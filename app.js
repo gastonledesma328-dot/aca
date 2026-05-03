@@ -57,7 +57,8 @@ function normalizeText(value) {
 
 function setUtilityOpen(open) {
   utilityPanel.classList.toggle("hidden", !open);
-
+  searchToggle.setAttribute("aria-expanded", String(open));
+  calendarToggle.setAttribute("aria-expanded", String(open));
 
   if (open) {
     matchSearch.focus();
