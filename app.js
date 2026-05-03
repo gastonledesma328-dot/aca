@@ -1,5 +1,5 @@
 const EVENTS_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/2612163/refs/heads/main/eventos_streamhdx.json";
-const AGENDA_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/2612164/refs/heads/main/agenda_espn.json";
+const AGENDA_URL = "https://partidos-hoy-worker.gastonledesma328.workers.dev";
 
 const tabs = document.querySelectorAll(".tab");
 const utilityPanel = document.querySelector("#utilityPanel");
