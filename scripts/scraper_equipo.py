@@ -693,7 +693,7 @@ def completar_equipo(base):
 
     equipo["estadisticas"] = estadisticas
 
-return equipo
+    return equipo
 
 
 def main():
