@@ -1,14 +1,11 @@
 import json
 import os
+import re
 import unicodedata
 from datetime import datetime, timezone
+from html import unescape
 
 import requests
-
-try:
-    from curl_cffi import requests as curl_requests
-except Exception:
-    curl_requests = None
 
 
 OUTPUT_FILE = "data/equipos.json"
@@ -18,12 +15,6 @@ SEASON = "2026"
 
 COMPETICION_PRINCIPAL = "Liga Profesional de Futbol - Torneo Apertura 2026"
 
-# FotMob:
-# id=112       -> Liga Profesional Argentina
-# season=28207 -> temporada/torneo detectado desde Network
-FOTMOB_LEAGUE_ID = "112"
-FOTMOB_SEASON_ID = "28207"
-
 COMPETICIONES = [
     {
         "nombre": "Liga Profesional de Futbol - Torneo Apertura 2026",
@@ -32,8 +23,6 @@ COMPETICIONES = [
         "fase": "apertura",
         "fecha_desde": "2026-01-01",
         "fecha_hasta": "2026-06-30",
-        "fotmob_league_id": FOTMOB_LEAGUE_ID,
-        "fotmob_season_id": FOTMOB_SEASON_ID,
     },
     {
         "nombre": "Liga Profesional de Futbol - Torneo Clausura 2026",
@@ -42,8 +31,6 @@ COMPETICIONES = [
         "fase": "clausura",
         "fecha_desde": "2026-07-01",
         "fecha_hasta": "2026-12-31",
-        "fotmob_league_id": FOTMOB_LEAGUE_ID,
-        "fotmob_season_id": FOTMOB_SEASON_ID,
     },
     {
         "nombre": "Copa Libertadores 2026",
@@ -52,8 +39,6 @@ COMPETICIONES = [
         "fase": "",
         "fecha_desde": "",
         "fecha_hasta": "",
-        "fotmob_league_id": "",
-        "fotmob_season_id": "",
     },
     {
         "nombre": "Copa Sudamericana 2026",
@@ -62,8 +47,6 @@ COMPETICIONES = [
         "fase": "",
         "fecha_desde": "",
         "fecha_hasta": "",
-        "fotmob_league_id": "",
-        "fotmob_season_id": "",
     },
 ]
 
@@ -72,8 +55,8 @@ EQUIPOS_BASE = [
     {
         "id": "river-plate",
         "espn_id": "16",
-        "fotmob_id": "10076",
-        "fotmob_slug": "river-plate",
+        "scores365_id": "868",
+        "scores365_slug": "river-plate",
         "nombre": "River Plate",
         "liga": "Liga Profesional de Futbol",
         "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
@@ -85,8 +68,8 @@ EQUIPOS_BASE = [
     {
         "id": "boca-juniors",
         "espn_id": "5",
-        "fotmob_id": "10077",
-        "fotmob_slug": "boca-juniors",
+        "scores365_id": "866",
+        "scores365_slug": "boca-juniors",
         "nombre": "Boca Juniors",
         "liga": "Liga Profesional de Futbol",
         "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
@@ -98,8 +81,8 @@ EQUIPOS_BASE = [
     {
         "id": "racing-club",
         "espn_id": "15",
-        "fotmob_id": "10080",
-        "fotmob_slug": "racing-club",
+        "scores365_id": "876",
+        "scores365_slug": "racing-club",
         "nombre": "Racing Club",
         "liga": "Liga Profesional de Futbol",
         "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
@@ -109,6 +92,9 @@ EQUIPOS_BASE = [
         "ciudad": "Avellaneda",
     },
 ]
+
+
+PREVIOUS_DATA = []
 
 
 def slug(texto):
@@ -129,6 +115,42 @@ def slug(texto):
                 anterior_guion = True
 
     return "".join(limpio).strip("-")
+
+
+def normalizar_texto(texto):
+    texto = str(texto or "")
+    texto = unicodedata.normalize("NFD", texto)
+    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
+    texto = texto.lower()
+    texto = re.sub(r"\s+", " ", texto)
+    return texto.strip()
+
+
+def slug_jugador(nombre):
+    value = slug(nombre)
+
+    correcciones = {
+        "lautaruo-rivero": "lautaro-rivero",
+        "adrian-martinez": "adrian-martinez",
+        "tomas-conechny": "tomas-conechny",
+        "duvan-vergara": "duvan-vergara",
+        "matias-zaracho": "matias-zaracho",
+    }
+
+    return correcciones.get(value, value)
+
+
+def nombre_visible(nombre):
+    correcciones = {
+        "Lautaruo Rivero": "Lautaro Rivero",
+        "Joaquin Freitas": "Joaquín Freitas",
+        "Aníbal Moreno": "Aníbal Moreno",
+        "Adrián Martínez": "Adrián Martínez",
+        "Duván Vergara": "Duván Vergara",
+        "Matías Zaracho": "Matías Zaracho",
+    }
+
+    return correcciones.get(nombre, nombre)
 
 
 def get_json(url):
@@ -164,6 +186,18 @@ def estadisticas_vacias():
     }
 
 
+def stats_vacias(stats):
+    if not isinstance(stats, dict):
+        return True
+
+    return (
+        not stats.get("goles")
+        and not stats.get("asistencias")
+        and not stats.get("amarillas")
+        and not stats.get("rojas")
+    )
+
+
 def estadisticas_generales_vacias():
     return {
         "posicion": "-",
@@ -183,8 +217,8 @@ def equipo_vacio(equipo):
     return {
         "id": equipo.get("id", ""),
         "espn_id": equipo.get("espn_id", ""),
-        "fotmob_id": equipo.get("fotmob_id", ""),
-        "fotmob_slug": equipo.get("fotmob_slug", ""),
+        "scores365_id": equipo.get("scores365_id", ""),
+        "scores365_slug": equipo.get("scores365_slug", ""),
         "nombre": equipo.get("nombre", ""),
         "liga": equipo.get("liga", "Liga no disponible"),
         "logo": equipo.get("logo", ""),
@@ -512,8 +546,8 @@ def cargar_plantel(equipo):
     return plantel
 
 
-def nombres_validos_plantel(plantel):
-    nombres = set()
+def lista_jugadores_plantel(plantel):
+    jugadores = []
 
     for grupo in plantel.values():
         if not isinstance(grupo, list):
@@ -526,9 +560,13 @@ def nombres_validos_plantel(plantel):
             nombre = jugador.get("nombre")
 
             if nombre:
-                nombres.add(slug(nombre))
+                jugadores.append(nombre)
 
-    return nombres
+    return jugadores
+
+
+def nombres_validos_plantel(plantel):
+    return {slug_jugador(nombre) for nombre in lista_jugadores_plantel(plantel)}
 
 
 def filtrar_estadisticas_por_plantel(estadisticas, plantel):
@@ -543,28 +581,102 @@ def filtrar_estadisticas_por_plantel(estadisticas, plantel):
         for item in estadisticas.get(categoria, []):
             jugador = item.get("jugador", "")
 
-            if slug(jugador) in validos:
+            if slug_jugador(jugador) in validos:
                 limpias[categoria].append(item)
 
     return limpias
 
 
 # =========================
-# FOTMOB API - ESTADÍSTICAS PERSONALES
+# 365SCORES - ESTADÍSTICAS PERSONALES
 # =========================
 
-def normalizar_numero(valor):
-    if valor is None:
-        return 0
+STAT_TITLES_365 = [
+    "Goles",
+    "Goles esperados",
+    "Asistencias",
+    "Asistencias esperadas",
+    "Goles y Asistencias",
+    "Goles esperados y asistencias",
+    "Penaltis convertidos",
+    "Tarjetas Rojas",
+    "Tarjetas Amarillas",
+    "Porterías a cero",
+    "Goles recibidos",
+    "Atajadas",
+    "Faltas",
+    "Faltas cometidas",
+    "Duelos ganados",
+]
 
-    if isinstance(valor, (int, float)):
-        if isinstance(valor, float) and valor.is_integer():
-            return int(valor)
-        return valor
 
-    valor = str(valor or "").strip()
-    valor = valor.replace(",", "")
-    valor = valor.replace("%", "")
+def limpiar_html_365(html):
+    html = re.sub(r"<script[\s\S]*?</script>", "\n", html, flags=re.I)
+    html = re.sub(r"<style[\s\S]*?</style>", "\n", html, flags=re.I)
+    html = re.sub(r"<noscript[\s\S]*?</noscript>", "\n", html, flags=re.I)
+    html = re.sub(r"<[^>]+>", "\n", html)
+
+    texto = unescape(html)
+
+    lineas = []
+    for linea in texto.splitlines():
+        linea = re.sub(r"\s+", " ", linea).strip()
+
+        if not linea:
+            continue
+
+        if linea.lower() in ["image", "ver más", "ver todos", "favoritos"]:
+            continue
+
+        lineas.append(linea)
+
+    return lineas
+
+
+def buscar_indice_titulo(lineas, titulo):
+    objetivo = slug(titulo)
+
+    for i, linea in enumerate(lineas):
+        value = slug(linea)
+
+        if value == objetivo:
+            return i
+
+    return -1
+
+
+def extraer_bloque_365(lineas, titulo):
+    inicio = buscar_indice_titulo(lineas, titulo)
+
+    if inicio == -1:
+        return ""
+
+    fin = len(lineas)
+
+    for i in range(inicio + 1, len(lineas)):
+        value = slug(lineas[i])
+
+        for posible in STAT_TITLES_365:
+            posible_slug = slug(posible)
+
+            if value == posible_slug:
+                fin = i
+                break
+
+        if fin != len(lineas):
+            break
+
+    bloque = " ".join(lineas[inicio + 1:fin])
+    bloque = re.sub(r"\s+", " ", bloque).strip()
+
+    return bloque
+
+
+def parse_numero_365(valor):
+    valor = str(valor or "").replace(",", ".").strip()
+
+    if "/" in valor:
+        valor = valor.split("/")[0]
 
     try:
         numero = float(valor)
@@ -575,251 +687,163 @@ def normalizar_numero(valor):
         return numero
 
     except Exception:
-        return valor
-
-
-def extraer_lista_fotmob_api(data):
-    """
-    Endpoint:
-    /api/data/leagueseasondeepstats
-
-    Normalmente la lista real viene en:
-    data["statsData"]
-    """
-    if isinstance(data, list):
-        return data
-
-    if not isinstance(data, dict):
-        return []
-
-    if isinstance(data.get("statsData"), list):
-        return data["statsData"]
-
-    posibles = [
-        data.get("stats"),
-        data.get("data"),
-        data.get("items"),
-        data.get("players"),
-        data.get("table"),
-        data.get("rows"),
-        data.get("rankings"),
-    ]
-
-    for item in posibles:
-        if isinstance(item, list):
-            return item
-
-        if isinstance(item, dict):
-            lista = extraer_lista_fotmob_api(item)
-            if lista:
-                return lista
-
-    for value in data.values():
-        if isinstance(value, list) and value and isinstance(value[0], dict):
-            return value
-
-        if isinstance(value, dict):
-            lista = extraer_lista_fotmob_api(value)
-            if lista:
-                return lista
-
-    return []
-
-
-def obtener_nombre_fotmob_item(item):
-    if not isinstance(item, dict):
-        return ""
-
-    for key in ["name", "playerName", "displayName", "fullName", "localizedName"]:
-        value = item.get(key)
-        if isinstance(value, str) and value.strip():
-            return value.strip()
-
-    player = (
-        item.get("player")
-        or item.get("participant")
-        or item.get("person")
-        or item.get("athlete")
-        or {}
-    )
-
-    if isinstance(player, dict):
-        for key in ["name", "displayName", "fullName", "localizedName", "shortName"]:
-            value = player.get(key)
-            if isinstance(value, str) and value.strip():
-                return value.strip()
-
-    return ""
-
-
-def obtener_valor_fotmob_item(item, stat):
-    if not isinstance(item, dict):
         return 0
 
-    stat_value = item.get("statValue")
 
-    if isinstance(stat_value, dict):
-        for key in ["value", "total", "stat", "count"]:
-            value = stat_value.get(key)
-            if value not in [None, ""]:
-                return normalizar_numero(value)
+def extraer_valor_jugador_en_bloque(bloque, nombre, todos_los_nombres):
+    if not bloque or not nombre:
+        return 0
 
-    if stat_value not in [None, ""] and not isinstance(stat_value, dict):
-        return normalizar_numero(stat_value)
+    bloque_norm = normalizar_texto(bloque)
+    nombre_norm = normalizar_texto(nombre)
 
-    posibles_keys = [
-        stat,
-        "value",
-        "total",
-        "count",
-        "goals",
-        "goal_assist",
-        "yellow_card",
-        "red_card",
-    ]
+    pos = bloque_norm.find(nombre_norm)
 
-    for key in posibles_keys:
-        if key in item and item.get(key) not in [None, ""]:
-            return normalizar_numero(item.get(key))
+    if pos == -1:
+        # Corrección especial para el typo de ESPN: Lautaruo Rivero.
+        if slug(nombre) == "lautaruo-rivero":
+            nombre_norm = "lautaro rivero"
+            pos = bloque_norm.find(nombre_norm)
+
+    if pos == -1:
+        return 0
+
+    final = len(bloque_norm)
+
+    for otro in todos_los_nombres:
+        otro_norm = normalizar_texto(otro)
+
+        if slug(otro) == "lautaruo-rivero":
+            otro_norm = "lautaro rivero"
+
+        if not otro_norm or otro_norm == nombre_norm:
+            continue
+
+        idx = bloque_norm.find(otro_norm, pos + len(nombre_norm))
+
+        if idx != -1 and idx < final:
+            final = idx
+
+    segmento = bloque_norm[pos + len(nombre_norm):final]
+    segmento = segmento[:180]
+
+    valores = re.findall(r"\b\d+(?:[.,]\d+)?(?:/\d+)?\b", segmento)
+
+    if valores:
+        return parse_numero_365(valores[-1])
+
+    prefijo = bloque_norm[max(0, pos - 20):pos]
+    valores_prefijo = re.findall(r"\b\d+(?:[.,]\d+)?\b", prefijo)
+
+    if valores_prefijo:
+        return parse_numero_365(valores_prefijo[-1])
 
     return 0
 
 
-def cargar_ranking_fotmob_api(equipo, competicion, stat):
-    fotmob_id = equipo.get("fotmob_id")
-    fotmob_slug = equipo.get("fotmob_slug") or equipo.get("id")
+def extraer_ranking_365(lineas, titulo, plantel, max_items=10):
+    bloque = extraer_bloque_365(lineas, titulo)
 
-    league_id = competicion.get("fotmob_league_id") or FOTMOB_LEAGUE_ID
-    season_id = competicion.get("fotmob_season_id") or FOTMOB_SEASON_ID
-
-    if not fotmob_id or not league_id or not season_id:
+    if not bloque:
         return []
 
-    api_url = (
-        "https://www.fotmob.com/api/data/leagueseasondeepstats"
-        f"?lng=es"
-        f"&id={league_id}"
-        f"&season={season_id}"
-        f"&type=players"
-        f"&stat={stat}"
-        f"&teamId={fotmob_id}"
-        f"&slug={fotmob_slug}-players"
-    )
+    jugadores = lista_jugadores_plantel(plantel)
+    resultados = []
 
-    page_url = f"https://www.fotmob.com/teams/{fotmob_id}/stats/{fotmob_slug}/players"
+    for nombre in jugadores:
+        total = extraer_valor_jugador_en_bloque(bloque, nombre, jugadores)
 
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/120.0.0.0 Safari/537.36"
-        ),
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Language": "es-AR,es;q=0.9,en;q=0.8",
-        "Referer": page_url,
-        "Origin": "https://www.fotmob.com",
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin",
-    }
-
-    try:
-        if curl_requests:
-            session = curl_requests.Session()
-
-            session.get(
-                page_url,
-                headers=headers,
-                timeout=30,
-                impersonate="chrome120",
-            )
-
-            r = session.get(
-                api_url,
-                headers=headers,
-                timeout=30,
-                impersonate="chrome120",
-            )
-        else:
-            session = requests.Session()
-
-            session.get(
-                page_url,
-                headers=headers,
-                timeout=30,
-            )
-
-            r = session.get(
-                api_url,
-                headers=headers,
-                timeout=30,
-            )
-
-        print(f"📊 FotMob API {r.status_code} stat={stat} {api_url}")
-
-        if not r.ok:
-            print("⚠️ FotMob bloqueó la request. Status:", r.status_code)
-            return []
-
-        data = r.json()
-        items = extraer_lista_fotmob_api(data)
-
-        print("🔎 FotMob keys:", list(data.keys()) if isinstance(data, dict) else type(data))
-        print("🔎 FotMob items encontrados:", len(items))
-
-        if items:
-            print("🔎 FotMob primer item:", items[0])
-
-        resultados = []
-        vistos = set()
-
-        for item in items:
-            nombre = obtener_nombre_fotmob_item(item)
-            total = obtener_valor_fotmob_item(item, stat)
-
-            if not nombre:
-                continue
-
-            if total in ["", None]:
-                continue
-
-            key = slug(nombre)
-
-            if key in vistos:
-                continue
-
-            vistos.add(key)
-
+        if total and total > 0:
             resultados.append(
                 {
-                    "jugador": nombre,
+                    "jugador": nombre_visible(nombre),
                     "total": total,
                 }
             )
 
-        return resultados[:10]
+    resultados.sort(key=lambda x: x.get("total", 0), reverse=True)
+
+    return resultados[:max_items]
+
+
+def cargar_estadisticas_365scores(equipo, plantel):
+    scores365_id = equipo.get("scores365_id")
+    scores365_slug = equipo.get("scores365_slug") or equipo.get("id")
+
+    if not scores365_id:
+        return estadisticas_vacias()
+
+    url = f"https://www.365scores.com/es/football/team/{scores365_slug}-{scores365_id}/stats"
+
+    try:
+        r = requests.get(
+            url,
+            timeout=30,
+            headers={
+                "User-Agent": (
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36"
+                ),
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "es-AR,es;q=0.9,en;q=0.8",
+                "Referer": "https://www.365scores.com/es",
+            },
+        )
+
+        print(f"📊 365Scores {r.status_code} {url}")
+
+        if not r.ok:
+            return estadisticas_vacias()
+
+        lineas = limpiar_html_365(r.text)
+
+        goles = extraer_ranking_365(lineas, "Goles", plantel)
+        asistencias = extraer_ranking_365(lineas, "Asistencias", plantel)
+        amarillas = extraer_ranking_365(lineas, "Tarjetas Amarillas", plantel)
+        rojas = extraer_ranking_365(lineas, "Tarjetas Rojas", plantel)
+
+        estadisticas = {
+            "goles": goles,
+            "asistencias": asistencias,
+            "amarillas": amarillas,
+            "rojas": rojas,
+        }
+
+        print(f"✅ Estadísticas 365Scores {equipo.get('nombre')}:", estadisticas)
+
+        return estadisticas
 
     except Exception as e:
-        print(f"⚠️ Error leyendo FotMob API stat={stat} para {equipo.get('nombre')}: {e}")
-        return []
+        print(f"⚠️ Error leyendo 365Scores para {equipo.get('nombre')}: {e}")
+        return estadisticas_vacias()
 
 
-def cargar_estadisticas_fotmob(equipo, competicion):
-    goles = cargar_ranking_fotmob_api(equipo, competicion, "goals")
-    asistencias = cargar_ranking_fotmob_api(equipo, competicion, "goal_assist")
-    amarillas = cargar_ranking_fotmob_api(equipo, competicion, "yellow_card")
-    rojas = cargar_ranking_fotmob_api(equipo, competicion, "red_card")
+def obtener_estadisticas_previas(equipo_id, nombre_competicion):
+    if not isinstance(PREVIOUS_DATA, list):
+        return estadisticas_vacias()
 
-    estadisticas = {
-        "goles": goles,
-        "asistencias": asistencias,
-        "amarillas": amarillas,
-        "rojas": rojas,
-    }
+    for equipo in PREVIOUS_DATA:
+        if not isinstance(equipo, dict):
+            continue
 
-    print(f"✅ Estadísticas FotMob API {equipo.get('nombre')}:", estadisticas)
+        if equipo.get("id") != equipo_id:
+            continue
 
-    return estadisticas
+        comp = (equipo.get("estadisticasPorCompeticion") or {}).get(nombre_competicion)
+
+        if isinstance(comp, dict):
+            stats = comp.get("estadisticas") or {}
+
+            if not stats_vacias(stats):
+                return stats
+
+        stats = equipo.get("estadisticas") or {}
+
+        if not stats_vacias(stats):
+            return stats
+
+    return estadisticas_vacias()
 
 
 # =========================
@@ -967,7 +991,14 @@ def cargar_datos_por_competicion(base, equipo, competicion):
 
     if competicion.get("league_slug") == "arg.1":
         if resultados or proximos:
-            estadisticas = cargar_estadisticas_fotmob(base, competicion)
+            estadisticas = cargar_estadisticas_365scores(base, equipo["plantel"])
+
+            if stats_vacias(estadisticas):
+                previas = obtener_estadisticas_previas(base.get("id"), nombre_competicion)
+
+                if not stats_vacias(previas):
+                    print(f"♻️ Usando estadísticas previas para {base['nombre']}")
+                    estadisticas = previas
         else:
             estadisticas = estadisticas_vacias()
     else:
@@ -1033,8 +1064,29 @@ def completar_equipo(base):
     return equipo
 
 
+def cargar_json_previo():
+    if not os.path.exists(OUTPUT_FILE):
+        return []
+
+    try:
+        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if isinstance(data, list):
+            return data
+
+    except Exception as e:
+        print(f"⚠️ No se pudo leer JSON previo: {e}")
+
+    return []
+
+
 def main():
+    global PREVIOUS_DATA
+
     os.makedirs("data", exist_ok=True)
+
+    PREVIOUS_DATA = cargar_json_previo()
 
     equipos = []
 
