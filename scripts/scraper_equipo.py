@@ -1,10 +1,7 @@
 import json
 import os
-import re
 import unicodedata
-from collections import Counter
 from datetime import datetime, timezone
-from html import unescape
 
 import requests
 
@@ -16,6 +13,12 @@ SEASON = "2026"
 
 COMPETICION_PRINCIPAL = "Liga Profesional de Futbol - Torneo Apertura 2026"
 
+# FotMob:
+# id=112      -> Liga Profesional Argentina
+# season=28207 -> temporada actual detectada en Network
+FOTMOB_LEAGUE_ID = "112"
+FOTMOB_SEASON_ID = "28207"
+
 COMPETICIONES = [
     {
         "nombre": "Liga Profesional de Futbol - Torneo Apertura 2026",
@@ -24,6 +27,8 @@ COMPETICIONES = [
         "fase": "apertura",
         "fecha_desde": "2026-01-01",
         "fecha_hasta": "2026-06-30",
+        "fotmob_league_id": FOTMOB_LEAGUE_ID,
+        "fotmob_season_id": FOTMOB_SEASON_ID,
     },
     {
         "nombre": "Liga Profesional de Futbol - Torneo Clausura 2026",
@@ -32,6 +37,8 @@ COMPETICIONES = [
         "fase": "clausura",
         "fecha_desde": "2026-07-01",
         "fecha_hasta": "2026-12-31",
+        "fotmob_league_id": FOTMOB_LEAGUE_ID,
+        "fotmob_season_id": FOTMOB_SEASON_ID,
     },
     {
         "nombre": "Copa Libertadores 2026",
@@ -40,6 +47,8 @@ COMPETICIONES = [
         "fase": "",
         "fecha_desde": "",
         "fecha_hasta": "",
+        "fotmob_league_id": "",
+        "fotmob_season_id": "",
     },
     {
         "nombre": "Copa Sudamericana 2026",
@@ -48,6 +57,8 @@ COMPETICIONES = [
         "fase": "",
         "fecha_desde": "",
         "fecha_hasta": "",
+        "fotmob_league_id": "",
+        "fotmob_season_id": "",
     },
 ]
 
@@ -228,32 +239,6 @@ def filtrar_partidos_por_fecha(partidos, competicion):
         for partido in partidos
         if fecha_en_rango(partido.get("dia"), fecha_desde, fecha_hasta)
     ]
-
-
-def extraer_game_id(url):
-    url = str(url or "")
-
-    if "gameId/" in url:
-        try:
-            return url.split("gameId/")[1].split("/")[0].strip()
-        except Exception:
-            return ""
-
-    if "gameId=" in url:
-        try:
-            return url.split("gameId=")[1].split("&")[0].strip()
-        except Exception:
-            return ""
-
-    return ""
-
-
-def cargar_resumen_partido(game_id):
-    if not game_id:
-        return None
-
-    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/summary?event={game_id}"
-    return get_json(url)
 
 
 def limpiar_score(score):
@@ -560,10 +545,18 @@ def filtrar_estadisticas_por_plantel(estadisticas, plantel):
 
 
 # =========================
-# FOTMOB - ESTADÍSTICAS PERSONALES
+# FOTMOB API - ESTADÍSTICAS PERSONALES
 # =========================
 
-def normalizar_numero_fotmob(valor):
+def normalizar_numero(valor):
+    if valor is None:
+        return 0
+
+    if isinstance(valor, (int, float)):
+        if isinstance(valor, float) and valor.is_integer():
+            return int(valor)
+        return valor
+
     valor = str(valor or "").strip()
     valor = valor.replace(",", "")
     valor = valor.replace("%", "")
@@ -580,117 +573,153 @@ def normalizar_numero_fotmob(valor):
         return valor
 
 
-def es_numero_fotmob(texto):
-    texto = str(texto or "").strip()
-    texto = texto.replace(",", "")
-    texto = texto.replace("%", "")
+def extraer_lista_fotmob_api(data):
+    """
+    FotMob puede cambiar la envoltura del JSON.
+    Esta función busca la lista real de filas/jugadores.
+    """
+    if isinstance(data, list):
+        return data
 
-    try:
-        float(texto)
-        return True
-    except Exception:
-        return False
-
-
-def limpiar_html_fotmob(html):
-    html = re.sub(r"<script[\s\S]*?</script>", "\n", html, flags=re.I)
-    html = re.sub(r"<style[\s\S]*?</style>", "\n", html, flags=re.I)
-    html = re.sub(r"<[^>]+>", "\n", html)
-
-    texto = unescape(html)
-    lineas = []
-
-    for linea in texto.splitlines():
-        linea = linea.strip()
-
-        if not linea:
-            continue
-
-        if linea.lower() in [
-            "image",
-            "see all",
-            "ver todos",
-            "fotmob",
-            "get the app",
-        ]:
-            continue
-
-        if linea.startswith(".css-"):
-            continue
-
-        lineas.append(linea)
-
-    return lineas
-
-
-def buscar_indice_titulo(lineas, titulo):
-    titulo_slug = slug(titulo)
-
-    for i, linea in enumerate(lineas):
-        linea_slug = slug(linea)
-
-        if linea_slug == titulo_slug:
-            return i
-
-        if linea_slug.startswith(titulo_slug):
-            return i
-
-    return -1
-
-
-def extraer_ranking_fotmob(lineas, titulo_inicio, titulos_fin, max_items=10):
-    inicio = buscar_indice_titulo(lineas, titulo_inicio)
-
-    if inicio == -1:
+    if not isinstance(data, dict):
         return []
 
-    fin = len(lineas)
+    posibles = [
+        data.get("stats"),
+        data.get("data"),
+        data.get("items"),
+        data.get("players"),
+        data.get("table"),
+        data.get("rows"),
+        data.get("rankings"),
+    ]
 
-    for titulo in titulos_fin:
-        idx = buscar_indice_titulo(lineas[inicio + 1:], titulo)
+    for item in posibles:
+        if isinstance(item, list):
+            return item
 
-        if idx != -1:
-            fin = min(fin, inicio + 1 + idx)
+        if isinstance(item, dict):
+            lista = extraer_lista_fotmob_api(item)
+            if lista:
+                return lista
 
-    bloque = lineas[inicio + 1:fin]
-    resultados = []
+    for value in data.values():
+        if isinstance(value, list) and value:
+            # Evita listas de strings simples.
+            if isinstance(value[0], dict):
+                return value
 
-    i = 0
+        if isinstance(value, dict):
+            lista = extraer_lista_fotmob_api(value)
+            if lista:
+                return lista
 
-    while i < len(bloque) - 1:
-        nombre = bloque[i].strip()
-        valor = bloque[i + 1].strip()
-
-        if (
-            nombre
-            and not es_numero_fotmob(nombre)
-            and es_numero_fotmob(valor)
-            and nombre.lower() not in ["image", "see all", "ver todos"]
-        ):
-            resultados.append(
-                {
-                    "jugador": nombre,
-                    "total": normalizar_numero_fotmob(valor),
-                }
-            )
-            i += 2
-        else:
-            i += 1
-
-        if len(resultados) >= max_items:
-            break
-
-    return resultados
+    return []
 
 
-def cargar_estadisticas_fotmob(equipo):
+def obtener_nombre_fotmob_item(item):
+    if not isinstance(item, dict):
+        return ""
+
+    player = (
+        item.get("player")
+        or item.get("participant")
+        or item.get("person")
+        or item.get("athlete")
+        or {}
+    )
+
+    if isinstance(player, dict):
+        nombre = (
+            player.get("name")
+            or player.get("displayName")
+            or player.get("fullName")
+            or player.get("localizedName")
+            or player.get("shortName")
+            or ""
+        )
+
+        if nombre:
+            return nombre
+
+    return (
+        item.get("name")
+        or item.get("playerName")
+        or item.get("displayName")
+        or item.get("fullName")
+        or item.get("localizedName")
+        or ""
+    )
+
+
+def obtener_valor_fotmob_item(item, stat):
+    if not isinstance(item, dict):
+        return 0
+
+    posibles_keys = [
+        stat,
+        "value",
+        "statValue",
+        "stat",
+        "total",
+        "count",
+        "goals",
+        "goal_assist",
+        "yellow_card",
+        "red_card",
+    ]
+
+    for key in posibles_keys:
+        if key in item and item.get(key) not in [None, ""]:
+            return normalizar_numero(item.get(key))
+
+    # Algunas respuestas traen nested stats.
+    nested_stats = item.get("stats") or item.get("stat") or {}
+
+    if isinstance(nested_stats, dict):
+        for key in posibles_keys:
+            if key in nested_stats and nested_stats.get(key) not in [None, ""]:
+                return normalizar_numero(nested_stats.get(key))
+
+    # Fallback: buscar primer número útil, pero evitar IDs.
+    for key, value in item.items():
+        key_slug = slug(key)
+
+        if key_slug in ["id", "playerid", "teamid", "participantid"]:
+            continue
+
+        if isinstance(value, (int, float)):
+            return normalizar_numero(value)
+
+        if isinstance(value, str):
+            try:
+                return normalizar_numero(value)
+            except Exception:
+                pass
+
+    return 0
+
+
+def cargar_ranking_fotmob_api(equipo, competicion, stat):
     fotmob_id = equipo.get("fotmob_id")
     fotmob_slug = equipo.get("fotmob_slug") or equipo.get("id")
 
-    if not fotmob_id:
-        return estadisticas_vacias()
+    league_id = competicion.get("fotmob_league_id") or FOTMOB_LEAGUE_ID
+    season_id = competicion.get("fotmob_season_id") or FOTMOB_SEASON_ID
 
-    url = f"https://www.fotmob.com/teams/{fotmob_id}/stats/{fotmob_slug}/players"
+    if not fotmob_id or not league_id or not season_id:
+        return []
+
+    url = (
+        "https://www.fotmob.com/api/data/leagueseasondeepstats"
+        f"?lng=es"
+        f"&id={league_id}"
+        f"&season={season_id}"
+        f"&type=players"
+        f"&stat={stat}"
+        f"&teamId={fotmob_id}"
+        f"&slug={fotmob_slug}-players"
+    )
 
     try:
         r = requests.get(
@@ -698,81 +727,75 @@ def cargar_estadisticas_fotmob(equipo):
             timeout=30,
             headers={
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                "Accept-Language": "en-US,en;q=0.9,es;q=0.8",
-                "Referer": "https://www.fotmob.com/",
+                "Accept": "application/json, text/plain, */*",
+                "Accept-Language": "es-AR,es;q=0.9,en;q=0.8",
+                "Referer": f"https://www.fotmob.com/teams/{fotmob_id}/stats/{fotmob_slug}/players",
             },
         )
 
-        print(f"📊 FotMob {r.status_code} {url}")
+        print(f"📊 FotMob API {r.status_code} stat={stat} {url}")
 
         if not r.ok:
-            return estadisticas_vacias()
+            return []
 
-        lineas = limpiar_html_fotmob(r.text)
+        data = r.json()
+        items = extraer_lista_fotmob_api(data)
 
-        goles = extraer_ranking_fotmob(
-            lineas,
-            "Top scorer",
-            [
-                "Assists",
-                "Goals + Assists",
-                "FotMob rating",
-                "Minutes played",
-                "Attack",
-                "Discipline",
-            ],
-        )
+        resultados = []
+        vistos = set()
 
-        asistencias = extraer_ranking_fotmob(
-            lineas,
-            "Assists",
-            [
-                "Goals + Assists",
-                "FotMob rating",
-                "Minutes played",
-                "Attack",
-                "Discipline",
-            ],
-        )
+        for item in items:
+            nombre = obtener_nombre_fotmob_item(item)
+            total = obtener_valor_fotmob_item(item, stat)
 
-        amarillas = extraer_ranking_fotmob(
-            lineas,
-            "Yellow cards",
-            [
-                "Red cards",
-                "FotMob",
-                "Get the app",
-                "© Copyright",
-                "Goalkeeper",
-            ],
-        )
+            if not nombre:
+                continue
 
-        rojas = extraer_ranking_fotmob(
-            lineas,
-            "Red cards",
-            [
-                "FotMob",
-                "Get the app",
-                "© Copyright",
-                "Goalkeeper",
-            ],
-        )
+            if total in ["", None]:
+                continue
 
-        estadisticas = {
-            "goles": goles,
-            "asistencias": asistencias,
-            "amarillas": amarillas,
-            "rojas": rojas,
-        }
+            key = slug(nombre)
 
-        print(f"✅ Estadísticas FotMob {equipo.get('nombre')}:", estadisticas)
+            if key in vistos:
+                continue
 
-        return estadisticas
+            vistos.add(key)
+
+            resultados.append(
+                {
+                    "jugador": nombre,
+                    "total": total,
+                }
+            )
+
+        return resultados[:10]
 
     except Exception as e:
-        print(f"⚠️ Error leyendo FotMob para {equipo.get('nombre')}: {e}")
-        return estadisticas_vacias()
+        print(f"⚠️ Error leyendo FotMob API stat={stat} para {equipo.get('nombre')}: {e}")
+        return []
+
+
+def cargar_estadisticas_fotmob(equipo, competicion):
+    # Confirmado:
+    # goals       -> goles
+    # goal_assist -> asistencias
+    # yellow_card -> amarillas
+    # red_card    -> rojas
+    goles = cargar_ranking_fotmob_api(equipo, competicion, "goals")
+    asistencias = cargar_ranking_fotmob_api(equipo, competicion, "goal_assist")
+    amarillas = cargar_ranking_fotmob_api(equipo, competicion, "yellow_card")
+    rojas = cargar_ranking_fotmob_api(equipo, competicion, "red_card")
+
+    estadisticas = {
+        "goles": goles,
+        "asistencias": asistencias,
+        "amarillas": amarillas,
+        "rojas": rojas,
+    }
+
+    print(f"✅ Estadísticas FotMob API {equipo.get('nombre')}:", estadisticas)
+
+    return estadisticas
 
 
 # =========================
@@ -920,7 +943,7 @@ def cargar_datos_por_competicion(base, equipo, competicion):
 
     if competicion.get("league_slug") == "arg.1":
         if resultados or proximos:
-            estadisticas = cargar_estadisticas_fotmob(base)
+            estadisticas = cargar_estadisticas_fotmob(base, competicion)
         else:
             estadisticas = estadisticas_vacias()
     else:
