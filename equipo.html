@@ -421,6 +421,11 @@
     return params.get("id") || "boca-juniors";
   }
 
+    function getTeamLogoFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("logo") || "";
+}
+
     function nombreDesdeId(id) {
   return String(id || "")
     .split("-")
@@ -446,10 +451,10 @@
 
       if (!equipo) {
   const equipoBasico = {
-    id: teamId,
-    nombre: nombreDesdeId(teamId),
-    liga: "Liga no disponible",
-    logo: "",
+  id: teamId,
+  nombre: nombreDesdeId(teamId),
+  liga: "Liga no disponible",
+  logo: getTeamLogoFromUrl(),
     apodo: "Sin datos",
     fundacion: "Sin datos",
     estadio: "Sin datos",
