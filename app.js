@@ -704,11 +704,11 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
 
       const list = section.querySelector(".agenda-list");
 
-      group.matches.forEach((match) => {
-        const row = document.createElement("article");
+     group.matches.forEach((match) => {
+  const row = document.createElement("article");
 
-        row.className = "agenda-row";
-        row.dataset.espnUrl = match.url_espn || sourceUrl;
+  row.className = "agenda-row";
+  row.dataset.espnUrl = match.url_espn || sourceUrl;
 
         const home = match.local || match.partido?.split(" vs ")[0] || "Local";
         const away = match.visitante || match.partido?.split(" vs ")[1] || "Visitante";
@@ -719,26 +719,26 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
         }
 
         row.innerHTML = `
-          <time>${agendaDisplayTime(match)}</time>
+  <time>${agendaDisplayTime(match)}</time>
 
-          <span class="agenda-teams">
-            <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo, group.league)}" title="Ver ficha de ${home}">
-              ${teamLogoMarkup(home, match.local_logo)}
-              <span>${home}</span>
-            </a>
+  <span class="agenda-teams">
+    <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo, group.league)}" title="Ver ficha de ${home}">
+      ${teamLogoMarkup(home, match.local_logo)}
+      <span>${home}</span>
+    </a>
 
-            <span class="agenda-score">${scoreMarkup(match)}</span>
+    <span class="agenda-score">${scoreMarkup(match)}</span>
 
-            <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo, group.league)}" title="Ver ficha de ${away}">
-              ${teamLogoMarkup(away, match.visitante_logo)}
-              <span>${away}</span>
-            </a>
+    <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo, group.league)}" title="Ver ficha de ${away}">
+      ${teamLogoMarkup(away, match.visitante_logo)}
+      <span>${away}</span>
+    </a>
 
-            ${scorersMarkup(match)}
-          </span>
+    ${scorersMarkup(match)}
+  </span>
 
-          <span class="agenda-state">${agendaStatus(match)}</span>
-        `;
+  <span class="agenda-state">${agendaStatus(match)}</span>
+`;
 
         list.append(row);
       });
