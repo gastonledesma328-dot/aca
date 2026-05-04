@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ficha del Equipo</title>
+
+  <style>
+    :root {
+      --bg: #0b3b28;
+      --bg2: #062719;
+      --card: rgba(13, 55, 38, 0.95);
+      --card2: rgba(20, 75, 52, 0.95);
+      --border: rgba(255,255,255,0.18);
+      --text: #f2fff7;
+      --muted: rgba(242,255,247,0.7);
+      --primary: #5fcf80;
+      --live: #e8533a;
+      --row: rgba(255,255,255,0.06);
+      --row2: rgba(255,255,255,0.1);
+      --shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(34,120,80,0.35), transparent 35%),
+        linear-gradient(160deg, var(--bg), var(--bg2));
+      color: var(--text);
+      padding: 18px;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 18px;
+    }
+
+    .team-header {
+      grid-column: 1 / -1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .team-logo {
+      width: 74px;
+      height: 74px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      padding: 8px;
+    }
+
+    .team-title h1 {
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .team-title p {
+      color: var(--muted);
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      font-size: 15px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      overflow: hidden;
+    }
+
+    th {
+      background: rgba(0,0,0,0.25);
+      color: #ffffff;
+      font-size: 11px;
+      text-align: left;
+      padding: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: var(--text);
+    }
+
+    tr:nth-child(even) td {
+      background: var(--row);
+    }
+
+    tr:nth-child(odd) td {
+      background: var(--row2);
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .more {
+      display: block;
+      text-align: center;
+      color: var(--primary);
+      margin-top: 8px;
+      font-size: 11px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .club-info {
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 7px;
+    }
+
+    .info-row span:first-child {
+      color: var(--muted);
+    }
+
+    .info-row span:last-child {
+      text-align: right;
+      font-weight: bold;
+    }
+
+    .section-title {
+      background: rgba(95,207,128,0.9);
+      color: #062719;
+      font-weight: bold;
+      text-align: center;
+      font-size: 11px;
+      padding: 5px;
+    }
+
+    .player {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .player-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.14);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .back {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 13px;
+      margin-left: auto;
+      font-weight: bold;
+    }
+
+    @media (max-width: 850px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+
+      .team-header {
+        flex-wrap: wrap;
+      }
+
+      .back {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <header class="team-header">
+      <img id="teamLogo" class="team-logo" src="" alt="Logo del equipo">
+
+      <div class="team-title">
+        <h1 id="teamName">Boca Juniors</h1>
+        <p id="teamLeague">Liga Profesional Argentina</p>
+      </div>
+
+      <a class="back" href="index.html">← Volver a partidos</a>
+    </header>
+
+    <section class="column">
+
+      <div class="card">
+        <h2>Próximos partidos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Día</th>
+              <th>Local</th>
+              <th>Visitante</th>
+              <th class="right">Hora</th>
+            </tr>
+          </thead>
+          <tbody id="upcomingMatches"></tbody>
+        </table>
+        <a href="#" class="more">VER MÁS</a>
+      </div>
+
+      <div class="card">
+        <h2>Resultados</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Día</th>
+              <th>Local</th>
+              <th>Visitante</th>
+              <th class="right">Resultado</th>
+            </tr>
+          </thead>
+          <tbody id="results"></tbody>
+        </table>
+        <a href="#" class="more">VER MÁS</a>
+      </div>
+
+      <div class="card">
+        <h2>Plantel</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Jugador</th>
+              <th class="center">Edad</th>
+              <th class="right">Altura</th>
+            </tr>
+          </thead>
+          <tbody id="squad"></tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <aside class="column">
+
+      <div class="card">
+        <h2>Datos del club</h2>
+        <div class="club-info">
+          <div class="info-row">
+            <span>Apodo</span>
+            <span id="teamNickname">Xeneizes</span>
+          </div>
+          <div class="info-row">
+            <span>Fundación</span>
+            <span id="teamFounded">1905</span>
+          </div>
+          <div class="info-row">
+            <span>Estadio</span>
+            <span id="teamStadium">Alberto J. Armando</span>
+          </div>
+          <div class="info-row">
+            <span>Ciudad</span>
+            <span id="teamCity">Buenos Aires</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Estadísticas personales</h2>
+
+        <h2 style="font-size:12px; margin-top:10px;">Goles</h2>
+        <table>
+          <tbody id="goals"></tbody>
+        </table>
+        <a href="#" class="more">VER MÁS</a>
+
+        <h2 style="font-size:12px; margin-top:18px;">Asistencias</h2>
+        <table>
+          <tbody id="assists"></tbody>
+        </table>
+        <a href="#" class="more">VER MÁS</a>
+
+        <h2 style="font-size:12px; margin-top:18px;">Tarjetas amarillas</h2>
+        <table>
+          <tbody id="yellowCards"></tbody>
+        </table>
+        <a href="#" class="more">VER MÁS</a>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <script>
+    const equipoDemo = {
+      nombre: "Boca Juniors",
+      liga: "Liga Profesional Argentina",
+      logo: "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+      apodo: "Xeneizes",
+      fundacion: "1905",
+      estadio: "Alberto J. Armando",
+      ciudad: "Buenos Aires",
+
+      proximosPartidos: [
+        { dia: "05/05", local: "Boca Juniors", visitante: "Barracas Central", hora: "21:00" },
+        { dia: "10/05", local: "River Plate", visitante: "Boca Juniors", hora: "17:30" },
+        { dia: "18/05", local: "Boca Juniors", visitante: "Racing Club", hora: "20:00" }
+      ],
+
+      resultados: [
+        { dia: "28/04", local: "Boca Juniors", visitante: "Independiente", resultado: "2-1" },
+        { dia: "21/04", local: "San Lorenzo", visitante: "Boca Juniors", resultado: "0-0" },
+        { dia: "14/04", local: "Boca Juniors", visitante: "Lanús", resultado: "3-1" }
+      ],
+
+      plantel: {
+        arqueros: [
+          { nombre: "Sergio Romero", edad: 37, altura: "1.92" },
+          { nombre: "Leandro Brey", edad: 22, altura: "1.91" }
+        ],
+        defensores: [
+          { nombre: "Luis Advíncula", edad: 34, altura: "1.78" },
+          { nombre: "Marcos Rojo", edad: 34, altura: "1.87" },
+          { nombre: "Nicolás Figal", edad: 30, altura: "1.80" }
+        ],
+        mediocampistas: [
+          { nombre: "Cristian Medina", edad: 22, altura: "1.76" },
+          { nombre: "Ezequiel Fernández", edad: 22, altura: "1.78" },
+          { nombre: "Kevin Zenón", edad: 23, altura: "1.77" }
+        ],
+        delanteros: [
+          { nombre: "Edinson Cavani", edad: 37, altura: "1.84" },
+          { nombre: "Miguel Merentiel", edad: 28, altura: "1.76" }
+        ]
+      },
+
+      estadisticas: {
+        goles: [
+          { jugador: "Miguel Merentiel", total: 5 },
+          { jugador: "Edinson Cavani", total: 4 },
+          { jugador: "Kevin Zenón", total: 2 }
+        ],
+        asistencias: [
+          { jugador: "Kevin Zenón", total: 3 },
+          { jugador: "Cristian Medina", total: 2 },
+          { jugador: "Luis Advíncula", total: 1 }
+        ],
+        amarillas: [
+          { jugador: "Marcos Rojo", total: 5 },
+          { jugador: "Pol Fernández", total: 4 },
+          { jugador: "Luis Advíncula", total: 3 }
+        ]
+      }
+    };
+
+    function cargarEquipo(equipo) {
+      document.title = equipo.nombre + " - Ficha del Equipo";
+
+      document.getElementById("teamLogo").src = equipo.logo;
+      document.getElementById("teamName").textContent = equipo.nombre;
+      document.getElementById("teamLeague").textContent = equipo.liga;
+      document.getElementById("teamNickname").textContent = equipo.apodo;
+      document.getElementById("teamFounded").textContent = equipo.fundacion;
+      document.getElementById("teamStadium").textContent = equipo.estadio;
+      document.getElementById("teamCity").textContent = equipo.ciudad;
+
+      document.getElementById("upcomingMatches").innerHTML = equipo.proximosPartidos.map(p => `
+        <tr>
+          <td>${p.dia}</td>
+          <td>${p.local}</td>
+          <td>${p.visitante}</td>
+          <td class="right">${p.hora}</td>
+        </tr>
+      `).join("");
+
+      document.getElementById("results").innerHTML = equipo.resultados.map(p => `
+        <tr>
+          <td>${p.dia}</td>
+          <td>${p.local}</td>
+          <td>${p.visitante}</td>
+          <td class="right">${p.resultado}</td>
+        </tr>
+      `).join("");
+
+      const squadRows = [];
+
+      Object.entries(equipo.plantel).forEach(([posicion, jugadores]) => {
+        squadRows.push(`
+          <tr>
+            <td colspan="3" class="section-title">${posicion.toUpperCase()}</td>
+          </tr>
+        `);
+
+        jugadores.forEach(j => {
+          squadRows.push(`
+            <tr>
+              <td>
+                <span class="player">
+                  <span class="player-number">⚽</span>
+                  ${j.nombre}
+                </span>
+              </td>
+              <td class="center">${j.edad}</td>
+              <td class="right">${j.altura}</td>
+            </tr>
+          `);
+        });
+      });
+
+      document.getElementById("squad").innerHTML = squadRows.join("");
+
+      document.getElementById("goals").innerHTML = equipo.estadisticas.goles.map(e => `
+        <tr>
+          <td>${e.jugador}</td>
+          <td class="right">${e.total}</td>
+        </tr>
+      `).join("");
+
+      document.getElementById("assists").innerHTML = equipo.estadisticas.asistencias.map(e => `
+        <tr>
+          <td>${e.jugador}</td>
+          <td class="right">${e.total}</td>
+        </tr>
+      `).join("");
+
+      document.getElementById("yellowCards").innerHTML = equipo.estadisticas.amarillas.map(e => `
+        <tr>
+          <td>${e.jugador}</td>
+          <td class="right">${e.total}</td>
+        </tr>
+      `).join("");
+    }
+
+    cargarEquipo(equipoDemo);
+  </script>
+
+</body>
+</html>
