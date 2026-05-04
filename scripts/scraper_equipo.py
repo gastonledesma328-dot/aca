@@ -344,13 +344,24 @@ def cargar_estadisticas_jugadores(equipo):
     ]
 
     for url in urls:
-        data = get_json(url)
+    data = get_json(url)
 
-        if not data:
-            continue
+    if not data:
+        continue
 
-        leaders = data.get("leaders") or data.get("categories") or []
+    print(f"📊 Estadísticas recibidas para {equipo.get('nombre')}")
+    print("🔑 Keys principales:", list(data.keys()))
 
+    if "leaders" in data:
+        print("✅ Tiene leaders")
+
+    if "categories" in data:
+        print("✅ Tiene categories")
+
+    if "splits" in data:
+        print("✅ Tiene splits")
+
+    leaders = data.get("leaders") or data.get("categories") or []
         for group in leaders:
             group_name = slug(group.get("name") or group.get("displayName") or "")
             items = (
