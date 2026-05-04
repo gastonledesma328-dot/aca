@@ -761,6 +761,7 @@ def cargar_estadisticas_desde_resumenes(equipo):
     plantel = equipo.get("plantel") or {}
 
     print(f"📊 Calculando estadísticas por partidos filtrados para {equipo.get('nombre')}")
+    print(f"🎯 Partidos usados para estadísticas: {len(partidos)}")
 
     for partido in partidos:
         game_id = extraer_game_id(partido.get("url"))
@@ -773,61 +774,73 @@ def cargar_estadisticas_desde_resumenes(equipo):
         if not isinstance(resumen, dict):
             continue
 
-        scoring_plays = resumen.get("scoringPlays") or []
+        print(f"📌 Partido {game_id} keys:", list(resumen.keys()))
 
-        if isinstance(scoring_plays, list):
-            for play in scoring_plays:
-                if not isinstance(play, dict):
-                    continue
+        eventos = []
 
-                jugadores = extraer_jugadores_de_evento_con_plantel(play, plantel)
+        # 1) Fuente principal si ESPN la trae
+        if isinstance(resumen.get("scoringPlays"), list):
+            eventos.extend(resumen.get("scoringPlays") or [])
 
-                if not jugadores:
-                    continue
+        # 2) Jugadas generales si ESPN las trae
+        if isinstance(resumen.get("plays"), list):
+            eventos.extend(resumen.get("plays") or [])
 
-                goles[jugadores[0]] += 1
+        # 3) Fallback controlado: buscar eventos dentro del JSON completo
+        eventos.extend(extraer_eventos_recursivo(resumen))
+
+        vistos = set()
+
+        for evento in eventos:
+            if not isinstance(evento, dict):
+                continue
+
+            tipo = detectar_tipo_evento(evento)
+
+            if tipo not in ["gol", "asistencia", "amarilla", "roja"]:
+                continue
+
+            jugadores = extraer_jugadores_de_evento_con_plantel(evento, plantel)
+
+            if not jugadores:
+                continue
+
+            texto = texto_evento(evento)
+            jugador = jugadores[0]
+
+            # Evita contar repetido el mismo evento muchas veces
+            key = f"{game_id}-{tipo}-{slug(jugador)}-{slug(texto)[:120]}"
+
+            if key in vistos:
+                continue
+
+            vistos.add(key)
+
+            if tipo == "gol":
+                goles[jugador] += 1
 
                 if len(jugadores) > 1:
                     asistencias[jugadores[1]] += 1
 
-        plays = resumen.get("plays") or []
+            elif tipo == "asistencia":
+                asistencias[jugador] += 1
 
-        if isinstance(plays, list):
-            vistos_tarjetas = set()
+            elif tipo == "amarilla":
+                amarillas[jugador] += 1
 
-            for play in plays:
-                if not isinstance(play, dict):
-                    continue
+            elif tipo == "roja":
+                rojas[jugador] += 1
 
-                tipo = detectar_tipo_evento(play)
-
-                if tipo not in ["amarilla", "roja"]:
-                    continue
-
-                jugadores = extraer_jugadores_de_evento_con_plantel(play, plantel)
-
-                if not jugadores:
-                    continue
-
-                jugador = jugadores[0]
-                key = f"{game_id}-{tipo}-{slug(jugador)}-{texto_evento(play)[:80]}"
-
-                if key in vistos_tarjetas:
-                    continue
-
-                vistos_tarjetas.add(key)
-
-                if tipo == "amarilla":
-                    amarillas[jugador] += 1
-                elif tipo == "roja":
-                    rojas[jugador] += 1
-
-    return {
+    resultado = {
         "goles": sumar_counter_a_lista(goles),
         "asistencias": sumar_counter_a_lista(asistencias),
         "amarillas": sumar_counter_a_lista(amarillas),
         "rojas": sumar_counter_a_lista(rojas),
     }
+
+    print(f"✅ Estadísticas calculadas para {equipo.get('nombre')}:", resultado)
+
+    return resultado
 
 
 def cargar_estadisticas_jugadores(equipo):
