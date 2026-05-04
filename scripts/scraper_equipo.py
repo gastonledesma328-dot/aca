@@ -751,6 +751,35 @@ def detectar_tipo_evento(evento):
     return ""
 
 
+def extraer_eventos_recursivo(data):
+    encontrados = []
+
+    def caminar(obj):
+        if isinstance(obj, dict):
+            keys = set(obj.keys())
+
+            if (
+                "type" in keys
+                or "text" in keys
+                or "play" in keys
+                or "athletesInvolved" in keys
+                or "participants" in keys
+                or "card" in keys
+                or "commentary" in keys
+                or "keyEvents" in keys
+            ):
+                encontrados.append(obj)
+
+            for value in obj.values():
+                caminar(value)
+
+        elif isinstance(obj, list):
+            for item in obj:
+                caminar(item)
+
+    caminar(data)
+    return encontrados
+
 def cargar_estadisticas_desde_resumenes(equipo):
     goles = Counter()
     asistencias = Counter()
