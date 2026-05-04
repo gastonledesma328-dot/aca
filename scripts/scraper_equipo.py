@@ -131,6 +131,7 @@ def slug_jugador(nombre):
 
     correcciones = {
         "lautaruo-rivero": "lautaro-rivero",
+        "joaquin-freitas": "joaquin-freitas",
         "adrian-martinez": "adrian-martinez",
         "tomas-conechny": "tomas-conechny",
         "duvan-vergara": "duvan-vergara",
@@ -591,19 +592,23 @@ def filtrar_estadisticas_por_plantel(estadisticas, plantel):
 # 365SCORES - ESTADÍSTICAS PERSONALES
 # =========================
 
-STAT_TITLES_365 = [
+TITULOS_365 = [
     "Goles",
     "Goles esperados",
     "Asistencias",
     "Asistencias esperadas",
     "Goles y Asistencias",
     "Goles esperados y asistencias",
+    "Rating 365",
     "Penaltis convertidos",
+    "Barridas ganadas por partido",
+    "Intercepciones por partido",
     "Tarjetas Rojas",
     "Tarjetas Amarillas",
     "Porterías a cero",
     "Goles recibidos",
-    "Atajadas",
+    "Atajadas por partido",
+    "Penaltis parados",
     "Faltas",
     "Faltas cometidas",
     "Duelos ganados",
@@ -631,25 +636,6 @@ def obtener_bloque_texto_365(texto, titulo):
     if not texto:
         return ""
 
-    titulos = [
-        "Goles",
-        "Goles esperados",
-        "Asistencias",
-        "Asistencias esperadas",
-        "Goles y Asistencias",
-        "Goles esperados y asistencias",
-        "Rating 365",
-        "Penaltis convertidos",
-        "Barridas ganadas por partido",
-        "Intercepciones por partido",
-        "Tarjetas Rojas",
-        "Tarjetas Amarillas",
-        "Porterías a cero",
-        "Goles recibidos",
-        "Atajadas por partido",
-        "Penaltis parados",
-    ]
-
     patron_inicio = re.compile(rf"(?:###\s*)?{re.escape(titulo)}\b", re.I)
     match = patron_inicio.search(texto)
 
@@ -659,7 +645,7 @@ def obtener_bloque_texto_365(texto, titulo):
     inicio = match.end()
     fin = len(texto)
 
-    for otro in titulos:
+    for otro in TITULOS_365:
         if slug(otro) == slug(titulo):
             continue
 
@@ -700,13 +686,15 @@ def extraer_ranking_365_desde_texto(texto, titulo, plantel, max_items=10):
     jugadores = lista_jugadores_plantel(plantel)
     resultados = []
 
-    # Ordenamos por nombre más largo primero para evitar choques entre nombres parecidos.
-    jugadores_ordenados = sorted(jugadores, key=lambda n: len(str(n)), reverse=True)
+    jugadores_ordenados = sorted(
+        jugadores,
+        key=lambda n: len(str(n)),
+        reverse=True
+    )
 
     for nombre in jugadores_ordenados:
         candidatos = [nombre]
 
-        # Correcciones por diferencias entre ESPN y 365Scores.
         if slug(nombre) == "lautaruo-rivero":
             candidatos.append("Lautaro Rivero")
 
@@ -717,20 +705,18 @@ def extraer_ranking_365_desde_texto(texto, titulo, plantel, max_items=10):
 
         for candidato in candidatos:
             nombre_regex = re.escape(candidato)
-            patron = re.compile(
-                rf"(?:^|\s)(?:(?P<pre>\d+(?:[.,]\d+)?(?:/\d+)?)\s+)?"
+
+            patron_pre = re.compile(
+                rf"(?:^|\s)(?P<pre>\d+(?:[.,]\d+)?(?:/\d+)?)\s+"
                 rf"{nombre_regex}"
-                rf"(?:\s+[A-ZÁÉÍÓÚÑa-záéíóúñüÜ().'-]+){{0,10}}?"
-                rf"\s+(?P<post>\d+(?:[.,]\d+)?(?:/\d+)?)"
                 rf"(?=\s|$)",
                 re.I,
             )
 
-            m = patron.search(bloque)
+            m_pre = patron_pre.search(bloque)
 
-            if m:
-                valor = m.group("post") or m.group("pre")
-                total = parse_numero_365(valor)
+            if m_pre:
+                total = parse_numero_365(m_pre.group("pre"))
 
                 if total > 0:
                     encontrado = {
@@ -739,19 +725,18 @@ def extraer_ranking_365_desde_texto(texto, titulo, plantel, max_items=10):
                     }
                     break
 
-            # Caso top 3 de Goles en 365Scores:
-            # "4 Gonzalo Montiel River Plate Defensa..."
-            patron_pre = re.compile(
-                rf"(?:^|\s)(?P<pre>\d+(?:[.,]\d+)?(?:/\d+)?)\s+"
+            patron_post = re.compile(
                 rf"{nombre_regex}"
+                rf"(?:\s+[A-ZÁÉÍÓÚÑa-záéíóúñüÜ().'\-]+){{0,12}}?"
+                rf"\s+(?P<post>\d+(?:[.,]\d+)?(?:/\d+)?)"
                 rf"(?=\s|$)",
                 re.I,
             )
 
-            m2 = patron_pre.search(bloque)
+            m_post = patron_post.search(bloque)
 
-            if m2:
-                total = parse_numero_365(m2.group("pre"))
+            if m_post:
+                total = parse_numero_365(m_post.group("post"))
 
                 if total > 0:
                     encontrado = {
@@ -778,6 +763,7 @@ def extraer_ranking_365_desde_texto(texto, titulo, plantel, max_items=10):
         limpios.append(item)
 
     return limpios[:max_items]
+
 
 def cargar_estadisticas_365scores(equipo, plantel):
     scores365_id = equipo.get("scores365_id")
@@ -811,16 +797,16 @@ def cargar_estadisticas_365scores(equipo, plantel):
 
         texto = limpiar_html_365(r.text)
 
-print("🔎 365Scores texto length:", len(texto))
-print("🔎 Tiene Goles:", "Goles" in texto)
-print("🔎 Tiene Asistencias:", "Asistencias" in texto)
-print("🔎 Tiene Tarjetas Amarillas:", "Tarjetas Amarillas" in texto)
-print("🔎 Tiene Tarjetas Rojas:", "Tarjetas Rojas" in texto)
+        print("🔎 365Scores texto length:", len(texto))
+        print("🔎 Tiene Goles:", "Goles" in texto)
+        print("🔎 Tiene Asistencias:", "Asistencias" in texto)
+        print("🔎 Tiene Tarjetas Amarillas:", "Tarjetas Amarillas" in texto)
+        print("🔎 Tiene Tarjetas Rojas:", "Tarjetas Rojas" in texto)
 
-goles = extraer_ranking_365_desde_texto(texto, "Goles", plantel)
-asistencias = extraer_ranking_365_desde_texto(texto, "Asistencias", plantel)
-amarillas = extraer_ranking_365_desde_texto(texto, "Tarjetas Amarillas", plantel)
-rojas = extraer_ranking_365_desde_texto(texto, "Tarjetas Rojas", plantel)
+        goles = extraer_ranking_365_desde_texto(texto, "Goles", plantel)
+        asistencias = extraer_ranking_365_desde_texto(texto, "Asistencias", plantel)
+        amarillas = extraer_ranking_365_desde_texto(texto, "Tarjetas Amarillas", plantel)
+        rojas = extraer_ranking_365_desde_texto(texto, "Tarjetas Rojas", plantel)
 
         estadisticas = {
             "goles": goles,
