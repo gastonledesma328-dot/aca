@@ -1328,19 +1328,9 @@ footer strong {
 }
 
 @media (max-width: 640px) {
-  .agenda-teams {
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  gap: 6px;
-}
-
-.agenda-team:first-child {
-  justify-content: flex-end;
-}
-
-.agenda-vs,
-.agenda-score {
-  justify-self: center;
-}
+  .app-shell,
+  footer {
+    width: min(100% - 1rem, 860px);
   }
 
   .topbar {
@@ -1383,18 +1373,18 @@ footer strong {
   }
 
   .agenda-teams {
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  gap: 6px;
-}
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
 
-.agenda-team:first-child {
-  justify-content: flex-end;
-}
+  .agenda-team:first-child {
+    justify-content: flex-start;
+  }
 
-.agenda-vs,
-.agenda-score {
-  justify-self: center;
-}
+  .agenda-vs,
+  .agenda-score {
+    justify-self: start;
+  }
 
   .agenda-scorers {
     padding-left: 0;
@@ -1472,22 +1462,4 @@ img.league-logo {
 .agenda-group .agenda-group-head .agenda-league-title span {
   font-size: 9px !important;
   line-height: 1.1 !important;
-}
-
-.team-link {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.team-link:hover {
-  color: var(--primary);
-}
-
-.team-link:hover .team-logo {
-  transform: scale(1.08);
-}
-
-.team-link .team-logo {
-  transition: transform 0.15s ease;
 }
