@@ -1400,18 +1400,18 @@ footer strong {
   min-width: 0;
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 6px;
 }
 
 .league-logo {
-  width: 24px;
-  height: 24px;
-  flex: 0 0 24px;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
   object-fit: contain;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 2px;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 .league-logo-fallback {
