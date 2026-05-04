@@ -29,6 +29,8 @@ const postFeed = document.querySelector("#postFeed");
 const postCounter = document.querySelector("#postCounter");
 const notification = document.querySelector(".notification");
 
+console.log("APP.JS ACTUALIZADO CARGADO");
+
 let activeTab = "agenda";
 let muted = false;
 let favoriteMode = false;
