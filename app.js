@@ -762,6 +762,7 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
 }
 
 async function loadAgenda(date = currentAgendaDate) {
+  const selectedDate = localDateISO(date);
 
   if (agendaLoading) {
     return;
@@ -782,7 +783,6 @@ async function loadAgenda(date = currentAgendaDate) {
     }
 
     const data = await response.json();
-    const selectedDate = localDateISO(date);
     const partidos = Array.isArray(data.partidos) ? data.partidos : [];
 
     const dailyMatches = partidos
@@ -798,7 +798,9 @@ async function loadAgenda(date = currentAgendaDate) {
           return priorityA - priorityB;
         }
 
-        return (a.hora_inicio || a.hora || "").localeCompare(b.hora_inicio || b.hora || "");
+        return (a.hora_inicio || a.hora || "").localeCompare(
+          b.hora_inicio || b.hora || ""
+        );
       });
 
     renderAgenda(dailyMatches, AGENDA_URL, {
@@ -806,11 +808,9 @@ async function loadAgenda(date = currentAgendaDate) {
       total: data.total,
     });
 
-
     agendaLoadedDate = selectedDate;
-
     setUtilityStatus("");
-    } catch (error) {
+  } catch (error) {
     leagueGrid.innerHTML = `
       <article class="empty-state">
         <strong>No se pudo cargar la agenda ESPN.</strong>
