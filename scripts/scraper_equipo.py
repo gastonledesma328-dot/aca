@@ -7,11 +7,14 @@ import requests
 
 
 OUTPUT_FILE = "data/equipos.json"
-AGENDA_URL = "https://partidos-hoy-worker.gastonledesma328.workers.dev"
+
+# Liga Profesional Argentina en ESPN
+LEAGUE_SLUG = "arg.1"
 
 EQUIPOS_BASE = [
     {
         "id": "river-plate",
+        "espn_id": "16",
         "nombre": "River Plate",
         "liga": "Liga Profesional de Futbol",
         "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
@@ -22,6 +25,7 @@ EQUIPOS_BASE = [
     },
     {
         "id": "boca-juniors",
+        "espn_id": "5",
         "nombre": "Boca Juniors",
         "liga": "Liga Profesional de Futbol",
         "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
@@ -32,6 +36,7 @@ EQUIPOS_BASE = [
     },
     {
         "id": "racing-club",
+        "espn_id": "15",
         "nombre": "Racing Club",
         "liga": "Liga Profesional de Futbol",
         "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
@@ -63,9 +68,34 @@ def slug(texto):
     return "".join(limpio).strip("-")
 
 
+def get_json(url):
+    try:
+        r = requests.get(
+            url,
+            timeout=25,
+            headers={
+                "User-Agent": "Mozilla/5.0",
+                "Accept": "application/json, text/plain, */*",
+                "Referer": "https://www.espn.com.ar/"
+            }
+        )
+
+        print(f"🌐 {r.status_code} {url}")
+
+        if not r.ok:
+            return None
+
+        return r.json()
+
+    except Exception as e:
+        print(f"⚠️ Error leyendo ESPN: {e}")
+        return None
+
+
 def equipo_vacio(equipo):
     return {
         "id": equipo.get("id", ""),
+        "espn_id": equipo.get("espn_id", ""),
         "nombre": equipo.get("nombre", ""),
         "liga": equipo.get("liga", "Liga no disponible"),
         "logo": equipo.get("logo", ""),
@@ -90,103 +120,273 @@ def equipo_vacio(equipo):
     }
 
 
-def cargar_agenda():
-    try:
-        print("📡 Leyendo agenda desde Worker...")
+def formatear_fecha(fecha):
+    if not fecha:
+        return "Sin fecha"
 
-        r = requests.get(
-            AGENDA_URL,
-            timeout=25,
-            headers={
-                "User-Agent": "Mozilla/5.0",
-                "Accept": "application/json"
-            }
-        )
-
-        print(f"🌐 Estado Worker: {r.status_code}")
-        r.raise_for_status()
-
-        data = r.json()
-        partidos = data.get("partidos", [])
-
-        if not isinstance(partidos, list):
-            print("⚠️ La respuesta no trae una lista válida en 'partidos'")
-            return []
-
-        print(f"✅ Partidos recibidos: {len(partidos)}")
-        return partidos
-
-    except Exception as e:
-        print(f"⚠️ No se pudo leer la agenda: {e}")
-        return []
+    return str(fecha).split("T")[0]
 
 
-def resultado_partido(partido):
-    marcador_local = partido.get("marcador_local")
-    marcador_visitante = partido.get("marcador_visitante")
+def parse_score_event(evento):
+    competitions = evento.get("competitions") or []
+    competition = competitions[0] if competitions else {}
+    competitors = competition.get("competitors") or []
 
-    if marcador_local is not None and marcador_visitante is not None:
-        return f"{marcador_local} - {marcador_visitante}"
+    local = "Local"
+    visitante = "Visitante"
+    local_score = None
+    visitante_score = None
 
-    if partido.get("resultado"):
-        return str(partido.get("resultado"))
+    for comp in competitors:
+        team = comp.get("team") or {}
+        name = team.get("displayName") or team.get("shortDisplayName") or "Equipo"
+        score = comp.get("score")
 
-    return "-"
+        if comp.get("homeAway") == "home":
+            local = name
+            local_score = score
+        elif comp.get("homeAway") == "away":
+            visitante = name
+            visitante_score = score
+
+    status = (evento.get("status") or {}).get("type") or {}
+    completado = status.get("completed") is True
+
+    return {
+        "fecha": formatear_fecha(evento.get("date")),
+        "local": local,
+        "visitante": visitante,
+        "marcador_local": local_score,
+        "marcador_visitante": visitante_score,
+        "completado": completado,
+        "estado": status.get("description") or status.get("name") or "",
+        "url": (evento.get("links") or [{}])[0].get("href", "")
+    }
 
 
-def tiene_marcador(partido):
-    return (
-        partido.get("marcador_local") is not None
-        and partido.get("marcador_visitante") is not None
-    )
+def cargar_partidos_equipo(equipo):
+    espn_id = equipo.get("espn_id")
 
+    if not espn_id:
+        return [], []
 
-def completar_partidos(equipo, partidos):
-    equipo_id = equipo["id"]
+    # Schedule del equipo en ESPN
+    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}/schedule"
+    data = get_json(url)
 
-    print(f"🔎 Buscando partidos para: {equipo['nombre']} ({equipo_id})")
-    print(f"📋 Total partidos disponibles: {len(partidos)}")
+    if not data:
+        return [], []
 
-    partidos_equipo = []
-
-    for partido in partidos:
-        local = partido.get("local") or ""
-        visitante = partido.get("visitante") or ""
-
-        local_id = slug(local)
-        visitante_id = slug(visitante)
-
-        if local_id == equipo_id or visitante_id == equipo_id:
-            partidos_equipo.append(partido)
-
-    print(f"🎯 Partidos encontrados para {equipo['nombre']}: {len(partidos_equipo)}")
+    eventos = data.get("events") or data.get("items") or []
 
     proximos = []
     resultados = []
 
-    for partido in partidos_equipo:
-        item_base = {
-            "dia": partido.get("fecha") or "Sin fecha",
-            "local": partido.get("local") or "Local",
-            "visitante": partido.get("visitante") or "Visitante",
-            "url": partido.get("url_espn") or ""
-        }
+    for evento in eventos:
+        partido = parse_score_event(evento)
 
-        completado = partido.get("completado") is True
+        tiene_marcador = (
+            partido["marcador_local"] is not None
+            and partido["marcador_visitante"] is not None
+        )
 
-        if completado or tiene_marcador(partido):
+        if partido["completado"] or tiene_marcador:
             resultados.append({
-                **item_base,
-                "resultado": resultado_partido(partido)
+                "dia": partido["fecha"],
+                "local": partido["local"],
+                "visitante": partido["visitante"],
+                "url": partido["url"],
+                "resultado": f'{partido["marcador_local"]} - {partido["marcador_visitante"]}' if tiene_marcador else "-"
             })
         else:
             proximos.append({
-                **item_base,
-                "hora": partido.get("hora_inicio") or partido.get("hora") or "-"
+                "dia": partido["fecha"],
+                "local": partido["local"],
+                "visitante": partido["visitante"],
+                "url": partido["url"],
+                "hora": "Ver horario"
             })
 
-    equipo["proximosPartidos"] = proximos[:10]
-    equipo["resultados"] = resultados[:10]
+    return proximos[:10], resultados[:10]
+
+
+def normalizar_posicion(nombre_posicion):
+    pos = slug(nombre_posicion)
+
+    if "goalkeeper" in pos or "arquero" in pos or "portero" in pos:
+        return "arqueros"
+
+    if "defender" in pos or "defensa" in pos:
+        return "defensores"
+
+    if "midfielder" in pos or "mediocampista" in pos or "volante" in pos:
+        return "mediocampistas"
+
+    if "forward" in pos or "delantero" in pos or "attacker" in pos:
+        return "delanteros"
+
+    return "mediocampistas"
+
+
+def cargar_plantel(equipo):
+    espn_id = equipo.get("espn_id")
+
+    if not espn_id:
+        return {
+            "arqueros": [],
+            "defensores": [],
+            "mediocampistas": [],
+            "delanteros": []
+        }
+
+    # Roster desde ESPN site api
+    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}/roster"
+    data = get_json(url)
+
+    plantel = {
+        "arqueros": [],
+        "defensores": [],
+        "mediocampistas": [],
+        "delanteros": []
+    }
+
+    if not data:
+        return plantel
+
+    athletes = data.get("athletes") or []
+
+    # Algunas respuestas vienen agrupadas por position.
+    for group in athletes:
+        if isinstance(group, dict) and "items" in group:
+            posicion_nombre = group.get("position") or group.get("name") or ""
+            categoria = normalizar_posicion(posicion_nombre)
+
+            for item in group.get("items") or []:
+                athlete = item.get("athlete") or item
+                nombre = athlete.get("displayName") or athlete.get("fullName") or athlete.get("name")
+
+                if not nombre:
+                    continue
+
+                plantel[categoria].append({
+                    "nombre": nombre,
+                    "edad": athlete.get("age") or "-",
+                    "altura": athlete.get("displayHeight") or athlete.get("height") or "-"
+                })
+
+        elif isinstance(group, dict):
+            nombre = group.get("displayName") or group.get("fullName") or group.get("name")
+
+            if not nombre:
+                continue
+
+            position = group.get("position") or {}
+            categoria = normalizar_posicion(position.get("displayName") or position.get("name") or "")
+
+            plantel[categoria].append({
+                "nombre": nombre,
+                "edad": group.get("age") or "-",
+                "altura": group.get("displayHeight") or group.get("height") or "-"
+            })
+
+    return plantel
+
+
+def extraer_stat_valor(stat):
+    for key in ["value", "displayValue", "total"]:
+        if stat.get(key) is not None:
+            return stat.get(key)
+
+    return 0
+
+
+def cargar_estadisticas_jugadores(equipo):
+    espn_id = equipo.get("espn_id")
+
+    if not espn_id:
+        return {
+            "goles": [],
+            "asistencias": [],
+            "amarillas": []
+        }
+
+    estadisticas = {
+        "goles": [],
+        "asistencias": [],
+        "amarillas": []
+    }
+
+    # Endpoint de estadísticas del equipo. Puede variar según liga/temporada.
+    urls = [
+        f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}/statistics",
+        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}/seasons/2026/types/1/teams/{espn_id}/statistics?lang=es&region=ar"
+    ]
+
+    for url in urls:
+        data = get_json(url)
+
+        if not data:
+            continue
+
+        # Como ESPN no siempre entrega el mismo formato, guardamos si encontramos rankings/listas.
+        # Si no encuentra formato compatible, deja arrays vacíos.
+        leaders = data.get("leaders") or data.get("categories") or []
+
+        for group in leaders:
+            group_name = slug(group.get("name") or group.get("displayName") or "")
+
+            items = group.get("leaders") or group.get("items") or group.get("statistics") or []
+
+            for item in items:
+                athlete = item.get("athlete") or item.get("player") or {}
+                nombre = (
+                    athlete.get("displayName")
+                    or athlete.get("fullName")
+                    or item.get("displayName")
+                    or item.get("name")
+                )
+
+                if not nombre:
+                    continue
+
+                total = item.get("value") or item.get("displayValue") or item.get("total") or 0
+
+                if "goal" in group_name or "gol" in group_name:
+                    estadisticas["goles"].append({
+                        "jugador": nombre,
+                        "total": total
+                    })
+
+                if "assist" in group_name or "asistencia" in group_name:
+                    estadisticas["asistencias"].append({
+                        "jugador": nombre,
+                        "total": total
+                    })
+
+                if "yellow" in group_name or "amarilla" in group_name:
+                    estadisticas["amarillas"].append({
+                        "jugador": nombre,
+                        "total": total
+                    })
+
+    estadisticas["goles"] = estadisticas["goles"][:10]
+    estadisticas["asistencias"] = estadisticas["asistencias"][:10]
+    estadisticas["amarillas"] = estadisticas["amarillas"][:10]
+
+    return estadisticas
+
+
+def completar_equipo(base):
+    print(f"🏟️ Actualizando equipo: {base['nombre']}")
+
+    equipo = equipo_vacio(base)
+
+    proximos, resultados = cargar_partidos_equipo(base)
+    equipo["proximosPartidos"] = proximos
+    equipo["resultados"] = resultados
+
+    equipo["plantel"] = cargar_plantel(base)
+    equipo["estadisticas"] = cargar_estadisticas_jugadores(base)
 
     return equipo
 
@@ -194,13 +394,10 @@ def completar_partidos(equipo, partidos):
 def main():
     os.makedirs("data", exist_ok=True)
 
-    partidos = cargar_agenda()
     equipos = []
 
     for base in EQUIPOS_BASE:
-        equipo = equipo_vacio(base)
-        equipo = completar_partidos(equipo, partidos)
-        equipos.append(equipo)
+        equipos.append(completar_equipo(base))
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(equipos, f, ensure_ascii=False, indent=2)
