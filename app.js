@@ -331,6 +331,23 @@ function teamLogoMarkup(name, logo) {
   return `<span class="team-logo logo-fallback">${initials(name)}</span>`;
 }
 
+function initials(name = "") {
+  return String(name)
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((part) => part.charAt(0).toUpperCase())
+    .join("") || "PH";
+}
+
+function leagueLogoMarkup(name, logo) {
+  if (logo) {
+    return `<img class="league-logo" src="${logo}" alt="${name}" loading="lazy" />`;
+  }
+
+  return `<span class="league-logo league-logo-fallback">${initials(name)}</span>`;
+}
+
 function scoreMarkup(match) {
   const hasLocal =
     match.marcador_local !== undefined &&
@@ -597,17 +614,27 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
   }
 
   const groups = matches.reduce((acc, match) => {
-    const sport = agendaSport(match);
-    const league = inferAgendaLeague(match);
-    const key = `${sport}||${league}`;
+  const sport = agendaSport(match);
+  const league = inferAgendaLeague(match);
+  const key = `${sport}||${league}`;
+  const leagueLogo = match.liga_logo || match.competicion?.logo || null;
 
-    if (!acc.has(key)) {
-      acc.set(key, { sport, league, matches: [] });
-    }
+  if (!acc.has(key)) {
+    acc.set(key, {
+      sport,
+      league,
+      leagueLogo,
+      matches: [],
+    });
+  }
 
-    acc.get(key).matches.push(match);
-    return acc;
-  }, new Map());
+  if (!acc.get(key).leagueLogo && leagueLogo) {
+    acc.get(key).leagueLogo = leagueLogo;
+  }
+
+  acc.get(key).matches.push(match);
+  return acc;
+}, new Map());
 
   Array.from(groups.values())
     .sort((a, b) => {
@@ -643,15 +670,18 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
       const section = document.createElement("section");
       section.className = "agenda-group";
       section.innerHTML = `
-        <header class="agenda-group-head">
-          <div>
-            <span>${group.sport}</span>
-            <strong>${group.league}</strong>
-          </div>
-          <em>${group.matches.length}</em>
-        </header>
-        <div class="agenda-list"></div>
-      `;
+  <header class="agenda-group-head">
+    <div class="agenda-league-title">
+      ${leagueLogoMarkup(group.league, group.leagueLogo)}
+      <div>
+        <span>${group.sport}</span>
+        <strong>${group.league}</strong>
+      </div>
+    </div>
+    <em>${group.matches.length}</em>
+  </header>
+  <div class="agenda-list"></div>
+`;
 
       const list = section.querySelector(".agenda-list");
 
