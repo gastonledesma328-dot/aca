@@ -1,8 +1,10 @@
 import json
 import os
+import re
 import unicodedata
 from collections import Counter
 from datetime import datetime, timezone
+from html import unescape
 
 import requests
 
@@ -54,6 +56,8 @@ EQUIPOS_BASE = [
     {
         "id": "river-plate",
         "espn_id": "16",
+        "fotmob_id": "10076",
+        "fotmob_slug": "river-plate",
         "nombre": "River Plate",
         "liga": "Liga Profesional de Futbol",
         "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
@@ -65,6 +69,8 @@ EQUIPOS_BASE = [
     {
         "id": "boca-juniors",
         "espn_id": "5",
+        "fotmob_id": "10077",
+        "fotmob_slug": "boca-juniors",
         "nombre": "Boca Juniors",
         "liga": "Liga Profesional de Futbol",
         "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
@@ -76,6 +82,8 @@ EQUIPOS_BASE = [
     {
         "id": "racing-club",
         "espn_id": "15",
+        "fotmob_id": "10080",
+        "fotmob_slug": "racing-club",
         "nombre": "Racing Club",
         "liga": "Liga Profesional de Futbol",
         "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
@@ -159,6 +167,8 @@ def equipo_vacio(equipo):
     return {
         "id": equipo.get("id", ""),
         "espn_id": equipo.get("espn_id", ""),
+        "fotmob_id": equipo.get("fotmob_id", ""),
+        "fotmob_slug": equipo.get("fotmob_slug", ""),
         "nombre": equipo.get("nombre", ""),
         "liga": equipo.get("liga", "Liga no disponible"),
         "logo": equipo.get("logo", ""),
@@ -512,43 +522,6 @@ def cargar_plantel(equipo):
     return plantel
 
 
-def obtener_nombre_jugador(obj):
-    if not isinstance(obj, dict):
-        return ""
-
-    athlete = obj.get("athlete") or obj.get("player") or {}
-
-    if isinstance(athlete, dict):
-        nombre = (
-            athlete.get("displayName")
-            or athlete.get("fullName")
-            or athlete.get("name")
-            or athlete.get("shortName")
-        )
-
-        if nombre:
-            return nombre
-
-    return (
-        obj.get("displayName")
-        or obj.get("fullName")
-        or obj.get("name")
-        or obj.get("athleteName")
-        or obj.get("playerName")
-        or ""
-    )
-
-
-def sumar_counter_a_lista(counter):
-    return [
-        {
-            "jugador": jugador,
-            "total": total,
-        }
-        for jugador, total in counter.most_common(10)
-    ]
-
-
 def nombres_validos_plantel(plantel):
     nombres = set()
 
@@ -586,382 +559,225 @@ def filtrar_estadisticas_por_plantel(estadisticas, plantel):
     return limpias
 
 
-def texto_evento(obj):
-    partes = []
+# =========================
+# FOTMOB - ESTADÍSTICAS PERSONALES
+# =========================
 
-    def caminar(valor):
-        if isinstance(valor, dict):
-            for k, v in valor.items():
-                if k in [
-                    "text",
-                    "description",
-                    "displayName",
-                    "shortDisplayName",
-                    "name",
-                    "headline",
-                    "caption",
-                    "detail",
-                ]:
-                    if isinstance(v, str):
-                        partes.append(v)
-                    elif isinstance(v, dict):
-                        caminar(v)
-                elif isinstance(v, (dict, list)):
-                    caminar(v)
+def normalizar_numero_fotmob(valor):
+    valor = str(valor or "").strip()
+    valor = valor.replace(",", "")
+    valor = valor.replace("%", "")
 
-        elif isinstance(valor, list):
-            for item in valor:
-                caminar(item)
+    try:
+        numero = float(valor)
 
-    caminar(obj)
-    return " ".join(partes)
+        if numero.is_integer():
+            return int(numero)
+
+        return numero
+
+    except Exception:
+        return valor
 
 
-def mapa_jugadores_plantel(plantel):
-    mapa = {}
+def es_numero_fotmob(texto):
+    texto = str(texto or "").strip()
+    texto = texto.replace(",", "")
+    texto = texto.replace("%", "")
 
-    for grupo in (plantel or {}).values():
-        if not isinstance(grupo, list):
+    try:
+        float(texto)
+        return True
+    except Exception:
+        return False
+
+
+def limpiar_html_fotmob(html):
+    html = re.sub(r"<script[\s\S]*?</script>", "\n", html, flags=re.I)
+    html = re.sub(r"<style[\s\S]*?</style>", "\n", html, flags=re.I)
+    html = re.sub(r"<[^>]+>", "\n", html)
+
+    texto = unescape(html)
+    lineas = []
+
+    for linea in texto.splitlines():
+        linea = linea.strip()
+
+        if not linea:
             continue
 
-        for jugador in grupo:
-            if not isinstance(jugador, dict):
-                continue
-
-            nombre = jugador.get("nombre")
-
-            if nombre:
-                mapa[slug(nombre)] = nombre
-
-    return mapa
-
-
-def buscar_jugadores_plantel_en_texto(texto, plantel):
-    texto_slug = slug(texto)
-    mapa = mapa_jugadores_plantel(plantel)
-
-    encontrados = []
-    vistos = set()
-
-    for jugador_slug, nombre_real in mapa.items():
-        if not jugador_slug:
+        if linea.lower() in [
+            "image",
+            "see all",
+            "ver todos",
+            "fotmob",
+            "get the app",
+        ]:
             continue
 
-        partes = jugador_slug.split("-")
-        apellido = partes[-1] if partes else ""
+        if linea.startswith(".css-"):
+            continue
 
-        coincide_nombre_completo = jugador_slug in texto_slug
-        coincide_apellido = apellido and len(apellido) >= 4 and apellido in texto_slug
+        lineas.append(linea)
 
-        if coincide_nombre_completo or coincide_apellido:
-            key = slug(nombre_real)
-
-            if key not in vistos:
-                vistos.add(key)
-                encontrados.append(nombre_real)
-
-    return encontrados
+    return lineas
 
 
-def extraer_jugadores_de_evento(evento):
-    jugadores = []
+def buscar_indice_titulo(lineas, titulo):
+    titulo_slug = slug(titulo)
 
-    posibles_listas = [
-        evento.get("athletesInvolved"),
-        evento.get("participants"),
-        evento.get("players"),
-        evento.get("competitors"),
-    ]
+    for i, linea in enumerate(lineas):
+        linea_slug = slug(linea)
 
-    for lista in posibles_listas:
-        if isinstance(lista, list):
-            for item in lista:
-                nombre = obtener_nombre_jugador(item)
-                if nombre:
-                    jugadores.append(nombre)
+        if linea_slug == titulo_slug:
+            return i
 
-    nombre_directo = obtener_nombre_jugador(evento)
-    if nombre_directo:
-        jugadores.append(nombre_directo)
+        if linea_slug.startswith(titulo_slug):
+            return i
 
-    vistos = set()
-    limpios = []
-
-    for jugador in jugadores:
-        key = slug(jugador)
-        if key and key not in vistos:
-            vistos.add(key)
-            limpios.append(jugador)
-
-    return limpios
+    return -1
 
 
-def extraer_jugadores_de_evento_con_plantel(evento, plantel):
-    jugadores_directos = extraer_jugadores_de_evento(evento)
-    validos = nombres_validos_plantel(plantel)
+def extraer_ranking_fotmob(lineas, titulo_inicio, titulos_fin, max_items=10):
+    inicio = buscar_indice_titulo(lineas, titulo_inicio)
 
-    jugadores_validos = []
-
-    for jugador in jugadores_directos:
-        if slug(jugador) in validos:
-            jugadores_validos.append(jugador)
-
-    if jugadores_validos:
-        return jugadores_validos
-
-    texto = texto_evento(evento)
-
-    if not texto:
+    if inicio == -1:
         return []
 
-    return buscar_jugadores_plantel_en_texto(texto, plantel)
+    fin = len(lineas)
+
+    for titulo in titulos_fin:
+        idx = buscar_indice_titulo(lineas[inicio + 1:], titulo)
+
+        if idx != -1:
+            fin = min(fin, inicio + 1 + idx)
+
+    bloque = lineas[inicio + 1:fin]
+    resultados = []
+
+    i = 0
+
+    while i < len(bloque) - 1:
+        nombre = bloque[i].strip()
+        valor = bloque[i + 1].strip()
+
+        if (
+            nombre
+            and not es_numero_fotmob(nombre)
+            and es_numero_fotmob(valor)
+            and nombre.lower() not in ["image", "see all", "ver todos"]
+        ):
+            resultados.append(
+                {
+                    "jugador": nombre,
+                    "total": normalizar_numero_fotmob(valor),
+                }
+            )
+            i += 2
+        else:
+            i += 1
+
+        if len(resultados) >= max_items:
+            break
+
+    return resultados
 
 
-def detectar_tipo_evento(evento):
-    tipo = evento.get("type") or {}
+def cargar_estadisticas_fotmob(equipo):
+    fotmob_id = equipo.get("fotmob_id")
+    fotmob_slug = equipo.get("fotmob_slug") or equipo.get("id")
 
-    tipo_text = ""
-    tipo_type = ""
+    if not fotmob_id:
+        return estadisticas_vacias()
 
-    if isinstance(tipo, dict):
-        tipo_text = slug(tipo.get("text") or "")
-        tipo_type = slug(tipo.get("type") or "")
+    url = f"https://www.fotmob.com/teams/{fotmob_id}/stats/{fotmob_slug}/players"
 
-    texto = slug(
-        evento.get("text")
-        or evento.get("displayText")
-        or evento.get("description")
-        or evento.get("detail")
-        or ""
-    )
+    try:
+        r = requests.get(
+            url,
+            timeout=30,
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9,es;q=0.8",
+                "Referer": "https://www.fotmob.com/",
+            },
+        )
 
-    combinado = f"{tipo_text} {tipo_type} {texto}"
+        print(f"📊 FotMob {r.status_code} {url}")
 
-    # Primero usar tipo oficial de ESPN si existe.
-    if tipo_type == "goal" or tipo_text == "goal":
-        return "gol"
+        if not r.ok:
+            return estadisticas_vacias()
 
-    if tipo_type == "yellow-card" or tipo_text == "yellow-card":
-        return "amarilla"
+        lineas = limpiar_html_fotmob(r.text)
 
-    if tipo_type == "red-card" or tipo_text == "red-card":
-        return "roja"
+        goles = extraer_ranking_fotmob(
+            lineas,
+            "Top scorer",
+            [
+                "Assists",
+                "Goals + Assists",
+                "FotMob rating",
+                "Minutes played",
+                "Attack",
+                "Discipline",
+            ],
+        )
 
-    # Fallback por texto, pero estricto.
-    if texto.startswith("goal"):
-        return "gol"
+        asistencias = extraer_ranking_fotmob(
+            lineas,
+            "Assists",
+            [
+                "Goals + Assists",
+                "FotMob rating",
+                "Minutes played",
+                "Attack",
+                "Discipline",
+            ],
+        )
 
-    if "is-shown-the-yellow-card" in texto:
-        return "amarilla"
+        amarillas = extraer_ranking_fotmob(
+            lineas,
+            "Yellow cards",
+            [
+                "Red cards",
+                "FotMob",
+                "Get the app",
+                "© Copyright",
+                "Goalkeeper",
+            ],
+        )
 
-    if "is-shown-the-red-card" in texto:
-        return "roja"
+        rojas = extraer_ranking_fotmob(
+            lineas,
+            "Red cards",
+            [
+                "FotMob",
+                "Get the app",
+                "© Copyright",
+                "Goalkeeper",
+            ],
+        )
 
-    return ""
+        estadisticas = {
+            "goles": goles,
+            "asistencias": asistencias,
+            "amarillas": amarillas,
+            "rojas": rojas,
+        }
 
+        print(f"✅ Estadísticas FotMob {equipo.get('nombre')}:", estadisticas)
 
-def extraer_asistencia_desde_texto(texto, plantel):
-    texto_original = str(texto or "")
-    texto_slug = slug(texto_original)
-
-    if not texto_slug.startswith("goal"):
-        return ""
-
-    if "assisted-by" not in texto_slug:
-        return ""
-
-    jugadores = buscar_jugadores_plantel_en_texto(texto_original, plantel)
-
-    if len(jugadores) >= 2:
-        return jugadores[1]
-
-    return ""
-
-
-def cargar_estadisticas_desde_resumenes(equipo):
-    goles = Counter()
-    asistencias = Counter()
-    amarillas = Counter()
-    rojas = Counter()
-
-    partidos = equipo.get("resultados", [])[:20]
-    plantel = equipo.get("plantel") or {}
-
-    print(f"📊 Calculando estadísticas REALES por partidos filtrados para {equipo.get('nombre')}")
-    print(f"🎯 Partidos usados para estadísticas: {len(partidos)}")
-
-    for partido in partidos:
-        game_id = extraer_game_id(partido.get("url"))
-
-        if not game_id:
-            continue
-
-        resumen = cargar_resumen_partido(game_id)
-
-        if not isinstance(resumen, dict):
-            continue
-
-        print(f"📌 Partido {game_id} keys:", list(resumen.keys()))
-
-        eventos = []
-
-        key_events = resumen.get("keyEvents") or []
-        if isinstance(key_events, list):
-            eventos.extend(key_events)
-
-        commentary = resumen.get("commentary") or []
-        if isinstance(commentary, list):
-            eventos.extend(commentary)
-
-        vistos = set()
-
-        for evento in eventos:
-            if not isinstance(evento, dict):
-                continue
-
-            texto = texto_evento(evento)
-            tipo = detectar_tipo_evento(evento)
-
-            if tipo not in ["gol", "amarilla", "roja"]:
-                continue
-
-            jugadores = extraer_jugadores_de_evento_con_plantel(evento, plantel)
-
-            if not jugadores:
-                continue
-
-            jugador = jugadores[0]
-            key = f"{game_id}-{tipo}-{slug(jugador)}-{slug(texto)[:140]}"
-
-            if key in vistos:
-                continue
-
-            vistos.add(key)
-
-            if tipo == "gol":
-                goles[jugador] += 1
-
-                asistidor = extraer_asistencia_desde_texto(texto, plantel)
-
-                if asistidor and slug(asistidor) != slug(jugador):
-                    asistencias[asistidor] += 1
-
-            elif tipo == "amarilla":
-                amarillas[jugador] += 1
-
-            elif tipo == "roja":
-                rojas[jugador] += 1
-
-    resultado = {
-        "goles": sumar_counter_a_lista(goles),
-        "asistencias": sumar_counter_a_lista(asistencias),
-        "amarillas": sumar_counter_a_lista(amarillas),
-        "rojas": sumar_counter_a_lista(rojas),
-    }
-
-    print(f"✅ Estadísticas calculadas para {equipo.get('nombre')}:", resultado)
-
-    return resultado
-
-
-def cargar_estadisticas_jugadores(equipo):
-    espn_id = equipo.get("espn_id")
-
-    estadisticas = estadisticas_vacias()
-
-    if not espn_id:
         return estadisticas
 
-    urls = [
-        f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}/statistics",
-        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}/leaders?limit=100",
-        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}/seasons/{SEASON}/leaders?limit=100",
-        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}/seasons/{SEASON}/types/1/teams/{espn_id}/statistics?lang=es&region=ar",
-    ]
+    except Exception as e:
+        print(f"⚠️ Error leyendo FotMob para {equipo.get('nombre')}: {e}")
+        return estadisticas_vacias()
 
-    for url in urls:
-        data = get_json(url)
 
-        if not data:
-            continue
-
-        leaders = data.get("leaders") or data.get("categories") or data.get("items") or []
-
-        for group in leaders:
-            if not isinstance(group, dict):
-                continue
-
-            group_name = slug(
-                group.get("name")
-                or group.get("displayName")
-                or group.get("shortDisplayName")
-                or group.get("abbreviation")
-                or ""
-            )
-
-            items = (
-                group.get("leaders")
-                or group.get("items")
-                or group.get("statistics")
-                or []
-            )
-
-            for item in items:
-                if not isinstance(item, dict):
-                    continue
-
-                nombre = obtener_nombre_jugador(item)
-
-                if not nombre:
-                    continue
-
-                total = (
-                    item.get("value")
-                    or item.get("displayValue")
-                    or item.get("total")
-                    or item.get("stat")
-                    or 0
-                )
-
-                if "goal" in group_name or "gol" in group_name:
-                    estadisticas["goles"].append(
-                        {
-                            "jugador": nombre,
-                            "total": total,
-                        }
-                    )
-
-                if "assist" in group_name or "asistencia" in group_name:
-                    estadisticas["asistencias"].append(
-                        {
-                            "jugador": nombre,
-                            "total": total,
-                        }
-                    )
-
-                if "yellow" in group_name or "amarilla" in group_name:
-                    estadisticas["amarillas"].append(
-                        {
-                            "jugador": nombre,
-                            "total": total,
-                        }
-                    )
-
-                if "red" in group_name or "roja" in group_name:
-                    estadisticas["rojas"].append(
-                        {
-                            "jugador": nombre,
-                            "total": total,
-                        }
-                    )
-
-    estadisticas["goles"] = estadisticas["goles"][:10]
-    estadisticas["asistencias"] = estadisticas["asistencias"][:10]
-    estadisticas["amarillas"] = estadisticas["amarillas"][:10]
-    estadisticas["rojas"] = estadisticas["rojas"][:10]
-
-    return estadisticas
-
+# =========================
+# ESPN - TABLA / GENERALES
+# =========================
 
 def extraer_team_id_desde_entry(entry):
     team = entry.get("team") or {}
@@ -1102,31 +918,18 @@ def cargar_datos_por_competicion(base, equipo, competicion):
     proximos = filtrar_partidos_por_fecha(proximos, competicion)
     resultados = filtrar_partidos_por_fecha(resultados, competicion)
 
-    equipo_temp = dict(equipo)
-    equipo_temp["resultados"] = resultados
-    equipo_temp["plantel"] = equipo["plantel"]
-
-    if competicion.get("fecha_desde") or competicion.get("fecha_hasta"):
-        estadisticas = cargar_estadisticas_desde_resumenes(equipo_temp)
+    if competicion.get("league_slug") == "arg.1":
+        if resultados or proximos:
+            estadisticas = cargar_estadisticas_fotmob(base)
+        else:
+            estadisticas = estadisticas_vacias()
     else:
-        estadisticas = cargar_estadisticas_jugadores(base)
-
-        if (
-            not estadisticas["goles"]
-            and not estadisticas["asistencias"]
-            and not estadisticas["amarillas"]
-            and not estadisticas["rojas"]
-        ):
-            estadisticas = cargar_estadisticas_desde_resumenes(equipo_temp)
+        estadisticas = estadisticas_vacias()
 
     estadisticas = filtrar_estadisticas_por_plantel(
         estadisticas,
         equipo["plantel"]
     )
-
-    # Temporal: ESPN suele mezclar tarjetas rojas con otros eventos.
-    # Mejor dejar rojas vacías antes que mostrar datos falsos.
-    estadisticas["rojas"] = []
 
     if resultados or proximos:
         generales = cargar_estadisticas_generales(base)
