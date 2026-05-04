@@ -14,8 +14,8 @@ SEASON = "2026"
 COMPETICION_PRINCIPAL = "Liga Profesional de Futbol - Torneo Apertura 2026"
 
 # FotMob:
-# id=112      -> Liga Profesional Argentina
-# season=28207 -> temporada actual detectada en Network
+# id=112        -> Liga Profesional Argentina
+# season=28207  -> temporada detectada en Network
 FOTMOB_LEAGUE_ID = "112"
 FOTMOB_SEASON_ID = "28207"
 
@@ -575,14 +575,20 @@ def normalizar_numero(valor):
 
 def extraer_lista_fotmob_api(data):
     """
-    FotMob puede cambiar la envoltura del JSON.
-    Esta función busca la lista real de filas/jugadores.
+    Endpoint:
+    /api/data/leagueseasondeepstats
+
+    En este endpoint, la lista real normalmente viene en:
+    data["statsData"]
     """
     if isinstance(data, list):
         return data
 
     if not isinstance(data, dict):
         return []
+
+    if isinstance(data.get("statsData"), list):
+        return data["statsData"]
 
     posibles = [
         data.get("stats"),
@@ -604,10 +610,8 @@ def extraer_lista_fotmob_api(data):
                 return lista
 
     for value in data.values():
-        if isinstance(value, list) and value:
-            # Evita listas de strings simples.
-            if isinstance(value[0], dict):
-                return value
+        if isinstance(value, list) and value and isinstance(value[0], dict):
+            return value
 
         if isinstance(value, dict):
             lista = extraer_lista_fotmob_api(value)
@@ -621,6 +625,13 @@ def obtener_nombre_fotmob_item(item):
     if not isinstance(item, dict):
         return ""
 
+    # Forma común:
+    # {"name": "Sebastian Driussi", "statValue": {"value": 4}}
+    for key in ["name", "playerName", "displayName", "fullName", "localizedName"]:
+        value = item.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+
     player = (
         item.get("player")
         or item.get("participant")
@@ -630,37 +641,34 @@ def obtener_nombre_fotmob_item(item):
     )
 
     if isinstance(player, dict):
-        nombre = (
-            player.get("name")
-            or player.get("displayName")
-            or player.get("fullName")
-            or player.get("localizedName")
-            or player.get("shortName")
-            or ""
-        )
+        for key in ["name", "displayName", "fullName", "localizedName", "shortName"]:
+            value = player.get(key)
+            if isinstance(value, str) and value.strip():
+                return value.strip()
 
-        if nombre:
-            return nombre
-
-    return (
-        item.get("name")
-        or item.get("playerName")
-        or item.get("displayName")
-        or item.get("fullName")
-        or item.get("localizedName")
-        or ""
-    )
+    return ""
 
 
 def obtener_valor_fotmob_item(item, stat):
     if not isinstance(item, dict):
         return 0
 
+    # Forma común:
+    # "statValue": {"value": 4, "format": "number"}
+    stat_value = item.get("statValue")
+
+    if isinstance(stat_value, dict):
+        for key in ["value", "total", "stat", "count"]:
+            value = stat_value.get(key)
+            if value not in [None, ""]:
+                return normalizar_numero(value)
+
+    if stat_value not in [None, ""] and not isinstance(stat_value, dict):
+        return normalizar_numero(stat_value)
+
     posibles_keys = [
         stat,
         "value",
-        "statValue",
-        "stat",
         "total",
         "count",
         "goals",
@@ -672,30 +680,6 @@ def obtener_valor_fotmob_item(item, stat):
     for key in posibles_keys:
         if key in item and item.get(key) not in [None, ""]:
             return normalizar_numero(item.get(key))
-
-    # Algunas respuestas traen nested stats.
-    nested_stats = item.get("stats") or item.get("stat") or {}
-
-    if isinstance(nested_stats, dict):
-        for key in posibles_keys:
-            if key in nested_stats and nested_stats.get(key) not in [None, ""]:
-                return normalizar_numero(nested_stats.get(key))
-
-    # Fallback: buscar primer número útil, pero evitar IDs.
-    for key, value in item.items():
-        key_slug = slug(key)
-
-        if key_slug in ["id", "playerid", "teamid", "participantid"]:
-            continue
-
-        if isinstance(value, (int, float)):
-            return normalizar_numero(value)
-
-        if isinstance(value, str):
-            try:
-                return normalizar_numero(value)
-            except Exception:
-                pass
 
     return 0
 
@@ -740,6 +724,12 @@ def cargar_ranking_fotmob_api(equipo, competicion, stat):
 
         data = r.json()
         items = extraer_lista_fotmob_api(data)
+
+        print("🔎 FotMob keys:", list(data.keys()) if isinstance(data, dict) else type(data))
+        print("🔎 FotMob items encontrados:", len(items))
+
+        if items:
+            print("🔎 FotMob primer item:", items[0])
 
         resultados = []
         vistos = set()
