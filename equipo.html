@@ -426,6 +426,11 @@
   return params.get("logo") || "";
 }
 
+    function getTeamLeagueFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("liga") || "";
+}
+
     function nombreDesdeId(id) {
   return String(id || "")
     .split("-")
@@ -453,7 +458,7 @@
   const equipoBasico = {
   id: teamId,
   nombre: nombreDesdeId(teamId),
-  liga: "Liga no disponible",
+  liga: getTeamLeagueFromUrl() || "Liga no disponible",
   logo: getTeamLogoFromUrl(),
     apodo: "Sin datos",
     fundacion: "Sin datos",
