@@ -29,6 +29,16 @@ EQUIPOS_BASE = [
         "fundacion": "1905",
         "estadio": "Alberto J. Armando",
         "ciudad": "Buenos Aires"
+    },
+    {
+        "id": "racing-club",
+        "nombre": "Racing Club",
+        "liga": "Liga Profesional de Futbol",
+        "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "apodo": "La Academia",
+        "fundacion": "1903",
+        "estadio": "Presidente Perón",
+        "ciudad": "Avellaneda"
     }
 ]
 
@@ -83,6 +93,7 @@ def equipo_vacio(equipo):
 def cargar_agenda():
     try:
         print("📡 Leyendo agenda desde Worker...")
+
         r = requests.get(
             AGENDA_URL,
             timeout=25,
@@ -91,11 +102,15 @@ def cargar_agenda():
                 "Accept": "application/json"
             }
         )
+
+        print(f"🌐 Estado Worker: {r.status_code}")
         r.raise_for_status()
+
         data = r.json()
         partidos = data.get("partidos", [])
 
         if not isinstance(partidos, list):
+            print("⚠️ La respuesta no trae una lista válida en 'partidos'")
             return []
 
         print(f"✅ Partidos recibidos: {len(partidos)}")
@@ -144,7 +159,7 @@ def completar_partidos(equipo, partidos):
         if local_id == equipo_id or visitante_id == equipo_id:
             partidos_equipo.append(partido)
 
-        print(f"🎯 Partidos encontrados para {equipo['nombre']}: {len(partidos_equipo)}")
+    print(f"🎯 Partidos encontrados para {equipo['nombre']}: {len(partidos_equipo)}")
 
     proximos = []
     resultados = []
@@ -180,7 +195,6 @@ def main():
     os.makedirs("data", exist_ok=True)
 
     partidos = cargar_agenda()
-
     equipos = []
 
     for base in EQUIPOS_BASE:
