@@ -35,6 +35,10 @@ let favoriteMode = false;
 let events = [];
 let currentAgendaDate = new Date();
 
+
+let agendaLoadedDate = "";
+let agendaLoading = false;
+
 function localDateISO(date = new Date()) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -758,6 +762,16 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
 }
 
 async function loadAgenda(date = currentAgendaDate) {
+
+  if (agendaLoading) {
+    return;
+  }
+
+  if (agendaLoadedDate === selectedDate && leagueGrid.children.length > 0) {
+    return;
+  }
+
+  agendaLoading = true;
   leagueGrid.innerHTML = `<p class="empty-state">Cargando agenda desde ESPN...</p>`;
 
   try {
@@ -792,15 +806,20 @@ async function loadAgenda(date = currentAgendaDate) {
       total: data.total,
     });
 
+
+    agendaLoadedDate = selectedDate;
+
     setUtilityStatus("");
-  } catch (error) {
+    } catch (error) {
     leagueGrid.innerHTML = `
       <article class="empty-state">
         <strong>No se pudo cargar la agenda ESPN.</strong>
-        <p>Revisa la conexion o intenta recargar la pagina.</p>
+        <p>El Worker está temporalmente saturado. Probá recargar en unos minutos.</p>
         <a class="channel-link" href="${AGENDA_URL}" target="_blank" rel="noreferrer">Abrir JSON</a>
       </article>
     `;
+  } finally {
+    agendaLoading = false;
   }
 }
 
