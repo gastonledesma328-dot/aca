@@ -206,12 +206,12 @@
     }
 
     .clickable-row {
-  cursor: pointer;
-}
+      cursor: pointer;
+    }
 
-.clickable-row:hover td {
-  background: rgba(95,207,128,0.18) !important;
-}
+    .clickable-row:hover td {
+      background: rgba(95,207,128,0.18) !important;
+    }
 
     @media (max-width: 850px) {
       .page {
@@ -238,8 +238,8 @@
       <img id="teamLogo" class="team-logo" src="" alt="Logo del equipo">
 
       <div class="team-title">
-        <h1 id="teamName">Boca Juniors</h1>
-        <p id="teamLeague">Liga Profesional Argentina</p>
+        <h1 id="teamName">Cargando equipo...</h1>
+        <p id="teamLeague">Liga</p>
       </div>
 
       <a class="back" href="index.html">← Volver a partidos</a>
@@ -302,19 +302,65 @@
         <div class="club-info">
           <div class="info-row">
             <span>Apodo</span>
-            <span id="teamNickname">Xeneizes</span>
+            <span id="teamNickname">-</span>
           </div>
           <div class="info-row">
             <span>Fundación</span>
-            <span id="teamFounded">1905</span>
+            <span id="teamFounded">-</span>
           </div>
           <div class="info-row">
             <span>Estadio</span>
-            <span id="teamStadium">Alberto J. Armando</span>
+            <span id="teamStadium">-</span>
           </div>
           <div class="info-row">
             <span>Ciudad</span>
-            <span id="teamCity">Buenos Aires</span>
+            <span id="teamCity">-</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Estadísticas generales</h2>
+        <div class="club-info">
+          <div class="info-row">
+            <span>Posición</span>
+            <span id="generalPosition">-</span>
+          </div>
+          <div class="info-row">
+            <span>Partidos</span>
+            <span id="generalMatches">-</span>
+          </div>
+          <div class="info-row">
+            <span>Ganados</span>
+            <span id="generalWins">-</span>
+          </div>
+          <div class="info-row">
+            <span>Empatados</span>
+            <span id="generalDraws">-</span>
+          </div>
+          <div class="info-row">
+            <span>Perdidos</span>
+            <span id="generalLosses">-</span>
+          </div>
+          <div class="info-row">
+            <span>Goles a favor</span>
+            <span id="generalGoalsFor">-</span>
+          </div>
+          <div class="info-row">
+            <span>Goles en contra</span>
+            <span id="generalGoalsAgainst">-</span>
+          </div>
+          <div class="info-row">
+            <span>Diferencia</span>
+            <span id="generalGoalDiff">-</span>
+          </div>
+          <div class="info-row">
+            <span>Puntos</span>
+            <span id="generalPoints">-</span>
+          </div>
+          <div class="info-row">
+            <span>Racha</span>
+            <span id="generalStreak">-</span>
           </div>
         </div>
       </div>
@@ -339,6 +385,12 @@
           <tbody id="yellowCards"></tbody>
         </table>
         <a href="#" class="more">VER MÁS</a>
+
+        <h2 style="font-size:12px; margin-top:18px;">Tarjetas rojas</h2>
+        <table>
+          <tbody id="redCards"></tbody>
+        </table>
+        <a href="#" class="more">VER MÁS</a>
       </div>
 
     </aside>
@@ -346,251 +398,287 @@
   </main>
 
   <script>
-
-    
-  function cargarEquipo(equipo) {
-    document.title = equipo.nombre + " - Ficha del Equipo";
-
-    document.getElementById("teamLogo").src = equipo.logo || "https://via.placeholder.com/100?text=EQ";
-    document.getElementById("teamName").textContent = equipo.nombre;
-    document.getElementById("teamLeague").textContent = equipo.liga;
-    document.getElementById("teamNickname").textContent = equipo.apodo;
-    document.getElementById("teamFounded").textContent = equipo.fundacion;
-    document.getElementById("teamStadium").textContent = equipo.estadio;
-    document.getElementById("teamCity").textContent = equipo.ciudad;
-
-    document.getElementById("upcomingMatches").innerHTML = equipo.proximosPartidos.length
-  ? equipo.proximosPartidos.map(p => `
-      <tr ${matchRowAttrs(p)}>
-        <td>${p.dia}</td>
-        <td>${p.local}</td>
-        <td>${p.visitante}</td>
-        <td class="right">${p.hora}</td>
-      </tr>
-    `).join("")
-  : `
-      <tr>
-        <td colspan="4" class="center">Sin próximos partidos</td>
-      </tr>
-    `;
-
-    document.getElementById("results").innerHTML = equipo.resultados.length
-  ? equipo.resultados.map(p => `
-      <tr ${matchRowAttrs(p)}>
-        <td>${p.dia}</td>
-        <td>${p.local}</td>
-        <td>${p.visitante}</td>
-        <td class="right">${p.resultado}</td>
-      </tr>
-    `).join("")
-  : `
-      <tr>
-        <td colspan="4" class="center">Sin resultados disponibles</td>
-      </tr>
-    `;
-
-    const squadRows = [];
-
-Object.entries(equipo.plantel).forEach(([posicion, jugadores]) => {
-  if (!jugadores.length) return;
-
-  squadRows.push(`
-    <tr>
-      <td colspan="3" class="section-title">${posicion.toUpperCase()}</td>
-    </tr>
-  `);
-
-  jugadores.forEach(j => {
-    squadRows.push(`
-      <tr>
-        <td>
-          <span class="player">
-            <span class="player-number">⚽</span>
-            ${j.nombre}
-          </span>
-        </td>
-        <td class="center">${j.edad || "-"}</td>
-        <td class="right">${j.altura || "-"}</td>
-      </tr>
-    `);
-  });
-});
-
-document.getElementById("squad").innerHTML = squadRows.length
-  ? squadRows.join("")
-  : `
-      <tr>
-        <td colspan="3" class="center">Plantel no disponible</td>
-      </tr>
-    `;
-
-    document.getElementById("goals").innerHTML = equipo.estadisticas.goles.length
-  ? equipo.estadisticas.goles.map(e => `
-      <tr>
-        <td>${e.jugador}</td>
-        <td class="right">${e.total}</td>
-      </tr>
-    `).join("")
-  : `
-      <tr>
-        <td colspan="2" class="center">Sin datos</td>
-      </tr>
-    `;
-
-    document.getElementById("assists").innerHTML = equipo.estadisticas.asistencias.length
-  ? equipo.estadisticas.asistencias.map(e => `
-      <tr>
-        <td>${e.jugador}</td>
-        <td class="right">${e.total}</td>
-      </tr>
-    `).join("")
-  : `
-      <tr>
-        <td colspan="2" class="center">Sin datos</td>
-      </tr>
-    `;
-
-    document.getElementById("yellowCards").innerHTML = equipo.estadisticas.amarillas.length
-  ? equipo.estadisticas.amarillas.map(e => `
-      <tr>
-        <td>${e.jugador}</td>
-        <td class="right">${e.total}</td>
-      </tr>
-    `).join("")
-  : `
-      <tr>
-        <td colspan="2" class="center">Sin datos</td>
-      </tr>
-    `;
-  }
-
-  function getTeamIdFromUrl() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("id") || "boca-juniors";
-  }
+    function getTeamIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("id") || "boca-juniors";
+    }
 
     function getTeamLogoFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("logo") || "";
-}
+      const params = new URLSearchParams(window.location.search);
+      return params.get("logo") || "";
+    }
 
     function getTeamLeagueFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("liga") || "";
-}
+      const params = new URLSearchParams(window.location.search);
+      return params.get("liga") || "";
+    }
 
     function nombreDesdeId(id) {
-  return String(id || "")
-    .split("-")
-    .filter(Boolean)
-    .map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1))
-    .join(" ");
-}
+      return String(id || "")
+        .split("-")
+        .filter(Boolean)
+        .map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1))
+        .join(" ");
+    }
 
     function crearTeamId(nombre) {
-  return String(nombre || "")
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
+      return String(nombre || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+    }
 
     function matchRowAttrs(partido) {
-  if (!partido.url) {
-    return "";
-  }
-
-  return `class="clickable-row" data-url="${partido.url}"`;
-}
-
-
-  async function iniciarPaginaEquipo() {
-    const teamId = getTeamIdFromUrl();
-
-    console.log("ID recibido desde la URL:", teamId);
-
-    try {
-      const response = await fetch("data/equipos.json?v=" + Date.now());
-
-      if (!response.ok) {
-        throw new Error("No se pudo cargar equipos.json");
+      if (!partido.url) {
+        return "";
       }
 
-      const equipos = await response.json();
-      const equipo = equipos.find(item => item.id === teamId);
-
-      if (!equipo) {
-  const equipoBasico = {
-  id: teamId,
-  nombre: nombreDesdeId(teamId),
-  liga: getTeamLeagueFromUrl() || "Liga no disponible",
-  logo: getTeamLogoFromUrl(),
-    apodo: "Sin datos",
-    fundacion: "Sin datos",
-    estadio: "Sin datos",
-    ciudad: "Sin datos",
-    proximosPartidos: [
-      {
-        dia: "Sin datos",
-        local: "Próximamente",
-        visitante: "Próximamente",
-        hora: "-"
-      }
-    ],
-    resultados: [
-      {
-        dia: "Sin datos",
-        local: "Sin datos",
-        visitante: "Sin datos",
-        resultado: "-"
-      }
-    ],
-    plantel: {
-      arqueros: [],
-      defensores: [],
-      mediocampistas: [],
-      delanteros: []
-    },
-    estadisticas: {
-      goles: [],
-      asistencias: [],
-      amarillas: []
+      return `class="clickable-row" data-url="${partido.url}"`;
     }
-  };
 
-  cargarEquipo(equipoBasico);
-
-return;
-}
-
-      cargarEquipo(equipo);
-
-    } catch (error) {
-      console.error(error);
-      document.getElementById("teamName").textContent = "Error al cargar datos";
-      document.getElementById("teamLeague").textContent = "No se pudo leer equipos.json";
+    function normalizarEquipo(equipo) {
+      return {
+        id: equipo.id || "",
+        espn_id: equipo.espn_id || "",
+        nombre: equipo.nombre || "Equipo",
+        liga: equipo.liga || getTeamLeagueFromUrl() || "Liga no disponible",
+        logo: equipo.logo || getTeamLogoFromUrl() || "",
+        apodo: equipo.apodo || "Sin datos",
+        fundacion: equipo.fundacion || "Sin datos",
+        estadio: equipo.estadio || "Sin datos",
+        ciudad: equipo.ciudad || "Sin datos",
+        proximosPartidos: Array.isArray(equipo.proximosPartidos) ? equipo.proximosPartidos : [],
+        resultados: Array.isArray(equipo.resultados) ? equipo.resultados : [],
+        plantel: equipo.plantel || {
+          arqueros: [],
+          defensores: [],
+          mediocampistas: [],
+          delanteros: []
+        },
+        estadisticas: {
+          goles: equipo.estadisticas?.goles || [],
+          asistencias: equipo.estadisticas?.asistencias || [],
+          amarillas: equipo.estadisticas?.amarillas || [],
+          rojas: equipo.estadisticas?.rojas || []
+        },
+        estadisticasGenerales: {
+          posicion: equipo.estadisticasGenerales?.posicion || "-",
+          partidos: equipo.estadisticasGenerales?.partidos || "-",
+          ganados: equipo.estadisticasGenerales?.ganados || "-",
+          empatados: equipo.estadisticasGenerales?.empatados || "-",
+          perdidos: equipo.estadisticasGenerales?.perdidos || "-",
+          golesFavor: equipo.estadisticasGenerales?.golesFavor || "-",
+          golesContra: equipo.estadisticasGenerales?.golesContra || "-",
+          diferenciaGol: equipo.estadisticasGenerales?.diferenciaGol || "-",
+          puntos: equipo.estadisticasGenerales?.puntos || "-",
+          racha: equipo.estadisticasGenerales?.racha || "-"
+        }
+      };
     }
-  }
+
+    function renderStatsTable(elementId, items) {
+      const element = document.getElementById(elementId);
+
+      element.innerHTML = items.length
+        ? items.map(e => `
+            <tr>
+              <td>${e.jugador}</td>
+              <td class="right">${e.total}</td>
+            </tr>
+          `).join("")
+        : `
+            <tr>
+              <td colspan="2" class="center">Sin datos</td>
+            </tr>
+          `;
+    }
+
+    function cargarEquipo(equipoOriginal) {
+      const equipo = normalizarEquipo(equipoOriginal);
+
+      document.title = equipo.nombre + " - Ficha del Equipo";
+
+      document.getElementById("teamLogo").src = equipo.logo || "https://via.placeholder.com/100?text=EQ";
+      document.getElementById("teamName").textContent = equipo.nombre;
+      document.getElementById("teamLeague").textContent = equipo.liga;
+      document.getElementById("teamNickname").textContent = equipo.apodo;
+      document.getElementById("teamFounded").textContent = equipo.fundacion;
+      document.getElementById("teamStadium").textContent = equipo.estadio;
+      document.getElementById("teamCity").textContent = equipo.ciudad;
+
+      const generales = equipo.estadisticasGenerales || {};
+
+      document.getElementById("generalPosition").textContent = generales.posicion || "-";
+      document.getElementById("generalMatches").textContent = generales.partidos || "-";
+      document.getElementById("generalWins").textContent = generales.ganados || "-";
+      document.getElementById("generalDraws").textContent = generales.empatados || "-";
+      document.getElementById("generalLosses").textContent = generales.perdidos || "-";
+      document.getElementById("generalGoalsFor").textContent = generales.golesFavor || "-";
+      document.getElementById("generalGoalsAgainst").textContent = generales.golesContra || "-";
+      document.getElementById("generalGoalDiff").textContent = generales.diferenciaGol || "-";
+      document.getElementById("generalPoints").textContent = generales.puntos || "-";
+      document.getElementById("generalStreak").textContent = generales.racha || "-";
+
+      document.getElementById("upcomingMatches").innerHTML = equipo.proximosPartidos.length
+        ? equipo.proximosPartidos.map(p => `
+            <tr ${matchRowAttrs(p)}>
+              <td>${p.dia}</td>
+              <td>${p.local}</td>
+              <td>${p.visitante}</td>
+              <td class="right">${p.hora || "-"}</td>
+            </tr>
+          `).join("")
+        : `
+            <tr>
+              <td colspan="4" class="center">Sin próximos partidos</td>
+            </tr>
+          `;
+
+      document.getElementById("results").innerHTML = equipo.resultados.length
+        ? equipo.resultados.map(p => `
+            <tr ${matchRowAttrs(p)}>
+              <td>${p.dia}</td>
+              <td>${p.local}</td>
+              <td>${p.visitante}</td>
+              <td class="right">${p.resultado}</td>
+            </tr>
+          `).join("")
+        : `
+            <tr>
+              <td colspan="4" class="center">Sin resultados disponibles</td>
+            </tr>
+          `;
+
+      const squadRows = [];
+      const plantel = equipo.plantel || {};
+
+      Object.entries(plantel).forEach(([posicion, jugadores]) => {
+        if (!Array.isArray(jugadores) || !jugadores.length) {
+          return;
+        }
+
+        squadRows.push(`
+          <tr>
+            <td colspan="3" class="section-title">${posicion.toUpperCase()}</td>
+          </tr>
+        `);
+
+        jugadores.forEach(j => {
+          squadRows.push(`
+            <tr>
+              <td>
+                <span class="player">
+                  <span class="player-number">⚽</span>
+                  ${j.nombre}
+                </span>
+              </td>
+              <td class="center">${j.edad || "-"}</td>
+              <td class="right">${j.altura || "-"}</td>
+            </tr>
+          `);
+        });
+      });
+
+      document.getElementById("squad").innerHTML = squadRows.length
+        ? squadRows.join("")
+        : `
+            <tr>
+              <td colspan="3" class="center">Plantel no disponible</td>
+            </tr>
+          `;
+
+      renderStatsTable("goals", equipo.estadisticas.goles);
+      renderStatsTable("assists", equipo.estadisticas.asistencias);
+      renderStatsTable("yellowCards", equipo.estadisticas.amarillas);
+      renderStatsTable("redCards", equipo.estadisticas.rojas);
+    }
+
+    async function iniciarPaginaEquipo() {
+      const teamId = getTeamIdFromUrl();
+
+      console.log("ID recibido desde la URL:", teamId);
+
+      try {
+        const response = await fetch("data/equipos.json?v=" + Date.now());
+
+        if (!response.ok) {
+          throw new Error("No se pudo cargar data/equipos.json");
+        }
+
+        const equipos = await response.json();
+        const equipo = equipos.find(item => item.id === teamId);
+
+        if (!equipo) {
+          const equipoBasico = {
+            id: teamId,
+            nombre: nombreDesdeId(teamId),
+            liga: getTeamLeagueFromUrl() || "Liga no disponible",
+            logo: getTeamLogoFromUrl(),
+            apodo: "Sin datos",
+            fundacion: "Sin datos",
+            estadio: "Sin datos",
+            ciudad: "Sin datos",
+            proximosPartidos: [],
+            resultados: [],
+            plantel: {
+              arqueros: [],
+              defensores: [],
+              mediocampistas: [],
+              delanteros: []
+            },
+            estadisticas: {
+              goles: [],
+              asistencias: [],
+              amarillas: [],
+              rojas: []
+            },
+            estadisticasGenerales: {
+              posicion: "-",
+              partidos: "-",
+              ganados: "-",
+              empatados: "-",
+              perdidos: "-",
+              golesFavor: "-",
+              golesContra: "-",
+              diferenciaGol: "-",
+              puntos: "-",
+              racha: "-"
+            }
+          };
+
+          cargarEquipo(equipoBasico);
+          return;
+        }
+
+        cargarEquipo(equipo);
+
+      } catch (error) {
+        console.error(error);
+        document.getElementById("teamName").textContent = "Error al cargar datos";
+        document.getElementById("teamLeague").textContent = "No se pudo leer data/equipos.json";
+      }
+    }
 
     document.addEventListener("click", function(event) {
-  const row = event.target.closest(".clickable-row");
+      const row = event.target.closest(".clickable-row");
 
-  if (!row) {
-    return;
-  }
+      if (!row) {
+        return;
+      }
 
-  const url = row.dataset.url;
+      const url = row.dataset.url;
 
-  if (!url) {
-    return;
-  }
+      if (!url) {
+        return;
+      }
 
-  window.open(url, "_blank", "noreferrer");
-});
+      window.open(url, "_blank", "noreferrer");
+    });
 
-  iniciarPaginaEquipo();
-</script>
+    iniciarPaginaEquipo();
+  </script>
 
 </body>
 </html>
