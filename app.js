@@ -64,14 +64,21 @@ function crearTeamId(nombre) {
     .replace(/^-+|-+$/g, "");
 }
 
-function teamProfileHref(nombre, logo = "") {
+function teamProfileHref(nombre, logo = "", liga = "") {
   const id = crearTeamId(nombre);
+  const params = new URLSearchParams();
+
+  params.set("id", id);
 
   if (logo) {
-    return `equipo.html?id=${id}&logo=${encodeURIComponent(logo)}`;
+    params.set("logo", logo);
   }
 
-  return `equipo.html?id=${id}`;
+  if (liga) {
+    params.set("liga", liga);
+  }
+
+  return `equipo.html?${params.toString()}`;
 }
 
 window.teamProfileHref = teamProfileHref;
@@ -725,14 +732,14 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
   <time>${agendaDisplayTime(match)}</time>
 
   <span class="agenda-teams">
-    <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo)}" title="Ver ficha de ${home}">
+    <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo, group.league)}" title="Ver ficha de ${home}">
       ${teamLogoMarkup(home, match.local_logo)}
       <span>${home}</span>
     </a>
 
     <span class="agenda-score">${scoreMarkup(match)}</span>
 
-    <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo)}" title="Ver ficha de ${away}">
+    <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo, group.league)}" title="Ver ficha de ${away}">
       ${teamLogoMarkup(away, match.visitante_logo)}
       <span>${away}</span>
     </a>
