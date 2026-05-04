@@ -1,6 +1,8 @@
 import json
 import os
+import re
 import unicodedata
+from collections import Counter
 from datetime import datetime, timezone
 
 import requests
@@ -125,6 +127,26 @@ def formatear_fecha(fecha):
         return "Sin fecha"
 
     return str(fecha).split("T")[0]
+
+
+def extraer_game_id(url):
+    url = str(url or "")
+
+    if "gameId/" not in url:
+        return ""
+
+    try:
+        return url.split("gameId/")[1].split("/")[0].strip()
+    except Exception:
+        return ""
+
+
+def cargar_resumen_partido(game_id):
+    if not game_id:
+        return None
+
+    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/summary?event={game_id}"
+    return get_json(url)
 
 
 def limpiar_score(score):
@@ -326,6 +348,203 @@ def cargar_plantel(equipo):
     return plantel
 
 
+def obtener_nombre_jugador(obj):
+    if not isinstance(obj, dict):
+        return ""
+
+    athlete = obj.get("athlete") or obj.get("player") or {}
+
+    if isinstance(athlete, dict):
+        nombre = (
+            athlete.get("displayName")
+            or athlete.get("fullName")
+            or athlete.get("name")
+            or athlete.get("shortName")
+        )
+
+        if nombre:
+            return nombre
+
+    return (
+        obj.get("displayName")
+        or obj.get("fullName")
+        or obj.get("name")
+        or obj.get("athleteName")
+        or obj.get("playerName")
+        or ""
+    )
+
+
+def sumar_counter_a_lista(counter):
+    return [
+        {
+            "jugador": jugador,
+            "total": total,
+        }
+        for jugador, total in counter.most_common(10)
+    ]
+
+
+def extraer_eventos_recursivo(data):
+    encontrados = []
+
+    def caminar(obj):
+        if isinstance(obj, dict):
+            keys = set(obj.keys())
+
+            # Posibles objetos de jugada/evento
+            if (
+                "type" in keys
+                or "text" in keys
+                or "play" in keys
+                or "athletesInvolved" in keys
+                or "participants" in keys
+            ):
+                encontrados.append(obj)
+
+            for value in obj.values():
+                caminar(value)
+
+        elif isinstance(obj, list):
+            for item in obj:
+                caminar(item)
+
+    caminar(data)
+    return encontrados
+
+
+def detectar_tipo_evento(evento):
+    textos = []
+
+    for key in ["type", "text", "description", "displayName", "shortDisplayName", "name"]:
+        value = evento.get(key)
+
+        if isinstance(value, dict):
+            textos.append(str(value.get("text") or value.get("description") or value.get("name") or ""))
+        elif value is not None:
+            textos.append(str(value))
+
+    texto = slug(" ".join(textos))
+
+    if "goal" in texto or "gol" in texto:
+        return "gol"
+
+    if "assist" in texto or "asistencia" in texto:
+        return "asistencia"
+
+    if "yellow" in texto or "amarilla" in texto:
+        return "amarilla"
+
+    if "card" in texto and "yellow" in texto:
+        return "amarilla"
+
+    return ""
+
+
+def extraer_jugadores_de_evento(evento):
+    jugadores = []
+
+    posibles_listas = [
+        evento.get("athletesInvolved"),
+        evento.get("participants"),
+        evento.get("players"),
+        evento.get("competitors"),
+    ]
+
+    for lista in posibles_listas:
+        if isinstance(lista, list):
+            for item in lista:
+                nombre = obtener_nombre_jugador(item)
+                if nombre:
+                    jugadores.append(nombre)
+
+    nombre_directo = obtener_nombre_jugador(evento)
+    if nombre_directo:
+        jugadores.append(nombre_directo)
+
+    # Quitar duplicados manteniendo orden
+    vistos = set()
+    limpios = []
+
+    for jugador in jugadores:
+        key = slug(jugador)
+        if key and key not in vistos:
+            vistos.add(key)
+            limpios.append(jugador)
+
+    return limpios
+
+
+def cargar_estadisticas_desde_resumenes(equipo):
+    goles = Counter()
+    asistencias = Counter()
+    amarillas = Counter()
+
+    partidos = equipo.get("resultados", [])[:10]
+
+    print(f"📊 Buscando estadísticas por resumen para {equipo.get('nombre')}")
+
+    for partido in partidos:
+        game_id = extraer_game_id(partido.get("url"))
+
+        if not game_id:
+            continue
+
+        data = cargar_resumen_partido(game_id)
+
+        if not data:
+            continue
+
+        print(f"📌 Summary {game_id} keys: {list(data.keys())}")
+
+        if "scoringPlays" in data:
+            print(f"⚽ scoringPlays encontrados: {len(data.get('scoringPlays') or [])}")
+
+        eventos = []
+
+        # Primero intentamos fuentes más probables
+        if isinstance(data.get("scoringPlays"), list):
+            eventos.extend(data.get("scoringPlays") or [])
+
+        if isinstance(data.get("plays"), list):
+            eventos.extend(data.get("plays") or [])
+
+        # Después hacemos búsqueda recursiva por si ESPN cambia el formato
+        eventos.extend(extraer_eventos_recursivo(data))
+
+        for evento in eventos:
+            if not isinstance(evento, dict):
+                continue
+
+            tipo = detectar_tipo_evento(evento)
+            jugadores = extraer_jugadores_de_evento(evento)
+
+            if not tipo or not jugadores:
+                continue
+
+            # Normalmente el primer jugador del evento es el principal.
+            jugador_principal = jugadores[0]
+
+            if tipo == "gol":
+                goles[jugador_principal] += 1
+
+                # Si aparece un segundo jugador en la jugada, lo contamos como posible asistencia.
+                if len(jugadores) > 1:
+                    asistencias[jugadores[1]] += 1
+
+            elif tipo == "asistencia":
+                asistencias[jugador_principal] += 1
+
+            elif tipo == "amarilla":
+                amarillas[jugador_principal] += 1
+
+    return {
+        "goles": sumar_counter_a_lista(goles),
+        "asistencias": sumar_counter_a_lista(asistencias),
+        "amarillas": sumar_counter_a_lista(amarillas),
+    }
+
+
 def cargar_estadisticas_jugadores(equipo):
     espn_id = equipo.get("espn_id")
 
@@ -352,15 +571,6 @@ def cargar_estadisticas_jugadores(equipo):
         print(f"📊 Estadísticas recibidas para {equipo.get('nombre')}")
         print("🔑 Keys principales:", list(data.keys()))
 
-        if "leaders" in data:
-            print("✅ Tiene leaders")
-
-        if "categories" in data:
-            print("✅ Tiene categories")
-
-        if "splits" in data:
-            print("✅ Tiene splits")
-
         leaders = data.get("leaders") or data.get("categories") or []
 
         for group in leaders:
@@ -379,24 +589,7 @@ def cargar_estadisticas_jugadores(equipo):
                 if not isinstance(item, dict):
                     continue
 
-                athlete = item.get("athlete") or item.get("player") or {}
-
-                if isinstance(athlete, dict):
-                    nombre = (
-                        athlete.get("displayName")
-                        or athlete.get("fullName")
-                        or athlete.get("name")
-                    )
-                else:
-                    nombre = None
-
-                nombre = (
-                    nombre
-                    or item.get("displayName")
-                    or item.get("name")
-                    or item.get("athleteName")
-                    or item.get("playerName")
-                )
+                nombre = obtener_nombre_jugador(item)
 
                 if not nombre:
                     continue
@@ -450,7 +643,19 @@ def completar_equipo(base):
     equipo["resultados"] = resultados
 
     equipo["plantel"] = cargar_plantel(base)
-    equipo["estadisticas"] = cargar_estadisticas_jugadores(base)
+
+    # 1) Intento directo desde endpoint de estadísticas
+    estadisticas = cargar_estadisticas_jugadores(base)
+
+    # 2) Si ESPN no da líderes, intento armar estadísticas desde resúmenes de partidos
+    if (
+        not estadisticas["goles"]
+        and not estadisticas["asistencias"]
+        and not estadisticas["amarillas"]
+    ):
+        estadisticas = cargar_estadisticas_desde_resumenes(equipo)
+
+    equipo["estadisticas"] = estadisticas
 
     return equipo
 
