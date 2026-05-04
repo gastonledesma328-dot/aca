@@ -349,71 +349,109 @@
     document.getElementById("teamStadium").textContent = equipo.estadio;
     document.getElementById("teamCity").textContent = equipo.ciudad;
 
-    document.getElementById("upcomingMatches").innerHTML = equipo.proximosPartidos.map(p => `
+    document.getElementById("upcomingMatches").innerHTML = equipo.proximosPartidos.length
+  ? equipo.proximosPartidos.map(p => `
       <tr>
         <td>${p.dia}</td>
         <td>${p.local}</td>
         <td>${p.visitante}</td>
         <td class="right">${p.hora}</td>
       </tr>
-    `).join("");
+    `).join("")
+  : `
+      <tr>
+        <td colspan="4" class="center">Sin próximos partidos</td>
+      </tr>
+    `;
 
-    document.getElementById("results").innerHTML = equipo.resultados.map(p => `
+    document.getElementById("results").innerHTML = equipo.resultados.length
+  ? equipo.resultados.map(p => `
       <tr>
         <td>${p.dia}</td>
         <td>${p.local}</td>
         <td>${p.visitante}</td>
         <td class="right">${p.resultado}</td>
       </tr>
-    `).join("");
+    `).join("")
+  : `
+      <tr>
+        <td colspan="4" class="center">Sin resultados disponibles</td>
+      </tr>
+    `;
 
     const squadRows = [];
 
-    Object.entries(equipo.plantel).forEach(([posicion, jugadores]) => {
-      squadRows.push(`
-        <tr>
-          <td colspan="3" class="section-title">${posicion.toUpperCase()}</td>
-        </tr>
-      `);
+Object.entries(equipo.plantel).forEach(([posicion, jugadores]) => {
+  if (!jugadores.length) return;
 
-      jugadores.forEach(j => {
-        squadRows.push(`
-          <tr>
-            <td>
-              <span class="player">
-                <span class="player-number">⚽</span>
-                ${j.nombre}
-              </span>
-            </td>
-            <td class="center">${j.edad}</td>
-            <td class="right">${j.altura}</td>
-          </tr>
-        `);
-      });
-    });
+  squadRows.push(`
+    <tr>
+      <td colspan="3" class="section-title">${posicion.toUpperCase()}</td>
+    </tr>
+  `);
 
-    document.getElementById("squad").innerHTML = squadRows.join("");
+  jugadores.forEach(j => {
+    squadRows.push(`
+      <tr>
+        <td>
+          <span class="player">
+            <span class="player-number">⚽</span>
+            ${j.nombre}
+          </span>
+        </td>
+        <td class="center">${j.edad || "-"}</td>
+        <td class="right">${j.altura || "-"}</td>
+      </tr>
+    `);
+  });
+});
 
-    document.getElementById("goals").innerHTML = equipo.estadisticas.goles.map(e => `
+document.getElementById("squad").innerHTML = squadRows.length
+  ? squadRows.join("")
+  : `
+      <tr>
+        <td colspan="3" class="center">Plantel no disponible</td>
+      </tr>
+    `;
+
+    document.getElementById("goals").innerHTML = equipo.estadisticas.goles.length
+  ? equipo.estadisticas.goles.map(e => `
       <tr>
         <td>${e.jugador}</td>
         <td class="right">${e.total}</td>
       </tr>
-    `).join("");
+    `).join("")
+  : `
+      <tr>
+        <td colspan="2" class="center">Sin datos</td>
+      </tr>
+    `;
 
-    document.getElementById("assists").innerHTML = equipo.estadisticas.asistencias.map(e => `
+    document.getElementById("assists").innerHTML = equipo.estadisticas.asistencias.length
+  ? equipo.estadisticas.asistencias.map(e => `
       <tr>
         <td>${e.jugador}</td>
         <td class="right">${e.total}</td>
       </tr>
-    `).join("");
+    `).join("")
+  : `
+      <tr>
+        <td colspan="2" class="center">Sin datos</td>
+      </tr>
+    `;
 
-    document.getElementById("yellowCards").innerHTML = equipo.estadisticas.amarillas.map(e => `
+    document.getElementById("yellowCards").innerHTML = equipo.estadisticas.amarillas.length
+  ? equipo.estadisticas.amarillas.map(e => `
       <tr>
         <td>${e.jugador}</td>
         <td class="right">${e.total}</td>
       </tr>
-    `).join("");
+    `).join("")
+  : `
+      <tr>
+        <td colspan="2" class="center">Sin datos</td>
+      </tr>
+    `;
   }
 
   function getTeamIdFromUrl() {
