@@ -675,21 +675,25 @@ def completar_equipo(base):
 
     equipo["plantel"] = cargar_plantel(base)
 
-estadisticas = cargar_estadisticas_jugadores(base)
+    estadisticas = cargar_estadisticas_jugadores(base)
 
-if (
-    not estadisticas["goles"]
-    and not estadisticas["asistencias"]
-    and not estadisticas["amarillas"]
-):
-    estadisticas = cargar_estadisticas_desde_resumenes(equipo)
+    if (
+        not estadisticas["goles"]
+        and not estadisticas["asistencias"]
+        and not estadisticas["amarillas"]
+    ):
+        estadisticas = cargar_estadisticas_desde_resumenes(equipo)
 
-estadisticas = filtrar_estadisticas_por_plantel(estadisticas, equipo["plantel"])
-print("✅ Estadísticas filtradas:", equipo["nombre"], estadisticas)
+    estadisticas = filtrar_estadisticas_por_plantel(
+        estadisticas,
+        equipo["plantel"]
+    )
 
-equipo["estadisticas"] = estadisticas
+    print("✅ Estadísticas filtradas:", equipo["nombre"], estadisticas)
 
-    return equipo
+    equipo["estadisticas"] = estadisticas
+
+return equipo
 
 
 def main():
