@@ -5,6 +5,11 @@ from datetime import datetime, timezone
 
 import requests
 
+try:
+    from curl_cffi import requests as curl_requests
+except Exception:
+    curl_requests = None
+
 
 OUTPUT_FILE = "data/equipos.json"
 
@@ -14,8 +19,8 @@ SEASON = "2026"
 COMPETICION_PRINCIPAL = "Liga Profesional de Futbol - Torneo Apertura 2026"
 
 # FotMob:
-# id=112        -> Liga Profesional Argentina
-# season=28207  -> temporada detectada en Network
+# id=112       -> Liga Profesional Argentina
+# season=28207 -> temporada/torneo detectado desde Network
 FOTMOB_LEAGUE_ID = "112"
 FOTMOB_SEASON_ID = "28207"
 
@@ -578,7 +583,7 @@ def extraer_lista_fotmob_api(data):
     Endpoint:
     /api/data/leagueseasondeepstats
 
-    En este endpoint, la lista real normalmente viene en:
+    Normalmente la lista real viene en:
     data["statsData"]
     """
     if isinstance(data, list):
@@ -625,8 +630,6 @@ def obtener_nombre_fotmob_item(item):
     if not isinstance(item, dict):
         return ""
 
-    # Forma común:
-    # {"name": "Sebastian Driussi", "statValue": {"value": 4}}
     for key in ["name", "playerName", "displayName", "fullName", "localizedName"]:
         value = item.get(key)
         if isinstance(value, str) and value.strip():
@@ -653,8 +656,6 @@ def obtener_valor_fotmob_item(item, stat):
     if not isinstance(item, dict):
         return 0
 
-    # Forma común:
-    # "statValue": {"value": 4, "format": "number"}
     stat_value = item.get("statValue")
 
     if isinstance(stat_value, dict):
@@ -694,7 +695,7 @@ def cargar_ranking_fotmob_api(equipo, competicion, stat):
     if not fotmob_id or not league_id or not season_id:
         return []
 
-    url = (
+    api_url = (
         "https://www.fotmob.com/api/data/leagueseasondeepstats"
         f"?lng=es"
         f"&id={league_id}"
@@ -705,21 +706,59 @@ def cargar_ranking_fotmob_api(equipo, competicion, stat):
         f"&slug={fotmob_slug}-players"
     )
 
-    try:
-        r = requests.get(
-            url,
-            timeout=30,
-            headers={
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
-                "Accept": "application/json, text/plain, */*",
-                "Accept-Language": "es-AR,es;q=0.9,en;q=0.8",
-                "Referer": f"https://www.fotmob.com/teams/{fotmob_id}/stats/{fotmob_slug}/players",
-            },
-        )
+    page_url = f"https://www.fotmob.com/teams/{fotmob_id}/stats/{fotmob_slug}/players"
 
-        print(f"📊 FotMob API {r.status_code} stat={stat} {url}")
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/120.0.0.0 Safari/537.36"
+        ),
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "es-AR,es;q=0.9,en;q=0.8",
+        "Referer": page_url,
+        "Origin": "https://www.fotmob.com",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-origin",
+    }
+
+    try:
+        if curl_requests:
+            session = curl_requests.Session()
+
+            session.get(
+                page_url,
+                headers=headers,
+                timeout=30,
+                impersonate="chrome120",
+            )
+
+            r = session.get(
+                api_url,
+                headers=headers,
+                timeout=30,
+                impersonate="chrome120",
+            )
+        else:
+            session = requests.Session()
+
+            session.get(
+                page_url,
+                headers=headers,
+                timeout=30,
+            )
+
+            r = session.get(
+                api_url,
+                headers=headers,
+                timeout=30,
+            )
+
+        print(f"📊 FotMob API {r.status_code} stat={stat} {api_url}")
 
         if not r.ok:
+            print("⚠️ FotMob bloqueó la request. Status:", r.status_code)
             return []
 
         data = r.json()
@@ -766,11 +805,6 @@ def cargar_ranking_fotmob_api(equipo, competicion, stat):
 
 
 def cargar_estadisticas_fotmob(equipo, competicion):
-    # Confirmado:
-    # goals       -> goles
-    # goal_assist -> asistencias
-    # yellow_card -> amarillas
-    # red_card    -> rojas
     goles = cargar_ranking_fotmob_api(equipo, competicion, "goals")
     asistencias = cargar_ranking_fotmob_api(equipo, competicion, "goal_assist")
     amarillas = cargar_ranking_fotmob_api(equipo, competicion, "yellow_card")
