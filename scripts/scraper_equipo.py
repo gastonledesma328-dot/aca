@@ -13,6 +13,25 @@ OUTPUT_FILE = "data/equipos.json"
 LEAGUE_SLUG = "arg.1"
 SEASON = "2026"
 
+
+COMPETICIONES = [
+    {
+        "nombre": "Liga Profesional de Futbol",
+        "league_slug": "arg.1",
+        "season": "2026"
+    },
+    {
+        "nombre": "Copa Libertadores",
+        "league_slug": "conmebol.libertadores",
+        "season": "2026"
+    },
+    {
+        "nombre": "Copa Sudamericana",
+        "league_slug": "conmebol.sudamericana",
+        "season": "2026"
+    }
+]
+
 EQUIPOS_BASE = [
     {
         "id": "river-plate",
