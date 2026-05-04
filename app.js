@@ -721,19 +721,21 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
         }
 
         row.innerHTML = `
+  row.innerHTML = `
   <time>${agendaDisplayTime(match)}</time>
 
-  <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo, group.league)}" title="Ver ficha de ${home}">
-  ${teamLogoMarkup(home, match.local_logo)}
-  <span>${home}</span>
+  <span class="agenda-teams">
+    <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo, group.league)}" title="Ver ficha de ${home}">
+      ${teamLogoMarkup(home, match.local_logo)}
+      <span>${home}</span>
     </a>
 
     <span class="agenda-score">${scoreMarkup(match)}</span>
 
     <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo, group.league)}" title="Ver ficha de ${away}">
-  ${teamLogoMarkup(away, match.visitante_logo)}
-  <span>${away}</span>
-</a>
+      ${teamLogoMarkup(away, match.visitante_logo)}
+      <span>${away}</span>
+    </a>
 
     ${scorersMarkup(match)}
   </span>
