@@ -344,25 +344,29 @@ def cargar_estadisticas_jugadores(equipo):
     ]
 
     for url in urls:
-    data = get_json(url)
+        data = get_json(url)
 
-    if not data:
-        continue
+        if not data:
+            continue
 
-    print(f"📊 Estadísticas recibidas para {equipo.get('nombre')}")
-    print("🔑 Keys principales:", list(data.keys()))
+        print(f"📊 Estadísticas recibidas para {equipo.get('nombre')}")
+        print("🔑 Keys principales:", list(data.keys()))
 
-    if "leaders" in data:
-        print("✅ Tiene leaders")
+        if "leaders" in data:
+            print("✅ Tiene leaders")
 
-    if "categories" in data:
-        print("✅ Tiene categories")
+        if "categories" in data:
+            print("✅ Tiene categories")
 
-    if "splits" in data:
-        print("✅ Tiene splits")
+        if "splits" in data:
+            print("✅ Tiene splits")
 
-    leaders = data.get("leaders") or data.get("categories") or []
+        leaders = data.get("leaders") or data.get("categories") or []
+
         for group in leaders:
+            if not isinstance(group, dict):
+                continue
+
             group_name = slug(group.get("name") or group.get("displayName") or "")
             items = (
                 group.get("leaders")
@@ -372,18 +376,38 @@ def cargar_estadisticas_jugadores(equipo):
             )
 
             for item in items:
+                if not isinstance(item, dict):
+                    continue
+
                 athlete = item.get("athlete") or item.get("player") or {}
+
+                if isinstance(athlete, dict):
+                    nombre = (
+                        athlete.get("displayName")
+                        or athlete.get("fullName")
+                        or athlete.get("name")
+                    )
+                else:
+                    nombre = None
+
                 nombre = (
-                    athlete.get("displayName")
-                    or athlete.get("fullName")
+                    nombre
                     or item.get("displayName")
                     or item.get("name")
+                    or item.get("athleteName")
+                    or item.get("playerName")
                 )
 
                 if not nombre:
                     continue
 
-                total = item.get("value") or item.get("displayValue") or item.get("total") or 0
+                total = (
+                    item.get("value")
+                    or item.get("displayValue")
+                    or item.get("total")
+                    or item.get("stat")
+                    or 0
+                )
 
                 if "goal" in group_name or "gol" in group_name:
                     estadisticas["goles"].append(
