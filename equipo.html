@@ -511,7 +511,7 @@ document.getElementById("squad").innerHTML = squadRows.length
     console.log("ID recibido desde la URL:", teamId);
 
     try {
-      const response = await fetch("equipos.json");
+      const response = await fetch("data/equipos.json?v=" + Date.now());
 
       if (!response.ok) {
         throw new Error("No se pudo cargar equipos.json");
