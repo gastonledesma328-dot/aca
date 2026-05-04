@@ -9,7 +9,7 @@
     "fundacion": "1901",
     "estadio": "Monumental",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-04T03:18:54.762160+00:00",
+    "actualizado": "2026-05-04T03:50:20.209574+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -350,16 +350,16 @@
           "total": 12
         },
         {
-          "jugador": "Gonzalo Montiel",
-          "total": 8
-        },
-        {
           "jugador": "Facundo Colidio",
           "total": 7
         },
         {
           "jugador": "Tomás Galván",
           "total": 7
+        },
+        {
+          "jugador": "Gonzalo Montiel",
+          "total": 4
         },
         {
           "jugador": "Maximiliano Salas",
@@ -448,8 +448,38 @@
         {
           "jugador": "Ian Subiabre",
           "total": 4
+        },
+        {
+          "jugador": "Kendry Páez",
+          "total": 2
+        }
+      ],
+      "rojas": [
+        {
+          "jugador": "Gonzalo Montiel",
+          "total": 4
+        },
+        {
+          "jugador": "Sebastián Driussi",
+          "total": 2
+        },
+        {
+          "jugador": "Maximiliano Salas",
+          "total": 2
         }
       ]
+    },
+    "estadisticasGenerales": {
+      "posicion": "2",
+      "partidos": "16",
+      "ganados": "9",
+      "empatados": "2",
+      "perdidos": "5",
+      "golesFavor": "22",
+      "golesContra": "12",
+      "diferenciaGol": "+10",
+      "puntos": "29",
+      "racha": "-"
     }
   },
   {
@@ -462,7 +492,7 @@
     "fundacion": "1905",
     "estadio": "Alberto J. Armando",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-04T03:18:57.968588+00:00",
+    "actualizado": "2026-05-04T03:50:24.609205+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -794,16 +824,16 @@
     "estadisticas": {
       "goles": [
         {
-          "jugador": "Miguel Merentiel",
-          "total": 15
-        },
-        {
           "jugador": "Adam Bareiro",
           "total": 15
         },
         {
+          "jugador": "Miguel Merentiel",
+          "total": 12
+        },
+        {
           "jugador": "Milton Gimenez",
-          "total": 10
+          "total": 8
         },
         {
           "jugador": "Alan Velasco",
@@ -814,10 +844,6 @@
           "total": 5
         },
         {
-          "jugador": "Tomás Aranda",
-          "total": 3
-        },
-        {
           "jugador": "Ángel Romero",
           "total": 2
         }
@@ -825,15 +851,15 @@
       "asistencias": [
         {
           "jugador": "Miguel Merentiel",
-          "total": 19
+          "total": 16
         },
         {
           "jugador": "Tomás Aranda",
-          "total": 15
+          "total": 14
         },
         {
           "jugador": "Adam Bareiro",
-          "total": 12
+          "total": 11
         },
         {
           "jugador": "Exequiel Zeballos",
@@ -844,29 +870,25 @@
           "total": 8
         },
         {
-          "jugador": "Leandro Paredes",
-          "total": 5
-        },
-        {
-          "jugador": "Lautaro Di Lollo",
-          "total": 5
-        },
-        {
           "jugador": "William Alarcón",
           "total": 4
         },
         {
-          "jugador": "Marcelo Weigandt",
+          "jugador": "Milton Gimenez",
+          "total": 4
+        },
+        {
+          "jugador": "Santiago Ascacibar",
+          "total": 4
+        },
+        {
+          "jugador": "Lautaro Di Lollo",
           "total": 4
         }
       ],
       "amarillas": [
         {
           "jugador": "Adam Bareiro",
-          "total": 8
-        },
-        {
-          "jugador": "Leandro Paredes",
           "total": 8
         },
         {
@@ -889,7 +911,45 @@
           "jugador": "Juan Barinaga",
           "total": 2
         }
+      ],
+      "rojas": [
+        {
+          "jugador": "Leandro Paredes",
+          "total": 31
+        },
+        {
+          "jugador": "Miguel Merentiel",
+          "total": 6
+        },
+        {
+          "jugador": "Ander Herrera",
+          "total": 2
+        },
+        {
+          "jugador": "Milton Gimenez",
+          "total": 2
+        },
+        {
+          "jugador": "Camilo Rey",
+          "total": 2
+        },
+        {
+          "jugador": "Marcelo Weigandt",
+          "total": 2
+        }
       ]
+    },
+    "estadisticasGenerales": {
+      "posicion": "2",
+      "partidos": "16",
+      "ganados": "8",
+      "empatados": "6",
+      "perdidos": "2",
+      "golesFavor": "22",
+      "golesContra": "9",
+      "diferenciaGol": "+13",
+      "puntos": "30",
+      "racha": "-"
     }
   },
   {
@@ -902,7 +962,7 @@
     "fundacion": "1903",
     "estadio": "Presidente Perón",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-04T03:19:01.247601+00:00",
+    "actualizado": "2026-05-04T03:50:28.508057+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -1233,27 +1293,19 @@
         {
           "jugador": "Santiago Solari",
           "total": 3
-        },
-        {
-          "jugador": "Tomás Conechny",
-          "total": 3
         }
       ],
       "asistencias": [
         {
           "jugador": "Santiago Solari",
-          "total": 17
+          "total": 14
         },
         {
           "jugador": "Adrián Martínez",
-          "total": 11
+          "total": 9
         },
         {
           "jugador": "Tomás Conechny",
-          "total": 8
-        },
-        {
-          "jugador": "Santiago Sosa",
           "total": 6
         },
         {
@@ -1262,14 +1314,14 @@
         },
         {
           "jugador": "Matías Zaracho",
-          "total": 5
-        },
-        {
-          "jugador": "Baltasar Rodríguez",
-          "total": 5
+          "total": 4
         },
         {
           "jugador": "Bruno Zuculini",
+          "total": 4
+        },
+        {
+          "jugador": "Baltasar Rodríguez",
           "total": 4
         },
         {
@@ -1277,21 +1329,21 @@
           "total": 4
         },
         {
-          "jugador": "Marco Di Cesare",
+          "jugador": "Santiago Sosa",
+          "total": 4
+        },
+        {
+          "jugador": "Damián Pizarro",
           "total": 4
         }
       ],
       "amarillas": [
         {
-          "jugador": "Marco Di Cesare",
-          "total": 8
-        },
-        {
           "jugador": "Baltasar Rodríguez",
           "total": 6
         },
         {
-          "jugador": "Matko Miljevic",
+          "jugador": "Marco Di Cesare",
           "total": 6
         },
         {
@@ -1307,10 +1359,56 @@
           "total": 4
         },
         {
-          "jugador": "Gabriel Rojas",
+          "jugador": "Matko Miljevic",
           "total": 4
         }
+      ],
+      "rojas": [
+        {
+          "jugador": "Gabriel Rojas",
+          "total": 15
+        },
+        {
+          "jugador": "Tomás Conechny",
+          "total": 4
+        },
+        {
+          "jugador": "Marco Di Cesare",
+          "total": 4
+        },
+        {
+          "jugador": "Santiago Solari",
+          "total": 3
+        },
+        {
+          "jugador": "Adrián Martínez",
+          "total": 2
+        },
+        {
+          "jugador": "Adrián Fernández",
+          "total": 2
+        },
+        {
+          "jugador": "Agustín García Basso",
+          "total": 2
+        },
+        {
+          "jugador": "Marcos Rojo",
+          "total": 2
+        }
       ]
+    },
+    "estadisticasGenerales": {
+      "posicion": "8",
+      "partidos": "16",
+      "ganados": "5",
+      "empatados": "6",
+      "perdidos": "5",
+      "golesFavor": "17",
+      "golesContra": "15",
+      "diferenciaGol": "+2",
+      "puntos": "21",
+      "racha": "-"
     }
   }
 ]
