@@ -223,13 +223,19 @@ def filtrar_partidos_por_fecha(partidos, competicion):
 def extraer_game_id(url):
     url = str(url or "")
 
-    if "gameId/" not in url:
-        return ""
+    if "gameId/" in url:
+        try:
+            return url.split("gameId/")[1].split("/")[0].strip()
+        except Exception:
+            return ""
 
-    try:
-        return url.split("gameId/")[1].split("/")[0].strip()
-    except Exception:
-        return ""
+    if "gameId=" in url:
+        try:
+            return url.split("gameId=")[1].split("&")[0].strip()
+        except Exception:
+            return ""
+
+    return ""
 
 
 def cargar_resumen_partido(game_id):
@@ -594,6 +600,7 @@ def texto_evento(obj):
                     "name",
                     "headline",
                     "caption",
+                    "detail",
                 ]:
                     if isinstance(v, str):
                         partes.append(v)
@@ -713,7 +720,7 @@ def extraer_jugadores_de_evento_con_plantel(evento, plantel):
 def detectar_tipo_evento(evento):
     textos = []
 
-    for key in ["type", "text", "description", "displayName", "shortDisplayName", "name"]:
+    for key in ["type", "text", "description", "displayName", "shortDisplayName", "name", "detail"]:
         value = evento.get(key)
 
         if isinstance(value, dict):
@@ -722,6 +729,7 @@ def detectar_tipo_evento(evento):
                     value.get("text")
                     or value.get("description")
                     or value.get("name")
+                    or value.get("detail")
                     or ""
                 )
             )
@@ -730,55 +738,62 @@ def detectar_tipo_evento(evento):
 
     texto = slug(" ".join(textos))
 
-    if "red-card" in texto or "redcard" in texto:
-        return "roja"
+    if not texto:
+        return ""
 
-    if "tarjeta-roja" in texto or "roja" in texto or "red" in texto:
+    falsos_gol = [
+        "goal-difference",
+        "goals-for",
+        "goals-against",
+        "goalkeeper",
+        "expected-goals",
+        "goalie",
+    ]
+
+    if any(falso in texto for falso in falsos_gol):
+        return ""
+
+    if "red-card" in texto or "redcard" in texto or "tarjeta-roja" in texto:
         return "roja"
 
     if "second-yellow" in texto or "segunda-amarilla" in texto:
         return "roja"
 
-    if "yellow" in texto or "amarilla" in texto:
+    if (
+        "yellow-card" in texto
+        or "yellowcard" in texto
+        or "tarjeta-amarilla" in texto
+        or "amarilla" in texto
+    ):
         return "amarilla"
 
     if "goal" in texto or "gol" in texto:
         return "gol"
 
-    if "assist" in texto or "asistencia" in texto:
-        return "asistencia"
-
     return ""
 
 
-def extraer_eventos_recursivo(data):
-    encontrados = []
+def extraer_asistencia_desde_texto(texto, plantel):
+    texto_original = str(texto or "")
+    texto_slug = slug(texto_original)
 
-    def caminar(obj):
-        if isinstance(obj, dict):
-            keys = set(obj.keys())
+    palabras_clave = [
+        "assist",
+        "assisted-by",
+        "asistencia",
+        "asistido-por",
+    ]
 
-            if (
-                "type" in keys
-                or "text" in keys
-                or "play" in keys
-                or "athletesInvolved" in keys
-                or "participants" in keys
-                or "card" in keys
-                or "commentary" in keys
-                or "keyEvents" in keys
-            ):
-                encontrados.append(obj)
+    if not any(palabra in texto_slug for palabra in palabras_clave):
+        return ""
 
-            for value in obj.values():
-                caminar(value)
+    jugadores = buscar_jugadores_plantel_en_texto(texto_original, plantel)
 
-        elif isinstance(obj, list):
-            for item in obj:
-                caminar(item)
+    if len(jugadores) >= 2:
+        return jugadores[1]
 
-    caminar(data)
-    return encontrados
+    return ""
+
 
 def cargar_estadisticas_desde_resumenes(equipo):
     goles = Counter()
@@ -789,7 +804,7 @@ def cargar_estadisticas_desde_resumenes(equipo):
     partidos = equipo.get("resultados", [])[:20]
     plantel = equipo.get("plantel") or {}
 
-    print(f"📊 Calculando estadísticas por partidos filtrados para {equipo.get('nombre')}")
+    print(f"📊 Calculando estadísticas REALES por partidos filtrados para {equipo.get('nombre')}")
     print(f"🎯 Partidos usados para estadísticas: {len(partidos)}")
 
     for partido in partidos:
@@ -807,16 +822,13 @@ def cargar_estadisticas_desde_resumenes(equipo):
 
         eventos = []
 
-        # 1) Fuente principal si ESPN la trae
-        if isinstance(resumen.get("scoringPlays"), list):
-            eventos.extend(resumen.get("scoringPlays") or [])
+        key_events = resumen.get("keyEvents") or []
+        if isinstance(key_events, list):
+            eventos.extend(key_events)
 
-        # 2) Jugadas generales si ESPN las trae
-        if isinstance(resumen.get("plays"), list):
-            eventos.extend(resumen.get("plays") or [])
-
-        # 3) Fallback controlado: buscar eventos dentro del JSON completo
-        eventos.extend(extraer_eventos_recursivo(resumen))
+        commentary = resumen.get("commentary") or []
+        if isinstance(commentary, list):
+            eventos.extend(commentary)
 
         vistos = set()
 
@@ -824,9 +836,10 @@ def cargar_estadisticas_desde_resumenes(equipo):
             if not isinstance(evento, dict):
                 continue
 
+            texto = texto_evento(evento)
             tipo = detectar_tipo_evento(evento)
 
-            if tipo not in ["gol", "asistencia", "amarilla", "roja"]:
+            if tipo not in ["gol", "amarilla", "roja"]:
                 continue
 
             jugadores = extraer_jugadores_de_evento_con_plantel(evento, plantel)
@@ -834,11 +847,8 @@ def cargar_estadisticas_desde_resumenes(equipo):
             if not jugadores:
                 continue
 
-            texto = texto_evento(evento)
             jugador = jugadores[0]
-
-            # Evita contar repetido el mismo evento muchas veces
-            key = f"{game_id}-{tipo}-{slug(jugador)}-{slug(texto)[:120]}"
+            key = f"{game_id}-{tipo}-{slug(jugador)}-{slug(texto)[:140]}"
 
             if key in vistos:
                 continue
@@ -848,11 +858,10 @@ def cargar_estadisticas_desde_resumenes(equipo):
             if tipo == "gol":
                 goles[jugador] += 1
 
-                if len(jugadores) > 1:
-                    asistencias[jugadores[1]] += 1
+                asistidor = extraer_asistencia_desde_texto(texto, plantel)
 
-            elif tipo == "asistencia":
-                asistencias[jugador] += 1
+                if asistidor and slug(asistidor) != slug(jugador):
+                    asistencias[asistidor] += 1
 
             elif tipo == "amarilla":
                 amarillas[jugador] += 1
@@ -979,6 +988,7 @@ def extraer_team_id_desde_entry(entry):
             return str(team.get("id"))
 
         ref = team.get("$ref") or team.get("href") or ""
+
         if "/teams/" in ref:
             return ref.split("/teams/")[1].split("?")[0].split("/")[0]
 
