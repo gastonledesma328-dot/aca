@@ -64,6 +64,11 @@
       background: rgba(255,255,255,0.08);
       border-radius: 50%;
       padding: 8px;
+      flex-shrink: 0;
+    }
+
+    .team-title {
+      min-width: 180px;
     }
 
     .team-title h1 {
@@ -75,6 +80,44 @@
       color: var(--muted);
       margin-top: 5px;
       font-size: 14px;
+    }
+
+    .competition-box {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 260px;
+    }
+
+    .competition-box label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .competition-box select {
+      width: 100%;
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      outline: none;
+    }
+
+    .competition-box option {
+      background: #062719;
+      color: #ffffff;
+    }
+
+    .back {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+      white-space: nowrap;
     }
 
     .column {
@@ -197,44 +240,6 @@
       flex-shrink: 0;
     }
 
-    .back {
-      color: var(--primary);
-      text-decoration: none;
-      font-size: 13px;
-      margin-left: auto;
-      font-weight: bold;
-    }
-
-    .competition-box {
-  margin-left: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  min-width: 220px;
-}
-
-.competition-box label {
-  font-size: 11px;
-  color: var(--muted);
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.competition-box select {
-  width: 100%;
-  background: rgba(255,255,255,0.1);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px;
-  outline: none;
-}
-
-.competition-box option {
-  background: #062719;
-  color: #ffffff;
-}
-
     .clickable-row {
       cursor: pointer;
     }
@@ -244,11 +249,6 @@
     }
 
     @media (max-width: 850px) {
-
-      .competition-box {
-  width: 100%;
-  margin-left: 0;
-}
       .page {
         grid-template-columns: 1fr;
       }
@@ -257,9 +257,13 @@
         flex-wrap: wrap;
       }
 
-      .back {
+      .competition-box {
         width: 100%;
         margin-left: 0;
+      }
+
+      .back {
+        width: 100%;
       }
     }
   </style>
@@ -278,10 +282,10 @@
       </div>
 
       <div class="competition-box">
-  <label for="competitionSelect">Competición</label>
-  <select id="competitionSelect"></select>
-</div>
-      
+        <label for="competitionSelect">Competición</label>
+        <select id="competitionSelect"></select>
+      </div>
+
       <a class="back" href="index.html">← Volver a partidos</a>
     </header>
 
@@ -359,8 +363,6 @@
         </div>
       </div>
 
-
-      <select id="competitionSelect"></select>
       <div class="card">
         <h2>Estadísticas generales</h2>
         <div class="club-info">
@@ -440,6 +442,8 @@
   </main>
 
   <script>
+    let equipoActual = null;
+
     function getTeamIdFromUrl() {
       const params = new URLSearchParams(window.location.search);
       return params.get("id") || "boca-juniors";
@@ -455,6 +459,11 @@
       return params.get("liga") || "";
     }
 
+    function getCompetitionFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("competicion") || "";
+    }
+
     function nombreDesdeId(id) {
       return String(id || "")
         .split("-")
@@ -463,21 +472,36 @@
         .join(" ");
     }
 
-    function crearTeamId(nombre) {
-      return String(nombre || "")
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
-    }
-
     function matchRowAttrs(partido) {
       if (!partido.url) {
         return "";
       }
 
       return `class="clickable-row" data-url="${partido.url}"`;
+    }
+
+    function estadisticasVacias() {
+      return {
+        goles: [],
+        asistencias: [],
+        amarillas: [],
+        rojas: []
+      };
+    }
+
+    function generalesVacios() {
+      return {
+        posicion: "-",
+        partidos: "-",
+        ganados: "-",
+        empatados: "-",
+        perdidos: "-",
+        golesFavor: "-",
+        golesContra: "-",
+        diferenciaGol: "-",
+        puntos: "-",
+        racha: "-"
+      };
     }
 
     function normalizarEquipo(equipo) {
@@ -516,15 +540,80 @@
           diferenciaGol: equipo.estadisticasGenerales?.diferenciaGol || "-",
           puntos: equipo.estadisticasGenerales?.puntos || "-",
           racha: equipo.estadisticasGenerales?.racha || "-"
-        }
+        },
+        estadisticasPorCompeticion: equipo.estadisticasPorCompeticion || {}
+      };
+    }
+
+    function getCompeticionesDisponibles(equipo) {
+      const porCompeticion = equipo.estadisticasPorCompeticion || {};
+      return Object.keys(porCompeticion);
+    }
+
+    function crearDatosDesdeCompeticion(equipo, nombreCompeticion) {
+      const porCompeticion = equipo.estadisticasPorCompeticion || {};
+      const datosCompeticion = porCompeticion[nombreCompeticion];
+
+      if (!datosCompeticion) {
+        return equipo;
+      }
+
+      return {
+        ...equipo,
+        liga: datosCompeticion.nombre || equipo.liga,
+        proximosPartidos: datosCompeticion.proximosPartidos || [],
+        resultados: datosCompeticion.resultados || [],
+        estadisticas: datosCompeticion.estadisticas || estadisticasVacias(),
+        estadisticasGenerales: datosCompeticion.generales || generalesVacios()
+      };
+    }
+
+    function configurarSelectorCompeticion(equipo) {
+      const select = document.getElementById("competitionSelect");
+      const competiciones = getCompeticionesDisponibles(equipo);
+
+      select.innerHTML = "";
+
+      if (!competiciones.length) {
+        const option = document.createElement("option");
+        option.value = "";
+        option.textContent = equipo.liga || "General";
+        select.appendChild(option);
+        select.disabled = true;
+        return;
+      }
+
+      competiciones.forEach(nombre => {
+        const option = document.createElement("option");
+        option.value = nombre;
+        option.textContent = nombre;
+        select.appendChild(option);
+      });
+
+      select.disabled = false;
+
+      const competicionUrl = getCompetitionFromUrl();
+
+      if (competicionUrl && competiciones.includes(competicionUrl)) {
+        select.value = competicionUrl;
+      } else if (competiciones.includes(equipo.liga)) {
+        select.value = equipo.liga;
+      } else {
+        select.value = competiciones[0];
+      }
+
+      select.onchange = () => {
+        const equipoFiltrado = crearDatosDesdeCompeticion(equipoActual, select.value);
+        renderEquipo(equipoFiltrado);
       };
     }
 
     function renderStatsTable(elementId, items) {
       const element = document.getElementById(elementId);
+      const safeItems = Array.isArray(items) ? items : [];
 
-      element.innerHTML = items.length
-        ? items.map(e => `
+      element.innerHTML = safeItems.length
+        ? safeItems.map(e => `
             <tr>
               <td>${e.jugador}</td>
               <td class="right">${e.total}</td>
@@ -537,80 +626,6 @@
           `;
     }
 
-    let equipoActual = null;
-
-function getCompeticionesDisponibles(equipo) {
-  const porCompeticion = equipo.estadisticasPorCompeticion || {};
-  return Object.keys(porCompeticion);
-}
-
-function crearDatosDesdeCompeticion(equipo, nombreCompeticion) {
-  const porCompeticion = equipo.estadisticasPorCompeticion || {};
-  const datosCompeticion = porCompeticion[nombreCompeticion];
-
-  if (!datosCompeticion) {
-    return equipo;
-  }
-
-  return {
-    ...equipo,
-    liga: datosCompeticion.nombre || equipo.liga,
-    proximosPartidos: datosCompeticion.proximosPartidos || [],
-    resultados: datosCompeticion.resultados || [],
-    estadisticas: datosCompeticion.estadisticas || {
-      goles: [],
-      asistencias: [],
-      amarillas: [],
-      rojas: []
-    },
-    estadisticasGenerales: datosCompeticion.generales || {
-      posicion: "-",
-      partidos: "-",
-      ganados: "-",
-      empatados: "-",
-      perdidos: "-",
-      golesFavor: "-",
-      golesContra: "-",
-      diferenciaGol: "-",
-      puntos: "-",
-      racha: "-"
-    }
-  };
-}
-
-function configurarSelectorCompeticion(equipo) {
-  const select = document.getElementById("competitionSelect");
-  const competiciones = getCompeticionesDisponibles(equipo);
-
-  select.innerHTML = "";
-
-  if (!competiciones.length) {
-    select.innerHTML = `<option value="">${equipo.liga || "General"}</option>`;
-    select.disabled = true;
-    return;
-  }
-
-  competiciones.forEach(nombre => {
-    const option = document.createElement("option");
-    option.value = nombre;
-    option.textContent = nombre;
-    select.appendChild(option);
-  });
-
-  select.disabled = false;
-
-  const principal = competiciones.includes(equipo.liga)
-    ? equipo.liga
-    : competiciones[0];
-
-  select.value = principal;
-
-  select.onchange = () => {
-    const equipoFiltrado = crearDatosDesdeCompeticion(equipoActual, select.value);
-    renderEquipo(equipoFiltrado);
-  };
-}
-    
     function renderEquipo(equipoOriginal) {
       const equipo = normalizarEquipo(equipoOriginal);
 
@@ -624,7 +639,7 @@ function configurarSelectorCompeticion(equipo) {
       document.getElementById("teamStadium").textContent = equipo.estadio;
       document.getElementById("teamCity").textContent = equipo.ciudad;
 
-      const generales = equipo.estadisticasGenerales || {};
+      const generales = equipo.estadisticasGenerales || generalesVacios();
 
       document.getElementById("generalPosition").textContent = generales.posicion || "-";
       document.getElementById("generalMatches").textContent = generales.partidos || "-";
@@ -658,7 +673,7 @@ function configurarSelectorCompeticion(equipo) {
               <td>${p.dia}</td>
               <td>${p.local}</td>
               <td>${p.visitante}</td>
-              <td class="right">${p.resultado}</td>
+              <td class="right">${p.resultado || "-"}</td>
             </tr>
           `).join("")
         : `
@@ -711,22 +726,21 @@ function configurarSelectorCompeticion(equipo) {
       renderStatsTable("redCards", equipo.estadisticas.rojas);
     }
 
-
     function cargarEquipo(equipoOriginal) {
-  equipoActual = normalizarEquipo(equipoOriginal);
+      equipoActual = normalizarEquipo(equipoOriginal);
 
-  configurarSelectorCompeticion(equipoActual);
+      configurarSelectorCompeticion(equipoActual);
 
-  const select = document.getElementById("competitionSelect");
-  const competicionSeleccionada = select.value;
+      const select = document.getElementById("competitionSelect");
+      const competicionSeleccionada = select.value;
 
-  const equipoFiltrado = competicionSeleccionada
-    ? crearDatosDesdeCompeticion(equipoActual, competicionSeleccionada)
-    : equipoActual;
+      const equipoFiltrado = competicionSeleccionada
+        ? crearDatosDesdeCompeticion(equipoActual, competicionSeleccionada)
+        : equipoActual;
 
-  renderEquipo(equipoFiltrado);
-}
-    
+      renderEquipo(equipoFiltrado);
+    }
+
     async function iniciarPaginaEquipo() {
       const teamId = getTeamIdFromUrl();
 
@@ -760,24 +774,9 @@ function configurarSelectorCompeticion(equipo) {
               mediocampistas: [],
               delanteros: []
             },
-            estadisticas: {
-              goles: [],
-              asistencias: [],
-              amarillas: [],
-              rojas: []
-            },
-            estadisticasGenerales: {
-              posicion: "-",
-              partidos: "-",
-              ganados: "-",
-              empatados: "-",
-              perdidos: "-",
-              golesFavor: "-",
-              golesContra: "-",
-              diferenciaGol: "-",
-              puntos: "-",
-              racha: "-"
-            }
+            estadisticas: estadisticasVacias(),
+            estadisticasGenerales: generalesVacios(),
+            estadisticasPorCompeticion: {}
           };
 
           cargarEquipo(equipoBasico);
