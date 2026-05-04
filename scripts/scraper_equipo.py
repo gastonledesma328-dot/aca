@@ -21,7 +21,7 @@ EQUIPOS_BASE = [
         "apodo": "Millonario",
         "fundacion": "1901",
         "estadio": "Monumental",
-        "ciudad": "Buenos Aires"
+        "ciudad": "Buenos Aires",
     },
     {
         "id": "boca-juniors",
@@ -32,7 +32,7 @@ EQUIPOS_BASE = [
         "apodo": "Xeneizes",
         "fundacion": "1905",
         "estadio": "Alberto J. Armando",
-        "ciudad": "Buenos Aires"
+        "ciudad": "Buenos Aires",
     },
     {
         "id": "racing-club",
@@ -43,8 +43,8 @@ EQUIPOS_BASE = [
         "apodo": "La Academia",
         "fundacion": "1903",
         "estadio": "Presidente Perón",
-        "ciudad": "Avellaneda"
-    }
+        "ciudad": "Avellaneda",
+    },
 ]
 
 
@@ -76,8 +76,8 @@ def get_json(url):
             headers={
                 "User-Agent": "Mozilla/5.0",
                 "Accept": "application/json, text/plain, */*",
-                "Referer": "https://www.espn.com.ar/"
-            }
+                "Referer": "https://www.espn.com.ar/",
+            },
         )
 
         print(f"🌐 {r.status_code} {url}")
@@ -110,13 +110,13 @@ def equipo_vacio(equipo):
             "arqueros": [],
             "defensores": [],
             "mediocampistas": [],
-            "delanteros": []
+            "delanteros": [],
         },
         "estadisticas": {
             "goles": [],
             "asistencias": [],
-            "amarillas": []
-        }
+            "amarillas": [],
+        },
     }
 
 
@@ -125,6 +125,7 @@ def formatear_fecha(fecha):
         return "Sin fecha"
 
     return str(fecha).split("T")[0]
+
 
 def limpiar_score(score):
     if score is None:
@@ -136,14 +137,17 @@ def limpiar_score(score):
 
         if score.get("value") is not None:
             value = score.get("value")
+
             if isinstance(value, float) and value.is_integer():
                 return str(int(value))
+
             return str(value)
 
         return None
 
     return str(score)
-    
+
+
 def parse_score_event(evento):
     competitions = evento.get("competitions") or []
     competition = competitions[0] if competitions else {}
@@ -157,16 +161,14 @@ def parse_score_event(evento):
     for comp in competitors:
         team = comp.get("team") or {}
         name = team.get("displayName") or team.get("shortDisplayName") or "Equipo"
-        score = comp.get("score")
+        score = limpiar_score(comp.get("score"))
 
-       score = limpiar_score(comp.get("score"))
-
-if comp.get("homeAway") == "home":
-    local = name
-    local_score = score
-elif comp.get("homeAway") == "away":
-    visitante = name
-    visitante_score = score
+        if comp.get("homeAway") == "home":
+            local = name
+            local_score = score
+        elif comp.get("homeAway") == "away":
+            visitante = name
+            visitante_score = score
 
     status = (evento.get("status") or {}).get("type") or {}
     completado = status.get("completed") is True
@@ -179,7 +181,7 @@ elif comp.get("homeAway") == "away":
         "marcador_visitante": visitante_score,
         "completado": completado,
         "estado": status.get("description") or status.get("name") or "",
-        "url": (evento.get("links") or [{}])[0].get("href", "")
+        "url": (evento.get("links") or [{}])[0].get("href", ""),
     }
 
 
@@ -189,7 +191,6 @@ def cargar_partidos_equipo(equipo):
     if not espn_id:
         return [], []
 
-    # Schedule del equipo en ESPN
     url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}/schedule"
     data = get_json(url)
 
@@ -210,21 +211,30 @@ def cargar_partidos_equipo(equipo):
         )
 
         if partido["completado"] or tiene_marcador:
-            resultados.append({
-                "dia": partido["fecha"],
-                "local": partido["local"],
-                "visitante": partido["visitante"],
-                "url": partido["url"],
-                "resultado": f'{partido["marcador_local"]} - {partido["marcador_visitante"]}' if tiene_marcador else "-"
-            })
+            resultado = "-"
+
+            if tiene_marcador:
+                resultado = f'{partido["marcador_local"]} - {partido["marcador_visitante"]}'
+
+            resultados.append(
+                {
+                    "dia": partido["fecha"],
+                    "local": partido["local"],
+                    "visitante": partido["visitante"],
+                    "url": partido["url"],
+                    "resultado": resultado,
+                }
+            )
         else:
-            proximos.append({
-                "dia": partido["fecha"],
-                "local": partido["local"],
-                "visitante": partido["visitante"],
-                "url": partido["url"],
-                "hora": "Ver horario"
-            })
+            proximos.append(
+                {
+                    "dia": partido["fecha"],
+                    "local": partido["local"],
+                    "visitante": partido["visitante"],
+                    "url": partido["url"],
+                    "hora": "Ver horario",
+                }
+            )
 
     return proximos[:10], resultados[:10]
 
@@ -250,31 +260,24 @@ def normalizar_posicion(nombre_posicion):
 def cargar_plantel(equipo):
     espn_id = equipo.get("espn_id")
 
-    if not espn_id:
-        return {
-            "arqueros": [],
-            "defensores": [],
-            "mediocampistas": [],
-            "delanteros": []
-        }
-
-    # Roster desde ESPN site api
-    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}/roster"
-    data = get_json(url)
-
     plantel = {
         "arqueros": [],
         "defensores": [],
         "mediocampistas": [],
-        "delanteros": []
+        "delanteros": [],
     }
+
+    if not espn_id:
+        return plantel
+
+    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}/roster"
+    data = get_json(url)
 
     if not data:
         return plantel
 
     athletes = data.get("athletes") or []
 
-    # Algunas respuestas vienen agrupadas por position.
     for group in athletes:
         if isinstance(group, dict) and "items" in group:
             posicion_nombre = group.get("position") or group.get("name") or ""
@@ -282,16 +285,24 @@ def cargar_plantel(equipo):
 
             for item in group.get("items") or []:
                 athlete = item.get("athlete") or item
-                nombre = athlete.get("displayName") or athlete.get("fullName") or athlete.get("name")
+                nombre = (
+                    athlete.get("displayName")
+                    or athlete.get("fullName")
+                    or athlete.get("name")
+                )
 
                 if not nombre:
                     continue
 
-                plantel[categoria].append({
-                    "nombre": nombre,
-                    "edad": athlete.get("age") or "-",
-                    "altura": athlete.get("displayHeight") or athlete.get("height") or "-"
-                })
+                plantel[categoria].append(
+                    {
+                        "nombre": nombre,
+                        "edad": athlete.get("age") or "-",
+                        "altura": athlete.get("displayHeight")
+                        or athlete.get("height")
+                        or "-",
+                    }
+                )
 
         elif isinstance(group, dict):
             nombre = group.get("displayName") or group.get("fullName") or group.get("name")
@@ -300,45 +311,36 @@ def cargar_plantel(equipo):
                 continue
 
             position = group.get("position") or {}
-            categoria = normalizar_posicion(position.get("displayName") or position.get("name") or "")
+            categoria = normalizar_posicion(
+                position.get("displayName") or position.get("name") or ""
+            )
 
-            plantel[categoria].append({
-                "nombre": nombre,
-                "edad": group.get("age") or "-",
-                "altura": group.get("displayHeight") or group.get("height") or "-"
-            })
+            plantel[categoria].append(
+                {
+                    "nombre": nombre,
+                    "edad": group.get("age") or "-",
+                    "altura": group.get("displayHeight") or group.get("height") or "-",
+                }
+            )
 
     return plantel
-
-
-def extraer_stat_valor(stat):
-    for key in ["value", "displayValue", "total"]:
-        if stat.get(key) is not None:
-            return stat.get(key)
-
-    return 0
 
 
 def cargar_estadisticas_jugadores(equipo):
     espn_id = equipo.get("espn_id")
 
-    if not espn_id:
-        return {
-            "goles": [],
-            "asistencias": [],
-            "amarillas": []
-        }
-
     estadisticas = {
         "goles": [],
         "asistencias": [],
-        "amarillas": []
+        "amarillas": [],
     }
 
-    # Endpoint de estadísticas del equipo. Puede variar según liga/temporada.
+    if not espn_id:
+        return estadisticas
+
     urls = [
         f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}/statistics",
-        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}/seasons/2026/types/1/teams/{espn_id}/statistics?lang=es&region=ar"
+        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}/seasons/2026/types/1/teams/{espn_id}/statistics?lang=es&region=ar",
     ]
 
     for url in urls:
@@ -347,14 +349,16 @@ def cargar_estadisticas_jugadores(equipo):
         if not data:
             continue
 
-        # Como ESPN no siempre entrega el mismo formato, guardamos si encontramos rankings/listas.
-        # Si no encuentra formato compatible, deja arrays vacíos.
         leaders = data.get("leaders") or data.get("categories") or []
 
         for group in leaders:
             group_name = slug(group.get("name") or group.get("displayName") or "")
-
-            items = group.get("leaders") or group.get("items") or group.get("statistics") or []
+            items = (
+                group.get("leaders")
+                or group.get("items")
+                or group.get("statistics")
+                or []
+            )
 
             for item in items:
                 athlete = item.get("athlete") or item.get("player") or {}
@@ -371,22 +375,28 @@ def cargar_estadisticas_jugadores(equipo):
                 total = item.get("value") or item.get("displayValue") or item.get("total") or 0
 
                 if "goal" in group_name or "gol" in group_name:
-                    estadisticas["goles"].append({
-                        "jugador": nombre,
-                        "total": total
-                    })
+                    estadisticas["goles"].append(
+                        {
+                            "jugador": nombre,
+                            "total": total,
+                        }
+                    )
 
                 if "assist" in group_name or "asistencia" in group_name:
-                    estadisticas["asistencias"].append({
-                        "jugador": nombre,
-                        "total": total
-                    })
+                    estadisticas["asistencias"].append(
+                        {
+                            "jugador": nombre,
+                            "total": total,
+                        }
+                    )
 
                 if "yellow" in group_name or "amarilla" in group_name:
-                    estadisticas["amarillas"].append({
-                        "jugador": nombre,
-                        "total": total
-                    })
+                    estadisticas["amarillas"].append(
+                        {
+                            "jugador": nombre,
+                            "total": total,
+                        }
+                    )
 
     estadisticas["goles"] = estadisticas["goles"][:10]
     estadisticas["asistencias"] = estadisticas["asistencias"][:10]
