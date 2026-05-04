@@ -1463,4 +1463,22 @@ img.league-logo {
   font-size: 9px !important;
   line-height: 1.1 !important;
 }
+
+.team-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.team-link:hover {
+  color: var(--primary);
+}
+
+.team-link:hover .team-logo {
+  transform: scale(1.08);
+}
+
+.team-link .team-logo {
+  transition: transform 0.15s ease;
+}
 }
