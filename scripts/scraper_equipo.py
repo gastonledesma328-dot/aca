@@ -9,10 +9,11 @@ import requests
 
 OUTPUT_FILE = "data/equipos.json"
 
-# Liga Profesional Argentina en ESPN
+# Valores por defecto
 LEAGUE_SLUG = "arg.1"
 SEASON = "2026"
 
+COMPETICION_PRINCIPAL = "Liga Profesional de Futbol - Torneo Apertura 2026"
 
 COMPETICIONES = [
     {
@@ -21,7 +22,7 @@ COMPETICIONES = [
         "season": "2026",
         "fase": "apertura",
         "fecha_desde": "2026-01-01",
-        "fecha_hasta": "2026-06-30"
+        "fecha_hasta": "2026-06-30",
     },
     {
         "nombre": "Liga Profesional de Futbol - Torneo Clausura 2026",
@@ -29,18 +30,24 @@ COMPETICIONES = [
         "season": "2026",
         "fase": "clausura",
         "fecha_desde": "2026-07-01",
-        "fecha_hasta": "2026-12-31"
+        "fecha_hasta": "2026-12-31",
     },
     {
         "nombre": "Copa Libertadores 2026",
         "league_slug": "conmebol.libertadores",
-        "season": "2026"
+        "season": "2026",
+        "fase": "",
+        "fecha_desde": "",
+        "fecha_hasta": "",
     },
     {
         "nombre": "Copa Sudamericana 2026",
         "league_slug": "conmebol.sudamericana",
-        "season": "2026"
-    }
+        "season": "2026",
+        "fase": "",
+        "fecha_desde": "",
+        "fecha_hasta": "",
+    },
 ]
 
 EQUIPOS_BASE = [
@@ -124,6 +131,30 @@ def get_json(url):
         return None
 
 
+def estadisticas_vacias():
+    return {
+        "goles": [],
+        "asistencias": [],
+        "amarillas": [],
+        "rojas": [],
+    }
+
+
+def estadisticas_generales_vacias():
+    return {
+        "posicion": "-",
+        "partidos": "-",
+        "ganados": "-",
+        "empatados": "-",
+        "perdidos": "-",
+        "golesFavor": "-",
+        "golesContra": "-",
+        "diferenciaGol": "-",
+        "puntos": "-",
+        "racha": "-",
+    }
+
+
 def equipo_vacio(equipo):
     return {
         "id": equipo.get("id", ""),
@@ -144,25 +175,8 @@ def equipo_vacio(equipo):
             "mediocampistas": [],
             "delanteros": [],
         },
-        "estadisticas": {
-            "goles": [],
-            "asistencias": [],
-            "amarillas": [],
-            "rojas": [],
-        },
-        "estadisticasGenerales": {
-            "posicion": "-",
-            "partidos": "-",
-            "ganados": "-",
-            "empatados": "-",
-            "perdidos": "-",
-            "golesFavor": "-",
-            "golesContra": "-",
-            "diferenciaGol": "-",
-            "puntos": "-",
-            "racha": "-",
-            
-        },
+        "estadisticas": estadisticas_vacias(),
+        "estadisticasGenerales": estadisticas_generales_vacias(),
         "estadisticasPorCompeticion": {},
     }
 
@@ -172,6 +186,38 @@ def formatear_fecha(fecha):
         return "Sin fecha"
 
     return str(fecha).split("T")[0]
+
+
+def fecha_en_rango(fecha, fecha_desde="", fecha_hasta=""):
+    if not fecha_desde and not fecha_hasta:
+        return True
+
+    fecha = str(fecha or "")
+
+    if not fecha or fecha == "Sin fecha":
+        return False
+
+    if fecha_desde and fecha < fecha_desde:
+        return False
+
+    if fecha_hasta and fecha > fecha_hasta:
+        return False
+
+    return True
+
+
+def filtrar_partidos_por_fecha(partidos, competicion):
+    fecha_desde = competicion.get("fecha_desde", "")
+    fecha_hasta = competicion.get("fecha_hasta", "")
+
+    if not fecha_desde and not fecha_hasta:
+        return partidos
+
+    return [
+        partido
+        for partido in partidos
+        if fecha_en_rango(partido.get("dia"), fecha_desde, fecha_hasta)
+    ]
 
 
 def extraer_game_id(url):
@@ -198,7 +244,6 @@ def cargar_plays_partido(game_id):
     if not game_id:
         return None
 
-    # En fútbol normalmente event_id y competition_id son iguales.
     url = (
         f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}"
         f"/events/{game_id}/competitions/{game_id}/plays?limit=300"
@@ -318,10 +363,7 @@ def cargar_datos_club(base):
     venue = team.get("venue") or {}
     if isinstance(venue, dict):
         estadio = venue.get("fullName") or venue.get("name")
-        ciudad = (
-            (venue.get("address") or {}).get("city")
-            or venue.get("city")
-        )
+        ciudad = (venue.get("address") or {}).get("city") or venue.get("city")
 
         if estadio:
             actualizado["estadio"] = estadio
@@ -386,7 +428,7 @@ def cargar_partidos_equipo(equipo):
                 }
             )
 
-    return proximos[:10], resultados[:10]
+    return proximos[:20], resultados[:20]
 
 
 def normalizar_posicion(nombre_posicion):
@@ -531,12 +573,7 @@ def filtrar_estadisticas_por_plantel(estadisticas, plantel):
     if not validos:
         return estadisticas
 
-    limpias = {
-        "goles": [],
-        "asistencias": [],
-        "amarillas": [],
-        "rojas": [],
-    }
+    limpias = estadisticas_vacias()
 
     for categoria in ["goles", "asistencias", "amarillas", "rojas"]:
         for item in estadisticas.get(categoria, []):
@@ -596,7 +633,7 @@ def detectar_tipo_evento(evento):
 
     texto = slug(" ".join(textos))
 
-    if "red-card" in texto or "redcard" in texto or "red-card" in texto:
+    if "red-card" in texto or "redcard" in texto:
         return "roja"
 
     if "tarjeta-roja" in texto or "roja" in texto or "red" in texto:
@@ -656,7 +693,7 @@ def cargar_estadisticas_desde_resumenes(equipo):
     amarillas = Counter()
     rojas = Counter()
 
-    partidos = equipo.get("resultados", [])[:10]
+    partidos = equipo.get("resultados", [])[:20]
 
     print(f"📊 Buscando estadísticas por resumen/plays para {equipo.get('nombre')}")
 
@@ -725,12 +762,7 @@ def cargar_estadisticas_desde_resumenes(equipo):
 def cargar_estadisticas_jugadores(equipo):
     espn_id = equipo.get("espn_id")
 
-    estadisticas = {
-        "goles": [],
-        "asistencias": [],
-        "amarillas": [],
-        "rojas": [],
-    }
+    estadisticas = estadisticas_vacias()
 
     if not espn_id:
         return estadisticas
@@ -864,18 +896,7 @@ def extraer_entries_standings(data):
 
 def mapear_stats_generales(entry):
     stats = entry.get("stats") or []
-    salida = {
-        "posicion": "-",
-        "partidos": "-",
-        "ganados": "-",
-        "empatados": "-",
-        "perdidos": "-",
-        "golesFavor": "-",
-        "golesContra": "-",
-        "diferenciaGol": "-",
-        "puntos": "-",
-        "racha": "-",
-    }
+    salida = estadisticas_generales_vacias()
 
     if entry.get("rank"):
         salida["posicion"] = str(entry.get("rank"))
@@ -931,7 +952,7 @@ def cargar_estadisticas_generales(equipo):
     espn_id = str(equipo.get("espn_id") or "")
 
     if not espn_id:
-        return equipo_vacio(equipo)["estadisticasGenerales"]
+        return estadisticas_generales_vacias()
 
     urls = [
         f"https://site.api.espn.com/apis/v2/sports/soccer/{LEAGUE_SLUG}/standings",
@@ -957,7 +978,7 @@ def cargar_estadisticas_generales(equipo):
                 print(f"📈 Estadísticas generales encontradas para {equipo.get('nombre')}")
                 return mapear_stats_generales(entry)
 
-    return equipo_vacio(equipo)["estadisticasGenerales"]
+    return estadisticas_generales_vacias()
 
 
 def cargar_datos_por_competicion(base, equipo, competicion):
@@ -975,29 +996,40 @@ def cargar_datos_por_competicion(base, equipo, competicion):
 
     proximos, resultados = cargar_partidos_equipo(base)
 
-    estadisticas = cargar_estadisticas_jugadores(base)
+    proximos = filtrar_partidos_por_fecha(proximos, competicion)
+    resultados = filtrar_partidos_por_fecha(resultados, competicion)
 
     equipo_temp = dict(equipo)
     equipo_temp["resultados"] = resultados
 
-    if (
-        not estadisticas["goles"]
-        and not estadisticas["asistencias"]
-        and not estadisticas["amarillas"]
-        and not estadisticas["rojas"]
-    ):
+    # Para competiciones separadas por fechas, conviene calcular estadísticas desde los partidos filtrados.
+    # Así Apertura y Clausura no se mezclan.
+    if competicion.get("fecha_desde") or competicion.get("fecha_hasta"):
         estadisticas = cargar_estadisticas_desde_resumenes(equipo_temp)
+    else:
+        estadisticas = cargar_estadisticas_jugadores(base)
+
+        if (
+            not estadisticas["goles"]
+            and not estadisticas["asistencias"]
+            and not estadisticas["amarillas"]
+            and not estadisticas["rojas"]
+        ):
+            estadisticas = cargar_estadisticas_desde_resumenes(equipo_temp)
 
     estadisticas = filtrar_estadisticas_por_plantel(
         estadisticas,
         equipo["plantel"]
     )
 
-    # Temporal: las rojas pueden venir mezcladas desde ESPN/plays.
-    # Mejor dejarlas vacías hasta tener parser 100% confiable.
+    # Temporal: ESPN/plays mezcla rojas con otros eventos. Mejor no mostrar datos dudosos.
     estadisticas["rojas"] = []
 
-    generales = cargar_estadisticas_generales(base)
+    # Si no hay partidos en esa fase, no mostramos tabla inventada.
+    if resultados or proximos:
+        generales = cargar_estadisticas_generales(base)
+    else:
+        generales = estadisticas_generales_vacias()
 
     LEAGUE_SLUG = league_original
     SEASON = season_original
@@ -1006,12 +1038,14 @@ def cargar_datos_por_competicion(base, equipo, competicion):
         "nombre": nombre_competicion,
         "league_slug": competicion["league_slug"],
         "season": competicion["season"],
-        "proximosPartidos": proximos,
-        "resultados": resultados,
+        "fase": competicion.get("fase", ""),
+        "fecha_desde": competicion.get("fecha_desde", ""),
+        "fecha_hasta": competicion.get("fecha_hasta", ""),
+        "proximosPartidos": proximos[:10],
+        "resultados": resultados[:10],
         "estadisticas": estadisticas,
-        "generales": generales
+        "generales": generales,
     }
-
 
 
 def completar_equipo(base):
@@ -1035,11 +1069,10 @@ def completar_equipo(base):
 
     equipo["estadisticasPorCompeticion"] = estadisticas_por_competicion
 
-    # Compatibilidad con el HTML actual:
-    # usamos Liga Profesional como competición principal.
-    principal = estadisticas_por_competicion.get("Liga Profesional de Futbol")
+    principal = estadisticas_por_competicion.get(COMPETICION_PRINCIPAL)
 
     if principal:
+        equipo["liga"] = principal["nombre"]
         equipo["proximosPartidos"] = principal["proximosPartidos"]
         equipo["resultados"] = principal["resultados"]
         equipo["estadisticas"] = principal["estadisticas"]
