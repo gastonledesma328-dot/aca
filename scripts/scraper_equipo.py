@@ -126,7 +126,24 @@ def formatear_fecha(fecha):
 
     return str(fecha).split("T")[0]
 
+def limpiar_score(score):
+    if score is None:
+        return None
 
+    if isinstance(score, dict):
+        if score.get("displayValue") is not None:
+            return str(score.get("displayValue"))
+
+        if score.get("value") is not None:
+            value = score.get("value")
+            if isinstance(value, float) and value.is_integer():
+                return str(int(value))
+            return str(value)
+
+        return None
+
+    return str(score)
+    
 def parse_score_event(evento):
     competitions = evento.get("competitions") or []
     competition = competitions[0] if competitions else {}
@@ -142,12 +159,14 @@ def parse_score_event(evento):
         name = team.get("displayName") or team.get("shortDisplayName") or "Equipo"
         score = comp.get("score")
 
-        if comp.get("homeAway") == "home":
-            local = name
-            local_score = score
-        elif comp.get("homeAway") == "away":
-            visitante = name
-            visitante_score = score
+       score = limpiar_score(comp.get("score"))
+
+if comp.get("homeAway") == "home":
+    local = name
+    local_score = score
+elif comp.get("homeAway") == "away":
+    visitante = name
+    visitante_score = score
 
     status = (evento.get("status") or {}).get("type") or {}
     completado = status.get("completed") is True
