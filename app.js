@@ -385,6 +385,13 @@ function leagueLogoMarkup(name, logo) {
 }
 
 function scoreMarkup(match) {
+  const cleanScore = (value) => {
+    return String(value ?? "")
+      .trim()
+      .replace(/\s+/g, "")
+      .replace(/[–—]/g, "-");
+  };
+
   const hasLocal =
     match.marcador_local !== undefined &&
     match.marcador_local !== null &&
@@ -395,12 +402,20 @@ function scoreMarkup(match) {
     match.marcador_visitante !== null &&
     String(match.marcador_visitante).trim() !== "";
 
-  if (match.resultado && String(match.resultado).trim()) {
-    return String(match.resultado).replace("-", " - ");
-  }
-
   if (hasLocal && hasAway) {
     return `${match.marcador_local} - ${match.marcador_visitante}`;
+  }
+
+  if (match.resultado && String(match.resultado).trim()) {
+    const resultado = cleanScore(match.resultado);
+
+    const partes = resultado.split("-").filter(Boolean);
+
+    if (partes.length >= 2) {
+      return `${partes[0]} - ${partes[1]}`;
+    }
+
+    return resultado;
   }
 
   return "-";
