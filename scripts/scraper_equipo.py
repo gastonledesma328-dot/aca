@@ -1,6 +1,5 @@
 import json
 import os
-import re
 import unicodedata
 from collections import Counter
 from datetime import datetime, timezone
@@ -385,6 +384,40 @@ def sumar_counter_a_lista(counter):
     ]
 
 
+def nombres_validos_plantel(plantel):
+    nombres = set()
+
+    for grupo in plantel.values():
+        for jugador in grupo:
+            nombre = jugador.get("nombre")
+            if nombre:
+                nombres.add(slug(nombre))
+
+    return nombres
+
+
+def filtrar_estadisticas_por_plantel(estadisticas, plantel):
+    validos = nombres_validos_plantel(plantel)
+
+    if not validos:
+        return estadisticas
+
+    limpias = {
+        "goles": [],
+        "asistencias": [],
+        "amarillas": [],
+    }
+
+    for categoria in ["goles", "asistencias", "amarillas"]:
+        for item in estadisticas.get(categoria, []):
+            jugador = item.get("jugador", "")
+
+            if slug(jugador) in validos:
+                limpias[categoria].append(item)
+
+    return limpias
+
+
 def extraer_eventos_recursivo(data):
     encontrados = []
 
@@ -392,7 +425,6 @@ def extraer_eventos_recursivo(data):
         if isinstance(obj, dict):
             keys = set(obj.keys())
 
-            # Posibles objetos de jugada/evento
             if (
                 "type" in keys
                 or "text" in keys
@@ -420,7 +452,14 @@ def detectar_tipo_evento(evento):
         value = evento.get(key)
 
         if isinstance(value, dict):
-            textos.append(str(value.get("text") or value.get("description") or value.get("name") or ""))
+            textos.append(
+                str(
+                    value.get("text")
+                    or value.get("description")
+                    or value.get("name")
+                    or ""
+                )
+            )
         elif value is not None:
             textos.append(str(value))
 
@@ -462,7 +501,6 @@ def extraer_jugadores_de_evento(evento):
     if nombre_directo:
         jugadores.append(nombre_directo)
 
-    # Quitar duplicados manteniendo orden
     vistos = set()
     limpios = []
 
@@ -497,19 +535,14 @@ def cargar_estadisticas_desde_resumenes(equipo):
 
         print(f"📌 Summary {game_id} keys: {list(data.keys())}")
 
-        if "scoringPlays" in data:
-            print(f"⚽ scoringPlays encontrados: {len(data.get('scoringPlays') or [])}")
-
         eventos = []
 
-        # Primero intentamos fuentes más probables
         if isinstance(data.get("scoringPlays"), list):
             eventos.extend(data.get("scoringPlays") or [])
 
         if isinstance(data.get("plays"), list):
             eventos.extend(data.get("plays") or [])
 
-        # Después hacemos búsqueda recursiva por si ESPN cambia el formato
         eventos.extend(extraer_eventos_recursivo(data))
 
         for evento in eventos:
@@ -522,13 +555,11 @@ def cargar_estadisticas_desde_resumenes(equipo):
             if not tipo or not jugadores:
                 continue
 
-            # Normalmente el primer jugador del evento es el principal.
             jugador_principal = jugadores[0]
 
             if tipo == "gol":
                 goles[jugador_principal] += 1
 
-                # Si aparece un segundo jugador en la jugada, lo contamos como posible asistencia.
                 if len(jugadores) > 1:
                     asistencias[jugadores[1]] += 1
 
@@ -644,16 +675,16 @@ def completar_equipo(base):
 
     equipo["plantel"] = cargar_plantel(base)
 
-    # 1) Intento directo desde endpoint de estadísticas
     estadisticas = cargar_estadisticas_jugadores(base)
 
-    # 2) Si ESPN no da líderes, intento armar estadísticas desde resúmenes de partidos
     if (
         not estadisticas["goles"]
         and not estadisticas["asistencias"]
         and not estadisticas["amarillas"]
     ):
         estadisticas = cargar_estadisticas_desde_resumenes(equipo)
+
+    estadisticas = filtrar_estadisticas_por_plantel(estadisticas, equipo["plantel"])
 
     equipo["estadisticas"] = estadisticas
 
