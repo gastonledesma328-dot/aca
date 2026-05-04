@@ -338,6 +338,8 @@
   </main>
 
   <script>
+
+    const AGENDA_URL = "https://partidos-hoy-worker.gastonledesma328.workers.dev";
   function cargarEquipo(equipo) {
     document.title = equipo.nombre + " - Ficha del Equipo";
 
@@ -477,6 +479,74 @@ document.getElementById("squad").innerHTML = squadRows.length
     .join(" ");
 }
 
+    function crearTeamId(nombre) {
+  return String(nombre || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+    async function cargarPartidosDelEquipo(equipo) {
+  try {
+    const response = await fetch(`${AGENDA_URL}?v=${Date.now()}`);
+
+    if (!response.ok) {
+      throw new Error("No se pudo cargar la agenda");
+    }
+
+    const data = await response.json();
+    const partidos = Array.isArray(data.partidos) ? data.partidos : [];
+    const equipoId = crearTeamId(equipo.nombre || equipo.id);
+
+    const partidosEquipo = partidos.filter(partido => {
+      const localId = crearTeamId(partido.local || "");
+      const visitanteId = crearTeamId(partido.visitante || "");
+
+      return localId === equipoId || visitanteId === equipoId;
+    });
+
+    const proximos = [];
+    const resultados = [];
+
+    partidosEquipo.forEach(partido => {
+      const completado = partido.completado === true;
+      const tieneMarcador =
+        partido.marcador_local !== undefined &&
+        partido.marcador_visitante !== undefined &&
+        partido.marcador_local !== null &&
+        partido.marcador_visitante !== null;
+
+      if (completado || tieneMarcador) {
+        resultados.push({
+          dia: partido.fecha || "Sin fecha",
+          local: partido.local || "Local",
+          visitante: partido.visitante || "Visitante",
+          resultado: tieneMarcador
+            ? `${partido.marcador_local} - ${partido.marcador_visitante}`
+            : partido.resultado || "-"
+        });
+      } else {
+        proximos.push({
+          dia: partido.fecha || "Sin fecha",
+          local: partido.local || "Local",
+          visitante: partido.visitante || "Visitante",
+          hora: partido.hora_inicio || partido.hora || "-"
+        });
+      }
+    });
+
+    equipo.proximosPartidos = proximos;
+    equipo.resultados = resultados;
+
+    cargarEquipo(equipo);
+
+  } catch (error) {
+    console.warn("No se pudieron cargar partidos del equipo:", error);
+  }
+}
+
   async function iniciarPaginaEquipo() {
     const teamId = getTeamIdFromUrl();
 
@@ -532,10 +602,12 @@ document.getElementById("squad").innerHTML = squadRows.length
   };
 
   cargarEquipo(equipoBasico);
-  return;
+cargarPartidosDelEquipo(equipoBasico);
+return;
 }
 
       cargarEquipo(equipo);
+cargarPartidosDelEquipo(equipo);
 
     } catch (error) {
       console.error(error);
