@@ -1282,11 +1282,13 @@ svg {
   border-color: transparent;
 }
 
-.league-card.dimmed {
+.league-card.dimmed,
+.agenda-row.dimmed {
   display: none;
 }
 
-.league-card.favorite {
+.league-card.favorite,
+.agenda-row.favorite {
   outline: 3px solid rgba(95, 207, 128, 0.32);
 }
 
@@ -1364,26 +1366,28 @@ footer strong {
   }
 
   .agenda-row {
-    grid-template-columns: 46px minmax(0, 1fr);
-  }
-
-  .agenda-state {
-    grid-column: 2;
-    justify-self: start;
+    grid-template-columns: 46px minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 8px 10px;
   }
 
   .agenda-teams {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 4px;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 6px;
   }
 
   .agenda-team:first-child {
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
 
   .agenda-vs,
   .agenda-score {
-    justify-self: start;
+    justify-self: center;
+  }
+
+  .agenda-state {
+    grid-column: auto;
+    justify-self: end;
   }
 
   .agenda-scorers {
@@ -1397,9 +1401,26 @@ footer strong {
 }
 
 /* ================================
-   FIX FINAL LOGOS DE LIGA
-   Fuera de cualquier @media
+   LINKS DE EQUIPO
 ================================ */
+
+.team-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.team-link:hover {
+  color: var(--primary);
+}
+
+.team-link:hover .team-logo {
+  transform: scale(1.08);
+}
+
+.team-link .team-logo {
+  transition: transform 0.15s ease;
+}
 
 /* ================================
    LOGOS DE LIGA = MISMO TAMAÑO QUE ESCUDOS
