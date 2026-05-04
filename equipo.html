@@ -338,66 +338,7 @@
   </main>
 
   <script>
-    const equipoDemo = {
-      nombre: "Boca Juniors",
-      liga: "Liga Profesional Argentina",
-      logo: "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
-      apodo: "Xeneizes",
-      fundacion: "1905",
-      estadio: "Alberto J. Armando",
-      ciudad: "Buenos Aires",
-
-      proximosPartidos: [
-        { dia: "05/05", local: "Boca Juniors", visitante: "Barracas Central", hora: "21:00" },
-        { dia: "10/05", local: "River Plate", visitante: "Boca Juniors", hora: "17:30" },
-        { dia: "18/05", local: "Boca Juniors", visitante: "Racing Club", hora: "20:00" }
-      ],
-
-      resultados: [
-        { dia: "28/04", local: "Boca Juniors", visitante: "Independiente", resultado: "2-1" },
-        { dia: "21/04", local: "San Lorenzo", visitante: "Boca Juniors", resultado: "0-0" },
-        { dia: "14/04", local: "Boca Juniors", visitante: "Lanús", resultado: "3-1" }
-      ],
-
-      plantel: {
-        arqueros: [
-          { nombre: "Sergio Romero", edad: 37, altura: "1.92" },
-          { nombre: "Leandro Brey", edad: 22, altura: "1.91" }
-        ],
-        defensores: [
-          { nombre: "Luis Advíncula", edad: 34, altura: "1.78" },
-          { nombre: "Marcos Rojo", edad: 34, altura: "1.87" },
-          { nombre: "Nicolás Figal", edad: 30, altura: "1.80" }
-        ],
-        mediocampistas: [
-          { nombre: "Cristian Medina", edad: 22, altura: "1.76" },
-          { nombre: "Ezequiel Fernández", edad: 22, altura: "1.78" },
-          { nombre: "Kevin Zenón", edad: 23, altura: "1.77" }
-        ],
-        delanteros: [
-          { nombre: "Edinson Cavani", edad: 37, altura: "1.84" },
-          { nombre: "Miguel Merentiel", edad: 28, altura: "1.76" }
-        ]
-      },
-
-      estadisticas: {
-        goles: [
-          { jugador: "Miguel Merentiel", total: 5 },
-          { jugador: "Edinson Cavani", total: 4 },
-          { jugador: "Kevin Zenón", total: 2 }
-        ],
-        asistencias: [
-          { jugador: "Kevin Zenón", total: 3 },
-          { jugador: "Cristian Medina", total: 2 },
-          { jugador: "Luis Advíncula", total: 1 }
-        ],
-        amarillas: [
-          { jugador: "Marcos Rojo", total: 5 },
-          { jugador: "Pol Fernández", total: 4 },
-          { jugador: "Luis Advíncula", total: 3 }
-        ]
-      }
-    };
+    
 
     function cargarEquipo(equipo) {
       document.title = equipo.nombre + " - Ficha del Equipo";
@@ -452,6 +393,41 @@
           `);
         });
       });
+
+      function getTeamIdFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("id") || "boca-juniors";
+}
+
+async function iniciarPaginaEquipo() {
+  const teamId = getTeamIdFromUrl();
+
+  try {
+    const response = await fetch("equipos.json");
+
+    if (!response.ok) {
+      throw new Error("No se pudo cargar equipos.json");
+    }
+
+    const equipos = await response.json();
+    const equipo = equipos.find(item => item.id === teamId);
+
+    if (!equipo) {
+      document.getElementById("teamName").textContent = "Equipo no encontrado";
+      document.getElementById("teamLeague").textContent = "Revisá el id en la URL";
+      return;
+    }
+
+    cargarEquipo(equipo);
+
+  } catch (error) {
+    console.error(error);
+    document.getElementById("teamName").textContent = "Error al cargar datos";
+    document.getElementById("teamLeague").textContent = "No se pudo leer equipos.json";
+  }
+}
+
+iniciarPaginaEquipo();
 
       document.getElementById("squad").innerHTML = squadRows.join("");
 
