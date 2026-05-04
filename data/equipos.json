@@ -1,6 +1,7 @@
 [
   {
     "id": "river-plate",
+    "espn_id": "16",
     "nombre": "River Plate",
     "liga": "Liga Profesional de Futbol",
     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
@@ -8,22 +9,339 @@
     "fundacion": "1901",
     "estadio": "Monumental",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-04T02:48:28.623071+00:00",
+    "actualizado": "2026-05-04T02:56:24.415946+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
         "dia": "2026-05-03",
         "local": "River Plate",
         "visitante": "Atlético Tucumán",
-        "url": "https://www.espn.com.ar/futbol/partido/_/juegoId/762899/atletico-tucuman-river-plate",
-        "resultado": "0 - 1"
+        "url": "https://www.espn.com/soccer/match/_/gameId/762899/atletico-tucuman-river-plate",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762899/competitions/762899/competitors/16/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762899/competitions/762899/competitors/9785/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-04-26",
+        "local": "River Plate",
+        "visitante": "Aldosivi",
+        "url": "https://www.espn.com/soccer/match/_/gameId/763001/aldosivi-river-plate",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/763001/competitions/763001/competitors/16/scores/38?lang=en&region=us', 'value': 3.0, 'displayValue': '3', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/763001/competitions/763001/competitors/9739/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-04-19",
+        "local": "River Plate",
+        "visitante": "Boca Juniors",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762995/boca-juniors-river-plate",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762995/competitions/762995/competitors/16/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762995/competitions/762995/competitors/5/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-04-12",
+        "local": "Racing Club",
+        "visitante": "River Plate",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762976/river-plate-racing-club",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762976/competitions/762976/competitors/15/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762976/competitions/762976/competitors/16/scores/38?lang=en&region=us', 'value': 2.0, 'displayValue': '2', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-04-05",
+        "local": "River Plate",
+        "visitante": "Belgrano (Córdoba)",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762960/belgrano-cordoba-river-plate",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762960/competitions/762960/competitors/16/scores/38?lang=en&region=us', 'value': 3.0, 'displayValue': '3', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762960/competitions/762960/competitors/4/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-03-22",
+        "local": "Estudiantes de Río Cuarto",
+        "visitante": "River Plate",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762946/river-plate-estudiantes-de-rio-cuarto",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762946/competitions/762946/competitors/19685/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762946/competitions/762946/competitors/16/scores/38?lang=en&region=us', 'value': 2.0, 'displayValue': '2', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-03-15",
+        "local": "River Plate",
+        "visitante": "Sarmiento (Junín)",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762934/sarmiento-junin-river-plate",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762934/competitions/762934/competitors/16/scores/38?lang=en&region=us', 'value': 2.0, 'displayValue': '2', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762934/competitions/762934/competitors/10158/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-03-13",
+        "local": "Huracán",
+        "visitante": "River Plate",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762917/river-plate-huracan",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762917/competitions/762917/competitors/10/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762917/competitions/762917/competitors/16/scores/38?lang=en&region=us', 'value': 2.0, 'displayValue': '2', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-03-03",
+        "local": "Independiente Rivadavia",
+        "visitante": "River Plate",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762888/river-plate-independiente-rivadavia",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762888/competitions/762888/competitors/9744/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762888/competitions/762888/competitors/16/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-02-26",
+        "local": "River Plate",
+        "visitante": "Banfield",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762867/banfield-river-plate",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762867/competitions/762867/competitors/16/scores/38?lang=en&region=us', 'value': 3.0, 'displayValue': '3', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762867/competitions/762867/competitors/235/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
       }
     ],
     "plantel": {
-      "arqueros": [],
-      "defensores": [],
-      "mediocampistas": [],
-      "delanteros": []
+      "arqueros": [
+        {
+          "nombre": "Franco Armani",
+          "edad": 39,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Ezequiel Centuríon",
+          "edad": 28,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Santiago Beltrán",
+          "edad": 21,
+          "altura": "6' 3\""
+        },
+        {
+          "nombre": "Franco Jaroszewicz",
+          "edad": 19,
+          "altura": "6' 6\""
+        }
+      ],
+      "defensores": [
+        {
+          "nombre": "Germán Pezzella",
+          "edad": 34,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Marcos Acuña",
+          "edad": 34,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Paulo Díaz",
+          "edad": 31,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Juan Portillo",
+          "edad": 25,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Lucas Martínez Quarta",
+          "edad": 29,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Gonzalo Montiel",
+          "edad": 29,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Fabricio Bustos",
+          "edad": 30,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Matías Viña",
+          "edad": 28,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Brian Gutiérrez",
+          "edad": 19,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Ulises Giménez",
+          "edad": 20,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Tobías Palacio",
+          "edad": 19,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Lautaruo Rivero",
+          "edad": 22,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Lucas Obregón",
+          "edad": 20,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Facundo González",
+          "edad": 20,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Ángel Susano",
+          "edad": 19,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Matías Unyicio",
+          "edad": 19,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Lucas Flores",
+          "edad": 19,
+          "altura": "5' 3\""
+        }
+      ],
+      "mediocampistas": [
+        {
+          "nombre": "Juan Meza",
+          "edad": 18,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Maximiliano Meza",
+          "edad": 33,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Juan Fernando Quintero",
+          "edad": 33,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Agustín De La Cuesta",
+          "edad": 20,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Giuliano Galoppo",
+          "edad": 26,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Fausto Vera",
+          "edad": 26,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Aníbal Moreno",
+          "edad": 26,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Tomás Galván",
+          "edad": 26,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Kevin Castaño",
+          "edad": 25,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Kendry Páez",
+          "edad": 18,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Santiago Lencina",
+          "edad": 20,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Thiago Acosta",
+          "edad": 21,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Cristian Jaime",
+          "edad": 19,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Santiago Espíndola",
+          "edad": 18,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Lautaro Pereyra",
+          "edad": 18,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Lucas Silva",
+          "edad": 19,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Ignacio Zaballa",
+          "edad": 20,
+          "altura": "5' 5\""
+        },
+        {
+          "nombre": "Valentín Lucero",
+          "edad": 20,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Maximiliano Soria",
+          "edad": 18,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Thiago Salvatierra",
+          "edad": 17,
+          "altura": "5' 10\""
+        }
+      ],
+      "delanteros": [
+        {
+          "nombre": "Sebastián Driussi",
+          "edad": 30,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Maximiliano Salas",
+          "edad": 28,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Facundo Colidio",
+          "edad": 26,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Agustín Ruberto",
+          "edad": 20,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Ian Subiabre",
+          "edad": 19,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Alex Woiski",
+          "edad": 20,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Felipe Esquivel",
+          "edad": 17,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Joaquin Freitas",
+          "edad": 20,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Jonathan Spiff",
+          "edad": 19,
+          "altura": "6' 0\""
+        }
+      ]
     },
     "estadisticas": {
       "goles": [],
@@ -33,6 +351,7 @@
   },
   {
     "id": "boca-juniors",
+    "espn_id": "5",
     "nombre": "Boca Juniors",
     "liga": "Liga Profesional de Futbol",
     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
@@ -40,14 +359,334 @@
     "fundacion": "1905",
     "estadio": "Alberto J. Armando",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-04T02:48:28.623583+00:00",
+    "actualizado": "2026-05-04T02:56:25.274424+00:00",
     "proximosPartidos": [],
-    "resultados": [],
+    "resultados": [
+      {
+        "dia": "2026-05-02",
+        "local": "Central Córdoba (Santiago del Estero)",
+        "visitante": "Boca Juniors",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762907/boca-juniors-central-cordoba-santiago-del-estero",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762907/competitions/762907/competitors/11989/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762907/competitions/762907/competitors/5/scores/38?lang=en&region=us', 'value': 2.0, 'displayValue': '2', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-04-23",
+        "local": "Defensa y Justicia",
+        "visitante": "Boca Juniors",
+        "url": "https://www.espn.com/soccer/match/_/gameId/763011/boca-juniors-defensa-y-justicia",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/763011/competitions/763011/competitors/8950/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/763011/competitions/763011/competitors/5/scores/38?lang=en&region=us', 'value': 4.0, 'displayValue': '4', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-04-19",
+        "local": "River Plate",
+        "visitante": "Boca Juniors",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762995/boca-juniors-river-plate",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762995/competitions/762995/competitors/16/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762995/competitions/762995/competitors/5/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-04-11",
+        "local": "Boca Juniors",
+        "visitante": "Independiente",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762970/independiente-boca-juniors",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762970/competitions/762970/competitors/5/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762970/competitions/762970/competitors/11/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-04-02",
+        "local": "Talleres (Córdoba)",
+        "visitante": "Boca Juniors",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762963/boca-juniors-talleres-cordoba",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762963/competitions/762963/competitors/19/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762963/competitions/762963/competitors/5/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-03-22",
+        "local": "Boca Juniors",
+        "visitante": "Instituto (Córdoba)",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762943/instituto-cordoba-boca-juniors",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762943/competitions/762943/competitors/5/scores/38?lang=en&region=us', 'value': 2.0, 'displayValue': '2', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762943/competitions/762943/competitors/2975/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-03-16",
+        "local": "Unión (Santa Fe)",
+        "visitante": "Boca Juniors",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762938/boca-juniors-union-santa-fe",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762938/competitions/762938/competitors/20/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762938/competitions/762938/competitors/5/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-03-11",
+        "local": "Boca Juniors",
+        "visitante": "San Lorenzo",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762912/san-lorenzo-boca-juniors",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762912/competitions/762912/competitors/5/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762912/competitions/762912/competitors/18/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-03-05",
+        "local": "Lanús",
+        "visitante": "Boca Juniors",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762878/boca-juniors-lanus",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762878/competitions/762878/competitors/12/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762878/competitions/762878/competitors/5/scores/38?lang=en&region=us', 'value': 3.0, 'displayValue': '3', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-02-28",
+        "local": "Boca Juniors",
+        "visitante": "Gimnasia (Mendoza)",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762882/gimnasia-mendoza-boca-juniors",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762882/competitions/762882/competitors/5/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762882/competitions/762882/competitors/11972/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      }
+    ],
     "plantel": {
-      "arqueros": [],
-      "defensores": [],
-      "mediocampistas": [],
-      "delanteros": []
+      "arqueros": [
+        {
+          "nombre": "Javier García",
+          "edad": 39,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Agustín Marchesín",
+          "edad": 38,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Leandro Brey",
+          "edad": 23,
+          "altura": "6' 4\""
+        },
+        {
+          "nombre": "Fernando Rodríguez",
+          "edad": 21,
+          "altura": "6' 3\""
+        }
+      ],
+      "defensores": [
+        {
+          "nombre": "Jorge Figal",
+          "edad": 32,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Marcelo Weigandt",
+          "edad": 26,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Juan Barinaga",
+          "edad": 25,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Ayrton Costa",
+          "edad": 26,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Lautaro Blanco",
+          "edad": 27,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Marco Pellegrino",
+          "edad": 23,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Lautaro Di Lollo",
+          "edad": 22,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Dylan Gorosito",
+          "edad": 20,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Facundo Herrera",
+          "edad": 19,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Matías Satas",
+          "edad": 18,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Gian Paoli",
+          "edad": 20,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Kevin Giménez",
+          "edad": 21,
+          "altura": "5' 5\""
+        }
+      ],
+      "mediocampistas": [
+        {
+          "nombre": "Camilo Rey",
+          "edad": 20,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Ander Herrera",
+          "edad": 36,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Rodrigo Battaglia",
+          "edad": 34,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Leandro Paredes",
+          "edad": 31,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Santiago Ascacibar",
+          "edad": 29,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Tomás Belmonte",
+          "edad": 27,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Malcom Braida",
+          "edad": 28,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "William Alarcón",
+          "edad": 25,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Alan Velasco",
+          "edad": 23,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Agustín Martegani",
+          "edad": 25,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Kevin Zenón",
+          "edad": 24,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Milton Delgado",
+          "edad": 20,
+          "altura": "5' 5\""
+        },
+        {
+          "nombre": "Dante Gonzalez",
+          "edad": 19,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Tomás Aranda",
+          "edad": 18,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Santiago Zampieri",
+          "edad": 19,
+          "altura": "6' 0\""
+        }
+      ],
+      "delanteros": [
+        {
+          "nombre": "Edinson Cavani",
+          "edad": 39,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Lucas Janson",
+          "edad": 31,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Ángel Romero",
+          "edad": 33,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Carlos Palacios",
+          "edad": 25,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Adam Bareiro",
+          "edad": 29,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Miguel Merentiel",
+          "edad": 30,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Exequiel Zeballos",
+          "edad": 24,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Milton Gimenez",
+          "edad": 29,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Iker Zufiaurre",
+          "edad": 20,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Joaquín Ruíz",
+          "edad": 19,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Leonel Flores",
+          "edad": 19,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Joaquín Piñeyro",
+          "edad": 18,
+          "altura": "6' 4\""
+        },
+        {
+          "nombre": "Kevin Ferreira",
+          "edad": 17,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Gonzalo Gelini",
+          "edad": 19,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Rodrigo Bacidalupe",
+          "edad": 18,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Miguel Ventos",
+          "edad": 21,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Ezequiel González",
+          "edad": 18,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Juan Pussetto",
+          "edad": 18,
+          "altura": "6' 1\""
+        }
+      ]
     },
     "estadisticas": {
       "goles": [],
@@ -57,6 +696,7 @@
   },
   {
     "id": "racing-club",
+    "espn_id": "15",
     "nombre": "Racing Club",
     "liga": "Liga Profesional de Futbol",
     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
@@ -64,22 +704,319 @@
     "fundacion": "1903",
     "estadio": "Presidente Perón",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-04T02:48:28.624027+00:00",
+    "actualizado": "2026-05-04T02:56:25.789402+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
         "dia": "2026-05-03",
         "local": "Racing Club",
         "visitante": "Huracán",
-        "url": "https://www.espn.com.ar/futbol/partido/_/juegoId/762898/huracan-racing-club",
-        "resultado": "0 - 0"
+        "url": "https://www.espn.com/soccer/match/_/gameId/762898/huracan-racing-club",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762898/competitions/762898/competitors/15/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762898/competitions/762898/competitors/10/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-04-25",
+        "local": "Racing Club",
+        "visitante": "Barracas Central",
+        "url": "https://www.espn.com/soccer/match/_/gameId/763013/barracas-central-racing-club",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/763013/competitions/763013/competitors/15/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/763013/competitions/763013/competitors/10060/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-04-19",
+        "local": "Aldosivi",
+        "visitante": "Racing Club",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762986/racing-club-aldosivi",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762986/competitions/762986/competitors/9739/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762986/competitions/762986/competitors/15/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-04-12",
+        "local": "Racing Club",
+        "visitante": "River Plate",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762976/river-plate-racing-club",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762976/competitions/762976/competitors/15/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762976/competitions/762976/competitors/16/scores/38?lang=en&region=us', 'value': 2.0, 'displayValue': '2', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-04-04",
+        "local": "Independiente",
+        "visitante": "Racing Club",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762957/racing-club-independiente",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762957/competitions/762957/competitors/11/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762957/competitions/762957/competitors/15/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-03-22",
+        "local": "Belgrano (Córdoba)",
+        "visitante": "Racing Club",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762942/racing-club-belgrano-cordoba",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762942/competitions/762942/competitors/4/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762942/competitions/762942/competitors/15/scores/38?lang=en&region=us', 'value': 2.0, 'displayValue': '2', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-03-16",
+        "local": "Racing Club",
+        "visitante": "Estudiantes de Río Cuarto",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762933/estudiantes-de-rio-cuarto-racing-club",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762933/competitions/762933/competitors/15/scores/38?lang=en&region=us', 'value': 2.0, 'displayValue': '2', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762933/competitions/762933/competitors/19685/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-03-11",
+        "local": "Sarmiento (Junín)",
+        "visitante": "Racing Club",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762921/racing-club-sarmiento-junin",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762921/competitions/762921/competitors/10158/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762921/competitions/762921/competitors/15/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-03-04",
+        "local": "Atlético Tucumán",
+        "visitante": "Racing Club",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762880/racing-club-atletico-tucuman",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762880/competitions/762880/competitors/9785/scores/38?lang=en&region=us', 'value': 0.0, 'displayValue': '0', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762880/competitions/762880/competitors/15/scores/38?lang=en&region=us', 'value': 3.0, 'displayValue': '3', 'winner': True, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
+      },
+      {
+        "dia": "2026-02-26",
+        "local": "Racing Club",
+        "visitante": "Independiente Rivadavia",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762866/independiente-rivadavia-racing-club",
+        "resultado": "{'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762866/competitions/762866/competitors/15/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}} - {'$ref': 'http://sports.core.api.espn.pvt/v2/sports/soccer/leagues/arg.1/events/762866/competitions/762866/competitors/9744/scores/38?lang=en&region=us', 'value': 1.0, 'displayValue': '1', 'winner': False, 'source': {'id': '38', 'description': 'SA.ENVOY'}}"
       }
     ],
     "plantel": {
-      "arqueros": [],
-      "defensores": [],
-      "mediocampistas": [],
-      "delanteros": []
+      "arqueros": [
+        {
+          "nombre": "Facundo Cambeses",
+          "edad": 29,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Matías Tagliamonte",
+          "edad": 28,
+          "altura": "6' 5\""
+        },
+        {
+          "nombre": "Francisco Gómez",
+          "edad": 22,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Thiago De Bellis",
+          "edad": 21,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Lucio Latorre",
+          "edad": 20,
+          "altura": "-"
+        }
+      ],
+      "defensores": [
+        {
+          "nombre": "Marcos Rojo",
+          "edad": 36,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Agustín García Basso",
+          "edad": 34,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Gabriel Rojas",
+          "edad": 28,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Franco Pardo",
+          "edad": 29,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Nazareno Colombo",
+          "edad": 27,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Marco Di Cesare",
+          "edad": 24,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Gastón Martirena",
+          "edad": 26,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Ezequiel Cannavo",
+          "edad": 23,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Tobías Rubio",
+          "edad": 21,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Axel Cabellos",
+          "edad": 19,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Gonzalo Escudero",
+          "edad": 19,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Galo Volpe",
+          "edad": 21,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Samir Meza",
+          "edad": 20,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Benjamín González",
+          "edad": 18,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Mateo Martínez",
+          "edad": 18,
+          "altura": "5' 9\""
+        }
+      ],
+      "mediocampistas": [
+        {
+          "nombre": "Alejandro Tello",
+          "edad": 18,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Bruno Zuculini",
+          "edad": 33,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Gonzalo Sosa",
+          "edad": 21,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Matías Zaracho",
+          "edad": 28,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Santiago Sosa",
+          "edad": 27,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Matko Miljevic",
+          "edad": 24,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Adrián Fernández",
+          "edad": 24,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Ignacio Agustin Rodríguez",
+          "edad": 24,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Valentin Carboni",
+          "edad": 21,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Baltasar Rodríguez",
+          "edad": 22,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Felipe Schaare",
+          "edad": 20,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Bautista Castreje",
+          "edad": 19,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Alan Forneris",
+          "edad": 21,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Ezequiel Pérez",
+          "edad": 17,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Bautista Perez",
+          "edad": 17,
+          "altura": "-"
+        },
+        {
+          "nombre": "Gonzalo Leiva",
+          "edad": 19,
+          "altura": "-"
+        },
+        {
+          "nombre": "Luciano Agüero",
+          "edad": 18,
+          "altura": "5' 10\""
+        }
+      ],
+      "delanteros": [
+        {
+          "nombre": "Adrián Martínez",
+          "edad": 33,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Duván Vergara",
+          "edad": 29,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Tomás Conechny",
+          "edad": 28,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Santiago Solari",
+          "edad": 28,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Damián Pizarro",
+          "edad": 21,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Elías Torres",
+          "edad": 25,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Tomas Perez",
+          "edad": 20,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Francisco Fraga",
+          "edad": 20,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Thiago Taborda",
+          "edad": 20,
+          "altura": "-"
+        }
+      ]
     },
     "estadisticas": {
       "goles": [],
