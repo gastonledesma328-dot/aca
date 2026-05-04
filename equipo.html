@@ -205,6 +205,14 @@
       font-weight: bold;
     }
 
+    .clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover td {
+  background: rgba(95,207,128,0.18) !important;
+}
+
     @media (max-width: 850px) {
       .page {
         grid-template-columns: 1fr;
@@ -353,7 +361,7 @@
 
     document.getElementById("upcomingMatches").innerHTML = equipo.proximosPartidos.length
   ? equipo.proximosPartidos.map(p => `
-      <tr>
+      <tr ${matchRowAttrs(p)}>
         <td>${p.dia}</td>
         <td>${p.local}</td>
         <td>${p.visitante}</td>
@@ -368,7 +376,7 @@
 
     document.getElementById("results").innerHTML = equipo.resultados.length
   ? equipo.resultados.map(p => `
-      <tr>
+      <tr ${matchRowAttrs(p)}>
         <td>${p.dia}</td>
         <td>${p.local}</td>
         <td>${p.visitante}</td>
@@ -488,6 +496,14 @@ document.getElementById("squad").innerHTML = squadRows.length
     .replace(/^-+|-+$/g, "");
 }
 
+    function matchRowAttrs(partido) {
+  if (!partido.url) {
+    return "";
+  }
+
+  return `class="clickable-row" data-url="${partido.url}"`;
+}
+
     async function cargarPartidosDelEquipo(equipo) {
   try {
     const response = await fetch(`${AGENDA_URL}?v=${Date.now()}`);
@@ -520,20 +536,22 @@ document.getElementById("squad").innerHTML = squadRows.length
 
       if (completado || tieneMarcador) {
         resultados.push({
-          dia: partido.fecha || "Sin fecha",
-          local: partido.local || "Local",
-          visitante: partido.visitante || "Visitante",
-          resultado: tieneMarcador
-            ? `${partido.marcador_local} - ${partido.marcador_visitante}`
-            : partido.resultado || "-"
-        });
+  dia: partido.fecha || "Sin fecha",
+  local: partido.local || "Local",
+  visitante: partido.visitante || "Visitante",
+  resultado: tieneMarcador
+    ? `${partido.marcador_local} - ${partido.marcador_visitante}`
+    : partido.resultado || "-",
+  url: partido.url_espn || ""
+});
       } else {
         proximos.push({
-          dia: partido.fecha || "Sin fecha",
-          local: partido.local || "Local",
-          visitante: partido.visitante || "Visitante",
-          hora: partido.hora_inicio || partido.hora || "-"
-        });
+  dia: partido.fecha || "Sin fecha",
+  local: partido.local || "Local",
+  visitante: partido.visitante || "Visitante",
+  hora: partido.hora_inicio || partido.hora || "-",
+  url: partido.url_espn || ""
+});
       }
     });
 
@@ -615,6 +633,22 @@ cargarPartidosDelEquipo(equipo);
       document.getElementById("teamLeague").textContent = "No se pudo leer equipos.json";
     }
   }
+
+    document.addEventListener("click", function(event) {
+  const row = event.target.closest(".clickable-row");
+
+  if (!row) {
+    return;
+  }
+
+  const url = row.dataset.url;
+
+  if (!url) {
+    return;
+  }
+
+  window.open(url, "_blank", "noreferrer");
+});
 
   iniciarPaginaEquipo();
 </script>
