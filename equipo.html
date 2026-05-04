@@ -341,7 +341,7 @@
   function cargarEquipo(equipo) {
     document.title = equipo.nombre + " - Ficha del Equipo";
 
-    document.getElementById("teamLogo").src = equipo.logo;
+    document.getElementById("teamLogo").src = equipo.logo || "https://via.placeholder.com/100?text=EQ";
     document.getElementById("teamName").textContent = equipo.nombre;
     document.getElementById("teamLeague").textContent = equipo.liga;
     document.getElementById("teamNickname").textContent = equipo.apodo;
@@ -421,6 +421,14 @@
     return params.get("id") || "boca-juniors";
   }
 
+    function nombreDesdeId(id) {
+  return String(id || "")
+    .split("-")
+    .filter(Boolean)
+    .map(palabra => palabra.charAt(0).toUpperCase() + palabra.slice(1))
+    .join(" ");
+}
+
   async function iniciarPaginaEquipo() {
     const teamId = getTeamIdFromUrl();
 
@@ -437,10 +445,47 @@
       const equipo = equipos.find(item => item.id === teamId);
 
       if (!equipo) {
-        document.getElementById("teamName").textContent = "Equipo no encontrado";
-        document.getElementById("teamLeague").textContent = "Revisá el id en la URL";
-        return;
+  const equipoBasico = {
+    id: teamId,
+    nombre: nombreDesdeId(teamId),
+    liga: "Liga no disponible",
+    logo: "",
+    apodo: "Sin datos",
+    fundacion: "Sin datos",
+    estadio: "Sin datos",
+    ciudad: "Sin datos",
+    proximosPartidos: [
+      {
+        dia: "Sin datos",
+        local: "Próximamente",
+        visitante: "Próximamente",
+        hora: "-"
       }
+    ],
+    resultados: [
+      {
+        dia: "Sin datos",
+        local: "Sin datos",
+        visitante: "Sin datos",
+        resultado: "-"
+      }
+    ],
+    plantel: {
+      arqueros: [],
+      defensores: [],
+      mediocampistas: [],
+      delanteros: []
+    },
+    estadisticas: {
+      goles: [],
+      asistencias: [],
+      amarillas: []
+    }
+  };
+
+  cargarEquipo(equipoBasico);
+  return;
+}
 
       cargarEquipo(equipo);
 
