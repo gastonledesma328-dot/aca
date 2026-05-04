@@ -695,7 +695,7 @@ def cargar_estadisticas_desde_resumenes(equipo):
 
     partidos = equipo.get("resultados", [])[:20]
 
-    print(f"📊 Buscando estadísticas por resumen/plays para {equipo.get('nombre')}")
+    print(f"📊 Calculando estadísticas SOLO por partidos filtrados para {equipo.get('nombre')}")
 
     for partido in partidos:
         game_id = extraer_game_id(partido.get("url"))
@@ -704,52 +704,55 @@ def cargar_estadisticas_desde_resumenes(equipo):
             continue
 
         resumen = cargar_resumen_partido(game_id)
-        plays = cargar_plays_partido(game_id)
 
-        eventos = []
+        if not isinstance(resumen, dict):
+            continue
 
-        if isinstance(resumen, dict):
-            if isinstance(resumen.get("scoringPlays"), list):
-                eventos.extend(resumen.get("scoringPlays") or [])
+        # 1) Goles y posibles asistencias desde scoringPlays.
+        scoring_plays = resumen.get("scoringPlays") or []
 
-            if isinstance(resumen.get("plays"), list):
-                eventos.extend(resumen.get("plays") or [])
+        if isinstance(scoring_plays, list):
+            for play in scoring_plays:
+                if not isinstance(play, dict):
+                    continue
 
-            eventos.extend(extraer_eventos_recursivo(resumen))
+                jugadores = extraer_jugadores_de_evento(play)
 
-        if isinstance(plays, dict):
-            items = plays.get("items") or plays.get("plays") or []
-            if isinstance(items, list):
-                eventos.extend(items)
+                if not jugadores:
+                    continue
 
-            eventos.extend(extraer_eventos_recursivo(plays))
+                # Primer jugador: goleador.
+                goles[jugadores[0]] += 1
 
-        for evento in eventos:
-            if not isinstance(evento, dict):
-                continue
-
-            tipo = detectar_tipo_evento(evento)
-            jugadores = extraer_jugadores_de_evento(evento)
-
-            if not tipo or not jugadores:
-                continue
-
-            jugador_principal = jugadores[0]
-
-            if tipo == "gol":
-                goles[jugador_principal] += 1
-
+                # Segundo jugador, si existe: posible asistidor.
                 if len(jugadores) > 1:
                     asistencias[jugadores[1]] += 1
 
-            elif tipo == "asistencia":
-                asistencias[jugador_principal] += 1
+        # 2) Tarjetas desde plays, pero sin búsqueda recursiva amplia.
+        plays = resumen.get("plays") or []
 
-            elif tipo == "amarilla":
-                amarillas[jugador_principal] += 1
+        if isinstance(plays, list):
+            for play in plays:
+                if not isinstance(play, dict):
+                    continue
 
-            elif tipo == "roja":
-                rojas[jugador_principal] += 1
+                tipo = detectar_tipo_evento(play)
+
+                if tipo not in ["amarilla", "roja"]:
+                    continue
+
+                jugadores = extraer_jugadores_de_evento(play)
+
+                if not jugadores:
+                    continue
+
+                jugador = jugadores[0]
+
+                if tipo == "amarilla":
+                    amarillas[jugador] += 1
+
+                elif tipo == "roja":
+                    rojas[jugador] += 1
 
     return {
         "goles": sumar_counter_a_lista(goles),
