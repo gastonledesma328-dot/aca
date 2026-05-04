@@ -9,7 +9,7 @@
     "fundacion": "1901",
     "estadio": "Monumental",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-04T16:22:33.133856+00:00",
+    "actualizado": "2026-05-04T17:29:10.418490+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -454,20 +454,7 @@
           "total": 2
         }
       ],
-      "rojas": [
-        {
-          "jugador": "Gonzalo Montiel",
-          "total": 4
-        },
-        {
-          "jugador": "Sebastián Driussi",
-          "total": 2
-        },
-        {
-          "jugador": "Maximiliano Salas",
-          "total": 2
-        }
-      ]
+      "rojas": []
     },
     "estadisticasGenerales": {
       "posicion": "2",
@@ -480,6 +467,354 @@
       "diferenciaGol": "+10",
       "puntos": "29",
       "racha": "-"
+    },
+    "estadisticasPorCompeticion": {
+      "Liga Profesional de Futbol": {
+        "nombre": "Liga Profesional de Futbol",
+        "league_slug": "arg.1",
+        "season": "2026",
+        "proximosPartidos": [],
+        "resultados": [
+          {
+            "dia": "2026-05-03",
+            "local": "River Plate",
+            "visitante": "Atlético Tucumán",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762899/atletico-tucuman-river-plate",
+            "resultado": "0 - 1"
+          },
+          {
+            "dia": "2026-04-26",
+            "local": "River Plate",
+            "visitante": "Aldosivi",
+            "url": "https://www.espn.com/soccer/match/_/gameId/763001/aldosivi-river-plate",
+            "resultado": "3 - 1"
+          },
+          {
+            "dia": "2026-04-19",
+            "local": "River Plate",
+            "visitante": "Boca Juniors",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762995/boca-juniors-river-plate",
+            "resultado": "0 - 1"
+          },
+          {
+            "dia": "2026-04-12",
+            "local": "Racing Club",
+            "visitante": "River Plate",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762976/river-plate-racing-club",
+            "resultado": "0 - 2"
+          },
+          {
+            "dia": "2026-04-05",
+            "local": "River Plate",
+            "visitante": "Belgrano (Córdoba)",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762960/belgrano-cordoba-river-plate",
+            "resultado": "3 - 0"
+          },
+          {
+            "dia": "2026-03-22",
+            "local": "Estudiantes de Río Cuarto",
+            "visitante": "River Plate",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762946/river-plate-estudiantes-de-rio-cuarto",
+            "resultado": "0 - 2"
+          },
+          {
+            "dia": "2026-03-15",
+            "local": "River Plate",
+            "visitante": "Sarmiento (Junín)",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762934/sarmiento-junin-river-plate",
+            "resultado": "2 - 0"
+          },
+          {
+            "dia": "2026-03-13",
+            "local": "Huracán",
+            "visitante": "River Plate",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762917/river-plate-huracan",
+            "resultado": "1 - 2"
+          },
+          {
+            "dia": "2026-03-03",
+            "local": "Independiente Rivadavia",
+            "visitante": "River Plate",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762888/river-plate-independiente-rivadavia",
+            "resultado": "1 - 1"
+          },
+          {
+            "dia": "2026-02-26",
+            "local": "River Plate",
+            "visitante": "Banfield",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762867/banfield-river-plate",
+            "resultado": "3 - 1"
+          }
+        ],
+        "estadisticas": {
+          "goles": [
+            {
+              "jugador": "Sebastián Driussi",
+              "total": 12
+            },
+            {
+              "jugador": "Facundo Colidio",
+              "total": 7
+            },
+            {
+              "jugador": "Tomás Galván",
+              "total": 7
+            },
+            {
+              "jugador": "Gonzalo Montiel",
+              "total": 4
+            },
+            {
+              "jugador": "Maximiliano Salas",
+              "total": 4
+            },
+            {
+              "jugador": "Ian Subiabre",
+              "total": 4
+            },
+            {
+              "jugador": "Kendry Páez",
+              "total": 3
+            },
+            {
+              "jugador": "Lucas Martínez Quarta",
+              "total": 3
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Joaquin Freitas",
+              "total": 17
+            },
+            {
+              "jugador": "Ian Subiabre",
+              "total": 15
+            },
+            {
+              "jugador": "Aníbal Moreno",
+              "total": 13
+            },
+            {
+              "jugador": "Facundo Colidio",
+              "total": 10
+            },
+            {
+              "jugador": "Sebastián Driussi",
+              "total": 9
+            },
+            {
+              "jugador": "Maximiliano Salas",
+              "total": 8
+            },
+            {
+              "jugador": "Gonzalo Montiel",
+              "total": 8
+            },
+            {
+              "jugador": "Tomás Galván",
+              "total": 8
+            },
+            {
+              "jugador": "Fausto Vera",
+              "total": 8
+            },
+            {
+              "jugador": "Lucas Martínez Quarta",
+              "total": 7
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Marcos Acuña",
+              "total": 8
+            },
+            {
+              "jugador": "Lautaruo Rivero",
+              "total": 6
+            },
+            {
+              "jugador": "Lucas Martínez Quarta",
+              "total": 6
+            },
+            {
+              "jugador": "Juan Meza",
+              "total": 4
+            },
+            {
+              "jugador": "Gonzalo Montiel",
+              "total": 4
+            },
+            {
+              "jugador": "Matías Viña",
+              "total": 4
+            },
+            {
+              "jugador": "Ian Subiabre",
+              "total": 4
+            },
+            {
+              "jugador": "Kendry Páez",
+              "total": 2
+            }
+          ],
+          "rojas": []
+        },
+        "generales": {
+          "posicion": "2",
+          "partidos": "16",
+          "ganados": "9",
+          "empatados": "2",
+          "perdidos": "5",
+          "golesFavor": "22",
+          "golesContra": "12",
+          "diferenciaGol": "+10",
+          "puntos": "29",
+          "racha": "-"
+        }
+      },
+      "Copa Libertadores": {
+        "nombre": "Copa Libertadores",
+        "league_slug": "conmebol.libertadores",
+        "season": "2026",
+        "proximosPartidos": [],
+        "resultados": [],
+        "estadisticas": {
+          "goles": [],
+          "asistencias": [],
+          "amarillas": [],
+          "rojas": []
+        },
+        "generales": {
+          "posicion": "-",
+          "partidos": "-",
+          "ganados": "-",
+          "empatados": "-",
+          "perdidos": "-",
+          "golesFavor": "-",
+          "golesContra": "-",
+          "diferenciaGol": "-",
+          "puntos": "-",
+          "racha": "-"
+        }
+      },
+      "Copa Sudamericana": {
+        "nombre": "Copa Sudamericana",
+        "league_slug": "conmebol.sudamericana",
+        "season": "2026",
+        "proximosPartidos": [],
+        "resultados": [
+          {
+            "dia": "2026-05-01",
+            "local": "Red Bull Bragantino",
+            "visitante": "River Plate",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865414/river-plate-red-bull-bragantino",
+            "resultado": "0 - 1"
+          },
+          {
+            "dia": "2026-04-16",
+            "local": "River Plate",
+            "visitante": "Carabobo",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865398/carabobo-river-plate",
+            "resultado": "1 - 0"
+          },
+          {
+            "dia": "2026-04-09",
+            "local": "Blooming",
+            "visitante": "River Plate",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865373/river-plate-blooming",
+            "resultado": "1 - 1"
+          }
+        ],
+        "estadisticas": {
+          "goles": [
+            {
+              "jugador": "Sebastián Driussi",
+              "total": 4
+            },
+            {
+              "jugador": "Lucas Martínez Quarta",
+              "total": 2
+            },
+            {
+              "jugador": "Juan Fernando Quintero",
+              "total": 1
+            },
+            {
+              "jugador": "Kendry Páez",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Kendry Páez",
+              "total": 4
+            },
+            {
+              "jugador": "Fabricio Bustos",
+              "total": 3
+            },
+            {
+              "jugador": "Lucas Silva",
+              "total": 2
+            },
+            {
+              "jugador": "Maximiliano Salas",
+              "total": 2
+            },
+            {
+              "jugador": "Juan Meza",
+              "total": 2
+            },
+            {
+              "jugador": "Facundo Colidio",
+              "total": 2
+            },
+            {
+              "jugador": "Aníbal Moreno",
+              "total": 2
+            },
+            {
+              "jugador": "Giuliano Galoppo",
+              "total": 2
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Ian Subiabre",
+              "total": 2
+            },
+            {
+              "jugador": "Juan Meza",
+              "total": 2
+            },
+            {
+              "jugador": "Lucas Martínez Quarta",
+              "total": 2
+            },
+            {
+              "jugador": "Lautaruo Rivero",
+              "total": 2
+            },
+            {
+              "jugador": "Germán Pezzella",
+              "total": 2
+            }
+          ],
+          "rojas": []
+        },
+        "generales": {
+          "posicion": "1",
+          "partidos": "3",
+          "ganados": "2",
+          "empatados": "1",
+          "perdidos": "0",
+          "golesFavor": "3",
+          "golesContra": "1",
+          "diferenciaGol": "+2",
+          "puntos": "7",
+          "racha": "-"
+        }
+      }
     }
   },
   {
@@ -492,7 +827,7 @@
     "fundacion": "1905",
     "estadio": "Alberto J. Armando",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-04T16:22:40.100853+00:00",
+    "actualizado": "2026-05-04T17:29:16.430938+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -912,32 +1247,7 @@
           "total": 2
         }
       ],
-      "rojas": [
-        {
-          "jugador": "Leandro Paredes",
-          "total": 31
-        },
-        {
-          "jugador": "Miguel Merentiel",
-          "total": 6
-        },
-        {
-          "jugador": "Ander Herrera",
-          "total": 2
-        },
-        {
-          "jugador": "Milton Gimenez",
-          "total": 2
-        },
-        {
-          "jugador": "Camilo Rey",
-          "total": 2
-        },
-        {
-          "jugador": "Marcelo Weigandt",
-          "total": 2
-        }
-      ]
+      "rojas": []
     },
     "estadisticasGenerales": {
       "posicion": "2",
@@ -950,6 +1260,310 @@
       "diferenciaGol": "+13",
       "puntos": "30",
       "racha": "-"
+    },
+    "estadisticasPorCompeticion": {
+      "Liga Profesional de Futbol": {
+        "nombre": "Liga Profesional de Futbol",
+        "league_slug": "arg.1",
+        "season": "2026",
+        "proximosPartidos": [],
+        "resultados": [
+          {
+            "dia": "2026-05-02",
+            "local": "Central Córdoba (Santiago del Estero)",
+            "visitante": "Boca Juniors",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762907/boca-juniors-central-cordoba-santiago-del-estero",
+            "resultado": "1 - 2"
+          },
+          {
+            "dia": "2026-04-23",
+            "local": "Defensa y Justicia",
+            "visitante": "Boca Juniors",
+            "url": "https://www.espn.com/soccer/match/_/gameId/763011/boca-juniors-defensa-y-justicia",
+            "resultado": "0 - 4"
+          },
+          {
+            "dia": "2026-04-19",
+            "local": "River Plate",
+            "visitante": "Boca Juniors",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762995/boca-juniors-river-plate",
+            "resultado": "0 - 1"
+          },
+          {
+            "dia": "2026-04-11",
+            "local": "Boca Juniors",
+            "visitante": "Independiente",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762970/independiente-boca-juniors",
+            "resultado": "1 - 1"
+          },
+          {
+            "dia": "2026-04-02",
+            "local": "Talleres (Córdoba)",
+            "visitante": "Boca Juniors",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762963/boca-juniors-talleres-cordoba",
+            "resultado": "0 - 1"
+          },
+          {
+            "dia": "2026-03-22",
+            "local": "Boca Juniors",
+            "visitante": "Instituto (Córdoba)",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762943/instituto-cordoba-boca-juniors",
+            "resultado": "2 - 0"
+          },
+          {
+            "dia": "2026-03-16",
+            "local": "Unión (Santa Fe)",
+            "visitante": "Boca Juniors",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762938/boca-juniors-union-santa-fe",
+            "resultado": "1 - 1"
+          },
+          {
+            "dia": "2026-03-11",
+            "local": "Boca Juniors",
+            "visitante": "San Lorenzo",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762912/san-lorenzo-boca-juniors",
+            "resultado": "1 - 1"
+          },
+          {
+            "dia": "2026-03-05",
+            "local": "Lanús",
+            "visitante": "Boca Juniors",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762878/boca-juniors-lanus",
+            "resultado": "0 - 3"
+          },
+          {
+            "dia": "2026-02-28",
+            "local": "Boca Juniors",
+            "visitante": "Gimnasia (Mendoza)",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762882/gimnasia-mendoza-boca-juniors",
+            "resultado": "1 - 1"
+          }
+        ],
+        "estadisticas": {
+          "goles": [
+            {
+              "jugador": "Adam Bareiro",
+              "total": 15
+            },
+            {
+              "jugador": "Miguel Merentiel",
+              "total": 12
+            },
+            {
+              "jugador": "Milton Gimenez",
+              "total": 8
+            },
+            {
+              "jugador": "Alan Velasco",
+              "total": 5
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 5
+            },
+            {
+              "jugador": "Ángel Romero",
+              "total": 2
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Miguel Merentiel",
+              "total": 16
+            },
+            {
+              "jugador": "Tomás Aranda",
+              "total": 14
+            },
+            {
+              "jugador": "Adam Bareiro",
+              "total": 11
+            },
+            {
+              "jugador": "Exequiel Zeballos",
+              "total": 9
+            },
+            {
+              "jugador": "Alan Velasco",
+              "total": 8
+            },
+            {
+              "jugador": "William Alarcón",
+              "total": 4
+            },
+            {
+              "jugador": "Milton Gimenez",
+              "total": 4
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 4
+            },
+            {
+              "jugador": "Lautaro Di Lollo",
+              "total": 4
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Adam Bareiro",
+              "total": 8
+            },
+            {
+              "jugador": "Milton Delgado",
+              "total": 6
+            },
+            {
+              "jugador": "Tomás Belmonte",
+              "total": 4
+            },
+            {
+              "jugador": "Tomás Aranda",
+              "total": 4
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 4
+            },
+            {
+              "jugador": "Juan Barinaga",
+              "total": 2
+            }
+          ],
+          "rojas": []
+        },
+        "generales": {
+          "posicion": "2",
+          "partidos": "16",
+          "ganados": "8",
+          "empatados": "6",
+          "perdidos": "2",
+          "golesFavor": "22",
+          "golesContra": "9",
+          "diferenciaGol": "+13",
+          "puntos": "30",
+          "racha": "-"
+        }
+      },
+      "Copa Libertadores": {
+        "nombre": "Copa Libertadores",
+        "league_slug": "conmebol.libertadores",
+        "season": "2026",
+        "proximosPartidos": [],
+        "resultados": [
+          {
+            "dia": "2026-04-29",
+            "local": "Cruzeiro",
+            "visitante": "Boca Juniors",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865505/boca-juniors-cruzeiro",
+            "resultado": "1 - 0"
+          },
+          {
+            "dia": "2026-04-15",
+            "local": "Boca Juniors",
+            "visitante": "Barcelona SC",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865499/barcelona-sc-boca-juniors",
+            "resultado": "3 - 0"
+          },
+          {
+            "dia": "2026-04-08",
+            "local": "Universidad Católica",
+            "visitante": "Boca Juniors",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865370/boca-juniors-universidad-catolica",
+            "resultado": "1 - 2"
+          }
+        ],
+        "estadisticas": {
+          "goles": [
+            {
+              "jugador": "Lautaro Di Lollo",
+              "total": 2
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 2
+            },
+            {
+              "jugador": "Ander Herrera",
+              "total": 2
+            },
+            {
+              "jugador": "Adam Bareiro",
+              "total": 2
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Lautaro Blanco",
+              "total": 6
+            },
+            {
+              "jugador": "Alan Velasco",
+              "total": 3
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 2
+            },
+            {
+              "jugador": "Miguel Merentiel",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Adam Bareiro",
+              "total": 4
+            },
+            {
+              "jugador": "Lautaro Blanco",
+              "total": 4
+            },
+            {
+              "jugador": "Ayrton Costa",
+              "total": 2
+            }
+          ],
+          "rojas": []
+        },
+        "generales": {
+          "posicion": "2",
+          "partidos": "3",
+          "ganados": "2",
+          "empatados": "0",
+          "perdidos": "1",
+          "golesFavor": "5",
+          "golesContra": "2",
+          "diferenciaGol": "+3",
+          "puntos": "6",
+          "racha": "-"
+        }
+      },
+      "Copa Sudamericana": {
+        "nombre": "Copa Sudamericana",
+        "league_slug": "conmebol.sudamericana",
+        "season": "2026",
+        "proximosPartidos": [],
+        "resultados": [],
+        "estadisticas": {
+          "goles": [],
+          "asistencias": [],
+          "amarillas": [],
+          "rojas": []
+        },
+        "generales": {
+          "posicion": "-",
+          "partidos": "-",
+          "ganados": "-",
+          "empatados": "-",
+          "perdidos": "-",
+          "golesFavor": "-",
+          "golesContra": "-",
+          "diferenciaGol": "-",
+          "puntos": "-",
+          "racha": "-"
+        }
+      }
     }
   },
   {
@@ -962,7 +1576,7 @@
     "fundacion": "1903",
     "estadio": "Presidente Perón",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-04T16:22:46.438713+00:00",
+    "actualizado": "2026-05-04T17:29:21.882589+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -1363,40 +1977,7 @@
           "total": 4
         }
       ],
-      "rojas": [
-        {
-          "jugador": "Gabriel Rojas",
-          "total": 15
-        },
-        {
-          "jugador": "Tomás Conechny",
-          "total": 4
-        },
-        {
-          "jugador": "Marco Di Cesare",
-          "total": 4
-        },
-        {
-          "jugador": "Santiago Solari",
-          "total": 3
-        },
-        {
-          "jugador": "Adrián Martínez",
-          "total": 2
-        },
-        {
-          "jugador": "Adrián Fernández",
-          "total": 2
-        },
-        {
-          "jugador": "Agustín García Basso",
-          "total": 2
-        },
-        {
-          "jugador": "Marcos Rojo",
-          "total": 2
-        }
-      ]
+      "rojas": []
     },
     "estadisticasGenerales": {
       "posicion": "8",
@@ -1409,6 +1990,334 @@
       "diferenciaGol": "+2",
       "puntos": "21",
       "racha": "-"
+    },
+    "estadisticasPorCompeticion": {
+      "Liga Profesional de Futbol": {
+        "nombre": "Liga Profesional de Futbol",
+        "league_slug": "arg.1",
+        "season": "2026",
+        "proximosPartidos": [],
+        "resultados": [
+          {
+            "dia": "2026-05-03",
+            "local": "Racing Club",
+            "visitante": "Huracán",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762898/huracan-racing-club",
+            "resultado": "0 - 0"
+          },
+          {
+            "dia": "2026-04-25",
+            "local": "Racing Club",
+            "visitante": "Barracas Central",
+            "url": "https://www.espn.com/soccer/match/_/gameId/763013/barracas-central-racing-club",
+            "resultado": "1 - 1"
+          },
+          {
+            "dia": "2026-04-19",
+            "local": "Aldosivi",
+            "visitante": "Racing Club",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762986/racing-club-aldosivi",
+            "resultado": "1 - 1"
+          },
+          {
+            "dia": "2026-04-12",
+            "local": "Racing Club",
+            "visitante": "River Plate",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762976/river-plate-racing-club",
+            "resultado": "0 - 2"
+          },
+          {
+            "dia": "2026-04-04",
+            "local": "Independiente",
+            "visitante": "Racing Club",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762957/racing-club-independiente",
+            "resultado": "1 - 0"
+          },
+          {
+            "dia": "2026-03-22",
+            "local": "Belgrano (Córdoba)",
+            "visitante": "Racing Club",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762942/racing-club-belgrano-cordoba",
+            "resultado": "1 - 2"
+          },
+          {
+            "dia": "2026-03-16",
+            "local": "Racing Club",
+            "visitante": "Estudiantes de Río Cuarto",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762933/estudiantes-de-rio-cuarto-racing-club",
+            "resultado": "2 - 0"
+          },
+          {
+            "dia": "2026-03-11",
+            "local": "Sarmiento (Junín)",
+            "visitante": "Racing Club",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762921/racing-club-sarmiento-junin",
+            "resultado": "0 - 0"
+          },
+          {
+            "dia": "2026-03-04",
+            "local": "Atlético Tucumán",
+            "visitante": "Racing Club",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762880/racing-club-atletico-tucuman",
+            "resultado": "0 - 3"
+          },
+          {
+            "dia": "2026-02-26",
+            "local": "Racing Club",
+            "visitante": "Independiente Rivadavia",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762866/independiente-rivadavia-racing-club",
+            "resultado": "1 - 1"
+          }
+        ],
+        "estadisticas": {
+          "goles": [
+            {
+              "jugador": "Duván Vergara",
+              "total": 5
+            },
+            {
+              "jugador": "Matías Zaracho",
+              "total": 4
+            },
+            {
+              "jugador": "Adrián Martínez",
+              "total": 4
+            },
+            {
+              "jugador": "Santiago Solari",
+              "total": 3
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Santiago Solari",
+              "total": 14
+            },
+            {
+              "jugador": "Adrián Martínez",
+              "total": 9
+            },
+            {
+              "jugador": "Tomás Conechny",
+              "total": 6
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 6
+            },
+            {
+              "jugador": "Matías Zaracho",
+              "total": 4
+            },
+            {
+              "jugador": "Bruno Zuculini",
+              "total": 4
+            },
+            {
+              "jugador": "Baltasar Rodríguez",
+              "total": 4
+            },
+            {
+              "jugador": "Duván Vergara",
+              "total": 4
+            },
+            {
+              "jugador": "Santiago Sosa",
+              "total": 4
+            },
+            {
+              "jugador": "Damián Pizarro",
+              "total": 4
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Baltasar Rodríguez",
+              "total": 6
+            },
+            {
+              "jugador": "Marco Di Cesare",
+              "total": 6
+            },
+            {
+              "jugador": "Franco Pardo",
+              "total": 4
+            },
+            {
+              "jugador": "Marcos Rojo",
+              "total": 4
+            },
+            {
+              "jugador": "Santiago Sosa",
+              "total": 4
+            },
+            {
+              "jugador": "Matko Miljevic",
+              "total": 4
+            }
+          ],
+          "rojas": []
+        },
+        "generales": {
+          "posicion": "8",
+          "partidos": "16",
+          "ganados": "5",
+          "empatados": "6",
+          "perdidos": "5",
+          "golesFavor": "17",
+          "golesContra": "15",
+          "diferenciaGol": "+2",
+          "puntos": "21",
+          "racha": "-"
+        }
+      },
+      "Copa Libertadores": {
+        "nombre": "Copa Libertadores",
+        "league_slug": "conmebol.libertadores",
+        "season": "2026",
+        "proximosPartidos": [],
+        "resultados": [],
+        "estadisticas": {
+          "goles": [],
+          "asistencias": [],
+          "amarillas": [],
+          "rojas": []
+        },
+        "generales": {
+          "posicion": "-",
+          "partidos": "-",
+          "ganados": "-",
+          "empatados": "-",
+          "perdidos": "-",
+          "golesFavor": "-",
+          "golesContra": "-",
+          "diferenciaGol": "-",
+          "puntos": "-",
+          "racha": "-"
+        }
+      },
+      "Copa Sudamericana": {
+        "nombre": "Copa Sudamericana",
+        "league_slug": "conmebol.sudamericana",
+        "season": "2026",
+        "proximosPartidos": [],
+        "resultados": [
+          {
+            "dia": "2026-04-29",
+            "local": "Caracas FC",
+            "visitante": "Racing Club",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865407/racing-club-caracas-fc",
+            "resultado": "1 - 1"
+          },
+          {
+            "dia": "2026-04-15",
+            "local": "Racing Club",
+            "visitante": "Botafogo",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865399/botafogo-racing-club",
+            "resultado": "2 - 3"
+          },
+          {
+            "dia": "2026-04-07",
+            "local": "Independiente Petrolero",
+            "visitante": "Racing Club",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865384/racing-club-independiente-petrolero",
+            "resultado": "1 - 3"
+          }
+        ],
+        "estadisticas": {
+          "goles": [
+            {
+              "jugador": "Adrián Martínez",
+              "total": 4
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 4
+            },
+            {
+              "jugador": "Gonzalo Sosa",
+              "total": 3
+            },
+            {
+              "jugador": "Tomas Perez",
+              "total": 2
+            },
+            {
+              "jugador": "Santiago Sosa",
+              "total": 2
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Baltasar Rodríguez",
+              "total": 6
+            },
+            {
+              "jugador": "Duván Vergara",
+              "total": 5
+            },
+            {
+              "jugador": "Bruno Zuculini",
+              "total": 4
+            },
+            {
+              "jugador": "Ignacio Agustin Rodríguez",
+              "total": 4
+            },
+            {
+              "jugador": "Santiago Solari",
+              "total": 3
+            },
+            {
+              "jugador": "Ezequiel Cannavo",
+              "total": 3
+            },
+            {
+              "jugador": "Tomás Conechny",
+              "total": 3
+            },
+            {
+              "jugador": "Nazareno Colombo",
+              "total": 2
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Ezequiel Cannavo",
+              "total": 4
+            },
+            {
+              "jugador": "Baltasar Rodríguez",
+              "total": 2
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 2
+            },
+            {
+              "jugador": "Ignacio Agustin Rodríguez",
+              "total": 2
+            },
+            {
+              "jugador": "Gastón Martirena",
+              "total": 2
+            }
+          ],
+          "rojas": []
+        },
+        "generales": {
+          "posicion": "3",
+          "partidos": "3",
+          "ganados": "1",
+          "empatados": "1",
+          "perdidos": "1",
+          "golesFavor": "6",
+          "golesContra": "5",
+          "diferenciaGol": "+1",
+          "puntos": "4",
+          "racha": "-"
+        }
+      }
     }
   }
 ]
