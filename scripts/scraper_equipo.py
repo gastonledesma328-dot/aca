@@ -16,17 +16,28 @@ SEASON = "2026"
 
 COMPETICIONES = [
     {
-        "nombre": "Liga Profesional de Futbol",
+        "nombre": "Liga Profesional de Futbol - Torneo Apertura 2026",
         "league_slug": "arg.1",
-        "season": "2026"
+        "season": "2026",
+        "fase": "apertura",
+        "fecha_desde": "2026-01-01",
+        "fecha_hasta": "2026-06-30"
     },
     {
-        "nombre": "Copa Libertadores",
+        "nombre": "Liga Profesional de Futbol - Torneo Clausura 2026",
+        "league_slug": "arg.1",
+        "season": "2026",
+        "fase": "clausura",
+        "fecha_desde": "2026-07-01",
+        "fecha_hasta": "2026-12-31"
+    },
+    {
+        "nombre": "Copa Libertadores 2026",
         "league_slug": "conmebol.libertadores",
         "season": "2026"
     },
     {
-        "nombre": "Copa Sudamericana",
+        "nombre": "Copa Sudamericana 2026",
         "league_slug": "conmebol.sudamericana",
         "season": "2026"
     }
