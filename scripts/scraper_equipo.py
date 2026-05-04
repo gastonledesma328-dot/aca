@@ -129,6 +129,9 @@ def tiene_marcador(partido):
 def completar_partidos(equipo, partidos):
     equipo_id = equipo["id"]
 
+    print(f"🔎 Buscando partidos para: {equipo['nombre']} ({equipo_id})")
+    print(f"📋 Total partidos disponibles: {len(partidos)}")
+
     partidos_equipo = []
 
     for partido in partidos:
@@ -140,6 +143,8 @@ def completar_partidos(equipo, partidos):
 
         if local_id == equipo_id or visitante_id == equipo_id:
             partidos_equipo.append(partido)
+
+        print(f"🎯 Partidos encontrados para {equipo['nombre']}: {len(partidos_equipo)}")
 
     proximos = []
     resultados = []
