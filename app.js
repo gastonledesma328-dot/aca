@@ -808,6 +808,7 @@ async function loadAgenda(date = currentAgendaDate) {
       total: data.total,
     });
 
+    const selectedDate = localDateISO(date);
     agendaLoadedDate = selectedDate;
     setUtilityStatus("");
   } catch (error) {
