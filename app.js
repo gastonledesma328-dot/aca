@@ -29,8 +29,6 @@ const postFeed = document.querySelector("#postFeed");
 const postCounter = document.querySelector("#postCounter");
 const notification = document.querySelector(".notification");
 
-console.log("APP.JS ACTUALIZADO CARGADO");
-
 let activeTab = "agenda";
 let muted = false;
 let favoriteMode = false;
@@ -81,7 +79,7 @@ function teamProfileHref(nombre, logo = "", liga = "") {
 
 // Lo dejo global para poder probarlo desde la consola
 window.crearTeamId = crearTeamId;
-window.teamProfileHref = teamProfileHref;
+
 
 function setUtilityOpen(open) {
   utilityPanel.classList.toggle("hidden", !open);
