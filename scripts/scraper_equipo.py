@@ -11,6 +11,7 @@ OUTPUT_FILE = "data/equipos.json"
 
 # Liga Profesional Argentina en ESPN
 LEAGUE_SLUG = "arg.1"
+SEASON = "2026"
 
 EQUIPOS_BASE = [
     {
@@ -117,6 +118,19 @@ def equipo_vacio(equipo):
             "goles": [],
             "asistencias": [],
             "amarillas": [],
+            "rojas": [],
+        },
+        "estadisticasGenerales": {
+            "posicion": "-",
+            "partidos": "-",
+            "ganados": "-",
+            "empatados": "-",
+            "perdidos": "-",
+            "golesFavor": "-",
+            "golesContra": "-",
+            "diferenciaGol": "-",
+            "puntos": "-",
+            "racha": "-",
         },
     }
 
@@ -148,6 +162,19 @@ def cargar_resumen_partido(game_id):
     return get_json(url)
 
 
+def cargar_plays_partido(game_id):
+    if not game_id:
+        return None
+
+    # En fútbol normalmente event_id y competition_id son iguales.
+    url = (
+        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}"
+        f"/events/{game_id}/competitions/{game_id}/plays?limit=300"
+    )
+
+    return get_json(url)
+
+
 def limpiar_score(score):
     if score is None:
         return None
@@ -167,6 +194,21 @@ def limpiar_score(score):
         return None
 
     return str(score)
+
+
+def valor_stat(stat):
+    if not isinstance(stat, dict):
+        return "-"
+
+    for key in ["displayValue", "value", "total", "stat"]:
+        value = stat.get(key)
+
+        if value is not None and value != "":
+            if isinstance(value, float) and value.is_integer():
+                return str(int(value))
+            return str(value)
+
+    return "-"
 
 
 def parse_score_event(evento):
@@ -204,6 +246,61 @@ def parse_score_event(evento):
         "estado": status.get("description") or status.get("name") or "",
         "url": (evento.get("links") or [{}])[0].get("href", ""),
     }
+
+
+def cargar_datos_club(base):
+    espn_id = base.get("espn_id")
+
+    if not espn_id:
+        return base
+
+    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}"
+    data = get_json(url)
+
+    if not data:
+        return base
+
+    team = data.get("team") or data
+
+    if not isinstance(team, dict):
+        return base
+
+    actualizado = dict(base)
+
+    nombre = (
+        team.get("displayName")
+        or team.get("name")
+        or team.get("shortDisplayName")
+        or base.get("nombre")
+    )
+
+    if nombre:
+        actualizado["nombre"] = nombre
+
+    logos = team.get("logos") or []
+    if logos and isinstance(logos, list):
+        logo = logos[0].get("href")
+        if logo:
+            actualizado["logo"] = logo
+
+    venue = team.get("venue") or {}
+    if isinstance(venue, dict):
+        estadio = venue.get("fullName") or venue.get("name")
+        ciudad = (
+            (venue.get("address") or {}).get("city")
+            or venue.get("city")
+        )
+
+        if estadio:
+            actualizado["estadio"] = estadio
+
+        if ciudad:
+            actualizado["ciudad"] = ciudad
+
+    if team.get("nickname"):
+        actualizado["apodo"] = team.get("nickname")
+
+    return actualizado
 
 
 def cargar_partidos_equipo(equipo):
@@ -406,9 +503,10 @@ def filtrar_estadisticas_por_plantel(estadisticas, plantel):
         "goles": [],
         "asistencias": [],
         "amarillas": [],
+        "rojas": [],
     }
 
-    for categoria in ["goles", "asistencias", "amarillas"]:
+    for categoria in ["goles", "asistencias", "amarillas", "rojas"]:
         for item in estadisticas.get(categoria, []):
             jugador = item.get("jugador", "")
 
@@ -431,6 +529,7 @@ def extraer_eventos_recursivo(data):
                 or "play" in keys
                 or "athletesInvolved" in keys
                 or "participants" in keys
+                or "card" in keys
             ):
                 encontrados.append(obj)
 
@@ -465,17 +564,23 @@ def detectar_tipo_evento(evento):
 
     texto = slug(" ".join(textos))
 
+    if "red-card" in texto or "redcard" in texto or "red-card" in texto:
+        return "roja"
+
+    if "tarjeta-roja" in texto or "roja" in texto or "red" in texto:
+        return "roja"
+
+    if "second-yellow" in texto or "segunda-amarilla" in texto:
+        return "roja"
+
+    if "yellow" in texto or "amarilla" in texto:
+        return "amarilla"
+
     if "goal" in texto or "gol" in texto:
         return "gol"
 
     if "assist" in texto or "asistencia" in texto:
         return "asistencia"
-
-    if "yellow" in texto or "amarilla" in texto:
-        return "amarilla"
-
-    if "card" in texto and "yellow" in texto:
-        return "amarilla"
 
     return ""
 
@@ -517,10 +622,11 @@ def cargar_estadisticas_desde_resumenes(equipo):
     goles = Counter()
     asistencias = Counter()
     amarillas = Counter()
+    rojas = Counter()
 
     partidos = equipo.get("resultados", [])[:10]
 
-    print(f"📊 Buscando estadísticas por resumen para {equipo.get('nombre')}")
+    print(f"📊 Buscando estadísticas por resumen/plays para {equipo.get('nombre')}")
 
     for partido in partidos:
         game_id = extraer_game_id(partido.get("url"))
@@ -528,22 +634,26 @@ def cargar_estadisticas_desde_resumenes(equipo):
         if not game_id:
             continue
 
-        data = cargar_resumen_partido(game_id)
-
-        if not data:
-            continue
-
-        print(f"📌 Summary {game_id} keys: {list(data.keys())}")
+        resumen = cargar_resumen_partido(game_id)
+        plays = cargar_plays_partido(game_id)
 
         eventos = []
 
-        if isinstance(data.get("scoringPlays"), list):
-            eventos.extend(data.get("scoringPlays") or [])
+        if isinstance(resumen, dict):
+            if isinstance(resumen.get("scoringPlays"), list):
+                eventos.extend(resumen.get("scoringPlays") or [])
 
-        if isinstance(data.get("plays"), list):
-            eventos.extend(data.get("plays") or [])
+            if isinstance(resumen.get("plays"), list):
+                eventos.extend(resumen.get("plays") or [])
 
-        eventos.extend(extraer_eventos_recursivo(data))
+            eventos.extend(extraer_eventos_recursivo(resumen))
+
+        if isinstance(plays, dict):
+            items = plays.get("items") or plays.get("plays") or []
+            if isinstance(items, list):
+                eventos.extend(items)
+
+            eventos.extend(extraer_eventos_recursivo(plays))
 
         for evento in eventos:
             if not isinstance(evento, dict):
@@ -569,10 +679,14 @@ def cargar_estadisticas_desde_resumenes(equipo):
             elif tipo == "amarilla":
                 amarillas[jugador_principal] += 1
 
+            elif tipo == "roja":
+                rojas[jugador_principal] += 1
+
     return {
         "goles": sumar_counter_a_lista(goles),
         "asistencias": sumar_counter_a_lista(asistencias),
         "amarillas": sumar_counter_a_lista(amarillas),
+        "rojas": sumar_counter_a_lista(rojas),
     }
 
 
@@ -583,6 +697,7 @@ def cargar_estadisticas_jugadores(equipo):
         "goles": [],
         "asistencias": [],
         "amarillas": [],
+        "rojas": [],
     }
 
     if not espn_id:
@@ -590,7 +705,9 @@ def cargar_estadisticas_jugadores(equipo):
 
     urls = [
         f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}/statistics",
-        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}/seasons/2026/types/1/teams/{espn_id}/statistics?lang=es&region=ar",
+        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}/leaders?limit=100",
+        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}/seasons/{SEASON}/leaders?limit=100",
+        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}/seasons/{SEASON}/types/1/teams/{espn_id}/statistics?lang=es&region=ar",
     ]
 
     for url in urls:
@@ -602,13 +719,20 @@ def cargar_estadisticas_jugadores(equipo):
         print(f"📊 Estadísticas recibidas para {equipo.get('nombre')}")
         print("🔑 Keys principales:", list(data.keys()))
 
-        leaders = data.get("leaders") or data.get("categories") or []
+        leaders = data.get("leaders") or data.get("categories") or data.get("items") or []
 
         for group in leaders:
             if not isinstance(group, dict):
                 continue
 
-            group_name = slug(group.get("name") or group.get("displayName") or "")
+            group_name = slug(
+                group.get("name")
+                or group.get("displayName")
+                or group.get("shortDisplayName")
+                or group.get("abbreviation")
+                or ""
+            )
+
             items = (
                 group.get("leaders")
                 or group.get("items")
@@ -657,16 +781,157 @@ def cargar_estadisticas_jugadores(equipo):
                         }
                     )
 
+                if "red" in group_name or "roja" in group_name:
+                    estadisticas["rojas"].append(
+                        {
+                            "jugador": nombre,
+                            "total": total,
+                        }
+                    )
+
     estadisticas["goles"] = estadisticas["goles"][:10]
     estadisticas["asistencias"] = estadisticas["asistencias"][:10]
     estadisticas["amarillas"] = estadisticas["amarillas"][:10]
+    estadisticas["rojas"] = estadisticas["rojas"][:10]
 
     return estadisticas
+
+
+def extraer_team_id_desde_entry(entry):
+    team = entry.get("team") or {}
+
+    if isinstance(team, dict):
+        if team.get("id"):
+            return str(team.get("id"))
+
+        ref = team.get("$ref") or team.get("href") or ""
+        if "/teams/" in ref:
+            return ref.split("/teams/")[1].split("?")[0].split("/")[0]
+
+    return ""
+
+
+def extraer_entries_standings(data):
+    entries = []
+
+    def caminar(obj):
+        if isinstance(obj, dict):
+            if isinstance(obj.get("entries"), list):
+                entries.extend(obj.get("entries"))
+
+            for value in obj.values():
+                caminar(value)
+
+        elif isinstance(obj, list):
+            for item in obj:
+                caminar(item)
+
+    caminar(data)
+    return entries
+
+
+def mapear_stats_generales(entry):
+    stats = entry.get("stats") or []
+    salida = {
+        "posicion": "-",
+        "partidos": "-",
+        "ganados": "-",
+        "empatados": "-",
+        "perdidos": "-",
+        "golesFavor": "-",
+        "golesContra": "-",
+        "diferenciaGol": "-",
+        "puntos": "-",
+        "racha": "-",
+    }
+
+    if entry.get("rank"):
+        salida["posicion"] = str(entry.get("rank"))
+
+    for stat in stats:
+        if not isinstance(stat, dict):
+            continue
+
+        name = slug(
+            stat.get("name")
+            or stat.get("displayName")
+            or stat.get("shortDisplayName")
+            or stat.get("abbreviation")
+            or ""
+        )
+
+        value = valor_stat(stat)
+
+        if name in ["rank", "ranking", "position", "posicion"]:
+            salida["posicion"] = value
+
+        elif name in ["gamesplayed", "games-played", "played", "partidos", "gp"]:
+            salida["partidos"] = value
+
+        elif name in ["wins", "win", "ganados", "w"]:
+            salida["ganados"] = value
+
+        elif name in ["ties", "draws", "empates", "empatados", "d"]:
+            salida["empatados"] = value
+
+        elif name in ["losses", "lost", "perdidos", "l"]:
+            salida["perdidos"] = value
+
+        elif name in ["points", "puntos", "pts"]:
+            salida["puntos"] = value
+
+        elif name in ["pointsfor", "goalsfor", "golesfavor", "gf", "f"]:
+            salida["golesFavor"] = value
+
+        elif name in ["pointsagainst", "goalsagainst", "golescontra", "ga", "a"]:
+            salida["golesContra"] = value
+
+        elif name in ["pointdifferential", "goaldifference", "diferenciagol", "gd"]:
+            salida["diferenciaGol"] = value
+
+        elif name in ["streak", "racha"]:
+            salida["racha"] = value
+
+    return salida
+
+
+def cargar_estadisticas_generales(equipo):
+    espn_id = str(equipo.get("espn_id") or "")
+
+    if not espn_id:
+        return equipo_vacio(equipo)["estadisticasGenerales"]
+
+    urls = [
+        f"https://site.api.espn.com/apis/v2/sports/soccer/{LEAGUE_SLUG}/standings",
+        f"https://site.web.api.espn.com/apis/v2/sports/soccer/{LEAGUE_SLUG}/standings",
+        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}/standings",
+    ]
+
+    for url in urls:
+        data = get_json(url)
+
+        if not data:
+            continue
+
+        entries = extraer_entries_standings(data)
+
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+
+            team_id = extraer_team_id_desde_entry(entry)
+
+            if team_id == espn_id:
+                print(f"📈 Estadísticas generales encontradas para {equipo.get('nombre')}")
+                return mapear_stats_generales(entry)
+
+    return equipo_vacio(equipo)["estadisticasGenerales"]
 
 
 def completar_equipo(base):
     print(f"🏟️ Actualizando equipo: {base['nombre']}")
 
+    base = cargar_datos_club(base)
     equipo = equipo_vacio(base)
 
     proximos, resultados = cargar_partidos_equipo(base)
@@ -681,6 +946,7 @@ def completar_equipo(base):
         not estadisticas["goles"]
         and not estadisticas["asistencias"]
         and not estadisticas["amarillas"]
+        and not estadisticas["rojas"]
     ):
         estadisticas = cargar_estadisticas_desde_resumenes(equipo)
 
@@ -692,6 +958,7 @@ def completar_equipo(base):
     print("✅ Estadísticas filtradas:", equipo["nombre"], estadisticas)
 
     equipo["estadisticas"] = estadisticas
+    equipo["estadisticasGenerales"] = cargar_estadisticas_generales(base)
 
     return equipo
 
