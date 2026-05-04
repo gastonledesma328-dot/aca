@@ -634,10 +634,24 @@ def buscar_jugadores_plantel_en_texto(texto, plantel):
     mapa = mapa_jugadores_plantel(plantel)
 
     encontrados = []
+    vistos = set()
 
     for jugador_slug, nombre_real in mapa.items():
-        if jugador_slug and jugador_slug in texto_slug:
-            encontrados.append(nombre_real)
+        if not jugador_slug:
+            continue
+
+        partes = jugador_slug.split("-")
+        apellido = partes[-1] if partes else ""
+
+        coincide_nombre_completo = jugador_slug in texto_slug
+        coincide_apellido = apellido and len(apellido) >= 4 and apellido in texto_slug
+
+        if coincide_nombre_completo or coincide_apellido:
+            key = slug(nombre_real)
+
+            if key not in vistos:
+                vistos.add(key)
+                encontrados.append(nombre_real)
 
     return encontrados
 
@@ -676,10 +690,17 @@ def extraer_jugadores_de_evento(evento):
 
 
 def extraer_jugadores_de_evento_con_plantel(evento, plantel):
-    jugadores = extraer_jugadores_de_evento(evento)
+    jugadores_directos = extraer_jugadores_de_evento(evento)
+    validos = nombres_validos_plantel(plantel)
 
-    if jugadores:
-        return jugadores
+    jugadores_validos = []
+
+    for jugador in jugadores_directos:
+        if slug(jugador) in validos:
+            jugadores_validos.append(jugador)
+
+    if jugadores_validos:
+        return jugadores_validos
 
     texto = texto_evento(evento)
 
@@ -1068,6 +1089,8 @@ def cargar_datos_por_competicion(base, equipo, competicion):
         equipo["plantel"]
     )
 
+    # Temporal: ESPN suele mezclar tarjetas rojas con otros eventos.
+    # Mejor dejar rojas vacías antes que mostrar datos falsos.
     estadisticas["rojas"] = []
 
     if resultados or proximos:
