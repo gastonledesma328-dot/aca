@@ -1401,10 +1401,14 @@ footer strong {
    Fuera de cualquier @media
 ================================ */
 
+/* ================================
+   LOGOS DE LIGA = MISMO TAMAÑO QUE ESCUDOS
+================================ */
+
 .agenda-group .agenda-group-head .agenda-league-title {
   display: flex !important;
   align-items: center !important;
-  gap: 5px !important;
+  gap: 7px !important;
   min-width: 0 !important;
 }
 
@@ -1412,35 +1416,35 @@ footer strong {
 .agenda-group-head img.league-logo,
 img.league-logo {
   display: inline-block !important;
-  width: 13px !important;
-  height: 13px !important;
-  min-width: 13px !important;
-  min-height: 13px !important;
-  max-width: 13px !important;
-  max-height: 13px !important;
-  flex: 0 0 13px !important;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  max-width: 22px !important;
+  max-height: 22px !important;
+  flex: 0 0 22px !important;
   object-fit: contain !important;
   object-position: center !important;
-  border-radius: 3px !important;
-  padding: 1px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
   margin: 0 !important;
   background: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: none !important;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
 }
 
 .agenda-group .agenda-group-head .agenda-league-title .league-logo-fallback {
-  width: 13px !important;
-  height: 13px !important;
-  min-width: 13px !important;
-  min-height: 13px !important;
-  max-width: 13px !important;
-  max-height: 13px !important;
-  flex: 0 0 13px !important;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  max-width: 22px !important;
+  max-height: 22px !important;
+  flex: 0 0 22px !important;
   display: grid !important;
   place-items: center !important;
-  font-size: 7px !important;
+  font-size: 8px !important;
   line-height: 1 !important;
-  border-radius: 3px !important;
+  border-radius: 50% !important;
   padding: 0 !important;
 }
 
@@ -1458,4 +1462,5 @@ img.league-logo {
 .agenda-group .agenda-group-head .agenda-league-title span {
   font-size: 9px !important;
   line-height: 1.1 !important;
+}
 }
