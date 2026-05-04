@@ -687,6 +687,75 @@ def extraer_jugadores_de_evento(evento):
     return limpios
 
 
+def texto_evento(obj):
+    partes = []
+
+    def caminar(valor):
+        if isinstance(valor, dict):
+            for k, v in valor.items():
+                if k in [
+                    "text",
+                    "description",
+                    "displayName",
+                    "shortDisplayName",
+                    "name",
+                    "headline",
+                    "caption",
+                ]:
+                    if isinstance(v, str):
+                        partes.append(v)
+                    elif isinstance(v, dict):
+                        caminar(v)
+                elif isinstance(v, (dict, list)):
+                    caminar(v)
+
+        elif isinstance(valor, list):
+            for item in valor:
+                caminar(item)
+
+    caminar(obj)
+    return " ".join(partes)
+
+
+def mapa_jugadores_plantel(plantel):
+    mapa = {}
+
+    for grupo in (plantel or {}).values():
+        for jugador in grupo:
+            nombre = jugador.get("nombre")
+            if nombre:
+                mapa[slug(nombre)] = nombre
+
+    return mapa
+
+
+def buscar_jugadores_plantel_en_texto(texto, plantel):
+    texto_slug = slug(texto)
+    mapa = mapa_jugadores_plantel(plantel)
+
+    encontrados = []
+
+    for jugador_slug, nombre_real in mapa.items():
+        if jugador_slug and jugador_slug in texto_slug:
+            encontrados.append(nombre_real)
+
+    return encontrados
+
+
+def extraer_jugadores_de_evento_con_plantel(evento, plantel):
+    jugadores = extraer_jugadores_de_evento(evento)
+
+    if jugadores:
+        return jugadores
+
+    texto = texto_evento(evento)
+
+    if not texto:
+        return []
+
+    return buscar_jugadores_plantel_en_texto(texto, plantel)
+
+
 def cargar_estadisticas_desde_resumenes(equipo):
     goles = Counter()
     asistencias = Counter()
@@ -694,8 +763,9 @@ def cargar_estadisticas_desde_resumenes(equipo):
     rojas = Counter()
 
     partidos = equipo.get("resultados", [])[:20]
+    plantel = equipo.get("plantel") or {}
 
-    print(f"📊 Calculando estadísticas SOLO por partidos filtrados para {equipo.get('nombre')}")
+    print(f"📊 Calculando estadísticas por partidos filtrados para {equipo.get('nombre')}")
 
     for partido in partidos:
         game_id = extraer_game_id(partido.get("url"))
@@ -708,7 +778,6 @@ def cargar_estadisticas_desde_resumenes(equipo):
         if not isinstance(resumen, dict):
             continue
 
-        # 1) Goles y posibles asistencias desde scoringPlays.
         scoring_plays = resumen.get("scoringPlays") or []
 
         if isinstance(scoring_plays, list):
@@ -716,22 +785,21 @@ def cargar_estadisticas_desde_resumenes(equipo):
                 if not isinstance(play, dict):
                     continue
 
-                jugadores = extraer_jugadores_de_evento(play)
+                jugadores = extraer_jugadores_de_evento_con_plantel(play, plantel)
 
                 if not jugadores:
                     continue
 
-                # Primer jugador: goleador.
                 goles[jugadores[0]] += 1
 
-                # Segundo jugador, si existe: posible asistidor.
                 if len(jugadores) > 1:
                     asistencias[jugadores[1]] += 1
 
-        # 2) Tarjetas desde plays, pero sin búsqueda recursiva amplia.
         plays = resumen.get("plays") or []
 
         if isinstance(plays, list):
+            vistos_tarjetas = set()
+
             for play in plays:
                 if not isinstance(play, dict):
                     continue
@@ -741,16 +809,21 @@ def cargar_estadisticas_desde_resumenes(equipo):
                 if tipo not in ["amarilla", "roja"]:
                     continue
 
-                jugadores = extraer_jugadores_de_evento(play)
+                jugadores = extraer_jugadores_de_evento_con_plantel(play, plantel)
 
                 if not jugadores:
                     continue
 
                 jugador = jugadores[0]
+                key = f"{game_id}-{tipo}-{slug(jugador)}-{texto_evento(play)[:80]}"
+
+                if key in vistos_tarjetas:
+                    continue
+
+                vistos_tarjetas.add(key)
 
                 if tipo == "amarilla":
                     amarillas[jugador] += 1
-
                 elif tipo == "roja":
                     rojas[jugador] += 1
 
@@ -1003,7 +1076,11 @@ def cargar_datos_por_competicion(base, equipo, competicion):
     resultados = filtrar_partidos_por_fecha(resultados, competicion)
 
     equipo_temp = dict(equipo)
-    equipo_temp["resultados"] = resultados
+equipo_temp["resultados"] = resultados
+equipo_temp["plantel"] = equipo["plantel"]
+
+if competicion.get("fecha_desde") or competicion.get("fecha_hasta"):
+    estadisticas = cargar_estadisticas_desde_resumenes(equipo_temp)
 
     # Para competiciones separadas por fechas, conviene calcular estadísticas desde los partidos filtrados.
     # Así Apertura y Clausura no se mezclan.
