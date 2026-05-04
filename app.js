@@ -79,6 +79,10 @@ function teamProfileHref(nombre, logo = "", liga = "") {
   return `equipo.html?${params.toString()}`;
 }
 
+// Lo dejo global para poder probarlo desde la consola
+window.crearTeamId = crearTeamId;
+window.teamProfileHref = teamProfileHref;
+
 function setUtilityOpen(open) {
   utilityPanel.classList.toggle("hidden", !open);
   searchToggle.setAttribute("aria-expanded", String(open));
