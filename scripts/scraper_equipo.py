@@ -718,57 +718,44 @@ def extraer_jugadores_de_evento_con_plantel(evento, plantel):
 
 
 def detectar_tipo_evento(evento):
-    textos = []
+    tipo = evento.get("type") or {}
 
-    for key in ["type", "text", "description", "displayName", "shortDisplayName", "name", "detail"]:
-        value = evento.get(key)
+    tipo_text = ""
+    tipo_type = ""
 
-        if isinstance(value, dict):
-            textos.append(
-                str(
-                    value.get("text")
-                    or value.get("description")
-                    or value.get("name")
-                    or value.get("detail")
-                    or ""
-                )
-            )
-        elif value is not None:
-            textos.append(str(value))
+    if isinstance(tipo, dict):
+        tipo_text = slug(tipo.get("text") or "")
+        tipo_type = slug(tipo.get("type") or "")
 
-    texto = slug(" ".join(textos))
+    texto = slug(
+        evento.get("text")
+        or evento.get("displayText")
+        or evento.get("description")
+        or evento.get("detail")
+        or ""
+    )
 
-    if not texto:
-        return ""
+    combinado = f"{tipo_text} {tipo_type} {texto}"
 
-    falsos_gol = [
-        "goal-difference",
-        "goals-for",
-        "goals-against",
-        "goalkeeper",
-        "expected-goals",
-        "goalie",
-    ]
+    # Primero usar tipo oficial de ESPN si existe.
+    if tipo_type == "goal" or tipo_text == "goal":
+        return "gol"
 
-    if any(falso in texto for falso in falsos_gol):
-        return ""
-
-    if "red-card" in texto or "redcard" in texto or "tarjeta-roja" in texto:
-        return "roja"
-
-    if "second-yellow" in texto or "segunda-amarilla" in texto:
-        return "roja"
-
-    if (
-        "yellow-card" in texto
-        or "yellowcard" in texto
-        or "tarjeta-amarilla" in texto
-        or "amarilla" in texto
-    ):
+    if tipo_type == "yellow-card" or tipo_text == "yellow-card":
         return "amarilla"
 
-    if "goal" in texto or "gol" in texto:
+    if tipo_type == "red-card" or tipo_text == "red-card":
+        return "roja"
+
+    # Fallback por texto, pero estricto.
+    if texto.startswith("goal"):
         return "gol"
+
+    if "is-shown-the-yellow-card" in texto:
+        return "amarilla"
+
+    if "is-shown-the-red-card" in texto:
+        return "roja"
 
     return ""
 
@@ -777,14 +764,10 @@ def extraer_asistencia_desde_texto(texto, plantel):
     texto_original = str(texto or "")
     texto_slug = slug(texto_original)
 
-    palabras_clave = [
-        "assist",
-        "assisted-by",
-        "asistencia",
-        "asistido-por",
-    ]
+    if not texto_slug.startswith("goal"):
+        return ""
 
-    if not any(palabra in texto_slug for palabra in palabras_clave):
+    if "assisted-by" not in texto_slug:
         return ""
 
     jugadores = buscar_jugadores_plantel_en_texto(texto_original, plantel)
