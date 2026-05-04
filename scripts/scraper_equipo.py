@@ -790,10 +790,20 @@ def cargar_estadisticas_365scores(equipo, plantel):
             },
         )
 
-        print(f"📊 365Scores {r.status_code} {url}")
+        print("🔎 365Scores raw length:", len(r.text or ""))
+print("🔎 365Scores content-type:", r.headers.get("content-type"))
+print("🔎 365Scores inicio raw:", (r.text or "")[:500])
+print("🔎 365Scores tiene __NEXT_DATA__:", "__NEXT_DATA__" in (r.text or ""))
+print("🔎 365Scores tiene Goles raw:", "Goles" in (r.text or ""))
+print("🔎 365Scores tiene window:", "window" in (r.text or ""))
 
-        if not r.ok:
-            return estadisticas_vacias()
+texto = limpiar_html_365(r.text)
+
+print("🔎 365Scores texto length:", len(texto))
+print("🔎 Tiene Goles:", "Goles" in texto)
+print("🔎 Tiene Asistencias:", "Asistencias" in texto)
+print("🔎 Tiene Tarjetas Amarillas:", "Tarjetas Amarillas" in texto)
+print("🔎 Tiene Tarjetas Rojas:", "Tarjetas Rojas" in texto)
 
         texto = limpiar_html_365(r.text)
 
