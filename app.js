@@ -55,6 +55,28 @@ function normalizeText(value) {
     .toLowerCase();
 }
 
+function crearTeamId(nombre) {
+  return String(nombre || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function teamProfileHref(nombre, logo = "", liga = "") {
+  const id = crearTeamId(nombre);
+
+  const params = new URLSearchParams({
+    id: id,
+    nombre: nombre || "",
+    logo: logo || "",
+    liga: liga || ""
+  });
+
+  return `equipo.html?${params.toString()}`;
+}
+
 function setUtilityOpen(open) {
   utilityPanel.classList.toggle("hidden", !open);
   searchToggle.setAttribute("aria-expanded", String(open));
@@ -359,17 +381,14 @@ function scoreMarkup(match) {
     match.marcador_visitante !== null &&
     String(match.marcador_visitante).trim() !== "";
 
-  // Primero usamos resultado si viene listo del scraper
   if (match.resultado && String(match.resultado).trim()) {
     return String(match.resultado).replace("-", " - ");
   }
 
-  // Si existen los dos marcadores, los mostramos aunque mostrar_marcador venga falso
   if (hasLocal && hasAway) {
     return `${match.marcador_local} - ${match.marcador_visitante}`;
   }
 
-  // Si el partido es próximo y no hay marcador real
   return "-";
 }
 
@@ -614,27 +633,27 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
   }
 
   const groups = matches.reduce((acc, match) => {
-  const sport = agendaSport(match);
-  const league = inferAgendaLeague(match);
-  const key = `${sport}||${league}`;
-  const leagueLogo = match.liga_logo || match.competicion?.logo || null;
+    const sport = agendaSport(match);
+    const league = inferAgendaLeague(match);
+    const key = `${sport}||${league}`;
+    const leagueLogo = match.liga_logo || match.competicion?.logo || null;
 
-  if (!acc.has(key)) {
-    acc.set(key, {
-      sport,
-      league,
-      leagueLogo,
-      matches: [],
-    });
-  }
+    if (!acc.has(key)) {
+      acc.set(key, {
+        sport,
+        league,
+        leagueLogo,
+        matches: [],
+      });
+    }
 
-  if (!acc.get(key).leagueLogo && leagueLogo) {
-    acc.get(key).leagueLogo = leagueLogo;
-  }
+    if (!acc.get(key).leagueLogo && leagueLogo) {
+      acc.get(key).leagueLogo = leagueLogo;
+    }
 
-  acc.get(key).matches.push(match);
-  return acc;
-}, new Map());
+    acc.get(key).matches.push(match);
+    return acc;
+  }, new Map());
 
   Array.from(groups.values())
     .sort((a, b) => {
@@ -670,28 +689,26 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
       const section = document.createElement("section");
       section.className = "agenda-group";
       section.innerHTML = `
-  <header class="agenda-group-head">
-    <div class="agenda-league-title">
-      ${leagueLogoMarkup(group.league, group.leagueLogo)}
-      <div>
-        <span>${group.sport}</span>
-        <strong>${group.league}</strong>
-      </div>
-    </div>
-    <em>${group.matches.length}</em>
-  </header>
-  <div class="agenda-list"></div>
-`;
+        <header class="agenda-group-head">
+          <div class="agenda-league-title">
+            ${leagueLogoMarkup(group.league, group.leagueLogo)}
+            <div>
+              <span>${group.sport}</span>
+              <strong>${group.league}</strong>
+            </div>
+          </div>
+          <em>${group.matches.length}</em>
+        </header>
+        <div class="agenda-list"></div>
+      `;
 
       const list = section.querySelector(".agenda-list");
 
       group.matches.forEach((match) => {
-        const row = document.createElement("a");
+        const row = document.createElement("article");
 
         row.className = "agenda-row";
-        row.href = match.url_espn || sourceUrl;
-        row.target = "_blank";
-        row.rel = "noreferrer";
+        row.dataset.espnUrl = match.url_espn || sourceUrl;
 
         const home = match.local || match.partido?.split(" vs ")[0] || "Local";
         const away = match.visitante || match.partido?.split(" vs ")[1] || "Visitante";
@@ -703,21 +720,23 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
 
         row.innerHTML = `
           <time>${agendaDisplayTime(match)}</time>
+
           <span class="agenda-teams">
-            <span class="agenda-team">
+            <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo, group.league)}" title="Ver ficha de ${home}">
               ${teamLogoMarkup(home, match.local_logo)}
               <span>${home}</span>
-            </span>
+            </a>
 
             <span class="agenda-score">${scoreMarkup(match)}</span>
 
-            <span class="agenda-team">
+            <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo, group.league)}" title="Ver ficha de ${away}">
               ${teamLogoMarkup(away, match.visitante_logo)}
               <span>${away}</span>
-            </span>
+            </a>
 
             ${scorersMarkup(match)}
           </span>
+
           <span class="agenda-state">${agendaStatus(match)}</span>
         `;
 
@@ -948,6 +967,12 @@ liveGrid.addEventListener("click", (event) => {
 });
 
 leagueGrid.addEventListener("click", (event) => {
+  const teamLink = event.target.closest(".team-link");
+
+  if (teamLink) {
+    return;
+  }
+
   const row = event.target.closest(".agenda-row");
 
   if (!favoriteMode || !row) {
