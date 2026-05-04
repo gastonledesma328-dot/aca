@@ -150,7 +150,9 @@ def equipo_vacio(equipo):
             "diferenciaGol": "-",
             "puntos": "-",
             "racha": "-",
+            
         },
+        "estadisticasPorCompeticion": {},
     }
 
 
@@ -947,19 +949,25 @@ def cargar_estadisticas_generales(equipo):
     return equipo_vacio(equipo)["estadisticasGenerales"]
 
 
-def completar_equipo(base):
-    print(f"🏟️ Actualizando equipo: {base['nombre']}")
+def cargar_datos_por_competicion(base, equipo, competicion):
+    global LEAGUE_SLUG, SEASON
 
-    base = cargar_datos_club(base)
-    equipo = equipo_vacio(base)
+    league_original = LEAGUE_SLUG
+    season_original = SEASON
+
+    LEAGUE_SLUG = competicion["league_slug"]
+    SEASON = competicion["season"]
+
+    nombre_competicion = competicion["nombre"]
+
+    print(f"🏆 Cargando competición: {nombre_competicion} para {base['nombre']}")
 
     proximos, resultados = cargar_partidos_equipo(base)
-    equipo["proximosPartidos"] = proximos
-    equipo["resultados"] = resultados
-
-    equipo["plantel"] = cargar_plantel(base)
 
     estadisticas = cargar_estadisticas_jugadores(base)
+
+    equipo_temp = dict(equipo)
+    equipo_temp["resultados"] = resultados
 
     if (
         not estadisticas["goles"]
@@ -967,17 +975,64 @@ def completar_equipo(base):
         and not estadisticas["amarillas"]
         and not estadisticas["rojas"]
     ):
-        estadisticas = cargar_estadisticas_desde_resumenes(equipo)
+        estadisticas = cargar_estadisticas_desde_resumenes(equipo_temp)
 
     estadisticas = filtrar_estadisticas_por_plantel(
         estadisticas,
         equipo["plantel"]
     )
 
-    print("✅ Estadísticas filtradas:", equipo["nombre"], estadisticas)
+    # Temporal: las rojas pueden venir mezcladas desde ESPN/plays.
+    # Mejor dejarlas vacías hasta tener parser 100% confiable.
+    estadisticas["rojas"] = []
 
-    equipo["estadisticas"] = estadisticas
-    equipo["estadisticasGenerales"] = cargar_estadisticas_generales(base)
+    generales = cargar_estadisticas_generales(base)
+
+    LEAGUE_SLUG = league_original
+    SEASON = season_original
+
+    return {
+        "nombre": nombre_competicion,
+        "league_slug": competicion["league_slug"],
+        "season": competicion["season"],
+        "proximosPartidos": proximos,
+        "resultados": resultados,
+        "estadisticas": estadisticas,
+        "generales": generales
+    }
+
+
+
+def completar_equipo(base):
+    print(f"🏟️ Actualizando equipo: {base['nombre']}")
+
+    base = cargar_datos_club(base)
+    equipo = equipo_vacio(base)
+
+    equipo["plantel"] = cargar_plantel(base)
+
+    estadisticas_por_competicion = {}
+
+    for competicion in COMPETICIONES:
+        datos_competicion = cargar_datos_por_competicion(
+            base,
+            equipo,
+            competicion
+        )
+
+        estadisticas_por_competicion[competicion["nombre"]] = datos_competicion
+
+    equipo["estadisticasPorCompeticion"] = estadisticas_por_competicion
+
+    # Compatibilidad con el HTML actual:
+    # usamos Liga Profesional como competición principal.
+    principal = estadisticas_por_competicion.get("Liga Profesional de Futbol")
+
+    if principal:
+        equipo["proximosPartidos"] = principal["proximosPartidos"]
+        equipo["resultados"] = principal["resultados"]
+        equipo["estadisticas"] = principal["estadisticas"]
+        equipo["estadisticasGenerales"] = principal["generales"]
 
     return equipo
 
