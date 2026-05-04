@@ -9,7 +9,6 @@ import requests
 
 OUTPUT_FILE = "data/equipos.json"
 
-# Valores por defecto
 LEAGUE_SLUG = "arg.1"
 SEASON = "2026"
 
@@ -49,6 +48,7 @@ COMPETICIONES = [
         "fecha_hasta": "",
     },
 ]
+
 
 EQUIPOS_BASE = [
     {
@@ -240,18 +240,6 @@ def cargar_resumen_partido(game_id):
     return get_json(url)
 
 
-def cargar_plays_partido(game_id):
-    if not game_id:
-        return None
-
-    url = (
-        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE_SLUG}"
-        f"/events/{game_id}/competitions/{game_id}/plays?limit=300"
-    )
-
-    return get_json(url)
-
-
 def limpiar_score(score):
     if score is None:
         return None
@@ -355,12 +343,14 @@ def cargar_datos_club(base):
         actualizado["nombre"] = nombre
 
     logos = team.get("logos") or []
+
     if logos and isinstance(logos, list):
         logo = logos[0].get("href")
         if logo:
             actualizado["logo"] = logo
 
     venue = team.get("venue") or {}
+
     if isinstance(venue, dict):
         estadio = venue.get("fullName") or venue.get("name")
         ciudad = (venue.get("address") or {}).get("city") or venue.get("city")
@@ -490,9 +480,7 @@ def cargar_plantel(equipo):
                     {
                         "nombre": nombre,
                         "edad": athlete.get("age") or "-",
-                        "altura": athlete.get("displayHeight")
-                        or athlete.get("height")
-                        or "-",
+                        "altura": athlete.get("displayHeight") or athlete.get("height") or "-",
                     }
                 )
 
@@ -559,8 +547,15 @@ def nombres_validos_plantel(plantel):
     nombres = set()
 
     for grupo in plantel.values():
+        if not isinstance(grupo, list):
+            continue
+
         for jugador in grupo:
+            if not isinstance(jugador, dict):
+                continue
+
             nombre = jugador.get("nombre")
+
             if nombre:
                 nombres.add(slug(nombre))
 
@@ -585,32 +580,113 @@ def filtrar_estadisticas_por_plantel(estadisticas, plantel):
     return limpias
 
 
-def extraer_eventos_recursivo(data):
-    encontrados = []
+def texto_evento(obj):
+    partes = []
 
-    def caminar(obj):
-        if isinstance(obj, dict):
-            keys = set(obj.keys())
+    def caminar(valor):
+        if isinstance(valor, dict):
+            for k, v in valor.items():
+                if k in [
+                    "text",
+                    "description",
+                    "displayName",
+                    "shortDisplayName",
+                    "name",
+                    "headline",
+                    "caption",
+                ]:
+                    if isinstance(v, str):
+                        partes.append(v)
+                    elif isinstance(v, dict):
+                        caminar(v)
+                elif isinstance(v, (dict, list)):
+                    caminar(v)
 
-            if (
-                "type" in keys
-                or "text" in keys
-                or "play" in keys
-                or "athletesInvolved" in keys
-                or "participants" in keys
-                or "card" in keys
-            ):
-                encontrados.append(obj)
-
-            for value in obj.values():
-                caminar(value)
-
-        elif isinstance(obj, list):
-            for item in obj:
+        elif isinstance(valor, list):
+            for item in valor:
                 caminar(item)
 
-    caminar(data)
+    caminar(obj)
+    return " ".join(partes)
+
+
+def mapa_jugadores_plantel(plantel):
+    mapa = {}
+
+    for grupo in (plantel or {}).values():
+        if not isinstance(grupo, list):
+            continue
+
+        for jugador in grupo:
+            if not isinstance(jugador, dict):
+                continue
+
+            nombre = jugador.get("nombre")
+
+            if nombre:
+                mapa[slug(nombre)] = nombre
+
+    return mapa
+
+
+def buscar_jugadores_plantel_en_texto(texto, plantel):
+    texto_slug = slug(texto)
+    mapa = mapa_jugadores_plantel(plantel)
+
+    encontrados = []
+
+    for jugador_slug, nombre_real in mapa.items():
+        if jugador_slug and jugador_slug in texto_slug:
+            encontrados.append(nombre_real)
+
     return encontrados
+
+
+def extraer_jugadores_de_evento(evento):
+    jugadores = []
+
+    posibles_listas = [
+        evento.get("athletesInvolved"),
+        evento.get("participants"),
+        evento.get("players"),
+        evento.get("competitors"),
+    ]
+
+    for lista in posibles_listas:
+        if isinstance(lista, list):
+            for item in lista:
+                nombre = obtener_nombre_jugador(item)
+                if nombre:
+                    jugadores.append(nombre)
+
+    nombre_directo = obtener_nombre_jugador(evento)
+    if nombre_directo:
+        jugadores.append(nombre_directo)
+
+    vistos = set()
+    limpios = []
+
+    for jugador in jugadores:
+        key = slug(jugador)
+        if key and key not in vistos:
+            vistos.add(key)
+            limpios.append(jugador)
+
+    return limpios
+
+
+def extraer_jugadores_de_evento_con_plantel(evento, plantel):
+    jugadores = extraer_jugadores_de_evento(evento)
+
+    if jugadores:
+        return jugadores
+
+    texto = texto_evento(evento)
+
+    if not texto:
+        return []
+
+    return buscar_jugadores_plantel_en_texto(texto, plantel)
 
 
 def detectar_tipo_evento(evento):
@@ -652,108 +728,6 @@ def detectar_tipo_evento(evento):
         return "asistencia"
 
     return ""
-
-
-def extraer_jugadores_de_evento(evento):
-    jugadores = []
-
-    posibles_listas = [
-        evento.get("athletesInvolved"),
-        evento.get("participants"),
-        evento.get("players"),
-        evento.get("competitors"),
-    ]
-
-    for lista in posibles_listas:
-        if isinstance(lista, list):
-            for item in lista:
-                nombre = obtener_nombre_jugador(item)
-                if nombre:
-                    jugadores.append(nombre)
-
-    nombre_directo = obtener_nombre_jugador(evento)
-    if nombre_directo:
-        jugadores.append(nombre_directo)
-
-    vistos = set()
-    limpios = []
-
-    for jugador in jugadores:
-        key = slug(jugador)
-        if key and key not in vistos:
-            vistos.add(key)
-            limpios.append(jugador)
-
-    return limpios
-
-
-def texto_evento(obj):
-    partes = []
-
-    def caminar(valor):
-        if isinstance(valor, dict):
-            for k, v in valor.items():
-                if k in [
-                    "text",
-                    "description",
-                    "displayName",
-                    "shortDisplayName",
-                    "name",
-                    "headline",
-                    "caption",
-                ]:
-                    if isinstance(v, str):
-                        partes.append(v)
-                    elif isinstance(v, dict):
-                        caminar(v)
-                elif isinstance(v, (dict, list)):
-                    caminar(v)
-
-        elif isinstance(valor, list):
-            for item in valor:
-                caminar(item)
-
-    caminar(obj)
-    return " ".join(partes)
-
-
-def mapa_jugadores_plantel(plantel):
-    mapa = {}
-
-    for grupo in (plantel or {}).values():
-        for jugador in grupo:
-            nombre = jugador.get("nombre")
-            if nombre:
-                mapa[slug(nombre)] = nombre
-
-    return mapa
-
-
-def buscar_jugadores_plantel_en_texto(texto, plantel):
-    texto_slug = slug(texto)
-    mapa = mapa_jugadores_plantel(plantel)
-
-    encontrados = []
-
-    for jugador_slug, nombre_real in mapa.items():
-        if jugador_slug and jugador_slug in texto_slug:
-            encontrados.append(nombre_real)
-
-    return encontrados
-
-
-def extraer_jugadores_de_evento_con_plantel(evento, plantel):
-    jugadores = extraer_jugadores_de_evento(evento)
-
-    if jugadores:
-        return jugadores
-
-    texto = texto_evento(evento)
-
-    if not texto:
-        return []
-
-    return buscar_jugadores_plantel_en_texto(texto, plantel)
 
 
 def cargar_estadisticas_desde_resumenes(equipo):
@@ -855,9 +829,6 @@ def cargar_estadisticas_jugadores(equipo):
 
         if not data:
             continue
-
-        print(f"📊 Estadísticas recibidas para {equipo.get('nombre')}")
-        print("🔑 Keys principales:", list(data.keys()))
 
         leaders = data.get("leaders") or data.get("categories") or data.get("items") or []
 
@@ -1076,14 +1047,9 @@ def cargar_datos_por_competicion(base, equipo, competicion):
     resultados = filtrar_partidos_por_fecha(resultados, competicion)
 
     equipo_temp = dict(equipo)
-equipo_temp["resultados"] = resultados
-equipo_temp["plantel"] = equipo["plantel"]
+    equipo_temp["resultados"] = resultados
+    equipo_temp["plantel"] = equipo["plantel"]
 
-if competicion.get("fecha_desde") or competicion.get("fecha_hasta"):
-    estadisticas = cargar_estadisticas_desde_resumenes(equipo_temp)
-
-    # Para competiciones separadas por fechas, conviene calcular estadísticas desde los partidos filtrados.
-    # Así Apertura y Clausura no se mezclan.
     if competicion.get("fecha_desde") or competicion.get("fecha_hasta"):
         estadisticas = cargar_estadisticas_desde_resumenes(equipo_temp)
     else:
@@ -1102,10 +1068,8 @@ if competicion.get("fecha_desde") or competicion.get("fecha_hasta"):
         equipo["plantel"]
     )
 
-    # Temporal: ESPN/plays mezcla rojas con otros eventos. Mejor no mostrar datos dudosos.
     estadisticas["rojas"] = []
 
-    # Si no hay partidos en esa fase, no mostramos tabla inventada.
     if resultados or proximos:
         generales = cargar_estadisticas_generales(base)
     else:
