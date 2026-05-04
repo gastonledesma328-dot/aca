@@ -9,7 +9,7 @@
     "fundacion": "1901",
     "estadio": "Monumental",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-04T18:39:00.221079+00:00",
+    "actualizado": "2026-05-04T18:45:31.207512+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -344,9 +344,132 @@
       ]
     },
     "estadisticas": {
-      "goles": [],
-      "asistencias": [],
-      "amarillas": [],
+      "goles": [
+        {
+          "jugador": "Santiago Beltrán",
+          "total": 35
+        },
+        {
+          "jugador": "Sebastián Driussi",
+          "total": 18
+        },
+        {
+          "jugador": "Juan Fernando Quintero",
+          "total": 14
+        },
+        {
+          "jugador": "Gonzalo Montiel",
+          "total": 11
+        },
+        {
+          "jugador": "Tomás Galván",
+          "total": 11
+        },
+        {
+          "jugador": "Facundo Colidio",
+          "total": 8
+        },
+        {
+          "jugador": "Lucas Martínez Quarta",
+          "total": 7
+        },
+        {
+          "jugador": "Aníbal Moreno",
+          "total": 7
+        },
+        {
+          "jugador": "Ian Subiabre",
+          "total": 6
+        },
+        {
+          "jugador": "Kendry Páez",
+          "total": 5
+        }
+      ],
+      "asistencias": [
+        {
+          "jugador": "Gonzalo Montiel",
+          "total": 43
+        },
+        {
+          "jugador": "Juan Fernando Quintero",
+          "total": 36
+        },
+        {
+          "jugador": "Fausto Vera",
+          "total": 34
+        },
+        {
+          "jugador": "Santiago Beltrán",
+          "total": 29
+        },
+        {
+          "jugador": "Tomás Galván",
+          "total": 27
+        },
+        {
+          "jugador": "Joaquin Freitas",
+          "total": 25
+        },
+        {
+          "jugador": "Sebastián Driussi",
+          "total": 24
+        },
+        {
+          "jugador": "Facundo Colidio",
+          "total": 23
+        },
+        {
+          "jugador": "Ian Subiabre",
+          "total": 23
+        },
+        {
+          "jugador": "Lucas Martínez Quarta",
+          "total": 22
+        }
+      ],
+      "amarillas": [
+        {
+          "jugador": "Marcos Acuña",
+          "total": 14
+        },
+        {
+          "jugador": "Lautaruo Rivero",
+          "total": 12
+        },
+        {
+          "jugador": "Matías Viña",
+          "total": 10
+        },
+        {
+          "jugador": "Lucas Martínez Quarta",
+          "total": 8
+        },
+        {
+          "jugador": "Gonzalo Montiel",
+          "total": 8
+        },
+        {
+          "jugador": "Juan Meza",
+          "total": 6
+        },
+        {
+          "jugador": "Aníbal Moreno",
+          "total": 4
+        },
+        {
+          "jugador": "Ulises Giménez",
+          "total": 4
+        },
+        {
+          "jugador": "Maximiliano Salas",
+          "total": 4
+        },
+        {
+          "jugador": "Ian Subiabre",
+          "total": 4
+        }
+      ],
       "rojas": []
     },
     "estadisticasGenerales": {
@@ -443,9 +566,132 @@
           }
         ],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
+          "goles": [
+            {
+              "jugador": "Santiago Beltrán",
+              "total": 35
+            },
+            {
+              "jugador": "Sebastián Driussi",
+              "total": 18
+            },
+            {
+              "jugador": "Juan Fernando Quintero",
+              "total": 14
+            },
+            {
+              "jugador": "Gonzalo Montiel",
+              "total": 11
+            },
+            {
+              "jugador": "Tomás Galván",
+              "total": 11
+            },
+            {
+              "jugador": "Facundo Colidio",
+              "total": 8
+            },
+            {
+              "jugador": "Lucas Martínez Quarta",
+              "total": 7
+            },
+            {
+              "jugador": "Aníbal Moreno",
+              "total": 7
+            },
+            {
+              "jugador": "Ian Subiabre",
+              "total": 6
+            },
+            {
+              "jugador": "Kendry Páez",
+              "total": 5
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Gonzalo Montiel",
+              "total": 43
+            },
+            {
+              "jugador": "Juan Fernando Quintero",
+              "total": 36
+            },
+            {
+              "jugador": "Fausto Vera",
+              "total": 34
+            },
+            {
+              "jugador": "Santiago Beltrán",
+              "total": 29
+            },
+            {
+              "jugador": "Tomás Galván",
+              "total": 27
+            },
+            {
+              "jugador": "Joaquin Freitas",
+              "total": 25
+            },
+            {
+              "jugador": "Sebastián Driussi",
+              "total": 24
+            },
+            {
+              "jugador": "Facundo Colidio",
+              "total": 23
+            },
+            {
+              "jugador": "Ian Subiabre",
+              "total": 23
+            },
+            {
+              "jugador": "Lucas Martínez Quarta",
+              "total": 22
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Marcos Acuña",
+              "total": 14
+            },
+            {
+              "jugador": "Lautaruo Rivero",
+              "total": 12
+            },
+            {
+              "jugador": "Matías Viña",
+              "total": 10
+            },
+            {
+              "jugador": "Lucas Martínez Quarta",
+              "total": 8
+            },
+            {
+              "jugador": "Gonzalo Montiel",
+              "total": 8
+            },
+            {
+              "jugador": "Juan Meza",
+              "total": 6
+            },
+            {
+              "jugador": "Aníbal Moreno",
+              "total": 4
+            },
+            {
+              "jugador": "Ulises Giménez",
+              "total": 4
+            },
+            {
+              "jugador": "Maximiliano Salas",
+              "total": 4
+            },
+            {
+              "jugador": "Ian Subiabre",
+              "total": 4
+            }
+          ],
           "rojas": []
         },
         "generales": {
@@ -549,9 +795,108 @@
           }
         ],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
+          "goles": [
+            {
+              "jugador": "Santiago Beltrán",
+              "total": 6
+            },
+            {
+              "jugador": "Juan Fernando Quintero",
+              "total": 3
+            },
+            {
+              "jugador": "Lucas Martínez Quarta",
+              "total": 2
+            },
+            {
+              "jugador": "Sebastián Driussi",
+              "total": 2
+            },
+            {
+              "jugador": "Kendry Páez",
+              "total": 2
+            },
+            {
+              "jugador": "Aníbal Moreno",
+              "total": 1
+            },
+            {
+              "jugador": "Fabricio Bustos",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Santiago Beltrán",
+              "total": 6
+            },
+            {
+              "jugador": "Kendry Páez",
+              "total": 6
+            },
+            {
+              "jugador": "Lautaruo Rivero",
+              "total": 6
+            },
+            {
+              "jugador": "Aníbal Moreno",
+              "total": 5
+            },
+            {
+              "jugador": "Tomás Galván",
+              "total": 5
+            },
+            {
+              "jugador": "Juan Meza",
+              "total": 4
+            },
+            {
+              "jugador": "Marcos Acuña",
+              "total": 3
+            },
+            {
+              "jugador": "Giuliano Galoppo",
+              "total": 3
+            },
+            {
+              "jugador": "Fabricio Bustos",
+              "total": 3
+            },
+            {
+              "jugador": "Germán Pezzella",
+              "total": 3
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Ian Subiabre",
+              "total": 2
+            },
+            {
+              "jugador": "Juan Meza",
+              "total": 2
+            },
+            {
+              "jugador": "Lucas Martínez Quarta",
+              "total": 2
+            },
+            {
+              "jugador": "Lautaruo Rivero",
+              "total": 2
+            },
+            {
+              "jugador": "Germán Pezzella",
+              "total": 2
+            },
+            {
+              "jugador": "Matías Viña",
+              "total": 2
+            },
+            {
+              "jugador": "Ulises Giménez",
+              "total": 2
+            }
+          ],
           "rojas": []
         },
         "generales": {
@@ -579,7 +924,7 @@
     "fundacion": "1905",
     "estadio": "Alberto J. Armando",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-04T18:39:05.500859+00:00",
+    "actualizado": "2026-05-04T18:45:39.717209+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -909,9 +1254,132 @@
       ]
     },
     "estadisticas": {
-      "goles": [],
-      "asistencias": [],
-      "amarillas": [],
+      "goles": [
+        {
+          "jugador": "Adam Bareiro",
+          "total": 20
+        },
+        {
+          "jugador": "Miguel Merentiel",
+          "total": 12
+        },
+        {
+          "jugador": "Agustín Marchesín",
+          "total": 12
+        },
+        {
+          "jugador": "Leandro Brey",
+          "total": 10
+        },
+        {
+          "jugador": "Alan Velasco",
+          "total": 8
+        },
+        {
+          "jugador": "Santiago Ascacibar",
+          "total": 7
+        },
+        {
+          "jugador": "Milton Gimenez",
+          "total": 6
+        },
+        {
+          "jugador": "Kevin Giménez",
+          "total": 6
+        },
+        {
+          "jugador": "Tomás Aranda",
+          "total": 5
+        },
+        {
+          "jugador": "Marcelo Weigandt",
+          "total": 4
+        }
+      ],
+      "asistencias": [
+        {
+          "jugador": "Miguel Merentiel",
+          "total": 25
+        },
+        {
+          "jugador": "Lautaro Blanco",
+          "total": 24
+        },
+        {
+          "jugador": "Tomás Aranda",
+          "total": 22
+        },
+        {
+          "jugador": "Agustín Marchesín",
+          "total": 22
+        },
+        {
+          "jugador": "Facundo Herrera",
+          "total": 19
+        },
+        {
+          "jugador": "Adam Bareiro",
+          "total": 17
+        },
+        {
+          "jugador": "Alan Velasco",
+          "total": 12
+        },
+        {
+          "jugador": "Marcelo Weigandt",
+          "total": 12
+        },
+        {
+          "jugador": "Santiago Ascacibar",
+          "total": 12
+        },
+        {
+          "jugador": "William Alarcón",
+          "total": 11
+        }
+      ],
+      "amarillas": [
+        {
+          "jugador": "Adam Bareiro",
+          "total": 8
+        },
+        {
+          "jugador": "Milton Delgado",
+          "total": 6
+        },
+        {
+          "jugador": "Santiago Ascacibar",
+          "total": 6
+        },
+        {
+          "jugador": "Lautaro Di Lollo",
+          "total": 6
+        },
+        {
+          "jugador": "Tomás Belmonte",
+          "total": 4
+        },
+        {
+          "jugador": "Tomás Aranda",
+          "total": 4
+        },
+        {
+          "jugador": "Ayrton Costa",
+          "total": 4
+        },
+        {
+          "jugador": "Facundo Herrera",
+          "total": 3
+        },
+        {
+          "jugador": "Juan Barinaga",
+          "total": 2
+        },
+        {
+          "jugador": "Marcelo Weigandt",
+          "total": 2
+        }
+      ],
       "rojas": []
     },
     "estadisticasGenerales": {
@@ -1008,9 +1476,132 @@
           }
         ],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
+          "goles": [
+            {
+              "jugador": "Adam Bareiro",
+              "total": 20
+            },
+            {
+              "jugador": "Miguel Merentiel",
+              "total": 12
+            },
+            {
+              "jugador": "Agustín Marchesín",
+              "total": 12
+            },
+            {
+              "jugador": "Leandro Brey",
+              "total": 10
+            },
+            {
+              "jugador": "Alan Velasco",
+              "total": 8
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 7
+            },
+            {
+              "jugador": "Milton Gimenez",
+              "total": 6
+            },
+            {
+              "jugador": "Kevin Giménez",
+              "total": 6
+            },
+            {
+              "jugador": "Tomás Aranda",
+              "total": 5
+            },
+            {
+              "jugador": "Marcelo Weigandt",
+              "total": 4
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Miguel Merentiel",
+              "total": 25
+            },
+            {
+              "jugador": "Lautaro Blanco",
+              "total": 24
+            },
+            {
+              "jugador": "Tomás Aranda",
+              "total": 22
+            },
+            {
+              "jugador": "Agustín Marchesín",
+              "total": 22
+            },
+            {
+              "jugador": "Facundo Herrera",
+              "total": 19
+            },
+            {
+              "jugador": "Adam Bareiro",
+              "total": 17
+            },
+            {
+              "jugador": "Alan Velasco",
+              "total": 12
+            },
+            {
+              "jugador": "Marcelo Weigandt",
+              "total": 12
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 12
+            },
+            {
+              "jugador": "William Alarcón",
+              "total": 11
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Adam Bareiro",
+              "total": 8
+            },
+            {
+              "jugador": "Milton Delgado",
+              "total": 6
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 6
+            },
+            {
+              "jugador": "Lautaro Di Lollo",
+              "total": 6
+            },
+            {
+              "jugador": "Tomás Belmonte",
+              "total": 4
+            },
+            {
+              "jugador": "Tomás Aranda",
+              "total": 4
+            },
+            {
+              "jugador": "Ayrton Costa",
+              "total": 4
+            },
+            {
+              "jugador": "Facundo Herrera",
+              "total": 3
+            },
+            {
+              "jugador": "Juan Barinaga",
+              "total": 2
+            },
+            {
+              "jugador": "Marcelo Weigandt",
+              "total": 2
+            }
+          ],
           "rojas": []
         },
         "generales": {
@@ -1086,9 +1677,96 @@
           }
         ],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
+          "goles": [
+            {
+              "jugador": "Leandro Brey",
+              "total": 3
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 3
+            },
+            {
+              "jugador": "Lautaro Blanco",
+              "total": 3
+            },
+            {
+              "jugador": "Milton Delgado",
+              "total": 2
+            },
+            {
+              "jugador": "Lautaro Di Lollo",
+              "total": 1
+            },
+            {
+              "jugador": "Ander Herrera",
+              "total": 1
+            },
+            {
+              "jugador": "Facundo Herrera",
+              "total": 1
+            },
+            {
+              "jugador": "Adam Bareiro",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Lautaro Blanco",
+              "total": 6
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 5
+            },
+            {
+              "jugador": "Miguel Merentiel",
+              "total": 4
+            },
+            {
+              "jugador": "Alan Velasco",
+              "total": 3
+            },
+            {
+              "jugador": "Milton Delgado",
+              "total": 2
+            },
+            {
+              "jugador": "Ayrton Costa",
+              "total": 2
+            },
+            {
+              "jugador": "Lautaro Di Lollo",
+              "total": 2
+            },
+            {
+              "jugador": "Adam Bareiro",
+              "total": 2
+            },
+            {
+              "jugador": "Dante Gonzalez",
+              "total": 2
+            },
+            {
+              "jugador": "Tomás Aranda",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Adam Bareiro",
+              "total": 4
+            },
+            {
+              "jugador": "Lautaro Blanco",
+              "total": 4
+            },
+            {
+              "jugador": "Ayrton Costa",
+              "total": 2
+            }
+          ],
           "rojas": []
         },
         "generales": {
@@ -1144,7 +1822,7 @@
     "fundacion": "1903",
     "estadio": "Presidente Perón",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-04T18:39:10.097834+00:00",
+    "actualizado": "2026-05-04T18:45:47.920598+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -1459,9 +2137,132 @@
       ]
     },
     "estadisticas": {
-      "goles": [],
-      "asistencias": [],
-      "amarillas": [],
+      "goles": [
+        {
+          "jugador": "Facundo Cambeses",
+          "total": 41
+        },
+        {
+          "jugador": "Mateo Martínez",
+          "total": 11
+        },
+        {
+          "jugador": "Matko Miljevic",
+          "total": 8
+        },
+        {
+          "jugador": "Adrián Fernández",
+          "total": 6
+        },
+        {
+          "jugador": "Adrián Martínez",
+          "total": 6
+        },
+        {
+          "jugador": "Duván Vergara",
+          "total": 5
+        },
+        {
+          "jugador": "Matías Zaracho",
+          "total": 4
+        },
+        {
+          "jugador": "Ignacio Agustin Rodríguez",
+          "total": 4
+        },
+        {
+          "jugador": "Marco Di Cesare",
+          "total": 4
+        },
+        {
+          "jugador": "Damián Pizarro",
+          "total": 4
+        }
+      ],
+      "asistencias": [
+        {
+          "jugador": "Santiago Solari",
+          "total": 25
+        },
+        {
+          "jugador": "Adrián Martínez",
+          "total": 25
+        },
+        {
+          "jugador": "Adrián Fernández",
+          "total": 23
+        },
+        {
+          "jugador": "Facundo Cambeses",
+          "total": 19
+        },
+        {
+          "jugador": "Mateo Martínez",
+          "total": 18
+        },
+        {
+          "jugador": "Matko Miljevic",
+          "total": 18
+        },
+        {
+          "jugador": "Gonzalo Sosa",
+          "total": 16
+        },
+        {
+          "jugador": "Baltasar Rodríguez",
+          "total": 12
+        },
+        {
+          "jugador": "Matías Zaracho",
+          "total": 11
+        },
+        {
+          "jugador": "Thiago Taborda",
+          "total": 10
+        }
+      ],
+      "amarillas": [
+        {
+          "jugador": "Marco Di Cesare",
+          "total": 12
+        },
+        {
+          "jugador": "Matko Miljevic",
+          "total": 8
+        },
+        {
+          "jugador": "Franco Pardo",
+          "total": 6
+        },
+        {
+          "jugador": "Adrián Fernández",
+          "total": 6
+        },
+        {
+          "jugador": "Santiago Solari",
+          "total": 6
+        },
+        {
+          "jugador": "Baltasar Rodríguez",
+          "total": 5
+        },
+        {
+          "jugador": "Ignacio Agustin Rodríguez",
+          "total": 5
+        },
+        {
+          "jugador": "Marcos Rojo",
+          "total": 4
+        },
+        {
+          "jugador": "Santiago Sosa",
+          "total": 4
+        },
+        {
+          "jugador": "Matías Zaracho",
+          "total": 4
+        }
+      ],
       "rojas": []
     },
     "estadisticasGenerales": {
@@ -1558,9 +2359,132 @@
           }
         ],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
+          "goles": [
+            {
+              "jugador": "Facundo Cambeses",
+              "total": 41
+            },
+            {
+              "jugador": "Mateo Martínez",
+              "total": 11
+            },
+            {
+              "jugador": "Matko Miljevic",
+              "total": 8
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 6
+            },
+            {
+              "jugador": "Adrián Martínez",
+              "total": 6
+            },
+            {
+              "jugador": "Duván Vergara",
+              "total": 5
+            },
+            {
+              "jugador": "Matías Zaracho",
+              "total": 4
+            },
+            {
+              "jugador": "Ignacio Agustin Rodríguez",
+              "total": 4
+            },
+            {
+              "jugador": "Marco Di Cesare",
+              "total": 4
+            },
+            {
+              "jugador": "Damián Pizarro",
+              "total": 4
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Santiago Solari",
+              "total": 25
+            },
+            {
+              "jugador": "Adrián Martínez",
+              "total": 25
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 23
+            },
+            {
+              "jugador": "Facundo Cambeses",
+              "total": 19
+            },
+            {
+              "jugador": "Mateo Martínez",
+              "total": 18
+            },
+            {
+              "jugador": "Matko Miljevic",
+              "total": 18
+            },
+            {
+              "jugador": "Gonzalo Sosa",
+              "total": 16
+            },
+            {
+              "jugador": "Baltasar Rodríguez",
+              "total": 12
+            },
+            {
+              "jugador": "Matías Zaracho",
+              "total": 11
+            },
+            {
+              "jugador": "Thiago Taborda",
+              "total": 10
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Marco Di Cesare",
+              "total": 12
+            },
+            {
+              "jugador": "Matko Miljevic",
+              "total": 8
+            },
+            {
+              "jugador": "Franco Pardo",
+              "total": 6
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 6
+            },
+            {
+              "jugador": "Santiago Solari",
+              "total": 6
+            },
+            {
+              "jugador": "Baltasar Rodríguez",
+              "total": 5
+            },
+            {
+              "jugador": "Ignacio Agustin Rodríguez",
+              "total": 5
+            },
+            {
+              "jugador": "Marcos Rojo",
+              "total": 4
+            },
+            {
+              "jugador": "Santiago Sosa",
+              "total": 4
+            },
+            {
+              "jugador": "Matías Zaracho",
+              "total": 4
+            }
+          ],
           "rojas": []
         },
         "generales": {
@@ -1664,9 +2588,112 @@
           }
         ],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
+          "goles": [
+            {
+              "jugador": "Gonzalo Sosa",
+              "total": 5
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 4
+            },
+            {
+              "jugador": "Adrián Martínez",
+              "total": 3
+            },
+            {
+              "jugador": "Mateo Martínez",
+              "total": 2
+            },
+            {
+              "jugador": "Gastón Martirena",
+              "total": 2
+            },
+            {
+              "jugador": "Tomas Perez",
+              "total": 1
+            },
+            {
+              "jugador": "Ignacio Agustin Rodríguez",
+              "total": 1
+            },
+            {
+              "jugador": "Santiago Sosa",
+              "total": 1
+            },
+            {
+              "jugador": "Franco Pardo",
+              "total": 1
+            },
+            {
+              "jugador": "Ezequiel Cannavo",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Bruno Zuculini",
+              "total": 7
+            },
+            {
+              "jugador": "Ignacio Agustin Rodríguez",
+              "total": 7
+            },
+            {
+              "jugador": "Baltasar Rodríguez",
+              "total": 6
+            },
+            {
+              "jugador": "Gastón Martirena",
+              "total": 6
+            },
+            {
+              "jugador": "Mateo Martínez",
+              "total": 6
+            },
+            {
+              "jugador": "Nazareno Colombo",
+              "total": 5
+            },
+            {
+              "jugador": "Tomás Conechny",
+              "total": 5
+            },
+            {
+              "jugador": "Duván Vergara",
+              "total": 5
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 4
+            },
+            {
+              "jugador": "Benjamín González",
+              "total": 4
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Ezequiel Cannavo",
+              "total": 4
+            },
+            {
+              "jugador": "Ignacio Agustin Rodríguez",
+              "total": 3
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 2
+            },
+            {
+              "jugador": "Gastón Martirena",
+              "total": 2
+            },
+            {
+              "jugador": "Baltasar Rodríguez",
+              "total": 1
+            }
+          ],
           "rojas": []
         },
         "generales": {
