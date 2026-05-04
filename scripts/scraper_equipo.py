@@ -614,62 +614,62 @@ def limpiar_html_365(html):
     html = re.sub(r"<script[\s\S]*?</script>", "\n", html, flags=re.I)
     html = re.sub(r"<style[\s\S]*?</style>", "\n", html, flags=re.I)
     html = re.sub(r"<noscript[\s\S]*?</noscript>", "\n", html, flags=re.I)
+
+    html = re.sub(r"<h[1-6][^>]*>", "\n### ", html, flags=re.I)
+    html = re.sub(r"</h[1-6]>", "\n", html, flags=re.I)
+    html = re.sub(r"<a[^>]*>", "\n", html, flags=re.I)
+    html = re.sub(r"</a>", "\n", html, flags=re.I)
     html = re.sub(r"<[^>]+>", "\n", html)
 
     texto = unescape(html)
+    texto = re.sub(r"\s+", " ", texto)
 
-    lineas = []
-    for linea in texto.splitlines():
-        linea = re.sub(r"\s+", " ", linea).strip()
-
-        if not linea:
-            continue
-
-        if linea.lower() in ["image", "ver más", "ver todos", "favoritos"]:
-            continue
-
-        lineas.append(linea)
-
-    return lineas
+    return texto.strip()
 
 
-def buscar_indice_titulo(lineas, titulo):
-    objetivo = slug(titulo)
-
-    for i, linea in enumerate(lineas):
-        value = slug(linea)
-
-        if value == objetivo:
-            return i
-
-    return -1
-
-
-def extraer_bloque_365(lineas, titulo):
-    inicio = buscar_indice_titulo(lineas, titulo)
-
-    if inicio == -1:
+def obtener_bloque_texto_365(texto, titulo):
+    if not texto:
         return ""
 
-    fin = len(lineas)
+    titulos = [
+        "Goles",
+        "Goles esperados",
+        "Asistencias",
+        "Asistencias esperadas",
+        "Goles y Asistencias",
+        "Goles esperados y asistencias",
+        "Rating 365",
+        "Penaltis convertidos",
+        "Barridas ganadas por partido",
+        "Intercepciones por partido",
+        "Tarjetas Rojas",
+        "Tarjetas Amarillas",
+        "Porterías a cero",
+        "Goles recibidos",
+        "Atajadas por partido",
+        "Penaltis parados",
+    ]
 
-    for i in range(inicio + 1, len(lineas)):
-        value = slug(lineas[i])
+    patron_inicio = re.compile(rf"(?:###\s*)?{re.escape(titulo)}\b", re.I)
+    match = patron_inicio.search(texto)
 
-        for posible in STAT_TITLES_365:
-            posible_slug = slug(posible)
+    if not match:
+        return ""
 
-            if value == posible_slug:
-                fin = i
-                break
+    inicio = match.end()
+    fin = len(texto)
 
-        if fin != len(lineas):
-            break
+    for otro in titulos:
+        if slug(otro) == slug(titulo):
+            continue
 
-    bloque = " ".join(lineas[inicio + 1:fin])
-    bloque = re.sub(r"\s+", " ", bloque).strip()
+        patron_fin = re.compile(rf"(?:###\s*)?{re.escape(otro)}\b", re.I)
+        m = patron_fin.search(texto, inicio)
 
-    return bloque
+        if m and m.start() < fin:
+            fin = m.start()
+
+    return texto[inicio:fin].strip()
 
 
 def parse_numero_365(valor):
@@ -690,81 +690,94 @@ def parse_numero_365(valor):
         return 0
 
 
-def extraer_valor_jugador_en_bloque(bloque, nombre, todos_los_nombres):
-    if not bloque or not nombre:
-        return 0
-
-    bloque_norm = normalizar_texto(bloque)
-    nombre_norm = normalizar_texto(nombre)
-
-    pos = bloque_norm.find(nombre_norm)
-
-    if pos == -1:
-        # Corrección especial para el typo de ESPN: Lautaruo Rivero.
-        if slug(nombre) == "lautaruo-rivero":
-            nombre_norm = "lautaro rivero"
-            pos = bloque_norm.find(nombre_norm)
-
-    if pos == -1:
-        return 0
-
-    final = len(bloque_norm)
-
-    for otro in todos_los_nombres:
-        otro_norm = normalizar_texto(otro)
-
-        if slug(otro) == "lautaruo-rivero":
-            otro_norm = "lautaro rivero"
-
-        if not otro_norm or otro_norm == nombre_norm:
-            continue
-
-        idx = bloque_norm.find(otro_norm, pos + len(nombre_norm))
-
-        if idx != -1 and idx < final:
-            final = idx
-
-    segmento = bloque_norm[pos + len(nombre_norm):final]
-    segmento = segmento[:180]
-
-    valores = re.findall(r"\b\d+(?:[.,]\d+)?(?:/\d+)?\b", segmento)
-
-    if valores:
-        return parse_numero_365(valores[-1])
-
-    prefijo = bloque_norm[max(0, pos - 20):pos]
-    valores_prefijo = re.findall(r"\b\d+(?:[.,]\d+)?\b", prefijo)
-
-    if valores_prefijo:
-        return parse_numero_365(valores_prefijo[-1])
-
-    return 0
-
-
-def extraer_ranking_365(lineas, titulo, plantel, max_items=10):
-    bloque = extraer_bloque_365(lineas, titulo)
+def extraer_ranking_365_desde_texto(texto, titulo, plantel, max_items=10):
+    bloque = obtener_bloque_texto_365(texto, titulo)
 
     if not bloque:
+        print(f"⚠️ 365Scores: no encontré bloque {titulo}")
         return []
 
     jugadores = lista_jugadores_plantel(plantel)
     resultados = []
 
-    for nombre in jugadores:
-        total = extraer_valor_jugador_en_bloque(bloque, nombre, jugadores)
+    # Ordenamos por nombre más largo primero para evitar choques entre nombres parecidos.
+    jugadores_ordenados = sorted(jugadores, key=lambda n: len(str(n)), reverse=True)
 
-        if total and total > 0:
-            resultados.append(
-                {
-                    "jugador": nombre_visible(nombre),
-                    "total": total,
-                }
+    for nombre in jugadores_ordenados:
+        candidatos = [nombre]
+
+        # Correcciones por diferencias entre ESPN y 365Scores.
+        if slug(nombre) == "lautaruo-rivero":
+            candidatos.append("Lautaro Rivero")
+
+        if slug(nombre) == "joaquin-freitas":
+            candidatos.append("Joaquín Freitas")
+
+        encontrado = None
+
+        for candidato in candidatos:
+            nombre_regex = re.escape(candidato)
+            patron = re.compile(
+                rf"(?:^|\s)(?:(?P<pre>\d+(?:[.,]\d+)?(?:/\d+)?)\s+)?"
+                rf"{nombre_regex}"
+                rf"(?:\s+[A-ZÁÉÍÓÚÑa-záéíóúñüÜ().'-]+){{0,10}}?"
+                rf"\s+(?P<post>\d+(?:[.,]\d+)?(?:/\d+)?)"
+                rf"(?=\s|$)",
+                re.I,
             )
+
+            m = patron.search(bloque)
+
+            if m:
+                valor = m.group("post") or m.group("pre")
+                total = parse_numero_365(valor)
+
+                if total > 0:
+                    encontrado = {
+                        "jugador": nombre_visible(nombre),
+                        "total": total,
+                    }
+                    break
+
+            # Caso top 3 de Goles en 365Scores:
+            # "4 Gonzalo Montiel River Plate Defensa..."
+            patron_pre = re.compile(
+                rf"(?:^|\s)(?P<pre>\d+(?:[.,]\d+)?(?:/\d+)?)\s+"
+                rf"{nombre_regex}"
+                rf"(?=\s|$)",
+                re.I,
+            )
+
+            m2 = patron_pre.search(bloque)
+
+            if m2:
+                total = parse_numero_365(m2.group("pre"))
+
+                if total > 0:
+                    encontrado = {
+                        "jugador": nombre_visible(nombre),
+                        "total": total,
+                    }
+                    break
+
+        if encontrado:
+            resultados.append(encontrado)
 
     resultados.sort(key=lambda x: x.get("total", 0), reverse=True)
 
-    return resultados[:max_items]
+    vistos = set()
+    limpios = []
 
+    for item in resultados:
+        key = slug_jugador(item["jugador"])
+
+        if key in vistos:
+            continue
+
+        vistos.add(key)
+        limpios.append(item)
+
+    return limpios[:max_items]
 
 def cargar_estadisticas_365scores(equipo, plantel):
     scores365_id = equipo.get("scores365_id")
@@ -796,12 +809,18 @@ def cargar_estadisticas_365scores(equipo, plantel):
         if not r.ok:
             return estadisticas_vacias()
 
-        lineas = limpiar_html_365(r.text)
+        texto = limpiar_html_365(r.text)
 
-        goles = extraer_ranking_365(lineas, "Goles", plantel)
-        asistencias = extraer_ranking_365(lineas, "Asistencias", plantel)
-        amarillas = extraer_ranking_365(lineas, "Tarjetas Amarillas", plantel)
-        rojas = extraer_ranking_365(lineas, "Tarjetas Rojas", plantel)
+print("🔎 365Scores texto length:", len(texto))
+print("🔎 Tiene Goles:", "Goles" in texto)
+print("🔎 Tiene Asistencias:", "Asistencias" in texto)
+print("🔎 Tiene Tarjetas Amarillas:", "Tarjetas Amarillas" in texto)
+print("🔎 Tiene Tarjetas Rojas:", "Tarjetas Rojas" in texto)
+
+goles = extraer_ranking_365_desde_texto(texto, "Goles", plantel)
+asistencias = extraer_ranking_365_desde_texto(texto, "Asistencias", plantel)
+amarillas = extraer_ranking_365_desde_texto(texto, "Tarjetas Amarillas", plantel)
+rojas = extraer_ranking_365_desde_texto(texto, "Tarjetas Rojas", plantel)
 
         estadisticas = {
             "goles": goles,
