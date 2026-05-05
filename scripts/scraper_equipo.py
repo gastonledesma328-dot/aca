@@ -3,6 +3,7 @@ import os
 import re
 import unicodedata
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 import requests
 
@@ -405,6 +406,18 @@ def cargar_datos_club(base):
     return actualizado
 
 
+def hora_argentina_desde_iso(fecha_iso):
+    if not fecha_iso or "T" not in str(fecha_iso):
+        return "Ver horario"
+
+    try:
+        dt = datetime.fromisoformat(str(fecha_iso).replace("Z", "+00:00"))
+        dt_arg = dt.astimezone(ZoneInfo("America/Argentina/Buenos_Aires"))
+        return dt_arg.strftime("%H:%M")
+    except Exception:
+        return "Ver horario"
+
+
 def parse_score_event(evento):
     competitions = evento.get("competitions") or []
     competition = competitions[0] if competitions else {}
@@ -449,14 +462,7 @@ def parse_score_event(evento):
     fecha_iso = evento.get("date") or ""
     fecha = formatear_fecha(fecha_iso)
 
-    hora = "Ver horario"
-
-    if "T" in str(fecha_iso):
-        try:
-            hora = str(fecha_iso).split("T")[1][:5]
-        except Exception:
-            hora = "Ver horario"
-
+    hora = hora_argentina_desde_iso(fecha_iso)
     return {
         "id": str(evento.get("id") or ""),
         "fecha": fecha,
@@ -823,14 +829,15 @@ def cargar_texto_renderizado_365(url, wait_texts=None):
             )
 
             context = browser.new_context(
-                locale="es-AR",
-                user_agent=(
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36"
-                ),
-                viewport={"width": 1366, "height": 1200},
-            )
+    locale="es-AR",
+    timezone_id="America/Argentina/Buenos_Aires",
+    user_agent=(
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/120.0.0.0 Safari/537.36"
+    ),
+    viewport={"width": 1366, "height": 1200},
+)
 
             page = context.new_page()
             page.goto(url, wait_until="domcontentloaded", timeout=60000)
@@ -993,14 +1000,15 @@ def cargar_proximos_365scores(equipo, competicion):
             )
 
             context = browser.new_context(
-                locale="es-AR",
-                user_agent=(
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36"
-                ),
-                viewport={"width": 1366, "height": 1400},
-            )
+    locale="es-AR",
+    timezone_id="America/Argentina/Buenos_Aires",
+    user_agent=(
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/120.0.0.0 Safari/537.36"
+    ),
+    viewport={"width": 1366, "height": 1400},
+)
 
             page = context.new_page()
             page.goto(url, wait_until="domcontentloaded", timeout=60000)
