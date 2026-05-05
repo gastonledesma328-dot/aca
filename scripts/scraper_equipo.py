@@ -1271,6 +1271,58 @@ def cargar_datos_por_competicion(base, equipo, competicion):
         "generales": generales,
     }
 
+def cargar_datos_club(base):
+    espn_id = base.get("espn_id")
+
+    if not espn_id:
+        return base
+
+    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}"
+    data = get_json(url)
+
+    if not data:
+        return base
+
+    team = data.get("team") or data
+
+    if not isinstance(team, dict):
+        return base
+
+    actualizado = dict(base)
+
+    nombre = (
+        team.get("displayName")
+        or team.get("name")
+        or team.get("shortDisplayName")
+        or base.get("nombre")
+    )
+
+    if nombre:
+        actualizado["nombre"] = nombre
+
+    logos = team.get("logos") or []
+
+    if logos and isinstance(logos, list):
+        logo = logos[0].get("href")
+        if logo:
+            actualizado["logo"] = logo
+
+    venue = team.get("venue") or {}
+
+    if isinstance(venue, dict):
+        estadio = venue.get("fullName") or venue.get("name")
+        ciudad = (venue.get("address") or {}).get("city") or venue.get("city")
+
+        if estadio:
+            actualizado["estadio"] = estadio
+
+        if ciudad:
+            actualizado["ciudad"] = ciudad
+
+    if team.get("nickname"):
+        actualizado["apodo"] = team.get("nickname")
+
+    return actualizado
 
 def completar_equipo(base):
     print(f"🏟️ Actualizando equipo: {base['nombre']}")
