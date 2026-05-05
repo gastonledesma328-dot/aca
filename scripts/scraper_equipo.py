@@ -335,33 +335,65 @@ def parse_score_event(evento):
     visitante = "Visitante"
     local_score = None
     visitante_score = None
+    local_logo = ""
+    visitante_logo = ""
 
     for comp in competitors:
         team = comp.get("team") or {}
         name = team.get("displayName") or team.get("shortDisplayName") or "Equipo"
         score = limpiar_score(comp.get("score"))
 
+        logos = team.get("logos") or []
+        logo = ""
+
+        if isinstance(logos, list) and logos:
+            logo = logos[0].get("href") or ""
+
         if comp.get("homeAway") == "home":
             local = name
             local_score = score
+            local_logo = logo
         elif comp.get("homeAway") == "away":
             visitante = name
             visitante_score = score
+            visitante_logo = logo
 
     status = (evento.get("status") or {}).get("type") or {}
+
+    estado_nombre = status.get("name") or ""
+    estado_detalle = status.get("description") or ""
+    estado_estado = status.get("state") or ""
+
     completado = status.get("completed") is True
 
+    fecha_iso = evento.get("date") or ""
+    fecha = formatear_fecha(fecha_iso)
+
+    hora = "Ver horario"
+
+    if "T" in str(fecha_iso):
+        try:
+            hora_utc = str(fecha_iso).split("T")[1][:5]
+            hora = hora_utc
+        except Exception:
+            hora = "Ver horario"
+
     return {
-        "fecha": formatear_fecha(evento.get("date")),
+        "id": str(evento.get("id") or ""),
+        "fecha": fecha,
+        "fecha_iso": fecha_iso,
+        "hora": hora,
         "local": local,
         "visitante": visitante,
+        "local_logo": local_logo,
+        "visitante_logo": visitante_logo,
         "marcador_local": local_score,
         "marcador_visitante": visitante_score,
         "completado": completado,
-        "estado": status.get("description") or status.get("name") or "",
+        "estado": estado_detalle or estado_nombre or estado_estado,
+        "estado_tipo": estado_estado,
         "url": (evento.get("links") or [{}])[0].get("href", ""),
     }
-
 
 def cargar_datos_club(base):
     espn_id = base.get("espn_id")
@@ -437,36 +469,49 @@ def cargar_partidos_equipo(equipo):
     for evento in eventos:
         partido = parse_score_event(evento)
 
-        tiene_marcador = (
-            partido["marcador_local"] is not None
-            and partido["marcador_visitante"] is not None
-        )
-
-        if partido["completado"] or tiene_marcador:
+        # ESPN puede traer score 0-0 en partidos futuros.
+        # Por eso NO usamos "tiene_marcador" para decidir si es resultado.
+        if partido["completado"]:
             resultado = "-"
 
-            if tiene_marcador:
+            if (
+                partido["marcador_local"] is not None
+                and partido["marcador_visitante"] is not None
+            ):
                 resultado = f'{partido["marcador_local"]} - {partido["marcador_visitante"]}'
 
             resultados.append(
                 {
+                    "id": partido["id"],
                     "dia": partido["fecha"],
+                    "fecha_iso": partido["fecha_iso"],
                     "local": partido["local"],
                     "visitante": partido["visitante"],
+                    "local_logo": partido["local_logo"],
+                    "visitante_logo": partido["visitante_logo"],
                     "url": partido["url"],
                     "resultado": resultado,
+                    "estado": partido["estado"],
                 }
             )
         else:
             proximos.append(
                 {
+                    "id": partido["id"],
                     "dia": partido["fecha"],
+                    "fecha_iso": partido["fecha_iso"],
                     "local": partido["local"],
                     "visitante": partido["visitante"],
+                    "local_logo": partido["local_logo"],
+                    "visitante_logo": partido["visitante_logo"],
                     "url": partido["url"],
-                    "hora": "Ver horario",
+                    "hora": partido["hora"],
+                    "estado": partido["estado"],
                 }
             )
+
+    proximos.sort(key=lambda x: x.get("fecha_iso") or x.get("dia") or "")
+    resultados.sort(key=lambda x: x.get("fecha_iso") or x.get("dia") or "", reverse=True)
 
     return proximos[:20], resultados[:20]
 
