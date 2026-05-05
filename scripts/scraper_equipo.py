@@ -735,21 +735,24 @@ def extraer_numero_de_linea_con_nombre(linea):
 
 
 def extraer_numero_cerca_de_linea(lineas, index_nombre):
-    # Formato común:
+    # Caso principal 365Scores:
     # 4
     # Gonzalo Montiel
     #
-    # Otro formato posible:
+    # No buscamos demasiado hacia atrás porque si no, jugadores sin número
+    # heredan el valor del jugador anterior.
+
+    if index_nombre - 1 >= 0 and es_linea_numero_365(lineas[index_nombre - 1]):
+        return parse_numero_365(lineas[index_nombre - 1])
+
+    # Caso alternativo:
     # Gonzalo Montiel
     # River Plate
     # Defensa
     # 4
-
-    for i in range(index_nombre - 1, max(-1, index_nombre - 4), -1):
-        if i >= 0 and es_linea_numero_365(lineas[i]):
-            return parse_numero_365(lineas[i])
-
-    for i in range(index_nombre + 1, min(len(lineas), index_nombre + 10)):
+    #
+    # Buscamos hacia adelante, pero cortamos si aparece otro jugador antes del número.
+    for i in range(index_nombre + 1, min(len(lineas), index_nombre + 6)):
         if es_linea_numero_365(lineas[i]):
             return parse_numero_365(lineas[i])
 
@@ -931,27 +934,21 @@ def cargar_texto_renderizado_365(url):
 
             browser.close()
 
-            texto_final = "\n".join(textos)
+            # IMPORTANTE:
+# No eliminamos líneas repetidas globalmente porque 365Scores repite valores
+# como 1, 2, 3, 6 en distintas secciones. Si los borramos, se rompen
+# Asistencias, Tarjetas Amarillas y Tarjetas Rojas.
+texto_final = "\n".join(textos)
 
-            # Eliminar líneas repetidas manteniendo orden.
-            lineas = []
-            vistas = set()
+lineas = []
 
-            for linea in texto_final.splitlines():
-                limpia = re.sub(r"\s+", " ", linea).strip()
+for linea in texto_final.splitlines():
+    limpia = re.sub(r"\s+", " ", linea).strip()
 
-                if not limpia:
-                    continue
+    if limpia:
+        lineas.append(limpia)
 
-                key = limpia.lower()
-
-                if key in vistas:
-                    continue
-
-                vistas.add(key)
-                lineas.append(limpia)
-
-            return "\n".join(lineas)
+return "\n".join(lineas)
 
     except Exception as e:
         print(f"⚠️ Error renderizando 365Scores con Playwright: {e}")
