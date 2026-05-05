@@ -1570,20 +1570,18 @@ def cargar_datos_por_competicion(base, equipo, competicion):
     proximos_espn = filtrar_partidos_por_fecha(proximos_espn, competicion)
     resultados = filtrar_partidos_por_fecha(resultados, competicion)
 
-   proximos_365 = cargar_proximos_365scores(base, competicion)
+    proximos_365 = cargar_proximos_365scores(base, competicion)
 
-# Primero usamos 365Scores porque suele traer mejor agenda.
-# Si trae menos de 5 partidos, completamos con ESPN.
-proximos = combinar_proximos_partidos(
-    proximos_365,
-    proximos_espn,
-    max_items=MAX_PROXIMOS_PARTIDOS,
-)
+    proximos = combinar_proximos_partidos(
+        proximos_365,
+        proximos_espn,
+        max_items=MAX_PROXIMOS_PARTIDOS,
+    )
 
-print(
-    f"📅 Próximos finales {base.get('nombre')} / {nombre_competicion}: "
-    f"{len(proximos)} partidos"
-)
+    print(
+        f"📅 Próximos finales {base.get('nombre')} / {nombre_competicion}: "
+        f"{len(proximos)} partidos"
+    )
 
     if competicion.get("league_slug") == "arg.1":
         if resultados or proximos:
