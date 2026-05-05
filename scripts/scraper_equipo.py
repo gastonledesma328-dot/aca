@@ -931,7 +931,7 @@ def normalizar_competicion_365(texto):
     return ""
 
 
-def competicion_365_coincide(comp_detectada, competicion_obj, fecha):
+def competicion_365_coincide(comp_detectada, competicion_obj, fecha, permitir_liga_sin_rango=False):
     nombre = competicion_obj.get("nombre", "")
 
     if not comp_detectada:
@@ -946,6 +946,12 @@ def competicion_365_coincide(comp_detectada, competicion_obj, fecha):
     if comp_detectada == "Liga Profesional de Futbol":
         if "Liga Profesional" not in nombre:
             return False
+
+        # Para completar próximos partidos hasta 5:
+        # si estamos en Apertura y ya no quedan suficientes,
+        # permitimos traer próximos del Clausura.
+        if permitir_liga_sin_rango:
+            return True
 
         return fecha_en_rango(
             fecha,
@@ -1049,8 +1055,15 @@ def cargar_proximos_365scores(equipo, competicion):
                         f"{competicion_txt} {pais_txt}"
                     )
 
-                    if not competicion_365_coincide(comp_detectada, competicion, fecha):
-                        continue
+                    permitir_liga_sin_rango = "Liga Profesional" in competicion.get("nombre", "")
+
+if not competicion_365_coincide(
+    comp_detectada,
+    competicion,
+    fecha,
+    permitir_liga_sin_rango=permitir_liga_sin_rango,
+):
+    continue
 
                     cards = grupo.locator("a[class*='game-card_game_card_link']").all()
 
