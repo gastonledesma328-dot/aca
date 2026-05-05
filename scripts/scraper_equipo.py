@@ -14,6 +14,7 @@ except Exception:
 
 OUTPUT_FILE = "data/equipos.json"
 MAX_PROXIMOS_PARTIDOS = 5
+
 LEAGUE_SLUG = "arg.1"
 SEASON = "2026"
 
@@ -955,74 +956,10 @@ def competicion_365_coincide(comp_detectada, competicion_obj, fecha):
     return False
 
 
-def es_linea_basura_partidos_365(linea):
-    n = normalizar_texto(linea)
-
-    if not n:
-        return True
-
-    basura = [
-        "partidos",
-        "resumen",
-        "plantilla",
-        "estadisticas",
-        "estadísticas",
-        "clasificacion",
-        "clasificación",
-        "transferencias",
-        "noticias",
-        "favoritos",
-        "ver mas",
-        "ver más",
-        "calendario",
-    ]
-
-    return n in basura
-
-
-def es_linea_hora(linea):
-    return bool(re.fullmatch(r"\d{1,2}:\d{2}", str(linea or "").strip()))
-
-
 def limpiar_equipo_365(nombre):
     nombre = re.sub(r"\s+", " ", str(nombre or "")).strip()
     nombre = re.sub(r"\b\d{1,2}:\d{2}\b", "", nombre).strip()
     return nombre
-
-
-def parece_equipo_365(linea):
-    linea = limpiar_equipo_365(linea)
-
-    if not linea:
-        return False
-
-    if es_linea_basura_partidos_365(linea):
-        return False
-
-    if parse_fecha_365(linea):
-        return False
-
-    if es_linea_hora(linea):
-        return False
-
-    n = normalizar_texto(linea)
-
-    descartes = [
-        "argentina",
-        "copa libertadores",
-        "copa sudamericana",
-        "liga profesional",
-        "copa argentina",
-        "conmebol",
-    ]
-
-    if any(d in n for d in descartes):
-        return False
-
-    if len(linea) < 2:
-        return False
-
-    return True
 
 
 def cargar_proximos_365scores(equipo, competicion):
@@ -1068,8 +1005,14 @@ def cargar_proximos_365scores(equipo, competicion):
             except Exception:
                 pass
 
-            # Scroll para cargar todos los próximos partidos.
-            for y in [0, 600, 1200, 2000, 3000, 4500, 6000, 8000, 10000, 13000]:
+            for selector_text in ["Partidos", "Liga Profesional", "Copa Libertadores", "Copa Sudamericana"]:
+                try:
+                    page.get_by_text(selector_text, exact=False).first.wait_for(timeout=15000)
+                    break
+                except Exception:
+                    continue
+
+            for y in [0, 600, 1200, 2000, 3000, 4500, 6000, 8000, 10000, 13000, 16000]:
                 try:
                     page.evaluate(f"window.scrollTo(0, {y})")
                     page.wait_for_timeout(700)
@@ -1122,7 +1065,7 @@ def cargar_proximos_365scores(equipo, competicion):
 
                             nombres = card.locator(
                                 "div[class*='game-card-competitor_name']"
-                            ).all_inner_texts(timeout=3000)
+                            ).all_inner_texts()
 
                             nombres = [
                                 limpiar_equipo_365(n)
@@ -1571,9 +1514,6 @@ def cargar_estadisticas_generales(equipo):
     return estadisticas_generales_vacias()
 
 
-
-
-
 # =========================
 # ARMADO FINAL
 # =========================
@@ -1600,7 +1540,6 @@ def combinar_proximos_partidos(principales, fallback, max_items=5):
     combinados.sort(key=lambda x: x.get("fecha_iso") or x.get("dia") or "")
 
     return combinados[:max_items]
-
 
 
 def cargar_datos_por_competicion(base, equipo, competicion):
