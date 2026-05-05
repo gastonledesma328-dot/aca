@@ -8,6 +8,11 @@ from html import unescape
 import requests
 
 
+try:
+    from playwright.sync_api import sync_playwright
+except Exception:
+    sync_playwright = None
+
 OUTPUT_FILE = "data/equipos.json"
 
 LEAGUE_SLUG = "arg.1"
@@ -765,6 +770,59 @@ def extraer_ranking_365_desde_texto(texto, titulo, plantel, max_items=10):
     return limpios[:max_items]
 
 
+def cargar_texto_renderizado_365(url):
+    if sync_playwright is None:
+        print("⚠️ Playwright no está instalado.")
+        return ""
+
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(
+                headless=True,
+                args=[
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage",
+                    "--disable-gpu",
+                ],
+            )
+
+            context = browser.new_context(
+                locale="es-AR",
+                user_agent=(
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36"
+                ),
+                viewport={"width": 1366, "height": 900},
+            )
+
+            page = context.new_page()
+            page.goto(url, wait_until="domcontentloaded", timeout=60000)
+
+            try:
+                page.wait_for_load_state("networkidle", timeout=30000)
+            except Exception:
+                pass
+
+            # Esperar a que aparezcan los bloques reales de estadísticas.
+            for selector_text in ["Goles", "Asistencias", "Tarjetas Amarillas", "Tarjetas Rojas"]:
+                try:
+                    page.get_by_text(selector_text, exact=False).first.wait_for(timeout=15000)
+                    break
+                except Exception:
+                    continue
+
+            texto = page.locator("body").inner_text(timeout=15000)
+
+            browser.close()
+
+            return texto or ""
+
+    except Exception as e:
+        print(f"⚠️ Error renderizando 365Scores con Playwright: {e}")
+        return ""
+
+
 def cargar_estadisticas_365scores(equipo, plantel):
     scores365_id = equipo.get("scores365_id")
     scores365_slug = equipo.get("scores365_slug") or equipo.get("id")
@@ -775,44 +833,18 @@ def cargar_estadisticas_365scores(equipo, plantel):
     url = f"https://www.365scores.com/es/football/team/{scores365_slug}-{scores365_id}/stats"
 
     try:
-        r = requests.get(
-            url,
-            timeout=30,
-            headers={
-                "User-Agent": (
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36"
-                ),
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                "Accept-Language": "es-AR,es;q=0.9,en;q=0.8",
-                "Referer": "https://www.365scores.com/es",
-            },
-        )
+        print(f"📊 365Scores Playwright {url}")
 
-        print(f"📊 365Scores {r.status_code} {url}")
+        texto = cargar_texto_renderizado_365(url)
 
-        if not r.ok:
-            return estadisticas_vacias()
-
-        raw_html = r.text or ""
-
-        print("🔎 365Scores raw length:", len(raw_html))
-        print("🔎 365Scores content-type:", r.headers.get("content-type"))
-        print("🔎 365Scores inicio raw:", raw_html[:500])
-        print("🔎 365Scores tiene __NEXT_DATA__:", "__NEXT_DATA__" in raw_html)
-        print("🔎 365Scores tiene Goles raw:", "Goles" in raw_html)
-        print("🔎 365Scores tiene Asistencias raw:", "Asistencias" in raw_html)
-        print("🔎 365Scores tiene Tarjetas raw:", "Tarjetas" in raw_html)
-        print("🔎 365Scores tiene window:", "window" in raw_html)
-
-        texto = limpiar_html_365(raw_html)
-
-        print("🔎 365Scores texto length:", len(texto))
+        print("🔎 365Scores render texto length:", len(texto))
         print("🔎 Tiene Goles:", "Goles" in texto)
         print("🔎 Tiene Asistencias:", "Asistencias" in texto)
         print("🔎 Tiene Tarjetas Amarillas:", "Tarjetas Amarillas" in texto)
         print("🔎 Tiene Tarjetas Rojas:", "Tarjetas Rojas" in texto)
+
+        if not texto:
+            return estadisticas_vacias()
 
         goles = extraer_ranking_365_desde_texto(texto, "Goles", plantel)
         asistencias = extraer_ranking_365_desde_texto(texto, "Asistencias", plantel)
@@ -829,6 +861,10 @@ def cargar_estadisticas_365scores(equipo, plantel):
         print(f"✅ Estadísticas 365Scores {equipo.get('nombre')}:", estadisticas)
 
         return estadisticas
+
+    except Exception as e:
+        print(f"⚠️ Error leyendo 365Scores para {equipo.get('nombre')}: {e}")
+        return estadisticas_vacias()
 
     except Exception as e:
         print(f"⚠️ Error leyendo 365Scores para {equipo.get('nombre')}: {e}")
