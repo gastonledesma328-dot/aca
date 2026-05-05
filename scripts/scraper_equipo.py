@@ -13,7 +13,7 @@ except Exception:
 
 
 OUTPUT_FILE = "data/equipos.json"
-
+MAX_PROXIMOS_PARTIDOS = 5
 LEAGUE_SLUG = "arg.1"
 SEASON = "2026"
 
@@ -1520,9 +1520,37 @@ def cargar_estadisticas_generales(equipo):
     return estadisticas_generales_vacias()
 
 
+
+
+
 # =========================
 # ARMADO FINAL
 # =========================
+
+def combinar_proximos_partidos(principales, fallback, max_items=5):
+    combinados = []
+    vistos = set()
+
+    for partido in (principales or []) + (fallback or []):
+        local = slug(partido.get("local", ""))
+        visitante = slug(partido.get("visitante", ""))
+        dia = partido.get("dia", "")
+        hora = partido.get("hora", "")
+        fecha_iso = partido.get("fecha_iso", "")
+
+        key = f"{dia}-{fecha_iso}-{hora}-{local}-{visitante}"
+
+        if key in vistos:
+            continue
+
+        vistos.add(key)
+        combinados.append(partido)
+
+    combinados.sort(key=lambda x: x.get("fecha_iso") or x.get("dia") or "")
+
+    return combinados[:max_items]
+
+
 
 def cargar_datos_por_competicion(base, equipo, competicion):
     global LEAGUE_SLUG, SEASON
@@ -1542,12 +1570,20 @@ def cargar_datos_por_competicion(base, equipo, competicion):
     proximos_espn = filtrar_partidos_por_fecha(proximos_espn, competicion)
     resultados = filtrar_partidos_por_fecha(resultados, competicion)
 
-    proximos_365 = cargar_proximos_365scores(base, competicion)
+   proximos_365 = cargar_proximos_365scores(base, competicion)
 
-    if proximos_365:
-        proximos = proximos_365
-    else:
-        proximos = proximos_espn
+# Primero usamos 365Scores porque suele traer mejor agenda.
+# Si trae menos de 5 partidos, completamos con ESPN.
+proximos = combinar_proximos_partidos(
+    proximos_365,
+    proximos_espn,
+    max_items=MAX_PROXIMOS_PARTIDOS,
+)
+
+print(
+    f"📅 Próximos finales {base.get('nombre')} / {nombre_competicion}: "
+    f"{len(proximos)} partidos"
+)
 
     if competicion.get("league_slug") == "arg.1":
         if resultados or proximos:
@@ -1584,7 +1620,7 @@ def cargar_datos_por_competicion(base, equipo, competicion):
         "fase": competicion.get("fase", ""),
         "fecha_desde": competicion.get("fecha_desde", ""),
         "fecha_hasta": competicion.get("fecha_hasta", ""),
-        "proximosPartidos": proximos[:10],
+        "proximosPartidos": proximos[:MAX_PROXIMOS_PARTIDOS],
         "resultados": resultados[:10],
         "estadisticas": estadisticas,
         "generales": generales,
