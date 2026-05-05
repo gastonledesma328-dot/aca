@@ -363,6 +363,7 @@ def parse_score_event(evento):
     estado_nombre = status.get("name") or ""
     estado_detalle = status.get("description") or ""
     estado_estado = status.get("state") or ""
+    estado_id = str(status.get("id") or "")
 
     completado = status.get("completed") is True
 
@@ -373,8 +374,7 @@ def parse_score_event(evento):
 
     if "T" in str(fecha_iso):
         try:
-            hora_utc = str(fecha_iso).split("T")[1][:5]
-            hora = hora_utc
+            hora = str(fecha_iso).split("T")[1][:5]
         except Exception:
             hora = "Ver horario"
 
@@ -392,61 +392,103 @@ def parse_score_event(evento):
         "completado": completado,
         "estado": estado_detalle or estado_nombre or estado_estado,
         "estado_tipo": estado_estado,
+        "estado_nombre": estado_nombre,
+        "estado_id": estado_id,
         "url": (evento.get("links") or [{}])[0].get("href", ""),
     }
 
-def cargar_datos_club(base):
-    espn_id = base.get("espn_id")
 
-    if not espn_id:
-        return base
+def fecha_iso_pasada(fecha_iso):
+    if not fecha_iso:
+        return False
 
-    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}"
-    data = get_json(url)
+    try:
+        dt = datetime.fromisoformat(str(fecha_iso).replace("Z", "+00:00"))
+        return dt < datetime.now(timezone.utc)
+    except Exception:
+        return False
 
-    if not data:
-        return base
 
-    team = data.get("team") or data
+def tiene_marcador_real(partido):
+    local = partido.get("marcador_local")
+    visitante = partido.get("marcador_visitante")
 
-    if not isinstance(team, dict):
-        return base
+    return local is not None and visitante is not None
 
-    actualizado = dict(base)
 
-    nombre = (
-        team.get("displayName")
-        or team.get("name")
-        or team.get("shortDisplayName")
-        or base.get("nombre")
-    )
+def es_partido_finalizado(partido):
+    estado_tipo = str(partido.get("estado_tipo") or "").lower()
+    estado_nombre = str(partido.get("estado_nombre") or "").lower()
+    estado = str(partido.get("estado") or "").lower()
+    estado_id = str(partido.get("estado_id") or "")
 
-    if nombre:
-        actualizado["nombre"] = nombre
+    if partido.get("completado") is True:
+        return True
 
-    logos = team.get("logos") or []
+    if estado_tipo == "post":
+        return True
 
-    if logos and isinstance(logos, list):
-        logo = logos[0].get("href")
-        if logo:
-            actualizado["logo"] = logo
+    if estado_id in ["3"]:
+        return True
 
-    venue = team.get("venue") or {}
+    palabras_final = [
+        "final",
+        "full time",
+        "ft",
+        "finalizado",
+        "terminado",
+        "post-game",
+    ]
 
-    if isinstance(venue, dict):
-        estadio = venue.get("fullName") or venue.get("name")
-        ciudad = (venue.get("address") or {}).get("city") or venue.get("city")
+    if any(p in estado_nombre for p in palabras_final):
+        return True
 
-        if estadio:
-            actualizado["estadio"] = estadio
+    if any(p in estado for p in palabras_final):
+        return True
 
-        if ciudad:
-            actualizado["ciudad"] = ciudad
+    # Fallback seguro:
+    # Si ya pasó y ESPN trae marcador, lo mandamos a Resultados.
+    # Esto evita que partidos ya jugados aparezcan en Próximos.
+    if fecha_iso_pasada(partido.get("fecha_iso")) and tiene_marcador_real(partido):
+        return True
 
-    if team.get("nickname"):
-        actualizado["apodo"] = team.get("nickname")
+    return False
 
-    return actualizado
+
+def es_partido_proximo(partido):
+    estado_tipo = str(partido.get("estado_tipo") or "").lower()
+    estado_nombre = str(partido.get("estado_nombre") or "").lower()
+    estado = str(partido.get("estado") or "").lower()
+    estado_id = str(partido.get("estado_id") or "")
+
+    if es_partido_finalizado(partido):
+        return False
+
+    if estado_tipo == "pre":
+        return True
+
+    if estado_id in ["1"]:
+        return True
+
+    palabras_pre = [
+        "scheduled",
+        "pre-game",
+        "programado",
+        "por jugar",
+        "not started",
+    ]
+
+    if any(p in estado_nombre for p in palabras_pre):
+        return True
+
+    if any(p in estado for p in palabras_pre):
+        return True
+
+    # Si la fecha es futura, es próximo aunque venga 0-0.
+    if partido.get("fecha_iso") and not fecha_iso_pasada(partido.get("fecha_iso")):
+        return True
+
+    return False
 
 
 def cargar_partidos_equipo(equipo):
@@ -469,15 +511,10 @@ def cargar_partidos_equipo(equipo):
     for evento in eventos:
         partido = parse_score_event(evento)
 
-        # ESPN puede traer score 0-0 en partidos futuros.
-        # Por eso NO usamos "tiene_marcador" para decidir si es resultado.
-        if partido["completado"]:
+        if es_partido_finalizado(partido):
             resultado = "-"
 
-            if (
-                partido["marcador_local"] is not None
-                and partido["marcador_visitante"] is not None
-            ):
+            if tiene_marcador_real(partido):
                 resultado = f'{partido["marcador_local"]} - {partido["marcador_visitante"]}'
 
             resultados.append(
@@ -494,7 +531,8 @@ def cargar_partidos_equipo(equipo):
                     "estado": partido["estado"],
                 }
             )
-        else:
+
+        elif es_partido_proximo(partido):
             proximos.append(
                 {
                     "id": partido["id"],
@@ -769,40 +807,6 @@ def es_linea_numero_365(linea):
     return bool(re.fullmatch(r"\d+(?:\.\d+)?", linea))
 
 
-def extraer_numero_de_linea_con_nombre(linea):
-    numeros = re.findall(r"\b\d+(?:[.,]\d+)?(?:/\d+)?\b", str(linea or ""))
-
-    if not numeros:
-        return 0
-
-    return parse_numero_365(numeros[-1])
-
-
-def extraer_numero_cerca_de_linea(lineas, index_nombre):
-    # Caso principal 365Scores:
-    # 4
-    # Gonzalo Montiel
-    #
-    # No buscamos demasiado hacia atrás porque si no, jugadores sin número
-    # heredan el valor del jugador anterior.
-
-    if index_nombre - 1 >= 0 and es_linea_numero_365(lineas[index_nombre - 1]):
-        return parse_numero_365(lineas[index_nombre - 1])
-
-    # Caso alternativo:
-    # Gonzalo Montiel
-    # River Plate
-    # Defensa
-    # 4
-    #
-    # Buscamos hacia adelante, pero sin ir demasiado lejos.
-    for i in range(index_nombre + 1, min(len(lineas), index_nombre + 6)):
-        if es_linea_numero_365(lineas[i]):
-            return parse_numero_365(lineas[i])
-
-    return 0
-
-
 def matchea_jugador_365(linea, nombre):
     linea_slug = slug_jugador(linea)
     nombre_slug = slug_jugador(nombre)
@@ -832,8 +836,6 @@ def extraer_ranking_de_bloque_365(bloque, titulo, plantel, max_items=10):
     lineas = texto_a_lineas_365(bloque)
     jugadores = lista_jugadores_plantel(plantel)
 
-    print(f"🧩 Bloque {titulo} primeras líneas:", lineas[:40])
-
     resultados = []
     vistos = set()
 
@@ -846,23 +848,23 @@ def extraer_ranking_de_bloque_365(bloque, titulo, plantel, max_items=10):
 
             total = 0
 
-            # Si el jugador viene pegado a posición, ejemplo:
+            # Si viene pegado a posición:
             # Leandro ParedesCentrocampista defensivo
             # Argentina
             # 6
-            # entonces el número correcto está DESPUÉS, no antes.
+            # El número correcto está DESPUÉS.
             if match_tipo == "incluido":
                 for i in range(idx + 1, min(len(lineas), idx + 5)):
                     if es_linea_numero_365(lineas[i]):
                         total = parse_numero_365(lineas[i])
                         break
 
-            # Si el jugador viene en línea limpia, ejemplo:
+            # Si viene limpio:
             # 5
             # Miguel Merentiel
             # Boca Juniors
             # Centro Delantero
-            # entonces el número correcto suele estar ANTES.
+            # El número correcto suele estar ANTES.
             if match_tipo == "exacto":
                 if idx - 1 >= 0 and es_linea_numero_365(lineas[idx - 1]):
                     total = parse_numero_365(lineas[idx - 1])
@@ -968,7 +970,6 @@ def cargar_texto_renderizado_365(url):
 
             textos = []
 
-            # 365Scores carga secciones de forma dinámica al hacer scroll.
             for y in [0, 600, 1200, 1800, 2400, 3200, 4000, 5000, 6500, 8000]:
                 try:
                     page.evaluate(f"window.scrollTo(0, {y})")
@@ -996,10 +997,8 @@ def cargar_texto_renderizado_365(url):
 
             browser.close()
 
-            # IMPORTANTE:
-            # No eliminamos líneas repetidas globalmente porque 365Scores repite valores
-            # como 1, 2, 3, 6 en distintas secciones. Si los borramos, se rompen
-            # Asistencias, Tarjetas Amarillas y Tarjetas Rojas.
+            # No eliminamos líneas repetidas globalmente:
+            # 365Scores repite números como 1, 2, 3, 6 en distintas secciones.
             texto_final = "\n".join(textos)
 
             lineas = []
