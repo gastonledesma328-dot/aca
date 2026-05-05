@@ -774,13 +774,11 @@ def matchea_jugador_365(linea, nombre):
         candidatos.add("ignacio-rodriguez")
 
     if linea_slug in candidatos:
-        return True
+        return "exacto"
 
-    # Caso donde la línea viene como:
-    # Juan Fernando Quintero River Plate Mediocampista 2
     for candidato in candidatos:
         if candidato and candidato in linea_slug:
-            return True
+            return "incluido"
 
     return False
 
@@ -796,17 +794,39 @@ def extraer_ranking_de_bloque_365(bloque, titulo, plantel, max_items=10):
 
     for idx, linea in enumerate(lineas):
         for nombre in jugadores:
-            if not matchea_jugador_365(linea, nombre):
+            match_tipo = matchea_jugador_365(linea, nombre)
+
+            if not match_tipo:
                 continue
 
             total = 0
 
-            total_linea = extraer_numero_de_linea_con_nombre(linea)
-            if total_linea:
-                total = total_linea
+            # Si el jugador viene pegado a posición, ejemplo:
+            # Leandro ParedesCentrocampista defensivo
+            # Argentina
+            # 6
+            # entonces el número correcto está DESPUÉS, no antes.
+            if match_tipo == "incluido":
+                for i in range(idx + 1, min(len(lineas), idx + 5)):
+                    if es_linea_numero_365(lineas[i]):
+                        total = parse_numero_365(lineas[i])
+                        break
 
-            if not total:
-                total = extraer_numero_cerca_de_linea(lineas, idx)
+            # Si el jugador viene en línea limpia, ejemplo:
+            # 5
+            # Miguel Merentiel
+            # Boca Juniors
+            # Centro Delantero
+            # entonces el número correcto suele estar ANTES.
+            if match_tipo == "exacto":
+                if idx - 1 >= 0 and es_linea_numero_365(lineas[idx - 1]):
+                    total = parse_numero_365(lineas[idx - 1])
+
+                if not total:
+                    for i in range(idx + 1, min(len(lineas), idx + 6)):
+                        if es_linea_numero_365(lineas[i]):
+                            total = parse_numero_365(lineas[i])
+                            break
 
             if not total or total <= 0:
                 continue
