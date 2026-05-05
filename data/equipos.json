@@ -11,80 +11,130 @@
     "fundacion": "1901",
     "estadio": "Monumental",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-05T01:30:32.746865+00:00",
-    "proximosPartidos": [],
-    "resultados": [
+    "actualizado": "2026-05-05T01:54:09.582038+00:00",
+    "proximosPartidos": [
       {
-        "dia": "2026-05-03",
-        "local": "River Plate",
-        "visitante": "Atlético Tucumán",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762899/atletico-tucuman-river-plate",
-        "resultado": "0 - 1"
-      },
-      {
-        "dia": "2026-04-26",
-        "local": "River Plate",
-        "visitante": "Aldosivi",
-        "url": "https://www.espn.com/soccer/match/_/gameId/763001/aldosivi-river-plate",
-        "resultado": "3 - 1"
-      },
-      {
-        "dia": "2026-04-19",
-        "local": "River Plate",
-        "visitante": "Boca Juniors",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762995/boca-juniors-river-plate",
-        "resultado": "0 - 1"
-      },
-      {
-        "dia": "2026-04-12",
-        "local": "Racing Club",
+        "id": "762777",
+        "dia": "2026-01-24",
+        "fecha_iso": "2026-01-24T20:00Z",
+        "local": "Barracas Central",
         "visitante": "River Plate",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762976/river-plate-racing-club",
-        "resultado": "0 - 2"
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762777/river-plate-barracas-central",
+        "hora": "20:00",
+        "estado": ""
       },
       {
-        "dia": "2026-04-05",
+        "id": "762801",
+        "dia": "2026-01-28",
+        "fecha_iso": "2026-01-28T23:00Z",
         "local": "River Plate",
-        "visitante": "Belgrano (Córdoba)",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762960/belgrano-cordoba-river-plate",
-        "resultado": "3 - 0"
+        "visitante": "Gimnasia La Plata",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762801/gimnasia-la-plata-river-plate",
+        "hora": "23:00",
+        "estado": ""
       },
       {
-        "dia": "2026-03-22",
-        "local": "Estudiantes de Río Cuarto",
+        "id": "762814",
+        "dia": "2026-02-02",
+        "fecha_iso": "2026-02-02T00:30Z",
+        "local": "Rosario Central",
         "visitante": "River Plate",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762946/river-plate-estudiantes-de-rio-cuarto",
-        "resultado": "0 - 2"
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762814/river-plate-rosario-central",
+        "hora": "00:30",
+        "estado": ""
       },
       {
-        "dia": "2026-03-15",
+        "id": "762831",
+        "dia": "2026-02-07",
+        "fecha_iso": "2026-02-07T23:00Z",
         "local": "River Plate",
-        "visitante": "Sarmiento (Junín)",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762934/sarmiento-junin-river-plate",
-        "resultado": "2 - 0"
+        "visitante": "Tigre",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762831/tigre-river-plate",
+        "hora": "23:00",
+        "estado": ""
       },
       {
-        "dia": "2026-03-13",
-        "local": "Huracán",
+        "id": "762834",
+        "dia": "2026-02-13",
+        "fecha_iso": "2026-02-13T00:15Z",
+        "local": "Argentinos Juniors",
         "visitante": "River Plate",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762917/river-plate-huracan",
-        "resultado": "1 - 2"
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762834/river-plate-argentinos-juniors",
+        "hora": "00:15",
+        "estado": ""
       },
       {
-        "dia": "2026-03-03",
-        "local": "Independiente Rivadavia",
+        "id": "762862",
+        "dia": "2026-02-22",
+        "fecha_iso": "2026-02-22T22:15Z",
+        "local": "Vélez Sarsfield",
         "visitante": "River Plate",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762888/river-plate-independiente-rivadavia",
-        "resultado": "1 - 1"
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762862/river-plate-velez-sarsfield",
+        "hora": "22:15",
+        "estado": ""
       },
       {
+        "id": "762867",
         "dia": "2026-02-26",
+        "fecha_iso": "2026-02-26T22:30Z",
         "local": "River Plate",
         "visitante": "Banfield",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
         "url": "https://www.espn.com/soccer/match/_/gameId/762867/banfield-river-plate",
-        "resultado": "3 - 1"
+        "hora": "22:30",
+        "estado": ""
+      },
+      {
+        "id": "762888",
+        "dia": "2026-03-03",
+        "fecha_iso": "2026-03-03T00:30Z",
+        "local": "Independiente Rivadavia",
+        "visitante": "River Plate",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762888/river-plate-independiente-rivadavia",
+        "hora": "00:30",
+        "estado": ""
+      },
+      {
+        "id": "762917",
+        "dia": "2026-03-13",
+        "fecha_iso": "2026-03-13T00:30Z",
+        "local": "Huracán",
+        "visitante": "River Plate",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762917/river-plate-huracan",
+        "hora": "00:30",
+        "estado": ""
+      },
+      {
+        "id": "762934",
+        "dia": "2026-03-15",
+        "fecha_iso": "2026-03-15T22:45Z",
+        "local": "River Plate",
+        "visitante": "Sarmiento (Junín)",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10158.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762934/sarmiento-junin-river-plate",
+        "hora": "22:45",
+        "estado": ""
       }
     ],
+    "resultados": [],
     "plantel": {
       "arqueros": [
         {
@@ -483,79 +533,129 @@
         "fase": "apertura",
         "fecha_desde": "2026-01-01",
         "fecha_hasta": "2026-06-30",
-        "proximosPartidos": [],
-        "resultados": [
+        "proximosPartidos": [
           {
-            "dia": "2026-05-03",
-            "local": "River Plate",
-            "visitante": "Atlético Tucumán",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762899/atletico-tucuman-river-plate",
-            "resultado": "0 - 1"
-          },
-          {
-            "dia": "2026-04-26",
-            "local": "River Plate",
-            "visitante": "Aldosivi",
-            "url": "https://www.espn.com/soccer/match/_/gameId/763001/aldosivi-river-plate",
-            "resultado": "3 - 1"
-          },
-          {
-            "dia": "2026-04-19",
-            "local": "River Plate",
-            "visitante": "Boca Juniors",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762995/boca-juniors-river-plate",
-            "resultado": "0 - 1"
-          },
-          {
-            "dia": "2026-04-12",
-            "local": "Racing Club",
+            "id": "762777",
+            "dia": "2026-01-24",
+            "fecha_iso": "2026-01-24T20:00Z",
+            "local": "Barracas Central",
             "visitante": "River Plate",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762976/river-plate-racing-club",
-            "resultado": "0 - 2"
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762777/river-plate-barracas-central",
+            "hora": "20:00",
+            "estado": ""
           },
           {
-            "dia": "2026-04-05",
+            "id": "762801",
+            "dia": "2026-01-28",
+            "fecha_iso": "2026-01-28T23:00Z",
             "local": "River Plate",
-            "visitante": "Belgrano (Córdoba)",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762960/belgrano-cordoba-river-plate",
-            "resultado": "3 - 0"
+            "visitante": "Gimnasia La Plata",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762801/gimnasia-la-plata-river-plate",
+            "hora": "23:00",
+            "estado": ""
           },
           {
-            "dia": "2026-03-22",
-            "local": "Estudiantes de Río Cuarto",
+            "id": "762814",
+            "dia": "2026-02-02",
+            "fecha_iso": "2026-02-02T00:30Z",
+            "local": "Rosario Central",
             "visitante": "River Plate",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762946/river-plate-estudiantes-de-rio-cuarto",
-            "resultado": "0 - 2"
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762814/river-plate-rosario-central",
+            "hora": "00:30",
+            "estado": ""
           },
           {
-            "dia": "2026-03-15",
+            "id": "762831",
+            "dia": "2026-02-07",
+            "fecha_iso": "2026-02-07T23:00Z",
             "local": "River Plate",
-            "visitante": "Sarmiento (Junín)",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762934/sarmiento-junin-river-plate",
-            "resultado": "2 - 0"
+            "visitante": "Tigre",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762831/tigre-river-plate",
+            "hora": "23:00",
+            "estado": ""
           },
           {
-            "dia": "2026-03-13",
-            "local": "Huracán",
+            "id": "762834",
+            "dia": "2026-02-13",
+            "fecha_iso": "2026-02-13T00:15Z",
+            "local": "Argentinos Juniors",
             "visitante": "River Plate",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762917/river-plate-huracan",
-            "resultado": "1 - 2"
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762834/river-plate-argentinos-juniors",
+            "hora": "00:15",
+            "estado": ""
           },
           {
-            "dia": "2026-03-03",
-            "local": "Independiente Rivadavia",
+            "id": "762862",
+            "dia": "2026-02-22",
+            "fecha_iso": "2026-02-22T22:15Z",
+            "local": "Vélez Sarsfield",
             "visitante": "River Plate",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762888/river-plate-independiente-rivadavia",
-            "resultado": "1 - 1"
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762862/river-plate-velez-sarsfield",
+            "hora": "22:15",
+            "estado": ""
           },
           {
+            "id": "762867",
             "dia": "2026-02-26",
+            "fecha_iso": "2026-02-26T22:30Z",
             "local": "River Plate",
             "visitante": "Banfield",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
             "url": "https://www.espn.com/soccer/match/_/gameId/762867/banfield-river-plate",
-            "resultado": "3 - 1"
+            "hora": "22:30",
+            "estado": ""
+          },
+          {
+            "id": "762888",
+            "dia": "2026-03-03",
+            "fecha_iso": "2026-03-03T00:30Z",
+            "local": "Independiente Rivadavia",
+            "visitante": "River Plate",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762888/river-plate-independiente-rivadavia",
+            "hora": "00:30",
+            "estado": ""
+          },
+          {
+            "id": "762917",
+            "dia": "2026-03-13",
+            "fecha_iso": "2026-03-13T00:30Z",
+            "local": "Huracán",
+            "visitante": "River Plate",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762917/river-plate-huracan",
+            "hora": "00:30",
+            "estado": ""
+          },
+          {
+            "id": "762934",
+            "dia": "2026-03-15",
+            "fecha_iso": "2026-03-15T22:45Z",
+            "local": "River Plate",
+            "visitante": "Sarmiento (Junín)",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10158.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762934/sarmiento-junin-river-plate",
+            "hora": "22:45",
+            "estado": ""
           }
         ],
+        "resultados": [],
         "estadisticas": {
           "goles": [
             {
@@ -750,30 +850,45 @@
         "fase": "",
         "fecha_desde": "",
         "fecha_hasta": "",
-        "proximosPartidos": [],
-        "resultados": [
+        "proximosPartidos": [
           {
-            "dia": "2026-05-01",
-            "local": "Red Bull Bragantino",
-            "visitante": "River Plate",
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865414/river-plate-red-bull-bragantino",
-            "resultado": "0 - 1"
-          },
-          {
-            "dia": "2026-04-16",
-            "local": "River Plate",
-            "visitante": "Carabobo",
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865398/carabobo-river-plate",
-            "resultado": "1 - 0"
-          },
-          {
+            "id": "401865373",
             "dia": "2026-04-09",
+            "fecha_iso": "2026-04-09T00:30Z",
             "local": "Blooming",
             "visitante": "River Plate",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6047.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
             "url": "https://www.espn.com/soccer/match/_/gameId/401865373/river-plate-blooming",
-            "resultado": "1 - 1"
+            "hora": "00:30",
+            "estado": ""
+          },
+          {
+            "id": "401865398",
+            "dia": "2026-04-16",
+            "fecha_iso": "2026-04-16T00:30Z",
+            "local": "River Plate",
+            "visitante": "Carabobo",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6037.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865398/carabobo-river-plate",
+            "hora": "00:30",
+            "estado": ""
+          },
+          {
+            "id": "401865414",
+            "dia": "2026-05-01",
+            "fecha_iso": "2026-05-01T00:30Z",
+            "local": "Red Bull Bragantino",
+            "visitante": "River Plate",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6079.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865414/river-plate-red-bull-bragantino",
+            "hora": "00:30",
+            "estado": ""
           }
         ],
+        "resultados": [],
         "estadisticas": {
           "goles": [],
           "asistencias": [],
@@ -807,80 +922,130 @@
     "fundacion": "1905",
     "estadio": "Alberto J. Armando",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-05T01:30:52.060303+00:00",
-    "proximosPartidos": [],
-    "resultados": [
+    "actualizado": "2026-05-05T01:54:53.235438+00:00",
+    "proximosPartidos": [
       {
-        "dia": "2026-05-02",
-        "local": "Central Córdoba (Santiago del Estero)",
-        "visitante": "Boca Juniors",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762907/boca-juniors-central-cordoba-santiago-del-estero",
-        "resultado": "1 - 2"
-      },
-      {
-        "dia": "2026-04-23",
-        "local": "Defensa y Justicia",
-        "visitante": "Boca Juniors",
-        "url": "https://www.espn.com/soccer/match/_/gameId/763011/boca-juniors-defensa-y-justicia",
-        "resultado": "0 - 4"
-      },
-      {
-        "dia": "2026-04-19",
-        "local": "River Plate",
-        "visitante": "Boca Juniors",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762995/boca-juniors-river-plate",
-        "resultado": "0 - 1"
-      },
-      {
-        "dia": "2026-04-11",
+        "id": "762778",
+        "dia": "2026-01-25",
+        "fecha_iso": "2026-01-25T21:30Z",
         "local": "Boca Juniors",
-        "visitante": "Independiente",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762970/independiente-boca-juniors",
-        "resultado": "1 - 1"
+        "visitante": "Deportivo Riestra",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762778/deportivo-riestra-boca-juniors",
+        "hora": "21:30",
+        "estado": ""
       },
       {
-        "dia": "2026-04-02",
-        "local": "Talleres (Córdoba)",
+        "id": "762794",
+        "dia": "2026-01-29",
+        "fecha_iso": "2026-01-29T01:15Z",
+        "local": "Estudiantes de La Plata",
         "visitante": "Boca Juniors",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762963/boca-juniors-talleres-cordoba",
-        "resultado": "0 - 1"
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762794/boca-juniors-estudiantes-de-la-plata",
+        "hora": "01:15",
+        "estado": ""
       },
       {
-        "dia": "2026-03-22",
+        "id": "762808",
+        "dia": "2026-02-01",
+        "fecha_iso": "2026-02-01T22:15Z",
         "local": "Boca Juniors",
-        "visitante": "Instituto (Córdoba)",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762943/instituto-cordoba-boca-juniors",
-        "resultado": "2 - 0"
+        "visitante": "Newell's Old Boys",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762808/newells-old-boys-boca-juniors",
+        "hora": "22:15",
+        "estado": ""
       },
       {
-        "dia": "2026-03-16",
-        "local": "Unión (Santa Fe)",
+        "id": "762833",
+        "dia": "2026-02-09",
+        "fecha_iso": "2026-02-09T01:15Z",
+        "local": "Vélez Sarsfield",
         "visitante": "Boca Juniors",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762938/boca-juniors-union-santa-fe",
-        "resultado": "1 - 1"
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762833/boca-juniors-velez-sarsfield",
+        "hora": "01:15",
+        "estado": ""
       },
       {
-        "dia": "2026-03-11",
+        "id": "762837",
+        "dia": "2026-02-15",
+        "fecha_iso": "2026-02-15T22:30Z",
         "local": "Boca Juniors",
-        "visitante": "San Lorenzo",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762912/san-lorenzo-boca-juniors",
-        "resultado": "1 - 1"
+        "visitante": "Platense",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762837/platense-boca-juniors",
+        "hora": "22:30",
+        "estado": ""
       },
       {
-        "dia": "2026-03-05",
-        "local": "Lanús",
-        "visitante": "Boca Juniors",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762878/boca-juniors-lanus",
-        "resultado": "0 - 3"
+        "id": "762851",
+        "dia": "2026-02-20",
+        "fecha_iso": "2026-02-20T23:00Z",
+        "local": "Boca Juniors",
+        "visitante": "Racing Club",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762851/racing-club-boca-juniors",
+        "hora": "23:00",
+        "estado": ""
       },
       {
+        "id": "762882",
         "dia": "2026-02-28",
+        "fecha_iso": "2026-02-28T20:45Z",
         "local": "Boca Juniors",
         "visitante": "Gimnasia (Mendoza)",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
         "url": "https://www.espn.com/soccer/match/_/gameId/762882/gimnasia-mendoza-boca-juniors",
-        "resultado": "1 - 1"
+        "hora": "20:45",
+        "estado": ""
+      },
+      {
+        "id": "762878",
+        "dia": "2026-03-05",
+        "fecha_iso": "2026-03-05T00:00Z",
+        "local": "Lanús",
+        "visitante": "Boca Juniors",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762878/boca-juniors-lanus",
+        "hora": "00:00",
+        "estado": ""
+      },
+      {
+        "id": "762912",
+        "dia": "2026-03-11",
+        "fecha_iso": "2026-03-11T22:45Z",
+        "local": "Boca Juniors",
+        "visitante": "San Lorenzo",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762912/san-lorenzo-boca-juniors",
+        "hora": "22:45",
+        "estado": ""
+      },
+      {
+        "id": "762938",
+        "dia": "2026-03-16",
+        "fecha_iso": "2026-03-16T01:00Z",
+        "local": "Unión (Santa Fe)",
+        "visitante": "Boca Juniors",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762938/boca-juniors-union-santa-fe",
+        "hora": "01:00",
+        "estado": ""
       }
     ],
+    "resultados": [],
     "plantel": {
       "arqueros": [
         {
@@ -1257,79 +1422,129 @@
         "fase": "apertura",
         "fecha_desde": "2026-01-01",
         "fecha_hasta": "2026-06-30",
-        "proximosPartidos": [],
-        "resultados": [
+        "proximosPartidos": [
           {
-            "dia": "2026-05-02",
-            "local": "Central Córdoba (Santiago del Estero)",
-            "visitante": "Boca Juniors",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762907/boca-juniors-central-cordoba-santiago-del-estero",
-            "resultado": "1 - 2"
-          },
-          {
-            "dia": "2026-04-23",
-            "local": "Defensa y Justicia",
-            "visitante": "Boca Juniors",
-            "url": "https://www.espn.com/soccer/match/_/gameId/763011/boca-juniors-defensa-y-justicia",
-            "resultado": "0 - 4"
-          },
-          {
-            "dia": "2026-04-19",
-            "local": "River Plate",
-            "visitante": "Boca Juniors",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762995/boca-juniors-river-plate",
-            "resultado": "0 - 1"
-          },
-          {
-            "dia": "2026-04-11",
+            "id": "762778",
+            "dia": "2026-01-25",
+            "fecha_iso": "2026-01-25T21:30Z",
             "local": "Boca Juniors",
-            "visitante": "Independiente",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762970/independiente-boca-juniors",
-            "resultado": "1 - 1"
+            "visitante": "Deportivo Riestra",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762778/deportivo-riestra-boca-juniors",
+            "hora": "21:30",
+            "estado": ""
           },
           {
-            "dia": "2026-04-02",
-            "local": "Talleres (Córdoba)",
+            "id": "762794",
+            "dia": "2026-01-29",
+            "fecha_iso": "2026-01-29T01:15Z",
+            "local": "Estudiantes de La Plata",
             "visitante": "Boca Juniors",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762963/boca-juniors-talleres-cordoba",
-            "resultado": "0 - 1"
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762794/boca-juniors-estudiantes-de-la-plata",
+            "hora": "01:15",
+            "estado": ""
           },
           {
-            "dia": "2026-03-22",
+            "id": "762808",
+            "dia": "2026-02-01",
+            "fecha_iso": "2026-02-01T22:15Z",
             "local": "Boca Juniors",
-            "visitante": "Instituto (Córdoba)",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762943/instituto-cordoba-boca-juniors",
-            "resultado": "2 - 0"
+            "visitante": "Newell's Old Boys",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762808/newells-old-boys-boca-juniors",
+            "hora": "22:15",
+            "estado": ""
           },
           {
-            "dia": "2026-03-16",
-            "local": "Unión (Santa Fe)",
+            "id": "762833",
+            "dia": "2026-02-09",
+            "fecha_iso": "2026-02-09T01:15Z",
+            "local": "Vélez Sarsfield",
             "visitante": "Boca Juniors",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762938/boca-juniors-union-santa-fe",
-            "resultado": "1 - 1"
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762833/boca-juniors-velez-sarsfield",
+            "hora": "01:15",
+            "estado": ""
           },
           {
-            "dia": "2026-03-11",
+            "id": "762837",
+            "dia": "2026-02-15",
+            "fecha_iso": "2026-02-15T22:30Z",
             "local": "Boca Juniors",
-            "visitante": "San Lorenzo",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762912/san-lorenzo-boca-juniors",
-            "resultado": "1 - 1"
+            "visitante": "Platense",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762837/platense-boca-juniors",
+            "hora": "22:30",
+            "estado": ""
           },
           {
-            "dia": "2026-03-05",
-            "local": "Lanús",
-            "visitante": "Boca Juniors",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762878/boca-juniors-lanus",
-            "resultado": "0 - 3"
+            "id": "762851",
+            "dia": "2026-02-20",
+            "fecha_iso": "2026-02-20T23:00Z",
+            "local": "Boca Juniors",
+            "visitante": "Racing Club",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762851/racing-club-boca-juniors",
+            "hora": "23:00",
+            "estado": ""
           },
           {
+            "id": "762882",
             "dia": "2026-02-28",
+            "fecha_iso": "2026-02-28T20:45Z",
             "local": "Boca Juniors",
             "visitante": "Gimnasia (Mendoza)",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
             "url": "https://www.espn.com/soccer/match/_/gameId/762882/gimnasia-mendoza-boca-juniors",
-            "resultado": "1 - 1"
+            "hora": "20:45",
+            "estado": ""
+          },
+          {
+            "id": "762878",
+            "dia": "2026-03-05",
+            "fecha_iso": "2026-03-05T00:00Z",
+            "local": "Lanús",
+            "visitante": "Boca Juniors",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762878/boca-juniors-lanus",
+            "hora": "00:00",
+            "estado": ""
+          },
+          {
+            "id": "762912",
+            "dia": "2026-03-11",
+            "fecha_iso": "2026-03-11T22:45Z",
+            "local": "Boca Juniors",
+            "visitante": "San Lorenzo",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762912/san-lorenzo-boca-juniors",
+            "hora": "22:45",
+            "estado": ""
+          },
+          {
+            "id": "762938",
+            "dia": "2026-03-16",
+            "fecha_iso": "2026-03-16T01:00Z",
+            "local": "Unión (Santa Fe)",
+            "visitante": "Boca Juniors",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762938/boca-juniors-union-santa-fe",
+            "hora": "01:00",
+            "estado": ""
           }
         ],
+        "resultados": [],
         "estadisticas": {
           "goles": [
             {
@@ -1479,30 +1694,45 @@
         "fase": "",
         "fecha_desde": "",
         "fecha_hasta": "",
-        "proximosPartidos": [],
-        "resultados": [
+        "proximosPartidos": [
           {
-            "dia": "2026-04-29",
-            "local": "Cruzeiro",
-            "visitante": "Boca Juniors",
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865505/boca-juniors-cruzeiro",
-            "resultado": "1 - 0"
-          },
-          {
-            "dia": "2026-04-15",
-            "local": "Boca Juniors",
-            "visitante": "Barcelona SC",
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865499/barcelona-sc-boca-juniors",
-            "resultado": "3 - 0"
-          },
-          {
+            "id": "401865370",
             "dia": "2026-04-08",
+            "fecha_iso": "2026-04-08T00:30Z",
             "local": "Universidad Católica",
             "visitante": "Boca Juniors",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/885.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
             "url": "https://www.espn.com/soccer/match/_/gameId/401865370/boca-juniors-universidad-catolica",
-            "resultado": "1 - 2"
+            "hora": "00:30",
+            "estado": ""
+          },
+          {
+            "id": "401865499",
+            "dia": "2026-04-15",
+            "fecha_iso": "2026-04-15T00:00Z",
+            "local": "Boca Juniors",
+            "visitante": "Barcelona SC",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2686.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865499/barcelona-sc-boca-juniors",
+            "hora": "00:00",
+            "estado": ""
+          },
+          {
+            "id": "401865505",
+            "dia": "2026-04-29",
+            "fecha_iso": "2026-04-29T00:30Z",
+            "local": "Cruzeiro",
+            "visitante": "Boca Juniors",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2022.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865505/boca-juniors-cruzeiro",
+            "hora": "00:30",
+            "estado": ""
           }
         ],
+        "resultados": [],
         "estadisticas": {
           "goles": [],
           "asistencias": [],
@@ -1564,80 +1794,130 @@
     "fundacion": "1903",
     "estadio": "Presidente Perón",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-05T01:31:09.866284+00:00",
-    "proximosPartidos": [],
-    "resultados": [
+    "actualizado": "2026-05-05T01:55:35.797900+00:00",
+    "proximosPartidos": [
       {
-        "dia": "2026-05-03",
+        "id": "762780",
+        "dia": "2026-01-24",
+        "fecha_iso": "2026-01-24T22:30Z",
+        "local": "Gimnasia La Plata",
+        "visitante": "Racing Club",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762780/racing-club-gimnasia-la-plata",
+        "hora": "22:30",
+        "estado": ""
+      },
+      {
+        "id": "762800",
+        "dia": "2026-01-28",
+        "fecha_iso": "2026-01-28T22:00Z",
         "local": "Racing Club",
-        "visitante": "Huracán",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762898/huracan-racing-club",
-        "resultado": "0 - 0"
+        "visitante": "Rosario Central",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762800/rosario-central-racing-club",
+        "hora": "22:00",
+        "estado": ""
       },
       {
-        "dia": "2026-04-25",
+        "id": "762817",
+        "dia": "2026-02-02",
+        "fecha_iso": "2026-02-02T22:45Z",
+        "local": "Tigre",
+        "visitante": "Racing Club",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762817/racing-club-tigre",
+        "hora": "22:45",
+        "estado": ""
+      },
+      {
+        "id": "762830",
+        "dia": "2026-02-07",
+        "fecha_iso": "2026-02-07T21:00Z",
         "local": "Racing Club",
-        "visitante": "Barracas Central",
-        "url": "https://www.espn.com/soccer/match/_/gameId/763013/barracas-central-racing-club",
-        "resultado": "1 - 1"
+        "visitante": "Argentinos Juniors",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762830/argentinos-juniors-racing-club",
+        "hora": "21:00",
+        "estado": ""
       },
       {
-        "dia": "2026-04-19",
-        "local": "Aldosivi",
+        "id": "762836",
+        "dia": "2026-02-14",
+        "fecha_iso": "2026-02-14T20:30Z",
+        "local": "Banfield",
         "visitante": "Racing Club",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762986/racing-club-aldosivi",
-        "resultado": "1 - 1"
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762836/racing-club-banfield",
+        "hora": "20:30",
+        "estado": ""
       },
       {
-        "dia": "2026-04-12",
-        "local": "Racing Club",
-        "visitante": "River Plate",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762976/river-plate-racing-club",
-        "resultado": "0 - 2"
-      },
-      {
-        "dia": "2026-04-04",
-        "local": "Independiente",
+        "id": "762851",
+        "dia": "2026-02-20",
+        "fecha_iso": "2026-02-20T23:00Z",
+        "local": "Boca Juniors",
         "visitante": "Racing Club",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762957/racing-club-independiente",
-        "resultado": "1 - 0"
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762851/racing-club-boca-juniors",
+        "hora": "23:00",
+        "estado": ""
       },
       {
-        "dia": "2026-03-22",
-        "local": "Belgrano (Córdoba)",
-        "visitante": "Racing Club",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762942/racing-club-belgrano-cordoba",
-        "resultado": "1 - 2"
-      },
-      {
-        "dia": "2026-03-16",
-        "local": "Racing Club",
-        "visitante": "Estudiantes de Río Cuarto",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762933/estudiantes-de-rio-cuarto-racing-club",
-        "resultado": "2 - 0"
-      },
-      {
-        "dia": "2026-03-11",
-        "local": "Sarmiento (Junín)",
-        "visitante": "Racing Club",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762921/racing-club-sarmiento-junin",
-        "resultado": "0 - 0"
-      },
-      {
-        "dia": "2026-03-04",
-        "local": "Atlético Tucumán",
-        "visitante": "Racing Club",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762880/racing-club-atletico-tucuman",
-        "resultado": "0 - 3"
-      },
-      {
+        "id": "762866",
         "dia": "2026-02-26",
+        "fecha_iso": "2026-02-26T20:15Z",
         "local": "Racing Club",
         "visitante": "Independiente Rivadavia",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
         "url": "https://www.espn.com/soccer/match/_/gameId/762866/independiente-rivadavia-racing-club",
-        "resultado": "1 - 1"
+        "hora": "20:15",
+        "estado": ""
+      },
+      {
+        "id": "762880",
+        "dia": "2026-03-04",
+        "fecha_iso": "2026-03-04T00:15Z",
+        "local": "Atlético Tucumán",
+        "visitante": "Racing Club",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762880/racing-club-atletico-tucuman",
+        "hora": "00:15",
+        "estado": ""
+      },
+      {
+        "id": "762921",
+        "dia": "2026-03-11",
+        "fecha_iso": "2026-03-11T01:00Z",
+        "local": "Sarmiento (Junín)",
+        "visitante": "Racing Club",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10158.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762921/racing-club-sarmiento-junin",
+        "hora": "01:00",
+        "estado": ""
+      },
+      {
+        "id": "762933",
+        "dia": "2026-03-16",
+        "fecha_iso": "2026-03-16T23:00Z",
+        "local": "Racing Club",
+        "visitante": "Estudiantes de Río Cuarto",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19685.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/762933/estudiantes-de-rio-cuarto-racing-club",
+        "hora": "23:00",
+        "estado": ""
       }
     ],
+    "resultados": [],
     "plantel": {
       "arqueros": [
         {
@@ -2008,79 +2288,129 @@
         "fase": "apertura",
         "fecha_desde": "2026-01-01",
         "fecha_hasta": "2026-06-30",
-        "proximosPartidos": [],
-        "resultados": [
+        "proximosPartidos": [
           {
-            "dia": "2026-05-03",
+            "id": "762780",
+            "dia": "2026-01-24",
+            "fecha_iso": "2026-01-24T22:30Z",
+            "local": "Gimnasia La Plata",
+            "visitante": "Racing Club",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762780/racing-club-gimnasia-la-plata",
+            "hora": "22:30",
+            "estado": ""
+          },
+          {
+            "id": "762800",
+            "dia": "2026-01-28",
+            "fecha_iso": "2026-01-28T22:00Z",
             "local": "Racing Club",
-            "visitante": "Huracán",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762898/huracan-racing-club",
-            "resultado": "0 - 0"
+            "visitante": "Rosario Central",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762800/rosario-central-racing-club",
+            "hora": "22:00",
+            "estado": ""
           },
           {
-            "dia": "2026-04-25",
+            "id": "762817",
+            "dia": "2026-02-02",
+            "fecha_iso": "2026-02-02T22:45Z",
+            "local": "Tigre",
+            "visitante": "Racing Club",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762817/racing-club-tigre",
+            "hora": "22:45",
+            "estado": ""
+          },
+          {
+            "id": "762830",
+            "dia": "2026-02-07",
+            "fecha_iso": "2026-02-07T21:00Z",
             "local": "Racing Club",
-            "visitante": "Barracas Central",
-            "url": "https://www.espn.com/soccer/match/_/gameId/763013/barracas-central-racing-club",
-            "resultado": "1 - 1"
+            "visitante": "Argentinos Juniors",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762830/argentinos-juniors-racing-club",
+            "hora": "21:00",
+            "estado": ""
           },
           {
-            "dia": "2026-04-19",
-            "local": "Aldosivi",
+            "id": "762836",
+            "dia": "2026-02-14",
+            "fecha_iso": "2026-02-14T20:30Z",
+            "local": "Banfield",
             "visitante": "Racing Club",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762986/racing-club-aldosivi",
-            "resultado": "1 - 1"
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762836/racing-club-banfield",
+            "hora": "20:30",
+            "estado": ""
           },
           {
-            "dia": "2026-04-12",
-            "local": "Racing Club",
-            "visitante": "River Plate",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762976/river-plate-racing-club",
-            "resultado": "0 - 2"
-          },
-          {
-            "dia": "2026-04-04",
-            "local": "Independiente",
+            "id": "762851",
+            "dia": "2026-02-20",
+            "fecha_iso": "2026-02-20T23:00Z",
+            "local": "Boca Juniors",
             "visitante": "Racing Club",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762957/racing-club-independiente",
-            "resultado": "1 - 0"
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762851/racing-club-boca-juniors",
+            "hora": "23:00",
+            "estado": ""
           },
           {
-            "dia": "2026-03-22",
-            "local": "Belgrano (Córdoba)",
-            "visitante": "Racing Club",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762942/racing-club-belgrano-cordoba",
-            "resultado": "1 - 2"
-          },
-          {
-            "dia": "2026-03-16",
-            "local": "Racing Club",
-            "visitante": "Estudiantes de Río Cuarto",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762933/estudiantes-de-rio-cuarto-racing-club",
-            "resultado": "2 - 0"
-          },
-          {
-            "dia": "2026-03-11",
-            "local": "Sarmiento (Junín)",
-            "visitante": "Racing Club",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762921/racing-club-sarmiento-junin",
-            "resultado": "0 - 0"
-          },
-          {
-            "dia": "2026-03-04",
-            "local": "Atlético Tucumán",
-            "visitante": "Racing Club",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762880/racing-club-atletico-tucuman",
-            "resultado": "0 - 3"
-          },
-          {
+            "id": "762866",
             "dia": "2026-02-26",
+            "fecha_iso": "2026-02-26T20:15Z",
             "local": "Racing Club",
             "visitante": "Independiente Rivadavia",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
             "url": "https://www.espn.com/soccer/match/_/gameId/762866/independiente-rivadavia-racing-club",
-            "resultado": "1 - 1"
+            "hora": "20:15",
+            "estado": ""
+          },
+          {
+            "id": "762880",
+            "dia": "2026-03-04",
+            "fecha_iso": "2026-03-04T00:15Z",
+            "local": "Atlético Tucumán",
+            "visitante": "Racing Club",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762880/racing-club-atletico-tucuman",
+            "hora": "00:15",
+            "estado": ""
+          },
+          {
+            "id": "762921",
+            "dia": "2026-03-11",
+            "fecha_iso": "2026-03-11T01:00Z",
+            "local": "Sarmiento (Junín)",
+            "visitante": "Racing Club",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10158.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762921/racing-club-sarmiento-junin",
+            "hora": "01:00",
+            "estado": ""
+          },
+          {
+            "id": "762933",
+            "dia": "2026-03-16",
+            "fecha_iso": "2026-03-16T23:00Z",
+            "local": "Racing Club",
+            "visitante": "Estudiantes de Río Cuarto",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19685.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/762933/estudiantes-de-rio-cuarto-racing-club",
+            "hora": "23:00",
+            "estado": ""
           }
         ],
+        "resultados": [],
         "estadisticas": {
           "goles": [
             {
@@ -2267,30 +2597,45 @@
         "fase": "",
         "fecha_desde": "",
         "fecha_hasta": "",
-        "proximosPartidos": [],
-        "resultados": [
+        "proximosPartidos": [
           {
-            "dia": "2026-04-29",
-            "local": "Caracas FC",
-            "visitante": "Racing Club",
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865407/racing-club-caracas-fc",
-            "resultado": "1 - 1"
-          },
-          {
-            "dia": "2026-04-15",
-            "local": "Racing Club",
-            "visitante": "Botafogo",
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865399/botafogo-racing-club",
-            "resultado": "2 - 3"
-          },
-          {
+            "id": "401865384",
             "dia": "2026-04-07",
+            "fecha_iso": "2026-04-07T22:00Z",
             "local": "Independiente Petrolero",
             "visitante": "Racing Club",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20889.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
             "url": "https://www.espn.com/soccer/match/_/gameId/401865384/racing-club-independiente-petrolero",
-            "resultado": "1 - 3"
+            "hora": "22:00",
+            "estado": ""
+          },
+          {
+            "id": "401865399",
+            "dia": "2026-04-15",
+            "fecha_iso": "2026-04-15T22:00Z",
+            "local": "Racing Club",
+            "visitante": "Botafogo",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6086.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865399/botafogo-racing-club",
+            "hora": "22:00",
+            "estado": ""
+          },
+          {
+            "id": "401865407",
+            "dia": "2026-04-29",
+            "fecha_iso": "2026-04-29T22:00Z",
+            "local": "Caracas FC",
+            "visitante": "Racing Club",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4811.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865407/racing-club-caracas-fc",
+            "hora": "22:00",
+            "estado": ""
           }
         ],
+        "resultados": [],
         "estadisticas": {
           "goles": [],
           "asistencias": [],
