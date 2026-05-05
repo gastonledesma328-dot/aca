@@ -260,6 +260,42 @@ def formatear_fecha(fecha):
     return str(fecha).split("T")[0]
 
 
+def fecha_argentina_desde_iso(fecha_iso):
+    if not fecha_iso:
+        return "Sin fecha"
+
+    try:
+        dt = datetime.fromisoformat(str(fecha_iso).replace("Z", "+00:00"))
+        dt_arg = dt.astimezone(ZoneInfo("America/Argentina/Buenos_Aires"))
+        return dt_arg.strftime("%Y-%m-%d")
+    except Exception:
+        return formatear_fecha(fecha_iso)
+
+
+def hora_argentina_desde_iso(fecha_iso):
+    if not fecha_iso or "T" not in str(fecha_iso):
+        return "Ver horario"
+
+    try:
+        dt = datetime.fromisoformat(str(fecha_iso).replace("Z", "+00:00"))
+        dt_arg = dt.astimezone(ZoneInfo("America/Argentina/Buenos_Aires"))
+        return dt_arg.strftime("%H:%M")
+    except Exception:
+        return "Ver horario"
+
+
+def fecha_iso_argentina_ordenable(fecha_iso):
+    if not fecha_iso:
+        return ""
+
+    try:
+        dt = datetime.fromisoformat(str(fecha_iso).replace("Z", "+00:00"))
+        dt_arg = dt.astimezone(ZoneInfo("America/Argentina/Buenos_Aires"))
+        return dt_arg.strftime("%Y-%m-%dT%H:%M:%S")
+    except Exception:
+        return str(fecha_iso or "")
+
+
 def fecha_en_rango(fecha, fecha_desde="", fecha_hasta=""):
     if not fecha_desde and not fecha_hasta:
         return True
@@ -284,15 +320,26 @@ def fecha_iso_pasada(fecha_iso):
 
     try:
         dt = datetime.fromisoformat(str(fecha_iso).replace("Z", "+00:00"))
-        return dt < datetime.now(timezone.utc)
+
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=ZoneInfo("America/Argentina/Buenos_Aires"))
+
+        return dt.astimezone(timezone.utc) < datetime.now(timezone.utc)
     except Exception:
         return False
 
 
 def fecha_yyyy_mm_dd_pasada(fecha):
     try:
-        dt = datetime.strptime(fecha, "%Y-%m-%d").replace(tzinfo=timezone.utc)
-        hoy = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+        dt = datetime.strptime(fecha, "%Y-%m-%d").replace(
+            tzinfo=ZoneInfo("America/Argentina/Buenos_Aires")
+        )
+        hoy = datetime.now(ZoneInfo("America/Argentina/Buenos_Aires")).replace(
+            hour=0,
+            minute=0,
+            second=0,
+            microsecond=0,
+        )
         return dt < hoy
     except Exception:
         return False
@@ -406,18 +453,6 @@ def cargar_datos_club(base):
     return actualizado
 
 
-def hora_argentina_desde_iso(fecha_iso):
-    if not fecha_iso or "T" not in str(fecha_iso):
-        return "Ver horario"
-
-    try:
-        dt = datetime.fromisoformat(str(fecha_iso).replace("Z", "+00:00"))
-        dt_arg = dt.astimezone(ZoneInfo("America/Argentina/Buenos_Aires"))
-        return dt_arg.strftime("%H:%M")
-    except Exception:
-        return "Ver horario"
-
-
 def parse_score_event(evento):
     competitions = evento.get("competitions") or []
     competition = competitions[0] if competitions else {}
@@ -459,14 +494,16 @@ def parse_score_event(evento):
 
     completado = status.get("completed") is True
 
-    fecha_iso = evento.get("date") or ""
-    fecha = formatear_fecha(fecha_iso)
+    fecha_iso_utc = evento.get("date") or ""
+    fecha = fecha_argentina_desde_iso(fecha_iso_utc)
+    hora = hora_argentina_desde_iso(fecha_iso_utc)
+    fecha_iso_local = fecha_iso_argentina_ordenable(fecha_iso_utc)
 
-    hora = hora_argentina_desde_iso(fecha_iso)
     return {
         "id": str(evento.get("id") or ""),
         "fecha": fecha,
-        "fecha_iso": fecha_iso,
+        "fecha_iso": fecha_iso_local,
+        "fecha_iso_utc": fecha_iso_utc,
         "hora": hora,
         "local": local,
         "visitante": visitante,
@@ -520,7 +557,9 @@ def es_partido_finalizado(partido):
     if any(p in estado for p in palabras_final):
         return True
 
-    if fecha_iso_pasada(partido.get("fecha_iso")) and tiene_marcador_real(partido):
+    fecha_para_estado = partido.get("fecha_iso_utc") or partido.get("fecha_iso")
+
+    if fecha_iso_pasada(fecha_para_estado) and tiene_marcador_real(partido):
         return True
 
     return False
@@ -555,7 +594,9 @@ def es_partido_proximo(partido):
     if any(p in estado for p in palabras_pre):
         return True
 
-    if partido.get("fecha_iso") and not fecha_iso_pasada(partido.get("fecha_iso")):
+    fecha_para_estado = partido.get("fecha_iso_utc") or partido.get("fecha_iso")
+
+    if fecha_para_estado and not fecha_iso_pasada(fecha_para_estado):
         return True
 
     return False
@@ -592,6 +633,7 @@ def cargar_partidos_equipo(equipo):
                     "id": partido["id"],
                     "dia": partido["fecha"],
                     "fecha_iso": partido["fecha_iso"],
+                    "fecha_iso_utc": partido.get("fecha_iso_utc", ""),
                     "local": partido["local"],
                     "visitante": partido["visitante"],
                     "local_logo": partido["local_logo"],
@@ -599,6 +641,7 @@ def cargar_partidos_equipo(equipo):
                     "url": partido["url"],
                     "resultado": resultado,
                     "estado": partido["estado"],
+                    "hora": partido["hora"],
                 }
             )
 
@@ -608,6 +651,7 @@ def cargar_partidos_equipo(equipo):
                     "id": partido["id"],
                     "dia": partido["fecha"],
                     "fecha_iso": partido["fecha_iso"],
+                    "fecha_iso_utc": partido.get("fecha_iso_utc", ""),
                     "local": partido["local"],
                     "visitante": partido["visitante"],
                     "local_logo": partido["local_logo"],
@@ -829,15 +873,15 @@ def cargar_texto_renderizado_365(url, wait_texts=None):
             )
 
             context = browser.new_context(
-    locale="es-AR",
-    timezone_id="America/Argentina/Buenos_Aires",
-    user_agent=(
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/120.0.0.0 Safari/537.36"
-    ),
-    viewport={"width": 1366, "height": 1200},
-)
+                locale="es-AR",
+                timezone_id="America/Argentina/Buenos_Aires",
+                user_agent=(
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36"
+                ),
+                viewport={"width": 1366, "height": 1200},
+            )
 
             page = context.new_page()
             page.goto(url, wait_until="domcontentloaded", timeout=60000)
@@ -954,8 +998,6 @@ def competicion_365_coincide(comp_detectada, competicion_obj, fecha, permitir_li
         if "Liga Profesional" not in nombre:
             return False
 
-        # Si estamos en Apertura y quedan pocos partidos,
-        # permitimos completar con partidos futuros del Clausura.
         if permitir_liga_sin_rango:
             return True
 
@@ -1000,15 +1042,15 @@ def cargar_proximos_365scores(equipo, competicion):
             )
 
             context = browser.new_context(
-    locale="es-AR",
-    timezone_id="America/Argentina/Buenos_Aires",
-    user_agent=(
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/120.0.0.0 Safari/537.36"
-    ),
-    viewport={"width": 1366, "height": 1400},
-)
+                locale="es-AR",
+                timezone_id="America/Argentina/Buenos_Aires",
+                user_agent=(
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36"
+                ),
+                viewport={"width": 1366, "height": 1400},
+            )
 
             page = context.new_page()
             page.goto(url, wait_until="domcontentloaded", timeout=60000)
