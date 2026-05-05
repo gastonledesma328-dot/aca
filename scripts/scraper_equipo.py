@@ -1029,118 +1029,169 @@ def cargar_proximos_365scores(equipo, competicion):
     scores365_id = equipo.get("scores365_id")
     scores365_slug = equipo.get("scores365_slug") or equipo.get("id")
 
-    if not scores365_id:
+    if not scores365_id or sync_playwright is None:
         return []
 
     url = f"https://www.365scores.com/es/football/team/{scores365_slug}-{scores365_id}/matches"
 
-    print(f"📅 365Scores Matches {url}")
-
-    texto = cargar_texto_renderizado_365(
-        url,
-        wait_texts=["Partidos", "Liga Profesional", "Copa Libertadores", "Copa Sudamericana"],
-    )
-
-    print("🔎 365Scores matches texto length:", len(texto))
-
-    if not texto:
-        return []
-
-    lineas = texto_a_lineas_365(texto)
-
-    actual_comp = ""
-    actual_fecha = ""
+    print(f"📅 365Scores Matches DOM {url}")
 
     partidos = []
     vistos = set()
 
-    for i, linea in enumerate(lineas):
-        linea_limpia = re.sub(r"\s+", " ", linea).strip()
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(
+                headless=True,
+                args=[
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage",
+                    "--disable-gpu",
+                ],
+            )
 
-        comp = normalizar_competicion_365(linea_limpia)
+            context = browser.new_context(
+                locale="es-AR",
+                user_agent=(
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36"
+                ),
+                viewport={"width": 1366, "height": 1400},
+            )
 
-        if comp:
-            actual_comp = comp
+            page = context.new_page()
+            page.goto(url, wait_until="domcontentloaded", timeout=60000)
 
-        fecha_detectada = parse_fecha_365(linea_limpia)
+            try:
+                page.wait_for_load_state("networkidle", timeout=30000)
+            except Exception:
+                pass
 
-        if fecha_detectada:
-            actual_fecha = fecha_detectada
+            # Scroll para cargar todos los próximos partidos.
+            for y in [0, 600, 1200, 2000, 3000, 4500, 6000, 8000, 10000, 13000]:
+                try:
+                    page.evaluate(f"window.scrollTo(0, {y})")
+                    page.wait_for_timeout(700)
+                except Exception:
+                    pass
 
-            comp_en_fecha = normalizar_competicion_365(linea_limpia)
+            grupos = page.locator("div[class*='entity-scores-widget-group_container']").all()
 
-            if comp_en_fecha:
-                actual_comp = comp_en_fecha
+            print(f"🔎 Grupos 365Scores encontrados: {len(grupos)}")
 
-            continue
+            for grupo in grupos:
+                try:
+                    competicion_txt = grupo.locator(
+                        "div[class*='entity-scores-widget-group_competition']"
+                    ).first.inner_text(timeout=3000).strip()
 
-        if not actual_fecha:
-            continue
+                    pais_txt = grupo.locator(
+                        "div[class*='entity-scores-widget-group_country']"
+                    ).first.inner_text(timeout=3000).strip()
 
-        if fecha_yyyy_mm_dd_pasada(actual_fecha):
-            continue
+                    fecha_txt = grupo.locator(
+                        "div[class*='entity-scores-widget-group_header_date']"
+                    ).first.inner_text(timeout=3000).strip()
 
-        if not competicion_365_coincide(actual_comp, competicion, actual_fecha):
-            continue
+                    fecha = parse_fecha_365(fecha_txt)
 
-        # Formato posible:
-        # Boca Jrs. 14:00 Huracán
-        m_linea = re.search(r"(.+?)\s+(\d{1,2}:\d{2})\s+(.+)", linea_limpia)
+                    if not fecha:
+                        continue
 
-        if m_linea:
-            local = limpiar_equipo_365(m_linea.group(1))
-            hora = m_linea.group(2)
-            visitante = limpiar_equipo_365(m_linea.group(3))
-        else:
-            if not es_linea_hora(linea_limpia):
-                continue
+                    if fecha_yyyy_mm_dd_pasada(fecha):
+                        continue
 
-            hora = linea_limpia
+                    comp_detectada = normalizar_competicion_365(
+                        f"{competicion_txt} {pais_txt}"
+                    )
 
-            local = ""
-            visitante = ""
+                    if not competicion_365_coincide(comp_detectada, competicion, fecha):
+                        continue
 
-            for j in range(i - 1, max(-1, i - 6), -1):
-                if parece_equipo_365(lineas[j]):
-                    local = limpiar_equipo_365(lineas[j])
-                    break
+                    cards = grupo.locator("a[class*='game-card_game_card_link']").all()
 
-            for j in range(i + 1, min(len(lineas), i + 6)):
-                if parece_equipo_365(lineas[j]):
-                    visitante = limpiar_equipo_365(lineas[j])
-                    break
+                    for card in cards:
+                        try:
+                            href = card.get_attribute("href") or ""
+                            full_url = "https://www.365scores.com" + href if href.startswith("/") else href
 
-        if not local or not visitante:
-            continue
+                            hora = card.locator(
+                                "div[class*='game-card-center_center_score']"
+                            ).first.inner_text(timeout=3000).strip()
 
-        key = f"{actual_fecha}-{hora}-{local}-{visitante}"
+                            nombres = card.locator(
+                                "div[class*='game-card-competitor_name']"
+                            ).all_inner_texts(timeout=3000)
 
-        if key in vistos:
-            continue
+                            nombres = [
+                                limpiar_equipo_365(n)
+                                for n in nombres
+                                if limpiar_equipo_365(n)
+                            ]
 
-        vistos.add(key)
+                            if len(nombres) < 2:
+                                continue
 
-        partidos.append(
-            {
-                "id": key,
-                "dia": actual_fecha,
-                "fecha_iso": f"{actual_fecha}T{hora}:00",
-                "local": local,
-                "visitante": visitante,
-                "local_logo": "",
-                "visitante_logo": "",
-                "url": url,
-                "hora": hora,
-                "estado": "Programado",
-                "competicion": competicion.get("nombre", ""),
-            }
-        )
+                            local = nombres[0]
+                            visitante = nombres[-1]
+
+                            logos = card.locator(
+                                "img[class*='game-card-competitor_logo_wrap']"
+                            ).all()
+
+                            local_logo = ""
+                            visitante_logo = ""
+
+                            if len(logos) >= 1:
+                                local_logo = logos[0].get_attribute("src") or ""
+
+                            if len(logos) >= 2:
+                                visitante_logo = logos[1].get_attribute("src") or ""
+
+                            key = f"{fecha}-{hora}-{local}-{visitante}"
+
+                            if key in vistos:
+                                continue
+
+                            vistos.add(key)
+
+                            partidos.append(
+                                {
+                                    "id": key,
+                                    "dia": fecha,
+                                    "fecha_iso": f"{fecha}T{hora}:00",
+                                    "local": local,
+                                    "visitante": visitante,
+                                    "local_logo": local_logo,
+                                    "visitante_logo": visitante_logo,
+                                    "url": full_url,
+                                    "hora": hora,
+                                    "estado": "Programado",
+                                    "competicion": competicion.get("nombre", ""),
+                                }
+                            )
+
+                        except Exception as e:
+                            print(f"⚠️ Error leyendo partido 365Scores: {e}")
+
+                except Exception:
+                    continue
+
+            browser.close()
+
+    except Exception as e:
+        print(f"⚠️ Error leyendo próximos 365Scores DOM: {e}")
+        return []
 
     partidos.sort(key=lambda x: x.get("fecha_iso") or x.get("dia") or "")
 
-    print(f"✅ Próximos 365Scores {equipo.get('nombre')} / {competicion.get('nombre')}: {len(partidos)}")
+    print(
+        f"✅ Próximos 365Scores DOM {equipo.get('nombre')} / "
+        f"{competicion.get('nombre')}: {len(partidos)}"
+    )
 
-    return partidos[:20]
+    return partidos[:MAX_PROXIMOS_PARTIDOS]
 
 
 # =========================
