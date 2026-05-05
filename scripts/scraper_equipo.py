@@ -947,9 +947,8 @@ def competicion_365_coincide(comp_detectada, competicion_obj, fecha, permitir_li
         if "Liga Profesional" not in nombre:
             return False
 
-        # Para completar próximos partidos hasta 5:
-        # si estamos en Apertura y ya no quedan suficientes,
-        # permitimos traer próximos del Clausura.
+        # Si estamos en Apertura y quedan pocos partidos,
+        # permitimos completar con partidos futuros del Clausura.
         if permitir_liga_sin_rango:
             return True
 
@@ -1011,7 +1010,12 @@ def cargar_proximos_365scores(equipo, competicion):
             except Exception:
                 pass
 
-            for selector_text in ["Partidos", "Liga Profesional", "Copa Libertadores", "Copa Sudamericana"]:
+            for selector_text in [
+                "Partidos",
+                "Liga Profesional",
+                "Copa Libertadores",
+                "Copa Sudamericana",
+            ]:
                 try:
                     page.get_by_text(selector_text, exact=False).first.wait_for(timeout=15000)
                     break
@@ -1057,13 +1061,13 @@ def cargar_proximos_365scores(equipo, competicion):
 
                     permitir_liga_sin_rango = "Liga Profesional" in competicion.get("nombre", "")
 
-if not competicion_365_coincide(
-    comp_detectada,
-    competicion,
-    fecha,
-    permitir_liga_sin_rango=permitir_liga_sin_rango,
-):
-    continue
+                    if not competicion_365_coincide(
+                        comp_detectada,
+                        competicion,
+                        fecha,
+                        permitir_liga_sin_rango=permitir_liga_sin_rango,
+                    ):
+                        continue
 
                     cards = grupo.locator("a[class*='game-card_game_card_link']").all()
 
@@ -1131,7 +1135,8 @@ if not competicion_365_coincide(
                         except Exception as e:
                             print(f"⚠️ Error leyendo partido 365Scores: {e}")
 
-                except Exception:
+                except Exception as e:
+                    print(f"⚠️ Error leyendo grupo 365Scores: {e}")
                     continue
 
             browser.close()
