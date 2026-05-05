@@ -19,7 +19,6 @@ SEASON = "2026"
 
 COMPETICION_PRINCIPAL = "Liga Profesional de Futbol - Torneo Apertura 2026"
 
-
 COMPETICIONES = [
     {
         "nombre": "Liga Profesional de Futbol - Torneo Apertura 2026",
@@ -100,6 +99,7 @@ EQUIPOS_BASE = [
 
 
 PREVIOUS_DATA = []
+TEXT_CACHE_365 = {}
 
 
 def slug(texto):
@@ -276,6 +276,26 @@ def fecha_en_rango(fecha, fecha_desde="", fecha_hasta=""):
     return True
 
 
+def fecha_iso_pasada(fecha_iso):
+    if not fecha_iso:
+        return False
+
+    try:
+        dt = datetime.fromisoformat(str(fecha_iso).replace("Z", "+00:00"))
+        return dt < datetime.now(timezone.utc)
+    except Exception:
+        return False
+
+
+def fecha_yyyy_mm_dd_pasada(fecha):
+    try:
+        dt = datetime.strptime(fecha, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        hoy = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+        return dt < hoy
+    except Exception:
+        return False
+
+
 def filtrar_partidos_por_fecha(partidos, competicion):
     fecha_desde = competicion.get("fecha_desde", "")
     fecha_hasta = competicion.get("fecha_hasta", "")
@@ -324,6 +344,64 @@ def valor_stat(stat):
             return str(value)
 
     return "-"
+
+
+# =========================
+# ESPN - CLUB / PARTIDOS / PLANTEL
+# =========================
+
+def cargar_datos_club(base):
+    espn_id = base.get("espn_id")
+
+    if not espn_id:
+        return base
+
+    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}"
+    data = get_json(url)
+
+    if not data:
+        return base
+
+    team = data.get("team") or data
+
+    if not isinstance(team, dict):
+        return base
+
+    actualizado = dict(base)
+
+    nombre = (
+        team.get("displayName")
+        or team.get("name")
+        or team.get("shortDisplayName")
+        or base.get("nombre")
+    )
+
+    if nombre:
+        actualizado["nombre"] = nombre
+
+    logos = team.get("logos") or []
+
+    if logos and isinstance(logos, list):
+        logo = logos[0].get("href")
+        if logo:
+            actualizado["logo"] = logo
+
+    venue = team.get("venue") or {}
+
+    if isinstance(venue, dict):
+        estadio = venue.get("fullName") or venue.get("name")
+        ciudad = (venue.get("address") or {}).get("city") or venue.get("city")
+
+        if estadio:
+            actualizado["estadio"] = estadio
+
+        if ciudad:
+            actualizado["ciudad"] = ciudad
+
+    if team.get("nickname"):
+        actualizado["apodo"] = team.get("nickname")
+
+    return actualizado
 
 
 def parse_score_event(evento):
@@ -398,17 +476,6 @@ def parse_score_event(evento):
     }
 
 
-def fecha_iso_pasada(fecha_iso):
-    if not fecha_iso:
-        return False
-
-    try:
-        dt = datetime.fromisoformat(str(fecha_iso).replace("Z", "+00:00"))
-        return dt < datetime.now(timezone.utc)
-    except Exception:
-        return False
-
-
 def tiene_marcador_real(partido):
     local = partido.get("marcador_local")
     visitante = partido.get("marcador_visitante")
@@ -446,9 +513,6 @@ def es_partido_finalizado(partido):
     if any(p in estado for p in palabras_final):
         return True
 
-    # Fallback seguro:
-    # Si ya pasó y ESPN trae marcador, lo mandamos a Resultados.
-    # Esto evita que partidos ya jugados aparezcan en Próximos.
     if fecha_iso_pasada(partido.get("fecha_iso")) and tiene_marcador_real(partido):
         return True
 
@@ -484,7 +548,6 @@ def es_partido_proximo(partido):
     if any(p in estado for p in palabras_pre):
         return True
 
-    # Si la fecha es futura, es próximo aunque venga 0-0.
     if partido.get("fecha_iso") and not fecha_iso_pasada(partido.get("fecha_iso")):
         return True
 
@@ -681,7 +744,7 @@ def filtrar_estadisticas_por_plantel(estadisticas, plantel):
 
 
 # =========================
-# 365SCORES - ESTADÍSTICAS PERSONALES
+# PLAYWRIGHT / 365SCORES
 # =========================
 
 TITULOS_365 = [
@@ -736,6 +799,353 @@ def texto_a_lineas_365(texto):
 
     return lineas
 
+
+def cargar_texto_renderizado_365(url, wait_texts=None):
+    if sync_playwright is None:
+        print("⚠️ Playwright no está instalado.")
+        return ""
+
+    if url in TEXT_CACHE_365:
+        return TEXT_CACHE_365[url]
+
+    wait_texts = wait_texts or ["Goles", "Asistencias", "Partidos"]
+
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(
+                headless=True,
+                args=[
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage",
+                    "--disable-gpu",
+                ],
+            )
+
+            context = browser.new_context(
+                locale="es-AR",
+                user_agent=(
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36"
+                ),
+                viewport={"width": 1366, "height": 1200},
+            )
+
+            page = context.new_page()
+            page.goto(url, wait_until="domcontentloaded", timeout=60000)
+
+            try:
+                page.wait_for_load_state("networkidle", timeout=30000)
+            except Exception:
+                pass
+
+            for selector_text in wait_texts:
+                try:
+                    page.get_by_text(selector_text, exact=False).first.wait_for(timeout=15000)
+                    break
+                except Exception:
+                    continue
+
+            textos = []
+
+            for y in [0, 500, 1000, 1600, 2200, 3000, 4000, 5500, 7000, 9000]:
+                try:
+                    page.evaluate(f"window.scrollTo(0, {y})")
+                    page.wait_for_timeout(800)
+
+                    parcial = page.locator("body").inner_text(timeout=15000)
+
+                    if parcial:
+                        textos.append(parcial)
+
+                except Exception:
+                    pass
+
+            try:
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                page.wait_for_timeout(1000)
+
+                parcial = page.locator("body").inner_text(timeout=15000)
+
+                if parcial:
+                    textos.append(parcial)
+
+            except Exception:
+                pass
+
+            browser.close()
+
+            texto_final = "\n".join(textos)
+
+            lineas = []
+
+            for linea in texto_final.splitlines():
+                limpia = re.sub(r"\s+", " ", linea).strip()
+
+                if limpia:
+                    lineas.append(limpia)
+
+            texto = "\n".join(lineas)
+            TEXT_CACHE_365[url] = texto
+
+            return texto
+
+    except Exception as e:
+        print(f"⚠️ Error renderizando 365Scores con Playwright: {e}")
+        return ""
+
+
+# =========================
+# 365SCORES - PRÓXIMOS PARTIDOS
+# =========================
+
+def parse_fecha_365(linea):
+    m = re.search(r"\b(\d{1,2})/(\d{1,2})/(\d{4})\b", str(linea or ""))
+
+    if not m:
+        return ""
+
+    dia = int(m.group(1))
+    mes = int(m.group(2))
+    anio = int(m.group(3))
+
+    return f"{anio:04d}-{mes:02d}-{dia:02d}"
+
+
+def normalizar_competicion_365(texto):
+    n = normalizar_texto(texto)
+
+    if "libertadores" in n:
+        return "Copa Libertadores 2026"
+
+    if "sudamericana" in n:
+        return "Copa Sudamericana 2026"
+
+    if "liga profesional" in n or "primera division" in n or "argentina" in n:
+        return "Liga Profesional de Futbol"
+
+    if "copa argentina" in n:
+        return "Copa Argentina"
+
+    return ""
+
+
+def competicion_365_coincide(comp_detectada, competicion_obj, fecha):
+    nombre = competicion_obj.get("nombre", "")
+
+    if not comp_detectada:
+        return False
+
+    if comp_detectada == "Copa Libertadores 2026":
+        return "Libertadores" in nombre
+
+    if comp_detectada == "Copa Sudamericana 2026":
+        return "Sudamericana" in nombre
+
+    if comp_detectada == "Liga Profesional de Futbol":
+        if "Liga Profesional" not in nombre:
+            return False
+
+        return fecha_en_rango(
+            fecha,
+            competicion_obj.get("fecha_desde", ""),
+            competicion_obj.get("fecha_hasta", ""),
+        )
+
+    return False
+
+
+def es_linea_basura_partidos_365(linea):
+    n = normalizar_texto(linea)
+
+    if not n:
+        return True
+
+    basura = [
+        "partidos",
+        "resumen",
+        "plantilla",
+        "estadisticas",
+        "estadísticas",
+        "clasificacion",
+        "clasificación",
+        "transferencias",
+        "noticias",
+        "favoritos",
+        "ver mas",
+        "ver más",
+        "calendario",
+    ]
+
+    return n in basura
+
+
+def es_linea_hora(linea):
+    return bool(re.fullmatch(r"\d{1,2}:\d{2}", str(linea or "").strip()))
+
+
+def limpiar_equipo_365(nombre):
+    nombre = re.sub(r"\s+", " ", str(nombre or "")).strip()
+    nombre = re.sub(r"\b\d{1,2}:\d{2}\b", "", nombre).strip()
+    return nombre
+
+
+def parece_equipo_365(linea):
+    linea = limpiar_equipo_365(linea)
+
+    if not linea:
+        return False
+
+    if es_linea_basura_partidos_365(linea):
+        return False
+
+    if parse_fecha_365(linea):
+        return False
+
+    if es_linea_hora(linea):
+        return False
+
+    n = normalizar_texto(linea)
+
+    descartes = [
+        "argentina",
+        "copa libertadores",
+        "copa sudamericana",
+        "liga profesional",
+        "copa argentina",
+        "conmebol",
+    ]
+
+    if any(d in n for d in descartes):
+        return False
+
+    if len(linea) < 2:
+        return False
+
+    return True
+
+
+def cargar_proximos_365scores(equipo, competicion):
+    scores365_id = equipo.get("scores365_id")
+    scores365_slug = equipo.get("scores365_slug") or equipo.get("id")
+
+    if not scores365_id:
+        return []
+
+    url = f"https://www.365scores.com/es/football/team/{scores365_slug}-{scores365_id}/matches"
+
+    print(f"📅 365Scores Matches {url}")
+
+    texto = cargar_texto_renderizado_365(
+        url,
+        wait_texts=["Partidos", "Liga Profesional", "Copa Libertadores", "Copa Sudamericana"],
+    )
+
+    print("🔎 365Scores matches texto length:", len(texto))
+
+    if not texto:
+        return []
+
+    lineas = texto_a_lineas_365(texto)
+
+    actual_comp = ""
+    actual_fecha = ""
+
+    partidos = []
+    vistos = set()
+
+    for i, linea in enumerate(lineas):
+        linea_limpia = re.sub(r"\s+", " ", linea).strip()
+
+        comp = normalizar_competicion_365(linea_limpia)
+
+        if comp:
+            actual_comp = comp
+
+        fecha_detectada = parse_fecha_365(linea_limpia)
+
+        if fecha_detectada:
+            actual_fecha = fecha_detectada
+
+            comp_en_fecha = normalizar_competicion_365(linea_limpia)
+
+            if comp_en_fecha:
+                actual_comp = comp_en_fecha
+
+            continue
+
+        if not actual_fecha:
+            continue
+
+        if fecha_yyyy_mm_dd_pasada(actual_fecha):
+            continue
+
+        if not competicion_365_coincide(actual_comp, competicion, actual_fecha):
+            continue
+
+        # Formato posible:
+        # Boca Jrs. 14:00 Huracán
+        m_linea = re.search(r"(.+?)\s+(\d{1,2}:\d{2})\s+(.+)", linea_limpia)
+
+        if m_linea:
+            local = limpiar_equipo_365(m_linea.group(1))
+            hora = m_linea.group(2)
+            visitante = limpiar_equipo_365(m_linea.group(3))
+        else:
+            if not es_linea_hora(linea_limpia):
+                continue
+
+            hora = linea_limpia
+
+            local = ""
+            visitante = ""
+
+            for j in range(i - 1, max(-1, i - 6), -1):
+                if parece_equipo_365(lineas[j]):
+                    local = limpiar_equipo_365(lineas[j])
+                    break
+
+            for j in range(i + 1, min(len(lineas), i + 6)):
+                if parece_equipo_365(lineas[j]):
+                    visitante = limpiar_equipo_365(lineas[j])
+                    break
+
+        if not local or not visitante:
+            continue
+
+        key = f"{actual_fecha}-{hora}-{local}-{visitante}"
+
+        if key in vistos:
+            continue
+
+        vistos.add(key)
+
+        partidos.append(
+            {
+                "id": key,
+                "dia": actual_fecha,
+                "fecha_iso": f"{actual_fecha}T{hora}:00",
+                "local": local,
+                "visitante": visitante,
+                "local_logo": "",
+                "visitante_logo": "",
+                "url": url,
+                "hora": hora,
+                "estado": "Programado",
+                "competicion": competicion.get("nombre", ""),
+            }
+        )
+
+    partidos.sort(key=lambda x: x.get("fecha_iso") or x.get("dia") or "")
+
+    print(f"✅ Próximos 365Scores {equipo.get('nombre')} / {competicion.get('nombre')}: {len(partidos)}")
+
+    return partidos[:20]
+
+
+# =========================
+# 365SCORES - ESTADÍSTICAS PERSONALES
+# =========================
 
 def obtener_bloques_texto_365(texto, titulo):
     if not texto:
@@ -848,23 +1258,12 @@ def extraer_ranking_de_bloque_365(bloque, titulo, plantel, max_items=10):
 
             total = 0
 
-            # Si viene pegado a posición:
-            # Leandro ParedesCentrocampista defensivo
-            # Argentina
-            # 6
-            # El número correcto está DESPUÉS.
             if match_tipo == "incluido":
                 for i in range(idx + 1, min(len(lineas), idx + 5)):
                     if es_linea_numero_365(lineas[i]):
                         total = parse_numero_365(lineas[i])
                         break
 
-            # Si viene limpio:
-            # 5
-            # Miguel Merentiel
-            # Boca Juniors
-            # Centro Delantero
-            # El número correcto suele estar ANTES.
             if match_tipo == "exacto":
                 if idx - 1 >= 0 and es_linea_numero_365(lineas[idx - 1]):
                     total = parse_numero_365(lineas[idx - 1])
@@ -922,100 +1321,6 @@ def extraer_ranking_365_desde_texto(texto, titulo, plantel, max_items=10):
     return mejor[:max_items]
 
 
-def cargar_texto_renderizado_365(url):
-    if sync_playwright is None:
-        print("⚠️ Playwright no está instalado.")
-        return ""
-
-    try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(
-                headless=True,
-                args=[
-                    "--no-sandbox",
-                    "--disable-dev-shm-usage",
-                    "--disable-gpu",
-                ],
-            )
-
-            context = browser.new_context(
-                locale="es-AR",
-                user_agent=(
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/120.0.0.0 Safari/537.36"
-                ),
-                viewport={"width": 1366, "height": 1200},
-            )
-
-            page = context.new_page()
-            page.goto(url, wait_until="domcontentloaded", timeout=60000)
-
-            try:
-                page.wait_for_load_state("networkidle", timeout=30000)
-            except Exception:
-                pass
-
-            for selector_text in [
-                "Goles",
-                "Asistencias",
-                "Tarjetas Amarillas",
-                "Tarjetas Rojas",
-            ]:
-                try:
-                    page.get_by_text(selector_text, exact=False).first.wait_for(timeout=15000)
-                    break
-                except Exception:
-                    continue
-
-            textos = []
-
-            for y in [0, 600, 1200, 1800, 2400, 3200, 4000, 5000, 6500, 8000]:
-                try:
-                    page.evaluate(f"window.scrollTo(0, {y})")
-                    page.wait_for_timeout(900)
-
-                    parcial = page.locator("body").inner_text(timeout=15000)
-
-                    if parcial:
-                        textos.append(parcial)
-
-                except Exception:
-                    pass
-
-            try:
-                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-                page.wait_for_timeout(1200)
-
-                parcial = page.locator("body").inner_text(timeout=15000)
-
-                if parcial:
-                    textos.append(parcial)
-
-            except Exception:
-                pass
-
-            browser.close()
-
-            # No eliminamos líneas repetidas globalmente:
-            # 365Scores repite números como 1, 2, 3, 6 en distintas secciones.
-            texto_final = "\n".join(textos)
-
-            lineas = []
-
-            for linea in texto_final.splitlines():
-                limpia = re.sub(r"\s+", " ", linea).strip()
-
-                if limpia:
-                    lineas.append(limpia)
-
-            return "\n".join(lineas)
-
-    except Exception as e:
-        print(f"⚠️ Error renderizando 365Scores con Playwright: {e}")
-        return ""
-
-
 def cargar_estadisticas_365scores(equipo, plantel):
     scores365_id = equipo.get("scores365_id")
     scores365_slug = equipo.get("scores365_slug") or equipo.get("id")
@@ -1026,11 +1331,14 @@ def cargar_estadisticas_365scores(equipo, plantel):
     url = f"https://www.365scores.com/es/football/team/{scores365_slug}-{scores365_id}/stats"
 
     try:
-        print(f"📊 365Scores Playwright {url}")
+        print(f"📊 365Scores Stats {url}")
 
-        texto = cargar_texto_renderizado_365(url)
+        texto = cargar_texto_renderizado_365(
+            url,
+            wait_texts=["Goles", "Asistencias", "Tarjetas Amarillas", "Tarjetas Rojas"],
+        )
 
-        print("🔎 365Scores render texto length:", len(texto))
+        print("🔎 365Scores stats texto length:", len(texto))
         print("🔎 Tiene Goles:", "Goles" in texto)
         print("🔎 Tiene Asistencias:", "Asistencias" in texto)
         print("🔎 Tiene Tarjetas Amarillas:", "Tarjetas Amarillas" in texto)
@@ -1212,6 +1520,10 @@ def cargar_estadisticas_generales(equipo):
     return estadisticas_generales_vacias()
 
 
+# =========================
+# ARMADO FINAL
+# =========================
+
 def cargar_datos_por_competicion(base, equipo, competicion):
     global LEAGUE_SLUG, SEASON
 
@@ -1225,10 +1537,17 @@ def cargar_datos_por_competicion(base, equipo, competicion):
 
     print(f"🏆 Cargando competición: {nombre_competicion} para {base['nombre']}")
 
-    proximos, resultados = cargar_partidos_equipo(base)
+    proximos_espn, resultados = cargar_partidos_equipo(base)
 
-    proximos = filtrar_partidos_por_fecha(proximos, competicion)
+    proximos_espn = filtrar_partidos_por_fecha(proximos_espn, competicion)
     resultados = filtrar_partidos_por_fecha(resultados, competicion)
+
+    proximos_365 = cargar_proximos_365scores(base, competicion)
+
+    if proximos_365:
+        proximos = proximos_365
+    else:
+        proximos = proximos_espn
 
     if competicion.get("league_slug") == "arg.1":
         if resultados or proximos:
@@ -1271,58 +1590,6 @@ def cargar_datos_por_competicion(base, equipo, competicion):
         "generales": generales,
     }
 
-def cargar_datos_club(base):
-    espn_id = base.get("espn_id")
-
-    if not espn_id:
-        return base
-
-    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE_SLUG}/teams/{espn_id}"
-    data = get_json(url)
-
-    if not data:
-        return base
-
-    team = data.get("team") or data
-
-    if not isinstance(team, dict):
-        return base
-
-    actualizado = dict(base)
-
-    nombre = (
-        team.get("displayName")
-        or team.get("name")
-        or team.get("shortDisplayName")
-        or base.get("nombre")
-    )
-
-    if nombre:
-        actualizado["nombre"] = nombre
-
-    logos = team.get("logos") or []
-
-    if logos and isinstance(logos, list):
-        logo = logos[0].get("href")
-        if logo:
-            actualizado["logo"] = logo
-
-    venue = team.get("venue") or {}
-
-    if isinstance(venue, dict):
-        estadio = venue.get("fullName") or venue.get("name")
-        ciudad = (venue.get("address") or {}).get("city") or venue.get("city")
-
-        if estadio:
-            actualizado["estadio"] = estadio
-
-        if ciudad:
-            actualizado["ciudad"] = ciudad
-
-    if team.get("nickname"):
-        actualizado["apodo"] = team.get("nickname")
-
-    return actualizado
 
 def completar_equipo(base):
     print(f"🏟️ Actualizando equipo: {base['nombre']}")
