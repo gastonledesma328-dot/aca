@@ -661,7 +661,6 @@ def obtener_bloques_texto_365(texto, titulo):
     lineas = texto_a_lineas_365(texto)
     titulo_slug = slug(titulo)
     bloques = []
-
     indices = []
 
     for i, linea in enumerate(lineas):
@@ -751,7 +750,7 @@ def extraer_numero_cerca_de_linea(lineas, index_nombre):
     # Defensa
     # 4
     #
-    # Buscamos hacia adelante, pero cortamos si aparece otro jugador antes del número.
+    # Buscamos hacia adelante, pero sin ir demasiado lejos.
     for i in range(index_nombre + 1, min(len(lineas), index_nombre + 6)):
         if es_linea_numero_365(lineas[i]):
             return parse_numero_365(lineas[i])
@@ -802,12 +801,10 @@ def extraer_ranking_de_bloque_365(bloque, titulo, plantel, max_items=10):
 
             total = 0
 
-            # Si el número viene en la misma línea.
             total_linea = extraer_numero_de_linea_con_nombre(linea)
             if total_linea:
                 total = total_linea
 
-            # Si el número viene cerca, antes o después.
             if not total:
                 total = extraer_numero_cerca_de_linea(lineas, idx)
 
@@ -935,20 +932,20 @@ def cargar_texto_renderizado_365(url):
             browser.close()
 
             # IMPORTANTE:
-# No eliminamos líneas repetidas globalmente porque 365Scores repite valores
-# como 1, 2, 3, 6 en distintas secciones. Si los borramos, se rompen
-# Asistencias, Tarjetas Amarillas y Tarjetas Rojas.
-texto_final = "\n".join(textos)
+            # No eliminamos líneas repetidas globalmente porque 365Scores repite valores
+            # como 1, 2, 3, 6 en distintas secciones. Si los borramos, se rompen
+            # Asistencias, Tarjetas Amarillas y Tarjetas Rojas.
+            texto_final = "\n".join(textos)
 
-lineas = []
+            lineas = []
 
-for linea in texto_final.splitlines():
-    limpia = re.sub(r"\s+", " ", linea).strip()
+            for linea in texto_final.splitlines():
+                limpia = re.sub(r"\s+", " ", linea).strip()
 
-    if limpia:
-        lineas.append(limpia)
+                if limpia:
+                    lineas.append(limpia)
 
-return "\n".join(lineas)
+            return "\n".join(lineas)
 
     except Exception as e:
         print(f"⚠️ Error renderizando 365Scores con Playwright: {e}")
