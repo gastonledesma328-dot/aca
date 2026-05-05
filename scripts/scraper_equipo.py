@@ -7,11 +7,11 @@ from html import unescape
 
 import requests
 
-
 try:
     from playwright.sync_api import sync_playwright
 except Exception:
     sync_playwright = None
+
 
 OUTPUT_FILE = "data/equipos.json"
 
@@ -19,6 +19,7 @@ LEAGUE_SLUG = "arg.1"
 SEASON = "2026"
 
 COMPETICION_PRINCIPAL = "Liga Profesional de Futbol - Torneo Apertura 2026"
+
 
 COMPETICIONES = [
     {
@@ -141,6 +142,7 @@ def slug_jugador(nombre):
         "tomas-conechny": "tomas-conechny",
         "duvan-vergara": "duvan-vergara",
         "matias-zaracho": "matias-zaracho",
+        "ignacio-agustin-rodriguez": "ignacio-rodriguez",
     }
 
     return correcciones.get(value, value)
@@ -154,6 +156,7 @@ def nombre_visible(nombre):
         "Adrián Martínez": "Adrián Martínez",
         "Duván Vergara": "Duván Vergara",
         "Matías Zaracho": "Matías Zaracho",
+        "Ignacio Agustin Rodríguez": "Ignacio Agustín Rodríguez",
     }
 
     return correcciones.get(nombre, nombre)
@@ -620,47 +623,70 @@ TITULOS_365 = [
 ]
 
 
-def limpiar_html_365(html):
-    html = re.sub(r"<script[\s\S]*?</script>", "\n", html, flags=re.I)
-    html = re.sub(r"<style[\s\S]*?</style>", "\n", html, flags=re.I)
-    html = re.sub(r"<noscript[\s\S]*?</noscript>", "\n", html, flags=re.I)
+def texto_a_lineas_365(texto):
+    lineas = []
 
-    html = re.sub(r"<h[1-6][^>]*>", "\n### ", html, flags=re.I)
-    html = re.sub(r"</h[1-6]>", "\n", html, flags=re.I)
-    html = re.sub(r"<a[^>]*>", "\n", html, flags=re.I)
-    html = re.sub(r"</a>", "\n", html, flags=re.I)
-    html = re.sub(r"<[^>]+>", "\n", html)
+    for linea in str(texto or "").splitlines():
+        linea = re.sub(r"\s+", " ", linea).strip()
 
-    texto = unescape(html)
-    texto = re.sub(r"\s+", " ", texto)
+        if not linea:
+            continue
 
-    return texto.strip()
+        if linea.lower() in [
+            "ver más",
+            "ver todos",
+            "favoritos",
+            "resumen",
+            "partidos",
+            "plantilla",
+            "estadísticas",
+            "estadisticas",
+            "clasificación",
+            "clasificacion",
+            "transferencias",
+            "noticias",
+        ]:
+            continue
+
+        lineas.append(linea)
+
+    return lineas
 
 
 def obtener_bloque_texto_365(texto, titulo):
     if not texto:
         return ""
 
-    patron_inicio = re.compile(rf"(?:###\s*)?{re.escape(titulo)}\b", re.I)
-    match = patron_inicio.search(texto)
+    lineas = texto_a_lineas_365(texto)
 
-    if not match:
+    inicio = -1
+    titulo_slug = slug(titulo)
+
+    for i, linea in enumerate(lineas):
+        if slug(linea) == titulo_slug:
+            inicio = i
+            break
+
+    if inicio == -1:
         return ""
 
-    inicio = match.end()
-    fin = len(texto)
+    fin = len(lineas)
 
-    for otro in TITULOS_365:
-        if slug(otro) == slug(titulo):
-            continue
+    for i in range(inicio + 1, len(lineas)):
+        linea_slug = slug(lineas[i])
 
-        patron_fin = re.compile(rf"(?:###\s*)?{re.escape(otro)}\b", re.I)
-        m = patron_fin.search(texto, inicio)
+        for otro in TITULOS_365:
+            if slug(otro) == titulo_slug:
+                continue
 
-        if m and m.start() < fin:
-            fin = m.start()
+            if linea_slug == slug(otro):
+                fin = i
+                break
 
-    return texto[inicio:fin].strip()
+        if fin != len(lineas):
+            break
+
+    return "\n".join(lineas[inicio + 1:fin]).strip()
 
 
 def parse_numero_365(valor):
@@ -681,6 +707,42 @@ def parse_numero_365(valor):
         return 0
 
 
+def es_linea_numero_365(linea):
+    linea = str(linea or "").strip()
+
+    if not linea:
+        return False
+
+    if "/" in linea:
+        linea = linea.split("/")[0]
+
+    linea = linea.replace(",", ".")
+
+    return bool(re.fullmatch(r"\d+(?:\.\d+)?", linea))
+
+
+def extraer_numero_cerca_de_linea(lineas, index_nombre):
+    # Formato común:
+    # 4
+    # Gonzalo Montiel
+    #
+    # Otro formato posible:
+    # Gonzalo Montiel
+    # River Plate
+    # Defensa
+    # 4
+
+    for i in range(index_nombre - 1, max(-1, index_nombre - 4), -1):
+        if i >= 0 and es_linea_numero_365(lineas[i]):
+            return parse_numero_365(lineas[i])
+
+    for i in range(index_nombre + 1, min(len(lineas), index_nombre + 8)):
+        if es_linea_numero_365(lineas[i]):
+            return parse_numero_365(lineas[i])
+
+    return 0
+
+
 def extraer_ranking_365_desde_texto(texto, titulo, plantel, max_items=10):
     bloque = obtener_bloque_texto_365(texto, titulo)
 
@@ -688,86 +750,56 @@ def extraer_ranking_365_desde_texto(texto, titulo, plantel, max_items=10):
         print(f"⚠️ 365Scores: no encontré bloque {titulo}")
         return []
 
+    lineas = texto_a_lineas_365(bloque)
     jugadores = lista_jugadores_plantel(plantel)
+
     resultados = []
+    vistos = set()
 
-    jugadores_ordenados = sorted(
-        jugadores,
-        key=lambda n: len(str(n)),
-        reverse=True
-    )
+    for idx, linea in enumerate(lineas):
+        linea_slug = slug_jugador(linea)
 
-    for nombre in jugadores_ordenados:
-        candidatos = [nombre]
+        for nombre in jugadores:
+            nombre_slug = slug_jugador(nombre)
 
-        if slug(nombre) == "lautaruo-rivero":
-            candidatos.append("Lautaro Rivero")
+            candidatos = {nombre_slug}
 
-        if slug(nombre) == "joaquin-freitas":
-            candidatos.append("Joaquín Freitas")
+            if nombre_slug == "lautaruo-rivero":
+                candidatos.add("lautaro-rivero")
 
-        encontrado = None
+            if nombre_slug == "joaquin-freitas":
+                candidatos.add("joaquin-freitas")
 
-        for candidato in candidatos:
-            nombre_regex = re.escape(candidato)
+            if nombre_slug == "ignacio-agustin-rodriguez":
+                candidatos.add("ignacio-rodriguez")
 
-            patron_pre = re.compile(
-                rf"(?:^|\s)(?P<pre>\d+(?:[.,]\d+)?(?:/\d+)?)\s+"
-                rf"{nombre_regex}"
-                rf"(?=\s|$)",
-                re.I,
+            if linea_slug not in candidatos:
+                continue
+
+            total = extraer_numero_cerca_de_linea(lineas, idx)
+
+            if not total or total <= 0:
+                continue
+
+            key = slug_jugador(nombre)
+
+            if key in vistos:
+                continue
+
+            vistos.add(key)
+
+            resultados.append(
+                {
+                    "jugador": nombre_visible(nombre),
+                    "total": total,
+                }
             )
-
-            m_pre = patron_pre.search(bloque)
-
-            if m_pre:
-                total = parse_numero_365(m_pre.group("pre"))
-
-                if total > 0:
-                    encontrado = {
-                        "jugador": nombre_visible(nombre),
-                        "total": total,
-                    }
-                    break
-
-            patron_post = re.compile(
-                rf"{nombre_regex}"
-                rf"(?:\s+[A-ZÁÉÍÓÚÑa-záéíóúñüÜ().'\-]+){{0,12}}?"
-                rf"\s+(?P<post>\d+(?:[.,]\d+)?(?:/\d+)?)"
-                rf"(?=\s|$)",
-                re.I,
-            )
-
-            m_post = patron_post.search(bloque)
-
-            if m_post:
-                total = parse_numero_365(m_post.group("post"))
-
-                if total > 0:
-                    encontrado = {
-                        "jugador": nombre_visible(nombre),
-                        "total": total,
-                    }
-                    break
-
-        if encontrado:
-            resultados.append(encontrado)
 
     resultados.sort(key=lambda x: x.get("total", 0), reverse=True)
 
-    vistos = set()
-    limpios = []
+    print(f"🔎 365Scores bloque {titulo} resultados:", resultados[:max_items])
 
-    for item in resultados:
-        key = slug_jugador(item["jugador"])
-
-        if key in vistos:
-            continue
-
-        vistos.add(key)
-        limpios.append(item)
-
-    return limpios[:max_items]
+    return resultados[:max_items]
 
 
 def cargar_texto_renderizado_365(url):
@@ -804,8 +836,12 @@ def cargar_texto_renderizado_365(url):
             except Exception:
                 pass
 
-            # Esperar a que aparezcan los bloques reales de estadísticas.
-            for selector_text in ["Goles", "Asistencias", "Tarjetas Amarillas", "Tarjetas Rojas"]:
+            for selector_text in [
+                "Goles",
+                "Asistencias",
+                "Tarjetas Amarillas",
+                "Tarjetas Rojas",
+            ]:
                 try:
                     page.get_by_text(selector_text, exact=False).first.wait_for(timeout=15000)
                     break
@@ -861,10 +897,6 @@ def cargar_estadisticas_365scores(equipo, plantel):
         print(f"✅ Estadísticas 365Scores {equipo.get('nombre')}:", estadisticas)
 
         return estadisticas
-
-    except Exception as e:
-        print(f"⚠️ Error leyendo 365Scores para {equipo.get('nombre')}: {e}")
-        return estadisticas_vacias()
 
     except Exception as e:
         print(f"⚠️ Error leyendo 365Scores para {equipo.get('nombre')}: {e}")
