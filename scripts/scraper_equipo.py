@@ -454,6 +454,10 @@ EQUIPOS_BASE = [
 PREVIOUS_DATA = []
 TEXT_CACHE_365 = {}
 
+JSON_CACHE = {}
+STATS_CACHE_365 = {}
+MATCHES_CACHE_365 = {}
+
 
 def slug(texto):
     texto = str(texto or "").lower().strip()
@@ -517,6 +521,10 @@ def nombre_visible(nombre):
 
 
 def get_json(url):
+    if url in JSON_CACHE:
+        print(f"♻️ JSON cache {url}")
+        return JSON_CACHE[url]
+
     try:
         r = requests.get(
             url,
@@ -533,7 +541,9 @@ def get_json(url):
         if not r.ok:
             return None
 
-        return r.json()
+        data = r.json()
+        JSON_CACHE[url] = data
+        return data
 
     except Exception as e:
         print(f"⚠️ Error leyendo ESPN: {e}")
@@ -1369,12 +1379,18 @@ def limpiar_equipo_365(nombre):
 
 def cargar_proximos_365scores(equipo, competicion):
     scores365_id = equipo.get("scores365_id")
-    scores365_slug = equipo.get("scores365_slug") or equipo.get("id")
+scores365_slug = equipo.get("scores365_slug") or equipo.get("id")
 
-    if not scores365_id or sync_playwright is None:
-        return []
+if not scores365_id or sync_playwright is None:
+    return []
 
-    url = f"https://www.365scores.com/es/football/team/{scores365_slug}-{scores365_id}/matches"
+cache_key = f"{scores365_id}-{competicion.get('nombre', '')}"
+
+if cache_key in MATCHES_CACHE_365:
+    print(f"♻️ Matches 365Scores cache {equipo.get('nombre')} / {competicion.get('nombre')}")
+    return MATCHES_CACHE_365[cache_key]
+
+url = f"https://www.365scores.com/es/football/team/{scores365_slug}-{scores365_id}/matches"
 
     print(f"📅 365Scores Matches DOM {url}")
 
@@ -1553,7 +1569,9 @@ def cargar_proximos_365scores(equipo, competicion):
         f"{competicion.get('nombre')}: {len(partidos)}"
     )
 
-    return partidos[:MAX_PROXIMOS_PARTIDOS]
+    partidos = partidos[:MAX_PROXIMOS_PARTIDOS]
+MATCHES_CACHE_365[cache_key] = partidos
+return partidos
 
 
 # =========================
@@ -1736,10 +1754,17 @@ def extraer_ranking_365_desde_texto(texto, titulo, plantel, max_items=10):
 
 def cargar_estadisticas_365scores(equipo, plantel):
     scores365_id = equipo.get("scores365_id")
-    scores365_slug = equipo.get("scores365_slug") or equipo.get("id")
+scores365_slug = equipo.get("scores365_slug") or equipo.get("id")
 
-    if not scores365_id:
-        return estadisticas_vacias()
+if not scores365_id:
+    STATS_CACHE_365[cache_key] = estadisticas
+return estadisticas
+
+cache_key = str(scores365_id)
+
+if cache_key in STATS_CACHE_365:
+    print(f"♻️ Stats 365Scores cache {equipo.get('nombre')}")
+    return STATS_CACHE_365[cache_key]
 
     url = f"https://www.365scores.com/es/football/team/{scores365_slug}-{scores365_id}/stats"
 
@@ -1993,8 +2018,9 @@ def cargar_datos_por_competicion(base, equipo, competicion):
     )
 
     if competicion.get("league_slug") == "arg.1":
-        if resultados or proximos:
-            estadisticas = cargar_estadisticas_365scores(base, equipo["plantel"])
+    if resultados or proximos:
+        # Las estadísticas personales de 365Scores se leen una sola vez por equipo.
+        estadisticas = cargar_estadisticas_365scores(base, equipo["plantel"])
 
             if stats_vacias(estadisticas):
                 previas = obtener_estadisticas_previas(base.get("id"), nombre_competicion)
