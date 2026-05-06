@@ -1,6 +1,29 @@
 const EVENTS_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/2612163/refs/heads/main/eventos_streamhdx.json";
 const AGENDA_URL = "https://partidos-hoy-worker.gastonledesma328.workers.dev";
 
+/*
+  ============================================================
+  FLUJO GENERAL DEL PROYECTO
+  ============================================================
+
+  1) PARTIDOS EN VIVO:
+     - Usa EVENTS_URL.
+     - Lee el archivo eventos_streamhdx.json desde GitHub.
+     - Ese JSON ya debe traer la hora correcta en Argentina.
+     - La web muestra event.hora directamente.
+
+  2) AGENDA:
+     - Usa AGENDA_URL.
+     - Lee el Worker de Cloudflare.
+     - Muestra los partidos de la agenda ESPN.
+
+  IMPORTANTE:
+  Este app.js no genera los horarios.
+  Solo muestra lo que recibe.
+  Si eventos_streamhdx.json trae "hora": "11:45", la web va a mostrar 11:45.
+  Para que muestre 13:45, el JSON final tiene que venir con "hora": "13:45".
+*/
+
 const tabs = document.querySelectorAll(".tab");
 const utilityPanel = document.querySelector("#utilityPanel");
 const searchToggle = document.querySelector("#searchToggle");
@@ -35,10 +58,13 @@ let favoriteMode = false;
 let events = [];
 let currentAgendaDate = new Date();
 
-
 let agendaLoadedDate = "";
 let agendaLoading = false;
 
+/*
+  Devuelve fecha local del navegador en formato YYYY-MM-DD.
+  Se usa para comparar la fecha seleccionada con los partidos.
+*/
 function localDateISO(date = new Date()) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -86,10 +112,7 @@ function teamProfileHref(nombre, logo = "", liga = "") {
 }
 
 window.teamProfileHref = teamProfileHref;
-
-// Lo dejo global para poder probarlo desde la consola
 window.crearTeamId = crearTeamId;
-
 
 function setUtilityOpen(open) {
   utilityPanel.classList.toggle("hidden", !open);
@@ -116,20 +139,50 @@ function showSection(section) {
 }
 
 /* ============================================================
-   EVENTOS STREAMHDX
+   EVENTOS STREAMHDX / PARTIDOS EN VIVO
 ============================================================ */
 
+/*
+  IMPORTANTE:
+  Antes tenías esto:
+
+    new Date(`${event.fecha_iso}T${event.hora}:00`)
+
+  Eso puede hacer que el navegador interprete la hora según su zona horaria
+  y termine calculando mal si el formato viene sin zona.
+
+  Ahora usamos -03:00 explícito, que corresponde a Argentina.
+  Esto arregla el cálculo de Live / Prox / Fin.
+
+  OJO:
+  Esto NO cambia el texto visible event.hora.
+  Si el JSON trae "11:45", se va a mostrar 11:45.
+  Para mostrar 13:45, el JSON debe traer "hora": "13:45".
+*/
 function eventStart(event) {
-  return new Date(`${event.fecha_iso}T${event.hora}:00`);
+  const fecha = event.fecha_iso || event.fecha;
+  const hora = event.hora || "00:00";
+
+  if (!fecha) {
+    return new Date(NaN);
+  }
+
+  return new Date(`${fecha}T${hora}:00-03:00`);
 }
 
 function eventEnd(event) {
-  return new Date(eventStart(event).getTime() + Number(event.duracion_min || 140) * 60_000);
+  return new Date(
+    eventStart(event).getTime() + Number(event.duracion_min || 140) * 60_000
+  );
 }
 
 function eventStatus(event, now = new Date()) {
   const start = eventStart(event);
   const end = eventEnd(event);
+
+  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+    return "upcoming";
+  }
 
   if (now >= start && now <= end) {
     return "live";
@@ -158,7 +211,8 @@ function updateFeatured() {
   if (!liveEvent) {
     featured.classList.add("no-live");
     featuredStatus.querySelector("strong").textContent = "Sin partido en vivo ahora";
-    featuredStatus.querySelector("p").textContent = "Cuando el horario actual caiga dentro de un evento del JSON, esta seccion se actualiza sola.";
+    featuredStatus.querySelector("p").textContent =
+      "Cuando el horario actual caiga dentro de un evento del JSON, esta seccion se actualiza sola.";
     videoState.textContent = "Sin directo";
     return;
   }
@@ -174,6 +228,11 @@ function updateFeatured() {
 
   mainScore.textContent = "EN VIVO";
   featuredStatus.querySelector("strong").textContent = info.competition;
+
+  /*
+    Mostramos liveEvent.hora directamente.
+    No convertimos acá porque el JSON final debe venir ya en horario Argentina.
+  */
   featuredStatus.querySelector("p").textContent =
     `${liveEvent.hora} · ${liveEvent.clase || liveEvent.categoria} · ${liveEvent.canales?.[0]?.nombre || "Canal disponible"}`;
 
@@ -195,7 +254,9 @@ function renderEvents() {
   }
 
   const liveCount = sorted.filter((event) => eventStatus(event, now) === "live").length;
-  liveTitle.textContent = liveCount ? `${liveCount} en vivo ahora` : `Agenda cargada: ${sorted.length} eventos`;
+  liveTitle.textContent = liveCount
+    ? `${liveCount} en vivo ahora`
+    : `Agenda cargada: ${sorted.length} eventos`;
 
   const groups = sorted.reduce((acc, event) => {
     const sport = event.categoria || "deporte";
@@ -281,6 +342,11 @@ async function loadEvents() {
     }
 
     events = await response.json();
+
+    /*
+      Ordena por fecha/hora Argentina usando eventStart().
+      Como eventStart fuerza -03:00, el orden es más estable.
+    */
     events.sort((a, b) => eventStart(a) - eventStart(b));
 
     renderEvents();
@@ -288,9 +354,11 @@ async function loadEvents() {
     setUtilityStatus("");
   } catch (error) {
     liveTitle.textContent = "No se pudo cargar el JSON";
-    liveGrid.innerHTML = `<p class="empty-state">Revisa la conexion o intenta actualizar nuevamente.</p>`;
+    liveGrid.innerHTML =
+      `<p class="empty-state">Revisa la conexion o intenta actualizar nuevamente.</p>`;
     featuredStatus.querySelector("strong").textContent = "JSON no disponible";
-    featuredStatus.querySelector("p").textContent = "La seccion destacada depende de la lista remota de partidos en vivo.";
+    featuredStatus.querySelector("p").textContent =
+      "La seccion destacada depende de la lista remota de partidos en vivo.";
   }
 }
 
@@ -311,13 +379,17 @@ function agendaDate(match) {
 }
 
 function agendaStatus(match) {
-  const tiempo = match.mostrar_tiempo || match.minuto || match.estado_corto || match.estado || "";
+  const tiempo =
+    match.mostrar_tiempo || match.minuto || match.estado_corto || match.estado || "";
 
   if (match.completado === true) {
     return "Fin";
   }
 
-  if (String(tiempo).toLowerCase().includes("fin") || String(tiempo).toLowerCase().includes("final")) {
+  if (
+    String(tiempo).toLowerCase().includes("fin") ||
+    String(tiempo).toLowerCase().includes("final")
+  ) {
     return "Fin";
   }
 
@@ -336,6 +408,10 @@ function agendaStatus(match) {
   return tiempo || "Prox";
 }
 
+/*
+  La agenda muestra hora_inicio o hora.
+  No convertimos acá porque el Worker debería entregar la hora correcta.
+*/
 function agendaDisplayTime(match) {
   const tiempo = match.mostrar_tiempo || match.minuto || "";
 
@@ -368,12 +444,14 @@ function teamLogoMarkup(name, logo) {
 }
 
 function initials(name = "") {
-  return String(name)
-    .trim()
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((part) => part.charAt(0).toUpperCase())
-    .join("") || "PH";
+  return (
+    String(name)
+      .trim()
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((part) => part.charAt(0).toUpperCase())
+      .join("") || "PH"
+  );
 }
 
 function leagueLogoMarkup(name, logo) {
@@ -408,7 +486,6 @@ function scoreMarkup(match) {
 
   if (match.resultado && String(match.resultado).trim()) {
     const resultado = cleanScore(match.resultado);
-
     const partes = resultado.split("-").filter(Boolean);
 
     if (partes.length >= 2) {
@@ -449,7 +526,9 @@ function agendaSport(match) {
 }
 
 function inferWomenLeague(match) {
-  const text = normalizeText(`${match.partido || ""} ${match.local || ""} ${match.visitante || ""} ${match.url_espn || ""}`);
+  const text = normalizeText(
+    `${match.partido || ""} ${match.local || ""} ${match.visitante || ""} ${match.url_espn || ""}`
+  );
 
   if (/argentina|boca|river|san lorenzo|racing|independiente/.test(text)) {
     return "Campeonato Femenino de Primera Division";
@@ -483,7 +562,9 @@ function inferAgendaLeague(match) {
     return match.liga;
   }
 
-  const text = normalizeText(`${match.partido || ""} ${match.local || ""} ${match.visitante || ""} ${match.url_espn || ""}`);
+  const text = normalizeText(
+    `${match.partido || ""} ${match.local || ""} ${match.visitante || ""} ${match.url_espn || ""}`
+  );
 
   if (/femenin|women|womens|\(f\)|liga f|frauen|femminile|vrouwen/.test(text)) {
     return inferWomenLeague(match);
@@ -641,7 +722,9 @@ function groupPriority(group) {
 
 function isWomenGroup(group) {
   const text = normalizeText(
-    `${group.sport} ${group.league} ${group.matches.map((match) => `${match.partido} ${match.local} ${match.visitante}`).join(" ")}`
+    `${group.sport} ${group.league} ${group.matches
+      .map((match) => `${match.partido} ${match.local} ${match.visitante}`)
+      .join(" ")}`
   );
 
   return /femenin|women|womens|\(f\)|liga f|frauen|femminile|vrouwen/.test(text);
@@ -712,7 +795,9 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
           return liveA - liveB;
         }
 
-        return (a.hora_inicio || a.hora || "").localeCompare(b.hora_inicio || b.hora || "");
+        return (a.hora_inicio || a.hora || "").localeCompare(
+          b.hora_inicio || b.hora || ""
+        );
       });
 
       const section = document.createElement("section");
@@ -733,11 +818,11 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
 
       const list = section.querySelector(".agenda-list");
 
-     group.matches.forEach((match) => {
-  const row = document.createElement("article");
+      group.matches.forEach((match) => {
+        const row = document.createElement("article");
 
-  row.className = "agenda-row";
-  row.dataset.espnUrl = match.url_espn || sourceUrl;
+        row.className = "agenda-row";
+        row.dataset.espnUrl = match.url_espn || sourceUrl;
 
         const home = match.local || match.partido?.split(" vs ")[0] || "Local";
         const away = match.visitante || match.partido?.split(" vs ")[1] || "Visitante";
@@ -748,26 +833,26 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
         }
 
         row.innerHTML = `
-  <time>${agendaDisplayTime(match)}</time>
+          <time>${agendaDisplayTime(match)}</time>
 
-  <span class="agenda-teams">
-    <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo, group.league)}" title="Ver ficha de ${home}">
-      ${teamLogoMarkup(home, match.local_logo)}
-      <span>${home}</span>
-    </a>
+          <span class="agenda-teams">
+            <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo, group.league)}" title="Ver ficha de ${home}">
+              ${teamLogoMarkup(home, match.local_logo)}
+              <span>${home}</span>
+            </a>
 
-    <span class="agenda-score">${scoreMarkup(match)}</span>
+            <span class="agenda-score">${scoreMarkup(match)}</span>
 
-    <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo, group.league)}" title="Ver ficha de ${away}">
-      ${teamLogoMarkup(away, match.visitante_logo)}
-      <span>${away}</span>
-    </a>
+            <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo, group.league)}" title="Ver ficha de ${away}">
+              ${teamLogoMarkup(away, match.visitante_logo)}
+              <span>${away}</span>
+            </a>
 
-    ${scorersMarkup(match)}
-  </span>
+            ${scorersMarkup(match)}
+          </span>
 
-  <span class="agenda-state">${agendaStatus(match)}</span>
-`;
+          <span class="agenda-state">${agendaStatus(match)}</span>
+        `;
 
         list.append(row);
       });
@@ -932,7 +1017,10 @@ dateButtons.forEach((button) => {
 playToggle.addEventListener("click", () => {
   const isPlaying = videoCard.classList.toggle("playing");
   videoState.textContent = isPlaying ? "Transmitiendo" : "En pausa";
-  playToggle.setAttribute("aria-label", isPlaying ? "Pausar partido" : "Reproducir partido");
+  playToggle.setAttribute(
+    "aria-label",
+    isPlaying ? "Pausar partido" : "Reproducir partido"
+  );
 });
 
 volumeToggle.addEventListener("click", () => {
