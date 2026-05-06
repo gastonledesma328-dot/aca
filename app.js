@@ -463,39 +463,57 @@ function leagueLogoMarkup(name, logo) {
 }
 
 function scoreMarkup(match) {
-  const cleanScore = (value) => {
-    return String(value ?? "")
-      .trim()
-      .replace(/\s+/g, "")
-      .replace(/[–—]/g, "-");
+  const normalizarGol = (value) => {
+    if (value === undefined || value === null) {
+      return null;
+    }
+
+    const text = String(value).trim();
+
+    if (!text) {
+      return null;
+    }
+
+    const number = Number(text);
+
+    if (Number.isNaN(number)) {
+      return null;
+    }
+
+    // ESPN / tu Worker usa -1 como "sin marcador"
+    if (number < 0) {
+      return null;
+    }
+
+    return number;
   };
 
-  const hasLocal =
-    match.marcador_local !== undefined &&
-    match.marcador_local !== null &&
-    String(match.marcador_local).trim() !== "";
+  const local = normalizarGol(match.marcador_local);
+  const visitante = normalizarGol(match.marcador_visitante);
 
-  const hasAway =
-    match.marcador_visitante !== undefined &&
-    match.marcador_visitante !== null &&
-    String(match.marcador_visitante).trim() !== "";
-
-  if (hasLocal && hasAway) {
-    return `${match.marcador_local} - ${match.marcador_visitante}`;
+  if (local !== null && visitante !== null) {
+    return `${local} - ${visitante}`;
   }
 
   if (match.resultado && String(match.resultado).trim()) {
-    const resultado = cleanScore(match.resultado);
+    const resultado = String(match.resultado)
+      .trim()
+      .replace(/\s+/g, "")
+      .replace(/[–—]/g, "-");
+
     const partes = resultado.split("-").filter(Boolean);
 
     if (partes.length >= 2) {
-      return `${partes[0]} - ${partes[1]}`;
-    }
+      const resultadoLocal = normalizarGol(partes[0]);
+      const resultadoVisitante = normalizarGol(partes[1]);
 
-    return resultado;
+      if (resultadoLocal !== null && resultadoVisitante !== null) {
+        return `${resultadoLocal} - ${resultadoVisitante}`;
+      }
+    }
   }
 
-  return "-";
+  return "";
 }
 
 function scorersMarkup(match) {
@@ -841,7 +859,7 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
               <span>${home}</span>
             </a>
 
-            <span class="agenda-score">${scoreMarkup(match)}</span>
+            ${scoreMarkup(match) ? `<span class="agenda-score">${scoreMarkup(match)}</span>` : ""}
 
             <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo, group.league)}" title="Ver ficha de ${away}">
               ${teamLogoMarkup(away, match.visitante_logo)}
