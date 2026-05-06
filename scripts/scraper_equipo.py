@@ -1761,17 +1761,16 @@ def extraer_ranking_365_desde_texto(texto, titulo, plantel, max_items=10):
 
 def cargar_estadisticas_365scores(equipo, plantel):
     scores365_id = equipo.get("scores365_id")
-scores365_slug = equipo.get("scores365_slug") or equipo.get("id")
+    scores365_slug = equipo.get("scores365_slug") or equipo.get("id")
 
-if not scores365_id:
-    STATS_CACHE_365[cache_key] = estadisticas
-return estadisticas
+    if not scores365_id:
+        return estadisticas_vacias()
 
-cache_key = str(scores365_id)
+    cache_key = str(scores365_id)
 
-if cache_key in STATS_CACHE_365:
-    print(f"♻️ Stats 365Scores cache {equipo.get('nombre')}")
-    return STATS_CACHE_365[cache_key]
+    if cache_key in STATS_CACHE_365:
+        print(f"♻️ Stats 365Scores cache {equipo.get('nombre')}")
+        return STATS_CACHE_365[cache_key]
 
     url = f"https://www.365scores.com/es/football/team/{scores365_slug}-{scores365_id}/stats"
 
@@ -1780,7 +1779,12 @@ if cache_key in STATS_CACHE_365:
 
         texto = cargar_texto_renderizado_365(
             url,
-            wait_texts=["Goles", "Asistencias", "Tarjetas Amarillas", "Tarjetas Rojas"],
+            wait_texts=[
+                "Goles",
+                "Asistencias",
+                "Tarjetas Amarillas",
+                "Tarjetas Rojas",
+            ],
         )
 
         print("🔎 365Scores stats texto length:", len(texto))
@@ -1804,6 +1808,8 @@ if cache_key in STATS_CACHE_365:
             "rojas": rojas,
         }
 
+        STATS_CACHE_365[cache_key] = estadisticas
+
         print(f"✅ Estadísticas 365Scores {equipo.get('nombre')}:", estadisticas)
 
         return estadisticas
@@ -1811,7 +1817,6 @@ if cache_key in STATS_CACHE_365:
     except Exception as e:
         print(f"⚠️ Error leyendo 365Scores para {equipo.get('nombre')}: {e}")
         return estadisticas_vacias()
-
 
 def obtener_estadisticas_previas(equipo_id, nombre_competicion):
     if not isinstance(PREVIOUS_DATA, list):
