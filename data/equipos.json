@@ -11,8 +11,74 @@
     "fundacion": "Sin datos",
     "estadio": "Sin datos",
     "ciudad": "La Plata",
-    "actualizado": "2026-05-06T06:47:08.648311+00:00",
-    "proximosPartidos": [],
+    "actualizado": "2026-05-06T09:29:03.840602+00:00",
+    "proximosPartidos": [
+      {
+        "id": "2026-05-10-17:00-Estudiantes-Racing",
+        "dia": "2026-05-10",
+        "fecha_iso": "2026-05-10T17:00:00",
+        "local": "Estudiantes",
+        "visitante": "Racing",
+        "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v11/Competitors/867",
+        "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v5/Competitors/876",
+        "url": "https://www.365scores.com/es/football/match/liga-profesional-72/estudiantes-de-la-plata-racing-club-867-876-72#id=4710405",
+        "hora": "17:00",
+        "estado": "Programado",
+        "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+      },
+      {
+        "id": "2026-06-07-14:00-Estudiantes-Central",
+        "dia": "2026-06-07",
+        "fecha_iso": "2026-06-07T14:00:00",
+        "local": "Estudiantes",
+        "visitante": "Central",
+        "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v11/Competitors/867",
+        "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v8/Competitors/875",
+        "url": "https://www.365scores.com/es/football/match/copa-argentina-640/estudiantes-de-la-plata-rosario-central-867-875-640#id=4673273",
+        "hora": "14:00",
+        "estado": "Programado",
+        "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+      },
+      {
+        "id": "2026-07-26-16:00-Estudiantes-Independiente",
+        "dia": "2026-07-26",
+        "fecha_iso": "2026-07-26T16:00:00",
+        "local": "Estudiantes",
+        "visitante": "Independiente",
+        "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v11/Competitors/867",
+        "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/874",
+        "url": "https://www.365scores.com/es/football/match/liga-profesional-72/estudiantes-de-la-plata-independiente-867-874-72#id=4633432",
+        "hora": "16:00",
+        "estado": "Programado",
+        "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+      },
+      {
+        "id": "2026-07-29-16:00-Boca Jrs.-Estudiantes",
+        "dia": "2026-07-29",
+        "fecha_iso": "2026-07-29T16:00:00",
+        "local": "Boca Jrs.",
+        "visitante": "Estudiantes",
+        "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v2/Competitors/866",
+        "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v11/Competitors/867",
+        "url": "https://www.365scores.com/es/football/match/liga-profesional-72/boca-juniors-estudiantes-de-la-plata-866-867-72#id=4633416",
+        "hora": "16:00",
+        "estado": "Programado",
+        "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+      },
+      {
+        "id": "2026-08-02-16:00-Estudiantes-Defensa",
+        "dia": "2026-08-02",
+        "fecha_iso": "2026-08-02T16:00:00",
+        "local": "Estudiantes",
+        "visitante": "Defensa",
+        "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v11/Competitors/867",
+        "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7217",
+        "url": "https://www.365scores.com/es/football/match/liga-profesional-72/defensa-y-justicia-estudiantes-de-la-plata-867-7217-72#id=4633406",
+        "hora": "16:00",
+        "estado": "Programado",
+        "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+      }
+    ],
     "resultados": [
       {
         "id": "762897",
@@ -190,11 +256,6 @@
           "altura": "6' 1\""
         },
         {
-          "nombre": "Joaquín Pereyra",
-          "edad": 20,
-          "altura": "5' 11\""
-        },
-        {
           "nombre": "Santiago Arzamendia",
           "edad": 28,
           "altura": "5' 8\""
@@ -251,6 +312,11 @@
         }
       ],
       "mediocampistas": [
+        {
+          "nombre": "Joaquín Pereyra",
+          "edad": 27,
+          "altura": "5' 11\""
+        },
         {
           "nombre": "José Sosa",
           "edad": 40,
@@ -535,7 +601,73 @@
         "fase": "apertura",
         "fecha_desde": "2026-01-01",
         "fecha_hasta": "2026-06-30",
-        "proximosPartidos": [],
+        "proximosPartidos": [
+          {
+            "id": "2026-05-10-17:00-Estudiantes-Racing",
+            "dia": "2026-05-10",
+            "fecha_iso": "2026-05-10T17:00:00",
+            "local": "Estudiantes",
+            "visitante": "Racing",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v11/Competitors/867",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v5/Competitors/876",
+            "url": "https://www.365scores.com/es/football/match/liga-profesional-72/estudiantes-de-la-plata-racing-club-867-876-72#id=4710405",
+            "hora": "17:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+          },
+          {
+            "id": "2026-06-07-14:00-Estudiantes-Central",
+            "dia": "2026-06-07",
+            "fecha_iso": "2026-06-07T14:00:00",
+            "local": "Estudiantes",
+            "visitante": "Central",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v11/Competitors/867",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v8/Competitors/875",
+            "url": "https://www.365scores.com/es/football/match/copa-argentina-640/estudiantes-de-la-plata-rosario-central-867-875-640#id=4673273",
+            "hora": "14:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+          },
+          {
+            "id": "2026-07-26-16:00-Estudiantes-Independiente",
+            "dia": "2026-07-26",
+            "fecha_iso": "2026-07-26T16:00:00",
+            "local": "Estudiantes",
+            "visitante": "Independiente",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v11/Competitors/867",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/874",
+            "url": "https://www.365scores.com/es/football/match/liga-profesional-72/estudiantes-de-la-plata-independiente-867-874-72#id=4633432",
+            "hora": "16:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+          },
+          {
+            "id": "2026-07-29-16:00-Boca Jrs.-Estudiantes",
+            "dia": "2026-07-29",
+            "fecha_iso": "2026-07-29T16:00:00",
+            "local": "Boca Jrs.",
+            "visitante": "Estudiantes",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v2/Competitors/866",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v11/Competitors/867",
+            "url": "https://www.365scores.com/es/football/match/liga-profesional-72/boca-juniors-estudiantes-de-la-plata-866-867-72#id=4633416",
+            "hora": "16:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+          },
+          {
+            "id": "2026-08-02-16:00-Estudiantes-Defensa",
+            "dia": "2026-08-02",
+            "fecha_iso": "2026-08-02T16:00:00",
+            "local": "Estudiantes",
+            "visitante": "Defensa",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v11/Competitors/867",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7217",
+            "url": "https://www.365scores.com/es/football/match/liga-profesional-72/defensa-y-justicia-estudiantes-de-la-plata-867-7217-72#id=4633406",
+            "hora": "16:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+          }
+        ],
         "resultados": [
           {
             "id": "762897",
@@ -1152,7 +1284,7 @@
     "fundacion": "1905",
     "estadio": "Alberto J. Armando",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-06T06:51:12.100363+00:00",
+    "actualizado": "2026-05-06T09:32:23.576748+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-09-19:00-Boca Jrs.-Huracán",
@@ -2404,7 +2536,7 @@
     "fundacion": "Sin datos",
     "estadio": "José Amalfitani",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-06T06:54:30.231000+00:00",
+    "actualizado": "2026-05-06T09:35:41.702633+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-10-21:30-Vélez-Gimnasia",
@@ -3461,7 +3593,7 @@
     "fundacion": "Sin datos",
     "estadio": "Mario Alberto Kempes",
     "ciudad": "Córdoba",
-    "actualizado": "2026-05-06T06:58:27.798439+00:00",
+    "actualizado": "2026-05-06T09:38:59.259035+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-09-16:30-Talleres-Belgrano",
@@ -4479,7 +4611,7 @@
     "fundacion": "Sin datos",
     "estadio": "Libertadores de América",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-06T07:01:45.649471+00:00",
+    "actualizado": "2026-05-06T09:42:16.699329+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-10-15:00-Central-Independiente",
@@ -5604,7 +5736,7 @@
     "fundacion": "Sin datos",
     "estadio": "Ciudad de Lanús",
     "ciudad": "Lanús",
-    "actualizado": "2026-05-06T07:05:04.509360+00:00",
+    "actualizado": "2026-05-06T09:45:34.344199+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-09-21:30-Argentinos-Lanús",
@@ -6837,7 +6969,7 @@
     "fundacion": "Sin datos",
     "estadio": "Pedro Bidegain",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-06T07:08:47.765037+00:00",
+    "actualizado": "2026-05-06T09:48:52.084383+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-10-19:00-River-San Lorenzo",
@@ -8068,7 +8200,7 @@
     "fundacion": "Sin datos",
     "estadio": "15 de Abril",
     "ciudad": "Santa Fe",
-    "actualizado": "2026-05-06T07:11:45.209047+00:00",
+    "actualizado": "2026-05-06T09:52:10.121824+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-09-21:30-Ind. Rivadavia-Unión",
@@ -9132,7 +9264,7 @@
     "fundacion": "Sin datos",
     "estadio": "Juan Domingo Perón",
     "ciudad": "Córdoba",
-    "actualizado": "2026-05-06T07:14:48.791718+00:00",
+    "actualizado": "2026-05-06T09:55:27.723266+00:00",
     "proximosPartidos": [
       {
         "id": "2026-06-07-14:00-Instituto-Lanús",
@@ -10230,7 +10362,7 @@
     "fundacion": "Sin datos",
     "estadio": "Norberto Tomaghello",
     "ciudad": "Florencio Varela",
-    "actualizado": "2026-05-06T07:18:07.970986+00:00",
+    "actualizado": "2026-05-06T09:58:45.292338+00:00",
     "proximosPartidos": [
       {
         "id": "2026-06-07-14:00-Racing-Defensa",
@@ -11326,7 +11458,7 @@
     "fundacion": "Sin datos",
     "estadio": "Víctor Antonio Legrotaglie",
     "ciudad": "Mendoza",
-    "actualizado": "2026-05-06T07:21:26.104142+00:00",
+    "actualizado": "2026-05-06T10:02:03.266235+00:00",
     "proximosPartidos": [
       {
         "id": "2026-07-26-16:00-Gimnasia (M)-Central Córdoba",
@@ -12403,7 +12535,7 @@
     "fundacion": "Sin datos",
     "estadio": "Ciudad de Vicente López",
     "ciudad": "Vicente López",
-    "actualizado": "2026-05-06T07:24:44.110635+00:00",
+    "actualizado": "2026-05-06T10:05:21.319481+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-13-14:00-Platense-San Martín",
@@ -13561,7 +13693,7 @@
     "fundacion": "Sin datos",
     "estadio": "Único Madre de Ciudades",
     "ciudad": "Santiago del Estero",
-    "actualizado": "2026-05-06T07:28:02.400745+00:00",
+    "actualizado": "2026-05-06T10:08:49.178809+00:00",
     "proximosPartidos": [
       {
         "id": "2026-07-26-16:00-Gimnasia (M)-Central Córdoba",
@@ -14564,7 +14696,7 @@
     "fundacion": "Sin datos",
     "estadio": "Marcelo Bielsa",
     "ciudad": "Rosario",
-    "actualizado": "2026-05-06T07:31:06.095825+00:00",
+    "actualizado": "2026-05-06T10:12:06.837139+00:00",
     "proximosPartidos": [
       {
         "id": "2026-07-26-16:00-Newell's-Talleres",
@@ -15617,7 +15749,7 @@
     "fundacion": "Sin datos",
     "estadio": "Guillermo Laza",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-06T07:34:01.463288+00:00",
+    "actualizado": "2026-05-06T10:15:24.413818+00:00",
     "proximosPartidos": [
       {
         "id": "2026-06-07-14:00-San Lorenzo-Riestra",
@@ -16690,7 +16822,7 @@
     "fundacion": "Sin datos",
     "estadio": "Bautista Gargantini",
     "ciudad": "Mendoza",
-    "actualizado": "2026-05-06T07:37:20.249500+00:00",
+    "actualizado": "2026-05-06T10:18:42.709585+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-09-21:30-Ind. Rivadavia-Unión",
@@ -16914,7 +17046,7 @@
         },
         {
           "nombre": "Nicolás Bolcato",
-          "edad": 21,
+          "edad": 22,
           "altura": "6' 1\""
         },
         {
@@ -17939,7 +18071,7 @@
     "fundacion": "1901",
     "estadio": "Monumental",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-06T07:40:20.117883+00:00",
+    "actualizado": "2026-05-06T10:22:01.239672+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-10-19:00-River-San Lorenzo",
@@ -19246,7 +19378,7 @@
     "fundacion": "Sin datos",
     "estadio": "Diego Armando Maradona",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-06T07:43:39.060300+00:00",
+    "actualizado": "2026-05-06T10:25:19.037739+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-09-21:30-Argentinos-Lanús",
@@ -20433,7 +20565,7 @@
     "fundacion": "Sin datos",
     "estadio": "Gigante de Arroyito",
     "ciudad": "Rosario",
-    "actualizado": "2026-05-06T07:46:32.343369+00:00",
+    "actualizado": "2026-05-06T10:28:37.071216+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-10-15:00-Central-Independiente",
@@ -21700,7 +21832,7 @@
     "fundacion": "Sin datos",
     "estadio": "Julio César Villagra",
     "ciudad": "Córdoba",
-    "actualizado": "2026-05-06T07:49:26.571351+00:00",
+    "actualizado": "2026-05-06T10:31:55.482416+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-09-16:30-Talleres-Belgrano",
@@ -22798,7 +22930,7 @@
     "fundacion": "Sin datos",
     "estadio": "Juan Carmelo Zerillo",
     "ciudad": "La Plata",
-    "actualizado": "2026-05-06T07:52:44.580766+00:00",
+    "actualizado": "2026-05-06T10:35:13.689451+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-10-21:30-Vélez-Gimnasia",
@@ -23837,7 +23969,7 @@
     "fundacion": "Sin datos",
     "estadio": "Tomás Adolfo Ducó",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-06T07:56:02.698514+00:00",
+    "actualizado": "2026-05-06T10:38:31.569150+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-09-19:00-Boca Jrs.-Huracán",
@@ -24894,7 +25026,7 @@
     "fundacion": "1903",
     "estadio": "Presidente Perón",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-06T07:58:57.997331+00:00",
+    "actualizado": "2026-05-06T10:41:49.469042+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-10-17:00-Estudiantes-Racing",
@@ -26157,7 +26289,7 @@
     "fundacion": "Sin datos",
     "estadio": "Claudio Chiqui Tapia",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-06T08:02:17.745394+00:00",
+    "actualizado": "2026-05-06T10:45:08.200637+00:00",
     "proximosPartidos": [
       {
         "id": "2026-06-07-14:00-Barracas-Huracán",
@@ -27372,7 +27504,7 @@
     "fundacion": "Sin datos",
     "estadio": "José Dellagiovanna",
     "ciudad": "Victoria",
-    "actualizado": "2026-05-06T08:05:35.643071+00:00",
+    "actualizado": "2026-05-06T10:48:26.621155+00:00",
     "proximosPartidos": [
       {
         "id": "2026-06-07-14:00-Ind. Rivadavia-Tigre",
@@ -28583,7 +28715,7 @@
     "fundacion": "Sin datos",
     "estadio": "Eva Perón",
     "ciudad": "Junín",
-    "actualizado": "2026-05-06T08:08:53.883350+00:00",
+    "actualizado": "2026-05-06T10:51:44.744342+00:00",
     "proximosPartidos": [
       {
         "id": "2026-06-07-14:00-Sarmiento-Boca Jrs.",
@@ -29651,7 +29783,7 @@
     "fundacion": "Sin datos",
     "estadio": "Florencio Sola",
     "ciudad": "Banfield",
-    "actualizado": "2026-05-06T08:12:11.676242+00:00",
+    "actualizado": "2026-05-06T10:55:03.496250+00:00",
     "proximosPartidos": [
       {
         "id": "2026-05-08-21:10-Banfield-San Martín (T)",
@@ -30651,7 +30783,7 @@
     "fundacion": "Sin datos",
     "estadio": "Monumental José Fierro",
     "ciudad": "San Miguel de Tucumán",
-    "actualizado": "2026-05-06T08:15:38.291797+00:00",
+    "actualizado": "2026-05-06T10:58:21.344971+00:00",
     "proximosPartidos": [
       {
         "id": "2026-06-07-14:00-Talleres-Atl. Tucumán",
@@ -31687,8 +31819,74 @@
     "fundacion": "Sin datos",
     "estadio": "José María Minella",
     "ciudad": "Mar del Plata",
-    "actualizado": "2026-05-06T08:19:17.676945+00:00",
-    "proximosPartidos": [],
+    "actualizado": "2026-05-06T11:01:39.364456+00:00",
+    "proximosPartidos": [
+      {
+        "id": "2026-06-07-14:00-River-Aldosivi",
+        "dia": "2026-06-07",
+        "fecha_iso": "2026-06-07T14:00:00",
+        "local": "River",
+        "visitante": "Aldosivi",
+        "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v3/Competitors/868",
+        "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+        "url": "https://www.365scores.com/es/football/match/copa-argentina-640/aldosivi-river-plate-868-7223-640#id=4674989",
+        "hora": "14:00",
+        "estado": "Programado",
+        "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+      },
+      {
+        "id": "2026-07-26-16:00-Defensa-Aldosivi",
+        "dia": "2026-07-26",
+        "fecha_iso": "2026-07-26T16:00:00",
+        "local": "Defensa",
+        "visitante": "Aldosivi",
+        "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7217",
+        "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+        "url": "https://www.365scores.com/es/football/match/liga-profesional-72/aldosivi-defensa-y-justicia-7217-7223-72#id=4633434",
+        "hora": "16:00",
+        "estado": "Programado",
+        "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+      },
+      {
+        "id": "2026-07-29-16:00-Barracas-Aldosivi",
+        "dia": "2026-07-29",
+        "fecha_iso": "2026-07-29T16:00:00",
+        "local": "Barracas",
+        "visitante": "Aldosivi",
+        "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v4/Competitors/9051",
+        "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+        "url": "https://www.365scores.com/es/football/match/liga-profesional-72/aldosivi-barracas-central-7223-9051-72#id=4633409",
+        "hora": "16:00",
+        "estado": "Programado",
+        "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+      },
+      {
+        "id": "2026-08-02-16:00-Aldosivi-Gimnasia",
+        "dia": "2026-08-02",
+        "fecha_iso": "2026-08-02T16:00:00",
+        "local": "Aldosivi",
+        "visitante": "Gimnasia",
+        "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+        "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/880",
+        "url": "https://www.365scores.com/es/football/match/liga-profesional-72/aldosivi-gimnasia-la-plata-880-7223-72#id=4633399",
+        "hora": "16:00",
+        "estado": "Programado",
+        "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+      },
+      {
+        "id": "2026-08-09-16:00-Central-Aldosivi",
+        "dia": "2026-08-09",
+        "fecha_iso": "2026-08-09T16:00:00",
+        "local": "Central",
+        "visitante": "Aldosivi",
+        "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v8/Competitors/875",
+        "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+        "url": "https://www.365scores.com/es/football/match/liga-profesional-72/aldosivi-rosario-central-875-7223-72#id=4633379",
+        "hora": "16:00",
+        "estado": "Programado",
+        "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+      }
+    ],
     "resultados": [
       {
         "id": "762904",
@@ -32117,7 +32315,73 @@
         "fase": "apertura",
         "fecha_desde": "2026-01-01",
         "fecha_hasta": "2026-06-30",
-        "proximosPartidos": [],
+        "proximosPartidos": [
+          {
+            "id": "2026-06-07-14:00-River-Aldosivi",
+            "dia": "2026-06-07",
+            "fecha_iso": "2026-06-07T14:00:00",
+            "local": "River",
+            "visitante": "Aldosivi",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v3/Competitors/868",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+            "url": "https://www.365scores.com/es/football/match/copa-argentina-640/aldosivi-river-plate-868-7223-640#id=4674989",
+            "hora": "14:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+          },
+          {
+            "id": "2026-07-26-16:00-Defensa-Aldosivi",
+            "dia": "2026-07-26",
+            "fecha_iso": "2026-07-26T16:00:00",
+            "local": "Defensa",
+            "visitante": "Aldosivi",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7217",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+            "url": "https://www.365scores.com/es/football/match/liga-profesional-72/aldosivi-defensa-y-justicia-7217-7223-72#id=4633434",
+            "hora": "16:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+          },
+          {
+            "id": "2026-07-29-16:00-Barracas-Aldosivi",
+            "dia": "2026-07-29",
+            "fecha_iso": "2026-07-29T16:00:00",
+            "local": "Barracas",
+            "visitante": "Aldosivi",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v4/Competitors/9051",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+            "url": "https://www.365scores.com/es/football/match/liga-profesional-72/aldosivi-barracas-central-7223-9051-72#id=4633409",
+            "hora": "16:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+          },
+          {
+            "id": "2026-08-02-16:00-Aldosivi-Gimnasia",
+            "dia": "2026-08-02",
+            "fecha_iso": "2026-08-02T16:00:00",
+            "local": "Aldosivi",
+            "visitante": "Gimnasia",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/880",
+            "url": "https://www.365scores.com/es/football/match/liga-profesional-72/aldosivi-gimnasia-la-plata-880-7223-72#id=4633399",
+            "hora": "16:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+          },
+          {
+            "id": "2026-08-09-16:00-Central-Aldosivi",
+            "dia": "2026-08-09",
+            "fecha_iso": "2026-08-09T16:00:00",
+            "local": "Central",
+            "visitante": "Aldosivi",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v8/Competitors/875",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+            "url": "https://www.365scores.com/es/football/match/liga-profesional-72/aldosivi-rosario-central-875-7223-72#id=4633379",
+            "hora": "16:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Apertura 2026"
+          }
+        ],
         "resultados": [
           {
             "id": "762904",
@@ -32346,24 +32610,150 @@
         "fase": "clausura",
         "fecha_desde": "2026-07-01",
         "fecha_hasta": "2026-12-31",
-        "proximosPartidos": [],
+        "proximosPartidos": [
+          {
+            "id": "2026-06-07-14:00-River-Aldosivi",
+            "dia": "2026-06-07",
+            "fecha_iso": "2026-06-07T14:00:00",
+            "local": "River",
+            "visitante": "Aldosivi",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v3/Competitors/868",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+            "url": "https://www.365scores.com/es/football/match/copa-argentina-640/aldosivi-river-plate-868-7223-640#id=4674989",
+            "hora": "14:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Clausura 2026"
+          },
+          {
+            "id": "2026-07-26-16:00-Defensa-Aldosivi",
+            "dia": "2026-07-26",
+            "fecha_iso": "2026-07-26T16:00:00",
+            "local": "Defensa",
+            "visitante": "Aldosivi",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7217",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+            "url": "https://www.365scores.com/es/football/match/liga-profesional-72/aldosivi-defensa-y-justicia-7217-7223-72#id=4633434",
+            "hora": "16:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Clausura 2026"
+          },
+          {
+            "id": "2026-07-29-16:00-Barracas-Aldosivi",
+            "dia": "2026-07-29",
+            "fecha_iso": "2026-07-29T16:00:00",
+            "local": "Barracas",
+            "visitante": "Aldosivi",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v4/Competitors/9051",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+            "url": "https://www.365scores.com/es/football/match/liga-profesional-72/aldosivi-barracas-central-7223-9051-72#id=4633409",
+            "hora": "16:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Clausura 2026"
+          },
+          {
+            "id": "2026-08-02-16:00-Aldosivi-Gimnasia",
+            "dia": "2026-08-02",
+            "fecha_iso": "2026-08-02T16:00:00",
+            "local": "Aldosivi",
+            "visitante": "Gimnasia",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/880",
+            "url": "https://www.365scores.com/es/football/match/liga-profesional-72/aldosivi-gimnasia-la-plata-880-7223-72#id=4633399",
+            "hora": "16:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Clausura 2026"
+          },
+          {
+            "id": "2026-08-09-16:00-Central-Aldosivi",
+            "dia": "2026-08-09",
+            "fecha_iso": "2026-08-09T16:00:00",
+            "local": "Central",
+            "visitante": "Aldosivi",
+            "local_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v8/Competitors/875",
+            "visitante_logo": "https://imagecache.365scores.com/image/upload/f_png,w_34,h_34,c_limit,q_auto:eco,dpr_2,d_Competitors:default1.png/v1/Competitors/7223",
+            "url": "https://www.365scores.com/es/football/match/liga-profesional-72/aldosivi-rosario-central-875-7223-72#id=4633379",
+            "hora": "16:00",
+            "estado": "Programado",
+            "competicion": "Liga Profesional de Futbol - Torneo Clausura 2026"
+          }
+        ],
         "resultados": [],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
-          "rojas": []
+          "goles": [
+            {
+              "jugador": "Nicolás Cordero",
+              "total": 1
+            },
+            {
+              "jugador": "Santiago Moya",
+              "total": 1
+            },
+            {
+              "jugador": "Tomás Fernandez",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Lucas Rodríguez",
+              "total": 1
+            },
+            {
+              "jugador": "Nicolás Cordero",
+              "total": 1
+            },
+            {
+              "jugador": "Nicolás Zalazar",
+              "total": 1
+            },
+            {
+              "jugador": "Fernando Román",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Esteban Rolón",
+              "total": 6
+            },
+            {
+              "jugador": "Martín García",
+              "total": 4
+            },
+            {
+              "jugador": "Axel Werner",
+              "total": 3
+            },
+            {
+              "jugador": "Fernando Román",
+              "total": 3
+            },
+            {
+              "jugador": "Roberto Bochi",
+              "total": 3
+            }
+          ],
+          "rojas": [
+            {
+              "jugador": "Alan Sosa",
+              "total": 1
+            },
+            {
+              "jugador": "Nicolás Zalazar",
+              "total": 1
+            }
+          ]
         },
         "generales": {
-          "posicion": "-",
-          "partidos": "-",
-          "ganados": "-",
-          "empatados": "-",
-          "perdidos": "-",
-          "golesFavor": "-",
-          "golesContra": "-",
-          "diferenciaGol": "-",
-          "puntos": "-",
+          "posicion": "14",
+          "partidos": "16",
+          "ganados": "0",
+          "empatados": "8",
+          "perdidos": "8",
+          "golesFavor": "6",
+          "golesContra": "19",
+          "diferenciaGol": "-13",
+          "puntos": "8",
           "racha": "-"
         }
       },
@@ -32437,7 +32827,7 @@
     "fundacion": "Sin datos",
     "estadio": "Antonio Candini",
     "ciudad": "Río Cuarto",
-    "actualizado": "2026-05-06T08:22:19.846464+00:00",
+    "actualizado": "2026-05-06T11:04:57.318956+00:00",
     "proximosPartidos": [
       {
         "id": "2026-07-26-16:00-Estudiantes RC-Tigre",
