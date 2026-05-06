@@ -463,6 +463,43 @@ function leagueLogoMarkup(name, logo) {
 }
 
 function scoreMarkup(match) {
+  const tiempo = String(
+    match.mostrar_tiempo ||
+    match.minuto ||
+    match.estado_corto ||
+    match.estado ||
+    ""
+  ).toLowerCase();
+
+  const estaFinalizado =
+    match.completado === true ||
+    tiempo.includes("fin") ||
+    tiempo.includes("final") ||
+    tiempo.includes("full time") ||
+    tiempo.includes("ft");
+
+  const estaEnVivo =
+    match.mostrar_marcador === true &&
+    match.completado !== true &&
+    (
+      tiempo.includes("'") ||
+      tiempo.includes("+") ||
+      tiempo.includes("live") ||
+      tiempo.includes("en vivo") ||
+      tiempo.includes("halftime") ||
+      tiempo.includes("entretiempo") ||
+      tiempo.includes("descanso") ||
+      tiempo.includes("ht")
+    );
+
+  /*
+    Si el partido no está en juego ni finalizado,
+    mostramos solo "-" para dejar vacío el resultado.
+  */
+  if (!estaEnVivo && !estaFinalizado) {
+    return "-";
+  }
+
   const normalizarGol = (value) => {
     if (value === undefined || value === null) {
       return null;
@@ -513,7 +550,11 @@ function scoreMarkup(match) {
     }
   }
 
-  return "";
+  /*
+    Si ESPN dice que está en vivo/finalizado pero no hay marcador válido,
+    mantenemos el separador vacío.
+  */
+  return "-";
 }
 
 function scorersMarkup(match) {
@@ -845,6 +886,7 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
         const home = match.local || match.partido?.split(" vs ")[0] || "Local";
         const away = match.visitante || match.partido?.split(" vs ")[1] || "Visitante";
         const isLive = match.mostrar_marcador === true && match.completado !== true;
+        const score = scoreMarkup(match);
 
         if (isLive) {
           row.classList.add("is-live");
@@ -859,7 +901,7 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
               <span>${home}</span>
             </a>
 
-            ${scoreMarkup(match) ? `<span class="agenda-score">${scoreMarkup(match)}</span>` : ""}
+            <span class="agenda-score">${score}</span>
 
             <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo, group.league)}" title="Ver ficha de ${away}">
               ${teamLogoMarkup(away, match.visitante_logo)}
