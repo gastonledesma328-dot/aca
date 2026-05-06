@@ -2025,12 +2025,14 @@ def cargar_datos_por_competicion(base, equipo, competicion):
     )
 
     if competicion.get("league_slug") == "arg.1":
-    if resultados or proximos:
-        # Las estadísticas personales de 365Scores se leen una sola vez por equipo.
-        estadisticas = cargar_estadisticas_365scores(base, equipo["plantel"])
+        if resultados or proximos:
+            estadisticas = cargar_estadisticas_365scores(base, equipo["plantel"])
 
             if stats_vacias(estadisticas):
-                previas = obtener_estadisticas_previas(base.get("id"), nombre_competicion)
+                previas = obtener_estadisticas_previas(
+                    base.get("id"),
+                    nombre_competicion
+                )
 
                 if not stats_vacias(previas):
                     print(f"♻️ Usando estadísticas previas para {base['nombre']}")
