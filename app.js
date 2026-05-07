@@ -1,6 +1,6 @@
 const EVENTS_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/2612163/refs/heads/main/eventos_streamhdx.json";
 const AGENDA_URL = "https://partidos-hoy-worker.gastonledesma328.workers.dev";
-
+const SUDANALYTICS_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/2612163/refs/heads/main/data/sudanalytics_posts.json";
 /*
   ============================================================
   FLUJO GENERAL DEL PROYECTO
@@ -1108,14 +1108,195 @@ async function loadAgenda(date = currentAgendaDate) {
 }
 
 /* ============================================================
-   CHAT
+   CHAT / SUDANALYTICS
 ============================================================ */
+
+let sudanalyticsLoaded = false;
 
 function updatePostCount() {
   const total = postFeed.querySelectorAll(".post-card").length;
   postCounter.textContent = `${total} post${total === 1 ? "" : "s"}`;
 }
 
+function escapeHtml(texto) {
+  return String(texto || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function linkificarTexto(texto) {
+  return String(texto || "").replace(
+    /(https?:\/\/[^\s]+)/g,
+    `<a href="$1" target="_blank" rel="noopener">$1</a>`
+  );
+}
+
+function formatearFechaPost(fechaIso) {
+  if (!fechaIso) {
+    return "";
+  }
+
+  try {
+    const fecha = new Date(fechaIso);
+
+    return fecha.toLocaleString("es-AR", {
+      day: "2-digit",
+      month: "short",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  } catch {
+    return "";
+  }
+}
+
+function crearMediaSudanalytics(media = []) {
+  if (!Array.isArray(media) || !media.length) {
+    return "";
+  }
+
+  return `
+    <div class="suda-media-grid ${media.length > 1 ? "multiple" : ""}">
+      ${media.map((item) => {
+        if (item.type === "photo") {
+          return `
+            <img
+              class="suda-media"
+              src="${item.url}"
+              alt="Imagen del post"
+              loading="lazy"
+            >
+          `;
+        }
+
+        if (item.type === "video" || item.type === "animated_gif") {
+          const poster = item.preview ? `poster="${item.preview}"` : "";
+
+          return `
+            <video
+              class="suda-media"
+              controls
+              preload="metadata"
+              ${poster}
+            >
+              <source src="${item.url}" type="video/mp4">
+            </video>
+          `;
+        }
+
+        return "";
+      }).join("")}
+    </div>
+  `;
+}
+
+function crearPostSudanalytics(post) {
+  const fecha = formatearFechaPost(post.fecha);
+  const texto = linkificarTexto(escapeHtml(post.texto || ""));
+  const media = crearMediaSudanalytics(post.media || []);
+
+  const article = document.createElement("article");
+  article.className = "post-card suda-post-card";
+
+  article.innerHTML = `
+    <div class="post-avatar suda-avatar">S</div>
+
+    <div>
+      <header>
+        <strong>Sudanalytics</strong>
+        <span>@sudanalytics_ ${fecha ? "· " + fecha : ""}</span>
+      </header>
+
+      <p class="suda-text">${texto}</p>
+
+      ${media}
+
+      <footer>
+        <a class="suda-open-link" href="${post.url}" target="_blank" rel="noopener">
+          Abrir en X
+        </a>
+      </footer>
+    </div>
+  `;
+
+  return article;
+}
+
+async function cargarSudanalyticsPosts(force = false) {
+  if (sudanalyticsLoaded && !force) {
+    return;
+  }
+
+  sudanalyticsLoaded = true;
+
+  try {
+    const response = await fetch(`${SUDANALYTICS_URL}?v=${Date.now()}`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const json = await response.json();
+    const posts = Array.isArray(json.posts) ? json.posts : [];
+
+    postFeed
+      .querySelectorAll(".suda-post-card, .suda-loading, .suda-error")
+      .forEach((item) => item.remove());
+
+    if (!posts.length) {
+      const empty = document.createElement("article");
+      empty.className = "post-card suda-loading";
+      empty.innerHTML = `
+        <div class="post-avatar suda-avatar">S</div>
+        <div>
+          <header>
+            <strong>Sudanalytics</strong>
+            <span>@sudanalytics_</span>
+          </header>
+          <p>No hay posteos disponibles por ahora.</p>
+        </div>
+      `;
+      postFeed.prepend(empty);
+      updatePostCount();
+      return;
+    }
+
+    const fragment = document.createDocumentFragment();
+
+    posts.forEach((post) => {
+      fragment.append(crearPostSudanalytics(post));
+    });
+
+    postFeed.prepend(fragment);
+    updatePostCount();
+
+  } catch (error) {
+    console.error(error);
+
+    postFeed
+      .querySelectorAll(".suda-post-card, .suda-loading, .suda-error")
+      .forEach((item) => item.remove());
+
+    const errorCard = document.createElement("article");
+    errorCard.className = "post-card suda-error";
+    errorCard.innerHTML = `
+      <div class="post-avatar suda-avatar">S</div>
+      <div>
+        <header>
+          <strong>Sudanalytics</strong>
+          <span>@sudanalytics_</span>
+        </header>
+        <p>No se pudieron cargar los últimos posteos.</p>
+      </div>
+    `;
+
+    postFeed.prepend(errorCard);
+    updatePostCount();
+  }
+}
 /* ============================================================
    TABS / UI
 ============================================================ */
@@ -1127,9 +1308,10 @@ function activateTab(tab) {
   showSection(activeTab);
 
   if (activeTab === "chat") {
-    notification.textContent = "0";
-    socialSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  notification.textContent = "0";
+  cargarSudanalyticsPosts();
+  socialSection.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
   if (activeTab === "live") {
     setUtilityOpen(true);
@@ -1233,7 +1415,13 @@ postForm.addEventListener("submit", (event) => {
   `;
 
   post.querySelector("p").textContent = value;
+  const firstUserPost = postFeed.querySelector(".post-card:not(.suda-post-card):not(.suda-loading):not(.suda-error)");
+
+if (firstUserPost) {
+  postFeed.insertBefore(post, firstUserPost);
+} else {
   postFeed.prepend(post);
+}
   postInput.value = "";
   notification.textContent = Number(notification.textContent) + 1;
 
