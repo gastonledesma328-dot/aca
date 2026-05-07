@@ -115,9 +115,9 @@ window.teamProfileHref = teamProfileHref;
 window.crearTeamId = crearTeamId;
 
 function setUtilityOpen(open) {
-  utilityPanel.classList.toggle("hidden", !open);
-  searchToggle.setAttribute("aria-expanded", String(open));
-  calendarToggle.setAttribute("aria-expanded", String(open));
+  utilityPanel.classList.remove("hidden");
+  searchToggle.setAttribute("aria-expanded", "true");
+  calendarToggle.setAttribute("aria-expanded", "true");
 
   if (open) {
     matchSearch.focus();
@@ -557,6 +557,124 @@ function scoreMarkup(match) {
   return "-";
 }
 
+function searchValue(value) {
+  return normalizeText(value)
+    .replace(/[–—]/g, "-")
+    .replace(/[^a-z0-9:+\-'\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function scoreSearchTerms(match, home, away, score) {
+  const terms = [score];
+  const scoreMatch = String(score).match(/(\d+)\s*-\s*(\d+)/);
+
+  if (!scoreMatch) {
+    return terms;
+  }
+
+  const homeGoals = Number(scoreMatch[1]);
+  const awayGoals = Number(scoreMatch[2]);
+
+  terms.push(
+    `${homeGoals}-${awayGoals}`,
+    `${homeGoals}:${awayGoals}`,
+    `${homeGoals} ${awayGoals}`,
+    `${homeGoals} a ${awayGoals}`,
+    `marcador ${homeGoals}-${awayGoals}`,
+    `resultado ${homeGoals}-${awayGoals}`
+  );
+
+  if (homeGoals === awayGoals) {
+    terms.push("empate igualado igualados");
+  } else if (homeGoals > awayGoals) {
+    terms.push(`gana local gana ${home} victoria ${home}`);
+  } else {
+    terms.push(`gana visitante gana ${away} victoria ${away}`);
+  }
+
+  if (match.mostrar_marcador === true && match.completado !== true) {
+    terms.push("en vivo live jugando ahora");
+  }
+
+  return terms;
+}
+
+function matchSearchIndex(match, group, home, away, score) {
+  const status = agendaStatus(match);
+  const scorers = Array.isArray(match.goleadores)
+    ? match.goleadores
+        .map((scorer) => `${scorer.jugador || ""} ${scorer.descripcion || ""} ${scorer.equipo || ""}`)
+        .join(" ")
+    : "";
+
+  return searchValue(
+    [
+      home,
+      away,
+      `${home} vs ${away}`,
+      `${away} vs ${home}`,
+      match.partido,
+      group.league,
+      group.sport,
+      status,
+      agendaDisplayTime(match),
+      match.hora_inicio,
+      match.hora,
+      match.estado,
+      match.estado_corto,
+      match.mostrar_tiempo,
+      match.minuto,
+      match.resultado,
+      scorers,
+      ...scoreSearchTerms(match, home, away, score),
+    ].join(" ")
+  );
+}
+
+function agendaRowMatchesQuery(row, query) {
+  const normalizedQuery = searchValue(query);
+
+  if (!normalizedQuery) {
+    return true;
+  }
+
+  const search = row.dataset.search || searchValue(row.textContent);
+  const compactQuery = normalizedQuery.replace(/\s+/g, "");
+
+  if (search.includes(normalizedQuery) || search.replace(/\s+/g, "").includes(compactQuery)) {
+    return true;
+  }
+
+  return normalizedQuery
+    .split(" ")
+    .filter(Boolean)
+    .every((term) => search.includes(term));
+}
+
+function applyAgendaSearch() {
+  const query = matchSearch.value.trim();
+  const rows = leagueGrid.querySelectorAll(".agenda-row");
+  const groups = leagueGrid.querySelectorAll(".agenda-group");
+  let visible = 0;
+
+  rows.forEach((row) => {
+    const matches = agendaRowMatchesQuery(row, query);
+    row.classList.toggle("dimmed", !matches);
+
+    if (matches) {
+      visible += 1;
+    }
+  });
+
+  groups.forEach((group) => {
+    const hasVisibleRows = Boolean(group.querySelector(".agenda-row:not(.dimmed)"));
+    group.classList.toggle("dimmed", Boolean(query) && !hasVisibleRows);
+  });
+
+  setUtilityStatus(query ? `${visible} coincidencia${visible === 1 ? "" : "s"}` : "");
+}
+
 function scorersMarkup(match) {
   const scorers = Array.isArray(match.goleadores)
     ? match.goleadores.filter((scorer) => scorer.jugador || scorer.descripcion)
@@ -892,6 +1010,8 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
           row.classList.add("is-live");
         }
 
+        row.dataset.search = matchSearchIndex(match, group, home, away, score);
+
         row.innerHTML = `
           <time>${agendaDisplayTime(match)}</time>
 
@@ -929,6 +1049,7 @@ async function loadAgenda(date = currentAgendaDate) {
   }
 
   if (agendaLoadedDate === selectedDate && leagueGrid.children.length > 0) {
+    applyAgendaSearch();
     return;
   }
 
@@ -967,9 +1088,12 @@ async function loadAgenda(date = currentAgendaDate) {
       source: data.fuente,
       total: data.total,
     });
+    applyAgendaSearch();
 
     agendaLoadedDate = selectedDate;
-    setUtilityStatus("");
+    if (!matchSearch.value.trim()) {
+      setUtilityStatus("");
+    }
   } catch (error) {
     leagueGrid.innerHTML = `
       <article class="empty-state">
@@ -1023,7 +1147,7 @@ tabs.forEach((tab) => {
 });
 
 searchToggle.addEventListener("click", () => {
-  setUtilityOpen(utilityPanel.classList.contains("hidden"));
+  setUtilityOpen(true);
 });
 
 calendarToggle.addEventListener("click", () => {
@@ -1037,22 +1161,7 @@ profileToggle.addEventListener("click", () => {
   setUtilityOpen(true);
 });
 
-matchSearch.addEventListener("input", () => {
-  const query = matchSearch.value.trim().toLowerCase();
-  const rows = leagueGrid.querySelectorAll(".agenda-row, .empty-state");
-  let visible = 0;
-
-  rows.forEach((row) => {
-    const matches = !query || row.textContent.toLowerCase().includes(query);
-    row.classList.toggle("dimmed", !matches);
-
-    if (matches) {
-      visible += 1;
-    }
-  });
-
-  setUtilityStatus(query ? `${visible} coincidencia${visible === 1 ? "" : "s"}` : "");
-});
+matchSearch.addEventListener("input", applyAgendaSearch);
 
 dateButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -1066,6 +1175,7 @@ dateButtons.forEach((button) => {
 
     currentAgendaDate = dateFromOffset(offsets[button.dataset.day] || 0);
 
+    matchSearch.value = "";
     setUtilityStatus("");
 
     if (activeTab === "agenda") {
