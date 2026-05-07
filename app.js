@@ -1113,6 +1113,12 @@ async function loadAgenda(date = currentAgendaDate) {
 
 let sudanalyticsLoaded = false;
 
+/* ============================================================
+   CHAT / SUDANALYTICS
+============================================================ */
+
+let sudanalyticsLoaded = false;
+
 function updatePostCount() {
   const total = postFeed.querySelectorAll(".post-card").length;
   postCounter.textContent = `${total} post${total === 1 ? "" : "s"}`;
@@ -1136,7 +1142,7 @@ function linkificarTexto(texto) {
 
 function formatearFechaPost(fechaIso) {
   if (!fechaIso) {
-    return "";
+    return "hoy";
   }
 
   try {
@@ -1149,7 +1155,7 @@ function formatearFechaPost(fechaIso) {
       minute: "2-digit",
     });
   } catch {
-    return "";
+    return "hoy";
   }
 }
 
@@ -1173,18 +1179,31 @@ function crearMediaSudanalytics(media = []) {
         }
 
         if (item.type === "video" || item.type === "animated_gif") {
-          const poster = item.preview ? `poster="${item.preview}"` : "";
+          if (item.url) {
+            const poster = item.preview ? `poster="${item.preview}"` : "";
 
-          return `
-            <video
-              class="suda-media"
-              controls
-              preload="metadata"
-              ${poster}
-            >
-              <source src="${item.url}" type="video/mp4">
-            </video>
-          `;
+            return `
+              <video
+                class="suda-media"
+                controls
+                preload="metadata"
+                ${poster}
+              >
+                <source src="${item.url}" type="video/mp4">
+              </video>
+            `;
+          }
+
+          if (item.preview) {
+            return `
+              <img
+                class="suda-media"
+                src="${item.preview}"
+                alt="Vista previa del video"
+                loading="lazy"
+              >
+            `;
+          }
         }
 
         return "";
@@ -1207,7 +1226,7 @@ function crearPostSudanalytics(post) {
     <div>
       <header>
         <strong>Sudanalytics</strong>
-        <span>@sudanalytics_ ${fecha ? "· " + fecha : ""}</span>
+        <span>@sudanalytics_ · ${fecha}</span>
       </header>
 
       <p class="suda-text">${texto}</p>
@@ -1232,6 +1251,26 @@ async function cargarSudanalyticsPosts(force = false) {
 
   sudanalyticsLoaded = true;
 
+  postFeed
+    .querySelectorAll(".suda-post-card, .suda-loading, .suda-error")
+    .forEach((item) => item.remove());
+
+  const loading = document.createElement("article");
+  loading.className = "post-card suda-loading";
+  loading.innerHTML = `
+    <div class="post-avatar suda-avatar">S</div>
+    <div>
+      <header>
+        <strong>Sudanalytics</strong>
+        <span>@sudanalytics_</span>
+      </header>
+      <p>Cargando últimos posteos de hoy...</p>
+    </div>
+  `;
+
+  postFeed.prepend(loading);
+  updatePostCount();
+
   try {
     const response = await fetch(`${SUDANALYTICS_URL}?v=${Date.now()}`);
 
@@ -1242,9 +1281,7 @@ async function cargarSudanalyticsPosts(force = false) {
     const json = await response.json();
     const posts = Array.isArray(json.posts) ? json.posts : [];
 
-    postFeed
-      .querySelectorAll(".suda-post-card, .suda-loading, .suda-error")
-      .forEach((item) => item.remove());
+    loading.remove();
 
     if (!posts.length) {
       const empty = document.createElement("article");
@@ -1256,9 +1293,10 @@ async function cargarSudanalyticsPosts(force = false) {
             <strong>Sudanalytics</strong>
             <span>@sudanalytics_</span>
           </header>
-          <p>No hay posteos disponibles por ahora.</p>
+          <p>No hay publicaciones nuevas de Sudanalytics hoy.</p>
         </div>
       `;
+
       postFeed.prepend(empty);
       updatePostCount();
       return;
@@ -1289,7 +1327,7 @@ async function cargarSudanalyticsPosts(force = false) {
           <strong>Sudanalytics</strong>
           <span>@sudanalytics_</span>
         </header>
-        <p>No se pudieron cargar los últimos posteos.</p>
+        <p>No se pudieron cargar los posteos de Sudanalytics.</p>
       </div>
     `;
 
