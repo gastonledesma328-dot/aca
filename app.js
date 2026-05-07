@@ -933,7 +933,7 @@ async function loadAgenda(date = currentAgendaDate) {
   }
 
   agendaLoading = true;
-  leagueGrid.innerHTML = `<p class="empty-state">Cargando agenda desde ESPN...</p>`;
+  leagueGrid.innerHTML = `<p class="empty-state">Cargando Agenda...</p>`;
 
   try {
     const response = await fetch(`${AGENDA_URL}?v=${Date.now()}`);
