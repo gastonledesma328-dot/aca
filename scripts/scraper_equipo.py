@@ -14,6 +14,7 @@ except Exception:
 
 
 OUTPUT_FILE = "data/equipos.json"
+MANUAL_FILE = "data/manual_equipos.json"
 MAX_PROXIMOS_PARTIDOS = 5
 
 LEAGUE_SLUG = "arg.1"
@@ -452,12 +453,12 @@ EQUIPOS_BASE = [
 
 
 PREVIOUS_DATA = []
+MANUAL_DATA = {}
 TEXT_CACHE_365 = {}
 
 JSON_CACHE = {}
 STATS_CACHE_365 = {}
 MATCHES_CACHE_365 = {}
-
 
 def slug(texto):
     texto = str(texto or "").lower().strip()
@@ -2074,11 +2075,113 @@ def cargar_datos_por_competicion(base, equipo, competicion):
     }
 
 
+def valor_es_vacio(valor):
+    return (
+        valor is None
+        or str(valor).strip() == ""
+        or str(valor).strip().lower() == "sin datos"
+    )
+
+
+def cargar_datos_manuales():
+    if not os.path.exists(MANUAL_FILE):
+        print(f"ℹ️ No existe {MANUAL_FILE}, sigo sin datos manuales.")
+        return {}
+
+    try:
+        with open(MANUAL_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if isinstance(data, dict):
+            print(f"✅ Datos manuales cargados desde {MANUAL_FILE}")
+            return data
+
+        print(f"⚠️ {MANUAL_FILE} no tiene formato válido. Debe ser un objeto JSON.")
+        return {}
+
+    except Exception as e:
+        print(f"⚠️ No se pudo leer {MANUAL_FILE}: {e}")
+        return {}
+
+
+def aplicar_datos_manuales(equipo):
+    equipo_id = equipo.get("id", "")
+
+    if not equipo_id:
+        return equipo
+
+    manual = MANUAL_DATA.get(equipo_id)
+
+    if not isinstance(manual, dict):
+        return equipo
+
+    campos_permitidos = [
+        "nombre",
+        "liga",
+        "logo",
+        "apodo",
+        "fundacion",
+        "estadio",
+        "ciudad",
+        "espn_id",
+        "scores365_id",
+        "scores365_slug",
+    ]
+
+    for campo in campos_permitidos:
+        valor = manual.get(campo)
+
+        if not valor_es_vacio(valor):
+            equipo[campo] = valor
+
+    print(f"✍️ Datos manuales aplicados a {equipo.get('nombre')}")
+
+    return equipo
+
+
+def proteger_datos_buenos(equipo):
+    equipo_id = equipo.get("id", "")
+
+    if not equipo_id:
+        return equipo
+
+    anterior = None
+
+    for item in PREVIOUS_DATA:
+        if isinstance(item, dict) and item.get("id") == equipo_id:
+            anterior = item
+            break
+
+    if not anterior:
+        return equipo
+
+    campos = [
+        "apodo",
+        "fundacion",
+        "estadio",
+        "ciudad",
+    ]
+
+    for campo in campos:
+        valor_actual = equipo.get(campo)
+        valor_anterior = anterior.get(campo)
+
+        if valor_es_vacio(valor_actual) and not valor_es_vacio(valor_anterior):
+            equipo[campo] = valor_anterior
+
+    return equipo
+
+
 def completar_equipo(base):
     print(f"🏟️ Actualizando equipo: {base['nombre']}")
 
+    base = aplicar_datos_manuales(base)
     base = cargar_datos_club(base)
+    base = aplicar_datos_manuales(base)
+
     equipo = equipo_vacio(base)
+    equipo = proteger_datos_buenos(equipo)
+    equipo = aplicar_datos_manuales(equipo)
 
     equipo["plantel"] = cargar_plantel(base)
 
@@ -2125,11 +2228,12 @@ def cargar_json_previo():
 
 
 def main():
-    global PREVIOUS_DATA
+    global PREVIOUS_DATA, MANUAL_DATA
 
     os.makedirs("data", exist_ok=True)
 
     PREVIOUS_DATA = cargar_json_previo()
+    MANUAL_DATA = cargar_datos_manuales()
 
     equipos = []
 
