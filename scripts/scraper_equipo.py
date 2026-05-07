@@ -17,6 +17,13 @@ OUTPUT_FILE = "data/equipos.json"
 MANUAL_FILE = "data/manual_equipos.json"
 MAX_PROXIMOS_PARTIDOS = 5
 
+# Modo rápido por defecto:
+# - SCRAPEAR_365_MATCHES=0 evita abrir Playwright para próximos partidos de 365Scores.
+# - SCRAPEAR_365_STATS=0 evita abrir Playwright para estadísticas de 365Scores.
+# Para una corrida completa en GitHub Actions, poné estas variables en "1".
+SCRAPEAR_365_MATCHES = os.environ.get("SCRAPEAR_365_MATCHES", "0") == "1"
+SCRAPEAR_365_STATS = os.environ.get("SCRAPEAR_365_STATS", "0") == "1"
+
 LEAGUE_SLUG = "arg.1"
 SEASON = "2026"
 
@@ -2017,7 +2024,12 @@ def cargar_datos_por_competicion(base, equipo, competicion):
     proximos_espn = filtrar_partidos_por_fecha(proximos_espn, competicion)
     resultados = filtrar_partidos_por_fecha(resultados, competicion)
 
-    proximos_365 = cargar_proximos_365scores(base, competicion)
+    proximos_365 = []
+
+    if SCRAPEAR_365_MATCHES and competicion.get("league_slug") == "arg.1":
+        proximos_365 = cargar_proximos_365scores(base, competicion)
+    elif not SCRAPEAR_365_MATCHES:
+        print("⏭️ 365Scores próximos desactivado. Usando solo ESPN para próximos partidos.")
 
     proximos = combinar_proximos_partidos(
         proximos_365,
@@ -2030,23 +2042,23 @@ def cargar_datos_por_competicion(base, equipo, competicion):
         f"{len(proximos)} partidos"
     )
 
+    estadisticas = estadisticas_vacias()
+
     if competicion.get("league_slug") == "arg.1":
-        if resultados or proximos:
+        previas = obtener_estadisticas_previas(
+            base.get("id"),
+            nombre_competicion
+        )
+
+        if not stats_vacias(previas):
+            print(f"♻️ Usando estadísticas previas para {base['nombre']}")
+            estadisticas = previas
+
+        elif SCRAPEAR_365_STATS and (resultados or proximos):
             estadisticas = cargar_estadisticas_365scores(base, equipo["plantel"])
 
-            if stats_vacias(estadisticas):
-                previas = obtener_estadisticas_previas(
-                    base.get("id"),
-                    nombre_competicion
-                )
-
-                if not stats_vacias(previas):
-                    print(f"♻️ Usando estadísticas previas para {base['nombre']}")
-                    estadisticas = previas
-        else:
-            estadisticas = estadisticas_vacias()
-    else:
-        estadisticas = estadisticas_vacias()
+        elif not SCRAPEAR_365_STATS:
+            print("⏭️ 365Scores estadísticas desactivado. Conservando previas si existen.")
 
     estadisticas = filtrar_estadisticas_por_plantel(
         estadisticas,
@@ -2234,6 +2246,9 @@ def main():
 
     PREVIOUS_DATA = cargar_json_previo()
     MANUAL_DATA = cargar_datos_manuales()
+
+    print(f"⚙️ SCRAPEAR_365_MATCHES={SCRAPEAR_365_MATCHES}")
+    print(f"⚙️ SCRAPEAR_365_STATS={SCRAPEAR_365_STATS}")
 
     equipos = []
 
