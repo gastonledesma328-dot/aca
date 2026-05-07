@@ -1,6 +1,6 @@
 const EVENTS_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/2612163/refs/heads/main/eventos_streamhdx.json";
 const AGENDA_URL = "https://partidos-hoy-worker.gastonledesma328.workers.dev";
-const SUDANALYTICS_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/2612163/refs/heads/main/data/sudanalytics_posts.json";
+const SUDANALYTICS_URL = "https://sudanalytics-worker.gastonledesma328.workers.dev/sudanalytics_posts.json";
 /*
   ============================================================
   FLUJO GENERAL DEL PROYECTO
