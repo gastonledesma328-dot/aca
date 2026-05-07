@@ -1331,21 +1331,101 @@ footer strong {
 }
 
 @media (max-width: 640px) {
+  body {
+    background:
+      radial-gradient(circle at 50% -8rem, rgba(95, 207, 128, 0.16), transparent 18rem),
+      linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+  }
+
   .app-shell,
   footer {
-    width: min(100% - 1rem, 860px);
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .app-shell {
+    padding-top: 10px;
+    gap: 10px;
   }
 
   .topbar {
-    padding: 12px;
+    min-height: 58px;
+    padding: 10px 12px;
+    border-radius: 12px;
   }
 
   .brand {
-    font-size: 23px;
+    font-size: 22px;
+    min-width: 0;
+  }
+
+  .ball {
+    width: 16px;
+    height: 16px;
+  }
+
+  .top-actions {
+    gap: 6px;
+  }
+
+  .icon-btn,
+  .profile-btn {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+  }
+
+  .utility-panel {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .search-box {
+    min-height: 48px;
+    padding: 0 14px;
+    border-radius: 12px;
+  }
+
+  .search-box span {
+    display: none;
+  }
+
+  .search-box input {
+    min-height: 48px;
+    font-size: 16px;
   }
 
   .tabs {
-    grid-template-columns: 1fr;
+    min-height: 48px;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 6px;
+    border-radius: 12px;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    min-width: max-content;
+    min-height: 38px;
+    padding: 0 12px;
+    border-radius: 9px;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .featured {
+    gap: 10px;
+    padding: 12px;
+    border-radius: 12px;
   }
 
   .score-grid {
@@ -1366,15 +1446,36 @@ footer strong {
     grid-template-columns: 1fr;
   }
 
+  .agenda-group {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .agenda-group-head {
+    min-height: 48px;
+    padding: 10px 12px;
+  }
+
+  .agenda-group-head strong {
+    font-size: 13px;
+  }
+
   .agenda-row {
-    grid-template-columns: 46px minmax(0, 1fr) auto;
-    gap: 8px;
-    padding: 8px 10px;
+    min-height: 68px;
+    grid-template-columns: 1fr auto;
+    gap: 7px 10px;
+    padding: 10px 12px;
+  }
+
+  .agenda-row time {
+    font-size: 11px;
   }
 
   .agenda-teams {
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr);
     gap: 6px;
+    font-size: 12px;
   }
 
   .agenda-team:first-child {
@@ -1387,17 +1488,76 @@ footer strong {
   }
 
   .agenda-state {
-    grid-column: auto;
     justify-self: end;
+    max-width: 96px;
+    padding: 5px 8px;
   }
 
   .agenda-scorers {
     padding-left: 0;
+    font-size: 10px;
   }
 
   .date-strip {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .date-strip button {
+    min-height: 40px;
+    padding: 0 8px;
+  }
+
+  footer {
+    margin-top: 0;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .app-shell,
+  footer {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .topbar {
+    padding: 9px 10px;
+  }
+
+  .brand {
+    font-size: 20px;
+  }
+
+  .top-actions {
+    gap: 4px;
+  }
+
+  .icon-btn,
+  .profile-btn {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .agenda-row {
+    padding: 10px;
+  }
+
+  .agenda-teams {
+    grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr);
+  }
+
+  .team-logo {
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+  }
+
+  .agenda-score {
+    min-width: 40px;
+    padding: 4px;
   }
 }
 
