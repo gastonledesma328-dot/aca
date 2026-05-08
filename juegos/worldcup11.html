@@ -8,19 +8,92 @@
 
   <link rel="stylesheet" href="worldcup11.css" />
 </head>
-<body>
 
+<body>
   <main class="game-page">
-    <header class="game-header">
+
+    <header class="topbar">
       <a href="../index.html" class="back">← Volver</a>
-      <h1>Armá tu 11 Mundial</h1>
-      <p>Elegí un jugador por país y completá tu formación.</p>
+
+      <div class="brand">
+        <strong>Partidos.Hoy</strong>
+        <span>Armá tu 11</span>
+      </div>
+
+      <button class="help-btn" type="button" id="helpBtn">?</button>
     </header>
 
-    <section class="score-panel">
+    <section class="game-header">
+      <span class="daily-badge">Desafío diario</span>
+      <h1>Armá tu 11 Mundial</h1>
+      <p>Completá la formación del día con futbolistas del país indicado.</p>
+    </section>
+
+    <section class="tactical-board">
+
+      <div class="pitch-frame">
+
+        <div class="line line-attack">
+          <button class="position-slot" data-position="ST">ST</button>
+          <button class="position-slot" data-position="ST">ST</button>
+        </div>
+
+        <div class="line line-mid-advanced">
+          <button class="position-slot" data-position="CAM">CAM</button>
+        </div>
+
+        <div class="line line-mid">
+          <button class="position-slot" data-position="LM">LM</button>
+          <button class="position-slot" data-position="CDM">CDM</button>
+          <button class="position-slot" data-position="CDM">CDM</button>
+          <button class="position-slot" data-position="RM">RM</button>
+        </div>
+
+        <div class="line line-defense">
+          <button class="position-slot" data-position="CB">CB</button>
+          <button class="position-slot" data-position="CB">CB</button>
+          <button class="position-slot" data-position="CB">CB</button>
+        </div>
+
+        <div class="line line-gk">
+          <button class="position-slot" data-position="GK">GK</button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="country-panel">
+      <div class="country-indicator">
+        <span class="country-flag" id="countryFlag">🇯🇵</span>
+        <strong id="countryName">Japón</strong>
+      </div>
+
+      <form class="search-area" id="playerForm">
+        <input
+          type="search"
+          id="playerSearch"
+          placeholder="Ingresá nombre de futbolista..."
+          autocomplete="off"
+        />
+
+        <button class="surrender-btn" type="button" id="surrenderBtn" title="Rendirse">
+          🏳️
+        </button>
+      </form>
+
+      <div class="suggestions" id="suggestions"></div>
+    </section>
+
+    <section class="status-panel">
       <div>
-        <span>Ronda</span>
-        <strong id="roundText">1/11</strong>
+        <span>Formación</span>
+        <strong id="formationText">3-5-2</strong>
+      </div>
+
+      <div>
+        <span>Completados</span>
+        <strong id="completedText">0/11</strong>
       </div>
 
       <div>
@@ -29,24 +102,18 @@
       </div>
     </section>
 
-    <section class="pitch">
-      <div id="formation" class="formation"></div>
+    <section class="result-modal hidden" id="resultModal">
+      <div class="result-card">
+        <h2 id="resultTitle">Resultado</h2>
+        <p id="resultText"></p>
+
+        <div class="result-actions">
+          <button type="button" id="shareBtn">Compartir</button>
+          <button type="button" id="restartBtn">Jugar de nuevo</button>
+        </div>
+      </div>
     </section>
 
-    <section class="round-card">
-      <h2 id="countryTitle">Cargando...</h2>
-      <p id="countryHelp">Elegí un jugador disponible.</p>
-
-      <div id="playersList" class="players-list"></div>
-    </section>
-
-    <section id="resultBox" class="result-box hidden">
-      <h2>Equipo completado</h2>
-      <p id="finalScore"></p>
-
-      <button onclick="shareResult()">Compartir resultado</button>
-      <button onclick="restartGame()">Jugar de nuevo</button>
-    </section>
   </main>
 
   <script src="worldcup11.js"></script>
