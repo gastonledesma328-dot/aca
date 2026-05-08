@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Juegos | Partidos.Hoy</title>
+
+  <style>
+    :root {
+      --bg: #1e3a2f;
+      --bg2: #162d24;
+      --card: #f5f5f0;
+      --card-dark: #1a3228;
+      --border: rgba(255,255,255,0.12);
+      --primary: #5fcf80;
+      --live: #e8533a;
+      --text: #f0faf4;
+      --muted: rgba(240,250,244,0.6);
+      --dark: #182e22;
+      --shadow: 0 8px 24px rgba(0,0,0,0.35);
+      --rad: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(160deg, var(--bg), var(--bg2));
+      color: var(--text);
+    }
+
+    .page {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand strong {
+      font-size: 24px;
+      letter-spacing: -0.4px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .back {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 800;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 12px;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(95,207,128,0.25), transparent 35%),
+        rgba(255,255,255,0.07);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(95,207,128,0.14);
+      color: var(--primary);
+      border: 1px solid rgba(95,207,128,0.25);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.02;
+      max-width: 780px;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+      margin: 22px 0 14px;
+    }
+
+    .section-head h2 {
+      font-size: 24px;
+    }
+
+    .section-head span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .game-card {
+      background: var(--card);
+      color: var(--dark);
+      border-radius: var(--rad);
+      padding: 18px;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform .15s ease, box-shadow .15s ease;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .game-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.42);
+    }
+
+    .game-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: var(--dark);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      margin-bottom: 14px;
+    }
+
+    .game-card h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .game-card p {
+      color: rgba(24,46,34,0.7);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+
+    .game-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      background: #e8f4eb;
+      color: #193726;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .play {
+      color: var(--dark);
+      font-weight: 900;
+    }
+
+    .disabled {
+      opacity: .58;
+      pointer-events: none;
+    }
+
+    .disabled .game-icon {
+      background: #d8d8d0;
+      color: #777;
+    }
+
+    .coming {
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      border: 1px dashed var(--border);
+    }
+
+    .coming p {
+      color: var(--muted);
+    }
+
+    .coming .tag {
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        padding: 16px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        padding: 22px;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <div class="brand">
+        <strong>Partidos.Hoy</strong>
+        <span>Juegos de fútbol</span>
+      </div>
+
+      <a class="back" href="../index.html">← Volver al inicio</a>
+    </header>
+
+    <section class="hero">
+      <div class="hero-badge">⚽ Nueva sección</div>
+      <h1>Jugá desafíos diarios de fútbol</h1>
+      <p>
+        Armá equipos, adiviná jugadores, completá grillas y competí con tus amigos.
+        Esta sección va a crecer con nuevos juegos dentro de Partidos.Hoy.
+      </p>
+    </section>
+
+    <div class="section-head">
+      <div>
+        <h2>Juegos disponibles</h2>
+        <span>Elegí un modo para empezar</span>
+      </div>
+    </div>
+
+    <section class="games-grid">
+
+      <a class="game-card" href="worldcup11.html">
+        <div>
+          <div class="game-icon">🏆</div>
+          <h3>Armá tu 11 Mundial</h3>
+          <p>
+            Elegí un jugador por país y completá una formación sin repetir posiciones.
+          </p>
+        </div>
+
+        <div class="game-meta">
+          <span class="tag">Disponible</span>
+          <span class="play">Jugar →</span>
+        </div>
+      </a>
+
+      <a class="game-card coming disabled" href="#">
+        <div>
+          <div class="game-icon">🧩</div>
+          <h3>Grilla futbolera</h3>
+          <p>
+            Completá casillas con jugadores que cumplan club, selección o liga.
+          </p>
+        </div>
+
+        <div class="game-meta">
+          <span class="tag">Próximamente</span>
+          <span class="play">Bloqueado</span>
+        </div>
+      </a>
+
+      <a class="game-card coming disabled" href="#">
+        <div>
+          <div class="game-icon">👤</div>
+          <h3>Adiviná el jugador</h3>
+          <p>
+            Descubrí al futbolista oculto usando pistas de país, club y posición.
+          </p>
+        </div>
+
+        <div class="game-meta">
+          <span class="tag">Próximamente</span>
+          <span class="play">Bloqueado</span>
+        </div>
+      </a>
+
+      <a class="game-card coming disabled" href="#">
+        <div>
+          <div class="game-icon">🔥</div>
+          <h3>Top goleadores</h3>
+          <p>
+            Intentá completar rankings de goleadores por torneo, club o selección.
+          </p>
+        </div>
+
+        <div class="game-meta">
+          <span class="tag">Próximamente</span>
+          <span class="play">Bloqueado</span>
+        </div>
+      </a>
+
+    </section>
+
+  </main>
+</body>
+</html>
