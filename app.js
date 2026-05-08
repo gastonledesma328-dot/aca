@@ -1271,8 +1271,18 @@ async function cargarSudanalyticsPosts(force = false) {
     const response = await fetch(`${SUDANALYTICS_URL}?v=${Date.now()}`);
 
     if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+  let detalle = `HTTP ${response.status}`;
+
+  try {
+    const errorJson = await response.json();
+
+    if (errorJson.message) {
+      detalle = errorJson.message;
     }
+  } catch {}
+
+  throw new Error(detalle);
+}
 
     const json = await response.json();
     const posts = Array.isArray(json.posts) ? json.posts : [];
@@ -1343,7 +1353,7 @@ function activateTab(tab) {
 
   if (activeTab === "chat") {
   notification.textContent = "0";
-  cargarSudanalyticsPosts();
+  cargarSudanalyticsPosts(true);
   socialSection.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
