@@ -112,28 +112,28 @@ function initGame() {
   countryName.textContent = DAILY_GAME.country.name;
   formationText.textContent = DAILY_GAME.formationName;
 
+  selectedSlot = null;
+  usedPlayers = [];
+  score = 0;
+  surrendered = false;
+
   slots.forEach((slot, index) => {
     slot.dataset.index = index;
     slot.dataset.originalLabel = slot.dataset.position;
     slot.innerHTML = slot.dataset.position;
     slot.classList.remove("filled", "selected");
 
-    slot.addEventListener("click", () => {
+    slot.onclick = () => {
       selectSlot(slot);
-    });
+    };
   });
-
-  selectedSlot = null;
-  usedPlayers = [];
-  score = 0;
-  surrendered = false;
 
   playerSearch.value = "";
   suggestions.innerHTML = "";
-
   resultModal.classList.add("hidden");
 
   updateStatus();
+  renderSuggestions("");
 }
 
 function selectSlot(slot) {
@@ -148,54 +148,57 @@ function selectSlot(slot) {
   renderSuggestions(playerSearch.value);
 }
 
+function clearSelectedSlot() {
+  selectedSlot = null;
+  slots.forEach(item => item.classList.remove("selected"));
+}
+
 function renderSuggestions(query) {
   const value = normalizeText(query);
-
   suggestions.innerHTML = "";
 
-  if (!selectedSlot) {
+  let filtered = getMatchingPlayers(value);
+
+  if (!value && !selectedSlot) {
     suggestions.innerHTML = `
       <button class="suggestion-item" type="button">
-        <strong>Primero elegí una posición del campo</strong>
-        <span>GK, CB, CDM, LM, RM, CAM o ST</span>
+        <strong>Buscá un jugador japonés</strong>
+        <span>Ejemplo: Mitoma, Kubo, Endo, Suzuki</span>
       </button>
     `;
     return;
   }
-
-  const position = selectedSlot.dataset.position;
-
-  const filtered = DAILY_GAME.players
-    .filter(player => player.position === position)
-    .filter(player => !usedPlayers.includes(player.name))
-    .filter(player => {
-      if (!value) return true;
-      return normalizeText(player.name).includes(value);
-    })
-    .slice(0, 5);
 
   if (!filtered.length) {
     suggestions.innerHTML = `
       <button class="suggestion-item" type="button">
-        <strong>No encontré jugador para ${position}</strong>
-        <span>Probá otro nombre o posición</span>
+        <strong>No encontré ese jugador</strong>
+        <span>Probá con apellido, nombre o club</span>
       </button>
     `;
     return;
   }
 
-  filtered.forEach(player => {
+  filtered.slice(0, 7).forEach(player => {
+    const freeSlots = getFreeSlotsByPosition(player.position);
+
     const button = document.createElement("button");
     button.className = "suggestion-item";
     button.type = "button";
+
+    const status = freeSlots.length
+      ? "Elegir"
+      : "Sin lugar";
 
     button.innerHTML = `
       <div>
         <strong>${player.name}</strong>
         <span>${player.position} · ${player.club}</span>
       </div>
-      <span>Elegir</span>
+      <span>${status}</span>
     `;
+
+    button.disabled = freeSlots.length === 0;
 
     button.addEventListener("click", () => {
       placePlayer(player);
@@ -205,16 +208,61 @@ function renderSuggestions(query) {
   });
 }
 
-function placePlayer(player) {
-  if (!selectedSlot) {
-    alert("Primero elegí una posición del campo.");
-    return;
+function getMatchingPlayers(value) {
+  return DAILY_GAME.players
+    .filter(player => !usedPlayers.includes(player.name))
+    .filter(player => {
+      if (selectedSlot) {
+        return player.position === selectedSlot.dataset.position;
+      }
+
+      return getFreeSlotsByPosition(player.position).length > 0;
+    })
+    .filter(player => {
+      if (!value) return true;
+
+      const fullText = normalizeText(`
+        ${player.name}
+        ${player.club}
+        ${player.position}
+      `);
+
+      return fullText.includes(value);
+    });
+}
+
+function getFreeSlotsByPosition(position) {
+  return Array.from(slots).filter(slot => {
+    return (
+      slot.dataset.position === position &&
+      !slot.classList.contains("filled")
+    );
+  });
+}
+
+function findBestSlotForPlayer(player) {
+  if (
+    selectedSlot &&
+    !selectedSlot.classList.contains("filled") &&
+    selectedSlot.dataset.position === player.position
+  ) {
+    return selectedSlot;
   }
 
-  const slotPosition = selectedSlot.dataset.position;
+  const freeSlots = getFreeSlotsByPosition(player.position);
 
-  if (player.position !== slotPosition) {
-    alert(`Ese jugador no corresponde a ${slotPosition}.`);
+  if (!freeSlots.length) {
+    return null;
+  }
+
+  return freeSlots[0];
+}
+
+function placePlayer(player) {
+  const slot = findBestSlotForPlayer(player);
+
+  if (!slot) {
+    alert(`No queda lugar libre para ${player.position}.`);
     return;
   }
 
@@ -223,10 +271,10 @@ function placePlayer(player) {
     return;
   }
 
-  selectedSlot.classList.add("filled");
-  selectedSlot.classList.remove("selected");
+  slot.classList.add("filled");
+  slot.classList.remove("selected");
 
-  selectedSlot.innerHTML = `
+  slot.innerHTML = `
     ${player.name}
     <small>${player.position}</small>
   `;
@@ -234,15 +282,52 @@ function placePlayer(player) {
   usedPlayers.push(player.name);
   score += 100;
 
-  selectedSlot = null;
+  clearSelectedSlot();
+
   playerSearch.value = "";
   suggestions.innerHTML = "";
 
   updateStatus();
+  renderSuggestions("");
 
   if (usedPlayers.length === slots.length) {
     finishGame(false);
   }
+}
+
+function trySubmitSearch() {
+  const value = normalizeText(playerSearch.value);
+
+  if (!value) {
+    renderSuggestions("");
+    return;
+  }
+
+  const matches = getMatchingPlayers(value);
+
+  if (!matches.length) {
+    renderSuggestions(playerSearch.value);
+    return;
+  }
+
+  if (matches.length === 1) {
+    placePlayer(matches[0]);
+    return;
+  }
+
+  const exactMatch = matches.find(player => {
+    const playerName = normalizeText(player.name);
+    const lastName = normalizeText(player.name.split(" ").pop());
+
+    return playerName === value || lastName === value;
+  });
+
+  if (exactMatch) {
+    placePlayer(exactMatch);
+    return;
+  }
+
+  renderSuggestions(playerSearch.value);
 }
 
 function updateStatus() {
@@ -278,27 +363,7 @@ playerSearch.addEventListener("input", () => {
 
 playerForm.addEventListener("submit", event => {
   event.preventDefault();
-
-  const query = normalizeText(playerSearch.value);
-
-  if (!query) return;
-
-  const position = selectedSlot ? selectedSlot.dataset.position : "";
-
-  const player = DAILY_GAME.players.find(item => {
-    return (
-      normalizeText(item.name).includes(query) &&
-      item.position === position &&
-      !usedPlayers.includes(item.name)
-    );
-  });
-
-  if (!player) {
-    renderSuggestions(playerSearch.value);
-    return;
-  }
-
-  placePlayer(player);
+  trySubmitSearch();
 });
 
 surrenderBtn.addEventListener("click", () => {
@@ -324,7 +389,7 @@ restartBtn.addEventListener("click", () => {
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Elegí una posición del campo, buscá un jugador japonés compatible y completá el 11. La bandera blanca sirve para rendirse.");
+  alert("Buscá un jugador japonés por nombre o apellido. También podés tocar una posición primero si querés elegir dónde colocarlo. La bandera blanca sirve para rendirse.");
 });
 
 initGame();
