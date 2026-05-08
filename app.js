@@ -1333,7 +1333,7 @@ async function cargarSudanalyticsPosts(force = false) {
           <strong>Sudanalytics</strong>
           <span>@sudanalytics_</span>
         </header>
-        <p>No se pudieron cargar los posteos de Sudanalytics.</p>
+        <p>No se pudieron cargar los posteos de Sudanalytics: ${escapeHtml(error.message)}</p>
       </div>
     `;
 
@@ -1528,3 +1528,4 @@ setUtilityStatus("");
 updatePostCount();
 loadAgenda();
 loadEvents();
+cargarSudanalyticsPosts();
