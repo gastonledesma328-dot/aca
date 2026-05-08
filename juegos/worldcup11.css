@@ -114,6 +114,42 @@ input {
   font-size: 16px;
 }
 
+.mode-panel {
+  width: min(680px, 100%);
+  margin: 0 auto 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.mode-btn {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  border-radius: 16px;
+  padding: 11px 8px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.mode-btn small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.mode-btn.active {
+  background: var(--primary);
+  color: #10251d;
+  border-color: transparent;
+}
+
+.mode-btn.active small {
+  color: rgba(16,37,29,0.7);
+}
+
 .tactical-board {
   width: 100%;
   display: flex;
@@ -220,6 +256,7 @@ input {
   color: white;
   border-color: rgba(95,207,128,0.55);
   min-width: 112px;
+  font-size: 12px;
 }
 
 .position-slot.filled small {
@@ -292,10 +329,21 @@ input {
   box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
 
+.mode-hint {
+  margin-top: 10px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 13px;
+}
+
 .suggestions {
   display: grid;
   gap: 8px;
   margin-top: 12px;
+}
+
+.suggestions.hidden {
+  display: none;
 }
 
 .suggestion-item {
@@ -324,7 +372,7 @@ input {
   width: min(680px, 100%);
   margin: 16px auto 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
 
@@ -416,6 +464,10 @@ input {
     font-size: 18px;
   }
 
+  .mode-panel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .pitch-frame {
     min-height: 500px;
     padding: 24px 12px;
@@ -454,14 +506,6 @@ input {
   }
 
   .status-panel {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .position-slot small {
-  display: block;
-  font-size: 10px;
-  margin-top: 4px;
-  opacity: 0.8;
-  font-weight: 800;
-}
 }
