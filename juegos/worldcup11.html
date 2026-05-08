@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Armá tu 11 Mundial</title>
+
+  <link rel="stylesheet" href="worldcup11.css" />
+</head>
+<body>
+
+  <main class="game-page">
+    <header class="game-header">
+      <a href="/" class="back">← Volver</a>
+      <h1>Armá tu 11 Mundial</h1>
+      <p>Elegí un jugador por país y completá tu formación.</p>
+    </header>
+
+    <section class="score-panel">
+      <div>
+        <span>Ronda</span>
+        <strong id="roundText">1/11</strong>
+      </div>
+
+      <div>
+        <span>Puntaje</span>
+        <strong id="scoreText">0</strong>
+      </div>
+    </section>
+
+    <section class="pitch">
+      <div id="formation" class="formation"></div>
+    </section>
+
+    <section class="round-card">
+      <h2 id="countryTitle">Cargando...</h2>
+      <p id="countryHelp">Elegí un jugador disponible.</p>
+
+      <div id="playersList" class="players-list"></div>
+    </section>
+
+    <section id="resultBox" class="result-box hidden">
+      <h2>Equipo completado</h2>
+      <p id="finalScore"></p>
+
+      <button onclick="shareResult()">Compartir resultado</button>
+      <button onclick="restartGame()">Jugar de nuevo</button>
+    </section>
+  </main>
+
+  <script src="worldcup11.js"></script>
+</body>
+</html>
