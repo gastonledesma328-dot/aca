@@ -5,7 +5,7 @@ const DAILY_GAME = {
       id: 0,
       position: "ST",
       country: "Noruega",
-      flag: "🇳🇴",
+      flagCode: "no",
       players: [
         { name: "Erling Haaland", club: "Manchester City" },
         { name: "Alexander Sørloth", club: "Atlético Madrid" }
@@ -15,7 +15,7 @@ const DAILY_GAME = {
       id: 1,
       position: "ST",
       country: "Inglaterra",
-      flag: "🏴",
+      flagCode: "gb-eng",
       players: [
         { name: "Harry Kane", club: "Bayern Munich" },
         { name: "Ollie Watkins", club: "Aston Villa" }
@@ -25,7 +25,7 @@ const DAILY_GAME = {
       id: 2,
       position: "CAM",
       country: "Portugal",
-      flag: "🇵🇹",
+      flagCode: "pt",
       players: [
         { name: "Bruno Fernandes", club: "Manchester United" },
         { name: "Bernardo Silva", club: "Manchester City" }
@@ -35,7 +35,7 @@ const DAILY_GAME = {
       id: 3,
       position: "LM",
       country: "Japón",
-      flag: "🇯🇵",
+      flagCode: "jp",
       players: [
         { name: "Kaoru Mitoma", club: "Brighton" },
         { name: "Takefusa Kubo", club: "Real Sociedad" }
@@ -45,7 +45,7 @@ const DAILY_GAME = {
       id: 4,
       position: "CDM",
       country: "España",
-      flag: "🇪🇸",
+      flagCode: "es",
       players: [
         { name: "Rodri", club: "Manchester City" },
         { name: "Martín Zubimendi", club: "Real Sociedad" }
@@ -55,7 +55,7 @@ const DAILY_GAME = {
       id: 5,
       position: "CDM",
       country: "Uruguay",
-      flag: "🇺🇾",
+      flagCode: "uy",
       players: [
         { name: "Federico Valverde", club: "Real Madrid" },
         { name: "Manuel Ugarte", club: "Manchester United" }
@@ -65,7 +65,7 @@ const DAILY_GAME = {
       id: 6,
       position: "RM",
       country: "Alemania",
-      flag: "🇩🇪",
+      flagCode: "de",
       players: [
         { name: "Leroy Sané", club: "Galatasaray" },
         { name: "Serge Gnabry", club: "Bayern Munich" }
@@ -75,7 +75,7 @@ const DAILY_GAME = {
       id: 7,
       position: "CB",
       country: "Argentina",
-      flag: "🇦🇷",
+      flagCode: "ar",
       players: [
         { name: "Cristian Romero", club: "Tottenham" },
         { name: "Nicolás Otamendi", club: "Benfica" }
@@ -85,7 +85,7 @@ const DAILY_GAME = {
       id: 8,
       position: "CB",
       country: "Brasil",
-      flag: "🇧🇷",
+      flagCode: "br",
       players: [
         { name: "Marquinhos", club: "PSG" },
         { name: "Gabriel Magalhães", club: "Arsenal" }
@@ -95,7 +95,7 @@ const DAILY_GAME = {
       id: 9,
       position: "CB",
       country: "Francia",
-      flag: "🇫🇷",
+      flagCode: "fr",
       players: [
         { name: "William Saliba", club: "Arsenal" },
         { name: "Ibrahima Konaté", club: "Liverpool" }
@@ -105,7 +105,7 @@ const DAILY_GAME = {
       id: 10,
       position: "GK",
       country: "Italia",
-      flag: "🇮🇹",
+      flagCode: "it",
       players: [
         { name: "Gianluigi Donnarumma", club: "PSG" },
         { name: "Guglielmo Vicario", club: "Tottenham" }
@@ -190,7 +190,7 @@ function initGame() {
     slot.dataset.index = index;
     slot.dataset.position = data.position;
     slot.dataset.country = data.country;
-    slot.dataset.flag = data.flag;
+    slot.dataset.flagCode = data.flagCode;
 
     slot.classList.remove("filled", "selected");
     slot.innerHTML = data.position;
@@ -274,7 +274,8 @@ function selectSlot(slot) {
 
   const data = getSlotData(slot);
 
-  countryFlag.textContent = data.flag;
+  countryFlag.src = `https://flagcdn.com/w40/${data.flagCode}.png`;
+  countryFlag.alt = `Bandera de ${data.country}`;
   countryName.textContent = data.country;
 
   playerSearch.value = "";
@@ -341,7 +342,7 @@ function renderSuggestions(query) {
     button.innerHTML = `
       <div>
         <strong>${player.name}</strong>
-        <span>${data.flag} ${data.country} · ${data.position} · ${player.club}</span>
+        <span>${data.country} · ${data.position} · ${player.club}</span>
       </div>
       <span>Elegir</span>
     `;
