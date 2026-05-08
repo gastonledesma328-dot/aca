@@ -1,0 +1,205 @@
+:root {
+  --bg: #10251d;
+  --bg2: #163528;
+  --card: #f5f5f0;
+  --text: #f0faf4;
+  --dark: #182e22;
+  --muted: rgba(240, 250, 244, 0.65);
+  --primary: #5fcf80;
+  --danger: #e8533a;
+  --border: rgba(255,255,255,0.12);
+  --shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(160deg, var(--bg), var(--bg2));
+  color: var(--text);
+}
+
+.game-page {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.game-header {
+  margin-bottom: 20px;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.game-header h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.game-header p {
+  color: var(--muted);
+}
+
+.score-panel {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.score-panel div {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 16px;
+  min-width: 120px;
+}
+
+.score-panel span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.score-panel strong {
+  font-size: 22px;
+}
+
+.pitch {
+  background:
+    linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+    #1f7a3c;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-radius: 24px;
+  min-height: 460px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+
+.formation {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  height: 100%;
+}
+
+.slot {
+  background: rgba(255,255,255,0.16);
+  border: 1px dashed rgba(255,255,255,0.45);
+  border-radius: 16px;
+  min-height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  font-weight: 800;
+  color: white;
+}
+
+.slot.filled {
+  background: var(--card);
+  color: var(--dark);
+  border: none;
+}
+
+.slot small {
+  display: block;
+  margin-top: 4px;
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.round-card {
+  background: var(--card);
+  color: var(--dark);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.round-card h2 {
+  margin-bottom: 6px;
+}
+
+.round-card p {
+  margin-bottom: 14px;
+  opacity: 0.7;
+}
+
+.players-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.player-card {
+  border: 1px solid rgba(0,0,0,0.08);
+  background: white;
+  border-radius: 16px;
+  padding: 14px;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.player-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.player-card strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.player-card span {
+  display: block;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.result-box {
+  margin-top: 20px;
+  background: var(--card);
+  color: var(--dark);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.result-box button {
+  margin-top: 12px;
+  margin-right: 8px;
+  border: none;
+  background: var(--primary);
+  color: #10251d;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .formation {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .game-header h1 {
+    font-size: 25px;
+  }
+}
