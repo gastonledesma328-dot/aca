@@ -1332,6 +1332,8 @@ svg {
 
 .league-card.dimmed,
 .agenda-group.dimmed,
+.event-group.dimmed,
+.live-event-card.dimmed,
 .agenda-row.dimmed {
   display: none;
 }
