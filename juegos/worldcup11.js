@@ -1,86 +1,115 @@
 const DAILY_GAME = {
   formationName: "3-5-2",
-  country: {
-    name: "Japón",
-    flag: "🇯🇵"
-  },
-  positions: [
-    "ST", "ST",
-    "CAM",
-    "LM", "CDM", "CDM", "RM",
-    "CB", "CB", "CB",
-    "GK"
-  ],
-  players: [
+  slots: [
     {
-      name: "Takefusa Kubo",
-      position: "CAM",
-      club: "Real Sociedad"
+      id: 0,
+      position: "ST",
+      country: "Noruega",
+      flag: "🇳🇴",
+      players: [
+        { name: "Erling Haaland", club: "Manchester City" },
+        { name: "Alexander Sørloth", club: "Atlético Madrid" }
+      ]
     },
     {
-      name: "Kaoru Mitoma",
+      id: 1,
+      position: "ST",
+      country: "Inglaterra",
+      flag: "🏴",
+      players: [
+        { name: "Harry Kane", club: "Bayern Munich" },
+        { name: "Ollie Watkins", club: "Aston Villa" }
+      ]
+    },
+    {
+      id: 2,
+      position: "CAM",
+      country: "Portugal",
+      flag: "🇵🇹",
+      players: [
+        { name: "Bruno Fernandes", club: "Manchester United" },
+        { name: "Bernardo Silva", club: "Manchester City" }
+      ]
+    },
+    {
+      id: 3,
       position: "LM",
-      club: "Brighton"
+      country: "Japón",
+      flag: "🇯🇵",
+      players: [
+        { name: "Kaoru Mitoma", club: "Brighton" },
+        { name: "Takefusa Kubo", club: "Real Sociedad" }
+      ]
     },
     {
-      name: "Ritsu Doan",
+      id: 4,
+      position: "CDM",
+      country: "España",
+      flag: "🇪🇸",
+      players: [
+        { name: "Rodri", club: "Manchester City" },
+        { name: "Martín Zubimendi", club: "Real Sociedad" }
+      ]
+    },
+    {
+      id: 5,
+      position: "CDM",
+      country: "Uruguay",
+      flag: "🇺🇾",
+      players: [
+        { name: "Federico Valverde", club: "Real Madrid" },
+        { name: "Manuel Ugarte", club: "Manchester United" }
+      ]
+    },
+    {
+      id: 6,
       position: "RM",
-      club: "Freiburg"
+      country: "Alemania",
+      flag: "🇩🇪",
+      players: [
+        { name: "Leroy Sané", club: "Galatasaray" },
+        { name: "Serge Gnabry", club: "Bayern Munich" }
+      ]
     },
     {
-      name: "Wataru Endo",
-      position: "CDM",
-      club: "Liverpool"
-    },
-    {
-      name: "Ao Tanaka",
-      position: "CDM",
-      club: "Leeds United"
-    },
-    {
-      name: "Daichi Kamada",
-      position: "CAM",
-      club: "Crystal Palace"
-    },
-    {
-      name: "Takumi Minamino",
-      position: "ST",
-      club: "Monaco"
-    },
-    {
-      name: "Ayase Ueda",
-      position: "ST",
-      club: "Feyenoord"
-    },
-    {
-      name: "Kyogo Furuhashi",
-      position: "ST",
-      club: "Birmingham City"
-    },
-    {
-      name: "Ko Itakura",
+      id: 7,
       position: "CB",
-      club: "Borussia Mönchengladbach"
+      country: "Argentina",
+      flag: "🇦🇷",
+      players: [
+        { name: "Cristian Romero", club: "Tottenham" },
+        { name: "Nicolás Otamendi", club: "Benfica" }
+      ]
     },
     {
-      name: "Takehiro Tomiyasu",
+      id: 8,
       position: "CB",
-      club: "Arsenal"
+      country: "Brasil",
+      flag: "🇧🇷",
+      players: [
+        { name: "Marquinhos", club: "PSG" },
+        { name: "Gabriel Magalhães", club: "Arsenal" }
+      ]
     },
     {
-      name: "Hiroki Ito",
+      id: 9,
       position: "CB",
-      club: "Bayern Munich"
+      country: "Francia",
+      flag: "🇫🇷",
+      players: [
+        { name: "William Saliba", club: "Arsenal" },
+        { name: "Ibrahima Konaté", club: "Liverpool" }
+      ]
     },
     {
-      name: "Zion Suzuki",
+      id: 10,
       position: "GK",
-      club: "Parma"
-    },
-    {
-      name: "Daiya Maekawa",
-      position: "GK",
-      club: "Vissel Kobe"
+      country: "Italia",
+      flag: "🇮🇹",
+      players: [
+        { name: "Gianluigi Donnarumma", club: "PSG" },
+        { name: "Guglielmo Vicario", club: "Tottenham" }
+      ]
     }
   ]
 };
@@ -103,37 +132,42 @@ const shareBtn = document.getElementById("shareBtn");
 const restartBtn = document.getElementById("restartBtn");
 
 let selectedSlot = null;
+let completedSlots = [];
 let usedPlayers = [];
 let score = 0;
-let surrendered = false;
 
 function initGame() {
-  countryFlag.textContent = DAILY_GAME.country.flag;
-  countryName.textContent = DAILY_GAME.country.name;
-  formationText.textContent = DAILY_GAME.formationName;
-
   selectedSlot = null;
+  completedSlots = [];
   usedPlayers = [];
   score = 0;
-  surrendered = false;
+
+  formationText.textContent = DAILY_GAME.formationName;
+  resultModal.classList.add("hidden");
+  playerSearch.value = "";
+  suggestions.innerHTML = "";
 
   slots.forEach((slot, index) => {
+    const data = DAILY_GAME.slots[index];
+
     slot.dataset.index = index;
-    slot.dataset.originalLabel = slot.dataset.position;
-    slot.innerHTML = slot.dataset.position;
+    slot.dataset.position = data.position;
+    slot.dataset.country = data.country;
+    slot.dataset.flag = data.flag;
+
     slot.classList.remove("filled", "selected");
+    slot.innerHTML = `
+      ${data.position}
+      <small>${data.flag} ${data.country}</small>
+    `;
 
     slot.onclick = () => {
       selectSlot(slot);
     };
   });
 
-  playerSearch.value = "";
-  suggestions.innerHTML = "";
-  resultModal.classList.add("hidden");
-
+  selectNextEmptySlot();
   updateStatus();
-  renderSuggestions("");
 }
 
 function selectSlot(slot) {
@@ -144,158 +178,124 @@ function selectSlot(slot) {
   selectedSlot = slot;
   selectedSlot.classList.add("selected");
 
+  const data = getSlotData(slot);
+
+  countryFlag.textContent = data.flag;
+  countryName.textContent = data.country;
+
+  playerSearch.value = "";
+  playerSearch.placeholder = `Jugador de ${data.country} para ${data.position}...`;
   playerSearch.focus();
-  renderSuggestions(playerSearch.value);
+
+  renderSuggestions("");
 }
 
-function clearSelectedSlot() {
-  selectedSlot = null;
-  slots.forEach(item => item.classList.remove("selected"));
+function selectNextEmptySlot() {
+  const next = Array.from(slots).find(slot => {
+    return !slot.classList.contains("filled");
+  });
+
+  if (next) {
+    selectSlot(next);
+  }
+}
+
+function getSlotData(slot) {
+  const index = Number(slot.dataset.index);
+  return DAILY_GAME.slots[index];
 }
 
 function renderSuggestions(query) {
-  const value = normalizeText(query);
   suggestions.innerHTML = "";
 
-  let filtered = getMatchingPlayers(value);
+  if (!selectedSlot) return;
 
-  if (!value && !selectedSlot) {
-    suggestions.innerHTML = `
-      <button class="suggestion-item" type="button">
-        <strong>Buscá un jugador japonés</strong>
-        <span>Ejemplo: Mitoma, Kubo, Endo, Suzuki</span>
-      </button>
-    `;
-    return;
-  }
+  const data = getSlotData(selectedSlot);
+  const value = normalizeText(query);
+
+  let filtered = data.players.filter(player => {
+    if (usedPlayers.includes(player.name)) return false;
+
+    if (!value) return true;
+
+    const text = normalizeText(`${player.name} ${player.club}`);
+    return text.includes(value);
+  });
 
   if (!filtered.length) {
     suggestions.innerHTML = `
       <button class="suggestion-item" type="button">
         <strong>No encontré ese jugador</strong>
-        <span>Probá con apellido, nombre o club</span>
+        <span>Debe ser de ${data.country} y jugar como ${data.position}</span>
       </button>
     `;
     return;
   }
 
-  filtered.slice(0, 7).forEach(player => {
-    const freeSlots = getFreeSlotsByPosition(player.position);
-
+  filtered.slice(0, 6).forEach(player => {
     const button = document.createElement("button");
     button.className = "suggestion-item";
     button.type = "button";
 
-    const status = freeSlots.length
-      ? "Elegir"
-      : "Sin lugar";
-
     button.innerHTML = `
       <div>
         <strong>${player.name}</strong>
-        <span>${player.position} · ${player.club}</span>
+        <span>${data.flag} ${data.country} · ${data.position} · ${player.club}</span>
       </div>
-      <span>${status}</span>
+      <span>Elegir</span>
     `;
 
-    button.disabled = freeSlots.length === 0;
-
-    button.addEventListener("click", () => {
+    button.onclick = () => {
       placePlayer(player);
-    });
+    };
 
     suggestions.appendChild(button);
   });
 }
 
-function getMatchingPlayers(value) {
-  return DAILY_GAME.players
-    .filter(player => !usedPlayers.includes(player.name))
-    .filter(player => {
-      if (selectedSlot) {
-        return player.position === selectedSlot.dataset.position;
-      }
-
-      return getFreeSlotsByPosition(player.position).length > 0;
-    })
-    .filter(player => {
-      if (!value) return true;
-
-      const fullText = normalizeText(`
-        ${player.name}
-        ${player.club}
-        ${player.position}
-      `);
-
-      return fullText.includes(value);
-    });
-}
-
-function getFreeSlotsByPosition(position) {
-  return Array.from(slots).filter(slot => {
-    return (
-      slot.dataset.position === position &&
-      !slot.classList.contains("filled")
-    );
-  });
-}
-
-function findBestSlotForPlayer(player) {
-  if (
-    selectedSlot &&
-    !selectedSlot.classList.contains("filled") &&
-    selectedSlot.dataset.position === player.position
-  ) {
-    return selectedSlot;
-  }
-
-  const freeSlots = getFreeSlotsByPosition(player.position);
-
-  if (!freeSlots.length) {
-    return null;
-  }
-
-  return freeSlots[0];
-}
-
 function placePlayer(player) {
-  const slot = findBestSlotForPlayer(player);
+  if (!selectedSlot) return;
 
-  if (!slot) {
-    alert(`No queda lugar libre para ${player.position}.`);
-    return;
-  }
+  const data = getSlotData(selectedSlot);
 
   if (usedPlayers.includes(player.name)) {
     alert("Ese jugador ya fue usado.");
     return;
   }
 
-  slot.classList.add("filled");
-  slot.classList.remove("selected");
+  selectedSlot.classList.add("filled");
+  selectedSlot.classList.remove("selected");
 
-  slot.innerHTML = `
+  selectedSlot.innerHTML = `
     ${player.name}
-    <small>${player.position}</small>
+    <small>${data.flag} ${data.country} · ${data.position}</small>
   `;
 
+  completedSlots.push(data.id);
   usedPlayers.push(player.name);
   score += 100;
 
-  clearSelectedSlot();
-
+  selectedSlot = null;
   playerSearch.value = "";
   suggestions.innerHTML = "";
 
   updateStatus();
-  renderSuggestions("");
 
-  if (usedPlayers.length === slots.length) {
+  if (completedSlots.length === DAILY_GAME.slots.length) {
     finishGame(false);
+    return;
   }
+
+  selectNextEmptySlot();
 }
 
 function trySubmitSearch() {
+  if (!selectedSlot) {
+    selectNextEmptySlot();
+    return;
+  }
+
+  const data = getSlotData(selectedSlot);
   const value = normalizeText(playerSearch.value);
 
   if (!value) {
@@ -303,10 +303,34 @@ function trySubmitSearch() {
     return;
   }
 
-  const matches = getMatchingPlayers(value);
+  const matches = data.players.filter(player => {
+    if (usedPlayers.includes(player.name)) return false;
+
+    const fullName = normalizeText(player.name);
+    const lastName = normalizeText(player.name.split(" ").pop());
+    const club = normalizeText(player.club);
+
+    return (
+      fullName.includes(value) ||
+      lastName.includes(value) ||
+      club.includes(value)
+    );
+  });
 
   if (!matches.length) {
     renderSuggestions(playerSearch.value);
+    return;
+  }
+
+  const exactMatch = matches.find(player => {
+    const fullName = normalizeText(player.name);
+    const lastName = normalizeText(player.name.split(" ").pop());
+
+    return fullName === value || lastName === value;
+  });
+
+  if (exactMatch) {
+    placePlayer(exactMatch);
     return;
   }
 
@@ -315,37 +339,23 @@ function trySubmitSearch() {
     return;
   }
 
-  const exactMatch = matches.find(player => {
-    const playerName = normalizeText(player.name);
-    const lastName = normalizeText(player.name.split(" ").pop());
-
-    return playerName === value || lastName === value;
-  });
-
-  if (exactMatch) {
-    placePlayer(exactMatch);
-    return;
-  }
-
   renderSuggestions(playerSearch.value);
 }
 
 function updateStatus() {
-  completedText.textContent = `${usedPlayers.length}/${slots.length}`;
+  completedText.textContent = `${completedSlots.length}/${DAILY_GAME.slots.length}`;
   scoreText.textContent = score;
 }
 
 function finishGame(bySurrender) {
-  surrendered = bySurrender;
-
   resultModal.classList.remove("hidden");
 
   if (bySurrender) {
     resultTitle.textContent = "Te rendiste";
-    resultText.textContent = `Completaste ${usedPlayers.length} de ${slots.length} posiciones. Puntaje final: ${score}.`;
+    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.slots.length} posiciones. Puntaje final: ${score}.`;
   } else {
     resultTitle.textContent = "Equipo completado";
-    resultText.textContent = `Completaste el 11 de ${DAILY_GAME.country.name}. Puntaje final: ${score}.`;
+    resultText.textContent = `Completaste el 11 con la formación ${DAILY_GAME.formationName}. Puntaje final: ${score}.`;
   }
 }
 
@@ -371,7 +381,7 @@ surrenderBtn.addEventListener("click", () => {
 });
 
 shareBtn.addEventListener("click", async () => {
-  const text = `Armé mi 11 de ${DAILY_GAME.country.name} en Partidos.Hoy ⚽\nPuntaje: ${score}\nFormación: ${DAILY_GAME.formationName}`;
+  const text = `Armé mi 11 en Partidos.Hoy ⚽\nFormación: ${DAILY_GAME.formationName}\nPuntaje: ${score}`;
 
   if (navigator.share) {
     await navigator.share({
@@ -389,7 +399,7 @@ restartBtn.addEventListener("click", () => {
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Buscá un jugador japonés por nombre o apellido. También podés tocar una posición primero si querés elegir dónde colocarlo. La bandera blanca sirve para rendirse.");
+  alert("Cada posición tiene un país. Escribí un jugador válido de ese país para completar el casillero seleccionado.");
 });
 
 initGame();
