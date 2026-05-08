@@ -40,12 +40,26 @@ input {
   padding: 22px;
 }
 
+/* CABECERA SIMÉTRICA */
 .topbar {
-  display: flex;
+  width: min(680px, 100%);
+  margin: 0 auto 24px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
-  margin-bottom: 24px;
+}
+
+.topbar .back {
+  justify-self: start;
+}
+
+.topbar .brand {
+  justify-self: center;
+}
+
+.topbar .help-btn {
+  justify-self: end;
 }
 
 .back {
@@ -56,6 +70,7 @@ input {
   border: 1px solid var(--border);
   padding: 10px 13px;
   border-radius: 13px;
+  white-space: nowrap;
 }
 
 .brand {
@@ -86,8 +101,9 @@ input {
 }
 
 .game-header {
+  width: min(680px, 100%);
+  margin: 0 auto 18px;
   text-align: center;
-  margin-bottom: 18px;
 }
 
 .daily-badge {
@@ -458,6 +474,7 @@ input {
 
   .topbar {
     gap: 8px;
+    grid-template-columns: auto 1fr auto;
   }
 
   .back {
@@ -467,6 +484,10 @@ input {
 
   .brand strong {
     font-size: 18px;
+  }
+
+  .brand span {
+    font-size: 12px;
   }
 
   .mode-panel {
