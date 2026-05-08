@@ -26,7 +26,29 @@
     <section class="game-header">
       <span class="daily-badge">Desafío diario</span>
       <h1>Armá tu 11 Mundial</h1>
-      <p>Completá la formación del día con futbolistas del país indicado.</p>
+      <p>Completá cada posición con un jugador del país indicado.</p>
+    </section>
+
+    <section class="mode-panel">
+      <button class="mode-btn active" type="button" data-mode="easy">
+        Fácil
+        <small>Con ayudas</small>
+      </button>
+
+      <button class="mode-btn" type="button" data-mode="normal">
+        Normal
+        <small>Sin tiempo</small>
+      </button>
+
+      <button class="mode-btn" type="button" data-mode="hard">
+        Difícil
+        <small>90 segundos</small>
+      </button>
+
+      <button class="mode-btn" type="button" data-mode="impossible">
+        Imposible
+        <small>30 segundos</small>
+      </button>
     </section>
 
     <section class="tactical-board">
@@ -82,13 +104,22 @@
         </button>
       </form>
 
+      <p class="mode-hint" id="modeHint">
+        Modo fácil: vas a ver sugerencias disponibles.
+      </p>
+
       <div class="suggestions" id="suggestions"></div>
     </section>
 
     <section class="status-panel">
       <div>
-        <span>Formación</span>
-        <strong id="formationText">3-5-2</strong>
+        <span>Modo</span>
+        <strong id="modeText">Fácil</strong>
+      </div>
+
+      <div>
+        <span>Tiempo</span>
+        <strong id="timerText">Sin límite</strong>
       </div>
 
       <div>
