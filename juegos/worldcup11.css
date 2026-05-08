@@ -456,4 +456,12 @@ input {
   .status-panel {
     grid-template-columns: 1fr;
   }
+
+  .position-slot small {
+  display: block;
+  font-size: 10px;
+  margin-top: 4px;
+  opacity: 0.8;
+  font-weight: 800;
+}
 }
