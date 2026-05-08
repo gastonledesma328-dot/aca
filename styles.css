@@ -1616,6 +1616,53 @@ footer strong {
   }
 }
 
+
+.suda-video-preview {
+  position: relative;
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  background: #000;
+}
+
+.suda-video-preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.22);
+  pointer-events: none;
+}
+
+.suda-play-button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 58px;
+  height: 58px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(0,0,0,0.75);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  z-index: 2;
+  padding-left: 4px;
+}
+
+.suda-video-label {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 2;
+  background: rgba(0,0,0,0.75);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-size: 12px;
+  font-weight: 800;
+}
 /* ================================
    LINKS DE EQUIPO
 ================================ */
