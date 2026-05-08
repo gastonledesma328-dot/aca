@@ -755,6 +755,54 @@ svg {
   background: var(--primary);
 }
 
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.game-card {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.045);
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.game-card > span {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--chip-fg);
+  background: var(--primary);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.game-card strong {
+  font-size: 16px;
+}
+
+.game-card p {
+  margin: 0;
+  color: rgba(240, 250, 244, 0.68);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.game-card button {
+  min-height: 34px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--chip-fg);
+  background: var(--chip-bg);
+  font-weight: 900;
+}
+
 .live-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1551,6 +1599,10 @@ footer strong {
   .date-strip {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .games-grid {
+    grid-template-columns: 1fr;
   }
 
   .date-strip button {
