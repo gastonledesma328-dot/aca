@@ -1,6 +1,6 @@
 const EVENTS_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/2612163/refs/heads/main/eventos_streamhdx.json";
 const AGENDA_URL = "https://partidos-hoy-worker.gastonledesma328.workers.dev";
-const SUDANALYTICS_URL = "https://sudanalytics-worker.gastonledesma328.workers.dev/sudanalytics_posts.json";
+
 /*
   ============================================================
   FLUJO GENERAL DEL PROYECTO
@@ -34,7 +34,10 @@ const utilityStatus = document.querySelector("#utilityStatus");
 const dateButtons = document.querySelectorAll("[data-day]");
 const playToggle = document.querySelector("#playToggle");
 const videoCard = document.querySelector("#videoCard");
+const featuredFrame = document.querySelector("#featuredFrame");
 const videoState = document.querySelector("#videoState");
+const watchButton = document.querySelector(".watch-btn");
+const reloadEmbed = document.querySelector("#reloadEmbed");
 const volumeToggle = document.querySelector("#volumeToggle");
 const focusToggle = document.querySelector("#focusToggle");
 const featured = document.querySelector(".featured");
@@ -56,10 +59,19 @@ let activeTab = "agenda";
 let muted = false;
 let favoriteMode = false;
 let events = [];
+let agendaLiveMatches = [];
+let agendaLiveLoaded = false;
 let currentAgendaDate = new Date();
 
 let agendaLoadedDate = "";
 let agendaLoading = false;
+
+const FEATURED_LOGO_FALLBACKS = {
+  flamengo: "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
+  medellin: "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
+  "independiente medellin": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
+  "independiente medellín": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
+};
 
 /*
   Devuelve fecha local del navegador en formato YYYY-MM-DD.
@@ -144,15 +156,15 @@ function showSection(section) {
 
 /*
   IMPORTANTE:
-  Antes tenías esto:
+  Antes tenÃ­as esto:
 
     new Date(`${event.fecha_iso}T${event.hora}:00`)
 
-  Eso puede hacer que el navegador interprete la hora según su zona horaria
+  Eso puede hacer que el navegador interprete la hora segÃºn su zona horaria
   y termine calculando mal si el formato viene sin zona.
 
-  Ahora usamos -03:00 explícito, que corresponde a Argentina.
-  Esto arregla el cálculo de Live / Prox / Fin.
+  Ahora usamos -03:00 explÃ­cito, que corresponde a Argentina.
+  Esto arregla el cÃ¡lculo de Live / Prox / Fin.
 
   OJO:
   Esto NO cambia el texto visible event.hora.
@@ -205,19 +217,287 @@ function splitTitle(title = "") {
   };
 }
 
-function updateFeatured() {
-  const liveEvent = events.find((event) => eventStatus(event) === "live");
+function compactMatchName(value) {
+  return normalizeText(value)
+    .replace(/\b(club|fc|cf|sc|deportivo|independiente|atletico|atl|cd)\b/g, " ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
-  if (!liveEvent) {
-    featured.classList.add("no-live");
-    featuredStatus.querySelector("strong").textContent = "Sin partido en vivo ahora";
-    featuredStatus.querySelector("p").textContent =
-      "Cuando el horario actual caiga dentro de un evento del JSON, esta seccion se actualiza sola.";
-    videoState.textContent = "Sin directo";
+function namesLookRelated(a, b) {
+  const left = compactMatchName(a);
+  const right = compactMatchName(b);
+
+  if (!left || !right) {
+    return false;
+  }
+
+  return left.includes(right) || right.includes(left);
+}
+
+function agendaTeams(match) {
+  const parts = String(match.partido || "").split(/\s+vs\.?\s+/i);
+
+  return {
+    home: match.local || parts[0]?.trim() || "",
+    away: match.visitante || parts[1]?.trim() || "",
+  };
+}
+
+function isAgendaMatchLive(match) {
+  const statusText = normalizeText(
+    `${match.mostrar_tiempo || ""} ${match.minuto || ""} ${match.estado_corto || ""} ${match.estado || ""}`
+  );
+
+  if (match.completado === true || /fin|final|full time|\bft\b/.test(statusText)) {
+    return false;
+  }
+
+  if (/scheduled|programado|prox/.test(statusText)) {
+    return false;
+  }
+
+  return (
+    match.mostrar_marcador === true ||
+    /live|en vivo|entretiempo|descanso|halftime|\bht\b/.test(statusText) ||
+    /(^|\s)\d{1,3}('|’|\+| min)/.test(statusText)
+  );
+}
+
+function eventHasLiveAgendaMatch(event) {
+  if (!agendaLiveLoaded) {
+    return eventStatus(event) === "live";
+  }
+
+  if (!agendaLiveMatches.length) {
+    return false;
+  }
+
+  const eventInfo = splitTitle(event.titulo);
+
+  return agendaLiveMatches.some((match) => {
+    const teams = agendaTeams(match);
+    const sameOrder =
+      namesLookRelated(eventInfo.home, teams.home) &&
+      namesLookRelated(eventInfo.away, teams.away);
+    const swappedOrder =
+      namesLookRelated(eventInfo.home, teams.away) &&
+      namesLookRelated(eventInfo.away, teams.home);
+
+    return sameOrder || swappedOrder;
+  });
+}
+
+async function fetchAgendaLiveMatches(date = new Date()) {
+  const selectedDate = localDateISO(date);
+  const response = await fetch(`${AGENDA_URL}?v=${Date.now()}`);
+
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+  }
+
+  const data = await response.json();
+  const partidos = Array.isArray(data.partidos) ? data.partidos : [];
+
+  return partidos.filter((match) => {
+    const matchDate = agendaDate(match);
+    return (!matchDate || matchDate === selectedDate) && isAgendaMatchLive(match);
+  });
+}
+
+function randomFeaturedEvent() {
+  const pool = events.filter(eventHasLiveAgendaMatch);
+
+  if (!pool.length) {
+    return null;
+  }
+
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function autoplayEmbedUrl(url) {
+  try {
+    const embedUrl = new URL(url, window.location.href);
+
+    if (!embedUrl.searchParams.has("autoplay")) {
+      embedUrl.searchParams.set("autoplay", "1");
+    }
+
+    embedUrl.searchParams.set("muted", "0");
+    embedUrl.searchParams.set("mute", "0");
+    embedUrl.searchParams.set("volume", "1");
+
+    if (!embedUrl.searchParams.has("playsinline")) {
+      embedUrl.searchParams.set("playsinline", "1");
+    }
+
+    return embedUrl.href;
+  } catch (error) {
+    return url;
+  }
+}
+
+function setFeaturedEmbed(channel) {
+  const rawUrl = channel?.url || "";
+  const embedSrc = rawUrl ? autoplayEmbedUrl(rawUrl) : "";
+
+  videoCard.dataset.channelUrl = rawUrl;
+  videoCard.classList.toggle("has-embed", Boolean(embedSrc));
+  videoCard.classList.toggle("playing", Boolean(embedSrc));
+  muted = false;
+  volumeToggle.classList.remove("active");
+  volumeToggle.title = "Silenciar";
+
+  if (!embedSrc) {
+    featuredFrame.removeAttribute("src");
+    featuredFrame.title = "Reproductor sin canal";
     return;
   }
 
-  const info = splitTitle(liveEvent.titulo);
+  if (featuredFrame.src !== embedSrc) {
+    featuredFrame.src = embedSrc;
+  }
+
+  featuredFrame.title = `Reproductor ${channel.nombre || "canal en vivo"}`;
+}
+
+function fallbackFeaturedLogo(teamName) {
+  const normalized = normalizeText(teamName);
+
+  return FEATURED_LOGO_FALLBACKS[normalized] || "";
+}
+
+function featuredTeamLogo(event, side, teamName = "") {
+  const prefixes = side === "home"
+    ? ["local", "home", "equipo_local", "team_home"]
+    : ["visitante", "away", "equipo_visitante", "team_away"];
+  const teamIndex = side === "home" ? 0 : 1;
+  const candidates = [
+    event.equipos?.[teamIndex],
+    event.teams?.[teamIndex],
+    event.competitors?.[teamIndex],
+    event.competidores?.[teamIndex],
+  ].filter(Boolean);
+
+  for (const prefix of prefixes) {
+    const logo =
+      event[`${prefix}_logo`] ||
+      event[`${prefix}_escudo`] ||
+      event[`${prefix}Logo`] ||
+      event[`${prefix}Escudo`] ||
+      event[prefix]?.logo ||
+      event[prefix]?.escudo ||
+      event[prefix]?.image ||
+      event[prefix]?.imagen;
+
+    if (logo) {
+      return logo;
+    }
+  }
+
+  for (const team of candidates) {
+    const logo = team.logo || team.escudo || team.image || team.imagen || team.logo_url;
+
+    if (logo) {
+      return logo;
+    }
+  }
+
+  return fallbackFeaturedLogo(teamName);
+}
+
+function setFeaturedCrest(selector, teamName, logo) {
+  const crest = document.querySelector(selector);
+
+  crest.textContent = "";
+  crest.classList.toggle("has-logo", Boolean(logo));
+
+  if (logo) {
+    const image = document.createElement("img");
+    image.src = logo;
+    image.alt = teamName;
+    image.loading = "lazy";
+    image.onerror = () => {
+      crest.classList.remove("has-logo");
+      crest.textContent = teamName?.charAt(0).toUpperCase() || "-";
+    };
+    crest.append(image);
+    return;
+  }
+
+  crest.textContent = teamName?.charAt(0).toUpperCase() || "-";
+}
+
+function reloadFeaturedEmbed() {
+  const channelUrl = videoCard.dataset.channelUrl || "";
+
+  if (!channelUrl) {
+    videoState.textContent = "Sin canal";
+    return;
+  }
+
+  featuredFrame.removeAttribute("src");
+  window.setTimeout(() => {
+    featuredFrame.src = autoplayEmbedUrl(channelUrl);
+    videoCard.classList.add("has-embed", "playing");
+    videoState.textContent = "Transmitiendo";
+    muted = false;
+    volumeToggle.classList.remove("active");
+    volumeToggle.title = "Silenciar";
+  }, 80);
+}
+
+async function toggleVideoFullscreen() {
+  if (!videoCard.classList.contains("has-embed")) {
+    videoState.textContent = "Sin reproductor";
+    return;
+  }
+
+  try {
+    if (document.fullscreenElement === videoCard) {
+      await document.exitFullscreen();
+    } else {
+      await videoCard.requestFullscreen();
+    }
+  } catch (error) {
+    window.open(videoCard.dataset.channelUrl, "_blank", "noopener,noreferrer");
+  }
+}
+
+function updateFeaturedLegacy() {
+  const featuredEvent = randomFeaturedEvent();
+
+  if (!featuredEvent) {
+    featured.classList.add("no-live");
+    featuredStatus.querySelector("strong").textContent = "Sin partidos en vivo ahora";
+    featuredStatus.querySelector("p").textContent =
+      "Cuando un evento del JSON este dentro de su horario, aparece destacado aca.";
+    setFeaturedCrest(".crest-a", "-", "");
+    setFeaturedCrest(".crest-b", "-", "");
+    document.querySelector(".team:first-child strong").textContent = "Sin directo";
+    document.querySelector(".team:last-child strong").textContent = "Ahora";
+    document.querySelector(".live-pill").textContent = "Live";
+    mainScore.textContent = "--";
+    setFeaturedEmbed(null);
+    videoState.textContent = "Sin directo";
+    watchButton.textContent = "Sin canal";
+    watchButton.disabled = true;
+    watchButton.onclick = null;
+    return;
+  }
+
+  const info = splitTitle(featuredEvent.titulo);
+  const homeLogo = featuredTeamLogo(featuredEvent, "home", info.home);
+  const awayLogo = featuredTeamLogo(featuredEvent, "away", info.away);
+  const status = eventStatus(featuredEvent);
+  const statusText = {
+    live: "EN VIVO",
+    upcoming: "PROX",
+    ended: "FIN",
+  }[status];
+  const firstChannel = featuredEvent.canales?.[0] || null;
+  const liveEvent = featuredEvent;
 
   featured.classList.remove("no-live");
 
@@ -226,37 +506,103 @@ function updateFeatured() {
   document.querySelector(".team:first-child strong").textContent = info.home;
   document.querySelector(".team:last-child strong").textContent = info.away;
 
-  mainScore.textContent = "EN VIVO";
+  document.querySelector(".live-pill").textContent = status === "live" ? "Live" : statusText;
+  mainScore.textContent = statusText;
   featuredStatus.querySelector("strong").textContent = info.competition;
 
   /*
     Mostramos liveEvent.hora directamente.
-    No convertimos acá porque el JSON final debe venir ya en horario Argentina.
+    No convertimos acÃ¡ porque el JSON final debe venir ya en horario Argentina.
   */
   featuredStatus.querySelector("p").textContent =
-    `${liveEvent.hora} · ${liveEvent.clase || liveEvent.categoria} · ${liveEvent.canales?.[0]?.nombre || "Canal disponible"}`;
+    `${liveEvent.hora} Â· ${liveEvent.clase || liveEvent.categoria} Â· ${liveEvent.canales?.[0]?.nombre || "Canal disponible"}`;
 
-  videoState.textContent = "Disponible";
+  featuredStatus.querySelector("p").textContent =
+    `${featuredEvent.hora || "--:--"} · ${featuredEvent.clase || featuredEvent.categoria || "Evento"} · ${firstChannel?.nombre || "Canal disponible"}`;
+
+  featuredStatus.querySelector("p").textContent =
+    `${featuredEvent.hora || "--:--"} - ${featuredEvent.clase || featuredEvent.categoria || "Evento"} - ${firstChannel?.nombre || "Canal disponible"}`;
+
+  setFeaturedEmbed(firstChannel);
+  videoState.textContent = firstChannel
+    ? `Transmitiendo ${firstChannel.nombre} ${firstChannel.calidad || ""}`.trim()
+    : "Sin canal";
+  watchButton.textContent = firstChannel ? "Ver canal" : "Sin canal";
+  watchButton.disabled = !firstChannel?.url;
+  watchButton.onclick = firstChannel?.url
+    ? () => window.open(firstChannel.url, "_blank", "noopener,noreferrer")
+    : null;
+}
+
+function updateFeatured() {
+  const featuredEvent = randomFeaturedEvent();
+
+  if (!featuredEvent) {
+    featured.classList.add("no-live");
+    featuredStatus.querySelector("strong").textContent = "Sin partidos en vivo ahora";
+    featuredStatus.querySelector("p").textContent =
+      "Cuando un evento del JSON este dentro de su horario, aparece destacado aca.";
+    setFeaturedCrest(".crest-a", "-", "");
+    setFeaturedCrest(".crest-b", "-", "");
+    document.querySelector(".team:first-child strong").textContent = "Sin directo";
+    document.querySelector(".team:last-child strong").textContent = "Ahora";
+    document.querySelector(".live-pill").textContent = "Live";
+    mainScore.textContent = "--";
+    setFeaturedEmbed(null);
+    videoState.textContent = "Sin directo";
+    watchButton.textContent = "Sin canal";
+    watchButton.disabled = true;
+    watchButton.onclick = null;
+    return;
+  }
+
+  const info = splitTitle(featuredEvent.titulo);
+  const homeLogo = featuredTeamLogo(featuredEvent, "home", info.home);
+  const awayLogo = featuredTeamLogo(featuredEvent, "away", info.away);
+  const status = eventStatus(featuredEvent);
+  const statusText = {
+    live: "EN VIVO",
+    upcoming: "PROX",
+    ended: "FIN",
+  }[status];
+  const firstChannel = featuredEvent.canales?.[0] || null;
+
+  featured.classList.remove("no-live");
+  setFeaturedCrest(".crest-a", info.home, homeLogo);
+  setFeaturedCrest(".crest-b", info.away, awayLogo);
+  document.querySelector(".team:first-child strong").textContent = info.home;
+  document.querySelector(".team:last-child strong").textContent = info.away;
+  document.querySelector(".live-pill").textContent = status === "live" ? "Live" : statusText;
+
+  mainScore.textContent = statusText;
+  featuredStatus.querySelector("strong").textContent = info.competition;
+  featuredStatus.querySelector("p").textContent =
+    `${featuredEvent.hora || "--:--"} - ${featuredEvent.categoria || "Evento"} - ${statusText}`;
+
+  setFeaturedEmbed(firstChannel);
+  videoState.textContent = firstChannel
+    ? `Transmitiendo ${firstChannel.nombre} ${firstChannel.calidad || ""}`.trim()
+    : "Sin canal";
+  watchButton.textContent = firstChannel ? "Ver canal" : "Sin canal";
+  watchButton.disabled = !firstChannel?.url;
+  watchButton.onclick = firstChannel?.url
+    ? () => window.open(firstChannel.url, "_blank", "noopener,noreferrer")
+    : null;
 }
 
 function renderEvents() {
   const now = new Date();
-  const today = localDateISO(now);
-  const dailyEvents = events.filter((event) => event.fecha_iso === today);
-  const sorted = dailyEvents.length ? dailyEvents : events;
+  const sorted = events.filter(eventHasLiveAgendaMatch);
 
   liveGrid.innerHTML = "";
 
   if (!sorted.length) {
-    liveTitle.textContent = "No se encontraron eventos";
-    liveGrid.innerHTML = `<p class="empty-state">No hay partidos para mostrar desde el JSON remoto.</p>`;
+    liveTitle.textContent = "Sin partidos en vivo ahora";
+    liveGrid.innerHTML = `<p class="empty-state">No hay partidos en vivo en este momento.</p>`;
     return;
   }
 
-  const liveCount = sorted.filter((event) => eventStatus(event, now) === "live").length;
-  liveTitle.textContent = liveCount
-    ? `${liveCount} en vivo ahora`
-    : `Agenda cargada: ${sorted.length} eventos`;
+  liveTitle.textContent = `${sorted.length} en vivo ahora`;
 
   const groups = sorted.reduce((acc, event) => {
     const sport = event.categoria || "deporte";
@@ -288,7 +634,7 @@ function renderEvents() {
     const list = groupNode.querySelector(".event-group-list");
 
     group.events.forEach((event) => {
-      const status = eventStatus(event, now);
+      const status = "live";
       const info = splitTitle(event.titulo);
       const card = document.createElement("article");
 
@@ -302,7 +648,7 @@ function renderEvents() {
 
       const channels = (event.canales || [])
         .map((channel) => {
-          return `<a class="channel-link" href="${channel.url}" target="_blank" rel="noreferrer">${channel.nombre} · ${channel.calidad || "HD"}</a>`;
+          return `<a class="channel-link" href="${channel.url}" target="_blank" rel="noreferrer">${channel.nombre} Â· ${channel.calidad || "HD"}</a>`;
         })
         .join("");
 
@@ -310,7 +656,7 @@ function renderEvents() {
         <button class="event-toggle" type="button" aria-expanded="false">
           <span>
             <strong>${info.matchup}</strong>
-            <small>${event.hora} · ${info.competition}</small>
+            <small>${event.hora} Â· ${info.competition}</small>
           </span>
           <span class="event-badge">${statusText}</span>
         </button>
@@ -335,17 +681,25 @@ async function loadEvents() {
   liveTitle.textContent = "Cargando eventos...";
 
   try {
-    const response = await fetch(`${EVENTS_URL}?v=${Date.now()}`);
+    const [eventsResponse, liveAgendaResult] = await Promise.all([
+      fetch(`${EVENTS_URL}?v=${Date.now()}`),
+      fetchAgendaLiveMatches()
+        .then((matches) => ({ ok: true, matches }))
+        .catch(() => ({ ok: false, matches: [] })),
+    ]);
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+    if (!eventsResponse.ok) {
+      throw new Error(`HTTP ${eventsResponse.status}`);
     }
 
-    events = await response.json();
+    const data = await eventsResponse.json();
+    events = Array.isArray(data) ? data : [];
+    agendaLiveMatches = liveAgendaResult.matches;
+    agendaLiveLoaded = liveAgendaResult.ok;
 
     /*
       Ordena por fecha/hora Argentina usando eventStart().
-      Como eventStart fuerza -03:00, el orden es más estable.
+      Como eventStart fuerza -03:00, el orden es mÃ¡s estable.
     */
     events.sort((a, b) => eventStart(a) - eventStart(b));
 
@@ -410,7 +764,7 @@ function agendaStatus(match) {
 
 /*
   La agenda muestra hora_inicio o hora.
-  No convertimos acá porque el Worker debería entregar la hora correcta.
+  No convertimos acÃ¡ porque el Worker deberÃ­a entregar la hora correcta.
 */
 function agendaDisplayTime(match) {
   const tiempo = match.mostrar_tiempo || match.minuto || "";
@@ -493,8 +847,8 @@ function scoreMarkup(match) {
     );
 
   /*
-    Si el partido no está en juego ni finalizado,
-    mostramos solo "-" para dejar vacío el resultado.
+    Si el partido no estÃ¡ en juego ni finalizado,
+    mostramos solo "-" para dejar vacÃ­o el resultado.
   */
   if (!estaEnVivo && !estaFinalizado) {
     return "-";
@@ -536,7 +890,7 @@ function scoreMarkup(match) {
     const resultado = String(match.resultado)
       .trim()
       .replace(/\s+/g, "")
-      .replace(/[–—]/g, "-");
+      .replace(/[â€“â€”]/g, "-");
 
     const partes = resultado.split("-").filter(Boolean);
 
@@ -551,15 +905,15 @@ function scoreMarkup(match) {
   }
 
   /*
-    Si ESPN dice que está en vivo/finalizado pero no hay marcador válido,
-    mantenemos el separador vacío.
+    Si ESPN dice que estÃ¡ en vivo/finalizado pero no hay marcador vÃ¡lido,
+    mantenemos el separador vacÃ­o.
   */
   return "-";
 }
 
 function searchValue(value) {
   return normalizeText(value)
-    .replace(/[–—]/g, "-")
+    .replace(/[â€“â€”]/g, "-")
     .replace(/[^a-z0-9:+\-'\s]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
@@ -691,7 +1045,7 @@ function scorersMarkup(match) {
       const team = scorer.equipo ? ` (${scorer.equipo})` : "";
       return `${minute}${scorer.jugador || scorer.descripcion}${team}`;
     })
-    .join(" · ");
+    .join(" Â· ");
 
   const extra = scorers.length > 4 ? ` +${scorers.length - 4}` : "";
 
@@ -1003,7 +1357,7 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
 
         const home = match.local || match.partido?.split(" vs ")[0] || "Local";
         const away = match.visitante || match.partido?.split(" vs ")[1] || "Visitante";
-        const isLive = match.mostrar_marcador === true && match.completado !== true;
+        const isLive = isAgendaMatchLive(match);
         const score = scoreMarkup(match);
 
         if (isLive) {
@@ -1084,6 +1438,16 @@ async function loadAgenda(date = currentAgendaDate) {
         );
       });
 
+    if (selectedDate === localDateISO()) {
+      agendaLiveMatches = dailyMatches.filter(isAgendaMatchLive);
+      agendaLiveLoaded = true;
+
+      if (activeTab === "live") {
+        renderEvents();
+        updateFeatured();
+      }
+    }
+
     renderAgenda(dailyMatches, AGENDA_URL, {
       source: data.fuente,
       total: data.total,
@@ -1098,7 +1462,7 @@ async function loadAgenda(date = currentAgendaDate) {
     leagueGrid.innerHTML = `
       <article class="empty-state">
         <strong>No se pudo cargar la agenda ESPN.</strong>
-        <p>El Worker está temporalmente saturado. Probá recargar en unos minutos.</p>
+        <p>El Worker estÃ¡ temporalmente saturado. ProbÃ¡ recargar en unos minutos.</p>
         <a class="channel-link" href="${AGENDA_URL}" target="_blank" rel="noreferrer">Abrir JSON</a>
       </article>
     `;
@@ -1107,256 +1471,15 @@ async function loadAgenda(date = currentAgendaDate) {
   }
 }
 
-
-
 /* ============================================================
-   CHAT / SUDANALYTICS
+   CHAT
 ============================================================ */
-
-let sudanalyticsLoaded = false;
 
 function updatePostCount() {
   const total = postFeed.querySelectorAll(".post-card").length;
   postCounter.textContent = `${total} post${total === 1 ? "" : "s"}`;
 }
 
-function escapeHtml(texto) {
-  return String(texto || "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-function linkificarTexto(texto) {
-  return String(texto || "").replace(
-    /(https?:\/\/[^\s]+)/g,
-    `<a href="$1" target="_blank" rel="noopener">$1</a>`
-  );
-}
-
-function formatearFechaPost(fechaIso) {
-  if (!fechaIso) {
-    return "hoy";
-  }
-
-  try {
-    const fecha = new Date(fechaIso);
-
-    return fecha.toLocaleString("es-AR", {
-      day: "2-digit",
-      month: "short",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  } catch {
-    return "hoy";
-  }
-}
-
-function crearMediaSudanalytics(media = [], postUrl = "") {
-  if (!Array.isArray(media) || !media.length) {
-    return "";
-  }
-
-  return `
-    <div class="suda-media-grid ${media.length > 1 ? "multiple" : ""}">
-      ${media.map((item) => {
-        if (item.type === "photo") {
-          return `
-            <img
-              class="suda-media"
-              src="${item.url}"
-              alt="Imagen del post"
-              loading="lazy"
-            >
-          `;
-        }
-
-        if (item.type === "video" || item.type === "animated_gif") {
-          if (item.url) {
-            const poster = item.preview ? `poster="${item.preview}"` : "";
-
-            return `
-              <video
-                class="suda-media"
-                controls
-                preload="metadata"
-                ${poster}
-              >
-                <source src="${item.url}" type="video/mp4">
-              </video>
-            `;
-          }
-
-          if (item.preview) {
-            return `
-              <a
-                class="suda-video-preview"
-                href="${postUrl}"
-                target="_blank"
-                rel="noopener"
-                aria-label="Ver video en X"
-              >
-                <img
-                  class="suda-media"
-                  src="${item.preview}"
-                  alt="Vista previa del video"
-                  loading="lazy"
-                >
-
-                <span class="suda-play-button">
-                  ▶
-                </span>
-
-                <span class="suda-video-label">
-                  Ver video en X
-                </span>
-              </a>
-            `;
-          }
-        }
-
-        return "";
-      }).join("")}
-    </div>
-  `;
-}
-
-function crearPostSudanalytics(post) {
-  const fecha = formatearFechaPost(post.fecha);
-  const texto = linkificarTexto(escapeHtml(post.texto || ""));
-  const media = crearMediaSudanalytics(post.media || [], post.url);
-
-  const article = document.createElement("article");
-  article.className = "post-card suda-post-card";
-
-  article.innerHTML = `
-    <div class="post-avatar suda-avatar">S</div>
-
-    <div>
-      <header>
-        <strong>Sudanalytics</strong>
-        <span>@sudanalytics_ · ${fecha}</span>
-      </header>
-
-      <p class="suda-text">${texto}</p>
-
-      ${media}
-
-      <footer>
-        <a class="suda-open-link" href="${post.url}" target="_blank" rel="noopener">
-          Abrir en X
-        </a>
-      </footer>
-    </div>
-  `;
-
-  return article;
-}
-
-async function cargarSudanalyticsPosts(force = false) {
-  if (sudanalyticsLoaded && !force) {
-    return;
-  }
-
-  sudanalyticsLoaded = true;
-
-  postFeed
-    .querySelectorAll(".suda-post-card, .suda-loading, .suda-error")
-    .forEach((item) => item.remove());
-
-  const loading = document.createElement("article");
-  loading.className = "post-card suda-loading";
-  loading.innerHTML = `
-    <div class="post-avatar suda-avatar">S</div>
-    <div>
-      <header>
-        <strong>Sudanalytics</strong>
-        <span>@sudanalytics_</span>
-      </header>
-      <p>Cargando últimos posteos de hoy...</p>
-    </div>
-  `;
-
-  postFeed.prepend(loading);
-  updatePostCount();
-
-  try {
-    const response = await fetch(`${SUDANALYTICS_URL}?v=${Date.now()}`);
-
-    if (!response.ok) {
-  let detalle = `HTTP ${response.status}`;
-
-  try {
-    const errorJson = await response.json();
-
-    if (errorJson.message) {
-      detalle = errorJson.message;
-    }
-  } catch {}
-
-  throw new Error(detalle);
-}
-
-    const json = await response.json();
-    const posts = Array.isArray(json.posts) ? json.posts : [];
-
-    loading.remove();
-
-    if (!posts.length) {
-      const empty = document.createElement("article");
-      empty.className = "post-card suda-loading";
-      empty.innerHTML = `
-        <div class="post-avatar suda-avatar">S</div>
-        <div>
-          <header>
-            <strong>Sudanalytics</strong>
-            <span>@sudanalytics_</span>
-          </header>
-          <p>No hay publicaciones nuevas de Sudanalytics hoy.</p>
-        </div>
-      `;
-
-      postFeed.prepend(empty);
-      updatePostCount();
-      return;
-    }
-
-    const fragment = document.createDocumentFragment();
-
-    posts.forEach((post) => {
-      fragment.append(crearPostSudanalytics(post));
-    });
-
-    postFeed.prepend(fragment);
-    updatePostCount();
-
-  } catch (error) {
-    console.error(error);
-
-    postFeed
-      .querySelectorAll(".suda-post-card, .suda-loading, .suda-error")
-      .forEach((item) => item.remove());
-
-    const errorCard = document.createElement("article");
-    errorCard.className = "post-card suda-error";
-    errorCard.innerHTML = `
-      <div class="post-avatar suda-avatar">S</div>
-      <div>
-        <header>
-          <strong>Sudanalytics</strong>
-          <span>@sudanalytics_</span>
-        </header>
-        <p>No se pudieron cargar los posteos de Sudanalytics: ${escapeHtml(error.message)}</p>
-      </div>
-    `;
-
-    postFeed.prepend(errorCard);
-    updatePostCount();
-  }
-}
 /* ============================================================
    TABS / UI
 ============================================================ */
@@ -1368,10 +1491,9 @@ function activateTab(tab) {
   showSection(activeTab);
 
   if (activeTab === "chat") {
-  notification.textContent = "0";
-  cargarSudanalyticsPosts(true);
-  socialSection.scrollIntoView({ behavior: "smooth", block: "start" });
-}
+    notification.textContent = "0";
+    socialSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 
   if (activeTab === "live") {
     setUtilityOpen(true);
@@ -1427,6 +1549,12 @@ dateButtons.forEach((button) => {
 });
 
 playToggle.addEventListener("click", () => {
+  if (videoCard.dataset.channelUrl) {
+    reloadFeaturedEmbed();
+    videoState.textContent = "Transmitiendo";
+    return;
+  }
+
   const isPlaying = videoCard.classList.toggle("playing");
   videoState.textContent = isPlaying ? "Transmitiendo" : "En pausa";
   playToggle.setAttribute(
@@ -1434,6 +1562,8 @@ playToggle.addEventListener("click", () => {
     isPlaying ? "Pausar partido" : "Reproducir partido"
   );
 });
+
+reloadEmbed.addEventListener("click", reloadFeaturedEmbed);
 
 volumeToggle.addEventListener("click", () => {
   muted = !muted;
@@ -1443,8 +1573,17 @@ volumeToggle.addEventListener("click", () => {
 });
 
 focusToggle.addEventListener("click", () => {
-  videoCard.classList.toggle("focused");
-  videoCard.scrollIntoView({ behavior: "smooth", block: "center" });
+  toggleVideoFullscreen();
+});
+
+document.addEventListener("fullscreenchange", () => {
+  const isFullscreen = document.fullscreenElement === videoCard;
+  videoCard.classList.toggle("focused", isFullscreen);
+  focusToggle.title = isFullscreen ? "Salir de pantalla completa" : "Pantalla completa";
+  focusToggle.setAttribute(
+    "aria-label",
+    isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"
+  );
 });
 
 postForm.addEventListener("submit", (event) => {
@@ -1463,7 +1602,7 @@ postForm.addEventListener("submit", (event) => {
     <div>
       <header>
         <strong>Tu cuenta</strong>
-        <span>@usuario · ahora</span>
+        <span>@usuario Â· ahora</span>
       </header>
       <p></p>
       <footer>
@@ -1475,13 +1614,7 @@ postForm.addEventListener("submit", (event) => {
   `;
 
   post.querySelector("p").textContent = value;
-  const firstUserPost = postFeed.querySelector(".post-card:not(.suda-post-card):not(.suda-loading):not(.suda-error)");
-
-if (firstUserPost) {
-  postFeed.insertBefore(post, firstUserPost);
-} else {
   postFeed.prepend(post);
-}
   postInput.value = "";
   notification.textContent = Number(notification.textContent) + 1;
 
@@ -1544,4 +1677,3 @@ setUtilityStatus("");
 updatePostCount();
 loadAgenda();
 loadEvents();
-cargarSudanalyticsPosts();
