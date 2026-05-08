@@ -73,6 +73,33 @@ const FEATURED_LOGO_FALLBACKS = {
   "independiente medellín": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
 };
 
+const CACHE_TTL_MS = 60_000;
+const STALE_CACHE_TTL_MS = 20 * 60_000;
+const requestCache = new Map();
+const STATIC_STREAM_FALLBACKS = [
+  {
+    titulo: "Copa Libertadores: Junior vs Cerro Porteño",
+    categoria: "futbol",
+    clase: "LIB",
+    fecha: "Jueves 07 de Mayo 2026",
+    fecha_iso: "2026-05-07",
+    hora: "23:00",
+    duracion_min: 140,
+    canales: [
+      {
+        nombre: "Fanatiz",
+        calidad: "720p",
+        url: "https://streamhdx.com/live1.php?stream=fanatiz9",
+      },
+      {
+        nombre: "Disney+",
+        calidad: "720p",
+        url: "https://streamhdx.com/live1.php?stream=disney11",
+      },
+    ],
+  },
+];
+
 /*
   Devuelve fecha local del navegador en formato YYYY-MM-DD.
   Se usa para comparar la fecha seleccionada con los partidos.
@@ -88,6 +115,123 @@ function dateFromOffset(offset) {
   const date = new Date();
   date.setDate(date.getDate() + offset);
   return date;
+}
+
+function readJsonCache(key, maxAge = CACHE_TTL_MS) {
+  try {
+    const raw = localStorage.getItem(key);
+
+    if (!raw) {
+      return null;
+    }
+
+    const cached = JSON.parse(raw);
+
+    if (Date.now() - cached.savedAt > maxAge) {
+      return null;
+    }
+
+    return cached.data;
+  } catch (error) {
+    return null;
+  }
+}
+
+function readAnyJsonCache(key) {
+  try {
+    const raw = localStorage.getItem(key);
+
+    if (!raw) {
+      return null;
+    }
+
+    return JSON.parse(raw).data;
+  } catch (error) {
+    return null;
+  }
+}
+
+function writeJsonCache(key, data) {
+  try {
+    localStorage.setItem(
+      key,
+      JSON.stringify({
+        savedAt: Date.now(),
+        data,
+      })
+    );
+  } catch (error) {
+    // Cache is best-effort only.
+  }
+}
+
+async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS) {
+  const fresh = readJsonCache(cacheKey, ttl);
+
+  if (fresh) {
+    return fresh;
+  }
+
+  if (requestCache.has(cacheKey)) {
+    return requestCache.get(cacheKey);
+  }
+
+  const request = fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      return response.json();
+    })
+    .then((data) => {
+      writeJsonCache(cacheKey, data);
+      return data;
+    })
+    .catch((error) => {
+      const stale = readJsonCache(cacheKey, STALE_CACHE_TTL_MS);
+
+      if (stale) {
+        return stale;
+      }
+
+      throw error;
+    })
+    .finally(() => requestCache.delete(cacheKey));
+
+  requestCache.set(cacheKey, request);
+  return request;
+}
+
+function fetchAgendaPayload() {
+  return fetchJsonCached(`${AGENDA_URL}?v=${Math.floor(Date.now() / CACHE_TTL_MS)}`, "agenda-worker-cache");
+}
+
+function fetchStreamEventsPayload() {
+  return fetchJsonCached(`${EVENTS_URL}?v=${Math.floor(Date.now() / CACHE_TTL_MS)}`, "stream-events-cache");
+}
+
+async function getStreamEventsFallback() {
+  try {
+    const payload = await fetchStreamEventsPayload();
+
+    if (Array.isArray(payload)) {
+      return payload;
+    }
+  } catch (error) {
+    // Fall through to in-memory and stale caches.
+  }
+
+  if (events.length) {
+    return events;
+  }
+
+  const stale = readAnyJsonCache("stream-events-cache");
+  if (Array.isArray(stale) && stale.length) {
+    return stale;
+  }
+
+  return STATIC_STREAM_FALLBACKS;
 }
 
 function normalizeText(value) {
@@ -217,6 +361,44 @@ function splitTitle(title = "") {
   };
 }
 
+function streamElapsedLabel(event, now = new Date()) {
+  const elapsed = Math.max(1, Math.floor((now - eventStart(event)) / 60_000));
+
+  if (elapsed > Number(event.duracion_min || 140)) {
+    return "Fin";
+  }
+
+  return `${elapsed}'`;
+}
+
+function startsAfterNightThreshold(event) {
+  const [hours = "0", minutes = "0"] = String(event.hora || "00:00").split(":");
+  const totalMinutes = Number(hours) * 60 + Number(minutes);
+
+  return totalMinutes >= 21 * 60 + 30;
+}
+
+function eventIsLiveByNightRule(event, now = new Date()) {
+  const start = eventStart(event);
+  const end = eventEnd(event);
+
+  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+    return false;
+  }
+
+  return startsAfterNightThreshold(event) && now >= start && now <= end;
+}
+
+function eventBelongsToTodayOrRecentNight(event, now = new Date()) {
+  const today = localDateISO(now);
+  const yesterday = localDateISO(dateFromOffsetForBase(now, -1));
+
+  return (
+    event.fecha_iso === today ||
+    (event.fecha_iso === yesterday && startsAfterNightThreshold(event))
+  );
+}
+
 function compactMatchName(value) {
   return normalizeText(value)
     .replace(/\b(club|fc|cf|sc|deportivo|independiente|atletico|atl|cd)\b/g, " ")
@@ -267,7 +449,7 @@ function isAgendaMatchLive(match) {
 
 function eventHasLiveAgendaMatch(event) {
   if (!agendaLiveLoaded) {
-    return eventStatus(event) === "live";
+    return false;
   }
 
   if (!agendaLiveMatches.length) {
@@ -291,18 +473,13 @@ function eventHasLiveAgendaMatch(event) {
 
 async function fetchAgendaLiveMatches(date = new Date()) {
   const selectedDate = localDateISO(date);
-  const response = await fetch(`${AGENDA_URL}?v=${Date.now()}`);
-
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status}`);
-  }
-
-  const data = await response.json();
-  const partidos = Array.isArray(data.partidos) ? data.partidos : [];
+  const payload = await fetchAgendaPayload();
+  const partidos = uniqueMatches(
+    Array.isArray(payload.partidos) ? payload.partidos : []
+  );
 
   return partidos.filter((match) => {
-    const matchDate = agendaDate(match);
-    return (!matchDate || matchDate === selectedDate) && isAgendaMatchLive(match);
+    return agendaMatchesSelectedDate(match, selectedDate) && isAgendaMatchLive(match);
   });
 }
 
@@ -316,17 +493,25 @@ function randomFeaturedEvent() {
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
-function autoplayEmbedUrl(url) {
+function autoplayEmbedUrl(url, shouldMute = muted) {
+  if (!url || /^file:/i.test(String(url))) {
+    return "about:blank";
+  }
+
   try {
     const embedUrl = new URL(url, window.location.href);
+
+    if (embedUrl.protocol === "file:") {
+      return "about:blank";
+    }
 
     if (!embedUrl.searchParams.has("autoplay")) {
       embedUrl.searchParams.set("autoplay", "1");
     }
 
-    embedUrl.searchParams.set("muted", "0");
-    embedUrl.searchParams.set("mute", "0");
-    embedUrl.searchParams.set("volume", "1");
+    embedUrl.searchParams.set("muted", shouldMute ? "1" : "0");
+    embedUrl.searchParams.set("mute", shouldMute ? "1" : "0");
+    embedUrl.searchParams.set("volume", shouldMute ? "0" : "1");
 
     if (!embedUrl.searchParams.has("playsinline")) {
       embedUrl.searchParams.set("playsinline", "1");
@@ -350,7 +535,7 @@ function setFeaturedEmbed(channel) {
   volumeToggle.title = "Silenciar";
 
   if (!embedSrc) {
-    featuredFrame.removeAttribute("src");
+    featuredFrame.src = "about:blank";
     featuredFrame.title = "Reproductor sin canal";
     return;
   }
@@ -437,7 +622,7 @@ function reloadFeaturedEmbed() {
     return;
   }
 
-  featuredFrame.removeAttribute("src");
+  featuredFrame.src = "about:blank";
   window.setTimeout(() => {
     featuredFrame.src = autoplayEmbedUrl(channelUrl);
     videoCard.classList.add("has-embed", "playing");
@@ -446,6 +631,22 @@ function reloadFeaturedEmbed() {
     volumeToggle.classList.remove("active");
     volumeToggle.title = "Silenciar";
   }, 80);
+}
+
+function applyEmbedAudioState() {
+  const channelUrl = videoCard.dataset.channelUrl || "";
+
+  volumeToggle.classList.toggle("active", muted);
+  volumeToggle.title = muted ? "Activar sonido" : "Silenciar";
+
+  if (!channelUrl) {
+    videoState.textContent = "Sin canal";
+    return;
+  }
+
+  featuredFrame.src = autoplayEmbedUrl(channelUrl, muted);
+  videoCard.classList.add("has-embed", "playing");
+  videoState.textContent = muted ? "Silenciado" : "Transmitiendo con sonido";
 }
 
 async function toggleVideoFullscreen() {
@@ -472,7 +673,7 @@ function updateFeaturedLegacy() {
     featured.classList.add("no-live");
     featuredStatus.querySelector("strong").textContent = "Sin partidos en vivo ahora";
     featuredStatus.querySelector("p").textContent =
-      "Cuando un evento del JSON este dentro de su horario, aparece destacado aca.";
+      "La lista puede tener streams por horario, pero el destacado espera confirmacion de la agenda.";
     setFeaturedCrest(".crest-a", "-", "");
     setFeaturedCrest(".crest-b", "-", "");
     document.querySelector(".team:first-child strong").textContent = "Sin directo";
@@ -541,7 +742,7 @@ function updateFeatured() {
     featured.classList.add("no-live");
     featuredStatus.querySelector("strong").textContent = "Sin partidos en vivo ahora";
     featuredStatus.querySelector("p").textContent =
-      "Cuando un evento del JSON este dentro de su horario, aparece destacado aca.";
+      "La lista puede tener streams por horario, pero el destacado espera confirmacion de la agenda.";
     setFeaturedCrest(".crest-a", "-", "");
     setFeaturedCrest(".crest-b", "-", "");
     document.querySelector(".team:first-child strong").textContent = "Sin directo";
@@ -592,17 +793,22 @@ function updateFeatured() {
 
 function renderEvents() {
   const now = new Date();
-  const sorted = events.filter(eventHasLiveAgendaMatch);
+  const liveEvents = events.filter((event) => eventStatus(event, now) === "live");
+  const sorted = liveEvents.length
+    ? liveEvents
+    : events.filter((event) => eventBelongsToTodayOrRecentNight(event, now));
 
   liveGrid.innerHTML = "";
 
   if (!sorted.length) {
-    liveTitle.textContent = "Sin partidos en vivo ahora";
-    liveGrid.innerHTML = `<p class="empty-state">No hay partidos en vivo en este momento.</p>`;
+    liveTitle.textContent = "No se encontraron eventos";
+    liveGrid.innerHTML = `<p class="empty-state">No hay partidos para mostrar desde el JSON remoto.</p>`;
     return;
   }
 
-  liveTitle.textContent = `${sorted.length} en vivo ahora`;
+  liveTitle.textContent = liveEvents.length
+    ? `${liveEvents.length} en vivo ahora`
+    : `Agenda cargada: ${sorted.length} eventos`;
 
   const groups = sorted.reduce((acc, event) => {
     const sport = event.categoria || "deporte";
@@ -634,11 +840,29 @@ function renderEvents() {
     const list = groupNode.querySelector(".event-group-list");
 
     group.events.forEach((event) => {
-      const status = "live";
+      const status = eventStatus(event, now);
       const info = splitTitle(event.titulo);
       const card = document.createElement("article");
+      const channelsText = (event.canales || [])
+        .map((channel) => `${channel.nombre || ""} ${channel.calidad || ""}`)
+        .join(" ");
 
       card.className = `event-card live-event-card ${status === "live" ? "is-live" : ""}`;
+      card.dataset.search = searchValue(
+        [
+          info.home,
+          info.away,
+          info.matchup,
+          info.competition,
+          group.league,
+          group.sport,
+          event.hora,
+          event.fecha,
+          event.fecha_iso,
+          status,
+          channelsText,
+        ].join(" ")
+      );
 
       const statusText = {
         live: "Live",
@@ -681,18 +905,13 @@ async function loadEvents() {
   liveTitle.textContent = "Cargando eventos...";
 
   try {
-    const [eventsResponse, liveAgendaResult] = await Promise.all([
-      fetch(`${EVENTS_URL}?v=${Date.now()}`),
+    const [data, liveAgendaResult] = await Promise.all([
+      fetchStreamEventsPayload(),
       fetchAgendaLiveMatches()
         .then((matches) => ({ ok: true, matches }))
         .catch(() => ({ ok: false, matches: [] })),
     ]);
 
-    if (!eventsResponse.ok) {
-      throw new Error(`HTTP ${eventsResponse.status}`);
-    }
-
-    const data = await eventsResponse.json();
     events = Array.isArray(data) ? data : [];
     agendaLiveMatches = liveAgendaResult.matches;
     agendaLiveLoaded = liveAgendaResult.ok;
@@ -704,6 +923,7 @@ async function loadEvents() {
     events.sort((a, b) => eventStart(a) - eventStart(b));
 
     renderEvents();
+    applySearch();
     updateFeatured();
     setUtilityStatus("");
   } catch (error) {
@@ -730,6 +950,119 @@ function agendaDate(match) {
   }
 
   return localDateISO(new Date(match.fecha_espn));
+}
+
+function agendaStart(match) {
+  if (match.fecha_espn) {
+    const date = new Date(match.fecha_espn);
+
+    if (!Number.isNaN(date.getTime())) {
+      return date;
+    }
+  }
+
+  const fecha = agendaDate(match);
+  const hora = match.hora_inicio || match.hora || "00:00";
+
+  if (!fecha) {
+    return new Date(NaN);
+  }
+
+  return new Date(`${fecha}T${hora}:00-03:00`);
+}
+
+function agendaEnd(match) {
+  const duration = Number(match.duracion_min || match.duracion || 180);
+  return new Date(agendaStart(match).getTime() + duration * 60_000);
+}
+
+function agendaMatchesSelectedDate(match, selectedDate) {
+  const matchDate = agendaDate(match);
+
+  if (matchDate === selectedDate) {
+    return true;
+  }
+
+  const start = agendaStart(match);
+  const end = agendaEnd(match);
+
+  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+    return false;
+  }
+
+  const dayStart = new Date(`${selectedDate}T00:00:00-03:00`);
+  const dayEnd = new Date(`${selectedDate}T23:59:59-03:00`);
+
+  return start <= dayEnd && end >= dayStart;
+}
+
+function agendaWindowDates(date) {
+  return [-1, 0, 1].map((offset) => localDateISO(dateFromOffsetForBase(date, offset)));
+}
+
+function dateFromOffsetForBase(baseDate, offset) {
+  const date = new Date(baseDate);
+  date.setDate(date.getDate() + offset);
+  return date;
+}
+
+function agendaMatchKey(match) {
+  const teams = agendaTeams(match);
+
+  return [
+    match.id,
+    match.uid,
+    match.url_espn,
+    agendaDate(match),
+    normalizeText(teams.home),
+    normalizeText(teams.away),
+    match.hora_inicio || match.hora || "",
+  ]
+    .filter(Boolean)
+    .join("|");
+}
+
+function uniqueMatches(matches) {
+  const seen = new Set();
+
+  return matches.filter((match) => {
+    const key = agendaMatchKey(match);
+
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+}
+
+function hasSameTeamsMatch(matches, candidate) {
+  const candidateTeams = agendaTeams(candidate);
+
+  return matches.some((match) => {
+    const teams = agendaTeams(match);
+    const sameOrder =
+      namesLookRelated(candidateTeams.home, teams.home) &&
+      namesLookRelated(candidateTeams.away, teams.away);
+    const swappedOrder =
+      namesLookRelated(candidateTeams.home, teams.away) &&
+      namesLookRelated(candidateTeams.away, teams.home);
+
+    return sameOrder || swappedOrder;
+  });
+}
+
+function mergeStreamAgendaMatches(matches, streamMatches) {
+  const merged = [...matches];
+
+  streamMatches.forEach((streamMatch) => {
+    if (!hasSameTeamsMatch(merged, streamMatch)) {
+      merged.push(streamMatch);
+    }
+  });
+
+  return uniqueMatches(merged);
 }
 
 function agendaStatus(match) {
@@ -1004,6 +1337,58 @@ function agendaRowMatchesQuery(row, query) {
     .split(" ")
     .filter(Boolean)
     .every((term) => search.includes(term));
+}
+
+function liveCardMatchesQuery(card, query) {
+  const normalizedQuery = searchValue(query);
+
+  if (!normalizedQuery) {
+    return true;
+  }
+
+  const search = card.dataset.search || searchValue(card.textContent);
+  const compactQuery = normalizedQuery.replace(/\s+/g, "");
+
+  if (search.includes(normalizedQuery) || search.replace(/\s+/g, "").includes(compactQuery)) {
+    return true;
+  }
+
+  return normalizedQuery
+    .split(" ")
+    .filter(Boolean)
+    .every((term) => search.includes(term));
+}
+
+function applyLiveSearch() {
+  const query = matchSearch.value.trim();
+  const cards = liveGrid.querySelectorAll(".live-event-card");
+  const groups = liveGrid.querySelectorAll(".event-group");
+  let visible = 0;
+
+  cards.forEach((card) => {
+    const matches = liveCardMatchesQuery(card, query);
+    card.classList.toggle("dimmed", !matches);
+
+    if (matches) {
+      visible += 1;
+    }
+  });
+
+  groups.forEach((group) => {
+    const hasVisibleCards = Boolean(group.querySelector(".live-event-card:not(.dimmed)"));
+    group.classList.toggle("dimmed", Boolean(query) && !hasVisibleCards);
+  });
+
+  setUtilityStatus(query ? `${visible} coincidencia${visible === 1 ? "" : "s"}` : "");
+}
+
+function applySearch() {
+  if (activeTab === "live") {
+    applyLiveSearch();
+    return;
+  }
+
+  applyAgendaSearch();
 }
 
 function applyAgendaSearch() {
@@ -1411,13 +1796,7 @@ async function loadAgenda(date = currentAgendaDate) {
   leagueGrid.innerHTML = `<p class="empty-state">Cargando Agenda...</p>`;
 
   try {
-    const response = await fetch(`${AGENDA_URL}?v=${Date.now()}`);
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = await fetchAgendaPayload();
     const partidos = Array.isArray(data.partidos) ? data.partidos : [];
 
     const dailyMatches = partidos
@@ -1462,7 +1841,7 @@ async function loadAgenda(date = currentAgendaDate) {
     leagueGrid.innerHTML = `
       <article class="empty-state">
         <strong>No se pudo cargar la agenda ESPN.</strong>
-        <p>El Worker estÃ¡ temporalmente saturado. ProbÃ¡ recargar en unos minutos.</p>
+        <p>El Worker esta temporalmente saturado. Proba recargar en unos minutos.</p>
         <a class="channel-link" href="${AGENDA_URL}" target="_blank" rel="noreferrer">Abrir JSON</a>
       </article>
     `;
@@ -1498,7 +1877,6 @@ function activateTab(tab) {
   if (activeTab === "live") {
     setUtilityOpen(true);
     loadEvents();
-    liveSection.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
   if (activeTab === "agenda") {
@@ -1525,7 +1903,7 @@ profileToggle.addEventListener("click", () => {
   setUtilityOpen(true);
 });
 
-matchSearch.addEventListener("input", applyAgendaSearch);
+matchSearch.addEventListener("input", applySearch);
 
 dateButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -1567,9 +1945,7 @@ reloadEmbed.addEventListener("click", reloadFeaturedEmbed);
 
 volumeToggle.addEventListener("click", () => {
   muted = !muted;
-  volumeToggle.classList.toggle("active", muted);
-  volumeToggle.title = muted ? "Activar sonido" : "Silenciar";
-  setUtilityOpen(true);
+  applyEmbedAudioState();
 });
 
 focusToggle.addEventListener("click", () => {
