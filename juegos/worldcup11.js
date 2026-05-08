@@ -114,7 +114,36 @@ const DAILY_GAME = {
   ]
 };
 
+const GAME_MODES = {
+  easy: {
+    label: "Fácil",
+    showHints: true,
+    timeLimit: null,
+    help: "Modo fácil: vas a ver sugerencias disponibles."
+  },
+  normal: {
+    label: "Normal",
+    showHints: false,
+    timeLimit: null,
+    help: "Modo normal: sin ayudas y sin tiempo en contra."
+  },
+  hard: {
+    label: "Difícil",
+    showHints: false,
+    timeLimit: 90,
+    help: "Modo difícil: sin ayudas y con 90 segundos."
+  },
+  impossible: {
+    label: "Imposible",
+    showHints: false,
+    timeLimit: 30,
+    help: "Modo imposible: sin ayudas y con 30 segundos."
+  }
+};
+
 const slots = document.querySelectorAll(".position-slot");
+const modeButtons = document.querySelectorAll(".mode-btn");
+
 const countryFlag = document.getElementById("countryFlag");
 const countryName = document.getElementById("countryName");
 const playerForm = document.getElementById("playerForm");
@@ -124,25 +153,33 @@ const surrenderBtn = document.getElementById("surrenderBtn");
 const helpBtn = document.getElementById("helpBtn");
 const completedText = document.getElementById("completedText");
 const scoreText = document.getElementById("scoreText");
-const formationText = document.getElementById("formationText");
+const modeText = document.getElementById("modeText");
+const timerText = document.getElementById("timerText");
+const modeHint = document.getElementById("modeHint");
 const resultModal = document.getElementById("resultModal");
 const resultTitle = document.getElementById("resultTitle");
 const resultText = document.getElementById("resultText");
 const shareBtn = document.getElementById("shareBtn");
 const restartBtn = document.getElementById("restartBtn");
 
+let currentMode = "easy";
 let selectedSlot = null;
 let completedSlots = [];
 let usedPlayers = [];
 let score = 0;
+let timeLeft = null;
+let timerInterval = null;
+let gameFinished = false;
 
 function initGame() {
+  stopTimer();
+
   selectedSlot = null;
   completedSlots = [];
   usedPlayers = [];
   score = 0;
+  gameFinished = false;
 
-  formationText.textContent = DAILY_GAME.formationName;
   resultModal.classList.add("hidden");
   playerSearch.value = "";
   suggestions.innerHTML = "";
@@ -156,21 +193,78 @@ function initGame() {
     slot.dataset.flag = data.flag;
 
     slot.classList.remove("filled", "selected");
-    slot.innerHTML = `
-      ${data.position}
-      <small>${data.flag} ${data.country}</small>
-    `;
+    slot.innerHTML = data.position;
 
     slot.onclick = () => {
       selectSlot(slot);
     };
   });
 
+  applyModeUi();
   selectNextEmptySlot();
+  startTimerIfNeeded();
   updateStatus();
 }
 
+function applyModeUi() {
+  const mode = GAME_MODES[currentMode];
+
+  modeText.textContent = mode.label;
+  modeHint.textContent = mode.help;
+
+  if (mode.showHints) {
+    suggestions.classList.remove("hidden");
+  } else {
+    suggestions.classList.add("hidden");
+    suggestions.innerHTML = "";
+  }
+
+  if (mode.timeLimit === null) {
+    timeLeft = null;
+    timerText.textContent = "Sin límite";
+  } else {
+    timeLeft = mode.timeLimit;
+    timerText.textContent = formatTime(timeLeft);
+  }
+
+  modeButtons.forEach(button => {
+    button.classList.toggle("active", button.dataset.mode === currentMode);
+  });
+}
+
+function startTimerIfNeeded() {
+  const mode = GAME_MODES[currentMode];
+
+  if (mode.timeLimit === null) return;
+
+  timerInterval = setInterval(() => {
+    if (gameFinished) {
+      stopTimer();
+      return;
+    }
+
+    timeLeft--;
+
+    if (timeLeft <= 0) {
+      timeLeft = 0;
+      timerText.textContent = formatTime(timeLeft);
+      finishGame("time");
+      return;
+    }
+
+    timerText.textContent = formatTime(timeLeft);
+  }, 1000);
+}
+
+function stopTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+}
+
 function selectSlot(slot) {
+  if (gameFinished) return;
   if (slot.classList.contains("filled")) return;
 
   slots.forEach(item => item.classList.remove("selected"));
@@ -206,6 +300,13 @@ function getSlotData(slot) {
 }
 
 function renderSuggestions(query) {
+  const mode = GAME_MODES[currentMode];
+
+  if (!mode.showHints) {
+    suggestions.innerHTML = "";
+    return;
+  }
+
   suggestions.innerHTML = "";
 
   if (!selectedSlot) return;
@@ -213,7 +314,7 @@ function renderSuggestions(query) {
   const data = getSlotData(selectedSlot);
   const value = normalizeText(query);
 
-  let filtered = data.players.filter(player => {
+  const filtered = data.players.filter(player => {
     if (usedPlayers.includes(player.name)) return false;
 
     if (!value) return true;
@@ -226,7 +327,7 @@ function renderSuggestions(query) {
     suggestions.innerHTML = `
       <button class="suggestion-item" type="button">
         <strong>No encontré ese jugador</strong>
-        <span>Debe ser de ${data.country} y jugar como ${data.position}</span>
+        <span>Debe coincidir con ${data.country} y ${data.position}</span>
       </button>
     `;
     return;
@@ -254,6 +355,7 @@ function renderSuggestions(query) {
 }
 
 function placePlayer(player) {
+  if (gameFinished) return;
   if (!selectedSlot) return;
 
   const data = getSlotData(selectedSlot);
@@ -268,12 +370,12 @@ function placePlayer(player) {
 
   selectedSlot.innerHTML = `
     ${player.name}
-    <small>${data.flag} ${data.country} · ${data.position}</small>
+    <small>${data.position}</small>
   `;
 
   completedSlots.push(data.id);
   usedPlayers.push(player.name);
-  score += 100;
+  score += calculatePoints();
 
   selectedSlot = null;
   playerSearch.value = "";
@@ -282,14 +384,24 @@ function placePlayer(player) {
   updateStatus();
 
   if (completedSlots.length === DAILY_GAME.slots.length) {
-    finishGame(false);
+    finishGame("complete");
     return;
   }
 
   selectNextEmptySlot();
 }
 
+function calculatePoints() {
+  if (currentMode === "easy") return 100;
+  if (currentMode === "normal") return 150;
+  if (currentMode === "hard") return 200;
+  if (currentMode === "impossible") return 300;
+  return 100;
+}
+
 function trySubmitSearch() {
+  if (gameFinished) return;
+
   if (!selectedSlot) {
     selectNextEmptySlot();
     return;
@@ -318,7 +430,11 @@ function trySubmitSearch() {
   });
 
   if (!matches.length) {
-    renderSuggestions(playerSearch.value);
+    if (GAME_MODES[currentMode].showHints) {
+      renderSuggestions(playerSearch.value);
+    } else {
+      showTemporaryPlaceholder(`No coincide con ${data.country} / ${data.position}`);
+    }
     return;
   }
 
@@ -339,7 +455,27 @@ function trySubmitSearch() {
     return;
   }
 
-  renderSuggestions(playerSearch.value);
+  if (GAME_MODES[currentMode].showHints) {
+    renderSuggestions(playerSearch.value);
+  } else {
+    showTemporaryPlaceholder("Hay más de una coincidencia. Escribí mejor el nombre.");
+  }
+}
+
+function showTemporaryPlaceholder(message) {
+  const original = playerSearch.placeholder;
+
+  playerSearch.value = "";
+  playerSearch.placeholder = message;
+
+  setTimeout(() => {
+    if (!gameFinished && selectedSlot) {
+      const data = getSlotData(selectedSlot);
+      playerSearch.placeholder = `Jugador de ${data.country} para ${data.position}...`;
+    } else {
+      playerSearch.placeholder = original;
+    }
+  }, 1400);
 }
 
 function updateStatus() {
@@ -347,16 +483,28 @@ function updateStatus() {
   scoreText.textContent = score;
 }
 
-function finishGame(bySurrender) {
+function finishGame(reason) {
+  if (gameFinished) return;
+
+  gameFinished = true;
+  stopTimer();
+
   resultModal.classList.remove("hidden");
 
-  if (bySurrender) {
+  if (reason === "surrender") {
     resultTitle.textContent = "Te rendiste";
     resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.slots.length} posiciones. Puntaje final: ${score}.`;
-  } else {
-    resultTitle.textContent = "Equipo completado";
-    resultText.textContent = `Completaste el 11 con la formación ${DAILY_GAME.formationName}. Puntaje final: ${score}.`;
+    return;
   }
+
+  if (reason === "time") {
+    resultTitle.textContent = "Se terminó el tiempo";
+    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.slots.length} posiciones en modo ${GAME_MODES[currentMode].label}. Puntaje final: ${score}.`;
+    return;
+  }
+
+  resultTitle.textContent = "Equipo completado";
+  resultText.textContent = `Completaste el 11 en modo ${GAME_MODES[currentMode].label}. Puntaje final: ${score}.`;
 }
 
 function normalizeText(text) {
@@ -366,6 +514,20 @@ function normalizeText(text) {
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
 }
+
+function formatTime(seconds) {
+  const min = Math.floor(seconds / 60);
+  const sec = seconds % 60;
+
+  return `${min}:${String(sec).padStart(2, "0")}`;
+}
+
+modeButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    currentMode = button.dataset.mode;
+    initGame();
+  });
+});
 
 playerSearch.addEventListener("input", () => {
   renderSuggestions(playerSearch.value);
@@ -377,11 +539,11 @@ playerForm.addEventListener("submit", event => {
 });
 
 surrenderBtn.addEventListener("click", () => {
-  finishGame(true);
+  finishGame("surrender");
 });
 
 shareBtn.addEventListener("click", async () => {
-  const text = `Armé mi 11 en Partidos.Hoy ⚽\nFormación: ${DAILY_GAME.formationName}\nPuntaje: ${score}`;
+  const text = `Armé mi 11 en Partidos.Hoy ⚽\nModo: ${GAME_MODES[currentMode].label}\nFormación: ${DAILY_GAME.formationName}\nPuntaje: ${score}`;
 
   if (navigator.share) {
     await navigator.share({
@@ -399,7 +561,7 @@ restartBtn.addEventListener("click", () => {
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Cada posición tiene un país. Escribí un jugador válido de ese país para completar el casillero seleccionado.");
+  alert("Cada posición tiene un país indicado abajo. Escribí un jugador válido para ese país y esa posición. En modo fácil hay ayudas. En normal, difícil e imposible no hay ayudas.");
 });
 
 initGame();
