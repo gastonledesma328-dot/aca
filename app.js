@@ -44,7 +44,7 @@ const featured = document.querySelector(".featured");
 const featuredStatus = document.querySelector("#featuredStatus");
 const mainScore = document.querySelector("#mainScore");
 const leagueGrid = document.querySelector("#leagueGrid");
-const socialSection = document.querySelector("#socialSection");
+const gamesSection = document.querySelector("#gamesSection");
 const liveSection = document.querySelector("#liveSection");
 const liveGrid = document.querySelector("#liveGrid");
 const liveTitle = document.querySelector("#liveTitle");
@@ -53,7 +53,6 @@ const postForm = document.querySelector("#postForm");
 const postInput = document.querySelector("#postInput");
 const postFeed = document.querySelector("#postFeed");
 const postCounter = document.querySelector("#postCounter");
-const notification = document.querySelector(".notification");
 
 let activeTab = "agenda";
 let muted = false;
@@ -65,6 +64,9 @@ let currentAgendaDate = new Date();
 
 let agendaLoadedDate = "";
 let agendaLoading = false;
+let featuredChannels = [];
+let featuredChannelIndex = 0;
+let featuredEmbedTimer = null;
 
 const FEATURED_LOGO_FALLBACKS = {
   flamengo: "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
@@ -288,7 +290,7 @@ function setUtilityStatus(text = "") {
 function showSection(section) {
   const isLive = section === "live";
 
-  socialSection.classList.toggle("hidden", section !== "chat");
+  gamesSection.classList.toggle("hidden", section !== "games");
   liveSection.classList.toggle("hidden", !isLive);
   leagueGrid.classList.toggle("hidden", section !== "agenda");
   featured.classList.toggle("hidden", !isLive);
@@ -448,6 +450,10 @@ function isAgendaMatchLive(match) {
 }
 
 function eventHasLiveAgendaMatch(event) {
+  if (eventStatus(event) === "live") {
+    return true;
+  }
+
   if (!agendaLiveLoaded) {
     return false;
   }
@@ -534,6 +540,8 @@ function setFeaturedEmbed(channel) {
   volumeToggle.classList.remove("active");
   volumeToggle.title = "Silenciar";
 
+  window.clearTimeout(featuredEmbedTimer);
+
   if (!embedSrc) {
     featuredFrame.src = "about:blank";
     featuredFrame.title = "Reproductor sin canal";
@@ -545,6 +553,27 @@ function setFeaturedEmbed(channel) {
   }
 
   featuredFrame.title = `Reproductor ${channel.nombre || "canal en vivo"}`;
+  featuredEmbedTimer = window.setTimeout(() => {
+    tryNextFeaturedChannel();
+  }, 7000);
+}
+
+function setFeaturedChannels(channels = []) {
+  featuredChannels = channels.filter((channel) => channel?.url);
+  featuredChannelIndex = 0;
+  setFeaturedEmbed(featuredChannels[featuredChannelIndex] || null);
+}
+
+function tryNextFeaturedChannel() {
+  if (featuredChannels.length <= 1) {
+    return;
+  }
+
+  featuredChannelIndex = (featuredChannelIndex + 1) % featuredChannels.length;
+  const nextChannel = featuredChannels[featuredChannelIndex];
+
+  videoState.textContent = `Probando ${nextChannel.nombre || "alternativa"}`;
+  setFeaturedEmbed(nextChannel);
 }
 
 function fallbackFeaturedLogo(teamName) {
@@ -622,6 +651,11 @@ function reloadFeaturedEmbed() {
     return;
   }
 
+  tryNextFeaturedChannel();
+  if (featuredChannels.length > 1) {
+    return;
+  }
+
   featuredFrame.src = "about:blank";
   window.setTimeout(() => {
     featuredFrame.src = autoplayEmbedUrl(channelUrl);
@@ -648,6 +682,12 @@ function applyEmbedAudioState() {
   videoCard.classList.add("has-embed", "playing");
   videoState.textContent = muted ? "Silenciado" : "Transmitiendo con sonido";
 }
+
+featuredFrame.addEventListener("load", () => {
+  window.clearTimeout(featuredEmbedTimer);
+});
+
+featuredFrame.addEventListener("error", tryNextFeaturedChannel);
 
 async function toggleVideoFullscreen() {
   if (!videoCard.classList.contains("has-embed")) {
@@ -680,7 +720,7 @@ function updateFeaturedLegacy() {
     document.querySelector(".team:last-child strong").textContent = "Ahora";
     document.querySelector(".live-pill").textContent = "Live";
     mainScore.textContent = "--";
-    setFeaturedEmbed(null);
+    setFeaturedChannels([]);
     videoState.textContent = "Sin directo";
     watchButton.textContent = "Sin canal";
     watchButton.disabled = true;
@@ -697,7 +737,8 @@ function updateFeaturedLegacy() {
     upcoming: "PROX",
     ended: "FIN",
   }[status];
-  const firstChannel = featuredEvent.canales?.[0] || null;
+  const channels = Array.isArray(featuredEvent.canales) ? featuredEvent.canales : [];
+  const firstChannel = channels.find((channel) => channel?.url) || null;
   const liveEvent = featuredEvent;
 
   featured.classList.remove("no-live");
@@ -724,7 +765,7 @@ function updateFeaturedLegacy() {
   featuredStatus.querySelector("p").textContent =
     `${featuredEvent.hora || "--:--"} - ${featuredEvent.clase || featuredEvent.categoria || "Evento"} - ${firstChannel?.nombre || "Canal disponible"}`;
 
-  setFeaturedEmbed(firstChannel);
+  setFeaturedChannels(channels);
   videoState.textContent = firstChannel
     ? `Transmitiendo ${firstChannel.nombre} ${firstChannel.calidad || ""}`.trim()
     : "Sin canal";
@@ -1851,10 +1892,14 @@ async function loadAgenda(date = currentAgendaDate) {
 }
 
 /* ============================================================
-   CHAT
+   JUEGOS / LEGACY SOCIAL
 ============================================================ */
 
 function updatePostCount() {
+  if (!postFeed || !postCounter) {
+    return;
+  }
+
   const total = postFeed.querySelectorAll(".post-card").length;
   postCounter.textContent = `${total} post${total === 1 ? "" : "s"}`;
 }
@@ -1868,11 +1913,6 @@ function activateTab(tab) {
 
   tabs.forEach((item) => item.classList.toggle("active", item === tab));
   showSection(activeTab);
-
-  if (activeTab === "chat") {
-    notification.textContent = "0";
-    socialSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
 
   if (activeTab === "live") {
     setUtilityOpen(true);
@@ -1962,7 +2002,7 @@ document.addEventListener("fullscreenchange", () => {
   );
 });
 
-postForm.addEventListener("submit", (event) => {
+postForm?.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const value = postInput.value.trim();
@@ -1992,12 +2032,10 @@ postForm.addEventListener("submit", (event) => {
   post.querySelector("p").textContent = value;
   postFeed.prepend(post);
   postInput.value = "";
-  notification.textContent = Number(notification.textContent) + 1;
-
   updatePostCount();
 });
 
-postFeed.addEventListener("click", (event) => {
+postFeed?.addEventListener("click", (event) => {
   const likeButton = event.target.closest("[data-like]");
 
   if (!likeButton) {
