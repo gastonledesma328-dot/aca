@@ -370,6 +370,18 @@ svg {
   font-weight: 900;
 }
 
+.crest.has-logo {
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.92) !important;
+}
+
+.crest img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
 .crest-a {
   background: linear-gradient(160deg, #3b82f6, #1e3a8a);
 }
@@ -421,6 +433,37 @@ svg {
 
 .video-card.focused {
   outline: 3px solid rgba(95, 207, 128, 0.5);
+}
+
+.video-card:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  border-radius: 0;
+  background: #000;
+}
+
+.video-card:fullscreen .featured-frame {
+  width: 100vw;
+  height: 100vh;
+}
+
+.featured-frame {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 0;
+  background: #000;
+}
+
+.video-card:not(.has-embed) .featured-frame {
+  display: none;
+}
+
+.video-card.has-embed .play-btn {
+  display: none;
 }
 
 .video-card::before {
@@ -480,6 +523,11 @@ svg {
   z-index: 2;
 }
 
+.watch-btn:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
 .video-state {
   position: absolute;
   top: 10px;
@@ -503,14 +551,14 @@ svg {
 }
 
 .video-tools button {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   padding: 0;
-  border-radius: 5px;
+  border-radius: 50%;
   display: grid;
   place-items: center;
   color: rgba(255, 255, 255, 0.72);
-  background: transparent;
+  background: rgba(0, 0, 0, 0.38);
 }
 
 .video-tools svg {
@@ -1561,108 +1609,6 @@ footer strong {
   }
 }
 
-.suda-post-card {
-  border-color: rgba(95, 207, 128, 0.25);
-}
-
-.suda-avatar {
-  background: #5fcf80;
-  color: #102018;
-  font-weight: 900;
-}
-
-.suda-text {
-  white-space: pre-wrap;
-}
-
-.suda-text a {
-  color: #5fcf80;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.suda-media-grid {
-  display: grid;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.suda-media-grid.multiple {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.suda-media {
-  width: 100%;
-  max-height: 420px;
-  object-fit: cover;
-  border-radius: 12px;
-  background: #000;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.suda-open-link {
-  color: #5fcf80;
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.suda-error p {
-  color: #e8533a;
-}
-
-@media (max-width: 700px) {
-  .suda-media-grid.multiple {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-.suda-video-preview {
-  position: relative;
-  display: block;
-  border-radius: 12px;
-  overflow: hidden;
-  text-decoration: none;
-  background: #000;
-}
-
-.suda-video-preview::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.22);
-  pointer-events: none;
-}
-
-.suda-play-button {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 58px;
-  height: 58px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: rgba(0,0,0,0.75);
-  color: #ffffff;
-  display: grid;
-  place-items: center;
-  font-size: 24px;
-  z-index: 2;
-  padding-left: 4px;
-}
-
-.suda-video-label {
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  z-index: 2;
-  background: rgba(0,0,0,0.75);
-  color: #ffffff;
-  border-radius: 999px;
-  padding: 7px 11px;
-  font-size: 12px;
-  font-weight: 800;
-}
 /* ================================
    LINKS DE EQUIPO
 ================================ */
