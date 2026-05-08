@@ -52,7 +52,7 @@
 
       <section class="featured" aria-label="Partido destacado">
         <article class="score-panel">
-          <p class="eyebrow">Featured match</p>
+          <p class="eyebrow">Partido destacado</p>
           <div class="score-grid">
             <div class="team">
               <span class="crest crest-a">A</span>
@@ -71,16 +71,28 @@
         </article>
 
         <article class="video-card" id="videoCard" aria-label="Reproductor en vivo">
+          <iframe
+            class="featured-frame"
+            id="featuredFrame"
+            title="Reproductor del partido destacado"
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+            allowfullscreen
+            loading="eager"
+            referrerpolicy="no-referrer"
+          ></iframe>
           <button class="play-btn" id="playToggle" type="button" aria-label="Reproducir partido">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7Z"/></svg>
           </button>
           <button class="watch-btn" type="button">Watch live</button>
           <p class="video-state" id="videoState">En pausa</p>
           <div class="video-tools">
+            <button type="button" id="reloadEmbed" aria-label="Recargar reproductor" title="Recargar reproductor">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+            </button>
             <button type="button" id="volumeToggle" aria-label="Volumen" title="Volumen">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm5.5 3.5a5 5 0 0 1 0 7M19 6a8 8 0 0 1 0 12"/></svg>
             </button>
-            <button type="button" id="focusToggle" aria-label="Enfocar video" title="Enfocar video">
+            <button type="button" id="focusToggle" aria-label="Pantalla completa" title="Pantalla completa">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m18 0V3h-5M3 16v5h5m8 0h5v-5"/></svg>
             </button>
           </div>
