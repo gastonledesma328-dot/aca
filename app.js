@@ -1107,11 +1107,7 @@ async function loadAgenda(date = currentAgendaDate) {
   }
 }
 
-/* ============================================================
-   CHAT / SUDANALYTICS
-============================================================ */
 
-let sudanalyticsLoaded = false;
 
 /* ============================================================
    CHAT / SUDANALYTICS
