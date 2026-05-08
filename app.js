@@ -1155,7 +1155,7 @@ function formatearFechaPost(fechaIso) {
   }
 }
 
-function crearMediaSudanalytics(media = []) {
+function crearMediaSudanalytics(media = [], postUrl = "") {
   if (!Array.isArray(media) || !media.length) {
     return "";
   }
@@ -1192,12 +1192,28 @@ function crearMediaSudanalytics(media = []) {
 
           if (item.preview) {
             return `
-              <img
-                class="suda-media"
-                src="${item.preview}"
-                alt="Vista previa del video"
-                loading="lazy"
+              <a
+                class="suda-video-preview"
+                href="${postUrl}"
+                target="_blank"
+                rel="noopener"
+                aria-label="Ver video en X"
               >
+                <img
+                  class="suda-media"
+                  src="${item.preview}"
+                  alt="Vista previa del video"
+                  loading="lazy"
+                >
+
+                <span class="suda-play-button">
+                  ▶
+                </span>
+
+                <span class="suda-video-label">
+                  Ver video en X
+                </span>
+              </a>
             `;
           }
         }
@@ -1211,7 +1227,7 @@ function crearMediaSudanalytics(media = []) {
 function crearPostSudanalytics(post) {
   const fecha = formatearFechaPost(post.fecha);
   const texto = linkificarTexto(escapeHtml(post.texto || ""));
-  const media = crearMediaSudanalytics(post.media || []);
+  const media = crearMediaSudanalytics(post.media || [], post.url);
 
   const article = document.createElement("article");
   article.className = "post-card suda-post-card";
