@@ -2,41 +2,19 @@
   "formations": [
     {
       "name": "3-5-2",
-      "rows": [
-        ["ST", "ST"],
-        ["CAM"],
-        ["LM", "CDM", "CDM", "RM"],
-        ["CB", "CB", "CB"],
-        ["GK"]
-      ]
+      "rows": [["ST", "ST"], ["CAM"], ["LM", "CDM", "CDM", "RM"], ["CB", "CB", "CB"], ["GK"]]
     },
     {
       "name": "4-3-3",
-      "rows": [
-        ["LW", "ST", "RW"],
-        ["CM", "CM", "CM"],
-        ["LB", "CB", "CB", "RB"],
-        ["GK"]
-      ]
+      "rows": [["LW", "ST", "RW"], ["CM", "CM", "CM"], ["LB", "CB", "CB", "RB"], ["GK"]]
     },
     {
       "name": "4-4-2",
-      "rows": [
-        ["ST", "ST"],
-        ["LM", "CM", "CM", "RM"],
-        ["LB", "CB", "CB", "RB"],
-        ["GK"]
-      ]
+      "rows": [["ST", "ST"], ["LM", "CM", "CM", "RM"], ["LB", "CB", "CB", "RB"], ["GK"]]
     },
     {
       "name": "4-2-3-1",
-      "rows": [
-        ["ST"],
-        ["LW", "CAM", "RW"],
-        ["CDM", "CDM"],
-        ["LB", "CB", "CB", "RB"],
-        ["GK"]
-      ]
+      "rows": [["ST"], ["LW", "CAM", "RW"], ["CDM", "CDM"], ["LB", "CB", "CB", "RB"], ["GK"]]
     }
   ],
   "countries": [
@@ -61,7 +39,8 @@
         { "name": "Nicolás Otamendi", "position": "CB", "club": "Benfica", "status": "Suplente" },
         { "name": "Leandro Paredes", "position": "CDM", "club": "Roma", "status": "Suplente" },
         { "name": "Giovani Lo Celso", "position": "CAM", "club": "Real Betis", "status": "Suplente" },
-        { "name": "Alejandro Garnacho", "position": "LW", "club": "Manchester United", "status": "Suplente" }
+        { "name": "Alejandro Garnacho", "position": "LW", "club": "Manchester United", "status": "Suplente" },
+        { "name": "Valentín Carboni", "position": "CAM", "club": "Marseille", "status": "Suplente" }
       ]
     },
     {
@@ -82,7 +61,11 @@
         { "name": "Raphinha", "position": "RW", "club": "Barcelona", "status": "Titular" },
         { "name": "Ederson", "position": "GK", "club": "Manchester City", "status": "Suplente" },
         { "name": "Éder Militão", "position": "CB", "club": "Real Madrid", "status": "Suplente" },
-        { "name": "Endrick", "position": "ST", "club": "Real Madrid", "status": "Suplente" }
+        { "name": "Beraldo", "position": "CB", "club": "PSG", "status": "Suplente" },
+        { "name": "Douglas Luiz", "position": "CM", "club": "Juventus", "status": "Suplente" },
+        { "name": "Andreas Pereira", "position": "CAM", "club": "Fulham", "status": "Suplente" },
+        { "name": "Endrick", "position": "ST", "club": "Real Madrid", "status": "Suplente" },
+        { "name": "Savinho", "position": "RW", "club": "Manchester City", "status": "Suplente" }
       ]
     },
     {
@@ -103,7 +86,11 @@
         { "name": "Marcus Thuram", "position": "ST", "club": "Inter Milan", "status": "Titular" },
         { "name": "Brice Samba", "position": "GK", "club": "Lens", "status": "Suplente" },
         { "name": "Ibrahima Konaté", "position": "CB", "club": "Liverpool", "status": "Suplente" },
-        { "name": "Bradley Barcola", "position": "LW", "club": "PSG", "status": "Suplente" }
+        { "name": "Ferland Mendy", "position": "LB", "club": "Real Madrid", "status": "Suplente" },
+        { "name": "Youssouf Fofana", "position": "CM", "club": "AC Milan", "status": "Suplente" },
+        { "name": "Bradley Barcola", "position": "LW", "club": "PSG", "status": "Suplente" },
+        { "name": "Randal Kolo Muani", "position": "ST", "club": "PSG", "status": "Suplente" },
+        { "name": "Kingsley Coman", "position": "RW", "club": "Bayern Munich", "status": "Suplente" }
       ]
     },
     {
@@ -123,8 +110,12 @@
         { "name": "Nico Williams", "position": "LW", "club": "Athletic Club", "status": "Titular" },
         { "name": "Álvaro Morata", "position": "ST", "club": "AC Milan", "status": "Titular" },
         { "name": "David Raya", "position": "GK", "club": "Arsenal", "status": "Suplente" },
+        { "name": "Dani Vivian", "position": "CB", "club": "Athletic Club", "status": "Suplente" },
+        { "name": "Alejandro Grimaldo", "position": "LB", "club": "Bayer Leverkusen", "status": "Suplente" },
+        { "name": "Martín Zubimendi", "position": "CDM", "club": "Real Sociedad", "status": "Suplente" },
         { "name": "Dani Olmo", "position": "CAM", "club": "Barcelona", "status": "Suplente" },
-        { "name": "Ferran Torres", "position": "RW", "club": "Barcelona", "status": "Suplente" }
+        { "name": "Ferran Torres", "position": "RW", "club": "Barcelona", "status": "Suplente" },
+        { "name": "Mikel Oyarzabal", "position": "ST", "club": "Real Sociedad", "status": "Suplente" }
       ]
     },
     {
@@ -133,69 +124,23 @@
       "dt": "Javier Aguirre",
       "players": [
         { "name": "Luis Malagón", "position": "GK", "club": "América", "status": "Titular" },
+        { "name": "Jorge Sánchez", "position": "RB", "club": "Cruz Azul", "status": "Titular" },
         { "name": "César Montes", "position": "CB", "club": "Lokomotiv Moscow", "status": "Titular" },
         { "name": "Johan Vásquez", "position": "CB", "club": "Genoa", "status": "Titular" },
+        { "name": "Gerardo Arteaga", "position": "LB", "club": "Monterrey", "status": "Titular" },
         { "name": "Edson Álvarez", "position": "CDM", "club": "West Ham", "status": "Titular" },
+        { "name": "Luis Romo", "position": "CM", "club": "Cruz Azul", "status": "Titular" },
+        { "name": "Orbelín Pineda", "position": "CAM", "club": "AEK Athens", "status": "Titular" },
+        { "name": "César Huerta", "position": "LW", "club": "Pumas UNAM", "status": "Titular" },
         { "name": "Santiago Giménez", "position": "ST", "club": "Feyenoord", "status": "Titular" },
+        { "name": "Alexis Vega", "position": "RW", "club": "Toluca", "status": "Titular" },
         { "name": "Guillermo Ochoa", "position": "GK", "club": "AVS Futebol", "status": "Suplente" },
-        { "name": "Raúl Jiménez", "position": "ST", "club": "Fulham", "status": "Suplente" }
-      ]
-    },
-    {
-      "country": "Estados Unidos",
-      "flagCode": "us",
-      "dt": "Mauricio Pochettino",
-      "players": [
-        { "name": "Matt Turner", "position": "GK", "club": "Crystal Palace", "status": "Titular" },
-        { "name": "Antonee Robinson", "position": "LB", "club": "Fulham", "status": "Titular" },
-        { "name": "Tim Ream", "position": "CB", "club": "Charlotte FC", "status": "Titular" },
-        { "name": "Weston McKennie", "position": "CM", "club": "Juventus", "status": "Titular" },
-        { "name": "Christian Pulisic", "position": "LW", "club": "AC Milan", "status": "Titular" },
-        { "name": "Folarin Balogun", "position": "ST", "club": "Monaco", "status": "Titular" },
-        { "name": "Ricardo Pepi", "position": "ST", "club": "PSV", "status": "Suplente" }
-      ]
-    },
-    {
-      "country": "Uruguay",
-      "flagCode": "uy",
-      "dt": "Marcelo Bielsa",
-      "players": [
-        { "name": "Sergio Rochet", "position": "GK", "club": "Internacional", "status": "Titular" },
-        { "name": "Ronald Araújo", "position": "CB", "club": "Barcelona", "status": "Titular" },
-        { "name": "Josema Giménez", "position": "CB", "club": "Atlético Madrid", "status": "Titular" },
-        { "name": "Federico Valverde", "position": "CM", "club": "Real Madrid", "status": "Titular" },
-        { "name": "Manuel Ugarte", "position": "CDM", "club": "Manchester United", "status": "Titular" },
-        { "name": "Darwin Núñez", "position": "ST", "club": "Liverpool", "status": "Titular" },
-        { "name": "Luis Suárez", "position": "ST", "club": "Inter Miami", "status": "Suplente" }
-      ]
-    },
-    {
-      "country": "Inglaterra",
-      "flagCode": "gb-eng",
-      "dt": "Thomas Tuchel",
-      "players": [
-        { "name": "Jordan Pickford", "position": "GK", "club": "Everton", "status": "Titular" },
-        { "name": "John Stones", "position": "CB", "club": "Manchester City", "status": "Titular" },
-        { "name": "Kyle Walker", "position": "RB", "club": "Manchester City", "status": "Titular" },
-        { "name": "Declan Rice", "position": "CDM", "club": "Arsenal", "status": "Titular" },
-        { "name": "Jude Bellingham", "position": "CAM", "club": "Real Madrid", "status": "Titular" },
-        { "name": "Harry Kane", "position": "ST", "club": "Bayern Munich", "status": "Titular" },
-        { "name": "Bukayo Saka", "position": "RW", "club": "Arsenal", "status": "Titular" },
-        { "name": "Cole Palmer", "position": "CAM", "club": "Chelsea", "status": "Suplente" }
-      ]
-    },
-    {
-      "country": "Portugal",
-      "flagCode": "pt",
-      "dt": "Roberto Martínez",
-      "players": [
-        { "name": "Diogo Costa", "position": "GK", "club": "Porto", "status": "Titular" },
-        { "name": "Rúben Dias", "position": "CB", "club": "Manchester City", "status": "Titular" },
-        { "name": "Bruno Fernandes", "position": "CAM", "club": "Manchester United", "status": "Titular" },
-        { "name": "Bernardo Silva", "position": "RM", "club": "Manchester City", "status": "Titular" },
-        { "name": "Cristiano Ronaldo", "position": "ST", "club": "Al-Nassr", "status": "Titular" },
-        { "name": "Rafael Leão", "position": "LW", "club": "AC Milan", "status": "Titular" },
-        { "name": "João Félix", "position": "ST", "club": "Chelsea", "status": "Suplente" }
+        { "name": "Israel Reyes", "position": "CB", "club": "América", "status": "Suplente" },
+        { "name": "Jesús Angulo", "position": "LB", "club": "Tigres UANL", "status": "Suplente" },
+        { "name": "Luis Chávez", "position": "CM", "club": "Dinamo Moscow", "status": "Suplente" },
+        { "name": "Roberto Alvarado", "position": "RW", "club": "Chivas", "status": "Suplente" },
+        { "name": "Raúl Jiménez", "position": "ST", "club": "Fulham", "status": "Suplente" },
+        { "name": "Henry Martín", "position": "ST", "club": "América", "status": "Suplente" }
       ]
     },
     {
@@ -205,10 +150,22 @@
       "players": [
         { "name": "Camilo Vargas", "position": "GK", "club": "Atlas", "status": "Titular" },
         { "name": "Daniel Muñoz", "position": "RB", "club": "Crystal Palace", "status": "Titular" },
+        { "name": "Davinson Sánchez", "position": "CB", "club": "Galatasaray", "status": "Titular" },
+        { "name": "Jhon Lucumí", "position": "CB", "club": "Bologna", "status": "Titular" },
+        { "name": "Johan Mojica", "position": "LB", "club": "Mallorca", "status": "Titular" },
         { "name": "Jefferson Lerma", "position": "CDM", "club": "Crystal Palace", "status": "Titular" },
+        { "name": "Richard Ríos", "position": "CM", "club": "Palmeiras", "status": "Titular" },
         { "name": "James Rodríguez", "position": "CAM", "club": "Rayo Vallecano", "status": "Titular" },
+        { "name": "Jhon Arias", "position": "RW", "club": "Fluminense", "status": "Titular" },
         { "name": "Luis Díaz", "position": "LW", "club": "Liverpool", "status": "Titular" },
-        { "name": "Jhon Durán", "position": "ST", "club": "Aston Villa", "status": "Suplente" }
+        { "name": "Jhon Córdoba", "position": "ST", "club": "Krasnodar", "status": "Titular" },
+        { "name": "Álvaro Montero", "position": "GK", "club": "Millonarios", "status": "Suplente" },
+        { "name": "Yerry Mina", "position": "CB", "club": "Cagliari", "status": "Suplente" },
+        { "name": "Mateus Uribe", "position": "CM", "club": "Al-Sadd", "status": "Suplente" },
+        { "name": "Juan Fernando Quintero", "position": "CAM", "club": "Racing Club", "status": "Suplente" },
+        { "name": "Jhon Durán", "position": "ST", "club": "Aston Villa", "status": "Suplente" },
+        { "name": "Luis Sinisterra", "position": "LW", "club": "Bournemouth", "status": "Suplente" },
+        { "name": "Rafael Santos Borré", "position": "ST", "club": "Internacional", "status": "Suplente" }
       ]
     }
   ]
