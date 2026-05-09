@@ -36,14 +36,14 @@ const POSITION_COMPATIBILITY = {
   LB: ["LB"],
 
   CDM: ["CDM", "CM"],
-  CM: ["CM", "CDM", "CAM"],
+  CM: ["CM", "CDM", "CAM", "LM", "RM"],
   CAM: ["CAM", "CM"],
 
   LW: ["LW", "LM"],
-  LM: ["LM", "LW"],
+  LM: ["LM", "LW", "CM"],
 
   RW: ["RW", "RM"],
-  RM: ["RM", "RW"],
+  RM: ["RM", "RW", "CM"],
 
   ST: ["ST"]
 };
