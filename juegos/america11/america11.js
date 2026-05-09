@@ -90,11 +90,13 @@ let score = 0;
 let challengeIndex = -1;
 let formationIndex = -1;
 let gameCompleted = false;
+let difficulty = "easy";
 
 const pitch = document.getElementById("pitch");
 const formationName = document.getElementById("formationName");
 const filledCount = document.getElementById("filledCount");
 const scoreEl = document.getElementById("score");
+const difficultySelect = document.getElementById("difficultySelect");
 const playerInput = document.getElementById("playerInput");
 const addPlayerBtn = document.getElementById("addPlayerBtn");
 const message = document.getElementById("message");
@@ -164,6 +166,65 @@ function positionGroup(pos) {
 
 function canFit(player, slotPosition) {
   return player.categoria === positionGroup(slotPosition);
+}
+
+function getDifficultyName() {
+  if (difficulty === "hard") {
+    return "Difícil";
+  }
+
+  if (difficulty === "expert") {
+    return "Experto";
+  }
+
+  return "Fácil";
+}
+
+function getPointsForDifficulty() {
+  if (difficulty === "hard") {
+    return 150;
+  }
+
+  if (difficulty === "expert") {
+    return 200;
+  }
+
+  return 100;
+}
+
+function getUsedClubs() {
+  return slots
+    .filter(slot => slot.player)
+    .map(slot => slot.player.club)
+    .filter(Boolean);
+}
+
+function clubAlreadyUsed(player) {
+  return getUsedClubs().includes(player.club);
+}
+
+function difficultyAllowsPlayer(player) {
+  if (difficulty === "easy") {
+    return true;
+  }
+
+  if (difficulty === "hard" || difficulty === "expert") {
+    return !clubAlreadyUsed(player);
+  }
+
+  return true;
+}
+
+function getDifficultyRuleText() {
+  if (difficulty === "hard") {
+    return "En Difícil no podés repetir club.";
+  }
+
+  if (difficulty === "expert") {
+    return "En Experto no podés repetir club y cada acierto vale más.";
+  }
+
+  return "En Fácil podés repetir club.";
 }
 
 function getFreePositionsText() {
@@ -272,7 +333,9 @@ function normalizePlayer(raw) {
 }
 
 function buildChallenges() {
-  const countries = [...new Set(players.map(player => player.pais_club).filter(Boolean))];
+  const countries = [
+    ...new Set(players.map(player => player.pais_club).filter(Boolean))
+  ];
 
   const leagueMap = new Map();
 
@@ -312,6 +375,10 @@ function isValidForChallenge(player) {
   return currentChallenge.validate(player);
 }
 
+function playerAlreadyUsed(player) {
+  return slots.some(slot => slot.player && slot.player.slug === player.slug);
+}
+
 function findPlayer(name) {
   const target = slugify(name);
 
@@ -319,7 +386,6 @@ function findPlayer(name) {
     return null;
   }
 
-  // 1. Coincidencia exacta
   const exact = players.find(player => {
     return player.slug === target || slugify(player.nombre) === target;
   });
@@ -328,25 +394,24 @@ function findPlayer(name) {
     return exact;
   }
 
-  // 2. Coincidencia por nombre parcial, pero respetando el desafío actual
   const matches = players.filter(player => {
     const playerSlug = player.slug || slugify(player.nombre);
 
     return (
       isValidForChallenge(player) &&
+      difficultyAllowsPlayer(player) &&
       !playerAlreadyUsed(player) &&
       playerSlug.includes(target)
     );
   });
 
-  // 3. Si hay una sola coincidencia clara, la usamos
   if (matches.length === 1) {
     return matches[0];
   }
 
-  // 4. Si hay varias, no elegimos automáticamente
   return null;
 }
+
 function findMatches(query, limit = 8) {
   const target = slugify(query);
 
@@ -362,6 +427,7 @@ function findMatches(query, limit = 8) {
 
     const valid =
       isValidForChallenge(player) &&
+      difficultyAllowsPlayer(player) &&
       !playerAlreadyUsed(player) &&
       name.includes(target);
 
@@ -377,10 +443,6 @@ function findMatches(query, limit = 8) {
   });
 
   return [...exactStart, ...contains].slice(0, limit);
-}
-
-function playerAlreadyUsed(player) {
-  return slots.some(slot => slot.player && slot.player.slug === player.slug);
 }
 
 function clearSuggestions() {
@@ -411,6 +473,7 @@ function renderSuggestions(matches) {
 
   suggestions.classList.remove("hidden");
 }
+
 function addPlayerByName(name) {
   const value = String(name || "").trim();
 
@@ -422,32 +485,32 @@ function addPlayerByName(name) {
   const player = findPlayer(value);
 
   if (!player) {
-  const matches = findMatches(value, 6);
+    const matches = findMatches(value, 6);
 
-  if (matches.length) {
-    setMessage(
-      `Encontré ${matches.length} coincidencias. Tocá una sugerencia o escribí más específico.`,
-      "warn"
-    );
+    if (matches.length) {
+      setMessage(
+        `Encontré ${matches.length} coincidencias. Tocá una sugerencia o escribí más específico.`,
+        "warn"
+      );
 
-    renderSuggestions(matches);
-  } else {
-    setMessage("No encontré ese jugador para este desafío.", "error");
-    clearSuggestions();
+      renderSuggestions(matches);
+    } else {
+      setMessage("No encontré ese jugador para este desafío.", "error");
+      clearSuggestions();
+    }
+
+    return;
   }
 
-  return;
-}
-
   if (!isValidForChallenge(player)) {
-  setMessage(
-    `${player.nombre} juega en ${player.club} (${player.pais_club}), pero no cumple este desafío: ${currentChallenge.title}.`,
-    "error"
-  );
+    setMessage(
+      `${player.nombre} juega en ${player.club} (${player.pais_club}), pero no cumple este desafío: ${currentChallenge.title}.`,
+      "error"
+    );
 
-  clearSuggestions();
-  return;
-}
+    clearSuggestions();
+    return;
+  }
 
   if (playerAlreadyUsed(player)) {
     setMessage("Ese jugador ya está en tu equipo.", "error");
@@ -455,25 +518,39 @@ function addPlayerByName(name) {
     return;
   }
 
+  if (!difficultyAllowsPlayer(player)) {
+    setMessage(
+      `${player.nombre} juega en ${player.club}, pero ese club ya fue usado. ${getDifficultyRuleText()}`,
+      "error"
+    );
+
+    clearSuggestions();
+    return;
+  }
+
   const freeSlot = slots.find(slot => {
-  return !slot.player && canFit(player, slot.position);
-});
+    return !slot.player && canFit(player, slot.position);
+  });
 
-if (!freeSlot) {
-  setMessage(
-    `${player.nombre} es ${player.posicion}, pero no hay lugar compatible. ${getFreePositionsText()}`,
-    "error"
-  );
+  if (!freeSlot) {
+    setMessage(
+      `${player.nombre} es ${player.posicion}, pero no hay lugar compatible. ${getFreePositionsText()}`,
+      "error"
+    );
 
-  clearSuggestions();
-  return;
-}
+    clearSuggestions();
+    return;
+  }
 
   freeSlot.player = player;
-  score += 100;
+  score += getPointsForDifficulty();
   playerInput.value = "";
 
-  setMessage(`${player.nombre} agregado. Juega en ${player.club}.`, "ok");
+  setMessage(
+    `${player.nombre} agregado. Juega en ${player.club}. +${getPointsForDifficulty()} puntos.`,
+    "ok"
+  );
+
   clearSuggestions();
   renderPitch();
 }
@@ -487,17 +564,26 @@ function getCandidatesForSlot(slot) {
     return (
       !playerAlreadyUsed(player) &&
       isValidForChallenge(player) &&
+      difficultyAllowsPlayer(player) &&
       canFit(player, slot.position)
     );
   });
 }
 
 function clearAnswers() {
+  if (!answersCard || !answersList) {
+    return;
+  }
+
   answersCard.classList.add("hidden");
   answersList.innerHTML = "";
 }
 
 function renderAnswers(answers) {
+  if (!answersCard || !answersList) {
+    return;
+  }
+
   answersList.innerHTML = "";
 
   if (!answers.length) {
@@ -561,7 +647,10 @@ function surrender() {
       "warn"
     );
   } else {
-    setMessage(`Te rendiste. Se completaron ${missingBefore} puestos con respuestas posibles.`, "warn");
+    setMessage(
+      `Te rendiste. Se completaron ${missingBefore} puestos con respuestas posibles.`,
+      "warn"
+    );
   }
 
   clearSuggestions();
@@ -580,7 +669,10 @@ function pickNextChallenge() {
 }
 
 function challengeHasEnoughPlayers() {
-  const available = players.filter(player => isValidForChallenge(player));
+  const available = players.filter(player => {
+    return isValidForChallenge(player);
+  });
+
   const positions = selectedFormation.rows.flat();
 
   const needed = {
@@ -611,11 +703,14 @@ function resetGame() {
   } while (!challengeHasEnoughPlayers() && safety < 100);
 
   buildSlots();
-clearSuggestions();
-clearAnswers();
-renderChallenge();
-setMessage("Nuevo desafío cargado. Completá tu 11.", "ok");
-renderPitch();
+  clearSuggestions();
+  clearAnswers();
+  renderChallenge();
+  setMessage(
+    `Nuevo desafío cargado. Modo ${getDifficultyName()}. ${getDifficultyRuleText()}`,
+    "ok"
+  );
+  renderPitch();
 }
 
 function completeGame() {
@@ -624,6 +719,7 @@ function completeGame() {
   completeText.textContent =
     `Completaste el 11 en Armá 11 América. ` +
     `Desafío: ${currentChallenge.title}. ` +
+    `Modo ${getDifficultyName()}. ` +
     `Formación ${selectedFormation.name}. ` +
     `Puntaje final: ${score}. ` +
     `Podés jugar otro desafío ahora.`;
@@ -635,6 +731,7 @@ function completeGame() {
 async function shareGame() {
   const text =
     `Completé Armá 11 América: ${currentChallenge.title}, ` +
+    `modo ${getDifficultyName()}, ` +
     `formación ${selectedFormation.name}, ${score} puntos.`;
 
   if (navigator.share) {
@@ -677,6 +774,10 @@ function formatDateTime(value) {
 }
 
 function renderBaseInfo(payload) {
+  if (!baseTotal || !baseUpdated || !baseLeagues) {
+    return;
+  }
+
   const total = Array.isArray(payload)
     ? players.length
     : payload.total || players.length;
@@ -699,7 +800,6 @@ function renderBaseInfo(payload) {
   }
 }
 
-
 async function loadPlayers() {
   try {
     const response = await fetch(DATA_URL, { cache: "no-store" });
@@ -710,14 +810,13 @@ async function loadPlayers() {
 
     const payload = await response.json();
 
-players = Array.isArray(payload) ? payload : (payload.jugadores || []);
+    players = Array.isArray(payload) ? payload : (payload.jugadores || []);
 
     players = players
       .map(normalizePlayer)
       .filter(player => player.nombre && player.slug && player.club);
 
     renderBaseInfo(payload);
-
     buildChallenges();
 
     if (!players.length) {
@@ -730,7 +829,7 @@ players = Array.isArray(payload) ? payload : (payload.jugadores || []);
     console.error(error);
 
     setMessage(
-      "Error cargando data/jugadores_america.json. Revisá la ruta o ejecutá el scraper.",
+      "Error cargando jugadores_america.json desde el Worker.",
       "error"
     );
 
@@ -763,7 +862,19 @@ nextBtn.addEventListener("click", resetGame);
 modalNextBtn.addEventListener("click", resetGame);
 changeChallengeBtn.addEventListener("click", resetGame);
 shareBtn.addEventListener("click", shareGame);
-hideAnswersBtn.addEventListener("click", clearAnswers);
+
+if (hideAnswersBtn) {
+  hideAnswersBtn.addEventListener("click", clearAnswers);
+}
+
+if (difficultySelect) {
+  difficultySelect.value = difficulty;
+
+  difficultySelect.addEventListener("change", () => {
+    difficulty = difficultySelect.value;
+    resetGame();
+  });
+}
 
 helpBtn.addEventListener("click", () => {
   helpModal.classList.remove("hidden");
