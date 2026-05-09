@@ -9,6 +9,8 @@ import requests
 
 OUTPUT_FILE = "data/jugadores_america.json"
 
+CORRECCIONES_FILE = "data/correcciones_jugadores_america.json"
+
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36",
     "Accept": "application/json, text/plain, */*",
@@ -329,8 +331,84 @@ def deduplicar_jugadores(jugadores):
 
     return salida
 
+
+def cargar_correcciones():
+    if not os.path.exists(CORRECCIONES_FILE):
+        return {
+            "jugadores": {},
+            "clubes": {},
+        }
+
+    try:
+        with open(CORRECCIONES_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if not isinstance(data, dict):
+            return {
+                "jugadores": {},
+                "clubes": {},
+            }
+
+        return {
+            "jugadores": data.get("jugadores") or {},
+            "clubes": data.get("clubes") or {},
+        }
+
+    except Exception as e:
+        print(f"⚠️ No se pudieron cargar correcciones manuales: {e}")
+
+        return {
+            "jugadores": {},
+            "clubes": {},
+        }
+
+
+def aplicar_correcciones_jugador(jugador, correcciones):
+    jugadores_corr = correcciones.get("jugadores") or {}
+    clubes_corr = correcciones.get("clubes") or {}
+
+    jugador_slug = jugador.get("slug") or slugify(jugador.get("nombre", ""))
+    club_id = str(jugador.get("club_id") or "")
+    club_slug = slugify(jugador.get("club", ""))
+
+    # Corrección por jugador.
+    if jugador_slug in jugadores_corr:
+      cambios = jugadores_corr[jugador_slug]
+
+      if isinstance(cambios, dict):
+          jugador.update(cambios)
+
+    # Corrección por club_id.
+    if club_id and club_id in clubes_corr:
+      cambios_club = clubes_corr[club_id]
+
+      if isinstance(cambios_club, dict):
+          jugador.update(cambios_club)
+
+    # Corrección por slug del club.
+    if club_slug and club_slug in clubes_corr:
+      cambios_club = clubes_corr[club_slug]
+
+      if isinstance(cambios_club, dict):
+          jugador.update(cambios_club)
+
+    jugador["slug"] = jugador.get("slug") or slugify(jugador.get("nombre", ""))
+
+    return jugador
+
+
+def aplicar_correcciones_lista(jugadores, correcciones):
+    corregidos = []
+
+    for jugador in jugadores:
+        corregidos.append(aplicar_correcciones_jugador(jugador, correcciones))
+
+    return corregidos
+
 def main():
     os.makedirs("data", exist_ok=True)
+
+    correcciones = cargar_correcciones()
 
     todos = []
 
@@ -338,6 +416,7 @@ def main():
         jugadores_liga = cargar_liga(liga)
         todos.extend(jugadores_liga)
 
+    todos = aplicar_correcciones_lista(todos, correcciones)
     todos = deduplicar_jugadores(todos)
 
     todos.sort(key=lambda j: (
@@ -351,6 +430,7 @@ def main():
         "actualizado": datetime.now(timezone.utc).isoformat(),
         "total": len(todos),
         "ligas": AMERICA_LEAGUES,
+        "correcciones_aplicadas": True,
         "jugadores": todos,
     }
 
@@ -359,6 +439,7 @@ def main():
 
     print(f"\n✅ Generado {OUTPUT_FILE}")
     print(f"👥 Total jugadores: {len(todos)}")
+    print("🛠️ Correcciones manuales aplicadas")
 
 if __name__ == "__main__":
     main()
