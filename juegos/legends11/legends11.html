@@ -62,13 +62,22 @@
       </div>
 
       <form id="playerForm" class="player-form">
-        <input id="playerSearch" type="text" autocomplete="off" placeholder="Elegí un casillero o escribí una leyenda..." />
+        <input
+          id="playerSearch"
+          type="text"
+          autocomplete="off"
+          placeholder="Elegí un casillero o escribí una leyenda..."
+        />
         <button type="submit" aria-label="Comprobar">⚑</button>
       </form>
 
       <div id="suggestions" class="suggestions"></div>
 
       <p id="modeHint" class="mode-hint">Cargando desafío...</p>
+
+      <button id="surrenderBtn" class="surrender-btn" type="button">
+        Rendirse
+      </button>
     </section>
 
     <section class="status-card">
@@ -92,8 +101,6 @@
         <strong id="scoreText">0</strong>
       </div>
     </section>
-
-    <button id="surrenderBtn" class="surrender-btn" type="button">Rendirse</button>
 
     <section id="resultModal" class="result-modal hidden" aria-live="polite">
       <div class="result-box">
