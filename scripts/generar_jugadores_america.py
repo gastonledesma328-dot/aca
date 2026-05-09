@@ -8,7 +8,6 @@ from datetime import datetime, timezone
 import requests
 
 OUTPUT_FILE = "data/jugadores_america.json"
-
 CORRECCIONES_FILE = "data/correcciones_jugadores_america.json"
 
 HEADERS = {
@@ -90,6 +89,7 @@ POSICIONES_ESPECIFICAS = {
     "right wing": "RW",
 }
 
+
 def slugify(texto):
     texto = str(texto or "").strip().lower()
     texto = unicodedata.normalize("NFD", texto)
@@ -98,12 +98,14 @@ def slugify(texto):
     texto = re.sub(r"-+", "-", texto)
     return texto.strip("-")
 
+
 def normalizar_texto(texto):
     texto = str(texto or "").strip().lower()
     texto = unicodedata.normalize("NFD", texto)
     texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
     texto = re.sub(r"\s+", " ", texto)
     return texto
+
 
 def get_json(url, retries=2, sleep=0.6):
     for intento in range(retries + 1):
@@ -125,6 +127,7 @@ def get_json(url, retries=2, sleep=0.6):
 
     return None
 
+
 def extraer_logo(team):
     logos = team.get("logos") or []
 
@@ -135,6 +138,7 @@ def extraer_logo(team):
         return team.get("logo")
 
     return ""
+
 
 def extraer_equipos(data):
     equipos = []
@@ -168,6 +172,7 @@ def extraer_equipos(data):
         })
 
     return equipos
+
 
 def normalizar_posicion(position_obj):
     if not isinstance(position_obj, dict):
@@ -203,6 +208,12 @@ def normalizar_posicion(position_obj):
     if abreviatura in ["CAM", "AM"]:
         return "CAM", "mediocampistas"
 
+    if abreviatura in ["LM"]:
+        return "LM", "mediocampistas"
+
+    if abreviatura in ["RM"]:
+        return "RM", "mediocampistas"
+
     if abreviatura in ["LW"]:
         return "LW", "delanteros"
 
@@ -216,13 +227,17 @@ def normalizar_posicion(position_obj):
         if key in texto:
             if pos == "GK":
                 return pos, "arqueros"
+
             if pos in ["CB", "LB", "RB"]:
                 return pos, "defensores"
-            if pos in ["CM", "CDM", "CAM"]:
+
+            if pos in ["CM", "CDM", "CAM", "LM", "RM"]:
                 return pos, "mediocampistas"
+
             return pos, "delanteros"
 
     return "CM", "mediocampistas"
+
 
 def extraer_athletes(data):
     athletes = data.get("athletes") or []
@@ -241,6 +256,7 @@ def extraer_athletes(data):
             salida.append(group)
 
     return [a for a in salida if isinstance(a, dict)]
+
 
 def cargar_plantel(league_slug, liga_nombre, pais_club, equipo):
     team_id = equipo["id"]
@@ -287,6 +303,7 @@ def cargar_plantel(league_slug, liga_nombre, pais_club, equipo):
 
     return jugadores
 
+
 def cargar_liga(liga):
     league_slug = liga["slug"]
     liga_nombre = liga["nombre"]
@@ -309,27 +326,20 @@ def cargar_liga(liga):
 
     for idx, equipo in enumerate(equipos, start=1):
         print(f"   👕 {idx}/{len(equipos)} {equipo['nombre']}")
-        jugadores = cargar_plantel(league_slug, liga_nombre, pais_club, equipo)
+
+        jugadores = cargar_plantel(
+            league_slug,
+            liga_nombre,
+            pais_club,
+            equipo
+        )
+
         print(f"      Jugadores: {len(jugadores)}")
         jugadores_liga.extend(jugadores)
+
         time.sleep(0.35)
 
     return jugadores_liga
-
-def deduplicar_jugadores(jugadores):
-    salida = []
-    vistos = set()
-
-    for jugador in jugadores:
-        key = f"{jugador.get('slug')}::{jugador.get('club_id')}::{jugador.get('league_slug')}"
-
-        if key in vistos:
-            continue
-
-        vistos.add(key)
-        salida.append(jugador)
-
-    return salida
 
 
 def cargar_correcciones():
@@ -337,6 +347,8 @@ def cargar_correcciones():
         return {
             "jugadores": {},
             "clubes": {},
+            "agregar": [],
+            "eliminar": [],
         }
 
     try:
@@ -347,11 +359,15 @@ def cargar_correcciones():
             return {
                 "jugadores": {},
                 "clubes": {},
+                "agregar": [],
+                "eliminar": [],
             }
 
         return {
             "jugadores": data.get("jugadores") or {},
             "clubes": data.get("clubes") or {},
+            "agregar": data.get("agregar") or [],
+            "eliminar": data.get("eliminar") or [],
         }
 
     except Exception as e:
@@ -360,6 +376,8 @@ def cargar_correcciones():
         return {
             "jugadores": {},
             "clubes": {},
+            "agregar": [],
+            "eliminar": [],
         }
 
 
@@ -373,24 +391,24 @@ def aplicar_correcciones_jugador(jugador, correcciones):
 
     # Corrección por jugador.
     if jugador_slug in jugadores_corr:
-      cambios = jugadores_corr[jugador_slug]
+        cambios = jugadores_corr[jugador_slug]
 
-      if isinstance(cambios, dict):
-          jugador.update(cambios)
+        if isinstance(cambios, dict):
+            jugador.update(cambios)
 
     # Corrección por club_id.
     if club_id and club_id in clubes_corr:
-      cambios_club = clubes_corr[club_id]
+        cambios_club = clubes_corr[club_id]
 
-      if isinstance(cambios_club, dict):
-          jugador.update(cambios_club)
+        if isinstance(cambios_club, dict):
+            jugador.update(cambios_club)
 
     # Corrección por slug del club.
     if club_slug and club_slug in clubes_corr:
-      cambios_club = clubes_corr[club_slug]
+        cambios_club = clubes_corr[club_slug]
 
-      if isinstance(cambios_club, dict):
-          jugador.update(cambios_club)
+        if isinstance(cambios_club, dict):
+            jugador.update(cambios_club)
 
     jugador["slug"] = jugador.get("slug") or slugify(jugador.get("nombre", ""))
 
@@ -405,6 +423,73 @@ def aplicar_correcciones_lista(jugadores, correcciones):
 
     return corregidos
 
+
+def aplicar_agregados_manuales(jugadores, correcciones):
+    agregados = correcciones.get("agregar") or []
+
+    for item in agregados:
+        if not isinstance(item, dict):
+            continue
+
+        nombre = item.get("nombre", "").strip()
+
+        if not nombre:
+            continue
+
+        jugador = {
+            "id": item.get("id") or f"manual-{slugify(nombre)}",
+            "nombre": nombre,
+            "slug": item.get("slug") or slugify(nombre),
+            "posicion": item.get("posicion") or "CM",
+            "categoria": item.get("categoria") or "mediocampistas",
+            "club": item.get("club") or "Club desconocido",
+            "club_id": str(item.get("club_id") or ""),
+            "club_logo": item.get("club_logo") or "",
+            "liga": item.get("liga") or "",
+            "league_slug": item.get("league_slug") or "",
+            "pais_club": item.get("pais_club") or "",
+            "edad": item.get("edad") or "",
+            "altura": item.get("altura") or "",
+            "fuente": "Manual",
+        }
+
+        jugadores.append(jugador)
+
+    return jugadores
+
+
+def aplicar_eliminados_manuales(jugadores, correcciones):
+    eliminados = correcciones.get("eliminar") or []
+
+    eliminados_slug = {
+        slugify(item) for item in eliminados if isinstance(item, str)
+    }
+
+    return [
+        jugador
+        for jugador in jugadores
+        if jugador.get("slug") not in eliminados_slug
+    ]
+
+
+def deduplicar_jugadores(jugadores):
+    salida = []
+    vistos = set()
+
+    for jugador in jugadores:
+        jugador["slug"] = jugador.get("slug") or slugify(jugador.get("nombre", ""))
+
+        key = f"{jugador.get('slug')}::{jugador.get('club_id')}::{jugador.get('league_slug')}"
+
+        if key in vistos:
+            continue
+
+        vistos.add(key)
+        salida.append(jugador)
+
+    return salida
+
+
 def main():
     os.makedirs("data", exist_ok=True)
 
@@ -417,6 +502,8 @@ def main():
         todos.extend(jugadores_liga)
 
     todos = aplicar_correcciones_lista(todos, correcciones)
+    todos = aplicar_agregados_manuales(todos, correcciones)
+    todos = aplicar_eliminados_manuales(todos, correcciones)
     todos = deduplicar_jugadores(todos)
 
     todos.sort(key=lambda j: (
@@ -440,6 +527,7 @@ def main():
     print(f"\n✅ Generado {OUTPUT_FILE}")
     print(f"👥 Total jugadores: {len(todos)}")
     print("🛠️ Correcciones manuales aplicadas")
+
 
 if __name__ == "__main__":
     main()
