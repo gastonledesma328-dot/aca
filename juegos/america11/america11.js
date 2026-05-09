@@ -329,24 +329,36 @@ function findPlayer(name) {
   // 4. Si hay varias, no elegimos automáticamente
   return null;
 }
-function findMatches(query, limit = 6) {
+function findMatches(query, limit = 8) {
   const target = slugify(query);
 
   if (target.length < 2) {
     return [];
   }
 
-  return players
-    .filter(player => {
-      const name = player.slug || slugify(player.nombre);
+  const exactStart = [];
+  const contains = [];
 
-      return (
-        name.includes(target) &&
-        isValidForChallenge(player) &&
-        !playerAlreadyUsed(player)
-      );
-    })
-    .slice(0, limit);
+  players.forEach(player => {
+    const name = player.slug || slugify(player.nombre);
+
+    const valid =
+      isValidForChallenge(player) &&
+      !playerAlreadyUsed(player) &&
+      name.includes(target);
+
+    if (!valid) {
+      return;
+    }
+
+    if (name.startsWith(target)) {
+      exactStart.push(player);
+    } else {
+      contains.push(player);
+    }
+  });
+
+  return [...exactStart, ...contains].slice(0, limit);
 }
 
 function playerAlreadyUsed(player) {
@@ -389,22 +401,22 @@ function addPlayerByName(name) {
   const player = findPlayer(value);
 
   if (!player) {
-    const matches = findMatches(value, 4);
+  const matches = findMatches(value, 6);
 
-    if (matches.length) {
-      setMessage(
-        "No encontré coincidencia exacta. Tocá una sugerencia o escribí el nombre completo.",
-        "warn"
-      );
+  if (matches.length) {
+    setMessage(
+      `Encontré ${matches.length} coincidencias. Tocá una sugerencia o escribí más específico.`,
+      "warn"
+    );
 
-      renderSuggestions(matches);
-    } else {
-      setMessage("No encontré ese jugador para este desafío.", "error");
-      clearSuggestions();
-    }
-
-    return;
+    renderSuggestions(matches);
+  } else {
+    setMessage("No encontré ese jugador para este desafío.", "error");
+    clearSuggestions();
   }
+
+  return;
+}
 
   if (!isValidForChallenge(player)) {
     setMessage(`${player.nombre} está en ${player.club}, pero no cumple este desafío.`, "error");
