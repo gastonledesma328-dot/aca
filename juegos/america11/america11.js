@@ -9,13 +9,83 @@ const formations = [
       ["LB", "CB", "CB", "RB"],
       ["GK"]
     ]
+  },
+  {
+    name: "4-4-2",
+    rows: [
+      ["ST", "ST"],
+      ["LM", "CM", "CM", "RM"],
+      ["LB", "CB", "CB", "RB"],
+      ["GK"]
+    ]
+  },
+  {
+    name: "4-2-3-1",
+    rows: [
+      ["ST"],
+      ["LW", "CAM", "RW"],
+      ["CDM", "CDM"],
+      ["LB", "CB", "CB", "RB"],
+      ["GK"]
+    ]
+  },
+  {
+    name: "3-5-2",
+    rows: [
+      ["ST", "ST"],
+      ["CAM"],
+      ["LM", "CM", "CM", "RM"],
+      ["CB", "CB", "CB"],
+      ["GK"]
+    ]
+  },
+  {
+    name: "5-3-2",
+    rows: [
+      ["ST", "ST"],
+      ["CM", "CM", "CM"],
+      ["LB", "CB", "CB", "CB", "RB"],
+      ["GK"]
+    ]
+  },
+  {
+    name: "4-3-1-2",
+    rows: [
+      ["ST", "ST"],
+      ["CAM"],
+      ["CM", "CM", "CM"],
+      ["LB", "CB", "CB", "RB"],
+      ["GK"]
+    ]
+  },
+  {
+    name: "3-4-3",
+    rows: [
+      ["LW", "ST", "RW"],
+      ["LM", "CM", "CM", "RM"],
+      ["CB", "CB", "CB"],
+      ["GK"]
+    ]
+  }
+];
+
+const baseChallenges = [
+  {
+    type: "america",
+    title: "Clubes de América",
+    description: "Usá cualquier jugador que juegue actualmente en un club americano.",
+    validate: player => true
   }
 ];
 
 let players = [];
+let challenges = [...baseChallenges];
 let selectedFormation = formations[0];
+let currentChallenge = challenges[0];
 let slots = [];
 let score = 0;
+let challengeIndex = -1;
+let formationIndex = -1;
 
 const pitch = document.getElementById("pitch");
 const formationName = document.getElementById("formationName");
@@ -26,6 +96,11 @@ const addPlayerBtn = document.getElementById("addPlayerBtn");
 const message = document.getElementById("message");
 const surrenderBtn = document.getElementById("surrenderBtn");
 const nextBtn = document.getElementById("nextBtn");
+const changeChallengeBtn = document.getElementById("changeChallengeBtn");
+const suggestions = document.getElementById("suggestions");
+
+const challengeTitle = document.getElementById("challengeTitle");
+const challengeDescription = document.getElementById("challengeDescription");
 
 const helpBtn = document.getElementById("helpBtn");
 const helpModal = document.getElementById("helpModal");
@@ -44,6 +119,17 @@ function slugify(text) {
     .trim()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
+}
+
+function shuffle(array) {
+  const copy = [...array];
+
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+
+  return copy;
 }
 
 function positionGroup(pos) {
@@ -73,6 +159,7 @@ function setMessage(text, type = "") {
 
 function buildSlots() {
   let index = 0;
+
   slots = selectedFormation.rows.flatMap(row =>
     row.map(position => ({
       id: index++,
@@ -80,6 +167,11 @@ function buildSlots() {
       player: null
     }))
   );
+}
+
+function renderChallenge() {
+  challengeTitle.textContent = currentChallenge.title;
+  challengeDescription.textContent = currentChallenge.description;
 }
 
 function renderPitch() {
@@ -94,7 +186,7 @@ function renderPitch() {
     row.forEach(() => {
       const slot = slots[slotIndex];
       const slotEl = document.createElement("div");
-      slotEl.className = "slot";
+      slotEl.className = `slot ${slot.player ? "filled" : ""}`.trim();
 
       if (slot.player) {
         slotEl.innerHTML = `
@@ -109,7 +201,7 @@ function renderPitch() {
           <div>
             <small>${slot.position}</small>
             <strong>Vacío</strong>
-            <span>Club de América</span>
+            <span>${currentChallenge.type === "country" ? currentChallenge.value : "Club de América"}</span>
           </div>
         `;
       }
@@ -135,6 +227,43 @@ function updateStats() {
   }
 }
 
+function normalizePlayer(raw) {
+  return {
+    ...raw,
+    nombre: raw.nombre || "",
+    slug: raw.slug || slugify(raw.nombre),
+    categoria: raw.categoria || "mediocampistas",
+    posicion: raw.posicion || "CM",
+    club: raw.club || "Club desconocido",
+    pais_club: raw.pais_club || "",
+    liga: raw.liga || "",
+    league_slug: raw.league_slug || ""
+  };
+}
+
+function buildChallenges() {
+  const countries = [...new Set(players.map(p => p.pais_club).filter(Boolean))];
+  const leagues = [...new Map(players.filter(p => p.league_slug && p.liga).map(p => [p.league_slug, p])).values()];
+
+  const countryChallenges = countries.map(country => ({
+    type: "country",
+    value: country,
+    title: `Clubes de ${country}`,
+    description: `Completá el 11 solo con jugadores que juegan actualmente en clubes de ${country}.`,
+    validate: player => player.pais_club === country
+  }));
+
+  const leagueChallenges = leagues.map(item => ({
+    type: "league",
+    value: item.league_slug,
+    title: item.liga,
+    description: `Completá el 11 solo con jugadores de ${item.liga}.`,
+    validate: player => player.league_slug === item.league_slug
+  }));
+
+  challenges = shuffle([...baseChallenges, ...countryChallenges, ...leagueChallenges]);
+}
+
 function findPlayer(name) {
   const target = slugify(name);
 
@@ -143,12 +272,31 @@ function findPlayer(name) {
   });
 }
 
+function findMatches(query, limit = 6) {
+  const target = slugify(query);
+
+  if (target.length < 2) {
+    return [];
+  }
+
+  return players
+    .filter(player => {
+      const name = player.slug || slugify(player.nombre);
+      return name.includes(target);
+    })
+    .slice(0, limit);
+}
+
 function playerAlreadyUsed(player) {
   return slots.some(slot => slot.player && slot.player.slug === player.slug);
 }
 
-function addPlayer() {
-  const value = playerInput.value.trim();
+function isValidForChallenge(player) {
+  return currentChallenge.validate(player);
+}
+
+function addPlayerByName(name) {
+  const value = String(name || "").trim();
 
   if (!value) {
     setMessage("Escribí el nombre de un jugador.", "error");
@@ -158,12 +306,28 @@ function addPlayer() {
   const player = findPlayer(value);
 
   if (!player) {
-    setMessage("No encontré ese jugador en la base de América.", "error");
+    const matches = findMatches(value, 4);
+
+    if (matches.length) {
+      setMessage(`No encontré coincidencia exacta. Probá con: ${matches.map(p => p.nombre).join(", ")}`, "warn");
+      renderSuggestions(matches);
+    } else {
+      setMessage("No encontré ese jugador en la base de América.", "error");
+      clearSuggestions();
+    }
+
+    return;
+  }
+
+  if (!isValidForChallenge(player)) {
+    setMessage(`${player.nombre} está en ${player.club}, pero no cumple este desafío.`, "error");
+    clearSuggestions();
     return;
   }
 
   if (playerAlreadyUsed(player)) {
     setMessage("Ese jugador ya está en tu equipo.", "error");
+    clearSuggestions();
     return;
   }
 
@@ -171,6 +335,7 @@ function addPlayer() {
 
   if (!freeSlot) {
     setMessage(`No hay lugar compatible para ${player.nombre}.`, "error");
+    clearSuggestions();
     return;
   }
 
@@ -179,19 +344,47 @@ function addPlayer() {
   playerInput.value = "";
 
   setMessage(`${player.nombre} agregado. Juega en ${player.club}.`, "ok");
+  clearSuggestions();
   renderPitch();
 }
 
-function surrender() {
-  const missing = slots.filter(slot => !slot.player).length;
+function addPlayer() {
+  addPlayerByName(playerInput.value);
+}
 
-  setMessage(`Te rendiste. Te faltaron ${missing} puestos.`, "error");
+function clearSuggestions() {
+  suggestions.classList.add("hidden");
+  suggestions.innerHTML = "";
+}
+
+function renderSuggestions(matches) {
+  suggestions.innerHTML = "";
+
+  matches.forEach(player => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "suggestion";
+    btn.textContent = `${player.nombre} · ${player.club}`;
+    btn.addEventListener("click", () => addPlayerByName(player.nombre));
+    suggestions.appendChild(btn);
+  });
+
+  suggestions.classList.remove("hidden");
+}
+
+function getCandidatesForSlot(slot) {
+  return players.filter(player => {
+    return !playerAlreadyUsed(player) && isValidForChallenge(player) && canFit(player, slot.position);
+  });
+}
+
+function surrender() {
+  const missingBefore = slots.filter(slot => !slot.player).length;
 
   slots.forEach(slot => {
     if (!slot.player) {
-      const candidate = players.find(player => {
-        return !playerAlreadyUsed(player) && canFit(player, slot.position);
-      });
+      const candidates = getCandidatesForSlot(slot);
+      const candidate = candidates[Math.floor(Math.random() * candidates.length)];
 
       if (candidate) {
         slot.player = candidate;
@@ -199,27 +392,64 @@ function surrender() {
     }
   });
 
+  setMessage(`Te rendiste. Se completaron ${missingBefore} puestos con respuestas posibles.`, "warn");
+  clearSuggestions();
   renderPitch();
 }
 
+function pickNextFormation() {
+  formationIndex = (formationIndex + 1) % formations.length;
+  selectedFormation = formations[formationIndex];
+}
+
+function pickNextChallenge() {
+  challengeIndex = (challengeIndex + 1) % challenges.length;
+  currentChallenge = challenges[challengeIndex];
+}
+
+function challengeHasEnoughPlayers() {
+  const available = players.filter(player => isValidForChallenge(player));
+
+  const needed = {
+    arqueros: selectedFormation.rows.flat().filter(p => positionGroup(p) === "arqueros").length,
+    defensores: selectedFormation.rows.flat().filter(p => positionGroup(p) === "defensores").length,
+    mediocampistas: selectedFormation.rows.flat().filter(p => positionGroup(p) === "mediocampistas").length,
+    delanteros: selectedFormation.rows.flat().filter(p => positionGroup(p) === "delanteros").length
+  };
+
+  return Object.keys(needed).every(group => {
+    return available.filter(player => player.categoria === group).length >= needed[group];
+  });
+}
+
 function resetGame() {
-  selectedFormation = formations[0];
-  buildSlots();
-  score = 0;
   completeModal.classList.add("hidden");
   nextBtn.classList.add("hidden");
+
+  let safety = 0;
+
+  do {
+    pickNextFormation();
+    pickNextChallenge();
+    safety++;
+  } while (!challengeHasEnoughPlayers() && safety < 80);
+
+  buildSlots();
+  score = 0;
+  clearSuggestions();
+  renderChallenge();
   setMessage("Nuevo desafío cargado. Completá tu 11.", "ok");
   renderPitch();
 }
 
 function completeGame() {
-  completeText.textContent = `Completaste el 11 de América. Formación ${selectedFormation.name}. Puntaje final: ${score}.`;
+  completeText.textContent = `Completaste el 11 en Armá 11 América. Desafío: ${currentChallenge.title}. Formación ${selectedFormation.name}. Puntaje final: ${score}. Podés jugar otro desafío ahora.`;
   completeModal.classList.remove("hidden");
   nextBtn.classList.remove("hidden");
 }
 
 async function shareGame() {
-  const text = `Completé Armá 11 América en Partidos.Hoy con ${score} puntos.`;
+  const text = `Completé Armá 11 América: ${currentChallenge.title}, formación ${selectedFormation.name}, ${score} puntos.`;
 
   if (navigator.share) {
     try {
@@ -231,8 +461,12 @@ async function shareGame() {
     } catch (error) {}
   }
 
-  await navigator.clipboard.writeText(text);
-  setMessage("Resultado copiado para compartir.", "ok");
+  try {
+    await navigator.clipboard.writeText(text);
+    setMessage("Resultado copiado para compartir.", "ok");
+  } catch (error) {
+    setMessage(text, "ok");
+  }
 }
 
 async function loadPlayers() {
@@ -246,18 +480,21 @@ async function loadPlayers() {
     const payload = await response.json();
 
     players = Array.isArray(payload) ? payload : (payload.jugadores || []);
+    players = players.map(normalizePlayer).filter(player => player.nombre && player.slug);
 
-    players = players.map(player => ({
-      ...player,
-      slug: player.slug || slugify(player.nombre)
-    }));
+    buildChallenges();
+
+    if (!players.length) {
+      throw new Error("La base de jugadores está vacía");
+    }
 
     setMessage(`Base cargada: ${players.length} jugadores disponibles.`, "ok");
     resetGame();
   } catch (error) {
     console.error(error);
-    setMessage("Error cargando data/jugadores_america.json. Revisá la ruta.", "error");
+    setMessage("Error cargando data/jugadores_america.json. Revisá la ruta o ejecutá el scraper.", "error");
     buildSlots();
+    renderChallenge();
     renderPitch();
   }
 }
@@ -270,9 +507,20 @@ playerInput.addEventListener("keydown", event => {
   }
 });
 
+playerInput.addEventListener("input", () => {
+  const matches = findMatches(playerInput.value, 6);
+
+  if (matches.length) {
+    renderSuggestions(matches);
+  } else {
+    clearSuggestions();
+  }
+});
+
 surrenderBtn.addEventListener("click", surrender);
 nextBtn.addEventListener("click", resetGame);
 modalNextBtn.addEventListener("click", resetGame);
+changeChallengeBtn.addEventListener("click", resetGame);
 shareBtn.addEventListener("click", shareGame);
 
 helpBtn.addEventListener("click", () => helpModal.classList.remove("hidden"));
@@ -290,4 +538,9 @@ completeModal.addEventListener("click", event => {
   }
 });
 
+selectedFormation = formations[0];
+currentChallenge = baseChallenges[0];
+buildSlots();
+renderChallenge();
+renderPitch();
 loadPlayers();
