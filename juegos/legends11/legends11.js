@@ -31,24 +31,24 @@ const GAME_MODES = {
 const POSITION_COMPATIBILITY = {
   GK: ["GK"],
 
-  RB: ["RB", "CB"],
-  CB: ["CB", "RB", "LB"],
-  LB: ["LB", "CB"],
+  RB: ["RB", "RWB"],
+  CB: ["CB"],
+  LB: ["LB", "LWB"],
 
-  LWB: ["LB", "LWB", "LM"],
-  RWB: ["RB", "RWB", "RM"],
+  LWB: ["LWB", "LB", "LM"],
+  RWB: ["RWB", "RB", "RM"],
 
   CDM: ["CDM", "CM"],
-  CM: ["CM", "CDM", "CAM", "LM", "RM"],
-  CAM: ["CAM", "CM", "LW", "RW"],
+  CM: ["CM", "CDM", "CAM"],
+  CAM: ["CAM", "CM"],
 
-  LW: ["LW", "LM", "ST", "CAM"],
+  LW: ["LW", "LM"],
   LM: ["LM", "LW", "CM"],
 
-  RW: ["RW", "RM", "ST", "CAM"],
+  RW: ["RW", "RM"],
   RM: ["RM", "RW", "CM"],
 
-  ST: ["ST", "LW", "RW", "CAM"]
+  ST: ["ST"]
 };
 
 const pitchFrame = document.querySelector(".pitch-frame");
