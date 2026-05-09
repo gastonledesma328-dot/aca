@@ -355,7 +355,7 @@ function updateCountryPanel() {
 
   playerSearch.placeholder = selectedSlot
     ? `Jugador de ${round.country} para colocar en ${selectedSlot.dataset.position}...`
-    : `Elegí un casillero y escribí un jugador de ${round.country}...`;
+    : `Elegí un casillero o escribí un jugador de ${round.country}...`;
 }
 
 function selectSlot(slot) {
@@ -443,6 +443,30 @@ function playerCanPlaySlot(playerPosition, slotPosition) {
   return (groups[slotPos] || [slotPos]).includes(playerPos);
 }
 
+function findBestFreeSlotForPlayer(player) {
+  const freeSlots = Array.from(getSlots()).filter(slot => {
+    return !slot.classList.contains("filled");
+  });
+
+  if (!freeSlots.length) return null;
+
+  const exactSlot = freeSlots.find(slot => {
+    return normalizePosition(slot.dataset.position) === normalizePosition(player.position);
+  });
+
+  if (exactSlot) return exactSlot;
+
+  const compatibleSlots = freeSlots.filter(slot => {
+    return playerCanPlaySlot(player.position, slot.dataset.position);
+  });
+
+  if (compatibleSlots.length === 1) {
+    return compatibleSlots[0];
+  }
+
+  return null;
+}
+
 function renderSuggestions(query) {
   const mode = GAME_MODES[currentMode];
 
@@ -469,6 +493,10 @@ function renderSuggestions(query) {
       return false;
     }
 
+    if (!selectedPosition && !findBestFreeSlotForPlayer(player)) {
+      return false;
+    }
+
     if (!value) return true;
 
     const text = normalizeText(`${player.name} ${player.club} ${player.position}`);
@@ -478,7 +506,7 @@ function renderSuggestions(query) {
   if (!filtered.length) {
     const msg = selectedSlot
       ? `Debe ser de ${round.country} y servir para ${selectedSlot.dataset.position}`
-      : `Debe ser de ${round.country}`;
+      : `Debe ser de ${round.country} y tener casillero compatible`;
 
     suggestions.innerHTML = `
       <button class="suggestion-item" type="button">
@@ -503,31 +531,35 @@ function renderSuggestions(query) {
     `;
 
     button.onclick = () => {
-      if (!selectedSlot) {
-        showTemporaryPlaceholder("Primero elegí un casillero del campo");
+      const autoSlot = selectedSlot || findBestFreeSlotForPlayer(player);
+
+      if (!autoSlot) {
+        showTemporaryPlaceholder("Elegí un casillero compatible");
         return;
       }
 
-      placePlayer(player);
+      placePlayer(player, autoSlot);
     };
 
     suggestions.appendChild(button);
   });
 }
 
-function placePlayer(player) {
+function placePlayer(player, forcedSlot = null) {
   if (gameFinished) return;
-
-  if (!selectedSlot) {
-    showTemporaryPlaceholder("Primero elegí un casillero del campo");
-    return;
-  }
 
   const round = getCurrentRound();
 
   if (!round) return;
 
-  const slotPosition = selectedSlot.dataset.position;
+  const targetSlot = forcedSlot || selectedSlot || findBestFreeSlotForPlayer(player);
+
+  if (!targetSlot) {
+    showTemporaryPlaceholder("Elegí un casillero compatible");
+    return;
+  }
+
+  const slotPosition = targetSlot.dataset.position;
 
   if (!playerCanPlaySlot(player.position, slotPosition)) {
     showTemporaryPlaceholder(`${player.name} no puede jugar de ${slotPosition}`);
@@ -543,15 +575,15 @@ function placePlayer(player) {
     return;
   }
 
-  selectedSlot.classList.add("filled");
-  selectedSlot.classList.remove("selected");
+  targetSlot.classList.add("filled");
+  targetSlot.classList.remove("selected");
 
-  selectedSlot.innerHTML = `
+  targetSlot.innerHTML = `
     ${player.name}
     <small>${player.position}</small>
   `;
 
-  completedSlots.push(Number(selectedSlot.dataset.index));
+  completedSlots.push(Number(targetSlot.dataset.index));
   usedPlayers.push(player.name);
   score += calculatePoints();
 
@@ -583,11 +615,6 @@ function trySubmitSearch() {
   if (dailyAttemptLocked && hasPlayedToday()) return;
   if (gameFinished) return;
 
-  if (!selectedSlot) {
-    showTemporaryPlaceholder("Primero elegí un casillero del campo");
-    return;
-  }
-
   const round = getCurrentRound();
   const value = normalizeText(playerSearch.value);
 
@@ -598,12 +625,14 @@ function trySubmitSearch() {
     return;
   }
 
-  const slotPosition = selectedSlot.dataset.position;
-
   const matches = round.players.filter(player => {
     if (usedPlayers.includes(player.name)) return false;
 
-    if (!playerCanPlaySlot(player.position, slotPosition)) {
+    if (selectedSlot && !playerCanPlaySlot(player.position, selectedSlot.dataset.position)) {
+      return false;
+    }
+
+    if (!selectedSlot && !findBestFreeSlotForPlayer(player)) {
       return false;
     }
 
@@ -624,7 +653,11 @@ function trySubmitSearch() {
     if (GAME_MODES[currentMode].showHints) {
       renderSuggestions(playerSearch.value);
     } else {
-      showTemporaryPlaceholder(`No coincide con ${round.country} / ${slotPosition}`);
+      const msg = selectedSlot
+        ? `No coincide con ${round.country} / ${selectedSlot.dataset.position}`
+        : `No encontré un jugador compatible de ${round.country}`;
+
+      showTemporaryPlaceholder(msg);
     }
     return;
   }
@@ -637,12 +670,26 @@ function trySubmitSearch() {
   });
 
   if (exactMatch) {
-    placePlayer(exactMatch);
+    const autoSlot = selectedSlot || findBestFreeSlotForPlayer(exactMatch);
+
+    if (!autoSlot) {
+      showTemporaryPlaceholder("Elegí un casillero compatible");
+      return;
+    }
+
+    placePlayer(exactMatch, autoSlot);
     return;
   }
 
   if (matches.length === 1) {
-    placePlayer(matches[0]);
+    const autoSlot = selectedSlot || findBestFreeSlotForPlayer(matches[0]);
+
+    if (!autoSlot) {
+      showTemporaryPlaceholder("Elegí un casillero compatible");
+      return;
+    }
+
+    placePlayer(matches[0], autoSlot);
     return;
   }
 
@@ -812,7 +859,7 @@ restartBtn.addEventListener("click", () => {
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Cada ronda muestra un país. Elegí un casillero libre y escribí un jugador de ese país que pueda jugar en esa posición. Tenés una sola oportunidad diaria.");
+  alert("Cada ronda muestra un país. Escribí un jugador de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. Si no, elegí un casillero compatible. Tenés una sola oportunidad diaria.");
 });
 
 loadGameData();
