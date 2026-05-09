@@ -534,4 +534,18 @@ input {
   .status-panel {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .back-to-games {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 999px;
+  background: #10251d;
+  color: #f0faf4;
+  padding: 11px 14px;
+  font-weight: 900;
+  text-decoration: none;
+  cursor: pointer;
+}
 }
