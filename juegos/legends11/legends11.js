@@ -184,10 +184,8 @@ function shuffleArray(list, random) {
 }
 
 /*
-  NUEVA LÓGICA:
-  Ya no usa una semilla fija diaria.
-  Cada partida genera una semilla nueva con Date.now(), Math.random() y challengeCounter.
-  Así rota formación, países y orden de jugadores cada vez que terminás o te rendís.
+  Genera una partida nueva en cada intento.
+  No queda fija por día.
 */
 function generateDailyGame() {
   const todayKey = getTodayKey();
@@ -234,6 +232,7 @@ function generateDailyGame() {
 
   return {
     date: todayKey,
+    challengeNumber: challengeCounter,
     formationName: formation.name,
     rows: formation.rows,
     positions: flatPositions,
@@ -245,14 +244,47 @@ function getSlots() {
   return document.querySelectorAll(".position-slot");
 }
 
+function getLineRole(row, rowIndex, totalRows) {
+  if (rowIndex === totalRows - 1 || row.includes("GK")) {
+    return "line-gk";
+  }
+
+  if (row.some(position => ["CB", "LB", "RB", "LWB", "RWB"].includes(position))) {
+    return "line-defense";
+  }
+
+  if (row.some(position => ["CDM", "CM", "LM", "RM"].includes(position))) {
+    return "line-mid";
+  }
+
+  if (row.some(position => ["CAM"].includes(position))) {
+    return "line-mid-advanced";
+  }
+
+  if (row.some(position => ["LW", "RW", "ST"].includes(position))) {
+    return "line-attack";
+  }
+
+  return `line-${rowIndex}`;
+}
+
 function renderFormation() {
   pitchFrame.innerHTML = "";
 
   let slotIndex = 0;
+  const totalRows = DAILY_GAME.rows.length;
 
   DAILY_GAME.rows.forEach((row, rowIndex) => {
     const line = document.createElement("div");
-line.className = `line dynamic-line line-${rowIndex} line-count-${row.length}`;
+    const lineRole = getLineRole(row, rowIndex, totalRows);
+
+    line.className = [
+      "line",
+      "dynamic-line",
+      `line-${rowIndex}`,
+      `line-count-${row.length}`,
+      lineRole
+    ].join(" ");
 
     row.forEach(position => {
       const button = document.createElement("button");
@@ -332,7 +364,7 @@ function applyModeUi() {
   const mode = GAME_MODES[currentMode];
 
   modeText.textContent = mode.label;
-  modeHint.textContent = `${mode.help} Partida: ${challengeCounter} · Formación: ${DAILY_GAME.formationName}`;
+  modeHint.textContent = `${mode.help} Desafío #${DAILY_GAME.challengeNumber} · Formación: ${DAILY_GAME.formationName}`;
 
   if (mode.showHints && !dailyAttemptLocked) {
     suggestions.classList.remove("hidden");
@@ -737,15 +769,64 @@ function updateStatus() {
   scoreText.textContent = score;
 }
 
+function getResultActions() {
+  return resultModal.querySelector(".result-actions");
+}
+
+function getOrCreateNextChallengeButton() {
+  let nextBtn = document.getElementById("nextChallengeBtn");
+
+  if (nextBtn) return nextBtn;
+
+  const actions = getResultActions();
+
+  if (!actions) return null;
+
+  nextBtn = document.createElement("button");
+  nextBtn.type = "button";
+  nextBtn.id = "nextChallengeBtn";
+  nextBtn.textContent = "Siguiente desafío";
+
+  nextBtn.onclick = () => {
+    startNewRandomChallenge();
+  };
+
+  actions.appendChild(nextBtn);
+
+  return nextBtn;
+}
+
 function showFinalButtons() {
+  const nextBtn = getOrCreateNextChallengeButton();
+
+  if (shareBtn) {
+    shareBtn.classList.remove("hidden");
+    shareBtn.style.display = "inline-flex";
+    shareBtn.textContent = "Compartir";
+  }
+
   if (backToGamesBtn) {
     backToGamesBtn.classList.remove("hidden");
     backToGamesBtn.style.display = "inline-flex";
-    backToGamesBtn.textContent = "Nueva partida";
+    backToGamesBtn.textContent = "Volver a juegos";
+    backToGamesBtn.href = "../../index.html#games";
+  }
+
+  if (nextBtn) {
+    nextBtn.classList.remove("hidden");
+    nextBtn.style.display = "inline-flex";
+    nextBtn.textContent = "Siguiente desafío";
   }
 }
 
 function hideFinalButtons() {
+  const nextBtn = document.getElementById("nextChallengeBtn");
+
+  if (nextBtn) {
+    nextBtn.classList.add("hidden");
+    nextBtn.style.display = "none";
+  }
+
   if (backToGamesBtn) {
     backToGamesBtn.classList.add("hidden");
     backToGamesBtn.style.display = "none";
@@ -807,18 +888,18 @@ function finishGame(reason) {
 
   if (reason === "surrender") {
     resultTitle.textContent = "Te rendiste";
-    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.positions.length} casilleros. Puntaje final: ${score}. Tocá “Nueva partida” para generar otra alineación.`;
+    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.positions.length} casilleros. Puntaje final: ${score}. Podés jugar otro desafío ahora.`;
     return;
   }
 
   if (reason === "time") {
     resultTitle.textContent = "Se terminó el tiempo";
-    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.positions.length} casilleros en modo ${GAME_MODES[currentMode].label}. Puntaje final: ${score}. Tocá “Nueva partida” para generar otra alineación.`;
+    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.positions.length} casilleros en modo ${GAME_MODES[currentMode].label}. Puntaje final: ${score}. Podés jugar otro desafío ahora.`;
     return;
   }
 
-  resultTitle.textContent = "Once de leyendas completado";
-  resultText.textContent = `Completaste el 11 en modo ${GAME_MODES[currentMode].label}. Formación ${DAILY_GAME.formationName}. Puntaje final: ${score}. Tocá “Nueva partida” para jugar otra vez.`;
+  resultTitle.textContent = "Equipo completado";
+  resultText.textContent = `Completaste el 11 en modo ${GAME_MODES[currentMode].label}. Formación ${DAILY_GAME.formationName}. Puntaje final: ${score}. Podés jugar otro desafío ahora.`;
 }
 
 function normalizeText(text) {
@@ -875,14 +956,9 @@ surrenderBtn.addEventListener("click", () => {
   finishGame("surrender");
 });
 
-backToGamesBtn.addEventListener("click", event => {
-  event.preventDefault();
-  startNewRandomChallenge();
-});
-
 shareBtn.addEventListener("click", async () => {
   const text = `Armé mi 11 de Leyendas en Partidos.Hoy ⚽
-Partida: ${challengeCounter}
+Desafío: #${DAILY_GAME.challengeNumber}
 Modo: ${GAME_MODES[currentMode].label}
 Formación: ${DAILY_GAME.formationName}
 Puntaje: ${score}`;
@@ -899,7 +975,7 @@ Puntaje: ${score}`;
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Cada ronda muestra un país distinto. Escribí una leyenda de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. También podés elegir primero una casilla compatible. No hay límite diario: al terminar podés iniciar otra partida.");
+  alert("Cada desafío muestra países distintos. Escribí una leyenda del país indicado; si su posición tiene un casillero compatible, se coloca automáticamente. También podés elegir primero una casilla compatible. Al terminar, podés jugar otro desafío con nueva formación y países rotados.");
 });
 
 loadGameData();
