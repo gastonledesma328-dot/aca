@@ -162,6 +162,20 @@ function canFit(player, slotPosition) {
   return player.categoria === positionGroup(slotPosition);
 }
 
+function getFreePositionsText() {
+  const freePositions = slots
+    .filter(slot => !slot.player)
+    .map(slot => slot.position);
+
+  if (!freePositions.length) {
+    return "No quedan puestos libres.";
+  }
+
+  const uniquePositions = [...new Set(freePositions)];
+
+  return `Puestos libres: ${uniquePositions.join(", ")}`;
+}
+
 function setMessage(text, type = "") {
   message.textContent = text;
   message.className = `message ${type}`.trim();
@@ -422,10 +436,14 @@ function addPlayerByName(name) {
 }
 
   if (!isValidForChallenge(player)) {
-    setMessage(`${player.nombre} está en ${player.club}, pero no cumple este desafío.`, "error");
-    clearSuggestions();
-    return;
-  }
+  setMessage(
+    `${player.nombre} juega en ${player.club} (${player.pais_club}), pero no cumple este desafío: ${currentChallenge.title}.`,
+    "error"
+  );
+
+  clearSuggestions();
+  return;
+}
 
   if (playerAlreadyUsed(player)) {
     setMessage("Ese jugador ya está en tu equipo.", "error");
@@ -434,14 +452,18 @@ function addPlayerByName(name) {
   }
 
   const freeSlot = slots.find(slot => {
-    return !slot.player && canFit(player, slot.position);
-  });
+  return !slot.player && canFit(player, slot.position);
+});
 
-  if (!freeSlot) {
-    setMessage(`No hay lugar compatible para ${player.nombre}.`, "error");
-    clearSuggestions();
-    return;
-  }
+if (!freeSlot) {
+  setMessage(
+    `${player.nombre} es ${player.posicion}, pero no hay lugar compatible. ${getFreePositionsText()}`,
+    "error"
+  );
+
+  clearSuggestions();
+  return;
+}
 
   freeSlot.player = player;
   score += 100;
