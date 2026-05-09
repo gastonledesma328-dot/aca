@@ -548,4 +548,30 @@ input {
   text-decoration: none;
   cursor: pointer;
 }
+
+  .back-to-games,
+.result-actions a.back-to-games {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #10251d;
+  padding: 11px 14px;
+  font-weight: 900;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 42px;
+}
+
+.back-to-games:hover,
+.result-actions a.back-to-games:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.back-to-games.hidden {
+  display: none;
+}
 }
