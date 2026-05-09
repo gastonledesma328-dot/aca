@@ -759,9 +759,9 @@ function lockGameForToday() {
 function finishGame(reason) {
   if (gameFinished) return;
 
-  //if (!hasPlayedToday()) {
-    //savePlayedToday();
-  //}
+  if (!hasPlayedToday()) {
+    savePlayedToday();
+  }
 
   gameFinished = true;
   stopTimer();
