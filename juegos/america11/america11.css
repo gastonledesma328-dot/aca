@@ -30,6 +30,7 @@ body {
 
 button,
 input,
+select,
 a {
   font: inherit;
 }
@@ -123,9 +124,29 @@ a {
   margin: 4px 0;
 }
 
+.base-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.base-info > div {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.base-info strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
 .status-card {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 16px;
 }
@@ -134,7 +155,7 @@ a {
   padding: 16px;
   border: 1px solid var(--border);
   border-radius: 18px;
-  background: rgba(255,255,255,0.07);
+  background: rgba(255, 255, 255, 0.07);
 }
 
 .label {
@@ -144,11 +165,26 @@ a {
   margin-bottom: 4px;
 }
 
+.difficulty-select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 9px 10px;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.24);
+  outline: none;
+  font-weight: 800;
+}
+
+.difficulty-select option {
+  color: #111;
+}
+
 .pitch-wrap {
   padding: 14px;
   border-radius: 24px;
   border: 1px solid var(--border);
-  background: rgba(0,0,0,0.22);
+  background: rgba(0, 0, 0, 0.22);
   box-shadow: var(--shadow);
 }
 
@@ -156,11 +192,11 @@ a {
   min-height: 640px;
   border-radius: 20px;
   background:
-    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
     linear-gradient(160deg, var(--field), var(--field2));
   background-size: 54px 54px, 54px 54px, auto;
-  border: 2px solid rgba(255,255,255,0.28);
+  border: 2px solid rgba(255, 255, 255, 0.28);
   padding: 26px 12px;
   display: flex;
   flex-direction: column;
@@ -177,7 +213,7 @@ a {
   width: clamp(78px, 12vw, 124px);
   min-height: 76px;
   border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.32);
+  border: 1px solid rgba(255, 255, 255, 0.32);
   background: rgba(10, 28, 20, 0.64);
   display: grid;
   place-items: center;
@@ -200,7 +236,7 @@ a {
 
 .slot span {
   display: block;
-  color: rgba(255,255,255,0.72);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 11px;
   margin-top: 3px;
   line-height: 1.15;
@@ -232,7 +268,7 @@ input {
   border-radius: 14px;
   padding: 13px 14px;
   color: var(--text);
-  background: rgba(0,0,0,0.24);
+  background: rgba(0, 0, 0, 0.24);
   outline: none;
 }
 
@@ -258,7 +294,7 @@ button,
 }
 
 .secondary {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: var(--text);
   border: 1px solid var(--border);
 }
@@ -290,7 +326,7 @@ button,
 .suggestion {
   padding: 9px 12px;
   border-radius: 14px;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   color: var(--text);
   border: 1px solid var(--border);
   cursor: pointer;
@@ -311,6 +347,7 @@ button,
   color: var(--muted);
   line-height: 1.2;
 }
+
 .actions {
   display: flex;
   gap: 12px;
@@ -318,106 +355,7 @@ button,
   flex-wrap: wrap;
 }
 
-.hidden {
-  display: none !important;
-}
-
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  display: grid;
-  place-items: center;
-  padding: 20px;
-  z-index: 20;
-}
-
-.modal-box {
-  width: min(480px, 100%);
-  padding: 22px;
-  border-radius: 22px;
-  background: #142c23;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  position: relative;
-}
-
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  background: rgba(255,255,255,0.12);
-  color: white;
-}
-
-.modal-actions {
-  display: grid;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-@media (max-width: 760px) {
-  .challenge-card {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .status-card {
-    grid-template-columns: 1fr;
-  }
-
-  .search-row {
-    flex-direction: column;
-  }
-
-  .pitch {
-    min-height: 590px;
-    padding-inline: 6px;
-  }
-
-  .slot {
-    width: clamp(58px, 19vw, 92px);
-    min-height: 68px;
-    padding: 6px;
-  }
-
-  .slot strong {
-    font-size: 11px;
-  }
-
-  .slot span {
-    font-size: 10px;
-  }
-
-  .base-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.base-info > div {
-  padding: 14px 16px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: rgba(255,255,255,0.07);
-}
-
-.base-info strong {
-  display: block;
-  font-size: 14px;
-  line-height: 1.3;
-}
-
-@media (max-width: 760px) {
-  .base-info {
-    grid-template-columns: 1fr;
-  }
-}
-  .answers-card {
+.answers-card {
   margin-top: 16px;
   padding: 18px;
   border: 1px solid var(--border);
@@ -451,7 +389,7 @@ button,
   padding: 12px;
   border: 1px solid var(--border);
   border-radius: 16px;
-  background: rgba(255,255,255,0.07);
+  background: rgba(255, 255, 255, 0.07);
 }
 
 .answer-position {
@@ -471,7 +409,84 @@ button,
   font-size: 12px;
 }
 
+.hidden {
+  display: none !important;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 20;
+}
+
+.modal-box {
+  width: min(480px, 100%);
+  padding: 22px;
+  border-radius: 22px;
+  background: #142c23;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.modal-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
 @media (max-width: 760px) {
+  .challenge-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .base-info {
+    grid-template-columns: 1fr;
+  }
+
+  .status-card {
+    grid-template-columns: 1fr;
+  }
+
+  .search-row {
+    flex-direction: column;
+  }
+
+  .pitch {
+    min-height: 590px;
+    padding-inline: 6px;
+  }
+
+  .slot {
+    width: clamp(58px, 19vw, 92px);
+    min-height: 68px;
+    padding: 6px;
+  }
+
+  .slot strong {
+    font-size: 11px;
+  }
+
+  .slot span {
+    font-size: 10px;
+  }
+
   .answers-head {
     align-items: stretch;
     flex-direction: column;
@@ -481,5 +496,4 @@ button,
     grid-template-columns: 1fr;
     gap: 4px;
   }
-}
 }
