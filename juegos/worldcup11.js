@@ -1,233 +1,5 @@
-const FORMATIONS = [
-  {
-    name: "3-5-2",
-    rows: [
-      ["ST", "ST"],
-      ["CAM"],
-      ["LM", "CDM", "CDM", "RM"],
-      ["CB", "CB", "CB"],
-      ["GK"]
-    ]
-  },
-  {
-    name: "4-3-3",
-    rows: [
-      ["LW", "ST", "RW"],
-      ["CM", "CM", "CM"],
-      ["LB", "CB", "CB", "RB"],
-      ["GK"]
-    ]
-  },
-  {
-    name: "4-4-2",
-    rows: [
-      ["ST", "ST"],
-      ["LM", "CM", "CM", "RM"],
-      ["LB", "CB", "CB", "RB"],
-      ["GK"]
-    ]
-  },
-  {
-    name: "4-2-3-1",
-    rows: [
-      ["ST"],
-      ["LW", "CAM", "RW"],
-      ["CDM", "CDM"],
-      ["LB", "CB", "CB", "RB"],
-      ["GK"]
-    ]
-  }
-];
-
-const PLAYER_POOL = [
-  {
-    country: "Argentina",
-    flagCode: "ar",
-    players: [
-      { name: "Emiliano Martínez", position: "GK", club: "Aston Villa" },
-      { name: "Cristian Romero", position: "CB", club: "Tottenham" },
-      { name: "Nicolás Otamendi", position: "CB", club: "Benfica" },
-      { name: "Nahuel Molina", position: "RB", club: "Atlético Madrid" },
-      { name: "Nicolás Tagliafico", position: "LB", club: "Lyon" },
-      { name: "Rodrigo De Paul", position: "CM", club: "Inter Miami" },
-      { name: "Enzo Fernández", position: "CM", club: "Chelsea" },
-      { name: "Alexis Mac Allister", position: "CM", club: "Liverpool" },
-      { name: "Lionel Messi", position: "RW", club: "Inter Miami" },
-      { name: "Lautaro Martínez", position: "ST", club: "Inter" },
-      { name: "Julián Álvarez", position: "ST", club: "Atlético Madrid" }
-    ]
-  },
-  {
-    country: "Brasil",
-    flagCode: "br",
-    players: [
-      { name: "Alisson", position: "GK", club: "Liverpool" },
-      { name: "Ederson", position: "GK", club: "Manchester City" },
-      { name: "Marquinhos", position: "CB", club: "PSG" },
-      { name: "Gabriel Magalhães", position: "CB", club: "Arsenal" },
-      { name: "Danilo", position: "RB", club: "Flamengo" },
-      { name: "Guilherme Arana", position: "LB", club: "Atlético Mineiro" },
-      { name: "Casemiro", position: "CDM", club: "Manchester United" },
-      { name: "Bruno Guimarães", position: "CM", club: "Newcastle" },
-      { name: "Lucas Paquetá", position: "CAM", club: "West Ham" },
-      { name: "Vinícius Jr", position: "LW", club: "Real Madrid" },
-      { name: "Rodrygo", position: "RW", club: "Real Madrid" },
-      { name: "Richarlison", position: "ST", club: "Tottenham" }
-    ]
-  },
-  {
-    country: "Francia",
-    flagCode: "fr",
-    players: [
-      { name: "Mike Maignan", position: "GK", club: "AC Milan" },
-      { name: "William Saliba", position: "CB", club: "Arsenal" },
-      { name: "Ibrahima Konaté", position: "CB", club: "Liverpool" },
-      { name: "Jules Koundé", position: "RB", club: "Barcelona" },
-      { name: "Theo Hernández", position: "LB", club: "AC Milan" },
-      { name: "Aurélien Tchouaméni", position: "CDM", club: "Real Madrid" },
-      { name: "Eduardo Camavinga", position: "CM", club: "Real Madrid" },
-      { name: "Antoine Griezmann", position: "CAM", club: "Atlético Madrid" },
-      { name: "Kylian Mbappé", position: "LW", club: "Real Madrid" },
-      { name: "Ousmane Dembélé", position: "RW", club: "PSG" },
-      { name: "Marcus Thuram", position: "ST", club: "Inter" }
-    ]
-  },
-  {
-    country: "España",
-    flagCode: "es",
-    players: [
-      { name: "Unai Simón", position: "GK", club: "Athletic Club" },
-      { name: "Dani Carvajal", position: "RB", club: "Real Madrid" },
-      { name: "Aymeric Laporte", position: "CB", club: "Al Nassr" },
-      { name: "Pau Cubarsí", position: "CB", club: "Barcelona" },
-      { name: "Alejandro Grimaldo", position: "LB", club: "Bayer Leverkusen" },
-      { name: "Rodri", position: "CDM", club: "Manchester City" },
-      { name: "Pedri", position: "CM", club: "Barcelona" },
-      { name: "Fabián Ruiz", position: "CM", club: "PSG" },
-      { name: "Dani Olmo", position: "CAM", club: "Barcelona" },
-      { name: "Nico Williams", position: "LW", club: "Athletic Club" },
-      { name: "Lamine Yamal", position: "RW", club: "Barcelona" },
-      { name: "Álvaro Morata", position: "ST", club: "Galatasaray" }
-    ]
-  },
-  {
-    country: "Alemania",
-    flagCode: "de",
-    players: [
-      { name: "Manuel Neuer", position: "GK", club: "Bayern Munich" },
-      { name: "Antonio Rüdiger", position: "CB", club: "Real Madrid" },
-      { name: "Jonathan Tah", position: "CB", club: "Bayern Munich" },
-      { name: "Joshua Kimmich", position: "RB", club: "Bayern Munich" },
-      { name: "David Raum", position: "LB", club: "RB Leipzig" },
-      { name: "Leon Goretzka", position: "CM", club: "Bayern Munich" },
-      { name: "Florian Wirtz", position: "CAM", club: "Liverpool" },
-      { name: "Jamal Musiala", position: "CAM", club: "Bayern Munich" },
-      { name: "Leroy Sané", position: "RM", club: "Galatasaray" },
-      { name: "Serge Gnabry", position: "RW", club: "Bayern Munich" },
-      { name: "Kai Havertz", position: "ST", club: "Arsenal" }
-    ]
-  },
-  {
-    country: "Portugal",
-    flagCode: "pt",
-    players: [
-      { name: "Diogo Costa", position: "GK", club: "Porto" },
-      { name: "Rúben Dias", position: "CB", club: "Manchester City" },
-      { name: "António Silva", position: "CB", club: "Benfica" },
-      { name: "João Cancelo", position: "RB", club: "Al Hilal" },
-      { name: "Nuno Mendes", position: "LB", club: "PSG" },
-      { name: "Vitinha", position: "CM", club: "PSG" },
-      { name: "Bruno Fernandes", position: "CAM", club: "Manchester United" },
-      { name: "Bernardo Silva", position: "RM", club: "Manchester City" },
-      { name: "Rafael Leão", position: "LW", club: "AC Milan" },
-      { name: "Pedro Neto", position: "RW", club: "Chelsea" },
-      { name: "Cristiano Ronaldo", position: "ST", club: "Al Nassr" }
-    ]
-  },
-  {
-    country: "Japón",
-    flagCode: "jp",
-    players: [
-      { name: "Zion Suzuki", position: "GK", club: "Parma" },
-      { name: "Ko Itakura", position: "CB", club: "Ajax" },
-      { name: "Takehiro Tomiyasu", position: "CB", club: "Arsenal" },
-      { name: "Hiroki Ito", position: "CB", club: "Bayern Munich" },
-      { name: "Wataru Endo", position: "CDM", club: "Liverpool" },
-      { name: "Ao Tanaka", position: "CM", club: "Leeds United" },
-      { name: "Daichi Kamada", position: "CAM", club: "Crystal Palace" },
-      { name: "Takefusa Kubo", position: "RW", club: "Real Sociedad" },
-      { name: "Kaoru Mitoma", position: "LM", club: "Brighton" },
-      { name: "Ritsu Doan", position: "RM", club: "Freiburg" },
-      { name: "Ayase Ueda", position: "ST", club: "Feyenoord" }
-    ]
-  },
-  {
-    country: "Uruguay",
-    flagCode: "uy",
-    players: [
-      { name: "Sergio Rochet", position: "GK", club: "Internacional" },
-      { name: "José María Giménez", position: "CB", club: "Atlético Madrid" },
-      { name: "Ronald Araújo", position: "CB", club: "Barcelona" },
-      { name: "Mathías Olivera", position: "LB", club: "Napoli" },
-      { name: "Manuel Ugarte", position: "CDM", club: "Manchester United" },
-      { name: "Federico Valverde", position: "CM", club: "Real Madrid" },
-      { name: "Rodrigo Bentancur", position: "CM", club: "Tottenham" },
-      { name: "Giorgian De Arrascaeta", position: "CAM", club: "Flamengo" },
-      { name: "Facundo Pellistri", position: "RW", club: "Panathinaikos" },
-      { name: "Darwin Núñez", position: "ST", club: "Liverpool" },
-      { name: "Luis Suárez", position: "ST", club: "Inter Miami" }
-    ]
-  },
-  {
-    country: "Inglaterra",
-    flagCode: "gb-eng",
-    players: [
-      { name: "Jordan Pickford", position: "GK", club: "Everton" },
-      { name: "John Stones", position: "CB", club: "Manchester City" },
-      { name: "Marc Guéhi", position: "CB", club: "Crystal Palace" },
-      { name: "Kyle Walker", position: "RB", club: "Burnley" },
-      { name: "Luke Shaw", position: "LB", club: "Manchester United" },
-      { name: "Declan Rice", position: "CDM", club: "Arsenal" },
-      { name: "Jude Bellingham", position: "CAM", club: "Real Madrid" },
-      { name: "Phil Foden", position: "CAM", club: "Manchester City" },
-      { name: "Bukayo Saka", position: "RW", club: "Arsenal" },
-      { name: "Anthony Gordon", position: "LW", club: "Newcastle" },
-      { name: "Harry Kane", position: "ST", club: "Bayern Munich" }
-    ]
-  },
-  {
-    country: "Noruega",
-    flagCode: "no",
-    players: [
-      { name: "Ørjan Nyland", position: "GK", club: "Sevilla" },
-      { name: "Leo Østigård", position: "CB", club: "Rennes" },
-      { name: "Julian Ryerson", position: "RB", club: "Borussia Dortmund" },
-      { name: "Sander Berge", position: "CM", club: "Fulham" },
-      { name: "Martin Ødegaard", position: "CAM", club: "Arsenal" },
-      { name: "Antonio Nusa", position: "LW", club: "RB Leipzig" },
-      { name: "Oscar Bobb", position: "RW", club: "Manchester City" },
-      { name: "Erling Haaland", position: "ST", club: "Manchester City" },
-      { name: "Alexander Sørloth", position: "ST", club: "Atlético Madrid" }
-    ]
-  },
-  {
-    country: "Italia",
-    flagCode: "it",
-    players: [
-      { name: "Gianluigi Donnarumma", position: "GK", club: "PSG" },
-      { name: "Guglielmo Vicario", position: "GK", club: "Tottenham" },
-      { name: "Alessandro Bastoni", position: "CB", club: "Inter" },
-      { name: "Riccardo Calafiori", position: "CB", club: "Arsenal" },
-      { name: "Federico Dimarco", position: "LB", club: "Inter" },
-      { name: "Giovanni Di Lorenzo", position: "RB", club: "Napoli" },
-      { name: "Nicolò Barella", position: "CM", club: "Inter" },
-      { name: "Sandro Tonali", position: "CM", club: "Newcastle" },
-      { name: "Federico Chiesa", position: "LW", club: "Liverpool" },
-      { name: "Domenico Berardi", position: "RW", club: "Sassuolo" },
-      { name: "Moise Kean", position: "ST", club: "Fiorentina" }
-    ]
-  }
-];
+const DATA_URL = "../data/worldcup11-players.json";
+const STORAGE_PREFIX = "partidos_hoy_worldcup11_played_";
 
 const GAME_MODES = {
   easy: {
@@ -277,7 +49,9 @@ const resultText = document.getElementById("resultText");
 const shareBtn = document.getElementById("shareBtn");
 const restartBtn = document.getElementById("restartBtn");
 
+let GAME_DATA = null;
 let DAILY_GAME = null;
+
 let currentMode = "easy";
 let selectedSlot = null;
 let completedSlots = [];
@@ -286,6 +60,37 @@ let score = 0;
 let timeLeft = null;
 let timerInterval = null;
 let gameFinished = false;
+let dailyAttemptLocked = false;
+
+async function loadGameData() {
+  try {
+    const res = await fetch(`${DATA_URL}?v=${Date.now()}`);
+
+    if (!res.ok) {
+      throw new Error(`No se pudo cargar ${DATA_URL}`);
+    }
+
+    GAME_DATA = await res.json();
+
+    if (!GAME_DATA.formations || !GAME_DATA.countries) {
+      throw new Error("El JSON no tiene formations o countries.");
+    }
+
+    initGame();
+
+  } catch (error) {
+    console.error(error);
+
+    pitchFrame.innerHTML = `
+      <div class="load-error">
+        <strong>No se pudo cargar el juego</strong>
+        <span>Revisá que exista data/worldcup11-players.json</span>
+      </div>
+    `;
+
+    modeHint.textContent = "Error cargando datos del juego.";
+  }
+}
 
 function getTodayKey() {
   const now = new Date();
@@ -294,6 +99,19 @@ function getTodayKey() {
   const day = String(now.getDate()).padStart(2, "0");
 
   return `${year}-${month}-${day}`;
+}
+
+function getTodayStorageKey() {
+  return `${STORAGE_PREFIX}${getTodayKey()}`;
+}
+
+function hasPlayedToday() {
+  return localStorage.getItem(getTodayStorageKey()) === "true";
+}
+
+function savePlayedToday() {
+  localStorage.setItem(getTodayStorageKey(), "true");
+  dailyAttemptLocked = true;
 }
 
 function createSeedFromString(text) {
@@ -338,7 +156,7 @@ function getPlayersByPosition(countryData, position) {
 }
 
 function getValidCountriesForPosition(position) {
-  return PLAYER_POOL.filter(countryData => {
+  return GAME_DATA.countries.filter(countryData => {
     return getPlayersByPosition(countryData, position).length > 0;
   });
 }
@@ -348,7 +166,7 @@ function generateDailyGame() {
   const seed = createSeedFromString(`partidos-hoy-worldcup11-${todayKey}`);
   const random = seededRandom(seed);
 
-  const formation = pickRandom(FORMATIONS, random);
+  const formation = pickRandom(GAME_DATA.formations, random);
 
   const flatPositions = formation.rows.flat();
   const usedCountries = new Set();
@@ -365,6 +183,11 @@ function generateDailyGame() {
     }
 
     const countryData = pickRandom(validCountries, random);
+
+    if (!countryData) {
+      throw new Error(`No hay países con jugadores para la posición ${position}`);
+    }
+
     usedCountries.add(countryData.country);
 
     const possiblePlayers = shuffleArray(
@@ -432,6 +255,7 @@ function initGame() {
   usedPlayers = [];
   score = 0;
   gameFinished = false;
+  dailyAttemptLocked = hasPlayedToday();
 
   resultModal.classList.add("hidden");
   playerSearch.value = "";
@@ -458,9 +282,46 @@ function initGame() {
   });
 
   applyModeUi();
+
+  if (dailyAttemptLocked) {
+    lockGameForToday();
+    return;
+  }
+
   selectNextEmptySlot();
   startTimerIfNeeded();
   updateStatus();
+}
+
+function lockGameForToday() {
+  gameFinished = true;
+  stopTimer();
+
+  getSlots().forEach(slot => {
+    slot.disabled = true;
+    slot.classList.remove("selected");
+  });
+
+  modeButtons.forEach(button => {
+    button.disabled = true;
+  });
+
+  playerSearch.disabled = true;
+  surrenderBtn.disabled = true;
+  suggestions.innerHTML = "";
+
+  countryFlag.src = "https://flagcdn.com/w40/un.png";
+  countryFlag.alt = "Desafío bloqueado";
+  countryName.textContent = "Ya jugaste hoy";
+
+  completedText.textContent = "0/11";
+  scoreText.textContent = "0";
+  timerText.textContent = "Mañana";
+
+  resultTitle.textContent = "Ya usaste tu intento diario";
+  resultText.textContent = "Este desafío permite una sola oportunidad por día. Volvé mañana para jugar una nueva alineación.";
+  restartBtn.style.display = "none";
+  resultModal.classList.remove("hidden");
 }
 
 function applyModeUi() {
@@ -469,7 +330,7 @@ function applyModeUi() {
   modeText.textContent = mode.label;
   modeHint.textContent = `${mode.help} Desafío diario: ${DAILY_GAME.date} · Formación: ${DAILY_GAME.formationName}`;
 
-  if (mode.showHints) {
+  if (mode.showHints && !dailyAttemptLocked) {
     suggestions.classList.remove("hidden");
   } else {
     suggestions.classList.add("hidden");
@@ -492,7 +353,10 @@ function applyModeUi() {
 function startTimerIfNeeded() {
   const mode = GAME_MODES[currentMode];
 
+  if (dailyAttemptLocked) return;
   if (mode.timeLimit === null) return;
+
+  savePlayedToday();
 
   timerInterval = setInterval(() => {
     if (gameFinished) {
@@ -521,6 +385,7 @@ function stopTimer() {
 }
 
 function selectSlot(slot) {
+  if (dailyAttemptLocked) return;
   if (gameFinished) return;
   if (slot.classList.contains("filled")) return;
 
@@ -537,7 +402,6 @@ function selectSlot(slot) {
 
   playerSearch.value = "";
   playerSearch.placeholder = `Jugador de ${data.country} para ${data.position}...`;
-  playerSearch.focus();
 
   renderSuggestions("");
 }
@@ -559,6 +423,8 @@ function getSlotData(slot) {
 
 function renderSuggestions(query) {
   const mode = GAME_MODES[currentMode];
+
+  if (dailyAttemptLocked) return;
 
   if (!mode.showHints) {
     suggestions.innerHTML = "";
@@ -613,8 +479,13 @@ function renderSuggestions(query) {
 }
 
 function placePlayer(player) {
+  if (dailyAttemptLocked && !hasPlayedToday()) return;
   if (gameFinished) return;
   if (!selectedSlot) return;
+
+  if (!hasPlayedToday()) {
+    savePlayedToday();
+  }
 
   const data = getSlotData(selectedSlot);
 
@@ -658,6 +529,7 @@ function calculatePoints() {
 }
 
 function trySubmitSearch() {
+  if (dailyAttemptLocked && hasPlayedToday()) return;
   if (gameFinished) return;
 
   if (!selectedSlot) {
@@ -727,7 +599,7 @@ function showTemporaryPlaceholder(message) {
   playerSearch.placeholder = message;
 
   setTimeout(() => {
-    if (!gameFinished && selectedSlot) {
+    if (!gameFinished && selectedSlot && !dailyAttemptLocked) {
       const data = getSlotData(selectedSlot);
       playerSearch.placeholder = `Jugador de ${data.country} para ${data.position}...`;
     } else {
@@ -744,25 +616,37 @@ function updateStatus() {
 function finishGame(reason) {
   if (gameFinished) return;
 
+  if (!hasPlayedToday()) {
+    savePlayedToday();
+  }
+
   gameFinished = true;
   stopTimer();
 
   resultModal.classList.remove("hidden");
+  restartBtn.style.display = "none";
+
+  modeButtons.forEach(button => {
+    button.disabled = true;
+  });
+
+  playerSearch.disabled = true;
+  surrenderBtn.disabled = true;
 
   if (reason === "surrender") {
     resultTitle.textContent = "Te rendiste";
-    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.slots.length} posiciones. Puntaje final: ${score}.`;
+    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.slots.length} posiciones. Puntaje final: ${score}. Volvé mañana para otro desafío.`;
     return;
   }
 
   if (reason === "time") {
     resultTitle.textContent = "Se terminó el tiempo";
-    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.slots.length} posiciones en modo ${GAME_MODES[currentMode].label}. Puntaje final: ${score}.`;
+    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.slots.length} posiciones en modo ${GAME_MODES[currentMode].label}. Puntaje final: ${score}. Volvé mañana para otro desafío.`;
     return;
   }
 
   resultTitle.textContent = "Equipo completado";
-  resultText.textContent = `Completaste el 11 en modo ${GAME_MODES[currentMode].label}. Formación ${DAILY_GAME.formationName}. Puntaje final: ${score}.`;
+  resultText.textContent = `Completaste el 11 en modo ${GAME_MODES[currentMode].label}. Formación ${DAILY_GAME.formationName}. Puntaje final: ${score}. Volvé mañana para otro desafío.`;
 }
 
 function normalizeText(text) {
@@ -782,6 +666,11 @@ function formatTime(seconds) {
 
 modeButtons.forEach(button => {
   button.addEventListener("click", () => {
+    if (dailyAttemptLocked || hasPlayedToday()) {
+      lockGameForToday();
+      return;
+    }
+
     currentMode = button.dataset.mode;
     initGame();
   });
@@ -797,6 +686,10 @@ playerForm.addEventListener("submit", event => {
 });
 
 surrenderBtn.addEventListener("click", () => {
+  if (!hasPlayedToday()) {
+    savePlayedToday();
+  }
+
   finishGame("surrender");
 });
 
@@ -819,11 +712,11 @@ Puntaje: ${score}`;
 });
 
 restartBtn.addEventListener("click", () => {
-  initGame();
+  lockGameForToday();
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Cada día se genera una formación distinta con países y jugadores distintos. En modo fácil hay ayudas. En normal, difícil e imposible no hay ayudas.");
+  alert("Cada día tenés una sola oportunidad. El desafío cambia todos los días con una formación, países y jugadores distintos. En modo fácil hay ayudas. En normal, difícil e imposible no hay ayudas.");
 });
 
-initGame();
+loadGameData();
