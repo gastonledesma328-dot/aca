@@ -1,4 +1,4 @@
-const DATA_URL = "../../data/jugadores_america.json";
+const DATA_URL = "https://partidoshoy-worker-jugadores-america.gastonledesma328.workers.dev/data/jugadores_america.json";
 
 const formations = [
   {
