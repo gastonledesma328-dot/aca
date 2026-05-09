@@ -864,7 +864,7 @@ restartBtn.addEventListener("click", () => {
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Cada ronda muestra un país. Escribí un jugador de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. Si no, elegí un casillero compatible. Tenés una sola oportunidad diaria.");
+  alert("Cada ronda muestra un país distinto. Escribí un jugador de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. Si no, elegí un casillero compatible. Tenés una sola oportunidad diaria.");
 });
 
 loadGameData();
