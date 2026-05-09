@@ -448,6 +448,7 @@ function renderFormation() {
 
     row.forEach(position => {
       const slotData = CURRENT_GAME.slots[slotIndex];
+      const logo = getClubLogo(slotData);
 
       const button = document.createElement("button");
       button.className = "position-slot";
@@ -459,7 +460,10 @@ function renderFormation() {
       button.dataset.country = slotData.country;
 
       button.innerHTML = `
-        ${position}
+        <span class="slot-logo-wrap">
+          <img class="slot-logo" src="${logo}" alt="${escapeHtml(slotData.clubName)}" loading="lazy" />
+        </span>
+        <span class="slot-position">${position}</span>
         <small>${slotData.clubName}</small>
       `;
 
@@ -510,13 +514,18 @@ function renderChallengePanel() {
   }
 
   const slotData = getSlotData(selectedSlot);
+  const logo = getClubLogo(slotData);
 
-  challengeIcon.src = slotData.clubLogo || getCountryFlagUrl(slotData.country);
-  challengeIcon.alt = slotData.clubName;
+  challengeIcon.src = logo;
+  challengeIcon.alt = `Escudo de ${slotData.clubName}`;
 
   challengeName.textContent = slotData.clubName;
   challengeDescription.textContent =
     `${slotData.country || "América"} · ${slotData.league || "Liga"} · Buscá un jugador para ${slotData.position}.`;
+}
+
+function getClubLogo(slotData) {
+  return slotData.clubLogo || getCountryFlagUrl(slotData.country);
 }
 
 function getCountryFlagUrl(country) {
@@ -992,8 +1001,6 @@ function finishGame(reason) {
 }
 
 function surrenderGame() {
-  const answers = [];
-
   getSlots().forEach(slot => {
     if (slot.classList.contains("filled")) {
       return;
@@ -1004,8 +1011,6 @@ function surrenderGame() {
 
     if (candidate) {
       placePlayer(candidate, slot);
-
-      answers.push(candidate.nombre);
     }
   });
 
@@ -1159,6 +1164,15 @@ function shuffleArray(list) {
   }
 
   return copy;
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 modeButtons.forEach(button => {
