@@ -278,8 +278,22 @@ button {
   min-width: 0;
   width: 104px;
   max-width: 104px;
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.line-count-5 .slot-logo-wrap {
+  width: 24px;
+  height: 24px;
+}
+
+.line-count-5 .slot-logo {
+  width: 19px;
+  height: 19px;
+}
+
+.line-count-5 .position-slot small {
+  font-size: 8px;
 }
 
 .line-count-5 .position-slot.filled {
@@ -296,10 +310,10 @@ button {
 
 .position-slot {
   min-width: 78px;
-  min-height: 46px;
-  padding: 10px 13px;
+  min-height: 76px;
+  padding: 8px 10px;
   border: 1px solid rgba(255,255,255,0.34);
-  border-radius: 12px;
+  border-radius: 14px;
   background: rgba(255,255,255,0.92);
   color: #173223;
   font-size: 15px;
@@ -307,6 +321,10 @@ button {
   letter-spacing: .3px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.22);
   transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  display: grid;
+  place-items: center;
+  gap: 3px;
+  text-align: center;
 }
 
 .position-slot:hover {
@@ -318,12 +336,55 @@ button {
   outline: 3px solid var(--primary);
 }
 
+.slot-logo-wrap {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+  overflow: hidden;
+}
+
+.slot-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.slot-position {
+  display: block;
+  font-size: 13px;
+  font-weight: 1000;
+  line-height: 1;
+}
+
+.position-slot small {
+  display: block;
+  max-width: 100%;
+  font-size: 9px;
+  line-height: 1.05;
+  font-weight: 800;
+  color: rgba(23, 50, 35, 0.72);
+  white-space: normal;
+  word-break: break-word;
+}
+
 .position-slot.filled {
   background: #10251d;
   color: white;
   border-color: rgba(95,207,128,0.55);
   min-width: 112px;
+  min-height: 58px;
   font-size: 12px;
+  padding: 9px 10px;
+}
+
+.position-slot.filled .slot-logo-wrap,
+.position-slot.filled .slot-logo,
+.position-slot.filled .slot-position {
+  display: none;
 }
 
 .position-slot.filled small {
@@ -348,34 +409,45 @@ button {
 .country-indicator {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 11px;
+  justify-content: flex-start;
+  gap: 13px;
   margin-bottom: 14px;
   text-align: left;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 12px;
 }
 
 .country-flag-img {
-  width: 38px;
-  height: 26px;
-  object-fit: cover;
-  border-radius: 5px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-  background: white;
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  border-radius: 16px;
+  padding: 7px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.28);
+  background: rgba(255,255,255,0.92);
+  flex: 0 0 auto;
 }
 
 .challenge-text {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
 }
 
 .challenge-text strong {
-  font-size: 20px;
+  font-size: 23px;
+  line-height: 1.1;
 }
 
 .challenge-text span {
+  display: block;
+  margin-top: 4px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
+  line-height: 1.3;
 }
 
 .search-area {
@@ -639,13 +711,32 @@ button {
 
   .position-slot {
     min-width: 58px;
-    min-height: 42px;
-    padding: 8px 9px;
+    min-height: 72px;
+    padding: 7px 6px;
     font-size: 12px;
+  }
+
+  .slot-logo-wrap {
+    width: 24px;
+    height: 24px;
+  }
+
+  .slot-logo {
+    width: 19px;
+    height: 19px;
+  }
+
+  .slot-position {
+    font-size: 11px;
+  }
+
+  .position-slot small {
+    font-size: 7.5px;
   }
 
   .position-slot.filled {
     min-width: 76px;
+    min-height: 50px;
     font-size: 11px;
   }
 
@@ -658,9 +749,23 @@ button {
     min-width: 0;
     width: 61px;
     max-width: 61px;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 3px;
+    padding-right: 3px;
     font-size: 11px;
+  }
+
+  .line-count-5 .slot-logo-wrap {
+    width: 19px;
+    height: 19px;
+  }
+
+  .line-count-5 .slot-logo {
+    width: 15px;
+    height: 15px;
+  }
+
+  .line-count-5 .position-slot small {
+    font-size: 6.8px;
   }
 
   .line-count-5 .position-slot.filled {
@@ -673,6 +778,27 @@ button {
 
   .line-count-5 .position-slot.filled small {
     font-size: 7px;
+  }
+
+  .country-indicator {
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .country-flag-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    padding: 6px;
+  }
+
+  .challenge-text strong {
+    font-size: 19px;
+  }
+
+  .challenge-text span {
+    font-size: 12px;
   }
 
   .search-area input {
