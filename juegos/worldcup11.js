@@ -68,6 +68,7 @@ const resultTitle = document.getElementById("resultTitle");
 const resultText = document.getElementById("resultText");
 const shareBtn = document.getElementById("shareBtn");
 const restartBtn = document.getElementById("restartBtn");
+const backToGamesBtn = document.getElementById("backToGamesBtn");
 
 let GAME_DATA = null;
 let DAILY_GAME = null;
@@ -265,8 +266,7 @@ function initGame() {
   dailyAttemptLocked = hasPlayedToday() && !attemptStartedThisSession;
 
   resultModal.classList.add("hidden");
-  restartBtn.style.display = "";
-  hideBackToGamesButton();
+  hideFinalButtons();
 
   playerSearch.disabled = false;
   surrenderBtn.disabled = false;
@@ -707,87 +707,50 @@ function updateStatus() {
   scoreText.textContent = score;
 }
 
-function getResultActions() {
-  return resultModal.querySelector(".result-actions");
-}
-
-function addBackToGamesButton() {
-  const actions = getResultActions();
-
-  if (!actions) return;
-
-  let backLink = document.getElementById("backToGamesBtn");
-
-  if (!backLink) {
-    backLink = document.createElement("a");
-    backLink.id = "backToGamesBtn";
-    backLink.href = "index.html";
-    backLink.textContent = "Volver a juegos";
-    backLink.style.display = "inline-flex";
-    backLink.style.alignItems = "center";
-    backLink.style.justifyContent = "center";
-    backLink.style.border = "none";
-    backLink.style.borderRadius = "999px";
-    backLink.style.background = "#10251d";
-    backLink.style.color = "#f0faf4";
-    backLink.style.padding = "11px 14px";
-    backLink.style.fontWeight = "900";
-    backLink.style.textDecoration = "none";
-    backLink.style.cursor = "pointer";
-
-    actions.appendChild(backLink);
+function showFinalButtons() {
+  if (restartBtn) {
+    restartBtn.classList.add("hidden");
+    restartBtn.style.display = "none";
   }
 
-  backLink.style.display = "inline-flex";
+  if (backToGamesBtn) {
+    backToGamesBtn.classList.remove("hidden");
+    backToGamesBtn.style.display = "inline-flex";
+  }
 }
 
-function hideBackToGamesButton() {
-  const backLink = document.getElementById("backToGamesBtn");
+function hideFinalButtons() {
+  if (restartBtn) {
+    restartBtn.classList.add("hidden");
+    restartBtn.style.display = "none";
+  }
 
-  if (backLink) {
-    backLink.style.display = "none";
+  if (backToGamesBtn) {
+    backToGamesBtn.classList.add("hidden");
+    backToGamesBtn.style.display = "none";
   }
 }
 
 function showModeChangeModal(nextMode) {
-  const oldModal = document.getElementById("modeChangeModal");
+  const modal = document.getElementById("modeChangeModal");
 
-  if (oldModal) {
-    oldModal.remove();
+  if (!modal) {
+    return;
   }
-
-  const modal = document.createElement("section");
-  modal.className = "result-modal";
-  modal.id = "modeChangeModal";
-
-  modal.innerHTML = `
-    <div class="result-card">
-      <h2>Cambiar dificultad</h2>
-      <p>
-        Ya empezaste este intento diario. Si cambiás el modo, se reinicia la alineación actual,
-        pero no perdés el intento de hoy.
-      </p>
-
-      <div class="result-actions">
-        <button type="button" id="confirmModeChangeBtn">Cambiar modo</button>
-        <button type="button" id="cancelModeChangeBtn">Cancelar</button>
-      </div>
-    </div>
-  `;
-
-  document.body.appendChild(modal);
 
   const confirmBtn = document.getElementById("confirmModeChangeBtn");
   const cancelBtn = document.getElementById("cancelModeChangeBtn");
 
+  modal.classList.remove("hidden");
+
   confirmBtn.onclick = () => {
-    modal.remove();
+    modal.classList.add("hidden");
     currentMode = nextMode;
     initGame();
   };
 
   cancelBtn.onclick = () => {
-    modal.remove();
+    modal.classList.add("hidden");
   };
 }
 
@@ -818,8 +781,8 @@ function lockGameForToday() {
 
   resultTitle.textContent = "Ya usaste tu intento diario";
   resultText.textContent = "Este desafío permite una sola oportunidad por día. Volvé mañana para jugar una nueva alineación.";
-  restartBtn.style.display = "none";
-  addBackToGamesButton();
+
+  showFinalButtons();
   resultModal.classList.remove("hidden");
 }
 
@@ -836,8 +799,7 @@ function finishGame(reason) {
   stopTimer();
 
   resultModal.classList.remove("hidden");
-  restartBtn.style.display = "none";
-  addBackToGamesButton();
+  showFinalButtons();
 
   modeButtons.forEach(button => {
     button.disabled = true;
