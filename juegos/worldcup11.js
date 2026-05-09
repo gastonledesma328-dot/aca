@@ -128,11 +128,10 @@ function getTodayStorageKey() {
 }
 
 function hasPlayedToday() {
-  return localStorage.getItem(getTodayStorageKey()) === "true";
+  return false;
 }
 
 function savePlayedToday() {
-  localStorage.setItem(getTodayStorageKey(), "true");
   attemptStartedThisSession = true;
 }
 
