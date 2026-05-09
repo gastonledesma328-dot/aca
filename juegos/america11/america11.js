@@ -378,7 +378,11 @@ function renderSuggestions(matches) {
 
     btn.type = "button";
     btn.className = "suggestion";
-    btn.textContent = `${player.nombre} · ${player.club}`;
+
+    btn.innerHTML = `
+      <strong>${player.nombre}</strong>
+      <span>${player.club} · ${player.posicion} · ${player.pais_club}</span>
+    `;
 
     btn.addEventListener("click", () => {
       addPlayerByName(player.nombre);
@@ -389,7 +393,6 @@ function renderSuggestions(matches) {
 
   suggestions.classList.remove("hidden");
 }
-
 function addPlayerByName(name) {
   const value = String(name || "").trim();
 
