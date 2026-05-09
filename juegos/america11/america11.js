@@ -105,6 +105,9 @@ const suggestions = document.getElementById("suggestions");
 
 const challengeTitle = document.getElementById("challengeTitle");
 const challengeDescription = document.getElementById("challengeDescription");
+const baseTotal = document.getElementById("baseTotal");
+const baseUpdated = document.getElementById("baseUpdated");
+const baseLeagues = document.getElementById("baseLeagues");
 
 const helpBtn = document.getElementById("helpBtn");
 const helpModal = document.getElementById("helpModal");
@@ -536,6 +539,50 @@ async function shareGame() {
   }
 }
 
+function formatDateTime(value) {
+  if (!value) {
+    return "-";
+  }
+
+  try {
+    const date = new Date(value);
+
+    return date.toLocaleString("es-AR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+  } catch (error) {
+    return value;
+  }
+}
+
+function renderBaseInfo(payload) {
+  const total = Array.isArray(payload)
+    ? players.length
+    : payload.total || players.length;
+
+  const updated = Array.isArray(payload)
+    ? "-"
+    : formatDateTime(payload.actualizado);
+
+  const ligas = Array.isArray(payload)
+    ? []
+    : payload.ligas || [];
+
+  baseTotal.textContent = `${total} jugadores`;
+  baseUpdated.textContent = updated;
+
+  if (ligas.length) {
+    baseLeagues.textContent = ligas.map(liga => liga.pais_club).join(", ");
+  } else {
+    baseLeagues.textContent = "-";
+  }
+}
+
+
 async function loadPlayers() {
   try {
     const response = await fetch(DATA_URL, { cache: "no-store" });
@@ -546,11 +593,13 @@ async function loadPlayers() {
 
     const payload = await response.json();
 
-    players = Array.isArray(payload) ? payload : (payload.jugadores || []);
+players = Array.isArray(payload) ? payload : (payload.jugadores || []);
 
     players = players
       .map(normalizePlayer)
       .filter(player => player.nombre && player.slug && player.club);
+
+    renderBaseInfo(payload);
 
     buildChallenges();
 
