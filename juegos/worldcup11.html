@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Armá tu 11 Mundial</title>
+  <title>Armá tu 11 Mundial | Partidos.Hoy</title>
 
   <link rel="stylesheet" href="worldcup11.css" />
 </head>
@@ -20,16 +20,16 @@
         <span>Armá tu 11</span>
       </div>
 
-      <button class="help-btn" type="button" id="helpBtn">?</button>
+      <button class="help-btn" type="button" id="helpBtn" aria-label="Ayuda">?</button>
     </header>
 
     <section class="game-header">
       <span class="daily-badge">Desafío diario</span>
       <h1>Armá tu 11 Mundial</h1>
-      <p>Completá cada posición con un jugador del país indicado.</p>
+      <p>Elegí un casillero y completalo con un jugador válido del país indicado.</p>
     </section>
 
-    <section class="mode-panel">
+    <section class="mode-panel" aria-label="Elegir dificultad">
       <button class="mode-btn active" type="button" data-mode="easy">
         Fácil
         <small>Con ayudas</small>
@@ -51,38 +51,13 @@
       </button>
     </section>
 
-    <section class="tactical-board">
-
+    <section class="tactical-board" aria-label="Campo táctico">
       <div class="pitch-frame">
-
-        <div class="line line-attack">
-          <button class="position-slot" data-position="ST">ST</button>
-          <button class="position-slot" data-position="ST">ST</button>
+        <div class="load-error">
+          <strong>Cargando desafío...</strong>
+          <span>Preparando la formación diaria</span>
         </div>
-
-        <div class="line line-mid-advanced">
-          <button class="position-slot" data-position="CAM">CAM</button>
-        </div>
-
-        <div class="line line-mid">
-          <button class="position-slot" data-position="LM">LM</button>
-          <button class="position-slot" data-position="CDM">CDM</button>
-          <button class="position-slot" data-position="CDM">CDM</button>
-          <button class="position-slot" data-position="RM">RM</button>
-        </div>
-
-        <div class="line line-defense">
-          <button class="position-slot" data-position="CB">CB</button>
-          <button class="position-slot" data-position="CB">CB</button>
-          <button class="position-slot" data-position="CB">CB</button>
-        </div>
-
-        <div class="line line-gk">
-          <button class="position-slot" data-position="GK">GK</button>
-        </div>
-
       </div>
-
     </section>
 
     <section class="country-panel">
@@ -90,10 +65,10 @@
         <img
           class="country-flag-img"
           id="countryFlag"
-          src="https://flagcdn.com/w40/jp.png"
-          alt="Bandera de Japón"
+          src="https://flagcdn.com/w40/un.png"
+          alt="Seleccioná una posición"
         />
-        <strong id="countryName">Japón</strong>
+        <strong id="countryName">Cargando país...</strong>
       </div>
 
       <form class="search-area" id="playerForm">
@@ -104,13 +79,13 @@
           autocomplete="off"
         />
 
-        <button class="surrender-btn" type="button" id="surrenderBtn" title="Rendirse">
+        <button class="surrender-btn" type="button" id="surrenderBtn" title="Rendirse" aria-label="Rendirse">
           🏳️
         </button>
       </form>
 
       <p class="mode-hint" id="modeHint">
-        Modo fácil: vas a ver sugerencias disponibles.
+        Cargando datos del juego...
       </p>
 
       <div class="suggestions" id="suggestions"></div>
@@ -138,7 +113,7 @@
       </div>
     </section>
 
-    <section class="result-modal hidden" id="resultModal">
+    <section class="result-modal hidden" id="resultModal" aria-live="polite">
       <div class="result-card">
         <h2 id="resultTitle">Resultado</h2>
         <p id="resultText"></p>
@@ -146,6 +121,24 @@
         <div class="result-actions">
           <button type="button" id="shareBtn">Compartir</button>
           <button type="button" id="restartBtn">Jugar de nuevo</button>
+          <a href="index.html" id="backToGamesBtn" class="back-to-games hidden">
+            Volver a juegos
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="result-modal hidden" id="modeChangeModal" aria-live="polite">
+      <div class="result-card">
+        <h2>Cambiar dificultad</h2>
+        <p>
+          Ya empezaste este intento diario. Si cambiás el modo, se reinicia la alineación actual,
+          pero no perdés el intento de hoy.
+        </p>
+
+        <div class="result-actions">
+          <button type="button" id="confirmModeChangeBtn">Cambiar modo</button>
+          <button type="button" id="cancelModeChangeBtn">Cancelar</button>
         </div>
       </div>
     </section>
