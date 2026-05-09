@@ -156,31 +156,36 @@ function generateDailyGame() {
   const seed = createSeedFromString(`partidos-hoy-worldcup11-${todayKey}`);
   const random = seededRandom(seed);
 
-  const formation = pickRandom(GAME_DATA.formations, random);
-  const flatPositions = formation.rows.flat();
-  const totalSlots = flatPositions.length;
-
   const availableCountries = GAME_DATA.countries.filter(country => {
     return Array.isArray(country.players) && country.players.length > 0;
   });
 
-  let shuffledCountries = shuffleArray(availableCountries, random);
-  const rounds = [];
+  const validFormations = GAME_DATA.formations.filter(formation => {
+    const totalSlots = formation.rows.flat().length;
+    return availableCountries.length >= totalSlots;
+  });
 
-  while (rounds.length < totalSlots) {
-    if (!shuffledCountries.length) {
-      shuffledCountries = shuffleArray(availableCountries, random);
-    }
+  if (!validFormations.length) {
+    throw new Error(
+      `No hay suficientes países para generar un desafío sin repetir. Países disponibles: ${availableCountries.length}`
+    );
+  }
 
-    const country = shuffledCountries.shift();
+  const formation = pickRandom(validFormations, random);
+  const flatPositions = formation.rows.flat();
+  const totalSlots = flatPositions.length;
 
-    rounds.push({
+  const shuffledCountries = shuffleArray(availableCountries, random);
+  const selectedCountries = shuffledCountries.slice(0, totalSlots);
+
+  const rounds = selectedCountries.map(country => {
+    return {
       country: country.country,
       flagCode: country.flagCode,
       dt: country.dt || "",
       players: shuffleArray(country.players, random)
-    });
-  }
+    };
+  });
 
   return {
     date: todayKey,
