@@ -14,7 +14,9 @@
   --radius: 20px;
 }
 
-* { box-sizing: border-box; }
+* { 
+  box-sizing: border-box; 
+}
 
 body {
   margin: 0;
@@ -35,7 +37,7 @@ button {
 }
 
 .game-page {
-  width: min(510px, calc(100% - 28px));
+  width: min(560px, calc(100% - 24px));
   margin: 0 auto;
   padding: 7px 0 32px;
 }
@@ -177,9 +179,9 @@ button {
 .pitch-card {
   position: relative;
   overflow: hidden;
-  min-height: 420px;
+  min-height: 435px;
   border-radius: 19px;
-  padding: 19px 16px;
+  padding: 19px 18px;
   background:
     repeating-linear-gradient(
       90deg,
@@ -228,7 +230,7 @@ button {
 .pitch-frame {
   position: relative;
   z-index: 1;
-  min-height: 380px;
+  min-height: 397px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -239,12 +241,12 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 19px;
+  gap: 21px;
 }
 
 .position-slot {
-  width: 58px;
-  min-height: 36px;
+  width: 62px;
+  min-height: 37px;
   border-radius: 8px;
   background: var(--slot);
   color: var(--slot-text);
@@ -261,8 +263,8 @@ button {
 }
 
 .position-slot.filled {
-  width: 82px;
-  min-height: 46px;
+  width: 86px;
+  min-height: 47px;
   padding: 5px 6px;
   background: #5bd17b;
   color: #062013;
@@ -486,7 +488,7 @@ button {
 
 @media (max-width: 560px) {
   .game-page {
-    width: min(510px, calc(100% - 18px));
+    width: min(560px, calc(100% - 18px));
   }
 
   .game-header h1 {
@@ -502,16 +504,24 @@ button {
   }
 
   .pitch-card {
-    min-height: 410px;
-    padding-inline: 9px;
+    min-height: 420px;
+    padding-inline: 10px;
+  }
+
+  .pitch-frame {
+    min-height: 382px;
   }
 
   .line {
-    gap: 14px;
+    gap: 15px;
   }
 
   .position-slot {
-    width: 56px;
+    width: 58px;
+  }
+
+  .position-slot.filled {
+    width: 78px;
   }
 
   .status-card {
