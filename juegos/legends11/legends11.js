@@ -252,7 +252,7 @@ function renderFormation() {
 
   DAILY_GAME.rows.forEach((row, rowIndex) => {
     const line = document.createElement("div");
-    line.className = `line dynamic-line line-${rowIndex}`;
+line.className = `line dynamic-line line-${rowIndex} line-count-${row.length}`;
 
     row.forEach(position => {
       const button = document.createElement("button");
