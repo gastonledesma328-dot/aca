@@ -713,19 +713,7 @@ function showFinalButtons() {
   }
 }
 
-  if (backToGamesBtn) {
-    backToGamesBtn.classList.remove("hidden");
-    backToGamesBtn.style.display = "inline-flex";
-  }
-}
-
 function hideFinalButtons() {
-  if (backToGamesBtn) {
-    backToGamesBtn.classList.add("hidden");
-    backToGamesBtn.style.display = "none";
-  }
-}
-
   if (backToGamesBtn) {
     backToGamesBtn.classList.add("hidden");
     backToGamesBtn.style.display = "none";
@@ -909,8 +897,6 @@ Puntaje: ${score}`;
     alert("Resultado copiado al portapapeles");
   }
 });
-
-
 
 helpBtn.addEventListener("click", () => {
   alert("Cada ronda muestra un país distinto. Escribí un jugador de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. También podés elegir primero una casilla compatible. Tenés una sola oportunidad diaria.");
