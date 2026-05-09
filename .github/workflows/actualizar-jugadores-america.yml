@@ -1,0 +1,38 @@
+name: Actualizar jugadores América
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 8 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repo
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: |
+          pip install requests
+
+      - name: Generar jugadores América
+        run: |
+          python scripts/generar_jugadores_america.py
+
+      - name: Guardar cambios
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add data/jugadores_america.json
+          git commit -m "Actualizar jugadores America" || echo "No changes"
+          git push
