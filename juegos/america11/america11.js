@@ -297,11 +297,38 @@ function isValidForChallenge(player) {
 function findPlayer(name) {
   const target = slugify(name);
 
-  return players.find(player => {
+  if (!target) {
+    return null;
+  }
+
+  // 1. Coincidencia exacta
+  const exact = players.find(player => {
     return player.slug === target || slugify(player.nombre) === target;
   });
-}
 
+  if (exact) {
+    return exact;
+  }
+
+  // 2. Coincidencia por nombre parcial, pero respetando el desafío actual
+  const matches = players.filter(player => {
+    const playerSlug = player.slug || slugify(player.nombre);
+
+    return (
+      isValidForChallenge(player) &&
+      !playerAlreadyUsed(player) &&
+      playerSlug.includes(target)
+    );
+  });
+
+  // 3. Si hay una sola coincidencia clara, la usamos
+  if (matches.length === 1) {
+    return matches[0];
+  }
+
+  // 4. Si hay varias, no elegimos automáticamente
+  return null;
+}
 function findMatches(query, limit = 6) {
   const target = slugify(query);
 
