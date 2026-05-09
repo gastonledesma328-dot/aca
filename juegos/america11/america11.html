@@ -19,7 +19,7 @@
         <span>Armá tu 11</span>
       </div>
 
-      <button class="help-btn" type="button" id="helpBtn">?</button>
+      <button class="help-btn" type="button" id="helpBtn" aria-label="Ayuda">?</button>
     </header>
 
     <section class="hero">
@@ -28,6 +28,16 @@
       <p>
         Completá una formación usando jugadores que actualmente juegan en clubes de América.
       </p>
+    </section>
+
+    <section class="challenge-card">
+      <div>
+        <span class="label">Desafío</span>
+        <strong id="challengeTitle">Cargando...</strong>
+        <p id="challengeDescription">Preparando base de jugadores.</p>
+      </div>
+
+      <button id="changeChallengeBtn" type="button" class="secondary">Cambiar desafío</button>
     </section>
 
     <section class="status-card">
@@ -59,6 +69,8 @@
         <button id="addPlayerBtn" type="button">Agregar</button>
       </div>
 
+      <div class="suggestions hidden" id="suggestions"></div>
+
       <p id="message" class="message">Cargando jugadores...</p>
     </section>
 
@@ -73,11 +85,11 @@
       <button class="modal-close" id="closeHelpBtn" type="button">×</button>
       <h2>Cómo se juega</h2>
       <p>
-        Escribí el nombre de un jugador. Si está en la base y juega actualmente en un club de América,
-        se agregará al primer puesto compatible de la formación.
+        Escribí el nombre de un jugador. Si está en la base, juega en América y cumple el desafío actual,
+        se agregará al primer puesto compatible.
       </p>
       <p>
-        Esta es una base inicial. Después vamos a llenar el JSON automáticamente con ESPN.
+        No hay límite diario. Cada vez que terminás o tocás “Siguiente desafío”, cambia la formación y el país/liga del desafío.
       </p>
     </div>
   </div>
