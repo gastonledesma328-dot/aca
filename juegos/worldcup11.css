@@ -449,22 +449,66 @@ input {
 .result-actions {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
   margin-top: 18px;
+  flex-wrap: wrap;
 }
 
-.result-actions button {
+.result-actions button,
+.back-to-games,
+.result-actions a.back-to-games,
+#backToGamesBtn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 11px 16px;
   border: none;
   border-radius: 999px;
   background: var(--primary);
-  color: #10251d;
-  padding: 11px 14px;
+  color: #10251d !important;
   font-weight: 900;
+  text-decoration: none !important;
   cursor: pointer;
+  line-height: 1;
+  font-size: 14px;
+  appearance: none;
 }
 
-.hidden {
-  display: none;
+.result-actions button:hover,
+.back-to-games:hover,
+.result-actions a.back-to-games:hover,
+#backToGamesBtn:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.hidden,
+.back-to-games.hidden,
+#backToGamesBtn.hidden {
+  display: none !important;
+}
+
+.load-error {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  text-align: center;
+  color: white;
+}
+
+.load-error strong {
+  font-size: 22px;
+}
+
+.load-error span {
+  color: rgba(255,255,255,0.72);
 }
 
 @media (max-width: 700px) {
@@ -534,44 +578,4 @@ input {
   .status-panel {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .back-to-games {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 999px;
-  background: #10251d;
-  color: #f0faf4;
-  padding: 11px 14px;
-  font-weight: 900;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-  .back-to-games,
-.result-actions a.back-to-games {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 999px;
-  background: var(--primary);
-  color: #10251d;
-  padding: 11px 14px;
-  font-weight: 900;
-  text-decoration: none;
-  cursor: pointer;
-  min-height: 42px;
-}
-
-.back-to-games:hover,
-.result-actions a.back-to-games:hover {
-  filter: brightness(1.05);
-  transform: translateY(-1px);
-}
-
-.back-to-games.hidden {
-  display: none;
-}
 }
