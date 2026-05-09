@@ -266,6 +266,8 @@ function initGame() {
 
   resultModal.classList.add("hidden");
   restartBtn.style.display = "";
+  hideBackToGamesButton();
+
   playerSearch.disabled = false;
   surrenderBtn.disabled = false;
   playerSearch.value = "";
@@ -705,6 +707,90 @@ function updateStatus() {
   scoreText.textContent = score;
 }
 
+function getResultActions() {
+  return resultModal.querySelector(".result-actions");
+}
+
+function addBackToGamesButton() {
+  const actions = getResultActions();
+
+  if (!actions) return;
+
+  let backLink = document.getElementById("backToGamesBtn");
+
+  if (!backLink) {
+    backLink = document.createElement("a");
+    backLink.id = "backToGamesBtn";
+    backLink.href = "index.html";
+    backLink.textContent = "Volver a juegos";
+    backLink.style.display = "inline-flex";
+    backLink.style.alignItems = "center";
+    backLink.style.justifyContent = "center";
+    backLink.style.border = "none";
+    backLink.style.borderRadius = "999px";
+    backLink.style.background = "#10251d";
+    backLink.style.color = "#f0faf4";
+    backLink.style.padding = "11px 14px";
+    backLink.style.fontWeight = "900";
+    backLink.style.textDecoration = "none";
+    backLink.style.cursor = "pointer";
+
+    actions.appendChild(backLink);
+  }
+
+  backLink.style.display = "inline-flex";
+}
+
+function hideBackToGamesButton() {
+  const backLink = document.getElementById("backToGamesBtn");
+
+  if (backLink) {
+    backLink.style.display = "none";
+  }
+}
+
+function showModeChangeModal(nextMode) {
+  const oldModal = document.getElementById("modeChangeModal");
+
+  if (oldModal) {
+    oldModal.remove();
+  }
+
+  const modal = document.createElement("section");
+  modal.className = "result-modal";
+  modal.id = "modeChangeModal";
+
+  modal.innerHTML = `
+    <div class="result-card">
+      <h2>Cambiar dificultad</h2>
+      <p>
+        Ya empezaste este intento diario. Si cambiás el modo, se reinicia la alineación actual,
+        pero no perdés el intento de hoy.
+      </p>
+
+      <div class="result-actions">
+        <button type="button" id="confirmModeChangeBtn">Cambiar modo</button>
+        <button type="button" id="cancelModeChangeBtn">Cancelar</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const confirmBtn = document.getElementById("confirmModeChangeBtn");
+  const cancelBtn = document.getElementById("cancelModeChangeBtn");
+
+  confirmBtn.onclick = () => {
+    modal.remove();
+    currentMode = nextMode;
+    initGame();
+  };
+
+  cancelBtn.onclick = () => {
+    modal.remove();
+  };
+}
+
 function lockGameForToday() {
   gameFinished = true;
   stopTimer();
@@ -733,6 +819,7 @@ function lockGameForToday() {
   resultTitle.textContent = "Ya usaste tu intento diario";
   resultText.textContent = "Este desafío permite una sola oportunidad por día. Volvé mañana para jugar una nueva alineación.";
   restartBtn.style.display = "none";
+  addBackToGamesButton();
   resultModal.classList.remove("hidden");
 }
 
@@ -750,6 +837,7 @@ function finishGame(reason) {
 
   resultModal.classList.remove("hidden");
   restartBtn.style.display = "none";
+  addBackToGamesButton();
 
   modeButtons.forEach(button => {
     button.disabled = true;
@@ -813,13 +901,8 @@ modeButtons.forEach(button => {
     const hasProgress = completedSlots.length > 0;
 
     if (hasProgress) {
-      const confirmChange = confirm(
-        "Ya empezaste este intento diario. Si cambiás el modo, se reinicia la alineación actual, pero no perdés el intento de hoy. ¿Querés cambiar el modo?"
-      );
-
-      if (!confirmChange) {
-        return;
-      }
+      showModeChangeModal(nextMode);
+      return;
     }
 
     currentMode = nextMode;
