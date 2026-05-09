@@ -2,11 +2,13 @@
   --bg: #10251d;
   --bg2: #18382c;
   --card: rgba(255, 255, 255, 0.08);
+  --card2: rgba(255, 255, 255, 0.11);
   --border: rgba(255, 255, 255, 0.14);
   --text: #f3fff7;
   --muted: rgba(243, 255, 247, 0.65);
   --primary: #6ee787;
   --danger: #ff6868;
+  --warning: #ffd166;
   --field: #1f7a48;
   --field2: #19663d;
   --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
@@ -33,7 +35,7 @@ a {
 }
 
 .game-page {
-  width: min(1100px, calc(100% - 28px));
+  width: min(1120px, calc(100% - 28px));
   margin: 0 auto;
   padding: 20px 0 36px;
 }
@@ -73,12 +75,17 @@ a {
   cursor: pointer;
 }
 
-.hero {
+.hero,
+.challenge-card,
+.input-card {
   padding: 22px;
   border: 1px solid var(--border);
   border-radius: 22px;
   background: var(--card);
   box-shadow: var(--shadow);
+}
+
+.hero {
   margin-bottom: 16px;
 }
 
@@ -96,9 +103,24 @@ a {
   font-size: clamp(30px, 5vw, 56px);
 }
 
-.hero p {
+.hero p,
+.challenge-card p {
   margin: 0;
   color: var(--muted);
+}
+
+.challenge-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.challenge-card strong {
+  display: block;
+  font-size: clamp(18px, 2.8vw, 28px);
+  margin: 4px 0;
 }
 
 .status-card {
@@ -131,7 +153,7 @@ a {
 }
 
 .pitch {
-  min-height: 610px;
+  min-height: 640px;
   border-radius: 20px;
   background:
     linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px),
@@ -148,12 +170,12 @@ a {
 .pitch-row {
   display: flex;
   justify-content: center;
-  gap: clamp(8px, 2vw, 22px);
+  gap: clamp(7px, 1.6vw, 18px);
 }
 
 .slot {
-  width: min(128px, 26vw);
-  min-height: 74px;
+  width: clamp(78px, 12vw, 124px);
+  min-height: 76px;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.32);
   background: rgba(10, 28, 20, 0.64);
@@ -170,7 +192,10 @@ a {
 }
 
 .slot strong {
+  display: block;
   font-size: 13px;
+  line-height: 1.15;
+  word-break: break-word;
 }
 
 .slot span {
@@ -178,14 +203,15 @@ a {
   color: rgba(255,255,255,0.72);
   font-size: 11px;
   margin-top: 3px;
+  line-height: 1.15;
+}
+
+.slot.filled {
+  background: rgba(110, 231, 135, 0.16);
 }
 
 .input-card {
   margin-top: 16px;
-  padding: 18px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: var(--card);
 }
 
 .input-card label {
@@ -250,6 +276,27 @@ button,
   color: var(--danger);
 }
 
+.message.warn {
+  color: var(--warning);
+}
+
+.suggestions {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.suggestion {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  cursor: pointer;
+}
+
 .actions {
   display: flex;
   gap: 12px;
@@ -272,7 +319,7 @@ button,
 }
 
 .modal-box {
-  width: min(460px, 100%);
+  width: min(480px, 100%);
   padding: 22px;
   border-radius: 22px;
   background: #142c23;
@@ -298,7 +345,12 @@ button,
   margin-top: 18px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 760px) {
+  .challenge-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
   .status-card {
     grid-template-columns: 1fr;
   }
@@ -308,11 +360,21 @@ button,
   }
 
   .pitch {
-    min-height: 540px;
+    min-height: 590px;
     padding-inline: 6px;
   }
 
   .slot {
-    min-height: 66px;
+    width: clamp(58px, 19vw, 92px);
+    min-height: 68px;
+    padding: 6px;
+  }
+
+  .slot strong {
+    font-size: 11px;
+  }
+
+  .slot span {
+    font-size: 10px;
   }
 }
