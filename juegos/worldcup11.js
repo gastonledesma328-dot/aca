@@ -34,6 +34,9 @@ const POSITION_COMPATIBILITY = {
   CB: ["CB"],
   LB: ["LB"],
 
+  LWB: ["LWB", "LB", "LM"],
+  RWB: ["RWB", "RB", "RM"],
+
   CDM: ["CDM", "CM"],
   CM: ["CM", "CDM", "CAM", "LM", "RM"],
   CAM: ["CAM", "CM"],
@@ -212,14 +215,49 @@ function getSlots() {
   return document.querySelectorAll(".position-slot");
 }
 
+function getLineRole(row, rowIndex, totalRows) {
+  const joined = row.join("-");
+
+  if (rowIndex === totalRows - 1 || row.includes("GK")) {
+    return "line-gk";
+  }
+
+  if (row.some(position => ["CB", "LB", "RB", "LWB", "RWB"].includes(position))) {
+    return "line-defense";
+  }
+
+  if (row.some(position => ["CDM", "CM", "LM", "RM"].includes(position))) {
+    return "line-mid";
+  }
+
+  if (row.some(position => ["CAM"].includes(position))) {
+    return "line-mid-advanced";
+  }
+
+  if (row.some(position => ["LW", "RW", "ST"].includes(position))) {
+    return "line-attack";
+  }
+
+  return `line-${rowIndex}`;
+}
+
 function renderFormation() {
   pitchFrame.innerHTML = "";
 
   let slotIndex = 0;
+  const totalRows = DAILY_GAME.rows.length;
 
   DAILY_GAME.rows.forEach((row, rowIndex) => {
     const line = document.createElement("div");
-    line.className = `line dynamic-line line-${rowIndex}`;
+    const lineRole = getLineRole(row, rowIndex, totalRows);
+
+    line.className = [
+      "line",
+      "dynamic-line",
+      `line-${rowIndex}`,
+      `line-count-${row.length}`,
+      lineRole
+    ].join(" ");
 
     row.forEach(position => {
       const button = document.createElement("button");
@@ -431,6 +469,28 @@ function findBestFreeSlotForPlayer(player) {
   return null;
 }
 
+function playerMatchesSearch(player, value) {
+  const fullName = normalizeText(player.name);
+  const lastName = normalizeText(player.name.split(" ").pop());
+  const position = normalizeText(player.position);
+  const aliases = Array.isArray(player.aliases) ? player.aliases.map(normalizeText) : [];
+
+  return (
+    fullName.includes(value) ||
+    lastName.includes(value) ||
+    position.includes(value) ||
+    aliases.some(alias => alias.includes(value) || value.includes(alias))
+  );
+}
+
+function playerIsExactMatch(player, value) {
+  const fullName = normalizeText(player.name);
+  const lastName = normalizeText(player.name.split(" ").pop());
+  const aliases = Array.isArray(player.aliases) ? player.aliases.map(normalizeText) : [];
+
+  return fullName === value || lastName === value || aliases.includes(value);
+}
+
 function renderSuggestions(query) {
   const mode = GAME_MODES[currentMode];
 
@@ -461,8 +521,7 @@ function renderSuggestions(query) {
 
     if (!value) return true;
 
-    const text = normalizeText(`${player.name} ${player.position}`);
-    return text.includes(value);
+    return playerMatchesSearch(player, value);
   });
 
   if (!filtered.length) {
@@ -593,15 +652,7 @@ function trySubmitSearch() {
       return false;
     }
 
-    const fullName = normalizeText(player.name);
-    const lastName = normalizeText(player.name.split(" ").pop());
-    const position = normalizeText(player.position);
-
-    return (
-      fullName.includes(value) ||
-      lastName.includes(value) ||
-      position.includes(value)
-    );
+    return playerMatchesSearch(player, value);
   });
 
   if (!matches.length) {
@@ -619,10 +670,7 @@ function trySubmitSearch() {
   }
 
   const exactMatch = matches.find(player => {
-    const fullName = normalizeText(player.name);
-    const lastName = normalizeText(player.name.split(" ").pop());
-
-    return fullName === value || lastName === value;
+    return playerIsExactMatch(player, value);
   });
 
   if (exactMatch) {
@@ -799,6 +847,8 @@ function normalizeText(text) {
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9ñ\s]/g, "")
+    .replace(/\s+/g, " ")
     .trim();
 }
 
