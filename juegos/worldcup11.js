@@ -112,7 +112,6 @@ function hasPlayedToday() {
 
 function savePlayedToday() {
   localStorage.setItem(getTodayStorageKey(), "true");
-  dailyAttemptLocked = true;
 }
 
 function createSeedFromString(text) {
@@ -384,9 +383,64 @@ function clearSelectedSlot() {
 
   getSlots().forEach(item => item.classList.remove("selected"));
 
-  playerSearch.value = "";
   suggestions.innerHTML = "";
   updateCountryPanel();
+}
+
+function normalizePosition(position) {
+  const pos = String(position || "").toUpperCase().trim();
+
+  const map = {
+    ARQ: "GK",
+    GK: "GK",
+
+    DEF: "DEF",
+    CB: "CB",
+    LB: "LB",
+    RB: "RB",
+
+    MED: "MED",
+    CM: "CM",
+    CDM: "CDM",
+    CAM: "CAM",
+    LM: "LM",
+    RM: "RM",
+
+    DEL: "DEL",
+    ST: "ST",
+    LW: "LW",
+    RW: "RW"
+  };
+
+  return map[pos] || pos;
+}
+
+function playerCanPlaySlot(playerPosition, slotPosition) {
+  const playerPos = normalizePosition(playerPosition);
+  const slotPos = normalizePosition(slotPosition);
+
+  if (playerPos === slotPos) return true;
+
+  const groups = {
+    GK: ["GK", "ARQ"],
+
+    CB: ["CB", "DEF"],
+    LB: ["LB", "DEF"],
+    RB: ["RB", "DEF"],
+
+    CM: ["CM", "MED", "CDM", "CAM"],
+    CDM: ["CDM", "CM", "MED"],
+    CAM: ["CAM", "CM", "MED"],
+
+    LM: ["LM", "LW", "MED"],
+    RM: ["RM", "RW", "MED"],
+
+    ST: ["ST", "DEL"],
+    LW: ["LW", "DEL"],
+    RW: ["RW", "DEL"]
+  };
+
+  return (groups[slotPos] || [slotPos]).includes(playerPos);
 }
 
 function renderSuggestions(query) {
@@ -406,9 +460,14 @@ function renderSuggestions(query) {
   if (!round) return;
 
   const value = normalizeText(query);
+  const selectedPosition = selectedSlot ? selectedSlot.dataset.position : "";
 
   const filtered = round.players.filter(player => {
     if (usedPlayers.includes(player.name)) return false;
+
+    if (selectedPosition && !playerCanPlaySlot(player.position, selectedPosition)) {
+      return false;
+    }
 
     if (!value) return true;
 
@@ -417,10 +476,14 @@ function renderSuggestions(query) {
   });
 
   if (!filtered.length) {
+    const msg = selectedSlot
+      ? `Debe ser de ${round.country} y servir para ${selectedSlot.dataset.position}`
+      : `Debe ser de ${round.country}`;
+
     suggestions.innerHTML = `
       <button class="suggestion-item" type="button">
         <strong>No encontré ese jugador</strong>
-        <span>Debe ser de ${round.country}</span>
+        <span>${msg}</span>
       </button>
     `;
     return;
@@ -454,8 +517,20 @@ function renderSuggestions(query) {
 
 function placePlayer(player) {
   if (gameFinished) return;
+
   if (!selectedSlot) {
     showTemporaryPlaceholder("Primero elegí un casillero del campo");
+    return;
+  }
+
+  const round = getCurrentRound();
+
+  if (!round) return;
+
+  const slotPosition = selectedSlot.dataset.position;
+
+  if (!playerCanPlaySlot(player.position, slotPosition)) {
+    showTemporaryPlaceholder(`${player.name} no puede jugar de ${slotPosition}`);
     return;
   }
 
@@ -467,10 +542,6 @@ function placePlayer(player) {
     alert("Ese jugador ya fue usado.");
     return;
   }
-
-  const round = getCurrentRound();
-
-  if (!round) return;
 
   selectedSlot.classList.add("filled");
   selectedSlot.classList.remove("selected");
@@ -527,8 +598,14 @@ function trySubmitSearch() {
     return;
   }
 
+  const slotPosition = selectedSlot.dataset.position;
+
   const matches = round.players.filter(player => {
     if (usedPlayers.includes(player.name)) return false;
+
+    if (!playerCanPlaySlot(player.position, slotPosition)) {
+      return false;
+    }
 
     const fullName = normalizeText(player.name);
     const lastName = normalizeText(player.name.split(" ").pop());
@@ -547,7 +624,7 @@ function trySubmitSearch() {
     if (GAME_MODES[currentMode].showHints) {
       renderSuggestions(playerSearch.value);
     } else {
-      showTemporaryPlaceholder(`No coincide con ${round.country}`);
+      showTemporaryPlaceholder(`No coincide con ${round.country} / ${slotPosition}`);
     }
     return;
   }
@@ -735,7 +812,7 @@ restartBtn.addEventListener("click", () => {
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Cada ronda muestra un país. Elegí un casillero libre y escribí un jugador de ese país. El jugador puede ser de cualquier posición. Tenés una sola oportunidad diaria.");
+  alert("Cada ronda muestra un país. Elegí un casillero libre y escribí un jugador de ese país que pueda jugar en esa posición. Tenés una sola oportunidad diaria.");
 });
 
 loadGameData();
