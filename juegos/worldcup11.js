@@ -28,26 +28,6 @@ const GAME_MODES = {
   }
 };
 
-const POSITION_COMPATIBILITY = {
-  GK: ["GK"],
-
-  RB: ["RB"],
-  CB: ["CB"],
-  LB: ["LB"],
-
-  CDM: ["CDM", "CM"],
-  CM: ["CM", "CDM", "CAM"],
-  CAM: ["CAM", "CM"],
-
-  LW: ["LW", "LM"],
-  LM: ["LM", "LW"],
-
-  RW: ["RW", "RM"],
-  RM: ["RM", "RW"],
-
-  ST: ["ST"]
-};
-
 const pitchFrame = document.querySelector(".pitch-frame");
 const modeButtons = document.querySelectorAll(".mode-btn");
 
@@ -82,6 +62,7 @@ let timerInterval = null;
 let gameFinished = false;
 let dailyAttemptLocked = false;
 let currentRoundIndex = 0;
+let attemptStartedThisSession = false;
 
 async function loadGameData() {
   try {
@@ -105,11 +86,11 @@ async function loadGameData() {
     pitchFrame.innerHTML = `
       <div class="load-error">
         <strong>No se pudo cargar el juego</strong>
-        <span>Revisá que exista data/worldcup11-players.json</span>
+        <span>${error.message}</span>
       </div>
     `;
 
-    modeHint.textContent = "Error cargando datos del juego.";
+    modeHint.textContent = error.message;
   }
 }
 
@@ -132,6 +113,7 @@ function hasPlayedToday() {
 
 function savePlayedToday() {
   localStorage.setItem(getTodayStorageKey(), "true");
+  attemptStartedThisSession = true;
 }
 
 function createSeedFromString(text) {
@@ -260,7 +242,7 @@ function initGame() {
   score = 0;
   gameFinished = false;
   currentRoundIndex = 0;
-  dailyAttemptLocked = hasPlayedToday();
+  dailyAttemptLocked = hasPlayedToday() && !attemptStartedThisSession;
 
   resultModal.classList.add("hidden");
   restartBtn.style.display = "";
@@ -413,16 +395,59 @@ function clearSelectedSlot() {
 }
 
 function normalizePosition(position) {
-  return String(position || "").toUpperCase().trim();
+  const pos = String(position || "").toUpperCase().trim();
+
+  const map = {
+    ARQ: "GK",
+    GK: "GK",
+
+    DEF: "DEF",
+    CB: "CB",
+    LB: "LB",
+    RB: "RB",
+
+    MED: "MED",
+    CM: "CM",
+    CDM: "CDM",
+    CAM: "CAM",
+    LM: "LM",
+    RM: "RM",
+
+    DEL: "DEL",
+    ST: "ST",
+    LW: "LW",
+    RW: "RW"
+  };
+
+  return map[pos] || pos;
 }
 
 function playerCanPlaySlot(playerPosition, slotPosition) {
   const playerPos = normalizePosition(playerPosition);
   const slotPos = normalizePosition(slotPosition);
 
-  const compatibles = POSITION_COMPATIBILITY[slotPos] || [slotPos];
+  if (playerPos === slotPos) return true;
 
-  return compatibles.includes(playerPos);
+  const groups = {
+    GK: ["GK", "ARQ"],
+
+    CB: ["CB", "DEF"],
+    LB: ["LB", "DEF"],
+    RB: ["RB", "DEF"],
+
+    CM: ["CM", "MED", "CDM", "CAM"],
+    CDM: ["CDM", "CM", "MED"],
+    CAM: ["CAM", "CM", "MED"],
+
+    LM: ["LM", "LW", "MED"],
+    RM: ["RM", "RW", "MED"],
+
+    ST: ["ST", "DEL"],
+    LW: ["LW", "DEL"],
+    RW: ["RW", "DEL"]
+  };
+
+  return (groups[slotPos] || [slotPos]).includes(playerPos);
 }
 
 function findBestFreeSlotForPlayer(player) {
@@ -481,7 +506,7 @@ function renderSuggestions(query) {
 
     if (!value) return true;
 
-    const text = normalizeText(`${player.name} ${player.position}`);
+    const text = normalizeText(`${player.name} ${player.club} ${player.position}`);
     return text.includes(value);
   });
 
@@ -507,7 +532,7 @@ function renderSuggestions(query) {
     button.innerHTML = `
       <div>
         <strong>${player.name}</strong>
-        <span>${round.country} · ${player.position}</span>
+        <span>${round.country} · ${player.position} · ${player.club}</span>
       </div>
       <span>Elegir</span>
     `;
@@ -550,6 +575,8 @@ function placePlayer(player, forcedSlot = null) {
 
   if (!hasPlayedToday()) {
     savePlayedToday();
+  } else {
+    attemptStartedThisSession = true;
   }
 
   if (usedPlayers.includes(player.name)) {
@@ -620,11 +647,13 @@ function trySubmitSearch() {
 
     const fullName = normalizeText(player.name);
     const lastName = normalizeText(player.name.split(" ").pop());
+    const club = normalizeText(player.club);
     const position = normalizeText(player.position);
 
     return (
       fullName.includes(value) ||
       lastName.includes(value) ||
+      club.includes(value) ||
       position.includes(value)
     );
   });
@@ -639,7 +668,6 @@ function trySubmitSearch() {
 
       showTemporaryPlaceholder(msg);
     }
-
     return;
   }
 
@@ -737,6 +765,8 @@ function finishGame(reason) {
 
   if (!hasPlayedToday()) {
     savePlayedToday();
+  } else {
+    attemptStartedThisSession = true;
   }
 
   gameFinished = true;
@@ -790,12 +820,33 @@ function formatTime(seconds) {
 
 modeButtons.forEach(button => {
   button.addEventListener("click", () => {
-    if (dailyAttemptLocked || hasPlayedToday()) {
+    const nextMode = button.dataset.mode;
+
+    if (nextMode === currentMode) return;
+
+    if (gameFinished) {
       lockGameForToday();
       return;
     }
 
-    currentMode = button.dataset.mode;
+    if (hasPlayedToday() && !attemptStartedThisSession) {
+      lockGameForToday();
+      return;
+    }
+
+    const hasProgress = completedSlots.length > 0;
+
+    if (hasProgress) {
+      const confirmChange = confirm(
+        "Ya empezaste este intento diario. Si cambiás el modo, se reinicia la alineación actual, pero no perdés el intento de hoy. ¿Querés cambiar el modo?"
+      );
+
+      if (!confirmChange) {
+        return;
+      }
+    }
+
+    currentMode = nextMode;
     initGame();
   });
 });
@@ -812,6 +863,8 @@ playerForm.addEventListener("submit", event => {
 surrenderBtn.addEventListener("click", () => {
   if (!hasPlayedToday()) {
     savePlayedToday();
+  } else {
+    attemptStartedThisSession = true;
   }
 
   finishGame("surrender");
@@ -840,7 +893,7 @@ restartBtn.addEventListener("click", () => {
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Cada ronda muestra un país distinto. Escribí un jugador de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. También podés elegir primero una casilla compatible. Tenés una sola oportunidad diaria.");
+  alert("Cada ronda muestra un país distinto. Escribí un jugador de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. Si no, elegí un casillero compatible. Tenés una sola oportunidad diaria.");
 });
 
 loadGameData();
