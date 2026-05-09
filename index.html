@@ -6,6 +6,7 @@
     <title>Partidos Hoy</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
     <main class="app-shell">
       <header class="topbar" aria-label="Barra principal">
@@ -15,11 +16,18 @@
 
         <nav class="top-actions" aria-label="Acciones">
           <button class="icon-btn" id="searchToggle" type="button" aria-label="Buscar" title="Buscar">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.7-4.7m2.1-5.2a7.3 7.3 0 1 1-14.6 0 7.3 7.3 0 0 1 14.6 0Z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m21 21-4.7-4.7m2.1-5.2a7.3 7.3 0 1 1-14.6 0 7.3 7.3 0 0 1 14.6 0Z" />
+            </svg>
           </button>
+
           <button class="icon-btn" id="calendarToggle" type="button" aria-label="Calendario" title="Calendario">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4m8-4v4M3 10h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 2v4m8-4v4M3 10h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />
+              <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" />
+            </svg>
           </button>
+
           <button class="profile-btn" id="profileToggle" type="button" aria-label="Perfil" title="Perfil">
             <span class="avatar"></span>
             <span class="status-dot"></span>
@@ -32,36 +40,48 @@
           <span>Buscar</span>
           <input id="matchSearch" type="search" placeholder="Equipo, liga o marcador" autocomplete="off" />
         </label>
+
         <div class="date-strip" aria-label="Seleccionar dia">
           <button type="button" data-day="ayer">Ayer</button>
           <button class="active" type="button" data-day="hoy">Hoy</button>
           <button type="button" data-day="manana">Manana</button>
         </div>
+
         <p class="utility-status" id="utilityStatus">Mostrando agenda de hoy</p>
       </section>
 
       <section class="tabs" aria-label="Secciones">
         <button class="tab active" type="button" data-tab="agenda">Agenda del dia</button>
+
         <button class="tab" type="button" data-tab="games">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h4m-2-2v4m7-1h.01M18 10h.01"/><path d="M5 7h14a3 3 0 0 1 3 3v4a4 4 0 0 1-4 4 4.5 4.5 0 0 1-3.6-1.8H9.6A4.5 4.5 0 0 1 6 18a4 4 0 0 1-4-4v-4a3 3 0 0 1 3-3Z"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 12h4m-2-2v4m7-1h.01M18 10h.01" />
+            <path d="M5 7h14a3 3 0 0 1 3 3v4a4 4 0 0 1-4 4 4.5 4.5 0 0 1-3.6-1.8H9.6A4.5 4.5 0 0 1 6 18a4 4 0 0 1-4-4v-4a3 3 0 0 1 3-3Z" />
+          </svg>
           Juegos de fulbo
         </button>
-        <button class="tab" type="button" data-tab="live">Partidos en vivo <span>Live</span></button>
+
+        <button class="tab" type="button" data-tab="live">
+          Partidos en vivo <span>Live</span>
+        </button>
       </section>
 
       <section class="featured" aria-label="Partido destacado">
         <article class="score-panel">
           <p class="eyebrow">Partido destacado</p>
+
           <div class="score-grid">
             <div class="team">
               <span class="crest crest-a">A</span>
               <strong>Team Alfa</strong>
             </div>
+
             <div class="score">
               <span class="live-pill">Live</span>
               <strong id="mainScore">2 - 1</strong>
               <small>vs</small>
             </div>
+
             <div class="team">
               <span class="crest crest-b">B</span>
               <strong>Team Beta</strong>
@@ -80,20 +100,34 @@
             loading="eager"
             referrerpolicy="no-referrer"
           ></iframe>
+
           <button class="play-btn" id="playToggle" type="button" aria-label="Reproducir partido">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7Z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 5v14l11-7Z" />
+            </svg>
           </button>
+
           <button class="watch-btn" type="button">Watch live</button>
           <p class="video-state" id="videoState">En pausa</p>
+
           <div class="video-tools">
             <button type="button" id="reloadEmbed" aria-label="Recargar reproductor" title="Recargar reproductor">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M21 12a9 9 0 1 1-2.64-6.36" />
+                <path d="M21 3v6h-6" />
+              </svg>
             </button>
+
             <button type="button" id="volumeToggle" aria-label="Volumen" title="Volumen">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm5.5 3.5a5 5 0 0 1 0 7M19 6a8 8 0 0 1 0 12"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M11 5 6 9H3v6h3l5 4V5Zm5.5 3.5a5 5 0 0 1 0 7M19 6a8 8 0 0 1 0 12" />
+              </svg>
             </button>
+
             <button type="button" id="focusToggle" aria-label="Pantalla completa" title="Pantalla completa">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5m18 0V3h-5M3 16v5h5m8 0h5v-5"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 3H3v5m18 0V3h-5M3 16v5h5m8 0h5v-5" />
+              </svg>
             </button>
           </div>
         </article>
@@ -106,25 +140,23 @@
       </section>
 
       <section class="social-section games-section hidden" id="gamesSection" aria-label="Juegos de fulbo">
-  <div class="section-head">
-    <div>
-      <span>Juegos de fulbo</span>
-      <strong>Elegí un reto rápido</strong>
-    </div>
+        <div class="section-head">
+          <div>
+            <span>Juegos de fulbo</span>
+            <strong>Elegí un reto rápido</strong>
+          </div>
 
-    <a class="section-link" href="juegos/index.html">Ver todos →</a>
-  </div>
-
-  <div class="games-grid">
-    <a class="game-card" href="juegos/legends11/legends11.html">
-      <span class="game-badge">Nuevo</span>
-      <strong>Leyendas por País</strong>
-      <p>Adiviná una leyenda según el país y la posición.</p>
-    </a>
-  </div>
-</section>
+          <a class="section-link" href="juegos/index.html">Ver todos →</a>
+        </div>
 
         <div class="games-grid">
+          <article class="game-card">
+            <span>🌎</span>
+            <strong>Leyendas por País</strong>
+            <p>Adiviná una leyenda según el país y la posición.</p>
+            <a class="game-play-link" href="juegos/legends11/legends11.html">Jugar</a>
+          </article>
+
           <article class="game-card">
             <span>🏆</span>
             <strong>Armá tu 11 Mundial</strong>
@@ -151,10 +183,12 @@
       <section class="social-section hidden" id="socialSection" aria-label="Chat social">
         <form class="post-composer" id="postForm">
           <div class="composer-avatar">T</div>
+
           <label for="postInput">
             <span>Publicar en el muro</span>
             <textarea id="postInput" maxlength="220" placeholder="Que esta pasando en el partido?"></textarea>
           </label>
+
           <button type="submit">Postear</button>
         </form>
 
@@ -166,28 +200,58 @@
         <div class="post-feed" id="postFeed">
           <article class="post-card">
             <div class="post-avatar">PH</div>
+
             <div>
-              <header><strong>Partidos.Hoy</strong><span>@partidoshoy · ahora</span></header>
+              <header>
+                <strong>Partidos.Hoy</strong>
+                <span>@partidoshoy · ahora</span>
+              </header>
+
               <p>Los eventos en vivo se actualizan desde el calendario remoto. Usa esta seccion para comentar como en X.</p>
-              <footer><button type="button">Responder</button><button type="button">Repost</button><button type="button" data-like>Me gusta <span>8</span></button></footer>
+
+              <footer>
+                <button type="button">Responder</button>
+                <button type="button">Repost</button>
+                <button type="button" data-like>Me gusta <span>8</span></button>
+              </footer>
             </div>
           </article>
 
           <article class="post-card">
             <div class="post-avatar">AF</div>
+
             <div>
-              <header><strong>Analista Futbol</strong><span>@analista · 4 min</span></header>
+              <header>
+                <strong>Analista Futbol</strong>
+                <span>@analista · 4 min</span>
+              </header>
+
               <p>Si el destacado cambia solo, es porque encontro un partido dentro de su ventana horaria.</p>
-              <footer><button type="button">Responder</button><button type="button">Repost</button><button type="button" data-like>Me gusta <span>3</span></button></footer>
+
+              <footer>
+                <button type="button">Responder</button>
+                <button type="button">Repost</button>
+                <button type="button" data-like>Me gusta <span>3</span></button>
+              </footer>
             </div>
           </article>
 
           <article class="post-card">
             <div class="post-avatar">TV</div>
+
             <div>
-              <header><strong>TV Sports</strong><span>@tvsports · 12 min</span></header>
+              <header>
+                <strong>TV Sports</strong>
+                <span>@tvsports · 12 min</span>
+              </header>
+
               <p>Recuerda revisar los canales disponibles dentro de cada evento antes de abrir la transmision.</p>
-              <footer><button type="button">Responder</button><button type="button">Repost</button><button type="button" data-like>Me gusta <span>5</span></button></footer>
+
+              <footer>
+                <button type="button">Responder</button>
+                <button type="button">Repost</button>
+                <button type="button" data-like>Me gusta <span>5</span></button>
+              </footer>
             </div>
           </article>
         </div>
@@ -199,8 +263,10 @@
             <span>Partidos en vivo</span>
             <strong id="liveTitle">Cargando eventos...</strong>
           </div>
+
           <button type="button" id="refreshLive">Actualizar</button>
         </div>
+
         <div class="live-grid" id="liveGrid"></div>
       </section>
 
@@ -208,6 +274,7 @@
     </main>
 
     <footer>Desarrollado por <strong>AzWink</strong></footer>
+
     <script src="app.js"></script>
   </body>
 </html>
