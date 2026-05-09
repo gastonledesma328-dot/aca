@@ -273,6 +273,33 @@ button {
   margin-bottom: 0;
 }
 
+/* Corrección para líneas con 5 jugadores, ejemplo 5-3-2 */
+.line-count-5 {
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+}
+
+.line-count-5 .position-slot {
+  min-width: 0;
+  width: 104px;
+  max-width: 104px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.line-count-5 .position-slot.filled {
+  min-width: 0;
+  width: 104px;
+  max-width: 104px;
+  font-size: 10px;
+  line-height: 1.08;
+}
+
+.line-count-5 .position-slot.filled small {
+  font-size: 9px;
+}
+
 .position-slot {
   min-width: 78px;
   min-height: 46px;
@@ -581,6 +608,33 @@ button {
   .game-page {
     padding: 14px;
   }
+
+
+  .line-count-5 {
+  gap: 5px;
+  padding: 0;
+}
+
+.line-count-5 .position-slot {
+  min-width: 0;
+  width: 61px;
+  max-width: 61px;
+  padding-left: 4px;
+  padding-right: 4px;
+  font-size: 11px;
+}
+
+.line-count-5 .position-slot.filled {
+  min-width: 0;
+  width: 61px;
+  max-width: 61px;
+  font-size: 8px;
+  line-height: 1.05;
+}
+
+.line-count-5 .position-slot.filled small {
+  font-size: 7px;
+}
 
   .topbar {
     gap: 8px;
