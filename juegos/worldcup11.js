@@ -369,9 +369,8 @@ function selectSlot(slot) {
   selectedSlot = slot;
   selectedSlot.classList.add("selected");
 
-  playerSearch.value = "";
   updateCountryPanel();
-  renderSuggestions("");
+  renderSuggestions(playerSearch.value);
 }
 
 function clearSelectedSlot() {
