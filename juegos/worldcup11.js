@@ -283,14 +283,14 @@ function initGame() {
 
   applyModeUi();
 
-  if (dailyAttemptLocked) {
-    lockGameForToday();
-    return;
-  }
+if (dailyAttemptLocked) {
+  lockGameForToday();
+  return;
+}
 
-  selectNextEmptySlot();
-  startTimerIfNeeded();
-  updateStatus();
+clearSelectedSlot();
+startTimerIfNeeded();
+updateStatus();
 }
 
 function lockGameForToday() {
@@ -406,15 +406,22 @@ function selectSlot(slot) {
   renderSuggestions("");
 }
 
-function selectNextEmptySlot() {
-  const next = Array.from(getSlots()).find(slot => {
-    return !slot.classList.contains("filled");
-  });
 
-  if (next) {
-    selectSlot(next);
-  }
+function clearSelectedSlot() {
+  selectedSlot = null;
+
+  getSlots().forEach(item => item.classList.remove("selected"));
+
+  countryFlag.src = "https://flagcdn.com/w40/un.png";
+  countryFlag.alt = "Seleccioná una posición";
+  countryName.textContent = "Seleccioná una posición";
+
+  playerSearch.value = "";
+  playerSearch.placeholder = "Primero elegí una posición del campo...";
+  suggestions.innerHTML = "";
 }
+
+
 
 function getSlotData(slot) {
   const index = Number(slot.dataset.index);
@@ -513,11 +520,11 @@ function placePlayer(player) {
   updateStatus();
 
   if (completedSlots.length === DAILY_GAME.slots.length) {
-    finishGame("complete");
-    return;
-  }
+  finishGame("complete");
+  return;
+}
 
-  selectNextEmptySlot();
+clearSelectedSlot();
 }
 
 function calculatePoints() {
@@ -533,9 +540,9 @@ function trySubmitSearch() {
   if (gameFinished) return;
 
   if (!selectedSlot) {
-    selectNextEmptySlot();
-    return;
-  }
+  showTemporaryPlaceholder("Primero elegí una posición del campo");
+  return;
+}
 
   const data = getSlotData(selectedSlot);
   const value = normalizeText(playerSearch.value);
