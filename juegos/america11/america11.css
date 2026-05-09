@@ -1,0 +1,318 @@
+:root {
+  --bg: #10251d;
+  --bg2: #18382c;
+  --card: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.14);
+  --text: #f3fff7;
+  --muted: rgba(243, 255, 247, 0.65);
+  --primary: #6ee787;
+  --danger: #ff6868;
+  --field: #1f7a48;
+  --field2: #19663d;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top, rgba(110, 231, 135, 0.18), transparent 34rem),
+    linear-gradient(160deg, var(--bg), var(--bg2));
+}
+
+button,
+input,
+a {
+  font: inherit;
+}
+
+.game-page {
+  width: min(1100px, calc(100% - 28px));
+  margin: 0 auto;
+  padding: 20px 0 36px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.back {
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.brand span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.help-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.hero {
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--primary);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: clamp(30px, 5vw, 56px);
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.status-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.status-card > div {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.07);
+}
+
+.label {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.pitch-wrap {
+  padding: 14px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,0.22);
+  box-shadow: var(--shadow);
+}
+
+.pitch {
+  min-height: 610px;
+  border-radius: 20px;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(160deg, var(--field), var(--field2));
+  background-size: 54px 54px, 54px 54px, auto;
+  border: 2px solid rgba(255,255,255,0.28);
+  padding: 26px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pitch-row {
+  display: flex;
+  justify-content: center;
+  gap: clamp(8px, 2vw, 22px);
+}
+
+.slot {
+  width: min(128px, 26vw);
+  min-height: 74px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.32);
+  background: rgba(10, 28, 20, 0.64);
+  display: grid;
+  place-items: center;
+  padding: 8px;
+  text-align: center;
+}
+
+.slot small {
+  display: block;
+  color: var(--primary);
+  font-weight: 900;
+}
+
+.slot strong {
+  font-size: 13px;
+}
+
+.slot span {
+  display: block;
+  color: rgba(255,255,255,0.72);
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.input-card {
+  margin-top: 16px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--card);
+}
+
+.input-card label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+
+.search-row {
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 13px 14px;
+  color: var(--text);
+  background: rgba(0,0,0,0.24);
+  outline: none;
+}
+
+button,
+.modal-actions a {
+  border: 0;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-weight: 900;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#addPlayerBtn,
+.primary,
+.modal-actions button,
+.modal-actions a {
+  background: var(--primary);
+  color: #0d2117;
+}
+
+.secondary {
+  background: rgba(255,255,255,0.1);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.message {
+  min-height: 22px;
+  color: var(--muted);
+}
+
+.message.ok {
+  color: var(--primary);
+}
+
+.message.error {
+  color: var(--danger);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 20;
+}
+
+.modal-box {
+  width: min(460px, 100%);
+  padding: 22px;
+  border-radius: 22px;
+  background: #142c23;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: rgba(255,255,255,0.12);
+  color: white;
+}
+
+.modal-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+@media (max-width: 700px) {
+  .status-card {
+    grid-template-columns: 1fr;
+  }
+
+  .search-row {
+    flex-direction: column;
+  }
+
+  .pitch {
+    min-height: 540px;
+    padding-inline: 6px;
+  }
+
+  .slot {
+    min-height: 66px;
+  }
+}

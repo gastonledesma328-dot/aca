@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Armá 11 América | Partidos.Hoy</title>
+
+  <link rel="stylesheet" href="america11.css" />
+</head>
+
+<body>
+  <main class="game-page">
+    <header class="topbar">
+      <a href="../index.html" class="back">← Volver</a>
+
+      <div class="brand">
+        <strong>Partidos.Hoy</strong>
+        <span>Armá tu 11</span>
+      </div>
+
+      <button class="help-btn" type="button" id="helpBtn">?</button>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">Nuevo juego</p>
+      <h1>Armá 11 América</h1>
+      <p>
+        Completá una formación usando jugadores que actualmente juegan en clubes de América.
+      </p>
+    </section>
+
+    <section class="status-card">
+      <div>
+        <span class="label">Formación</span>
+        <strong id="formationName">4-3-3</strong>
+      </div>
+
+      <div>
+        <span class="label">Completados</span>
+        <strong><span id="filledCount">0</span>/11</strong>
+      </div>
+
+      <div>
+        <span class="label">Puntaje</span>
+        <strong id="score">0</strong>
+      </div>
+    </section>
+
+    <section class="pitch-wrap">
+      <div class="pitch" id="pitch"></div>
+    </section>
+
+    <section class="input-card">
+      <label for="playerInput">Buscar jugador</label>
+
+      <div class="search-row">
+        <input id="playerInput" type="text" placeholder="Ej: Miguel Borja" autocomplete="off" />
+        <button id="addPlayerBtn" type="button">Agregar</button>
+      </div>
+
+      <p id="message" class="message">Cargando jugadores...</p>
+    </section>
+
+    <section class="actions">
+      <button id="surrenderBtn" type="button" class="secondary">Rendirse</button>
+      <button id="nextBtn" type="button" class="primary hidden">Siguiente desafío</button>
+    </section>
+  </main>
+
+  <div class="modal hidden" id="helpModal">
+    <div class="modal-box">
+      <button class="modal-close" id="closeHelpBtn" type="button">×</button>
+      <h2>Cómo se juega</h2>
+      <p>
+        Escribí el nombre de un jugador. Si está en la base y juega actualmente en un club de América,
+        se agregará al primer puesto compatible de la formación.
+      </p>
+      <p>
+        Esta es una base inicial. Después vamos a llenar el JSON automáticamente con ESPN.
+      </p>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="completeModal">
+    <div class="modal-box">
+      <h2>Equipo completado</h2>
+      <p id="completeText"></p>
+
+      <div class="modal-actions">
+        <button type="button" id="shareBtn">Compartir</button>
+        <a href="../index.html">Volver a juegos</a>
+        <button type="button" id="modalNextBtn">Siguiente desafío</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="america11.js"></script>
+</body>
+</html>
