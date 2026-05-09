@@ -86,6 +86,7 @@ let gameFinished = false;
 let dailyAttemptLocked = false;
 let currentRoundIndex = 0;
 let attemptStartedThisSession = false;
+let challengeCounter = 0;
 
 async function loadGameData() {
   try {
@@ -130,10 +131,17 @@ function getTodayStorageKey() {
   return `${STORAGE_PREFIX}${getTodayKey()}`;
 }
 
+/*
+  LÍMITE DIARIO QUITADO:
+  Siempre devuelve false para que el juego no se bloquee nunca.
+*/
 function hasPlayedToday() {
   return false;
 }
 
+/*
+  Ya no guardamos bloqueo en localStorage.
+*/
 function savePlayedToday() {
   attemptStartedThisSession = true;
 }
@@ -175,9 +183,21 @@ function shuffleArray(list, random) {
   return copy;
 }
 
+/*
+  NUEVA LÓGICA:
+  Ya no usa una semilla fija diaria.
+  Cada partida genera una semilla nueva con Date.now(), Math.random() y challengeCounter.
+  Así rota formación, países y orden de jugadores cada vez que terminás o te rendís.
+*/
 function generateDailyGame() {
   const todayKey = getTodayKey();
-  const seed = createSeedFromString(`partidos-hoy-legends11-${todayKey}`);
+
+  challengeCounter += 1;
+
+  const seed = createSeedFromString(
+    `partidos-hoy-legends11-${todayKey}-${Date.now()}-${Math.random()}-${challengeCounter}`
+  );
+
   const random = seededRandom(seed);
 
   const availableCountries = GAME_DATA.countries.filter(country => {
@@ -254,18 +274,15 @@ function renderFormation() {
   });
 }
 
-function initGame() {
-  stopTimer();
-
-  DAILY_GAME = generateDailyGame();
-
+function resetGameState() {
   selectedSlot = null;
   completedSlots = [];
   usedPlayers = [];
   score = 0;
   gameFinished = false;
+  dailyAttemptLocked = false;
   currentRoundIndex = 0;
-  dailyAttemptLocked = hasPlayedToday() && !attemptStartedThisSession;
+  attemptStartedThisSession = false;
 
   resultModal.classList.add("hidden");
   hideFinalButtons();
@@ -274,6 +291,14 @@ function initGame() {
   surrenderBtn.disabled = false;
   playerSearch.value = "";
   suggestions.innerHTML = "";
+}
+
+function initGame() {
+  stopTimer();
+
+  DAILY_GAME = generateDailyGame();
+
+  resetGameState();
 
   renderFormation();
 
@@ -293,23 +318,21 @@ function initGame() {
   });
 
   applyModeUi();
-
-  if (dailyAttemptLocked) {
-    lockGameForToday();
-    return;
-  }
-
   clearSelectedSlot();
   updateCountryPanel();
   startTimerIfNeeded();
   updateStatus();
 }
 
+function startNewRandomChallenge() {
+  initGame();
+}
+
 function applyModeUi() {
   const mode = GAME_MODES[currentMode];
 
   modeText.textContent = mode.label;
-  modeHint.textContent = `${mode.help} Desafío diario: ${DAILY_GAME.date} · Formación: ${DAILY_GAME.formationName}`;
+  modeHint.textContent = `${mode.help} Partida: ${challengeCounter} · Formación: ${DAILY_GAME.formationName}`;
 
   if (mode.showHints && !dailyAttemptLocked) {
     suggestions.classList.remove("hidden");
@@ -575,11 +598,7 @@ function placePlayer(player, forcedSlot = null) {
     return;
   }
 
-  if (!hasPlayedToday()) {
-    savePlayedToday();
-  } else {
-    attemptStartedThisSession = true;
-  }
+  savePlayedToday();
 
   if (usedPlayers.includes(player.name)) {
     alert("Esa leyenda ya fue usada.");
@@ -623,7 +642,6 @@ function calculatePoints() {
 }
 
 function trySubmitSearch() {
-  if (dailyAttemptLocked && hasPlayedToday()) return;
   if (gameFinished) return;
 
   const round = getCurrentRound();
@@ -723,6 +741,7 @@ function showFinalButtons() {
   if (backToGamesBtn) {
     backToGamesBtn.classList.remove("hidden");
     backToGamesBtn.style.display = "inline-flex";
+    backToGamesBtn.textContent = "Nueva partida";
   }
 }
 
@@ -754,46 +773,19 @@ function showModeChangeModal(nextMode) {
   };
 }
 
+/*
+  Esta función queda por compatibilidad, pero ya no debería usarse
+  porque el límite diario fue eliminado.
+*/
 function lockGameForToday() {
-  gameFinished = true;
-  stopTimer();
-
-  getSlots().forEach(slot => {
-    slot.disabled = true;
-    slot.classList.remove("selected");
-  });
-
-  modeButtons.forEach(button => {
-    button.disabled = true;
-  });
-
-  playerSearch.disabled = true;
-  surrenderBtn.disabled = true;
-  suggestions.innerHTML = "";
-
-  countryFlag.src = "https://flagcdn.com/w40/un.png";
-  countryFlag.alt = "Desafío bloqueado";
-  countryName.textContent = "Ya jugaste hoy";
-
-  completedText.textContent = "0/11";
-  scoreText.textContent = "0";
-  timerText.textContent = "Mañana";
-
-  resultTitle.textContent = "Ya usaste tu intento diario";
-  resultText.textContent = "Este desafío permite una sola oportunidad por día. Volvé mañana para jugar una nueva alineación de leyendas.";
-
-  showFinalButtons();
-  resultModal.classList.remove("hidden");
+  gameFinished = false;
+  dailyAttemptLocked = false;
 }
 
 function finishGame(reason) {
   if (gameFinished) return;
 
-  if (!hasPlayedToday()) {
-    savePlayedToday();
-  } else {
-    attemptStartedThisSession = true;
-  }
+  savePlayedToday();
 
   gameFinished = true;
   stopTimer();
@@ -802,7 +794,7 @@ function finishGame(reason) {
   showFinalButtons();
 
   modeButtons.forEach(button => {
-    button.disabled = true;
+    button.disabled = false;
   });
 
   getSlots().forEach(slot => {
@@ -815,18 +807,18 @@ function finishGame(reason) {
 
   if (reason === "surrender") {
     resultTitle.textContent = "Te rendiste";
-    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.positions.length} casilleros. Puntaje final: ${score}. Volvé mañana para otro desafío de leyendas.`;
+    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.positions.length} casilleros. Puntaje final: ${score}. Tocá “Nueva partida” para generar otra alineación.`;
     return;
   }
 
   if (reason === "time") {
     resultTitle.textContent = "Se terminó el tiempo";
-    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.positions.length} casilleros en modo ${GAME_MODES[currentMode].label}. Puntaje final: ${score}. Volvé mañana para otro desafío de leyendas.`;
+    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.positions.length} casilleros en modo ${GAME_MODES[currentMode].label}. Puntaje final: ${score}. Tocá “Nueva partida” para generar otra alineación.`;
     return;
   }
 
   resultTitle.textContent = "Once de leyendas completado";
-  resultText.textContent = `Completaste el 11 en modo ${GAME_MODES[currentMode].label}. Formación ${DAILY_GAME.formationName}. Puntaje final: ${score}.`;
+  resultText.textContent = `Completaste el 11 en modo ${GAME_MODES[currentMode].label}. Formación ${DAILY_GAME.formationName}. Puntaje final: ${score}. Tocá “Nueva partida” para jugar otra vez.`;
 }
 
 function normalizeText(text) {
@@ -853,12 +845,8 @@ modeButtons.forEach(button => {
     if (nextMode === currentMode) return;
 
     if (gameFinished) {
-      lockGameForToday();
-      return;
-    }
-
-    if (hasPlayedToday() && !attemptStartedThisSession) {
-      lockGameForToday();
+      currentMode = nextMode;
+      initGame();
       return;
     }
 
@@ -884,18 +872,17 @@ playerForm.addEventListener("submit", event => {
 });
 
 surrenderBtn.addEventListener("click", () => {
-  if (!hasPlayedToday()) {
-    savePlayedToday();
-  } else {
-    attemptStartedThisSession = true;
-  }
-
   finishGame("surrender");
+});
+
+backToGamesBtn.addEventListener("click", event => {
+  event.preventDefault();
+  startNewRandomChallenge();
 });
 
 shareBtn.addEventListener("click", async () => {
   const text = `Armé mi 11 de Leyendas en Partidos.Hoy ⚽
-Fecha: ${DAILY_GAME.date}
+Partida: ${challengeCounter}
 Modo: ${GAME_MODES[currentMode].label}
 Formación: ${DAILY_GAME.formationName}
 Puntaje: ${score}`;
@@ -912,7 +899,7 @@ Puntaje: ${score}`;
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Cada ronda muestra un país distinto. Escribí una leyenda de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. También podés elegir primero una casilla compatible. Tenés una sola oportunidad diaria.");
+  alert("Cada ronda muestra un país distinto. Escribí una leyenda de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. También podés elegir primero una casilla compatible. No hay límite diario: al terminar podés iniciar otra partida.");
 });
 
 loadGameData();
