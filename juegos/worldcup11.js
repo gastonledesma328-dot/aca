@@ -67,7 +67,6 @@ const resultModal = document.getElementById("resultModal");
 const resultTitle = document.getElementById("resultTitle");
 const resultText = document.getElementById("resultText");
 const shareBtn = document.getElementById("shareBtn");
-const restartBtn = document.getElementById("restartBtn");
 const backToGamesBtn = document.getElementById("backToGamesBtn");
 
 let GAME_DATA = null;
@@ -708,10 +707,11 @@ function updateStatus() {
 }
 
 function showFinalButtons() {
-  if (restartBtn) {
-    restartBtn.classList.add("hidden");
-    restartBtn.style.display = "none";
+  if (backToGamesBtn) {
+    backToGamesBtn.classList.remove("hidden");
+    backToGamesBtn.style.display = "inline-flex";
   }
+}
 
   if (backToGamesBtn) {
     backToGamesBtn.classList.remove("hidden");
@@ -720,10 +720,11 @@ function showFinalButtons() {
 }
 
 function hideFinalButtons() {
-  if (restartBtn) {
-    restartBtn.classList.add("hidden");
-    restartBtn.style.display = "none";
+  if (backToGamesBtn) {
+    backToGamesBtn.classList.add("hidden");
+    backToGamesBtn.style.display = "none";
   }
+}
 
   if (backToGamesBtn) {
     backToGamesBtn.classList.add("hidden");
@@ -909,9 +910,7 @@ Puntaje: ${score}`;
   }
 });
 
-restartBtn.addEventListener("click", () => {
-  lockGameForToday();
-});
+
 
 helpBtn.addEventListener("click", () => {
   alert("Cada ronda muestra un país distinto. Escribí un jugador de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. También podés elegir primero una casilla compatible. Tenés una sola oportunidad diaria.");
