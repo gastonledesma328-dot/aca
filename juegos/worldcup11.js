@@ -371,6 +371,12 @@ function selectSlot(slot) {
 
   updateCountryPanel();
   renderSuggestions(playerSearch.value);
+
+  const value = normalizeText(playerSearch.value);
+
+  if (value) {
+    trySubmitSearch();
+  }
 }
 
 function clearSelectedSlot() {
