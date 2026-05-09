@@ -6,32 +6,28 @@ const GAME_MODES = {
     showHints: true,
     timeLimit: null,
     points: 100,
-    noRepeatClub: false,
-    help: "Modo fácil: vas a ver sugerencias y podés repetir club."
+    help: "Modo fácil: vas a ver sugerencias disponibles."
   },
   normal: {
     label: "Normal",
     showHints: false,
     timeLimit: null,
     points: 150,
-    noRepeatClub: true,
-    help: "Modo normal: sin ayudas y sin repetir club."
+    help: "Modo normal: sin ayudas y sin tiempo en contra."
   },
   hard: {
     label: "Difícil",
     showHints: false,
     timeLimit: 90,
     points: 200,
-    noRepeatClub: true,
-    help: "Modo difícil: sin ayudas, sin repetir club y con 90 segundos."
+    help: "Modo difícil: sin ayudas y con 90 segundos."
   },
   expert: {
     label: "Experto",
     showHints: false,
     timeLimit: 45,
     points: 300,
-    noRepeatClub: true,
-    help: "Modo experto: sin ayudas, sin repetir club y con 45 segundos."
+    help: "Modo experto: sin ayudas y con 45 segundos."
   }
 };
 
@@ -174,14 +170,13 @@ const shareBtn = document.getElementById("shareBtn");
 const backToGamesBtn = document.getElementById("backToGamesBtn");
 
 let PLAYERS = [];
-let CHALLENGES = [];
+let CLUBS = [];
 let CURRENT_GAME = null;
 
 let currentMode = "easy";
 let selectedSlot = null;
 let completedSlots = [];
 let usedPlayers = [];
-let usedClubs = [];
 let score = 0;
 let timeLeft = null;
 let timerInterval = null;
@@ -199,6 +194,7 @@ async function loadGameData() {
     const payload = await res.json();
 
     PLAYERS = Array.isArray(payload) ? payload : (payload.jugadores || []);
+
     PLAYERS = PLAYERS
       .map(normalizePlayer)
       .filter(player => player.nombre && player.slug && player.club);
@@ -207,8 +203,13 @@ async function loadGameData() {
       throw new Error("La base de jugadores está vacía.");
     }
 
+    CLUBS = buildClubs();
+
+    if (!CLUBS.length) {
+      throw new Error("No hay clubes suficientes para generar el juego.");
+    }
+
     renderBaseInfo(payload);
-    buildChallenges();
     initGame();
 
   } catch (error) {
@@ -226,16 +227,61 @@ async function loadGameData() {
 }
 
 function normalizePlayer(raw) {
+  const position = String(raw.posicion || raw.position || "CM").toUpperCase();
+
   return {
     ...raw,
+    id: raw.id || "",
     nombre: raw.nombre || raw.name || "",
     slug: raw.slug || slugify(raw.nombre || raw.name || ""),
-    posicion: String(raw.posicion || raw.position || "CM").toUpperCase(),
-    categoria: raw.categoria || positionGroup(raw.posicion || raw.position || "CM"),
+    posicion: position,
+    categoria: raw.categoria || positionGroup(position),
     club: raw.club || "Club desconocido",
+    club_id: String(raw.club_id || "").trim(),
+    club_logo: raw.club_logo || "",
     pais_club: raw.pais_club || "",
     liga: raw.liga || "",
     league_slug: raw.league_slug || ""
+  };
+}
+
+function buildClubs() {
+  const clubMap = new Map();
+
+  PLAYERS.forEach(player => {
+    if (!player.club) return;
+
+    const key = player.club_id || slugify(player.club);
+
+    if (!clubMap.has(key)) {
+      clubMap.set(key, {
+        key,
+        clubId: player.club_id,
+        name: player.club,
+        country: player.pais_club || "América",
+        league: player.liga || "",
+        logo: player.club_logo || "",
+        players: []
+      });
+    }
+
+    clubMap.get(key).players.push(player);
+  });
+
+  return [...clubMap.values()]
+    .filter(club => club.players.length >= 8)
+    .map(club => ({
+      ...club,
+      positions: getClubPositionSummary(club.players)
+    }));
+}
+
+function getClubPositionSummary(players) {
+  return {
+    arqueros: players.filter(player => player.categoria === "arqueros").length,
+    defensores: players.filter(player => player.categoria === "defensores").length,
+    mediocampistas: players.filter(player => player.categoria === "mediocampistas").length,
+    delanteros: players.filter(player => player.categoria === "delanteros").length
   };
 }
 
@@ -275,55 +321,6 @@ function positionGroup(position) {
   return "delanteros";
 }
 
-function buildChallenges() {
-  const baseChallenge = {
-    type: "america",
-    value: "america",
-    title: "Clubes de América",
-    description: "Completá el 11 con cualquier jugador actual de clubes americanos.",
-    icon: "https://flagcdn.com/w40/un.png",
-    validate: player => Boolean(player.club)
-  };
-
-  const countries = [...new Set(PLAYERS.map(player => player.pais_club).filter(Boolean))];
-
-  const countryChallenges = countries.map(country => ({
-    type: "country",
-    value: country,
-    title: `Clubes de ${country}`,
-    description: `Completá el 11 solo con jugadores de clubes de ${country}.`,
-    icon: `https://flagcdn.com/w40/${COUNTRY_FLAGS[country] || "un"}.png`,
-    validate: player => player.pais_club === country
-  }));
-
-  const leagueMap = new Map();
-
-  PLAYERS.forEach(player => {
-    if (player.league_slug && player.liga) {
-      leagueMap.set(player.league_slug, {
-        league_slug: player.league_slug,
-        liga: player.liga,
-        pais_club: player.pais_club
-      });
-    }
-  });
-
-  const leagueChallenges = [...leagueMap.values()].map(item => ({
-    type: "league",
-    value: item.league_slug,
-    title: item.liga,
-    description: `Completá el 11 solo con jugadores de ${item.liga}.`,
-    icon: `https://flagcdn.com/w40/${COUNTRY_FLAGS[item.pais_club] || "un"}.png`,
-    validate: player => player.league_slug === item.league_slug
-  }));
-
-  CHALLENGES = shuffleArray([
-    baseChallenge,
-    ...countryChallenges,
-    ...leagueChallenges
-  ]);
-}
-
 function initGame() {
   stopTimer();
 
@@ -341,38 +338,93 @@ function initGame() {
 function generateChallenge() {
   challengeCounter += 1;
 
-  let formation;
-  let challenge;
+  let formation = null;
+  let slotChallenges = [];
   let safety = 0;
 
   do {
     formation = pickRandom(FORMATIONS);
-    challenge = pickRandom(CHALLENGES);
+    slotChallenges = generateSlotChallenges(formation);
     safety++;
-  } while (!challengeHasEnoughPlayers(formation, challenge) && safety < 200);
+  } while (slotChallenges.length !== 11 && safety < 200);
+
+  if (slotChallenges.length !== 11) {
+    throw new Error("No se pudieron elegir 11 equipos válidos de América.");
+  }
 
   return {
     challengeNumber: challengeCounter,
     formationName: formation.name,
     rows: formation.rows,
     positions: formation.rows.flat(),
-    challenge
+    slots: slotChallenges
   };
 }
 
-function challengeHasEnoughPlayers(formation, challenge) {
-  const available = PLAYERS.filter(player => challenge.validate(player));
+function generateSlotChallenges(formation) {
   const positions = formation.rows.flat();
+  const usedClubKeys = new Set();
+  const countryCount = new Map();
 
-  const needed = {
-    arqueros: positions.filter(position => positionGroup(position) === "arqueros").length,
-    defensores: positions.filter(position => positionGroup(position) === "defensores").length,
-    mediocampistas: positions.filter(position => positionGroup(position) === "mediocampistas").length,
-    delanteros: positions.filter(position => positionGroup(position) === "delanteros").length
-  };
+  const result = [];
 
-  return Object.keys(needed).every(group => {
-    return available.filter(player => player.categoria === group).length >= needed[group];
+  positions.forEach((position, index) => {
+    const club = pickClubForPosition(position, usedClubKeys, countryCount);
+
+    if (!club) {
+      return;
+    }
+
+    usedClubKeys.add(club.key);
+    countryCount.set(club.country, (countryCount.get(club.country) || 0) + 1);
+
+    result.push({
+      index,
+      position,
+      clubKey: club.key,
+      clubId: club.clubId,
+      clubName: club.name,
+      clubLogo: club.logo,
+      country: club.country,
+      league: club.league
+    });
+  });
+
+  if (result.length !== positions.length) {
+    return [];
+  }
+
+  return result;
+}
+
+function pickClubForPosition(position, usedClubKeys, countryCount) {
+  const candidates = CLUBS.filter(club => {
+    if (usedClubKeys.has(club.key)) return false;
+
+    return clubHasCompatiblePlayer(club, position);
+  });
+
+  if (!candidates.length) {
+    return null;
+  }
+
+  const sorted = shuffleArray(candidates).sort((a, b) => {
+    const countA = countryCount.get(a.country) || 0;
+    const countB = countryCount.get(b.country) || 0;
+
+    if (countA !== countB) {
+      return countA - countB;
+    }
+
+    return b.players.length - a.players.length;
+  });
+
+  return sorted[0];
+}
+
+function clubHasCompatiblePlayer(club, position) {
+  return club.players.some(player => {
+    return playerCanPlaySlot(player.posicion, position);
   });
 }
 
@@ -395,12 +447,21 @@ function renderFormation() {
     ].join(" ");
 
     row.forEach(position => {
+      const slotData = CURRENT_GAME.slots[slotIndex];
+
       const button = document.createElement("button");
       button.className = "position-slot";
       button.type = "button";
       button.dataset.position = position;
       button.dataset.index = slotIndex;
-      button.textContent = position;
+      button.dataset.clubKey = slotData.clubKey;
+      button.dataset.clubName = slotData.clubName;
+      button.dataset.country = slotData.country;
+
+      button.innerHTML = `
+        ${position}
+        <small>${slotData.clubName}</small>
+      `;
 
       button.onclick = () => {
         selectSlot(button);
@@ -439,19 +500,33 @@ function getLineRole(row, rowIndex, totalRows) {
 }
 
 function renderChallengePanel() {
-  const challenge = CURRENT_GAME.challenge;
+  if (!selectedSlot) {
+    challengeIcon.src = "https://flagcdn.com/w40/un.png";
+    challengeIcon.alt = "América";
+    challengeName.textContent = "Elegí un casillero";
+    challengeDescription.textContent =
+      "Cada casillero te pide un equipo distinto de América. Escribí un jugador actual de ese club.";
+    return;
+  }
 
-  challengeIcon.src = challenge.icon;
-  challengeIcon.alt = challenge.title;
-  challengeName.textContent = challenge.title;
-  challengeDescription.textContent = challenge.description;
+  const slotData = getSlotData(selectedSlot);
+
+  challengeIcon.src = slotData.clubLogo || getCountryFlagUrl(slotData.country);
+  challengeIcon.alt = slotData.clubName;
+
+  challengeName.textContent = slotData.clubName;
+  challengeDescription.textContent =
+    `${slotData.country || "América"} · ${slotData.league || "Liga"} · Buscá un jugador para ${slotData.position}.`;
+}
+
+function getCountryFlagUrl(country) {
+  return `https://flagcdn.com/w40/${COUNTRY_FLAGS[country] || "un"}.png`;
 }
 
 function resetGameState() {
   selectedSlot = null;
   completedSlots = [];
   usedPlayers = [];
-  usedClubs = [];
   score = 0;
   gameFinished = false;
 
@@ -468,6 +543,14 @@ function getSlots() {
   return document.querySelectorAll(".position-slot");
 }
 
+function getSlotData(slotOrIndex) {
+  const index = typeof slotOrIndex === "number"
+    ? slotOrIndex
+    : Number(slotOrIndex.dataset.index);
+
+  return CURRENT_GAME.slots[index];
+}
+
 function selectSlot(slot) {
   if (gameFinished) return;
   if (slot.classList.contains("filled")) return;
@@ -477,6 +560,7 @@ function selectSlot(slot) {
   selectedSlot = slot;
   selectedSlot.classList.add("selected");
 
+  renderChallengePanel();
   updateSearchPlaceholder();
   renderSuggestions(playerSearch.value);
 
@@ -493,15 +577,19 @@ function clearSelectedSlot() {
   getSlots().forEach(item => item.classList.remove("selected"));
 
   suggestions.innerHTML = "";
+  renderChallengePanel();
   updateSearchPlaceholder();
 }
 
 function updateSearchPlaceholder() {
-  const challenge = CURRENT_GAME.challenge;
+  if (!selectedSlot) {
+    playerSearch.placeholder = "Elegí un casillero o escribí un jugador...";
+    return;
+  }
 
-  playerSearch.placeholder = selectedSlot
-    ? `Jugador válido para ${selectedSlot.dataset.position} en ${challenge.title}...`
-    : `Elegí un casillero o escribí un jugador de ${challenge.title}...`;
+  const slotData = getSlotData(selectedSlot);
+
+  playerSearch.placeholder = `Jugador actual de ${slotData.clubName} para ${slotData.position}...`;
 }
 
 function normalizePosition(position) {
@@ -522,16 +610,13 @@ function findBestFreeSlotForPlayer(player) {
     return !slot.classList.contains("filled");
   });
 
-  if (!freeSlots.length) return null;
-
-  const exactSlot = freeSlots.find(slot => {
-    return normalizePosition(slot.dataset.position) === normalizePosition(player.posicion);
-  });
-
-  if (exactSlot) return exactSlot;
-
   const compatibleSlots = freeSlots.filter(slot => {
-    return playerCanPlaySlot(player.posicion, slot.dataset.position);
+    const slotData = getSlotData(slot);
+
+    return (
+      playerBelongsToSlotClub(player, slotData) &&
+      playerCanPlaySlot(player.posicion, slotData.position)
+    );
   });
 
   if (compatibleSlots.length === 1) {
@@ -539,6 +624,14 @@ function findBestFreeSlotForPlayer(player) {
   }
 
   return null;
+}
+
+function playerBelongsToSlotClub(player, slotData) {
+  if (slotData.clubId) {
+    return String(player.club_id || "").trim() === String(slotData.clubId).trim();
+  }
+
+  return player.club === slotData.clubName;
 }
 
 function playerMatchesSearch(player, value) {
@@ -562,23 +655,19 @@ function playerIsExactMatch(player, value) {
   return fullName === value || lastName === value;
 }
 
-function playerAllowedByMode(player) {
-  const mode = GAME_MODES[currentMode];
-
-  if (!mode.noRepeatClub) {
-    return true;
-  }
-
-  return !usedClubs.includes(player.club);
-}
-
 function playerAlreadyUsed(player) {
   return usedPlayers.includes(player.slug);
 }
 
-function getValidPlayersForCurrentChallenge() {
+function getPlayersForSlot(slot) {
+  const slotData = getSlotData(slot);
+
   return PLAYERS.filter(player => {
-    return CURRENT_GAME.challenge.validate(player);
+    return (
+      playerBelongsToSlotClub(player, slotData) &&
+      playerCanPlaySlot(player.posicion, slotData.position) &&
+      !playerAlreadyUsed(player)
+    );
   });
 }
 
@@ -594,32 +683,35 @@ function renderSuggestions(query) {
   suggestions.innerHTML = "";
   suggestions.classList.remove("hidden");
 
+  if (!selectedSlot) {
+    suggestions.innerHTML = `
+      <button class="suggestion-item" type="button">
+        <div>
+          <strong>Elegí un casillero</strong>
+          <span>Primero tocá una posición para ver jugadores del equipo pedido.</span>
+        </div>
+        <span>-</span>
+      </button>
+    `;
+    return;
+  }
+
   const value = normalizeText(query);
-  const selectedPosition = selectedSlot ? selectedSlot.dataset.position : "";
 
-  const filtered = getValidPlayersForCurrentChallenge().filter(player => {
-    if (playerAlreadyUsed(player)) return false;
-    if (!playerAllowedByMode(player)) return false;
-
-    if (selectedPosition && !playerCanPlaySlot(player.posicion, selectedPosition)) {
-      return false;
-    }
-
-    if (!selectedPosition && !findBestFreeSlotForPlayer(player)) {
-      return false;
-    }
-
+  const filtered = getPlayersForSlot(selectedSlot).filter(player => {
     if (!value) return true;
 
     return playerMatchesSearch(player, value);
   });
 
   if (!filtered.length) {
+    const slotData = getSlotData(selectedSlot);
+
     suggestions.innerHTML = `
       <button class="suggestion-item" type="button">
         <div>
           <strong>No encontré ese jugador</strong>
-          <span>Debe cumplir el desafío y tener casillero compatible.</span>
+          <span>Debe ser de ${slotData.clubName} y servir para ${slotData.position}.</span>
         </div>
         <span>-</span>
       </button>
@@ -641,14 +733,7 @@ function renderSuggestions(query) {
     `;
 
     button.onclick = () => {
-      const autoSlot = selectedSlot || findBestFreeSlotForPlayer(player);
-
-      if (!autoSlot) {
-        showTemporaryPlaceholder("Elegí un casillero compatible");
-        return;
-      }
-
-      placePlayer(player, autoSlot);
+      placePlayer(player, selectedSlot);
     };
 
     suggestions.appendChild(button);
@@ -658,21 +743,6 @@ function renderSuggestions(query) {
 function placePlayer(player, forcedSlot = null) {
   if (gameFinished) return;
 
-  if (!CURRENT_GAME.challenge.validate(player)) {
-    showTemporaryPlaceholder(`No cumple: ${CURRENT_GAME.challenge.title}`);
-    return;
-  }
-
-  if (!playerAllowedByMode(player)) {
-    showTemporaryPlaceholder(`Ya usaste ${player.club}`);
-    return;
-  }
-
-  if (playerAlreadyUsed(player)) {
-    showTemporaryPlaceholder("Ese jugador ya fue usado");
-    return;
-  }
-
   const targetSlot = forcedSlot || selectedSlot || findBestFreeSlotForPlayer(player);
 
   if (!targetSlot) {
@@ -680,10 +750,20 @@ function placePlayer(player, forcedSlot = null) {
     return;
   }
 
-  const slotPosition = targetSlot.dataset.position;
+  const slotData = getSlotData(targetSlot);
 
-  if (!playerCanPlaySlot(player.posicion, slotPosition)) {
-    showTemporaryPlaceholder(`${player.nombre} no puede jugar de ${slotPosition}`);
+  if (!playerBelongsToSlotClub(player, slotData)) {
+    showTemporaryPlaceholder(`${player.nombre} no juega en ${slotData.clubName}`);
+    return;
+  }
+
+  if (!playerCanPlaySlot(player.posicion, slotData.position)) {
+    showTemporaryPlaceholder(`${player.nombre} no puede jugar de ${slotData.position}`);
+    return;
+  }
+
+  if (playerAlreadyUsed(player)) {
+    showTemporaryPlaceholder("Ese jugador ya fue usado");
     return;
   }
 
@@ -697,7 +777,6 @@ function placePlayer(player, forcedSlot = null) {
 
   completedSlots.push(Number(targetSlot.dataset.index));
   usedPlayers.push(player.slug);
-  usedClubs.push(player.club);
 
   score += GAME_MODES[currentMode].points;
 
@@ -725,20 +804,21 @@ function trySubmitSearch() {
     return;
   }
 
-  const matches = getValidPlayersForCurrentChallenge().filter(player => {
-    if (playerAlreadyUsed(player)) return false;
-    if (!playerAllowedByMode(player)) return false;
+  let matches = [];
 
-    if (selectedSlot && !playerCanPlaySlot(player.posicion, selectedSlot.dataset.position)) {
-      return false;
-    }
+  if (selectedSlot) {
+    matches = getPlayersForSlot(selectedSlot).filter(player => {
+      return playerMatchesSearch(player, value);
+    });
+  } else {
+    matches = PLAYERS.filter(player => {
+      if (playerAlreadyUsed(player)) return false;
 
-    if (!selectedSlot && !findBestFreeSlotForPlayer(player)) {
-      return false;
-    }
+      const autoSlot = findBestFreeSlotForPlayer(player);
 
-    return playerMatchesSearch(player, value);
-  });
+      return autoSlot && playerMatchesSearch(player, value);
+    });
+  }
 
   if (!matches.length) {
     if (GAME_MODES[currentMode].showHints) {
@@ -907,11 +987,28 @@ function finishGame(reason) {
   resultTitle.textContent = "Equipo completado";
   resultText.textContent =
     `Completaste el 11 en modo ${GAME_MODES[currentMode].label}. ` +
-    `Desafío: ${CURRENT_GAME.challenge.title}. Formación ${CURRENT_GAME.formationName}. ` +
-    `Puntaje final: ${score}. Podés jugar otro desafío ahora.`;
+    `Formación ${CURRENT_GAME.formationName}. Puntaje final: ${score}. ` +
+    `Podés jugar otro desafío ahora.`;
 }
 
 function surrenderGame() {
+  const answers = [];
+
+  getSlots().forEach(slot => {
+    if (slot.classList.contains("filled")) {
+      return;
+    }
+
+    const candidates = getPlayersForSlot(slot);
+    const candidate = candidates[Math.floor(Math.random() * candidates.length)];
+
+    if (candidate) {
+      placePlayer(candidate, slot);
+
+      answers.push(candidate.nombre);
+    }
+  });
+
   finishGame("surrender");
 }
 
@@ -1101,7 +1198,7 @@ surrenderBtn.addEventListener("click", surrenderGame);
 
 shareBtn.addEventListener("click", async () => {
   const text = `Armé mi 11 América en Partidos.Hoy ⚽
-Desafío: ${CURRENT_GAME.challenge.title}
+Desafío: equipos de América
 Modo: ${GAME_MODES[currentMode].label}
 Formación: ${CURRENT_GAME.formationName}
 Puntaje: ${score}`;
@@ -1119,9 +1216,9 @@ Puntaje: ${score}`;
 
 helpBtn.addEventListener("click", () => {
   alert(
-    "Completá la formación con jugadores actuales de clubes americanos. " +
-    "Podés elegir un casillero primero o escribir un jugador y dejar que el juego busque un puesto compatible. " +
-    "En modo Fácil hay sugerencias. En Normal, Difícil y Experto no podés repetir club."
+    "Cada casillero te pide un equipo distinto de América. " +
+    "Tocá una posición, mirá qué club te pide y escribí un jugador actual de ese equipo. " +
+    "El jugador también debe ser compatible con la posición del casillero."
   );
 });
 
