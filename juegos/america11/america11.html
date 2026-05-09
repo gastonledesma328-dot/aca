@@ -11,6 +11,7 @@
 
 <body>
   <main class="game-page">
+
     <header class="topbar">
       <a href="../index.html" class="back">← Volver</a>
 
@@ -24,7 +25,9 @@
 
     <section class="hero">
       <p class="eyebrow">Nuevo juego</p>
+
       <h1>Armá 11 América</h1>
+
       <p>
         Completá una formación usando jugadores que actualmente juegan en clubes de América.
       </p>
@@ -37,25 +40,27 @@
         <p id="challengeDescription">Preparando base de jugadores.</p>
       </div>
 
-      <button id="changeChallengeBtn" type="button" class="secondary">Cambiar desafío</button>
+      <button id="changeChallengeBtn" type="button" class="secondary">
+        Cambiar desafío
+      </button>
     </section>
 
     <section class="base-info" id="baseInfo">
-  <div>
-    <span class="label">Base de jugadores</span>
-    <strong id="baseTotal">Cargando...</strong>
-  </div>
+      <div>
+        <span class="label">Base de jugadores</span>
+        <strong id="baseTotal">Cargando...</strong>
+      </div>
 
-  <div>
-    <span class="label">Actualizado</span>
-    <strong id="baseUpdated">-</strong>
-  </div>
+      <div>
+        <span class="label">Actualizado</span>
+        <strong id="baseUpdated">-</strong>
+      </div>
 
-  <div>
-    <span class="label">Ligas</span>
-    <strong id="baseLeagues">-</strong>
-  </div>
-</section>
+      <div>
+        <span class="label">Ligas</span>
+        <strong id="baseLeagues">-</strong>
+      </div>
+    </section>
 
     <section class="status-card">
       <div>
@@ -72,6 +77,16 @@
         <span class="label">Puntaje</span>
         <strong id="score">0</strong>
       </div>
+
+      <div>
+        <span class="label">Dificultad</span>
+
+        <select id="difficultySelect" class="difficulty-select">
+          <option value="easy">Fácil</option>
+          <option value="hard">Difícil</option>
+          <option value="expert">Experto</option>
+        </select>
+      </div>
     </section>
 
     <section class="pitch-wrap">
@@ -82,8 +97,16 @@
       <label for="playerInput">Buscar jugador</label>
 
       <div class="search-row">
-        <input id="playerInput" type="text" placeholder="Ej: Miguel Borja" autocomplete="off" />
-        <button id="addPlayerBtn" type="button">Agregar</button>
+        <input
+          id="playerInput"
+          type="text"
+          placeholder="Ej: Miguel Borja"
+          autocomplete="off"
+        />
+
+        <button id="addPlayerBtn" type="button">
+          Agregar
+        </button>
       </div>
 
       <div class="suggestions hidden" id="suggestions"></div>
@@ -92,21 +115,53 @@
     </section>
 
     <section class="actions">
-      <button id="surrenderBtn" type="button" class="secondary">Rendirse</button>
-      <button id="nextBtn" type="button" class="primary hidden">Siguiente desafío</button>
+      <button id="surrenderBtn" type="button" class="secondary">
+        Rendirse
+      </button>
+
+      <button id="nextBtn" type="button" class="primary hidden">
+        Siguiente desafío
+      </button>
     </section>
+
+    <section class="answers-card hidden" id="answersCard">
+      <div class="answers-head">
+        <div>
+          <span class="label">Respuestas posibles</span>
+          <strong>Jugadores agregados al rendirse</strong>
+        </div>
+
+        <button type="button" id="hideAnswersBtn" class="secondary">
+          Ocultar
+        </button>
+      </div>
+
+      <div id="answersList" class="answers-list"></div>
+    </section>
+
   </main>
 
   <div class="modal hidden" id="helpModal">
     <div class="modal-box">
-      <button class="modal-close" id="closeHelpBtn" type="button">×</button>
+      <button class="modal-close" id="closeHelpBtn" type="button">
+        ×
+      </button>
+
       <h2>Cómo se juega</h2>
+
       <p>
         Escribí el nombre de un jugador. Si está en la base, juega en América y cumple el desafío actual,
         se agregará al primer puesto compatible.
       </p>
+
       <p>
-        No hay límite diario. Cada vez que terminás o tocás “Siguiente desafío”, cambia la formación y el país/liga del desafío.
+        No hay límite diario. Cada vez que terminás o tocás “Siguiente desafío”,
+        cambia la formación y el país/liga del desafío.
+      </p>
+
+      <p>
+        En modo Fácil podés repetir club. En Difícil y Experto no podés repetir club.
+        Experto suma más puntos por acierto.
       </p>
     </div>
   </div>
@@ -114,12 +169,21 @@
   <div class="modal hidden" id="completeModal">
     <div class="modal-box">
       <h2>Equipo completado</h2>
+
       <p id="completeText"></p>
 
       <div class="modal-actions">
-        <button type="button" id="shareBtn">Compartir</button>
-        <a href="../index.html">Volver a juegos</a>
-        <button type="button" id="modalNextBtn">Siguiente desafío</button>
+        <button type="button" id="shareBtn">
+          Compartir
+        </button>
+
+        <a href="../index.html">
+          Volver a juegos
+        </a>
+
+        <button type="button" id="modalNextBtn">
+          Siguiente desafío
+        </button>
       </div>
     </div>
   </div>
