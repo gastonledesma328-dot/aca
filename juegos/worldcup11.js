@@ -28,6 +28,26 @@ const GAME_MODES = {
   }
 };
 
+const POSITION_COMPATIBILITY = {
+  GK: ["GK"],
+
+  RB: ["RB"],
+  CB: ["CB"],
+  LB: ["LB"],
+
+  CDM: ["CDM", "CM"],
+  CM: ["CM", "CDM", "CAM"],
+  CAM: ["CAM", "CM"],
+
+  LW: ["LW", "LM"],
+  LM: ["LM", "LW"],
+
+  RW: ["RW", "RM"],
+  RM: ["RM", "RW"],
+
+  ST: ["ST"]
+};
+
 const pitchFrame = document.querySelector(".pitch-frame");
 const modeButtons = document.querySelectorAll(".mode-btn");
 
@@ -393,59 +413,16 @@ function clearSelectedSlot() {
 }
 
 function normalizePosition(position) {
-  const pos = String(position || "").toUpperCase().trim();
-
-  const map = {
-    ARQ: "GK",
-    GK: "GK",
-
-    DEF: "DEF",
-    CB: "CB",
-    LB: "LB",
-    RB: "RB",
-
-    MED: "MED",
-    CM: "CM",
-    CDM: "CDM",
-    CAM: "CAM",
-    LM: "LM",
-    RM: "RM",
-
-    DEL: "DEL",
-    ST: "ST",
-    LW: "LW",
-    RW: "RW"
-  };
-
-  return map[pos] || pos;
+  return String(position || "").toUpperCase().trim();
 }
 
 function playerCanPlaySlot(playerPosition, slotPosition) {
   const playerPos = normalizePosition(playerPosition);
   const slotPos = normalizePosition(slotPosition);
 
-  if (playerPos === slotPos) return true;
+  const compatibles = POSITION_COMPATIBILITY[slotPos] || [slotPos];
 
-  const groups = {
-    GK: ["GK", "ARQ"],
-
-    CB: ["CB", "DEF"],
-    LB: ["LB", "DEF"],
-    RB: ["RB", "DEF"],
-
-    CM: ["CM", "MED", "CDM", "CAM"],
-    CDM: ["CDM", "CM", "MED"],
-    CAM: ["CAM", "CM", "MED"],
-
-    LM: ["LM", "LW", "MED"],
-    RM: ["RM", "RW", "MED"],
-
-    ST: ["ST", "DEL"],
-    LW: ["LW", "DEL"],
-    RW: ["RW", "DEL"]
-  };
-
-  return (groups[slotPos] || [slotPos]).includes(playerPos);
+  return compatibles.includes(playerPos);
 }
 
 function findBestFreeSlotForPlayer(player) {
@@ -504,7 +481,7 @@ function renderSuggestions(query) {
 
     if (!value) return true;
 
-    const text = normalizeText(`${player.name} ${player.club} ${player.position}`);
+    const text = normalizeText(`${player.name} ${player.position}`);
     return text.includes(value);
   });
 
@@ -530,7 +507,7 @@ function renderSuggestions(query) {
     button.innerHTML = `
       <div>
         <strong>${player.name}</strong>
-        <span>${round.country} · ${player.position} · ${player.club}</span>
+        <span>${round.country} · ${player.position}</span>
       </div>
       <span>Elegir</span>
     `;
@@ -643,13 +620,11 @@ function trySubmitSearch() {
 
     const fullName = normalizeText(player.name);
     const lastName = normalizeText(player.name.split(" ").pop());
-    const club = normalizeText(player.club);
     const position = normalizeText(player.position);
 
     return (
       fullName.includes(value) ||
       lastName.includes(value) ||
-      club.includes(value) ||
       position.includes(value)
     );
   });
@@ -664,6 +639,7 @@ function trySubmitSearch() {
 
       showTemporaryPlaceholder(msg);
     }
+
     return;
   }
 
@@ -864,7 +840,7 @@ restartBtn.addEventListener("click", () => {
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Cada ronda muestra un país distinto. Escribí un jugador de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. Si no, elegí un casillero compatible. Tenés una sola oportunidad diaria.");
+  alert("Cada ronda muestra un país distinto. Escribí un jugador de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. También podés elegir primero una casilla compatible. Tenés una sola oportunidad diaria.");
 });
 
 loadGameData();
