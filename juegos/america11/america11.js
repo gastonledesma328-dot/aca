@@ -103,6 +103,10 @@ const nextBtn = document.getElementById("nextBtn");
 const changeChallengeBtn = document.getElementById("changeChallengeBtn");
 const suggestions = document.getElementById("suggestions");
 
+const answersCard = document.getElementById("answersCard");
+const answersList = document.getElementById("answersList");
+const hideAnswersBtn = document.getElementById("hideAnswersBtn");
+
 const challengeTitle = document.getElementById("challengeTitle");
 const challengeDescription = document.getElementById("challengeDescription");
 const baseTotal = document.getElementById("baseTotal");
@@ -488,8 +492,50 @@ function getCandidatesForSlot(slot) {
   });
 }
 
+function clearAnswers() {
+  answersCard.classList.add("hidden");
+  answersList.innerHTML = "";
+}
+
+function renderAnswers(answers) {
+  answersList.innerHTML = "";
+
+  if (!answers.length) {
+    answersList.innerHTML = `
+      <div class="answer-item">
+        <div class="answer-position">-</div>
+        <div class="answer-player">
+          <strong>No se agregaron jugadores</strong>
+          <span>No había puestos libres o no se encontraron candidatos válidos.</span>
+        </div>
+      </div>
+    `;
+
+    answersCard.classList.remove("hidden");
+    return;
+  }
+
+  answers.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "answer-item";
+
+    row.innerHTML = `
+      <div class="answer-position">${item.position}</div>
+      <div class="answer-player">
+        <strong>${item.player.nombre}</strong>
+        <span>${item.player.club} · ${item.player.posicion} · ${item.player.pais_club}</span>
+      </div>
+    `;
+
+    answersList.appendChild(row);
+  });
+
+  answersCard.classList.remove("hidden");
+}
+
 function surrender() {
   const missingBefore = slots.filter(slot => !slot.player).length;
+  const answers = [];
 
   slots.forEach(slot => {
     if (!slot.player) {
@@ -498,6 +544,11 @@ function surrender() {
 
       if (candidate) {
         slot.player = candidate;
+
+        answers.push({
+          position: slot.position,
+          player: candidate
+        });
       }
     }
   });
@@ -514,6 +565,7 @@ function surrender() {
   }
 
   clearSuggestions();
+  renderAnswers(answers);
   renderPitch();
 }
 
@@ -559,10 +611,11 @@ function resetGame() {
   } while (!challengeHasEnoughPlayers() && safety < 100);
 
   buildSlots();
-  clearSuggestions();
-  renderChallenge();
-  setMessage("Nuevo desafío cargado. Completá tu 11.", "ok");
-  renderPitch();
+clearSuggestions();
+clearAnswers();
+renderChallenge();
+setMessage("Nuevo desafío cargado. Completá tu 11.", "ok");
+renderPitch();
 }
 
 function completeGame() {
@@ -710,6 +763,7 @@ nextBtn.addEventListener("click", resetGame);
 modalNextBtn.addEventListener("click", resetGame);
 changeChallengeBtn.addEventListener("click", resetGame);
 shareBtn.addEventListener("click", shareGame);
+hideAnswersBtn.addEventListener("click", clearAnswers);
 
 helpBtn.addEventListener("click", () => {
   helpModal.classList.remove("hidden");
