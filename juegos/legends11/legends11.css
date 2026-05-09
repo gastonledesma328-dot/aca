@@ -199,29 +199,8 @@ button {
   border-radius: 0;
 }
 
-.surrender-btn {
-  width: 100%;
-  height: 46px;
-  margin-top: 12px;
-  border: 1px solid rgba(232, 83, 58, 0.45);
-  border-radius: 16px;
-  background: rgba(232, 83, 58, 0.16);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 900;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-}
-
-.surrender-btn:hover {
-  background: rgba(232, 83, 58, 0.28);
-  transform: translateY(-1px);
-}
-
-.surrender-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-  transform: none;
+.pitch-lines {
+  display: none;
 }
 
 .pitch-frame {
@@ -397,7 +376,9 @@ button {
   font-weight: 600;
 }
 
-.player-form button {
+/* BOTÓN RENDIRSE COPIADO DEL FUNCIONAMIENTO WORLD CUP 11 */
+.surrender-btn {
+  flex: 0 0 auto;
   width: 56px;
   height: 52px;
   border: none;
@@ -407,24 +388,13 @@ button {
   font-size: 25px;
   cursor: pointer;
   box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-}
-
-.surrender-btn {
-  width: 100%;
-  height: 46px;
-  margin-top: 12px;
-  border: 1px solid rgba(232, 83, 58, 0.45);
-  border-radius: 16px;
-  background: rgba(232, 83, 58, 0.16);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 900;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .surrender-btn:hover {
-  background: rgba(232, 83, 58, 0.28);
+  filter: brightness(1.05);
   transform: translateY(-1px);
 }
 
@@ -668,7 +638,6 @@ button {
     font-size: 14px;
   }
 
-  .player-form button,
   .surrender-btn {
     width: 52px;
     height: 50px;
