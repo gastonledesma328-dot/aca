@@ -2108,6 +2108,47 @@ function abrirSeccionDesdeHash() {
 window.addEventListener("DOMContentLoaded", abrirSeccionDesdeHash);
 window.addEventListener("hashchange", abrirSeccionDesdeHash);
 
+
+function abrirSeccionDesdeHash() {
+  const hash = window.location.hash.replace("#", "");
+
+  if (!hash) return;
+
+  const aliases = {
+    juegos: "games",
+    juego: "games",
+    games: "games",
+    agenda: "agenda",
+    live: "live",
+    vivo: "live"
+  };
+
+  const tabName = aliases[hash] || hash;
+  const tabBtn = document.querySelector(`.tab[data-tab="${tabName}"]`);
+
+  if (!tabBtn) return;
+
+  setTimeout(() => {
+    tabBtn.click();
+
+    setTimeout(() => {
+      const section =
+        document.getElementById(`${tabName}Section`) ||
+        document.querySelector(`[data-section="${tabName}"]`);
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    }, 120);
+  }, 80);
+}
+
+window.addEventListener("DOMContentLoaded", abrirSeccionDesdeHash);
+window.addEventListener("hashchange", abrirSeccionDesdeHash);
+window.addEventListener("load", abrirSeccionDesdeHash);
 /* ============================================================
    INIT
 ============================================================ */
