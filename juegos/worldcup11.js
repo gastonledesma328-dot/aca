@@ -1,5 +1,4 @@
 const DATA_URL = "../data/worldcup11-players.json";
-const STORAGE_PREFIX = "partidos_hoy_worldcup11_played_";
 
 const GAME_MODES = {
   easy: {
@@ -80,9 +79,8 @@ let score = 0;
 let timeLeft = null;
 let timerInterval = null;
 let gameFinished = false;
-let dailyAttemptLocked = false;
 let currentRoundIndex = 0;
-let attemptStartedThisSession = false;
+let challengeIndex = 0;
 
 async function loadGameData() {
   try {
@@ -121,18 +119,6 @@ function getTodayKey() {
   const day = String(now.getDate()).padStart(2, "0");
 
   return `${year}-${month}-${day}`;
-}
-
-function getTodayStorageKey() {
-  return `${STORAGE_PREFIX}${getTodayKey()}`;
-}
-
-function hasPlayedToday() {
-  return false;
-}
-
-function savePlayedToday() {
-  attemptStartedThisSession = true;
 }
 
 function createSeedFromString(text) {
@@ -174,7 +160,11 @@ function shuffleArray(list, random) {
 
 function generateDailyGame() {
   const todayKey = getTodayKey();
-  const seed = createSeedFromString(`partidos-hoy-worldcup11-${todayKey}`);
+
+  const seed = createSeedFromString(
+    `partidos-hoy-worldcup11-${todayKey}-challenge-${challengeIndex}`
+  );
+
   const random = seededRandom(seed);
 
   const availableCountries = GAME_DATA.countries.filter(country => {
@@ -210,6 +200,7 @@ function generateDailyGame() {
 
   return {
     date: todayKey,
+    challengeNumber: challengeIndex + 1,
     formationName: formation.name,
     rows: formation.rows,
     positions: flatPositions,
@@ -261,7 +252,6 @@ function initGame() {
   score = 0;
   gameFinished = false;
   currentRoundIndex = 0;
-  dailyAttemptLocked = hasPlayedToday() && !attemptStartedThisSession;
 
   resultModal.classList.add("hidden");
   hideFinalButtons();
@@ -289,12 +279,6 @@ function initGame() {
   });
 
   applyModeUi();
-
-  if (dailyAttemptLocked) {
-    lockGameForToday();
-    return;
-  }
-
   clearSelectedSlot();
   updateCountryPanel();
   startTimerIfNeeded();
@@ -305,9 +289,9 @@ function applyModeUi() {
   const mode = GAME_MODES[currentMode];
 
   modeText.textContent = mode.label;
-  modeHint.textContent = `${mode.help} Desafío diario: ${DAILY_GAME.date} · Formación: ${DAILY_GAME.formationName}`;
+  modeHint.textContent = `${mode.help} Desafío #${DAILY_GAME.challengeNumber} · Formación: ${DAILY_GAME.formationName}`;
 
-  if (mode.showHints && !dailyAttemptLocked) {
+  if (mode.showHints) {
     suggestions.classList.remove("hidden");
   } else {
     suggestions.classList.add("hidden");
@@ -331,10 +315,7 @@ function applyModeUi() {
 function startTimerIfNeeded() {
   const mode = GAME_MODES[currentMode];
 
-  if (dailyAttemptLocked) return;
   if (mode.timeLimit === null) return;
-
-  savePlayedToday();
 
   timerInterval = setInterval(() => {
     if (gameFinished) {
@@ -386,7 +367,6 @@ function updateCountryPanel() {
 }
 
 function selectSlot(slot) {
-  if (dailyAttemptLocked) return;
   if (gameFinished) return;
   if (slot.classList.contains("filled")) return;
 
@@ -453,8 +433,6 @@ function findBestFreeSlotForPlayer(player) {
 
 function renderSuggestions(query) {
   const mode = GAME_MODES[currentMode];
-
-  if (dailyAttemptLocked) return;
 
   if (!mode.showHints) {
     suggestions.innerHTML = "";
@@ -550,12 +528,6 @@ function placePlayer(player, forcedSlot = null) {
     return;
   }
 
-  if (!hasPlayedToday()) {
-    savePlayedToday();
-  } else {
-    attemptStartedThisSession = true;
-  }
-
   if (usedPlayers.includes(player.name)) {
     alert("Ese jugador ya fue usado.");
     return;
@@ -598,7 +570,6 @@ function calculatePoints() {
 }
 
 function trySubmitSearch() {
-  if (dailyAttemptLocked && hasPlayedToday()) return;
   if (gameFinished) return;
 
   const round = getCurrentRound();
@@ -692,7 +663,7 @@ function showTemporaryPlaceholder(message) {
   playerSearch.placeholder = message;
 
   setTimeout(() => {
-    if (!gameFinished && !dailyAttemptLocked) {
+    if (!gameFinished) {
       updateCountryPanel();
     } else {
       playerSearch.placeholder = original;
@@ -705,7 +676,42 @@ function updateStatus() {
   scoreText.textContent = score;
 }
 
+function getResultActions() {
+  return resultModal.querySelector(".result-actions");
+}
+
+function getOrCreateNextChallengeButton() {
+  let nextBtn = document.getElementById("nextChallengeBtn");
+
+  if (nextBtn) return nextBtn;
+
+  const actions = getResultActions();
+
+  if (!actions) return null;
+
+  nextBtn = document.createElement("button");
+  nextBtn.type = "button";
+  nextBtn.id = "nextChallengeBtn";
+  nextBtn.textContent = "Siguiente desafío";
+
+  nextBtn.onclick = () => {
+    challengeIndex++;
+    initGame();
+  };
+
+  actions.appendChild(nextBtn);
+
+  return nextBtn;
+}
+
 function showFinalButtons() {
+  const nextBtn = getOrCreateNextChallengeButton();
+
+  if (nextBtn) {
+    nextBtn.classList.remove("hidden");
+    nextBtn.style.display = "inline-flex";
+  }
+
   if (backToGamesBtn) {
     backToGamesBtn.classList.remove("hidden");
     backToGamesBtn.style.display = "inline-flex";
@@ -713,6 +719,13 @@ function showFinalButtons() {
 }
 
 function hideFinalButtons() {
+  const nextBtn = document.getElementById("nextChallengeBtn");
+
+  if (nextBtn) {
+    nextBtn.classList.add("hidden");
+    nextBtn.style.display = "none";
+  }
+
   if (backToGamesBtn) {
     backToGamesBtn.classList.add("hidden");
     backToGamesBtn.style.display = "none";
@@ -723,6 +736,8 @@ function showModeChangeModal(nextMode) {
   const modal = document.getElementById("modeChangeModal");
 
   if (!modal) {
+    currentMode = nextMode;
+    initGame();
     return;
   }
 
@@ -742,47 +757,9 @@ function showModeChangeModal(nextMode) {
   };
 }
 
-function lockGameForToday() {
-  gameFinished = true;
-  stopTimer();
-
-  getSlots().forEach(slot => {
-    slot.disabled = true;
-    slot.classList.remove("selected");
-  });
-
-  modeButtons.forEach(button => {
-    button.disabled = true;
-  });
-
-  playerSearch.disabled = true;
-  surrenderBtn.disabled = true;
-  suggestions.innerHTML = "";
-
-  countryFlag.src = "https://flagcdn.com/w40/un.png";
-  countryFlag.alt = "Desafío bloqueado";
-  countryName.textContent = "Ya jugaste hoy";
-
-  completedText.textContent = "0/11";
-  scoreText.textContent = "0";
-  timerText.textContent = "Mañana";
-
-  resultTitle.textContent = "Ya usaste tu intento diario";
-  resultText.textContent = "Este desafío permite una sola oportunidad por día. Volvé mañana para jugar una nueva alineación.";
-
-  showFinalButtons();
-  resultModal.classList.remove("hidden");
-}
-
 function finishGame(reason) {
   if (gameFinished) return;
 
-  if (!hasPlayedToday()) {
-    savePlayedToday();
-  } else {
-    attemptStartedThisSession = true;
-  }
-
   gameFinished = true;
   stopTimer();
 
@@ -790,7 +767,7 @@ function finishGame(reason) {
   showFinalButtons();
 
   modeButtons.forEach(button => {
-    button.disabled = true;
+    button.disabled = false;
   });
 
   getSlots().forEach(slot => {
@@ -803,18 +780,18 @@ function finishGame(reason) {
 
   if (reason === "surrender") {
     resultTitle.textContent = "Te rendiste";
-    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.positions.length} casilleros. Puntaje final: ${score}. Volvé mañana para otro desafío.`;
+    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.positions.length} casilleros. Puntaje final: ${score}. Podés jugar otro desafío ahora.`;
     return;
   }
 
   if (reason === "time") {
     resultTitle.textContent = "Se terminó el tiempo";
-    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.positions.length} casilleros en modo ${GAME_MODES[currentMode].label}. Puntaje final: ${score}. Volvé mañana para otro desafío.`;
+    resultText.textContent = `Completaste ${completedSlots.length} de ${DAILY_GAME.positions.length} casilleros en modo ${GAME_MODES[currentMode].label}. Puntaje final: ${score}. Podés jugar otro desafío ahora.`;
     return;
   }
 
   resultTitle.textContent = "Equipo completado";
-  resultText.textContent = `Completaste el 11 en modo ${GAME_MODES[currentMode].label}. Formación ${DAILY_GAME.formationName}. Puntaje final: ${score}. Volvé mañana para otro desafío.`;
+  resultText.textContent = `Completaste el 11 en modo ${GAME_MODES[currentMode].label}. Formación ${DAILY_GAME.formationName}. Puntaje final: ${score}. Podés jugar otro desafío ahora.`;
 }
 
 function normalizeText(text) {
@@ -839,12 +816,9 @@ modeButtons.forEach(button => {
     if (nextMode === currentMode) return;
 
     if (gameFinished) {
-      lockGameForToday();
-      return;
-    }
-
-    if (hasPlayedToday() && !attemptStartedThisSession) {
-      lockGameForToday();
+      currentMode = nextMode;
+      challengeIndex++;
+      initGame();
       return;
     }
 
@@ -870,18 +844,12 @@ playerForm.addEventListener("submit", event => {
 });
 
 surrenderBtn.addEventListener("click", () => {
-  if (!hasPlayedToday()) {
-    savePlayedToday();
-  } else {
-    attemptStartedThisSession = true;
-  }
-
   finishGame("surrender");
 });
 
 shareBtn.addEventListener("click", async () => {
-  const text = `Armé mi 11 diario en Partidos.Hoy ⚽
-Fecha: ${DAILY_GAME.date}
+  const text = `Armé mi 11 en Partidos.Hoy ⚽
+Desafío: #${DAILY_GAME.challengeNumber}
 Modo: ${GAME_MODES[currentMode].label}
 Formación: ${DAILY_GAME.formationName}
 Puntaje: ${score}`;
@@ -898,7 +866,7 @@ Puntaje: ${score}`;
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Cada ronda muestra un país distinto. Escribí un jugador de ese país; si su posición tiene un casillero libre compatible, se coloca automáticamente. También podés elegir primero una casilla compatible. Tenés una sola oportunidad diaria.");
+  alert("Cada desafío muestra países distintos. Escribí un jugador del país indicado; si su posición tiene un casillero compatible, se coloca automáticamente. También podés elegir primero una casilla compatible. Al terminar, podés jugar otro desafío con nueva formación y países rotados.");
 });
 
 loadGameData();
