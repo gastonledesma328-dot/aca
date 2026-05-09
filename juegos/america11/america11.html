@@ -11,9 +11,8 @@
 
 <body>
   <main class="game-page">
-
     <header class="topbar">
-      <a href="../index.html" class="back">← Volver</a>
+      <a href="../../index.html#games" class="back">← Volver</a>
 
       <div class="brand">
         <strong>Partidos.Hoy</strong>
@@ -23,170 +22,141 @@
       <button class="help-btn" type="button" id="helpBtn" aria-label="Ayuda">?</button>
     </header>
 
-    <section class="hero">
-      <p class="eyebrow">Nuevo juego</p>
-
+    <section class="game-header">
+      <span class="daily-badge">Sin límite diario</span>
       <h1>Armá 11 América</h1>
-
-      <p>
-        Completá una formación usando jugadores que actualmente juegan en clubes de América.
-      </p>
+      <p>Elegí un casillero y completalo con un jugador actual de clubes americanos.</p>
     </section>
 
-    <section class="challenge-card">
-      <div>
-        <span class="label">Desafío</span>
-        <strong id="challengeTitle">Cargando...</strong>
-        <p id="challengeDescription">Preparando base de jugadores.</p>
-      </div>
+    <section class="mode-card" aria-label="Modos de juego">
+      <button class="mode-btn active" type="button" data-mode="easy">
+        <strong>Fácil</strong>
+        <span>Con ayudas</span>
+      </button>
 
-      <button id="changeChallengeBtn" type="button" class="secondary">
-        Cambiar desafío
+      <button class="mode-btn" type="button" data-mode="normal">
+        <strong>Normal</strong>
+        <span>Sin repetir club</span>
+      </button>
+
+      <button class="mode-btn" type="button" data-mode="hard">
+        <strong>Difícil</strong>
+        <span>90 segundos</span>
+      </button>
+
+      <button class="mode-btn" type="button" data-mode="expert">
+        <strong>Experto</strong>
+        <span>45 segundos</span>
       </button>
     </section>
 
-    <section class="base-info" id="baseInfo">
-      <div>
-        <span class="label">Base de jugadores</span>
-        <strong id="baseTotal">Cargando...</strong>
+    <section class="pitch-card" aria-label="Cancha">
+      <div class="pitch-lines"></div>
+      <div class="pitch-frame"></div>
+    </section>
+
+    <section class="country-panel">
+      <div class="country-indicator">
+        <img
+          id="challengeIcon"
+          class="country-flag-img"
+          src="https://flagcdn.com/w40/un.png"
+          alt="Desafío"
+        />
+
+        <div class="challenge-text">
+          <strong id="challengeName">Cargando...</strong>
+          <span id="challengeDescription">Preparando base de jugadores.</span>
+        </div>
       </div>
 
-      <div>
-        <span class="label">Actualizado</span>
-        <strong id="baseUpdated">-</strong>
-      </div>
+      <form id="playerForm" class="search-area">
+        <input
+          id="playerSearch"
+          type="text"
+          autocomplete="off"
+          placeholder="Elegí un casillero o escribí un jugador..."
+        />
 
-      <div>
-        <span class="label">Ligas</span>
-        <strong id="baseLeagues">-</strong>
-      </div>
+        <button
+          id="surrenderBtn"
+          class="surrender-btn"
+          type="button"
+          title="Rendirse"
+          aria-label="Rendirse"
+        >
+          ⚑
+        </button>
+      </form>
+
+      <div id="suggestions" class="suggestions"></div>
+
+      <p id="modeHint" class="mode-hint">Cargando desafío...</p>
     </section>
 
     <section class="status-card">
       <div>
-        <span class="label">Formación</span>
-        <strong id="formationName">4-3-3</strong>
+        <span>Modo</span>
+        <strong id="modeText">Fácil</strong>
       </div>
 
       <div>
-        <span class="label">Completados</span>
-        <strong><span id="filledCount">0</span>/11</strong>
+        <span>Tiempo</span>
+        <strong id="timerText">Sin límite</strong>
       </div>
 
       <div>
-        <span class="label">Puntaje</span>
-        <strong id="score">0</strong>
+        <span>Completados</span>
+        <strong id="completedText">0/11</strong>
       </div>
 
       <div>
-        <span class="label">Dificultad</span>
-
-        <select id="difficultySelect" class="difficulty-select">
-          <option value="easy">Fácil</option>
-          <option value="hard">Difícil</option>
-          <option value="expert">Experto</option>
-        </select>
+        <span>Puntaje</span>
+        <strong id="scoreText">0</strong>
       </div>
     </section>
 
-    <section class="pitch-wrap">
-      <div class="pitch" id="pitch"></div>
-    </section>
-
-    <section class="input-card">
-      <label for="playerInput">Buscar jugador</label>
-
-      <div class="search-row">
-        <input
-          id="playerInput"
-          type="text"
-          placeholder="Ej: Miguel Borja"
-          autocomplete="off"
-        />
-
-        <button id="addPlayerBtn" type="button">
-          Agregar
-        </button>
+    <section class="base-info">
+      <div>
+        <span>Base</span>
+        <strong id="baseTotal">Cargando...</strong>
       </div>
 
-      <div class="suggestions hidden" id="suggestions"></div>
+      <div>
+        <span>Actualizado</span>
+        <strong id="baseUpdated">-</strong>
+      </div>
 
-      <p id="message" class="message">Cargando jugadores...</p>
+      <div>
+        <span>Ligas</span>
+        <strong id="baseLeagues">-</strong>
+      </div>
     </section>
 
-    <section class="actions">
-      <button id="surrenderBtn" type="button" class="secondary">
-        Rendirse
-      </button>
+    <section id="resultModal" class="result-modal hidden" aria-live="polite">
+      <div class="result-box">
+        <h2 id="resultTitle">Resultado</h2>
+        <p id="resultText"></p>
 
-      <button id="nextBtn" type="button" class="primary hidden">
-        Siguiente desafío
-      </button>
-    </section>
-
-    <section class="answers-card hidden" id="answersCard">
-      <div class="answers-head">
-        <div>
-          <span class="label">Respuestas posibles</span>
-          <strong>Jugadores agregados al rendirse</strong>
+        <div class="result-actions">
+          <button id="shareBtn" type="button">Compartir</button>
+          <a id="backToGamesBtn" class="hidden" href="../../index.html#games">Volver a juegos</a>
         </div>
-
-        <button type="button" id="hideAnswersBtn" class="secondary">
-          Ocultar
-        </button>
       </div>
-
-      <div id="answersList" class="answers-list"></div>
     </section>
 
-  </main>
+    <section id="modeChangeModal" class="result-modal hidden" aria-live="polite">
+      <div class="result-box">
+        <h2>Cambiar modo</h2>
+        <p>Si cambiás de modo se reinicia el desafío actual.</p>
 
-  <div class="modal hidden" id="helpModal">
-    <div class="modal-box">
-      <button class="modal-close" id="closeHelpBtn" type="button">
-        ×
-      </button>
-
-      <h2>Cómo se juega</h2>
-
-      <p>
-        Escribí el nombre de un jugador. Si está en la base, juega en América y cumple el desafío actual,
-        se agregará al primer puesto compatible.
-      </p>
-
-      <p>
-        No hay límite diario. Cada vez que terminás o tocás “Siguiente desafío”,
-        cambia la formación y el país/liga del desafío.
-      </p>
-
-      <p>
-        En modo Fácil podés repetir club. En Difícil y Experto no podés repetir club.
-        Experto suma más puntos por acierto.
-      </p>
-    </div>
-  </div>
-
-  <div class="modal hidden" id="completeModal">
-    <div class="modal-box">
-      <h2>Equipo completado</h2>
-
-      <p id="completeText"></p>
-
-      <div class="modal-actions">
-        <button type="button" id="shareBtn">
-          Compartir
-        </button>
-
-        <a href="../index.html">
-          Volver a juegos
-        </a>
-
-        <button type="button" id="modalNextBtn">
-          Siguiente desafío
-        </button>
+        <div class="result-actions">
+          <button id="confirmModeChangeBtn" type="button">Cambiar</button>
+          <button id="cancelModeChangeBtn" type="button" class="secondary-btn">Cancelar</button>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <script src="america11.js"></script>
 </body>
