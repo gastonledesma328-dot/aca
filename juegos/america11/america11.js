@@ -1,546 +1,364 @@
-const DATA_URL = "../../data/jugadores_america.json";
+import json
+import os
+import re
+import time
+import unicodedata
+from datetime import datetime, timezone
 
-const formations = [
-  {
-    name: "4-3-3",
-    rows: [
-      ["LW", "ST", "RW"],
-      ["CM", "CM", "CM"],
-      ["LB", "CB", "CB", "RB"],
-      ["GK"]
-    ]
-  },
-  {
-    name: "4-4-2",
-    rows: [
-      ["ST", "ST"],
-      ["LM", "CM", "CM", "RM"],
-      ["LB", "CB", "CB", "RB"],
-      ["GK"]
-    ]
-  },
-  {
-    name: "4-2-3-1",
-    rows: [
-      ["ST"],
-      ["LW", "CAM", "RW"],
-      ["CDM", "CDM"],
-      ["LB", "CB", "CB", "RB"],
-      ["GK"]
-    ]
-  },
-  {
-    name: "3-5-2",
-    rows: [
-      ["ST", "ST"],
-      ["CAM"],
-      ["LM", "CM", "CM", "RM"],
-      ["CB", "CB", "CB"],
-      ["GK"]
-    ]
-  },
-  {
-    name: "5-3-2",
-    rows: [
-      ["ST", "ST"],
-      ["CM", "CM", "CM"],
-      ["LB", "CB", "CB", "CB", "RB"],
-      ["GK"]
-    ]
-  },
-  {
-    name: "4-3-1-2",
-    rows: [
-      ["ST", "ST"],
-      ["CAM"],
-      ["CM", "CM", "CM"],
-      ["LB", "CB", "CB", "RB"],
-      ["GK"]
-    ]
-  },
-  {
-    name: "3-4-3",
-    rows: [
-      ["LW", "ST", "RW"],
-      ["LM", "CM", "CM", "RM"],
-      ["CB", "CB", "CB"],
-      ["GK"]
-    ]
-  }
-];
+import requests
 
-const baseChallenges = [
-  {
-    type: "america",
-    title: "Clubes de América",
-    description: "Usá cualquier jugador que juegue actualmente en un club americano.",
-    validate: player => true
-  }
-];
+OUTPUT_FILE = "data/jugadores_america.json"
 
-let players = [];
-let challenges = [...baseChallenges];
-let selectedFormation = formations[0];
-let currentChallenge = challenges[0];
-let slots = [];
-let score = 0;
-let challengeIndex = -1;
-let formationIndex = -1;
-
-const pitch = document.getElementById("pitch");
-const formationName = document.getElementById("formationName");
-const filledCount = document.getElementById("filledCount");
-const scoreEl = document.getElementById("score");
-const playerInput = document.getElementById("playerInput");
-const addPlayerBtn = document.getElementById("addPlayerBtn");
-const message = document.getElementById("message");
-const surrenderBtn = document.getElementById("surrenderBtn");
-const nextBtn = document.getElementById("nextBtn");
-const changeChallengeBtn = document.getElementById("changeChallengeBtn");
-const suggestions = document.getElementById("suggestions");
-
-const challengeTitle = document.getElementById("challengeTitle");
-const challengeDescription = document.getElementById("challengeDescription");
-
-const helpBtn = document.getElementById("helpBtn");
-const helpModal = document.getElementById("helpModal");
-const closeHelpBtn = document.getElementById("closeHelpBtn");
-
-const completeModal = document.getElementById("completeModal");
-const completeText = document.getElementById("completeText");
-const shareBtn = document.getElementById("shareBtn");
-const modalNextBtn = document.getElementById("modalNextBtn");
-
-function slugify(text) {
-  return String(text || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36",
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "https://www.espn.com.ar/",
 }
 
-function shuffle(array) {
-  const copy = [...array];
+# Empezamos con las ligas más estables. Después podemos sumar más.
+AMERICA_LEAGUES = [
+    {
+        "slug": "arg.1",
+        "nombre": "Liga Profesional Argentina",
+        "pais_club": "Argentina",
+    },
+    {
+        "slug": "bra.1",
+        "nombre": "Brasileirão Serie A",
+        "pais_club": "Brasil",
+    },
+    {
+        "slug": "mex.1",
+        "nombre": "Liga MX",
+        "pais_club": "México",
+    },
+    {
+        "slug": "usa.1",
+        "nombre": "MLS",
+        "pais_club": "Estados Unidos",
+    },
+    {
+        "slug": "uru.1",
+        "nombre": "Primera División Uruguay",
+        "pais_club": "Uruguay",
+    },
+    {
+        "slug": "chi.1",
+        "nombre": "Primera División Chile",
+        "pais_club": "Chile",
+    },
+    {
+        "slug": "col.1",
+        "nombre": "Primera A Colombia",
+        "pais_club": "Colombia",
+    },
+]
 
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
+POSICIONES_ESPECIFICAS = {
+    # Arqueros
+    "goalkeeper": "GK",
+    "portero": "GK",
+    "arquero": "GK",
 
-  return copy;
+    # Defensores
+    "defender": "CB",
+    "defensa": "CB",
+    "center back": "CB",
+    "centre back": "CB",
+    "central": "CB",
+    "left back": "LB",
+    "lateral izquierdo": "LB",
+    "right back": "RB",
+    "lateral derecho": "RB",
+
+    # Mediocampistas
+    "midfielder": "CM",
+    "mediocampista": "CM",
+    "volante": "CM",
+    "defensive midfielder": "CDM",
+    "attacking midfielder": "CAM",
+
+    # Delanteros
+    "forward": "ST",
+    "delantero": "ST",
+    "attacker": "ST",
+    "striker": "ST",
+    "winger": "RW",
+    "left wing": "LW",
+    "right wing": "RW",
 }
 
-function positionGroup(pos) {
-  const p = String(pos || "").toUpperCase();
+def slugify(texto):
+    texto = str(texto or "").strip().lower()
+    texto = unicodedata.normalize("NFD", texto)
+    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
+    texto = re.sub(r"[^a-z0-9]+", "-", texto)
+    texto = re.sub(r"-+", "-", texto)
+    return texto.strip("-")
 
-  if (p === "GK") return "arqueros";
+def normalizar_texto(texto):
+    texto = str(texto or "").strip().lower()
+    texto = unicodedata.normalize("NFD", texto)
+    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
+    texto = re.sub(r"\s+", " ", texto)
+    return texto
 
-  if (["CB", "LB", "RB", "LWB", "RWB"].includes(p)) {
-    return "defensores";
-  }
+def get_json(url, retries=2, sleep=0.6):
+    for intento in range(retries + 1):
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=25)
+            print(f"🌐 {r.status_code} {url}")
 
-  if (["CM", "CDM", "CAM", "LM", "RM"].includes(p)) {
-    return "mediocampistas";
-  }
+            if r.ok:
+                return r.json()
 
-  return "delanteros";
-}
+            if intento < retries:
+                time.sleep(sleep)
 
-function canFit(player, slotPosition) {
-  return player.categoria === positionGroup(slotPosition);
-}
+        except Exception as e:
+            print(f"⚠️ Error leyendo URL: {url} / {e}")
 
-function setMessage(text, type = "") {
-  message.textContent = text;
-  message.className = `message ${type}`.trim();
-}
+            if intento < retries:
+                time.sleep(sleep)
 
-function buildSlots() {
-  let index = 0;
+    return None
 
-  slots = selectedFormation.rows.flatMap(row =>
-    row.map(position => ({
-      id: index++,
-      position,
-      player: null
-    }))
-  );
-}
+def extraer_logo(team):
+    logos = team.get("logos") or []
 
-function renderChallenge() {
-  challengeTitle.textContent = currentChallenge.title;
-  challengeDescription.textContent = currentChallenge.description;
-}
+    if isinstance(logos, list) and logos:
+        return logos[0].get("href") or ""
 
-function renderPitch() {
-  pitch.innerHTML = "";
+    if team.get("logo"):
+        return team.get("logo")
 
-  let slotIndex = 0;
+    return ""
 
-  selectedFormation.rows.forEach(row => {
-    const rowEl = document.createElement("div");
-    rowEl.className = "pitch-row";
+def extraer_equipos(data):
+    equipos = []
 
-    row.forEach(() => {
-      const slot = slots[slotIndex];
-      const slotEl = document.createElement("div");
-      slotEl.className = `slot ${slot.player ? "filled" : ""}`.trim();
+    raw_teams = data.get("sports", [{}])[0].get("leagues", [{}])[0].get("teams", [])
 
-      if (slot.player) {
-        slotEl.innerHTML = `
-          <div>
-            <small>${slot.position}</small>
-            <strong>${slot.player.nombre}</strong>
-            <span>${slot.player.club}</span>
-          </div>
-        `;
-      } else {
-        slotEl.innerHTML = `
-          <div>
-            <small>${slot.position}</small>
-            <strong>Vacío</strong>
-            <span>${currentChallenge.type === "country" ? currentChallenge.value : "Club de América"}</span>
-          </div>
-        `;
-      }
+    if not raw_teams:
+        raw_teams = data.get("teams") or []
 
-      rowEl.appendChild(slotEl);
-      slotIndex++;
-    });
+    for item in raw_teams:
+        team = item.get("team") if isinstance(item, dict) else None
 
-    pitch.appendChild(rowEl);
-  });
+        if not isinstance(team, dict):
+            team = item if isinstance(item, dict) else {}
 
-  updateStats();
-}
+        team_id = str(team.get("id") or "").strip()
+        nombre = (
+            team.get("displayName")
+            or team.get("name")
+            or team.get("shortDisplayName")
+            or ""
+        ).strip()
 
-function updateStats() {
-  const filled = slots.filter(slot => slot.player).length;
-  filledCount.textContent = filled;
-  scoreEl.textContent = score;
-  formationName.textContent = selectedFormation.name;
+        if not team_id or not nombre:
+            continue
 
-  if (filled === 11) {
-    completeGame();
-  }
-}
+        equipos.append({
+            "id": team_id,
+            "nombre": nombre,
+            "logo": extraer_logo(team),
+        })
 
-function normalizePlayer(raw) {
-  return {
-    ...raw,
-    nombre: raw.nombre || "",
-    slug: raw.slug || slugify(raw.nombre),
-    categoria: raw.categoria || "mediocampistas",
-    posicion: raw.posicion || "CM",
-    club: raw.club || "Club desconocido",
-    pais_club: raw.pais_club || "",
-    liga: raw.liga || "",
-    league_slug: raw.league_slug || ""
-  };
-}
+    return equipos
 
-function buildChallenges() {
-  const countries = [...new Set(players.map(p => p.pais_club).filter(Boolean))];
-  const leagues = [...new Map(players.filter(p => p.league_slug && p.liga).map(p => [p.league_slug, p])).values()];
+def normalizar_posicion(position_obj):
+    if not isinstance(position_obj, dict):
+        return "CM", "mediocampistas"
 
-  const countryChallenges = countries.map(country => ({
-    type: "country",
-    value: country,
-    title: `Clubes de ${country}`,
-    description: `Completá el 11 solo con jugadores que juegan actualmente en clubes de ${country}.`,
-    validate: player => player.pais_club === country
-  }));
+    texto = normalizar_texto(
+        position_obj.get("displayName")
+        or position_obj.get("name")
+        or position_obj.get("abbreviation")
+        or ""
+    )
 
-  const leagueChallenges = leagues.map(item => ({
-    type: "league",
-    value: item.league_slug,
-    title: item.liga,
-    description: `Completá el 11 solo con jugadores de ${item.liga}.`,
-    validate: player => player.league_slug === item.league_slug
-  }));
+    abreviatura = str(position_obj.get("abbreviation") or "").upper().strip()
 
-  challenges = shuffle([...baseChallenges, ...countryChallenges, ...leagueChallenges]);
-}
+    if abreviatura in ["GK", "G"]:
+        return "GK", "arqueros"
 
-function findPlayer(name) {
-  const target = slugify(name);
+    if abreviatura in ["CB", "DF", "D", "DEF"]:
+        return "CB", "defensores"
 
-  return players.find(player => {
-    return player.slug === target || slugify(player.nombre) === target;
-  });
-}
+    if abreviatura in ["LB"]:
+        return "LB", "defensores"
 
-function findMatches(query, limit = 6) {
-  const target = slugify(query);
+    if abreviatura in ["RB"]:
+        return "RB", "defensores"
 
-  if (target.length < 2) {
-    return [];
-  }
+    if abreviatura in ["CM", "MF", "M", "MID"]:
+        return "CM", "mediocampistas"
 
-  return players
-    .filter(player => {
-      const name = player.slug || slugify(player.nombre);
-      return name.includes(target);
-    })
-    .slice(0, limit);
-}
+    if abreviatura in ["CDM", "DM"]:
+        return "CDM", "mediocampistas"
 
-function playerAlreadyUsed(player) {
-  return slots.some(slot => slot.player && slot.player.slug === player.slug);
-}
+    if abreviatura in ["CAM", "AM"]:
+        return "CAM", "mediocampistas"
 
-function isValidForChallenge(player) {
-  return currentChallenge.validate(player);
-}
+    if abreviatura in ["LW"]:
+        return "LW", "delanteros"
 
-function addPlayerByName(name) {
-  const value = String(name || "").trim();
+    if abreviatura in ["RW"]:
+        return "RW", "delanteros"
 
-  if (!value) {
-    setMessage("Escribí el nombre de un jugador.", "error");
-    return;
-  }
+    if abreviatura in ["ST", "FW", "F", "ATT"]:
+        return "ST", "delanteros"
 
-  const player = findPlayer(value);
+    for key, pos in POSICIONES_ESPECIFICAS.items():
+        if key in texto:
+            if pos == "GK":
+                return pos, "arqueros"
+            if pos in ["CB", "LB", "RB"]:
+                return pos, "defensores"
+            if pos in ["CM", "CDM", "CAM"]:
+                return pos, "mediocampistas"
+            return pos, "delanteros"
 
-  if (!player) {
-    const matches = findMatches(value, 4);
+    return "CM", "mediocampistas"
 
-    if (matches.length) {
-      setMessage(`No encontré coincidencia exacta. Probá con: ${matches.map(p => p.nombre).join(", ")}`, "warn");
-      renderSuggestions(matches);
-    } else {
-      setMessage("No encontré ese jugador en la base de América.", "error");
-      clearSuggestions();
+def extraer_athletes(data):
+    athletes = data.get("athletes") or []
+
+    salida = []
+
+    for group in athletes:
+        if not isinstance(group, dict):
+            continue
+
+        if isinstance(group.get("items"), list):
+            for item in group.get("items") or []:
+                if isinstance(item, dict):
+                    salida.append(item.get("athlete") or item)
+        else:
+            salida.append(group)
+
+    return [a for a in salida if isinstance(a, dict)]
+
+def cargar_plantel(league_slug, liga_nombre, pais_club, equipo):
+    team_id = equipo["id"]
+    url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/teams/{team_id}/roster"
+    data = get_json(url)
+
+    if not data:
+        return []
+
+    jugadores = []
+
+    for athlete in extraer_athletes(data):
+        nombre = (
+            athlete.get("displayName")
+            or athlete.get("fullName")
+            or athlete.get("name")
+            or ""
+        ).strip()
+
+        if not nombre:
+            continue
+
+        position_obj = athlete.get("position") or {}
+        posicion, categoria = normalizar_posicion(position_obj)
+
+        jugador_id = str(athlete.get("id") or "").strip()
+
+        jugadores.append({
+            "id": jugador_id,
+            "nombre": nombre,
+            "slug": slugify(nombre),
+            "posicion": posicion,
+            "categoria": categoria,
+            "club": equipo["nombre"],
+            "club_id": team_id,
+            "club_logo": equipo.get("logo", ""),
+            "liga": liga_nombre,
+            "league_slug": league_slug,
+            "pais_club": pais_club,
+            "edad": athlete.get("age") or "",
+            "altura": athlete.get("displayHeight") or athlete.get("height") or "",
+            "fuente": "ESPN",
+        })
+
+    return jugadores
+
+def cargar_liga(liga):
+    league_slug = liga["slug"]
+    liga_nombre = liga["nombre"]
+    pais_club = liga["pais_club"]
+
+    print(f"\n🏆 Liga: {liga_nombre} ({league_slug})")
+
+    teams_url = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/teams"
+    data = get_json(teams_url)
+
+    if not data:
+        print(f"⚠️ No se pudo leer equipos de {liga_nombre}")
+        return []
+
+    equipos = extraer_equipos(data)
+
+    print(f"✅ Equipos encontrados: {len(equipos)}")
+
+    jugadores_liga = []
+
+    for idx, equipo in enumerate(equipos, start=1):
+        print(f"   👕 {idx}/{len(equipos)} {equipo['nombre']}")
+        jugadores = cargar_plantel(league_slug, liga_nombre, pais_club, equipo)
+        print(f"      Jugadores: {len(jugadores)}")
+        jugadores_liga.extend(jugadores)
+        time.sleep(0.35)
+
+    return jugadores_liga
+
+def deduplicar_jugadores(jugadores):
+    salida = []
+    vistos = set()
+
+    for jugador in jugadores:
+        key = f"{jugador.get('slug')}::{jugador.get('club_id')}::{jugador.get('league_slug')}"
+
+        if key in vistos:
+            continue
+
+        vistos.add(key)
+        salida.append(jugador)
+
+    return salida
+
+def main():
+    os.makedirs("data", exist_ok=True)
+
+    todos = []
+
+    for liga in AMERICA_LEAGUES:
+        jugadores_liga = cargar_liga(liga)
+        todos.extend(jugadores_liga)
+
+    todos = deduplicar_jugadores(todos)
+
+    todos.sort(key=lambda j: (
+        j.get("pais_club", ""),
+        j.get("liga", ""),
+        j.get("club", ""),
+        j.get("nombre", ""),
+    ))
+
+    payload = {
+        "actualizado": datetime.now(timezone.utc).isoformat(),
+        "total": len(todos),
+        "ligas": AMERICA_LEAGUES,
+        "jugadores": todos,
     }
 
-    return;
-  }
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
 
-  if (!isValidForChallenge(player)) {
-    setMessage(`${player.nombre} está en ${player.club}, pero no cumple este desafío.`, "error");
-    clearSuggestions();
-    return;
-  }
+    print(f"\n✅ Generado {OUTPUT_FILE}")
+    print(f"👥 Total jugadores: {len(todos)}")
 
-  if (playerAlreadyUsed(player)) {
-    setMessage("Ese jugador ya está en tu equipo.", "error");
-    clearSuggestions();
-    return;
-  }
-
-  const freeSlot = slots.find(slot => !slot.player && canFit(player, slot.position));
-
-  if (!freeSlot) {
-    setMessage(`No hay lugar compatible para ${player.nombre}.`, "error");
-    clearSuggestions();
-    return;
-  }
-
-  freeSlot.player = player;
-  score += 100;
-  playerInput.value = "";
-
-  setMessage(`${player.nombre} agregado. Juega en ${player.club}.`, "ok");
-  clearSuggestions();
-  renderPitch();
-}
-
-function addPlayer() {
-  addPlayerByName(playerInput.value);
-}
-
-function clearSuggestions() {
-  suggestions.classList.add("hidden");
-  suggestions.innerHTML = "";
-}
-
-function renderSuggestions(matches) {
-  suggestions.innerHTML = "";
-
-  matches.forEach(player => {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "suggestion";
-    btn.textContent = `${player.nombre} · ${player.club}`;
-    btn.addEventListener("click", () => addPlayerByName(player.nombre));
-    suggestions.appendChild(btn);
-  });
-
-  suggestions.classList.remove("hidden");
-}
-
-function getCandidatesForSlot(slot) {
-  return players.filter(player => {
-    return !playerAlreadyUsed(player) && isValidForChallenge(player) && canFit(player, slot.position);
-  });
-}
-
-function surrender() {
-  const missingBefore = slots.filter(slot => !slot.player).length;
-
-  slots.forEach(slot => {
-    if (!slot.player) {
-      const candidates = getCandidatesForSlot(slot);
-      const candidate = candidates[Math.floor(Math.random() * candidates.length)];
-
-      if (candidate) {
-        slot.player = candidate;
-      }
-    }
-  });
-
-  setMessage(`Te rendiste. Se completaron ${missingBefore} puestos con respuestas posibles.`, "warn");
-  clearSuggestions();
-  renderPitch();
-}
-
-function pickNextFormation() {
-  formationIndex = (formationIndex + 1) % formations.length;
-  selectedFormation = formations[formationIndex];
-}
-
-function pickNextChallenge() {
-  challengeIndex = (challengeIndex + 1) % challenges.length;
-  currentChallenge = challenges[challengeIndex];
-}
-
-function challengeHasEnoughPlayers() {
-  const available = players.filter(player => isValidForChallenge(player));
-
-  const needed = {
-    arqueros: selectedFormation.rows.flat().filter(p => positionGroup(p) === "arqueros").length,
-    defensores: selectedFormation.rows.flat().filter(p => positionGroup(p) === "defensores").length,
-    mediocampistas: selectedFormation.rows.flat().filter(p => positionGroup(p) === "mediocampistas").length,
-    delanteros: selectedFormation.rows.flat().filter(p => positionGroup(p) === "delanteros").length
-  };
-
-  return Object.keys(needed).every(group => {
-    return available.filter(player => player.categoria === group).length >= needed[group];
-  });
-}
-
-function resetGame() {
-  completeModal.classList.add("hidden");
-  nextBtn.classList.add("hidden");
-
-  let safety = 0;
-
-  do {
-    pickNextFormation();
-    pickNextChallenge();
-    safety++;
-  } while (!challengeHasEnoughPlayers() && safety < 80);
-
-  buildSlots();
-  score = 0;
-  clearSuggestions();
-  renderChallenge();
-  setMessage("Nuevo desafío cargado. Completá tu 11.", "ok");
-  renderPitch();
-}
-
-function completeGame() {
-  completeText.textContent = `Completaste el 11 en Armá 11 América. Desafío: ${currentChallenge.title}. Formación ${selectedFormation.name}. Puntaje final: ${score}. Podés jugar otro desafío ahora.`;
-  completeModal.classList.remove("hidden");
-  nextBtn.classList.remove("hidden");
-}
-
-async function shareGame() {
-  const text = `Completé Armá 11 América: ${currentChallenge.title}, formación ${selectedFormation.name}, ${score} puntos.`;
-
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: "Armá 11 América",
-        text
-      });
-      return;
-    } catch (error) {}
-  }
-
-  try {
-    await navigator.clipboard.writeText(text);
-    setMessage("Resultado copiado para compartir.", "ok");
-  } catch (error) {
-    setMessage(text, "ok");
-  }
-}
-
-async function loadPlayers() {
-  try {
-    const response = await fetch(DATA_URL, { cache: "no-store" });
-
-    if (!response.ok) {
-      throw new Error("No se pudo cargar el JSON");
-    }
-
-    const payload = await response.json();
-
-    players = Array.isArray(payload) ? payload : (payload.jugadores || []);
-    players = players.map(normalizePlayer).filter(player => player.nombre && player.slug);
-
-    buildChallenges();
-
-    if (!players.length) {
-      throw new Error("La base de jugadores está vacía");
-    }
-
-    setMessage(`Base cargada: ${players.length} jugadores disponibles.`, "ok");
-    resetGame();
-  } catch (error) {
-    console.error(error);
-    setMessage("Error cargando data/jugadores_america.json. Revisá la ruta o ejecutá el scraper.", "error");
-    buildSlots();
-    renderChallenge();
-    renderPitch();
-  }
-}
-
-addPlayerBtn.addEventListener("click", addPlayer);
-
-playerInput.addEventListener("keydown", event => {
-  if (event.key === "Enter") {
-    addPlayer();
-  }
-});
-
-playerInput.addEventListener("input", () => {
-  const matches = findMatches(playerInput.value, 6);
-
-  if (matches.length) {
-    renderSuggestions(matches);
-  } else {
-    clearSuggestions();
-  }
-});
-
-surrenderBtn.addEventListener("click", surrender);
-nextBtn.addEventListener("click", resetGame);
-modalNextBtn.addEventListener("click", resetGame);
-changeChallengeBtn.addEventListener("click", resetGame);
-shareBtn.addEventListener("click", shareGame);
-
-helpBtn.addEventListener("click", () => helpModal.classList.remove("hidden"));
-closeHelpBtn.addEventListener("click", () => helpModal.classList.add("hidden"));
-
-helpModal.addEventListener("click", event => {
-  if (event.target === helpModal) {
-    helpModal.classList.add("hidden");
-  }
-});
-
-completeModal.addEventListener("click", event => {
-  if (event.target === completeModal) {
-    completeModal.classList.add("hidden");
-  }
-});
-
-selectedFormation = formations[0];
-currentChallenge = baseChallenges[0];
-buildSlots();
-renderChallenge();
-renderPitch();
-loadPlayers();
+if __name__ == "__main__":
+    main()
