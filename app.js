@@ -2082,6 +2082,32 @@ leagueGrid.addEventListener("click", (event) => {
 
 refreshLive.addEventListener("click", loadEvents);
 
+function abrirSeccionDesdeHash() {
+  const hash = window.location.hash.replace("#", "");
+
+  if (!hash) return;
+
+  const tabBtn = document.querySelector(`.tab[data-tab="${hash}"]`);
+
+  if (tabBtn) {
+    tabBtn.click();
+
+    setTimeout(() => {
+      const section = document.getElementById(`${hash}Section`);
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    }, 100);
+  }
+}
+
+window.addEventListener("DOMContentLoaded", abrirSeccionDesdeHash);
+window.addEventListener("hashchange", abrirSeccionDesdeHash);
+
 /* ============================================================
    INIT
 ============================================================ */
