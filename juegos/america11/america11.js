@@ -243,7 +243,9 @@ async function loadPlayers() {
       throw new Error("No se pudo cargar el JSON");
     }
 
-    players = await response.json();
+    const payload = await response.json();
+
+    players = Array.isArray(payload) ? payload : (payload.jugadores || []);
 
     players = players.map(player => ({
       ...player,
