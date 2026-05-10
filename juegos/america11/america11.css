@@ -599,7 +599,32 @@ button {
 
 
 
+.status-card {
+  width: min(680px, 100%);
+  margin: 16px auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
 
+.status-card div {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+}
+
+.status-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.status-card strong {
+  font-size: 18px;
+}
 
 
 
