@@ -11,9 +11,23 @@
     "fundacion": "1905/04/08",
     "estadio": "Jorge Luis Hirschi",
     "ciudad": "La Plata",
-    "actualizado": "2026-05-10T20:55:39.692494+00:00",
+    "actualizado": "2026-05-10T22:54:53.026568+00:00",
     "proximosPartidos": [],
     "resultados": [
+      {
+        "id": "401871434",
+        "dia": "2026-05-10",
+        "fecha_iso": "2026-05-10T17:00:00",
+        "fecha_iso_utc": "2026-05-10T20:00Z",
+        "local": "Estudiantes de La Plata",
+        "visitante": "Racing Club",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401871434/racing-club-estudiantes-de-la-plata",
+        "resultado": "0 - 1",
+        "estado": "",
+        "hora": "17:00"
+      },
       {
         "id": "762897",
         "dia": "2026-05-02",
@@ -139,20 +153,6 @@
         "resultado": "0 - 1",
         "estado": "",
         "hora": "19:15"
-      },
-      {
-        "id": "762864",
-        "dia": "2026-02-25",
-        "fecha_iso": "2026-02-25T19:30:00",
-        "fecha_iso_utc": "2026-02-25T22:30Z",
-        "local": "Newell's Old Boys",
-        "visitante": "Estudiantes de La Plata",
-        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762864/estudiantes-de-la-plata-newells-old-boys",
-        "resultado": "0 - 2",
-        "estado": "",
-        "hora": "19:30"
       }
     ],
     "plantel": {
@@ -538,6 +538,20 @@
         "proximosPartidos": [],
         "resultados": [
           {
+            "id": "401871434",
+            "dia": "2026-05-10",
+            "fecha_iso": "2026-05-10T17:00:00",
+            "fecha_iso_utc": "2026-05-10T20:00Z",
+            "local": "Estudiantes de La Plata",
+            "visitante": "Racing Club",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871434/racing-club-estudiantes-de-la-plata",
+            "resultado": "0 - 1",
+            "estado": "",
+            "hora": "17:00"
+          },
+          {
             "id": "762897",
             "dia": "2026-05-02",
             "fecha_iso": "2026-05-02T21:15:00",
@@ -662,20 +676,6 @@
             "resultado": "0 - 1",
             "estado": "",
             "hora": "19:15"
-          },
-          {
-            "id": "762864",
-            "dia": "2026-02-25",
-            "fecha_iso": "2026-02-25T19:30:00",
-            "fecha_iso_utc": "2026-02-25T22:30Z",
-            "local": "Newell's Old Boys",
-            "visitante": "Estudiantes de La Plata",
-            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762864/estudiantes-de-la-plata-newells-old-boys",
-            "resultado": "0 - 2",
-            "estado": "",
-            "hora": "19:30"
           }
         ],
         "estadisticas": {
@@ -1060,7 +1060,7 @@
     "fundacion": "1905/03/04",
     "estadio": "Alberto J. Armando",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T20:55:40.759860+00:00",
+    "actualizado": "2026-05-10T22:54:54.335784+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -1239,11 +1239,6 @@
           "altura": "5' 9\""
         },
         {
-          "nombre": "Juan Barinaga",
-          "edad": 25,
-          "altura": "5' 9\""
-        },
-        {
           "nombre": "Ayrton Costa",
           "edad": 26,
           "altura": "5' 10\""
@@ -1290,6 +1285,11 @@
         }
       ],
       "mediocampistas": [
+        {
+          "nombre": "Juan Barinaga",
+          "edad": 25,
+          "altura": "5' 9\""
+        },
         {
           "nombre": "Camilo Rey",
           "edad": 20,
@@ -2087,7 +2087,7 @@
     "fundacion": "1910/01/01",
     "estadio": "José Amalfitani",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T20:55:41.375735+00:00",
+    "actualizado": "2026-05-10T22:54:55.363703+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -2946,7 +2946,7 @@
     "fundacion": "1913/12/10",
     "estadio": "Mario Alberto Kempes",
     "ciudad": "Córdoba",
-    "actualizado": "2026-05-10T20:55:41.962119+00:00",
+    "actualizado": "2026-05-10T22:54:56.656943+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -3766,7 +3766,7 @@
     "fundacion": "1905/01/01",
     "estadio": "Libertadores de América - Ricardo Enrique Bochini",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-10T20:55:42.519630+00:00",
+    "actualizado": "2026-05-10T22:54:57.813769+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -3991,8 +3991,8 @@
         },
         {
           "nombre": "Mateo Perez",
-          "edad": 20,
-          "altura": "5' 10\""
+          "edad": 24,
+          "altura": "6' 1\""
         }
       ],
       "mediocampistas": [
@@ -4688,7 +4688,7 @@
     "fundacion": "1915/03/01",
     "estadio": "Ciudad de Lanús - Néstor Díaz Pérez",
     "ciudad": "Lanús",
-    "actualizado": "2026-05-10T20:55:43.181403+00:00",
+    "actualizado": "2026-05-10T22:54:58.955053+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -5691,7 +5691,7 @@
     "fundacion": "1908/01/04",
     "estadio": "Pedro Bidegain",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T20:55:43.984387+00:00",
+    "actualizado": "2026-05-10T22:55:00.034799+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -6060,8 +6060,8 @@
         },
         {
           "nombre": "Matías Hernández",
-          "edad": 28,
-          "altura": "6' 1\""
+          "edad": 21,
+          "altura": "5' 10\""
         },
         {
           "nombre": "Rodrigo Auzmendi",
@@ -6692,7 +6692,7 @@
     "fundacion": "1907/15/04",
     "estadio": "15 de Abril",
     "ciudad": "Santa Fe",
-    "actualizado": "2026-05-10T20:55:44.757282+00:00",
+    "actualizado": "2026-05-10T22:55:01.184389+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -7558,7 +7558,7 @@
     "fundacion": "1918/08/08",
     "estadio": "Juan Domingo Perón",
     "ciudad": "Córdoba",
-    "actualizado": "2026-05-10T20:55:45.369175+00:00",
+    "actualizado": "2026-05-10T22:55:02.126126+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -8458,7 +8458,7 @@
     "fundacion": "1935/20/03",
     "estadio": "Norberto Tomaghello",
     "ciudad": "Florencio Varela",
-    "actualizado": "2026-05-10T20:55:46.169736+00:00",
+    "actualizado": "2026-05-10T22:55:03.098312+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -8679,11 +8679,6 @@
       ],
       "mediocampistas": [
         {
-          "nombre": "Julián López",
-          "edad": 26,
-          "altura": "6' 1\""
-        },
-        {
           "nombre": "Éver Banega",
           "edad": 37,
           "altura": "5' 9\""
@@ -8740,6 +8735,11 @@
         }
       ],
       "delanteros": [
+        {
+          "nombre": "Julián López",
+          "edad": 28,
+          "altura": "6' 1\""
+        },
         {
           "nombre": "David Barbona",
           "edad": 31,
@@ -9327,7 +9327,7 @@
     "fundacion": "1908/30/08",
     "estadio": "Víctor Antonio Legrotaglie",
     "ciudad": "Mendoza",
-    "actualizado": "2026-05-10T20:55:46.747634+00:00",
+    "actualizado": "2026-05-10T22:55:04.236705+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -10206,7 +10206,7 @@
     "fundacion": "1905/25/05",
     "estadio": "Ciudad de Vicente López",
     "ciudad": "Vicente López",
-    "actualizado": "2026-05-10T20:55:47.374279+00:00",
+    "actualizado": "2026-05-10T22:55:05.236567+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -10376,6 +10376,11 @@
           "nombre": "Santino Cambiasso",
           "edad": 19,
           "altura": "6' 6\""
+        },
+        {
+          "nombre": "Tomás Giménez",
+          "edad": 27,
+          "altura": "6' 1\""
         }
       ],
       "defensores": [
@@ -10393,11 +10398,6 @@
           "nombre": "Gonzalo Goñi",
           "edad": 27,
           "altura": "6' 0\""
-        },
-        {
-          "nombre": "Tomás Giménez",
-          "edad": 19,
-          "altura": "5' 6\""
         },
         {
           "nombre": "Agustín Lagos",
@@ -10455,8 +10455,8 @@
           "altura": "5' 8\""
         },
         {
-          "nombre": "Christian Ortiz",
-          "edad": 24,
+          "nombre": "Christian Ortíz",
+          "edad": 33,
           "altura": "5' 7\""
         }
       ],
@@ -11140,7 +11140,7 @@
     "fundacion": "1919/03/06",
     "estadio": "Único Madre de Ciudades",
     "ciudad": "Santiago del Estero",
-    "actualizado": "2026-05-10T20:55:47.927980+00:00",
+    "actualizado": "2026-05-10T22:55:06.238047+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -11344,17 +11344,17 @@
           "altura": "6' 3\""
         },
         {
-          "nombre": "Agustín Romero",
-          "edad": 19,
-          "altura": "5' 11\""
+          "nombre": "Matías Vera",
+          "edad": 27,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Joaquín Flores",
+          "edad": 20,
+          "altura": "5' 6\""
         }
       ],
       "mediocampistas": [
-        {
-          "nombre": "Matías Vera",
-          "edad": 30,
-          "altura": "5' 6\""
-        },
         {
           "nombre": "Fernando Juárez",
           "edad": 27,
@@ -11383,6 +11383,11 @@
       ],
       "delanteros": [
         {
+          "nombre": "Agustín Romero",
+          "edad": 17,
+          "altura": "5' 11\""
+        },
+        {
           "nombre": "Michael Santos",
           "edad": 33,
           "altura": "5' 9\""
@@ -11406,11 +11411,6 @@
           "nombre": "Ezequiel Naya",
           "edad": 24,
           "altura": "6' 3\""
-        },
-        {
-          "nombre": "Joaquín Flores",
-          "edad": 20,
-          "altura": "5' 6\""
         },
         {
           "nombre": "Bautista Gerez",
@@ -11923,7 +11923,7 @@
     "fundacion": "1903/03/11",
     "estadio": "Marcelo Bielsa",
     "ciudad": "Rosario",
-    "actualizado": "2026-05-10T20:55:48.568246+00:00",
+    "actualizado": "2026-05-10T22:55:07.290617+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -12768,7 +12768,7 @@
     "fundacion": "1931/22/02",
     "estadio": "Guillermo Laza",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T20:55:49.366775+00:00",
+    "actualizado": "2026-05-10T22:55:08.537951+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -13616,7 +13616,7 @@
     "fundacion": "1913/24/01",
     "estadio": "Bautista Gargantini",
     "ciudad": "Mendoza",
-    "actualizado": "2026-05-10T20:55:49.963929+00:00",
+    "actualizado": "2026-05-10T22:55:09.546294+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -14641,7 +14641,7 @@
     "fundacion": "1901/25/05",
     "estadio": "Mâs Monumental",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T20:55:50.540099+00:00",
+    "actualizado": "2026-05-10T22:55:10.438925+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -15724,7 +15724,7 @@
     "fundacion": "1904/15/08",
     "estadio": "Diego Armando Maradona",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T20:55:51.216753+00:00",
+    "actualizado": "2026-05-10T22:55:11.393719+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -16713,7 +16713,7 @@
     "fundacion": "1889/24/12",
     "estadio": "Gigante de Arroyito",
     "ciudad": "Rosario",
-    "actualizado": "2026-05-10T20:55:52.438657+00:00",
+    "actualizado": "2026-05-10T22:55:13.056739+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -17755,7 +17755,7 @@
     "fundacion": "1905/19/03",
     "estadio": "Julio César Villagra",
     "ciudad": "Córdoba",
-    "actualizado": "2026-05-10T20:55:53.228502+00:00",
+    "actualizado": "2026-05-10T22:55:14.481333+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -17980,8 +17980,8 @@
         },
         {
           "nombre": "Franco Vázquez",
-          "edad": 37,
-          "altura": "6' 2\""
+          "edad": 21,
+          "altura": "6' 0\""
         }
       ],
       "mediocampistas": [
@@ -18655,7 +18655,7 @@
     "fundacion": "1887/03/06",
     "estadio": "Juan Carmelo Zerillo",
     "ciudad": "La Plata",
-    "actualizado": "2026-05-10T20:55:53.807520+00:00",
+    "actualizado": "2026-05-10T22:55:15.680795+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -19496,7 +19496,7 @@
     "fundacion": "1908/01/11",
     "estadio": "Tomás Adolfo Ducó",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T20:55:54.724573+00:00",
+    "actualizado": "2026-05-10T22:55:16.651109+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -20355,9 +20355,23 @@
     "fundacion": "1903/25/03",
     "estadio": "Presidente Perón",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-10T20:55:55.597407+00:00",
+    "actualizado": "2026-05-10T22:55:17.519939+00:00",
     "proximosPartidos": [],
     "resultados": [
+      {
+        "id": "401871434",
+        "dia": "2026-05-10",
+        "fecha_iso": "2026-05-10T17:00:00",
+        "fecha_iso_utc": "2026-05-10T20:00Z",
+        "local": "Estudiantes de La Plata",
+        "visitante": "Racing Club",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401871434/racing-club-estudiantes-de-la-plata",
+        "resultado": "0 - 1",
+        "estado": "",
+        "hora": "17:00"
+      },
       {
         "id": "762898",
         "dia": "2026-05-03",
@@ -20483,20 +20497,6 @@
         "resultado": "0 - 3",
         "estado": "",
         "hora": "21:15"
-      },
-      {
-        "id": "762866",
-        "dia": "2026-02-26",
-        "fecha_iso": "2026-02-26T17:15:00",
-        "fecha_iso_utc": "2026-02-26T20:15Z",
-        "local": "Racing Club",
-        "visitante": "Independiente Rivadavia",
-        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
-        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762866/independiente-rivadavia-racing-club",
-        "resultado": "1 - 1",
-        "estado": "",
-        "hora": "17:15"
       }
     ],
     "plantel": {
@@ -20872,6 +20872,20 @@
         "proximosPartidos": [],
         "resultados": [
           {
+            "id": "401871434",
+            "dia": "2026-05-10",
+            "fecha_iso": "2026-05-10T17:00:00",
+            "fecha_iso_utc": "2026-05-10T20:00Z",
+            "local": "Estudiantes de La Plata",
+            "visitante": "Racing Club",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871434/racing-club-estudiantes-de-la-plata",
+            "resultado": "0 - 1",
+            "estado": "",
+            "hora": "17:00"
+          },
+          {
             "id": "762898",
             "dia": "2026-05-03",
             "fecha_iso": "2026-05-03T16:00:00",
@@ -20996,20 +21010,6 @@
             "resultado": "0 - 3",
             "estado": "",
             "hora": "21:15"
-          },
-          {
-            "id": "762866",
-            "dia": "2026-02-26",
-            "fecha_iso": "2026-02-26T17:15:00",
-            "fecha_iso_utc": "2026-02-26T20:15Z",
-            "local": "Racing Club",
-            "visitante": "Independiente Rivadavia",
-            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
-            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762866/independiente-rivadavia-racing-club",
-            "resultado": "1 - 1",
-            "estado": "",
-            "hora": "17:15"
           }
         ],
         "estadisticas": {
@@ -21394,7 +21394,7 @@
     "fundacion": "1904/05/04",
     "estadio": "Claudio Chiqui Tapia",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T20:55:56.221964+00:00",
+    "actualizado": "2026-05-10T22:55:18.658055+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -22385,7 +22385,7 @@
     "fundacion": "1902/03/08",
     "estadio": "José Dellagiovanna",
     "ciudad": "Victoria",
-    "actualizado": "2026-05-10T20:55:56.794254+00:00",
+    "actualizado": "2026-05-10T22:55:19.619460+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -22550,6 +22550,11 @@
           "nombre": "Máximo Leguizamón",
           "edad": 18,
           "altura": "6' 2\""
+        },
+        {
+          "nombre": "Alejandro Medina",
+          "edad": 39,
+          "altura": "5' 11\""
         }
       ],
       "defensores": [
@@ -22562,11 +22567,6 @@
           "nombre": "Ramón Arias",
           "edad": 33,
           "altura": "5' 11\""
-        },
-        {
-          "nombre": "Federico Álvarez",
-          "edad": 25,
-          "altura": "5' 10\""
         },
         {
           "nombre": "Guillermo Soto",
@@ -22640,6 +22640,11 @@
         }
       ],
       "mediocampistas": [
+        {
+          "nombre": "Federico Álvarez",
+          "edad": 25,
+          "altura": "5' 10\""
+        },
         {
           "nombre": "Gonzalo Martínez",
           "edad": 32,
@@ -22731,11 +22736,6 @@
           "nombre": "Marco Rivas",
           "edad": 17,
           "altura": "5' 7\""
-        },
-        {
-          "nombre": "Alejandro Medina",
-          "edad": 21,
-          "altura": "5' 9\""
         },
         {
           "nombre": "Alfio Oviedo",
@@ -23372,7 +23372,7 @@
     "fundacion": "1911/01/04",
     "estadio": "Eva Perón",
     "ciudad": "Junín",
-    "actualizado": "2026-05-10T20:55:57.356678+00:00",
+    "actualizado": "2026-05-10T22:55:20.407729+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -24242,7 +24242,7 @@
     "fundacion": "1896/21/01",
     "estadio": "Florencio Sola",
     "ciudad": "Banfield",
-    "actualizado": "2026-05-10T20:55:57.931759+00:00",
+    "actualizado": "2026-05-10T22:55:21.324746+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -24493,11 +24493,6 @@
           "altura": "5' 9\""
         },
         {
-          "nombre": "Lautaro Villegas",
-          "edad": 22,
-          "altura": "5' 7\""
-        },
-        {
           "nombre": "Tomás Adoryan",
           "edad": 24,
           "altura": "5' 10\""
@@ -24524,6 +24519,11 @@
         }
       ],
       "delanteros": [
+        {
+          "nombre": "Lautaro Villegas",
+          "edad": 29,
+          "altura": "5' 7\""
+        },
         {
           "nombre": "David Salazar",
           "edad": 24,
@@ -25044,7 +25044,7 @@
     "fundacion": "1902/27/09",
     "estadio": "Monumental José Fierro",
     "ciudad": "San Miguel de Tucumán",
-    "actualizado": "2026-05-10T20:55:58.790513+00:00",
+    "actualizado": "2026-05-10T22:55:22.353141+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -25882,7 +25882,7 @@
     "fundacion": "1913/29/03",
     "estadio": "José María Minella",
     "ciudad": "Mar del Plata",
-    "actualizado": "2026-05-10T20:55:59.473391+00:00",
+    "actualizado": "2026-05-10T22:55:23.386843+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -26047,6 +26047,11 @@
           "nombre": "Kevin Báez",
           "edad": 17,
           "altura": "-"
+        },
+        {
+          "nombre": "Alan Sosa",
+          "edad": 30,
+          "altura": "6' 0\""
         }
       ],
       "defensores": [
@@ -26173,11 +26178,6 @@
           "nombre": "Junior Arias",
           "edad": 32,
           "altura": "5' 9\""
-        },
-        {
-          "nombre": "Alan Sosa",
-          "edad": 30,
-          "altura": "6' 0\""
         },
         {
           "nombre": "Nicolás Cordero",
@@ -26692,7 +26692,7 @@
     "fundacion": "1912/21/09",
     "estadio": "Antonio Candini",
     "ciudad": "Río Cuarto",
-    "actualizado": "2026-05-10T20:56:00.325706+00:00",
+    "actualizado": "2026-05-10T22:55:24.331857+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -26857,6 +26857,11 @@
           "nombre": "Lautaro Herrera",
           "edad": 20,
           "altura": "-"
+        },
+        {
+          "nombre": "Mateo Rodríguez",
+          "edad": 20,
+          "altura": "6' 3\""
         }
       ],
       "defensores": [
@@ -26984,11 +26989,6 @@
         }
       ],
       "delanteros": [
-        {
-          "nombre": "Mateo Rodríguez",
-          "edad": 20,
-          "altura": "6' 3\""
-        },
         {
           "nombre": "Javier Ferreira",
           "edad": 34,
