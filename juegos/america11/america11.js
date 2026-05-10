@@ -212,6 +212,40 @@ const POPULAR_CLUB_NAMES = [
   "New York Red Bulls"
 ];
 
+const EXCLUDED_EASY_NORMAL_CLUB_NAMES = [
+  "New York City FC",
+  "NYCFC",
+
+  "Vasco da Gama",
+
+  "Santos Laguna",
+  "Santos",
+
+  "Atlanta United FC",
+  "Atlanta United",
+
+  "São Paulo",
+  "Sao Paulo",
+
+  "Seattle Sounders FC",
+  "Seattle Sounders",
+
+  "Pumas UNAM",
+  "Pumas",
+
+  "Toluca",
+
+  "Millonarios",
+
+  "Cruz Azul",
+
+  "Grêmio",
+  "Gremio",
+
+  "América de Cali",
+  "America de Cali"
+];
+
 const MEDIUM_CLUB_COUNTRIES = [
   "Argentina",
   "Brasil",
@@ -361,6 +395,22 @@ function buildClubs() {
 
 function isPopularClub(club) {
   const clubName = normalizeText(club.name);
+
+  const isExcluded = EXCLUDED_EASY_NORMAL_CLUB_NAMES.some(name => {
+    return clubName === normalizeText(name);
+  });
+
+  if (isExcluded) {
+    return false;
+  }
+
+  // Caso especial: si ESPN trae "Santos" como club mexicano, también lo sacamos.
+  if (
+    clubName === normalizeText("Santos") &&
+    (club.country === "México" || club.country === "Mexico")
+  ) {
+    return false;
+  }
 
   return POPULAR_CLUB_NAMES.some(name => {
     return clubName === normalizeText(name);
