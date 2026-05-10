@@ -499,7 +499,7 @@ function initGame() {
   resetGameState();
   renderFormation();
   applyModeUi();
-  selectNextEmptySlot();
+  selectRandomEmptySlot();
   startTimerIfNeeded();
   updateStatus();
 }
@@ -648,6 +648,7 @@ function renderFormation() {
       const button = document.createElement("button");
       button.className = "position-slot mystery-slot";
       button.type = "button";
+      button.disabled = true;
 
       button.dataset.position = position;
       button.dataset.index = slotIndex;
@@ -657,12 +658,7 @@ function renderFormation() {
 
       button.innerHTML = `
         <span class="slot-position">${position}</span>
-        <small>?</small>
       `;
-
-      button.onclick = () => {
-        selectSlot(button);
-      };
 
       line.appendChild(button);
       slotIndex++;
@@ -748,14 +744,18 @@ function getSlots() {
   return document.querySelectorAll(".position-slot");
 }
 
-function selectNextEmptySlot() {
-  if (gameFinished) return;
-
-  const nextSlot = Array.from(getSlots()).find(slot => {
+function getEmptySlots() {
+  return Array.from(getSlots()).filter(slot => {
     return !slot.classList.contains("filled");
   });
+}
 
-  if (!nextSlot) {
+function selectRandomEmptySlot() {
+  if (gameFinished) return;
+
+  const emptySlots = getEmptySlots();
+
+  if (!emptySlots.length) {
     selectedSlot = null;
     renderChallengePanel();
     updateSearchPlaceholder();
@@ -764,7 +764,7 @@ function selectNextEmptySlot() {
 
   getSlots().forEach(item => item.classList.remove("selected"));
 
-  selectedSlot = nextSlot;
+  selectedSlot = pickRandom(emptySlots);
   selectedSlot.classList.add("selected");
 
   renderChallengePanel();
@@ -778,26 +778,6 @@ function getSlotData(slotOrIndex) {
     : Number(slotOrIndex.dataset.index);
 
   return CURRENT_GAME.slots[index];
-}
-
-function selectSlot(slot) {
-  if (gameFinished) return;
-  if (slot.classList.contains("filled")) return;
-
-  getSlots().forEach(item => item.classList.remove("selected"));
-
-  selectedSlot = slot;
-  selectedSlot.classList.add("selected");
-
-  renderChallengePanel();
-  updateSearchPlaceholder();
-  renderSuggestions(playerSearch.value);
-
-  const value = normalizeText(playerSearch.value);
-
-  if (value) {
-    trySubmitSearch();
-  }
 }
 
 function clearSelectedSlot() {
@@ -835,9 +815,7 @@ function playerCanPlaySlot(playerPosition, slotPosition) {
 }
 
 function findBestFreeSlotForPlayer(player) {
-  const freeSlots = Array.from(getSlots()).filter(slot => {
-    return !slot.classList.contains("filled");
-  });
+  const freeSlots = getEmptySlots();
 
   const compatibleSlots = freeSlots.filter(slot => {
     const slotData = getSlotData(slot);
@@ -913,7 +891,7 @@ function renderSuggestions(query) {
   suggestions.classList.remove("hidden");
 
   if (!selectedSlot) {
-    selectNextEmptySlot();
+    selectRandomEmptySlot();
     return;
   }
 
@@ -964,10 +942,10 @@ function renderSuggestions(query) {
 function placePlayer(player, forcedSlot = null) {
   if (gameFinished) return;
 
-  const targetSlot = forcedSlot || selectedSlot || findBestFreeSlotForPlayer(player);
+  const targetSlot = forcedSlot || selectedSlot;
 
   if (!targetSlot) {
-    showTemporaryPlaceholder("No hay casillero compatible para ese jugador");
+    showTemporaryPlaceholder("No hay posición activa para ese jugador");
     return;
   }
 
@@ -988,12 +966,17 @@ function placePlayer(player, forcedSlot = null) {
     return;
   }
 
+  const logo = getClubLogo(slotData);
+
   targetSlot.classList.add("filled");
   targetSlot.classList.remove("selected");
 
   targetSlot.innerHTML = `
-    ${player.nombre}
-    <small>${player.club} · ${player.posicion}</small>
+    <span class="slot-logo-wrap">
+      <img class="slot-logo" src="${logo}" alt="${escapeHtml(slotData.clubName)}" loading="lazy" />
+    </span>
+    <span class="slot-player-name">${player.nombre}</span>
+    <small>${slotData.clubName}</small>
   `;
 
   completedSlots.push(Number(targetSlot.dataset.index));
@@ -1013,7 +996,7 @@ function placePlayer(player, forcedSlot = null) {
   }
 
   if (!surrendering) {
-    selectNextEmptySlot();
+    selectRandomEmptySlot();
   }
 }
 
@@ -1021,7 +1004,7 @@ function trySubmitSearch() {
   if (gameFinished) return;
 
   if (!selectedSlot) {
-    selectNextEmptySlot();
+    selectRandomEmptySlot();
   }
 
   const value = normalizeText(playerSearch.value);
@@ -1031,21 +1014,9 @@ function trySubmitSearch() {
     return;
   }
 
-  let matches = [];
-
-  if (selectedSlot) {
-    matches = getPlayersForSlot(selectedSlot).filter(player => {
-      return playerMatchesSearch(player, value);
-    });
-  } else {
-    matches = PLAYERS.filter(player => {
-      if (playerAlreadyUsed(player)) return false;
-
-      const autoSlot = findBestFreeSlotForPlayer(player);
-
-      return autoSlot && playerMatchesSearch(player, value);
-    });
-  }
+  const matches = getPlayersForSlot(selectedSlot).filter(player => {
+    return playerMatchesSearch(player, value);
+  });
 
   if (!matches.length) {
     if (GAME_MODES[currentMode].showHints) {
@@ -1062,26 +1033,12 @@ function trySubmitSearch() {
   });
 
   if (exactMatch) {
-    const autoSlot = selectedSlot || findBestFreeSlotForPlayer(exactMatch);
-
-    if (!autoSlot) {
-      showTemporaryPlaceholder("No hay casillero compatible para ese jugador");
-      return;
-    }
-
-    placePlayer(exactMatch, autoSlot);
+    placePlayer(exactMatch, selectedSlot);
     return;
   }
 
   if (matches.length === 1) {
-    const autoSlot = selectedSlot || findBestFreeSlotForPlayer(matches[0]);
-
-    if (!autoSlot) {
-      showTemporaryPlaceholder("No hay casillero compatible para ese jugador");
-      return;
-    }
-
-    placePlayer(matches[0], autoSlot);
+    placePlayer(matches[0], selectedSlot);
     return;
   }
 
@@ -1453,9 +1410,9 @@ Puntaje: ${score}`;
 
 helpBtn.addEventListener("click", () => {
   alert(
-    "El juego muestra automáticamente el próximo equipo de América que te toca. " +
-    "Escribí un jugador actual de ese club y compatible con la posición marcada en la cancha. " +
-    "En Fácil aparecen sugerencias. En Normal, Difícil y Experto no hay ayudas."
+    "El juego muestra automáticamente una posición y un equipo de América. " +
+    "Escribí un jugador actual de ese club y compatible con la posición marcada. " +
+    "Al acertar, se desbloquea otra posición aleatoria. En Fácil aparecen sugerencias."
   );
 });
 
