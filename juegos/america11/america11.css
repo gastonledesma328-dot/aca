@@ -310,7 +310,7 @@ button {
 
 .position-slot {
   min-width: 78px;
-  min-height: 76px;
+  min-height: 58px;
   padding: 8px 10px;
   border: 1px solid rgba(255,255,255,0.34);
   border-radius: 14px;
@@ -369,6 +369,18 @@ button {
   color: rgba(23, 50, 35, 0.72);
   white-space: normal;
   word-break: break-word;
+}
+
+.mystery-slot small {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(19, 37, 28, 0.12);
+  color: rgba(19, 37, 28, 0.55);
+  font-size: 14px;
+  font-weight: 1000;
 }
 
 .position-slot.filled {
