@@ -1308,6 +1308,10 @@ function formatDateTime(value) {
 }
 
 function renderBaseInfo(payload) {
+  if (!baseTotal || !baseUpdated || !baseLeagues) {
+    return;
+  }
+
   const total = Array.isArray(payload)
     ? PLAYERS.length
     : payload.total || PLAYERS.length;
