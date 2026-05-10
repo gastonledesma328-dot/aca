@@ -6,28 +6,28 @@ const GAME_MODES = {
     showHints: true,
     timeLimit: null,
     points: 100,
-    help: "Modo fácil: vas a ver sugerencias disponibles."
+    help: "Modo fácil: salen clubes populares de América y vas a ver sugerencias."
   },
   normal: {
     label: "Normal",
     showHints: false,
     timeLimit: null,
     points: 150,
-    help: "Modo normal: sin ayudas y sin tiempo en contra."
+    help: "Modo normal: salen clubes populares, pero sin ayudas."
   },
   hard: {
     label: "Difícil",
     showHints: false,
     timeLimit: 90,
     points: 200,
-    help: "Modo difícil: sin ayudas y con 90 segundos."
+    help: "Modo difícil: pueden salir clubes populares y clubes menos conocidos."
   },
   expert: {
     label: "Experto",
     showHints: false,
     timeLimit: 45,
     points: 300,
-    help: "Modo experto: sin ayudas y con 45 segundos."
+    help: "Modo experto: puede salir cualquier club de América."
   }
 };
 
@@ -139,6 +139,89 @@ const COUNTRY_FLAGS = {
   Bolivia: "bo",
   Venezuela: "ve"
 };
+
+const POPULAR_CLUB_NAMES = [
+  // Argentina
+  "Boca Juniors",
+  "River Plate",
+  "Racing Club",
+  "Independiente",
+  "San Lorenzo",
+  "Estudiantes de La Plata",
+  "Vélez Sarsfield",
+  "Rosario Central",
+  "Newell's Old Boys",
+
+  // Brasil
+  "Flamengo",
+  "Fluminense",
+  "Palmeiras",
+  "Corinthians",
+  "São Paulo",
+  "Sao Paulo",
+  "Santos",
+  "Grêmio",
+  "Gremio",
+  "Internacional",
+  "Atlético Mineiro",
+  "Atletico Mineiro",
+  "Cruzeiro",
+  "Botafogo",
+  "Vasco da Gama",
+
+  // Uruguay
+  "Peñarol",
+  "Penarol",
+  "Nacional",
+
+  // Chile
+  "Colo Colo",
+  "Universidad de Chile",
+  "Universidad Católica",
+  "Universidad Catolica",
+
+  // Colombia
+  "Atlético Nacional",
+  "Atletico Nacional",
+  "Millonarios",
+  "América de Cali",
+  "America de Cali",
+  "Deportivo Cali",
+  "Junior",
+
+  // México
+  "América",
+  "Club América",
+  "Guadalajara",
+  "Chivas",
+  "Cruz Azul",
+  "Pumas UNAM",
+  "Tigres UANL",
+  "Monterrey",
+  "Pachuca",
+  "Toluca",
+
+  // MLS / Estados Unidos
+  "Inter Miami CF",
+  "Inter Miami",
+  "LA Galaxy",
+  "Los Angeles FC",
+  "Seattle Sounders FC",
+  "Atlanta United FC",
+  "New York City FC",
+  "New York Red Bulls"
+];
+
+const MEDIUM_CLUB_COUNTRIES = [
+  "Argentina",
+  "Brasil",
+  "México",
+  "Mexico",
+  "Estados Unidos",
+  "Uruguay",
+  "Chile",
+  "Colombia"
+];
 
 const pitchFrame = document.querySelector(".pitch-frame");
 const modeButtons = document.querySelectorAll(".mode-btn");
@@ -276,6 +359,39 @@ function buildClubs() {
     }));
 }
 
+function isPopularClub(club) {
+  const clubName = normalizeText(club.name);
+
+  return POPULAR_CLUB_NAMES.some(name => {
+    return clubName === normalizeText(name);
+  });
+}
+
+function isMediumClub(club) {
+  if (isPopularClub(club)) {
+    return true;
+  }
+
+  if (!MEDIUM_CLUB_COUNTRIES.includes(club.country)) {
+    return false;
+  }
+
+  return club.players.length >= 16;
+}
+
+function getClubPoolForCurrentMode() {
+  if (currentMode === "easy" || currentMode === "normal") {
+    return CLUBS.filter(club => isPopularClub(club));
+  }
+
+  if (currentMode === "hard") {
+    return CLUBS.filter(club => isMediumClub(club));
+  }
+
+  return CLUBS;
+}
+
+
 function getClubPositionSummary(players) {
   return {
     arqueros: players.filter(player => player.categoria === "arqueros").length,
@@ -398,11 +514,32 @@ function generateSlotChallenges(formation) {
 }
 
 function pickClubForPosition(position, usedClubKeys, countryCount) {
-  const candidates = CLUBS.filter(club => {
+  let pool = getClubPoolForCurrentMode();
+
+  let candidates = pool.filter(club => {
     if (usedClubKeys.has(club.key)) return false;
 
     return clubHasCompatiblePlayer(club, position);
   });
+
+  // Si en Fácil/Normal no alcanza con populares, completamos con clubes medianos.
+  if (!candidates.length && (currentMode === "easy" || currentMode === "normal")) {
+    candidates = CLUBS.filter(club => {
+      if (usedClubKeys.has(club.key)) return false;
+      if (!isMediumClub(club)) return false;
+
+      return clubHasCompatiblePlayer(club, position);
+    });
+  }
+
+  // Si en Difícil no alcanza con medianos, habilitamos todos.
+  if (!candidates.length && currentMode === "hard") {
+    candidates = CLUBS.filter(club => {
+      if (usedClubKeys.has(club.key)) return false;
+
+      return clubHasCompatiblePlayer(club, position);
+    });
+  }
 
   if (!candidates.length) {
     return null;
@@ -414,6 +551,14 @@ function pickClubForPosition(position, usedClubKeys, countryCount) {
 
     if (countA !== countB) {
       return countA - countB;
+    }
+
+    if (currentMode === "easy" || currentMode === "normal") {
+      return Number(isPopularClub(b)) - Number(isPopularClub(a));
+    }
+
+    if (currentMode === "expert") {
+      return a.players.length - b.players.length;
     }
 
     return b.players.length - a.players.length;
