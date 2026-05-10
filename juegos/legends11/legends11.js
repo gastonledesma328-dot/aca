@@ -51,11 +51,29 @@ const POSITION_COMPATIBILITY = {
   ST: ["ST"]
 };
 
+const POSITION_LABELS = {
+  GK: "Arquero",
+  RB: "Lateral derecho",
+  CB: "Defensor central",
+  LB: "Lateral izquierdo",
+  LWB: "Carrilero izquierdo",
+  RWB: "Carrilero derecho",
+  CDM: "Mediocentro defensivo",
+  CM: "Mediocampista",
+  CAM: "Enganche",
+  LW: "Extremo izquierdo",
+  LM: "Volante izquierdo",
+  RW: "Extremo derecho",
+  RM: "Volante derecho",
+  ST: "Delantero"
+};
+
 const pitchFrame = document.querySelector(".pitch-frame");
 const modeButtons = document.querySelectorAll(".mode-btn");
 
 const countryFlag = document.getElementById("countryFlag");
 const countryName = document.getElementById("countryName");
+const positionName = document.getElementById("positionName");
 const playerForm = document.getElementById("playerForm");
 const playerSearch = document.getElementById("playerSearch");
 const suggestions = document.getElementById("suggestions");
@@ -425,13 +443,39 @@ function getCurrentRound() {
   return DAILY_GAME.rounds[currentRoundIndex];
 }
 
+function getCurrentRequiredPosition() {
+  return DAILY_GAME.positions[currentRoundIndex];
+}
+
+function getCurrentTargetSlot() {
+  return Array.from(getSlots()).find(slot => {
+    return Number(slot.dataset.index) === currentRoundIndex && !slot.classList.contains("filled");
+  });
+}
+
+function highlightCurrentSlot() {
+  getSlots().forEach(slot => slot.classList.remove("selected"));
+
+  const targetSlot = getCurrentTargetSlot();
+
+  if (targetSlot) {
+    targetSlot.classList.add("selected");
+  }
+}
+
 function updateCountryPanel() {
   const round = getCurrentRound();
+  const requiredPosition = getCurrentRequiredPosition();
 
-  if (!round) {
+  if (!round || !requiredPosition) {
     countryFlag.src = "https://flagcdn.com/w40/un.png";
     countryFlag.alt = "Desafío finalizado";
     countryName.textContent = "Desafío finalizado";
+
+    if (positionName) {
+      positionName.textContent = "";
+    }
+
     return;
   }
 
@@ -439,9 +483,13 @@ function updateCountryPanel() {
   countryFlag.alt = `Bandera de ${round.country}`;
   countryName.textContent = round.country;
 
-  playerSearch.placeholder = selectedSlot
-    ? `Leyenda de ${round.country} para colocar en ${selectedSlot.dataset.position}...`
-    : `Elegí un casillero o escribí una leyenda de ${round.country}...`;
+  if (positionName) {
+    positionName.textContent = `${requiredPosition} · ${POSITION_LABELS[requiredPosition] || requiredPosition}`;
+  }
+
+  playerSearch.placeholder = `Escribí una leyenda de ${round.country} para ${requiredPosition}...`;
+
+  highlightCurrentSlot();
 }
 
 function selectSlot(slot) {
@@ -449,18 +497,13 @@ function selectSlot(slot) {
   if (gameFinished) return;
   if (slot.classList.contains("filled")) return;
 
-  getSlots().forEach(item => item.classList.remove("selected"));
+  highlightCurrentSlot();
+  playerSearch.focus();
 
-  selectedSlot = slot;
-  selectedSlot.classList.add("selected");
+  const requiredPosition = getCurrentRequiredPosition();
 
-  updateCountryPanel();
-  renderSuggestions(playerSearch.value);
-
-  const value = normalizeText(playerSearch.value);
-
-  if (value) {
-    trySubmitSearch();
+  if (requiredPosition) {
+    showTemporaryPlaceholder(`Ahora toca ${requiredPosition}`);
   }
 }
 
@@ -545,20 +588,16 @@ function renderSuggestions(query) {
   suggestions.innerHTML = "";
 
   const round = getCurrentRound();
+  const requiredPosition = getCurrentRequiredPosition();
 
-  if (!round) return;
+  if (!round || !requiredPosition) return;
 
   const value = normalizeText(query);
-  const selectedPosition = selectedSlot ? selectedSlot.dataset.position : "";
 
   const filtered = round.players.filter(player => {
     if (usedPlayers.includes(player.name)) return false;
 
-    if (selectedPosition && !playerCanPlaySlot(player.position, selectedPosition)) {
-      return false;
-    }
-
-    if (!selectedPosition && !findBestFreeSlotForPlayer(player)) {
+    if (!playerCanPlaySlot(player.position, requiredPosition)) {
       return false;
     }
 
@@ -568,14 +607,10 @@ function renderSuggestions(query) {
   });
 
   if (!filtered.length) {
-    const msg = selectedSlot
-      ? `Debe ser de ${round.country} y servir para ${selectedSlot.dataset.position}`
-      : `Debe ser de ${round.country} y tener casillero compatible`;
-
     suggestions.innerHTML = `
       <button class="suggestion-item" type="button">
         <strong>No encontré esa leyenda</strong>
-        <span>${msg}</span>
+        <span>Debe ser de ${round.country} y jugar de ${requiredPosition}</span>
       </button>
     `;
     return;
@@ -595,38 +630,24 @@ function renderSuggestions(query) {
     `;
 
     button.onclick = () => {
-      const autoSlot = selectedSlot || findBestFreeSlotForPlayer(player);
-
-      if (!autoSlot) {
-        showTemporaryPlaceholder("Elegí un casillero compatible");
-        return;
-      }
-
-      placePlayer(player, autoSlot);
+      placePlayer(player);
     };
 
     suggestions.appendChild(button);
   });
 }
 
-function placePlayer(player, forcedSlot = null) {
+function placePlayer(player) {
   if (gameFinished) return;
 
   const round = getCurrentRound();
+  const requiredPosition = getCurrentRequiredPosition();
+  const targetSlot = getCurrentTargetSlot();
 
-  if (!round) return;
+  if (!round || !requiredPosition || !targetSlot) return;
 
-  const targetSlot = forcedSlot || selectedSlot || findBestFreeSlotForPlayer(player);
-
-  if (!targetSlot) {
-    showTemporaryPlaceholder("Elegí un casillero compatible");
-    return;
-  }
-
-  const slotPosition = targetSlot.dataset.position;
-
-  if (!playerCanPlaySlot(player.position, slotPosition)) {
-    showTemporaryPlaceholder(`${player.name} no puede jugar de ${slotPosition}`);
+  if (!playerCanPlaySlot(player.position, requiredPosition)) {
+    showTemporaryPlaceholder(`${player.name} no juega de ${requiredPosition}`);
     return;
   }
 
@@ -642,7 +663,7 @@ function placePlayer(player, forcedSlot = null) {
 
   targetSlot.innerHTML = `
     ${player.name}
-    <small>${round.flagEmoji || ""} ${player.position}</small>
+    <small>${round.flagEmoji || ""} ${round.country}</small>
   `;
 
   completedSlots.push(Number(targetSlot.dataset.index));
@@ -662,7 +683,7 @@ function placePlayer(player, forcedSlot = null) {
     return;
   }
 
-  clearSelectedSlot();
+  updateCountryPanel();
 }
 
 function calculatePoints() {
@@ -677,9 +698,10 @@ function trySubmitSearch() {
   if (gameFinished) return;
 
   const round = getCurrentRound();
+  const requiredPosition = getCurrentRequiredPosition();
   const value = normalizeText(playerSearch.value);
 
-  if (!round) return;
+  if (!round || !requiredPosition) return;
 
   if (!value) {
     renderSuggestions("");
@@ -689,11 +711,7 @@ function trySubmitSearch() {
   const matches = round.players.filter(player => {
     if (usedPlayers.includes(player.name)) return false;
 
-    if (selectedSlot && !playerCanPlaySlot(player.position, selectedSlot.dataset.position)) {
-      return false;
-    }
-
-    if (!selectedSlot && !findBestFreeSlotForPlayer(player)) {
+    if (!playerCanPlaySlot(player.position, requiredPosition)) {
       return false;
     }
 
@@ -704,11 +722,7 @@ function trySubmitSearch() {
     if (GAME_MODES[currentMode].showHints) {
       renderSuggestions(playerSearch.value);
     } else {
-      const msg = selectedSlot
-        ? `No coincide con ${round.country} / ${selectedSlot.dataset.position}`
-        : `No encontré una leyenda compatible de ${round.country}`;
-
-      showTemporaryPlaceholder(msg);
+      showTemporaryPlaceholder(`No encontré una leyenda de ${round.country} para ${requiredPosition}`);
     }
 
     return;
@@ -719,26 +733,12 @@ function trySubmitSearch() {
   });
 
   if (exactMatch) {
-    const autoSlot = selectedSlot || findBestFreeSlotForPlayer(exactMatch);
-
-    if (!autoSlot) {
-      showTemporaryPlaceholder("Elegí un casillero compatible");
-      return;
-    }
-
-    placePlayer(exactMatch, autoSlot);
+    placePlayer(exactMatch);
     return;
   }
 
   if (matches.length === 1) {
-    const autoSlot = selectedSlot || findBestFreeSlotForPlayer(matches[0]);
-
-    if (!autoSlot) {
-      showTemporaryPlaceholder("Elegí un casillero compatible");
-      return;
-    }
-
-    placePlayer(matches[0], autoSlot);
+    placePlayer(matches[0]);
     return;
   }
 
