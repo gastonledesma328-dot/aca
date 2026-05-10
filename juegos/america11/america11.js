@@ -216,6 +216,18 @@ const EXCLUDED_EASY_NORMAL_CLUB_NAMES = [
   "New York City FC",
   "NYCFC",
 
+  "Guadalajara",
+  "LA Galaxy",
+  "Deportivo Cali",
+  "Cruzeiro",
+  "New York City FC",
+  "New York City FC",
+  "New York City FC",
+  
+
+
+  
+
   "Vasco da Gama",
 
   "Santos Laguna",
@@ -643,11 +655,11 @@ function renderFormation() {
 
     row.forEach(position => {
       const slotData = CURRENT_GAME.slots[slotIndex];
-      const logo = getClubLogo(slotData);
 
       const button = document.createElement("button");
-      button.className = "position-slot";
+      button.className = "position-slot mystery-slot";
       button.type = "button";
+
       button.dataset.position = position;
       button.dataset.index = slotIndex;
       button.dataset.clubKey = slotData.clubKey;
@@ -655,11 +667,8 @@ function renderFormation() {
       button.dataset.country = slotData.country;
 
       button.innerHTML = `
-        <span class="slot-logo-wrap">
-          <img class="slot-logo" src="${logo}" alt="${escapeHtml(slotData.clubName)}" loading="lazy" />
-        </span>
         <span class="slot-position">${position}</span>
-        <small>${slotData.clubName}</small>
+        <small>?</small>
       `;
 
       button.onclick = () => {
@@ -704,7 +713,7 @@ function renderChallengePanel() {
     challengeIcon.alt = "América";
     challengeName.textContent = "Elegí un casillero";
     challengeDescription.textContent =
-      "Cada casillero te pide un equipo distinto de América. Escribí un jugador actual de ese club.";
+      "Cada posición esconde un equipo de América. Tocá un casillero para revelar el club que te toca.";
     return;
   }
 
@@ -716,7 +725,7 @@ function renderChallengePanel() {
 
   challengeName.textContent = slotData.clubName;
   challengeDescription.textContent =
-    `${slotData.country || "América"} · ${slotData.league || "Liga"} · Buscá un jugador para ${slotData.position}.`;
+    `${slotData.country || "América"} · ${slotData.league || "Liga"} · Buscá un jugador actual para ${slotData.position}.`;
 }
 
 function getClubLogo(slotData) {
@@ -787,7 +796,7 @@ function clearSelectedSlot() {
 
 function updateSearchPlaceholder() {
   if (!selectedSlot) {
-    playerSearch.placeholder = "Elegí un casillero o escribí un jugador...";
+    playerSearch.placeholder = "Elegí un casillero para revelar el equipo...";
     return;
   }
 
