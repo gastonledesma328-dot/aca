@@ -11,7 +11,7 @@
     "fundacion": "1905/04/08",
     "estadio": "Jorge Luis Hirschi",
     "ciudad": "La Plata",
-    "actualizado": "2026-05-10T19:47:52.267599+00:00",
+    "actualizado": "2026-05-10T20:55:39.692494+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -246,7 +246,7 @@
         },
         {
           "nombre": "Brian Aguirre",
-          "edad": 25,
+          "edad": 23,
           "altura": "5' 9\""
         }
       ],
@@ -1060,7 +1060,7 @@
     "fundacion": "1905/03/04",
     "estadio": "Alberto J. Armando",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T19:47:53.173309+00:00",
+    "actualizado": "2026-05-10T20:55:40.759860+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -2087,7 +2087,7 @@
     "fundacion": "1910/01/01",
     "estadio": "José Amalfitani",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T19:47:53.782836+00:00",
+    "actualizado": "2026-05-10T20:55:41.375735+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -2247,11 +2247,6 @@
           "nombre": "Álvaro Busso",
           "edad": 19,
           "altura": "6' 0\""
-        },
-        {
-          "nombre": "Benjamin Moyano",
-          "edad": 19,
-          "altura": "-"
         }
       ],
       "defensores": [
@@ -2313,6 +2308,11 @@
         {
           "nombre": "Alexis Pereyra",
           "edad": 19,
+          "altura": "-"
+        },
+        {
+          "nombre": "Benjamin Moyano",
+          "edad": 20,
           "altura": "-"
         }
       ],
@@ -2946,7 +2946,7 @@
     "fundacion": "1913/12/10",
     "estadio": "Mario Alberto Kempes",
     "ciudad": "Córdoba",
-    "actualizado": "2026-05-10T19:47:54.342546+00:00",
+    "actualizado": "2026-05-10T20:55:41.962119+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -3766,9 +3766,23 @@
     "fundacion": "1905/01/01",
     "estadio": "Libertadores de América - Ricardo Enrique Bochini",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-10T19:47:55.060808+00:00",
+    "actualizado": "2026-05-10T20:55:42.519630+00:00",
     "proximosPartidos": [],
     "resultados": [
+      {
+        "id": "401871431",
+        "dia": "2026-05-10",
+        "fecha_iso": "2026-05-10T15:00:00",
+        "fecha_iso_utc": "2026-05-10T18:00Z",
+        "local": "Rosario Central",
+        "visitante": "Independiente",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401871431/independiente-rosario-central",
+        "resultado": "3 - 1",
+        "estado": "",
+        "hora": "15:00"
+      },
       {
         "id": "762901",
         "dia": "2026-05-02",
@@ -3894,20 +3908,6 @@
         "resultado": "2 - 0",
         "estado": "",
         "hora": "20:00"
-      },
-      {
-        "id": "762877",
-        "dia": "2026-02-24",
-        "fecha_iso": "2026-02-24T22:00:00",
-        "fecha_iso_utc": "2026-02-25T01:00Z",
-        "local": "Gimnasia (Mendoza)",
-        "visitante": "Independiente",
-        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
-        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762877/independiente-gimnasia-mendoza",
-        "resultado": "1 - 1",
-        "estado": "",
-        "hora": "22:00"
       }
     ],
     "plantel": {
@@ -4043,7 +4043,7 @@
         },
         {
           "nombre": "Maximiliano Gutiérrez",
-          "edad": 22,
+          "edad": 29,
           "altura": "6' 0\""
         }
       ],
@@ -4223,6 +4223,20 @@
         "proximosPartidos": [],
         "resultados": [
           {
+            "id": "401871431",
+            "dia": "2026-05-10",
+            "fecha_iso": "2026-05-10T15:00:00",
+            "fecha_iso_utc": "2026-05-10T18:00Z",
+            "local": "Rosario Central",
+            "visitante": "Independiente",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871431/independiente-rosario-central",
+            "resultado": "3 - 1",
+            "estado": "",
+            "hora": "15:00"
+          },
+          {
             "id": "762901",
             "dia": "2026-05-02",
             "fecha_iso": "2026-05-02T18:45:00",
@@ -4347,20 +4361,6 @@
             "resultado": "2 - 0",
             "estado": "",
             "hora": "20:00"
-          },
-          {
-            "id": "762877",
-            "dia": "2026-02-24",
-            "fecha_iso": "2026-02-24T22:00:00",
-            "fecha_iso_utc": "2026-02-25T01:00Z",
-            "local": "Gimnasia (Mendoza)",
-            "visitante": "Independiente",
-            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
-            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762877/independiente-gimnasia-mendoza",
-            "resultado": "1 - 1",
-            "estado": "",
-            "hora": "22:00"
           }
         ],
         "estadisticas": {
@@ -4688,7 +4688,7 @@
     "fundacion": "1915/03/01",
     "estadio": "Ciudad de Lanús - Néstor Díaz Pérez",
     "ciudad": "Lanús",
-    "actualizado": "2026-05-10T19:47:55.669210+00:00",
+    "actualizado": "2026-05-10T20:55:43.181403+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -5691,7 +5691,7 @@
     "fundacion": "1908/01/04",
     "estadio": "Pedro Bidegain",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T19:47:56.503287+00:00",
+    "actualizado": "2026-05-10T20:55:43.984387+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -6692,7 +6692,7 @@
     "fundacion": "1907/15/04",
     "estadio": "15 de Abril",
     "ciudad": "Santa Fe",
-    "actualizado": "2026-05-10T19:47:57.356436+00:00",
+    "actualizado": "2026-05-10T20:55:44.757282+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -7558,7 +7558,7 @@
     "fundacion": "1918/08/08",
     "estadio": "Juan Domingo Perón",
     "ciudad": "Córdoba",
-    "actualizado": "2026-05-10T19:47:58.140928+00:00",
+    "actualizado": "2026-05-10T20:55:45.369175+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -8458,7 +8458,7 @@
     "fundacion": "1935/20/03",
     "estadio": "Norberto Tomaghello",
     "ciudad": "Florencio Varela",
-    "actualizado": "2026-05-10T19:47:59.009127+00:00",
+    "actualizado": "2026-05-10T20:55:46.169736+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -9327,7 +9327,7 @@
     "fundacion": "1908/30/08",
     "estadio": "Víctor Antonio Legrotaglie",
     "ciudad": "Mendoza",
-    "actualizado": "2026-05-10T19:47:59.588003+00:00",
+    "actualizado": "2026-05-10T20:55:46.747634+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -10206,7 +10206,7 @@
     "fundacion": "1905/25/05",
     "estadio": "Ciudad de Vicente López",
     "ciudad": "Vicente López",
-    "actualizado": "2026-05-10T19:48:00.289195+00:00",
+    "actualizado": "2026-05-10T20:55:47.374279+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -11140,7 +11140,7 @@
     "fundacion": "1919/03/06",
     "estadio": "Único Madre de Ciudades",
     "ciudad": "Santiago del Estero",
-    "actualizado": "2026-05-10T19:48:01.012238+00:00",
+    "actualizado": "2026-05-10T20:55:47.927980+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -11923,7 +11923,7 @@
     "fundacion": "1903/03/11",
     "estadio": "Marcelo Bielsa",
     "ciudad": "Rosario",
-    "actualizado": "2026-05-10T19:48:02.173788+00:00",
+    "actualizado": "2026-05-10T20:55:48.568246+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -12768,7 +12768,7 @@
     "fundacion": "1931/22/02",
     "estadio": "Guillermo Laza",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T19:48:02.738188+00:00",
+    "actualizado": "2026-05-10T20:55:49.366775+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -13616,7 +13616,7 @@
     "fundacion": "1913/24/01",
     "estadio": "Bautista Gargantini",
     "ciudad": "Mendoza",
-    "actualizado": "2026-05-10T19:48:03.297121+00:00",
+    "actualizado": "2026-05-10T20:55:49.963929+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -14641,7 +14641,7 @@
     "fundacion": "1901/25/05",
     "estadio": "Mâs Monumental",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T19:48:04.004360+00:00",
+    "actualizado": "2026-05-10T20:55:50.540099+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -15724,7 +15724,7 @@
     "fundacion": "1904/15/08",
     "estadio": "Diego Armando Maradona",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T19:48:04.678907+00:00",
+    "actualizado": "2026-05-10T20:55:51.216753+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -16713,9 +16713,23 @@
     "fundacion": "1889/24/12",
     "estadio": "Gigante de Arroyito",
     "ciudad": "Rosario",
-    "actualizado": "2026-05-10T19:48:05.939818+00:00",
+    "actualizado": "2026-05-10T20:55:52.438657+00:00",
     "proximosPartidos": [],
     "resultados": [
+      {
+        "id": "401871431",
+        "dia": "2026-05-10",
+        "fecha_iso": "2026-05-10T15:00:00",
+        "fecha_iso_utc": "2026-05-10T18:00Z",
+        "local": "Rosario Central",
+        "visitante": "Independiente",
+        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401871431/independiente-rosario-central",
+        "resultado": "3 - 1",
+        "estado": "",
+        "hora": "15:00"
+      },
       {
         "id": "762900",
         "dia": "2026-05-03",
@@ -16839,20 +16853,6 @@
         "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
         "url": "https://www.espn.com/soccer/match/_/gameId/762890/rosario-central-newells-old-boys",
         "resultado": "0 - 2",
-        "estado": "",
-        "hora": "17:00"
-      },
-      {
-        "id": "762876",
-        "dia": "2026-02-25",
-        "fecha_iso": "2026-02-25T17:00:00",
-        "fecha_iso_utc": "2026-02-25T20:00Z",
-        "local": "Gimnasia La Plata",
-        "visitante": "Rosario Central",
-        "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
-        "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
-        "url": "https://www.espn.com/soccer/match/_/gameId/762876/rosario-central-gimnasia-la-plata",
-        "resultado": "1 - 2",
         "estado": "",
         "hora": "17:00"
       }
@@ -17251,6 +17251,20 @@
         "proximosPartidos": [],
         "resultados": [
           {
+            "id": "401871431",
+            "dia": "2026-05-10",
+            "fecha_iso": "2026-05-10T15:00:00",
+            "fecha_iso_utc": "2026-05-10T18:00Z",
+            "local": "Rosario Central",
+            "visitante": "Independiente",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871431/independiente-rosario-central",
+            "resultado": "3 - 1",
+            "estado": "",
+            "hora": "15:00"
+          },
+          {
             "id": "762900",
             "dia": "2026-05-03",
             "fecha_iso": "2026-05-03T16:00:00",
@@ -17373,20 +17387,6 @@
             "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
             "url": "https://www.espn.com/soccer/match/_/gameId/762890/rosario-central-newells-old-boys",
             "resultado": "0 - 2",
-            "estado": "",
-            "hora": "17:00"
-          },
-          {
-            "id": "762876",
-            "dia": "2026-02-25",
-            "fecha_iso": "2026-02-25T17:00:00",
-            "fecha_iso_utc": "2026-02-25T20:00Z",
-            "local": "Gimnasia La Plata",
-            "visitante": "Rosario Central",
-            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
-            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
-            "url": "https://www.espn.com/soccer/match/_/gameId/762876/rosario-central-gimnasia-la-plata",
-            "resultado": "1 - 2",
             "estado": "",
             "hora": "17:00"
           }
@@ -17755,7 +17755,7 @@
     "fundacion": "1905/19/03",
     "estadio": "Julio César Villagra",
     "ciudad": "Córdoba",
-    "actualizado": "2026-05-10T19:48:06.712704+00:00",
+    "actualizado": "2026-05-10T20:55:53.228502+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -18655,7 +18655,7 @@
     "fundacion": "1887/03/06",
     "estadio": "Juan Carmelo Zerillo",
     "ciudad": "La Plata",
-    "actualizado": "2026-05-10T19:48:07.631532+00:00",
+    "actualizado": "2026-05-10T20:55:53.807520+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -19496,7 +19496,7 @@
     "fundacion": "1908/01/11",
     "estadio": "Tomás Adolfo Ducó",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T19:48:08.212250+00:00",
+    "actualizado": "2026-05-10T20:55:54.724573+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -20355,7 +20355,7 @@
     "fundacion": "1903/25/03",
     "estadio": "Presidente Perón",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-10T19:48:08.787133+00:00",
+    "actualizado": "2026-05-10T20:55:55.597407+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -20693,7 +20693,7 @@
         {
           "nombre": "Tomás Pérez",
           "edad": 20,
-          "altura": "6' 0\""
+          "altura": "5' 11\""
         }
       ],
       "delanteros": [
@@ -21394,7 +21394,7 @@
     "fundacion": "1904/05/04",
     "estadio": "Claudio Chiqui Tapia",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-10T19:48:09.372759+00:00",
+    "actualizado": "2026-05-10T20:55:56.221964+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -22385,7 +22385,7 @@
     "fundacion": "1902/03/08",
     "estadio": "José Dellagiovanna",
     "ciudad": "Victoria",
-    "actualizado": "2026-05-10T19:48:09.995091+00:00",
+    "actualizado": "2026-05-10T20:55:56.794254+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -23372,7 +23372,7 @@
     "fundacion": "1911/01/04",
     "estadio": "Eva Perón",
     "ciudad": "Junín",
-    "actualizado": "2026-05-10T19:48:10.605568+00:00",
+    "actualizado": "2026-05-10T20:55:57.356678+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -24242,7 +24242,7 @@
     "fundacion": "1896/21/01",
     "estadio": "Florencio Sola",
     "ciudad": "Banfield",
-    "actualizado": "2026-05-10T19:48:11.187450+00:00",
+    "actualizado": "2026-05-10T20:55:57.931759+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -25044,7 +25044,7 @@
     "fundacion": "1902/27/09",
     "estadio": "Monumental José Fierro",
     "ciudad": "San Miguel de Tucumán",
-    "actualizado": "2026-05-10T19:48:11.981684+00:00",
+    "actualizado": "2026-05-10T20:55:58.790513+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -25882,7 +25882,7 @@
     "fundacion": "1913/29/03",
     "estadio": "José María Minella",
     "ciudad": "Mar del Plata",
-    "actualizado": "2026-05-10T19:48:12.754885+00:00",
+    "actualizado": "2026-05-10T20:55:59.473391+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -26692,7 +26692,7 @@
     "fundacion": "1912/21/09",
     "estadio": "Antonio Candini",
     "ciudad": "Río Cuarto",
-    "actualizado": "2026-05-10T19:48:13.354446+00:00",
+    "actualizado": "2026-05-10T20:56:00.325706+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
