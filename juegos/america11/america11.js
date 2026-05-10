@@ -972,12 +972,12 @@ function placePlayer(player, forcedSlot = null) {
   targetSlot.classList.remove("selected");
 
   targetSlot.innerHTML = `
-    <span class="slot-logo-wrap">
-      <img class="slot-logo" src="${logo}" alt="${escapeHtml(slotData.clubName)}" loading="lazy" />
-    </span>
-    <span class="slot-player-name">${player.nombre}</span>
-    <small>${slotData.clubName}</small>
-  `;
+  <span class="slot-logo-wrap">
+    <img class="slot-logo" src="${logo}" alt="${escapeHtml(slotData.clubName)}" loading="lazy" />
+  </span>
+  <span class="slot-player-name">${player.nombre}</span>
+  <span class="slot-club-name">${slotData.clubName}</span>
+`;
 
   completedSlots.push(Number(targetSlot.dataset.index));
   usedPlayers.push(player.slug);
