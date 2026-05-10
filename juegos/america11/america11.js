@@ -504,13 +504,11 @@ function initGame() {
 
   CURRENT_GAME = generateChallenge();
 
-  resetGameState();
   renderFormation();
-  renderChallengePanel();
-  applyModeUi();
-  clearSelectedSlot();
-  startTimerIfNeeded();
-  updateStatus();
+applyModeUi();
+selectNextEmptySlot();
+startTimerIfNeeded();
+updateStatus();
 }
 
 function generateChallenge() {
@@ -667,9 +665,9 @@ function renderFormation() {
       button.dataset.country = slotData.country;
 
       button.innerHTML = `
-        <span class="slot-position">${position}</span>
-        <small>?</small>
-      `;
+  <span class="slot-position">${position}</span>
+  <small>?</small>
+`;
 
       button.onclick = () => {
         selectSlot(button);
@@ -709,13 +707,13 @@ function getLineRole(row, rowIndex, totalRows) {
 
 function renderChallengePanel() {
   if (!selectedSlot) {
-    challengeIcon.src = "https://flagcdn.com/w40/un.png";
-    challengeIcon.alt = "América";
-    challengeName.textContent = "Elegí un casillero";
-    challengeDescription.textContent =
-      "Cada posición esconde un equipo de América. Tocá un casillero para revelar el club que te toca.";
-    return;
-  }
+  challengeIcon.src = "https://flagcdn.com/w40/un.png";
+  challengeIcon.alt = "América";
+  challengeName.textContent = "Preparando equipo...";
+  challengeDescription.textContent =
+    "El juego va a mostrar automáticamente el próximo club que te toca.";
+  return;
+}
 
   const slotData = getSlotData(selectedSlot);
   const logo = getClubLogo(slotData);
@@ -754,6 +752,30 @@ function resetGameState() {
 
 function getSlots() {
   return document.querySelectorAll(".position-slot");
+}
+
+function selectNextEmptySlot() {
+  if (gameFinished) return;
+
+  const nextSlot = Array.from(getSlots()).find(slot => {
+    return !slot.classList.contains("filled");
+  });
+
+  if (!nextSlot) {
+    selectedSlot = null;
+    renderChallengePanel();
+    updateSearchPlaceholder();
+    return;
+  }
+
+  getSlots().forEach(item => item.classList.remove("selected"));
+
+  selectedSlot = nextSlot;
+  selectedSlot.classList.add("selected");
+
+  renderChallengePanel();
+  updateSearchPlaceholder();
+  renderSuggestions(playerSearch.value);
 }
 
 function getSlotData(slotOrIndex) {
@@ -897,16 +919,9 @@ function renderSuggestions(query) {
   suggestions.classList.remove("hidden");
 
   if (!selectedSlot) {
-    suggestions.innerHTML = `
-      <button class="suggestion-item" type="button">
-        <div>
-          <strong>Elegí un casillero</strong>
-          <span>Primero tocá una posición para ver jugadores del equipo pedido.</span>
-        </div>
-        <span>-</span>
-      </button>
-    `;
-    return;
+  selectNextEmptySlot();
+  return;
+}
   }
 
   const value = normalizeText(query);
@@ -1000,11 +1015,11 @@ function placePlayer(player, forcedSlot = null) {
   updateStatus();
 
   if (completedSlots.length === CURRENT_GAME.positions.length) {
-    finishGame("complete");
-    return;
-  }
+  finishGame("complete");
+  return;
+}
 
-  clearSelectedSlot();
+selectNextEmptySlot();
 }
 
 function trySubmitSearch() {
