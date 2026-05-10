@@ -597,9 +597,8 @@ button {
   font-size: 12px;
 }
 
-/* ESTADO */
-.status-card,
-.base-info {
+
+.status-card {
   width: min(680px, 100%);
   margin: 16px auto 0;
   display: grid;
@@ -607,12 +606,7 @@ button {
   gap: 10px;
 }
 
-.base-info {
-  grid-template-columns: 1fr 1fr 2fr;
-}
-
-.status-card div,
-.base-info div {
+.status-card div {
   background: rgba(255,255,255,0.08);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -620,18 +614,23 @@ button {
   text-align: center;
 }
 
-.status-card span,
-.base-info span {
+.status-card span {
   display: block;
   color: var(--muted);
   font-size: 12px;
   margin-bottom: 4px;
 }
 
-.status-card strong,
-.base-info strong {
+.status-card strong {
   font-size: 18px;
 }
+
+
+
+
+
+
+
 
 /* MODALES */
 .result-modal {
@@ -907,7 +906,4 @@ button {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .base-info {
-    grid-template-columns: 1fr;
-  }
 }
