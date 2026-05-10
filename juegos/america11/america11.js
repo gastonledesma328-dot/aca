@@ -220,13 +220,6 @@ const EXCLUDED_EASY_NORMAL_CLUB_NAMES = [
   "LA Galaxy",
   "Deportivo Cali",
   "Cruzeiro",
-  "New York City FC",
-  "New York City FC",
-  "New York City FC",
-  
-
-
-  
 
   "Vasco da Gama",
 
@@ -311,6 +304,7 @@ let timeLeft = null;
 let timerInterval = null;
 let gameFinished = false;
 let challengeCounter = 0;
+let surrendering = false;
 
 async function loadGameData() {
   try {
@@ -416,7 +410,6 @@ function isPopularClub(club) {
     return false;
   }
 
-  // Caso especial: si ESPN trae "Santos" como club mexicano, también lo sacamos.
   if (
     clubName === normalizeText("Santos") &&
     (club.country === "México" || club.country === "Mexico")
@@ -452,7 +445,6 @@ function getClubPoolForCurrentMode() {
 
   return CLUBS;
 }
-
 
 function getClubPositionSummary(players) {
   return {
@@ -504,11 +496,12 @@ function initGame() {
 
   CURRENT_GAME = generateChallenge();
 
+  resetGameState();
   renderFormation();
-applyModeUi();
-selectNextEmptySlot();
-startTimerIfNeeded();
-updateStatus();
+  applyModeUi();
+  selectNextEmptySlot();
+  startTimerIfNeeded();
+  updateStatus();
 }
 
 function generateChallenge() {
@@ -582,7 +575,6 @@ function pickClubForPosition(position, usedClubKeys, countryCount) {
     return clubHasCompatiblePlayer(club, position);
   });
 
-  // Si en Fácil/Normal no alcanza con populares, completamos con clubes medianos.
   if (!candidates.length && (currentMode === "easy" || currentMode === "normal")) {
     candidates = CLUBS.filter(club => {
       if (usedClubKeys.has(club.key)) return false;
@@ -592,7 +584,6 @@ function pickClubForPosition(position, usedClubKeys, countryCount) {
     });
   }
 
-  // Si en Difícil no alcanza con medianos, habilitamos todos.
   if (!candidates.length && currentMode === "hard") {
     candidates = CLUBS.filter(club => {
       if (usedClubKeys.has(club.key)) return false;
@@ -665,9 +656,9 @@ function renderFormation() {
       button.dataset.country = slotData.country;
 
       button.innerHTML = `
-  <span class="slot-position">${position}</span>
-  <small>?</small>
-`;
+        <span class="slot-position">${position}</span>
+        <small>?</small>
+      `;
 
       button.onclick = () => {
         selectSlot(button);
@@ -707,13 +698,13 @@ function getLineRole(row, rowIndex, totalRows) {
 
 function renderChallengePanel() {
   if (!selectedSlot) {
-  challengeIcon.src = "https://flagcdn.com/w40/un.png";
-  challengeIcon.alt = "América";
-  challengeName.textContent = "Preparando equipo...";
-  challengeDescription.textContent =
-    "El juego va a mostrar automáticamente el próximo club que te toca.";
-  return;
-}
+    challengeIcon.src = "https://flagcdn.com/w40/un.png";
+    challengeIcon.alt = "América";
+    challengeName.textContent = "Preparando equipo...";
+    challengeDescription.textContent =
+      "El juego va a mostrar automáticamente el próximo club que te toca.";
+    return;
+  }
 
   const slotData = getSlotData(selectedSlot);
   const logo = getClubLogo(slotData);
@@ -739,7 +730,9 @@ function resetGameState() {
   completedSlots = [];
   usedPlayers = [];
   score = 0;
+  timeLeft = null;
   gameFinished = false;
+  surrendering = false;
 
   resultModal.classList.add("hidden");
   hideFinalButtons();
@@ -748,6 +741,7 @@ function resetGameState() {
   surrenderBtn.disabled = false;
   playerSearch.value = "";
   suggestions.innerHTML = "";
+  suggestions.classList.remove("hidden");
 }
 
 function getSlots() {
@@ -818,7 +812,7 @@ function clearSelectedSlot() {
 
 function updateSearchPlaceholder() {
   if (!selectedSlot) {
-    playerSearch.placeholder = "Elegí un casillero para revelar el equipo...";
+    playerSearch.placeholder = "El juego está preparando el próximo equipo...";
     return;
   }
 
@@ -919,9 +913,8 @@ function renderSuggestions(query) {
   suggestions.classList.remove("hidden");
 
   if (!selectedSlot) {
-  selectNextEmptySlot();
-  return;
-}
+    selectNextEmptySlot();
+    return;
   }
 
   const value = normalizeText(query);
@@ -974,7 +967,7 @@ function placePlayer(player, forcedSlot = null) {
   const targetSlot = forcedSlot || selectedSlot || findBestFreeSlotForPlayer(player);
 
   if (!targetSlot) {
-    showTemporaryPlaceholder("Elegí un casillero compatible");
+    showTemporaryPlaceholder("No hay casillero compatible para ese jugador");
     return;
   }
 
@@ -1015,15 +1008,21 @@ function placePlayer(player, forcedSlot = null) {
   updateStatus();
 
   if (completedSlots.length === CURRENT_GAME.positions.length) {
-  finishGame("complete");
-  return;
-}
+    finishGame("complete");
+    return;
+  }
 
-selectNextEmptySlot();
+  if (!surrendering) {
+    selectNextEmptySlot();
+  }
 }
 
 function trySubmitSearch() {
   if (gameFinished) return;
+
+  if (!selectedSlot) {
+    selectNextEmptySlot();
+  }
 
   const value = normalizeText(playerSearch.value);
 
@@ -1066,7 +1065,7 @@ function trySubmitSearch() {
     const autoSlot = selectedSlot || findBestFreeSlotForPlayer(exactMatch);
 
     if (!autoSlot) {
-      showTemporaryPlaceholder("Elegí un casillero compatible");
+      showTemporaryPlaceholder("No hay casillero compatible para ese jugador");
       return;
     }
 
@@ -1078,7 +1077,7 @@ function trySubmitSearch() {
     const autoSlot = selectedSlot || findBestFreeSlotForPlayer(matches[0]);
 
     if (!autoSlot) {
-      showTemporaryPlaceholder("Elegí un casillero compatible");
+      showTemporaryPlaceholder("No hay casillero compatible para ese jugador");
       return;
     }
 
@@ -1220,6 +1219,10 @@ function finishGame(reason) {
 }
 
 function surrenderGame() {
+  if (gameFinished) return;
+
+  surrendering = true;
+
   getSlots().forEach(slot => {
     if (slot.classList.contains("filled")) {
       return;
@@ -1233,6 +1236,7 @@ function surrenderGame() {
     }
   });
 
+  surrendering = false;
   finishGame("surrender");
 }
 
@@ -1449,9 +1453,9 @@ Puntaje: ${score}`;
 
 helpBtn.addEventListener("click", () => {
   alert(
-    "Cada casillero te pide un equipo distinto de América. " +
-    "Tocá una posición, mirá qué club te pide y escribí un jugador actual de ese equipo. " +
-    "El jugador también debe ser compatible con la posición del casillero."
+    "El juego muestra automáticamente el próximo equipo de América que te toca. " +
+    "Escribí un jugador actual de ese club y compatible con la posición marcada en la cancha. " +
+    "En Fácil aparecen sugerencias. En Normal, Difícil y Experto no hay ayudas."
   );
 });
 
