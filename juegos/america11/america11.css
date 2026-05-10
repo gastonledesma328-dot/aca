@@ -300,12 +300,13 @@ button {
   min-width: 0;
   width: 104px;
   max-width: 104px;
+  min-height: 92px;
   font-size: 10px;
   line-height: 1.08;
 }
 
 .line-count-5 .position-slot.filled small {
-  font-size: 9px;
+  font-size: 8px;
 }
 
 .position-slot {
@@ -334,6 +335,10 @@ button {
 
 .position-slot.selected {
   outline: 3px solid var(--primary);
+}
+
+.position-slot:disabled {
+  cursor: default;
 }
 
 .slot-logo-wrap {
@@ -383,27 +388,68 @@ button {
   font-weight: 1000;
 }
 
+/* CASILLERO COMPLETADO */
 .position-slot.filled {
   background: #10251d;
   color: white;
   border-color: rgba(95,207,128,0.55);
   min-width: 112px;
-  min-height: 58px;
+  min-height: 90px;
   font-size: 12px;
-  padding: 9px 10px;
+  padding: 8px 7px;
+  display: grid;
+  place-items: center;
+  gap: 3px;
 }
 
-.position-slot.filled .slot-logo-wrap,
-.position-slot.filled .slot-logo,
+.position-slot.filled .slot-logo-wrap {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+  overflow: hidden;
+}
+
+.position-slot.filled .slot-logo {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
 .position-slot.filled .slot-position {
   display: none;
 }
 
+.slot-player-name {
+  display: block;
+  max-width: 100%;
+  font-size: 10.5px;
+  font-weight: 1000;
+  line-height: 1.05;
+  text-align: center;
+  word-break: break-word;
+}
+
+.slot-club-name {
+  display: block;
+  max-width: 100%;
+  color: rgba(255,255,255,0.72);
+  font-size: 9px;
+  line-height: 1.05;
+  font-weight: 800;
+  text-align: center;
+  word-break: break-word;
+}
+
 .position-slot.filled small {
   display: block;
-  font-size: 10px;
+  font-size: 9px;
   color: rgba(255,255,255,0.68);
-  margin-top: 3px;
+  margin-top: 2px;
   font-weight: 700;
 }
 
@@ -723,7 +769,7 @@ button {
 
   .position-slot {
     min-width: 58px;
-    min-height: 72px;
+    min-height: 58px;
     padding: 7px 6px;
     font-size: 12px;
   }
@@ -748,8 +794,27 @@ button {
 
   .position-slot.filled {
     min-width: 76px;
-    min-height: 50px;
+    min-height: 84px;
     font-size: 11px;
+    padding: 6px 4px;
+  }
+
+  .position-slot.filled .slot-logo-wrap {
+    width: 23px;
+    height: 23px;
+  }
+
+  .position-slot.filled .slot-logo {
+    width: 18px;
+    height: 18px;
+  }
+
+  .slot-player-name {
+    font-size: 8.5px;
+  }
+
+  .slot-club-name {
+    font-size: 7px;
   }
 
   .line-count-5 {
@@ -784,12 +849,27 @@ button {
     min-width: 0;
     width: 61px;
     max-width: 61px;
+    min-height: 78px;
     font-size: 8px;
     line-height: 1.05;
   }
 
-  .line-count-5 .position-slot.filled small {
+  .line-count-5 .position-slot.filled .slot-logo-wrap {
+    width: 19px;
+    height: 19px;
+  }
+
+  .line-count-5 .position-slot.filled .slot-logo {
+    width: 15px;
+    height: 15px;
+  }
+
+  .line-count-5 .slot-player-name {
     font-size: 7px;
+  }
+
+  .line-count-5 .slot-club-name {
+    font-size: 6px;
   }
 
   .country-indicator {
@@ -830,23 +910,4 @@ button {
   .base-info {
     grid-template-columns: 1fr;
   }
-
-
-  .slot-player-name {
-  display: block;
-  max-width: 100%;
-  font-size: 11px;
-  font-weight: 1000;
-  line-height: 1.05;
-  text-align: center;
-  word-break: break-word;
-}
-
-.position-slot.filled .slot-logo-wrap {
-  display: grid;
-}
-
-.position-slot.filled .slot-logo {
-  display: block;
-}
 }
