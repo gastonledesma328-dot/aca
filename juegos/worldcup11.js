@@ -631,9 +631,12 @@ function placePlayer(player, forcedSlot = null) {
   targetSlot.classList.remove("selected");
 
   targetSlot.innerHTML = `
-    ${player.name}
-    <small>${player.position}</small>
-  `;
+  <span class="slot-flag">
+    <img src="https://flagcdn.com/w80/${round.flagCode}.png" alt="${round.country}">
+  </span>
+  <span class="slot-player">${player.name}</span>
+  <span class="slot-country">${round.country}</span>
+`;
 
   completedSlots.push(Number(targetSlot.dataset.index));
   usedPlayers.push(player.name);
