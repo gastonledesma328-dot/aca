@@ -127,7 +127,6 @@ let GAME_DATA = null;
 let DAILY_GAME = null;
 
 let currentMode = "easy";
-let selectedSlot = null;
 let completedSlots = [];
 let usedPlayers = [];
 let score = 0;
@@ -263,7 +262,28 @@ function getLessKnownCountForMode() {
   return 0;
 }
 
-function buildCountriesForCurrentMode(totalSlots, random) {
+function normalizePosition(position) {
+  return String(position || "").toUpperCase().trim();
+}
+
+function playerCanPlaySlot(playerPosition, slotPosition) {
+  const playerPos = normalizePosition(playerPosition);
+  const slotPos = normalizePosition(slotPosition);
+
+  const compatibles = POSITION_COMPATIBILITY[slotPos] || [slotPos];
+
+  return compatibles.includes(playerPos);
+}
+
+function countryHasCompatiblePlayer(country, position) {
+  if (!country || !Array.isArray(country.players)) return false;
+
+  return country.players.some(player => {
+    return playerCanPlaySlot(player.position, position);
+  });
+}
+
+function buildCountriesForCurrentMode(positions, random) {
   const {
     availableCountries,
     popularCountries,
@@ -271,49 +291,73 @@ function buildCountriesForCurrentMode(totalSlots, random) {
     otherCountries
   } = getCountryPools();
 
-  const lessKnownCount = Math.min(
+  const totalSlots = positions.length;
+  const lessKnownTarget = Math.min(
     getLessKnownCountForMode(),
     lessKnownCountries.length,
     totalSlots
   );
 
-  const selectedLessKnown = shuffleArray(lessKnownCountries, random).slice(0, lessKnownCount);
-
-  const selectedLessKnownNames = new Set(
-    selectedLessKnown.map(country => normalizeCountryName(country.country))
+  const lessKnownIndexes = new Set(
+    shuffleArray(
+      Array.from({ length: totalSlots }, (_, index) => index),
+      random
+    ).slice(0, lessKnownTarget)
   );
 
-  const remainingPopular = popularCountries.filter(country => {
-    return !selectedLessKnownNames.has(normalizeCountryName(country.country));
+  const usedCountries = new Set();
+  const selectedCountries = [];
+
+  function countryAlreadyUsed(country) {
+    return usedCountries.has(normalizeCountryName(country.country));
+  }
+
+  function canUseCountryForPosition(country, position) {
+    if (!country || countryAlreadyUsed(country)) {
+      return false;
+    }
+
+    return countryHasCompatiblePlayer(country, position);
+  }
+
+  function pickCountryForPosition(position, pool) {
+    const shuffled = shuffleArray(pool, random);
+
+    return shuffled.find(country => {
+      return canUseCountryForPosition(country, position);
+    }) || null;
+  }
+
+  positions.forEach((position, index) => {
+    let selectedCountry = null;
+
+    if (lessKnownIndexes.has(index)) {
+      selectedCountry = pickCountryForPosition(position, lessKnownCountries);
+    }
+
+    if (!selectedCountry) {
+      selectedCountry = pickCountryForPosition(position, popularCountries);
+    }
+
+    if (!selectedCountry) {
+      selectedCountry = pickCountryForPosition(position, otherCountries);
+    }
+
+    if (!selectedCountry) {
+      selectedCountry = pickCountryForPosition(position, availableCountries);
+    }
+
+    if (!selectedCountry) {
+      throw new Error(
+        `No hay país disponible con jugador compatible para la posición ${position}.`
+      );
+    }
+
+    usedCountries.add(normalizeCountryName(selectedCountry.country));
+    selectedCountries.push(selectedCountry);
   });
 
-  let selectedCountries = [
-    ...selectedLessKnown,
-    ...shuffleArray(remainingPopular, random).slice(0, totalSlots - selectedLessKnown.length)
-  ];
-
-  if (selectedCountries.length < totalSlots) {
-    const used = new Set(
-      selectedCountries.map(country => normalizeCountryName(country.country))
-    );
-
-    const fallbackCountries = [...otherCountries, ...availableCountries].filter(country => {
-      return !used.has(normalizeCountryName(country.country));
-    });
-
-    selectedCountries = [
-      ...selectedCountries,
-      ...shuffleArray(fallbackCountries, random).slice(0, totalSlots - selectedCountries.length)
-    ];
-  }
-
-  if (selectedCountries.length < totalSlots) {
-    throw new Error(
-      `No hay suficientes países disponibles para generar el desafío. Países disponibles: ${availableCountries.length}`
-    );
-  }
-
-  return shuffleArray(selectedCountries, random);
+  return selectedCountries;
 }
 
 function generateDailyGame() {
@@ -328,28 +372,42 @@ function generateDailyGame() {
   const { availableCountries } = getCountryPools();
 
   const validFormations = GAME_DATA.formations.filter(formation => {
-    const totalSlots = formation.rows.flat().length;
-    return availableCountries.length >= totalSlots;
+    const flatPositions = formation.rows.flat();
+
+    if (availableCountries.length < flatPositions.length) {
+      return false;
+    }
+
+    return flatPositions.every(position => {
+      return availableCountries.some(country => {
+        return countryHasCompatiblePlayer(country, position);
+      });
+    });
   });
 
   if (!validFormations.length) {
     throw new Error(
-      `No hay suficientes países para generar un desafío sin repetir. Países disponibles: ${availableCountries.length}`
+      `No hay formaciones válidas: faltan países con jugadores compatibles para algunas posiciones.`
     );
   }
 
   const formation = pickRandom(validFormations, random);
   const flatPositions = formation.rows.flat();
-  const totalSlots = flatPositions.length;
+  const selectedCountries = buildCountriesForCurrentMode(flatPositions, random);
 
-  const selectedCountries = buildCountriesForCurrentMode(totalSlots, random);
+  const rounds = selectedCountries.map((country, index) => {
+    const position = flatPositions[index];
 
-  const rounds = selectedCountries.map(country => {
+    const compatiblePlayers = country.players.filter(player => {
+      return playerCanPlaySlot(player.position, position);
+    });
+
     return {
       country: country.country,
       flagCode: country.flagCode,
       dt: country.dt || "",
-      players: shuffleArray(country.players, random)
+      position,
+      players: shuffleArray(compatiblePlayers, random)
     };
   });
 
@@ -416,10 +474,8 @@ function renderFormation() {
       button.dataset.position = position;
       button.dataset.index = slotIndex;
       button.textContent = position;
-
-      button.onclick = () => {
-        selectSlot(button);
-      };
+      button.disabled = true;
+      button.onclick = null;
 
       line.appendChild(button);
       slotIndex++;
@@ -434,7 +490,6 @@ function initGame() {
 
   DAILY_GAME = generateDailyGame();
 
-  selectedSlot = null;
   completedSlots = [];
   usedPlayers = [];
   score = 0;
@@ -458,16 +513,12 @@ function initGame() {
     slot.dataset.position = position;
 
     slot.classList.remove("filled", "selected");
-    slot.disabled = false;
+    slot.disabled = true;
     slot.innerHTML = position;
-
-    slot.onclick = () => {
-      selectSlot(slot);
-    };
+    slot.onclick = null;
   });
 
   applyModeUi();
-  clearSelectedSlot();
   updateCountryPanel();
   startTimerIfNeeded();
   updateStatus();
@@ -535,6 +586,28 @@ function getCurrentRound() {
   return DAILY_GAME.rounds[currentRoundIndex];
 }
 
+function getActivePositionForRound() {
+  const round = getCurrentRound();
+
+  if (round && round.position) {
+    return round.position;
+  }
+
+  return DAILY_GAME.positions[currentRoundIndex] || "";
+}
+
+function findSlotForActivePosition(position) {
+  if (!position) return null;
+
+  const freeSlots = Array.from(getSlots()).filter(slot => {
+    return !slot.classList.contains("filled");
+  });
+
+  return freeSlots.find(slot => {
+    return normalizePosition(slot.dataset.position) === normalizePosition(position);
+  }) || null;
+}
+
 function updateCountryPanel() {
   const round = getCurrentRound();
 
@@ -551,9 +624,7 @@ function updateCountryPanel() {
     return;
   }
 
-  const selectedPosition = selectedSlot ? selectedSlot.dataset.position : "";
-  const fallbackPosition = DAILY_GAME.positions[currentRoundIndex] || "";
-  const positionToShow = selectedPosition || fallbackPosition;
+  const positionToShow = getActivePositionForRound();
 
   countryFlag.src = `https://flagcdn.com/w160/${round.flagCode}.png`;
   countryFlag.srcset = `
@@ -567,7 +638,7 @@ function updateCountryPanel() {
   if (countryRole) {
     countryRole.textContent = positionToShow
       ? `${positionToShow} · ${getPositionLabel(positionToShow)}`
-      : "Elegí una posición";
+      : "Sin posición";
   }
 
   playerSearch.placeholder = positionToShow
@@ -575,36 +646,8 @@ function updateCountryPanel() {
     : `Leyenda de ${round.country}...`;
 }
 
-function selectSlot(slot) {
-  if (gameFinished) return;
-  if (slot.classList.contains("filled")) return;
-
-  getSlots().forEach(item => item.classList.remove("selected"));
-
-  selectedSlot = slot;
-  selectedSlot.classList.add("selected");
-
-  updateCountryPanel();
-  renderSuggestions(playerSearch.value);
-
-  const value = normalizeText(playerSearch.value);
-
-  if (value) {
-    trySubmitSearch();
-  }
-}
-
-function clearSelectedSlot() {
-  selectedSlot = null;
-
-  getSlots().forEach(item => item.classList.remove("selected"));
-
-  suggestions.innerHTML = "";
-  updateCountryPanel();
-}
-
-function normalizePosition(position) {
-  return String(position || "").toUpperCase().trim();
+function selectSlot() {
+  return;
 }
 
 function getPositionLabel(position) {
@@ -626,39 +669,6 @@ function getPositionLabel(position) {
   };
 
   return labels[position] || "Jugador";
-}
-
-function playerCanPlaySlot(playerPosition, slotPosition) {
-  const playerPos = normalizePosition(playerPosition);
-  const slotPos = normalizePosition(slotPosition);
-
-  const compatibles = POSITION_COMPATIBILITY[slotPos] || [slotPos];
-
-  return compatibles.includes(playerPos);
-}
-
-function findBestFreeSlotForPlayer(player) {
-  const freeSlots = Array.from(getSlots()).filter(slot => {
-    return !slot.classList.contains("filled");
-  });
-
-  if (!freeSlots.length) return null;
-
-  const exactSlot = freeSlots.find(slot => {
-    return normalizePosition(slot.dataset.position) === normalizePosition(player.position);
-  });
-
-  if (exactSlot) return exactSlot;
-
-  const compatibleSlots = freeSlots.filter(slot => {
-    return playerCanPlaySlot(player.position, slot.dataset.position);
-  });
-
-  if (compatibleSlots.length === 1) {
-    return compatibleSlots[0];
-  }
-
-  return null;
 }
 
 function getPlayerNameParts(playerName) {
@@ -727,16 +737,12 @@ function renderSuggestions(query) {
   if (!round) return;
 
   const value = normalizeText(query);
-  const selectedPosition = selectedSlot ? selectedSlot.dataset.position : "";
+  const activePosition = getActivePositionForRound();
 
   const filtered = round.players.filter(player => {
     if (usedPlayers.includes(player.name)) return false;
 
-    if (selectedPosition && !playerCanPlaySlot(player.position, selectedPosition)) {
-      return false;
-    }
-
-    if (!selectedPosition && !findBestFreeSlotForPlayer(player)) {
+    if (activePosition && !playerCanPlaySlot(player.position, activePosition)) {
       return false;
     }
 
@@ -746,14 +752,10 @@ function renderSuggestions(query) {
   });
 
   if (!filtered.length) {
-    const msg = selectedSlot
-      ? `Debe ser de ${round.country} y servir para ${selectedSlot.dataset.position}`
-      : `Debe ser de ${round.country} y tener casillero compatible`;
-
     suggestions.innerHTML = `
       <button class="suggestion-item" type="button">
         <strong>No encontré ese jugador</strong>
-        <span>${msg}</span>
+        <span>Debe ser de ${round.country} y servir para ${activePosition}</span>
       </button>
     `;
     return;
@@ -773,10 +775,10 @@ function renderSuggestions(query) {
     `;
 
     button.onclick = () => {
-      const autoSlot = selectedSlot || findBestFreeSlotForPlayer(player);
+      const autoSlot = findSlotForActivePosition(activePosition);
 
       if (!autoSlot) {
-        showTemporaryPlaceholder("Elegí un casillero compatible");
+        showTemporaryPlaceholder("No hay casillero disponible para esta posición");
         return;
       }
 
@@ -794,10 +796,11 @@ function placePlayer(player, forcedSlot = null) {
 
   if (!round) return;
 
-  const targetSlot = forcedSlot || selectedSlot || findBestFreeSlotForPlayer(player);
+  const activePosition = getActivePositionForRound();
+  const targetSlot = forcedSlot || findSlotForActivePosition(activePosition);
 
   if (!targetSlot) {
-    showTemporaryPlaceholder("Elegí un casillero compatible");
+    showTemporaryPlaceholder("No hay casillero disponible para esta posición");
     return;
   }
 
@@ -839,7 +842,6 @@ function placePlayer(player, forcedSlot = null) {
 
   currentRoundIndex++;
 
-  selectedSlot = null;
   playerSearch.value = "";
   suggestions.innerHTML = "";
 
@@ -850,7 +852,8 @@ function placePlayer(player, forcedSlot = null) {
     return;
   }
 
-  clearSelectedSlot();
+  updateCountryPanel();
+  renderSuggestions("");
 }
 
 function calculatePoints() {
@@ -866,6 +869,7 @@ function trySubmitSearch() {
 
   const round = getCurrentRound();
   const value = normalizeText(playerSearch.value);
+  const activePosition = getActivePositionForRound();
 
   if (!round) return;
 
@@ -887,11 +891,7 @@ function trySubmitSearch() {
   const matches = round.players.filter(player => {
     if (usedPlayers.includes(player.name)) return false;
 
-    if (selectedSlot && !playerCanPlaySlot(player.position, selectedSlot.dataset.position)) {
-      return false;
-    }
-
-    if (!selectedSlot && !findBestFreeSlotForPlayer(player)) {
+    if (activePosition && !playerCanPlaySlot(player.position, activePosition)) {
       return false;
     }
 
@@ -902,11 +902,7 @@ function trySubmitSearch() {
     if (GAME_MODES[currentMode].showHints) {
       renderSuggestions(playerSearch.value);
     } else {
-      const msg = selectedSlot
-        ? `No coincide con ${round.country} / ${selectedSlot.dataset.position}`
-        : `No encontré un jugador compatible de ${round.country}`;
-
-      showTemporaryPlaceholder(msg);
+      showTemporaryPlaceholder(`No coincide con ${round.country} / ${activePosition}`);
     }
 
     return;
@@ -918,10 +914,10 @@ function trySubmitSearch() {
 
   if (strongMatches.length === 1) {
     const player = strongMatches[0];
-    const autoSlot = selectedSlot || findBestFreeSlotForPlayer(player);
+    const autoSlot = findSlotForActivePosition(activePosition);
 
     if (!autoSlot) {
-      showTemporaryPlaceholder("Elegí un casillero compatible");
+      showTemporaryPlaceholder("No hay casillero disponible para esta posición");
       return;
     }
 
@@ -1158,7 +1154,7 @@ Puntaje: ${score}`;
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Cada desafío muestra países distintos. Escribí un jugador del país indicado; si su posición tiene un casillero compatible, se coloca automáticamente. También podés elegir primero una casilla compatible. Al terminar, podés jugar otro desafío con nueva formación y países rotados.");
+  alert("Cada ronda tiene una posición fija. Escribí un jugador del país indicado que pueda jugar en esa posición. El juego lo coloca automáticamente en el casillero correcto. Al terminar, podés jugar otro desafío con nueva formación y países rotados.");
 });
 
 loadGameData();
