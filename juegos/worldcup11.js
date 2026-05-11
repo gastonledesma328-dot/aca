@@ -50,6 +50,58 @@ const POSITION_COMPATIBILITY = {
   ST: ["ST"]
 };
 
+const POPULAR_COUNTRIES = [
+  "Argentina",
+  "Brasil",
+  "Francia",
+  "España",
+  "Alemania",
+  "Inglaterra",
+  "Italia",
+  "Portugal",
+  "Países Bajos",
+  "Holanda",
+  "Uruguay",
+  "Colombia",
+  "Bélgica",
+  "Croacia",
+  "México",
+  "Estados Unidos",
+  "Japón",
+  "Marruecos"
+];
+
+const LESS_KNOWN_COUNTRIES = [
+  "Paraguay",
+  "República Checa",
+  "Chequia",
+  "Ecuador",
+  "Perú",
+  "Chile",
+  "Venezuela",
+  "Corea del Sur",
+  "Serbia",
+  "Suiza",
+  "Austria",
+  "Dinamarca",
+  "Suecia",
+  "Noruega",
+  "Polonia",
+  "Turquía",
+  "Senegal",
+  "Ghana",
+  "Nigeria",
+  "Costa de Marfil",
+  "Camerún",
+  "Argelia",
+  "Túnez",
+  "Australia",
+  "Canadá",
+  "Gales",
+  "Escocia",
+  "Ucrania"
+];
+
 const pitchFrame = document.querySelector(".pitch-frame");
 const modeButtons = document.querySelectorAll(".mode-btn");
 
@@ -162,18 +214,119 @@ function shuffleArray(list, random) {
   return copy;
 }
 
+function normalizeCountryName(name) {
+  return String(name || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+}
+
+function countryNameIsInList(countryName, list) {
+  const normalizedCountry = normalizeCountryName(countryName);
+
+  return list.some(item => {
+    return normalizeCountryName(item) === normalizedCountry;
+  });
+}
+
+function getCountryPools() {
+  const availableCountries = GAME_DATA.countries.filter(country => {
+    return Array.isArray(country.players) && country.players.length > 0;
+  });
+
+  const popularCountries = availableCountries.filter(country => {
+    return countryNameIsInList(country.country, POPULAR_COUNTRIES);
+  });
+
+  const lessKnownCountries = availableCountries.filter(country => {
+    return countryNameIsInList(country.country, LESS_KNOWN_COUNTRIES);
+  });
+
+  const otherCountries = availableCountries.filter(country => {
+    const isPopular = countryNameIsInList(country.country, POPULAR_COUNTRIES);
+    const isLessKnown = countryNameIsInList(country.country, LESS_KNOWN_COUNTRIES);
+
+    return !isPopular && !isLessKnown;
+  });
+
+  return {
+    availableCountries,
+    popularCountries,
+    lessKnownCountries,
+    otherCountries
+  };
+}
+
+function getLessKnownCountForMode() {
+  if (currentMode === "hard") return 2;
+  if (currentMode === "impossible") return 1;
+  return 0;
+}
+
+function buildCountriesForCurrentMode(totalSlots, random) {
+  const {
+    availableCountries,
+    popularCountries,
+    lessKnownCountries,
+    otherCountries
+  } = getCountryPools();
+
+  const lessKnownCount = Math.min(
+    getLessKnownCountForMode(),
+    lessKnownCountries.length,
+    totalSlots
+  );
+
+  const selectedLessKnown = shuffleArray(lessKnownCountries, random).slice(0, lessKnownCount);
+
+  const selectedLessKnownNames = new Set(
+    selectedLessKnown.map(country => normalizeCountryName(country.country))
+  );
+
+  const remainingPopular = popularCountries.filter(country => {
+    return !selectedLessKnownNames.has(normalizeCountryName(country.country));
+  });
+
+  let selectedCountries = [
+    ...selectedLessKnown,
+    ...shuffleArray(remainingPopular, random).slice(0, totalSlots - selectedLessKnown.length)
+  ];
+
+  if (selectedCountries.length < totalSlots) {
+    const used = new Set(
+      selectedCountries.map(country => normalizeCountryName(country.country))
+    );
+
+    const fallbackCountries = [...otherCountries, ...availableCountries].filter(country => {
+      return !used.has(normalizeCountryName(country.country));
+    });
+
+    selectedCountries = [
+      ...selectedCountries,
+      ...shuffleArray(fallbackCountries, random).slice(0, totalSlots - selectedCountries.length)
+    ];
+  }
+
+  if (selectedCountries.length < totalSlots) {
+    throw new Error(
+      `No hay suficientes países disponibles para generar el desafío. Países disponibles: ${availableCountries.length}`
+    );
+  }
+
+  return shuffleArray(selectedCountries, random);
+}
+
 function generateDailyGame() {
   const todayKey = getTodayKey();
 
   const seed = createSeedFromString(
-    `partidos-hoy-worldcup11-${todayKey}-challenge-${challengeIndex}`
+    `partidos-hoy-worldcup11-${todayKey}-challenge-${challengeIndex}-mode-${currentMode}`
   );
 
   const random = seededRandom(seed);
 
-  const availableCountries = GAME_DATA.countries.filter(country => {
-    return Array.isArray(country.players) && country.players.length > 0;
-  });
+  const { availableCountries } = getCountryPools();
 
   const validFormations = GAME_DATA.formations.filter(formation => {
     const totalSlots = formation.rows.flat().length;
@@ -190,8 +343,7 @@ function generateDailyGame() {
   const flatPositions = formation.rows.flat();
   const totalSlots = flatPositions.length;
 
-  const shuffledCountries = shuffleArray(availableCountries, random);
-  const selectedCountries = shuffledCountries.slice(0, totalSlots);
+  const selectedCountries = buildCountriesForCurrentMode(totalSlots, random);
 
   const rounds = selectedCountries.map(country => {
     return {
@@ -211,7 +363,6 @@ function generateDailyGame() {
     rounds
   };
 }
-
 function getSlots() {
   return document.querySelectorAll(".position-slot");
 }
