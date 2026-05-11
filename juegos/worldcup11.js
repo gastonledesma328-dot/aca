@@ -830,16 +830,54 @@ function calculatePoints() {
   return 100;
 }
 
+function getPlayerNameParts(playerName) {
+  return normalizeText(playerName)
+    .split(" ")
+    .filter(Boolean);
+}
+
+function isStrongPlayerMatch(player, value) {
+  const cleanValue = normalizeText(value);
+
+  if (cleanValue.length < 4) {
+    return false;
+  }
+
+  const fullName = normalizeText(player.name);
+  const nameParts = getPlayerNameParts(player.name);
+
+  if (fullName === cleanValue) {
+    return true;
+  }
+
+  if (nameParts.includes(cleanValue)) {
+    return true;
+  }
+
+  return false;
+}
+
 function trySubmitSearch() {
   if (gameFinished) return;
 
   const round = getCurrentRound();
-  const value = normalizeText(playerSearch.value);
+  const rawValue = playerSearch.value;
+  const value = normalizeText(rawValue);
 
   if (!round) return;
 
   if (!value) {
     renderSuggestions("");
+    return;
+  }
+
+  if (value.length < 4) {
+    if (GAME_MODES[currentMode].showHints) {
+      renderSuggestions(playerSearch.value);
+    } else {
+      showTemporaryPlaceholder("Escribí al menos 4 letras del jugador");
+    }
+
     return;
   }
 
@@ -854,7 +892,15 @@ function trySubmitSearch() {
       return false;
     }
 
-    return playerMatchesSearch(player, value);
+    const fullName = normalizeText(player.name);
+    const nameParts = getPlayerNameParts(player.name);
+    const position = normalizeText(player.position);
+
+    return (
+      fullName.includes(value) ||
+      nameParts.some(part => part.includes(value)) ||
+      position.includes(value)
+    );
   });
 
   if (!matches.length) {
@@ -871,38 +917,37 @@ function trySubmitSearch() {
     return;
   }
 
-  const exactMatch = matches.find(player => {
-    return playerIsExactMatch(player, value);
+  const strongMatches = matches.filter(player => {
+    return isStrongPlayerMatch(player, value);
   });
 
-  if (exactMatch) {
-    const autoSlot = selectedSlot || findBestFreeSlotForPlayer(exactMatch);
+  if (strongMatches.length === 1) {
+    const player = strongMatches[0];
+    const autoSlot = selectedSlot || findBestFreeSlotForPlayer(player);
 
     if (!autoSlot) {
       showTemporaryPlaceholder("Elegí un casillero compatible");
       return;
     }
 
-    placePlayer(exactMatch, autoSlot);
+    placePlayer(player, autoSlot);
     return;
   }
 
-  if (matches.length === 1) {
-    const autoSlot = selectedSlot || findBestFreeSlotForPlayer(matches[0]);
-
-    if (!autoSlot) {
-      showTemporaryPlaceholder("Elegí un casillero compatible");
-      return;
+  if (strongMatches.length > 1) {
+    if (GAME_MODES[currentMode].showHints) {
+      renderSuggestions(playerSearch.value);
+    } else {
+      showTemporaryPlaceholder("Hay más de una coincidencia. Escribí mejor el nombre.");
     }
 
-    placePlayer(matches[0], autoSlot);
     return;
   }
 
   if (GAME_MODES[currentMode].showHints) {
     renderSuggestions(playerSearch.value);
   } else {
-    showTemporaryPlaceholder("Hay más de una coincidencia. Escribí mejor el nombre.");
+    showTemporaryPlaceholder("Escribí el nombre más completo del jugador");
   }
 }
 
