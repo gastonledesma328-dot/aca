@@ -64,7 +64,6 @@ const POPULAR_COUNTRIES = [
   "Uruguay",
   "Colombia",
   "Bélgica",
-  "Croacia",
   "México",
   "Estados Unidos",
   "Paraguay",
@@ -76,6 +75,7 @@ const POPULAR_COUNTRIES = [
 
 const LESS_KNOWN_COUNTRIES = [
   "Marruecos",
+  "Croacia",
   "República Checa",
   "Chequia",
   "Corea del Sur",
