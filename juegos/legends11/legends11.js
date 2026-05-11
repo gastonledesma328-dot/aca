@@ -52,7 +52,6 @@ const POSITION_COMPATIBILITY = {
 };
 
 const POSITION_LABELS = {
-  const MIN_SEARCH_CHARS = 3;
   GK: "Arquero",
   RB: "Lateral derecho",
   CB: "Defensor central",
@@ -68,6 +67,9 @@ const POSITION_LABELS = {
   RM: "Volante derecho",
   ST: "Delantero"
 };
+
+const MIN_SEARCH_CHARS = 3;
+const SAFE_AUTOCOMPLETE_CHARS = 5;
 
 const pitchFrame = document.querySelector(".pitch-frame");
 const modeButtons = document.querySelectorAll(".mode-btn");
@@ -129,7 +131,7 @@ async function loadGameData() {
     pitchFrame.innerHTML = `
       <div class="load-error">
         <strong>No se pudo cargar el juego</strong>
-        <span>${error.message}</span>
+        <span>${escapeHTML(error.message)}</span>
       </div>
     `;
 
@@ -150,7 +152,6 @@ function getTodayStorageKey() {
   return `${STORAGE_PREFIX}${getTodayKey()}`;
 }
 
-
 function getFlagUrl(flagCode, size = 80) {
   if (!flagCode) return "https://flagcdn.com/w80/un.png";
   return `https://flagcdn.com/w${size}/${flagCode}.png`;
@@ -164,6 +165,7 @@ function escapeHTML(text) {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
+
 /*
   Límite diario quitado.
   El juego no se bloquea nunca.
@@ -219,6 +221,8 @@ function shuffleArray(list, random) {
 /*
   Genera una partida nueva cada vez.
   Rota formación, países y jugadores.
+  Además, cada país elegido debe tener al menos un jugador compatible
+  con la posición que toca.
 */
 function generateDailyGame() {
   const todayKey = getTodayKey();
@@ -248,9 +252,7 @@ function generateDailyGame() {
   });
 
   if (!validFormations.length) {
-    throw new Error(
-      "No hay formaciones válidas: faltan jugadores por posición en el JSON."
-    );
+    throw new Error("No hay formaciones válidas: faltan jugadores por posición en el JSON.");
   }
 
   const formation = pickRandom(validFormations, random);
@@ -268,8 +270,10 @@ function generateDailyGame() {
       });
     });
 
-    // Si no alcanza sin repetir país, permitimos repetir país,
-    // pero siempre respetando que tenga jugador para esa posición.
+    /*
+      Si no alcanza sin repetir país, permitimos repetir país,
+      pero siempre respetando que tenga jugador compatible.
+    */
     if (!compatibleCountries.length) {
       compatibleCountries = availableCountries.filter(country => {
         return country.players.some(player => {
@@ -604,6 +608,29 @@ function playerIsExactMatch(player, value) {
   return fullName === value || lastName === value || aliases.includes(value);
 }
 
+function playerCanAutocompleteSafely(player, value) {
+  const fullName = normalizeText(player.name);
+  const lastName = normalizeText(player.name.split(" ").pop());
+  const aliases = Array.isArray(player.aliases) ? player.aliases.map(normalizeText) : [];
+
+  const fullNameOk =
+    fullName.startsWith(value) &&
+    value.length >= Math.min(SAFE_AUTOCOMPLETE_CHARS, fullName.length);
+
+  const lastNameOk =
+    lastName.startsWith(value) &&
+    value.length >= Math.min(SAFE_AUTOCOMPLETE_CHARS, lastName.length);
+
+  const aliasOk = aliases.some(alias => {
+    return (
+      alias.startsWith(value) &&
+      value.length >= Math.min(SAFE_AUTOCOMPLETE_CHARS, alias.length)
+    );
+  });
+
+  return fullNameOk || lastNameOk || aliasOk;
+}
+
 function renderSuggestions(query) {
   const mode = GAME_MODES[currentMode];
 
@@ -626,8 +653,8 @@ function renderSuggestions(query) {
   if (value && value.length < MIN_SEARCH_CHARS) {
     suggestions.innerHTML = `
       <button class="suggestion-item" type="button">
-        <strong>Escribí al menos 3 letras</strong>
-        <span>${round.country} · ${requiredPosition}</span>
+        <strong>Escribí al menos ${MIN_SEARCH_CHARS} letras</strong>
+        <span>${escapeHTML(round.country)} · ${escapeHTML(requiredPosition)}</span>
       </button>
     `;
     return;
@@ -649,7 +676,7 @@ function renderSuggestions(query) {
     suggestions.innerHTML = `
       <button class="suggestion-item" type="button">
         <strong>No encontré esa leyenda</strong>
-        <span>${round.country} · Debe servir para ${requiredPosition}</span>
+        <span>${escapeHTML(round.country)} · Debe servir para ${escapeHTML(requiredPosition)}</span>
       </button>
     `;
     return;
@@ -662,8 +689,8 @@ function renderSuggestions(query) {
 
     button.innerHTML = `
       <div>
-        <strong>${player.name}</strong>
-        <span>${round.country} · ${player.position}</span>
+        <strong>${escapeHTML(player.name)}</strong>
+        <span>${escapeHTML(round.country)} · ${escapeHTML(player.position)}</span>
       </div>
       <span>Elegir</span>
     `;
@@ -701,17 +728,17 @@ function placePlayer(player) {
   targetSlot.classList.remove("selected");
 
   targetSlot.innerHTML = `
-  <span class="slot-flag">
-    <img
-      src="${getFlagUrl(round.flagCode, 40)}"
-      alt="${escapeHTML(round.country)}"
-      loading="lazy"
-      onerror="this.style.display='none'; this.parentElement.textContent='${round.flagEmoji || "🏳️"}';"
-    />
-  </span>
-  <strong class="slot-player">${escapeHTML(player.name)}</strong>
-  <small class="slot-country">${escapeHTML(round.country)}</small>
-`;
+    <span class="slot-flag">
+      <img
+        src="${getFlagUrl(round.flagCode, 40)}"
+        alt="${escapeHTML(round.country)}"
+        loading="lazy"
+        onerror="this.style.display='none'; this.parentElement.textContent='${round.flagEmoji || "🏳️"}';"
+      />
+    </span>
+    <strong class="slot-player">${escapeHTML(player.name)}</strong>
+    <small class="slot-country">${escapeHTML(round.country)}</small>
+  `;
 
   completedSlots.push(Number(targetSlot.dataset.index));
   usedPlayers.push(player.name);
@@ -756,7 +783,7 @@ function trySubmitSearch() {
   }
 
   if (value.length < MIN_SEARCH_CHARS) {
-    showTemporaryPlaceholder("Escribí al menos 3 letras del nombre");
+    showTemporaryPlaceholder(`Escribí al menos ${MIN_SEARCH_CHARS} letras`);
     return;
   }
 
@@ -789,25 +816,10 @@ function trySubmitSearch() {
     return;
   }
 
-  /*
-    Evita que entradas muy cortas autocompleten.
-    Ejemplo:
-    "ne"  -> no entra por mínimo de 3 letras
-    "ney" -> muestra sugerencia, pero no coloca automático
-    "neymar" -> coloca Neymar
-  */
   if (matches.length === 1) {
     const candidate = matches[0];
-    const fullName = normalizeText(candidate.name);
-    const lastName = normalizeText(candidate.name.split(" ").pop());
-    const aliases = Array.isArray(candidate.aliases) ? candidate.aliases.map(normalizeText) : [];
 
-    const safeAutoComplete =
-      fullName.startsWith(value) && value.length >= Math.min(5, fullName.length) ||
-      lastName.startsWith(value) && value.length >= Math.min(5, lastName.length) ||
-      aliases.some(alias => alias.startsWith(value) && value.length >= Math.min(5, alias.length));
-
-    if (safeAutoComplete) {
+    if (playerCanAutocompleteSafely(candidate, value)) {
       placePlayer(candidate);
       return;
     }
@@ -1050,7 +1062,7 @@ Puntaje: ${score}`;
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("El juego muestra un país y una posición. Escribí una leyenda de ese país para esa posición y presioná Enter. El jugador se coloca automáticamente en la cancha. Al terminar, podés jugar otro desafío con nueva formación y países rotados.");
+  alert("El juego muestra un país y una posición. Escribí una leyenda de ese país para esa posición y presioná Enter. El jugador se coloca automáticamente en la cancha. No alcanza con escribir 1 o 2 letras: tenés que escribir mejor el nombre. Al terminar, podés jugar otro desafío con nueva formación y países rotados.");
 });
 
 loadGameData();
