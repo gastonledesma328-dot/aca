@@ -67,18 +67,17 @@ const POPULAR_COUNTRIES = [
   "Croacia",
   "México",
   "Estados Unidos",
-  "Japón",
-  "Marruecos"
+  "Paraguay",
+  "Ecuador",
+  "Perú",
+  "Venezuela",
+  "Chile"
 ];
 
 const LESS_KNOWN_COUNTRIES = [
-  "Paraguay",
+  "Marruecos".
   "República Checa",
   "Chequia",
-  "Ecuador",
-  "Perú",
-  "Chile",
-  "Venezuela",
   "Corea del Sur",
   "Serbia",
   "Suiza",
