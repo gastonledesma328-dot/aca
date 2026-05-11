@@ -296,7 +296,11 @@ button {
   line-height: 1.08;
 }
 
-.line-count-5 .position-slot.filled small {
+.line-count-5 .position-slot.filled .slot-player {
+  font-size: 10px;
+}
+
+.line-count-5 .position-slot.filled .slot-country {
   font-size: 9px;
 }
 
@@ -330,23 +334,112 @@ button {
   color: white;
   border-color: rgba(95,207,128,0.55);
   min-width: 112px;
+  min-height: 88px;
+  padding: 10px;
   font-size: 12px;
+  line-height: 1.1;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.position-slot.filled small {
+/* Jugador completado dentro de la cancha */
+.slot-flag {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 7px;
+  border-radius: 50%;
+  background: white;
+  font-size: 20px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+}
+
+.slot-player {
   display: block;
-  font-size: 10px;
-  color: rgba(255,255,255,0.68);
-  margin-top: 3px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 1000;
+  color: white;
+  text-align: center;
 }
 
+.slot-country {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.72);
+  text-align: center;
+}
 
+/* PANEL PAÍS / BUSCADOR */
+.country-panel {
+  width: min(680px, 100%);
+  margin: 24px auto 0;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.country-current-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+.country-row,
+.country-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin-bottom: 14px;
+}
+
+.country-flag-img,
+.country-row img {
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+  background: white;
+  flex: 0 0 auto;
+}
+
+.country-current-info,
 .country-info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 5px;
+  min-width: 0;
+}
+
+.country-current-info strong,
+.country-row strong,
+.country-indicator strong {
+  color: var(--text);
+  font-size: 26px;
+  font-weight: 1000;
+  line-height: 1;
+}
+
+.country-current-info span {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.35;
 }
 
 .position-pill {
@@ -360,40 +453,6 @@ button {
   font-size: 12px;
   font-weight: 900;
 }
-/* PANEL PAÍS / BUSCADOR */
-.country-panel {
-  width: min(680px, 100%);
-  margin: 0 auto;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  padding: 16px;
-  box-shadow: var(--shadow);
-}
-
-.country-row,
-.country-indicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 11px;
-  margin-bottom: 14px;
-}
-
-.country-row img,
-.country-flag-img {
-  width: 38px;
-  height: 26px;
-  object-fit: cover;
-  border-radius: 5px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-  background: white;
-}
-
-.country-row strong,
-.country-indicator strong {
-  font-size: 22px;
-}
 
 .player-form,
 .search-area {
@@ -405,7 +464,7 @@ button {
 .player-form input,
 .search-area input {
   width: 100%;
-  height: 52px;
+  height: 54px;
   border: none;
   outline: none;
   border-radius: 16px;
@@ -413,20 +472,20 @@ button {
   background: var(--card);
   color: var(--dark);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .player-form input::placeholder,
 .search-area input::placeholder {
-  color: rgba(19,37,28,0.52);
-  font-weight: 600;
+  color: rgba(19,37,28,0.58);
+  font-weight: 700;
 }
 
-/* BOTÓN RENDIRSE COPIADO DEL FUNCIONAMIENTO WORLD CUP 11 */
+/* BOTÓN RENDIRSE */
 .surrender-btn {
   flex: 0 0 auto;
   width: 56px;
-  height: 52px;
+  height: 54px;
   border: none;
   border-radius: 16px;
   background: white;
@@ -472,6 +531,7 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  width: 100%;
   border: 1px solid rgba(255,255,255,0.12);
   background: rgba(255,255,255,0.1);
   color: var(--text);
@@ -628,33 +688,6 @@ button {
     padding: 14px;
   }
 
-
-  .line-count-5 {
-  gap: 5px;
-  padding: 0;
-}
-
-.line-count-5 .position-slot {
-  min-width: 0;
-  width: 61px;
-  max-width: 61px;
-  padding-left: 4px;
-  padding-right: 4px;
-  font-size: 11px;
-}
-
-.line-count-5 .position-slot.filled {
-  min-width: 0;
-  width: 61px;
-  max-width: 61px;
-  font-size: 8px;
-  line-height: 1.05;
-}
-
-.line-count-5 .position-slot.filled small {
-  font-size: 7px;
-}
-
   .topbar {
     gap: 8px;
     grid-template-columns: auto 1fr auto;
@@ -702,7 +735,76 @@ button {
 
   .position-slot.filled {
     min-width: 76px;
+    min-height: 78px;
     font-size: 11px;
+  }
+
+  .slot-flag {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .slot-player {
+    font-size: 10px;
+  }
+
+  .slot-country {
+    font-size: 8px;
+  }
+
+  .line-count-5 {
+    gap: 5px;
+    padding: 0;
+  }
+
+  .line-count-5 .position-slot {
+    min-width: 0;
+    width: 61px;
+    max-width: 61px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 11px;
+  }
+
+  .line-count-5 .position-slot.filled {
+    min-width: 0;
+    width: 61px;
+    max-width: 61px;
+    min-height: 72px;
+    font-size: 8px;
+    line-height: 1.05;
+  }
+
+  .line-count-5 .position-slot.filled .slot-player {
+    font-size: 8px;
+  }
+
+  .line-count-5 .position-slot.filled .slot-country {
+    font-size: 7px;
+  }
+
+  .country-current-card {
+    padding: 12px;
+    gap: 11px;
+  }
+
+  .country-flag-img,
+  .country-row img {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+  }
+
+  .country-current-info strong,
+  .country-row strong,
+  .country-indicator strong {
+    font-size: 22px;
+  }
+
+  .country-current-info span {
+    font-size: 12px;
   }
 
   .player-form input,
