@@ -75,7 +75,7 @@ const POPULAR_COUNTRIES = [
 ];
 
 const LESS_KNOWN_COUNTRIES = [
-  "Marruecos".
+  "Marruecos",
   "República Checa",
   "Chequia",
   "Corea del Sur",
@@ -362,13 +362,12 @@ function generateDailyGame() {
     rounds
   };
 }
+
 function getSlots() {
   return document.querySelectorAll(".position-slot");
 }
 
 function getLineRole(row, rowIndex, totalRows) {
-  const joined = row.join("-");
-
   if (rowIndex === totalRows - 1 || row.includes("GK")) {
     return "line-gk";
   }
@@ -540,7 +539,8 @@ function updateCountryPanel() {
   const round = getCurrentRound();
 
   if (!round) {
-    countryFlag.src = "https://flagcdn.com/w40/un.png";
+    countryFlag.src = "https://flagcdn.com/w160/un.png";
+    countryFlag.srcset = "";
     countryFlag.alt = "Desafío finalizado";
     countryName.textContent = "Desafío finalizado";
 
@@ -556,11 +556,11 @@ function updateCountryPanel() {
   const positionToShow = selectedPosition || fallbackPosition;
 
   countryFlag.src = `https://flagcdn.com/w160/${round.flagCode}.png`;
-countryFlag.srcset = `
-  https://flagcdn.com/w80/${round.flagCode}.png 1x,
-  https://flagcdn.com/w160/${round.flagCode}.png 2x,
-  https://flagcdn.com/w320/${round.flagCode}.png 3x
-`;
+  countryFlag.srcset = `
+    https://flagcdn.com/w80/${round.flagCode}.png 1x,
+    https://flagcdn.com/w160/${round.flagCode}.png 2x,
+    https://flagcdn.com/w320/${round.flagCode}.png 3x
+  `;
   countryFlag.alt = `Bandera de ${round.country}`;
   countryName.textContent = round.country;
 
@@ -613,6 +613,8 @@ function getPositionLabel(position) {
     RB: "Lateral derecho",
     CB: "Defensor central",
     LB: "Lateral izquierdo",
+    LWB: "Carrilero izquierdo",
+    RWB: "Carrilero derecho",
     CDM: "Mediocampista defensivo",
     CM: "Mediocampista",
     CAM: "Mediapunta",
@@ -659,26 +661,55 @@ function findBestFreeSlotForPlayer(player) {
   return null;
 }
 
+function getPlayerNameParts(playerName) {
+  return normalizeText(playerName)
+    .split(" ")
+    .filter(Boolean);
+}
+
+function getPlayerAliases(player) {
+  return Array.isArray(player.aliases)
+    ? player.aliases.map(normalizeText).filter(Boolean)
+    : [];
+}
+
 function playerMatchesSearch(player, value) {
+  const cleanValue = normalizeText(value);
   const fullName = normalizeText(player.name);
-  const lastName = normalizeText(player.name.split(" ").pop());
-  const position = normalizeText(player.position);
-  const aliases = Array.isArray(player.aliases) ? player.aliases.map(normalizeText) : [];
+  const nameParts = getPlayerNameParts(player.name);
+  const aliases = getPlayerAliases(player);
 
   return (
-    fullName.includes(value) ||
-    lastName.includes(value) ||
-    position.includes(value) ||
-    aliases.some(alias => alias.includes(value) || value.includes(alias))
+    fullName.includes(cleanValue) ||
+    nameParts.some(part => part.includes(cleanValue)) ||
+    aliases.some(alias => alias.includes(cleanValue) || cleanValue.includes(alias))
   );
 }
 
-function playerIsExactMatch(player, value) {
-  const fullName = normalizeText(player.name);
-  const lastName = normalizeText(player.name.split(" ").pop());
-  const aliases = Array.isArray(player.aliases) ? player.aliases.map(normalizeText) : [];
+function isStrongPlayerMatch(player, value) {
+  const cleanValue = normalizeText(value);
 
-  return fullName === value || lastName === value || aliases.includes(value);
+  if (cleanValue.length < 4) {
+    return false;
+  }
+
+  const fullName = normalizeText(player.name);
+  const nameParts = getPlayerNameParts(player.name);
+  const aliases = getPlayerAliases(player);
+
+  if (fullName === cleanValue) {
+    return true;
+  }
+
+  if (nameParts.includes(cleanValue)) {
+    return true;
+  }
+
+  if (aliases.includes(cleanValue)) {
+    return true;
+  }
+
+  return false;
 }
 
 function renderSuggestions(query) {
@@ -786,21 +817,21 @@ function placePlayer(player, forcedSlot = null) {
   targetSlot.classList.remove("selected");
 
   targetSlot.innerHTML = `
-  <span class="slot-flag">
-    <img
-      src="https://flagcdn.com/w160/${round.flagCode}.png"
-      srcset="
-        https://flagcdn.com/w80/${round.flagCode}.png 1x,
-        https://flagcdn.com/w160/${round.flagCode}.png 2x,
-        https://flagcdn.com/w320/${round.flagCode}.png 3x
-      "
-      alt="${round.country}"
-      loading="lazy"
-    >
-  </span>
-  <span class="slot-player">${player.name}</span>
-  <span class="slot-country">${round.country}</span>
-`;
+    <span class="slot-flag">
+      <img
+        src="https://flagcdn.com/w160/${round.flagCode}.png"
+        srcset="
+          https://flagcdn.com/w80/${round.flagCode}.png 1x,
+          https://flagcdn.com/w160/${round.flagCode}.png 2x,
+          https://flagcdn.com/w320/${round.flagCode}.png 3x
+        "
+        alt="${round.country}"
+        loading="lazy"
+      >
+    </span>
+    <span class="slot-player">${player.name}</span>
+    <span class="slot-country">${round.country}</span>
+  `;
 
   completedSlots.push(Number(targetSlot.dataset.index));
   usedPlayers.push(player.name);
@@ -830,39 +861,11 @@ function calculatePoints() {
   return 100;
 }
 
-function getPlayerNameParts(playerName) {
-  return normalizeText(playerName)
-    .split(" ")
-    .filter(Boolean);
-}
-
-function isStrongPlayerMatch(player, value) {
-  const cleanValue = normalizeText(value);
-
-  if (cleanValue.length < 4) {
-    return false;
-  }
-
-  const fullName = normalizeText(player.name);
-  const nameParts = getPlayerNameParts(player.name);
-
-  if (fullName === cleanValue) {
-    return true;
-  }
-
-  if (nameParts.includes(cleanValue)) {
-    return true;
-  }
-
-  return false;
-}
-
 function trySubmitSearch() {
   if (gameFinished) return;
 
   const round = getCurrentRound();
-  const rawValue = playerSearch.value;
-  const value = normalizeText(rawValue);
+  const value = normalizeText(playerSearch.value);
 
   if (!round) return;
 
@@ -892,15 +895,7 @@ function trySubmitSearch() {
       return false;
     }
 
-    const fullName = normalizeText(player.name);
-    const nameParts = getPlayerNameParts(player.name);
-    const position = normalizeText(player.position);
-
-    return (
-      fullName.includes(value) ||
-      nameParts.some(part => part.includes(value)) ||
-      position.includes(value)
-    );
+    return playerMatchesSearch(player, value);
   });
 
   if (!matches.length) {
