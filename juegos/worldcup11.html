@@ -61,41 +61,41 @@
     </section>
 
     <section class="country-panel">
-      <div class="country-indicator">
-        <img
-          class="country-flag-img"
-          id="countryFlag"
-          src="https://flagcdn.com/w40/un.png"
-          alt="Seleccioná una posición"
-        />
+  <div class="country-card">
+    <div class="country-indicator">
+      <img
+        class="country-flag-img"
+        id="countryFlag"
+        src="https://flagcdn.com/w40/un.png"
+        alt="Seleccioná una posición"
+      />
+
+      <div class="country-copy">
         <strong id="countryName">Cargando país...</strong>
+        <span id="countryRole">Elegí una posición</span>
       </div>
+    </div>
 
-      <form class="search-area" id="playerForm">
-        <input
-          type="search"
-          id="playerSearch"
-          placeholder="Ingresá nombre de futbolista..."
-          autocomplete="off"
-        />
+    <form class="search-area" id="playerForm">
+      <input
+        type="search"
+        id="playerSearch"
+        placeholder="Leyenda para armar tu 11..."
+        autocomplete="off"
+      />
 
-        <button
-          class="surrender-btn"
-          type="button"
-          id="surrenderBtn"
-          title="Rendirse"
-          aria-label="Rendirse"
-        >
-          🏳️
-        </button>
-      </form>
+      <button class="surrender-btn" type="button" id="surrenderBtn" title="Rendirse" aria-label="Rendirse">
+        🏳️
+      </button>
+    </form>
 
-      <p class="mode-hint" id="modeHint">
-        Cargando datos del juego...
-      </p>
+    <p class="mode-hint" id="modeHint">
+      Cargando datos del juego...
+    </p>
 
-      <div class="suggestions" id="suggestions"></div>
-    </section>
+    <div class="suggestions" id="suggestions"></div>
+  </div>
+</section>
 
     <section class="status-panel">
       <div>
