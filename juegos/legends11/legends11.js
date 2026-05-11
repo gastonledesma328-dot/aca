@@ -235,30 +235,72 @@ function generateDailyGame() {
   });
 
   const validFormations = GAME_DATA.formations.filter(formation => {
-    const totalSlots = formation.rows.flat().length;
-    return availableCountries.length >= totalSlots;
+    const flatPositions = formation.rows.flat();
+
+    return flatPositions.every(position => {
+      return availableCountries.some(country => {
+        return country.players.some(player => {
+          return playerCanPlaySlot(player.position, position);
+        });
+      });
+    });
   });
 
   if (!validFormations.length) {
     throw new Error(
-      `No hay suficientes países para generar un desafío sin repetir. Países disponibles: ${availableCountries.length}`
+      "No hay formaciones válidas: faltan jugadores por posición en el JSON."
     );
   }
 
   const formation = pickRandom(validFormations, random);
   const flatPositions = formation.rows.flat();
-  const totalSlots = flatPositions.length;
 
-  const shuffledCountries = shuffleArray(availableCountries, random);
-  const selectedCountries = shuffledCountries.slice(0, totalSlots);
+  const selectedCountries = [];
+  const usedCountryNames = new Set();
 
-  const rounds = selectedCountries.map(country => {
+  flatPositions.forEach(position => {
+    let compatibleCountries = availableCountries.filter(country => {
+      if (usedCountryNames.has(country.country)) return false;
+
+      return country.players.some(player => {
+        return playerCanPlaySlot(player.position, position);
+      });
+    });
+
+    // Si no alcanza sin repetir país, permitimos repetir país,
+    // pero siempre respetando que tenga jugador para esa posición.
+    if (!compatibleCountries.length) {
+      compatibleCountries = availableCountries.filter(country => {
+        return country.players.some(player => {
+          return playerCanPlaySlot(player.position, position);
+        });
+      });
+    }
+
+    if (!compatibleCountries.length) {
+      throw new Error(`No hay países con jugadores para la posición ${position}.`);
+    }
+
+    const chosenCountry = pickRandom(compatibleCountries, random);
+
+    selectedCountries.push(chosenCountry);
+    usedCountryNames.add(chosenCountry.country);
+  });
+
+  const rounds = selectedCountries.map((country, index) => {
+    const requiredPosition = flatPositions[index];
+
+    const compatiblePlayers = country.players.filter(player => {
+      return playerCanPlaySlot(player.position, requiredPosition);
+    });
+
     return {
       country: country.country,
       flagCode: country.flagCode,
       flagEmoji: country.flagEmoji || "",
       dt: country.dt || "",
-      players: shuffleArray(country.players, random)
+      requiredPosition,
+      players: shuffleArray(compatiblePlayers, random)
     };
   });
 
@@ -457,6 +499,12 @@ function getCurrentRound() {
 }
 
 function getCurrentRequiredPosition() {
+  const round = getCurrentRound();
+
+  if (round && round.requiredPosition) {
+    return round.requiredPosition;
+  }
+
   return DAILY_GAME.positions[currentRoundIndex];
 }
 
