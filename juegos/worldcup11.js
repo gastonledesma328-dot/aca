@@ -405,7 +405,12 @@ function updateCountryPanel() {
   const fallbackPosition = DAILY_GAME.positions[currentRoundIndex] || "";
   const positionToShow = selectedPosition || fallbackPosition;
 
-  countryFlag.src = `https://flagcdn.com/w40/${round.flagCode}.png`;
+  countryFlag.src = `https://flagcdn.com/w160/${round.flagCode}.png`;
+countryFlag.srcset = `
+  https://flagcdn.com/w80/${round.flagCode}.png 1x,
+  https://flagcdn.com/w160/${round.flagCode}.png 2x,
+  https://flagcdn.com/w320/${round.flagCode}.png 3x
+`;
   countryFlag.alt = `Bandera de ${round.country}`;
   countryName.textContent = round.country;
 
@@ -632,7 +637,16 @@ function placePlayer(player, forcedSlot = null) {
 
   targetSlot.innerHTML = `
   <span class="slot-flag">
-    <img src="https://flagcdn.com/w80/${round.flagCode}.png" alt="${round.country}">
+    <img
+      src="https://flagcdn.com/w160/${round.flagCode}.png"
+      srcset="
+        https://flagcdn.com/w80/${round.flagCode}.png 1x,
+        https://flagcdn.com/w160/${round.flagCode}.png 2x,
+        https://flagcdn.com/w320/${round.flagCode}.png 3x
+      "
+      alt="${round.country}"
+      loading="lazy"
+    >
   </span>
   <span class="slot-player">${player.name}</span>
   <span class="slot-country">${round.country}</span>
