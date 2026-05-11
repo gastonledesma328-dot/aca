@@ -491,6 +491,15 @@ function positionGroup(position) {
   return "delanteros";
 }
 
+function getPositionGroupLabel(position) {
+  const group = positionGroup(position);
+
+  if (group === "arqueros") return "Arquero";
+  if (group === "defensores") return "Defensor";
+  if (group === "mediocampistas") return "Mediocampista";
+  return "Delantero";
+}
+
 function initGame() {
   stopTimer();
 
@@ -704,13 +713,13 @@ function renderChallengePanel() {
 
   const slotData = getSlotData(selectedSlot);
   const logo = getClubLogo(slotData);
+  const positionLabel = getPositionGroupLabel(slotData.position);
 
   challengeIcon.src = logo;
   challengeIcon.alt = `Escudo de ${slotData.clubName}`;
 
   challengeName.textContent = slotData.clubName;
-  challengeDescription.textContent =
-    `${slotData.country || "América"} · ${slotData.league || "Liga"} · Buscá un jugador actual para ${slotData.position}.`;
+  challengeDescription.textContent = `${slotData.position} · ${positionLabel}`;
 }
 
 function getClubLogo(slotData) {
@@ -795,6 +804,11 @@ function updateSearchPlaceholder() {
     playerSearch.placeholder = "El juego está preparando el próximo equipo...";
     return;
   }
+
+  const slotData = getSlotData(selectedSlot);
+
+  playerSearch.placeholder = `Jugador de ${slotData.clubName} para ${slotData.position}...`;
+}
 
   const slotData = getSlotData(selectedSlot);
 
