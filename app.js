@@ -102,10 +102,6 @@ const STATIC_STREAM_FALLBACKS = [
   },
 ];
 
-/*
-  Devuelve fecha local del navegador en formato YYYY-MM-DD.
-  Se usa para comparar la fecha seleccionada con los partidos.
-*/
 function localDateISO(date = new Date()) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -300,23 +296,6 @@ function showSection(section) {
    EVENTOS STREAMHDX / PARTIDOS EN VIVO
 ============================================================ */
 
-/*
-  IMPORTANTE:
-  Antes tenÃ­as esto:
-
-    new Date(`${event.fecha_iso}T${event.hora}:00`)
-
-  Eso puede hacer que el navegador interprete la hora segÃºn su zona horaria
-  y termine calculando mal si el formato viene sin zona.
-
-  Ahora usamos -03:00 explÃ­cito, que corresponde a Argentina.
-  Esto arregla el cÃ¡lculo de Live / Prox / Fin.
-
-  OJO:
-  Esto NO cambia el texto visible event.hora.
-  Si el JSON trae "11:45", se va a mostrar 11:45.
-  Para mostrar 13:45, el JSON debe traer "hora": "13:45".
-*/
 function eventStart(event) {
   const fecha = event.fecha_iso || event.fecha;
   const hora = event.hora || "00:00";
@@ -752,10 +731,6 @@ function updateFeaturedLegacy() {
   mainScore.textContent = statusText;
   featuredStatus.querySelector("strong").textContent = info.competition;
 
-  /*
-    Mostramos liveEvent.hora directamente.
-    No convertimos acÃ¡ porque el JSON final debe venir ya en horario Argentina.
-  */
   featuredStatus.querySelector("p").textContent =
     `${liveEvent.hora} Â· ${liveEvent.clase || liveEvent.categoria} Â· ${liveEvent.canales?.[0]?.nombre || "Canal disponible"}`;
 
@@ -957,10 +932,6 @@ async function loadEvents() {
     agendaLiveMatches = liveAgendaResult.matches;
     agendaLiveLoaded = liveAgendaResult.ok;
 
-    /*
-      Ordena por fecha/hora Argentina usando eventStart().
-      Como eventStart fuerza -03:00, el orden es mÃ¡s estable.
-    */
     events.sort((a, b) => eventStart(a) - eventStart(b));
 
     renderEvents();
@@ -1136,10 +1107,6 @@ function agendaStatus(match) {
   return tiempo || "Prox";
 }
 
-/*
-  La agenda muestra hora_inicio o hora.
-  No convertimos acÃ¡ porque el Worker deberÃ­a entregar la hora correcta.
-*/
 function agendaDisplayTime(match) {
   const tiempo = match.mostrar_tiempo || match.minuto || "";
 
@@ -1163,12 +1130,23 @@ function agendaDisplayTime(match) {
   return match.hora_inicio || match.hora || "--:--";
 }
 
-function teamLogoMarkup(name, logo) {
-  if (logo) {
-    return `<img class="team-logo" src="${logo}" alt="${name}" loading="lazy" />`;
+function teamLogoMarkup(name, logo, redCards = 0) {
+  const logoHtml = logo
+    ? `<img class="team-logo" src="${logo}" alt="${name}" loading="lazy" />`
+    : `<span class="team-logo logo-fallback">${initials(name)}</span>`;
+
+  const cards = Number(redCards) || 0;
+
+  if (cards <= 0) {
+    return logoHtml;
   }
 
-  return `<span class="team-logo logo-fallback">${initials(name)}</span>`;
+  return `
+    <span class="team-logo-wrap" title="${cards} tarjeta${cards === 1 ? "" : "s"} roja${cards === 1 ? "" : "s"}">
+      ${logoHtml}
+      <span class="mini-red-card">${cards > 1 ? cards : ""}</span>
+    </span>
+  `;
 }
 
 function initials(name = "") {
@@ -1220,10 +1198,6 @@ function scoreMarkup(match) {
       tiempo.includes("ht")
     );
 
-  /*
-    Si el partido no estÃ¡ en juego ni finalizado,
-    mostramos solo "-" para dejar vacÃ­o el resultado.
-  */
   if (!estaEnVivo && !estaFinalizado) {
     return "-";
   }
@@ -1245,7 +1219,6 @@ function scoreMarkup(match) {
       return null;
     }
 
-    // ESPN / tu Worker usa -1 como "sin marcador"
     if (number < 0) {
       return null;
     }
@@ -1278,10 +1251,6 @@ function scoreMarkup(match) {
     }
   }
 
-  /*
-    Si ESPN dice que estÃ¡ en vivo/finalizado pero no hay marcador vÃ¡lido,
-    mantenemos el separador vacÃ­o.
-  */
   return "-";
 }
 
@@ -1332,9 +1301,10 @@ function matchSearchIndex(match, group, home, away, score) {
   const status = agendaStatus(match);
   const scorers = Array.isArray(match.goleadores)
     ? match.goleadores
-        .map((scorer) => `${scorer.jugador || ""} ${scorer.descripcion || ""} ${scorer.equipo || ""}`)
+        .map((scorer) => `${scorerName(scorer)} ${scorer.descripcion || ""} ${scorer.equipo || scorer.team || ""} ${scorerMinute(scorer)}`)
         .join(" ")
     : "";
+  const cards = cardsSearchText(match);
 
   return searchValue(
     [
@@ -1355,6 +1325,7 @@ function matchSearchIndex(match, group, home, away, score) {
       match.minuto,
       match.resultado,
       scorers,
+      cards,
       ...scoreSearchTerms(match, home, away, score),
     ].join(" ")
   );
@@ -1455,9 +1426,48 @@ function applyAgendaSearch() {
   setUtilityStatus(query ? `${visible} coincidencia${visible === 1 ? "" : "s"}` : "");
 }
 
+function normalizeMinute(value) {
+  if (value === undefined || value === null) {
+    return "";
+  }
+
+  const text = String(value).trim();
+
+  if (!text) {
+    return "";
+  }
+
+  if (text.includes("'")) {
+    return text;
+  }
+
+  return `${text}'`;
+}
+
+function scorerName(scorer) {
+  return (
+    scorer.jugador ||
+    scorer.nombre ||
+    scorer.player ||
+    scorer.athlete ||
+    scorer.descripcion ||
+    ""
+  );
+}
+
+function scorerMinute(scorer) {
+  return normalizeMinute(
+    scorer.minuto ||
+      scorer.minute ||
+      scorer.tiempo ||
+      scorer.displayMinute ||
+      scorer.clock
+  );
+}
+
 function scorersMarkup(match) {
   const scorers = Array.isArray(match.goleadores)
-    ? match.goleadores.filter((scorer) => scorer.jugador || scorer.descripcion)
+    ? match.goleadores.filter((scorer) => scorerName(scorer))
     : [];
 
   if (!scorers.length) {
@@ -1465,17 +1475,120 @@ function scorersMarkup(match) {
   }
 
   const summary = scorers
-    .slice(0, 4)
+    .slice(0, 6)
     .map((scorer) => {
-      const minute = scorer.minuto ? `${scorer.minuto} ` : "";
-      const team = scorer.equipo ? ` (${scorer.equipo})` : "";
-      return `${minute}${scorer.jugador || scorer.descripcion}${team}`;
-    })
-    .join(" Â· ");
+      const minute = scorerMinute(scorer);
+      const team = scorer.equipo || scorer.team || "";
+      const goalType = scorer.tipo || scorer.type || "";
+      const detail = goalType && !/goal|gol/i.test(goalType) ? `, ${goalType}` : "";
 
-  const extra = scorers.length > 4 ? ` +${scorers.length - 4}` : "";
+      return `
+        <span class="agenda-scorer-item">
+          ${minute ? `<b>${minute}</b>` : ""}
+          ${scorerName(scorer)}${detail}${team ? ` <em>${team}</em>` : ""}
+        </span>
+      `;
+    })
+    .join("");
+
+  const extra = scorers.length > 6
+    ? `<span class="agenda-scorer-more">+${scorers.length - 6}</span>`
+    : "";
 
   return `<span class="agenda-scorers">${summary}${extra}</span>`;
+}
+
+function normalizeTeamForCompare(value) {
+  return normalizeText(value)
+    .replace(/\bclub\b|\batletico\b|\bdeportivo\b|\basociacion\b|\bca\b|\bfc\b/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function teamValueMatches(value, teamName) {
+  const a = normalizeTeamForCompare(value);
+  const b = normalizeTeamForCompare(teamName);
+
+  if (!a || !b) {
+    return false;
+  }
+
+  return a === b || a.includes(b) || b.includes(a);
+}
+
+function normalizeCardList(match) {
+  return [
+    ...(Array.isArray(match.tarjetas) ? match.tarjetas : []),
+    ...(Array.isArray(match.cards) ? match.cards : []),
+    ...(Array.isArray(match.tarjetas_rojas) ? match.tarjetas_rojas : []),
+    ...(Array.isArray(match.rojas) ? match.rojas : []),
+    ...(Array.isArray(match.redCards) ? match.redCards : []),
+  ];
+}
+
+function isRedCard(card) {
+  const text = normalizeText(
+    `${card.tipo || ""} ${card.type || ""} ${card.card || ""} ${card.descripcion || ""} ${card.text || ""}`
+  );
+
+  return (
+    card.roja === true ||
+    card.red === true ||
+    card.redCard === true ||
+    text.includes("roja") ||
+    text.includes("red card") ||
+    text.includes("red-card")
+  );
+}
+
+function explicitRedCardCount(match, side) {
+  const keys =
+    side === "home"
+      ? ["local_rojas", "rojas_local", "tarjetas_rojas_local", "home_red_cards", "red_cards_home"]
+      : ["visitante_rojas", "rojas_visitante", "tarjetas_rojas_visitante", "away_red_cards", "red_cards_away"];
+
+  for (const key of keys) {
+    const value = Number(match[key]);
+
+    if (Number.isFinite(value) && value > 0) {
+      return value;
+    }
+  }
+
+  return 0;
+}
+
+function redCardsForTeam(match, side, teamName) {
+  const explicit = explicitRedCardCount(match, side);
+
+  if (explicit > 0) {
+    return explicit;
+  }
+
+  return normalizeCardList(match).filter((card) => {
+    if (!card || !isRedCard(card)) {
+      return false;
+    }
+
+    const cardSide = normalizeText(card.local_visitante || card.homeAway || card.side || "");
+
+    if (side === "home" && ["home", "local"].includes(cardSide)) {
+      return true;
+    }
+
+    if (side === "away" && ["away", "visitante"].includes(cardSide)) {
+      return true;
+    }
+
+    return teamValueMatches(card.equipo || card.team || card.teamName || "", teamName);
+  }).length;
+}
+
+function cardsSearchText(match) {
+  return normalizeCardList(match)
+    .filter(isRedCard)
+    .map((card) => `${card.jugador || card.nombre || card.player || ""} ${card.equipo || card.team || ""} roja red card ${card.minuto || card.minute || ""}`)
+    .join(" ");
 }
 
 function agendaSport(match) {
@@ -1785,6 +1898,8 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
         const away = match.visitante || match.partido?.split(" vs ")[1] || "Visitante";
         const isLive = isAgendaMatchLive(match);
         const score = scoreMarkup(match);
+        const homeRedCards = redCardsForTeam(match, "home", home);
+        const awayRedCards = redCardsForTeam(match, "away", away);
 
         if (isLive) {
           row.classList.add("is-live");
@@ -1797,14 +1912,14 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
 
           <span class="agenda-teams">
             <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo, group.league)}" title="Ver ficha de ${home}">
-              ${teamLogoMarkup(home, match.local_logo)}
+              ${teamLogoMarkup(home, match.local_logo, homeRedCards)}
               <span>${home}</span>
             </a>
 
             <span class="agenda-score">${score}</span>
 
             <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo, group.league)}" title="Ver ficha de ${away}">
-              ${teamLogoMarkup(away, match.visitante_logo)}
+              ${teamLogoMarkup(away, match.visitante_logo, awayRedCards)}
               <span>${away}</span>
             </a>
 
@@ -2122,6 +2237,7 @@ function abrirSeccionDesdeHash() {
 window.addEventListener("DOMContentLoaded", abrirSeccionDesdeHash);
 window.addEventListener("hashchange", abrirSeccionDesdeHash);
 window.addEventListener("load", abrirSeccionDesdeHash);
+
 /* ============================================================
    INIT
 ============================================================ */
