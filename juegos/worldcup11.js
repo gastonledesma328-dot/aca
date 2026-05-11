@@ -55,6 +55,7 @@ const modeButtons = document.querySelectorAll(".mode-btn");
 
 const countryFlag = document.getElementById("countryFlag");
 const countryName = document.getElementById("countryName");
+const countryRole = document.getElementById("countryRole");
 const playerForm = document.getElementById("playerForm");
 const playerSearch = document.getElementById("playerSearch");
 const suggestions = document.getElementById("suggestions");
@@ -392,16 +393,31 @@ function updateCountryPanel() {
     countryFlag.src = "https://flagcdn.com/w40/un.png";
     countryFlag.alt = "Desafío finalizado";
     countryName.textContent = "Desafío finalizado";
+
+    if (countryRole) {
+      countryRole.textContent = "Sin posición";
+    }
+
     return;
   }
+
+  const selectedPosition = selectedSlot ? selectedSlot.dataset.position : "";
+  const fallbackPosition = DAILY_GAME.positions[currentRoundIndex] || "";
+  const positionToShow = selectedPosition || fallbackPosition;
 
   countryFlag.src = `https://flagcdn.com/w40/${round.flagCode}.png`;
   countryFlag.alt = `Bandera de ${round.country}`;
   countryName.textContent = round.country;
 
-  playerSearch.placeholder = selectedSlot
-    ? `Jugador de ${round.country} para colocar en ${selectedSlot.dataset.position}...`
-    : `Elegí un casillero o escribí un jugador de ${round.country}...`;
+  if (countryRole) {
+    countryRole.textContent = positionToShow
+      ? `${positionToShow} · ${getPositionLabel(positionToShow)}`
+      : "Elegí una posición";
+  }
+
+  playerSearch.placeholder = positionToShow
+    ? `Leyenda de ${round.country} para ${positionToShow}...`
+    : `Leyenda de ${round.country}...`;
 }
 
 function selectSlot(slot) {
@@ -434,6 +450,25 @@ function clearSelectedSlot() {
 
 function normalizePosition(position) {
   return String(position || "").toUpperCase().trim();
+}
+
+function getPositionLabel(position) {
+  const labels = {
+    GK: "Arquero",
+    RB: "Lateral derecho",
+    CB: "Defensor central",
+    LB: "Lateral izquierdo",
+    CDM: "Mediocampista defensivo",
+    CM: "Mediocampista",
+    CAM: "Mediapunta",
+    LM: "Volante izquierdo",
+    RM: "Volante derecho",
+    LW: "Extremo izquierdo",
+    RW: "Extremo derecho",
+    ST: "Delantero"
+  };
+
+  return labels[position] || "Jugador";
 }
 
 function playerCanPlaySlot(playerPosition, slotPosition) {
