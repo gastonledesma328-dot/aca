@@ -351,18 +351,35 @@ button {
 }
 
 /* Jugador completado dentro de la cancha */
+.position-slot.filled {
+  background: #10251d;
+  color: white;
+  border-color: rgba(95,207,128,0.55);
+  min-width: 112px;
+  min-height: 88px;
+  padding: 9px 8px;
+  font-size: 12px;
+  line-height: 1.1;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border-radius: 12px;
+}
+
+/* Jugador completado dentro de la cancha */
 .slot-flag {
   width: 34px;
   height: 34px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 7px;
+  margin-bottom: 4px;
   border-radius: 50%;
   background: white;
   overflow: hidden;
   box-shadow: 0 5px 12px rgba(0,0,0,0.25);
-  font-size: 20px;
 }
 
 .slot-flag img {
@@ -374,19 +391,25 @@ button {
 
 .slot-player {
   display: block;
+  max-width: 100%;
   font-size: 12px;
   font-weight: 1000;
   color: white;
   text-align: center;
+  line-height: 1.05;
+  word-break: break-word;
 }
 
 .slot-country {
   display: block;
-  margin-top: 3px;
+  margin-top: 1px;
+  max-width: 100%;
   font-size: 10px;
   font-weight: 800;
   color: rgba(255,255,255,0.72);
   text-align: center;
+  line-height: 1.05;
+  word-break: break-word;
 }
 
 /* PANEL PAÍS / BUSCADOR */
@@ -755,56 +778,48 @@ button {
   }
 
   .position-slot.filled {
-    min-width: 76px;
-    min-height: 78px;
-    font-size: 11px;
-  }
+  min-width: 76px;
+  min-height: 78px;
+  padding: 7px 5px;
+  font-size: 11px;
+}
 
-  .slot-flag {
-    width: 28px;
-    height: 28px;
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
+.slot-flag {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 4px;
+}
 
-  .slot-player {
-    font-size: 10px;
-  }
+.slot-player {
+  font-size: 10px;
+}
 
-  .slot-country {
-    font-size: 8px;
-  }
+.slot-country {
+  font-size: 8px;
+}
 
-  .line-count-5 {
-    gap: 5px;
-    padding: 0;
-  }
+.line-count-5 .position-slot.filled {
+  min-width: 0;
+  width: 61px;
+  max-width: 61px;
+  min-height: 72px;
+  font-size: 8px;
+  line-height: 1.05;
+}
 
-  .line-count-5 .position-slot {
-    min-width: 0;
-    width: 61px;
-    max-width: 61px;
-    padding-left: 4px;
-    padding-right: 4px;
-    font-size: 11px;
-  }
+.line-count-5 .position-slot.filled .slot-flag {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 3px;
+}
 
-  .line-count-5 .position-slot.filled {
-    min-width: 0;
-    width: 61px;
-    max-width: 61px;
-    min-height: 72px;
-    font-size: 8px;
-    line-height: 1.05;
-  }
+.line-count-5 .position-slot.filled .slot-player {
+  font-size: 8px;
+}
 
-  .line-count-5 .position-slot.filled .slot-player {
-    font-size: 8px;
-  }
-
-  .line-count-5 .position-slot.filled .slot-country {
-    font-size: 7px;
-  }
+.line-count-5 .position-slot.filled .slot-country {
+  font-size: 7px;
+}
 
   .country-current-card,
   .country-indicator {
