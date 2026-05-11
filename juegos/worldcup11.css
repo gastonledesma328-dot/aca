@@ -33,6 +33,10 @@ input {
   font-family: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
 .game-page {
   width: min(980px, 100%);
   min-height: 100vh;
@@ -40,7 +44,7 @@ input {
   padding: 22px;
 }
 
-/* CABECERA SIMÉTRICA */
+/* CABECERA */
 .topbar {
   width: min(680px, 100%);
   margin: 0 auto 24px;
@@ -97,9 +101,9 @@ input {
   color: var(--text);
   border-radius: 50%;
   font-weight: 900;
-  cursor: pointer;
 }
 
+/* HEADER */
 .game-header {
   width: min(680px, 100%);
   margin: 0 auto 18px;
@@ -130,7 +134,9 @@ input {
   font-size: 16px;
 }
 
-.mode-panel {
+/* MODOS */
+.mode-panel,
+.mode-card {
   width: min(680px, 100%);
   margin: 0 auto 18px;
   display: grid;
@@ -145,10 +151,15 @@ input {
   border-radius: 16px;
   padding: 11px 8px;
   font-weight: 900;
-  cursor: pointer;
 }
 
-.mode-btn small {
+.mode-btn strong {
+  display: block;
+  font-size: 14px;
+}
+
+.mode-btn small,
+.mode-btn span {
   display: block;
   margin-top: 4px;
   color: var(--muted);
@@ -162,15 +173,33 @@ input {
   border-color: transparent;
 }
 
-.mode-btn.active small {
+.mode-btn.active small,
+.mode-btn.active span {
   color: rgba(16,37,29,0.7);
 }
 
-.tactical-board {
+.mode-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* CANCHA */
+.tactical-board,
+.pitch-card {
   width: 100%;
   display: flex;
   justify-content: center;
   margin: 22px 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  min-height: unset;
+  border-radius: 0;
+}
+
+.pitch-lines {
+  display: none;
 }
 
 .pitch-frame {
@@ -186,6 +215,7 @@ input {
   background-size: 80px 80px, 100% 100%;
   box-shadow: var(--shadow);
   overflow: hidden;
+  display: block;
 }
 
 .pitch-frame::before {
@@ -220,42 +250,50 @@ input {
   margin-bottom: 36px;
 }
 
-.line-attack {
+.line-attack,
+.line-0 {
   margin-top: 8px;
 }
 
-.line-mid-advanced {
+.line-mid-advanced,
+.line-1 {
   margin-bottom: 26px;
 }
 
-.line-mid {
+.line-mid,
+.line-2 {
   justify-content: space-between;
   padding: 0 18px;
   margin-bottom: 52px;
 }
 
-.line-defense {
+.line-defense,
+.line-3 {
   margin-bottom: 48px;
 }
 
-.line-gk {
+.line-gk,
+.line-4 {
   margin-bottom: 0;
 }
 
 .position-slot {
   min-width: 78px;
-  min-height: 46px;
-  padding: 10px 13px;
+  min-height: 58px;
+  padding: 8px 10px;
   border: 1px solid rgba(255,255,255,0.34);
-  border-radius: 12px;
+  border-radius: 14px;
   background: rgba(255,255,255,0.92);
   color: #173223;
   font-size: 15px;
   font-weight: 1000;
   letter-spacing: .3px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.22);
-  cursor: pointer;
   transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+  display: grid;
+  place-items: center;
+  gap: 3px;
+  text-align: center;
 }
 
 .position-slot:hover {
@@ -267,19 +305,111 @@ input {
   outline: 3px solid var(--primary);
 }
 
+.position-slot:disabled {
+  cursor: default;
+}
+
+.slot-logo-wrap {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+  overflow: hidden;
+}
+
+.slot-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.slot-position {
+  display: block;
+  font-size: 13px;
+  font-weight: 1000;
+  line-height: 1;
+}
+
+.position-slot small {
+  display: block;
+  max-width: 100%;
+  font-size: 9px;
+  line-height: 1.05;
+  font-weight: 800;
+  color: rgba(23, 50, 35, 0.72);
+  white-space: normal;
+  word-break: break-word;
+}
+
+.mystery-slot small {
+  display: none;
+}
+
+/* CASILLERO COMPLETADO */
 .position-slot.filled {
   background: #10251d;
   color: white;
   border-color: rgba(95,207,128,0.55);
   min-width: 112px;
+  min-height: 90px;
   font-size: 12px;
+  padding: 8px 7px;
+  display: grid;
+  place-items: center;
+  gap: 3px;
+}
+
+.position-slot.filled .slot-logo-wrap {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+  overflow: hidden;
+}
+
+.position-slot.filled .slot-logo {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.position-slot.filled .slot-position {
+  display: none;
+}
+
+.slot-player-name {
+  display: block;
+  max-width: 100%;
+  font-size: 10.5px;
+  font-weight: 1000;
+  line-height: 1.05;
+  text-align: center;
+  word-break: break-word;
+}
+
+.slot-club-name {
+  display: block;
+  max-width: 100%;
+  color: rgba(255,255,255,0.72);
+  font-size: 9px;
+  line-height: 1.05;
+  font-weight: 800;
+  text-align: center;
+  word-break: break-word;
 }
 
 .position-slot.filled small {
   display: block;
-  font-size: 10px;
+  font-size: 9px;
   color: rgba(255,255,255,0.68);
-  margin-top: 3px;
+  margin-top: 2px;
   font-weight: 700;
 }
 
@@ -294,38 +424,50 @@ input {
   min-width: 0;
   width: 104px;
   max-width: 104px;
-  padding-left: 7px;
-  padding-right: 7px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.line-count-5 .slot-logo-wrap {
+  width: 24px;
+  height: 24px;
+}
+
+.line-count-5 .slot-logo {
+  width: 19px;
+  height: 19px;
+}
+
+.line-count-5 .position-slot small {
+  font-size: 8px;
 }
 
 .line-count-5 .position-slot.filled {
   min-width: 0;
   width: 104px;
   max-width: 104px;
+  min-height: 92px;
   font-size: 10px;
   line-height: 1.08;
 }
 
 .line-count-5 .position-slot.filled small {
-  font-size: 9px;
+  font-size: 8px;
 }
 
-/* PANEL DEL PAÍS / BUSCADOR */
+/* PANEL DESAFÍO / BUSCADOR */
 .country-panel {
   width: min(680px, 100%);
   margin: 0 auto;
   background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.16);
   border-radius: 22px;
   padding: 16px;
   box-shadow: var(--shadow);
 }
 
 .country-card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.16);
-  border-radius: 18px;
-  padding: 16px;
+  width: 100%;
 }
 
 .country-indicator {
@@ -333,51 +475,58 @@ input {
   align-items: center;
   justify-content: flex-start;
   gap: 14px;
-  min-height: 88px;
-  padding: 14px;
   margin-bottom: 14px;
-  border-radius: 17px;
+  text-align: left;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 18px;
+  padding: 14px;
+  min-height: 88px;
 }
 
 .country-flag-img {
   width: 58px;
   height: 58px;
-  object-fit: cover;
-  border-radius: 14px;
+  object-fit: contain;
+  border-radius: 16px;
+  padding: 7px;
+  background: rgba(255,255,255,0.94);
   box-shadow: 0 8px 18px rgba(0,0,0,0.28);
-  background: white;
   flex: 0 0 auto;
 }
 
-.country-copy {
+.country-copy,
+.challenge-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 4px;
   min-width: 0;
 }
 
 .country-copy strong,
+.challenge-text strong,
 .country-indicator strong {
-  font-size: clamp(24px, 4vw, 30px);
+  font-size: 28px;
   line-height: 1;
-  color: #f0faf4;
   font-weight: 1000;
+  color: var(--text);
+  letter-spacing: -0.5px;
   text-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
-.country-copy span {
+.country-copy span,
+.challenge-text span,
+#countryRole {
   display: block;
-  margin-top: 6px;
-  color: rgba(240,250,244,0.78);
+  color: rgba(240,250,244,0.72);
   font-size: 14px;
+  line-height: 1.2;
   font-weight: 900;
 }
 
 .search-area {
   display: grid;
-  grid-template-columns: 1fr 56px;
+  grid-template-columns: 1fr 66px;
   align-items: center;
   gap: 10px;
 }
@@ -388,12 +537,12 @@ input {
   border: none;
   outline: none;
   border-radius: 16px;
-  padding: 0 16px;
+  padding: 0 18px;
   background: #f5f5f0;
-  color: #13251c;
+  color: var(--dark);
   font-size: 16px;
   font-weight: 800;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
 }
 
 .search-area input::placeholder {
@@ -402,27 +551,38 @@ input {
 }
 
 .surrender-btn {
-  width: 56px;
+  width: 66px;
   height: 54px;
   border: none;
   border-radius: 16px;
   background: #f5f5f0;
   color: #10251d;
   font-size: 25px;
-  cursor: pointer;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
+.surrender-btn:hover {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+.surrender-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .mode-hint {
-  margin-top: 14px;
-  color: rgba(240,250,244,0.78);
+  margin-top: 18px;
+  color: rgba(240,250,244,0.74);
   text-align: center;
   font-size: 13px;
 }
 
+/* SUGERENCIAS */
 .suggestions {
   display: grid;
   gap: 8px;
@@ -438,12 +598,12 @@ input {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  border: 1px solid rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.12);
   background: rgba(255,255,255,0.1);
   color: var(--text);
   border-radius: 14px;
   padding: 11px 12px;
-  cursor: pointer;
+  text-align: left;
 }
 
 .suggestion-item strong {
@@ -455,7 +615,9 @@ input {
   font-size: 12px;
 }
 
-.status-panel {
+/* ESTADO */
+.status-panel,
+.status-card {
   width: min(680px, 100%);
   margin: 16px auto 0;
   display: grid;
@@ -463,7 +625,8 @@ input {
   gap: 10px;
 }
 
-.status-panel div {
+.status-panel div,
+.status-card div {
   background: rgba(255,255,255,0.08);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -471,17 +634,20 @@ input {
   text-align: center;
 }
 
-.status-panel span {
+.status-panel span,
+.status-card span {
   display: block;
   color: var(--muted);
   font-size: 12px;
   margin-bottom: 4px;
 }
 
-.status-panel strong {
-  font-size: 20px;
+.status-panel strong,
+.status-card strong {
+  font-size: 18px;
 }
 
+/* MODALES */
 .result-modal {
   position: fixed;
   inset: 0;
@@ -492,7 +658,8 @@ input {
   padding: 20px;
 }
 
-.result-card {
+.result-card,
+.result-box {
   width: min(430px, 100%);
   background: var(--card);
   color: var(--dark);
@@ -502,12 +669,14 @@ input {
   box-shadow: var(--shadow);
 }
 
-.result-card h2 {
+.result-card h2,
+.result-box h2 {
   font-size: 28px;
   margin-bottom: 8px;
 }
 
-.result-card p {
+.result-card p,
+.result-box p {
   color: rgba(19,37,28,0.72);
   line-height: 1.45;
 }
@@ -522,8 +691,8 @@ input {
 }
 
 .result-actions button,
+.result-actions a,
 .back-to-games,
-.result-actions a.back-to-games,
 #backToGamesBtn {
   display: inline-flex !important;
   align-items: center;
@@ -536,23 +705,20 @@ input {
   color: #10251d !important;
   font-weight: 900;
   text-decoration: none !important;
-  cursor: pointer;
   line-height: 1;
   font-size: 14px;
   appearance: none;
 }
 
-.result-actions button:hover,
-.back-to-games:hover,
-.result-actions a.back-to-games:hover,
-#backToGamesBtn:hover {
-  filter: brightness(1.05);
-  transform: translateY(-1px);
+.secondary-btn {
+  background: rgba(19,37,28,0.12) !important;
+  color: var(--dark) !important;
 }
 
 .hidden,
+#backToGamesBtn.hidden,
 .back-to-games.hidden,
-#backToGamesBtn.hidden {
+.result-modal.hidden {
   display: none !important;
 }
 
@@ -577,6 +743,7 @@ input {
   color: rgba(255,255,255,0.72);
 }
 
+/* RESPONSIVE */
 @media (max-width: 700px) {
   .game-page {
     padding: 14px;
@@ -600,7 +767,8 @@ input {
     font-size: 12px;
   }
 
-  .mode-panel {
+  .mode-panel,
+  .mode-card {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -614,9 +782,60 @@ input {
     margin-bottom: 32px;
   }
 
-  .line-mid {
+  .line-mid,
+  .line-2 {
     padding: 0;
     gap: 7px;
+  }
+
+  .position-slot {
+    min-width: 58px;
+    min-height: 58px;
+    padding: 7px 6px;
+    font-size: 12px;
+  }
+
+  .slot-logo-wrap {
+    width: 24px;
+    height: 24px;
+  }
+
+  .slot-logo {
+    width: 19px;
+    height: 19px;
+  }
+
+  .slot-position {
+    font-size: 11px;
+  }
+
+  .position-slot small {
+    font-size: 7.5px;
+  }
+
+  .position-slot.filled {
+    min-width: 76px;
+    min-height: 84px;
+    font-size: 11px;
+    padding: 6px 4px;
+  }
+
+  .position-slot.filled .slot-logo-wrap {
+    width: 23px;
+    height: 23px;
+  }
+
+  .position-slot.filled .slot-logo {
+    width: 18px;
+    height: 18px;
+  }
+
+  .slot-player-name {
+    font-size: 8.5px;
+  }
+
+  .slot-club-name {
+    font-size: 7px;
   }
 
   .line-count-5 {
@@ -628,74 +847,100 @@ input {
     min-width: 0;
     width: 61px;
     max-width: 61px;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 3px;
+    padding-right: 3px;
     font-size: 11px;
+  }
+
+  .line-count-5 .slot-logo-wrap {
+    width: 19px;
+    height: 19px;
+  }
+
+  .line-count-5 .slot-logo {
+    width: 15px;
+    height: 15px;
+  }
+
+  .line-count-5 .position-slot small {
+    font-size: 6.8px;
   }
 
   .line-count-5 .position-slot.filled {
     min-width: 0;
     width: 61px;
     max-width: 61px;
+    min-height: 78px;
     font-size: 8px;
     line-height: 1.05;
   }
 
-  .line-count-5 .position-slot.filled small {
+  .line-count-5 .position-slot.filled .slot-logo-wrap {
+    width: 19px;
+    height: 19px;
+  }
+
+  .line-count-5 .position-slot.filled .slot-logo {
+    width: 15px;
+    height: 15px;
+  }
+
+  .line-count-5 .slot-player-name {
     font-size: 7px;
   }
 
-  .position-slot {
-    min-width: 58px;
-    min-height: 42px;
-    padding: 8px 9px;
-    font-size: 12px;
+  .line-count-5 .slot-club-name {
+    font-size: 6px;
   }
 
-  .position-slot.filled {
-    min-width: 76px;
-    font-size: 11px;
-  }
-
-  .country-card {
-    padding: 12px;
+  .country-panel {
+    padding: 14px;
+    border-radius: 20px;
   }
 
   .country-indicator {
     min-height: 78px;
+    gap: 11px;
     padding: 12px;
   }
 
   .country-flag-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    padding: 6px;
   }
 
   .country-copy strong,
+  .challenge-text strong,
   .country-indicator strong {
     font-size: 24px;
   }
 
-  .country-copy span {
+  .country-copy span,
+  .challenge-text span,
+  #countryRole {
     font-size: 13px;
   }
 
   .search-area {
-    grid-template-columns: 1fr 52px;
+    grid-template-columns: 1fr 58px;
+    gap: 9px;
   }
 
   .search-area input {
     height: 52px;
     font-size: 14px;
+    padding: 0 15px;
   }
 
   .surrender-btn {
-    width: 52px;
+    width: 58px;
     height: 52px;
   }
 
-  .status-panel {
+  .status-panel,
+  .status-card {
     grid-template-columns: repeat(2, 1fr);
   }
 }
