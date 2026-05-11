@@ -52,6 +52,7 @@ const POSITION_COMPATIBILITY = {
 };
 
 const POSITION_LABELS = {
+  const MIN_SEARCH_CHARS = 3;
   GK: "Arquero",
   RB: "Lateral derecho",
   CB: "Defensor central",
@@ -622,6 +623,16 @@ function renderSuggestions(query) {
 
   const value = normalizeText(query);
 
+  if (value && value.length < MIN_SEARCH_CHARS) {
+    suggestions.innerHTML = `
+      <button class="suggestion-item" type="button">
+        <strong>Escribí al menos 3 letras</strong>
+        <span>${round.country} · ${requiredPosition}</span>
+      </button>
+    `;
+    return;
+  }
+
   const filtered = round.players.filter(player => {
     if (usedPlayers.includes(player.name)) return false;
 
@@ -744,6 +755,11 @@ function trySubmitSearch() {
     return;
   }
 
+  if (value.length < MIN_SEARCH_CHARS) {
+    showTemporaryPlaceholder("Escribí al menos 3 letras del nombre");
+    return;
+  }
+
   const matches = round.players.filter(player => {
     if (usedPlayers.includes(player.name)) return false;
 
@@ -773,8 +789,35 @@ function trySubmitSearch() {
     return;
   }
 
+  /*
+    Evita que entradas muy cortas autocompleten.
+    Ejemplo:
+    "ne"  -> no entra por mínimo de 3 letras
+    "ney" -> muestra sugerencia, pero no coloca automático
+    "neymar" -> coloca Neymar
+  */
   if (matches.length === 1) {
-    placePlayer(matches[0]);
+    const candidate = matches[0];
+    const fullName = normalizeText(candidate.name);
+    const lastName = normalizeText(candidate.name.split(" ").pop());
+    const aliases = Array.isArray(candidate.aliases) ? candidate.aliases.map(normalizeText) : [];
+
+    const safeAutoComplete =
+      fullName.startsWith(value) && value.length >= Math.min(5, fullName.length) ||
+      lastName.startsWith(value) && value.length >= Math.min(5, lastName.length) ||
+      aliases.some(alias => alias.startsWith(value) && value.length >= Math.min(5, alias.length));
+
+    if (safeAutoComplete) {
+      placePlayer(candidate);
+      return;
+    }
+
+    if (GAME_MODES[currentMode].showHints) {
+      renderSuggestions(playerSearch.value);
+    } else {
+      showTemporaryPlaceholder("Escribí un poco más del nombre");
+    }
+
     return;
   }
 
