@@ -346,16 +346,24 @@ button {
 
 /* Jugador completado dentro de la cancha */
 .slot-flag {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 7px;
   border-radius: 50%;
   background: white;
-  font-size: 20px;
+  overflow: hidden;
   box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+  font-size: 20px;
+}
+
+.slot-flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .slot-player {
@@ -442,16 +450,15 @@ button {
   line-height: 1.35;
 }
 
-.position-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--primary);
-  color: #10251d;
-  border-radius: 999px;
-  padding: 4px 10px;
-  font-size: 12px;
-  font-weight: 900;
+.position-pill,
+#positionName {
+  display: block;
+  background: transparent;
+  color: var(--muted);
+  border-radius: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .player-form,
