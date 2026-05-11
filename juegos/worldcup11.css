@@ -101,6 +101,7 @@ button {
   color: var(--text);
   border-radius: 50%;
   font-weight: 900;
+  cursor: pointer;
 }
 
 /* HEADER */
@@ -135,8 +136,8 @@ button {
 }
 
 /* MODOS */
-.mode-panel,
-.mode-card {
+.mode-card,
+.mode-panel {
   width: min(680px, 100%);
   margin: 0 auto 18px;
   display: grid;
@@ -151,6 +152,7 @@ button {
   border-radius: 16px;
   padding: 11px 8px;
   font-weight: 900;
+  cursor: pointer;
 }
 
 .mode-btn strong {
@@ -158,8 +160,8 @@ button {
   font-size: 14px;
 }
 
-.mode-btn small,
-.mode-btn span {
+.mode-btn span,
+.mode-btn small {
   display: block;
   margin-top: 4px;
   color: var(--muted);
@@ -173,8 +175,8 @@ button {
   border-color: transparent;
 }
 
-.mode-btn.active small,
-.mode-btn.active span {
+.mode-btn.active span,
+.mode-btn.active small {
   color: rgba(16,37,29,0.7);
 }
 
@@ -277,23 +279,51 @@ button {
   margin-bottom: 0;
 }
 
+/* Corrección para líneas con 5 jugadores */
+.line-count-5 {
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+}
+
+.line-count-5 .position-slot {
+  min-width: 0;
+  width: 104px;
+  max-width: 104px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.line-count-5 .position-slot.filled {
+  min-width: 0;
+  width: 104px;
+  max-width: 104px;
+  font-size: 10px;
+  line-height: 1.08;
+}
+
+.line-count-5 .position-slot.filled .slot-player {
+  font-size: 10px;
+}
+
+.line-count-5 .position-slot.filled .slot-country {
+  font-size: 9px;
+}
+
 .position-slot {
   min-width: 78px;
-  min-height: 58px;
-  padding: 8px 10px;
+  min-height: 46px;
+  padding: 10px 13px;
   border: 1px solid rgba(255,255,255,0.34);
-  border-radius: 14px;
+  border-radius: 12px;
   background: rgba(255,255,255,0.92);
   color: #173223;
   font-size: 15px;
   font-weight: 1000;
   letter-spacing: .3px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+  cursor: pointer;
   transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-  display: grid;
-  place-items: center;
-  gap: 3px;
-  text-align: center;
 }
 
 .position-slot:hover {
@@ -305,162 +335,67 @@ button {
   outline: 3px solid var(--primary);
 }
 
-.position-slot:disabled {
-  cursor: default;
-}
-
-.slot-logo-wrap {
-  width: 30px;
-  height: 30px;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.9);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.18);
-  overflow: hidden;
-}
-
-.slot-logo {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-.slot-position {
-  display: block;
-  font-size: 13px;
-  font-weight: 1000;
-  line-height: 1;
-}
-
-.position-slot small {
-  display: block;
-  max-width: 100%;
-  font-size: 9px;
-  line-height: 1.05;
-  font-weight: 800;
-  color: rgba(23, 50, 35, 0.72);
-  white-space: normal;
-  word-break: break-word;
-}
-
-.mystery-slot small {
-  display: none;
-}
-
-/* CASILLERO COMPLETADO */
 .position-slot.filled {
   background: #10251d;
   color: white;
   border-color: rgba(95,207,128,0.55);
   min-width: 112px;
-  min-height: 90px;
+  min-height: 88px;
+  padding: 10px;
   font-size: 12px;
-  padding: 8px 7px;
-  display: grid;
-  place-items: center;
-  gap: 3px;
-}
-
-.position-slot.filled .slot-logo-wrap {
-  display: grid;
-  width: 30px;
-  height: 30px;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.92);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.18);
-  overflow: hidden;
-}
-
-.position-slot.filled .slot-logo {
-  display: block;
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-.position-slot.filled .slot-position {
-  display: none;
-}
-
-.slot-player-name {
-  display: block;
-  max-width: 100%;
-  font-size: 10.5px;
-  font-weight: 1000;
-  line-height: 1.05;
-  text-align: center;
-  word-break: break-word;
-}
-
-.slot-club-name {
-  display: block;
-  max-width: 100%;
-  color: rgba(255,255,255,0.72);
-  font-size: 9px;
-  line-height: 1.05;
-  font-weight: 800;
-  text-align: center;
-  word-break: break-word;
-}
-
-.position-slot.filled small {
-  display: block;
-  font-size: 9px;
-  color: rgba(255,255,255,0.68);
-  margin-top: 2px;
-  font-weight: 700;
-}
-
-/* Corrección para líneas de 5 jugadores, ejemplo 5-3-2 */
-.line-count-5 {
+  line-height: 1.1;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 0;
 }
 
-.line-count-5 .position-slot {
-  min-width: 0;
-  width: 104px;
-  max-width: 104px;
-  padding-left: 6px;
-  padding-right: 6px;
+/* Jugador completado dentro de la cancha */
+.slot-flag {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 7px;
+  border-radius: 50%;
+  background: white;
+  overflow: hidden;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+  font-size: 20px;
 }
 
-.line-count-5 .slot-logo-wrap {
-  width: 24px;
-  height: 24px;
+.slot-flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.line-count-5 .slot-logo {
-  width: 19px;
-  height: 19px;
+.slot-player {
+  display: block;
+  font-size: 12px;
+  font-weight: 1000;
+  color: white;
+  text-align: center;
 }
 
-.line-count-5 .position-slot small {
-  font-size: 8px;
-}
-
-.line-count-5 .position-slot.filled {
-  min-width: 0;
-  width: 104px;
-  max-width: 104px;
-  min-height: 92px;
+.slot-country {
+  display: block;
+  margin-top: 3px;
   font-size: 10px;
-  line-height: 1.08;
+  font-weight: 800;
+  color: rgba(255,255,255,0.72);
+  text-align: center;
 }
 
-.line-count-5 .position-slot.filled small {
-  font-size: 8px;
-}
-
-/* PANEL DESAFÍO / BUSCADOR */
+/* PANEL PAÍS / BUSCADOR */
+/* Esta parte copia la estética exacta del CSS que pasaste */
 .country-panel {
   width: min(680px, 100%);
-  margin: 0 auto;
+  margin: 24px auto 0;
   background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.16);
+  border: 1px solid var(--border);
   border-radius: 22px;
   padding: 16px;
   box-shadow: var(--shadow);
@@ -470,94 +405,114 @@ button {
   width: 100%;
 }
 
+.country-current-card,
 .country-indicator {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 14px;
+  width: 100%;
+  padding: 14px;
   margin-bottom: 14px;
-  text-align: left;
+  border-radius: 18px;
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 18px;
-  padding: 14px;
+  text-align: left;
   min-height: 88px;
 }
 
-.country-flag-img {
+.country-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin-bottom: 14px;
+}
+
+.country-flag-img,
+.country-row img {
   width: 58px;
   height: 58px;
-  object-fit: contain;
-  border-radius: 16px;
-  padding: 7px;
-  background: rgba(255,255,255,0.94);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.28);
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+  background: white;
   flex: 0 0 auto;
 }
 
 .country-copy,
-.challenge-text {
+.country-current-info,
+.country-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: flex-start;
+  gap: 5px;
   min-width: 0;
 }
 
 .country-copy strong,
-.challenge-text strong,
+.country-current-info strong,
+.country-row strong,
 .country-indicator strong {
-  font-size: 28px;
-  line-height: 1;
-  font-weight: 1000;
   color: var(--text);
-  letter-spacing: -0.5px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  font-size: 26px;
+  font-weight: 1000;
+  line-height: 1;
 }
 
 .country-copy span,
-.challenge-text span,
-#countryRole {
+.country-current-info span,
+#countryRole,
+.position-pill,
+#positionName {
   display: block;
-  color: rgba(240,250,244,0.72);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 0;
+  padding: 0;
   font-size: 14px;
-  line-height: 1.2;
-  font-weight: 900;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
+.player-form,
 .search-area {
-  display: grid;
-  grid-template-columns: 1fr 66px;
+  display: flex;
   align-items: center;
   gap: 10px;
 }
 
+.player-form input,
 .search-area input {
   width: 100%;
   height: 54px;
   border: none;
   outline: none;
   border-radius: 16px;
-  padding: 0 18px;
-  background: #f5f5f0;
+  padding: 0 16px;
+  background: var(--card);
   color: var(--dark);
   font-size: 16px;
   font-weight: 800;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
 }
 
+.player-form input::placeholder,
 .search-area input::placeholder {
-  color: rgba(19,37,28,0.62);
-  font-weight: 800;
+  color: rgba(19,37,28,0.58);
+  font-weight: 700;
 }
 
+/* BOTÓN RENDIRSE */
 .surrender-btn {
-  width: 66px;
+  flex: 0 0 auto;
+  width: 56px;
   height: 54px;
   border: none;
   border-radius: 16px;
-  background: #f5f5f0;
-  color: #10251d;
+  background: white;
+  color: var(--dark);
   font-size: 25px;
+  cursor: pointer;
   box-shadow: 0 8px 20px rgba(0,0,0,0.18);
   display: inline-flex;
   align-items: center;
@@ -565,7 +520,7 @@ button {
 }
 
 .surrender-btn:hover {
-  filter: brightness(1.04);
+  filter: brightness(1.05);
   transform: translateY(-1px);
 }
 
@@ -576,13 +531,12 @@ button {
 }
 
 .mode-hint {
-  margin-top: 18px;
-  color: rgba(240,250,244,0.74);
+  margin-top: 10px;
+  color: var(--muted);
   text-align: center;
   font-size: 13px;
 }
 
-/* SUGERENCIAS */
 .suggestions {
   display: grid;
   gap: 8px;
@@ -598,12 +552,13 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  width: 100%;
   border: 1px solid rgba(255,255,255,0.12);
   background: rgba(255,255,255,0.1);
   color: var(--text);
   border-radius: 14px;
   padding: 11px 12px;
-  text-align: left;
+  cursor: pointer;
 }
 
 .suggestion-item strong {
@@ -616,8 +571,8 @@ button {
 }
 
 /* ESTADO */
-.status-panel,
-.status-card {
+.status-card,
+.status-panel {
   width: min(680px, 100%);
   margin: 16px auto 0;
   display: grid;
@@ -625,8 +580,8 @@ button {
   gap: 10px;
 }
 
-.status-panel div,
-.status-card div {
+.status-card div,
+.status-panel div {
   background: rgba(255,255,255,0.08);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -634,17 +589,17 @@ button {
   text-align: center;
 }
 
-.status-panel span,
-.status-card span {
+.status-card span,
+.status-panel span {
   display: block;
   color: var(--muted);
   font-size: 12px;
   margin-bottom: 4px;
 }
 
-.status-panel strong,
-.status-card strong {
-  font-size: 18px;
+.status-card strong,
+.status-panel strong {
+  font-size: 20px;
 }
 
 /* MODALES */
@@ -658,8 +613,8 @@ button {
   padding: 20px;
 }
 
-.result-card,
-.result-box {
+.result-box,
+.result-card {
   width: min(430px, 100%);
   background: var(--card);
   color: var(--dark);
@@ -669,14 +624,14 @@ button {
   box-shadow: var(--shadow);
 }
 
-.result-card h2,
-.result-box h2 {
+.result-box h2,
+.result-card h2 {
   font-size: 28px;
   margin-bottom: 8px;
 }
 
-.result-card p,
-.result-box p {
+.result-box p,
+.result-card p {
   color: rgba(19,37,28,0.72);
   line-height: 1.45;
 }
@@ -691,8 +646,8 @@ button {
 }
 
 .result-actions button,
-.result-actions a,
 .back-to-games,
+.result-actions a.back-to-games,
 #backToGamesBtn {
   display: inline-flex !important;
   align-items: center;
@@ -705,23 +660,28 @@ button {
   color: #10251d !important;
   font-weight: 900;
   text-decoration: none !important;
+  cursor: pointer;
   line-height: 1;
   font-size: 14px;
   appearance: none;
 }
 
-.secondary-btn {
-  background: rgba(19,37,28,0.12) !important;
-  color: var(--dark) !important;
+.result-actions button:hover,
+.back-to-games:hover,
+.result-actions a.back-to-games:hover,
+#backToGamesBtn:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
 }
 
 .hidden,
-#backToGamesBtn.hidden,
 .back-to-games.hidden,
+#backToGamesBtn.hidden,
 .result-modal.hidden {
   display: none !important;
 }
 
+/* ERROR */
 .load-error {
   position: relative;
   z-index: 4;
@@ -767,8 +727,8 @@ button {
     font-size: 12px;
   }
 
-  .mode-panel,
-  .mode-card {
+  .mode-card,
+  .mode-panel {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -782,7 +742,6 @@ button {
     margin-bottom: 32px;
   }
 
-  .line-mid,
   .line-2 {
     padding: 0;
     gap: 7px;
@@ -790,52 +749,30 @@ button {
 
   .position-slot {
     min-width: 58px;
-    min-height: 58px;
-    padding: 7px 6px;
+    min-height: 42px;
+    padding: 8px 9px;
     font-size: 12px;
-  }
-
-  .slot-logo-wrap {
-    width: 24px;
-    height: 24px;
-  }
-
-  .slot-logo {
-    width: 19px;
-    height: 19px;
-  }
-
-  .slot-position {
-    font-size: 11px;
-  }
-
-  .position-slot small {
-    font-size: 7.5px;
   }
 
   .position-slot.filled {
     min-width: 76px;
-    min-height: 84px;
+    min-height: 78px;
     font-size: 11px;
-    padding: 6px 4px;
   }
 
-  .position-slot.filled .slot-logo-wrap {
-    width: 23px;
-    height: 23px;
+  .slot-flag {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    margin-bottom: 5px;
   }
 
-  .position-slot.filled .slot-logo {
-    width: 18px;
-    height: 18px;
+  .slot-player {
+    font-size: 10px;
   }
 
-  .slot-player-name {
-    font-size: 8.5px;
-  }
-
-  .slot-club-name {
-    font-size: 7px;
+  .slot-country {
+    font-size: 8px;
   }
 
   .line-count-5 {
@@ -847,100 +784,68 @@ button {
     min-width: 0;
     width: 61px;
     max-width: 61px;
-    padding-left: 3px;
-    padding-right: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
     font-size: 11px;
-  }
-
-  .line-count-5 .slot-logo-wrap {
-    width: 19px;
-    height: 19px;
-  }
-
-  .line-count-5 .slot-logo {
-    width: 15px;
-    height: 15px;
-  }
-
-  .line-count-5 .position-slot small {
-    font-size: 6.8px;
   }
 
   .line-count-5 .position-slot.filled {
     min-width: 0;
     width: 61px;
     max-width: 61px;
-    min-height: 78px;
+    min-height: 72px;
     font-size: 8px;
     line-height: 1.05;
   }
 
-  .line-count-5 .position-slot.filled .slot-logo-wrap {
-    width: 19px;
-    height: 19px;
+  .line-count-5 .position-slot.filled .slot-player {
+    font-size: 8px;
   }
 
-  .line-count-5 .position-slot.filled .slot-logo {
-    width: 15px;
-    height: 15px;
-  }
-
-  .line-count-5 .slot-player-name {
+  .line-count-5 .position-slot.filled .slot-country {
     font-size: 7px;
   }
 
-  .line-count-5 .slot-club-name {
-    font-size: 6px;
-  }
-
-  .country-panel {
-    padding: 14px;
-    border-radius: 20px;
-  }
-
+  .country-current-card,
   .country-indicator {
-    min-height: 78px;
-    gap: 11px;
     padding: 12px;
+    gap: 11px;
+    min-height: 78px;
   }
 
-  .country-flag-img {
-    width: 52px;
-    height: 52px;
+  .country-flag-img,
+  .country-row img {
+    width: 54px;
+    height: 54px;
     border-radius: 14px;
-    padding: 6px;
   }
 
   .country-copy strong,
-  .challenge-text strong,
+  .country-current-info strong,
+  .country-row strong,
   .country-indicator strong {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .country-copy span,
-  .challenge-text span,
+  .country-current-info span,
   #countryRole {
-    font-size: 13px;
+    font-size: 12px;
   }
 
-  .search-area {
-    grid-template-columns: 1fr 58px;
-    gap: 9px;
-  }
-
+  .player-form input,
   .search-area input {
-    height: 52px;
+    height: 50px;
     font-size: 14px;
-    padding: 0 15px;
   }
 
   .surrender-btn {
-    width: 58px;
-    height: 52px;
+    width: 52px;
+    height: 50px;
   }
 
-  .status-panel,
-  .status-card {
+  .status-card,
+  .status-panel {
     grid-template-columns: repeat(2, 1fr);
   }
 }
