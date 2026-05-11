@@ -149,6 +149,20 @@ function getTodayStorageKey() {
   return `${STORAGE_PREFIX}${getTodayKey()}`;
 }
 
+
+function getFlagUrl(flagCode, size = 80) {
+  if (!flagCode) return "https://flagcdn.com/w80/un.png";
+  return `https://flagcdn.com/w${size}/${flagCode}.png`;
+}
+
+function escapeHTML(text) {
+  return String(text || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 /*
   Límite diario quitado.
   El juego no se bloquea nunca.
@@ -467,7 +481,7 @@ function updateCountryPanel() {
   const requiredPosition = getCurrentRequiredPosition();
 
   if (!round || !requiredPosition) {
-    countryFlag.src = "https://flagcdn.com/w40/un.png";
+    countryFlag.src = getFlagUrl("un", 80);
     countryFlag.alt = "Desafío finalizado";
     countryName.textContent = "Desafío finalizado";
 
@@ -478,12 +492,12 @@ function updateCountryPanel() {
     return;
   }
 
-  countryFlag.src = `https://flagcdn.com/w80/${round.flagCode}.png`;
+  countryFlag.src = getFlagUrl(round.flagCode, 80);
   countryFlag.alt = `Bandera de ${round.country}`;
   countryName.textContent = round.country;
 
   if (positionName) {
-    positionName.textContent = `${round.country} · Buscá una leyenda para ${requiredPosition} (${POSITION_LABELS[requiredPosition] || requiredPosition}).`;
+    positionName.textContent = `${requiredPosition} · ${POSITION_LABELS[requiredPosition] || requiredPosition}`;
   }
 
   playerSearch.placeholder = `Leyenda de ${round.country} para ${requiredPosition}...`;
@@ -628,10 +642,17 @@ function placePlayer(player) {
   targetSlot.classList.remove("selected");
 
   targetSlot.innerHTML = `
-    <span class="slot-flag">${round.flagEmoji || "🏳️"}</span>
-    <strong class="slot-player">${player.name}</strong>
-    <small class="slot-country">${round.country}</small>
-  `;
+  <span class="slot-flag">
+    <img
+      src="${getFlagUrl(round.flagCode, 40)}"
+      alt="${escapeHTML(round.country)}"
+      loading="lazy"
+      onerror="this.style.display='none'; this.parentElement.textContent='${round.flagEmoji || "🏳️"}';"
+    />
+  </span>
+  <strong class="slot-player">${escapeHTML(player.name)}</strong>
+  <small class="slot-country">${escapeHTML(round.country)}</small>
+`;
 
   completedSlots.push(Number(targetSlot.dataset.index));
   usedPlayers.push(player.name);
