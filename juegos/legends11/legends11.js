@@ -150,15 +150,15 @@ function getTodayStorageKey() {
 }
 
 /*
-  LÍMITE DIARIO QUITADO:
-  Siempre devuelve false para que el juego no se bloquee nunca.
+  Límite diario quitado.
+  El juego no se bloquea nunca.
 */
 function hasPlayedToday() {
   return false;
 }
 
 /*
-  Ya no guardamos bloqueo en localStorage.
+  Ya no guarda bloqueo diario.
 */
 function savePlayedToday() {
   attemptStartedThisSession = true;
@@ -202,8 +202,8 @@ function shuffleArray(list, random) {
 }
 
 /*
-  Genera una partida nueva en cada intento.
-  No queda fija por día.
+  Genera una partida nueva cada vez.
+  Rota formación, países y jugadores.
 */
 function generateDailyGame() {
   const todayKey = getTodayKey();
@@ -368,7 +368,6 @@ function initGame() {
   });
 
   applyModeUi();
-  clearSelectedSlot();
   updateCountryPanel();
   startTimerIfNeeded();
   updateStatus();
@@ -479,15 +478,15 @@ function updateCountryPanel() {
     return;
   }
 
-  countryFlag.src = `https://flagcdn.com/w40/${round.flagCode}.png`;
+  countryFlag.src = `https://flagcdn.com/w80/${round.flagCode}.png`;
   countryFlag.alt = `Bandera de ${round.country}`;
   countryName.textContent = round.country;
 
   if (positionName) {
-    positionName.textContent = `${requiredPosition} · ${POSITION_LABELS[requiredPosition] || requiredPosition}`;
+    positionName.textContent = `${round.country} · Buscá una leyenda para ${requiredPosition} (${POSITION_LABELS[requiredPosition] || requiredPosition}).`;
   }
 
-  playerSearch.placeholder = `Escribí una leyenda de ${round.country} para ${requiredPosition}...`;
+  playerSearch.placeholder = `Leyenda de ${round.country} para ${requiredPosition}...`;
 
   highlightCurrentSlot();
 }
@@ -507,15 +506,6 @@ function selectSlot(slot) {
   }
 }
 
-function clearSelectedSlot() {
-  selectedSlot = null;
-
-  getSlots().forEach(item => item.classList.remove("selected"));
-
-  suggestions.innerHTML = "";
-  updateCountryPanel();
-}
-
 function normalizePosition(position) {
   return String(position || "").toUpperCase().trim();
 }
@@ -527,30 +517,6 @@ function playerCanPlaySlot(playerPosition, slotPosition) {
   const compatibles = POSITION_COMPATIBILITY[slotPos] || [slotPos];
 
   return compatibles.includes(playerPos);
-}
-
-function findBestFreeSlotForPlayer(player) {
-  const freeSlots = Array.from(getSlots()).filter(slot => {
-    return !slot.classList.contains("filled");
-  });
-
-  if (!freeSlots.length) return null;
-
-  const exactSlot = freeSlots.find(slot => {
-    return normalizePosition(slot.dataset.position) === normalizePosition(player.position);
-  });
-
-  if (exactSlot) return exactSlot;
-
-  const compatibleSlots = freeSlots.filter(slot => {
-    return playerCanPlaySlot(player.position, slot.dataset.position);
-  });
-
-  if (compatibleSlots.length === 1) {
-    return compatibleSlots[0];
-  }
-
-  return null;
 }
 
 function playerMatchesSearch(player, value) {
@@ -610,7 +576,7 @@ function renderSuggestions(query) {
     suggestions.innerHTML = `
       <button class="suggestion-item" type="button">
         <strong>No encontré esa leyenda</strong>
-        <span>Debe ser de ${round.country} y jugar de ${requiredPosition}</span>
+        <span>${round.country} · Debe servir para ${requiredPosition}</span>
       </button>
     `;
     return;
@@ -647,7 +613,7 @@ function placePlayer(player) {
   if (!round || !requiredPosition || !targetSlot) return;
 
   if (!playerCanPlaySlot(player.position, requiredPosition)) {
-    showTemporaryPlaceholder(`${player.name} no juega de ${requiredPosition}`);
+    showTemporaryPlaceholder(`${player.name} no sirve para ${requiredPosition}`);
     return;
   }
 
@@ -662,8 +628,9 @@ function placePlayer(player) {
   targetSlot.classList.remove("selected");
 
   targetSlot.innerHTML = `
-    ${player.name}
-    <small>${round.flagEmoji || ""} ${round.country}</small>
+    <span class="slot-flag">${round.flagEmoji || "🏳️"}</span>
+    <strong class="slot-player">${player.name}</strong>
+    <small class="slot-country">${round.country}</small>
   `;
 
   completedSlots.push(Number(targetSlot.dataset.index));
@@ -854,10 +821,6 @@ function showModeChangeModal(nextMode) {
   };
 }
 
-/*
-  Esta función queda por compatibilidad, pero ya no debería usarse
-  porque el límite diario fue eliminado.
-*/
 function lockGameForToday() {
   gameFinished = false;
   dailyAttemptLocked = false;
@@ -975,7 +938,7 @@ Puntaje: ${score}`;
 });
 
 helpBtn.addEventListener("click", () => {
-  alert("Cada desafío muestra países distintos. Escribí una leyenda del país indicado; si su posición tiene un casillero compatible, se coloca automáticamente. También podés elegir primero una casilla compatible. Al terminar, podés jugar otro desafío con nueva formación y países rotados.");
+  alert("El juego muestra un país y una posición. Escribí una leyenda de ese país para esa posición y presioná Enter. El jugador se coloca automáticamente en la cancha. Al terminar, podés jugar otro desafío con nueva formación y países rotados.");
 });
 
 loadGameData();
