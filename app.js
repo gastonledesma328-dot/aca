@@ -80,7 +80,7 @@ const FEATURED_LOGO_FALLBACKS = {
   Antes estaba en 60 segundos.
   Lo subimos a 3 minutos para que la agenda abra más rápido y no consulte el Worker todo el tiempo.
 */
-const CACHE_TTL_MS = 3 * 60_000;
+const CACHE_TTL_MS = 60_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
 
