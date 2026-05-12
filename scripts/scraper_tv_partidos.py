@@ -43,15 +43,77 @@ def cargar_rules():
         return json.load(f)
 
 
+def es_liga_juvenil_o_reserva(liga):
+    liga_norm = normalizar(liga)
+
+    palabras = [
+        "u17",
+        "u18",
+        "u19",
+        "u20",
+        "u21",
+        "u23",
+        "sub 17",
+        "sub 18",
+        "sub 19",
+        "sub 20",
+        "sub 21",
+        "sub 23",
+        "reserve",
+        "reserva",
+        "res.",
+        "reserves",
+        "youth",
+        "academy",
+        "development",
+        "junior",
+        "juniors",
+        "juvenil"
+    ]
+
+    return any(palabra in liga_norm for palabra in palabras)
+
+
+def limpiar_canales(canales):
+    if not isinstance(canales, list):
+        return ["A confirmar"]
+
+    limpios = []
+
+    for canal in canales:
+        canal = str(canal or "").strip()
+
+        if not canal:
+            continue
+
+        if canal not in limpios:
+            limpios.append(canal)
+
+    canales_reales = [
+        canal for canal in limpios
+        if normalizar(canal) != "a confirmar"
+    ]
+
+    if canales_reales:
+        return canales_reales
+
+    return ["A confirmar"]
+
+
 def buscar_canales(rules, pais, liga):
     pais = str(pais or "").strip()
     liga = str(liga or "").strip()
+
+    # Evita falsos positivos:
+    # U18 Premier League no debe heredar ESPN/Disney+ de Premier League.
+    if es_liga_juvenil_o_reserva(liga):
+        return rules.get("default", ["A confirmar"]), "liga_juvenil_reserva", "baja"
 
     pais_norm = normalizar(pais)
     liga_norm = normalizar(liga)
 
     # 1. Coincidencia exacta por país y liga
-    if pais in rules:
+    if pais in rules and isinstance(rules[pais], dict):
         ligas_pais = rules[pais]
 
         if liga in ligas_pais:
@@ -71,10 +133,10 @@ def buscar_canales(rules, pais, liga):
         if pais_rule == "default":
             continue
 
-        if normalizar(pais_rule) != pais_norm:
+        if not isinstance(ligas_pais, dict):
             continue
 
-        if not isinstance(ligas_pais, dict):
+        if normalizar(pais_rule) != pais_norm:
             continue
 
         for nombre_liga, canales in ligas_pais.items():
@@ -151,7 +213,7 @@ def armar_json_tv(fixtures, rules, fecha):
         fixture = item.get("fixture") or {}
         league = item.get("league") or {}
         teams = item.get("teams") or {}
-        status = (fixture.get("status") or {})
+        status = fixture.get("status") or {}
 
         fixture_id = fixture.get("id")
 
@@ -168,6 +230,7 @@ def armar_json_tv(fixtures, rules, fecha):
         pais = league.get("country") or ""
 
         canales, fuente, confianza = buscar_canales(rules, pais, liga)
+        canales = limpiar_canales(canales)
 
         partidos[str(fixture_id)] = {
             "fixture_id": fixture_id,
