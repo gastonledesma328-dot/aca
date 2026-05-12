@@ -2137,17 +2137,47 @@ async function loadAgenda(date = currentAgendaDate) {
   }
 
   agendaLoading = true;
-  leagueGrid.innerHTML = `<p class="empty-state">Cargando Agenda...</p>`;
+
+  // Primero mostramos cache guardado, si existe.
+  const cachedData = readAnyJsonCache("agenda-worker-cache");
+
+  if (cachedData && Array.isArray(cachedData.partidos)) {
+    const cachedMatches = uniqueMatches(cachedData.partidos)
+      .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
+      .sort((a, b) => {
+        const priorityA = Number(a.prioridad_liga ?? 9999);
+        const priorityB = Number(b.prioridad_liga ?? 9999);
+
+        if (priorityA !== priorityB) {
+          return priorityA - priorityB;
+        }
+
+        return (a.hora_inicio || a.hora || "").localeCompare(
+          b.hora_inicio || b.hora || ""
+        );
+      });
+
+    renderAgenda(cachedMatches, AGENDA_URL, {
+      source: cachedData.fuente,
+      total: cachedData.total,
+      fromCache: true,
+    });
+
+    applyAgendaSearch();
+
+    if (!matchSearch.value.trim()) {
+      setUtilityStatus("Actualizando agenda...");
+    }
+  } else {
+    leagueGrid.innerHTML = `<p class="empty-state">Cargando Agenda...</p>`;
+  }
 
   try {
     const data = await fetchAgendaPayload();
     const partidos = Array.isArray(data.partidos) ? data.partidos : [];
 
-    const dailyMatches = partidos
-      .filter((match) => {
-        const matchDate = agendaDate(match);
-        return !matchDate || matchDate === selectedDate;
-      })
+    const dailyMatches = uniqueMatches(partidos)
+      .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
       .sort((a, b) => {
         const priorityA = Number(a.prioridad_liga ?? 9999);
         const priorityB = Number(b.prioridad_liga ?? 9999);
@@ -2175,6 +2205,7 @@ async function loadAgenda(date = currentAgendaDate) {
       source: data.fuente,
       total: data.total,
     });
+
     applyAgendaSearch();
 
     agendaLoadedDate = selectedDate;
@@ -2183,6 +2214,12 @@ async function loadAgenda(date = currentAgendaDate) {
       setUtilityStatus("");
     }
   } catch (error) {
+    // Si ya mostramos cache, no rompemos la grilla.
+    if (leagueGrid.children.length > 0) {
+      setUtilityStatus("Mostrando agenda guardada. No se pudo actualizar ahora.");
+      return;
+    }
+
     leagueGrid.innerHTML = `
       <article class="empty-state">
         <strong>No se pudo cargar la agenda ESPN.</strong>
@@ -2435,4 +2472,5 @@ showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
 loadAgenda();
-loadEvents();
+
+// LIVE se carga recién cuando el usuario entra a la pestaña.
