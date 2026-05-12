@@ -1884,3 +1884,112 @@ img.league-logo {
   font-size: 9px !important;
   line-height: 1.1 !important;
 }
+/* ================================
+   DÓNDE VER / CANALES TV
+================================ */
+
+.tv-box {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 2px;
+  padding: 6px 8px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 8px;
+  flex-wrap: wrap;
+  background: rgba(95, 207, 128, 0.1);
+  border: 1px solid rgba(95, 207, 128, 0.18);
+}
+
+.tv-label {
+  color: rgba(240, 250, 244, 0.72);
+  font-size: 9px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tv-canales {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.tv-chip {
+  min-height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 7px;
+  border-radius: 999px;
+  color: #102016;
+  background: var(--primary);
+  font-size: 10px;
+  font-weight: 950;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tv-chip:empty {
+  display: none;
+}
+
+/* Cuando no hay canal confirmado */
+.tv-box:has(.tv-chip:first-child:last-child) .tv-chip {
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--chip-fg);
+}
+
+/* Ajuste dentro de la tarjeta de agenda */
+.agenda-teams .tv-box {
+  justify-self: stretch;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .tv-box {
+    padding: 6px;
+    gap: 5px;
+  }
+
+  .tv-label {
+    width: 100%;
+    text-align: center;
+    font-size: 8px;
+  }
+
+  .tv-canales {
+    width: 100%;
+  }
+
+  .tv-chip {
+    font-size: 9px;
+    min-height: 19px;
+    padding: 3px 6px;
+  }
+}
+
+.agenda-teams {
+  overflow: visible;
+}
+
+.agenda-goals-row,
+.tv-box {
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .agenda-teams {
+    overflow: visible;
+  }
+
+  .tv-box {
+    grid-column: 1 / -1;
+  }
+}
