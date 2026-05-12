@@ -2266,11 +2266,8 @@ async function refreshAgendaLive() {
     const data = await fetchAgendaPayload();
     const partidos = Array.isArray(data.partidos) ? data.partidos : [];
 
-    const dailyMatches = partidos
-      .filter((match) => {
-        const matchDate = agendaDate(match);
-        return !matchDate || matchDate === selectedDate;
-      })
+   const dailyMatches = uniqueMatches(partidos)
+  .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
       .sort((a, b) => {
         const priorityA = Number(a.prioridad_liga ?? 9999);
         const priorityB = Number(b.prioridad_liga ?? 9999);
