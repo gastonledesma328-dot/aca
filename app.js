@@ -185,10 +185,6 @@ async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS, options = {}) 
 
   const request = fetch(finalUrl, {
     cache: "no-store",
-    headers: {
-      "Cache-Control": "no-cache",
-      "Pragma": "no-cache",
-    },
   })
     .then(async (response) => {
       if (!response.ok) {
