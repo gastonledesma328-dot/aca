@@ -75,11 +75,6 @@ const FEATURED_LOGO_FALLBACKS = {
   "independiente medellín": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
 };
 
-/*
-  Cache principal:
-  Antes estaba en 60 segundos.
-  Lo subimos a 3 minutos para que la agenda abra más rápido y no consulte el Worker todo el tiempo.
-*/
 const CACHE_TTL_MS = 60_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
@@ -1096,13 +1091,28 @@ function agendaStatus(match) {
   const tiempo =
     match.mostrar_tiempo || match.minuto || match.estado_corto || match.estado || "";
 
+  const texto = String(tiempo).toLowerCase();
+  const start = agendaStart(match);
+  const now = new Date();
+
+  const partidoTodaviaNoEmpezo =
+    !Number.isNaN(start.getTime()) && now < start;
+
+  // Protección: si el partido todavía no empezó,
+  // no mostramos "Fin" aunque el Worker/API venga con estado finalizado por error.
+  if (partidoTodaviaNoEmpezo) {
+    return match.hora_inicio || match.hora || "Prox";
+  }
+
   if (match.completado === true) {
     return "Fin";
   }
 
   if (
-    String(tiempo).toLowerCase().includes("fin") ||
-    String(tiempo).toLowerCase().includes("final")
+    texto.includes("fin") ||
+    texto.includes("final") ||
+    texto.includes("full time") ||
+    texto.includes("ft")
   ) {
     return "Fin";
   }
@@ -1185,6 +1195,15 @@ function leagueLogoMarkup(name, logo) {
 }
 
 function scoreMarkup(match) {
+  const start = agendaStart(match);
+  const now = new Date();
+
+  // Protección: si el partido todavía no empezó,
+  // no mostramos marcador falso 0 - 0 aunque venga desde el Worker/API.
+  if (!Number.isNaN(start.getTime()) && now < start) {
+    return "-";
+  }
+
   const tiempo = String(
     match.mostrar_tiempo ||
     match.minuto ||
@@ -2105,38 +2124,6 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
     });
 }
 
-function sortAgendaMatches(matches) {
-  return matches.sort((a, b) => {
-    const priorityA = Number(a.prioridad_liga ?? 9999);
-    const priorityB = Number(b.prioridad_liga ?? 9999);
-
-    if (priorityA !== priorityB) {
-      return priorityA - priorityB;
-    }
-
-    return (a.hora_inicio || a.hora || "").localeCompare(
-      b.hora_inicio || b.hora || ""
-    );
-  });
-}
-
-function filterAgendaMatchesByDate(partidos, selectedDate) {
-  return uniqueMatches(partidos)
-    .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
-    .sort((a, b) => {
-      const priorityA = Number(a.prioridad_liga ?? 9999);
-      const priorityB = Number(b.prioridad_liga ?? 9999);
-
-      if (priorityA !== priorityB) {
-        return priorityA - priorityB;
-      }
-
-      return (a.hora_inicio || a.hora || "").localeCompare(
-        b.hora_inicio || b.hora || ""
-      );
-    });
-}
-
 async function loadAgenda(date = currentAgendaDate) {
   const selectedDate = localDateISO(date);
 
@@ -2150,36 +2137,29 @@ async function loadAgenda(date = currentAgendaDate) {
   }
 
   agendaLoading = true;
-
-  /*
-    Mejora de velocidad:
-    Primero pintamos la agenda guardada en localStorage.
-    Después actualizamos con datos nuevos del Worker.
-  */
-  const cachedData = readAnyJsonCache("agenda-worker-cache");
-
-  if (cachedData && Array.isArray(cachedData.partidos)) {
-    const cachedMatches = filterAgendaMatchesByDate(cachedData.partidos, selectedDate);
-
-    renderAgenda(cachedMatches, AGENDA_URL, {
-      source: cachedData.fuente,
-      total: cachedData.total,
-      fromCache: true,
-    });
-
-    applyAgendaSearch();
-
-    if (!matchSearch.value.trim()) {
-      setUtilityStatus("Actualizando agenda...");
-    }
-  } else {
-    leagueGrid.innerHTML = `<p class="empty-state">Cargando Agenda...</p>`;
-  }
+  leagueGrid.innerHTML = `<p class="empty-state">Cargando Agenda...</p>`;
 
   try {
     const data = await fetchAgendaPayload();
     const partidos = Array.isArray(data.partidos) ? data.partidos : [];
-    const dailyMatches = filterAgendaMatchesByDate(partidos, selectedDate);
+
+    const dailyMatches = partidos
+      .filter((match) => {
+        const matchDate = agendaDate(match);
+        return !matchDate || matchDate === selectedDate;
+      })
+      .sort((a, b) => {
+        const priorityA = Number(a.prioridad_liga ?? 9999);
+        const priorityB = Number(b.prioridad_liga ?? 9999);
+
+        if (priorityA !== priorityB) {
+          return priorityA - priorityB;
+        }
+
+        return (a.hora_inicio || a.hora || "").localeCompare(
+          b.hora_inicio || b.hora || ""
+        );
+      });
 
     if (selectedDate === localDateISO()) {
       agendaLiveMatches = dailyMatches.filter(isAgendaMatchLive);
@@ -2195,7 +2175,6 @@ async function loadAgenda(date = currentAgendaDate) {
       source: data.fuente,
       total: data.total,
     });
-
     applyAgendaSearch();
 
     agendaLoadedDate = selectedDate;
@@ -2204,15 +2183,6 @@ async function loadAgenda(date = currentAgendaDate) {
       setUtilityStatus("");
     }
   } catch (error) {
-    /*
-      Si ya se mostró cache, no rompemos la grilla.
-      Solo avisamos que no se pudo actualizar.
-    */
-    if (leagueGrid.children.length > 0 && !leagueGrid.querySelector(".empty-state strong")) {
-      setUtilityStatus("Mostrando agenda guardada. No se pudo actualizar ahora.");
-      return;
-    }
-
     leagueGrid.innerHTML = `
       <article class="empty-state">
         <strong>No se pudo cargar la agenda ESPN.</strong>
@@ -2465,10 +2435,4 @@ showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
 loadAgenda();
-
-/*
-  IMPORTANTE:
-  Antes se ejecutaba loadEvents() al entrar.
-  Eso hacía que la agenda y LIVE cargaran al mismo tiempo.
-  Ahora LIVE se carga recién cuando el usuario toca la pestaña "live".
-*/
+loadEvents();
