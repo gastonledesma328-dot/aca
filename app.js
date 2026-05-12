@@ -599,7 +599,6 @@ function featuredTeamLogo(event, side, teamName = "") {
 
   return fallbackFeaturedLogo(teamName);
 }
-
 function setFeaturedCrest(selector, teamName, logo) {
   const crest = document.querySelector(selector);
 
@@ -1253,7 +1252,6 @@ function scoreMarkup(match) {
 
   return "-";
 }
-
 function searchValue(value) {
   return normalizeText(value)
     .replace(/[â€“â€”]/g, "-")
@@ -1299,11 +1297,9 @@ function scoreSearchTerms(match, home, away, score) {
 
 function matchSearchIndex(match, group, home, away, score) {
   const status = agendaStatus(match);
-  const scorers = Array.isArray(match.goleadores)
-    ? match.goleadores
-        .map((scorer) => `${scorerName(scorer)} ${scorer.descripcion || ""} ${scorer.equipo || scorer.team || ""} ${scorerMinute(scorer)}`)
-        .join(" ")
-    : "";
+  const scorers = normalizeScorerList(match)
+    .map((scorer) => `${scorerName(scorer)} ${scorer.descripcion || ""} ${scorerTeamText(scorer)} ${scorerMinute(scorer)} ${scorerTypeLabel(scorer)}`)
+    .join(" ");
   const cards = cardsSearchText(match);
 
   return searchValue(
@@ -1445,14 +1441,14 @@ function normalizeMinute(value) {
 }
 
 function scorerName(scorer) {
-  return (
+  return String(
     scorer.jugador ||
-    scorer.nombre ||
-    scorer.player ||
-    scorer.athlete ||
-    scorer.descripcion ||
-    ""
-  );
+      scorer.nombre ||
+      scorer.player ||
+      scorer.athlete ||
+      scorer.descripcion ||
+      ""
+  ).trim();
 }
 
 function scorerMinute(scorer) {
@@ -1465,37 +1461,195 @@ function scorerMinute(scorer) {
   );
 }
 
-function scorersMarkup(match) {
-  const scorers = Array.isArray(match.goleadores)
-    ? match.goleadores.filter((scorer) => scorerName(scorer))
-    : [];
+function scorerTypeLabel(scorer) {
+  const raw = String(
+    scorer.tipo ||
+      scorer.type ||
+      scorer.detalle ||
+      scorer.detail ||
+      scorer.descripcion_tipo ||
+      ""
+  ).trim();
+
+  const normalized = normalizeText(raw);
+
+  if (!normalized || normalized === "gol" || normalized === "goal") {
+    return "";
+  }
+
+  if (/penal|penalty|\bpen\b|tiro penal/.test(normalized)) {
+    return "(Pen.)";
+  }
+
+  if (/en contra|contra|own goal|autogol|og|e c/.test(normalized)) {
+    return "(E.C.)";
+  }
+
+  return `(${escapeHtml(raw)})`;
+}
+
+function scorerTeamText(scorer) {
+  return String(
+    scorer.equipo ||
+      scorer.team ||
+      scorer.teamName ||
+      scorer.club ||
+      scorer.nombre_equipo ||
+      ""
+  ).trim();
+}
+
+function scorerSideValue(scorer) {
+  return String(
+    scorer.lado ||
+      scorer.side ||
+      scorer.homeAway ||
+      scorer.home_away ||
+      scorer.teamSide ||
+      scorer.team_side ||
+      ""
+  ).toLowerCase();
+}
+
+function normalizeScorerList(match) {
+  const list = [];
+
+  const add = (items, side = "") => {
+    if (!Array.isArray(items)) {
+      return;
+    }
+
+    items.forEach((item) => {
+      if (!item || typeof item !== "object") {
+        return;
+      }
+
+      list.push({ ...item, _sideHint: side });
+    });
+  };
+
+  add(match.goleadores);
+  add(match.scorers);
+  add(match.goles);
+  add(match.goals);
+  add(match.goles_local, "home");
+  add(match.local_goles, "home");
+  add(match.home_goals, "home");
+  add(match.goles_visitante, "away");
+  add(match.visitante_goles, "away");
+  add(match.away_goals, "away");
+
+  const seen = new Set();
+
+  return list.filter((scorer) => {
+    const name = scorerName(scorer);
+
+    if (!name) {
+      return false;
+    }
+
+    const key = `${scorerMinute(scorer)}-${name}-${scorerTeamText(scorer)}-${scorerTypeLabel(scorer)}-${scorer._sideHint || ""}`;
+
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+}
+
+function scorerBelongsToSide(scorer, home, away) {
+  const hint = String(scorer._sideHint || "").toLowerCase();
+
+  if (["home", "local", "h"].includes(hint)) {
+    return "home";
+  }
+
+  if (["away", "visitante", "a"].includes(hint)) {
+    return "away";
+  }
+
+  const side = scorerSideValue(scorer);
+
+  if (["home", "local", "h"].includes(side)) {
+    return "home";
+  }
+
+  if (["away", "visitante", "a"].includes(side)) {
+    return "away";
+  }
+
+  if (scorer.local === true || scorer.isHome === true || scorer.home === true) {
+    return "home";
+  }
+
+  if (scorer.visitante === true || scorer.isAway === true || scorer.away === true) {
+    return "away";
+  }
+
+  const team = scorerTeamText(scorer);
+
+  if (teamValueMatches(team, home)) {
+    return "home";
+  }
+
+  if (teamValueMatches(team, away)) {
+    return "away";
+  }
+
+  return "unknown";
+}
+
+function goalItemMarkup(scorer) {
+  const minute = scorerMinute(scorer);
+  const typeLabel = scorerTypeLabel(scorer);
+
+  return `
+    <span class="agenda-goal-item">
+      ${minute ? `<b>${escapeHtml(minute)}</b>` : ""}
+      <span>${escapeHtml(scorerName(scorer))}</span>
+      ${typeLabel ? `<em>${typeLabel}</em>` : ""}
+    </span>
+  `;
+}
+
+function scorersMarkup(match, home = "", away = "") {
+  const scorers = normalizeScorerList(match);
 
   if (!scorers.length) {
     return "";
   }
 
-  const summary = scorers
-    .slice(0, 6)
-    .map((scorer) => {
-      const minute = scorerMinute(scorer);
-      const team = scorer.equipo || scorer.team || "";
-      const goalType = scorer.tipo || scorer.type || "";
-      const detail = goalType && !/goal|gol/i.test(goalType) ? `, ${goalType}` : "";
+  const homeGoals = [];
+  const awayGoals = [];
+  const unknownGoals = [];
 
-      return `
-        <span class="agenda-scorer-item">
-          ${minute ? `<b>${minute}</b>` : ""}
-          ${scorerName(scorer)}${detail}${team ? ` <em>${team}</em>` : ""}
-        </span>
-      `;
-    })
-    .join("");
+  scorers.forEach((scorer) => {
+    const side = scorerBelongsToSide(scorer, home, away);
 
-  const extra = scorers.length > 6
-    ? `<span class="agenda-scorer-more">+${scorers.length - 6}</span>`
-    : "";
+    if (side === "home") {
+      homeGoals.push(scorer);
+    } else if (side === "away") {
+      awayGoals.push(scorer);
+    } else {
+      unknownGoals.push(scorer);
+    }
+  });
 
-  return `<span class="agenda-scorers">${summary}${extra}</span>`;
+  const unknown = unknownGoals.map(goalItemMarkup).join("");
+
+  return `
+    <span class="agenda-goals-row">
+      <span class="agenda-goals-team agenda-goals-home">
+        ${homeGoals.map(goalItemMarkup).join("")}
+      </span>
+      <span class="agenda-goals-team agenda-goals-away">
+        ${awayGoals.map(goalItemMarkup).join("")}
+      </span>
+      ${unknown ? `<span class="agenda-goals-unknown">${unknown}</span>` : ""}
+    </span>
+  `;
 }
 
 function normalizeTeamForCompare(value) {
@@ -1734,7 +1888,6 @@ function inferAgendaLeague(match) {
 
   return "Otras ligas";
 }
-
 function groupPriority(group) {
   const orderedLeagues = [
     "liga profesional de futbol",
@@ -1923,7 +2076,7 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
               <span>${away}</span>
             </a>
 
-            ${scorersMarkup(match)}
+            ${scorersMarkup(match, home, away)}
           </span>
 
           <span class="agenda-state">${agendaStatus(match)}</span>
