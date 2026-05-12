@@ -1197,9 +1197,6 @@ function agendaMatchKey(match) {
 function uniqueMatches(matches) {
   const seen = new Set();
 
-function uniqueMatches(matches) {
-  const seen = new Set();
-
   return matches.filter((match) => {
     const key = agendaMatchKey(match);
 
