@@ -78,6 +78,7 @@ const FEATURED_LOGO_FALLBACKS = {
 const CACHE_TTL_MS = 60_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
+
 const STATIC_STREAM_FALLBACKS = [
   {
     titulo: "Copa Libertadores: Junior vs Cerro Porteño",
@@ -202,11 +203,17 @@ async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS) {
 }
 
 function fetchAgendaPayload() {
-  return fetchJsonCached(`${AGENDA_URL}?v=${Math.floor(Date.now() / CACHE_TTL_MS)}`, "agenda-worker-cache");
+  return fetchJsonCached(
+    `${AGENDA_URL}?v=${Math.floor(Date.now() / CACHE_TTL_MS)}`,
+    "agenda-worker-cache"
+  );
 }
 
 function fetchStreamEventsPayload() {
-  return fetchJsonCached(`${EVENTS_URL}?v=${Math.floor(Date.now() / CACHE_TTL_MS)}`, "stream-events-cache");
+  return fetchJsonCached(
+    `${EVENTS_URL}?v=${Math.floor(Date.now() / CACHE_TTL_MS)}`,
+    "stream-events-cache"
+  );
 }
 
 async function getStreamEventsFallback() {
@@ -225,6 +232,7 @@ async function getStreamEventsFallback() {
   }
 
   const stale = readAnyJsonCache("stream-events-cache");
+
   if (Array.isArray(stale) && stale.length) {
     return stale;
   }
@@ -237,6 +245,15 @@ function normalizeText(value) {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 function crearTeamId(nombre) {
@@ -599,6 +616,7 @@ function featuredTeamLogo(event, side, teamName = "") {
 
   return fallbackFeaturedLogo(teamName);
 }
+
 function setFeaturedCrest(selector, teamName, logo) {
   const crest = document.querySelector(selector);
 
@@ -630,11 +648,13 @@ function reloadFeaturedEmbed() {
   }
 
   tryNextFeaturedChannel();
+
   if (featuredChannels.length > 1) {
     return;
   }
 
   featuredFrame.src = "about:blank";
+
   window.setTimeout(() => {
     featuredFrame.src = autoplayEmbedUrl(channelUrl);
     videoCard.classList.add("has-embed", "playing");
@@ -707,8 +727,6 @@ function updateFeaturedLegacy() {
   }
 
   const info = splitTitle(featuredEvent.titulo);
-  const homeLogo = featuredTeamLogo(featuredEvent, "home", info.home);
-  const awayLogo = featuredTeamLogo(featuredEvent, "away", info.away);
   const status = eventStatus(featuredEvent);
   const statusText = {
     live: "EN VIVO",
@@ -717,7 +735,6 @@ function updateFeaturedLegacy() {
   }[status];
   const channels = Array.isArray(featuredEvent.canales) ? featuredEvent.canales : [];
   const firstChannel = channels.find((channel) => channel?.url) || null;
-  const liveEvent = featuredEvent;
 
   featured.classList.remove("no-live");
 
@@ -729,12 +746,6 @@ function updateFeaturedLegacy() {
   document.querySelector(".live-pill").textContent = status === "live" ? "Live" : statusText;
   mainScore.textContent = statusText;
   featuredStatus.querySelector("strong").textContent = info.competition;
-
-  featuredStatus.querySelector("p").textContent =
-    `${liveEvent.hora} Â· ${liveEvent.clase || liveEvent.categoria} Â· ${liveEvent.canales?.[0]?.nombre || "Canal disponible"}`;
-
-  featuredStatus.querySelector("p").textContent =
-    `${featuredEvent.hora || "--:--"} · ${featuredEvent.clase || featuredEvent.categoria || "Evento"} · ${firstChannel?.nombre || "Canal disponible"}`;
 
   featuredStatus.querySelector("p").textContent =
     `${featuredEvent.hora || "--:--"} - ${featuredEvent.clase || featuredEvent.categoria || "Evento"} - ${firstChannel?.nombre || "Canal disponible"}`;
@@ -887,23 +898,23 @@ function renderEvents() {
 
       const channels = (event.canales || [])
         .map((channel) => {
-          return `<a class="channel-link" href="${channel.url}" target="_blank" rel="noreferrer">${channel.nombre} Â· ${channel.calidad || "HD"}</a>`;
+          return `<a class="channel-link" href="${channel.url}" target="_blank" rel="noreferrer">${escapeHtml(channel.nombre)} · ${escapeHtml(channel.calidad || "HD")}</a>`;
         })
         .join("");
 
       card.innerHTML = `
         <button class="event-toggle" type="button" aria-expanded="false">
           <span>
-            <strong>${info.matchup}</strong>
-            <small>${event.hora} Â· ${info.competition}</small>
+            <strong>${escapeHtml(info.matchup)}</strong>
+            <small>${escapeHtml(event.hora || "--:--")} · ${escapeHtml(info.competition)}</small>
           </span>
           <span class="event-badge">${statusText}</span>
         </button>
         <div class="event-details" hidden>
           <div class="event-meta">
-            <span>${event.fecha}</span>
-            <span>${event.categoria || "Evento"}</span>
-            <span>${event.clase || "General"}</span>
+            <span>${escapeHtml(event.fecha || "")}</span>
+            <span>${escapeHtml(event.categoria || "Evento")}</span>
+            <span>${escapeHtml(event.clase || "General")}</span>
           </div>
           <div class="channel-row">${channels || "<span>Sin canal</span>"}</div>
         </div>
@@ -1130,8 +1141,9 @@ function agendaDisplayTime(match) {
 }
 
 function teamLogoMarkup(name, logo, redCards = 0) {
+  const safeName = escapeHtml(name);
   const logoHtml = logo
-    ? `<img class="team-logo" src="${logo}" alt="${name}" loading="lazy" />`
+    ? `<img class="team-logo" src="${escapeHtml(logo)}" alt="${safeName}" loading="lazy" />`
     : `<span class="team-logo logo-fallback">${initials(name)}</span>`;
 
   const cards = Number(redCards) || 0;
@@ -1161,7 +1173,7 @@ function initials(name = "") {
 
 function leagueLogoMarkup(name, logo) {
   if (logo) {
-    return `<img class="league-logo" src="${logo}" alt="${name}" loading="lazy" />`;
+    return `<img class="league-logo" src="${escapeHtml(logo)}" alt="${escapeHtml(name)}" loading="lazy" />`;
   }
 
   return `<span class="league-logo league-logo-fallback">${initials(name)}</span>`;
@@ -1236,7 +1248,7 @@ function scoreMarkup(match) {
     const resultado = String(match.resultado)
       .trim()
       .replace(/\s+/g, "")
-      .replace(/[â€“â€”]/g, "-");
+      .replace(/[–—]/g, "-");
 
     const partes = resultado.split("-").filter(Boolean);
 
@@ -1252,9 +1264,10 @@ function scoreMarkup(match) {
 
   return "-";
 }
+
 function searchValue(value) {
   return normalizeText(value)
-    .replace(/[â€“â€”]/g, "-")
+    .replace(/[–—]/g, "-")
     .replace(/[^a-z0-9:+\-'\s]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
@@ -1888,6 +1901,7 @@ function inferAgendaLeague(match) {
 
   return "Otras ligas";
 }
+
 function groupPriority(group) {
   const orderedLeagues = [
     "liga profesional de futbol",
@@ -2030,8 +2044,8 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
           <div class="agenda-league-title">
             ${leagueLogoMarkup(group.league, group.leagueLogo)}
             <div>
-              <span>${group.sport}</span>
-              <strong>${group.league}</strong>
+              <span>${escapeHtml(group.sport)}</span>
+              <strong>${escapeHtml(group.league)}</strong>
             </div>
           </div>
           <em>${group.matches.length}</em>
@@ -2061,25 +2075,25 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
         row.dataset.search = matchSearchIndex(match, group, home, away, score);
 
         row.innerHTML = `
-          <time>${agendaDisplayTime(match)}</time>
+          <time>${escapeHtml(agendaDisplayTime(match))}</time>
 
           <span class="agenda-teams">
-            <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo, group.league)}" title="Ver ficha de ${home}">
+            <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo, group.league)}" title="Ver ficha de ${escapeHtml(home)}">
               ${teamLogoMarkup(home, match.local_logo, homeRedCards)}
-              <span>${home}</span>
+              <span>${escapeHtml(home)}</span>
             </a>
 
-            <span class="agenda-score">${score}</span>
+            <span class="agenda-score">${escapeHtml(score)}</span>
 
-            <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo, group.league)}" title="Ver ficha de ${away}">
+            <a class="agenda-team team-link" href="${teamProfileHref(away, match.visitante_logo, group.league)}" title="Ver ficha de ${escapeHtml(away)}">
               ${teamLogoMarkup(away, match.visitante_logo, awayRedCards)}
-              <span>${away}</span>
+              <span>${escapeHtml(away)}</span>
             </a>
 
             ${scorersMarkup(match, home, away)}
           </span>
 
-          <span class="agenda-state">${agendaStatus(match)}</span>
+          <span class="agenda-state">${escapeHtml(agendaStatus(match))}</span>
         `;
 
         list.append(row);
@@ -2143,6 +2157,7 @@ async function loadAgenda(date = currentAgendaDate) {
     applyAgendaSearch();
 
     agendaLoadedDate = selectedDate;
+
     if (!matchSearch.value.trim()) {
       setUtilityStatus("");
     }
@@ -2286,7 +2301,7 @@ postForm?.addEventListener("submit", (event) => {
     <div>
       <header>
         <strong>Tu cuenta</strong>
-        <span>@usuario Â· ahora</span>
+        <span>@usuario · ahora</span>
       </header>
       <p></p>
       <footer>
@@ -2361,7 +2376,7 @@ function abrirSeccionDesdeHash() {
     games: "games",
     agenda: "agenda",
     live: "live",
-    vivo: "live"
+    vivo: "live",
   };
 
   const tabName = aliases[hash] || hash;
@@ -2380,7 +2395,7 @@ function abrirSeccionDesdeHash() {
       if (section) {
         section.scrollIntoView({
           behavior: "smooth",
-          block: "start"
+          block: "start",
         });
       }
     }, 120);
