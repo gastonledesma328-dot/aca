@@ -1481,24 +1481,21 @@ function scorerTypeLabel(scorer) {
       scorer.detalle ||
       scorer.detail ||
       scorer.descripcion_tipo ||
+      scorer.descripcion ||
       ""
   ).trim();
 
   const normalized = normalizeText(raw);
 
-  if (!normalized || normalized === "gol" || normalized === "goal") {
-    return "";
-  }
-
   if (/penal|penalty|\bpen\b|tiro penal/.test(normalized)) {
     return "(Pen.)";
   }
 
-  if (/en contra|contra|own goal|autogol|og|e c/.test(normalized)) {
+  if (/en contra|contra|own goal|autogol|og|e c|ec/.test(normalized)) {
     return "(E.C.)";
   }
 
-  return `(${escapeHtml(raw)})`;
+  return "Gol";
 }
 
 function scorerTeamText(scorer) {
@@ -1622,7 +1619,7 @@ function goalItemMarkup(scorer) {
     <span class="agenda-goal-item">
       ${minute ? `<b>${escapeHtml(minute)}</b>` : ""}
       <span>${escapeHtml(scorerName(scorer))}</span>
-      ${typeLabel ? `<em>${typeLabel}</em>` : ""}
+      <em>${typeLabel}</em>
     </span>
   `;
 }
