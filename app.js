@@ -190,9 +190,10 @@ async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS, options = {}) 
       "Pragma": "no-cache",
     },
   })
-    .then((response) => {
+    .then(async (response) => {
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        const text = await response.text().catch(() => "");
+        throw new Error(`HTTP ${response.status}: ${text.slice(0, 200)}`);
       }
 
       return response.json();
@@ -2156,7 +2157,6 @@ async function loadAgenda(date = currentAgendaDate) {
 
   agendaLoading = true;
 
-  // Primero mostramos cache guardado, si existe.
   const cachedData = readAnyJsonCache("agenda-worker-cache");
 
   if (cachedData && Array.isArray(cachedData.partidos)) {
@@ -2232,9 +2232,10 @@ async function loadAgenda(date = currentAgendaDate) {
       setUtilityStatus("");
     }
   } catch (error) {
-    // Si ya mostramos cache, no rompemos la grilla.
+    console.error("Error actualizando agenda desde Worker:", error);
+
     if (leagueGrid.children.length > 0) {
-      setUtilityStatus("Mostrando agenda guardada. No se pudo actualizar ahora.");
+      setUtilityStatus("Agenda guardada. Reintentando actualización...");
       return;
     }
 
@@ -2249,7 +2250,6 @@ async function loadAgenda(date = currentAgendaDate) {
     agendaLoading = false;
   }
 }
-
 
 async function refreshAgendaLive() {
   if (activeTab !== "agenda") {
@@ -2293,8 +2293,13 @@ async function refreshAgendaLive() {
 
     applyAgendaSearch();
     agendaLoadedDate = selectedDate;
+
+    if (!matchSearch.value.trim()) {
+      setUtilityStatus("");
+    }
   } catch (error) {
     console.warn("No se pudo actualizar la agenda en vivo", error);
+    setUtilityStatus("Agenda guardada. Reintentando actualización...");
   }
 }
 /* ============================================================
