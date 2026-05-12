@@ -70,6 +70,7 @@ let featuredChannelIndex = 0;
 let featuredEmbedTimer = null;
 let TV_PARTIDOS_CACHE = null;
 let TV_PARTIDOS_LOADING = null;
+let TV_PARTIDOS_READY = false;
 
 const FEATURED_LOGO_FALLBACKS = {
   flamengo: "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
@@ -252,6 +253,7 @@ async function cargarTvPartidos() {
       TV_PARTIDOS_CACHE = data && typeof data === "object"
         ? data
         : { partidos: {} };
+      TV_PARTIDOS_READY = true;
 
       return TV_PARTIDOS_CACHE;
     })
@@ -263,6 +265,7 @@ async function cargarTvPartidos() {
       TV_PARTIDOS_CACHE = stale && typeof stale === "object"
         ? stale
         : { partidos: {} };
+      TV_PARTIDOS_READY = true;
 
       return TV_PARTIDOS_CACHE;
     })
@@ -2291,8 +2294,6 @@ async function loadAgenda(date = currentAgendaDate) {
 
   agendaLoading = true;
 
-  await cargarTvPartidos();
-
   const cachedData = readAnyJsonCache("agenda-worker-cache");
 
   if (cachedData && Array.isArray(cachedData.partidos)) {
@@ -2387,6 +2388,20 @@ async function loadAgenda(date = currentAgendaDate) {
   }
 }
 
+function recargarAgendaConTvSiCorresponde() {
+  if (activeTab !== "agenda") {
+    return;
+  }
+
+  if (agendaLoading) {
+    window.setTimeout(recargarAgendaConTvSiCorresponde, 500);
+    return;
+  }
+
+  agendaLoadedDate = "";
+  loadAgenda(currentAgendaDate);
+}
+
 async function refreshAgendaLive() {
   if (activeTab !== "agenda") {
     return;
@@ -2399,8 +2414,6 @@ async function refreshAgendaLive() {
   const selectedDate = localDateISO(currentAgendaDate);
 
   try {
-    await cargarTvPartidos();
-
     const data = await fetchAgendaPayload();
     const partidos = Array.isArray(data.partidos) ? data.partidos : [];
 
@@ -2680,11 +2693,14 @@ window.addEventListener("load", abrirSeccionDesdeHash);
 showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
+loadAgenda();
+loadEvents();
 
-cargarTvPartidos().finally(() => {
-  loadAgenda();
-  loadEvents();
-});
+cargarTvPartidos()
+  .then(recargarAgendaConTvSiCorresponde)
+  .catch(() => {
+    // La agenda no debe depender del JSON de TV.
+  });
 
 setInterval(() => {
   refreshAgendaLive();
