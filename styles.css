@@ -1023,47 +1023,73 @@ svg {
   font-size: 11px;
 }
 
-.agenda-scorers {
+/* ================================
+   GOLES DEL PARTIDO
+================================ */
+
+.agenda-goals-row {
   grid-column: 1 / -1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(5, 45, 24, 0.52);
+}
+
+.agenda-goals-team {
   min-width: 0;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px 9px;
   flex-wrap: wrap;
-  color: rgba(240, 250, 244, 0.68);
-  font-size: 11px;
-  font-weight: 650;
-  padding-left: 29px;
+  padding: 5px 7px;
 }
 
-.agenda-scorer-item {
+.agenda-goals-home {
+  justify-content: flex-end;
+  border-right: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.agenda-goals-away {
+  justify-content: flex-start;
+}
+
+.agenda-goal-item {
   display: inline-flex;
   align-items: center;
   gap: 3px;
   min-width: 0;
   max-width: 100%;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
-.agenda-scorer-item::before {
-  content: "⚽";
-  font-size: 10px;
-  opacity: 0.9;
-}
-
-.agenda-scorer-item b {
+.agenda-goal-item b {
   color: var(--primary);
   font-size: 10px;
+  font-weight: 950;
 }
 
-.agenda-scorer-item em {
-  color: rgba(240, 250, 244, 0.46);
+.agenda-goal-item em {
+  color: rgba(240, 250, 244, 0.78);
   font-size: 10px;
   font-style: normal;
+  font-weight: 800;
 }
 
-.agenda-scorer-more {
-  color: var(--primary);
-  font-weight: 900;
+.agenda-goals-unknown {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px 9px;
+  padding: 5px 7px;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
 }
 
 .team-logo-wrap {
@@ -1650,8 +1676,16 @@ footer strong {
     padding: 5px 8px;
   }
 
-  .agenda-scorers {
-    padding-left: 0;
+  .agenda-goals-row {
+    border-radius: 7px;
+  }
+
+  .agenda-goals-team {
+    padding: 5px;
+    gap: 4px 6px;
+  }
+
+  .agenda-goal-item {
     font-size: 10px;
   }
 
