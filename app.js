@@ -2545,4 +2545,4 @@ loadEvents();
 
 setInterval(() => {
   refreshAgendaLive();
-}, 15000);
+}, 60000);
