@@ -164,18 +164,32 @@ function writeJsonCache(key, data) {
   }
 }
 
-async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS) {
-  const fresh = readJsonCache(cacheKey, ttl);
+async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS, options = {}) {
+  const networkFirst = options.networkFirst === true;
 
-  if (fresh) {
-    return fresh;
+  if (!networkFirst) {
+    const fresh = readJsonCache(cacheKey, ttl);
+
+    if (fresh) {
+      return fresh;
+    }
   }
 
   if (requestCache.has(cacheKey)) {
     return requestCache.get(cacheKey);
   }
 
-  const request = fetch(url)
+  const finalUrl = networkFirst
+    ? `${url}${url.includes("?") ? "&" : "?"}_=${Date.now()}`
+    : url;
+
+  const request = fetch(finalUrl, {
+    cache: "no-store",
+    headers: {
+      "Cache-Control": "no-cache",
+      "Pragma": "no-cache",
+    },
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
@@ -204,8 +218,12 @@ async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS) {
 
 function fetchAgendaPayload() {
   return fetchJsonCached(
-    `${AGENDA_URL}?v=${Math.floor(Date.now() / CACHE_TTL_MS)}`,
-    "agenda-worker-cache"
+    AGENDA_URL,
+    "agenda-worker-cache",
+    CACHE_TTL_MS,
+    {
+      networkFirst: true,
+    }
   );
 }
 
@@ -2232,6 +2250,57 @@ async function loadAgenda(date = currentAgendaDate) {
   }
 }
 
+
+async function refreshAgendaLive() {
+  if (activeTab !== "agenda") {
+    return;
+  }
+
+  if (agendaLoading) {
+    return;
+  }
+
+  const selectedDate = localDateISO(currentAgendaDate);
+
+  try {
+    const data = await fetchAgendaPayload();
+    const partidos = Array.isArray(data.partidos) ? data.partidos : [];
+
+    const dailyMatches = partidos
+      .filter((match) => {
+        const matchDate = agendaDate(match);
+        return !matchDate || matchDate === selectedDate;
+      })
+      .sort((a, b) => {
+        const priorityA = Number(a.prioridad_liga ?? 9999);
+        const priorityB = Number(b.prioridad_liga ?? 9999);
+
+        if (priorityA !== priorityB) {
+          return priorityA - priorityB;
+        }
+
+        return (a.hora_inicio || a.hora || "").localeCompare(
+          b.hora_inicio || b.hora || ""
+        );
+      });
+
+    if (selectedDate === localDateISO()) {
+      agendaLiveMatches = dailyMatches.filter(isAgendaMatchLive);
+      agendaLiveLoaded = true;
+    }
+
+    renderAgenda(dailyMatches, AGENDA_URL, {
+      source: data.fuente,
+      total: data.total,
+    });
+
+    applyAgendaSearch();
+    agendaLoadedDate = selectedDate;
+  } catch (error) {
+    console.warn("No se pudo actualizar la agenda en vivo", error);
+  }
+}
+
 /* ============================================================
    JUEGOS / LEGACY SOCIAL
 ============================================================ */
@@ -2472,5 +2541,8 @@ showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
 loadAgenda();
+loadEvents();
 
-// LIVE se carga recién cuando el usuario entra a la pestaña.
+setInterval(() => {
+  refreshAgendaLive();
+}, 15000);
