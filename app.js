@@ -1,5 +1,6 @@
 const EVENTS_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/2612163/refs/heads/main/eventos_streamhdx.json";
 const AGENDA_URL = "https://partidos-hoy-worker.gastonledesma328.workers.dev";
+const TV_PARTIDOS_URL = "./data/tv_partidos.json";
 
 /*
   ============================================================
@@ -67,6 +68,8 @@ let agendaLoading = false;
 let featuredChannels = [];
 let featuredChannelIndex = 0;
 let featuredEmbedTimer = null;
+let TV_PARTIDOS_CACHE = null;
+let TV_PARTIDOS_LOADING = null;
 
 const FEATURED_LOGO_FALLBACKS = {
   flamengo: "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
@@ -229,6 +232,138 @@ function fetchStreamEventsPayload() {
     `${EVENTS_URL}?v=${Math.floor(Date.now() / CACHE_TTL_MS)}`,
     "stream-events-cache"
   );
+}
+
+async function cargarTvPartidos() {
+  if (TV_PARTIDOS_CACHE) {
+    return TV_PARTIDOS_CACHE;
+  }
+
+  if (TV_PARTIDOS_LOADING) {
+    return TV_PARTIDOS_LOADING;
+  }
+
+  TV_PARTIDOS_LOADING = fetchJsonCached(
+    `${TV_PARTIDOS_URL}?v=${Math.floor(Date.now() / CACHE_TTL_MS)}`,
+    "tv-partidos-cache",
+    CACHE_TTL_MS
+  )
+    .then((data) => {
+      TV_PARTIDOS_CACHE = data && typeof data === "object"
+        ? data
+        : { partidos: {} };
+
+      return TV_PARTIDOS_CACHE;
+    })
+    .catch((error) => {
+      console.warn("Error cargando TV de partidos:", error);
+
+      const stale = readAnyJsonCache("tv-partidos-cache");
+
+      TV_PARTIDOS_CACHE = stale && typeof stale === "object"
+        ? stale
+        : { partidos: {} };
+
+      return TV_PARTIDOS_CACHE;
+    })
+    .finally(() => {
+      TV_PARTIDOS_LOADING = null;
+    });
+
+  return TV_PARTIDOS_LOADING;
+}
+
+function normalizarTextoTv(texto) {
+  return String(texto || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function tvPartidoIds(match) {
+  return [
+    match.fixture_id,
+    match.api_football_id,
+    match.apiFootballId,
+    match.id_api_football,
+    match.api_id,
+    match.id,
+    match.uid,
+  ]
+    .filter((value) => value !== undefined && value !== null && value !== "")
+    .map(String);
+}
+
+function buscarTvPorNombre(data, match) {
+  const partidosTv = Object.values(data?.partidos || {});
+  const home = normalizarTextoTv(match.local || match.partido?.split(/\s+vs\.?\s+/i)[0] || "");
+  const away = normalizarTextoTv(match.visitante || match.partido?.split(/\s+vs\.?\s+/i)[1] || "");
+
+  if (!home || !away) {
+    return null;
+  }
+
+  const matchDate = agendaDate(match);
+
+  return partidosTv.find((tv) => {
+    const tvHome = normalizarTextoTv(tv.local);
+    const tvAway = normalizarTextoTv(tv.visitante);
+    const tvDate = String(tv.fecha || "").slice(0, 10);
+
+    if (matchDate && tvDate && matchDate !== tvDate) {
+      return false;
+    }
+
+    const sameOrder =
+      (tvHome.includes(home) || home.includes(tvHome)) &&
+      (tvAway.includes(away) || away.includes(tvAway));
+
+    const swappedOrder =
+      (tvHome.includes(away) || away.includes(tvHome)) &&
+      (tvAway.includes(home) || home.includes(tvAway));
+
+    return sameOrder || swappedOrder;
+  }) || null;
+}
+
+function obtenerTvPartidoSync(match) {
+  const data = TV_PARTIDOS_CACHE || readAnyJsonCache("tv-partidos-cache") || { partidos: {} };
+
+  for (const id of tvPartidoIds(match)) {
+    if (data.partidos?.[id]) {
+      return data.partidos[id];
+    }
+  }
+
+  const byName = buscarTvPorNombre(data, match);
+
+  if (byName) {
+    return byName;
+  }
+
+  return {
+    canales: ["A confirmar"],
+    fuente: "no_encontrado",
+    confianza: "baja",
+  };
+}
+
+function renderTvPartido(tv) {
+  const canales = Array.isArray(tv?.canales) && tv.canales.length
+    ? tv.canales
+    : ["A confirmar"];
+
+  return `
+    <span class="tv-box" title="Fuente: ${escapeHtml(tv?.fuente || "sin_regla")}">
+      <span class="tv-label">Dónde ver</span>
+      <span class="tv-canales">
+        ${canales.map((canal) => `<span class="tv-chip">${escapeHtml(canal)}</span>`).join("")}
+      </span>
+    </span>
+  `;
 }
 
 async function getStreamEventsFallback() {
@@ -1062,6 +1197,9 @@ function agendaMatchKey(match) {
 function uniqueMatches(matches) {
   const seen = new Set();
 
+function uniqueMatches(matches) {
+  const seen = new Set();
+
   return matches.filter((match) => {
     const key = agendaMatchKey(match);
 
@@ -1113,8 +1251,6 @@ function agendaStatus(match) {
   const partidoTodaviaNoEmpezo =
     !Number.isNaN(start.getTime()) && now < start;
 
-  // Protección: si el partido todavía no empezó,
-  // no mostramos "Fin" aunque el Worker/API venga con estado finalizado por error.
   if (partidoTodaviaNoEmpezo) {
     return match.hora_inicio || match.hora || "Prox";
   }
@@ -1213,8 +1349,6 @@ function scoreMarkup(match) {
   const start = agendaStart(match);
   const now = new Date();
 
-  // Protección: si el partido todavía no empezó,
-  // no mostramos marcador falso 0 - 0 aunque venga desde el Worker/API.
   if (!Number.isNaN(start.getTime()) && now < start) {
     return "-";
   }
@@ -1353,6 +1487,8 @@ function matchSearchIndex(match, group, home, away, score) {
     .map((scorer) => `${scorerName(scorer)} ${scorer.descripcion || ""} ${scorerTeamText(scorer)} ${scorerMinute(scorer)} ${scorerTypeLabel(scorer)}`)
     .join(" ");
   const cards = cardsSearchText(match);
+  const tv = obtenerTvPartidoSync(match);
+  const tvText = Array.isArray(tv.canales) ? tv.canales.join(" ") : "";
 
   return searchValue(
     [
@@ -1374,6 +1510,9 @@ function matchSearchIndex(match, group, home, away, score) {
       match.resultado,
       scorers,
       cards,
+      tvText,
+      tv.fuente,
+      tv.confianza,
       ...scoreSearchTerms(match, home, away, score),
     ].join(" ")
   );
@@ -2103,6 +2242,7 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
         const score = scoreMarkup(match);
         const homeRedCards = redCardsForTeam(match, "home", home);
         const awayRedCards = redCardsForTeam(match, "away", away);
+        const tv = obtenerTvPartidoSync(match);
 
         if (isLive) {
           row.classList.add("is-live");
@@ -2127,6 +2267,7 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
             </a>
 
             ${scorersMarkup(match, home, away)}
+            ${renderTvPartido(tv)}
           </span>
 
           <span class="agenda-state">${escapeHtml(agendaStatus(match))}</span>
@@ -2152,6 +2293,8 @@ async function loadAgenda(date = currentAgendaDate) {
   }
 
   agendaLoading = true;
+
+  await cargarTvPartidos();
 
   const cachedData = readAnyJsonCache("agenda-worker-cache");
 
@@ -2259,6 +2402,8 @@ async function refreshAgendaLive() {
   const selectedDate = localDateISO(currentAgendaDate);
 
   try {
+    await cargarTvPartidos();
+
     const data = await fetchAgendaPayload();
     const partidos = Array.isArray(data.partidos) ? data.partidos : [];
 
@@ -2298,6 +2443,7 @@ async function refreshAgendaLive() {
     setUtilityStatus("Agenda guardada. Reintentando actualización...");
   }
 }
+
 /* ============================================================
    JUEGOS / LEGACY SOCIAL
 ============================================================ */
@@ -2537,8 +2683,11 @@ window.addEventListener("load", abrirSeccionDesdeHash);
 showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
-loadAgenda();
-loadEvents();
+
+cargarTvPartidos().finally(() => {
+  loadAgenda();
+  loadEvents();
+});
 
 setInterval(() => {
   refreshAgendaLive();
