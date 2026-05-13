@@ -29,60 +29,90 @@ HEADERS = {
 CANALES_IGNORAR = {
     "bet365",
     "bet365.com",
+    "fanatiz",
+    "fubotv",
+    "fubo tv",
+    "fubo",
 }
 
-PAISES_REGIONALES_A_LIMPIAR = [
-    " argentina",
-    " brazil",
-    " brasil",
-    " chile",
-    " colombia",
-    " uruguay",
-    " peru",
-    " perú",
-    " ecuador",
-    " paraguay",
-    " bolivia",
-    " mexico",
-    " méxico",
-    " usa",
-    " canada",
-    " canadá",
-    " sur",
-    " latin america",
-    " internacional",
+# Canales argentinos que queremos priorizar especialmente
+CANALES_PRIORIDAD_ARGENTINA = [
+    "ESPN Argentina",
+    "ESPN2 Argentina",
+    "ESPN3 Argentina",
+    "ESPN4 Argentina",
+    "DGO",
+    "DIRECTV Sports Argentina",
+    "DIRECTV Sports Argentina HD",
+    "DIRECTV Sports App",
+    "Disney+ Premium Argentina",
+    "TNT Sports Argentina",
+    "TNT Sports Go Argentina",
+    "TyC Sports Argentina",
+    "TyC Sports Internacional",
+    "ESPN Premium Argentina",
+    "Fox Sports Argentina",
+    "Televisión Pública",
+    "Television Publica",
 ]
 
+# Nombres limpios para mostrar en tu app
 ALIAS_CANAL = {
-    "ESPN Premium Argentina": "ESPN Premium",
-    "TNT Sports Argentina": "TNT Sports",
-    "Disney+ Premium Argentina": "Disney+",
-    "DIRECTV Sports Argentina": "DSports",
-    "DIRECTV Sports App": "DSports App",
-    "DIRECTV Sports Argentina HD": "DSports",
     "ESPN Argentina": "ESPN",
     "ESPN2 Argentina": "ESPN 2",
     "ESPN3 Argentina": "ESPN 3",
     "ESPN4 Argentina": "ESPN 4",
-    "Fox Sports Argentina": "Fox Sports",
-    "TyC Sports Internacional": "TyC Sports Internacional",
-    "Televisión Pública": "TV Pública",
-    "Television Publica": "TV Pública",
-    "TNT Sports Go Chile": "TNT Sports Go",
+
+    "ESPN 2 Argentina": "ESPN 2",
+    "ESPN 3 Argentina": "ESPN 3",
+    "ESPN 4 Argentina": "ESPN 4",
+
+    "ESPN Premium Argentina": "ESPN Premium",
+
+    "DGO": "DGO",
+    "DIRECTV Sports Argentina": "DIRECTV Sports",
+    "DIRECTV Sports Argentina HD": "DIRECTV Sports",
+    "DIRECTV Sports App": "DGO",
+    "DIRECTV Sports App Argentina": "DGO",
+    "DirecTV Sports Argentina": "DIRECTV Sports",
+
+    "Disney+ Premium Argentina": "Disney+ Premium",
+
+    "TNT Sports Argentina": "TNT Sports",
+    "TNT Sports Go Argentina": "TNT Sports Go",
     "TNT SPORTS Premium": "TNT Sports Premium",
     "TNT SPORTS Premium HD": "TNT Sports Premium",
+
+    "TyC Sports Argentina": "TyC Sports",
+    "TyC Sports Internacional": "TyC Sports Internacional",
+
+    "Fox Sports Argentina": "Fox Sports",
+    "Televisión Pública": "TV Pública",
+    "Television Publica": "TV Pública",
+
     "MLS Season Pass": "MLS Season Pass",
 }
 
 PALABRAS_CANAL_ARGENTINA = [
-    "argentina",
-    "espn premium",
-    "tnt sports argentina",
+    "espn argentina",
+    "espn2 argentina",
+    "espn 2 argentina",
+    "espn3 argentina",
+    "espn 3 argentina",
+    "espn4 argentina",
+    "espn 4 argentina",
+    "espn premium argentina",
+    "dgo",
     "directv sports argentina",
+    "directv sports app",
     "disney+ premium argentina",
-    "televisión pública",
+    "tnt sports argentina",
+    "tnt sports go argentina",
+    "tyc sports argentina",
+    "tyc sports internacional",
+    "fox sports argentina",
     "television publica",
-    "tyc sports",
+    "televisión pública",
 ]
 
 STATUS_LINES = {
@@ -129,12 +159,14 @@ def es_hora(linea):
 
 def es_fecha_header(linea):
     n = normalizar(linea)
+
     meses = [
         "enero", "febrero", "marzo", "abril", "mayo", "junio",
         "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
         "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep",
         "oct", "nov", "dec",
     ]
+
     return any(m in n for m in meses) and re.search(r"\d{1,2}", n)
 
 
@@ -194,9 +226,19 @@ def limpiar_nombre_canal(canal):
     if not canal:
         return ""
 
+    reemplazos_previos = {
+        "ESPN 2 Argentina": "ESPN2 Argentina",
+        "ESPN 3 Argentina": "ESPN3 Argentina",
+        "ESPN 4 Argentina": "ESPN4 Argentina",
+        "DirecTV Sports Argentina": "DIRECTV Sports Argentina",
+        "DIRECTV Sports App Argentina": "DIRECTV Sports App",
+        "TyC Sports": "TyC Sports Argentina",
+    }
+
+    canal = reemplazos_previos.get(canal, canal)
     canal = ALIAS_CANAL.get(canal, canal)
 
-    # Normaliza algunas variantes comunes
+    # Normaliza variantes que puedan venir pegadas
     canal = canal.replace("ESPN2", "ESPN 2")
     canal = canal.replace("ESPN3", "ESPN 3")
     canal = canal.replace("ESPN4", "ESPN 4")
@@ -206,7 +248,70 @@ def limpiar_nombre_canal(canal):
 
 def canal_es_argentino_o_util(canal):
     n = normalizar(canal)
-    return any(p in n for p in PALABRAS_CANAL_ARGENTINA)
+    n_sin_espacios = n.replace(" ", "")
+
+    patrones = [
+        "espn argentina",
+        "espn2 argentina",
+        "espn 2 argentina",
+        "espn3 argentina",
+        "espn 3 argentina",
+        "espn4 argentina",
+        "espn 4 argentina",
+        "espn premium argentina",
+        "dgo",
+        "directv sports argentina",
+        "directv sports app",
+        "disney+ premium argentina",
+        "tnt sports argentina",
+        "tnt sports go argentina",
+        "tyc sports argentina",
+        "tyc sports internacional",
+        "fox sports argentina",
+        "television publica",
+        "televisión pública",
+    ]
+
+    if any(p in n for p in patrones):
+        return True
+
+    if "espn2argentina" in n_sin_espacios:
+        return True
+
+    if "espn3argentina" in n_sin_espacios:
+        return True
+
+    if "espn4argentina" in n_sin_espacios:
+        return True
+
+    return False
+
+
+def prioridad_canal(canal):
+    canal_limpio = limpiar_nombre_canal(canal)
+
+    orden = [
+        "ESPN",
+        "ESPN 2",
+        "ESPN 3",
+        "ESPN 4",
+        "ESPN Premium",
+        "DGO",
+        "DIRECTV Sports",
+        "Disney+ Premium",
+        "TNT Sports",
+        "TNT Sports Premium",
+        "TNT Sports Go",
+        "TyC Sports",
+        "TyC Sports Internacional",
+        "Fox Sports",
+        "TV Pública",
+    ]
+
+    if canal_limpio in orden:
+        return orden.index(canal_limpio)
+
+    return 999
 
 
 def limpiar_canales(canales_raw):
@@ -219,7 +324,17 @@ def limpiar_canales(canales_raw):
         partes = re.split(r",|\|", str(bloque or ""))
 
         for parte in partes:
-            canal = limpiar_nombre_canal(parte)
+            canal_original = limpiar_linea(parte)
+
+            if not canal_original:
+                continue
+
+            n_original = normalizar(canal_original)
+
+            if n_original in CANALES_IGNORAR:
+                continue
+
+            canal = limpiar_nombre_canal(canal_original)
 
             if not canal:
                 continue
@@ -235,24 +350,21 @@ def limpiar_canales(canales_raw):
     if not candidatos:
         return ["A confirmar"]
 
-    # Si hay canales específicos de Argentina, nos quedamos con esos.
-    argentinos = [c for c in candidatos if canal_es_argentino_o_util(c)]
+    # Primero nos quedamos con canales argentinos o útiles para Argentina.
+    argentinos = []
+
+    for canal in candidatos:
+        if canal_es_argentino_o_util(canal):
+            limpio = limpiar_nombre_canal(canal)
+
+            if limpio and limpio not in argentinos:
+                argentinos.append(limpio)
 
     if argentinos:
-        salida = []
+        argentinos.sort(key=prioridad_canal)
+        return argentinos or ["A confirmar"]
 
-        for canal in argentinos:
-            canal = limpiar_nombre_canal(canal)
-
-            # Aplica alias otra vez después de filtrar
-            canal = ALIAS_CANAL.get(canal, canal)
-
-            if canal not in salida:
-                salida.append(canal)
-
-        return salida or ["A confirmar"]
-
-    # Si no hay Argentina, guardamos canales reales pero sacamos apuestas.
+    # Si no hay canales argentinos, guardamos canales reales de respaldo.
     salida = []
 
     for canal in candidatos:
@@ -266,6 +378,8 @@ def limpiar_canales(canales_raw):
 
         if canal not in salida:
             salida.append(canal)
+
+    salida.sort(key=prioridad_canal)
 
     return salida[:6] if salida else ["A confirmar"]
 
@@ -314,7 +428,6 @@ def es_linea_partido(linea):
     if len(linea) > 120:
         return False
 
-    # Evita textos de navegación o noticias
     prohibidas = [
         "próximos partidos",
         "proximos partidos",
@@ -401,8 +514,8 @@ def parsear_partidos_livesoccertv(html, fecha_iso, url):
                 if es_fin_canales(siguiente):
                     break
 
-                # Evita basura del layout
                 ns = normalizar(siguiente)
+
                 basura = [
                     "mostrar marcadores",
                     "ordenar por",
