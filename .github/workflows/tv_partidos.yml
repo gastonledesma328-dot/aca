@@ -2,7 +2,8 @@ name: Actualizar TV Partidos
 
 on:
   schedule:
-    - cron: "0 11 * * *"
+    # 10:00 UTC = 07:00 Argentina aprox.
+    - cron: "0 10 * * *"
   workflow_dispatch:
 
 permissions:
@@ -23,11 +24,11 @@ jobs:
 
       - name: Instalar dependencias
         run: |
-          pip install requests
+          pip install requests beautifulsoup4
 
-      - name: Generar JSON de TV
+      - name: Generar JSON de TV desde Live Soccer TV
         env:
-          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          LOOKAHEAD_DAYS: "2"
         run: |
           python scripts/scraper_tv_partidos.py
 
@@ -36,5 +37,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add data/tv_partidos.json
-          git commit -m "Actualizar TV de partidos" || echo "Sin cambios para guardar"
+          git commit -m "Actualizar TV de partidos desde Live Soccer TV" || echo "Sin cambios para guardar"
           git push
