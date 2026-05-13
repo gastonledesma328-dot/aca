@@ -263,10 +263,13 @@ async function cargarTvPartidos() {
   }
 
   TV_PARTIDOS_LOADING = fetchJsonCached(
-    `${TV_PARTIDOS_URL}?v=${Math.floor(Date.now() / CACHE_TTL_MS)}`,
-    "tv-partidos-cache",
-    CACHE_TTL_MS
-  )
+  `${TV_PARTIDOS_URL}?v=${Date.now()}`,
+  "tv-partidos-cache",
+  CACHE_TTL_MS,
+  {
+    networkFirst: true,
+  }
+)
     .then((data) => {
       TV_PARTIDOS_CACHE = data && typeof data === "object"
         ? data
@@ -444,6 +447,69 @@ function renderTvPartido(tv) {
       </span>
     </span>
   `;
+}
+
+function obtenerTvPartidoSync(match) {
+  const tvData = TV_PARTIDOS_CACHE;
+
+  if (!tvData || typeof tvData !== "object") {
+    return {
+      canales: [],
+      fuente: "",
+      confianza: "baja",
+    };
+  }
+
+  const partidosObj = tvData.partidos || {};
+  const partidos = Array.isArray(partidosObj)
+    ? partidosObj
+    : Object.values(partidosObj);
+
+  if (!partidos.length) {
+    return {
+      canales: [],
+      fuente: "",
+      confianza: "baja",
+    };
+  }
+
+  // 1) Intento por ID exacto, si alguna vez coinciden.
+  const idsAgenda = [
+    match.id,
+    match.uid,
+    match.fixture_id,
+    match.event_id,
+  ]
+    .map((value) => String(value || "").trim())
+    .filter(Boolean);
+
+  for (const tv of partidos) {
+    const idsTv = [
+      tv.id,
+      tv.uid,
+      tv.fixture_id,
+      tv.event_id,
+    ]
+      .map((value) => String(value || "").trim())
+      .filter(Boolean);
+
+    if (idsAgenda.some((id) => idsTv.includes(id)) && tieneCanalesConfirmados(tv.canales)) {
+      return tv;
+    }
+  }
+
+  // 2) Intento fuerte por nombres normalizados + fecha.
+  const byName = buscarTvPorNombre(tvData, match);
+
+  if (byName && tieneCanalesConfirmados(byName.canales)) {
+    return byName;
+  }
+
+  return {
+    canales: [],
+    fuente: "",
+    confianza: "baja",
+  };
 }
 
 async function getStreamEventsFallback() {
