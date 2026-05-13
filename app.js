@@ -469,6 +469,36 @@ function tieneCanalesConfirmados(canales) {
     return value && value !== "a confirmar" && value !== "sin datos";
   });
 }
+const LIGAS_SIN_DONDE_VER = [
+  "liga mx",
+  "liga profesional boliviana",
+  "division profesional bolivia",
+  "división profesional bolivia",
+  "bolivia",
+  "ligapro ecuador",
+  "ligapro serie a",
+  "liga pro ecuador",
+  "ecuador",
+];
+
+function ligaTvBloqueada(match, tv = null) {
+  const textos = [
+    match?.liga,
+    match?.liga_corta,
+    match?.competicion?.nombre,
+    match?.competicion?.name,
+    inferAgendaLeague(match),
+    tv?.liga,
+    tv?.pais,
+  ]
+    .filter(Boolean)
+    .map((value) => normalizarTextoTV(value));
+
+  return textos.some((texto) =>
+    LIGAS_SIN_DONDE_VER.some((bloqueada) => texto.includes(normalizarTextoTV(bloqueada)))
+  );
+}
+
 
 function fechaAgendaParaTV(match) {
   return String(
@@ -495,6 +525,7 @@ function buscarTvPorNombre(tvData, match) {
 
   for (const tv of partidos) {
     if (!tv || !tieneCanalesConfirmados(tv.canales)) continue;
+    if (ligaTvBloqueada(match, tv)) continue;
 
     const fechaTv = String(tv.fecha || tv.dia || "").slice(0, 10);
 
@@ -545,7 +576,7 @@ function renderTvPartido(tv) {
       <span class="tv-label">Dónde ver</span>
       <span class="tv-canales">
         ${canalesLimpios
-          .map((canal) => `<span class="tv-chip">${escapeHtml(canal)}</span>`)
+          .map((canal) => `<span class="tv-chip tv-chip-confirmado">${escapeHtml(canal)}</span>`)
           .join("")}
       </span>
     </span>
@@ -553,6 +584,14 @@ function renderTvPartido(tv) {
 }
 
 function obtenerTvPartidoSync(match) {
+  if (ligaTvBloqueada(match)) {
+    return {
+      canales: [],
+      fuente: "",
+      confianza: "bloqueada",
+    };
+  }
+
   const tvData = TV_PARTIDOS_CACHE;
 
   if (!tvData || typeof tvData !== "object") {
@@ -596,7 +635,11 @@ function obtenerTvPartidoSync(match) {
       .map((value) => String(value || "").trim())
       .filter(Boolean);
 
-    if (idsAgenda.some((id) => idsTv.includes(id)) && tieneCanalesConfirmados(tv.canales)) {
+    if (
+      idsAgenda.some((id) => idsTv.includes(id)) &&
+      tieneCanalesConfirmados(tv.canales) &&
+      !ligaTvBloqueada(match, tv)
+    ) {
       return tv;
     }
   }
@@ -604,7 +647,7 @@ function obtenerTvPartidoSync(match) {
   // 2) Intento por nombres normalizados + fecha.
   const byName = buscarTvPorNombre(tvData, match);
 
-  if (byName && tieneCanalesConfirmados(byName.canales)) {
+  if (byName && tieneCanalesConfirmados(byName.canales) && !ligaTvBloqueada(match, byName)) {
     return byName;
   }
 
