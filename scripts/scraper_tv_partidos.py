@@ -1,17 +1,101 @@
 import os
+import re
 import json
+import unicodedata
 import requests
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
-
-API_KEY = os.environ.get("API_FOOTBALL_KEY", "")
-API_HOST = "v3.football.api-sports.io"
-API_URL = "https://v3.football.api-sports.io/fixtures"
+from bs4 import BeautifulSoup
 
 TIMEZONE = "America/Argentina/Buenos_Aires"
-
+BASE_URL = "https://www.livesoccertv.com"
 OUTPUT_FILE = "data/tv_partidos.json"
-RULES_FILE = "data/tv_rules.json"
+
+# Cuántos días scrapea desde hoy.
+# 1 = solo hoy
+# 2 = hoy y mañana
+LOOKAHEAD_DAYS = int(os.environ.get("LOOKAHEAD_DAYS", "2"))
+
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/120.0.0.0 Safari/537.36"
+    ),
+    "Accept-Language": "es-AR,es;q=0.9,en;q=0.8",
+    "Referer": "https://www.livesoccertv.com/es/",
+}
+
+CANALES_IGNORAR = {
+    "bet365",
+    "bet365.com",
+}
+
+PAISES_REGIONALES_A_LIMPIAR = [
+    " argentina",
+    " brazil",
+    " brasil",
+    " chile",
+    " colombia",
+    " uruguay",
+    " peru",
+    " perú",
+    " ecuador",
+    " paraguay",
+    " bolivia",
+    " mexico",
+    " méxico",
+    " usa",
+    " canada",
+    " canadá",
+    " sur",
+    " latin america",
+    " internacional",
+]
+
+ALIAS_CANAL = {
+    "ESPN Premium Argentina": "ESPN Premium",
+    "TNT Sports Argentina": "TNT Sports",
+    "Disney+ Premium Argentina": "Disney+",
+    "DIRECTV Sports Argentina": "DSports",
+    "DIRECTV Sports App": "DSports App",
+    "DIRECTV Sports Argentina HD": "DSports",
+    "ESPN Argentina": "ESPN",
+    "ESPN2 Argentina": "ESPN 2",
+    "ESPN3 Argentina": "ESPN 3",
+    "ESPN4 Argentina": "ESPN 4",
+    "Fox Sports Argentina": "Fox Sports",
+    "TyC Sports Internacional": "TyC Sports Internacional",
+    "Televisión Pública": "TV Pública",
+    "Television Publica": "TV Pública",
+    "TNT Sports Go Chile": "TNT Sports Go",
+    "TNT SPORTS Premium": "TNT Sports Premium",
+    "TNT SPORTS Premium HD": "TNT Sports Premium",
+    "MLS Season Pass": "MLS Season Pass",
+}
+
+PALABRAS_CANAL_ARGENTINA = [
+    "argentina",
+    "espn premium",
+    "tnt sports argentina",
+    "directv sports argentina",
+    "disney+ premium argentina",
+    "televisión pública",
+    "television publica",
+    "tyc sports",
+]
+
+STATUS_LINES = {
+    "en vivo",
+    "fp",
+    "posp.",
+    "posp",
+    "apl.",
+    "apl",
+    "cancelado",
+    "suspendido",
+    "final",
+}
 
 
 def ahora_argentina():
@@ -19,368 +103,402 @@ def ahora_argentina():
 
 
 def normalizar(texto):
-    texto = str(texto or "").lower().strip()
-    reemplazos = {
-        "á": "a",
-        "é": "e",
-        "í": "i",
-        "ó": "o",
-        "ú": "u",
-        "ñ": "n"
-    }
-
-    for original, nuevo in reemplazos.items():
-        texto = texto.replace(original, nuevo)
-
-    return " ".join(texto.split())
+    texto = str(texto or "").strip().lower()
+    texto = unicodedata.normalize("NFD", texto)
+    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
+    texto = re.sub(r"\s+", " ", texto)
+    return texto.strip()
 
 
-def cargar_rules():
-    if not os.path.exists(RULES_FILE):
-        return {"default": ["A confirmar"]}
-
-    with open(RULES_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+def slug(texto):
+    texto = normalizar(texto)
+    texto = re.sub(r"[^a-z0-9]+", "-", texto)
+    return texto.strip("-")
 
 
-def es_liga_juvenil_o_reserva(liga):
-    liga_norm = normalizar(liga)
+def limpiar_linea(linea):
+    linea = str(linea or "")
+    linea = linea.replace("\xa0", " ")
+    linea = re.sub(r"\s+", " ", linea)
+    return linea.strip()
 
-    palabras = [
-        "u17",
-        "u18",
-        "u19",
-        "u20",
-        "u21",
-        "u23",
-        "sub 17",
-        "sub 18",
-        "sub 19",
-        "sub 20",
-        "sub 21",
-        "sub 23",
-        "reserve",
-        "reserva",
-        "res.",
-        "reserves",
-        "youth",
-        "academy",
-        "development",
-        "junior",
-        "juniors",
-        "juvenil"
+
+def es_hora(linea):
+    return bool(re.fullmatch(r"\d{1,2}:\d{2}", limpiar_linea(linea)))
+
+
+def es_fecha_header(linea):
+    n = normalizar(linea)
+    meses = [
+        "enero", "febrero", "marzo", "abril", "mayo", "junio",
+        "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre",
+        "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep",
+        "oct", "nov", "dec",
     ]
+    return any(m in n for m in meses) and re.search(r"\d{1,2}", n)
 
-    return any(palabra in liga_norm for palabra in palabras)
+
+def es_linea_competicion(linea):
+    linea = limpiar_linea(linea)
+    n = normalizar(linea)
+
+    if not linea:
+        return False
+
+    if " vs " in n:
+        return False
+
+    if es_hora(linea):
+        return False
+
+    if "," in linea:
+        return False
+
+    if n in STATUS_LINES:
+        return False
+
+    if es_fecha_header(linea):
+        return False
+
+    # Ejemplo: Argentina - Liga Profesional
+    return " - " in linea and len(linea) <= 80
 
 
-def limpiar_canales(canales):
-    if not isinstance(canales, list):
+def separar_pais_liga(linea):
+    partes = limpiar_linea(linea).split(" - ", 1)
+
+    if len(partes) == 2:
+        return partes[0].strip(), partes[1].strip()
+
+    return "", limpiar_linea(linea)
+
+
+def extraer_equipos(partido):
+    partido = limpiar_linea(partido)
+
+    if " vs " in partido:
+        local, visitante = partido.split(" vs ", 1)
+        return limpiar_linea(local), limpiar_linea(visitante)
+
+    if " v " in partido:
+        local, visitante = partido.split(" v ", 1)
+        return limpiar_linea(local), limpiar_linea(visitante)
+
+    return "", ""
+
+
+def limpiar_nombre_canal(canal):
+    canal = limpiar_linea(canal)
+    canal = canal.strip(" ,.-")
+
+    if not canal:
+        return ""
+
+    canal = ALIAS_CANAL.get(canal, canal)
+
+    # Normaliza algunas variantes comunes
+    canal = canal.replace("ESPN2", "ESPN 2")
+    canal = canal.replace("ESPN3", "ESPN 3")
+    canal = canal.replace("ESPN4", "ESPN 4")
+
+    return canal.strip()
+
+
+def canal_es_argentino_o_util(canal):
+    n = normalizar(canal)
+    return any(p in n for p in PALABRAS_CANAL_ARGENTINA)
+
+
+def limpiar_canales(canales_raw):
+    if not canales_raw:
         return ["A confirmar"]
 
-    limpios = []
+    candidatos = []
 
-    for canal in canales:
-        canal = str(canal or "").strip()
+    for bloque in canales_raw:
+        partes = re.split(r",|\|", str(bloque or ""))
+
+        for parte in partes:
+            canal = limpiar_nombre_canal(parte)
+
+            if not canal:
+                continue
+
+            n = normalizar(canal)
+
+            if n in CANALES_IGNORAR:
+                continue
+
+            if canal not in candidatos:
+                candidatos.append(canal)
+
+    if not candidatos:
+        return ["A confirmar"]
+
+    # Si hay canales específicos de Argentina, nos quedamos con esos.
+    argentinos = [c for c in candidatos if canal_es_argentino_o_util(c)]
+
+    if argentinos:
+        salida = []
+
+        for canal in argentinos:
+            canal = limpiar_nombre_canal(canal)
+
+            # Aplica alias otra vez después de filtrar
+            canal = ALIAS_CANAL.get(canal, canal)
+
+            if canal not in salida:
+                salida.append(canal)
+
+        return salida or ["A confirmar"]
+
+    # Si no hay Argentina, guardamos canales reales pero sacamos apuestas.
+    salida = []
+
+    for canal in candidatos:
+        canal = limpiar_nombre_canal(canal)
 
         if not canal:
             continue
 
-        if canal not in limpios:
-            limpios.append(canal)
-
-    canales_reales = [
-        canal for canal in limpios
-        if normalizar(canal) != "a confirmar"
-    ]
-
-    if canales_reales:
-        return canales_reales
-
-    return ["A confirmar"]
-
-
-def buscar_en_rules(rules, pais, liga):
-    pais = str(pais or "").strip()
-    liga = str(liga or "").strip()
-
-    pais_norm = normalizar(pais)
-    liga_norm = normalizar(liga)
-
-    # Coincidencia exacta por país
-    if pais in rules and isinstance(rules[pais], dict):
-        ligas_pais = rules[pais]
-
-        if liga in ligas_pais:
-            return ligas_pais[liga], "regla_exacta", "alta"
-
-        for nombre_liga, canales in ligas_pais.items():
-            nombre_liga_norm = normalizar(nombre_liga)
-
-            if nombre_liga_norm == liga_norm:
-                return canales, "regla_exacta_normalizada", "alta"
-
-            if nombre_liga_norm in liga_norm or liga_norm in nombre_liga_norm:
-                return canales, "regla_flexible", "media"
-
-    # Coincidencia por país normalizado
-    for pais_rule, ligas_pais in rules.items():
-        if pais_rule == "default":
+        if normalizar(canal) in CANALES_IGNORAR:
             continue
 
-        if not isinstance(ligas_pais, dict):
-            continue
+        if canal not in salida:
+            salida.append(canal)
 
-        if normalizar(pais_rule) != pais_norm:
-            continue
-
-        for nombre_liga, canales in ligas_pais.items():
-            nombre_liga_norm = normalizar(nombre_liga)
-
-            if nombre_liga_norm == liga_norm:
-                return canales, "regla_pais_normalizado", "alta"
-
-            if nombre_liga_norm in liga_norm or liga_norm in nombre_liga_norm:
-                return canales, "regla_pais_flexible", "media"
-
-    return None, None, None
+    return salida[:6] if salida else ["A confirmar"]
 
 
-def buscar_canales(rules, pais, liga):
-    pais = str(pais or "").strip()
-    liga = str(liga or "").strip()
+def obtener_html(url):
+    print(f"🌐 Leyendo {url}")
 
-    pais_norm = normalizar(pais)
-    liga_norm = normalizar(liga)
+    r = requests.get(url, headers=HEADERS, timeout=30)
 
-    # Evita falsos positivos:
-    # U18 Premier League no debe heredar ESPN/Disney+ de Premier League.
-    if es_liga_juvenil_o_reserva(liga):
-        return rules.get("default", ["A confirmar"]), "liga_juvenil_reserva", "baja"
-
-    # =========================
-    # REGLAS FUERTES ARGENTINA
-    # =========================
-
-    if pais_norm == "argentina":
-        if "copa argentina" in liga_norm or liga_norm == "copa" or "argentina cup" in liga_norm:
-            return ["TyC Sports"], "regla_fuerte_copa_argentina", "alta"
-
-        if "primera nacional" in liga_norm:
-            return ["TyC Sports", "TyC Sports Play"], "regla_fuerte_primera_nacional", "alta"
-
-        if (
-            "liga profesional" in liga_norm
-            or "primera division" in liga_norm
-            or "torneo betano" in liga_norm
-        ):
-            return ["ESPN Premium", "TNT Sports"], "regla_fuerte_liga_argentina", "alta"
-
-        if "reserve" in liga_norm or "reserva" in liga_norm:
-            return ["A confirmar"], "reserva_argentina", "baja"
-
-    # =========================
-    # REGLAS FUERTES CONMEBOL
-    # =========================
-
-    if "libertadores" in liga_norm:
-        canales = (
-            rules.get("CONMEBOL", {}).get("CONMEBOL Libertadores")
-            or rules.get("CONMEBOL", {}).get("Copa Libertadores")
-            or ["ESPN", "Disney+"]
-        )
-        return canales, "regla_conmebol", "media"
-
-    if "sudamericana" in liga_norm:
-        canales = (
-            rules.get("CONMEBOL", {}).get("CONMEBOL Sudamericana")
-            or rules.get("CONMEBOL", {}).get("Copa Sudamericana")
-            or ["ESPN", "Disney+"]
-        )
-        return canales, "regla_conmebol", "media"
-
-    # =========================
-    # REGLAS FUERTES POR PAÍS
-    # =========================
-
-    if pais_norm == "colombia":
-        if "primera a" in liga_norm or "copa colombia" in liga_norm:
-            return ["Win Sports"], "regla_fuerte_colombia", "alta"
-
-    if pais_norm == "bolivia":
-        if "primera division" in liga_norm or "division profesional" in liga_norm:
-            return ["Tigo Sports"], "regla_fuerte_bolivia", "alta"
-
-    if pais_norm == "brazil":
-        if "copa do brasil" in liga_norm:
-            return ["SporTV", "Premiere"], "regla_fuerte_brasil", "alta"
-
-        if liga_norm == "serie a" or "brasileirao" in liga_norm:
-            return ["SporTV", "Premiere"], "regla_fuerte_brasil", "media"
-
-    if pais_norm == "spain":
-        if "la liga" in liga_norm or "laliga" in liga_norm:
-            return ["ESPN", "Disney+"], "regla_fuerte_espana", "alta"
-
-    if pais_norm == "italy":
-        if liga_norm == "serie a":
-            return ["ESPN", "Disney+"], "regla_fuerte_italia", "alta"
-
-        if liga_norm == "serie b":
-            return ["A confirmar"], "serie_b_italia_sin_regla", "baja"
-
-    if pais_norm == "england":
-        if liga_norm == "premier league":
-            return ["ESPN", "Disney+"], "regla_fuerte_inglaterra", "alta"
-
-        if "championship" in liga_norm:
-            return ["ESPN", "Disney+"], "regla_fuerte_championship", "media"
-
-    if pais_norm == "france":
-        if "ligue 1" in liga_norm:
-            return ["ESPN", "Disney+"], "regla_fuerte_francia", "alta"
-
-    if pais_norm == "germany":
-        if "bundesliga" in liga_norm:
-            return ["ESPN", "Disney+"], "regla_fuerte_alemania", "alta"
-
-    if pais_norm == "usa":
-        if "major league soccer" in liga_norm or liga_norm == "mls":
-            return ["Apple TV"], "regla_fuerte_mls", "alta"
-
-        if "nwsl" in liga_norm:
-            return ["A confirmar"], "nwsl_sin_regla", "baja"
-
-    # =========================
-    # RULES JSON
-    # =========================
-
-    canales, fuente, confianza = buscar_en_rules(rules, pais, liga)
-
-    if canales:
-        return canales, fuente, confianza
-
-    # =========================
-    # EUROPA
-    # =========================
-
-    if "champions league" in liga_norm:
-        return ["ESPN", "Disney+"], "regla_europa", "media"
-
-    if "europa league" in liga_norm:
-        return ["ESPN", "Disney+"], "regla_europa", "media"
-
-    if "conference league" in liga_norm:
-        return ["ESPN", "Disney+"], "regla_europa", "media"
-
-    # Fallback
-    return rules.get("default", ["A confirmar"]), "sin_regla", "baja"
-
-
-def obtener_fixtures_del_dia(fecha):
-    if not API_KEY:
-        raise RuntimeError("Falta configurar API_FOOTBALL_KEY en GitHub Secrets.")
-
-    headers = {
-        "x-apisports-key": API_KEY,
-        "x-rapidapi-host": API_HOST
-    }
-
-    params = {
-        "date": fecha,
-        "timezone": TIMEZONE
-    }
-
-    r = requests.get(API_URL, headers=headers, params=params, timeout=30)
-
-    print("🌐 API-FOOTBALL status:", r.status_code)
+    print(f"📡 Status {r.status_code}")
 
     r.raise_for_status()
 
-    data = r.json()
-
-    if data.get("errors"):
-        raise RuntimeError(f"API-FOOTBALL devolvió errores: {data.get('errors')}")
-
-    return data.get("response", [])
+    return r.text
 
 
-def armar_json_tv(fixtures, rules, fecha):
-    partidos = {}
+def lineas_desde_html(html):
+    soup = BeautifulSoup(html, "html.parser")
 
-    for item in fixtures:
-        fixture = item.get("fixture") or {}
-        league = item.get("league") or {}
-        teams = item.get("teams") or {}
-        status = fixture.get("status") or {}
+    for tag in soup(["script", "style", "noscript"]):
+        tag.decompose()
 
-        fixture_id = fixture.get("id")
+    texto = soup.get_text("\n")
+    lineas = []
 
-        if not fixture_id:
+    for linea in texto.splitlines():
+        linea = limpiar_linea(linea)
+
+        if not linea:
             continue
 
-        home = teams.get("home") or {}
-        away = teams.get("away") or {}
+        if linea in ["+", "×", "?", "PUBLICIDAD"]:
+            continue
 
-        local = home.get("name") or "Local"
-        visitante = away.get("name") or "Visitante"
+        lineas.append(linea)
 
-        liga = league.get("name") or ""
-        pais = league.get("country") or ""
+    return lineas
 
-        canales, fuente, confianza = buscar_canales(rules, pais, liga)
-        canales = limpiar_canales(canales)
 
-        partidos[str(fixture_id)] = {
-            "fixture_id": fixture_id,
-            "partido": f"{local} vs {visitante}",
-            "local": local,
-            "visitante": visitante,
-            "local_id": home.get("id"),
-            "visitante_id": away.get("id"),
-            "liga": liga,
-            "liga_id": league.get("id"),
-            "pais": pais,
-            "fecha": fixture.get("date", ""),
-            "timestamp": fixture.get("timestamp"),
-            "estado": {
-                "long": status.get("long"),
-                "short": status.get("short"),
-                "elapsed": status.get("elapsed")
-            },
-            "canales": canales,
-            "fuente": fuente,
-            "confianza": confianza
-        }
+def es_linea_partido(linea):
+    n = normalizar(linea)
 
-    return {
-        "actualizado": datetime.now(timezone.utc).isoformat(),
-        "timezone": TIMEZONE,
-        "fecha": fecha,
-        "total": len(partidos),
-        "partidos": partidos
-    }
+    if " vs " not in n:
+        return False
+
+    if len(linea) > 120:
+        return False
+
+    # Evita textos de navegación o noticias
+    prohibidas = [
+        "próximos partidos",
+        "proximos partidos",
+        "más partidos",
+        "mas partidos",
+        "noticias",
+    ]
+
+    return not any(p in n for p in prohibidas)
+
+
+def es_fin_canales(linea):
+    if es_hora(linea):
+        return True
+
+    if es_linea_competicion(linea):
+        return True
+
+    if es_linea_partido(linea):
+        return True
+
+    n = normalizar(linea)
+
+    cortes = [
+        "noticias",
+        "suscríbete",
+        "suscribete",
+        "próximos partidos relevantes",
+        "proximos partidos relevantes",
+        "más partidos",
+        "mas partidos",
+        "boletín",
+        "boletin",
+    ]
+
+    return any(c in n for c in cortes)
+
+
+def parsear_partidos_livesoccertv(html, fecha_iso, url):
+    lineas = lineas_desde_html(html)
+
+    partidos = {}
+    liga_actual = ""
+    pais_actual = ""
+    hora_actual = ""
+    estado_actual = "Programado"
+
+    i = 0
+
+    while i < len(lineas):
+        linea = lineas[i]
+        n = normalizar(linea)
+
+        if es_linea_competicion(linea):
+            pais_actual, liga_actual = separar_pais_liga(linea)
+            i += 1
+            continue
+
+        if n in STATUS_LINES:
+            estado_actual = linea
+            i += 1
+            continue
+
+        if es_hora(linea):
+            hora_actual = linea
+            estado_actual = "Programado"
+            i += 1
+            continue
+
+        if es_linea_partido(linea):
+            partido_nombre = linea
+            local, visitante = extraer_equipos(partido_nombre)
+
+            if not local or not visitante:
+                i += 1
+                continue
+
+            canales_raw = []
+            j = i + 1
+
+            while j < len(lineas):
+                siguiente = lineas[j]
+
+                if es_fin_canales(siguiente):
+                    break
+
+                # Evita basura del layout
+                ns = normalizar(siguiente)
+                basura = [
+                    "mostrar marcadores",
+                    "ordenar por",
+                    "liga hora",
+                    "language",
+                    "elige un dia",
+                    "elige un día",
+                ]
+
+                if not any(b in ns for b in basura):
+                    canales_raw.append(siguiente)
+
+                j += 1
+
+            canales = limpiar_canales(canales_raw)
+
+            partido_id = f"lstv-{fecha_iso}-{slug(local)}-{slug(visitante)}"
+
+            partidos[partido_id] = {
+                "id": partido_id,
+                "fixture_id": partido_id,
+                "partido": f"{local} vs {visitante}",
+                "local": local,
+                "visitante": visitante,
+                "liga": liga_actual,
+                "pais": pais_actual,
+                "fecha": f"{fecha_iso}T{hora_actual or '00:00'}:00",
+                "dia": fecha_iso,
+                "hora": hora_actual,
+                "estado": {
+                    "long": estado_actual,
+                    "short": estado_actual,
+                    "elapsed": None,
+                },
+                "canales": canales,
+                "fuente": "Live Soccer TV",
+                "fuente_url": url,
+                "confianza": "alta" if canales != ["A confirmar"] else "baja",
+            }
+
+            i = j
+            continue
+
+        i += 1
+
+    return partidos
+
+
+def url_para_fecha(fecha):
+    hoy = ahora_argentina().date()
+
+    if fecha == hoy:
+        return f"{BASE_URL}/es/"
+
+    return f"{BASE_URL}/es/schedules/{fecha.strftime('%Y-%m-%d')}/"
 
 
 def main():
     os.makedirs("data", exist_ok=True)
 
-    fecha = ahora_argentina().strftime("%Y-%m-%d")
+    hoy = ahora_argentina().date()
+    todos = {}
+    fechas = []
 
-    print(f"📺 Generando TV de partidos para {fecha}")
+    for offset in range(LOOKAHEAD_DAYS):
+        fecha = hoy + timedelta(days=offset)
+        fecha_iso = fecha.strftime("%Y-%m-%d")
+        url = url_para_fecha(fecha)
 
-    rules = cargar_rules()
-    fixtures = obtener_fixtures_del_dia(fecha)
+        try:
+            html = obtener_html(url)
+            partidos = parsear_partidos_livesoccertv(html, fecha_iso, url)
 
-    print(f"⚽ Fixtures recibidos: {len(fixtures)}")
+            print(f"✅ {fecha_iso}: {len(partidos)} partidos con TV encontrados")
 
-    salida = armar_json_tv(fixtures, rules, fecha)
+            todos.update(partidos)
+            fechas.append(fecha_iso)
+
+        except Exception as e:
+            print(f"⚠️ Error scrapeando {fecha_iso}: {e}")
+
+    salida = {
+        "fuente": "Live Soccer TV",
+        "metodo": "scraping HTML agenda diaria",
+        "actualizado": datetime.now(timezone.utc).isoformat(),
+        "timezone": TIMEZONE,
+        "fechas": fechas,
+        "total": len(todos),
+        "partidos": todos,
+    }
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(salida, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ Generado {OUTPUT_FILE}")
-    print(f"📌 Partidos procesados: {salida['total']}")
+    print(f"📺 Generado {OUTPUT_FILE}")
+    print(f"📌 Total partidos TV: {salida['total']}")
 
 
 if __name__ == "__main__":
