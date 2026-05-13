@@ -35,62 +35,6 @@ def normalizar(texto):
     return " ".join(texto.split())
 
 
-
-
-def canales_desde_rules_override(rules, fixture_id, pais, liga, local, visitante):
-    overrides = rules.get("overrides") or {}
-
-    if not isinstance(overrides, dict):
-        return None, "", ""
-
-    fixture_key = str(fixture_id or "")
-
-    fixtures = overrides.get("fixtures") or {}
-    if isinstance(fixtures, dict) and fixture_key and fixture_key in fixtures:
-        canales = fixtures.get(fixture_key)
-        if isinstance(canales, list) and canales:
-            return canales, "override_fixture", "alta"
-
-    pais_norm = normalizar(pais)
-    liga_norm = normalizar(liga)
-    local_norm = normalizar(local)
-    visitante_norm = normalizar(visitante)
-
-    matches = overrides.get("matches") or []
-
-    if not isinstance(matches, list):
-        return None, "", ""
-
-    for regla in matches:
-        if not isinstance(regla, dict):
-            continue
-
-        regla_liga = normalizar(regla.get("liga", ""))
-        regla_pais = normalizar(regla.get("pais", ""))
-        regla_local = normalizar(regla.get("local", ""))
-        regla_visitante = normalizar(regla.get("visitante", ""))
-        canales = regla.get("canales")
-
-        if not isinstance(canales, list) or not canales:
-            continue
-
-        if regla_pais and regla_pais != pais_norm:
-            continue
-
-        if regla_liga and regla_liga != liga_norm:
-            continue
-
-        mismos_equipos = (
-            regla_local == local_norm and regla_visitante == visitante_norm
-        ) or (
-            regla_local == visitante_norm and regla_visitante == local_norm
-        )
-
-        if regla_local and regla_visitante and mismos_equipos:
-            return canales, "override_partido", "alta"
-
-    return None, "", ""
-
 def cargar_rules():
     if not os.path.exists(RULES_FILE):
         return {"default": ["A confirmar"]}
@@ -156,28 +100,14 @@ def limpiar_canales(canales):
     return ["A confirmar"]
 
 
-def buscar_canales(rules, pais, liga):
+def buscar_en_rules(rules, pais, liga):
     pais = str(pais or "").strip()
     liga = str(liga or "").strip()
-
-    # Evita falsos positivos:
-    # U18 Premier League no debe heredar ESPN/Disney+ de Premier League.
-    if es_liga_juvenil_o_reserva(liga):
-        return rules.get("default", ["A confirmar"]), "liga_juvenil_reserva", "baja"
 
     pais_norm = normalizar(pais)
     liga_norm = normalizar(liga)
 
-    # Regla fuerte: Copa Argentina se ve por TyC Sports.
-    # La ponemos antes de las reglas flexibles para que nunca caiga en ESPN/Disney+.
-    if "copa argentina" in liga_norm:
-        canales = (
-            rules.get("Argentina", {}).get("Copa Argentina")
-            or ["TyC Sports"]
-        )
-        return canales, "regla_copa_argentina", "alta"
-
-    # 1. Coincidencia exacta por país y liga
+    # Coincidencia exacta por país
     if pais in rules and isinstance(rules[pais], dict):
         ligas_pais = rules[pais]
 
@@ -193,7 +123,7 @@ def buscar_canales(rules, pais, liga):
             if nombre_liga_norm in liga_norm or liga_norm in nombre_liga_norm:
                 return canales, "regla_flexible", "media"
 
-    # 2. Coincidencia por país normalizado
+    # Coincidencia por país normalizado
     for pais_rule, ligas_pais in rules.items():
         if pais_rule == "default":
             continue
@@ -213,7 +143,46 @@ def buscar_canales(rules, pais, liga):
             if nombre_liga_norm in liga_norm or liga_norm in nombre_liga_norm:
                 return canales, "regla_pais_flexible", "media"
 
-    # 3. Reglas continentales por texto de liga
+    return None, None, None
+
+
+def buscar_canales(rules, pais, liga):
+    pais = str(pais or "").strip()
+    liga = str(liga or "").strip()
+
+    pais_norm = normalizar(pais)
+    liga_norm = normalizar(liga)
+
+    # Evita falsos positivos:
+    # U18 Premier League no debe heredar ESPN/Disney+ de Premier League.
+    if es_liga_juvenil_o_reserva(liga):
+        return rules.get("default", ["A confirmar"]), "liga_juvenil_reserva", "baja"
+
+    # =========================
+    # REGLAS FUERTES ARGENTINA
+    # =========================
+
+    if pais_norm == "argentina":
+        if "copa argentina" in liga_norm or liga_norm == "copa" or "argentina cup" in liga_norm:
+            return ["TyC Sports"], "regla_fuerte_copa_argentina", "alta"
+
+        if "primera nacional" in liga_norm:
+            return ["TyC Sports", "TyC Sports Play"], "regla_fuerte_primera_nacional", "alta"
+
+        if (
+            "liga profesional" in liga_norm
+            or "primera division" in liga_norm
+            or "torneo betano" in liga_norm
+        ):
+            return ["ESPN Premium", "TNT Sports"], "regla_fuerte_liga_argentina", "alta"
+
+        if "reserve" in liga_norm or "reserva" in liga_norm:
+            return ["A confirmar"], "reserva_argentina", "baja"
+
+    # =========================
+    # REGLAS FUERTES CONMEBOL
+    # =========================
+
     if "libertadores" in liga_norm:
         canales = (
             rules.get("CONMEBOL", {}).get("CONMEBOL Libertadores")
@@ -230,6 +199,71 @@ def buscar_canales(rules, pais, liga):
         )
         return canales, "regla_conmebol", "media"
 
+    # =========================
+    # REGLAS FUERTES POR PAÍS
+    # =========================
+
+    if pais_norm == "colombia":
+        if "primera a" in liga_norm or "copa colombia" in liga_norm:
+            return ["Win Sports"], "regla_fuerte_colombia", "alta"
+
+    if pais_norm == "bolivia":
+        if "primera division" in liga_norm or "division profesional" in liga_norm:
+            return ["Tigo Sports"], "regla_fuerte_bolivia", "alta"
+
+    if pais_norm == "brazil":
+        if "copa do brasil" in liga_norm:
+            return ["SporTV", "Premiere"], "regla_fuerte_brasil", "alta"
+
+        if liga_norm == "serie a" or "brasileirao" in liga_norm:
+            return ["SporTV", "Premiere"], "regla_fuerte_brasil", "media"
+
+    if pais_norm == "spain":
+        if "la liga" in liga_norm or "laliga" in liga_norm:
+            return ["ESPN", "Disney+"], "regla_fuerte_espana", "alta"
+
+    if pais_norm == "italy":
+        if liga_norm == "serie a":
+            return ["ESPN", "Disney+"], "regla_fuerte_italia", "alta"
+
+        if liga_norm == "serie b":
+            return ["A confirmar"], "serie_b_italia_sin_regla", "baja"
+
+    if pais_norm == "england":
+        if liga_norm == "premier league":
+            return ["ESPN", "Disney+"], "regla_fuerte_inglaterra", "alta"
+
+        if "championship" in liga_norm:
+            return ["ESPN", "Disney+"], "regla_fuerte_championship", "media"
+
+    if pais_norm == "france":
+        if "ligue 1" in liga_norm:
+            return ["ESPN", "Disney+"], "regla_fuerte_francia", "alta"
+
+    if pais_norm == "germany":
+        if "bundesliga" in liga_norm:
+            return ["ESPN", "Disney+"], "regla_fuerte_alemania", "alta"
+
+    if pais_norm == "usa":
+        if "major league soccer" in liga_norm or liga_norm == "mls":
+            return ["Apple TV"], "regla_fuerte_mls", "alta"
+
+        if "nwsl" in liga_norm:
+            return ["A confirmar"], "nwsl_sin_regla", "baja"
+
+    # =========================
+    # RULES JSON
+    # =========================
+
+    canales, fuente, confianza = buscar_en_rules(rules, pais, liga)
+
+    if canales:
+        return canales, fuente, confianza
+
+    # =========================
+    # EUROPA
+    # =========================
+
     if "champions league" in liga_norm:
         return ["ESPN", "Disney+"], "regla_europa", "media"
 
@@ -239,7 +273,7 @@ def buscar_canales(rules, pais, liga):
     if "conference league" in liga_norm:
         return ["ESPN", "Disney+"], "regla_europa", "media"
 
-    # 4. Fallback
+    # Fallback
     return rules.get("default", ["A confirmar"]), "sin_regla", "baja"
 
 
@@ -294,18 +328,7 @@ def armar_json_tv(fixtures, rules, fecha):
         liga = league.get("name") or ""
         pais = league.get("country") or ""
 
-        canales, fuente, confianza = canales_desde_rules_override(
-            rules,
-            fixture_id,
-            pais,
-            liga,
-            local,
-            visitante
-        )
-
-        if canales is None:
-            canales, fuente, confianza = buscar_canales(rules, pais, liga)
-
+        canales, fuente, confianza = buscar_canales(rules, pais, liga)
         canales = limpiar_canales(canales)
 
         partidos[str(fixture_id)] = {
