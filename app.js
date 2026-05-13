@@ -294,117 +294,151 @@ async function cargarTvPartidos() {
   return TV_PARTIDOS_LOADING;
 }
 
-function normalizarTextoTv(texto) {
+function normalizarTextoTV(texto) {
   return String(texto || "")
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\([^)]*\)/g, " ")
+    .replace(/\bclub atletico\b/g, "")
+    .replace(/\bca\b/g, "")
+    .replace(/\bfc\b/g, "")
+    .replace(/\bcd\b/g, "")
+    .replace(/\bsc\b/g, "")
+    .replace(/\bac\b/g, "")
     .replace(/\s+/g, " ")
     .trim();
 }
 
-function tvPartidoIds(match) {
-  return [
-    match.fixture_id,
-    match.api_football_id,
-    match.apiFootballId,
-    match.id_api_football,
-    match.api_id,
-    match.id,
-    match.uid,
-  ]
-    .filter((value) => value !== undefined && value !== null && value !== "")
-    .map(String);
-}
+function normalizarEquipoTV(nombre) {
+  let n = normalizarTextoTV(nombre);
 
-function buscarTvPorNombre(data, match) {
-  const partidosTv = Object.values(data?.partidos || {});
-  const home = normalizarTextoTv(match.local || match.partido?.split(/\s+vs\.?\s+/i)[0] || "");
-  const away = normalizarTextoTv(match.visitante || match.partido?.split(/\s+vs\.?\s+/i)[1] || "");
-
-  if (!home || !away) {
-    return null;
-  }
-
-  const matchDate = agendaDate(match);
-
-  return partidosTv.find((tv) => {
-    const tvHome = normalizarTextoTv(tv.local);
-    const tvAway = normalizarTextoTv(tv.visitante);
-    const tvDate = String(tv.fecha || "").slice(0, 10);
-
-    if (matchDate && tvDate && matchDate !== tvDate) {
-      return false;
-    }
-
-    const sameOrder =
-      (tvHome.includes(home) || home.includes(tvHome)) &&
-      (tvAway.includes(away) || away.includes(tvAway));
-
-    const swappedOrder =
-      (tvHome.includes(away) || away.includes(tvHome)) &&
-      (tvAway.includes(home) || home.includes(tvAway));
-
-    return sameOrder || swappedOrder;
-  }) || null;
-}
-
-function obtenerTvPartidoSync(match) {
-  const data = TV_PARTIDOS_CACHE || readAnyJsonCache("tv-partidos-cache") || { partidos: {} };
-
-  for (const id of tvPartidoIds(match)) {
-    if (data.partidos?.[id]) {
-      return data.partidos[id];
-    }
-  }
-
-  const byName = buscarTvPorNombre(data, match);
-
-  if (byName) {
-    return byName;
-  }
-
-  return {
-    canales: ["A confirmar"],
-    fuente: "no_encontrado",
-    confianza: "baja",
+  const alias = {
+    "racing club": "racing avellaneda",
+    "racing": "racing avellaneda",
+    "gimnasia la plata": "gimnasia lp",
+    "gimnasia y esgrima la plata": "gimnasia lp",
+    "san martin san juan": "san martin sj",
+    "san martin de san juan": "san martin sj",
+    "san martin sj": "san martin sj",
+    "barcelona": "fc barcelona",
+    "deportivo alaves": "alaves",
+    "alaves": "alaves",
+    "sevilla": "sevilla",
+    "sevilla fc": "sevilla",
+    "man city": "manchester city",
+    "manchester utd": "manchester united",
+    "manchester united": "manchester united",
+    "inter": "inter milan",
+    "internazionale": "inter milan",
+    "psg": "psg",
+    "paris saint germain": "psg",
   };
+
+  return alias[n] || n;
+}
+
+function similitudTV(a, b) {
+  const aa = normalizarEquipoTV(a);
+  const bb = normalizarEquipoTV(b);
+
+  if (!aa || !bb) return 0;
+  if (aa === bb) return 1;
+  if (aa.includes(bb) || bb.includes(aa)) return 0.88;
+
+  const pa = aa.split(" ").filter(Boolean);
+  const pb = bb.split(" ").filter(Boolean);
+
+  if (!pa.length || !pb.length) return 0;
+
+  const comunes = pa.filter((p) => pb.includes(p)).length;
+  return comunes / Math.max(pa.length, pb.length);
+}
+
+function mismoPartidoTV(match, tv) {
+  const localAgenda = match.local || match.home || match.equipo_local || "";
+  const visitanteAgenda = match.visitante || match.away || match.equipo_visitante || "";
+
+  const localTV = tv.local || "";
+  const visitanteTV = tv.visitante || "";
+
+  const directo =
+    similitudTV(localAgenda, localTV) >= 0.72 &&
+    similitudTV(visitanteAgenda, visitanteTV) >= 0.72;
+
+  const invertido =
+    similitudTV(localAgenda, visitanteTV) >= 0.72 &&
+    similitudTV(visitanteAgenda, localTV) >= 0.72;
+
+  return directo || invertido;
 }
 
 function tieneCanalesConfirmados(canales) {
   if (!Array.isArray(canales)) return false;
 
-  const limpios = canales
-    .map((canal) => String(canal || "").trim())
-    .filter(Boolean);
-
-  if (!limpios.length) return false;
-
-  return limpios.some((canal) => {
-    const value = canal.toLowerCase();
-    return value !== "a confirmar" && value !== "sin datos";
+  return canales.some((canal) => {
+    const value = String(canal || "").trim().toLowerCase();
+    return value && value !== "a confirmar" && value !== "sin datos";
   });
 }
 
+function buscarTvPorNombre(tvData, match) {
+  const partidosObj = tvData?.partidos || {};
+  const partidos = Array.isArray(partidosObj)
+    ? partidosObj
+    : Object.values(partidosObj);
+
+  const fechaMatch = String(match.fecha || match.date || match.dia || "").slice(0, 10);
+
+  let mejor = null;
+  let mejorScore = 0;
+
+  for (const tv of partidos) {
+    if (!tv || !tieneCanalesConfirmados(tv.canales)) continue;
+
+    const fechaTv = String(tv.fecha || tv.dia || "").slice(0, 10);
+
+    if (fechaMatch && fechaTv && fechaMatch !== fechaTv) {
+      continue;
+    }
+
+    if (!mismoPartidoTV(match, tv)) {
+      continue;
+    }
+
+    const localAgenda = match.local || match.home || match.equipo_local || "";
+    const visitanteAgenda = match.visitante || match.away || match.equipo_visitante || "";
+
+    const score =
+      similitudTV(localAgenda, tv.local) +
+      similitudTV(visitanteAgenda, tv.visitante);
+
+    if (score > mejorScore) {
+      mejorScore = score;
+      mejor = tv;
+    }
+  }
+
+  return mejor;
+}
+
 function renderTvPartido(tv) {
-  const canales = Array.isArray(tv?.canales)
-    ? tv.canales
-    : [];
+  const canales = Array.isArray(tv?.canales) ? tv.canales : [];
 
   if (!tieneCanalesConfirmados(canales)) {
     return "";
   }
 
+  const canalesLimpios = canales.filter((canal) => {
+    const value = String(canal || "").trim().toLowerCase();
+    return value && value !== "a confirmar" && value !== "sin datos";
+  });
+
   return `
-    <span class="tv-box" title="Fuente: ${escapeHtml(tv?.fuente || "Live Soccer TV")}">
+    <span class="tv-box" title="Fuente: ${escapeHtml(tv?.fuente || "Fútbol en Vivo Argentina")}">
       <span class="tv-label">Dónde ver</span>
       <span class="tv-canales">
-        ${canales
-          .filter((canal) => {
-            const value = String(canal || "").trim().toLowerCase();
-            return value && value !== "a confirmar" && value !== "sin datos";
-          })
+        ${canalesLimpios
           .map((canal) => `<span class="tv-chip">${escapeHtml(canal)}</span>`)
           .join("")}
       </span>
