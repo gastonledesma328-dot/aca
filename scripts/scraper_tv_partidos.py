@@ -36,6 +36,60 @@ CANALES_IGNORAR = {
     "betmgm",
 }
 
+# Páginas específicas de canales argentinos en Live Soccer TV.
+# Algunas URLs pueden no devolver datos si Live Soccer TV cambia el slug,
+# pero el script no se rompe: solo las omite.
+CHANNELS_ARG = {
+    "ESPN": [
+        "https://www.livesoccertv.com/channels/espn-sur/",
+        "https://www.livesoccertv.com/channels/espn-argentina/",
+    ],
+    "ESPN 2": [
+        "https://www.livesoccertv.com/channels/espn2-sur/",
+        "https://www.livesoccertv.com/channels/espn-2-sur/",
+        "https://www.livesoccertv.com/channels/espn2-argentina/",
+    ],
+    "ESPN 3": [
+        "https://www.livesoccertv.com/channels/espn3-sur/",
+        "https://www.livesoccertv.com/channels/espn-3-sur/",
+        "https://www.livesoccertv.com/channels/espn3-argentina/",
+    ],
+    "ESPN 4": [
+        "https://www.livesoccertv.com/channels/espn4-sur/",
+        "https://www.livesoccertv.com/channels/espn-4-sur/",
+        "https://www.livesoccertv.com/channels/espn4-argentina/",
+    ],
+    "ESPN Premium": [
+        "https://www.livesoccertv.com/channels/fox-sports-premium-argentina/",
+        "https://www.livesoccertv.com/channels/espn-premium-argentina/",
+    ],
+    "DGO": [
+        "https://www.livesoccertv.com/channels/directv-sports-app/",
+        "https://www.livesoccertv.com/channels/dgo/",
+    ],
+    "DIRECTV Sports": [
+        "https://www.livesoccertv.com/channels/directv-argentina/",
+        "https://www.livesoccertv.com/channels/directv-sports-argentina/",
+    ],
+    "Disney+ Premium": [
+        "https://www.livesoccertv.com/channels/starplus-sur/",
+        "https://www.livesoccertv.com/channels/disney-plus-premium-argentina/",
+        "https://www.livesoccertv.com/channels/disney-premium-argentina/",
+    ],
+    "TNT Sports": [
+        "https://www.livesoccertv.com/channels/tnt-sports-argentina/",
+    ],
+    "TyC Sports": [
+        "https://www.livesoccertv.com/channels/tyc-sports-argentina/",
+    ],
+    "TyC Sports Internacional": [
+        "https://www.livesoccertv.com/channels/tyc-sports-internacional/",
+    ],
+    "TV Pública": [
+        "https://www.livesoccertv.com/channels/tv-publica-argentina/",
+    ],
+}
+
 # Canales argentinos que queremos priorizar especialmente
 CANALES_PRIORIDAD_ARGENTINA = [
     "ESPN Argentina",
@@ -161,6 +215,16 @@ def es_hora(linea):
     return bool(re.fullmatch(r"\d{1,2}:\d{2}", limpiar_linea(linea)))
 
 
+def hora_normalizada(hora):
+    hora = limpiar_linea(hora)
+
+    m = re.fullmatch(r"(\d{1,2}):(\d{2})", hora)
+    if not m:
+        return ""
+
+    return f"{int(m.group(1)):02d}:{m.group(2)}"
+
+
 def es_fecha_header(linea):
     n = normalizar(linea)
 
@@ -172,6 +236,85 @@ def es_fecha_header(linea):
     ]
 
     return any(m in n for m in meses) and re.search(r"\d{1,2}", n)
+
+
+def parsear_fecha_header(linea, anio_default=None):
+    """
+    Intenta leer fechas tipo:
+    - Miércoles, 13 de mayo
+    - 13 mayo
+    - May 13
+    - 2026-05-13
+    """
+    texto = normalizar(linea)
+    anio_default = anio_default or ahora_argentina().year
+
+    m_iso = re.search(r"\b(20\d{2})-(\d{1,2})-(\d{1,2})\b", texto)
+    if m_iso:
+        return f"{int(m_iso.group(1)):04d}-{int(m_iso.group(2)):02d}-{int(m_iso.group(3)):02d}"
+
+    meses = {
+        "enero": 1,
+        "febrero": 2,
+        "marzo": 3,
+        "abril": 4,
+        "mayo": 5,
+        "junio": 6,
+        "julio": 7,
+        "agosto": 8,
+        "septiembre": 9,
+        "setiembre": 9,
+        "octubre": 10,
+        "noviembre": 11,
+        "diciembre": 12,
+        "jan": 1,
+        "january": 1,
+        "feb": 2,
+        "february": 2,
+        "mar": 3,
+        "march": 3,
+        "apr": 4,
+        "april": 4,
+        "may": 5,
+        "jun": 6,
+        "june": 6,
+        "jul": 7,
+        "july": 7,
+        "aug": 8,
+        "august": 8,
+        "sep": 9,
+        "sept": 9,
+        "september": 9,
+        "oct": 10,
+        "october": 10,
+        "nov": 11,
+        "november": 11,
+        "dec": 12,
+        "december": 12,
+    }
+
+    anio_match = re.search(r"\b(20\d{2})\b", texto)
+    anio = int(anio_match.group(1)) if anio_match else anio_default
+
+    # 13 de mayo / 13 mayo
+    m = re.search(r"\b(\d{1,2})\b(?:\s+de)?\s+([a-záéíóúñ]+)", texto)
+    if m:
+        dia = int(m.group(1))
+        mes_txt = m.group(2)
+
+        if mes_txt in meses:
+            return f"{anio:04d}-{meses[mes_txt]:02d}-{dia:02d}"
+
+    # may 13 / mayo 13
+    m = re.search(r"\b([a-záéíóúñ]+)\s+(\d{1,2})\b", texto)
+    if m:
+        mes_txt = m.group(1)
+        dia = int(m.group(2))
+
+        if mes_txt in meses:
+            return f"{anio:04d}-{meses[mes_txt]:02d}-{dia:02d}"
+
+    return ""
 
 
 def es_linea_competicion(linea):
@@ -363,9 +506,6 @@ def limpiar_canales(canales_raw):
     argentinos = []
 
     for canal in candidatos:
-        # Importante: chequeamos el canal limpio.
-        # DIRECTV Sports Argentina se limpia como DIRECTV Sports,
-        # por eso canal_es_argentino_o_util acepta también "directv sports".
         if canal_es_argentino_o_util(canal):
             limpio = limpiar_nombre_canal(canal)
 
@@ -377,8 +517,30 @@ def limpiar_canales(canales_raw):
         return argentinos
 
     # Si Live Soccer TV solo trae canales de otros países,
-    # NO los guardamos como canales principales para no ensuciar la grilla argentina.
+    # no los guardamos como canales principales para no ensuciar la grilla.
     return ["A confirmar"]
+
+
+def agregar_canal(canales, canal):
+    canal = limpiar_nombre_canal(canal)
+
+    if not canal:
+        return canales or ["A confirmar"]
+
+    actuales = []
+
+    for c in canales or []:
+        c = limpiar_nombre_canal(c)
+
+        if c and c != "A confirmar" and c not in actuales:
+            actuales.append(c)
+
+    if canal not in actuales:
+        actuales.append(canal)
+
+    actuales.sort(key=prioridad_canal)
+
+    return actuales or ["A confirmar"]
 
 
 def obtener_html(url):
@@ -446,6 +608,9 @@ def es_fin_canales(linea):
     if es_linea_partido(linea):
         return True
 
+    if es_fecha_header(linea):
+        return True
+
     n = normalizar(linea)
 
     cortes = [
@@ -486,6 +651,23 @@ def limpiar_canales_raw(canales_raw):
     return salida
 
 
+def key_match(dia, local, visitante):
+    return f"{dia}|{slug(local)}|{slug(visitante)}"
+
+
+def key_match_reverse(dia, local, visitante):
+    return f"{dia}|{slug(visitante)}|{slug(local)}"
+
+
+def hora_iso(dia, hora):
+    h = hora_normalizada(hora)
+
+    if not h:
+        h = "00:00"
+
+    return f"{dia}T{h}:00"
+
+
 def parsear_partidos_livesoccertv(html, fecha_iso, url):
     lineas = lineas_desde_html(html)
 
@@ -512,7 +694,7 @@ def parsear_partidos_livesoccertv(html, fecha_iso, url):
             continue
 
         if es_hora(linea):
-            hora_actual = linea
+            hora_actual = hora_normalizada(linea)
             estado_actual = "Programado"
             i += 1
             continue
@@ -563,7 +745,7 @@ def parsear_partidos_livesoccertv(html, fecha_iso, url):
                 "visitante": visitante,
                 "liga": liga_actual,
                 "pais": pais_actual,
-                "fecha": f"{fecha_iso}T{hora_actual or '00:00'}:00",
+                "fecha": hora_iso(fecha_iso, hora_actual),
                 "dia": fecha_iso,
                 "hora": hora_actual,
                 "estado": {
@@ -586,6 +768,107 @@ def parsear_partidos_livesoccertv(html, fecha_iso, url):
     return partidos
 
 
+def parsear_partidos_de_canal(html, canal_nombre, url, fechas_validas):
+    """
+    Lee una página de canal de Live Soccer TV y devuelve partidos
+    donde ese canal aparece confirmado.
+    """
+    lineas = lineas_desde_html(html)
+
+    partidos = {}
+    fecha_actual = ""
+    liga_actual = ""
+    pais_actual = ""
+    hora_actual = ""
+    estado_actual = "Programado"
+
+    hoy = ahora_argentina().date()
+    anio_default = hoy.year
+
+    # Si la página del canal no muestra header de fecha claro,
+    # usamos hoy como fecha inicial.
+    fecha_actual = hoy.strftime("%Y-%m-%d")
+
+    i = 0
+
+    while i < len(lineas):
+        linea = lineas[i]
+        n = normalizar(linea)
+
+        if es_fecha_header(linea):
+            fecha_parseada = parsear_fecha_header(linea, anio_default=anio_default)
+
+            if fecha_parseada:
+                fecha_actual = fecha_parseada
+
+            i += 1
+            continue
+
+        if fecha_actual not in fechas_validas:
+            # Igual seguimos leyendo para detectar si cambia la fecha más adelante.
+            if es_linea_competicion(linea):
+                pais_actual, liga_actual = separar_pais_liga(linea)
+            elif es_hora(linea):
+                hora_actual = hora_normalizada(linea)
+            i += 1
+            continue
+
+        if es_linea_competicion(linea):
+            pais_actual, liga_actual = separar_pais_liga(linea)
+            i += 1
+            continue
+
+        if n in STATUS_LINES:
+            estado_actual = linea
+            i += 1
+            continue
+
+        if es_hora(linea):
+            hora_actual = hora_normalizada(linea)
+            estado_actual = "Programado"
+            i += 1
+            continue
+
+        if es_linea_partido(linea):
+            local, visitante = extraer_equipos(linea)
+
+            if not local or not visitante:
+                i += 1
+                continue
+
+            partido_id = f"lstv-{fecha_actual}-{slug(local)}-{slug(visitante)}"
+
+            partidos[partido_id] = {
+                "id": partido_id,
+                "fixture_id": partido_id,
+                "partido": f"{local} vs {visitante}",
+                "local": local,
+                "visitante": visitante,
+                "liga": liga_actual,
+                "pais": pais_actual,
+                "fecha": hora_iso(fecha_actual, hora_actual),
+                "dia": fecha_actual,
+                "hora": hora_actual,
+                "estado": {
+                    "long": estado_actual,
+                    "short": estado_actual,
+                    "elapsed": None,
+                },
+                "canales": [canal_nombre],
+                "canales_raw": [canal_nombre],
+                "fuente": "Live Soccer TV - canal",
+                "fuente_url": url,
+                "confianza": "alta",
+            }
+
+            i += 1
+            continue
+
+        i += 1
+
+    return partidos
+
+
 def url_para_fecha(fecha):
     hoy = ahora_argentina().date()
 
@@ -593,6 +876,104 @@ def url_para_fecha(fecha):
         return f"{BASE_URL}/es/"
 
     return f"{BASE_URL}/es/schedules/{fecha.strftime('%Y-%m-%d')}/"
+
+
+def indexar_partidos(partidos):
+    indice = {}
+
+    for partido_id, partido in partidos.items():
+        dia = partido.get("dia") or ""
+        local = partido.get("local") or ""
+        visitante = partido.get("visitante") or ""
+
+        if not dia or not local or not visitante:
+            continue
+
+        indice[key_match(dia, local, visitante)] = partido_id
+        indice[key_match_reverse(dia, local, visitante)] = partido_id
+
+    return indice
+
+
+def combinar_partido(destino, nuevo):
+    canales_actuales = destino.get("canales") or []
+    canales_nuevos = nuevo.get("canales") or []
+
+    for canal in canales_nuevos:
+        canales_actuales = agregar_canal(canales_actuales, canal)
+
+    raw_actual = destino.get("canales_raw") or []
+    raw_nuevo = nuevo.get("canales_raw") or []
+
+    for item in raw_nuevo:
+        item = limpiar_linea(item)
+
+        if item and item not in raw_actual:
+            raw_actual.append(item)
+
+    destino["canales"] = canales_actuales
+    destino["canales_raw"] = limpiar_canales_raw(raw_actual)
+    destino["confianza"] = "alta" if canales_actuales != ["A confirmar"] else "baja"
+
+    fuentes = destino.get("fuentes_tv") or []
+
+    for fuente in [
+        {
+            "fuente": nuevo.get("fuente", "Live Soccer TV"),
+            "url": nuevo.get("fuente_url", ""),
+            "canales": canales_nuevos,
+        }
+    ]:
+        if fuente not in fuentes:
+            fuentes.append(fuente)
+
+    destino["fuentes_tv"] = fuentes
+
+    return destino
+
+
+def sumar_partidos_de_canales(todos, fechas_validas):
+    indice = indexar_partidos(todos)
+
+    for canal_nombre, urls in CHANNELS_ARG.items():
+        for url in urls:
+            try:
+                html = obtener_html(url)
+                partidos_canal = parsear_partidos_de_canal(
+                    html,
+                    canal_nombre,
+                    url,
+                    fechas_validas,
+                )
+
+                print(f"📺 Canal {canal_nombre}: {len(partidos_canal)} partidos encontrados en {url}")
+
+                for partido_id, partido_canal in partidos_canal.items():
+                    k1 = key_match(
+                        partido_canal.get("dia"),
+                        partido_canal.get("local"),
+                        partido_canal.get("visitante"),
+                    )
+
+                    k2 = key_match_reverse(
+                        partido_canal.get("dia"),
+                        partido_canal.get("local"),
+                        partido_canal.get("visitante"),
+                    )
+
+                    existente_id = indice.get(k1) or indice.get(k2)
+
+                    if existente_id and existente_id in todos:
+                        todos[existente_id] = combinar_partido(todos[existente_id], partido_canal)
+                    else:
+                        todos[partido_id] = partido_canal
+                        indice[k1] = partido_id
+                        indice[k2] = partido_id
+
+            except Exception as e:
+                print(f"⚠️ Error leyendo canal {canal_nombre} en {url}: {e}")
+
+    return todos
 
 
 def main():
@@ -611,21 +992,28 @@ def main():
             html = obtener_html(url)
             partidos = parsear_partidos_livesoccertv(html, fecha_iso, url)
 
-            print(f"✅ {fecha_iso}: {len(partidos)} partidos con TV encontrados")
+            print(f"✅ Agenda {fecha_iso}: {len(partidos)} partidos encontrados")
 
             todos.update(partidos)
             fechas.append(fecha_iso)
 
         except Exception as e:
-            print(f"⚠️ Error scrapeando {fecha_iso}: {e}")
+            print(f"⚠️ Error scrapeando agenda {fecha_iso}: {e}")
+
+    fechas_validas = set(fechas)
+
+    # Segundo paso: revisar páginas específicas de canales argentinos.
+    # Esto mejora muchísimo la detección de ESPN, DGO, DIRECTV, TNT, TyC, Disney+.
+    todos = sumar_partidos_de_canales(todos, fechas_validas)
 
     salida = {
         "fuente": "Live Soccer TV",
-        "metodo": "scraping HTML agenda diaria",
+        "metodo": "scraping HTML agenda diaria + páginas de canales argentinos",
         "actualizado": datetime.now(timezone.utc).isoformat(),
         "timezone": TIMEZONE,
         "fechas": fechas,
         "total": len(todos),
+        "canales_priorizados": list(CHANNELS_ARG.keys()),
         "partidos": todos,
     }
 
