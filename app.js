@@ -469,6 +469,79 @@ function tieneCanalesConfirmados(canales) {
     return value && value !== "a confirmar" && value !== "sin datos";
   });
 }
+const CANALES_TV_BLOQUEADOS_POR_LIGA = [
+  "liga futve youtube",
+  "liga futve",
+  "ligafutve app",
+];
+
+function canalBloqueadoParaAgenda(match, canal) {
+  const canalNorm = normalizarTextoTV(canal);
+  const ligaAgenda = normalizarTextoTV(
+    `${match?.liga || ""} ${match?.liga_corta || ""} ${match?.competicion?.nombre || ""} ${inferAgendaLeague(match) || ""}`
+  );
+
+  const esArgentina =
+    ligaAgenda.includes("liga profesional") ||
+    ligaAgenda.includes("torneo betano") ||
+    ligaAgenda.includes("copa argentina") ||
+    ligaAgenda.includes("primera nacional") ||
+    ligaAgenda.includes("argentina");
+
+  if (esArgentina && CANALES_TV_BLOQUEADOS_POR_LIGA.some((c) => canalNorm.includes(c))) {
+    return true;
+  }
+
+  return false;
+}
+
+function canalesValidosParaAgenda(match, canales) {
+  if (!Array.isArray(canales)) return [];
+
+  return canales.filter((canal) => {
+    const value = String(canal || "").trim().toLowerCase();
+
+    if (!value || value === "a confirmar" || value === "sin datos") {
+      return false;
+    }
+
+    if (canalBloqueadoParaAgenda(match, canal)) {
+      return false;
+    }
+
+    return true;
+  });
+}
+
+function ligaCompatibleTV(match, tv) {
+  const ligaAgenda = normalizarTextoTV(
+    `${match?.liga || ""} ${match?.liga_corta || ""} ${match?.competicion?.nombre || ""} ${inferAgendaLeague(match) || ""}`
+  );
+
+  const ligaTv = normalizarTextoTV(
+    `${tv?.liga || ""} ${tv?.pais || ""} ${tv?.partido || ""}`
+  );
+
+  const agendaArgentina =
+    ligaAgenda.includes("liga profesional") ||
+    ligaAgenda.includes("torneo betano") ||
+    ligaAgenda.includes("copa argentina") ||
+    ligaAgenda.includes("primera nacional") ||
+    ligaAgenda.includes("argentina");
+
+  if (agendaArgentina) {
+    return (
+      ligaTv.includes("torneo betano") ||
+      ligaTv.includes("liga profesional") ||
+      ligaTv.includes("copa argentina") ||
+      ligaTv.includes("primera nacional") ||
+      ligaTv.includes("argentina")
+    );
+  }
+
+  return true;
+}
+
 const LIGAS_SIN_DONDE_VER = [
   "liga mx",
   "liga profesional boliviana",
@@ -526,6 +599,11 @@ function buscarTvPorNombre(tvData, match) {
   for (const tv of partidos) {
     if (!tv || !tieneCanalesConfirmados(tv.canales)) continue;
     if (ligaTvBloqueada(match, tv)) continue;
+    if (!ligaCompatibleTV(match, tv)) continue;
+
+    const canalesValidos = canalesValidosParaAgenda(match, tv.canales);
+
+    if (!canalesValidos.length) continue;
 
     const fechaTv = String(tv.fecha || tv.dia || "").slice(0, 10);
 
@@ -552,7 +630,10 @@ function buscarTvPorNombre(tvData, match) {
 
     if (score > mejorScore) {
       mejorScore = score;
-      mejor = tv;
+      mejor = {
+        ...tv,
+        canales: canalesValidos,
+      };
     }
   }
 
@@ -638,17 +719,37 @@ function obtenerTvPartidoSync(match) {
     if (
       idsAgenda.some((id) => idsTv.includes(id)) &&
       tieneCanalesConfirmados(tv.canales) &&
-      !ligaTvBloqueada(match, tv)
+      !ligaTvBloqueada(match, tv) &&
+      ligaCompatibleTV(match, tv)
     ) {
-      return tv;
+      const canalesValidosId = canalesValidosParaAgenda(match, tv.canales);
+
+      if (canalesValidosId.length) {
+        return {
+          ...tv,
+          canales: canalesValidosId,
+        };
+      }
     }
   }
 
   // 2) Intento por nombres normalizados + fecha.
   const byName = buscarTvPorNombre(tvData, match);
 
-  if (byName && tieneCanalesConfirmados(byName.canales) && !ligaTvBloqueada(match, byName)) {
-    return byName;
+  if (
+    byName &&
+    tieneCanalesConfirmados(byName.canales) &&
+    !ligaTvBloqueada(match, byName) &&
+    ligaCompatibleTV(match, byName)
+  ) {
+    const canalesValidosNombre = canalesValidosParaAgenda(match, byName.canales);
+
+    if (canalesValidosNombre.length) {
+      return {
+        ...byName,
+        canales: canalesValidosNombre,
+      };
+    }
   }
 
   return {
