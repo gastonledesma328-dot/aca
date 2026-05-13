@@ -1,8 +1,8 @@
 {
-  "actualizado": "2026-05-13T04:57:11.689236+00:00",
+  "actualizado": "2026-05-13T05:48:52.912307+00:00",
   "timezone": "America/Argentina/Buenos_Aires",
   "fecha": "2026-05-13",
-  "total": 362,
+  "total": 363,
   "partidos": {
     "1542459": {
       "fixture_id": 1542459,
@@ -17,8 +17,8 @@
       "fecha": "2026-05-13T00:00:00-03:00",
       "timestamp": 1778641200,
       "estado": {
-        "long": "Second Half",
-        "short": "2H",
+        "long": "Match Finished",
+        "short": "FT",
         "elapsed": 90
       },
       "canales": [
@@ -5688,6 +5688,29 @@
       "fuente": "liga_juvenil_reserva",
       "confianza": "baja"
     },
+    "1538535": {
+      "fixture_id": 1538535,
+      "partido": "Coritiba U20 vs Operário PR U20",
+      "local": "Coritiba U20",
+      "visitante": "Operário PR U20",
+      "local_id": 12957,
+      "visitante_id": 13036,
+      "liga": "Brasileiro U20 B",
+      "liga_id": 1183,
+      "pais": "Brazil",
+      "fecha": "2026-05-13T15:00:00-03:00",
+      "timestamp": 1778695200,
+      "estado": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "fuente": "liga_juvenil_reserva",
+      "confianza": "baja"
+    },
     "1542546": {
       "fixture_id": 1542546,
       "partido": "FC Differdange 03 vs Rodange 91",
@@ -6033,29 +6056,6 @@
       "fuente": "liga_juvenil_reserva",
       "confianza": "baja"
     },
-    "1538535": {
-      "fixture_id": 1538535,
-      "partido": "Coritiba U20 vs Operário PR U20",
-      "local": "Coritiba U20",
-      "visitante": "Operário PR U20",
-      "local_id": 12957,
-      "visitante_id": 13036,
-      "liga": "Brasileiro U20 B",
-      "liga_id": 1183,
-      "pais": "Brazil",
-      "fecha": "2026-05-13T15:30:00-03:00",
-      "timestamp": 1778697000,
-      "estado": {
-        "long": "Not Started",
-        "short": "NS",
-        "elapsed": null
-      },
-      "canales": [
-        "A confirmar"
-      ],
-      "fuente": "liga_juvenil_reserva",
-      "confianza": "baja"
-    },
     "1538536": {
       "fixture_id": 1538536,
       "partido": "Brusque U20 vs CRB U20",
@@ -6264,6 +6264,29 @@
       ],
       "fuente": "regla_fuerte_bolivia",
       "confianza": "alta"
+    },
+    "1538537": {
+      "fixture_id": 1538537,
+      "partido": "Atlético Mineiro U20 vs Mirassol U20",
+      "local": "Atlético Mineiro U20",
+      "visitante": "Mirassol U20",
+      "local_id": 12952,
+      "visitante_id": 13027,
+      "liga": "Brasileiro U20 B",
+      "liga_id": 1183,
+      "pais": "Brazil",
+      "fecha": "2026-05-13T16:00:00-03:00",
+      "timestamp": 1778698800,
+      "estado": {
+        "long": "Not Started",
+        "short": "NS",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "fuente": "liga_juvenil_reserva",
+      "confianza": "baja"
     },
     "1540029": {
       "fixture_id": 1540029,
