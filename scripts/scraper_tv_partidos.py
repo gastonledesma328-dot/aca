@@ -12,7 +12,6 @@ TIMEZONE = "America/Argentina/Buenos_Aires"
 
 OUTPUT_FILE = "data/tv_partidos.json"
 RULES_FILE = "data/tv_rules.json"
-OVERRIDES_FILE = "data/tv_overrides.json"
 
 
 def ahora_argentina():
@@ -37,30 +36,17 @@ def normalizar(texto):
 
 
 
-def cargar_overrides():
-    if not os.path.exists(OVERRIDES_FILE):
-        return {"fixtures": {}, "matches": []}
 
-    try:
-        with open(OVERRIDES_FILE, "r", encoding="utf-8") as f:
-            data = json.load(f)
+def canales_desde_rules_override(rules, fixture_id, pais, liga, local, visitante):
+    overrides = rules.get("overrides") or {}
 
-        if isinstance(data, dict):
-            data.setdefault("fixtures", {})
-            data.setdefault("matches", [])
-            return data
+    if not isinstance(overrides, dict):
+        return None, "", ""
 
-    except Exception as e:
-        print(f"⚠️ No se pudo leer {OVERRIDES_FILE}: {e}")
-
-    return {"fixtures": {}, "matches": []}
-
-
-def canales_desde_override(overrides, fixture_id, pais, liga, local, visitante):
     fixture_key = str(fixture_id or "")
 
     fixtures = overrides.get("fixtures") or {}
-    if fixture_key and fixture_key in fixtures:
+    if isinstance(fixtures, dict) and fixture_key and fixture_key in fixtures:
         canales = fixtures.get(fixture_key)
         if isinstance(canales, list) and canales:
             return canales, "override_fixture", "alta"
@@ -70,7 +56,12 @@ def canales_desde_override(overrides, fixture_id, pais, liga, local, visitante):
     local_norm = normalizar(local)
     visitante_norm = normalizar(visitante)
 
-    for regla in overrides.get("matches") or []:
+    matches = overrides.get("matches") or []
+
+    if not isinstance(matches, list):
+        return None, "", ""
+
+    for regla in matches:
         if not isinstance(regla, dict):
             continue
 
@@ -280,7 +271,7 @@ def obtener_fixtures_del_dia(fecha):
     return data.get("response", [])
 
 
-def armar_json_tv(fixtures, rules, overrides, fecha):
+def armar_json_tv(fixtures, rules, fecha):
     partidos = {}
 
     for item in fixtures:
@@ -303,8 +294,8 @@ def armar_json_tv(fixtures, rules, overrides, fecha):
         liga = league.get("name") or ""
         pais = league.get("country") or ""
 
-        canales, fuente, confianza = canales_desde_override(
-            overrides,
+        canales, fuente, confianza = canales_desde_rules_override(
+            rules,
             fixture_id,
             pais,
             liga,
@@ -356,12 +347,11 @@ def main():
     print(f"📺 Generando TV de partidos para {fecha}")
 
     rules = cargar_rules()
-    overrides = cargar_overrides()
     fixtures = obtener_fixtures_del_dia(fecha)
 
     print(f"⚽ Fixtures recibidos: {len(fixtures)}")
 
-    salida = armar_json_tv(fixtures, rules, overrides, fecha)
+    salida = armar_json_tv(fixtures, rules, fecha)
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(salida, f, ensure_ascii=False, indent=2)
