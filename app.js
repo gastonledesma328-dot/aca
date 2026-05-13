@@ -316,27 +316,31 @@ function normalizarTextoTV(texto) {
 function normalizarEquipoTV(nombre) {
   let n = normalizarTextoTV(nombre);
 
-  const alias = {
-    "racing club": "racing avellaneda",
-    "racing": "racing avellaneda",
-    "gimnasia la plata": "gimnasia lp",
-    "gimnasia y esgrima la plata": "gimnasia lp",
-    "san martin san juan": "san martin sj",
-    "san martin de san juan": "san martin sj",
-    "san martin sj": "san martin sj",
-    "barcelona": "fc barcelona",
-    "deportivo alaves": "alaves",
-    "alaves": "alaves",
-    "sevilla": "sevilla",
-    "sevilla fc": "sevilla",
-    "man city": "manchester city",
-    "manchester utd": "manchester united",
-    "manchester united": "manchester united",
-    "inter": "inter milan",
-    "internazionale": "inter milan",
-    "psg": "psg",
-    "paris saint germain": "psg",
-  };
+ const alias = {
+  "racing club": "racing avellaneda",
+  "racing": "racing avellaneda",
+  "gimnasia la plata": "gimnasia lp",
+  "gimnasia y esgrima la plata": "gimnasia lp",
+  "san martin san juan": "san martin sj",
+  "san martin de san juan": "san martin sj",
+  "san martin sj": "san martin sj",
+  "barcelona": "fc barcelona",
+  "deportivo alaves": "alaves",
+  "alaves": "alaves",
+  "sevilla": "sevilla",
+  "sevilla fc": "sevilla",
+  "man city": "manchester city",
+  "manchester utd": "manchester united",
+  "manchester united": "manchester united",
+  "inter": "inter milan",
+  "internazionale": "inter milan",
+  "psg": "psg",
+  "paris saint germain": "psg",
+  "paris saint-germain": "psg",
+  "paris sg": "psg",
+  "paris-saint germain": "psg",
+  "rc lens": "lens",
+};
 
   return alias[n] || n;
 }
@@ -385,13 +389,25 @@ function tieneCanalesConfirmados(canales) {
   });
 }
 
+function fechaAgendaParaTV(match) {
+  return String(
+    agendaDate(match) ||
+    match.fecha ||
+    match.fecha_iso ||
+    match.date ||
+    match.dia ||
+    match.fecha_espn ||
+    ""
+  ).slice(0, 10);
+}
+
 function buscarTvPorNombre(tvData, match) {
   const partidosObj = tvData?.partidos || {};
   const partidos = Array.isArray(partidosObj)
     ? partidosObj
     : Object.values(partidosObj);
 
-  const fechaMatch = String(match.fecha || match.date || match.dia || "").slice(0, 10);
+  const fechaMatch = fechaAgendaParaTV(match);
 
   let mejor = null;
   let mejorScore = 0;
@@ -405,16 +421,22 @@ function buscarTvPorNombre(tvData, match) {
       continue;
     }
 
-    if (!mismoPartidoTV(match, tv)) {
-      continue;
-    }
-
     const localAgenda = match.local || match.home || match.equipo_local || "";
     const visitanteAgenda = match.visitante || match.away || match.equipo_visitante || "";
 
-    const score =
+    const scoreDirecto =
       similitudTV(localAgenda, tv.local) +
       similitudTV(visitanteAgenda, tv.visitante);
+
+    const scoreInvertido =
+      similitudTV(localAgenda, tv.visitante) +
+      similitudTV(visitanteAgenda, tv.local);
+
+    const score = Math.max(scoreDirecto, scoreInvertido);
+
+    if (score < 1.35) {
+      continue;
+    }
 
     if (score > mejorScore) {
       mejorScore = score;
@@ -473,7 +495,6 @@ function obtenerTvPartidoSync(match) {
     };
   }
 
-  // 1) Intento por ID exacto, si alguna vez coinciden.
   const idsAgenda = [
     match.id,
     match.uid,
@@ -498,7 +519,6 @@ function obtenerTvPartidoSync(match) {
     }
   }
 
-  // 2) Intento fuerte por nombres normalizados + fecha.
   const byName = buscarTvPorNombre(tvData, match);
 
   if (byName && tieneCanalesConfirmados(byName.canales)) {
