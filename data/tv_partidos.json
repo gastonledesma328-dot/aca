@@ -1,14 +1,1190 @@
 {
   "fuente": "Live Soccer TV",
   "metodo": "scraping HTML agenda diaria",
-  "actualizado": "2026-05-13T06:17:01.170135+00:00",
+  "actualizado": "2026-05-13T06:23:53.995406+00:00",
   "timezone": "America/Argentina/Buenos_Aires",
   "fechas": [
     "2026-05-13",
     "2026-05-14"
   ],
-  "total": 30,
+  "total": 71,
   "partidos": {
+    "lstv-2026-05-13-charlotte-new-york-city": {
+      "id": "lstv-2026-05-13-charlotte-new-york-city",
+      "fixture_id": "lstv-2026-05-13-charlotte-new-york-city",
+      "partido": "Charlotte vs New York City",
+      "local": "Charlotte",
+      "visitante": "New York City",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T19:15:00",
+      "dia": "2026-05-13",
+      "hora": "19:15",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "Fox Sports 1",
+        ",",
+        "MLS Season Pass",
+        "FOX Deportes",
+        "Foxsports.com"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-cf-montreal-portland-timbers": {
+      "id": "lstv-2026-05-13-cf-montreal-portland-timbers",
+      "fixture_id": "lstv-2026-05-13-cf-montreal-portland-timbers",
+      "partido": "CF Montréal vs Portland Timbers",
+      "local": "CF Montréal",
+      "visitante": "Portland Timbers",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T19:30:00",
+      "dia": "2026-05-13",
+      "hora": "19:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "MLS Season Pass",
+        ",",
+        "TSN5",
+        "RDS",
+        "RDS App"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-dc-united-chicago-fire": {
+      "id": "lstv-2026-05-13-dc-united-chicago-fire",
+      "fixture_id": "lstv-2026-05-13-dc-united-chicago-fire",
+      "partido": "DC United vs Chicago Fire",
+      "local": "DC United",
+      "visitante": "Chicago Fire",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T19:30:00",
+      "dia": "2026-05-13",
+      "hora": "19:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "MLS Season Pass"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-cincinnati-inter-miami": {
+      "id": "lstv-2026-05-13-cincinnati-inter-miami",
+      "fixture_id": "lstv-2026-05-13-cincinnati-inter-miami",
+      "partido": "Cincinnati vs Inter Miami",
+      "local": "Cincinnati",
+      "visitante": "Inter Miami",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T19:30:00",
+      "dia": "2026-05-13",
+      "hora": "19:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "MLS Season Pass",
+        ","
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-orlando-city-sc-philadelphia-union": {
+      "id": "lstv-2026-05-13-orlando-city-sc-philadelphia-union",
+      "fixture_id": "lstv-2026-05-13-orlando-city-sc-philadelphia-union",
+      "partido": "Orlando City SC vs Philadelphia Union",
+      "local": "Orlando City SC",
+      "visitante": "Philadelphia Union",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T19:30:00",
+      "dia": "2026-05-13",
+      "hora": "19:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "MLS Season Pass"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-new-england-nashville-sc": {
+      "id": "lstv-2026-05-13-new-england-nashville-sc",
+      "fixture_id": "lstv-2026-05-13-new-england-nashville-sc",
+      "partido": "New England vs Nashville SC",
+      "local": "New England",
+      "visitante": "Nashville SC",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T19:30:00",
+      "dia": "2026-05-13",
+      "hora": "19:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "MLS Season Pass",
+        ","
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-new-york-rb-columbus-crew": {
+      "id": "lstv-2026-05-13-new-york-rb-columbus-crew",
+      "fixture_id": "lstv-2026-05-13-new-york-rb-columbus-crew",
+      "partido": "New York RB vs Columbus Crew",
+      "local": "New York RB",
+      "visitante": "Columbus Crew",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T19:30:00",
+      "dia": "2026-05-13",
+      "hora": "19:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "MLS Season Pass",
+        ","
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-st-louis-city-los-angeles-fc": {
+      "id": "lstv-2026-05-13-st-louis-city-los-angeles-fc",
+      "fixture_id": "lstv-2026-05-13-st-louis-city-los-angeles-fc",
+      "partido": "St. Louis City vs Los Angeles FC",
+      "local": "St. Louis City",
+      "visitante": "Los Angeles FC",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "MLS Season Pass",
+        ",",
+        "SPOTV NOW"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-sporting-kc-la-galaxy": {
+      "id": "lstv-2026-05-13-sporting-kc-la-galaxy",
+      "fixture_id": "lstv-2026-05-13-sporting-kc-la-galaxy",
+      "partido": "Sporting KC vs LA Galaxy",
+      "local": "Sporting KC",
+      "visitante": "LA Galaxy",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "MLS Season Pass"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-minnesota-united-colorado-rapids": {
+      "id": "lstv-2026-05-13-minnesota-united-colorado-rapids",
+      "fixture_id": "lstv-2026-05-13-minnesota-united-colorado-rapids",
+      "partido": "Minnesota United vs Colorado Rapids",
+      "local": "Minnesota United",
+      "visitante": "Colorado Rapids",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "MLS Season Pass"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-dallas-vancouver-whitecaps": {
+      "id": "lstv-2026-05-13-dallas-vancouver-whitecaps",
+      "fixture_id": "lstv-2026-05-13-dallas-vancouver-whitecaps",
+      "partido": "Dallas vs Vancouver Whitecaps",
+      "local": "Dallas",
+      "visitante": "Vancouver Whitecaps",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "MLS Season Pass"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-seattle-sounders-fc-sj-earthquakes": {
+      "id": "lstv-2026-05-13-seattle-sounders-fc-sj-earthquakes",
+      "fixture_id": "lstv-2026-05-13-seattle-sounders-fc-sj-earthquakes",
+      "partido": "Seattle Sounders FC vs SJ Earthquakes",
+      "local": "Seattle Sounders FC",
+      "visitante": "SJ Earthquakes",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "MLS Season Pass",
+        ","
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-real-salt-lake-houston-dynamo": {
+      "id": "lstv-2026-05-13-real-salt-lake-houston-dynamo",
+      "fixture_id": "lstv-2026-05-13-real-salt-lake-houston-dynamo",
+      "partido": "Real Salt Lake vs Houston Dynamo",
+      "local": "Real Salt Lake",
+      "visitante": "Houston Dynamo",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "MLS Season Pass"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-san-diego-austin": {
+      "id": "lstv-2026-05-13-san-diego-austin",
+      "fixture_id": "lstv-2026-05-13-san-diego-austin",
+      "partido": "San Diego vs Austin",
+      "local": "San Diego",
+      "visitante": "Austin",
+      "liga": "Major League Soccer",
+      "pais": "EE. UU./Canadá",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "Fox Sports 1",
+        ",",
+        "MLS Season Pass",
+        "FOX Deportes",
+        "Foxsports.com"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-manchester-city-crystal-palace": {
+      "id": "lstv-2026-05-13-manchester-city-crystal-palace",
+      "fixture_id": "lstv-2026-05-13-manchester-city-crystal-palace",
+      "partido": "Manchester City vs Crystal Palace",
+      "local": "Manchester City",
+      "visitante": "Crystal Palace",
+      "liga": "Premier League",
+      "pais": "Inglaterra",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "USA Network",
+        ",",
+        "Palace TV+",
+        "DAZN Canada",
+        "ESPN Caribbean",
+        "Disney+ Premium Caribbean"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-villarreal-sevilla": {
+      "id": "lstv-2026-05-13-villarreal-sevilla",
+      "fixture_id": "lstv-2026-05-13-villarreal-sevilla",
+      "partido": "Villarreal vs Sevilla",
+      "local": "Villarreal",
+      "visitante": "Sevilla",
+      "liga": "LaLiga",
+      "pais": "España",
+      "fecha": "2026-05-13T13:00:00",
+      "dia": "2026-05-13",
+      "hora": "13:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "ESPN Deportes",
+        ",",
+        "ESPN Select",
+        "ESPN App",
+        "TSN+"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-espanyol-athletic-club": {
+      "id": "lstv-2026-05-13-espanyol-athletic-club",
+      "fixture_id": "lstv-2026-05-13-espanyol-athletic-club",
+      "partido": "Espanyol vs Athletic Club",
+      "local": "Espanyol",
+      "visitante": "Athletic Club",
+      "liga": "LaLiga",
+      "pais": "España",
+      "fecha": "2026-05-13T13:00:00",
+      "dia": "2026-05-13",
+      "hora": "13:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "ESPN Select",
+        ",",
+        "ESPN App",
+        "TSN+",
+        "Sky Sports Mexico"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-deportivo-alaves-barcelona": {
+      "id": "lstv-2026-05-13-deportivo-alaves-barcelona",
+      "fixture_id": "lstv-2026-05-13-deportivo-alaves-barcelona",
+      "partido": "Deportivo Alavés vs Barcelona",
+      "local": "Deportivo Alavés",
+      "visitante": "Barcelona",
+      "liga": "LaLiga",
+      "pais": "España",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "ESPN Deportes",
+        ",",
+        "ESPN Select",
+        "ESPN App",
+        "TSN+"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-getafe-mallorca": {
+      "id": "lstv-2026-05-13-getafe-mallorca",
+      "fixture_id": "lstv-2026-05-13-getafe-mallorca",
+      "partido": "Getafe vs Mallorca",
+      "local": "Getafe",
+      "visitante": "Mallorca",
+      "liga": "LaLiga",
+      "pais": "España",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "ESPN Select",
+        ",",
+        "ESPN App",
+        "TSN+",
+        "Sky Sports Mexico"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-lens-psg": {
+      "id": "lstv-2026-05-13-lens-psg",
+      "fixture_id": "lstv-2026-05-13-lens-psg",
+      "partido": "Lens vs PSG",
+      "local": "Lens",
+      "visitante": "PSG",
+      "liga": "Ligue 1",
+      "pais": "Francia",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "Disney+ Premium Caribbean",
+        ",",
+        "Disney+ Premium Norte",
+        "Nexgen",
+        "FOX One",
+        "Ligue1+"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-brest-strasbourg": {
+      "id": "lstv-2026-05-13-brest-strasbourg",
+      "fixture_id": "lstv-2026-05-13-brest-strasbourg",
+      "partido": "Brest vs Strasbourg",
+      "local": "Brest",
+      "visitante": "Strasbourg",
+      "liga": "Ligue 1",
+      "pais": "Francia",
+      "fecha": "2026-05-13T13:00:00",
+      "dia": "2026-05-13",
+      "hora": "13:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "beIN SPORTS",
+        "beIN SPORTS en Español",
+        "beIN SPORTS CONNECT"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-lazio-internazionale": {
+      "id": "lstv-2026-05-13-lazio-internazionale",
+      "fixture_id": "lstv-2026-05-13-lazio-internazionale",
+      "partido": "Lazio vs Internazionale",
+      "local": "Lazio",
+      "visitante": "Internazionale",
+      "liga": "Copa de Italia",
+      "pais": "Italia",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "Paramount+",
+        ",",
+        "DAZN Canada",
+        "TLN",
+        "DIRECTV Sports Puerto Rico",
+        "DIRECTV Sports Caribbean"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-cruz-azul-guadalajara": {
+      "id": "lstv-2026-05-13-cruz-azul-guadalajara",
+      "fixture_id": "lstv-2026-05-13-cruz-azul-guadalajara",
+      "partido": "Cruz Azul vs Guadalajara",
+      "local": "Cruz Azul",
+      "visitante": "Guadalajara",
+      "liga": "Liga MX",
+      "pais": "México",
+      "fecha": "2026-05-13T22:00:00",
+      "dia": "2026-05-13",
+      "hora": "22:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "TUDN USA",
+        ",",
+        "TUDN.com",
+        "TUDN App",
+        "Canal 5 Televisa",
+        "TUDN"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-rosario-central-racing-club": {
+      "id": "lstv-2026-05-13-rosario-central-racing-club",
+      "fixture_id": "lstv-2026-05-13-rosario-central-racing-club",
+      "partido": "Rosario Central vs Racing Club",
+      "local": "Rosario Central",
+      "visitante": "Racing Club",
+      "liga": "Liga Profesional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:00:00",
+      "dia": "2026-05-13",
+      "hora": "18:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "TyC Sports Internacional"
+      ],
+      "canales_raw": [
+        ",",
+        "TyC Sports Internacional",
+        "ViX",
+        "Disney+ Premium Mexico"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "alta"
+    },
+    "lstv-2026-05-13-river-plate-gimnasia-la-plata": {
+      "id": "lstv-2026-05-13-river-plate-gimnasia-la-plata",
+      "fixture_id": "lstv-2026-05-13-river-plate-gimnasia-la-plata",
+      "partido": "River Plate vs Gimnasia La Plata",
+      "local": "River Plate",
+      "visitante": "Gimnasia La Plata",
+      "liga": "Liga Profesional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "TyC Sports Internacional"
+      ],
+      "canales_raw": [
+        ",",
+        "TyC Sports Internacional",
+        "ViX",
+        "Disney+ Premium Mexico"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "alta"
+    },
+    "lstv-2026-05-13-cska-sofia-cska-1948": {
+      "id": "lstv-2026-05-13-cska-sofia-cska-1948",
+      "fixture_id": "lstv-2026-05-13-cska-sofia-cska-1948",
+      "partido": "CSKA Sofia vs CSKA 1948",
+      "local": "CSKA Sofia",
+      "visitante": "CSKA 1948",
+      "liga": "Parva Liga",
+      "pais": "Bulgaria",
+      "fecha": "2026-05-13T10:45:00",
+      "dia": "2026-05-13",
+      "hora": "10:45",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "Sportklub 4 Croatia",
+        "Diema Sport",
+        "Play Diema Xtra"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-ludogorets-levski-sofia": {
+      "id": "lstv-2026-05-13-ludogorets-levski-sofia",
+      "fixture_id": "lstv-2026-05-13-ludogorets-levski-sofia",
+      "partido": "Ludogorets vs Levski Sofia",
+      "local": "Ludogorets",
+      "visitante": "Levski Sofia",
+      "liga": "Parva Liga",
+      "pais": "Bulgaria",
+      "fecha": "2026-05-13T13:15:00",
+      "dia": "2026-05-13",
+      "hora": "13:15",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "Diema Sport",
+        "Play Diema Xtra"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-deportivo-pasto-deportes-tolima": {
+      "id": "lstv-2026-05-13-deportivo-pasto-deportes-tolima",
+      "fixture_id": "lstv-2026-05-13-deportivo-pasto-deportes-tolima",
+      "partido": "Deportivo Pasto vs Deportes Tolima",
+      "local": "Deportivo Pasto",
+      "visitante": "Deportes Tolima",
+      "liga": "Categoría Primera A",
+      "pais": "Colombia",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "RCN Nuestra Tele",
+        "fubo Latino 2",
+        "Fanatiz Canada"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-junior-once-caldas": {
+      "id": "lstv-2026-05-13-junior-once-caldas",
+      "fixture_id": "lstv-2026-05-13-junior-once-caldas",
+      "partido": "Junior vs Once Caldas",
+      "local": "Junior",
+      "visitante": "Once Caldas",
+      "liga": "Categoría Primera A",
+      "pais": "Colombia",
+      "fecha": "2026-05-13T21:15:00",
+      "dia": "2026-05-13",
+      "hora": "21:15",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "RCN Nuestra Tele",
+        "fubo Latino 2",
+        "Fanatiz Canada"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-aguila-firpo": {
+      "id": "lstv-2026-05-13-aguila-firpo",
+      "fixture_id": "lstv-2026-05-13-aguila-firpo",
+      "partido": "Águila vs Firpo",
+      "local": "Águila",
+      "visitante": "Firpo",
+      "liga": "Primera División de El Salvador",
+      "pais": "El Salvador",
+      "fecha": "2026-05-13T17:30:00",
+      "dia": "2026-05-13",
+      "hora": "17:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "TCS GO"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-levadiakos-ofi": {
+      "id": "lstv-2026-05-13-levadiakos-ofi",
+      "fixture_id": "lstv-2026-05-13-levadiakos-ofi",
+      "partido": "Levadiakos vs OFI",
+      "local": "Levadiakos",
+      "visitante": "OFI",
+      "liga": "Superliga de Grecia",
+      "pais": "Grecia",
+      "fecha": "2026-05-13T10:00:00",
+      "dia": "2026-05-13",
+      "hora": "10:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "SportPlus",
+        ",",
+        "Nova Sports 2",
+        "Sportklub Poland",
+        "Nova Sports 2 Cyprus"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-paok-aek-athens": {
+      "id": "lstv-2026-05-13-paok-aek-athens",
+      "fixture_id": "lstv-2026-05-13-paok-aek-athens",
+      "partido": "PAOK vs AEK Athens",
+      "local": "PAOK",
+      "visitante": "AEK Athens",
+      "liga": "Superliga de Grecia",
+      "pais": "Grecia",
+      "fecha": "2026-05-13T12:30:00",
+      "dia": "2026-05-13",
+      "hora": "12:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "SportPlus",
+        ",",
+        "Nova Sport Bulgaria",
+        "Sportklub Poland",
+        "Sportklub 1 Croatia",
+        "Arena Sport 1"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-egipto-sub-17-etiopia-sub-17": {
+      "id": "lstv-2026-05-13-egipto-sub-17-etiopia-sub-17",
+      "fixture_id": "lstv-2026-05-13-egipto-sub-17-etiopia-sub-17",
+      "partido": "Egipto Sub-17 vs Etiopía Sub-17",
+      "local": "Egipto Sub-17",
+      "visitante": "Etiopía Sub-17",
+      "liga": "Copa Africana de Naciones Sub-17",
+      "pais": "África",
+      "fecha": "2026-05-13T9:00:00",
+      "dia": "2026-05-13",
+      "hora": "9:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "beIN SPORTS CONNECT",
+        "beIN SPORTS CONNECT Canada",
+        "Fanatiz Canada"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-costa-de-marfil-sub-17-camerun-sub-17": {
+      "id": "lstv-2026-05-13-costa-de-marfil-sub-17-camerun-sub-17",
+      "fixture_id": "lstv-2026-05-13-costa-de-marfil-sub-17-camerun-sub-17",
+      "partido": "Costa de Marfil Sub-17 vs Camerún Sub-17",
+      "local": "Costa de Marfil Sub-17",
+      "visitante": "Camerún Sub-17",
+      "liga": "Copa Africana de Naciones Sub-17",
+      "pais": "África",
+      "fecha": "2026-05-13T9:00:00",
+      "dia": "2026-05-13",
+      "hora": "9:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "beIN SPORTS CONNECT",
+        "beIN SPORTS CONNECT Canada",
+        "Fanatiz Canada"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-uganda-sub-17-rd-del-congo-sub-17": {
+      "id": "lstv-2026-05-13-uganda-sub-17-rd-del-congo-sub-17",
+      "fixture_id": "lstv-2026-05-13-uganda-sub-17-rd-del-congo-sub-17",
+      "partido": "Uganda Sub-17 vs RD del Congo Sub-17",
+      "local": "Uganda Sub-17",
+      "visitante": "RD del Congo Sub-17",
+      "liga": "Copa Africana de Naciones Sub-17",
+      "pais": "África",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "beIN SPORTS CONNECT",
+        "beIN SPORTS CONNECT Canada",
+        "Fanatiz Canada"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-marruecos-sub-17-tunez-sub-17": {
+      "id": "lstv-2026-05-13-marruecos-sub-17-tunez-sub-17",
+      "fixture_id": "lstv-2026-05-13-marruecos-sub-17-tunez-sub-17",
+      "partido": "Marruecos Sub-17 vs Túnez Sub-17",
+      "local": "Marruecos Sub-17",
+      "visitante": "Túnez Sub-17",
+      "liga": "Copa Africana de Naciones Sub-17",
+      "pais": "África",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "beIN SPORTS CONNECT",
+        "beIN SPORTS CONNECT Canada",
+        "Fanatiz Canada"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-bucheon-1995-jeonbuk-motors": {
+      "id": "lstv-2026-05-13-bucheon-1995-jeonbuk-motors",
+      "fixture_id": "lstv-2026-05-13-bucheon-1995-jeonbuk-motors",
+      "partido": "Bucheon 1995 vs Jeonbuk Motors",
+      "local": "Bucheon 1995",
+      "visitante": "Jeonbuk Motors",
+      "liga": "K League 1",
+      "pais": "Corea del Sur",
+      "fecha": "2026-05-13T6:30:00",
+      "dia": "2026-05-13",
+      "hora": "6:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "LAOLA1.TV",
+        "VeikkausTV"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-ulsan-jeju-united": {
+      "id": "lstv-2026-05-13-ulsan-jeju-united",
+      "fixture_id": "lstv-2026-05-13-ulsan-jeju-united",
+      "partido": "Ulsan vs Jeju United",
+      "local": "Ulsan",
+      "visitante": "Jeju United",
+      "liga": "K League 1",
+      "pais": "Corea del Sur",
+      "fecha": "2026-05-13T6:30:00",
+      "dia": "2026-05-13",
+      "hora": "6:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "LAOLA1.TV",
+        "VeikkausTV"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-arka-gdynia-gornik-zabrze": {
+      "id": "lstv-2026-05-13-arka-gdynia-gornik-zabrze",
+      "fixture_id": "lstv-2026-05-13-arka-gdynia-gornik-zabrze",
+      "partido": "Arka Gdynia vs Górnik Zabrze",
+      "local": "Arka Gdynia",
+      "visitante": "Górnik Zabrze",
+      "liga": "Ekstraklasa",
+      "pais": "Polonia",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "beIN SPORTS CONNECT",
+        "beIN SPORTS XTRA",
+        "beIN SPORTS XTRA en Español"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-rakow-czestochowa-jagiellonia-bia-ystok": {
+      "id": "lstv-2026-05-13-rakow-czestochowa-jagiellonia-bia-ystok",
+      "fixture_id": "lstv-2026-05-13-rakow-czestochowa-jagiellonia-bia-ystok",
+      "partido": "Raków Częstochowa vs Jagiellonia Białystok",
+      "local": "Raków Częstochowa",
+      "visitante": "Jagiellonia Białystok",
+      "liga": "Ekstraklasa",
+      "pais": "Polonia",
+      "fecha": "2026-05-13T14:30:00",
+      "dia": "2026-05-13",
+      "hora": "14:30",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
+        "beIN SPORTS CONNECT",
+        "Ekstraklasa TV",
+        "beIN SPORTS CONNECT Canada"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
+    "lstv-2026-05-13-hearts-falkirk": {
+      "id": "lstv-2026-05-13-hearts-falkirk",
+      "fixture_id": "lstv-2026-05-13-hearts-falkirk",
+      "partido": "Hearts vs Falkirk",
+      "local": "Hearts",
+      "visitante": "Falkirk",
+      "liga": "Scottish Premiership",
+      "pais": "Escocia",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "Paramount+",
+        ",",
+        "Hearts TV",
+        "Falkirk TV",
+        "Tenor Sports",
+        "DAZN Deutschland"
+      ],
+      "fuente": "Live Soccer TV",
+      "fuente_url": "https://www.livesoccertv.com/es/",
+      "confianza": "baja"
+    },
     "lstv-2026-05-14-valencia-rayo-vallecano": {
       "id": "lstv-2026-05-14-valencia-rayo-vallecano",
       "fixture_id": "lstv-2026-05-14-valencia-rayo-vallecano",
@@ -26,14 +1202,18 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "ESPN Deportes",
+        ",",
         "ESPN Select",
         "ESPN App",
         "TSN+"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-girona-real-sociedad": {
       "id": "lstv-2026-05-14-girona-real-sociedad",
@@ -52,14 +1232,18 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "ESPN Select",
+        ",",
         "ESPN App",
         "TSN+",
         "Sky Sports Mexico"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-real-madrid-real-oviedo": {
       "id": "lstv-2026-05-14-real-madrid-real-oviedo",
@@ -78,14 +1262,18 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "ESPN Deportes",
+        ",",
         "ESPN Select",
         "ESPN App",
         "TSN+"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-pachuca-pumas-unam": {
       "id": "lstv-2026-05-14-pachuca-pumas-unam",
@@ -104,7 +1292,11 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "TUDN USA",
+        ",",
         "TUDN.com",
         "TUDN App",
         "ViX",
@@ -112,7 +1304,7 @@
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-union-saint-gilloise-anderlecht": {
       "id": "lstv-2026-05-14-union-saint-gilloise-anderlecht",
@@ -131,7 +1323,11 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "DAZN USA",
+        ",",
         "DAZN Canada",
         "fuboTV Canada",
         "DAZN Deutschland",
@@ -139,7 +1335,7 @@
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-chapecoense-botafogo": {
       "id": "lstv-2026-05-14-chapecoense-botafogo",
@@ -158,7 +1354,11 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "Premiere",
+        ",",
         "SporTV",
         "Globoplay",
         "Zapping",
@@ -166,7 +1366,7 @@
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-atletico-goianiense-athletico-pr": {
       "id": "lstv-2026-05-14-atletico-goianiense-athletico-pr",
@@ -185,7 +1385,11 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "Premiere",
+        ",",
         "SporTV",
         "Globoplay",
         "Zapping",
@@ -193,7 +1397,7 @@
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-confianca-gremio": {
       "id": "lstv-2026-05-14-confianca-gremio",
@@ -212,11 +1416,14 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "Amazon Prime Video"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-corinthians-barra": {
       "id": "lstv-2026-05-14-corinthians-barra",
@@ -235,11 +1442,14 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "Amazon Prime Video"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-crb-fortaleza": {
       "id": "lstv-2026-05-14-crb-fortaleza",
@@ -258,11 +1468,14 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "Amazon Prime Video"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-vitoria-flamengo": {
       "id": "lstv-2026-05-14-vitoria-flamengo",
@@ -281,6 +1494,10 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
         "FOX Deportes",
         "Premiere",
         "Foxsports.com",
@@ -288,7 +1505,7 @@
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-tigres-envigado": {
       "id": "lstv-2026-05-14-tigres-envigado",
@@ -307,12 +1524,16 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
         "Fanatiz Canada",
         "Win Play"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-deportes-quindio-internacional-palmira": {
       "id": "lstv-2026-05-14-deportes-quindio-internacional-palmira",
@@ -331,12 +1552,16 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
         "Fanatiz Canada",
         "Win Play"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-municipal-limeno-fas": {
       "id": "lstv-2026-05-14-municipal-limeno-fas",
@@ -355,12 +1580,16 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "TCS GO",
+        ",",
         "Tigo Sports El Salvador"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-bradford-city-bolton-wanderers": {
       "id": "lstv-2026-05-14-bradford-city-bolton-wanderers",
@@ -379,7 +1608,11 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "Paramount+",
+        ",",
         "CBS Sports Golazo",
         "DAZN Canada",
         "Disney+ Premium Caribbean",
@@ -387,7 +1620,7 @@
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-manchester-city-u18-manchester-united-u18": {
       "id": "lstv-2026-05-14-manchester-city-u18-manchester-united-u18",
@@ -406,14 +1639,18 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "ESPN Select",
+        ",",
         "ESPN App",
         "Sportsnet World",
         "Sportsnet Plus"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-wolfsburg-bayern": {
       "id": "lstv-2026-05-14-wolfsburg-bayern",
@@ -432,7 +1669,11 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "DAZN USA",
+        ",",
         "DAZN Canada",
         "fuboTV Canada",
         "ZDF",
@@ -440,7 +1681,7 @@
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-mali-sub-17-angola-sub-17": {
       "id": "lstv-2026-05-14-mali-sub-17-angola-sub-17",
@@ -459,13 +1700,17 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
         "beIN SPORTS CONNECT",
         "beIN SPORTS CONNECT Canada",
         "Fanatiz Canada"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-tanzania-sub-17-mozambique-sub-17": {
       "id": "lstv-2026-05-14-tanzania-sub-17-mozambique-sub-17",
@@ -484,13 +1729,17 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
         "beIN SPORTS CONNECT",
         "beIN SPORTS CONNECT Canada",
         "Fanatiz Canada"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-senegal-sub-17-sur-africa-sub-17": {
       "id": "lstv-2026-05-14-senegal-sub-17-sur-africa-sub-17",
@@ -509,13 +1758,17 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
         "beIN SPORTS CONNECT",
         "beIN SPORTS CONNECT Canada",
         "Fanatiz Canada"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-argelia-sub-17-ghana-sub-17": {
       "id": "lstv-2026-05-14-argelia-sub-17-ghana-sub-17",
@@ -534,13 +1787,17 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
         "beIN SPORTS CONNECT",
         "beIN SPORTS CONNECT Canada",
         "Fanatiz Canada"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-francia-sub-17-noruega-sub-17": {
       "id": "lstv-2026-05-14-francia-sub-17-noruega-sub-17",
@@ -559,7 +1816,11 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "ViX",
+        ",",
         "UEFA.tv",
         "Sportdigital FUSSBALL",
         "TVP Sport",
@@ -567,7 +1828,7 @@
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-inglaterra-sub-17-polonia-sub-17": {
       "id": "lstv-2026-05-14-inglaterra-sub-17-polonia-sub-17",
@@ -586,11 +1847,14 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "UEFA.tv"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-alemania-sub-17-espana-sub-17": {
       "id": "lstv-2026-05-14-alemania-sub-17-espana-sub-17",
@@ -609,7 +1873,11 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "ViX",
+        ",",
         "UEFA.tv",
         "Sportdigital FUSSBALL",
         "TVP Sport",
@@ -617,7 +1885,7 @@
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-monterrey-america": {
       "id": "lstv-2026-05-14-monterrey-america",
@@ -636,12 +1904,16 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "ViX",
+        ",",
         "ViX Mexico"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-libertad-2-de-mayo": {
       "id": "lstv-2026-05-14-libertad-2-de-mayo",
@@ -660,13 +1932,17 @@
         "elapsed": null
       },
       "canales": [
-        "DIRECTV Sports",
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
         "Fanatiz Canada",
+        "DIRECTV Sports Argentina",
         "Tigo Sports Paraguay"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-thun-young-boys": {
       "id": "lstv-2026-05-14-thun-young-boys",
@@ -685,7 +1961,10 @@
         "elapsed": null
       },
       "canales": [
-        "BetMGM",
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
         "SFL TV",
         "Blue Sport",
         "Arena Sport 1x2",
@@ -693,7 +1972,7 @@
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-sion-lugano": {
       "id": "lstv-2026-05-14-sion-lugano",
@@ -712,7 +1991,11 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "SFL TV",
+        ",",
         "Cпорт 1",
         "Blue Sport D 2",
         "Blue Sport",
@@ -720,7 +2003,7 @@
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-basel-st-gallen": {
       "id": "lstv-2026-05-14-basel-st-gallen",
@@ -739,7 +2022,10 @@
         "elapsed": null
       },
       "canales": [
-        "BetMGM",
+        "A confirmar"
+      ],
+      "canales_raw": [
+        ",",
         "SFL TV",
         "RSI La 2",
         "SRF zwei",
@@ -747,7 +2033,7 @@
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     },
     "lstv-2026-05-14-wake-charlotte-eagles": {
       "id": "lstv-2026-05-14-wake-charlotte-eagles",
@@ -766,11 +2052,14 @@
         "elapsed": null
       },
       "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
         "SportsEngine Play"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "alta"
+      "confianza": "baja"
     }
   }
 }
