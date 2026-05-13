@@ -46,6 +46,7 @@ CANALES_PRIORIDAD_ARGENTINA = [
     "DIRECTV Sports Argentina",
     "DIRECTV Sports Argentina HD",
     "DIRECTV Sports App",
+    "DIRECTV Sports App Argentina",
     "Disney+ Premium Argentina",
     "TNT Sports Argentina",
     "TNT Sports Go Argentina",
@@ -106,6 +107,8 @@ PALABRAS_CANAL_ARGENTINA = [
     "dgo",
     "directv sports argentina",
     "directv sports app",
+    "directv sports",
+    "dsports",
     "disney+ premium argentina",
     "tnt sports argentina",
     "tnt sports go argentina",
@@ -263,6 +266,8 @@ def canal_es_argentino_o_util(canal):
         "dgo",
         "directv sports argentina",
         "directv sports app",
+        "directv sports",
+        "dsports",
         "disney+ premium argentina",
         "tnt sports argentina",
         "tnt sports go argentina",
@@ -330,6 +335,9 @@ def limpiar_canales(canales_raw):
             if not canal_original:
                 continue
 
+            if canal_original in [",", "|", "-", "–"]:
+                continue
+
             n_original = normalizar(canal_original)
 
             if n_original in CANALES_IGNORAR:
@@ -355,6 +363,9 @@ def limpiar_canales(canales_raw):
     argentinos = []
 
     for canal in candidatos:
+        # Importante: chequeamos el canal limpio.
+        # DIRECTV Sports Argentina se limpia como DIRECTV Sports,
+        # por eso canal_es_argentino_o_util acepta también "directv sports".
         if canal_es_argentino_o_util(canal):
             limpio = limpiar_nombre_canal(canal)
 
@@ -459,6 +470,9 @@ def limpiar_canales_raw(canales_raw):
         item = limpiar_linea(item)
 
         if not item:
+            continue
+
+        if item in [",", "|", "-", "–"]:
             continue
 
         n = normalizar(item)
