@@ -1,13 +1,13 @@
 {
   "fuente": "ESPN Argentina + 365Scores",
   "metodo": "Cloudflare Worker ESPN scoreboard + ESPN summary para incidencias faltantes + 365Scores detalle por id_365 para goles/rojas faltantes + corrector 365Scores + fallback 365Scores para ligas faltantes + 365Scores completo sin cortar en onlyMajorGames + filtro anti falsos positivos Ecuador + horarios Argentina + logos de liga + caché agenda/live + partidos desde 23:00 duplicados al día siguiente",
-  "fecha_scrapeo": "2026-05-13T05:33:05.158Z",
+  "fecha_scrapeo": "2026-05-13T13:07:54.747Z",
   "total": 34,
   "total_original": 32,
   "total_agregados_desde_365scores": 1,
   "total_agregados_dia_siguiente": 1,
   "total_ligas_consultadas": 36,
-  "total_partidos_365scores": 227,
+  "total_partidos_365scores": 236,
   "partidos": [
     {
       "id": "740902",
