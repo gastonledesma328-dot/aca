@@ -33,6 +33,7 @@ CANALES_IGNORAR = {
     "fubotv",
     "fubo tv",
     "fubo",
+    "betmgm",
 }
 
 # Canales argentinos que queremos priorizar especialmente
@@ -350,7 +351,7 @@ def limpiar_canales(canales_raw):
     if not candidatos:
         return ["A confirmar"]
 
-    # Primero nos quedamos con canales argentinos o útiles para Argentina.
+    # Solo guardamos canales útiles para Argentina.
     argentinos = []
 
     for canal in candidatos:
@@ -362,26 +363,11 @@ def limpiar_canales(canales_raw):
 
     if argentinos:
         argentinos.sort(key=prioridad_canal)
-        return argentinos or ["A confirmar"]
+        return argentinos
 
-    # Si no hay canales argentinos, guardamos canales reales de respaldo.
-    salida = []
-
-    for canal in candidatos:
-        canal = limpiar_nombre_canal(canal)
-
-        if not canal:
-            continue
-
-        if normalizar(canal) in CANALES_IGNORAR:
-            continue
-
-        if canal not in salida:
-            salida.append(canal)
-
-    salida.sort(key=prioridad_canal)
-
-    return salida[:6] if salida else ["A confirmar"]
+    # Si Live Soccer TV solo trae canales de otros países,
+    # NO los guardamos como canales principales para no ensuciar la grilla argentina.
+    return ["A confirmar"]
 
 
 def obtener_html(url):
@@ -466,6 +452,26 @@ def es_fin_canales(linea):
     return any(c in n for c in cortes)
 
 
+def limpiar_canales_raw(canales_raw):
+    salida = []
+
+    for item in canales_raw or []:
+        item = limpiar_linea(item)
+
+        if not item:
+            continue
+
+        n = normalizar(item)
+
+        if n in CANALES_IGNORAR:
+            continue
+
+        if item not in salida:
+            salida.append(item)
+
+    return salida
+
+
 def parsear_partidos_livesoccertv(html, fecha_iso, url):
     lineas = lineas_desde_html(html)
 
@@ -530,7 +536,8 @@ def parsear_partidos_livesoccertv(html, fecha_iso, url):
 
                 j += 1
 
-            canales = limpiar_canales(canales_raw)
+            canales_raw_limpios = limpiar_canales_raw(canales_raw)
+            canales = limpiar_canales(canales_raw_limpios)
 
             partido_id = f"lstv-{fecha_iso}-{slug(local)}-{slug(visitante)}"
 
@@ -551,6 +558,7 @@ def parsear_partidos_livesoccertv(html, fecha_iso, url):
                     "elapsed": None,
                 },
                 "canales": canales,
+                "canales_raw": canales_raw_limpios,
                 "fuente": "Live Soccer TV",
                 "fuente_url": url,
                 "confianza": "alta" if canales != ["A confirmar"] else "baja",
