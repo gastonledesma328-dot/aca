@@ -2400,7 +2400,7 @@ async function getLiveData() {
    ROUTER
 ============================================================ */
 
-import fs from "node:fs/promises";
+
 
 function crearLiveJsonDesdeAgenda(agenda) {
   const partidos = Array.isArray(agenda.partidos) ? agenda.partidos : [];
