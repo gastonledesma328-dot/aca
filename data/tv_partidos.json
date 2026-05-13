@@ -1,13 +1,27 @@
 {
   "fuente": "Live Soccer TV",
-  "metodo": "scraping HTML agenda diaria",
-  "actualizado": "2026-05-13T06:28:44.632022+00:00",
+  "metodo": "scraping HTML agenda diaria + páginas de canales argentinos",
+  "actualizado": "2026-05-13T06:56:20.137577+00:00",
   "timezone": "America/Argentina/Buenos_Aires",
   "fechas": [
     "2026-05-13",
     "2026-05-14"
   ],
   "total": 71,
+  "canales_priorizados": [
+    "ESPN",
+    "ESPN 2",
+    "ESPN 3",
+    "ESPN 4",
+    "ESPN Premium",
+    "DGO",
+    "DIRECTV Sports",
+    "Disney+ Premium",
+    "TNT Sports",
+    "TyC Sports",
+    "TyC Sports Internacional",
+    "TV Pública"
+  ],
   "partidos": {
     "lstv-2026-05-13-charlotte-new-york-city": {
       "id": "lstv-2026-05-13-charlotte-new-york-city",
@@ -400,18 +414,28 @@
         "elapsed": null
       },
       "canales": [
-        "A confirmar"
+        "ESPN"
       ],
       "canales_raw": [
         "USA Network",
         "Palace TV+",
         "DAZN Canada",
         "ESPN Caribbean",
-        "Disney+ Premium Caribbean"
+        "Disney+ Premium Caribbean",
+        "ESPN"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/",
-      "confianza": "baja"
+      "confianza": "alta",
+      "fuentes_tv": [
+        {
+          "fuente": "Live Soccer TV - canal",
+          "url": "https://www.livesoccertv.com/channels/espn-sur/",
+          "canales": [
+            "ESPN"
+          ]
+        }
+      ]
     },
     "lstv-2026-05-13-villarreal-sevilla": {
       "id": "lstv-2026-05-13-villarreal-sevilla",
@@ -861,10 +885,7 @@
         "A confirmar"
       ],
       "canales_raw": [
-        "SportPlus",
-        "Nova Sports 2",
-        "Sportklub Poland",
-        "Nova Sports 2 Cyprus"
+        "SportPlus"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/",
@@ -908,9 +929,9 @@
       "visitante": "Etiopía Sub-17",
       "liga": "Copa Africana de Naciones Sub-17",
       "pais": "África",
-      "fecha": "2026-05-13T9:00:00",
+      "fecha": "2026-05-13T09:00:00",
       "dia": "2026-05-13",
-      "hora": "9:00",
+      "hora": "09:00",
       "estado": {
         "long": "Programado",
         "short": "Programado",
@@ -936,9 +957,9 @@
       "visitante": "Camerún Sub-17",
       "liga": "Copa Africana de Naciones Sub-17",
       "pais": "África",
-      "fecha": "2026-05-13T9:00:00",
+      "fecha": "2026-05-13T09:00:00",
       "dia": "2026-05-13",
-      "hora": "9:00",
+      "hora": "09:00",
       "estado": {
         "long": "Programado",
         "short": "Programado",
@@ -1020,9 +1041,9 @@
       "visitante": "Jeonbuk Motors",
       "liga": "K League 1",
       "pais": "Corea del Sur",
-      "fecha": "2026-05-13T6:30:00",
+      "fecha": "2026-05-13T06:30:00",
       "dia": "2026-05-13",
-      "hora": "6:30",
+      "hora": "06:30",
       "estado": {
         "long": "Programado",
         "short": "Programado",
@@ -1047,9 +1068,9 @@
       "visitante": "Jeju United",
       "liga": "K League 1",
       "pais": "Corea del Sur",
-      "fecha": "2026-05-13T6:30:00",
+      "fecha": "2026-05-13T06:30:00",
       "dia": "2026-05-13",
-      "hora": "6:30",
+      "hora": "06:30",
       "estado": {
         "long": "Programado",
         "short": "Programado",
@@ -1198,17 +1219,27 @@
         "elapsed": null
       },
       "canales": [
-        "A confirmar"
+        "ESPN 4"
       ],
       "canales_raw": [
         "ESPN Select",
         "ESPN App",
         "TSN+",
-        "Sky Sports Mexico"
+        "Sky Sports Mexico",
+        "ESPN 4"
       ],
       "fuente": "Live Soccer TV",
       "fuente_url": "https://www.livesoccertv.com/es/schedules/2026-05-14/",
-      "confianza": "baja"
+      "confianza": "alta",
+      "fuentes_tv": [
+        {
+          "fuente": "Live Soccer TV - canal",
+          "url": "https://www.livesoccertv.com/channels/espn-4-sur/",
+          "canales": [
+            "ESPN 4"
+          ]
+        }
+      ]
     },
     "lstv-2026-05-14-real-madrid-real-oviedo": {
       "id": "lstv-2026-05-14-real-madrid-real-oviedo",
@@ -1277,9 +1308,9 @@
       "visitante": "Anderlecht",
       "liga": "Copa de Bélgica",
       "pais": "Bélgica",
-      "fecha": "2026-05-14T9:00:00",
+      "fecha": "2026-05-14T09:00:00",
       "dia": "2026-05-14",
-      "hora": "9:00",
+      "hora": "09:00",
       "estado": {
         "long": "Programado",
         "short": "Programado",
@@ -1644,9 +1675,9 @@
       "visitante": "Angola Sub-17",
       "liga": "Copa Africana de Naciones Sub-17",
       "pais": "África",
-      "fecha": "2026-05-14T9:00:00",
+      "fecha": "2026-05-14T09:00:00",
       "dia": "2026-05-14",
-      "hora": "9:00",
+      "hora": "09:00",
       "estado": {
         "long": "Programado",
         "short": "Programado",
@@ -1756,9 +1787,9 @@
       "visitante": "Noruega Sub-17",
       "liga": "Campeonato de Europa Femenino Sub-17 de la UEFA",
       "pais": "Europa",
-      "fecha": "2026-05-14T9:00:00",
+      "fecha": "2026-05-14T09:00:00",
       "dia": "2026-05-14",
-      "hora": "9:00",
+      "hora": "09:00",
       "estado": {
         "long": "Programado",
         "short": "Programado",
