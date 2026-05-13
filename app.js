@@ -1,8 +1,10 @@
 const EVENTS_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/2612163/refs/heads/main/eventos_streamhdx.json";
 
-const AGENDA_URL = "/api/agenda";
-const AGENDA_ENDPOINT = "/api/agenda";
-const AGENDA_LIVE_ENDPOINT = "/api/live";
+const WORKER_BASE_URL = "https://partidos-hoy-worker.gastonledesma328.workers.dev";
+
+const AGENDA_URL = `${WORKER_BASE_URL}/`;
+const AGENDA_ENDPOINT = `${WORKER_BASE_URL}/`;
+const AGENDA_LIVE_ENDPOINT = `${WORKER_BASE_URL}/live`;
 
 const TV_PARTIDOS_URL = "./data/tv_partidos.json";
 
