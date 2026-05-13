@@ -263,13 +263,13 @@ async function cargarTvPartidos() {
   }
 
   TV_PARTIDOS_LOADING = fetchJsonCached(
-  `${TV_PARTIDOS_URL}?v=${Date.now()}`,
-  "tv-partidos-cache",
-  CACHE_TTL_MS,
-  {
-    networkFirst: true,
-  }
-)
+    `${TV_PARTIDOS_URL}?v=${Date.now()}`,
+    "tv-partidos-cache",
+    CACHE_TTL_MS,
+    {
+      networkFirst: true,
+    }
+  )
     .then((data) => {
       TV_PARTIDOS_CACHE = data && typeof data === "object"
         ? data
@@ -303,63 +303,144 @@ function normalizarTextoTV(texto) {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/\([^)]*\)/g, " ")
-    .replace(/\bclub atletico\b/g, "")
-    .replace(/\bca\b/g, "")
-    .replace(/\bfc\b/g, "")
-    .replace(/\bcd\b/g, "")
-    .replace(/\bsc\b/g, "")
-    .replace(/\bac\b/g, "")
+    .replace(/&/g, " and ")
+    .replace(/['’`´.]/g, "")
+    .replace(/[^a-z0-9\s]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
 
+function tokensEquipoTV(nombre) {
+  const base = normalizarTextoTV(nombre);
+
+  const reemplazos = {
+    "utd": "united",
+    "intl": "internacional",
+    "inter": "internacional",
+    "st": "saint",
+    "dep": "deportivo",
+    "atl": "atletico",
+    "kansas": "kansas",
+  };
+
+  const stopwords = new Set([
+    "club",
+    "ca",
+    "fc",
+    "cf",
+    "sc",
+    "cd",
+    "ac",
+    "afc",
+    "the",
+    "de",
+    "del",
+    "da",
+    "do",
+    "la",
+    "el",
+    "los",
+    "las",
+    "y",
+    "and",
+  ]);
+
+  const compactosEspeciales = {
+    "lafc": ["los", "angeles"],
+    "nycfc": ["new", "york", "city"],
+    "nyrb": ["new", "york", "red", "bulls"],
+    "psg": ["paris", "saint", "germain"],
+  };
+
+  if (compactosEspeciales[base]) {
+    return compactosEspeciales[base];
+  }
+
+  const tokens = base
+    .split(" ")
+    .map((t) => reemplazos[t] || t)
+    .filter((t) => t && !stopwords.has(t));
+
+  // Caso común: "Sporting Kansas City" frente a "Sporting KC".
+  if (tokens.includes("sporting") && tokens.includes("kansas") && tokens.includes("city")) {
+    return ["sporting", "kc"];
+  }
+
+  if (tokens.includes("sporting") && tokens.includes("kc")) {
+    return ["sporting", "kc"];
+  }
+
+  // Caso común: "Los Angeles FC" frente a "LAFC".
+  if (tokens.includes("los") && tokens.includes("angeles")) {
+    return ["los", "angeles"];
+  }
+
+  // Caso común: "St Louis City SC" frente a variantes con Saint/St.
+  if (tokens.includes("saint") && tokens.includes("louis")) {
+    return ["saint", "louis", "city"];
+  }
+
+  return tokens;
+}
+
+function inicialesEquipoTV(tokens) {
+  return tokens
+    .filter((t) => t.length > 1)
+    .map((t) => t[0])
+    .join("");
+}
+
 function normalizarEquipoTV(nombre) {
-  let n = normalizarTextoTV(nombre);
+  return tokensEquipoTV(nombre).join(" ");
+}
 
- const alias = {
-  "racing club": "racing avellaneda",
-  "racing": "racing avellaneda",
-  "gimnasia la plata": "gimnasia lp",
-  "gimnasia y esgrima la plata": "gimnasia lp",
-  "san martin san juan": "san martin sj",
-  "san martin de san juan": "san martin sj",
-  "san martin sj": "san martin sj",
-  "barcelona": "fc barcelona",
-  "deportivo alaves": "alaves",
-  "alaves": "alaves",
-  "sevilla": "sevilla",
-  "sevilla fc": "sevilla",
-  "man city": "manchester city",
-  "manchester utd": "manchester united",
-  "manchester united": "manchester united",
-  "inter": "inter milan",
-  "internazionale": "inter milan",
-  "psg": "psg",
-  "paris saint germain": "psg",
-  "paris saint-germain": "psg",
-  "paris sg": "psg",
-  "paris-saint germain": "psg",
-  "rc lens": "lens",
-};
+function tokenParecidoTV(a, b) {
+  if (!a || !b) return false;
+  if (a === b) return true;
 
-  return alias[n] || n;
+  if (a.length <= 3 || b.length <= 3) {
+    return a.startsWith(b) || b.startsWith(a);
+  }
+
+  return a.includes(b) || b.includes(a);
 }
 
 function similitudTV(a, b) {
-  const aa = normalizarEquipoTV(a);
-  const bb = normalizarEquipoTV(b);
+  const ta = tokensEquipoTV(a);
+  const tb = tokensEquipoTV(b);
 
-  if (!aa || !bb) return 0;
-  if (aa === bb) return 1;
-  if (aa.includes(bb) || bb.includes(aa)) return 0.88;
+  if (!ta.length || !tb.length) return 0;
 
-  const pa = aa.split(" ").filter(Boolean);
-  const pb = bb.split(" ").filter(Boolean);
+  const na = ta.join(" ");
+  const nb = tb.join(" ");
 
-  if (!pa.length || !pb.length) return 0;
+  if (na === nb) return 1;
+  if (na.includes(nb) || nb.includes(na)) return 0.92;
 
-  const comunes = pa.filter((p) => pb.includes(p)).length;
-  return comunes / Math.max(pa.length, pb.length);
+  const ia = inicialesEquipoTV(ta);
+  const ib = inicialesEquipoTV(tb);
+
+  // LAFC ≈ Los Angeles FC, NYCFC ≈ New York City FC, PSG ≈ Paris Saint Germain.
+  if (ia && ib && (ia === ib || ia.includes(ib) || ib.includes(ia))) {
+    return 0.9;
+  }
+
+  let comunes = 0;
+
+  for (const tokenA of ta) {
+    if (tb.some((tokenB) => tokenParecidoTV(tokenA, tokenB))) {
+      comunes += 1;
+    }
+  }
+
+  const score = comunes / Math.max(ta.length, tb.length);
+  const comparteFuerte = ta.some((x) => x.length >= 5 && tb.some((y) => tokenParecidoTV(x, y)));
+
+  if (score >= 0.5 && comparteFuerte) {
+    return Math.max(score, 0.74);
+  }
+
+  return score;
 }
 
 function mismoPartidoTV(match, tv) {
@@ -495,6 +576,7 @@ function obtenerTvPartidoSync(match) {
     };
   }
 
+  // 1) Intento por ID exacto, si alguna vez coinciden.
   const idsAgenda = [
     match.id,
     match.uid,
@@ -519,6 +601,7 @@ function obtenerTvPartidoSync(match) {
     }
   }
 
+  // 2) Intento por nombres normalizados + fecha.
   const byName = buscarTvPorNombre(tvData, match);
 
   if (byName && tieneCanalesConfirmados(byName.canales)) {
@@ -531,6 +614,7 @@ function obtenerTvPartidoSync(match) {
     confianza: "baja",
   };
 }
+
 
 async function getStreamEventsFallback() {
   try {
