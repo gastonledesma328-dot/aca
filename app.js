@@ -372,16 +372,41 @@ function obtenerTvPartidoSync(match) {
   };
 }
 
+function tieneCanalesConfirmados(canales) {
+  if (!Array.isArray(canales)) return false;
+
+  const limpios = canales
+    .map((canal) => String(canal || "").trim())
+    .filter(Boolean);
+
+  if (!limpios.length) return false;
+
+  return limpios.some((canal) => {
+    const value = canal.toLowerCase();
+    return value !== "a confirmar" && value !== "sin datos";
+  });
+}
+
 function renderTvPartido(tv) {
-  const canales = Array.isArray(tv?.canales) && tv.canales.length
+  const canales = Array.isArray(tv?.canales)
     ? tv.canales
-    : ["A confirmar"];
+    : [];
+
+  if (!tieneCanalesConfirmados(canales)) {
+    return "";
+  }
 
   return `
-    <span class="tv-box" title="Fuente: ${escapeHtml(tv?.fuente || "sin_regla")}">
+    <span class="tv-box" title="Fuente: ${escapeHtml(tv?.fuente || "Live Soccer TV")}">
       <span class="tv-label">Dónde ver</span>
       <span class="tv-canales">
-        ${canales.map((canal) => `<span class="tv-chip">${escapeHtml(canal)}</span>`).join("")}
+        ${canales
+          .filter((canal) => {
+            const value = String(canal || "").trim().toLowerCase();
+            return value && value !== "a confirmar" && value !== "sin datos";
+          })
+          .map((canal) => `<span class="tv-chip">${escapeHtml(canal)}</span>`)
+          .join("")}
       </span>
     </span>
   `;
