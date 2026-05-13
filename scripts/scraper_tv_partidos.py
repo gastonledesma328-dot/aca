@@ -409,8 +409,6 @@ def canal_es_argentino_o_util(canal):
         "dgo",
         "directv sports argentina",
         "directv sports app",
-        "directv sports",
-        "dsports",
         "disney+ premium argentina",
         "tnt sports argentina",
         "tnt sports go argentina",
