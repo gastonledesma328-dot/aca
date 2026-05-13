@@ -1900,7 +1900,47 @@ function explicitRedCardCount(match, side) {
   return 0;
 }
 
+function hasAgendaScore(match) {
+  const local = match.marcador_local ?? match.home_score ?? match.score_home;
+  const away = match.marcador_visitante ?? match.away_score ?? match.score_away;
+
+  return local !== undefined && local !== null && local !== "" && away !== undefined && away !== null && away !== "";
+}
+
+function isAgendaMatchFinished(match) {
+  const statusText = normalizeText(
+    `${match.mostrar_tiempo || ""} ${match.minuto || ""} ${match.estado_corto || ""} ${match.estado || ""}`
+  );
+
+  return (
+    match.completado === true ||
+    /(^|\s)(fin|final|full time|ft)(\s|$)/.test(statusText)
+  );
+}
+
+function shouldShowRedCards(match) {
+  const start = agendaStart(match);
+  const now = new Date();
+
+  // Si el partido todavía no empezó, no mostramos rojas aunque el JSON traiga
+  // tarjetas mezcladas desde otra fuente o desde datos viejos/cacheados.
+  if (!Number.isNaN(start.getTime()) && now < start) {
+    return false;
+  }
+
+  if (isAgendaMatchLive(match)) {
+    return true;
+  }
+
+  // En finalizados solo las mostramos si además hay marcador real.
+  return isAgendaMatchFinished(match) && hasAgendaScore(match);
+}
+
 function redCardsForTeam(match, side, teamName) {
+  if (!shouldShowRedCards(match)) {
+    return 0;
+  }
+
   const explicit = explicitRedCardCount(match, side);
 
   if (explicit > 0) {
@@ -1927,6 +1967,10 @@ function redCardsForTeam(match, side, teamName) {
 }
 
 function cardsSearchText(match) {
+  if (!shouldShowRedCards(match)) {
+    return "";
+  }
+
   return normalizeCardList(match)
     .filter(isRedCard)
     .map((card) => `${card.jugador || card.nombre || card.player || ""} ${card.equipo || card.team || ""} roja red card ${card.minuto || card.minute || ""}`)
