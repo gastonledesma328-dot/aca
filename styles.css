@@ -1940,12 +1940,6 @@ img.league-logo {
   display: none;
 }
 
-/* Cuando no hay canal confirmado */
-.tv-box:has(.tv-chip:first-child:last-child) .tv-chip {
-  background: rgba(255, 255, 255, 0.78);
-  color: var(--chip-fg);
-}
-
 /* Ajuste dentro de la tarjeta de agenda */
 .agenda-teams .tv-box {
   justify-self: stretch;
@@ -1992,4 +1986,39 @@ img.league-logo {
   .tv-box {
     grid-column: 1 / -1;
   }
+}
+
+
+/* ================================
+   FIX FINAL DÓNDE VER / CANALES TV
+   - Todos los canales confirmados se ven verdes.
+   - No se fuerza gris cuando hay un solo canal.
+================================ */
+
+.tv-box {
+  color: #eafff0;
+  background: rgba(95, 207, 128, 0.10) !important;
+  border: 1px solid rgba(95, 207, 128, 0.25) !important;
+}
+
+.tv-chip,
+.tv-chip-confirmado {
+  min-height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 7px;
+  border-radius: 999px;
+  color: #102016 !important;
+  background: var(--primary) !important;
+  border: 1px solid rgba(95, 207, 128, 0.45) !important;
+  font-size: 10px;
+  font-weight: 950;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.tv-chip:empty,
+.tv-chip-confirmado:empty {
+  display: none;
 }
