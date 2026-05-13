@@ -1,7 +1,9 @@
 const EVENTS_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/2612163/refs/heads/main/eventos_streamhdx.json";
+
 const AGENDA_URL = "/api/agenda";
 const AGENDA_ENDPOINT = "/api/agenda";
-const AGENDA_LIVE_ENDPOINT = "/api/agenda";
+const AGENDA_LIVE_ENDPOINT = "/api/live";
+
 const TV_PARTIDOS_URL = "./data/tv_partidos.json";
 
 /*
