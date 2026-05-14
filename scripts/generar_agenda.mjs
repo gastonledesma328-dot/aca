@@ -9,10 +9,6 @@ let CACHE_LIVE_TIME = 0;
 const CACHE_AGENDA_MS = 2 * 60 * 1000; // 2 minutos
 const CACHE_LIVE_MS = 45 * 1000; // 45 segundos
 
-const ROUTES_AGENDA = new Set(["/", "/agenda", "/api/agenda"]);
-const ROUTES_LIVE = new Set(["/live", "/api/live", "/api/agenda/live"]);
-const ROUTES_HEALTH = new Set(["/health", "/api/health"]);
-
 const BASE_IMG = "https://raw.githubusercontent.com/gastonledesma328-dot/aca/refs/heads/main/img";
 
 const LEAGUES = {
@@ -166,19 +162,14 @@ const HEADERS_365 = {
   "Referer": "https://www.365scores.com/",
 };
 
-const CORS_HEADERS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, Authorization",
-  "Access-Control-Max-Age": "86400",
-};
-
 function jsonResponse(data, status = 200, maxAge = 60) {
   return new Response(JSON.stringify(data, null, 2), {
     status,
     headers: {
-      ...CORS_HEADERS,
       "Content-Type": "application/json; charset=utf-8",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
       "Cache-Control": `public, max-age=${maxAge}`,
     },
   });
@@ -333,6 +324,70 @@ function obtenerLogo(team) {
 }
 
 function obtenerLogoLiga(leagueData, leagueSlug) {
+  const fallback = {
+    // FIFA / Confederaciones
+    "fifa.world": `${BASE_IMG}/liga_confederaciones/fifa.png`,
+    "fifa.cwc": `${BASE_IMG}/liga_confederaciones/fifa.png`,
+    "fifa.worldq.conmebol": `${BASE_IMG}/liga_confederaciones/conmebol.png`,
+    "fifa.worldq.uefa": `${BASE_IMG}/liga_confederaciones/uefa.png`,
+
+    // Europa
+    "uefa.champions": `${BASE_IMG}/ligas/uefa_champions.png`,
+    "uefa.europa": `${BASE_IMG}/ligas/uefa_europa.png`,
+    "uefa.europa.conf": `${BASE_IMG}/ligas/uefa_europa_conf.png`,
+
+    "eng.1": `${BASE_IMG}/ligas/premier_league.png`,
+    "esp.1": `${BASE_IMG}/ligas/espana.png`,
+    "ita.1": `${BASE_IMG}/ligas/serie_a.png`,
+    "ger.1": `${BASE_IMG}/ligas/bundesliga.png`,
+    "fra.1": `${BASE_IMG}/ligas/ligue_1.png`,
+    "por.1": `${BASE_IMG}/ligas/liga_portugal_bwin.png`,
+    "ned.1": `${BASE_IMG}/ligas/eredivise.png`,
+
+    // Sudamérica
+    "conmebol.libertadores": `${BASE_IMG}/ligas/conmebol_libertadores.png`,
+    "conmebol.sudamericana": `${BASE_IMG}/liga_confederaciones/conmebol.png`,
+
+    "bra.1": `${BASE_IMG}/ligas/brasil.png`,
+    "bra.2": `${BASE_IMG}/ligas/Campeonato_Brasileiro_Série_B.png`,
+    "arg.1": `${BASE_IMG}/ligas/liga_profesional_arg.png`,
+    "arg.2": `${BASE_IMG}/ligas/argentina_primeranacional.png`,
+    "arg.copa": `${BASE_IMG}/ligas/liga_profesional_arg.png`,
+
+    "uru.1": `${BASE_IMG}/ligas/liga_auf_uruguaya.png`,
+    "chi.1": `${BASE_IMG}/ligas/liga_de_primera_Itaú.png`,
+    "col.1": `${BASE_IMG}/ligas/Liga_BetPlay_Dimayor.png`,
+    "ecu.1": `${BASE_IMG}/ligas/LigaPro_ecuador.png`,
+    "per.1": `${BASE_IMG}/ligas/liga_1_peru.png`,
+    "par.1": `${BASE_IMG}/ligas/primera_division_de_paraguay.png`,
+    "bol.1": `${BASE_IMG}/ligas/Liga_profesional_boliviana.png`,
+    "ven.1": `${BASE_IMG}/ligas/liga_futve_de_venezuela.png`,
+
+    // Norteamérica
+    "mex.1": `${BASE_IMG}/ligas/liga_bbva_mx.png`,
+    "usa.1": `${BASE_IMG}/ligas/Major_League_Soccer.png`,
+    "concacaf.champions": `${BASE_IMG}/liga_confederaciones/concacaf.png`,
+
+    // Otros disponibles en tu repo
+    "swe.1": `${BASE_IMG}/ligas/Allsvenskan.png`,
+    "aus.1": `${BASE_IMG}/ligas/australia_league.png`,
+    "jpn.1": `${BASE_IMG}/ligas/j_league.png`,
+    "kor.1": `${BASE_IMG}/ligas/k_league.png`,
+    "chn.1": `${BASE_IMG}/ligas/superliga_de_china.png`,
+    "pol.1": `${BASE_IMG}/ligas/primera_division_polonia.png`,
+
+    // Femenino / ascenso argentino disponibles
+    "arg.w": `${BASE_IMG}/ligas/argentina_fem.png`,
+    "arg.3": `${BASE_IMG}/ligas/argentina_primera_b.png`,
+    "arg.4": `${BASE_IMG}/ligas/argentina_primera_c.png`,
+  };
+
+  // Primero usamos tus logos locales del repo para evitar logos rotos de ESPN.
+  if (fallback[leagueSlug]) {
+    return fallback[leagueSlug];
+  }
+
+  // Si no hay logo local para esa liga, usamos el logo que venga de ESPN.
   const logos = leagueData?.logos || [];
 
   for (const logo of logos) {
@@ -343,64 +398,7 @@ function obtenerLogoLiga(leagueData, leagueSlug) {
 
   if (logos[0]?.href) return logos[0].href;
 
-  const fallback = {
-  // FIFA / Confederaciones
-  "fifa.world": `${BASE_IMG}/liga_confederaciones/fifa.png`,
-  "fifa.cwc": `${BASE_IMG}/liga_confederaciones/fifa.png`,
-  "fifa.worldq.conmebol": `${BASE_IMG}/liga_confederaciones/conmebol.png`,
-  "fifa.worldq.uefa": `${BASE_IMG}/liga_confederaciones/uefa.png`,
-
-  // Europa
-  "uefa.champions": `${BASE_IMG}/ligas/uefa_champions.png`,
-  "uefa.europa": `${BASE_IMG}/ligas/uefa_europa.png`,
-  "uefa.europa.conf": `${BASE_IMG}/ligas/uefa_europa_conf.png`,
-
-  "eng.1": `${BASE_IMG}/ligas/premier_league.png`,
-  "esp.1": `${BASE_IMG}/ligas/espana.png`,
-  "ita.1": `${BASE_IMG}/ligas/serie_a.png`,
-  "ger.1": `${BASE_IMG}/ligas/bundesliga.png`,
-  "fra.1": `${BASE_IMG}/ligas/ligue_1.png`,
-  "por.1": `${BASE_IMG}/ligas/liga_portugal_bwin.png`,
-  "ned.1": `${BASE_IMG}/ligas/eredivise.png`,
-
-  // Sudamérica
-  "conmebol.libertadores": `${BASE_IMG}/ligas/conmebol_libertadores.png`,
-  "conmebol.sudamericana": `${BASE_IMG}/liga_confederaciones/conmebol.png`,
-
-  "bra.1": `${BASE_IMG}/ligas/brasil.png`,
-  "bra.2": `${BASE_IMG}/ligas/Campeonato_Brasileiro_Série_B.png`,
-  "arg.1": `${BASE_IMG}/ligas/liga_profesional_arg.png`,
-  "arg.2": `${BASE_IMG}/ligas/argentina_primeranacional.png`,
-  "arg.copa": `${BASE_IMG}/ligas/liga_profesional_arg.png`,
-
-  "uru.1": `${BASE_IMG}/ligas/liga_auf_uruguaya.png`,
-  "chi.1": `${BASE_IMG}/ligas/liga_de_primera_Itaú.png`,
-  "col.1": `${BASE_IMG}/ligas/Liga_BetPlay_Dimayor.png`,
-  "ecu.1": `${BASE_IMG}/ligas/LigaPro_ecuador.png`,
-  "per.1": `${BASE_IMG}/ligas/liga_1_peru.png`,
-  "par.1": `${BASE_IMG}/ligas/primera_division_de_paraguay.png`,
-  "bol.1": `${BASE_IMG}/ligas/Liga_profesional_boliviana.png`,
-  "ven.1": `${BASE_IMG}/ligas/liga_futve_de_venezuela.png`,
-
-  // Norteamérica
-  "mex.1": `${BASE_IMG}/ligas/liga_bbva_mx.png`,
-  "usa.1": `${BASE_IMG}/ligas/Major_League_Soccer.png`,
-  "concacaf.champions": `${BASE_IMG}/liga_confederaciones/concacaf.png`,
-
-  // Otros disponibles en tu repo
-  "swe.1": `${BASE_IMG}/ligas/Allsvenskan.png`,
-  "aus.1": `${BASE_IMG}/ligas/australia_league.png`,
-  "jpn.1": `${BASE_IMG}/ligas/j_league.png`,
-  "kor.1": `${BASE_IMG}/ligas/k_league.png`,
-  "chn.1": `${BASE_IMG}/ligas/superliga_de_china.png`,
-  "pol.1": `${BASE_IMG}/ligas/primera_division_polonia.png`,
-
-  // Femenino / ascenso argentino disponibles
-  "arg.w": `${BASE_IMG}/ligas/argentina_fem.png`,
-  "arg.3": `${BASE_IMG}/ligas/argentina_primera_b.png`,
-  "arg.4": `${BASE_IMG}/ligas/argentina_primera_c.png`,
-};
-  return fallback[leagueSlug] || null;
+  return null;
 }
 
 /* ============================================================
@@ -2156,6 +2154,7 @@ function textoNormalizado(value) {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
+
 function partidoPuedeMostrarIncidencias(partido) {
   if (!partido) {
     return false;
@@ -2181,6 +2180,7 @@ function partidoPuedeMostrarIncidencias(partido) {
     ].join(" ")
   );
 
+  // Partidos que todavía no empezaron: nunca deben mostrar rojas ni goles.
   if (
     texto.includes("status_scheduled") ||
     texto.includes("scheduled") ||
@@ -2198,6 +2198,7 @@ function partidoPuedeMostrarIncidencias(partido) {
     return false;
   }
 
+  // Finalizados: sí pueden mostrar incidencias reales.
   if (
     partido.completado === true ||
     texto.includes("status_final") ||
@@ -2210,6 +2211,7 @@ function partidoPuedeMostrarIncidencias(partido) {
     return true;
   }
 
+  // En vivo: sí pueden mostrar incidencias.
   if (
     partido.en_vivo_365 === true ||
     match365.en_vivo_365 === true ||
@@ -2233,6 +2235,7 @@ function partidoPuedeMostrarIncidencias(partido) {
     return true;
   }
 
+  // Minutos tipo 12', 45+2', 90+5'
   if (/\b\d{1,3}(?:\+\d{1,2})?'\b/.test(texto)) {
     return true;
   }
@@ -2418,10 +2421,8 @@ async function getLiveData() {
 }
 
 /* ============================================================
-   ROUTER
+   GENERAR JSON PARA GITHUB ACTIONS
 ============================================================ */
-
-
 
 function crearLiveJsonDesdeAgenda(agenda) {
   const partidos = Array.isArray(agenda.partidos) ? agenda.partidos : [];
