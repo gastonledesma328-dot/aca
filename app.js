@@ -2,8 +2,11 @@ const EVENTS_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/26121
 
 const WORKER_BASE_URL = "https://partidos-hoy-worker.gastonledesma328.workers.dev";
 
+// Agenda completa generada por GitHub Actions: data/agenda.json
 const AGENDA_URL = `${WORKER_BASE_URL}/api/agenda`;
 const AGENDA_ENDPOINT = `${WORKER_BASE_URL}/api/agenda`;
+
+// Actualización liviana en vivo: minuto, marcador, goles/rojas desde el Worker
 const AGENDA_LIVE_ENDPOINT = `${WORKER_BASE_URL}/api/live`;
 
 const TV_PARTIDOS_URL = "./data/tv_partidos.json";
@@ -20,9 +23,14 @@ const TV_PARTIDOS_URL = "./data/tv_partidos.json";
      - La web muestra event.hora directamente.
 
   2) AGENDA:
-     - Usa AGENDA_URL.
-     - Lee el Worker de Cloudflare.
-     - Muestra los partidos de la agenda ESPN.
+     - Usa AGENDA_ENDPOINT.
+     - Lee /api/agenda del Worker de Cloudflare.
+     - Ese endpoint devuelve data/agenda.json generado por GitHub Actions.
+
+  3) LIVE:
+     - Usa AGENDA_LIVE_ENDPOINT.
+     - Lee /api/live del Worker de Cloudflare.
+     - Actualiza minuto, marcador, goles, goleadores y rojas sin recargar toda la agenda.
 
   IMPORTANTE:
   Este app.js no genera los horarios.
@@ -74,6 +82,7 @@ let agendaLoading = false;
 let featuredChannels = [];
 let featuredChannelIndex = 0;
 let featuredEmbedTimer = null;
+let featuredEmbedUserStarted = false;
 let TV_PARTIDOS_CACHE = null;
 let TV_PARTIDOS_LOADING = null;
 let TV_PARTIDOS_READY = false;
@@ -86,7 +95,7 @@ const FEATURED_LOGO_FALLBACKS = {
 };
 
 const CACHE_TTL_MS = 90_000;
-const LIVE_CACHE_TTL_MS = 45_000;
+const LIVE_CACHE_TTL_MS = 60_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
 
@@ -1069,38 +1078,73 @@ function autoplayEmbedUrl(url, shouldMute = muted) {
   }
 }
 
-function setFeaturedEmbed(channel) {
+function loadFeaturedEmbed(channel, shouldMute = muted) {
+  const rawUrl = channel?.url || videoCard.dataset.channelUrl || "";
+  const embedSrc = rawUrl ? autoplayEmbedUrl(rawUrl, shouldMute) : "";
+
+  window.clearTimeout(featuredEmbedTimer);
+
+  if (!embedSrc || embedSrc === "about:blank") {
+    featuredFrame.src = "about:blank";
+    featuredFrame.title = "Reproductor sin canal";
+    videoCard.classList.remove("playing");
+    videoState.textContent = "Sin canal";
+    return;
+  }
+
+  featuredEmbedUserStarted = true;
+  videoCard.dataset.channelUrl = rawUrl;
+  videoCard.classList.add("has-embed", "playing");
+
+  if (featuredFrame.src !== embedSrc) {
+    featuredFrame.src = embedSrc;
+  }
+
+  featuredFrame.title = `Reproductor ${channel?.nombre || videoCard.dataset.channelName || "canal en vivo"}`;
+  videoState.textContent = `Transmitiendo ${channel?.nombre || videoCard.dataset.channelName || "canal"}`.trim();
+
+  featuredEmbedTimer = window.setTimeout(() => {
+    tryNextFeaturedChannel();
+  }, 7000);
+}
+
+function setFeaturedEmbed(channel, options = {}) {
   const rawUrl = channel?.url || "";
-  const embedSrc = rawUrl ? autoplayEmbedUrl(rawUrl) : "";
+  const channelName = channel?.nombre || "canal";
+  const shouldAutoLoad = Boolean(options.autoLoad);
 
   videoCard.dataset.channelUrl = rawUrl;
-  videoCard.classList.toggle("has-embed", Boolean(embedSrc));
-  videoCard.classList.toggle("playing", Boolean(embedSrc));
+  videoCard.dataset.channelName = channelName;
+  videoCard.classList.toggle("has-embed", Boolean(rawUrl));
+  videoCard.classList.remove("playing");
   muted = false;
   volumeToggle.classList.remove("active");
   volumeToggle.title = "Silenciar";
 
   window.clearTimeout(featuredEmbedTimer);
 
-  if (!embedSrc) {
-    featuredFrame.src = "about:blank";
-    featuredFrame.title = "Reproductor sin canal";
+  // Importante: no cargamos el iframe/stream automáticamente.
+  // Los m3u8 lentos hacían que la página pareciera tardar más de 1 minuto.
+  featuredFrame.src = "about:blank";
+  featuredFrame.title = rawUrl
+    ? `Reproductor listo: ${channelName}`
+    : "Reproductor sin canal";
+
+  if (!rawUrl) {
+    videoState.textContent = "Sin canal";
     return;
   }
 
-  if (featuredFrame.src !== embedSrc) {
-    featuredFrame.src = embedSrc;
+  videoState.textContent = `Canal listo: ${channelName}. Tocá Ver canal para reproducir.`;
+
+  if (shouldAutoLoad) {
+    loadFeaturedEmbed(channel);
   }
-
-  featuredFrame.title = `Reproductor ${channel.nombre || "canal en vivo"}`;
-  featuredEmbedTimer = window.setTimeout(() => {
-    tryNextFeaturedChannel();
-  }, 7000);
 }
-
 function setFeaturedChannels(channels = []) {
   featuredChannels = channels.filter((channel) => channel?.url);
   featuredChannelIndex = 0;
+  featuredEmbedUserStarted = false;
   setFeaturedEmbed(featuredChannels[featuredChannelIndex] || null);
 }
 
@@ -1112,8 +1156,10 @@ function tryNextFeaturedChannel() {
   featuredChannelIndex = (featuredChannelIndex + 1) % featuredChannels.length;
   const nextChannel = featuredChannels[featuredChannelIndex];
 
-  videoState.textContent = `Probando ${nextChannel.nombre || "alternativa"}`;
-  setFeaturedEmbed(nextChannel);
+  videoState.textContent = featuredEmbedUserStarted
+    ? `Probando ${nextChannel.nombre || "alternativa"}`
+    : `Canal listo: ${nextChannel.nombre || "alternativa"}`;
+  setFeaturedEmbed(nextChannel, { autoLoad: featuredEmbedUserStarted });
 }
 
 function fallbackFeaturedLogo(teamName) {
@@ -1191,24 +1237,15 @@ function reloadFeaturedEmbed() {
     return;
   }
 
-  tryNextFeaturedChannel();
+  const currentChannel =
+    featuredChannels[featuredChannelIndex] ||
+    {
+      url: channelUrl,
+      nombre: videoCard.dataset.channelName || "canal",
+    };
 
-  if (featuredChannels.length > 1) {
-    return;
-  }
-
-  featuredFrame.src = "about:blank";
-
-  window.setTimeout(() => {
-    featuredFrame.src = autoplayEmbedUrl(channelUrl);
-    videoCard.classList.add("has-embed", "playing");
-    videoState.textContent = "Transmitiendo";
-    muted = false;
-    volumeToggle.classList.remove("active");
-    volumeToggle.title = "Silenciar";
-  }, 80);
+  loadFeaturedEmbed(currentChannel, muted);
 }
-
 function applyEmbedAudioState() {
   const channelUrl = videoCard.dataset.channelUrl || "";
 
@@ -1220,11 +1257,23 @@ function applyEmbedAudioState() {
     return;
   }
 
-  featuredFrame.src = autoplayEmbedUrl(channelUrl, muted);
-  videoCard.classList.add("has-embed", "playing");
+  if (!featuredEmbedUserStarted && !videoCard.classList.contains("playing")) {
+    videoState.textContent = muted
+      ? "El canal iniciará silenciado"
+      : "Canal listo para reproducir";
+    return;
+  }
+
+  const currentChannel =
+    featuredChannels[featuredChannelIndex] ||
+    {
+      url: channelUrl,
+      nombre: videoCard.dataset.channelName || "canal",
+    };
+
+  loadFeaturedEmbed(currentChannel, muted);
   videoState.textContent = muted ? "Silenciado" : "Transmitiendo con sonido";
 }
-
 featuredFrame.addEventListener("load", () => {
   window.clearTimeout(featuredEmbedTimer);
 });
@@ -1296,12 +1345,12 @@ function updateFeaturedLegacy() {
 
   setFeaturedChannels(channels);
   videoState.textContent = firstChannel
-    ? `Transmitiendo ${firstChannel.nombre} ${firstChannel.calidad || ""}`.trim()
+    ? `Canal listo: ${firstChannel.nombre} ${firstChannel.calidad || ""}`.trim()
     : "Sin canal";
   watchButton.textContent = firstChannel ? "Ver canal" : "Sin canal";
   watchButton.disabled = !firstChannel?.url;
   watchButton.onclick = firstChannel?.url
-    ? () => window.open(firstChannel.url, "_blank", "noopener,noreferrer")
+    ? () => loadFeaturedEmbed(firstChannel)
     : null;
 }
 
@@ -1350,14 +1399,15 @@ function updateFeatured() {
   featuredStatus.querySelector("p").textContent =
     `${featuredEvent.hora || "--:--"} - ${featuredEvent.categoria || "Evento"} - ${statusText}`;
 
+  featuredEmbedUserStarted = false;
   setFeaturedEmbed(firstChannel);
   videoState.textContent = firstChannel
-    ? `Transmitiendo ${firstChannel.nombre} ${firstChannel.calidad || ""}`.trim()
+    ? `Canal listo: ${firstChannel.nombre} ${firstChannel.calidad || ""}`.trim()
     : "Sin canal";
   watchButton.textContent = firstChannel ? "Ver canal" : "Sin canal";
   watchButton.disabled = !firstChannel?.url;
   watchButton.onclick = firstChannel?.url
-    ? () => window.open(firstChannel.url, "_blank", "noopener,noreferrer")
+    ? () => loadFeaturedEmbed(firstChannel)
     : null;
 }
 
