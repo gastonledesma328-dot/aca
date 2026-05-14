@@ -13,6 +13,8 @@ const ROUTES_AGENDA = new Set(["/", "/agenda", "/api/agenda"]);
 const ROUTES_LIVE = new Set(["/live", "/api/live", "/api/agenda/live"]);
 const ROUTES_HEALTH = new Set(["/health", "/api/health"]);
 
+const BASE_IMG = "https://raw.githubusercontent.com/gastonledesma328-dot/aca/refs/heads/main/img";
+
 const LEAGUES = {
   // FIFA / Mundo
   "fifa.world": "Mundial FIFA",
@@ -342,43 +344,62 @@ function obtenerLogoLiga(leagueData, leagueSlug) {
   if (logos[0]?.href) return logos[0].href;
 
   const fallback = {
-    "fifa.world": "https://a.espncdn.com/i/leaguelogos/soccer/500/4.png",
-    "fifa.cwc": "https://a.espncdn.com/i/leaguelogos/soccer/500/15.png",
-    "uefa.champions": "https://a.espncdn.com/i/leaguelogos/soccer/500/2.png",
-    "uefa.europa": "https://a.espncdn.com/i/leaguelogos/soccer/500/2310.png",
-    "uefa.europa.conf": "https://a.espncdn.com/i/leaguelogos/soccer/500/2026.png",
+  // FIFA / Confederaciones
+  "fifa.world": `${BASE_IMG}/liga_confederaciones/fifa.png`,
+  "fifa.cwc": `${BASE_IMG}/liga_confederaciones/fifa.png`,
+  "fifa.worldq.conmebol": `${BASE_IMG}/liga_confederaciones/conmebol.png`,
+  "fifa.worldq.uefa": `${BASE_IMG}/liga_confederaciones/uefa.png`,
 
-    "eng.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/23.png",
-    "esp.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/15.png",
-    "ita.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/12.png",
-    "ger.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/10.png",
-    "fra.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/9.png",
-    "por.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/14.png",
-    "ned.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/11.png",
+  // Europa
+  "uefa.champions": `${BASE_IMG}/ligas/uefa_champions.png`,
+  "uefa.europa": `${BASE_IMG}/ligas/uefa_europa.png`,
+  "uefa.europa.conf": `${BASE_IMG}/ligas/uefa_europa_conf.png`,
 
-    "conmebol.libertadores": "https://a.espncdn.com/i/leaguelogos/soccer/500/58.png",
-    "conmebol.sudamericana": "https://a.espncdn.com/i/leaguelogos/soccer/500/2026.png",
+  "eng.1": `${BASE_IMG}/ligas/premier_league.png`,
+  "esp.1": `${BASE_IMG}/ligas/espana.png`,
+  "ita.1": `${BASE_IMG}/ligas/serie_a.png`,
+  "ger.1": `${BASE_IMG}/ligas/bundesliga.png`,
+  "fra.1": `${BASE_IMG}/ligas/ligue_1.png`,
+  "por.1": `${BASE_IMG}/ligas/liga_portugal_bwin.png`,
+  "ned.1": `${BASE_IMG}/ligas/eredivise.png`,
 
-    "bra.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/85.png",
-    "bra.2": "https://a.espncdn.com/i/leaguelogos/soccer/500/85.png",
-    "arg.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/1.png",
-    "arg.2": "https://a.espncdn.com/i/leaguelogos/soccer/500/1.png",
-    "arg.copa": "https://a.espncdn.com/i/leaguelogos/soccer/500/1.png",
+  // Sudamérica
+  "conmebol.libertadores": `${BASE_IMG}/ligas/conmebol_libertadores.png`,
+  "conmebol.sudamericana": `${BASE_IMG}/liga_confederaciones/conmebol.png`,
 
-    "uru.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/70.png",
-    "chi.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/72.png",
-    "col.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/41.png",
-    "ecu.1": "https://raw.githubusercontent.com/gastonledesma328-dot/aca/refs/heads/main/img/ligas/LigaPro_ecuador.png",
-    "per.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/45.png",
-    "par.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/46.png",
-    "bol.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/47.png",
-    "ven.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/48.png",
+  "bra.1": `${BASE_IMG}/ligas/brasil.png`,
+  "bra.2": `${BASE_IMG}/ligas/Campeonato_Brasileiro_Série_B.png`,
+  "arg.1": `${BASE_IMG}/ligas/liga_profesional_arg.png`,
+  "arg.2": `${BASE_IMG}/ligas/argentina_primeranacional.png`,
+  "arg.copa": `${BASE_IMG}/ligas/liga_profesional_arg.png`,
 
-    "mex.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/22.png",
-    "usa.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/19.png",
-    "concacaf.champions": "https://a.espncdn.com/i/leaguelogos/soccer/500/13.png",
-  };
+  "uru.1": `${BASE_IMG}/ligas/liga_auf_uruguaya.png`,
+  "chi.1": `${BASE_IMG}/ligas/liga_de_primera_Itaú.png`,
+  "col.1": `${BASE_IMG}/ligas/Liga_BetPlay_Dimayor.png`,
+  "ecu.1": `${BASE_IMG}/ligas/LigaPro_ecuador.png`,
+  "per.1": `${BASE_IMG}/ligas/liga_1_peru.png`,
+  "par.1": `${BASE_IMG}/ligas/primera_division_de_paraguay.png`,
+  "bol.1": `${BASE_IMG}/ligas/Liga_profesional_boliviana.png`,
+  "ven.1": `${BASE_IMG}/ligas/liga_futve_de_venezuela.png`,
 
+  // Norteamérica
+  "mex.1": `${BASE_IMG}/ligas/liga_bbva_mx.png`,
+  "usa.1": `${BASE_IMG}/ligas/Major_League_Soccer.png`,
+  "concacaf.champions": `${BASE_IMG}/liga_confederaciones/concacaf.png`,
+
+  // Otros disponibles en tu repo
+  "swe.1": `${BASE_IMG}/ligas/Allsvenskan.png`,
+  "aus.1": `${BASE_IMG}/ligas/australia_league.png`,
+  "jpn.1": `${BASE_IMG}/ligas/j_league.png`,
+  "kor.1": `${BASE_IMG}/ligas/k_league.png`,
+  "chn.1": `${BASE_IMG}/ligas/superliga_de_china.png`,
+  "pol.1": `${BASE_IMG}/ligas/primera_division_polonia.png`,
+
+  // Femenino / ascenso argentino disponibles
+  "arg.w": `${BASE_IMG}/ligas/argentina_fem.png`,
+  "arg.3": `${BASE_IMG}/ligas/argentina_primera_b.png`,
+  "arg.4": `${BASE_IMG}/ligas/argentina_primera_c.png`,
+};
   return fallback[leagueSlug] || null;
 }
 
