@@ -86,6 +86,8 @@ let featuredEmbedUserStarted = false;
 let TV_PARTIDOS_CACHE = null;
 let TV_PARTIDOS_LOADING = null;
 let TV_PARTIDOS_READY = false;
+let agendaTimerMatches = new Map();
+let agendaVisualTimerStarted = false;
 
 const FEATURED_LOGO_FALLBACKS = {
   flamengo: "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
@@ -95,7 +97,10 @@ const FEATURED_LOGO_FALLBACKS = {
 };
 
 const CACHE_TTL_MS = 90_000;
-const LIVE_CACHE_TTL_MS = 60_000;
+const LIVE_REFRESH_MS = 15_000;
+const LIVE_VISUAL_TIMER_MS = 1_000;
+const LIVE_CACHE_TTL_MS = 15_000;
+const LIVE_FETCH_TIMEOUT_MS = 3_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
 
@@ -186,7 +191,6 @@ function writeJsonCache(key, data) {
 
 async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS, options = {}) {
   const networkFirst = options.networkFirst === true;
-  const timeoutMs = Number(options.timeoutMs || 0);
 
   if (!networkFirst) {
     const fresh = readJsonCache(cacheKey, ttl);
@@ -204,6 +208,7 @@ async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS, options = {}) 
     ? `${url}${url.includes("?") ? "&" : "?"}_=${Date.now()}`
     : url;
 
+  const timeoutMs = Number(options.timeoutMs || 0);
   const controller = timeoutMs > 0 ? new AbortController() : null;
   const timeout = controller
     ? window.setTimeout(() => controller.abort(), timeoutMs)
@@ -211,7 +216,7 @@ async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS, options = {}) 
 
   const request = fetch(finalUrl, {
     cache: networkFirst ? "reload" : "default",
-    signal: controller ? controller.signal : undefined,
+    signal: controller?.signal,
   })
     .then(async (response) => {
       if (!response.ok) {
@@ -253,7 +258,6 @@ function fetchAgendaPayload() {
     CACHE_TTL_MS,
     {
       networkFirst: true,
-      timeoutMs: 5000,
     }
   );
 }
@@ -265,7 +269,7 @@ function fetchAgendaLivePayload() {
     LIVE_CACHE_TTL_MS,
     {
       networkFirst: true,
-      timeoutMs: 2500,
+      timeoutMs: LIVE_FETCH_TIMEOUT_MS,
     }
   );
 }
@@ -1013,6 +1017,131 @@ function isAgendaMatchLive(match) {
   );
 }
 
+
+function agendaTimerKey(match) {
+  return String(
+    match?.id ||
+      match?.uid ||
+      agendaMatchKey(match || {}) ||
+      `${match?.local || ""}-${match?.visitante || ""}-${match?.hora_inicio || match?.hora || ""}`
+  );
+}
+
+function extraerMinutoAgendaNumero(value) {
+  const text = String(value || "");
+
+  if (!text || /fin|final|full time|ft/i.test(text)) {
+    return null;
+  }
+
+  const match = text.match(/(\d{1,3})(?:\+\d{1,2})?['’]?/);
+  const minute = match ? Number(match[1]) : null;
+
+  if (!Number.isFinite(minute) || minute <= 0 || minute > 130) {
+    return null;
+  }
+
+  return minute;
+}
+
+function partidoPermiteTimerVisual(match) {
+  if (!match || match.completado === true) {
+    return false;
+  }
+
+  const statusText = normalizeText(
+    `${match.mostrar_tiempo || ""} ${match.minuto || ""} ${match.estado_corto || ""} ${match.estado || ""} ${match.estado_nombre || ""}`
+  );
+
+  if (/fin|final|full time|\bft\b|scheduled|programado|postponed|cancelado|suspendido/.test(statusText)) {
+    return false;
+  }
+
+  return isAgendaMatchLive(match);
+}
+
+function sincronizarTimerPartido(match) {
+  if (!match || !partidoPermiteTimerVisual(match)) {
+    return match;
+  }
+
+  const minuto = extraerMinutoAgendaNumero(
+    match.minuto || match.mostrar_tiempo || match.hora || match.estado_corto
+  );
+
+  if (!minuto) {
+    return match;
+  }
+
+  const previous = agendaTimerMatches.get(agendaTimerKey(match));
+  const previousMinute = Number(previous?.live_sync_minuto || 0);
+  const previousTs = Number(previous?.live_sync_ts || 0);
+  const now = Date.now();
+
+  const synced = {
+    ...match,
+    live_sync_minuto: minuto,
+    live_sync_ts:
+      previousMinute === minuto && previousTs
+        ? previousTs
+        : now,
+  };
+
+  agendaTimerMatches.set(agendaTimerKey(synced), synced);
+  return synced;
+}
+
+function calcularMinutoVisual(match) {
+  if (!partidoPermiteTimerVisual(match)) {
+    return null;
+  }
+
+  const key = agendaTimerKey(match);
+  const timerMatch = agendaTimerMatches.get(key) || match;
+  const baseMinute = Number(timerMatch.live_sync_minuto || extraerMinutoAgendaNumero(timerMatch.minuto || timerMatch.mostrar_tiempo));
+  const syncTs = Number(timerMatch.live_sync_ts || 0);
+
+  if (!Number.isFinite(baseMinute) || baseMinute <= 0 || !syncTs) {
+    const minute = extraerMinutoAgendaNumero(match.minuto || match.mostrar_tiempo || match.hora);
+    return minute ? `${minute}'` : null;
+  }
+
+  const elapsedMs = Math.max(0, Date.now() - syncTs);
+  const extraMinutes = Math.floor(elapsedMs / 60_000);
+  const currentMinute = Math.min(baseMinute + extraMinutes, 130);
+
+  return `${currentMinute}'`;
+}
+
+function actualizarTimersVisibles() {
+  document.querySelectorAll("[data-live-timer-id]").forEach((el) => {
+    const match = agendaTimerMatches.get(el.dataset.liveTimerId);
+    const visual = calcularMinutoVisual(match);
+
+    if (visual) {
+      el.textContent = visual;
+    }
+  });
+
+  document.querySelectorAll("[data-live-state-id]").forEach((el) => {
+    const match = agendaTimerMatches.get(el.dataset.liveStateId);
+    const visual = calcularMinutoVisual(match);
+
+    if (visual) {
+      el.textContent = visual;
+    }
+  });
+}
+
+function iniciarAgendaVisualTimer() {
+  if (agendaVisualTimerStarted) {
+    return;
+  }
+
+  agendaVisualTimerStarted = true;
+  window.setInterval(actualizarTimersVisibles, LIVE_VISUAL_TIMER_MS);
+}
+
 function eventHasLiveAgendaMatch(event) {
   if (eventStatus(event) === "live") {
     return true;
@@ -1699,7 +1828,7 @@ function mergeAgendaWithLive(baseMatches, liveMatches) {
     const index = merged.findIndex((match) => sameAgendaMatch(match, liveMatch));
 
     if (index >= 0) {
-      merged[index] = {
+      merged[index] = sincronizarTimerPartido({
         ...merged[index],
         ...liveMatch,
         local: merged[index].local || liveMatch.local,
@@ -1710,7 +1839,7 @@ function mergeAgendaWithLive(baseMatches, liveMatches) {
         liga_corta: merged[index].liga_corta || liveMatch.liga_corta,
         liga_logo: merged[index].liga_logo || liveMatch.liga_logo,
         prioridad_liga: merged[index].prioridad_liga ?? liveMatch.prioridad_liga,
-      };
+      });
     } else {
       merged.push(liveMatch);
     }
@@ -1748,6 +1877,12 @@ function mergeStreamAgendaMatches(matches, streamMatches) {
 }
 
 function agendaStatus(match) {
+  const visual = calcularMinutoVisual(match);
+
+  if (visual) {
+    return visual;
+  }
+
   const tiempo =
     match.mostrar_tiempo || match.minuto || match.estado_corto || match.estado || "";
 
@@ -1791,6 +1926,12 @@ function agendaStatus(match) {
 }
 
 function agendaDisplayTime(match) {
+  const visual = calcularMinutoVisual(match);
+
+  if (visual) {
+    return visual;
+  }
+
   const tiempo = match.mostrar_tiempo || match.minuto || "";
 
   if (match.completado === true) {
@@ -2650,6 +2791,7 @@ function isWomenGroup(group) {
 }
 
 function renderAgenda(matches, sourceUrl, meta = {}) {
+  agendaTimerMatches = new Map();
   leagueGrid.innerHTML = "";
 
   if (!matches.length) {
@@ -2738,7 +2880,9 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
       const list = section.querySelector(".agenda-list");
 
       group.matches.forEach((match) => {
+        match = sincronizarTimerPartido(match);
         const row = document.createElement("article");
+        const timerId = agendaTimerKey(match);
 
         row.className = "agenda-row";
         row.dataset.espnUrl = match.url_espn || sourceUrl;
@@ -2758,7 +2902,7 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
         row.dataset.search = matchSearchIndex(match, group, home, away, score);
 
         row.innerHTML = `
-          <time>${escapeHtml(agendaDisplayTime(match))}</time>
+          <time data-live-timer-id="${escapeHtml(timerId)}">${escapeHtml(agendaDisplayTime(match))}</time>
 
           <span class="agenda-teams">
             <a class="agenda-team team-link" href="${teamProfileHref(home, match.local_logo, group.league)}" title="Ver ficha de ${escapeHtml(home)}">
@@ -2777,7 +2921,7 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
             ${renderTvPartido(tv)}
           </span>
 
-          <span class="agenda-state">${escapeHtml(agendaStatus(match))}</span>
+          <span class="agenda-state" data-live-state-id="${escapeHtml(timerId)}">${escapeHtml(agendaStatus(match))}</span>
         `;
 
         list.append(row);
@@ -2900,47 +3044,20 @@ function recargarAgendaConTvSiCorresponde() {
     return;
   }
 
-  const cachedData = readAnyJsonCache("agenda-worker-cache");
-
-  if (!cachedData || !Array.isArray(cachedData.partidos)) {
+  if (agendaLoading) {
+    window.setTimeout(recargarAgendaConTvSiCorresponde, 500);
     return;
   }
 
-  const selectedDate = localDateISO(currentAgendaDate);
-  const cachedLive = readAnyJsonCache("agenda-live-worker-cache");
-  const livePartidos = Array.isArray(cachedLive?.partidos) ? cachedLive.partidos : [];
-  const mergedPartidos = mergeAgendaWithLive(cachedData.partidos, livePartidos);
-
-  const dailyMatches = uniqueMatches(mergedPartidos)
-    .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
-    .sort((a, b) => {
-      const priorityA = Number(a.prioridad_liga ?? 9999);
-      const priorityB = Number(b.prioridad_liga ?? 9999);
-
-      if (priorityA !== priorityB) {
-        return priorityA - priorityB;
-      }
-
-      return (a.hora_inicio || a.hora || "").localeCompare(
-        b.hora_inicio || b.hora || ""
-      );
-    });
-
-  renderAgenda(dailyMatches, AGENDA_ENDPOINT, {
-    source: cachedData.fuente,
-    total: cachedData.total,
-    fromCache: true,
-  });
-
-  applyAgendaSearch();
+  agendaLoadedDate = "";
+  loadAgenda(currentAgendaDate);
 }
 
 async function refreshAgendaLive() {
-  if (activeTab !== "agenda" && activeTab !== "live") {
+  if (activeTab !== "agenda") {
     return;
   }
 
-  // El vivo debe ser opcional: nunca bloquea ni reinicia la agenda inicial.
   if (agendaLoading) {
     return;
   }
@@ -2998,7 +3115,7 @@ async function refreshAgendaLive() {
     }
   } catch (error) {
     console.warn("No se pudo actualizar solo el vivo", error);
-    // No mostramos error en pantalla: la agenda ya está cargada y el vivo reintenta solo.
+    setUtilityStatus("Agenda guardada. Reintentando vivo...");
   }
 }
 
@@ -3241,16 +3358,7 @@ window.addEventListener("load", abrirSeccionDesdeHash);
 showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
-
-// Carga inicial instantánea:
-// 1) Pintamos la agenda apenas llegue /api/agenda o caché local.
-// 2) El vivo, goles, goleadores, rojas y TV se actualizan en segundo plano.
 loadAgenda();
-
-window.setTimeout(() => {
-  refreshAgendaLive();
-}, 250);
-
 loadEvents();
 
 cargarTvPartidos()
@@ -3259,6 +3367,8 @@ cargarTvPartidos()
     // La agenda no debe depender del JSON de TV.
   });
 
+iniciarAgendaVisualTimer();
+
 setInterval(() => {
   refreshAgendaLive();
-}, 60000);
+}, LIVE_REFRESH_MS);
