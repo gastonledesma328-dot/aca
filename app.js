@@ -186,6 +186,7 @@ function writeJsonCache(key, data) {
 
 async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS, options = {}) {
   const networkFirst = options.networkFirst === true;
+  const timeoutMs = Number(options.timeoutMs || 0);
 
   if (!networkFirst) {
     const fresh = readJsonCache(cacheKey, ttl);
@@ -203,8 +204,14 @@ async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS, options = {}) 
     ? `${url}${url.includes("?") ? "&" : "?"}_=${Date.now()}`
     : url;
 
+  const controller = timeoutMs > 0 ? new AbortController() : null;
+  const timeout = controller
+    ? window.setTimeout(() => controller.abort(), timeoutMs)
+    : null;
+
   const request = fetch(finalUrl, {
     cache: networkFirst ? "reload" : "default",
+    signal: controller ? controller.signal : undefined,
   })
     .then(async (response) => {
       if (!response.ok) {
@@ -227,7 +234,13 @@ async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS, options = {}) 
 
       throw error;
     })
-    .finally(() => requestCache.delete(cacheKey));
+    .finally(() => {
+      if (timeout) {
+        window.clearTimeout(timeout);
+      }
+
+      requestCache.delete(cacheKey);
+    });
 
   requestCache.set(cacheKey, request);
   return request;
@@ -240,6 +253,7 @@ function fetchAgendaPayload() {
     CACHE_TTL_MS,
     {
       networkFirst: true,
+      timeoutMs: 5000,
     }
   );
 }
@@ -251,6 +265,7 @@ function fetchAgendaLivePayload() {
     LIVE_CACHE_TTL_MS,
     {
       networkFirst: true,
+      timeoutMs: 2500,
     }
   );
 }
@@ -2885,20 +2900,47 @@ function recargarAgendaConTvSiCorresponde() {
     return;
   }
 
-  if (agendaLoading) {
-    window.setTimeout(recargarAgendaConTvSiCorresponde, 500);
+  const cachedData = readAnyJsonCache("agenda-worker-cache");
+
+  if (!cachedData || !Array.isArray(cachedData.partidos)) {
     return;
   }
 
-  agendaLoadedDate = "";
-  loadAgenda(currentAgendaDate);
+  const selectedDate = localDateISO(currentAgendaDate);
+  const cachedLive = readAnyJsonCache("agenda-live-worker-cache");
+  const livePartidos = Array.isArray(cachedLive?.partidos) ? cachedLive.partidos : [];
+  const mergedPartidos = mergeAgendaWithLive(cachedData.partidos, livePartidos);
+
+  const dailyMatches = uniqueMatches(mergedPartidos)
+    .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
+    .sort((a, b) => {
+      const priorityA = Number(a.prioridad_liga ?? 9999);
+      const priorityB = Number(b.prioridad_liga ?? 9999);
+
+      if (priorityA !== priorityB) {
+        return priorityA - priorityB;
+      }
+
+      return (a.hora_inicio || a.hora || "").localeCompare(
+        b.hora_inicio || b.hora || ""
+      );
+    });
+
+  renderAgenda(dailyMatches, AGENDA_ENDPOINT, {
+    source: cachedData.fuente,
+    total: cachedData.total,
+    fromCache: true,
+  });
+
+  applyAgendaSearch();
 }
 
 async function refreshAgendaLive() {
-  if (activeTab !== "agenda") {
+  if (activeTab !== "agenda" && activeTab !== "live") {
     return;
   }
 
+  // El vivo debe ser opcional: nunca bloquea ni reinicia la agenda inicial.
   if (agendaLoading) {
     return;
   }
@@ -2956,7 +2998,7 @@ async function refreshAgendaLive() {
     }
   } catch (error) {
     console.warn("No se pudo actualizar solo el vivo", error);
-    setUtilityStatus("Agenda guardada. Reintentando vivo...");
+    // No mostramos error en pantalla: la agenda ya está cargada y el vivo reintenta solo.
   }
 }
 
@@ -3199,7 +3241,16 @@ window.addEventListener("load", abrirSeccionDesdeHash);
 showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
+
+// Carga inicial instantánea:
+// 1) Pintamos la agenda apenas llegue /api/agenda o caché local.
+// 2) El vivo, goles, goleadores, rojas y TV se actualizan en segundo plano.
 loadAgenda();
+
+window.setTimeout(() => {
+  refreshAgendaLive();
+}, 250);
+
 loadEvents();
 
 cargarTvPartidos()
