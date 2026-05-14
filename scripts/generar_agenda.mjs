@@ -368,7 +368,7 @@ function obtenerLogoLiga(leagueData, leagueSlug) {
     "uru.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/70.png",
     "chi.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/72.png",
     "col.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/41.png",
-    "ecu.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/44.png",
+    "ecu.1": "https://raw.githubusercontent.com/gastonledesma328-dot/aca/refs/heads/main/img/ligas/LigaPro_ecuador.png",
     "per.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/45.png",
     "par.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/46.png",
     "bol.1": "https://a.espncdn.com/i/leaguelogos/soccer/500/47.png",
