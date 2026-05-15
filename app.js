@@ -105,7 +105,7 @@ const FEATURED_LOGO_FALLBACKS = {
 };
 
 const CACHE_TTL_MS = 90_000;
-const LIVE_REFRESH_MS = 15_000;
+const LIVE_REFRESH_MS = 60_000;
 const LIVE_VISUAL_TIMER_MS = 1_000;
 const LIVE_CACHE_TTL_MS = 15_000;
 const LIVE_FETCH_TIMEOUT_MS = 3_000;
@@ -114,7 +114,7 @@ const INCIDENCIAS_CACHE_TTL_MS = 120_000;
 const INCIDENCIAS_FETCH_TIMEOUT_MS = 5_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
-const APP_CACHE_VERSION = "v4-worker2-no-flicker-final";
+const APP_CACHE_VERSION = "v5-worker2-logo-goles-layout";
 const CACHE_KEY_AGENDA = `agenda-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_LIVE = `agenda-live-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_TV = `tv-partidos-cache-${APP_CACHE_VERSION}`;
@@ -144,6 +144,78 @@ const STATIC_STREAM_FALLBACKS = [
     ],
   },
 ];
+
+function inyectarAjustesVisuales() {
+  if (document.getElementById("partidos-hoy-ajustes-visuales")) {
+    return;
+  }
+
+  const style = document.createElement("style");
+  style.id = "partidos-hoy-ajustes-visuales";
+  style.textContent = `
+    .agenda-incidencias-box {
+      grid-column: 1 / -1;
+      width: 100%;
+      min-width: 0;
+      display: block;
+    }
+
+    .agenda-goals-row {
+      width: 100%;
+      min-width: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
+      margin-top: 3px;
+    }
+
+    .agenda-goals-row.has-both-sides {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .agenda-goals-team:empty,
+    .agenda-goals-unknown:empty {
+      display: none !important;
+    }
+
+    .agenda-goal-item {
+      width: 100%;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 3px 8px;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+      line-height: 1.15;
+    }
+
+    .agenda-goal-item span {
+      min-width: 0;
+      overflow: visible;
+      text-overflow: clip;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .league-logo-fallback {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .agenda-goals-row.has-both-sides {
+        grid-template-columns: 1fr;
+      }
+    }
+  `;
+
+  document.head.appendChild(style);
+}
 
 function localDateISO(date = new Date()) {
   const year = date.getFullYear();
@@ -2148,12 +2220,77 @@ function initials(name = "") {
   );
 }
 
-function leagueLogoMarkup(name, logo) {
-  if (logo) {
-    return `<img class="league-logo" src="${escapeHtml(logo)}" alt="${escapeHtml(name)}" loading="lazy" />`;
+const LOCAL_LEAGUE_LOGOS = {
+  "ecu.1": "https://raw.githubusercontent.com/gastonledesma328-dot/aca/refs/heads/main/img/ligas/LigaPro_ecuador.png",
+  "mex.1": "https://raw.githubusercontent.com/gastonledesma328-dot/aca/refs/heads/main/img/ligas/liga_bbva_mx.png",
+};
+
+function leagueLogoFallback(name = "", slug = "") {
+  const slugKey = String(slug || "").trim();
+
+  if (LOCAL_LEAGUE_LOGOS[slugKey]) {
+    return LOCAL_LEAGUE_LOGOS[slugKey];
   }
 
-  return `<span class="league-logo league-logo-fallback">${initials(name)}</span>`;
+  const normalized = normalizeText(name);
+
+  if (normalized.includes("ligapro ecuador") || normalized.includes("ligapro serie a") || normalized.includes("liga pro ecuador")) {
+    return LOCAL_LEAGUE_LOGOS["ecu.1"];
+  }
+
+  if (normalized.includes("liga mx")) {
+    return LOCAL_LEAGUE_LOGOS["mex.1"];
+  }
+
+  return "";
+}
+
+function resolverLogoLiga(logo, name = "", slug = "") {
+  const fallback = leagueLogoFallback(name, slug);
+
+  // Para ligas con logo local propio, siempre priorizamos el repo y no ESPN.
+  if (fallback) {
+    return fallback;
+  }
+
+  return logo || "";
+}
+
+function aplicarFallbackLogosLiga() {
+  document.querySelectorAll("img.league-logo").forEach((img) => {
+    const fallback = img.dataset.fallbackLogo || "";
+    const fallbackText = img.dataset.fallbackText || "PH";
+
+    img.onerror = () => {
+      img.onerror = null;
+
+      if (fallback && img.src !== fallback) {
+        img.src = fallback;
+        return;
+      }
+
+      const span = document.createElement("span");
+      span.className = "league-logo league-logo-fallback";
+      span.textContent = fallbackText;
+      img.replaceWith(span);
+    };
+
+    if (img.complete && img.naturalWidth === 0) {
+      img.onerror();
+    }
+  });
+}
+
+function leagueLogoMarkup(name, logo, slug = "") {
+  const fallback = leagueLogoFallback(name, slug);
+  const finalLogo = resolverLogoLiga(logo, name, slug);
+  const fallbackText = initials(name);
+
+  if (finalLogo) {
+    return `<img class="league-logo" src="${escapeHtml(finalLogo)}" alt="${escapeHtml(name)}" loading="lazy" data-fallback-logo="${escapeHtml(fallback)}" data-fallback-text="${escapeHtml(fallbackText)}" />`;
+  }
+
+  return `<span class="league-logo league-logo-fallback">${fallbackText}</span>`;
 }
 
 function scoreMarkup(match) {
@@ -2637,9 +2774,11 @@ function scorersMarkup(match, home = "", away = "") {
   });
 
   const unknown = unknownGoals.map(goalItemMarkup).join("");
+  const sidesWithGoals = Number(homeGoals.length > 0) + Number(awayGoals.length > 0) + Number(unknownGoals.length > 0);
+  const rowClass = sidesWithGoals > 1 ? "agenda-goals-row has-both-sides" : "agenda-goals-row has-single-side";
 
   return `
-    <span class="agenda-goals-row">
+    <span class="${rowClass}">
       <span class="agenda-goals-team agenda-goals-home">
         ${homeGoals.map(goalItemMarkup).join("")}
       </span>
@@ -3081,15 +3220,22 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
     const sport = agendaSport(match);
     const league = inferAgendaLeague(match);
     const key = `${sport}||${league}`;
-    const leagueLogo = match.liga_logo || match.competicion?.logo || null;
+    const leagueSlug = match.liga_slug || match.competicion?.slug || "";
+    const rawLeagueLogo = match.liga_logo || match.competicion?.logo || null;
+    const leagueLogo = resolverLogoLiga(rawLeagueLogo, league, leagueSlug);
 
     if (!acc.has(key)) {
       acc.set(key, {
         sport,
         league,
+        leagueSlug,
         leagueLogo,
         matches: [],
       });
+    }
+
+    if (!acc.get(key).leagueSlug && leagueSlug) {
+      acc.get(key).leagueSlug = leagueSlug;
     }
 
     if (!acc.get(key).leagueLogo && leagueLogo) {
@@ -3138,7 +3284,7 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
       section.innerHTML = `
         <header class="agenda-group-head">
           <div class="agenda-league-title">
-            ${leagueLogoMarkup(group.league, group.leagueLogo)}
+            ${leagueLogoMarkup(group.league, group.leagueLogo, group.leagueSlug)}
             <div>
               <span>${escapeHtml(group.sport)}</span>
               <strong>${escapeHtml(group.league)}</strong>
@@ -3201,6 +3347,8 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
 
       leagueGrid.append(section);
     });
+
+  aplicarFallbackLogosLiga();
 }
 
 async function loadAgenda(date = currentAgendaDate) {
@@ -3777,6 +3925,7 @@ window.addEventListener("load", abrirSeccionDesdeHash);
    INIT
 ============================================================ */
 
+inyectarAjustesVisuales();
 showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
