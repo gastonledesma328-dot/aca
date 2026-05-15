@@ -217,6 +217,76 @@ function inyectarAjustesVisuales() {
   document.head.appendChild(style);
 }
 
+
+function injectAgendaGoalSideStyles() {
+  if (document.getElementById("agenda-goal-side-styles")) {
+    return;
+  }
+
+  const style = document.createElement("style");
+  style.id = "agenda-goal-side-styles";
+  style.textContent = `
+    .agenda-goals-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
+      width: 100%;
+    }
+
+    .agenda-goals-row.has-both-sides {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .agenda-goals-team {
+      min-width: 0;
+    }
+
+    .agenda-goal-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .agenda-goal-side {
+      flex: 0 1 auto;
+      max-width: 42%;
+      padding: 1px 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      font-size: 10px;
+      line-height: 1.3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .agenda-goals-home .agenda-goal-side {
+      border-left: 3px solid currentColor;
+    }
+
+    .agenda-goals-away .agenda-goal-side {
+      border-right: 3px solid currentColor;
+    }
+
+    @media (max-width: 720px) {
+      .agenda-goals-row.has-both-sides {
+        grid-template-columns: 1fr;
+      }
+
+      .agenda-goal-side {
+        max-width: 36%;
+      }
+    }
+  `;
+  document.head.append(style);
+}
+
 function localDateISO(date = new Date()) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -2737,12 +2807,15 @@ function scorerBelongsToSide(scorer, home, away) {
   return "unknown";
 }
 
-function goalItemMarkup(scorer) {
+function goalItemMarkup(scorer, side = "unknown", teamName = "") {
   const minute = scorerMinute(scorer);
   const typeLabel = scorerTypeLabel(scorer);
+  const teamLabel = teamName || scorerTeamText(scorer) || (side === "home" ? "Local" : side === "away" ? "Visitante" : "Equipo");
+  const sideClass = side === "home" ? "is-home-goal" : side === "away" ? "is-away-goal" : "is-unknown-goal";
 
   return `
-    <span class="agenda-goal-item">
+    <span class="agenda-goal-item ${sideClass}">
+      <strong class="agenda-goal-side">${escapeHtml(teamLabel)}</strong>
       ${minute ? `<b>${escapeHtml(minute)}</b>` : ""}
       <span>${escapeHtml(scorerName(scorer))}</span>
       <em>${typeLabel}</em>
@@ -2773,19 +2846,17 @@ function scorersMarkup(match, home = "", away = "") {
     }
   });
 
-  const unknown = unknownGoals.map(goalItemMarkup).join("");
+  const homeMarkup = homeGoals.map((scorer) => goalItemMarkup(scorer, "home", home)).join("");
+  const awayMarkup = awayGoals.map((scorer) => goalItemMarkup(scorer, "away", away)).join("");
+  const unknown = unknownGoals.map((scorer) => goalItemMarkup(scorer, "unknown", scorerTeamText(scorer))).join("");
   const sidesWithGoals = Number(homeGoals.length > 0) + Number(awayGoals.length > 0) + Number(unknownGoals.length > 0);
   const rowClass = sidesWithGoals > 1 ? "agenda-goals-row has-both-sides" : "agenda-goals-row has-single-side";
 
   return `
     <span class="${rowClass}">
-      <span class="agenda-goals-team agenda-goals-home">
-        ${homeGoals.map(goalItemMarkup).join("")}
-      </span>
-      <span class="agenda-goals-team agenda-goals-away">
-        ${awayGoals.map(goalItemMarkup).join("")}
-      </span>
-      ${unknown ? `<span class="agenda-goals-unknown">${unknown}</span>` : ""}
+      ${homeMarkup ? `<span class="agenda-goals-team agenda-goals-home" data-goal-side="home" title="Gol de ${escapeHtml(home)}">${homeMarkup}</span>` : ""}
+      ${awayMarkup ? `<span class="agenda-goals-team agenda-goals-away" data-goal-side="away" title="Gol de ${escapeHtml(away)}">${awayMarkup}</span>` : ""}
+      ${unknown ? `<span class="agenda-goals-team agenda-goals-unknown" data-goal-side="unknown">${unknown}</span>` : ""}
     </span>
   `;
 }
@@ -3926,6 +3997,7 @@ window.addEventListener("load", abrirSeccionDesdeHash);
 ============================================================ */
 
 inyectarAjustesVisuales();
+injectAgendaGoalSideStyles();
 showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
