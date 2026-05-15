@@ -8,6 +8,9 @@ const AGENDA_ENDPOINT = `${WORKER_BASE_URL}/`;
 const AGENDA_LIVE_ENDPOINT = `${WORKER_BASE_URL}/live`;
 const TV_PARTIDOS_URL = "./data/tv_partidos.json";
 
+const INCIDENCIAS_WORKER_BASE_URL = "https://partidos-hoy-incidencias-worker.gastonledesma328.workers.dev";
+const INCIDENCIAS_ENDPOINT = `${INCIDENCIAS_WORKER_BASE_URL}/api/incidencias`;
+
 /*
   ============================================================
   FLUJO GENERAL DEL PROYECTO
@@ -26,8 +29,14 @@ const TV_PARTIDOS_URL = "./data/tv_partidos.json";
 
   3) LIVE:
      - Usa AGENDA_LIVE_ENDPOINT.
-     - Lee /live del Worker compatible de Cloudflare.
-     - Actualiza minuto, marcador, goles, goleadores y rojas sin recargar toda la agenda.
+     - Lee /live del Worker 1.
+     - Actualiza solo minuto, marcador y estado sin recargar toda la agenda.
+
+  4) INCIDENCIAS:
+     - Usa INCIDENCIAS_ENDPOINT.
+     - Lee /api/incidencias del Worker 2.
+     - Actualiza goleadores, minuto del gol y cantidad de rojas por equipo.
+     - No muestra jugador expulsado.
 
   IMPORTANTE:
   Este app.js no genera los horarios.
@@ -85,6 +94,8 @@ let TV_PARTIDOS_LOADING = null;
 let TV_PARTIDOS_READY = false;
 let agendaTimerMatches = new Map();
 let agendaVisualTimerStarted = false;
+let agendaCurrentMatches = [];
+let incidenciasLoading = false;
 
 const FEATURED_LOGO_FALLBACKS = {
   flamengo: "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
@@ -94,10 +105,13 @@ const FEATURED_LOGO_FALLBACKS = {
 };
 
 const CACHE_TTL_MS = 90_000;
-const LIVE_REFRESH_MS = 60_000;
+const LIVE_REFRESH_MS = 15_000;
 const LIVE_VISUAL_TIMER_MS = 1_000;
 const LIVE_CACHE_TTL_MS = 15_000;
 const LIVE_FETCH_TIMEOUT_MS = 3_000;
+const INCIDENCIAS_REFRESH_MS = 120_000;
+const INCIDENCIAS_CACHE_TTL_MS = 120_000;
+const INCIDENCIAS_FETCH_TIMEOUT_MS = 5_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
 const APP_CACHE_VERSION = "v3-stable-agenda";
@@ -105,6 +119,7 @@ const CACHE_KEY_AGENDA = `agenda-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_LIVE = `agenda-live-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_TV = `tv-partidos-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_STREAMS = `stream-events-cache-${APP_CACHE_VERSION}`;
+const CACHE_KEY_INCIDENCIAS = `incidencias-worker-cache-${APP_CACHE_VERSION}`;
 
 const STATIC_STREAM_FALLBACKS = [
   {
@@ -272,6 +287,44 @@ function fetchAgendaLivePayload() {
     {
       networkFirst: true,
       timeoutMs: LIVE_FETCH_TIMEOUT_MS,
+    }
+  );
+}
+
+function incidenciaCacheKey(match) {
+  return [
+    match?.id || "",
+    match?.liga_slug || "",
+    match?.id_365 || match?.match_365?.id_365 || "",
+  ]
+    .map((value) => String(value || "").trim())
+    .join("|");
+}
+
+function fetchIncidenciasPartido(match) {
+  const id = String(match?.id || "").trim();
+  const liga = String(match?.liga_slug || "").trim();
+  const gameId = String(match?.id_365 || match?.match_365?.id_365 || "").trim();
+
+  if (!id || !liga) {
+    return Promise.resolve(null);
+  }
+
+  const params = new URLSearchParams();
+  params.set("id", id);
+  params.set("liga", liga);
+
+  if (gameId) {
+    params.set("gameId", gameId);
+  }
+
+  return fetchJsonCached(
+    `${INCIDENCIAS_ENDPOINT}?${params.toString()}`,
+    `${CACHE_KEY_INCIDENCIAS}:${incidenciaCacheKey(match)}`,
+    INCIDENCIAS_CACHE_TTL_MS,
+    {
+      networkFirst: true,
+      timeoutMs: INCIDENCIAS_FETCH_TIMEOUT_MS,
     }
   );
 }
@@ -2861,7 +2914,104 @@ function isWomenGroup(group) {
   return /femenin|women|womens|\(f\)|liga f|frauen|femminile|vrouwen/.test(text);
 }
 
+function numeroSeguro(value) {
+  const number = Number(value);
+  return Number.isFinite(number) && number > 0 ? number : 0;
+}
+
+function contarRojasDesdeLista(items = [], side = "") {
+  if (!Array.isArray(items)) {
+    return 0;
+  }
+
+  return items.filter((item) => {
+    const itemSide = normalizeText(
+      item?.local_visitante || item?.side || item?.homeAway || item?.equipo_lado || ""
+    );
+
+    if (side === "home") {
+      return ["home", "local"].includes(itemSide);
+    }
+
+    if (side === "away") {
+      return ["away", "visitante"].includes(itemSide);
+    }
+
+    return false;
+  }).length;
+}
+
+function normalizarIncidenciasPayload(payload) {
+  if (!payload || typeof payload !== "object") {
+    return null;
+  }
+
+  const goleadores = Array.isArray(payload.goleadores)
+    ? payload.goleadores
+    : Array.isArray(payload.goles)
+      ? payload.goles
+      : Array.isArray(payload.scorers)
+        ? payload.scorers
+        : [];
+
+  const tarjetas = Array.isArray(payload.tarjetas_rojas)
+    ? payload.tarjetas_rojas
+    : Array.isArray(payload.rojas)
+      ? payload.rojas
+      : [];
+
+  const localRojas = numeroSeguro(
+    payload.rojas?.local ??
+      payload.local_rojas ??
+      payload.rojas_local ??
+      payload.tarjetas_rojas_local ??
+      contarRojasDesdeLista(tarjetas, "home")
+  );
+
+  const visitanteRojas = numeroSeguro(
+    payload.rojas?.visitante ??
+      payload.rojas?.away ??
+      payload.visitante_rojas ??
+      payload.rojas_visitante ??
+      payload.tarjetas_rojas_visitante ??
+      contarRojasDesdeLista(tarjetas, "away")
+  );
+
+  return {
+    goleadores,
+    tarjetas_rojas: [],
+    local_rojas: localRojas,
+    visitante_rojas: visitanteRojas,
+  };
+}
+
+function aplicarIncidenciasAlPartido(match, payload) {
+  const incidencias = normalizarIncidenciasPayload(payload);
+
+  if (!incidencias) {
+    return match;
+  }
+
+  return {
+    ...match,
+    goleadores: incidencias.goleadores,
+    tarjetas_rojas: [],
+    local_rojas: incidencias.local_rojas,
+    visitante_rojas: incidencias.visitante_rojas,
+    incidencias_actualizadas: true,
+    incidencias_actualizado_en: new Date().toISOString(),
+  };
+}
+
+function mergeMatchesWithIncidencias(matches, incidenciasPorKey) {
+  return matches.map((match) => {
+    const payload = incidenciasPorKey.get(incidenciaCacheKey(match));
+    return payload ? aplicarIncidenciasAlPartido(match, payload) : match;
+  });
+}
+
 function renderAgenda(matches, sourceUrl, meta = {}) {
+  agendaCurrentMatches = Array.isArray(matches) ? matches : [];
   leagueGrid.innerHTML = "";
 
   if (!matches.length) {
@@ -3051,6 +3201,7 @@ async function loadAgenda(date = currentAgendaDate) {
 
     // El live se actualiza después, sin bloquear ni reordenar la primera carga.
     window.setTimeout(refreshAgendaLive, 250);
+    window.setTimeout(refreshIncidenciasLive, 1500);
   } catch (error) {
     console.error("Error actualizando agenda desde Worker:", error);
 
@@ -3144,9 +3295,75 @@ async function refreshAgendaLive() {
     if (!matchSearch.value.trim()) {
       setUtilityStatus(agendaLiveMatches.length ? "En vivo actualizado" : "");
     }
+
+    window.setTimeout(refreshIncidenciasLive, 500);
   } catch (error) {
     console.warn("No se pudo actualizar solo el vivo", error);
     setUtilityStatus("Agenda guardada. Reintentando vivo...");
+  }
+}
+
+async function refreshIncidenciasLive() {
+  if (activeTab !== "agenda" || incidenciasLoading || agendaLoading) {
+    return;
+  }
+
+  const selectedDate = localDateISO(currentAgendaDate);
+  const liveMatches = uniqueMatches(agendaCurrentMatches)
+    .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
+    .filter(isAgendaMatchLive)
+    .filter((match) => match?.id && match?.liga_slug);
+
+  if (!liveMatches.length) {
+    return;
+  }
+
+  incidenciasLoading = true;
+
+  try {
+    const results = await Promise.allSettled(
+      liveMatches.map(async (match) => {
+        const payload = await fetchIncidenciasPartido(match);
+        return {
+          key: incidenciaCacheKey(match),
+          payload,
+        };
+      })
+    );
+
+    const incidenciasPorKey = new Map();
+
+    for (const result of results) {
+      if (result.status !== "fulfilled" || !result.value?.payload) {
+        continue;
+      }
+
+      incidenciasPorKey.set(result.value.key, result.value.payload);
+    }
+
+    if (!incidenciasPorKey.size) {
+      return;
+    }
+
+    const dailyMatches = sortAgendaMatchesStable(
+      mergeMatchesWithIncidencias(agendaCurrentMatches, incidenciasPorKey)
+        .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
+    );
+
+    renderAgenda(dailyMatches, INCIDENCIAS_ENDPOINT, {
+      source: "Worker 2 incidencias",
+      total: dailyMatches.length,
+    });
+
+    applyAgendaSearch();
+
+    if (!matchSearch.value.trim()) {
+      setUtilityStatus("Incidencias actualizadas");
+    }
+  } catch (error) {
+    console.warn("No se pudieron actualizar incidencias", error);
+  } finally {
+    incidenciasLoading = false;
   }
 }
 
@@ -3403,3 +3620,7 @@ iniciarAgendaVisualTimer();
 setInterval(() => {
   refreshAgendaLive();
 }, LIVE_REFRESH_MS);
+
+setInterval(() => {
+  refreshIncidenciasLive();
+}, INCIDENCIAS_REFRESH_MS);
