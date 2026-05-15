@@ -1945,6 +1945,40 @@ function sameAgendaMatch(a, b) {
   return (sameOrder || swappedOrder) && agendaDate(a) === agendaDate(b);
 }
 
+function listaConDatos(items) {
+  return Array.isArray(items) && items.length > 0;
+}
+
+function numeroMayorQueCero(value) {
+  const number = Number(value);
+  return Number.isFinite(number) && number > 0;
+}
+
+function preservarIncidenciasExistentes(matchAnterior = {}, matchNuevo = {}) {
+  const golesPrevios = matchAnterior.goleadores || matchAnterior.scorers || matchAnterior.goles || [];
+  const golesNuevos = matchNuevo.goleadores || matchNuevo.scorers || matchNuevo.goles || [];
+
+  const localRojasPrevias = Number(matchAnterior.local_rojas || matchAnterior.rojas_local || matchAnterior.tarjetas_rojas_local || 0);
+  const visitanteRojasPrevias = Number(matchAnterior.visitante_rojas || matchAnterior.rojas_visitante || matchAnterior.tarjetas_rojas_visitante || 0);
+
+  return {
+    ...matchNuevo,
+
+    // Worker 1 /live no trae incidencias. Si ya tenemos goles desde Worker 2,
+    // no los borramos al actualizar minuto, marcador o estado.
+    goleadores: listaConDatos(golesNuevos) ? golesNuevos : golesPrevios,
+    tarjetas_rojas: [],
+
+    // No mostramos jugador expulsado. Solo mantenemos el conteo de rojas por equipo.
+    local_rojas: numeroMayorQueCero(matchNuevo.local_rojas)
+      ? Number(matchNuevo.local_rojas)
+      : localRojasPrevias,
+    visitante_rojas: numeroMayorQueCero(matchNuevo.visitante_rojas)
+      ? Number(matchNuevo.visitante_rojas)
+      : visitanteRojasPrevias,
+  };
+}
+
 function mergeAgendaWithLive(baseMatches, liveMatches) {
   const merged = Array.isArray(baseMatches) ? [...baseMatches] : [];
 
@@ -1952,18 +1986,23 @@ function mergeAgendaWithLive(baseMatches, liveMatches) {
     const index = merged.findIndex((match) => sameAgendaMatch(match, liveMatch));
 
     if (index >= 0) {
-      merged[index] = sincronizarTimerPartido({
-        ...merged[index],
+      const anterior = merged[index];
+      const actualizado = {
+        ...anterior,
         ...liveMatch,
-        local: merged[index].local || liveMatch.local,
-        visitante: merged[index].visitante || liveMatch.visitante,
-        local_logo: merged[index].local_logo || liveMatch.local_logo,
-        visitante_logo: merged[index].visitante_logo || liveMatch.visitante_logo,
-        liga: merged[index].liga || liveMatch.liga,
-        liga_corta: merged[index].liga_corta || liveMatch.liga_corta,
-        liga_logo: merged[index].liga_logo || liveMatch.liga_logo,
-        prioridad_liga: merged[index].prioridad_liga ?? liveMatch.prioridad_liga,
-      });
+        local: anterior.local || liveMatch.local,
+        visitante: anterior.visitante || liveMatch.visitante,
+        local_logo: anterior.local_logo || liveMatch.local_logo,
+        visitante_logo: anterior.visitante_logo || liveMatch.visitante_logo,
+        liga: anterior.liga || liveMatch.liga,
+        liga_corta: anterior.liga_corta || liveMatch.liga_corta,
+        liga_logo: anterior.liga_logo || liveMatch.liga_logo,
+        prioridad_liga: anterior.prioridad_liga ?? liveMatch.prioridad_liga,
+      };
+
+      merged[index] = sincronizarTimerPartido(
+        preservarIncidenciasExistentes(anterior, actualizado)
+      );
     } else {
       merged.push(liveMatch);
     }
@@ -2992,12 +3031,25 @@ function aplicarIncidenciasAlPartido(match, payload) {
     return match;
   }
 
+  const golesPrevios = match.goleadores || match.scorers || match.goles || [];
+  const golesEntrantes = incidencias.goleadores || [];
+
   return {
     ...match,
-    goleadores: incidencias.goleadores,
+
+    // Si Worker 2 todavía no encuentra goles en esta consulta,
+    // no borramos el cuadro de gol que ya estaba en pantalla.
+    goleadores: listaConDatos(golesEntrantes) ? golesEntrantes : golesPrevios,
     tarjetas_rojas: [],
-    local_rojas: incidencias.local_rojas,
-    visitante_rojas: incidencias.visitante_rojas,
+
+    // Las rojas se muestran solo como cantidad por equipo, sin jugador expulsado.
+    local_rojas: numeroMayorQueCero(incidencias.local_rojas)
+      ? incidencias.local_rojas
+      : Number(match.local_rojas || 0),
+    visitante_rojas: numeroMayorQueCero(incidencias.visitante_rojas)
+      ? incidencias.visitante_rojas
+      : Number(match.visitante_rojas || 0),
+
     incidencias_actualizadas: true,
     incidencias_actualizado_en: new Date().toISOString(),
   };
