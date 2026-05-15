@@ -120,6 +120,8 @@ const CACHE_KEY_LIVE = `agenda-live-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_TV = `tv-partidos-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_STREAMS = `stream-events-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_INCIDENCIAS = `incidencias-worker-cache-${APP_CACHE_VERSION}`;
+const CACHE_KEY_INCIDENCIAS_ESTADO = `incidencias-estado-cache-${APP_CACHE_VERSION}`;
+const INCIDENCIAS_MEMORIA = new Map();
 
 const STATIC_STREAM_FALLBACKS = [
   {
@@ -449,13 +451,138 @@ function fetchAgendaLivePayload() {
 }
 
 function incidenciaCacheKey(match) {
+  const id = String(match?.id || match?.uid || "").trim();
+  const liga = String(match?.liga_slug || match?.competicion?.slug || "").trim();
+  const gameId = String(match?.id_365 || match?.match_365?.id_365 || "").trim();
+  const teams = agendaTeams(match || {});
+
+  // Clave estable: no usamos gameId si ya hay id ESPN, porque a veces llega después
+  // y eso hacía que se pierdan los goles/rojas guardados.
+  if (id && liga) {
+    return `${id}|${liga}`;
+  }
+
+  if (gameId) {
+    return `365|${gameId}`;
+  }
+
   return [
-    match?.id || "",
-    match?.liga_slug || "",
-    match?.id_365 || match?.match_365?.id_365 || "",
+    normalizeText(teams.home),
+    normalizeText(teams.away),
+    agendaDate(match),
   ]
-    .map((value) => String(value || "").trim())
+    .filter(Boolean)
     .join("|");
+}
+
+function incidenciasDataTieneDatos(data) {
+  if (!data || typeof data !== "object") {
+    return false;
+  }
+
+  return (
+    listaConDatos(data.goleadores) ||
+    numeroMayorQueCero(data.local_rojas) ||
+    numeroMayorQueCero(data.visitante_rojas)
+  );
+}
+
+function incidenciasDesdeMatch(match = {}) {
+  return {
+    goleadores: Array.isArray(match.goleadores) ? match.goleadores : [],
+    local_rojas: Number(match.local_rojas || match.rojas_local || match.tarjetas_rojas_local || 0),
+    visitante_rojas: Number(match.visitante_rojas || match.rojas_visitante || match.tarjetas_rojas_visitante || 0),
+    actualizado_en: match.incidencias_actualizado_en || new Date().toISOString(),
+  };
+}
+
+function fusionarIncidenciasData(prev = {}, next = {}) {
+  const prevGoles = Array.isArray(prev.goleadores) ? prev.goleadores : [];
+  const nextGoles = Array.isArray(next.goleadores) ? next.goleadores : [];
+
+  return {
+    goleadores: listaConDatos(nextGoles) ? nextGoles : prevGoles,
+    local_rojas: Math.max(Number(prev.local_rojas || 0), Number(next.local_rojas || 0)),
+    visitante_rojas: Math.max(Number(prev.visitante_rojas || 0), Number(next.visitante_rojas || 0)),
+    actualizado_en: next.actualizado_en || prev.actualizado_en || new Date().toISOString(),
+  };
+}
+
+function cargarIncidenciasPersistidas() {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY_INCIDENCIAS_ESTADO);
+    if (!raw) return;
+
+    const saved = JSON.parse(raw);
+    const entries = saved && typeof saved === "object" ? saved.entries || saved : {};
+
+    Object.entries(entries).forEach(([key, data]) => {
+      if (key && incidenciasDataTieneDatos(data)) {
+        INCIDENCIAS_MEMORIA.set(key, data);
+      }
+    });
+  } catch (error) {
+    // Cache persistente best-effort.
+  }
+}
+
+function guardarIncidenciasPersistidas() {
+  try {
+    const entries = Object.fromEntries(INCIDENCIAS_MEMORIA.entries());
+    localStorage.setItem(
+      CACHE_KEY_INCIDENCIAS_ESTADO,
+      JSON.stringify({
+        savedAt: Date.now(),
+        entries,
+      })
+    );
+  } catch (error) {
+    // Cache persistente best-effort.
+  }
+}
+
+function guardarIncidenciasMatch(match) {
+  const key = incidenciaCacheKey(match);
+  if (!key) return;
+
+  const next = incidenciasDesdeMatch(match);
+  if (!incidenciasDataTieneDatos(next)) return;
+
+  const prev = INCIDENCIAS_MEMORIA.get(key) || {};
+  INCIDENCIAS_MEMORIA.set(key, fusionarIncidenciasData(prev, next));
+  guardarIncidenciasPersistidas();
+}
+
+function aplicarIncidenciasDataAlPartido(match, data) {
+  if (!incidenciasDataTieneDatos(data)) {
+    return match;
+  }
+
+  return {
+    ...match,
+    goleadores: listaConDatos(data.goleadores)
+      ? data.goleadores
+      : match.goleadores || [],
+    tarjetas_rojas: [],
+    local_rojas: numeroMayorQueCero(data.local_rojas)
+      ? Number(data.local_rojas)
+      : Number(match.local_rojas || 0),
+    visitante_rojas: numeroMayorQueCero(data.visitante_rojas)
+      ? Number(data.visitante_rojas)
+      : Number(match.visitante_rojas || 0),
+    incidencias_actualizadas: true,
+    incidencias_actualizado_en: data.actualizado_en || match.incidencias_actualizado_en || null,
+  };
+}
+
+function aplicarIncidenciasPersistidas(match) {
+  const key = incidenciaCacheKey(match);
+  const data = key ? INCIDENCIAS_MEMORIA.get(key) : null;
+  return data ? aplicarIncidenciasDataAlPartido(match, data) : match;
+}
+
+function aplicarIncidenciasPersistidasALista(matches) {
+  return (Array.isArray(matches) ? matches : []).map(aplicarIncidenciasPersistidas);
 }
 
 function fetchIncidenciasPartido(match) {
@@ -474,6 +601,11 @@ function fetchIncidenciasPartido(match) {
   if (gameId) {
     params.set("gameId", gameId);
   }
+
+  if (match.local) params.set("local", match.local);
+  if (match.visitante) params.set("visitante", match.visitante);
+  if (match.local_id) params.set("local_id", match.local_id);
+  if (match.visitante_id) params.set("visitante_id", match.visitante_id);
 
   return fetchJsonCached(
     `${INCIDENCIAS_ENDPOINT}?${params.toString()}`,
@@ -3261,41 +3393,60 @@ function aplicarIncidenciasAlPartido(match, payload) {
   const incidencias = normalizarIncidenciasPayload(payload);
 
   if (!incidencias) {
-    return match;
+    return aplicarIncidenciasPersistidas(match);
   }
 
+  const key = incidenciaCacheKey(match);
+  const persistidas = key ? INCIDENCIAS_MEMORIA.get(key) : null;
   const golesPrevios = match.goleadores || match.scorers || match.goles || [];
+  const golesPersistidos = persistidas?.goleadores || [];
   const golesEntrantes = incidencias.goleadores || [];
 
-  return {
+  const dataFusionada = fusionarIncidenciasData(
+    fusionarIncidenciasData(
+      {
+        goleadores: golesPrevios,
+        local_rojas: match.local_rojas,
+        visitante_rojas: match.visitante_rojas,
+      },
+      persistidas || {}
+    ),
+    {
+      goleadores: golesEntrantes,
+      local_rojas: incidencias.local_rojas,
+      visitante_rojas: incidencias.visitante_rojas,
+      actualizado_en: new Date().toISOString(),
+    }
+  );
+
+  const actualizado = {
     ...match,
-
-    // Si Worker 2 todavía no encuentra goles en esta consulta,
-    // no borramos el cuadro de gol que ya estaba en pantalla.
-    goleadores: listaConDatos(golesEntrantes) ? golesEntrantes : golesPrevios,
+    goleadores: listaConDatos(dataFusionada.goleadores)
+      ? dataFusionada.goleadores
+      : listaConDatos(golesPersistidos)
+        ? golesPersistidos
+        : golesPrevios,
     tarjetas_rojas: [],
-
-    // Las rojas se muestran solo como cantidad por equipo, sin jugador expulsado.
-    local_rojas: numeroMayorQueCero(incidencias.local_rojas)
-      ? incidencias.local_rojas
-      : Number(match.local_rojas || 0),
-    visitante_rojas: numeroMayorQueCero(incidencias.visitante_rojas)
-      ? incidencias.visitante_rojas
-      : Number(match.visitante_rojas || 0),
-
+    local_rojas: Number(dataFusionada.local_rojas || 0),
+    visitante_rojas: Number(dataFusionada.visitante_rojas || 0),
     incidencias_actualizadas: true,
-    incidencias_actualizado_en: new Date().toISOString(),
+    incidencias_actualizado_en: dataFusionada.actualizado_en,
   };
+
+  guardarIncidenciasMatch(actualizado);
+  return actualizado;
 }
 
 function mergeMatchesWithIncidencias(matches, incidenciasPorKey) {
   return matches.map((match) => {
-    const payload = incidenciasPorKey.get(incidenciaCacheKey(match));
-    return payload ? aplicarIncidenciasAlPartido(match, payload) : match;
+    const conPersistidas = aplicarIncidenciasPersistidas(match);
+    const payload = incidenciasPorKey.get(incidenciaCacheKey(conPersistidas));
+    return payload ? aplicarIncidenciasAlPartido(conPersistidas, payload) : conPersistidas;
   });
 }
 
 function renderAgenda(matches, sourceUrl, meta = {}) {
+  matches = aplicarIncidenciasPersistidasALista(matches);
   agendaCurrentMatches = Array.isArray(matches) ? matches : [];
   leagueGrid.innerHTML = "";
 
@@ -3464,9 +3615,11 @@ async function loadAgenda(date = currentAgendaDate) {
     const data = await fetchAgendaPayload();
     const partidos = Array.isArray(data.partidos) ? data.partidos : [];
 
-    const dailyMatches = sortAgendaMatchesStable(
-      uniqueMatches(partidos).filter((match) =>
-        agendaMatchesSelectedDate(match, selectedDate)
+    const dailyMatches = aplicarIncidenciasPersistidasALista(
+      sortAgendaMatchesStable(
+        uniqueMatches(partidos).filter((match) =>
+          agendaMatchesSelectedDate(match, selectedDate)
+        )
       )
     );
 
@@ -3502,9 +3655,11 @@ async function loadAgenda(date = currentAgendaDate) {
     const cachedData = readAnyJsonCache(CACHE_KEY_AGENDA);
 
     if (cachedData && Array.isArray(cachedData.partidos)) {
-      const cachedMatches = sortAgendaMatchesStable(
-        uniqueMatches(cachedData.partidos).filter((match) =>
-          agendaMatchesSelectedDate(match, selectedDate)
+      const cachedMatches = aplicarIncidenciasPersistidasALista(
+        sortAgendaMatchesStable(
+          uniqueMatches(cachedData.partidos).filter((match) =>
+            agendaMatchesSelectedDate(match, selectedDate)
+          )
         )
       );
 
@@ -3570,9 +3725,11 @@ async function refreshAgendaLive() {
 
     const mergedPartidos = mergeAgendaWithLive(basePartidos, livePartidos);
 
-    const dailyMatches = sortAgendaMatchesStable(
-      uniqueMatches(mergedPartidos).filter((match) =>
-        agendaMatchesSelectedDate(match, selectedDate)
+    const dailyMatches = aplicarIncidenciasPersistidasALista(
+      sortAgendaMatchesStable(
+        uniqueMatches(mergedPartidos).filter((match) =>
+          agendaMatchesSelectedDate(match, selectedDate)
+        )
       )
     );
 
@@ -3763,9 +3920,11 @@ async function refreshIncidenciasLive() {
       return;
     }
 
-    const dailyMatches = sortAgendaMatchesStable(
-      mergeMatchesWithIncidencias(agendaCurrentMatches, incidenciasPorKey)
-        .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
+    const dailyMatches = aplicarIncidenciasPersistidasALista(
+      sortAgendaMatchesStable(
+        mergeMatchesWithIncidencias(agendaCurrentMatches, incidenciasPorKey)
+          .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
+      )
     );
 
     // No hacemos renderAgenda() acá, porque eso borra y recrea las filas.
@@ -4024,6 +4183,7 @@ injectAgendaGoalSideStyles();
 showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
+cargarIncidenciasPersistidas();
 loadAgenda();
 loadEvents();
 
