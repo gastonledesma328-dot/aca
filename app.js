@@ -114,7 +114,7 @@ const INCIDENCIAS_CACHE_TTL_MS = 120_000;
 const INCIDENCIAS_FETCH_TIMEOUT_MS = 5_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
-const APP_CACHE_VERSION = "v3-stable-agenda";
+const APP_CACHE_VERSION = "v4-worker2-no-flicker-final";
 const CACHE_KEY_AGENDA = `agenda-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_LIVE = `agenda-live-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_TV = `tv-partidos-cache-${APP_CACHE_VERSION}`;
@@ -3316,7 +3316,12 @@ async function refreshAgendaLive() {
 
   try {
     const cachedData = readAnyJsonCache(CACHE_KEY_AGENDA);
-    const basePartidos = Array.isArray(cachedData?.partidos) ? cachedData.partidos : [];
+    const currentPartidos = Array.isArray(agendaCurrentMatches) ? agendaCurrentMatches : [];
+    const basePartidos = currentPartidos.length
+      ? currentPartidos
+      : Array.isArray(cachedData?.partidos)
+        ? cachedData.partidos
+        : [];
 
     const liveData = await fetchAgendaLivePayload();
     const livePartidos = Array.isArray(liveData.partidos) ? liveData.partidos : [];
@@ -3335,10 +3340,18 @@ async function refreshAgendaLive() {
     }
 
     if (dailyMatches.length) {
-      renderAgenda(dailyMatches, AGENDA_LIVE_ENDPOINT, {
-        source: liveData.fuente || cachedData?.fuente,
-        total: cachedData?.total || dailyMatches.length,
-      });
+      agendaCurrentMatches = dailyMatches;
+
+      // No renderizamos toda la agenda en cada refresh de /live.
+      // Renderizar recrea las filas y hace que el cuadro del gol desaparezca y vuelva a aparecer.
+      const domActualizado = actualizarLiveEnDOM(dailyMatches);
+
+      if (!domActualizado || !leagueGrid.querySelector(".agenda-row")) {
+        renderAgenda(dailyMatches, AGENDA_LIVE_ENDPOINT, {
+          source: liveData.fuente || cachedData?.fuente,
+          total: cachedData?.total || dailyMatches.length,
+        });
+      }
 
       applyAgendaSearch();
       agendaLoadedDate = selectedDate;
@@ -3373,9 +3386,13 @@ function actualizarIncidenciasEnDOM(matches) {
     const away = match.visitante || match.partido?.split(" vs ")[1] || "Visitante";
     const nextHtml = scorersMarkup(match, home, away);
 
-    // Clave: no vaciamos el cuadro mientras llega la nueva respuesta.
+    // Clave: si ya hay un gol visible, nunca vaciamos el cuadro por una respuesta vacía.
+    // Esto evita el parpadeo: desaparece → aparece.
+    if (!nextHtml.trim() && box.innerHTML.trim()) {
+      continue;
+    }
+
     // Solo tocamos el DOM si el HTML final realmente cambió.
-    // Así el gol no desaparece y vuelve a aparecer en cada refresh de incidencias.
     if (box.innerHTML !== nextHtml) {
       box.innerHTML = nextHtml;
     }
@@ -3397,6 +3414,69 @@ function actualizarIncidenciasEnDOM(matches) {
       );
     }
   }
+}
+
+
+function actualizarLiveEnDOM(matches) {
+  const list = Array.isArray(matches) ? matches : [];
+  let faltanFilas = false;
+
+  for (const match of list) {
+    const timerId = agendaTimerKey(match);
+    const timerEl = Array.from(document.querySelectorAll("[data-live-timer-id]")).find(
+      (el) => el.dataset.liveTimerId === timerId
+    );
+
+    if (!timerEl) {
+      // Si aparece un partido nuevo que no estaba en pantalla, ahí sí hay que renderizar.
+      // Pero para partidos ya dibujados no tocamos toda la grilla.
+      if (isAgendaMatchLive(match)) {
+        faltanFilas = true;
+      }
+      continue;
+    }
+
+    const row = timerEl.closest(".agenda-row");
+    if (!row) {
+      continue;
+    }
+
+    const stateEl = row.querySelector("[data-live-state-id]");
+    const scoreEl = row.querySelector(".agenda-score");
+
+    const nextTime = agendaDisplayTime(match);
+    const nextState = agendaStatus(match);
+    const nextScore = scoreMarkup(match);
+
+    if (timerEl.textContent !== nextTime) {
+      timerEl.textContent = nextTime;
+    }
+
+    if (stateEl && stateEl.textContent !== nextState) {
+      stateEl.textContent = nextState;
+    }
+
+    if (scoreEl && scoreEl.textContent !== nextScore) {
+      scoreEl.textContent = nextScore;
+    }
+
+    row.classList.toggle("is-live", isAgendaMatchLive(match));
+
+    const group = row.closest(".agenda-group");
+    const league = group?.querySelector(".agenda-league-title strong")?.textContent || inferAgendaLeague(match);
+    const sport = group?.querySelector(".agenda-league-title span")?.textContent || agendaSport(match);
+    const teams = agendaTeams(match);
+
+    row.dataset.search = matchSearchIndex(
+      match,
+      { league, sport },
+      teams.home || match.local || "Local",
+      teams.away || match.visitante || "Visitante",
+      nextScore
+    );
+  }
+
+  return !faltanFilas;
 }
 
 async function refreshIncidenciasLive() {
