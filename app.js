@@ -3189,7 +3189,7 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
               <span>${escapeHtml(away)}</span>
             </a>
 
-            ${scorersMarkup(match, home, away)}
+            <span class="agenda-incidencias-box" data-incidencias-id="${escapeHtml(timerId)}">${scorersMarkup(match, home, away)}</span>
             ${renderTvPartido(tv)}
           </span>
 
@@ -3355,6 +3355,50 @@ async function refreshAgendaLive() {
   }
 }
 
+
+function actualizarIncidenciasEnDOM(matches) {
+  const list = Array.isArray(matches) ? matches : [];
+
+  for (const match of list) {
+    const timerId = agendaTimerKey(match);
+    const box = Array.from(document.querySelectorAll("[data-incidencias-id]")).find(
+      (el) => el.dataset.incidenciasId === timerId
+    );
+
+    if (!box) {
+      continue;
+    }
+
+    const home = match.local || match.partido?.split(" vs ")[0] || "Local";
+    const away = match.visitante || match.partido?.split(" vs ")[1] || "Visitante";
+    const nextHtml = scorersMarkup(match, home, away);
+
+    // Clave: no vaciamos el cuadro mientras llega la nueva respuesta.
+    // Solo tocamos el DOM si el HTML final realmente cambió.
+    // Así el gol no desaparece y vuelve a aparecer en cada refresh de incidencias.
+    if (box.innerHTML !== nextHtml) {
+      box.innerHTML = nextHtml;
+    }
+
+    const row = box.closest(".agenda-row");
+
+    if (row) {
+      const group = row.closest(".agenda-group");
+      const league = group?.querySelector(".agenda-league-title strong")?.textContent || inferAgendaLeague(match);
+      const sport = group?.querySelector(".agenda-league-title span")?.textContent || agendaSport(match);
+      const score = scoreMarkup(match);
+
+      row.dataset.search = matchSearchIndex(
+        match,
+        { league, sport },
+        home,
+        away,
+        score
+      );
+    }
+  }
+}
+
 async function refreshIncidenciasLive() {
   if (activeTab !== "agenda" || incidenciasLoading || agendaLoading) {
     return;
@@ -3402,10 +3446,10 @@ async function refreshIncidenciasLive() {
         .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
     );
 
-    renderAgenda(dailyMatches, INCIDENCIAS_ENDPOINT, {
-      source: "Worker 2 incidencias",
-      total: dailyMatches.length,
-    });
+    // No hacemos renderAgenda() acá, porque eso borra y recrea las filas.
+    // Actualizamos solo el cuadro de goles/rojas en el DOM para evitar parpadeos.
+    agendaCurrentMatches = dailyMatches;
+    actualizarIncidenciasEnDOM(dailyMatches);
 
     applyAgendaSearch();
 
