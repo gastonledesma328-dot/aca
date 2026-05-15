@@ -227,18 +227,41 @@ function injectAgendaGoalSideStyles() {
   style.id = "agenda-goal-side-styles";
   style.textContent = `
     .agenda-goals-row {
+      position: relative;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 4px;
-      width: 100%;
-    }
-
-    .agenda-goals-row.has-both-sides {
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 0;
+      width: 100%;
+      overflow: hidden;
     }
 
-    .agenda-goals-team {
+    .agenda-goals-row.has-side-divider::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: rgba(255,255,255,0.18);
+      transform: translateX(-0.5px);
+      pointer-events: none;
+    }
+
+    .agenda-goals-team,
+    .agenda-goals-team:empty {
       min-width: 0;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      padding: 0 6px;
+    }
+
+    .agenda-goals-home {
+      justify-content: center;
+    }
+
+    .agenda-goals-away {
+      justify-content: center;
     }
 
     .agenda-goal-item {
@@ -253,34 +276,26 @@ function injectAgendaGoalSideStyles() {
       text-overflow: ellipsis;
     }
 
-    .agenda-goal-side {
-      flex: 0 1 auto;
-      max-width: 42%;
-      padding: 1px 6px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.1);
-      font-size: 10px;
-      line-height: 1.3;
+    .agenda-goal-item span {
+      min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-    .agenda-goals-home .agenda-goal-side {
-      border-left: 3px solid currentColor;
+    .agenda-goals-empty {
+      min-height: 18px;
+      display: block;
+      opacity: 0;
     }
 
-    .agenda-goals-away .agenda-goal-side {
-      border-right: 3px solid currentColor;
+    .agenda-goal-side {
+      display: none !important;
     }
 
     @media (max-width: 720px) {
-      .agenda-goals-row.has-both-sides {
-        grid-template-columns: 1fr;
-      }
-
-      .agenda-goal-side {
-        max-width: 36%;
+      .agenda-goals-row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       }
     }
   `;
@@ -2810,12 +2825,10 @@ function scorerBelongsToSide(scorer, home, away) {
 function goalItemMarkup(scorer, side = "unknown", teamName = "") {
   const minute = scorerMinute(scorer);
   const typeLabel = scorerTypeLabel(scorer);
-  const teamLabel = teamName || scorerTeamText(scorer) || (side === "home" ? "Local" : side === "away" ? "Visitante" : "Equipo");
   const sideClass = side === "home" ? "is-home-goal" : side === "away" ? "is-away-goal" : "is-unknown-goal";
 
   return `
     <span class="agenda-goal-item ${sideClass}">
-      <strong class="agenda-goal-side">${escapeHtml(teamLabel)}</strong>
       ${minute ? `<b>${escapeHtml(minute)}</b>` : ""}
       <span>${escapeHtml(scorerName(scorer))}</span>
       <em>${typeLabel}</em>
@@ -2849,14 +2862,24 @@ function scorersMarkup(match, home = "", away = "") {
   const homeMarkup = homeGoals.map((scorer) => goalItemMarkup(scorer, "home", home)).join("");
   const awayMarkup = awayGoals.map((scorer) => goalItemMarkup(scorer, "away", away)).join("");
   const unknown = unknownGoals.map((scorer) => goalItemMarkup(scorer, "unknown", scorerTeamText(scorer))).join("");
-  const sidesWithGoals = Number(homeGoals.length > 0) + Number(awayGoals.length > 0) + Number(unknownGoals.length > 0);
-  const rowClass = sidesWithGoals > 1 ? "agenda-goals-row has-both-sides" : "agenda-goals-row has-single-side";
+  const hasKnownSideGoals = homeGoals.length > 0 || awayGoals.length > 0;
+
+  if (!hasKnownSideGoals && unknown) {
+    return `
+      <span class="agenda-goals-row has-single-side">
+        <span class="agenda-goals-team agenda-goals-unknown" data-goal-side="unknown">${unknown}</span>
+      </span>
+    `;
+  }
 
   return `
-    <span class="${rowClass}">
-      ${homeMarkup ? `<span class="agenda-goals-team agenda-goals-home" data-goal-side="home" title="Gol de ${escapeHtml(home)}">${homeMarkup}</span>` : ""}
-      ${awayMarkup ? `<span class="agenda-goals-team agenda-goals-away" data-goal-side="away" title="Gol de ${escapeHtml(away)}">${awayMarkup}</span>` : ""}
-      ${unknown ? `<span class="agenda-goals-team agenda-goals-unknown" data-goal-side="unknown">${unknown}</span>` : ""}
+    <span class="agenda-goals-row has-side-divider">
+      <span class="agenda-goals-team agenda-goals-home" data-goal-side="home" title="Gol de ${escapeHtml(home)}">
+        ${homeMarkup || `<span class="agenda-goals-empty" aria-hidden="true"></span>`}
+      </span>
+      <span class="agenda-goals-team agenda-goals-away" data-goal-side="away" title="Gol de ${escapeHtml(away)}">
+        ${awayMarkup || `<span class="agenda-goals-empty" aria-hidden="true"></span>`}
+      </span>
     </span>
   `;
 }
