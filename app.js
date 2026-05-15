@@ -2,13 +2,10 @@ const EVENTS_URL = "https://raw.githubusercontent.com/gastonledesma328-dot/26121
 
 const WORKER_BASE_URL = "https://partidos-hoy-worker.gastonledesma328.workers.dev";
 
-// Agenda completa generada por GitHub Actions: data/agenda.json
-const AGENDA_URL = `${WORKER_BASE_URL}/api/agenda`;
-const AGENDA_ENDPOINT = `${WORKER_BASE_URL}/api/agenda`;
-
-// Actualización liviana en vivo: minuto, marcador, goles/rojas desde el Worker
-const AGENDA_LIVE_ENDPOINT = `${WORKER_BASE_URL}/api/live`;
-
+// Worker viejo / compatible
+const AGENDA_URL = `${WORKER_BASE_URL}/`;
+const AGENDA_ENDPOINT = `${WORKER_BASE_URL}/`;
+const AGENDA_LIVE_ENDPOINT = `${WORKER_BASE_URL}/live`;
 const TV_PARTIDOS_URL = "./data/tv_partidos.json";
 
 /*
