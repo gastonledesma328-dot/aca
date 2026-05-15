@@ -2796,15 +2796,130 @@ function normalizeMinute(value) {
   return `${text}'`;
 }
 
+function extraerNombreJugadorDesdeValor(value) {
+  if (value === undefined || value === null) {
+    return "";
+  }
+
+  if (typeof value === "object") {
+    return String(
+      value.displayName ||
+        value.fullName ||
+        value.shortName ||
+        value.name ||
+        value.nombre ||
+        value.player?.displayName ||
+        value.player?.fullName ||
+        value.player?.shortName ||
+        value.player?.name ||
+        value.athlete?.displayName ||
+        value.athlete?.fullName ||
+        value.athlete?.shortName ||
+        value.athlete?.name ||
+        ""
+    ).trim();
+  }
+
+  return String(value || "").trim();
+}
+
+function limpiarNombreJugadorGol(value) {
+  let text = String(value || "").trim();
+
+  if (!text) {
+    return "";
+  }
+
+  text = text
+    .replace(/^\s*\d{1,3}(?:\+\d{1,2})?['’]?\s*/i, "")
+    .replace(/^\s*(gol|goal)\s*[:\-]?\s*/i, "")
+    .replace(/\s+(Goal|Gol|Own Goal|Autogol|Red Card|Tarjeta Roja|Yellow Card|Tarjeta Amarilla).*$/i, "")
+    .replace(/\s+\d{1,3}(?:\+\d{1,2})?['’]?\s*$/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!text) {
+    return "";
+  }
+
+  const invalid = /^(gol|goal|own goal|autogol|penal|penalty|tarjeta roja|red card|tarjeta amarilla|yellow card|expulsion|expulsado|scored|converted)$/i;
+
+  if (invalid.test(text)) {
+    return "";
+  }
+
+  return text;
+}
+
 function scorerName(scorer) {
-  return String(
-    scorer.jugador ||
-      scorer.nombre ||
-      scorer.player ||
-      scorer.athlete ||
-      scorer.descripcion ||
-      ""
-  ).trim();
+  if (!scorer || typeof scorer !== "object") {
+    return "";
+  }
+
+  const directCandidates = [
+    scorer.jugador,
+    scorer.nombre,
+    scorer.playerName,
+    scorer.athleteName,
+    scorer.scorer,
+    scorer.autor,
+    scorer.player,
+    scorer.athlete,
+    scorer.participant,
+    scorer.member,
+    scorer.player1,
+    scorer.competitorPlayer,
+    scorer.fullName,
+    scorer.displayName,
+    scorer.shortName,
+    scorer.name,
+  ];
+
+  for (const candidate of directCandidates) {
+    const name = limpiarNombreJugadorGol(extraerNombreJugadorDesdeValor(candidate));
+
+    if (name) {
+      return name;
+    }
+  }
+
+  const arrayCandidates = [
+    scorer.athletesInvolved,
+    scorer.athletes,
+    scorer.participants,
+    scorer.players,
+    scorer.members,
+  ].filter(Array.isArray);
+
+  for (const arr of arrayCandidates) {
+    for (const candidate of arr) {
+      const name = limpiarNombreJugadorGol(extraerNombreJugadorDesdeValor(candidate));
+
+      if (name) {
+        return name;
+      }
+    }
+  }
+
+  const textCandidates = [
+    scorer.descripcion,
+    scorer.description,
+    scorer.text,
+    scorer.playText,
+    scorer.title,
+    scorer.headline,
+    scorer.detalle,
+  ];
+
+  for (const candidate of textCandidates) {
+    const name = limpiarNombreJugadorGol(candidate);
+
+    if (name) {
+      return name;
+    }
+  }
+
+  return "";
 }
 
 function scorerMinute(scorer) {
@@ -3381,8 +3496,28 @@ function normalizarIncidenciasPayload(payload) {
       contarRojasDesdeLista(tarjetas, "away")
   );
 
+  const goleadoresNormalizados = goleadores
+    .filter((gol) => gol && typeof gol === "object")
+    .map((gol) => {
+      const jugador = scorerName(gol);
+
+      return {
+        ...gol,
+        jugador: jugador || gol.jugador || gol.nombre || null,
+        minuto: scorerMinute(gol) || gol.minuto || gol.minute || null,
+        local_visitante:
+          gol.local_visitante ||
+          gol.lado ||
+          gol.side ||
+          gol.homeAway ||
+          gol.home_away ||
+          null,
+        equipo: scorerTeamText(gol) || gol.equipo || gol.team || gol.teamName || null,
+      };
+    });
+
   return {
-    goleadores,
+    goleadores: goleadoresNormalizados,
     tarjetas_rojas: [],
     local_rojas: localRojas,
     visitante_rojas: visitanteRojas,
