@@ -1062,34 +1062,78 @@ function partidoPermiteTimerVisual(match) {
   return isAgendaMatchLive(match);
 }
 
+function calcularTimerSuave(timerMatch, now = Date.now()) {
+  const baseMinute = Number(
+    timerMatch?.live_sync_minuto ||
+      extraerMinutoAgendaNumero(timerMatch?.minuto || timerMatch?.mostrar_tiempo)
+  );
+  const syncTs = Number(timerMatch?.live_sync_ts || 0);
+
+  if (!Number.isFinite(baseMinute) || baseMinute <= 0 || !syncTs) {
+    return {
+      minuto: Number.isFinite(baseMinute) ? baseMinute : null,
+      syncTs: now,
+    };
+  }
+
+  const elapsedMs = Math.max(0, now - syncTs);
+  const extraMinutes = Math.floor(elapsedMs / 60_000);
+
+  return {
+    minuto: Math.min(baseMinute + extraMinutes, 130),
+    // Mantenemos el resto del minuto para que no salte de golpe al refrescar /live.
+    syncTs: syncTs + extraMinutes * 60_000,
+  };
+}
+
 function sincronizarTimerPartido(match) {
   if (!match || !partidoPermiteTimerVisual(match)) {
     return match;
   }
 
-  const minuto = extraerMinutoAgendaNumero(
+  const minutoApi = extraerMinutoAgendaNumero(
     match.minuto || match.mostrar_tiempo || match.hora || match.estado_corto
   );
 
-  if (!minuto) {
+  if (!minutoApi) {
     return match;
   }
 
-  const previous = agendaTimerMatches.get(agendaTimerKey(match));
-  const previousMinute = Number(previous?.live_sync_minuto || 0);
-  const previousTs = Number(previous?.live_sync_ts || 0);
+  const key = agendaTimerKey(match);
+  const previous = agendaTimerMatches.get(key);
   const now = Date.now();
+
+  // Primera sincronización: usamos el minuto que llegó de ESPN/365.
+  if (!previous?.live_sync_minuto || !previous?.live_sync_ts) {
+    const synced = {
+      ...match,
+      live_sync_minuto: minutoApi,
+      live_sync_ts: now,
+    };
+
+    agendaTimerMatches.set(key, synced);
+    return synced;
+  }
+
+  const visualActual = calcularTimerSuave(previous, now);
+  const previousMinute = Number(previous.live_sync_minuto || 0);
+
+  // Regla principal:
+  // aunque la API salte de 75 a 77/80, la pantalla avanza como reloj: 75, 76, 77...
+  // Nunca retrocede y nunca adelanta más de lo que corresponde por tiempo real.
+  const minutoSuavizado = Math.max(
+    previousMinute,
+    visualActual.minuto || previousMinute
+  );
 
   const synced = {
     ...match,
-    live_sync_minuto: minuto,
-    live_sync_ts:
-      previousMinute === minuto && previousTs
-        ? previousTs
-        : now,
+    live_sync_minuto: minutoSuavizado,
+    live_sync_ts: visualActual.syncTs || now,
+    live_api_minuto: minutoApi,
   };
 
-  agendaTimerMatches.set(agendaTimerKey(synced), synced);
+  agendaTimerMatches.set(key, synced);
   return synced;
 }
 
@@ -1100,19 +1144,14 @@ function calcularMinutoVisual(match) {
 
   const key = agendaTimerKey(match);
   const timerMatch = agendaTimerMatches.get(key) || match;
-  const baseMinute = Number(timerMatch.live_sync_minuto || extraerMinutoAgendaNumero(timerMatch.minuto || timerMatch.mostrar_tiempo));
-  const syncTs = Number(timerMatch.live_sync_ts || 0);
+  const timer = calcularTimerSuave(timerMatch);
 
-  if (!Number.isFinite(baseMinute) || baseMinute <= 0 || !syncTs) {
+  if (!Number.isFinite(timer.minuto) || timer.minuto <= 0) {
     const minute = extraerMinutoAgendaNumero(match.minuto || match.mostrar_tiempo || match.hora);
     return minute ? `${minute}'` : null;
   }
 
-  const elapsedMs = Math.max(0, Date.now() - syncTs);
-  const extraMinutes = Math.floor(elapsedMs / 60_000);
-  const currentMinute = Math.min(baseMinute + extraMinutes, 130);
-
-  return `${currentMinute}'`;
+  return `${timer.minuto}'`;
 }
 
 function actualizarTimersVisibles() {
