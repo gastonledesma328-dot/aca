@@ -21,12 +21,12 @@ const TV_PARTIDOS_URL = "./data/tv_partidos.json";
 
   2) AGENDA:
      - Usa AGENDA_ENDPOINT.
-     - Lee /api/agenda del Worker de Cloudflare.
+     - Lee / del Worker compatible de Cloudflare.
      - Ese endpoint devuelve data/agenda.json generado por GitHub Actions.
 
   3) LIVE:
      - Usa AGENDA_LIVE_ENDPOINT.
-     - Lee /api/live del Worker de Cloudflare.
+     - Lee /live del Worker compatible de Cloudflare.
      - Actualiza minuto, marcador, goles, goleadores y rojas sin recargar toda la agenda.
 
   IMPORTANTE:
@@ -100,6 +100,11 @@ const LIVE_CACHE_TTL_MS = 15_000;
 const LIVE_FETCH_TIMEOUT_MS = 3_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
+const APP_CACHE_VERSION = "v3-stable-agenda";
+const CACHE_KEY_AGENDA = `agenda-worker-cache-${APP_CACHE_VERSION}`;
+const CACHE_KEY_LIVE = `agenda-live-worker-cache-${APP_CACHE_VERSION}`;
+const CACHE_KEY_TV = `tv-partidos-cache-${APP_CACHE_VERSION}`;
+const CACHE_KEY_STREAMS = `stream-events-cache-${APP_CACHE_VERSION}`;
 
 const STATIC_STREAM_FALLBACKS = [
   {
@@ -251,7 +256,7 @@ async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS, options = {}) 
 function fetchAgendaPayload() {
   return fetchJsonCached(
     AGENDA_ENDPOINT,
-    "agenda-worker-cache",
+    CACHE_KEY_AGENDA,
     CACHE_TTL_MS,
     {
       networkFirst: true,
@@ -262,7 +267,7 @@ function fetchAgendaPayload() {
 function fetchAgendaLivePayload() {
   return fetchJsonCached(
     AGENDA_LIVE_ENDPOINT,
-    "agenda-live-worker-cache",
+    CACHE_KEY_LIVE,
     LIVE_CACHE_TTL_MS,
     {
       networkFirst: true,
@@ -274,7 +279,7 @@ function fetchAgendaLivePayload() {
 function fetchStreamEventsPayload() {
   return fetchJsonCached(
     `${EVENTS_URL}?v=${Math.floor(Date.now() / CACHE_TTL_MS)}`,
-    "stream-events-cache"
+    CACHE_KEY_STREAMS
   );
 }
 
@@ -289,7 +294,7 @@ async function cargarTvPartidos() {
 
   TV_PARTIDOS_LOADING = fetchJsonCached(
     `${TV_PARTIDOS_URL}?v=${Date.now()}`,
-    "tv-partidos-cache",
+    CACHE_KEY_TV,
     CACHE_TTL_MS,
     {
       networkFirst: true,
@@ -306,7 +311,7 @@ async function cargarTvPartidos() {
     .catch((error) => {
       console.warn("Error cargando TV de partidos:", error);
 
-      const stale = readAnyJsonCache("tv-partidos-cache");
+      const stale = readAnyJsonCache(CACHE_KEY_TV);
 
       TV_PARTIDOS_CACHE = stale && typeof stale === "object"
         ? stale
@@ -800,7 +805,7 @@ async function getStreamEventsFallback() {
     return events;
   }
 
-  const stale = readAnyJsonCache("stream-events-cache");
+  const stale = readAnyJsonCache(CACHE_KEY_STREAMS);
 
   if (Array.isArray(stale) && stale.length) {
     return stale;
@@ -1791,6 +1796,36 @@ function uniqueMatches(matches) {
 
     seen.add(key);
     return true;
+  });
+}
+
+function sortAgendaMatchesStable(matches) {
+  return [...matches].sort((a, b) => {
+    const priorityA = Number(a.prioridad_liga ?? 9999);
+    const priorityB = Number(b.prioridad_liga ?? 9999);
+
+    if (priorityA !== priorityB) {
+      return priorityA - priorityB;
+    }
+
+    const leagueA = normalizeText(inferAgendaLeague(a));
+    const leagueB = normalizeText(inferAgendaLeague(b));
+
+    if (leagueA !== leagueB) {
+      return leagueA.localeCompare(leagueB);
+    }
+
+    const timeA = a.hora_inicio || a.hora || "";
+    const timeB = b.hora_inicio || b.hora || "";
+
+    if (timeA !== timeB) {
+      return timeA.localeCompare(timeB);
+    }
+
+    const teamsA = agendaTeams(a);
+    const teamsB = agendaTeams(b);
+
+    return `${teamsA.home} ${teamsA.away}`.localeCompare(`${teamsB.home} ${teamsB.away}`);
   });
 }
 
@@ -2788,7 +2823,6 @@ function isWomenGroup(group) {
 }
 
 function renderAgenda(matches, sourceUrl, meta = {}) {
-  agendaTimerMatches = new Map();
   leagueGrid.innerHTML = "";
 
   if (!matches.length) {
@@ -2941,58 +2975,17 @@ async function loadAgenda(date = currentAgendaDate) {
   }
 
   agendaLoading = true;
-
-  const cachedData = readAnyJsonCache("agenda-worker-cache");
-
-  if (cachedData && Array.isArray(cachedData.partidos)) {
-    const cachedMatches = uniqueMatches(cachedData.partidos)
-      .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
-      .sort((a, b) => {
-        const priorityA = Number(a.prioridad_liga ?? 9999);
-        const priorityB = Number(b.prioridad_liga ?? 9999);
-
-        if (priorityA !== priorityB) {
-          return priorityA - priorityB;
-        }
-
-        return (a.hora_inicio || a.hora || "").localeCompare(
-          b.hora_inicio || b.hora || ""
-        );
-      });
-
-    renderAgenda(cachedMatches, AGENDA_ENDPOINT, {
-      source: cachedData.fuente,
-      total: cachedData.total,
-      fromCache: true,
-    });
-
-    applyAgendaSearch();
-
-    if (!matchSearch.value.trim()) {
-      setUtilityStatus("Actualizando agenda...");
-    }
-  } else {
-    leagueGrid.innerHTML = `<p class="empty-state">Cargando Agenda...</p>`;
-  }
+  leagueGrid.innerHTML = `<p class="empty-state">Cargando Agenda...</p>`;
 
   try {
     const data = await fetchAgendaPayload();
     const partidos = Array.isArray(data.partidos) ? data.partidos : [];
 
-    const dailyMatches = uniqueMatches(partidos)
-      .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
-      .sort((a, b) => {
-        const priorityA = Number(a.prioridad_liga ?? 9999);
-        const priorityB = Number(b.prioridad_liga ?? 9999);
-
-        if (priorityA !== priorityB) {
-          return priorityA - priorityB;
-        }
-
-        return (a.hora_inicio || a.hora || "").localeCompare(
-          b.hora_inicio || b.hora || ""
-        );
-      });
+    const dailyMatches = sortAgendaMatchesStable(
+      uniqueMatches(partidos).filter((match) =>
+        agendaMatchesSelectedDate(match, selectedDate)
+      )
+    );
 
     if (selectedDate === localDateISO()) {
       agendaLiveMatches = dailyMatches.filter(isAgendaMatchLive);
@@ -3016,11 +3009,29 @@ async function loadAgenda(date = currentAgendaDate) {
     if (!matchSearch.value.trim()) {
       setUtilityStatus("");
     }
+
+    // El live se actualiza después, sin bloquear ni reordenar la primera carga.
+    window.setTimeout(refreshAgendaLive, 250);
   } catch (error) {
     console.error("Error actualizando agenda desde Worker:", error);
 
-    if (leagueGrid.children.length > 0) {
-      setUtilityStatus("Agenda guardada. Reintentando actualización...");
+    const cachedData = readAnyJsonCache(CACHE_KEY_AGENDA);
+
+    if (cachedData && Array.isArray(cachedData.partidos)) {
+      const cachedMatches = sortAgendaMatchesStable(
+        uniqueMatches(cachedData.partidos).filter((match) =>
+          agendaMatchesSelectedDate(match, selectedDate)
+        )
+      );
+
+      renderAgenda(cachedMatches, AGENDA_ENDPOINT, {
+        source: cachedData.fuente,
+        total: cachedData.total,
+        fromCache: true,
+      });
+
+      applyAgendaSearch();
+      setUtilityStatus("Mostrando agenda guardada. Reintentando actualización...");
       return;
     }
 
@@ -3062,7 +3073,7 @@ async function refreshAgendaLive() {
   const selectedDate = localDateISO(currentAgendaDate);
 
   try {
-    const cachedData = readAnyJsonCache("agenda-worker-cache");
+    const cachedData = readAnyJsonCache(CACHE_KEY_AGENDA);
     const basePartidos = Array.isArray(cachedData?.partidos) ? cachedData.partidos : [];
 
     const liveData = await fetchAgendaLivePayload();
@@ -3070,27 +3081,11 @@ async function refreshAgendaLive() {
 
     const mergedPartidos = mergeAgendaWithLive(basePartidos, livePartidos);
 
-    const dailyMatches = uniqueMatches(mergedPartidos)
-      .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
-      .sort((a, b) => {
-        const liveA = isAgendaMatchLive(a) ? 0 : 1;
-        const liveB = isAgendaMatchLive(b) ? 0 : 1;
-
-        if (liveA !== liveB) {
-          return liveA - liveB;
-        }
-
-        const priorityA = Number(a.prioridad_liga ?? 9999);
-        const priorityB = Number(b.prioridad_liga ?? 9999);
-
-        if (priorityA !== priorityB) {
-          return priorityA - priorityB;
-        }
-
-        return (a.hora_inicio || a.hora || "").localeCompare(
-          b.hora_inicio || b.hora || ""
-        );
-      });
+    const dailyMatches = sortAgendaMatchesStable(
+      uniqueMatches(mergedPartidos).filter((match) =>
+        agendaMatchesSelectedDate(match, selectedDate)
+      )
+    );
 
     if (selectedDate === localDateISO()) {
       agendaLiveMatches = dailyMatches.filter(isAgendaMatchLive);
