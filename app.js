@@ -3533,9 +3533,7 @@ async function refreshIncidenciasLive() {
 
     applyAgendaSearch();
 
-    if (!matchSearch.value.trim()) {
-      setUtilityStatus("Incidencias actualizadas");
-    }
+    // No mostramos cartel de "Incidencias actualizadas" para evitar ruido visual.
   } catch (error) {
     console.warn("No se pudieron actualizar incidencias", error);
   } finally {
