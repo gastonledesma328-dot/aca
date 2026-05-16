@@ -2830,6 +2830,36 @@ function limpiarNombreJugadorGol(value) {
     return "";
   }
 
+  const soloPalabrasInvalidas = (rawValue) => {
+    const normalizado = normalizeText(rawValue)
+      .replace(/[^a-z0-9\s]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (!normalizado) return true;
+
+    const invalidWords = new Set([
+      "gol",
+      "goal",
+      "own",
+      "autogol",
+      "penal",
+      "penalty",
+      "red",
+      "card",
+      "tarjeta",
+      "roja",
+      "amarilla",
+      "yellow",
+      "expulsion",
+      "expulsado",
+      "scored",
+      "converted",
+    ]);
+
+    return normalizado.split(" ").every((word) => invalidWords.has(word));
+  };
+
   text = text
     .replace(/^\s*\d{1,3}(?:\+\d{1,2})?['’]?\s*/i, "")
     .replace(/^\s*(gol|goal)\s*[:\-]?\s*/i, "")
@@ -2838,13 +2868,7 @@ function limpiarNombreJugadorGol(value) {
     .replace(/\s+/g, " ")
     .trim();
 
-  if (!text) {
-    return "";
-  }
-
-  const invalid = /^(gol|goal|own goal|autogol|penal|penalty|tarjeta roja|red card|tarjeta amarilla|yellow card|expulsion|expulsado|scored|converted)$/i;
-
-  if (invalid.test(text)) {
+  if (!text || soloPalabrasInvalidas(text)) {
     return "";
   }
 
@@ -3071,13 +3095,18 @@ function scorerBelongsToSide(scorer, home, away) {
 
 function goalItemMarkup(scorer, side = "unknown", teamName = "") {
   const minute = scorerMinute(scorer);
+  const player = scorerName(scorer);
   const typeLabel = scorerTypeLabel(scorer);
   const sideClass = side === "home" ? "is-home-goal" : side === "away" ? "is-away-goal" : "is-unknown-goal";
+
+  if (!player) {
+    return "";
+  }
 
   return `
     <span class="agenda-goal-item ${sideClass}">
       ${minute ? `<b>${escapeHtml(minute)}</b>` : ""}
-      <span>${escapeHtml(scorerName(scorer))}</span>
+      <span>${escapeHtml(player)}</span>
       <em>${typeLabel}</em>
     </span>
   `;
