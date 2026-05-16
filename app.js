@@ -4042,18 +4042,64 @@ function actualizarLiveEnDOM(matches) {
   return !faltanFilas;
 }
 
+function partidoTieneMarcadorConGoles(match) {
+  const score = scoreMarkup(match);
+
+  if (!score || score === "-") {
+    return false;
+  }
+
+  const matchScore = String(score).match(/(\d+)\s*-\s*(\d+)/);
+
+  if (!matchScore) {
+    return false;
+  }
+
+  const local = Number(matchScore[1]);
+  const visitante = Number(matchScore[2]);
+
+  return (Number.isFinite(local) && local > 0) || (Number.isFinite(visitante) && visitante > 0);
+}
+
+function partidoDebeConsultarIncidencias(match) {
+  if (!match?.id || !match?.liga_slug) {
+    return false;
+  }
+
+  if (isAgendaMatchLive(match)) {
+    return true;
+  }
+
+  // También consultamos partidos finalizados o con marcador con goles.
+  // Si no hacemos esto, algunos partidos con resultado 2-1, 3-0, etc.
+  // nunca piden Worker 2 y por eso no aparece el minuto/jugador del gol.
+  if (partidoTieneMarcadorConGoles(match)) {
+    return true;
+  }
+
+  if (Number(match.local_rojas || 0) > 0 || Number(match.visitante_rojas || 0) > 0) {
+    return true;
+  }
+
+  return false;
+}
+
 async function refreshIncidenciasLive() {
   if (activeTab !== "agenda" || incidenciasLoading || agendaLoading) {
     return;
   }
 
   const selectedDate = localDateISO(currentAgendaDate);
-  const liveMatches = uniqueMatches(agendaCurrentMatches)
-    .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
-    .filter(isAgendaMatchLive)
-    .filter((match) => match?.id && match?.liga_slug);
+  const partidosBase = Array.isArray(agendaCurrentMatches) && agendaCurrentMatches.length
+    ? agendaCurrentMatches
+    : uniqueMatches(readAnyJsonCache(CACHE_KEY_AGENDA)?.partidos || []);
 
-  if (!liveMatches.length) {
+  const partidosParaIncidencias = uniqueMatches(partidosBase)
+    .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
+    .filter(partidoDebeConsultarIncidencias)
+    .slice(0, 40);
+
+  if (!partidosParaIncidencias.length) {
     return;
   }
 
@@ -4061,7 +4107,7 @@ async function refreshIncidenciasLive() {
 
   try {
     const results = await Promise.allSettled(
-      liveMatches.map(async (match) => {
+      partidosParaIncidencias.map(async (match) => {
         const payload = await fetchIncidenciasPartido(match);
         return {
           key: incidenciaCacheKey(match),
