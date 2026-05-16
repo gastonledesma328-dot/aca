@@ -591,19 +591,21 @@ async function fetchIncidenciasPartido(match) {
   const gameId = String(match?.id_365 || match?.match_365?.id_365 || "").trim();
   const cacheKey = `${CACHE_KEY_INCIDENCIAS}:${incidenciaCacheKey(match)}`;
 
-  if (!id || !liga) {
+  if ((!id || !liga) && !gameId && !match.local && !match.visitante) {
     return readJsonCache(cacheKey, INCIDENCIAS_CACHE_TTL_MS) || null;
   }
 
   const params = new URLSearchParams();
-  params.set("id", id);
-  params.set("liga", liga);
+  if (id) params.set("id", id);
+  if (liga) params.set("liga", liga);
 
   if (gameId) params.set("gameId", gameId);
   if (match.local) params.set("local", match.local);
   if (match.visitante) params.set("visitante", match.visitante);
   if (match.local_id) params.set("local_id", match.local_id);
   if (match.visitante_id) params.set("visitante_id", match.visitante_id);
+  if (match.fecha || agendaDate(match)) params.set("fecha", match.fecha || agendaDate(match));
+  if (match.hora_inicio || match.hora) params.set("hora", match.hora_inicio || match.hora);
 
   // No cacheamos respuestas vacías. Si el Worker 2 tarda en encontrar los datos,
   // una respuesta sin goles no debe bloquear futuras consultas durante 2 minutos.
