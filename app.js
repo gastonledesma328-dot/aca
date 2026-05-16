@@ -585,37 +585,63 @@ function aplicarIncidenciasPersistidasALista(matches) {
   return (Array.isArray(matches) ? matches : []).map(aplicarIncidenciasPersistidas);
 }
 
-function fetchIncidenciasPartido(match) {
+async function fetchIncidenciasPartido(match) {
   const id = String(match?.id || "").trim();
-  const liga = String(match?.liga_slug || "").trim();
+  const liga = String(match?.liga_slug || match?.competicion?.slug || "").trim();
   const gameId = String(match?.id_365 || match?.match_365?.id_365 || "").trim();
+  const cacheKey = `${CACHE_KEY_INCIDENCIAS}:${incidenciaCacheKey(match)}`;
 
   if (!id || !liga) {
-    return Promise.resolve(null);
+    return readJsonCache(cacheKey, INCIDENCIAS_CACHE_TTL_MS) || null;
   }
 
   const params = new URLSearchParams();
   params.set("id", id);
   params.set("liga", liga);
 
-  if (gameId) {
-    params.set("gameId", gameId);
-  }
-
+  if (gameId) params.set("gameId", gameId);
   if (match.local) params.set("local", match.local);
   if (match.visitante) params.set("visitante", match.visitante);
   if (match.local_id) params.set("local_id", match.local_id);
   if (match.visitante_id) params.set("visitante_id", match.visitante_id);
 
-  return fetchJsonCached(
-    `${INCIDENCIAS_ENDPOINT}?${params.toString()}`,
-    `${CACHE_KEY_INCIDENCIAS}:${incidenciaCacheKey(match)}`,
-    INCIDENCIAS_CACHE_TTL_MS,
-    {
-      networkFirst: true,
-      timeoutMs: INCIDENCIAS_FETCH_TIMEOUT_MS,
+  // No cacheamos respuestas vacías. Si el Worker 2 tarda en encontrar los datos,
+  // una respuesta sin goles no debe bloquear futuras consultas durante 2 minutos.
+  const fresh = readJsonCache(cacheKey, INCIDENCIAS_CACHE_TTL_MS);
+  if (fresh && incidenciasDataTieneDatos(normalizarIncidenciasPayload(fresh))) {
+    return fresh;
+  }
+
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), INCIDENCIAS_FETCH_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(`${INCIDENCIAS_ENDPOINT}?${params.toString()}&_=${Date.now()}`, {
+      cache: "no-store",
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
     }
-  );
+
+    const data = await response.json();
+    const normalizada = normalizarIncidenciasPayload(data);
+
+    if (incidenciasDataTieneDatos(normalizada)) {
+      writeJsonCache(cacheKey, data);
+      return data;
+    }
+
+    const stale = readJsonCache(cacheKey, STALE_CACHE_TTL_MS);
+    return stale || data;
+  } catch (error) {
+    const stale = readJsonCache(cacheKey, STALE_CACHE_TTL_MS);
+    if (stale) return stale;
+    return null;
+  } finally {
+    window.clearTimeout(timeout);
+  }
 }
 
 function fetchStreamEventsPayload() {
@@ -4084,6 +4110,24 @@ function partidoDebeConsultarIncidencias(match) {
   return false;
 }
 
+function prioridadConsultaIncidencias(match) {
+  let prioridad = 0;
+
+  if (isAgendaMatchLive(match)) prioridad -= 1000;
+  if (partidoTieneMarcadorConGoles(match)) prioridad -= 500;
+  if (match.completado === true) prioridad -= 100;
+  if (incidenciasDataTieneDatos(incidenciasDesdeMatch(match))) prioridad += 300;
+
+  const score = scoreMarkup(match);
+  const scoreMatch = String(score || "").match(/(\d+)\s*-\s*(\d+)/);
+
+  if (scoreMatch) {
+    prioridad -= Number(scoreMatch[1]) + Number(scoreMatch[2]);
+  }
+
+  return prioridad;
+}
+
 async function refreshIncidenciasLive() {
   if (activeTab !== "agenda" || incidenciasLoading || agendaLoading) {
     return;
@@ -4097,7 +4141,8 @@ async function refreshIncidenciasLive() {
   const partidosParaIncidencias = uniqueMatches(partidosBase)
     .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
     .filter(partidoDebeConsultarIncidencias)
-    .slice(0, 40);
+    .sort((a, b) => prioridadConsultaIncidencias(a) - prioridadConsultaIncidencias(b))
+    .slice(0, 120);
 
   if (!partidosParaIncidencias.length) {
     return;
