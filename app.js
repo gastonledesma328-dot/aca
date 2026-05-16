@@ -591,21 +591,29 @@ async function fetchIncidenciasPartido(match) {
   const gameId = String(match?.id_365 || match?.match_365?.id_365 || "").trim();
   const cacheKey = `${CACHE_KEY_INCIDENCIAS}:${incidenciaCacheKey(match)}`;
 
-  if ((!id || !liga) && !gameId && !match.local && !match.visitante) {
+  if (!id || !liga) {
     return readJsonCache(cacheKey, INCIDENCIAS_CACHE_TTL_MS) || null;
   }
 
   const params = new URLSearchParams();
-  if (id) params.set("id", id);
-  if (liga) params.set("liga", liga);
+  params.set("id", id);
+  // liga = slug ESPN para summary, ejemplo: uru.1 / par.1 / bol.1
+  params.set("liga", liga);
+
+  // Datos extra para que Worker 2 pueda matchear manualmente 365Scores
+  // aunque el slug ESPN no se parezca al nombre de la liga.
+  const ligaNombre = String(match?.liga || match?.liga_corta || match?.competicion?.nombre || "").trim();
+  const fecha = String(agendaDate(match) || match?.fecha || match?.fecha_espn || "").slice(0, 10);
+  const hora = String(match?.hora_inicio || match?.hora || "").trim();
 
   if (gameId) params.set("gameId", gameId);
+  if (ligaNombre) params.set("liga_nombre", ligaNombre);
+  if (fecha) params.set("fecha", fecha);
+  if (hora) params.set("hora", hora);
   if (match.local) params.set("local", match.local);
   if (match.visitante) params.set("visitante", match.visitante);
   if (match.local_id) params.set("local_id", match.local_id);
   if (match.visitante_id) params.set("visitante_id", match.visitante_id);
-  if (match.fecha || agendaDate(match)) params.set("fecha", match.fecha || agendaDate(match));
-  if (match.hora_inicio || match.hora) params.set("hora", match.hora_inicio || match.hora);
 
   // No cacheamos respuestas vacías. Si el Worker 2 tarda en encontrar los datos,
   // una respuesta sin goles no debe bloquear futuras consultas durante 2 minutos.
