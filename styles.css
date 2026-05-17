@@ -49,7 +49,7 @@ svg {
 }
 
 .app-shell {
-  width: min(100% - 2rem, 860px);
+  width: min(100% - 2rem, 1180px);
   margin: 0 auto;
   padding: 18px 0 24px;
   display: flex;
@@ -948,12 +948,12 @@ svg {
 .agenda-row {
   min-height: 42px;
   display: grid;
-  grid-template-columns: 52px minmax(0, 1fr) auto;
+  grid-template-columns: 64px minmax(0, 1fr) minmax(92px, auto);
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   color: var(--text);
   text-decoration: none;
-  padding: 8px 12px;
+  padding: 9px 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.055);
   background: rgba(255, 255, 255, 0.018);
 }
@@ -1140,7 +1140,7 @@ svg {
 }
 
 .agenda-state {
-  max-width: 76px;
+  max-width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1477,7 +1477,7 @@ svg {
 }
 
 footer {
-  width: min(100% - 2rem, 860px);
+  width: min(100% - 2rem, 1180px);
   margin: -4px auto 0;
   padding-bottom: 4px;
   color: var(--muted);
@@ -1489,6 +1489,18 @@ footer {
 footer strong {
   color: var(--text);
   font-weight: 700;
+}
+
+@media (min-width: 1180px) {
+  .agenda-teams {
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .agenda-group-head {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
 }
 
 @media (max-width: 860px) {
