@@ -201,8 +201,14 @@ function updateCategoryButtons() {
 
 function updateDifficultyInfo() {
   const difficulty = getDifficulty();
-  els.modeLabel.textContent = `Dificultad: ${difficulty.label}`;
-  els.modeHelp.textContent = difficulty.help;
+
+  if (els.modeLabel) {
+    els.modeLabel.textContent = `Dificultad: ${difficulty.label}`;
+  }
+
+  if (els.modeHelp) {
+    els.modeHelp.textContent = difficulty.help;
+  }
 
   if (difficulty.autocomplete) {
     els.playerInput.setAttribute('list', 'playersList');
@@ -264,7 +270,9 @@ function startGame() {
 function updateCounters() {
   const maxTries = getMaxTries();
   const left = Math.max(0, maxTries - guesses.length);
-  els.triesLeft.textContent = String(left);
+  if (els.triesLeft) {
+    els.triesLeft.textContent = String(left);
+  }
   els.triesUsed.textContent = `${guesses.length}/${maxTries}`;
 }
 
