@@ -38,6 +38,13 @@ const CATEGORIES = [
 ];
 
 const POS_LABELS = {
+  // ESPN a veces devuelve posiciones cortas
+  G: 'Arquero',
+  D: 'Defensor',
+  M: 'Mediocampista',
+  F: 'Delantero',
+
+  // Posiciones más específicas
   GK: 'Arquero',
   CB: 'Defensa central',
   LB: 'Lateral izquierdo',
