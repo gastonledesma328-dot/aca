@@ -572,11 +572,20 @@ def cargar_detalle_atleta(league_slug: str, athlete_id: str) -> dict:
     return merged
 
 
+def _is_empty(v: Any) -> bool:
+    """True si el valor es considerado vacío/centinela."""
+    if isinstance(v, (dict, list)):
+        return False   # dicts/lists nunca son 'vacíos' a efectos de merge
+    try:
+        return v in {None, "", "Sin datos", "-", 0, "0"}
+    except TypeError:
+        return False
+
+
 def _merge_into(base: dict, extra: dict) -> None:
     """Fusiona extra en base: solo sobreescribe si base tiene un valor vacío/centinela."""
-    SKIP = {None, "", "Sin datos", "-", 0, "0"}
     for k, v in extra.items():
-        if k not in base or base[k] in SKIP:
+        if k not in base or _is_empty(base[k]):
             base[k] = v
         elif isinstance(v, dict) and isinstance(base.get(k), dict):
             # Merge recursivo para objetos anidados como "birthPlace", "position"
