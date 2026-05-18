@@ -2,24 +2,32 @@ const DATA_URL = './jugadores.json';
 const MAX_TRIES = 8;
 const MIN_CHARS = 4;
 
-const MODES = {
-  all: {
-    label: 'Todos',
-    leagues: null,
+const ERA_MODES = {
+  actual: {
+    label: 'Actualidad',
+    help: 'Jugadores actuales de clubes fuertes.',
+    values: ['actual', 'actualidad', 'presente'],
   },
-  easy: {
-    label: 'Fácil - Europa top',
-    leagues: ['Premier League', 'Serie A', 'Bundesliga', 'LaLiga', 'Ligue 1'],
+  pasado: {
+    label: 'Pasado',
+    help: 'Leyendas y exjugadores conocidos.',
+    values: ['pasado', 'historico', 'histórico', 'leyenda'],
   },
-  normal: {
-    label: 'Normal - Europa + Sudamérica',
-    leagues: ['Premier League', 'Serie A', 'Bundesliga', 'LaLiga', 'Ligue 1', 'Brasileirão', 'Liga Profesional Argentina', 'Eredivisie'],
-  },
-  hard: {
-    label: 'Difícil - Todas las ligas',
-    leagues: null,
+  mixto: {
+    label: 'Mixto',
+    help: 'Actualidad + pasado.',
+    values: null,
   },
 };
+
+const CATEGORIES = [
+  { key: 'pais', label: 'País', type: 'text' },
+  { key: 'club', label: 'Club', type: 'text' },
+  { key: 'competicion', label: 'Liga', type: 'text' },
+  { key: 'posicion', label: 'Posición', type: 'position' },
+  { key: 'edad', label: 'Edad', type: 'number', closeRange: 2, suffix: '' },
+  { key: 'altura', label: 'Altura', type: 'number', closeRange: 3, suffix: ' cm' },
+];
 
 const POS_LABELS = {
   GK: 'Arquero',
@@ -39,19 +47,25 @@ let pool = [];
 let secret = null;
 let guesses = [];
 let finished = false;
+let selectedEra = 'actual';
+let activeCategories = new Set(CATEGORIES.map((item) => item.key));
 
 const $ = (id) => document.getElementById(id);
 
 const els = {
-  modeSelect: $('modeSelect'),
+  eraButtons: document.querySelectorAll('[data-era]'),
+  categoryButtons: document.querySelectorAll('[data-category]'),
   modeLabel: $('modeLabel'),
+  modeHelp: $('modeHelp'),
   triesLeft: $('triesLeft'),
   triesUsed: $('triesUsed'),
   playerInput: $('playerInput'),
   playersList: $('playersList'),
   guessBtn: $('guessBtn'),
   newGameBtn: $('newGameBtn'),
+  allCategoriesBtn: $('allCategoriesBtn'),
   message: $('message'),
+  tableHead: $('tableHead'),
   guessesBody: $('guessesBody'),
   answerCard: $('answerCard'),
   secretCompetition: $('secretCompetition'),
@@ -65,6 +79,10 @@ function normalizeText(value) {
     .toLowerCase()
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+function getPlayerEra(player) {
+  return normalizeText(player.epoca || player.tipo || 'actual');
 }
 
 function getAge(player) {
@@ -85,8 +103,27 @@ function getAge(player) {
   return age;
 }
 
+function getValue(player, key) {
+  if (key === 'edad') return getAge(player);
+  return player[key];
+}
+
+function displayValue(player, category) {
+  const value = getValue(player, category.key);
+
+  if (category.type === 'position') {
+    return POS_LABELS[value] || value || '-';
+  }
+
+  if (category.type === 'number') {
+    return value ? `${value}${category.suffix || ''}` : '-';
+  }
+
+  return value || '-';
+}
+
 function playerLabel(player) {
-  return `${player.nombre} · ${player.club}`;
+  return `${player.nombre} · ${player.club} · ${ERA_MODES[getPlayerEra(player)]?.label || player.epoca || 'Actualidad'}`;
 }
 
 function setMessage(text, type = '') {
@@ -98,15 +135,58 @@ function shuffle(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
 
+function setEra(mode) {
+  selectedEra = ERA_MODES[mode] ? mode : 'actual';
+
+  els.eraButtons.forEach((button) => {
+    button.classList.toggle('active', button.dataset.era === selectedEra);
+  });
+
+  startGame();
+}
+
+function toggleCategory(key) {
+  if (!key) return;
+
+  if (activeCategories.has(key)) {
+    if (activeCategories.size === 1) {
+      setMessage('Dejá al menos una pista activa.', 'warn');
+      return;
+    }
+    activeCategories.delete(key);
+  } else {
+    activeCategories.add(key);
+  }
+
+  updateCategoryButtons();
+  renderTableHeader();
+  rerenderGuesses();
+}
+
+function activateAllCategories() {
+  activeCategories = new Set(CATEGORIES.map((item) => item.key));
+  updateCategoryButtons();
+  renderTableHeader();
+  rerenderGuesses();
+  setMessage('Activé todas las pistas.', 'ok');
+}
+
+function updateCategoryButtons() {
+  els.categoryButtons.forEach((button) => {
+    button.classList.toggle('active', activeCategories.has(button.dataset.category));
+  });
+}
+
 function filterPool() {
-  const mode = MODES[els.modeSelect.value] || MODES.all;
+  const mode = ERA_MODES[selectedEra] || ERA_MODES.actual;
 
   pool = allPlayers.filter((player) => {
-    if (!mode.leagues) return true;
-    return mode.leagues.includes(player.competicion);
+    if (!mode.values) return true;
+    return mode.values.includes(getPlayerEra(player));
   });
 
   els.modeLabel.textContent = `Modo: ${mode.label}`;
+  els.modeHelp.textContent = mode.help;
   els.playersCount.textContent = String(pool.length);
 }
 
@@ -114,7 +194,7 @@ function fillDatalist() {
   els.playersList.innerHTML = '';
 
   shuffle(pool)
-    .slice(0, 350)
+    .slice(0, 450)
     .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'))
     .forEach((player) => {
       const option = document.createElement('option');
@@ -144,8 +224,9 @@ function startGame() {
   els.guessBtn.disabled = false;
   els.secretCompetition.textContent = secret ? secret.competicion : '?';
 
+  renderTableHeader();
   updateCounters();
-  setMessage('Escribí mínimo 4 letras. Si hay una coincidencia clara, el juego la toma.', '');
+  setMessage('Elegí Actualidad o Pasado, activá las pistas que quieras y probá un jugador.', '');
   els.playerInput.focus();
 }
 
@@ -177,7 +258,7 @@ function findPlayerByInput(input) {
     return { error: 'Hay varios jugadores parecidos. Escribí un poco más del nombre.' };
   }
 
-  return { error: 'No encontré ese jugador en la base.' };
+  return { error: 'No encontré ese jugador en este modo. Probá cambiar a Mixto o revisar el nombre.' };
 }
 
 function compareText(value, target) {
@@ -204,29 +285,53 @@ function compareNumber(value, target, closeRange = 2) {
   return { className: 'bad', text: `${a} ${arrow}` };
 }
 
-function resultPill(text, isGood, extraClass = '') {
-  const className = extraClass || (isGood ? 'good' : 'bad');
+function resultPill(text, className) {
   return `<span class="result-pill ${className}">${text}</span>`;
 }
 
+function getCategoryResult(player, category) {
+  if (category.type === 'number') {
+    const result = compareNumber(getValue(player, category.key), getValue(secret, category.key), category.closeRange || 2);
+    return resultPill(`${result.text}${category.suffix || ''}`, result.className);
+  }
+
+  const value = displayValue(player, category);
+  const targetValue = getValue(secret, category.key);
+  const playerValue = getValue(player, category.key);
+  const good = compareText(playerValue, targetValue);
+
+  return resultPill(value, good ? 'good' : 'bad');
+}
+
+function getActiveCategories() {
+  return CATEGORIES.filter((category) => activeCategories.has(category.key));
+}
+
+function renderTableHeader() {
+  const ths = ['<th>Jugador</th>'];
+
+  getActiveCategories().forEach((category) => {
+    ths.push(`<th>${category.label}</th>`);
+  });
+
+  els.tableHead.innerHTML = `<tr>${ths.join('')}</tr>`;
+}
+
 function renderGuess(player) {
-  const age = getAge(player);
-  const secretAge = getAge(secret);
-  const ageResult = compareNumber(age, secretAge, 2);
-  const heightResult = compareNumber(player.altura, secret.altura, 3);
+  const tds = [`<td class="player-cell">${player.nombre}</td>`];
+
+  getActiveCategories().forEach((category) => {
+    tds.push(`<td>${getCategoryResult(player, category)}</td>`);
+  });
 
   const tr = document.createElement('tr');
-  tr.innerHTML = `
-    <td class="player-cell">${player.nombre}</td>
-    <td>${resultPill(player.pais, compareText(player.pais, secret.pais))}</td>
-    <td>${resultPill(player.club, compareText(player.club, secret.club))}</td>
-    <td>${resultPill(player.competicion, compareText(player.competicion, secret.competicion))}</td>
-    <td>${resultPill(POS_LABELS[player.posicion] || player.posicion, compareText(player.posicion, secret.posicion))}</td>
-    <td>${resultPill(ageResult.text, ageResult.className === 'good', ageResult.className)}</td>
-    <td>${resultPill(`${heightResult.text} cm`, heightResult.className === 'good', heightResult.className)}</td>
-  `;
-
+  tr.innerHTML = tds.join('');
   els.guessesBody.prepend(tr);
+}
+
+function rerenderGuesses() {
+  els.guessesBody.innerHTML = '';
+  [...guesses].reverse().forEach(renderGuess);
 }
 
 function showAnswer(won) {
@@ -235,11 +340,13 @@ function showAnswer(won) {
   els.guessBtn.disabled = true;
 
   const age = getAge(secret);
+  const eraLabel = ERA_MODES[getPlayerEra(secret)]?.label || 'Actualidad';
+
   els.answerCard.classList.remove('hidden');
   els.answerCard.innerHTML = `
     <h2>${won ? '¡Correcto!' : 'Se terminaron los intentos'}</h2>
     <p>El jugador era <strong>${secret.nombre}</strong>.</p>
-    <p>${secret.pais} · ${secret.club} · ${secret.competicion} · ${POS_LABELS[secret.posicion] || secret.posicion} · ${age} años · ${secret.altura} cm</p>
+    <p>${eraLabel} · ${secret.pais} · ${secret.club} · ${secret.competicion} · ${POS_LABELS[secret.posicion] || secret.posicion} · ${age} años · ${secret.altura} cm</p>
   `;
 }
 
@@ -278,7 +385,7 @@ function submitGuess() {
     return;
   }
 
-  setMessage('No era. Usá las pistas y probá otro.', '');
+  setMessage('No era. Mirá las pistas y probá otro.', '');
 }
 
 async function loadPlayers() {
@@ -289,8 +396,13 @@ async function loadPlayers() {
     const data = await response.json();
     allPlayers = data
       .filter((player) => player && player.nombre && player.club && player.competicion)
-      .map((player) => ({ ...player, altura: Number(player.altura || 0) }));
+      .map((player) => ({
+        ...player,
+        epoca: player.epoca || 'actual',
+        altura: Number(player.altura || 0),
+      }));
 
+    updateCategoryButtons();
     startGame();
   } catch (error) {
     console.error(error);
@@ -300,9 +412,18 @@ async function loadPlayers() {
 
 els.guessBtn.addEventListener('click', submitGuess);
 els.newGameBtn.addEventListener('click', startGame);
-els.modeSelect.addEventListener('change', startGame);
 els.playerInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') submitGuess();
 });
+
+els.eraButtons.forEach((button) => {
+  button.addEventListener('click', () => setEra(button.dataset.era));
+});
+
+els.categoryButtons.forEach((button) => {
+  button.addEventListener('click', () => toggleCategory(button.dataset.category));
+});
+
+els.allCategoriesBtn.addEventListener('click', activateAllCategories);
 
 loadPlayers();
