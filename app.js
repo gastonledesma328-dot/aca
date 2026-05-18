@@ -114,7 +114,7 @@ const INCIDENCIAS_CACHE_TTL_MS = 120_000;
 const INCIDENCIAS_FETCH_TIMEOUT_MS = 5_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
-const APP_CACHE_VERSION = "v7-goles-lado-jugador-prioridad";
+const APP_CACHE_VERSION = "v8-goles-lado-y-ec-fuerte";
 const CACHE_KEY_AGENDA = `agenda-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_LIVE = `agenda-live-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_TV = `tv-partidos-cache-${APP_CACHE_VERSION}`;
@@ -3022,9 +3022,20 @@ const SCORER_TEAM_HINTS = {
   "arturo vidal": ["colo colo"],
 };
 
-const SCORER_FORCED_OWN_GOAL_PLAYERS = new Set([
-  "arturo vidal",
-]);
+// Reglas puntuales para goles en contra cuando la fuente no lo marca bien.
+// Ejemplo real: Colo Colo vs Ñublense, Arturo Vidal marca en contra.
+// El gol debe contarse visualmente del lado de Ñublense y mostrarse como (E.C.).
+const SCORER_OWN_GOAL_RULES = [
+  {
+    player: "arturo vidal",
+    teamAliases: ["colo colo"],
+    opponentAliases: ["nublense", "ñublense"],
+  },
+];
+
+const SCORER_FORCED_OWN_GOAL_PLAYERS = new Set(
+  SCORER_OWN_GOAL_RULES.map((rule) => rule.player)
+);
 
 function scorerPlayerKey(scorer) {
   return normalizeTeamForCompare(scorerName(scorer));
@@ -3100,7 +3111,57 @@ function scorerIsForcedOwnGoal(scorer) {
   return SCORER_FORCED_OWN_GOAL_PLAYERS.has(scorerPlayerKey(scorer));
 }
 
-function scorerDisplayTypeLabel(scorer, side = "unknown", teamName = "") {
+function oppositeSide(side) {
+  if (side === "home") return "away";
+  if (side === "away") return "home";
+  return "";
+}
+
+function sideFromAliases(aliases, home, away) {
+  const matchesHome = aliasesMatchTeam(aliases, home);
+  const matchesAway = aliasesMatchTeam(aliases, away);
+
+  if (matchesHome && !matchesAway) return "home";
+  if (matchesAway && !matchesHome) return "away";
+
+  return "";
+}
+
+function scorerOwnGoalRule(scorer, home = "", away = "") {
+  const player = scorerPlayerKey(scorer);
+
+  if (!player) {
+    return null;
+  }
+
+  for (const rule of SCORER_OWN_GOAL_RULES) {
+    if (player !== rule.player) {
+      continue;
+    }
+
+    const playerTeamSide = sideFromAliases(rule.teamAliases, home, away);
+    const opponentSide = sideFromAliases(rule.opponentAliases, home, away);
+
+    if (!playerTeamSide || !opponentSide || playerTeamSide === opponentSide) {
+      continue;
+    }
+
+    return {
+      playerTeamSide,
+      goalSide: opponentSide,
+    };
+  }
+
+  return null;
+}
+
+function scorerDisplayTypeLabel(scorer, side = "unknown", teamName = "", home = "", away = "") {
+  const ownGoalRule = scorerOwnGoalRule(scorer, home, away);
+
+  if (ownGoalRule && side === ownGoalRule.goalSide) {
+    return "(E.C.)";
+  }
+
   const original = scorerTypeLabel(scorer);
 
   if (original !== "Gol") {
@@ -3110,7 +3171,6 @@ function scorerDisplayTypeLabel(scorer, side = "unknown", teamName = "") {
   const aliases = scorerKnownTeamAliases(scorer);
 
   // Si conocemos el club del jugador y el gol está asignado al rival, mostrarlo como gol en contra.
-  // Caso real: Arturo Vidal aparece como gol para Ñublense, debe verse como (E.C.).
   if (aliases.length && teamName && !aliasesMatchTeam(aliases, teamName)) {
     return "(E.C.)";
   }
@@ -3191,26 +3251,26 @@ function normalizeScorerList(match) {
 
 function scorerBelongsToSide(scorer, home, away) {
   const team = scorerTeamText(scorer);
+  const ownGoalRule = scorerOwnGoalRule(scorer, home, away);
+
+  // 1) Primero resolvemos goles en contra conocidos.
+  // Arturo Vidal pertenece a Colo Colo, pero en Colo Colo vs Ñublense este gol debe figurar del lado de Ñublense.
+  if (ownGoalRule?.goalSide) {
+    return ownGoalRule.goalSide;
+  }
+
   const knownSide = knownScorerSide(scorer, home, away);
-  const explicitSide = explicitScorerSide(scorer);
 
-  // 1) Primero mandan los jugadores conocidos.
-  // Esto corrige casos donde el Worker/365Scores trae mal el equipo del gol.
-  // Ejemplo: Bradley Barcola debe ir con Paris Saint-Germain, aunque el payload venga como local.
+  // 2) Después mandan los jugadores conocidos.
+  // Bradley Barcola debe ir con Paris Saint-Germain aunque el payload venga como local.
   if (knownSide) {
-    // Excepción: jugadores marcados como posible gol en contra.
-    // Si el payload lo asigna al rival, lo dejamos en el rival y luego se muestra como (E.C.).
-    if (explicitSide && explicitSide !== knownSide && scorerIsForcedOwnGoal(scorer)) {
-      return explicitSide;
-    }
-
     return knownSide;
   }
 
   const teamMatchesHome = teamValueMatches(team, home);
   const teamMatchesAway = teamValueMatches(team, away);
 
-  // 2) Después mandan los nombres de equipo si vienen claros.
+  // 3) Después mandan los nombres de equipo si vienen claros.
   if (teamMatchesHome && !teamMatchesAway) {
     return "home";
   }
@@ -3219,7 +3279,9 @@ function scorerBelongsToSide(scorer, home, away) {
     return "away";
   }
 
-  // 3) Por último usamos el lado explícito del payload.
+  // 4) Por último usamos el lado explícito del payload.
+  const explicitSide = explicitScorerSide(scorer);
+
   if (explicitSide) {
     return explicitSide;
   }
@@ -3227,10 +3289,10 @@ function scorerBelongsToSide(scorer, home, away) {
   return "unknown";
 }
 
-function goalItemMarkup(scorer, side = "unknown", teamName = "") {
+function goalItemMarkup(scorer, side = "unknown", teamName = "", home = "", away = "") {
   const minute = scorerMinute(scorer);
   const player = scorerName(scorer);
-  const typeLabel = scorerDisplayTypeLabel(scorer, side, teamName);
+  const typeLabel = scorerDisplayTypeLabel(scorer, side, teamName, home, away);
   const sideClass = side === "home" ? "is-home-goal" : side === "away" ? "is-away-goal" : "is-unknown-goal";
 
   if (!player) {
@@ -3269,9 +3331,9 @@ function scorersMarkup(match, home = "", away = "") {
     }
   });
 
-  const homeMarkup = homeGoals.map((scorer) => goalItemMarkup(scorer, "home", home)).join("");
-  const awayMarkup = awayGoals.map((scorer) => goalItemMarkup(scorer, "away", away)).join("");
-  const unknown = unknownGoals.map((scorer) => goalItemMarkup(scorer, "unknown", scorerTeamText(scorer))).join("");
+  const homeMarkup = homeGoals.map((scorer) => goalItemMarkup(scorer, "home", home, home, away)).join("");
+  const awayMarkup = awayGoals.map((scorer) => goalItemMarkup(scorer, "away", away, home, away)).join("");
+  const unknown = unknownGoals.map((scorer) => goalItemMarkup(scorer, "unknown", scorerTeamText(scorer), home, away)).join("");
   const hasKnownSideGoals = homeGoals.length > 0 || awayGoals.length > 0;
 
   if (!hasKnownSideGoals && unknown) {
