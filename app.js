@@ -3088,6 +3088,22 @@ function normalizeScorerList(match) {
 }
 
 function scorerBelongsToSide(scorer, home, away) {
+  const team = scorerTeamText(scorer);
+
+  const teamMatchesHome = teamValueMatches(team, home);
+  const teamMatchesAway = teamValueMatches(team, away);
+
+  // Primero mandan los nombres de equipo.
+  // Si el Worker dice local_visitante="home" pero equipo="Paris Saint-Germain",
+  // el gol debe ir al lado visitante.
+  if (teamMatchesHome && !teamMatchesAway) {
+    return "home";
+  }
+
+  if (teamMatchesAway && !teamMatchesHome) {
+    return "away";
+  }
+
   const hint = String(scorer._sideHint || "").toLowerCase();
 
   if (["home", "local", "h"].includes(hint)) {
@@ -3113,16 +3129,6 @@ function scorerBelongsToSide(scorer, home, away) {
   }
 
   if (scorer.visitante === true || scorer.isAway === true || scorer.away === true) {
-    return "away";
-  }
-
-  const team = scorerTeamText(scorer);
-
-  if (teamValueMatches(team, home)) {
-    return "home";
-  }
-
-  if (teamValueMatches(team, away)) {
     return "away";
   }
 
