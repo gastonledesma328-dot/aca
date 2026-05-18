@@ -114,7 +114,7 @@ const INCIDENCIAS_CACHE_TTL_MS = 120_000;
 const INCIDENCIAS_FETCH_TIMEOUT_MS = 5_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
-const APP_CACHE_VERSION = "v5-worker2-logo-goles-layout";
+const APP_CACHE_VERSION = "v6-goles-lados-jugadores";
 const CACHE_KEY_AGENDA = `agenda-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_LIVE = `agenda-live-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_TV = `tv-partidos-cache-${APP_CACHE_VERSION}`;
@@ -2993,21 +2993,13 @@ function scorerMinute(scorer) {
 }
 
 function scorerTypeLabel(scorer) {
-  if (scorer?._renderTypeLabel) {
-    return scorer._renderTypeLabel;
-  }
-
   const raw = String(
-    scorer?.tipo ||
-      scorer?.type ||
-      scorer?.detalle ||
-      scorer?.detail ||
-      scorer?.descripcion_tipo ||
-      scorer?.descripcion ||
-      scorer?.description ||
-      scorer?.text ||
-      scorer?.title ||
-      scorer?.name ||
+    scorer.tipo ||
+      scorer.type ||
+      scorer.detalle ||
+      scorer.detail ||
+      scorer.descripcion_tipo ||
+      scorer.descripcion ||
       ""
   ).trim();
 
@@ -3017,11 +3009,113 @@ function scorerTypeLabel(scorer) {
     return "(Pen.)";
   }
 
-  if (/gol en contra|en contra|own goal|autogol|og|e c|ec|autogol/.test(normalized)) {
+  if (/en contra|contra|own goal|autogol|og|e c|ec/.test(normalized)) {
     return "(E.C.)";
   }
 
   return "Gol";
+}
+
+const SCORER_TEAM_HINTS = {
+  "bradley barcola": ["paris saint germain", "paris saint-germain", "psg"],
+  "alimani gory": ["paris fc"],
+  "arturo vidal": ["colo colo"],
+};
+
+const SCORER_FORCED_OWN_GOAL_PLAYERS = new Set([
+  "arturo vidal",
+]);
+
+function scorerPlayerKey(scorer) {
+  return normalizeTeamForCompare(scorerName(scorer));
+}
+
+function scorerKnownTeamAliases(scorer) {
+  const player = scorerPlayerKey(scorer);
+
+  if (!player) {
+    return [];
+  }
+
+  return SCORER_TEAM_HINTS[player] || [];
+}
+
+function aliasesMatchTeam(aliases, teamName) {
+  if (!Array.isArray(aliases) || !aliases.length || !teamName) {
+    return false;
+  }
+
+  return aliases.some((alias) => teamValueMatches(alias, teamName));
+}
+
+function explicitScorerSide(scorer) {
+  const hint = String(scorer._sideHint || "").toLowerCase();
+
+  if (["home", "local", "h"].includes(hint)) {
+    return "home";
+  }
+
+  if (["away", "visitante", "a"].includes(hint)) {
+    return "away";
+  }
+
+  const side = scorerSideValue(scorer);
+
+  if (["home", "local", "h"].includes(side)) {
+    return "home";
+  }
+
+  if (["away", "visitante", "a"].includes(side)) {
+    return "away";
+  }
+
+  if (scorer.local === true || scorer.isHome === true || scorer.home === true) {
+    return "home";
+  }
+
+  if (scorer.visitante === true || scorer.isAway === true || scorer.away === true) {
+    return "away";
+  }
+
+  return "";
+}
+
+function knownScorerSide(scorer, home, away) {
+  const aliases = scorerKnownTeamAliases(scorer);
+
+  if (!aliases.length) {
+    return "";
+  }
+
+  const knownHome = aliasesMatchTeam(aliases, home);
+  const knownAway = aliasesMatchTeam(aliases, away);
+
+  if (knownHome && !knownAway) return "home";
+  if (knownAway && !knownHome) return "away";
+
+  return "";
+}
+
+function scorerIsForcedOwnGoal(scorer) {
+  return SCORER_FORCED_OWN_GOAL_PLAYERS.has(scorerPlayerKey(scorer));
+}
+
+function scorerDisplayTypeLabel(scorer, side = "unknown", teamName = "") {
+  const original = scorerTypeLabel(scorer);
+
+  if (original !== "Gol") {
+    return original;
+  }
+
+  const aliases = scorerKnownTeamAliases(scorer);
+
+  // Si conocemos el club del jugador y el gol está asignado al rival, mostrarlo como gol en contra.
+  // Caso real: Arturo Vidal aparece como gol para Ñublense, debe verse como (E.C.).
+  if (aliases.length && teamName && !aliasesMatchTeam(aliases, teamName)) {
+    return "(E.C.)";
+  }
+
+  return original;
 }
 
 function scorerTeamText(scorer) {
@@ -3097,13 +3191,13 @@ function normalizeScorerList(match) {
 
 function scorerBelongsToSide(scorer, home, away) {
   const team = scorerTeamText(scorer);
+  const knownSide = knownScorerSide(scorer, home, away);
+  const explicitSide = explicitScorerSide(scorer);
 
   const teamMatchesHome = teamValueMatches(team, home);
   const teamMatchesAway = teamValueMatches(team, away);
 
-  // Primero mandan los nombres de equipo.
-  // Si el Worker dice local_visitante="home" pero equipo="Paris Saint-Germain",
-  // el gol debe ir al lado visitante.
+  // 1) Si el dato trae el equipo correcto, manda el nombre del equipo.
   if (teamMatchesHome && !teamMatchesAway) {
     return "home";
   }
@@ -3112,32 +3206,19 @@ function scorerBelongsToSide(scorer, home, away) {
     return "away";
   }
 
-  const hint = String(scorer._sideHint || "").toLowerCase();
+  // 2) Si conocemos el club del jugador, corregimos lados mal enviados por la API.
+  // Caso: Bradley Barcola debe ir del lado Paris Saint-Germain, no Paris FC.
+  if (knownSide) {
+    if (explicitSide && explicitSide !== knownSide && scorerIsForcedOwnGoal(scorer)) {
+      return explicitSide;
+    }
 
-  if (["home", "local", "h"].includes(hint)) {
-    return "home";
+    return knownSide;
   }
 
-  if (["away", "visitante", "a"].includes(hint)) {
-    return "away";
-  }
-
-  const side = scorerSideValue(scorer);
-
-  if (["home", "local", "h"].includes(side)) {
-    return "home";
-  }
-
-  if (["away", "visitante", "a"].includes(side)) {
-    return "away";
-  }
-
-  if (scorer.local === true || scorer.isHome === true || scorer.home === true) {
-    return "home";
-  }
-
-  if (scorer.visitante === true || scorer.isAway === true || scorer.away === true) {
-    return "away";
+  // 3) Si no hay equipo/jugador conocido, usamos el lado explícito del payload.
+  if (explicitSide) {
+    return explicitSide;
   }
 
   return "unknown";
@@ -3146,7 +3227,7 @@ function scorerBelongsToSide(scorer, home, away) {
 function goalItemMarkup(scorer, side = "unknown", teamName = "") {
   const minute = scorerMinute(scorer);
   const player = scorerName(scorer);
-  const typeLabel = scorerTypeLabel(scorer);
+  const typeLabel = scorerDisplayTypeLabel(scorer, side, teamName);
   const sideClass = side === "home" ? "is-home-goal" : side === "away" ? "is-away-goal" : "is-unknown-goal";
 
   if (!player) {
@@ -3162,174 +3243,6 @@ function goalItemMarkup(scorer, side = "unknown", teamName = "") {
   `;
 }
 
-
-const PLAYER_TEAM_HINTS = [
-  { player: "Bradley Barcola", team: "Paris Saint-Germain" },
-  { player: "Arturo Vidal", team: "Colo Colo" },
-];
-
-function scoreGoalsForSide(match) {
-  const score = scoreMarkup(match);
-  const scoreMatch = String(score || "").match(/(\d+)\s*-\s*(\d+)/);
-
-  if (!scoreMatch) {
-    return null;
-  }
-
-  const homeGoals = Number(scoreMatch[1]);
-  const awayGoals = Number(scoreMatch[2]);
-
-  if (!Number.isFinite(homeGoals) || !Number.isFinite(awayGoals)) {
-    return null;
-  }
-
-  return {
-    home: homeGoals,
-    away: awayGoals,
-    total: homeGoals + awayGoals,
-  };
-}
-
-function playerHintTeam(scorer) {
-  const player = normalizeTeamForCompare(scorerName(scorer));
-
-  if (!player) {
-    return "";
-  }
-
-  const hint = PLAYER_TEAM_HINTS.find((item) => {
-    const hintPlayer = normalizeTeamForCompare(item.player);
-    return player === hintPlayer || player.includes(hintPlayer) || hintPlayer.includes(player);
-  });
-
-  return hint?.team || "";
-}
-
-function playerHintSide(scorer, home, away) {
-  const team = playerHintTeam(scorer);
-
-  if (!team) {
-    return "";
-  }
-
-  if (teamValueMatches(team, home)) {
-    return "home";
-  }
-
-  if (teamValueMatches(team, away)) {
-    return "away";
-  }
-
-  return "";
-}
-
-function cloneGoalWithRenderInfo(scorer, side, home, away) {
-  const hintSide = playerHintSide(scorer, home, away);
-  const typeLabel = scorerTypeLabel(scorer);
-  const looksOwnGoal = hintSide && side && side !== "unknown" && hintSide !== side;
-
-  return {
-    ...scorer,
-    _renderSide: side,
-    _playerHintSide: hintSide || null,
-    _renderTypeLabel: looksOwnGoal && typeLabel === "Gol" ? "(E.C.)" : typeLabel,
-  };
-}
-
-function goalPlayerKey(scorer) {
-  return normalizeTeamForCompare(scorerName(scorer));
-}
-
-function rebalanceScorersByScore(match, scorers, home, away) {
-  const expected = scoreGoalsForSide(match);
-
-  const assigned = scorers.map((scorer) => ({
-    scorer,
-    side: scorerBelongsToSide(scorer, home, away),
-    hintSide: playerHintSide(scorer, home, away),
-  }));
-
-  if (!expected || expected.total !== assigned.length) {
-    return assigned.map((item) => cloneGoalWithRenderInfo(item.scorer, item.side, home, away));
-  }
-
-  const countSide = (side) => assigned.filter((item) => item.side === side).length;
-
-  const moveOne = (from, to, predicate) => {
-    if (countSide(from) <= expected[from] || countSide(to) >= expected[to]) {
-      return false;
-    }
-
-    const item = assigned.find((candidate) => candidate.side === from && predicate(candidate));
-
-    if (!item) {
-      return false;
-    }
-
-    item.side = to;
-    return true;
-  };
-
-  // 1) Si un lado tiene goles de más, movemos primero jugadores con pista clara del otro equipo.
-  for (let i = 0; i < assigned.length; i += 1) {
-    moveOne("home", "away", (item) => item.hintSide === "away");
-    moveOne("away", "home", (item) => item.hintSide === "home");
-  }
-
-  // 2) Si todavía sobra, usamos grupos por jugador. Ejemplo: marcador 2-1 y tres goles
-  // del mismo lado; el jugador que aparece una vez suele ser el gol del equipo que hizo 1.
-  const tryMoveGroup = (from, to) => {
-    if (countSide(from) <= expected[from] || countSide(to) >= expected[to]) {
-      return false;
-    }
-
-    const needed = expected[to] - countSide(to);
-
-    if (needed <= 0) {
-      return false;
-    }
-
-    const groups = new Map();
-
-    assigned.forEach((item) => {
-      if (item.side !== from) return;
-      const key = goalPlayerKey(item.scorer);
-      if (!key) return;
-      if (!groups.has(key)) groups.set(key, []);
-      groups.get(key).push(item);
-    });
-
-    const exactGroup = Array.from(groups.values()).find((items) => items.length === needed);
-
-    if (!exactGroup) {
-      return false;
-    }
-
-    exactGroup.forEach((item) => {
-      item.side = to;
-    });
-
-    return true;
-  };
-
-  tryMoveGroup("home", "away");
-  tryMoveGroup("away", "home");
-
-  // 3) Último recurso: si el total debe encajar con el marcador, movemos los últimos goles sobrantes.
-  const forceBalance = (from, to) => {
-    while (countSide(from) > expected[from] && countSide(to) < expected[to]) {
-      const item = [...assigned].reverse().find((candidate) => candidate.side === from);
-      if (!item) break;
-      item.side = to;
-    }
-  };
-
-  forceBalance("home", "away");
-  forceBalance("away", "home");
-
-  return assigned.map((item) => cloneGoalWithRenderInfo(item.scorer, item.side, home, away));
-}
-
 function scorersMarkup(match, home = "", away = "") {
   const scorers = normalizeScorerList(match);
 
@@ -3337,13 +3250,12 @@ function scorersMarkup(match, home = "", away = "") {
     return "";
   }
 
-  const scorersBalanceados = rebalanceScorersByScore(match, scorers, home, away);
   const homeGoals = [];
   const awayGoals = [];
   const unknownGoals = [];
 
-  scorersBalanceados.forEach((scorer) => {
-    const side = scorer._renderSide || scorerBelongsToSide(scorer, home, away);
+  scorers.forEach((scorer) => {
+    const side = scorerBelongsToSide(scorer, home, away);
 
     if (side === "home") {
       homeGoals.push(scorer);
@@ -3979,59 +3891,6 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
   aplicarFallbackLogosLiga();
 }
 
-async function precargarIncidenciasParaPrimerRender(matches) {
-  const base = Array.isArray(matches) ? matches : [];
-
-  const partidosParaIncidencias = uniqueMatches(base)
-    .filter(partidoDebeConsultarIncidencias)
-    .sort((a, b) => prioridadConsultaIncidencias(a) - prioridadConsultaIncidencias(b))
-    .slice(0, 80);
-
-  if (!partidosParaIncidencias.length) {
-    return base;
-  }
-
-  const cargar = async () => {
-    const results = await Promise.allSettled(
-      partidosParaIncidencias.map(async (match) => {
-        const payload = await fetchIncidenciasPartido(match);
-        return {
-          key: incidenciaCacheKey(match),
-          payload,
-        };
-      })
-    );
-
-    const incidenciasPorKey = new Map();
-
-    for (const result of results) {
-      if (result.status !== "fulfilled" || !result.value?.payload) {
-        continue;
-      }
-
-      incidenciasPorKey.set(result.value.key, result.value.payload);
-    }
-
-    if (!incidenciasPorKey.size) {
-      return base;
-    }
-
-    return aplicarIncidenciasPersistidasALista(
-      sortAgendaMatchesStable(
-        mergeMatchesWithIncidencias(base, incidenciasPorKey)
-      )
-    );
-  };
-
-  // No dejamos la pantalla esperando indefinidamente:
-  // si Worker 2 tarda más de 3,5s, mostramos la agenda y se completa luego.
-  const timeout = new Promise((resolve) => {
-    window.setTimeout(() => resolve(base), 3500);
-  });
-
-  return Promise.race([cargar(), timeout]);
-}
-
 async function loadAgenda(date = currentAgendaDate) {
   const selectedDate = localDateISO(date);
 
@@ -4051,15 +3910,13 @@ async function loadAgenda(date = currentAgendaDate) {
     const data = await fetchAgendaPayload();
     const partidos = Array.isArray(data.partidos) ? data.partidos : [];
 
-    let dailyMatches = aplicarIncidenciasPersistidasALista(
+    const dailyMatches = aplicarIncidenciasPersistidasALista(
       sortAgendaMatchesStable(
         uniqueMatches(partidos).filter((match) =>
           agendaMatchesSelectedDate(match, selectedDate)
         )
       )
     );
-
-    dailyMatches = await precargarIncidenciasParaPrimerRender(dailyMatches);
 
     if (selectedDate === localDateISO()) {
       agendaLiveMatches = dailyMatches.filter(isAgendaMatchLive);
@@ -4085,24 +3942,21 @@ async function loadAgenda(date = currentAgendaDate) {
     }
 
     // El live se actualiza después, sin bloquear ni reordenar la primera carga.
-    // Las incidencias principales ya se precargaron antes del primer render.
-    window.setTimeout(() => refreshAgendaLive({ omitirIncidencias: true }), 250);
-    window.setTimeout(refreshIncidenciasLive, 10000);
+    window.setTimeout(refreshAgendaLive, 250);
+    window.setTimeout(refreshIncidenciasLive, 1500);
   } catch (error) {
     console.error("Error actualizando agenda desde Worker:", error);
 
     const cachedData = readAnyJsonCache(CACHE_KEY_AGENDA);
 
     if (cachedData && Array.isArray(cachedData.partidos)) {
-      let cachedMatches = aplicarIncidenciasPersistidasALista(
+      const cachedMatches = aplicarIncidenciasPersistidasALista(
         sortAgendaMatchesStable(
           uniqueMatches(cachedData.partidos).filter((match) =>
             agendaMatchesSelectedDate(match, selectedDate)
           )
         )
       );
-
-      cachedMatches = await precargarIncidenciasParaPrimerRender(cachedMatches);
 
       renderAgenda(cachedMatches, AGENDA_ENDPOINT, {
         source: cachedData.fuente,
@@ -4128,8 +3982,6 @@ async function loadAgenda(date = currentAgendaDate) {
 }
 
 function recargarAgendaConTvSiCorresponde() {
-  // Antes esto forzaba loadAgenda() otra vez y redibujaba toda la grilla.
-  // Ahora solo actualizamos TV si la agenda ya está pintada.
   if (activeTab !== "agenda") {
     return;
   }
@@ -4139,47 +3991,11 @@ function recargarAgendaConTvSiCorresponde() {
     return;
   }
 
-  if (!agendaCurrentMatches.length || !leagueGrid.querySelector(".agenda-row")) {
-    return;
-  }
-
-  actualizarTvEnDOM(agendaCurrentMatches);
+  agendaLoadedDate = "";
+  loadAgenda(currentAgendaDate);
 }
 
-function actualizarTvEnDOM(matches) {
-  const list = Array.isArray(matches) ? matches : [];
-
-  for (const match of list) {
-    const timerId = agendaTimerKey(match);
-    const row = Array.from(document.querySelectorAll("[data-live-timer-id]"))
-      .find((el) => el.dataset.liveTimerId === timerId)
-      ?.closest(".agenda-row");
-
-    if (!row) continue;
-
-    const teamsBox = row.querySelector(".agenda-teams");
-    if (!teamsBox) continue;
-
-    const tv = obtenerTvPartidoSync(match);
-    const nextHtml = renderTvPartido(tv);
-    const currentBox = teamsBox.querySelector(".tv-box");
-
-    if (!nextHtml.trim()) {
-      if (currentBox) currentBox.remove();
-      continue;
-    }
-
-    if (currentBox) {
-      if (currentBox.outerHTML !== nextHtml) {
-        currentBox.outerHTML = nextHtml;
-      }
-    } else {
-      teamsBox.insertAdjacentHTML("beforeend", nextHtml);
-    }
-  }
-}
-
-async function refreshAgendaLive(options = {}) {
+async function refreshAgendaLive() {
   if (activeTab !== "agenda") {
     return;
   }
@@ -4239,9 +4055,7 @@ async function refreshAgendaLive(options = {}) {
       setUtilityStatus(agendaLiveMatches.length ? "En vivo actualizado" : "");
     }
 
-    if (!options.omitirIncidencias) {
-      window.setTimeout(refreshIncidenciasLive, 500);
-    }
+    window.setTimeout(refreshIncidenciasLive, 500);
   } catch (error) {
     console.warn("No se pudo actualizar solo el vivo", error);
     setUtilityStatus("Agenda guardada. Reintentando vivo...");
@@ -4730,13 +4544,14 @@ showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
 cargarIncidenciasPersistidas();
-cargarTvPartidos()
-  .catch(() => null)
-  .finally(() => {
-    loadAgenda();
-  });
-
+loadAgenda();
 loadEvents();
+
+cargarTvPartidos()
+  .then(recargarAgendaConTvSiCorresponde)
+  .catch(() => {
+    // La agenda no debe depender del JSON de TV.
+  });
 
 iniciarAgendaVisualTimer();
 
