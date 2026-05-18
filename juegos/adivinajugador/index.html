@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adivina el Jugador | Juegos de Fulbo</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero-card">
+      <div>
+        <p class="eyebrow">Juegos de Fulbo</p>
+        <h1>Adivina el jugador</h1>
+        <p class="hero-text">
+          Escribí un jugador y compará país, club, competición, posición, edad y altura hasta descubrir al jugador oculto.
+        </p>
+      </div>
+      <div class="score-box">
+        <span id="modeLabel">Modo: Todos</span>
+        <strong><span id="triesLeft">8</span> intentos</strong>
+      </div>
+    </section>
+
+    <section class="game-card">
+      <div class="toolbar">
+        <label class="field">
+          <span>Modo</span>
+          <select id="modeSelect">
+            <option value="all">Todos</option>
+            <option value="easy">Fácil - Europa top</option>
+            <option value="normal">Normal - Europa + Sudamérica</option>
+            <option value="hard">Difícil - Todas las ligas</option>
+          </select>
+        </label>
+
+        <label class="field search-field">
+          <span>Jugador</span>
+          <input
+            id="playerInput"
+            type="text"
+            placeholder="Ej: Messi, Mbappé, Cano..."
+            autocomplete="off"
+            list="playersList"
+          />
+          <datalist id="playersList"></datalist>
+        </label>
+
+        <button id="guessBtn" class="primary-btn">Probar</button>
+        <button id="newGameBtn" class="ghost-btn">Nuevo</button>
+      </div>
+
+      <div id="message" class="message"></div>
+
+      <div class="hints-row">
+        <div class="hint-card">
+          <span>Competición</span>
+          <strong id="secretCompetition">?</strong>
+        </div>
+        <div class="hint-card">
+          <span>Intentos usados</span>
+          <strong id="triesUsed">0/8</strong>
+        </div>
+        <div class="hint-card">
+          <span>Jugadores cargados</span>
+          <strong id="playersCount">0</strong>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="guess-table">
+          <thead>
+            <tr>
+              <th>Jugador</th>
+              <th>País</th>
+              <th>Club</th>
+              <th>Competición</th>
+              <th>Posición</th>
+              <th>Edad</th>
+              <th>Altura</th>
+            </tr>
+          </thead>
+          <tbody id="guessesBody"></tbody>
+        </table>
+      </div>
+
+      <div id="answerCard" class="answer-card hidden"></div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
