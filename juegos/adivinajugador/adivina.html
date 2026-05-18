@@ -13,11 +13,11 @@
         <p class="eyebrow">Juegos de Fulbo</p>
         <h1>Adivina el jugador</h1>
         <p class="hero-text">
-          El jugador oculto se mantiene igual aunque cambies entre Actualidad, Pasado o Mixto. La base usa solo jugadores actuales; después activá las pistas: club, liga, país, posición, edad y altura.
+          Elegí una dificultad y descubrí al jugador oculto usando las pistas de país, club, liga, posición, edad y altura. Cambiar la dificultad no cambia el jugador oculto; solo cambia las ayudas y los intentos disponibles.
         </p>
       </div>
       <div class="score-box">
-        <span id="modeLabel">Modo: Actualidad</span>
+        <span id="modeLabel">Dificultad: Fácil</span>
         <strong><span id="triesLeft">8</span> intentos</strong>
       </div>
     </section>
@@ -25,13 +25,13 @@
     <section class="game-card">
       <div class="mode-panel">
         <div>
-          <span class="panel-label">Modo de juego</span>
-          <div class="button-group" aria-label="Elegir modo de juego">
-            <button class="chip-btn active" type="button" data-era="actual">Actualidad</button>
-            <button class="chip-btn" type="button" data-era="pasado">Pasado</button>
-            <button class="chip-btn" type="button" data-era="mixto">Mixto</button>
+          <span class="panel-label">Dificultad</span>
+          <div class="button-group" aria-label="Elegir dificultad">
+            <button class="chip-btn active" type="button" data-difficulty="facil">Fácil</button>
+            <button class="chip-btn" type="button" data-difficulty="normal">Normal</button>
+            <button class="chip-btn" type="button" data-difficulty="dificil">Difícil</button>
           </div>
-          <p id="modeHelp" class="mode-help">Pregunta con datos actuales. Cambiar este botón no cambia el jugador oculto.</p>
+          <p id="modeHelp" class="mode-help">Fácil: tenés lista de jugadores al escribir y 8 intentos.</p>
         </div>
 
         <div>
