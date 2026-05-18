@@ -49,7 +49,7 @@
 
     <section class="game-card" id="gameCard">
       <div class="mode-panel">
-        <div>
+        <div class="pistas-block">
           <span class="panel-label">Pistas activas</span>
           <div class="button-group categories" aria-label="Elegir pistas activas">
             <button class="chip-btn active" type="button" data-category="pais">País</button>
@@ -59,6 +59,17 @@
             <button class="chip-btn active" type="button" data-category="edad">Edad</button>
             <button class="chip-btn active" type="button" data-category="altura">Altura</button>
             <button class="chip-btn ghost" id="allCategoriesBtn" type="button">Todas</button>
+          </div>
+        </div>
+
+        <div class="hints-row">
+          <div class="hint-card">
+            <span>Liga del oculto</span>
+            <strong id="secretCompetition">?</strong>
+          </div>
+          <div class="hint-card">
+            <span>Intentos usados</span>
+            <strong id="triesUsed">0/8</strong>
           </div>
         </div>
       </div>
@@ -81,17 +92,6 @@
       </div>
 
       <div id="message" class="message"></div>
-
-      <div class="hints-row">
-        <div class="hint-card">
-          <span>Liga del oculto</span>
-          <strong id="secretCompetition">?</strong>
-        </div>
-        <div class="hint-card">
-          <span>Intentos usados</span>
-          <strong id="triesUsed">0/8</strong>
-        </div>
-      </div>
 
       <div class="table-wrap">
         <table class="guess-table">
