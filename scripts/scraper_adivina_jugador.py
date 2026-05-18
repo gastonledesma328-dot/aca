@@ -1,568 +1,516 @@
 import json
+import os
 import re
 import time
 import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 import requests
 
 OUTPUT_FILE = Path("adivinajugador/jugadores.json")
-TIMEOUT = 25
-SLEEP_BETWEEN_REQUESTS = 0.25
-MAX_JUGADORES_POR_CLUB = 36
-MIN_EDAD = 18
-MAX_EDAD = 45
+MIN_JUGADORES_VALIDOS = 100
+REQUEST_TIMEOUT = 25
+SLEEP_BETWEEN_REQUESTS = 0.08
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36",
-    "Accept": "application/json, text/plain, */*",
+    "Accept": "application/json,text/plain,*/*",
     "Referer": "https://www.espn.com/",
 }
 
-# Objetivo: que el juego tenga jugadores famosos y actuales.
-# Se agregan ligas necesarias para cracks que no están en Europa top:
-# MLS, Saudi Pro League, Liga Portugal, Turquía, Liga MX y más clubes de Brasil.
-LEAGUES = [
-    {
+# IMPORTANTE:
+# No dependemos solo de nombres especiales. Primero consultamos el roster,
+# después consultamos el detalle del atleta en ESPN para conseguir mejor posición,
+# país, altura y foto. Si ESPN trae solo una letra o un grupo general, usamos reglas.
+
+LIGAS = {
+    "Premier League": {
         "slug": "eng.1",
-        "competicion": "Premier League",
-        "teams": [
-            ["Arsenal"],
-            ["Aston Villa"],
-            ["Chelsea"],
-            ["Liverpool"],
-            ["Manchester City", "Man City"],
-            ["Manchester United", "Man United"],
-            ["Newcastle United", "Newcastle"],
-            ["Tottenham Hotspur", "Tottenham", "Spurs"],
+        "clubes": [
+            "Arsenal", "Aston Villa", "Chelsea", "Liverpool", "Manchester City",
+            "Manchester United", "Newcastle United", "Tottenham Hotspur",
         ],
     },
-    {
+    "LaLiga": {
         "slug": "esp.1",
-        "competicion": "LaLiga",
-        "teams": [
-            ["Athletic Club", "Athletic Bilbao"],
-            ["Atlético Madrid", "Atletico Madrid"],
-            ["Barcelona", "FC Barcelona"],
-            ["Real Betis", "Betis"],
-            ["Real Madrid"],
-            ["Real Sociedad"],
-            ["Sevilla"],
-            ["Villarreal"],
+        "clubes": [
+            "Real Madrid", "Barcelona", "Atlético Madrid", "Villarreal",
+            "Real Betis", "Athletic Club", "Real Sociedad", "Sevilla",
         ],
     },
-    {
+    "Serie A": {
         "slug": "ita.1",
-        "competicion": "Serie A",
-        "teams": [
-            ["AC Milan", "Milan"],
-            ["AS Roma", "Roma"],
-            ["Atalanta"],
-            ["Fiorentina"],
-            ["Internazionale", "Inter", "Inter Milan"],
-            ["Juventus"],
-            ["Lazio"],
-            ["Napoli"],
+        "clubes": [
+            "Internazionale", "Juventus", "AC Milan", "Napoli", "AS Roma",
+            "Lazio", "Atalanta", "Fiorentina",
         ],
     },
-    {
+    "Bundesliga": {
         "slug": "ger.1",
-        "competicion": "Bundesliga",
-        "teams": [
-            ["Bayer Leverkusen"],
-            ["Bayern Munich", "Bayern München"],
-            ["Borussia Dortmund", "Dortmund"],
-            ["Eintracht Frankfurt"],
-            ["RB Leipzig"],
-            ["VfB Stuttgart", "Stuttgart"],
+        "clubes": [
+            "Bayern Munich", "Borussia Dortmund", "Bayer Leverkusen",
+            "RB Leipzig", "Eintracht Frankfurt", "VfB Stuttgart",
         ],
     },
-    {
+    "Ligue 1": {
         "slug": "fra.1",
-        "competicion": "Ligue 1",
-        "teams": [
-            ["Lens", "RC Lens"],
-            ["Lille", "LOSC Lille"],
-            ["Lyon", "Olympique Lyon"],
-            ["Marseille", "Olympique Marseille"],
-            ["Monaco", "AS Monaco"],
-            ["Paris Saint-Germain", "PSG"],
+        "clubes": [
+            "Paris Saint-Germain", "Marseille", "Lyon", "Lille", "Lens", "Monaco",
         ],
     },
-    {
+    "Brasileirão": {
         "slug": "bra.1",
-        "competicion": "Brasileirão",
-        "teams": [
-            ["Atlético Mineiro", "Atletico Mineiro"],
-            ["Botafogo"],
-            ["Corinthians"],
-            ["Cruzeiro"],
-            ["Flamengo"],
-            ["Fluminense"],
-            ["Grêmio", "Gremio"],
-            ["Internacional"],
-            ["Palmeiras"],
-            ["Santos"],
-            ["São Paulo", "Sao Paulo"],
+        "clubes": [
+            "Botafogo", "Flamengo", "Fluminense", "Palmeiras", "São Paulo",
+            "Santos", "Corinthians", "Grêmio", "Cruzeiro", "Internacional",
+            "Atlético Mineiro",
         ],
     },
-    {
+    "Liga Profesional Argentina": {
         "slug": "arg.1",
-        "competicion": "Liga Profesional Argentina",
-        "teams": [
-            ["Boca Juniors"],
-            ["Estudiantes de La Plata", "Estudiantes"],
-            ["Independiente"],
-            ["Racing Club"],
-            ["River Plate"],
-            ["San Lorenzo"],
-            ["Vélez Sarsfield", "Velez"],
+        "clubes": [
+            "Boca Juniors", "River Plate", "Racing Club", "Independiente",
+            "San Lorenzo", "Estudiantes de La Plata", "Vélez Sarsfield", "Rosario Central",
         ],
     },
-    {
+    "Eredivisie": {
         "slug": "ned.1",
-        "competicion": "Eredivisie",
-        "teams": [
-            ["Ajax Amsterdam", "Ajax"],
-            ["AZ Alkmaar", "AZ"],
-            ["FC Twente", "Twente"],
-            ["Feyenoord Rotterdam", "Feyenoord"],
-            ["PSV Eindhoven", "PSV"],
+        "clubes": [
+            "Ajax Amsterdam", "PSV Eindhoven", "Feyenoord Rotterdam", "AZ Alkmaar", "FC Twente",
         ],
     },
-    {
+    "Liga BetPlay": {
         "slug": "col.1",
-        "competicion": "Liga BetPlay",
-        "teams": [
-            ["América de Cali", "America de Cali"],
-            ["Atlético Junior", "Junior", "Junior FC"],
-            ["Atlético Nacional", "Atletico Nacional"],
-            ["Deportivo Cali"],
-            ["Deportivo Pasto"],
-            ["Independiente Medellín", "Independiente Medellin", "Medellin"],
-            ["Millonarios"],
-            ["Once Caldas"],
-            ["Santa Fe", "Independiente Santa Fe"],
+        "clubes": [
+            "América de Cali", "Atlético Nacional", "Atlético Junior", "Once Caldas",
+            "Deportivo Pasto", "Millonarios", "Santa Fe", "Deportes Tolima",
         ],
     },
-    {
-        "slug": "por.1",
-        "competicion": "Liga Portugal",
-        "teams": [
-            ["Benfica", "SL Benfica"],
-            ["FC Porto", "Porto"],
-            ["Sporting CP", "Sporting Lisbon", "Sporting"],
-            ["Braga", "SC Braga"],
-        ],
-    },
-    {
+    "MLS": {
         "slug": "usa.1",
-        "competicion": "MLS",
-        "teams": [
-            ["Inter Miami CF", "Inter Miami"],
-            ["LAFC", "Los Angeles FC"],
-            ["LA Galaxy"],
-            ["Atlanta United FC", "Atlanta United"],
-            ["New York City FC", "NYCFC"],
+        "clubes": [
+            "Inter Miami CF", "LAFC", "LA Galaxy", "Atlanta United FC", "New York City FC",
         ],
     },
-    {
+    "Saudi Pro League": {
         "slug": "ksa.1",
-        "competicion": "Saudi Pro League",
-        "teams": [
-            ["Al Nassr", "Al-Nassr"],
-            ["Al Hilal", "Al-Hilal"],
-            ["Al Ittihad", "Al-Ittihad"],
-            ["Al Ahli", "Al-Ahli"],
-            ["Al Qadsiah", "Al-Qadsiah"],
-        ],
+        "clubes": ["Al Nassr", "Al Hilal", "Al Ittihad", "Al Ahli"],
     },
-    {
+    "Liga Portugal": {
+        "slug": "por.1",
+        "clubes": ["Benfica", "FC Porto", "Sporting CP", "Braga"],
+    },
+    "Süper Lig": {
         "slug": "tur.1",
-        "competicion": "Süper Lig",
-        "teams": [
-            ["Besiktas", "Beşiktaş"],
-            ["Fenerbahce", "Fenerbahçe"],
-            ["Galatasaray"],
-            ["Trabzonspor"],
-        ],
+        "clubes": ["Galatasaray", "Fenerbahçe", "Besiktas", "Trabzonspor"],
     },
-    {
+    "Liga MX": {
         "slug": "mex.1",
-        "competicion": "Liga MX",
-        "teams": [
-            ["América", "Club América", "Club America"],
-            ["Cruz Azul"],
-            ["Guadalajara", "Chivas"],
-            ["Monterrey"],
-            ["Tigres UANL", "Tigres"],
-            ["Toluca"],
-        ],
+        "clubes": ["América", "Cruz Azul", "Guadalajara", "Monterrey", "Tigres UANL"],
     },
-]
+}
 
-# Si ESPN no encuentra un club o un jugador muy famoso queda afuera por error del roster,
-# estos jugadores se agregan igual y luego se deduplican por nombre + club.
-# Mantener solo jugadores actuales, no retirados.
-FAMOUS_FALLBACK = [
+# Fallback solo para asegurar que los cracks muy conocidos estén si ESPN falla justo en ese equipo.
+FAMOSOS_FALLBACK = [
     {
-        "nombre": "Lionel Messi",
-        "pais": "Argentina",
-        "club": "Inter Miami CF",
-        "liga": "MLS",
-        "competicion": "MLS",
-        "posicion": "F",
-        "edad": 38,
-        "altura": 170,
-        "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/45843.png",
-    },
-    {
-        "nombre": "Cristiano Ronaldo",
-        "pais": "Portugal",
-        "club": "Al Nassr",
-        "liga": "Saudi Pro League",
-        "competicion": "Saudi Pro League",
-        "posicion": "F",
-        "edad": 41,
-        "altura": 187,
-        "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/22774.png",
-    },
-    {
-        "nombre": "Neymar",
-        "pais": "Brazil",
-        "club": "Santos",
-        "liga": "Brasileirão",
-        "competicion": "Brasileirão",
-        "posicion": "F",
-        "edad": 34,
-        "altura": 175,
+        "nombre": "Neymar", "pais": "Brazil", "club": "Santos", "liga": "Brasileirão",
+        "competicion": "Brasileirão", "posicion": "F", "edad": 34, "altura": 175,
         "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/132948.png",
+        "espn_id": "132948", "posicion_detalle": "Forward",
+    },
+    {
+        "nombre": "Lionel Messi", "pais": "Argentina", "club": "Inter Miami CF", "liga": "MLS",
+        "competicion": "MLS", "posicion": "F", "edad": 38, "altura": 170,
+        "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/45843.png",
+        "espn_id": "45843", "posicion_detalle": "Forward",
+    },
+    {
+        "nombre": "Cristiano Ronaldo", "pais": "Portugal", "club": "Al Nassr", "liga": "Saudi Pro League",
+        "competicion": "Saudi Pro League", "posicion": "F", "edad": 41, "altura": 187,
+        "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/22774.png",
+        "espn_id": "22774", "posicion_detalle": "Forward",
     },
 ]
 
+TEAM_ALIASES = {
+    "Internazionale": ["Inter Milan", "Internazionale"],
+    "AC Milan": ["AC Milan", "Milan"],
+    "AS Roma": ["AS Roma", "Roma"],
+    "Atlético Madrid": ["Atletico Madrid", "Atlético Madrid"],
+    "Paris Saint-Germain": ["Paris Saint-Germain", "PSG"],
+    "Bayern Munich": ["Bayern Munich", "Bayern München"],
+    "Borussia Dortmund": ["Borussia Dortmund", "Dortmund"],
+    "RB Leipzig": ["RB Leipzig", "Leipzig"],
+    "VfB Stuttgart": ["VfB Stuttgart", "Stuttgart"],
+    "Feyenoord Rotterdam": ["Feyenoord Rotterdam", "Feyenoord"],
+    "PSV Eindhoven": ["PSV Eindhoven", "PSV"],
+    "Atlético Junior": ["Atlético Junior", "Junior", "Junior FC"],
+    "América": ["América", "Club América", "America"],
+    "Guadalajara": ["Guadalajara", "Chivas"],
+    "Sporting CP": ["Sporting CP", "Sporting"],
+    "FC Porto": ["FC Porto", "Porto"],
+    "Besiktas": ["Besiktas", "Beşiktaş"],
+}
 
-def normalizar_texto(texto):
-    texto = str(texto or "")
-    texto = unicodedata.normalize("NFD", texto)
-    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
-    texto = texto.lower()
-    texto = re.sub(r"[^a-z0-9]+", " ", texto)
-    return re.sub(r"\s+", " ", texto).strip()
+
+def slug(text):
+    text = str(text or "")
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(ch for ch in text if not unicodedata.combining(ch))
+    text = text.lower()
+    text = re.sub(r"[^a-z0-9]+", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def jugador_key(j):
+    return f"{slug(j.get('nombre'))}|{slug(j.get('club'))}|{slug(j.get('liga'))}"
 
 
 def get_json(url):
     try:
-        r = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
-        print(f"🌐 {r.status_code} {url}")
-        if not r.ok:
+        r = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+        if r.status_code != 200:
             return None
         return r.json()
-    except Exception as e:
-        print(f"⚠️ Error leyendo {url}: {e}")
+    except Exception:
         return None
 
 
-def buscar_valor(obj, keys):
-    if isinstance(obj, dict):
-        for key in keys:
-            if key in obj and obj[key] not in [None, ""]:
-                return obj[key]
-        for value in obj.values():
-            found = buscar_valor(value, keys)
-            if found not in [None, ""]:
-                return found
-    elif isinstance(obj, list):
-        for item in obj:
-            found = buscar_valor(item, keys)
-            if found not in [None, ""]:
-                return found
+def first_valid(*values):
+    for v in values:
+        if v is None:
+            continue
+        if isinstance(v, str) and not v.strip():
+            continue
+        if v in ["Sin datos", "-", 0, "0"]:
+            continue
+        return v
     return None
 
 
-def equipos_desde_respuesta(data):
-    equipos = []
-
-    def walk(obj):
-        if isinstance(obj, dict):
-            if "team" in obj and isinstance(obj["team"], dict):
-                team = obj["team"]
-                if team.get("id") and (team.get("displayName") or team.get("name")):
-                    equipos.append(team)
-            elif obj.get("id") and (obj.get("displayName") or obj.get("name")) and (obj.get("logos") or obj.get("abbreviation")):
-                equipos.append(obj)
-            for value in obj.values():
-                walk(value)
-        elif isinstance(obj, list):
-            for item in obj:
-                walk(item)
-
-    walk(data)
-
-    vistos = set()
-    salida = []
-    for team in equipos:
-        tid = str(team.get("id") or "")
-        if not tid or tid in vistos:
-            continue
-        vistos.add(tid)
-        salida.append(team)
-    return salida
-
-
-def cargar_equipos_liga(league_slug):
-    urls = [
-        f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/teams",
-        f"https://site.web.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/teams",
-    ]
-
-    for url in urls:
-        data = get_json(url)
-        if not data:
-            continue
-        equipos = equipos_desde_respuesta(data)
-        if equipos:
-            print(f"✅ {league_slug}: {len(equipos)} equipos encontrados")
-            return equipos
-    print(f"⚠️ {league_slug}: no se encontraron equipos")
-    return []
-
-
-def match_equipo(team, aliases):
-    valores = [
-        team.get("displayName"),
-        team.get("name"),
-        team.get("shortDisplayName"),
-        team.get("abbreviation"),
-        team.get("nickname"),
-        team.get("location"),
-    ]
-    team_norms = {normalizar_texto(v) for v in valores if v}
-
-    for alias in aliases:
-        a = normalizar_texto(alias)
-        if not a:
-            continue
-        for t in team_norms:
-            if a == t or a in t or t in a:
-                return True
-    return False
-
-
-def encontrar_equipo(equipos, aliases):
-    for team in equipos:
-        if match_equipo(team, aliases):
-            return team
-    return None
-
-
-def limpiar_altura(value):
-    if value in [None, "", "-"]:
+def parse_height_cm(value):
+    if value is None:
         return 0
     if isinstance(value, (int, float)):
         # ESPN a veces entrega pulgadas.
-        if 55 <= value <= 90:
+        if 50 <= value <= 90:
             return int(round(value * 2.54))
-        if 140 <= value <= 220:
+        if 120 <= value <= 230:
             return int(round(value))
         return 0
 
-    text = str(value)
-    nums = re.findall(r"\d+(?:\.\d+)?", text)
-    if not nums:
+    s = str(value).strip()
+    if not s:
         return 0
 
-    n = float(nums[0])
-    if "cm" in text.lower() and 140 <= n <= 220:
-        return int(round(n))
-    if "m" in text.lower() and 1.4 <= n <= 2.2:
-        return int(round(n * 100))
-    if 55 <= n <= 90:
-        return int(round(n * 2.54))
-    if 140 <= n <= 220:
-        return int(round(n))
+    m = re.search(r"(\d+)\s*cm", s, re.I)
+    if m:
+        return int(m.group(1))
+
+    # Formatos como 5' 9" o 6'2"
+    m = re.search(r"(\d+)\s*'\s*(\d+)", s)
+    if m:
+        feet = int(m.group(1))
+        inches = int(m.group(2))
+        return int(round((feet * 12 + inches) * 2.54))
+
+    nums = re.findall(r"\d+", s)
+    if nums:
+        n = int(nums[0])
+        if 120 <= n <= 230:
+            return n
+        if 50 <= n <= 90:
+            return int(round(n * 2.54))
+
     return 0
 
 
-def limpiar_edad(value):
+def parse_age(value):
     try:
-        edad = int(value)
-        if MIN_EDAD <= edad <= MAX_EDAD:
-            return edad
+        n = int(value)
+        if 14 <= n <= 50:
+            return n
     except Exception:
         pass
     return 0
 
 
-def map_posicion(pos):
-    text = normalizar_texto(pos)
-    if not text:
-        return ""
-    if text in ["g", "gk"] or "goal" in text or "arquero" in text or "portero" in text:
-        return "G"
-    if text in ["d", "df"] or "def" in text or "back" in text or "defensa" in text:
-        return "D"
-    if text in ["m", "mf"] or "mid" in text or "volante" in text or "medioc" in text:
-        return "M"
-    if text in ["f", "fw", "st"] or "forw" in text or "delanter" in text or "wing" in text or "attack" in text:
-        return "F"
-    return pos if str(pos).upper() in ["G", "D", "M", "F"] else ""
-
-
-def foto_jugador(athlete):
-    headshot = athlete.get("headshot")
-    if isinstance(headshot, dict):
-        href = headshot.get("href")
-        if href:
-            return href
-
-    headshots = athlete.get("headshots")
-    if isinstance(headshots, list) and headshots:
-        href = headshots[0].get("href")
-        if href:
-            return href
-
-    links = athlete.get("links") or []
-    if isinstance(links, list) and links:
-        href = links[0].get("href")
-        if href:
-            return href
-
-    player_id = athlete.get("id")
-    if player_id:
-        return f"https://a.espncdn.com/i/headshots/soccer/players/full/{player_id}.png"
-
+def extract_id_from_ref(ref):
+    ref = str(ref or "")
+    m = re.search(r"/athletes/(\d+)", ref)
+    if m:
+        return m.group(1)
+    m = re.search(r"/players/(\d+)", ref)
+    if m:
+        return m.group(1)
     return ""
 
 
-def nacionalidad_jugador(athlete):
-    for key in ["country", "nationality", "birthPlace"]:
-        value = athlete.get(key)
-        if isinstance(value, dict):
-            for subkey in ["displayName", "name", "country", "abbreviation"]:
-                if value.get(subkey):
-                    return value[subkey]
-        elif isinstance(value, str) and value.strip():
-            return value.strip()
-
-    flag = buscar_valor(athlete, ["country", "nationality"])
-    if isinstance(flag, str) and flag.strip():
-        return flag.strip()
-    return "Sin datos"
+def extract_athlete_id(athlete):
+    if not isinstance(athlete, dict):
+        return ""
+    return str(
+        athlete.get("id")
+        or athlete.get("uid")
+        or extract_id_from_ref(athlete.get("$ref"))
+        or extract_id_from_ref(athlete.get("href"))
+        or ""
+    ).strip()
 
 
-def extraer_athletes(data):
-    athletes = []
+def get_nested(d, *path):
+    cur = d
+    for p in path:
+        if not isinstance(cur, dict):
+            return None
+        cur = cur.get(p)
+    return cur
 
-    raw = data.get("athletes") if isinstance(data, dict) else None
-    if isinstance(raw, list):
-        for group in raw:
-            if isinstance(group, dict) and isinstance(group.get("items"), list):
-                for item in group.get("items") or []:
-                    athlete = item.get("athlete") if isinstance(item, dict) else None
-                    if isinstance(athlete, dict):
-                        if "position" not in athlete and group.get("position"):
-                            athlete["position"] = group.get("position")
-                        athletes.append(athlete)
-                    elif isinstance(item, dict):
-                        athletes.append(item)
-            elif isinstance(group, dict):
-                athletes.append(group.get("athlete") or group)
 
-    # Fallback para respuestas con estructura distinta.
-    if not athletes:
-        def walk(obj):
-            if isinstance(obj, dict):
-                if obj.get("displayName") and (obj.get("position") or obj.get("age") or obj.get("headshot")):
-                    athletes.append(obj)
-                for value in obj.values():
-                    walk(value)
-            elif isinstance(obj, list):
-                for item in obj:
-                    walk(item)
-        walk(data)
+def country_from_obj(obj):
+    if not isinstance(obj, dict):
+        return None
+    return first_valid(
+        obj.get("displayName"), obj.get("name"), obj.get("abbreviation"),
+        get_nested(obj, "country", "displayName"),
+        get_nested(obj, "country", "name"),
+        get_nested(obj, "birthPlace", "country"),
+    )
 
-    vistos = set()
-    salida = []
-    for athlete in athletes:
-        aid = str(athlete.get("id") or athlete.get("uid") or athlete.get("displayName") or "")
-        if not aid or aid in vistos:
+
+def position_text_from_obj(obj):
+    if not isinstance(obj, dict):
+        return ""
+    pos = obj.get("position") or obj.get("defaultPosition") or {}
+    texts = []
+    if isinstance(pos, dict):
+        for k in ["displayName", "name", "abbreviation", "shortDisplayName"]:
+            if pos.get(k):
+                texts.append(str(pos.get(k)))
+    for k in ["position", "displayPosition"]:
+        v = obj.get(k)
+        if isinstance(v, str):
+            texts.append(v)
+    return " ".join(texts).strip()
+
+
+def normalizar_posicion_detallada(*texts):
+    raw = " ".join(str(t or "") for t in texts)
+    s = slug(raw)
+
+    # Primero arqueros.
+    if any(x in s for x in ["goalkeeper", "keeper", "portero", "arquero", "golero", "gk"]):
+        return "G"
+
+    # Laterales y carrileros son defensores, aunque ESPN diga wing back.
+    if any(x in s for x in [
+        "left back", "right back", "full back", "fullback", "wing back", "wingback",
+        "center back", "centre back", "defender", "defensa", "defensor", "cb", "lb", "rb",
+    ]):
+        return "D"
+
+    # Extremos, atacantes y delanteros siempre van como delantero para el juego.
+    if any(x in s for x in [
+        "left wing", "right wing", "winger", "wing", "forward", "attacker", "striker",
+        "delantero", "extremo", "punta", "centre forward", "center forward", "cf", "st", "lw", "rw",
+    ]):
+        return "F"
+
+    if any(x in s for x in [
+        "midfielder", "midfield", "mediocampista", "volante", "centrocampista",
+        "defensive midfielder", "attacking midfielder", "central midfielder", "cam", "cdm", "cm", "am", "dm",
+    ]):
+        return "M"
+
+    # Letras simples de ESPN.
+    if s in ["g"]:
+        return "G"
+    if s in ["d"]:
+        return "D"
+    if s in ["f"]:
+        return "F"
+    if s in ["m"]:
+        return "M"
+
+    return "M"
+
+
+def headshot_url(athlete_id, athlete=None):
+    if isinstance(athlete, dict):
+        h = athlete.get("headshot")
+        if isinstance(h, dict):
+            href = h.get("href")
+            if href:
+                return href
+        if isinstance(h, str) and h:
+            return h
+        for img in athlete.get("images") or []:
+            if isinstance(img, dict) and img.get("href"):
+                return img.get("href")
+    if athlete_id:
+        return f"https://a.espncdn.com/i/headshots/soccer/players/full/{athlete_id}.png"
+    return ""
+
+
+def cargar_detalle_atleta(league_slug, athlete_id):
+    if not athlete_id:
+        return {}
+
+    urls = [
+        f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/athletes/{athlete_id}",
+        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{league_slug}/athletes/{athlete_id}?lang=en&region=us",
+        f"https://sports.core.api.espn.com/v3/sports/soccer/{league_slug}/athletes/{athlete_id}?lang=en&region=us",
+        f"https://site.web.api.espn.com/apis/common/v3/sports/soccer/{league_slug}/athletes/{athlete_id}?region=us&lang=en",
+    ]
+
+    merged = {}
+    for url in urls:
+        data = get_json(url)
+        time.sleep(SLEEP_BETWEEN_REQUESTS)
+        if not isinstance(data, dict):
             continue
-        vistos.add(aid)
-        salida.append(athlete)
-    return salida
+
+        # Algunos endpoints envuelven el atleta en "athlete".
+        candidates = [data]
+        if isinstance(data.get("athlete"), dict):
+            candidates.append(data.get("athlete"))
+        if isinstance(data.get("player"), dict):
+            candidates.append(data.get("player"))
+
+        for c in candidates:
+            if not isinstance(c, dict):
+                continue
+            for k, v in c.items():
+                if k not in merged or merged.get(k) in [None, "", "Sin datos", 0]:
+                    merged[k] = v
+
+    return merged
+
+
+def cargar_equipos_liga(league_slug):
+    urls = [
+        f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/teams?limit=500",
+        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{league_slug}/teams?limit=500&lang=en&region=us",
+    ]
+    equipos = []
+    for url in urls:
+        data = get_json(url)
+        if not isinstance(data, dict):
+            continue
+        raw = []
+        if isinstance(data.get("sports"), list):
+            for sport in data.get("sports", []):
+                for league in sport.get("leagues", []) or []:
+                    raw.extend(league.get("teams", []) or [])
+        raw.extend(data.get("items") or [])
+        raw.extend(data.get("teams") or [])
+
+        for item in raw:
+            team = item.get("team") if isinstance(item, dict) else None
+            if not isinstance(team, dict):
+                team = item if isinstance(item, dict) else {}
+            if not team:
+                continue
+            tid = str(team.get("id") or extract_id_from_ref(team.get("$ref")) or "").strip()
+            name = first_valid(team.get("displayName"), team.get("name"), team.get("shortDisplayName"), team.get("location"))
+            if tid and name:
+                equipos.append({"id": tid, "nombre": name, "slug": slug(name)})
+        if equipos:
+            break
+    return equipos
+
+
+def buscar_equipo(equipos, nombre):
+    posibles = [nombre] + TEAM_ALIASES.get(nombre, [])
+    posibles_slug = [slug(x) for x in posibles]
+
+    for p in posibles_slug:
+        for e in equipos:
+            if e["slug"] == p:
+                return e
+
+    for p in posibles_slug:
+        for e in equipos:
+            if p in e["slug"] or e["slug"] in p:
+                return e
+
+    return None
 
 
 def cargar_roster(league_slug, team_id):
     urls = [
         f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/teams/{team_id}/roster",
-        f"https://site.web.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/teams/{team_id}/roster",
+        f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{league_slug}/teams/{team_id}/roster?lang=en&region=us",
     ]
     for url in urls:
         data = get_json(url)
-        if not data:
+        time.sleep(SLEEP_BETWEEN_REQUESTS)
+        if isinstance(data, dict) and data.get("athletes"):
+            return data
+    return {}
+
+
+def iter_athletes_from_roster(roster):
+    athletes = roster.get("athletes") or []
+    for group in athletes:
+        if not isinstance(group, dict):
             continue
-        athletes = extraer_athletes(data)
-        if athletes:
-            return athletes
-    return []
+        group_pos = first_valid(group.get("position"), group.get("name"), group.get("displayName"), "") or ""
+        items = group.get("items") or []
+        if items:
+            for item in items:
+                if not isinstance(item, dict):
+                    continue
+                athlete = item.get("athlete") or item
+                if isinstance(athlete, dict):
+                    yield athlete, group_pos
+        else:
+            yield group, group_pos
 
 
-def jugador_desde_athlete(athlete, club, competicion):
-    nombre = athlete.get("displayName") or athlete.get("fullName") or athlete.get("name")
+def construir_jugador(athlete, detalle, group_pos, club, liga, league_slug):
+    athlete_id = extract_athlete_id(athlete) or extract_athlete_id(detalle)
+    nombre = first_valid(
+        athlete.get("displayName"), athlete.get("fullName"), athlete.get("name"),
+        detalle.get("displayName"), detalle.get("fullName"), detalle.get("name"),
+    )
     if not nombre:
         return None
 
-    # No descartamos por edad/altura faltante porque ESPN a veces no los entrega.
-    # El juego puede usar esos datos como "Sin datos" o filtrarlos si hace falta.
-    edad = limpiar_edad(athlete.get("age"))
-    altura = limpiar_altura(athlete.get("displayHeight") or athlete.get("height"))
+    detalle_pos = position_text_from_obj(detalle)
+    roster_pos = position_text_from_obj(athlete)
+    posicion = normalizar_posicion_detallada(detalle_pos, roster_pos, group_pos)
 
-    position = athlete.get("position") or {}
-    if isinstance(position, dict):
-        posicion = map_posicion(position.get("abbreviation") or position.get("displayName") or position.get("name"))
-    else:
-        posicion = map_posicion(position)
+    pais = first_valid(
+        country_from_obj(detalle), country_from_obj(athlete),
+        detalle.get("citizenship"), detalle.get("nationality"), athlete.get("citizenship"), athlete.get("nationality"),
+    ) or "Sin datos"
 
-    if not posicion:
-        return None
+    edad = parse_age(first_valid(detalle.get("age"), athlete.get("age")))
+    altura = parse_height_cm(first_valid(
+        detalle.get("displayHeight"), detalle.get("height"), athlete.get("displayHeight"), athlete.get("height")
+    ))
 
-    pais = nacionalidad_jugador(athlete)
-    if not pais or normalizar_texto(pais) in ["unknown"]:
-        pais = "Sin datos"
+    imagen = first_valid(headshot_url(athlete_id, detalle), headshot_url(athlete_id, athlete)) or ""
 
     return {
         "nombre": str(nombre).strip(),
         "pais": str(pais).strip(),
         "club": club,
-        "liga": competicion,
-        "competicion": competicion,
+        "liga": liga,
+        "competicion": liga,
         "posicion": posicion,
+        "posicion_detalle": first_valid(detalle_pos, roster_pos, group_pos, posicion) or posicion,
         "edad": edad,
         "altura": altura,
-        "imagen": foto_jugador(athlete),
+        "imagen": imagen,
+        "espn_id": athlete_id,
     }
 
 
-def clave_jugador(j):
-    return f"{normalizar_texto(j.get('nombre'))}|{normalizar_texto(j.get('club'))}"
-
-
-def dedupe(jugadores):
-    vistos = set()
-    salida = []
-    for j in jugadores:
-        key = clave_jugador(j)
-        if key in vistos:
-            continue
-        vistos.add(key)
-        salida.append(j)
-    return salida
-
-
-
-def cargar_jugadores_existentes():
-    """Lee el jugadores.json actual para no perder la base si ESPN falla."""
+def cargar_existente():
     if not OUTPUT_FILE.exists():
         return []
     try:
@@ -570,122 +518,116 @@ def cargar_jugadores_existentes():
         if isinstance(data, list):
             return data
         if isinstance(data, dict) and isinstance(data.get("jugadores"), list):
-            return data["jugadores"]
-    except Exception as e:
-        print(f"⚠️ No pude leer JSON existente: {e}")
+            return data.get("jugadores")
+    except Exception:
+        pass
     return []
 
 
-def normalizar_jugador_existente(j):
-    """Asegura que los jugadores viejos tengan las claves que usa el juego."""
-    if not isinstance(j, dict):
-        return None
-    nombre = str(j.get("nombre") or "").strip()
-    club = str(j.get("club") or "").strip()
-    liga = str(j.get("liga") or j.get("competicion") or "").strip()
-    if not nombre or not club or not liga:
-        return None
-    return {
-        "nombre": nombre,
-        "pais": str(j.get("pais") or "Sin datos").strip(),
-        "club": club,
-        "liga": liga,
-        "competicion": str(j.get("competicion") or liga).strip(),
-        "posicion": map_posicion(j.get("posicion")) or str(j.get("posicion") or "").strip(),
-        "edad": limpiar_edad(j.get("edad")),
-        "altura": limpiar_altura(j.get("altura")),
-        "imagen": str(j.get("imagen") or "").strip(),
-    }
+def merge_jugadores(*listas):
+    out = {}
+    for lista in listas:
+        for j in lista or []:
+            if not isinstance(j, dict) or not j.get("nombre"):
+                continue
+            key = jugador_key(j)
+            old = out.get(key)
+            if not old:
+                out[key] = j.copy()
+                continue
+            # Merge: conservar el dato más completo.
+            merged = old.copy()
+            for campo in ["pais", "posicion", "posicion_detalle", "edad", "altura", "imagen", "espn_id"]:
+                val = j.get(campo)
+                if campo in ["edad", "altura"]:
+                    if int(val or 0) > int(merged.get(campo) or 0):
+                        merged[campo] = val
+                else:
+                    if val and merged.get(campo) in [None, "", "Sin datos", 0, "0"]:
+                        merged[campo] = val
+            out[key] = merged
+    return sorted(out.values(), key=lambda x: (slug(x.get("liga")), slug(x.get("club")), slug(x.get("nombre"))))
+
+
+def calidad_jugador(j):
+    score = 0
+    if j.get("pais") and j.get("pais") != "Sin datos":
+        score += 1
+    if int(j.get("edad") or 0) > 0:
+        score += 1
+    if int(j.get("altura") or 0) > 0:
+        score += 1
+    if j.get("posicion") in ["G", "D", "M", "F"]:
+        score += 1
+    return score
 
 
 def main():
-    jugadores = []
+    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    existentes = cargar_existente()
+    nuevos = []
     no_encontrados = []
-    existentes = []
 
-    # Primero guardamos la base anterior. Esto evita que el JSON quede en 3 jugadores
-    # si ESPN falla, cambia una estructura o no devuelve planteles en GitHub Actions.
-    existentes_raw = cargar_jugadores_existentes()
-    for j in existentes_raw:
-        jj = normalizar_jugador_existente(j)
-        if jj:
-            existentes.append(jj)
+    for liga, config in LIGAS.items():
+        league_slug = config["slug"]
+        print(f"\nLiga: {liga} ({league_slug})")
+        equipos_espn = cargar_equipos_liga(league_slug)
+        if not equipos_espn:
+            print(f"  ⚠️ No se pudo listar equipos ESPN para {liga}")
 
-    print(f"📦 Jugadores existentes antes del scraping: {len(existentes)}")
-
-    for league in LEAGUES:
-        slug = league["slug"]
-        competicion = league["competicion"]
-        equipos = cargar_equipos_liga(slug)
-
-        for aliases in league["teams"]:
-            team = encontrar_equipo(equipos, aliases)
-            nombre_objetivo = aliases[0]
-
-            if not team:
-                print(f"⚠️ No encontré equipo: {nombre_objetivo} ({competicion})")
-                no_encontrados.append({"liga": competicion, "equipo": nombre_objetivo})
+        for club in config["clubes"]:
+            equipo = buscar_equipo(equipos_espn, club)
+            if not equipo:
+                print(f"  ⚠️ No encontrado: {club}")
+                no_encontrados.append({"liga": liga, "equipo": club})
                 continue
 
-            team_id = str(team.get("id"))
-            club = team.get("displayName") or team.get("name") or nombre_objetivo
-            print(f"🏟️ {competicion}: {club} ({team_id})")
-
-            athletes = cargar_roster(slug, team_id)
+            print(f"  Equipo: {club} -> ESPN {equipo['id']} ({equipo['nombre']})")
+            roster = cargar_roster(league_slug, equipo["id"])
             count = 0
 
-            for athlete in athletes:
-                jugador = jugador_desde_athlete(athlete, club, competicion)
-                if not jugador:
-                    continue
-                jugadores.append(jugador)
-                count += 1
-                if count >= MAX_JUGADORES_POR_CLUB:
-                    break
+            for athlete, group_pos in iter_athletes_from_roster(roster):
+                athlete_id = extract_athlete_id(athlete)
+                detalle = cargar_detalle_atleta(league_slug, athlete_id) if athlete_id else {}
+                jugador = construir_jugador(athlete, detalle, group_pos, club, liga, league_slug)
+                if jugador:
+                    nuevos.append(jugador)
+                    count += 1
 
-            print(f"   ✅ {count} jugadores útiles")
-            time.sleep(SLEEP_BETWEEN_REQUESTS)
+            print(f"    Jugadores: {count}")
 
-    scraped_count = len(jugadores)
-    print(f"🧲 Jugadores scrapeados nuevos: {scraped_count}")
+    # Fallback famosos se suma, pero nunca reemplaza toda la base.
+    combinados = merge_jugadores(existentes, nuevos, FAMOSOS_FALLBACK)
 
-    # Si el scraping trae muy poco, NO pisamos la base buena.
-    # Mezclamos lo existente + famosos de respaldo.
-    if scraped_count < 100 and len(existentes) >= 100:
-        print("⚠️ Scraping demasiado bajo. Mantengo la base existente y solo agrego fallback famosos.")
-        jugadores = existentes + FAMOUS_FALLBACK
-        fuente = "ESPN site.api / rosters + base existente protegida + fallback famosos"
-    else:
-        # Caso normal: usamos lo scrapeado y también agregamos famosos por seguridad.
-        jugadores = jugadores + FAMOUS_FALLBACK
-        # Si existe una base anterior, la sumamos para no perder jugadores por fallas parciales.
-        if existentes:
-            jugadores = jugadores + existentes
-        fuente = "ESPN site.api / rosters + fallback famosos"
+    # Si ESPN vino demasiado mal, no pisamos una base grande existente.
+    if len(nuevos) < MIN_JUGADORES_VALIDOS and len(existentes) >= MIN_JUGADORES_VALIDOS:
+        print("\n⚠️ ESPN devolvió pocos jugadores. Conservo base anterior + fallback famosos.")
+        combinados = merge_jugadores(existentes, FAMOSOS_FALLBACK)
 
-    jugadores = dedupe(jugadores)
-    jugadores.sort(key=lambda x: (x.get("competicion", ""), x.get("club", ""), x.get("nombre", "")))
+    # Filtro suave para el juego: quedan jugadores con posición y edad o país útil.
+    jugables = [j for j in combinados if j.get("posicion") in ["G", "D", "M", "F"]]
 
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     payload = {
-        "fuente": fuente,
+        "fuente": "ESPN site.api rosters + ESPN athlete detail endpoints + fallback famosos",
         "actualizado": datetime.now(timezone.utc).isoformat(),
-        "total": len(jugadores),
-        "scrapeados_nuevos": scraped_count,
+        "total": len(jugables),
+        "scrapeados_nuevos": len(nuevos),
         "existentes_previos": len(existentes),
-        "ligas": sorted({j.get("competicion") for j in jugadores if j.get("competicion")}),
+        "ligas": sorted({j.get("liga") for j in jugables if j.get("liga")}),
         "no_encontrados": no_encontrados,
-        "jugadores": jugadores,
+        "calidad": {
+            "con_pais": sum(1 for j in jugables if j.get("pais") and j.get("pais") != "Sin datos"),
+            "con_edad": sum(1 for j in jugables if int(j.get("edad") or 0) > 0),
+            "con_altura": sum(1 for j in jugables if int(j.get("altura") or 0) > 0),
+            "con_posicion_detalle": sum(1 for j in jugables if j.get("posicion_detalle")),
+        },
+        "jugadores": jugables,
     }
 
-    with OUTPUT_FILE.open("w", encoding="utf-8") as f:
-        json.dump(payload, f, ensure_ascii=False, indent=2)
-
-    print(f"✅ Generado {OUTPUT_FILE} con {len(jugadores)} jugadores")
-    if no_encontrados:
-        print("⚠️ Equipos no encontrados:")
-        for item in no_encontrados:
-            print(f" - {item['liga']}: {item['equipo']}")
+    OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"\n✅ Guardado: {OUTPUT_FILE}")
+    print(f"Total final: {payload['total']}")
+    print(f"Calidad: {payload['calidad']}")
 
 
 if __name__ == "__main__":
