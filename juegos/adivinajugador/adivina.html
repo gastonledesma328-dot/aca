@@ -100,8 +100,21 @@
         </table>
       </div>
 
-      <div id="answerCard" class="answer-card hidden"></div>
     </section>
+
+    <div id="resultModal" class="result-modal hidden" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+      <div class="result-splash">
+        <div class="result-icon" id="resultIcon">🏆</div>
+        <p class="result-kicker" id="resultKicker">Juego completado</p>
+        <h2 id="resultTitle">¡Felicitaciones!</h2>
+        <p id="resultText" class="result-text"></p>
+        <div id="resultMeta" class="result-meta"></div>
+        <div class="result-actions">
+          <button id="resultNewGameBtn" class="primary-btn" type="button">Nuevo juego</button>
+          <button id="resultCloseBtn" class="ghost-btn" type="button">Ver tablero</button>
+        </div>
+      </div>
+    </div>
   </main>
 
   <script src="./app.js"></script>
