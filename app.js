@@ -2993,13 +2993,21 @@ function scorerMinute(scorer) {
 }
 
 function scorerTypeLabel(scorer) {
+  if (scorer?._renderTypeLabel) {
+    return scorer._renderTypeLabel;
+  }
+
   const raw = String(
-    scorer.tipo ||
-      scorer.type ||
-      scorer.detalle ||
-      scorer.detail ||
-      scorer.descripcion_tipo ||
-      scorer.descripcion ||
+    scorer?.tipo ||
+      scorer?.type ||
+      scorer?.detalle ||
+      scorer?.detail ||
+      scorer?.descripcion_tipo ||
+      scorer?.descripcion ||
+      scorer?.description ||
+      scorer?.text ||
+      scorer?.title ||
+      scorer?.name ||
       ""
   ).trim();
 
@@ -3009,7 +3017,7 @@ function scorerTypeLabel(scorer) {
     return "(Pen.)";
   }
 
-  if (/en contra|contra|own goal|autogol|og|e c|ec/.test(normalized)) {
+  if (/gol en contra|en contra|own goal|autogol|og|e c|ec|autogol/.test(normalized)) {
     return "(E.C.)";
   }
 
@@ -3154,6 +3162,174 @@ function goalItemMarkup(scorer, side = "unknown", teamName = "") {
   `;
 }
 
+
+const PLAYER_TEAM_HINTS = [
+  { player: "Bradley Barcola", team: "Paris Saint-Germain" },
+  { player: "Arturo Vidal", team: "Colo Colo" },
+];
+
+function scoreGoalsForSide(match) {
+  const score = scoreMarkup(match);
+  const scoreMatch = String(score || "").match(/(\d+)\s*-\s*(\d+)/);
+
+  if (!scoreMatch) {
+    return null;
+  }
+
+  const homeGoals = Number(scoreMatch[1]);
+  const awayGoals = Number(scoreMatch[2]);
+
+  if (!Number.isFinite(homeGoals) || !Number.isFinite(awayGoals)) {
+    return null;
+  }
+
+  return {
+    home: homeGoals,
+    away: awayGoals,
+    total: homeGoals + awayGoals,
+  };
+}
+
+function playerHintTeam(scorer) {
+  const player = normalizeTeamForCompare(scorerName(scorer));
+
+  if (!player) {
+    return "";
+  }
+
+  const hint = PLAYER_TEAM_HINTS.find((item) => {
+    const hintPlayer = normalizeTeamForCompare(item.player);
+    return player === hintPlayer || player.includes(hintPlayer) || hintPlayer.includes(player);
+  });
+
+  return hint?.team || "";
+}
+
+function playerHintSide(scorer, home, away) {
+  const team = playerHintTeam(scorer);
+
+  if (!team) {
+    return "";
+  }
+
+  if (teamValueMatches(team, home)) {
+    return "home";
+  }
+
+  if (teamValueMatches(team, away)) {
+    return "away";
+  }
+
+  return "";
+}
+
+function cloneGoalWithRenderInfo(scorer, side, home, away) {
+  const hintSide = playerHintSide(scorer, home, away);
+  const typeLabel = scorerTypeLabel(scorer);
+  const looksOwnGoal = hintSide && side && side !== "unknown" && hintSide !== side;
+
+  return {
+    ...scorer,
+    _renderSide: side,
+    _playerHintSide: hintSide || null,
+    _renderTypeLabel: looksOwnGoal && typeLabel === "Gol" ? "(E.C.)" : typeLabel,
+  };
+}
+
+function goalPlayerKey(scorer) {
+  return normalizeTeamForCompare(scorerName(scorer));
+}
+
+function rebalanceScorersByScore(match, scorers, home, away) {
+  const expected = scoreGoalsForSide(match);
+
+  const assigned = scorers.map((scorer) => ({
+    scorer,
+    side: scorerBelongsToSide(scorer, home, away),
+    hintSide: playerHintSide(scorer, home, away),
+  }));
+
+  if (!expected || expected.total !== assigned.length) {
+    return assigned.map((item) => cloneGoalWithRenderInfo(item.scorer, item.side, home, away));
+  }
+
+  const countSide = (side) => assigned.filter((item) => item.side === side).length;
+
+  const moveOne = (from, to, predicate) => {
+    if (countSide(from) <= expected[from] || countSide(to) >= expected[to]) {
+      return false;
+    }
+
+    const item = assigned.find((candidate) => candidate.side === from && predicate(candidate));
+
+    if (!item) {
+      return false;
+    }
+
+    item.side = to;
+    return true;
+  };
+
+  // 1) Si un lado tiene goles de más, movemos primero jugadores con pista clara del otro equipo.
+  for (let i = 0; i < assigned.length; i += 1) {
+    moveOne("home", "away", (item) => item.hintSide === "away");
+    moveOne("away", "home", (item) => item.hintSide === "home");
+  }
+
+  // 2) Si todavía sobra, usamos grupos por jugador. Ejemplo: marcador 2-1 y tres goles
+  // del mismo lado; el jugador que aparece una vez suele ser el gol del equipo que hizo 1.
+  const tryMoveGroup = (from, to) => {
+    if (countSide(from) <= expected[from] || countSide(to) >= expected[to]) {
+      return false;
+    }
+
+    const needed = expected[to] - countSide(to);
+
+    if (needed <= 0) {
+      return false;
+    }
+
+    const groups = new Map();
+
+    assigned.forEach((item) => {
+      if (item.side !== from) return;
+      const key = goalPlayerKey(item.scorer);
+      if (!key) return;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(item);
+    });
+
+    const exactGroup = Array.from(groups.values()).find((items) => items.length === needed);
+
+    if (!exactGroup) {
+      return false;
+    }
+
+    exactGroup.forEach((item) => {
+      item.side = to;
+    });
+
+    return true;
+  };
+
+  tryMoveGroup("home", "away");
+  tryMoveGroup("away", "home");
+
+  // 3) Último recurso: si el total debe encajar con el marcador, movemos los últimos goles sobrantes.
+  const forceBalance = (from, to) => {
+    while (countSide(from) > expected[from] && countSide(to) < expected[to]) {
+      const item = [...assigned].reverse().find((candidate) => candidate.side === from);
+      if (!item) break;
+      item.side = to;
+    }
+  };
+
+  forceBalance("home", "away");
+  forceBalance("away", "home");
+
+  return assigned.map((item) => cloneGoalWithRenderInfo(item.scorer, item.side, home, away));
+}
+
 function scorersMarkup(match, home = "", away = "") {
   const scorers = normalizeScorerList(match);
 
@@ -3161,12 +3337,13 @@ function scorersMarkup(match, home = "", away = "") {
     return "";
   }
 
+  const scorersBalanceados = rebalanceScorersByScore(match, scorers, home, away);
   const homeGoals = [];
   const awayGoals = [];
   const unknownGoals = [];
 
-  scorers.forEach((scorer) => {
-    const side = scorerBelongsToSide(scorer, home, away);
+  scorersBalanceados.forEach((scorer) => {
+    const side = scorer._renderSide || scorerBelongsToSide(scorer, home, away);
 
     if (side === "home") {
       homeGoals.push(scorer);
