@@ -71,7 +71,6 @@ const els = {
   guessesBody: $('guessesBody'),
   answerCard: $('answerCard'),
   secretCompetition: $('secretCompetition'),
-  playersCount: $('playersCount'),
 };
 
 function normalizeText(value) {
@@ -221,7 +220,6 @@ function updateDifficultyInfo() {
 
 function filterPool() {
   pool = allPlayers.filter((player) => getPlayerEra(player) === 'actual');
-  els.playersCount.textContent = String(pool.length);
 }
 
 function fillDatalist() {
