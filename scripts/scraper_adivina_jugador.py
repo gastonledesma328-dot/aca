@@ -513,13 +513,10 @@ def jugador_desde_athlete(athlete, club, competicion):
     if not nombre:
         return None
 
+    # No descartamos por edad/altura faltante porque ESPN a veces no los entrega.
+    # El juego puede usar esos datos como "Sin datos" o filtrarlos si hace falta.
     edad = limpiar_edad(athlete.get("age"))
-    if not edad:
-        return None
-
     altura = limpiar_altura(athlete.get("displayHeight") or athlete.get("height"))
-    if not altura:
-        return None
 
     position = athlete.get("position") or {}
     if isinstance(position, dict):
@@ -531,8 +528,8 @@ def jugador_desde_athlete(athlete, club, competicion):
         return None
 
     pais = nacionalidad_jugador(athlete)
-    if not pais or normalizar_texto(pais) in ["sin datos", "unknown"]:
-        return None
+    if not pais or normalizar_texto(pais) in ["unknown"]:
+        pais = "Sin datos"
 
     return {
         "nombre": str(nombre).strip(),
@@ -563,9 +560,58 @@ def dedupe(jugadores):
     return salida
 
 
+
+def cargar_jugadores_existentes():
+    """Lee el jugadores.json actual para no perder la base si ESPN falla."""
+    if not OUTPUT_FILE.exists():
+        return []
+    try:
+        data = json.loads(OUTPUT_FILE.read_text(encoding="utf-8"))
+        if isinstance(data, list):
+            return data
+        if isinstance(data, dict) and isinstance(data.get("jugadores"), list):
+            return data["jugadores"]
+    except Exception as e:
+        print(f"⚠️ No pude leer JSON existente: {e}")
+    return []
+
+
+def normalizar_jugador_existente(j):
+    """Asegura que los jugadores viejos tengan las claves que usa el juego."""
+    if not isinstance(j, dict):
+        return None
+    nombre = str(j.get("nombre") or "").strip()
+    club = str(j.get("club") or "").strip()
+    liga = str(j.get("liga") or j.get("competicion") or "").strip()
+    if not nombre or not club or not liga:
+        return None
+    return {
+        "nombre": nombre,
+        "pais": str(j.get("pais") or "Sin datos").strip(),
+        "club": club,
+        "liga": liga,
+        "competicion": str(j.get("competicion") or liga).strip(),
+        "posicion": map_posicion(j.get("posicion")) or str(j.get("posicion") or "").strip(),
+        "edad": limpiar_edad(j.get("edad")),
+        "altura": limpiar_altura(j.get("altura")),
+        "imagen": str(j.get("imagen") or "").strip(),
+    }
+
+
 def main():
     jugadores = []
     no_encontrados = []
+    existentes = []
+
+    # Primero guardamos la base anterior. Esto evita que el JSON quede en 3 jugadores
+    # si ESPN falla, cambia una estructura o no devuelve planteles en GitHub Actions.
+    existentes_raw = cargar_jugadores_existentes()
+    for j in existentes_raw:
+        jj = normalizar_jugador_existente(j)
+        if jj:
+            existentes.append(jj)
+
+    print(f"📦 Jugadores existentes antes del scraping: {len(existentes)}")
 
     for league in LEAGUES:
         slug = league["slug"]
@@ -600,15 +646,33 @@ def main():
             print(f"   ✅ {count} jugadores útiles")
             time.sleep(SLEEP_BETWEEN_REQUESTS)
 
-    jugadores.extend(FAMOUS_FALLBACK)
+    scraped_count = len(jugadores)
+    print(f"🧲 Jugadores scrapeados nuevos: {scraped_count}")
+
+    # Si el scraping trae muy poco, NO pisamos la base buena.
+    # Mezclamos lo existente + famosos de respaldo.
+    if scraped_count < 100 and len(existentes) >= 100:
+        print("⚠️ Scraping demasiado bajo. Mantengo la base existente y solo agrego fallback famosos.")
+        jugadores = existentes + FAMOUS_FALLBACK
+        fuente = "ESPN site.api / rosters + base existente protegida + fallback famosos"
+    else:
+        # Caso normal: usamos lo scrapeado y también agregamos famosos por seguridad.
+        jugadores = jugadores + FAMOUS_FALLBACK
+        # Si existe una base anterior, la sumamos para no perder jugadores por fallas parciales.
+        if existentes:
+            jugadores = jugadores + existentes
+        fuente = "ESPN site.api / rosters + fallback famosos"
+
     jugadores = dedupe(jugadores)
     jugadores.sort(key=lambda x: (x.get("competicion", ""), x.get("club", ""), x.get("nombre", "")))
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     payload = {
-        "fuente": "ESPN site.api / rosters + fallback famosos",
+        "fuente": fuente,
         "actualizado": datetime.now(timezone.utc).isoformat(),
         "total": len(jugadores),
+        "scrapeados_nuevos": scraped_count,
+        "existentes_previos": len(existentes),
         "ligas": sorted({j.get("competicion") for j in jugadores if j.get("competicion")}),
         "no_encontrados": no_encontrados,
         "jugadores": jugadores,
