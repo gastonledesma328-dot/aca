@@ -114,7 +114,7 @@ const INCIDENCIAS_CACHE_TTL_MS = 120_000;
 const INCIDENCIAS_FETCH_TIMEOUT_MS = 5_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
-const APP_CACHE_VERSION = "v6-goles-lados-jugadores";
+const APP_CACHE_VERSION = "v7-goles-lado-jugador-prioridad";
 const CACHE_KEY_AGENDA = `agenda-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_LIVE = `agenda-live-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_TV = `tv-partidos-cache-${APP_CACHE_VERSION}`;
@@ -3194,10 +3194,23 @@ function scorerBelongsToSide(scorer, home, away) {
   const knownSide = knownScorerSide(scorer, home, away);
   const explicitSide = explicitScorerSide(scorer);
 
+  // 1) Primero mandan los jugadores conocidos.
+  // Esto corrige casos donde el Worker/365Scores trae mal el equipo del gol.
+  // Ejemplo: Bradley Barcola debe ir con Paris Saint-Germain, aunque el payload venga como local.
+  if (knownSide) {
+    // Excepción: jugadores marcados como posible gol en contra.
+    // Si el payload lo asigna al rival, lo dejamos en el rival y luego se muestra como (E.C.).
+    if (explicitSide && explicitSide !== knownSide && scorerIsForcedOwnGoal(scorer)) {
+      return explicitSide;
+    }
+
+    return knownSide;
+  }
+
   const teamMatchesHome = teamValueMatches(team, home);
   const teamMatchesAway = teamValueMatches(team, away);
 
-  // 1) Si el dato trae el equipo correcto, manda el nombre del equipo.
+  // 2) Después mandan los nombres de equipo si vienen claros.
   if (teamMatchesHome && !teamMatchesAway) {
     return "home";
   }
@@ -3206,17 +3219,7 @@ function scorerBelongsToSide(scorer, home, away) {
     return "away";
   }
 
-  // 2) Si conocemos el club del jugador, corregimos lados mal enviados por la API.
-  // Caso: Bradley Barcola debe ir del lado Paris Saint-Germain, no Paris FC.
-  if (knownSide) {
-    if (explicitSide && explicitSide !== knownSide && scorerIsForcedOwnGoal(scorer)) {
-      return explicitSide;
-    }
-
-    return knownSide;
-  }
-
-  // 3) Si no hay equipo/jugador conocido, usamos el lado explícito del payload.
+  // 3) Por último usamos el lado explícito del payload.
   if (explicitSide) {
     return explicitSide;
   }
