@@ -72,7 +72,7 @@ h1 {
 }
 
 .score-box {
-  min-width: 170px;
+  min-width: 178px;
   padding: 14px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.08);
@@ -87,13 +87,14 @@ h1 {
 
 .game-card { padding: 18px; }
 
-.toolbar {
+.mode-panel {
   display: grid;
-  grid-template-columns: 180px minmax(220px, 1fr) auto auto;
-  gap: 12px;
-  align-items: end;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 14px;
+  margin-bottom: 14px;
 }
 
+.panel-label,
 .field span {
   display: block;
   margin: 0 0 6px;
@@ -104,8 +105,50 @@ h1 {
   letter-spacing: 0.08em;
 }
 
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip-btn {
+  width: auto;
+  min-height: 38px;
+  padding: 0 13px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.chip-btn.active {
+  background: var(--green);
+  color: var(--darkText);
+  border-color: transparent;
+}
+
+.chip-btn.ghost {
+  background: transparent;
+  color: var(--green);
+  border-color: rgba(88, 210, 125, 0.4);
+}
+
+.mode-help {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto auto;
+  gap: 12px;
+  align-items: end;
+}
+
 input,
-select,
 button {
   width: 100%;
   min-height: 44px;
@@ -114,16 +157,14 @@ button {
   font: inherit;
 }
 
-input,
-select {
+input {
   padding: 0 13px;
   outline: none;
   color: var(--text);
   background: rgba(255,255,255,0.08);
 }
 
-input:focus,
-select:focus {
+input:focus {
   border-color: rgba(88, 210, 125, 0.7);
   box-shadow: 0 0 0 3px rgba(88, 210, 125, 0.14);
 }
@@ -132,6 +173,11 @@ button {
   cursor: pointer;
   font-weight: 900;
   padding: 0 18px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .primary-btn {
@@ -189,7 +235,7 @@ button {
 .guess-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 880px;
+  min-width: 760px;
 }
 
 .guess-table th,
@@ -241,9 +287,10 @@ button {
 .answer-card p { margin: 4px 0; color: var(--muted); }
 .hidden { display: none; }
 
-@media (max-width: 760px) {
+@media (max-width: 860px) {
   .hero-card { flex-direction: column; align-items: stretch; }
   .score-box { text-align: left; }
+  .mode-panel { grid-template-columns: 1fr; }
   .toolbar { grid-template-columns: 1fr; }
   .hints-row { grid-template-columns: 1fr; }
   .game-card { padding: 14px; }
