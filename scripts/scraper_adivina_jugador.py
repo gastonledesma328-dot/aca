@@ -1,15 +1,14 @@
 """
-scraper_jugadores.py — ESPN Soccer Roster Scraper (versión optimizada)
+scraper_adivina_jugador.py — Scraper ESPN para /adivinajugador/jugadores.json
 
-Mejoras sobre la versión original:
-- Cadena de endpoints de detalle más completa y ordenada por calidad de datos
-- parse_height_cm robusto: maneja pulgadas enteras, feet'inches, cm y strings mixtos
-- country_from_athlete robusto: birthPlace.country → citizenship → nationality → flag
-- position_real: prioriza position.displayName del detalle (más preciso que el grupo)
-- Retry automático en 429/503 con backoff exponencial
-- Logging de calidad por jugador: detecta campos vacíos y los reporta al final
-- Deduplicación estable por (nombre_slug, club_slug)
-- Compatible con la estructura de salida existente (jugadores.json)
+Versión arreglada:
+- Consulta roster + detalle de atleta en ESPN.
+- Corrige alturas inválidas: 79 se interpreta como pulgadas => 201 cm, no como 79 cm.
+- No deja alturas fuera de 140–220 cm.
+- Deduplica sin perder datos buenos del scrapeo nuevo.
+- Permite corregir posiciones viejas cuando el nuevo detalle trae algo mejor.
+- Genera solo jugadores aptos para el juego en "jugadores".
+- Guarda una lista de "jugadores_no_aptos" para diagnóstico.
 """
 
 from __future__ import annotations
@@ -21,7 +20,6 @@ import unicodedata
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
-from threading import Lock
 from typing import Any
 
 import requests
@@ -29,13 +27,18 @@ import requests
 # ─── Configuración ─────────────────────────────────────────────────────────────
 
 OUTPUT_FILE = Path("adivinajugador/jugadores.json")
+
 MIN_JUGADORES_VALIDOS = 100
+MIN_ALTURA_CM = 140
+MAX_ALTURA_CM = 220
+
 REQUEST_TIMEOUT = 28
-SLEEP_BETWEEN_REQUESTS = 0.05   # segundos entre GETs (menor porque hay threads)
-SLEEP_AFTER_429 = 8.0           # pausa tras rate-limit
+SLEEP_BETWEEN_REQUESTS = 0.03
+SLEEP_AFTER_429 = 8.0
 MAX_RETRIES = 3
-MAX_WORKERS_DETALLE = 8         # threads paralelos para cargar detalle de atletas
-MAX_WORKERS_EQUIPOS = 4         # threads paralelos para ligas/equipos
+
+MAX_WORKERS_EQUIPOS = 4
+MAX_WORKERS_DETALLE = 8
 
 HEADERS = {
     "User-Agent": (
@@ -49,9 +52,12 @@ HEADERS = {
     "Origin": "https://www.espn.com",
 }
 
+SESSION = requests.Session()
+SESSION.headers.update(HEADERS)
+
 # ─── Ligas y equipos ───────────────────────────────────────────────────────────
 
-LIGAS: dict[str, dict] = {
+LIGAS: dict[str, dict[str, Any]] = {
     "Premier League": {
         "slug": "eng.1",
         "clubes": [
@@ -138,56 +144,63 @@ LIGAS: dict[str, dict] = {
 }
 
 TEAM_ALIASES: dict[str, list[str]] = {
-    "Internazionale":       ["Inter Milan", "Internazionale"],
-    "AC Milan":             ["AC Milan", "Milan"],
-    "AS Roma":              ["AS Roma", "Roma"],
-    "Atlético Madrid":      ["Atletico Madrid", "Atlético Madrid", "Atletico de Madrid"],
-    "Paris Saint-Germain":  ["Paris Saint-Germain", "PSG", "Paris SG"],
-    "Bayern Munich":        ["Bayern Munich", "FC Bayern Munich", "Bayern München"],
-    "Borussia Dortmund":    ["Borussia Dortmund", "Dortmund", "BVB"],
-    "RB Leipzig":           ["RB Leipzig", "Leipzig"],
-    "VfB Stuttgart":        ["VfB Stuttgart", "Stuttgart"],
-    "Feyenoord Rotterdam":  ["Feyenoord Rotterdam", "Feyenoord"],
-    "PSV Eindhoven":        ["PSV Eindhoven", "PSV"],
-    "Atlético Junior":      ["Atlético Junior", "Junior", "Junior FC", "Atletico Junior"],
-    "América":              ["América", "Club América", "America"],
-    "Guadalajara":          ["Guadalajara", "Chivas", "Club Deportivo Guadalajara"],
-    "Sporting CP":          ["Sporting CP", "Sporting", "Sporting Clube de Portugal"],
-    "FC Porto":             ["FC Porto", "Porto"],
-    "Besiktas":             ["Besiktas", "Beşiktaş", "Besiktas JK"],
+    "Internazionale": ["Inter Milan", "Internazionale"],
+    "AC Milan": ["AC Milan", "Milan"],
+    "AS Roma": ["AS Roma", "Roma"],
+    "Atlético Madrid": ["Atletico Madrid", "Atlético Madrid", "Atletico de Madrid"],
+    "Paris Saint-Germain": ["Paris Saint-Germain", "PSG", "Paris SG"],
+    "Bayern Munich": ["Bayern Munich", "FC Bayern Munich", "Bayern München"],
+    "Borussia Dortmund": ["Borussia Dortmund", "Dortmund", "BVB"],
+    "RB Leipzig": ["RB Leipzig", "Leipzig"],
+    "VfB Stuttgart": ["VfB Stuttgart", "Stuttgart"],
+    "Feyenoord Rotterdam": ["Feyenoord Rotterdam", "Feyenoord"],
+    "PSV Eindhoven": ["PSV Eindhoven", "PSV"],
+    "Atlético Junior": ["Atlético Junior", "Junior", "Junior FC", "Atletico Junior"],
+    "América": ["América", "Club América", "America"],
+    "Guadalajara": ["Guadalajara", "Chivas", "Club Deportivo Guadalajara"],
+    "Sporting CP": ["Sporting CP", "Sporting", "Sporting Clube de Portugal"],
+    "FC Porto": ["FC Porto", "Porto"],
+    "Besiktas": ["Besiktas", "Beşiktaş", "Besiktas JK"],
     "Brighton & Hove Albion": ["Brighton", "Brighton & Hove Albion", "Brighton and Hove Albion"],
-    "West Ham United":      ["West Ham", "West Ham United"],
-    "Atlético Mineiro":     ["Atletico Mineiro", "Atlético Mineiro", "Atletico MG"],
-    "Ajax Amsterdam":       ["Ajax", "Ajax Amsterdam", "AFC Ajax"],
-    "AZ Alkmaar":           ["AZ", "AZ Alkmaar"],
-    "FC Twente":            ["Twente", "FC Twente"],
+    "West Ham United": ["West Ham", "West Ham United"],
+    "Atlético Mineiro": ["Atletico Mineiro", "Atlético Mineiro", "Atletico MG"],
+    "Ajax Amsterdam": ["Ajax", "Ajax Amsterdam", "AFC Ajax"],
+    "AZ Alkmaar": ["AZ", "AZ Alkmaar"],
+    "FC Twente": ["Twente", "FC Twente"],
 }
 
 FAMOSOS_FALLBACK = [
     {
         "nombre": "Lionel Messi", "pais": "Argentina", "club": "Inter Miami CF",
-        "liga": "MLS", "competicion": "MLS", "posicion": "F", "edad": 38,
-        "altura": 170, "espn_id": "45843",
+        "liga": "MLS", "competicion": "MLS", "posicion": "F",
+        "posicion_detalle": "Forward", "edad": 38, "altura": 170,
         "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/45843.png",
-        "posicion_detalle": "Forward",
+        "espn_id": "45843",
     },
     {
         "nombre": "Cristiano Ronaldo", "pais": "Portugal", "club": "Al Nassr",
         "liga": "Saudi Pro League", "competicion": "Saudi Pro League", "posicion": "F",
-        "edad": 41, "altura": 187, "espn_id": "22774",
+        "posicion_detalle": "Forward", "edad": 41, "altura": 187,
         "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/22774.png",
-        "posicion_detalle": "Forward",
+        "espn_id": "22774",
     },
     {
         "nombre": "Kylian Mbappé", "pais": "France", "club": "Real Madrid",
         "liga": "LaLiga", "competicion": "LaLiga", "posicion": "F",
-        "edad": 26, "altura": 178, "espn_id": "229285",
+        "posicion_detalle": "Forward", "edad": 26, "altura": 178,
         "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/229285.png",
-        "posicion_detalle": "Forward",
+        "espn_id": "229285",
+    },
+    {
+        "nombre": "Neymar", "pais": "Brazil", "club": "Santos",
+        "liga": "Brasileirão", "competicion": "Brasileirão", "posicion": "F",
+        "posicion_detalle": "Forward", "edad": 34, "altura": 175,
+        "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/132948.png",
+        "espn_id": "132948",
     },
 ]
 
-# ─── Utilidades generales ──────────────────────────────────────────────────────
+# ─── Utilidades ────────────────────────────────────────────────────────────────
 
 def slugify(text: Any) -> str:
     text = str(text or "")
@@ -203,16 +216,10 @@ def jugador_key(j: dict) -> str:
 
 
 def first_valid(*values: Any) -> Any:
-    """Devuelve el primer valor no-nulo, no-vacío y no-centinela."""
-    SKIP_SCALARS = {None, "", "Sin datos", "-", 0, "0"}
     for v in values:
-        # dict/list no son hashables — no podemos usar `in` con el set
         if isinstance(v, (dict, list)):
             continue
-        try:
-            if v in SKIP_SCALARS:
-                continue
-        except TypeError:
+        if v in (None, "", "Sin datos", "-", 0, "0"):
             continue
         if isinstance(v, str) and not v.strip():
             continue
@@ -243,95 +250,92 @@ def extract_athlete_id(obj: Any) -> str:
         return ""
     return str(
         obj.get("id")
-        or obj.get("uid", "").split(":")[-1]
+        or str(obj.get("uid") or "").split(":")[-1]
         or extract_id_from_ref(obj.get("$ref"))
         or extract_id_from_ref(obj.get("href"))
         or ""
     ).strip()
 
-# ─── HTTP con reintentos ───────────────────────────────────────────────────────
+
+# ─── HTTP ──────────────────────────────────────────────────────────────────────
 
 def get_json(url: str, retries: int = MAX_RETRIES) -> Any:
     for attempt in range(retries):
         try:
-            r = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+            r = SESSION.get(url, timeout=REQUEST_TIMEOUT)
             if r.status_code == 200:
                 return r.json()
             if r.status_code in (429, 503):
                 wait = SLEEP_AFTER_429 * (attempt + 1)
-                print(f"    ⏳ Rate-limit ({r.status_code}). Esperando {wait:.0f}s…")
+                print(f"    ⏳ Rate-limit {r.status_code}. Esperando {wait:.0f}s…")
                 time.sleep(wait)
                 continue
             if r.status_code == 404:
-                return None   # No reintentar 404
-            # Otros errores: reintento corto
+                return None
             time.sleep(1.5 * (attempt + 1))
         except requests.exceptions.Timeout:
-            print(f"    ⏳ Timeout en {url} (intento {attempt+1})")
+            print(f"    ⏳ Timeout en {url} intento {attempt + 1}")
             time.sleep(2.0 * (attempt + 1))
         except Exception as exc:
             print(f"    ⚠️ Error HTTP: {exc}")
             break
     return None
 
-# ─── Parsers de datos de atleta ───────────────────────────────────────────────
+
+# ─── Parsers ───────────────────────────────────────────────────────────────────
+
+def sanitizar_altura_cm(value: Any) -> int:
+    """
+    Acepta solo 140–220 cm.
+    Si llega 55–90, lo toma como pulgadas y lo convierte.
+    Esto arregla casos como 79 → 201 cm.
+    """
+    try:
+        n = int(round(float(value or 0)))
+    except Exception:
+        return 0
+
+    if 55 <= n <= 90:
+        n = int(round(n * 2.54))
+
+    if MIN_ALTURA_CM <= n <= MAX_ALTURA_CM:
+        return n
+
+    return 0
+
 
 def parse_height_cm(value: Any) -> int:
-    """
-    Convierte cualquier formato de altura de ESPN a centímetros.
-    ESPN puede devolver:
-      - Un número float en pulgadas (ej: 72.0 → 182 cm)
-      - Un número en cm (ej: 182)
-      - Un string "5' 11\"" o "5'11" o "180 cm" o "1.80 m"
-      - None / 0
-    """
     if value is None:
         return 0
 
     if isinstance(value, (int, float)) and not isinstance(value, bool):
-        n = float(value)
-        if n <= 0:
-            return 0
-        # ESPN usa pulgadas para rosters anglosajones (rango 60–85)
-        if 55 <= n <= 90:
-            return int(round(n * 2.54))
-        # Ya está en cm
-        if 120 <= n <= 240:
-            return int(round(n))
-        return 0
+        return sanitizar_altura_cm(value)
 
     s = str(value).strip()
-    if not s or s in ["-", "0"]:
+    if not s or s in ("-", "0", "Sin datos"):
         return 0
 
-    # "180 cm" o "180cm"
     m = re.search(r"(\d+(?:\.\d+)?)\s*cm", s, re.I)
     if m:
-        return int(round(float(m.group(1))))
+        return sanitizar_altura_cm(float(m.group(1)))
 
-    # "1.80 m" o "1,80 m"
     m = re.search(r"(\d+)[,.](\d+)\s*m\b", s, re.I)
     if m:
-        return int(round((int(m.group(1)) + int(m.group(2)) / 100) * 100))
+        return sanitizar_altura_cm((int(m.group(1)) + int(m.group(2)) / 100) * 100)
 
-    # Feet + pulgadas: "5' 11\"" / "6'2" / "5 ft 10 in"
     m = re.search(r"(\d+)\s*(?:ft|'|′)\s*(\d+)", s, re.I)
     if m:
-        return int(round((int(m.group(1)) * 12 + int(m.group(2))) * 2.54))
+        inches = int(m.group(1)) * 12 + int(m.group(2))
+        return sanitizar_altura_cm(inches)
 
-    # Solo feet: "6 ft" / "6'"
     m = re.search(r"(\d+)\s*(?:ft|'|′)(?!\s*\d)", s, re.I)
     if m:
-        return int(round(int(m.group(1)) * 12 * 2.54))
+        inches = int(m.group(1)) * 12
+        return sanitizar_altura_cm(inches)
 
-    # Número suelto
     nums = re.findall(r"\d+", s)
     if nums:
-        n = int(nums[0])
-        if 120 <= n <= 240:
-            return n
-        if 55 <= n <= 90:
-            return int(round(n * 2.54))
+        return sanitizar_altura_cm(int(nums[0]))
 
     return 0
 
@@ -347,158 +351,150 @@ def parse_age(value: Any) -> int:
 
 
 def parse_age_from_dob(dob_str: Any) -> int:
-    """Calcula edad desde fecha de nacimiento ISO (YYYY-MM-DD o similares)."""
     if not dob_str:
         return 0
     try:
-        dob_str = str(dob_str)[:10]
-        dob = datetime.strptime(dob_str, "%Y-%m-%d")
+        dob = datetime.strptime(str(dob_str)[:10], "%Y-%m-%d")
         today = datetime.now()
         return today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
     except Exception:
         return 0
 
-# ─── Extracción de país ───────────────────────────────────────────────────────
+
+# ─── País ──────────────────────────────────────────────────────────────────────
 
 def country_from_athlete(obj: dict) -> str | None:
-    """
-    Extrae el país del jugador con una cascada de fuentes, del más confiable
-    al menos confiable. ESPN tiene datos en múltiples lugares según el endpoint.
-    """
     if not isinstance(obj, dict):
         return None
 
-    candidates = []
+    candidates: list[str] = []
 
-    # 1. birthPlace.country (más confiable — país real de nacimiento)
     bp = obj.get("birthPlace") or {}
     if isinstance(bp, dict):
         for k in ("country", "countryName", "countryDisplayName"):
             v = bp.get(k)
-            if v and isinstance(v, str) and len(v) > 1:
+            if isinstance(v, str) and len(v.strip()) > 1:
                 candidates.append(v.strip())
 
-    # 2. citizenship (campo explícito de ESPN)
-    for k in ("citizenship", "citizenshipCountry"):
+    for k in ("citizenship", "citizenshipCountry", "nationality", "nationalityCountry"):
         v = obj.get(k)
-        if isinstance(v, str) and len(v) > 1:
+        if isinstance(v, str) and len(v.strip()) > 1:
             candidates.append(v.strip())
         elif isinstance(v, dict):
             for kk in ("displayName", "name", "abbreviation"):
                 vv = v.get(kk)
-                if vv and isinstance(vv, str) and len(vv) > 1:
+                if isinstance(vv, str) and len(vv.strip()) > 1:
                     candidates.append(vv.strip())
                     break
 
-    # 3. nationality (a veces es una abreviatura como "BRA", "ARG")
-    for k in ("nationality", "nationalityCountry"):
-        v = obj.get(k)
-        if isinstance(v, str) and len(v) > 1:
-            candidates.append(v.strip())
-        elif isinstance(v, dict):
-            for kk in ("displayName", "name"):
-                vv = v.get(kk)
-                if vv and isinstance(vv, str) and len(vv) > 1:
-                    candidates.append(vv.strip())
-                    break
-
-    # 4. flag.alt / flag.description (ESPN pone el nombre del país como alt text)
     flag = obj.get("flag") or {}
     if isinstance(flag, dict):
         for k in ("alt", "description", "title"):
             v = flag.get(k)
-            if v and isinstance(v, str) and len(v) > 1:
+            if isinstance(v, str) and len(v.strip()) > 1:
                 candidates.append(v.strip())
 
-    # 5. country top-level (Core API a veces lo pone directamente)
     country_obj = obj.get("country") or {}
     if isinstance(country_obj, dict):
         for k in ("displayName", "name"):
             v = country_obj.get(k)
-            if v and isinstance(v, str) and len(v) > 1:
+            if isinstance(v, str) and len(v.strip()) > 1:
                 candidates.append(v.strip())
-    elif isinstance(country_obj, str) and len(country_obj) > 1:
+    elif isinstance(country_obj, str) and len(country_obj.strip()) > 1:
         candidates.append(country_obj.strip())
 
-    # Devuelve el primero válido (no vacío, no "Sin datos", no una sola letra)
     for c in candidates:
-        if c and c not in ("Sin datos", "-", "N/A") and len(c) > 1:
+        if c not in ("Sin datos", "-", "N/A"):
             return c
-
     return None
 
-# ─── Extracción de posición ───────────────────────────────────────────────────
 
-# Mapas de términos ESPN → código de posición del juego
+# ─── Posición ──────────────────────────────────────────────────────────────────
+
 _POS_MAP = [
-    # Guardameta — máxima prioridad
-    (["goalkeeper", "keeper", "portero", "arquero", "golero", " gk", "portière"], "G"),
-    # Defensa
-    (["center back", "centre back", "central def", "cb", " cb ",
-      "left back", "right back", "full back", "fullback",
-      "wing back", "wingback", "carrilero",
-      "defender", "defensa", "defensor", " lb ", " rb "], "D"),
-    # Delantero / extremo
-    (["centre forward", "center forward", "striker", "second striker",
-      "left wing", "right wing", "winger", "extremo",
-      "forward", "delantero", "punta", " cf ", " st ", " lw ", " rw ", " fw "], "F"),
-    # Centrocampista — todo lo que queda
-    (["defensive mid", "holding mid", "pivot",
-      "central mid", "attacking mid", "trequartista",
-      "midfielder", "midfield", "mediocampista", "volante", "centrocampista",
-      " cdm", " cam", " cm ", " am ", " dm "], "M"),
+    (["goalkeeper", "keeper", "portero", "arquero", "golero", " gk "], "G"),
+    ([
+        "center back", "centre back", "central defender", "defender", "defensa",
+        "defensor", "left back", "right back", "full back", "fullback",
+        "wing back", "wingback", " cb ", " lb ", " rb ",
+    ], "D"),
+    ([
+        "centre forward", "center forward", "striker", "second striker",
+        "left wing", "right wing", "winger", "wide forward", "attacker",
+        "forward", "delantero", "extremo", "punta", " cf ", " st ", " lw ", " rw ", " fw ",
+    ], "F"),
+    ([
+        "attacking mid", "defensive mid", "holding mid", "central mid",
+        "midfielder", "midfield", "mediocampista", "volante", "centrocampista",
+        " cdm ", " cam ", " cm ", " am ", " dm ",
+    ], "M"),
 ]
 
+
+def _pos_to_str(v: Any) -> str:
+    if isinstance(v, str):
+        return v.strip()
+    if isinstance(v, dict):
+        for k in ("displayName", "name", "abbreviation", "shortDisplayName"):
+            val = v.get(k)
+            if isinstance(val, str) and val.strip():
+                return val.strip()
+    return ""
+
+
 def normalizar_posicion(*sources: Any) -> str:
-    """
-    Recibe cualquier cantidad de strings/objetos de posición y devuelve
-    el código G/D/M/F más apropiado.
-    """
-    raw_parts = []
+    parts: list[str] = []
     for s in sources:
         if isinstance(s, dict):
             for k in ("displayName", "name", "abbreviation", "shortDisplayName"):
-                v = s.get(k)
-                if v:
-                    raw_parts.append(str(v))
+                if s.get(k):
+                    parts.append(str(s.get(k)))
         elif s:
-            raw_parts.append(str(s))
+            parts.append(str(s))
 
-    combined = " " + slugify(" ".join(raw_parts)) + " "
-
+    combined = " " + slugify(" ".join(parts)) + " "
     for keywords, code in _POS_MAP:
         if any(kw in combined for kw in keywords):
             return code
 
-    # Letras sueltas que ESPN devuelve en el grupo del roster
-    abbr = slugify(" ".join(raw_parts)).strip()
-    if abbr == "g":
-        return "G"
-    if abbr == "d":
-        return "D"
-    if abbr == "f":
-        return "F"
-    if abbr == "m":
-        return "M"
-
-    return "M"   # fallback seguro
+    abbr = slugify(" ".join(parts)).strip()
+    return {"g": "G", "d": "D", "f": "F", "m": "M"}.get(abbr, "M")
 
 
-def posicion_detalle_legible(pos_obj: Any, group_pos: str = "") -> str:
-    """Devuelve el nombre legible de la posición para mostrar en el juego."""
-    if isinstance(pos_obj, dict):
-        for k in ("displayName", "name", "shortDisplayName"):
-            v = pos_obj.get(k)
-            if v and isinstance(v, str) and len(v) > 1 and v not in ("G", "D", "M", "F"):
-                return v.strip()
-    if isinstance(group_pos, str) and len(group_pos) > 1:
-        return group_pos.strip()
+def posicion_detalle_legible(*sources: Any) -> str:
+    for s in sources:
+        txt = _pos_to_str(s)
+        if txt and txt not in ("G", "D", "M", "F"):
+            return txt
     return ""
 
-# ─── Imagen del jugador ───────────────────────────────────────────────────────
+
+def elegir_posicion_mejor(actual: dict, nuevo: dict) -> str:
+    """
+    Corrige duplicados. Si el nuevo detalle dice Forward/Winger/Striker,
+    permite cambiar M → F. Si dice Defender/Goalkeeper, también corrige.
+    """
+    cur = str(actual.get("posicion") or "").upper()
+    new = str(nuevo.get("posicion") or "").upper()
+
+    det = str(nuevo.get("posicion_detalle") or "")
+    pos_from_det = normalizar_posicion(det)
+
+    if det and det not in ("G", "D", "M", "F") and pos_from_det in ("G", "D", "M", "F"):
+        return pos_from_det
+
+    if new in ("G", "D", "M", "F"):
+        return new
+
+    if cur in ("G", "D", "M", "F"):
+        return cur
+
+    return "M"
+
+
+# ─── Imagen ───────────────────────────────────────────────────────────────────
 
 def headshot_url(athlete_id: str, obj: dict | None = None) -> str:
-    """Busca la URL de la foto en el objeto ESPN; genera CDN URL si no hay."""
     if isinstance(obj, dict):
         hs = obj.get("headshot")
         if isinstance(hs, dict):
@@ -507,40 +503,42 @@ def headshot_url(athlete_id: str, obj: dict | None = None) -> str:
                 return href
         if isinstance(hs, str) and hs.startswith("http"):
             return hs
-        for img in obj.get("images") or []:
-            if isinstance(img, dict):
-                href = img.get("href") or img.get("url")
-                if href and "headshot" in href.lower():
-                    return href
-        # Fallback: cualquier imagen
+
         for img in obj.get("images") or []:
             if isinstance(img, dict):
                 href = img.get("href") or img.get("url")
                 if href:
                     return href
+
     if athlete_id:
         return f"https://a.espncdn.com/i/headshots/soccer/players/full/{athlete_id}.png"
     return ""
 
-# ─── Carga de detalle de atleta ───────────────────────────────────────────────
+
+# ─── ESPN: detalle atleta ──────────────────────────────────────────────────────
+
+def _is_empty(v: Any) -> bool:
+    if isinstance(v, (dict, list)):
+        return False
+    return v in (None, "", "Sin datos", "-", 0, "0")
+
+
+def _merge_into(base: dict, extra: dict) -> None:
+    for k, v in extra.items():
+        if k not in base or _is_empty(base[k]):
+            base[k] = v
+        elif isinstance(v, dict) and isinstance(base.get(k), dict):
+            _merge_into(base[k], v)
+
 
 def cargar_detalle_atleta(league_slug: str, athlete_id: str) -> dict:
-    """
-    Intenta varios endpoints ESPN en orden de calidad de datos.
-    Fusiona todos los campos en un único dict, priorizando los más completos.
-    """
     if not athlete_id:
         return {}
 
-    # Orden: site.api (mejor para headshots y posiciones), luego core API
     urls = [
-        # Site API — datos de presentación (mejor nombre, headshot, posición display)
         f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/athletes/{athlete_id}",
-        # Site Web API — a veces trae birthPlace y citizenship que site.api no tiene
         f"https://site.web.api.espn.com/apis/common/v3/sports/soccer/{league_slug}/athletes/{athlete_id}?region=us&lang=en",
-        # Core API v2 — datos estructurados, a veces mejor altura y país
         f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{league_slug}/athletes/{athlete_id}?lang=en&region=us",
-        # Core API v3 — backup extra
         f"https://sports.core.api.espn.com/v3/sports/soccer/{league_slug}/athletes/{athlete_id}?lang=en&region=us",
     ]
 
@@ -552,7 +550,6 @@ def cargar_detalle_atleta(league_slug: str, athlete_id: str) -> dict:
         if not isinstance(data, dict):
             continue
 
-        # Algunos endpoints envuelven al atleta
         candidates = [data]
         for wrapper_key in ("athlete", "player", "person"):
             wrapped = data.get(wrapper_key)
@@ -560,68 +557,48 @@ def cargar_detalle_atleta(league_slug: str, athlete_id: str) -> dict:
                 candidates.append(wrapped)
 
         for candidate in candidates:
-            if not isinstance(candidate, dict):
-                continue
             _merge_into(merged, candidate)
 
-        # Si ya tenemos los datos clave no seguimos pidiendo endpoints
-        if (
+        has_core = (
             merged.get("displayName")
             and country_from_athlete(merged)
             and parse_height_cm(merged.get("displayHeight") or merged.get("height")) > 0
-            and merged.get("position")
-        ):
+            and (merged.get("position") or merged.get("defaultPosition"))
+        )
+        if has_core:
             break
 
     return merged
 
 
-def _is_empty(v: Any) -> bool:
-    """True si el valor es considerado vacío/centinela."""
-    if isinstance(v, (dict, list)):
-        return False   # dicts/lists nunca son 'vacíos' a efectos de merge
-    try:
-        return v in {None, "", "Sin datos", "-", 0, "0"}
-    except TypeError:
-        return False
-
-
-def _merge_into(base: dict, extra: dict) -> None:
-    """Fusiona extra en base: solo sobreescribe si base tiene un valor vacío/centinela."""
-    for k, v in extra.items():
-        if k not in base or _is_empty(base[k]):
-            base[k] = v
-        elif isinstance(v, dict) and isinstance(base.get(k), dict):
-            # Merge recursivo para objetos anidados como "birthPlace", "position"
-            _merge_into(base[k], v)
-
-# ─── Carga de equipos de la liga ─────────────────────────────────────────────
+# ─── ESPN: equipos y planteles ─────────────────────────────────────────────────
 
 def cargar_equipos_liga(league_slug: str) -> list[dict]:
     urls = [
         f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/teams?limit=500",
         f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{league_slug}/teams?limit=500&lang=en&region=us",
     ]
+
     for url in urls:
         data = get_json(url)
         if not isinstance(data, dict):
             continue
 
-        raw: list = []
-        # Estructura site.api: sports[].leagues[].teams[]
+        raw: list[Any] = []
         for sport in data.get("sports") or []:
             for league in sport.get("leagues") or []:
                 raw.extend(league.get("teams") or [])
         raw.extend(data.get("items") or [])
         raw.extend(data.get("teams") or [])
 
-        equipos = []
+        equipos: list[dict] = []
         for item in raw:
             team = item.get("team") if isinstance(item, dict) else None
             if not isinstance(team, dict):
                 team = item if isinstance(item, dict) else {}
             if not team:
                 continue
+
             tid = str(team.get("id") or extract_id_from_ref(team.get("$ref")) or "").strip()
             name = first_valid(
                 team.get("displayName"), team.get("name"),
@@ -640,13 +617,11 @@ def buscar_equipo(equipos: list[dict], nombre: str) -> dict | None:
     posibles = [nombre] + TEAM_ALIASES.get(nombre, [])
     posibles_slug = [slugify(x) for x in posibles]
 
-    # Coincidencia exacta
     for p in posibles_slug:
         for e in equipos:
             if e["slug"] == p:
                 return e
 
-    # Coincidencia parcial
     for p in posibles_slug:
         for e in equipos:
             if p in e["slug"] or e["slug"] in p:
@@ -654,45 +629,34 @@ def buscar_equipo(equipos: list[dict], nombre: str) -> dict | None:
 
     return None
 
-# ─── Carga de roster ─────────────────────────────────────────────────────────
 
 def cargar_roster(league_slug: str, team_id: str) -> dict:
     urls = [
         f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/teams/{team_id}/roster",
         f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{league_slug}/teams/{team_id}/roster?lang=en&region=us",
     ]
+
     for url in urls:
         data = get_json(url)
         time.sleep(SLEEP_BETWEEN_REQUESTS)
         if isinstance(data, dict) and data.get("athletes"):
             return data
+
     return {}
 
 
-def _pos_to_str(v: Any) -> str:
-    """Convierte un valor de posición ESPN (str o dict) a string legible."""
-    if isinstance(v, str):
-        return v.strip()
-    if isinstance(v, dict):
-        for k in ("displayName", "name", "abbreviation", "shortDisplayName"):
-            val = v.get(k)
-            if isinstance(val, str) and val.strip():
-                return val.strip()
-    return ""
-
-
 def iter_athletes_from_roster(roster: dict):
-    """Yield (athlete_dict, group_position_str) para cada jugador del roster."""
     for group in roster.get("athletes") or []:
         if not isinstance(group, dict):
             continue
-        # group.get("position") puede ser str o dict — normalizamos a str
+
         group_pos = (
             _pos_to_str(group.get("position"))
             or _pos_to_str(group.get("name"))
             or _pos_to_str(group.get("displayName"))
             or ""
         )
+
         items = group.get("items") or []
         if items:
             for item in items:
@@ -702,22 +666,12 @@ def iter_athletes_from_roster(roster: dict):
                 if isinstance(athlete, dict):
                     yield athlete, group_pos
         else:
-            # Algunos rosters no agrupan
             yield group, group_pos
 
-# ─── Construcción del jugador ─────────────────────────────────────────────────
 
-def construir_jugador(
-    athlete: dict,
-    detalle: dict,
-    group_pos: str,
-    club: str,
-    liga: str,
-) -> dict | None:
-    """
-    Construye el dict final del jugador fusionando roster + detalle ESPN.
-    Prioridad: detalle (más completo) > roster > group_pos.
-    """
+# ─── Jugador final ─────────────────────────────────────────────────────────────
+
+def construir_jugador(athlete: dict, detalle: dict, group_pos: str, club: str, liga: str) -> dict | None:
     athlete_id = extract_athlete_id(detalle) or extract_athlete_id(athlete)
 
     nombre = first_valid(
@@ -727,44 +681,47 @@ def construir_jugador(
     if not nombre:
         return None
 
-    # ── Posición ──
-    # El campo "position" del detalle es la posición REAL (no el grupo del roster)
     det_pos_obj = detalle.get("position") or detalle.get("defaultPosition") or {}
     ros_pos_obj = athlete.get("position") or athlete.get("defaultPosition") or {}
-    det_pos_str = detalle.get("displayPosition") or detalle.get("positionType") or ""
-    ros_pos_str = athlete.get("displayPosition") or ""
 
-    posicion_codigo = normalizar_posicion(det_pos_obj, ros_pos_obj, det_pos_str, ros_pos_str, group_pos)
-    detalle_legible = posicion_detalle_legible(det_pos_obj or ros_pos_obj, group_pos)
+    det_pos_str = (
+        detalle.get("displayPosition")
+        or detalle.get("positionType")
+        or detalle.get("positionDisplayName")
+        or ""
+    )
+    ros_pos_str = athlete.get("displayPosition") or athlete.get("positionType") or ""
 
-    # ── País ──
-    pais = (
-        country_from_athlete(detalle)
-        or country_from_athlete(athlete)
-        or "Sin datos"
+    posicion_codigo = normalizar_posicion(
+        det_pos_obj, det_pos_str,
+        ros_pos_obj, ros_pos_str,
+        group_pos,
+    )
+    detalle_legible = posicion_detalle_legible(
+        det_pos_obj, det_pos_str,
+        ros_pos_obj, ros_pos_str,
+        group_pos,
     )
 
-    # ── Edad ──
+    pais = country_from_athlete(detalle) or country_from_athlete(athlete) or "Sin datos"
+
     edad = first_valid(
         parse_age(detalle.get("age")),
         parse_age(athlete.get("age")),
-        parse_age_from_dob(detalle.get("dateOfBirth") or detalle.get("dob") or athlete.get("dateOfBirth")),
+        parse_age_from_dob(detalle.get("dateOfBirth") or detalle.get("dob")),
+        parse_age_from_dob(athlete.get("dateOfBirth") or athlete.get("dob")),
     ) or 0
 
-    # ── Altura ──
-    # ESPN devuelve "displayHeight" (string legible) y "height" (número en pulgadas)
-    # Probamos ambos en ambas fuentes.
     altura = first_valid(
-        parse_height_cm(detalle.get("displayHeight")),    # "5' 11\""
-        parse_height_cm(detalle.get("height")),           # 71.0 (pulgadas)
+        parse_height_cm(detalle.get("displayHeight")),
+        parse_height_cm(detalle.get("height")),
         parse_height_cm(athlete.get("displayHeight")),
         parse_height_cm(athlete.get("height")),
     ) or 0
 
-    # ── Imagen ──
     imagen = headshot_url(athlete_id, detalle) or headshot_url(athlete_id, athlete)
 
-    return {
+    return sanitizar_jugador({
         "nombre": str(nombre).strip(),
         "pais": str(pais).strip(),
         "club": club,
@@ -773,12 +730,13 @@ def construir_jugador(
         "posicion": posicion_codigo,
         "posicion_detalle": detalle_legible or posicion_codigo,
         "edad": int(edad or 0),
-        "altura": int(altura or 0),
+        "altura": altura,
         "imagen": imagen,
         "espn_id": athlete_id,
-    }
+    })
 
-# ─── Persistencia ────────────────────────────────────────────────────────────
+
+# ─── Persistencia y limpieza ───────────────────────────────────────────────────
 
 def cargar_existente() -> list[dict]:
     if not OUTPUT_FILE.exists():
@@ -794,96 +752,168 @@ def cargar_existente() -> list[dict]:
     return []
 
 
+def sanitizar_jugador(j: dict) -> dict:
+    j = dict(j or {})
+
+    j["nombre"] = str(j.get("nombre") or "").strip()
+    j["pais"] = str(j.get("pais") or "Sin datos").strip() or "Sin datos"
+    j["club"] = str(j.get("club") or "").strip()
+    j["liga"] = str(j.get("liga") or "").strip()
+    j["competicion"] = str(j.get("competicion") or j.get("liga") or "").strip()
+
+    j["edad"] = parse_age(j.get("edad"))
+    j["altura"] = sanitizar_altura_cm(j.get("altura"))
+
+    det = str(j.get("posicion_detalle") or "").strip()
+    pos = str(j.get("posicion") or "").strip().upper()
+    pos_from_det = normalizar_posicion(det) if det else ""
+    j["posicion"] = pos_from_det if pos_from_det in ("G", "D", "M", "F") else (pos if pos in ("G", "D", "M", "F") else "M")
+    j["posicion_detalle"] = det or j["posicion"]
+
+    if not j.get("imagen") and j.get("espn_id"):
+        j["imagen"] = headshot_url(str(j.get("espn_id")))
+
+    return j
+
+
+def posicion_score(j: dict) -> int:
+    score = 0
+    if j.get("pais") and j.get("pais") != "Sin datos":
+        score += 3
+    if parse_age(j.get("edad")):
+        score += 2
+    if sanitizar_altura_cm(j.get("altura")):
+        score += 3
+    if j.get("imagen"):
+        score += 1
+    if j.get("espn_id"):
+        score += 1
+    if j.get("posicion_detalle") not in (None, "", "G", "D", "M", "F"):
+        score += 3
+    return score
+
+
 def merge_jugadores(*listas: list[dict]) -> list[dict]:
     out: dict[str, dict] = {}
+
     for lista in listas:
-        for j in lista or []:
-            if not isinstance(j, dict) or not j.get("nombre"):
+        for item in lista or []:
+            if not isinstance(item, dict) or not item.get("nombre"):
                 continue
+
+            j = sanitizar_jugador(item)
             key = jugador_key(j)
+
             if key not in out:
-                out[key] = j.copy()
+                out[key] = j
                 continue
-            merged = out[key].copy()
-            for campo in j:
-                val = j[campo]
-                cur = merged.get(campo)
-                if campo in ("edad", "altura"):
-                    if int(val or 0) > int(cur or 0):
+
+            cur = sanitizar_jugador(out[key])
+            merged = cur.copy()
+
+            # Priorizar nuevos datos válidos.
+            for campo in ("pais", "imagen", "espn_id", "club", "liga", "competicion"):
+                val = j.get(campo)
+                if val and val not in ("Sin datos", "-", "0"):
+                    if campo in ("pais", "imagen", "espn_id") or _is_empty(merged.get(campo)):
                         merged[campo] = val
-                else:
-                    if val and cur in (None, "", "Sin datos", 0, "0"):
+
+            edad_cur = parse_age(cur.get("edad"))
+            edad_new = parse_age(j.get("edad"))
+            merged["edad"] = edad_new or edad_cur or 0
+
+            altura_cur = sanitizar_altura_cm(cur.get("altura"))
+            altura_new = sanitizar_altura_cm(j.get("altura"))
+            merged["altura"] = altura_new or altura_cur or 0
+
+            merged["posicion"] = elegir_posicion_mejor(cur, j)
+
+            det_new = str(j.get("posicion_detalle") or "").strip()
+            det_cur = str(cur.get("posicion_detalle") or "").strip()
+            if det_new and det_new not in ("G", "D", "M", "F"):
+                merged["posicion_detalle"] = det_new
+            else:
+                merged["posicion_detalle"] = det_cur or merged["posicion"]
+
+            # Si el nuevo es más completo, usarlo para completar vacíos.
+            if posicion_score(j) > posicion_score(cur):
+                for campo, val in j.items():
+                    if _is_empty(merged.get(campo)) and not _is_empty(val):
                         merged[campo] = val
-            out[key] = merged
+
+            out[key] = sanitizar_jugador(merged)
+
     return sorted(
         out.values(),
         key=lambda x: (slugify(x.get("liga")), slugify(x.get("club")), slugify(x.get("nombre"))),
     )
 
-# ─── Diagnóstico de calidad ───────────────────────────────────────────────────
 
-def calidad_stats(jugadores: list[dict]) -> dict:
-    total = len(jugadores)
-    def pct(n): return f"{n}/{total} ({100*n//total if total else 0}%)"
-    con_pais    = sum(1 for j in jugadores if j.get("pais") and j.get("pais") != "Sin datos")
-    con_edad    = sum(1 for j in jugadores if int(j.get("edad") or 0) > 0)
-    con_altura  = sum(1 for j in jugadores if int(j.get("altura") or 0) > 0)
-    con_pos_det = sum(1 for j in jugadores if j.get("posicion_detalle") not in (None, "", "G", "D", "M", "F"))
-    con_imagen  = sum(1 for j in jugadores if j.get("imagen"))
+def jugador_apto_para_juego(j: dict) -> tuple[bool, list[str]]:
+    faltantes = []
+    if not j.get("nombre"):
+        faltantes.append("nombre")
+    if not j.get("pais") or j.get("pais") == "Sin datos":
+        faltantes.append("pais")
+    if not parse_age(j.get("edad")):
+        faltantes.append("edad")
+    if not sanitizar_altura_cm(j.get("altura")):
+        faltantes.append("altura")
+    if j.get("posicion") not in ("G", "D", "M", "F"):
+        faltantes.append("posicion")
+    if not j.get("imagen"):
+        faltantes.append("imagen")
+    return len(faltantes) == 0, faltantes
+
+
+def calidad_stats(jugadores: list[dict], todos: list[dict] | None = None) -> dict:
+    base = todos or jugadores
+    total = len(base)
+
+    def pct(n: int) -> str:
+        return f"{n}/{total} ({100 * n // total if total else 0}%)"
+
+    con_pais = sum(1 for j in base if j.get("pais") and j.get("pais") != "Sin datos")
+    con_edad = sum(1 for j in base if parse_age(j.get("edad")) > 0)
+    con_altura = sum(1 for j in base if sanitizar_altura_cm(j.get("altura")) > 0)
+    con_pos_det = sum(1 for j in base if j.get("posicion_detalle") not in (None, "", "G", "D", "M", "F"))
+    con_imagen = sum(1 for j in base if j.get("imagen"))
+    aptos = len(jugadores)
+
     return {
-        "con_pais":           pct(con_pais),
-        "con_edad":           pct(con_edad),
-        "con_altura":         pct(con_altura),
+        "con_pais": pct(con_pais),
+        "con_edad": pct(con_edad),
+        "con_altura": pct(con_altura),
         "con_posicion_detalle": pct(con_pos_det),
-        "con_imagen":         pct(con_imagen),
+        "con_imagen": pct(con_imagen),
+        "aptos_para_juego": f"{aptos}/{total} ({100 * aptos // total if total else 0}%)",
     }
 
-# ─── Main ─────────────────────────────────────────────────────────────────────
 
-def procesar_atleta(
-    athlete: dict,
-    group_pos: str,
-    club: str,
-    liga: str,
-    league_slug: str,
-) -> tuple[dict | None, dict | None]:
-    """Carga el detalle de un atleta y construye su dict. Thread-safe."""
+# ─── Procesamiento ─────────────────────────────────────────────────────────────
+
+def procesar_atleta(athlete: dict, group_pos: str, club: str, liga: str, league_slug: str) -> tuple[dict | None, dict | None]:
     athlete_id = extract_athlete_id(athlete)
     detalle = cargar_detalle_atleta(league_slug, athlete_id) if athlete_id else {}
     jugador = construir_jugador(athlete, detalle, group_pos, club, liga)
     if not jugador:
         return None, None
 
-    campos_faltantes = []
-    if not jugador["pais"] or jugador["pais"] == "Sin datos":
-        campos_faltantes.append("pais")
-    if not jugador["edad"]:
-        campos_faltantes.append("edad")
-    if not jugador["altura"]:
-        campos_faltantes.append("altura")
-
+    ok, faltantes = jugador_apto_para_juego(jugador)
     incompleto = None
-    if campos_faltantes:
+    if not ok:
         incompleto = {
-            "nombre": jugador["nombre"],
+            "nombre": jugador.get("nombre"),
             "club": club,
             "liga": liga,
-            "faltantes": campos_faltantes,
+            "faltantes": faltantes,
             "espn_id": athlete_id,
         }
+
     return jugador, incompleto
 
 
-def procesar_equipo(
-    club: str,
-    equipo: dict,
-    liga: str,
-    league_slug: str,
-) -> tuple[list[dict], list[dict], int]:
-    """
-    Carga el roster de un equipo y procesa todos sus atletas en paralelo.
-    Devuelve (jugadores, incompletos, count).
-    """
+def procesar_equipo(club: str, equipo: dict, liga: str, league_slug: str) -> tuple[list[dict], list[dict], int]:
     roster = cargar_roster(league_slug, equipo["id"])
     athletes_list = list(iter_athletes_from_roster(roster))
 
@@ -891,10 +921,10 @@ def procesar_equipo(
     incompletos_equipo: list[dict] = []
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS_DETALLE) as pool:
-        futures = {
-            pool.submit(procesar_atleta, athlete, group_pos, club, liga, league_slug): (athlete, group_pos)
+        futures = [
+            pool.submit(procesar_atleta, athlete, group_pos, club, liga, league_slug)
             for athlete, group_pos in athletes_list
-        }
+        ]
         for future in as_completed(futures):
             try:
                 jugador, incompleto = future.result()
@@ -903,73 +933,86 @@ def procesar_equipo(
                 if incompleto:
                     incompletos_equipo.append(incompleto)
             except Exception as exc:
-                print(f"    ⚠️  Error procesando atleta: {exc}")
+                print(f"    ⚠️ Error procesando atleta: {exc}")
 
     return jugadores_equipo, incompletos_equipo, len(jugadores_equipo)
 
 
+# ─── Main ──────────────────────────────────────────────────────────────────────
+
 def main() -> None:
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+
     existentes = cargar_existente()
     nuevos: list[dict] = []
     no_encontrados: list[dict] = []
-    jugadores_sin_datos: list[dict] = []
-    lock = Lock()
+    jugadores_incompletos: list[dict] = []
 
     t0 = time.time()
 
     for liga, config in LIGAS.items():
         league_slug = config["slug"]
-        print(f"\n{chr(9472)*60}")
-        print(f"Liga: {liga}  ({league_slug})")
+        print(f"\n{'─' * 60}")
+        print(f"Liga: {liga} ({league_slug})")
 
         equipos_espn = cargar_equipos_liga(league_slug)
         if not equipos_espn:
-            print(f"  ⚠️  No se pudo listar equipos para {liga}")
+            print(f"  ⚠️ No se pudo listar equipos para {liga}")
 
-        # Encontrar todos los equipos de la liga primero
         equipos_validos: list[tuple[str, dict]] = []
         for club in config["clubes"]:
             equipo = buscar_equipo(equipos_espn, club)
             if not equipo:
-                print(f"  ✗  No encontrado: {club}")
+                print(f"  ✗ No encontrado: {club}")
                 no_encontrados.append({"liga": liga, "equipo": club})
             else:
-                print(f"  ✓  {club}  →  ESPN id={equipo['id']}  ({equipo['nombre']})")
+                print(f"  ✓ {club} → ESPN id={equipo['id']} ({equipo['nombre']})")
                 equipos_validos.append((club, equipo))
 
-        # Procesar equipos de la liga en paralelo (con menos workers para no saturar ESPN)
         with ThreadPoolExecutor(max_workers=MAX_WORKERS_EQUIPOS) as pool:
-            futures_eq = {
+            futures = {
                 pool.submit(procesar_equipo, club, equipo, liga, league_slug): club
                 for club, equipo in equipos_validos
             }
-            for future in as_completed(futures_eq):
-                club = futures_eq[future]
+            for future in as_completed(futures):
+                club = futures[future]
                 try:
                     jug_eq, inc_eq, count = future.result()
-                    missing_pct = f" ({len(inc_eq)} incompletos)" if inc_eq else ""
-                    print(f"      {club}: {count} jugadores{missing_pct}")
-                    with lock:
-                        nuevos.extend(jug_eq)
-                        jugadores_sin_datos.extend(inc_eq)
+                    print(f"      {club}: {count} jugadores" + (f" ({len(inc_eq)} incompletos)" if inc_eq else ""))
+                    nuevos.extend(jug_eq)
+                    jugadores_incompletos.extend(inc_eq)
                 except Exception as exc:
-                    print(f"    ⚠️  Error procesando {club}: {exc}")
+                    print(f"    ⚠️ Error procesando {club}: {exc}")
 
     elapsed = time.time() - t0
-    print(f"\n⏱  Scraping completado en {elapsed:.0f}s ({elapsed/60:.1f} min)")
+    print(f"\n⏱ Scraping completado en {elapsed:.0f}s ({elapsed / 60:.1f} min)")
 
-    # ── Merge final ──
     combinados = merge_jugadores(existentes, nuevos, FAMOSOS_FALLBACK)
 
     if len(nuevos) < MIN_JUGADORES_VALIDOS and len(existentes) >= MIN_JUGADORES_VALIDOS:
-        print("\n⚠️  ESPN devolvió pocos jugadores. Conservando base anterior + fallback.")
+        print("\n⚠️ ESPN devolvió pocos jugadores. Conservando base anterior + fallback.")
         combinados = merge_jugadores(existentes, FAMOSOS_FALLBACK)
 
-    jugables = [j for j in combinados if j.get("posicion") in ("G", "D", "M", "F")]
+    todos_sanitizados = [sanitizar_jugador(j) for j in combinados]
+
+    jugables: list[dict] = []
+    jugadores_no_aptos: list[dict] = []
+
+    for j in todos_sanitizados:
+        ok, faltantes = jugador_apto_para_juego(j)
+        if ok:
+            jugables.append(j)
+        else:
+            jugadores_no_aptos.append({
+                "nombre": j.get("nombre"),
+                "club": j.get("club"),
+                "liga": j.get("liga"),
+                "faltantes": faltantes,
+                "espn_id": j.get("espn_id", ""),
+            })
 
     payload = {
-        "fuente": "ESPN site.api + site.web.api + sports.core.api (v2/v3) [paralelo]",
+        "fuente": "ESPN site.api + site.web.api + sports.core.api (v2/v3) [paralelo] + filtros juego",
         "actualizado": datetime.now(timezone.utc).isoformat(),
         "total": len(jugables),
         "scrapeados_nuevos": len(nuevos),
@@ -977,8 +1020,9 @@ def main() -> None:
         "tiempo_segundos": round(elapsed, 1),
         "ligas": sorted({j.get("liga") for j in jugables if j.get("liga")}),
         "no_encontrados": no_encontrados,
-        "calidad": calidad_stats(jugables),
-        "jugadores_incompletos": jugadores_sin_datos[:50],
+        "calidad": calidad_stats(jugables, todos_sanitizados),
+        "jugadores_incompletos": jugadores_incompletos[:80],
+        "jugadores_no_aptos": jugadores_no_aptos[:120],
         "jugadores": jugables,
     }
 
@@ -987,12 +1031,13 @@ def main() -> None:
         encoding="utf-8",
     )
 
-    print(f"\n{chr(9552)*60}")
-    print(f"✅  Guardado en {OUTPUT_FILE}")
-    print(f"    Total jugadores: {payload['total']}")
-    print(f"    Calidad:")
+    print(f"\n{'═' * 60}")
+    print(f"✅ Guardado en {OUTPUT_FILE}")
+    print(f"    Total jugadores aptos: {payload['total']}")
+    print("    Calidad:")
     for k, v in payload["calidad"].items():
         print(f"      {k}: {v}")
+
     if no_encontrados:
         print(f"    Equipos no encontrados: {len(no_encontrados)}")
         for item in no_encontrados:
