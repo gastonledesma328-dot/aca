@@ -200,9 +200,15 @@ def jugador_key(j: dict) -> str:
 
 def first_valid(*values: Any) -> Any:
     """Devuelve el primer valor no-nulo, no-vacío y no-centinela."""
-    SKIP = {None, "", "Sin datos", "-", 0, "0"}
+    SKIP_SCALARS = {None, "", "Sin datos", "-", 0, "0"}
     for v in values:
-        if v in SKIP:
+        # dict/list no son hashables — no podemos usar `in` con el set
+        if isinstance(v, (dict, list)):
+            continue
+        try:
+            if v in SKIP_SCALARS:
+                continue
+        except TypeError:
             continue
         if isinstance(v, str) and not v.strip():
             continue
@@ -650,14 +656,30 @@ def cargar_roster(league_slug: str, team_id: str) -> dict:
     return {}
 
 
+def _pos_to_str(v: Any) -> str:
+    """Convierte un valor de posición ESPN (str o dict) a string legible."""
+    if isinstance(v, str):
+        return v.strip()
+    if isinstance(v, dict):
+        for k in ("displayName", "name", "abbreviation", "shortDisplayName"):
+            val = v.get(k)
+            if isinstance(val, str) and val.strip():
+                return val.strip()
+    return ""
+
+
 def iter_athletes_from_roster(roster: dict):
     """Yield (athlete_dict, group_position_str) para cada jugador del roster."""
     for group in roster.get("athletes") or []:
         if not isinstance(group, dict):
             continue
-        group_pos = first_valid(
-            group.get("position"), group.get("name"), group.get("displayName"), ""
-        ) or ""
+        # group.get("position") puede ser str o dict — normalizamos a str
+        group_pos = (
+            _pos_to_str(group.get("position"))
+            or _pos_to_str(group.get("name"))
+            or _pos_to_str(group.get("displayName"))
+            or ""
+        )
         items = group.get("items") or []
         if items:
             for item in items:
