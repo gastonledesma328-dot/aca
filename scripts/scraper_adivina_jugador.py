@@ -18,8 +18,10 @@ import json
 import re
 import time
 import unicodedata
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
+from threading import Lock
 from typing import Any
 
 import requests
@@ -29,9 +31,11 @@ import requests
 OUTPUT_FILE = Path("adivinajugador/jugadores.json")
 MIN_JUGADORES_VALIDOS = 100
 REQUEST_TIMEOUT = 28
-SLEEP_BETWEEN_REQUESTS = 0.10   # segundos entre GETs normales
+SLEEP_BETWEEN_REQUESTS = 0.05   # segundos entre GETs (menor porque hay threads)
 SLEEP_AFTER_429 = 8.0           # pausa tras rate-limit
 MAX_RETRIES = 3
+MAX_WORKERS_DETALLE = 8         # threads paralelos para cargar detalle de atletas
+MAX_WORKERS_EQUIPOS = 4         # threads paralelos para ligas/equipos
 
 HEADERS = {
     "User-Agent": (
@@ -836,65 +840,124 @@ def calidad_stats(jugadores: list[dict]) -> dict:
 
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
+def procesar_atleta(
+    athlete: dict,
+    group_pos: str,
+    club: str,
+    liga: str,
+    league_slug: str,
+) -> tuple[dict | None, dict | None]:
+    """Carga el detalle de un atleta y construye su dict. Thread-safe."""
+    athlete_id = extract_athlete_id(athlete)
+    detalle = cargar_detalle_atleta(league_slug, athlete_id) if athlete_id else {}
+    jugador = construir_jugador(athlete, detalle, group_pos, club, liga)
+    if not jugador:
+        return None, None
+
+    campos_faltantes = []
+    if not jugador["pais"] or jugador["pais"] == "Sin datos":
+        campos_faltantes.append("pais")
+    if not jugador["edad"]:
+        campos_faltantes.append("edad")
+    if not jugador["altura"]:
+        campos_faltantes.append("altura")
+
+    incompleto = None
+    if campos_faltantes:
+        incompleto = {
+            "nombre": jugador["nombre"],
+            "club": club,
+            "liga": liga,
+            "faltantes": campos_faltantes,
+            "espn_id": athlete_id,
+        }
+    return jugador, incompleto
+
+
+def procesar_equipo(
+    club: str,
+    equipo: dict,
+    liga: str,
+    league_slug: str,
+) -> tuple[list[dict], list[dict], int]:
+    """
+    Carga el roster de un equipo y procesa todos sus atletas en paralelo.
+    Devuelve (jugadores, incompletos, count).
+    """
+    roster = cargar_roster(league_slug, equipo["id"])
+    athletes_list = list(iter_athletes_from_roster(roster))
+
+    jugadores_equipo: list[dict] = []
+    incompletos_equipo: list[dict] = []
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS_DETALLE) as pool:
+        futures = {
+            pool.submit(procesar_atleta, athlete, group_pos, club, liga, league_slug): (athlete, group_pos)
+            for athlete, group_pos in athletes_list
+        }
+        for future in as_completed(futures):
+            try:
+                jugador, incompleto = future.result()
+                if jugador:
+                    jugadores_equipo.append(jugador)
+                if incompleto:
+                    incompletos_equipo.append(incompleto)
+            except Exception as exc:
+                print(f"    ⚠️  Error procesando atleta: {exc}")
+
+    return jugadores_equipo, incompletos_equipo, len(jugadores_equipo)
+
+
 def main() -> None:
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     existentes = cargar_existente()
     nuevos: list[dict] = []
     no_encontrados: list[dict] = []
     jugadores_sin_datos: list[dict] = []
+    lock = Lock()
+
+    t0 = time.time()
 
     for liga, config in LIGAS.items():
         league_slug = config["slug"]
-        print(f"\n{'─'*60}")
+        print(f"\n{chr(9472)*60}")
         print(f"Liga: {liga}  ({league_slug})")
 
         equipos_espn = cargar_equipos_liga(league_slug)
         if not equipos_espn:
             print(f"  ⚠️  No se pudo listar equipos para {liga}")
 
+        # Encontrar todos los equipos de la liga primero
+        equipos_validos: list[tuple[str, dict]] = []
         for club in config["clubes"]:
             equipo = buscar_equipo(equipos_espn, club)
             if not equipo:
                 print(f"  ✗  No encontrado: {club}")
                 no_encontrados.append({"liga": liga, "equipo": club})
-                continue
+            else:
+                print(f"  ✓  {club}  →  ESPN id={equipo['id']}  ({equipo['nombre']})")
+                equipos_validos.append((club, equipo))
 
-            print(f"  ✓  {club}  →  ESPN id={equipo['id']}  ({equipo['nombre']})")
-            roster = cargar_roster(league_slug, equipo["id"])
-            count = 0
-            sin_datos_local = 0
+        # Procesar equipos de la liga en paralelo (con menos workers para no saturar ESPN)
+        with ThreadPoolExecutor(max_workers=MAX_WORKERS_EQUIPOS) as pool:
+            futures_eq = {
+                pool.submit(procesar_equipo, club, equipo, liga, league_slug): club
+                for club, equipo in equipos_validos
+            }
+            for future in as_completed(futures_eq):
+                club = futures_eq[future]
+                try:
+                    jug_eq, inc_eq, count = future.result()
+                    missing_pct = f" ({len(inc_eq)} incompletos)" if inc_eq else ""
+                    print(f"      {club}: {count} jugadores{missing_pct}")
+                    with lock:
+                        nuevos.extend(jug_eq)
+                        jugadores_sin_datos.extend(inc_eq)
+                except Exception as exc:
+                    print(f"    ⚠️  Error procesando {club}: {exc}")
 
-            for athlete, group_pos in iter_athletes_from_roster(roster):
-                athlete_id = extract_athlete_id(athlete)
-                detalle = cargar_detalle_atleta(league_slug, athlete_id) if athlete_id else {}
-                jugador = construir_jugador(athlete, detalle, group_pos, club, liga)
-
-                if not jugador:
-                    continue
-
-                nuevos.append(jugador)
-                count += 1
-
-                # Registro de calidad individual
-                campos_faltantes = []
-                if not jugador["pais"] or jugador["pais"] == "Sin datos":
-                    campos_faltantes.append("pais")
-                if not jugador["edad"]:
-                    campos_faltantes.append("edad")
-                if not jugador["altura"]:
-                    campos_faltantes.append("altura")
-                if campos_faltantes:
-                    sin_datos_local += 1
-                    jugadores_sin_datos.append({
-                        "nombre": jugador["nombre"],
-                        "club": club,
-                        "liga": liga,
-                        "faltantes": campos_faltantes,
-                        "espn_id": athlete_id,
-                    })
-
-            missing_pct = f" ({sin_datos_local} con datos incompletos)" if sin_datos_local else ""
-            print(f"      Jugadores: {count}{missing_pct}")
+    elapsed = time.time() - t0
+    print(f"\n⏱  Scraping completado en {elapsed:.0f}s ({elapsed/60:.1f} min)")
 
     # ── Merge final ──
     combinados = merge_jugadores(existentes, nuevos, FAMOSOS_FALLBACK)
@@ -903,19 +966,19 @@ def main() -> None:
         print("\n⚠️  ESPN devolvió pocos jugadores. Conservando base anterior + fallback.")
         combinados = merge_jugadores(existentes, FAMOSOS_FALLBACK)
 
-    # Solo jugadores con posición válida
     jugables = [j for j in combinados if j.get("posicion") in ("G", "D", "M", "F")]
 
     payload = {
-        "fuente": "ESPN site.api + site.web.api + sports.core.api (v2/v3)",
+        "fuente": "ESPN site.api + site.web.api + sports.core.api (v2/v3) [paralelo]",
         "actualizado": datetime.now(timezone.utc).isoformat(),
         "total": len(jugables),
         "scrapeados_nuevos": len(nuevos),
         "existentes_previos": len(existentes),
+        "tiempo_segundos": round(elapsed, 1),
         "ligas": sorted({j.get("liga") for j in jugables if j.get("liga")}),
         "no_encontrados": no_encontrados,
         "calidad": calidad_stats(jugables),
-        "jugadores_incompletos": jugadores_sin_datos[:50],  # solo los primeros 50 para diagnóstico
+        "jugadores_incompletos": jugadores_sin_datos[:50],
         "jugadores": jugables,
     }
 
@@ -924,7 +987,7 @@ def main() -> None:
         encoding="utf-8",
     )
 
-    print(f"\n{'═'*60}")
+    print(f"\n{chr(9552)*60}")
     print(f"✅  Guardado en {OUTPUT_FILE}")
     print(f"    Total jugadores: {payload['total']}")
     print(f"    Calidad:")
