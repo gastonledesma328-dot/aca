@@ -232,9 +232,14 @@ h1 {
 
 .mode-panel {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  align-items: start;
   gap: 14px;
   margin-bottom: 14px;
+}
+
+.pistas-block {
+  min-width: 0;
 }
 
 .panel-label,
@@ -341,9 +346,9 @@ button:disabled {
 
 .hints-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-bottom: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 0;
 }
 
 .hint-card {
@@ -449,8 +454,12 @@ button:disabled {
     grid-template-columns: 1fr;
   }
 
-  .hints-row {
+  .mode-panel {
     grid-template-columns: 1fr;
+  }
+
+  .hints-row {
+    grid-template-columns: 1fr 1fr;
   }
 
   .game-card {
@@ -473,5 +482,9 @@ button:disabled {
   .help-button {
     width: 40px;
     min-height: 40px;
+  }
+
+  .hints-row {
+    grid-template-columns: 1fr;
   }
 }
