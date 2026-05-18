@@ -65,6 +65,31 @@ h1 {
   line-height: 1;
 }
 
+.back-games-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  min-height: 40px;
+  margin: 0 0 14px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(88, 210, 125, 0.38);
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 900;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+}
+
+.back-games-link:hover,
+.back-games-link:focus-visible {
+  color: var(--darkText);
+  background: var(--green);
+  border-color: transparent;
+  outline: none;
+}
+
 .hero-text {
   margin: 12px 0 0;
   max-width: 720px;
