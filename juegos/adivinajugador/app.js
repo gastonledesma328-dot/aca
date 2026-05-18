@@ -1,8 +1,9 @@
 const DATA_URLS = [
-  "../../adivinajugador/jugadores.json",
-  "./jugadores.json",
-  "jugadores.json",
-  "/adivinajugador/jugadores.json"
+  '../../adivinajugador/jugadores.json',
+  '/adivinajugador/jugadores.json',
+  './jugadores.json',
+  'jugadores.json',
+  '/aca/adivinajugador/jugadores.json',
 ];
 const MIN_CHARS = 4;
 
@@ -466,6 +467,17 @@ function submitGuess() {
   setMessage('No era. Mirá las pistas y probá otro.', '');
 }
 
+function normalizePlayersPayload(data) {
+  if (Array.isArray(data)) return data;
+
+  if (data && Array.isArray(data.jugadores)) return data.jugadores;
+  if (data && Array.isArray(data.players)) return data.players;
+  if (data && data.data && Array.isArray(data.data)) return data.data;
+  if (data && data.data && Array.isArray(data.data.jugadores)) return data.data.jugadores;
+
+  return null;
+}
+
 async function fetchPlayersJson() {
   const errors = [];
 
@@ -480,13 +492,14 @@ async function fetchPlayersJson() {
       }
 
       const data = await response.json();
+      const players = normalizePlayersPayload(data);
 
-      if (!Array.isArray(data)) {
-        errors.push(`${url}: el JSON no es una lista`);
+      if (!Array.isArray(players)) {
+        errors.push(`${url}: el JSON no contiene una lista de jugadores`);
         continue;
       }
 
-      return data;
+      return players;
     } catch (error) {
       errors.push(`${url}: ${error.message}`);
     }
@@ -516,7 +529,7 @@ async function loadPlayers() {
     startGame();
   } catch (error) {
     console.error(error);
-    setMessage('No se pudo cargar jugadores.json. Revisá que exista en /aca/adivinajugador/jugadores.json y que el archivo se llame exactamente jugadores.json.', 'bad');
+    setMessage('No se pudo cargar jugadores.json. Revisá que esté en /adivinajugador/jugadores.json o que el JSON tenga una lista en jugadores.', 'bad');
   }
 }
 
