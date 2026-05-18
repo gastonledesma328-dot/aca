@@ -69,8 +69,15 @@ const els = {
   message: $('message'),
   tableHead: $('tableHead'),
   guessesBody: $('guessesBody'),
-  answerCard: $('answerCard'),
   secretCompetition: $('secretCompetition'),
+  resultModal: $('resultModal'),
+  resultIcon: $('resultIcon'),
+  resultKicker: $('resultKicker'),
+  resultTitle: $('resultTitle'),
+  resultText: $('resultText'),
+  resultMeta: $('resultMeta'),
+  resultNewGameBtn: $('resultNewGameBtn'),
+  resultCloseBtn: $('resultCloseBtn'),
 };
 
 function normalizeText(value) {
@@ -252,8 +259,7 @@ function startGame() {
   finished = false;
 
   els.guessesBody.innerHTML = '';
-  els.answerCard.classList.add('hidden');
-  els.answerCard.innerHTML = '';
+  closeResultModal();
   els.playerInput.value = '';
   els.playerInput.disabled = false;
   els.guessBtn.disabled = false;
@@ -380,16 +386,41 @@ function showAnswer(won) {
   finished = true;
   els.playerInput.disabled = true;
   els.guessBtn.disabled = true;
+  openResultModal(won);
+}
+
+function openResultModal(won) {
+  if (!els.resultModal || !secret) return;
 
   const age = getAge(secret);
   const difficultyLabel = getDifficulty().label;
+  const position = POS_LABELS[secret.posicion] || secret.posicion || '-';
 
-  els.answerCard.classList.remove('hidden');
-  els.answerCard.innerHTML = `
-    <h2>${won ? '¡Correcto!' : 'Se terminaron los intentos'}</h2>
-    <p>El jugador era <strong>${secret.nombre}</strong>.</p>
-    <p>Dificultad ${difficultyLabel} · ${secret.pais} · ${secret.club} · ${secret.competicion} · ${POS_LABELS[secret.posicion] || secret.posicion} · ${age} años · ${secret.altura} cm</p>
-  `;
+  els.resultIcon.textContent = won ? '🏆' : '⚽';
+  els.resultKicker.textContent = won ? 'Juego completado' : 'Fin del juego';
+  els.resultTitle.textContent = won ? '¡Felicitaciones!' : 'Se terminaron los intentos';
+  els.resultText.innerHTML = won
+    ? `Lograste descubrir al jugador oculto: <strong>${secret.nombre}</strong>.`
+    : `El jugador oculto era <strong>${secret.nombre}</strong>.`;
+
+  els.resultMeta.innerHTML = [
+    `Dificultad ${difficultyLabel}`,
+    secret.pais || '-',
+    secret.club || '-',
+    secret.competicion || '-',
+    position,
+    `${age || '-'} años`,
+    `${secret.altura || '-'} cm`,
+  ]
+    .map((item) => `<span>${item}</span>`)
+    .join('');
+
+  els.resultModal.classList.remove('hidden');
+}
+
+function closeResultModal() {
+  if (!els.resultModal) return;
+  els.resultModal.classList.add('hidden');
 }
 
 function submitGuess() {
@@ -416,13 +447,13 @@ function submitGuess() {
   els.playerInput.value = '';
 
   if (normalizeText(player.nombre) === normalizeText(secret.nombre)) {
-    setMessage('¡Lo sacaste! Bien ahí.', 'ok');
+    setMessage('', '');
     showAnswer(true);
     return;
   }
 
   if (guesses.length >= getMaxTries()) {
-    setMessage('No quedan intentos.', 'bad');
+    setMessage('', '');
     showAnswer(false);
     return;
   }
@@ -468,5 +499,23 @@ els.categoryButtons.forEach((button) => {
 });
 
 els.allCategoriesBtn.addEventListener('click', activateAllCategories);
+
+if (els.resultNewGameBtn) {
+  els.resultNewGameBtn.addEventListener('click', startGame);
+}
+
+if (els.resultCloseBtn) {
+  els.resultCloseBtn.addEventListener('click', closeResultModal);
+}
+
+if (els.resultModal) {
+  els.resultModal.addEventListener('click', (event) => {
+    if (event.target === els.resultModal) closeResultModal();
+  });
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeResultModal();
+});
 
 loadPlayers();
