@@ -1,19 +1,24 @@
 const DATA_URL = './jugadores.json';
-const MAX_TRIES = 8;
 const MIN_CHARS = 4;
 
-const ERA_MODES = {
-  actual: {
-    label: 'Actualidad',
-    help: 'Pregunta con datos actuales. Cambiar este botón NO cambia el jugador oculto.',
+const DIFFICULTIES = {
+  facil: {
+    label: 'Fácil',
+    maxTries: 8,
+    autocomplete: true,
+    help: 'Fácil: tenés lista de jugadores al escribir y 8 intentos.',
   },
-  pasado: {
-    label: 'Pasado',
-    help: 'Modo de pregunta pasado. La base sigue usando jugadores actuales, no retirados.',
+  normal: {
+    label: 'Normal',
+    maxTries: 8,
+    autocomplete: false,
+    help: 'Normal: sin lista de jugadores al escribir. Tenés 8 intentos.',
   },
-  mixto: {
-    label: 'Mixto',
-    help: 'Mezcla de preguntas, manteniendo el mismo jugador oculto.',
+  dificil: {
+    label: 'Difícil',
+    maxTries: 5,
+    autocomplete: false,
+    help: 'Difícil: sin lista de jugadores y solo 5 intentos.',
   },
 };
 
@@ -44,13 +49,13 @@ let pool = [];
 let secret = null;
 let guesses = [];
 let finished = false;
-let selectedEra = 'actual';
+let selectedDifficulty = 'facil';
 let activeCategories = new Set(CATEGORIES.map((item) => item.key));
 
 const $ = (id) => document.getElementById(id);
 
 const els = {
-  eraButtons: document.querySelectorAll('[data-era]'),
+  difficultyButtons: document.querySelectorAll('[data-difficulty]'),
   categoryButtons: document.querySelectorAll('[data-category]'),
   modeLabel: $('modeLabel'),
   modeHelp: $('modeHelp'),
@@ -80,6 +85,14 @@ function normalizeText(value) {
 
 function getPlayerEra(player) {
   return normalizeText(player.epoca || player.tipo || 'actual');
+}
+
+function getDifficulty() {
+  return DIFFICULTIES[selectedDifficulty] || DIFFICULTIES.facil;
+}
+
+function getMaxTries() {
+  return getDifficulty().maxTries;
 }
 
 function getAge(player) {
@@ -132,15 +145,26 @@ function shuffle(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
 
-function setEra(mode) {
-  selectedEra = ERA_MODES[mode] ? mode : 'actual';
+function setDifficulty(mode) {
+  selectedDifficulty = DIFFICULTIES[mode] ? mode : 'facil';
 
-  els.eraButtons.forEach((button) => {
-    button.classList.toggle('active', button.dataset.era === selectedEra);
+  els.difficultyButtons.forEach((button) => {
+    button.classList.toggle('active', button.dataset.difficulty === selectedDifficulty);
   });
 
-  updateModeInfo();
-  setMessage(`Modo de pregunta: ${ERA_MODES[selectedEra].label}. El jugador oculto sigue siendo el mismo.`, 'ok');
+  updateDifficultyInfo();
+  fillDatalist();
+  updateCounters();
+
+  if (finished) return;
+
+  if (guesses.length >= getMaxTries()) {
+    setMessage('Al cambiar a esta dificultad ya no te quedan intentos.', 'bad');
+    showAnswer(false);
+    return;
+  }
+
+  setMessage(`Dificultad: ${getDifficulty().label}. El jugador oculto sigue siendo el mismo.`, 'ok');
 }
 
 function toggleCategory(key) {
@@ -175,23 +199,29 @@ function updateCategoryButtons() {
   });
 }
 
-function updateModeInfo() {
-  const mode = ERA_MODES[selectedEra] || ERA_MODES.actual;
-  els.modeLabel.textContent = `Modo: ${mode.label}`;
-  els.modeHelp.textContent = mode.help;
+function updateDifficultyInfo() {
+  const difficulty = getDifficulty();
+  els.modeLabel.textContent = `Dificultad: ${difficulty.label}`;
+  els.modeHelp.textContent = difficulty.help;
+
+  if (difficulty.autocomplete) {
+    els.playerInput.setAttribute('list', 'playersList');
+    els.playerInput.placeholder = 'Ej: Messi, Mbappé, Neymar...';
+  } else {
+    els.playerInput.removeAttribute('list');
+    els.playerInput.placeholder = 'Escribí el nombre sin ayuda...';
+  }
 }
 
 function filterPool() {
-  // Siempre usamos futbolistas actuales.
-  // Los botones Actualidad / Pasado / Mixto cambian el tipo de pregunta,
-  // pero NO reinician ni cambian el jugador oculto.
   pool = allPlayers.filter((player) => getPlayerEra(player) === 'actual');
-  updateModeInfo();
   els.playersCount.textContent = String(pool.length);
 }
 
 function fillDatalist() {
   els.playersList.innerHTML = '';
+
+  if (!getDifficulty().autocomplete) return;
 
   shuffle(pool)
     .slice(0, 450)
@@ -211,6 +241,7 @@ function pickSecret() {
 
 function startGame() {
   filterPool();
+  updateDifficultyInfo();
   fillDatalist();
   secret = pickSecret();
   guesses = [];
@@ -226,14 +257,15 @@ function startGame() {
 
   renderTableHeader();
   updateCounters();
-  setMessage('Elegí el modo de pregunta, activá las pistas que quieras y probá un jugador. Cambiar el modo no cambia el oculto.', '');
+  setMessage('Elegí la dificultad, activá las pistas que quieras y probá un jugador.', '');
   els.playerInput.focus();
 }
 
 function updateCounters() {
-  const left = MAX_TRIES - guesses.length;
+  const maxTries = getMaxTries();
+  const left = Math.max(0, maxTries - guesses.length);
   els.triesLeft.textContent = String(left);
-  els.triesUsed.textContent = `${guesses.length}/${MAX_TRIES}`;
+  els.triesUsed.textContent = `${guesses.length}/${maxTries}`;
 }
 
 function findPlayerByInput(input) {
@@ -255,10 +287,14 @@ function findPlayerByInput(input) {
   if (matches.length === 1) return { player: matches[0] };
 
   if (matches.length > 1) {
-    return { error: 'Hay varios jugadores parecidos. Escribí un poco más del nombre.' };
+    if (getDifficulty().autocomplete) {
+      return { error: 'Hay varios jugadores parecidos. Elegí uno de la lista o escribí más del nombre.' };
+    }
+
+    return { error: 'Hay varios jugadores parecidos. Escribí el nombre más completo.' };
   }
 
-  return { error: 'No encontré ese jugador en este modo. Probá cambiar a Mixto o revisar el nombre.' };
+  return { error: 'No encontré ese jugador. Revisá el nombre o probá con otro jugador de la base.' };
 }
 
 function compareText(value, target) {
@@ -340,13 +376,13 @@ function showAnswer(won) {
   els.guessBtn.disabled = true;
 
   const age = getAge(secret);
-  const modeLabel = ERA_MODES[selectedEra]?.label || 'Actualidad';
+  const difficultyLabel = getDifficulty().label;
 
   els.answerCard.classList.remove('hidden');
   els.answerCard.innerHTML = `
     <h2>${won ? '¡Correcto!' : 'Se terminaron los intentos'}</h2>
     <p>El jugador era <strong>${secret.nombre}</strong>.</p>
-    <p>Modo ${modeLabel} · ${secret.pais} · ${secret.club} · ${secret.competicion} · ${POS_LABELS[secret.posicion] || secret.posicion} · ${age} años · ${secret.altura} cm</p>
+    <p>Dificultad ${difficultyLabel} · ${secret.pais} · ${secret.club} · ${secret.competicion} · ${POS_LABELS[secret.posicion] || secret.posicion} · ${age} años · ${secret.altura} cm</p>
   `;
 }
 
@@ -379,7 +415,7 @@ function submitGuess() {
     return;
   }
 
-  if (guesses.length >= MAX_TRIES) {
+  if (guesses.length >= getMaxTries()) {
     setMessage('No quedan intentos.', 'bad');
     showAnswer(false);
     return;
@@ -417,8 +453,8 @@ els.playerInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') submitGuess();
 });
 
-els.eraButtons.forEach((button) => {
-  button.addEventListener('click', () => setEra(button.dataset.era));
+els.difficultyButtons.forEach((button) => {
+  button.addEventListener('click', () => setDifficulty(button.dataset.difficulty));
 });
 
 els.categoryButtons.forEach((button) => {
