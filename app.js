@@ -3802,6 +3802,59 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
   aplicarFallbackLogosLiga();
 }
 
+async function precargarIncidenciasParaPrimerRender(matches) {
+  const base = Array.isArray(matches) ? matches : [];
+
+  const partidosParaIncidencias = uniqueMatches(base)
+    .filter(partidoDebeConsultarIncidencias)
+    .sort((a, b) => prioridadConsultaIncidencias(a) - prioridadConsultaIncidencias(b))
+    .slice(0, 80);
+
+  if (!partidosParaIncidencias.length) {
+    return base;
+  }
+
+  const cargar = async () => {
+    const results = await Promise.allSettled(
+      partidosParaIncidencias.map(async (match) => {
+        const payload = await fetchIncidenciasPartido(match);
+        return {
+          key: incidenciaCacheKey(match),
+          payload,
+        };
+      })
+    );
+
+    const incidenciasPorKey = new Map();
+
+    for (const result of results) {
+      if (result.status !== "fulfilled" || !result.value?.payload) {
+        continue;
+      }
+
+      incidenciasPorKey.set(result.value.key, result.value.payload);
+    }
+
+    if (!incidenciasPorKey.size) {
+      return base;
+    }
+
+    return aplicarIncidenciasPersistidasALista(
+      sortAgendaMatchesStable(
+        mergeMatchesWithIncidencias(base, incidenciasPorKey)
+      )
+    );
+  };
+
+  // No dejamos la pantalla esperando indefinidamente:
+  // si Worker 2 tarda más de 3,5s, mostramos la agenda y se completa luego.
+  const timeout = new Promise((resolve) => {
+    window.setTimeout(() => resolve(base), 3500);
+  });
+
+  return Promise.race([cargar(), timeout]);
+}
+
 async function loadAgenda(date = currentAgendaDate) {
   const selectedDate = localDateISO(date);
 
@@ -3821,13 +3874,15 @@ async function loadAgenda(date = currentAgendaDate) {
     const data = await fetchAgendaPayload();
     const partidos = Array.isArray(data.partidos) ? data.partidos : [];
 
-    const dailyMatches = aplicarIncidenciasPersistidasALista(
+    let dailyMatches = aplicarIncidenciasPersistidasALista(
       sortAgendaMatchesStable(
         uniqueMatches(partidos).filter((match) =>
           agendaMatchesSelectedDate(match, selectedDate)
         )
       )
     );
+
+    dailyMatches = await precargarIncidenciasParaPrimerRender(dailyMatches);
 
     if (selectedDate === localDateISO()) {
       agendaLiveMatches = dailyMatches.filter(isAgendaMatchLive);
@@ -3853,21 +3908,24 @@ async function loadAgenda(date = currentAgendaDate) {
     }
 
     // El live se actualiza después, sin bloquear ni reordenar la primera carga.
-    window.setTimeout(refreshAgendaLive, 250);
-    window.setTimeout(refreshIncidenciasLive, 1500);
+    // Las incidencias principales ya se precargaron antes del primer render.
+    window.setTimeout(() => refreshAgendaLive({ omitirIncidencias: true }), 250);
+    window.setTimeout(refreshIncidenciasLive, 10000);
   } catch (error) {
     console.error("Error actualizando agenda desde Worker:", error);
 
     const cachedData = readAnyJsonCache(CACHE_KEY_AGENDA);
 
     if (cachedData && Array.isArray(cachedData.partidos)) {
-      const cachedMatches = aplicarIncidenciasPersistidasALista(
+      let cachedMatches = aplicarIncidenciasPersistidasALista(
         sortAgendaMatchesStable(
           uniqueMatches(cachedData.partidos).filter((match) =>
             agendaMatchesSelectedDate(match, selectedDate)
           )
         )
       );
+
+      cachedMatches = await precargarIncidenciasParaPrimerRender(cachedMatches);
 
       renderAgenda(cachedMatches, AGENDA_ENDPOINT, {
         source: cachedData.fuente,
@@ -3894,7 +3952,7 @@ async function loadAgenda(date = currentAgendaDate) {
 
 function recargarAgendaConTvSiCorresponde() {
   // Antes esto forzaba loadAgenda() otra vez y redibujaba toda la grilla.
-  // Ahora solo actualizamos el bloque de TV si la agenda ya está pintada.
+  // Ahora solo actualizamos TV si la agenda ya está pintada.
   if (activeTab !== "agenda") {
     return;
   }
@@ -3909,10 +3967,42 @@ function recargarAgendaConTvSiCorresponde() {
   }
 
   actualizarTvEnDOM(agendaCurrentMatches);
-  applyAgendaSearch();
 }
 
-async function refreshAgendaLive() {
+function actualizarTvEnDOM(matches) {
+  const list = Array.isArray(matches) ? matches : [];
+
+  for (const match of list) {
+    const timerId = agendaTimerKey(match);
+    const row = Array.from(document.querySelectorAll("[data-live-timer-id]"))
+      .find((el) => el.dataset.liveTimerId === timerId)
+      ?.closest(".agenda-row");
+
+    if (!row) continue;
+
+    const teamsBox = row.querySelector(".agenda-teams");
+    if (!teamsBox) continue;
+
+    const tv = obtenerTvPartidoSync(match);
+    const nextHtml = renderTvPartido(tv);
+    const currentBox = teamsBox.querySelector(".tv-box");
+
+    if (!nextHtml.trim()) {
+      if (currentBox) currentBox.remove();
+      continue;
+    }
+
+    if (currentBox) {
+      if (currentBox.outerHTML !== nextHtml) {
+        currentBox.outerHTML = nextHtml;
+      }
+    } else {
+      teamsBox.insertAdjacentHTML("beforeend", nextHtml);
+    }
+  }
+}
+
+async function refreshAgendaLive(options = {}) {
   if (activeTab !== "agenda") {
     return;
   }
@@ -3972,64 +4062,15 @@ async function refreshAgendaLive() {
       setUtilityStatus(agendaLiveMatches.length ? "En vivo actualizado" : "");
     }
 
-    window.setTimeout(refreshIncidenciasLive, 500);
+    if (!options.omitirIncidencias) {
+      window.setTimeout(refreshIncidenciasLive, 500);
+    }
   } catch (error) {
     console.warn("No se pudo actualizar solo el vivo", error);
     setUtilityStatus("Agenda guardada. Reintentando vivo...");
   }
 }
 
-
-function actualizarTvEnDOM(matches) {
-  const list = Array.isArray(matches) ? matches : [];
-
-  for (const match of list) {
-    const timerId = agendaTimerKey(match);
-    const timerEl = Array.from(document.querySelectorAll("[data-live-timer-id]")).find(
-      (el) => el.dataset.liveTimerId === timerId
-    );
-
-    const row = timerEl?.closest(".agenda-row");
-
-    if (!row) {
-      continue;
-    }
-
-    const teamsBox = row.querySelector(".agenda-teams");
-
-    if (!teamsBox) {
-      continue;
-    }
-
-    const tv = obtenerTvPartidoSync(match);
-    const nextHtml = renderTvPartido(tv);
-    const currentBox = teamsBox.querySelector(".tv-box");
-
-    if (!nextHtml.trim()) {
-      if (currentBox) {
-        currentBox.remove();
-      }
-      continue;
-    }
-
-    if (currentBox) {
-      if (currentBox.outerHTML !== nextHtml.trim()) {
-        currentBox.outerHTML = nextHtml;
-      }
-    } else {
-      teamsBox.insertAdjacentHTML("beforeend", nextHtml);
-    }
-
-    const group = row.closest(".agenda-group");
-    const home = match.local || match.partido?.split(" vs ")[0] || "Local";
-    const away = match.visitante || match.partido?.split(" vs ")[1] || "Visitante";
-    const league = group?.querySelector(".agenda-league-title strong")?.textContent || inferAgendaLeague(match);
-    const sport = group?.querySelector(".agenda-league-title span")?.textContent || agendaSport(match);
-    const score = scoreMarkup(match);
-
-    row.dataset.search = matchSearchIndex(match, { league, sport }, home, away, score);
-  }
-}
 
 function actualizarIncidenciasEnDOM(matches) {
   const list = Array.isArray(matches) ? matches : [];
@@ -4512,9 +4553,6 @@ showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
 cargarIncidenciasPersistidas();
-
-// Primero intentamos cargar TV para evitar que la agenda se pinte dos veces.
-// Si falla o tarda, igual cargamos la agenda con normalidad.
 cargarTvPartidos()
   .catch(() => null)
   .finally(() => {
@@ -4522,6 +4560,7 @@ cargarTvPartidos()
   });
 
 loadEvents();
+
 iniciarAgendaVisualTimer();
 
 setInterval(() => {
