@@ -3893,6 +3893,8 @@ async function loadAgenda(date = currentAgendaDate) {
 }
 
 function recargarAgendaConTvSiCorresponde() {
+  // Antes esto forzaba loadAgenda() otra vez y redibujaba toda la grilla.
+  // Ahora solo actualizamos el bloque de TV si la agenda ya está pintada.
   if (activeTab !== "agenda") {
     return;
   }
@@ -3902,8 +3904,12 @@ function recargarAgendaConTvSiCorresponde() {
     return;
   }
 
-  agendaLoadedDate = "";
-  loadAgenda(currentAgendaDate);
+  if (!agendaCurrentMatches.length || !leagueGrid.querySelector(".agenda-row")) {
+    return;
+  }
+
+  actualizarTvEnDOM(agendaCurrentMatches);
+  applyAgendaSearch();
 }
 
 async function refreshAgendaLive() {
@@ -3973,6 +3979,57 @@ async function refreshAgendaLive() {
   }
 }
 
+
+function actualizarTvEnDOM(matches) {
+  const list = Array.isArray(matches) ? matches : [];
+
+  for (const match of list) {
+    const timerId = agendaTimerKey(match);
+    const timerEl = Array.from(document.querySelectorAll("[data-live-timer-id]")).find(
+      (el) => el.dataset.liveTimerId === timerId
+    );
+
+    const row = timerEl?.closest(".agenda-row");
+
+    if (!row) {
+      continue;
+    }
+
+    const teamsBox = row.querySelector(".agenda-teams");
+
+    if (!teamsBox) {
+      continue;
+    }
+
+    const tv = obtenerTvPartidoSync(match);
+    const nextHtml = renderTvPartido(tv);
+    const currentBox = teamsBox.querySelector(".tv-box");
+
+    if (!nextHtml.trim()) {
+      if (currentBox) {
+        currentBox.remove();
+      }
+      continue;
+    }
+
+    if (currentBox) {
+      if (currentBox.outerHTML !== nextHtml.trim()) {
+        currentBox.outerHTML = nextHtml;
+      }
+    } else {
+      teamsBox.insertAdjacentHTML("beforeend", nextHtml);
+    }
+
+    const group = row.closest(".agenda-group");
+    const home = match.local || match.partido?.split(" vs ")[0] || "Local";
+    const away = match.visitante || match.partido?.split(" vs ")[1] || "Visitante";
+    const league = group?.querySelector(".agenda-league-title strong")?.textContent || inferAgendaLeague(match);
+    const sport = group?.querySelector(".agenda-league-title span")?.textContent || agendaSport(match);
+    const score = scoreMarkup(match);
+
+    row.dataset.search = matchSearchIndex(match, { league, sport }, home, away, score);
+  }
+}
 
 function actualizarIncidenciasEnDOM(matches) {
   const list = Array.isArray(matches) ? matches : [];
@@ -4455,15 +4512,16 @@ showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
 cargarIncidenciasPersistidas();
-loadAgenda();
-loadEvents();
 
+// Primero intentamos cargar TV para evitar que la agenda se pinte dos veces.
+// Si falla o tarda, igual cargamos la agenda con normalidad.
 cargarTvPartidos()
-  .then(recargarAgendaConTvSiCorresponde)
-  .catch(() => {
-    // La agenda no debe depender del JSON de TV.
+  .catch(() => null)
+  .finally(() => {
+    loadAgenda();
   });
 
+loadEvents();
 iniciarAgendaVisualTimer();
 
 setInterval(() => {
