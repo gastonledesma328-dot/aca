@@ -13,33 +13,48 @@
         <p class="eyebrow">Juegos de Fulbo</p>
         <h1>Adivina el jugador</h1>
         <p class="hero-text">
-          Escribí un jugador y compará país, club, competición, posición, edad y altura hasta descubrir al jugador oculto.
+          Elegí si querés jugar con jugadores de actualidad o del pasado. Después activá las pistas: club, liga, país, posición, edad y altura.
         </p>
       </div>
       <div class="score-box">
-        <span id="modeLabel">Modo: Todos</span>
+        <span id="modeLabel">Modo: Actualidad</span>
         <strong><span id="triesLeft">8</span> intentos</strong>
       </div>
     </section>
 
     <section class="game-card">
-      <div class="toolbar">
-        <label class="field">
-          <span>Modo</span>
-          <select id="modeSelect">
-            <option value="all">Todos</option>
-            <option value="easy">Fácil - Europa top</option>
-            <option value="normal">Normal - Europa + Sudamérica</option>
-            <option value="hard">Difícil - Todas las ligas</option>
-          </select>
-        </label>
+      <div class="mode-panel">
+        <div>
+          <span class="panel-label">Modo de juego</span>
+          <div class="button-group" aria-label="Elegir modo de juego">
+            <button class="chip-btn active" type="button" data-era="actual">Actualidad</button>
+            <button class="chip-btn" type="button" data-era="pasado">Pasado</button>
+            <button class="chip-btn" type="button" data-era="mixto">Mixto</button>
+          </div>
+          <p id="modeHelp" class="mode-help">Jugadores actuales de clubes fuertes.</p>
+        </div>
 
+        <div>
+          <span class="panel-label">Pistas activas</span>
+          <div class="button-group categories" aria-label="Elegir pistas activas">
+            <button class="chip-btn active" type="button" data-category="pais">País</button>
+            <button class="chip-btn active" type="button" data-category="club">Club</button>
+            <button class="chip-btn active" type="button" data-category="competicion">Liga</button>
+            <button class="chip-btn active" type="button" data-category="posicion">Posición</button>
+            <button class="chip-btn active" type="button" data-category="edad">Edad</button>
+            <button class="chip-btn active" type="button" data-category="altura">Altura</button>
+            <button class="chip-btn ghost" id="allCategoriesBtn" type="button">Todas</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="toolbar">
         <label class="field search-field">
           <span>Jugador</span>
           <input
             id="playerInput"
             type="text"
-            placeholder="Ej: Messi, Mbappé, Cano..."
+            placeholder="Ej: Messi, Mbappé, Neymar..."
             autocomplete="off"
             list="playersList"
           />
@@ -54,7 +69,7 @@
 
       <div class="hints-row">
         <div class="hint-card">
-          <span>Competición</span>
+          <span>Liga del oculto</span>
           <strong id="secretCompetition">?</strong>
         </div>
         <div class="hint-card">
@@ -62,24 +77,14 @@
           <strong id="triesUsed">0/8</strong>
         </div>
         <div class="hint-card">
-          <span>Jugadores cargados</span>
+          <span>Jugadores del modo</span>
           <strong id="playersCount">0</strong>
         </div>
       </div>
 
       <div class="table-wrap">
         <table class="guess-table">
-          <thead>
-            <tr>
-              <th>Jugador</th>
-              <th>País</th>
-              <th>Club</th>
-              <th>Competición</th>
-              <th>Posición</th>
-              <th>Edad</th>
-              <th>Altura</th>
-            </tr>
-          </thead>
+          <thead id="tableHead"></thead>
           <tbody id="guessesBody"></tbody>
         </table>
       </div>
