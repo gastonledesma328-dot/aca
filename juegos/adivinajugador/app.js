@@ -1,8 +1,4 @@
 const DATA_URLS = [
-  './jugadores.json',
-  'jugadores.json',
-  '/aca/adivinajugador/jugadores.json',
-  '/adivinajugador/jugadores.json',
   'adivinajugador/jugadores.json',
 ];
 const MIN_CHARS = 4;
