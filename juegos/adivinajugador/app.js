@@ -5,18 +5,15 @@ const MIN_CHARS = 4;
 const ERA_MODES = {
   actual: {
     label: 'Actualidad',
-    help: 'Jugadores actuales de clubes fuertes.',
-    values: ['actual', 'actualidad', 'presente'],
+    help: 'Pregunta con datos actuales. Cambiar este botón NO cambia el jugador oculto.',
   },
   pasado: {
     label: 'Pasado',
-    help: 'Leyendas y exjugadores conocidos.',
-    values: ['pasado', 'historico', 'histórico', 'leyenda'],
+    help: 'Modo de pregunta pasado. La base sigue usando jugadores actuales, no retirados.',
   },
   mixto: {
     label: 'Mixto',
-    help: 'Actualidad + pasado.',
-    values: null,
+    help: 'Mezcla de preguntas, manteniendo el mismo jugador oculto.',
   },
 };
 
@@ -123,7 +120,7 @@ function displayValue(player, category) {
 }
 
 function playerLabel(player) {
-  return `${player.nombre} · ${player.club} · ${ERA_MODES[getPlayerEra(player)]?.label || player.epoca || 'Actualidad'}`;
+  return `${player.nombre} · ${player.club} · ${player.competicion}`;
 }
 
 function setMessage(text, type = '') {
@@ -142,7 +139,8 @@ function setEra(mode) {
     button.classList.toggle('active', button.dataset.era === selectedEra);
   });
 
-  startGame();
+  updateModeInfo();
+  setMessage(`Modo de pregunta: ${ERA_MODES[selectedEra].label}. El jugador oculto sigue siendo el mismo.`, 'ok');
 }
 
 function toggleCategory(key) {
@@ -177,16 +175,18 @@ function updateCategoryButtons() {
   });
 }
 
-function filterPool() {
+function updateModeInfo() {
   const mode = ERA_MODES[selectedEra] || ERA_MODES.actual;
-
-  pool = allPlayers.filter((player) => {
-    if (!mode.values) return true;
-    return mode.values.includes(getPlayerEra(player));
-  });
-
   els.modeLabel.textContent = `Modo: ${mode.label}`;
   els.modeHelp.textContent = mode.help;
+}
+
+function filterPool() {
+  // Siempre usamos futbolistas actuales.
+  // Los botones Actualidad / Pasado / Mixto cambian el tipo de pregunta,
+  // pero NO reinician ni cambian el jugador oculto.
+  pool = allPlayers.filter((player) => getPlayerEra(player) === 'actual');
+  updateModeInfo();
   els.playersCount.textContent = String(pool.length);
 }
 
@@ -226,7 +226,7 @@ function startGame() {
 
   renderTableHeader();
   updateCounters();
-  setMessage('Elegí Actualidad o Pasado, activá las pistas que quieras y probá un jugador.', '');
+  setMessage('Elegí el modo de pregunta, activá las pistas que quieras y probá un jugador. Cambiar el modo no cambia el oculto.', '');
   els.playerInput.focus();
 }
 
@@ -340,13 +340,13 @@ function showAnswer(won) {
   els.guessBtn.disabled = true;
 
   const age = getAge(secret);
-  const eraLabel = ERA_MODES[getPlayerEra(secret)]?.label || 'Actualidad';
+  const modeLabel = ERA_MODES[selectedEra]?.label || 'Actualidad';
 
   els.answerCard.classList.remove('hidden');
   els.answerCard.innerHTML = `
     <h2>${won ? '¡Correcto!' : 'Se terminaron los intentos'}</h2>
     <p>El jugador era <strong>${secret.nombre}</strong>.</p>
-    <p>${eraLabel} · ${secret.pais} · ${secret.club} · ${secret.competicion} · ${POS_LABELS[secret.posicion] || secret.posicion} · ${age} años · ${secret.altura} cm</p>
+    <p>Modo ${modeLabel} · ${secret.pais} · ${secret.club} · ${secret.competicion} · ${POS_LABELS[secret.posicion] || secret.posicion} · ${age} años · ${secret.altura} cm</p>
   `;
 }
 
@@ -396,6 +396,7 @@ async function loadPlayers() {
     const data = await response.json();
     allPlayers = data
       .filter((player) => player && player.nombre && player.club && player.competicion)
+      .filter((player) => getPlayerEra(player) === 'actual')
       .map((player) => ({
         ...player,
         epoca: player.epoca || 'actual',
