@@ -8,34 +8,53 @@
 </head>
 <body>
   <main class="page-shell">
-    <a class="back-games-link" href="../index.html#games" aria-label="Volver a Juegos de fulbo">← Volver</a>
+    <header class="game-header" aria-label="Cabecera del juego">
+      <a class="back-games-link" href="../index.html#games" aria-label="Volver a Juegos de fulbo">← Volver</a>
 
-    <section class="hero-card">
-      <div>
-        <p class="eyebrow">Juegos de Fulbo</p>
-        <h1>Adivina el jugador</h1>
-        <p class="hero-text">
-          Elegí una dificultad y descubrí al jugador oculto usando las pistas de país, club, liga, posición, edad y altura. Cambiar la dificultad no cambia el jugador oculto; solo cambia las ayudas y los intentos disponibles.
-        </p>
+      <div class="brand-block">
+        <strong>Partidos.Hoy</strong>
+        <span>Adivina el jugador</span>
       </div>
-      <div class="score-box">
+
+      <button class="help-button" type="button" aria-label="Ayuda" title="Ayuda">?</button>
+    </header>
+
+    <section class="game-hero" aria-label="Presentación del juego">
+      <span class="limit-pill">Sin límite diario</span>
+
+      <h1>Adivina el jugador</h1>
+
+      <p class="hero-text">
+        Descubrí al futbolista oculto usando pistas de país, club, liga, posición, edad y altura.
+      </p>
+
+      <div class="difficulty-grid" aria-label="Elegir dificultad">
+        <button class="difficulty-card active" type="button" data-difficulty="facil">
+          <strong>Fácil</strong>
+          <span>Lista de jugadores + 8 intentos</span>
+        </button>
+
+        <button class="difficulty-card" type="button" data-difficulty="normal">
+          <strong>Normal</strong>
+          <span>Sin lista + 8 intentos</span>
+        </button>
+
+        <button class="difficulty-card" type="button" data-difficulty="dificil">
+          <strong>Difícil</strong>
+          <span>Sin lista + 5 intentos</span>
+        </button>
+      </div>
+
+      <div class="hero-status">
         <span id="modeLabel">Dificultad: Fácil</span>
         <strong><span id="triesLeft">8</span> intentos</strong>
       </div>
+
+      <p id="modeHelp" class="mode-help">Fácil: tenés lista de jugadores al escribir y 8 intentos.</p>
     </section>
 
-    <section class="game-card">
+    <section class="game-card" id="gameCard">
       <div class="mode-panel">
-        <div>
-          <span class="panel-label">Dificultad</span>
-          <div class="button-group" aria-label="Elegir dificultad">
-            <button class="chip-btn active" type="button" data-difficulty="facil">Fácil</button>
-            <button class="chip-btn" type="button" data-difficulty="normal">Normal</button>
-            <button class="chip-btn" type="button" data-difficulty="dificil">Difícil</button>
-          </div>
-          <p id="modeHelp" class="mode-help">Fácil: tenés lista de jugadores al escribir y 8 intentos.</p>
-        </div>
-
         <div>
           <span class="panel-label">Pistas activas</span>
           <div class="button-group categories" aria-label="Elegir pistas activas">
