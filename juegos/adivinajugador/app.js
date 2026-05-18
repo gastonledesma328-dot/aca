@@ -1,4 +1,10 @@
-const DATA_URL = './jugadores.json';
+const DATA_URLS = [
+  './jugadores.json',
+  'jugadores.json',
+  '/aca/adivinajugador/jugadores.json',
+  '/adivinajugador/jugadores.json',
+  '../adivinajugador/jugadores.json',
+];
 const MIN_CHARS = 4;
 
 const DIFFICULTIES = {
@@ -461,12 +467,39 @@ function submitGuess() {
   setMessage('No era. Mirá las pistas y probá otro.', '');
 }
 
+async function fetchPlayersJson() {
+  const errors = [];
+
+  for (const url of DATA_URLS) {
+    try {
+      const separator = url.includes('?') ? '&' : '?';
+      const response = await fetch(`${url}${separator}v=${Date.now()}`, { cache: 'no-store' });
+
+      if (!response.ok) {
+        errors.push(`${url}: HTTP ${response.status}`);
+        continue;
+      }
+
+      const data = await response.json();
+
+      if (!Array.isArray(data)) {
+        errors.push(`${url}: el JSON no es una lista`);
+        continue;
+      }
+
+      return data;
+    } catch (error) {
+      errors.push(`${url}: ${error.message}`);
+    }
+  }
+
+  throw new Error(errors.join(' | '));
+}
+
 async function loadPlayers() {
   try {
-    const response = await fetch(`${DATA_URL}?v=${Date.now()}`);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await fetchPlayersJson();
 
-    const data = await response.json();
     allPlayers = data
       .filter((player) => player && player.nombre && player.club && player.competicion)
       .filter((player) => getPlayerEra(player) === 'actual')
@@ -476,11 +509,15 @@ async function loadPlayers() {
         altura: Number(player.altura || 0),
       }));
 
+    if (!allPlayers.length) {
+      throw new Error('jugadores.json cargó, pero no tiene jugadores válidos.');
+    }
+
     updateCategoryButtons();
     startGame();
   } catch (error) {
     console.error(error);
-    setMessage('No se pudo cargar jugadores.json. Revisá que esté dentro de /adivinajugador/.', 'bad');
+    setMessage('No se pudo cargar jugadores.json. Revisá que exista en /aca/adivinajugador/jugadores.json y que el archivo se llame exactamente jugadores.json.', 'bad');
   }
 }
 
