@@ -114,7 +114,7 @@ const INCIDENCIAS_CACHE_TTL_MS = 120_000;
 const INCIDENCIAS_FETCH_TIMEOUT_MS = 5_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
-const APP_CACHE_VERSION = "v8-goles-lado-y-ec-fuerte";
+const APP_CACHE_VERSION = "v9-goles-local-visitante-ec";
 const CACHE_KEY_AGENDA = `agenda-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_LIVE = `agenda-live-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_TV = `tv-partidos-cache-${APP_CACHE_VERSION}`;
@@ -228,61 +228,98 @@ function injectAgendaGoalSideStyles() {
   const style = document.createElement("style");
   style.id = "agenda-goal-side-styles";
   style.textContent = `
+    .agenda-incidencias-box {
+      grid-column: 1 / -1;
+      width: 100%;
+      min-width: 0;
+      display: block;
+      margin-top: 4px;
+    }
+
     .agenda-goals-row {
       position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 0;
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+      gap: 0 !important;
       width: 100%;
+      min-width: 0;
       overflow: hidden;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .agenda-goals-row.has-side-divider::after {
       content: "";
       position: absolute;
-      top: 0;
-      bottom: 0;
+      top: 4px;
+      bottom: 4px;
       left: 50%;
       width: 1px;
-      background: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.28);
       transform: translateX(-0.5px);
       pointer-events: none;
     }
 
-    .agenda-goals-team,
-    .agenda-goals-team:empty {
+    .agenda-goals-team {
       min-width: 0;
       display: flex !important;
-      align-items: center;
-      justify-content: center;
-      padding: 0 6px;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 2px;
+      padding: 4px 8px;
     }
 
     .agenda-goals-home {
-      justify-content: center;
+      text-align: left;
+      padding-right: 12px;
     }
 
     .agenda-goals-away {
-      justify-content: center;
+      text-align: right;
+      padding-left: 12px;
     }
 
     .agenda-goal-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
       width: 100%;
       min-width: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 2px 0;
+      font-size: 12px;
+      line-height: 1.2;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+    }
+
+    .agenda-goals-home .agenda-goal-item {
+      justify-content: flex-start;
+    }
+
+    .agenda-goals-away .agenda-goal-item {
+      justify-content: flex-end;
     }
 
     .agenda-goal-item span {
       min-width: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      overflow: visible;
+      text-overflow: clip;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .agenda-goal-item b {
+      flex: 0 0 auto;
+      opacity: 0.9;
+    }
+
+    .agenda-goal-item em {
+      flex: 0 0 auto;
+      font-style: normal;
+      opacity: 0.75;
     }
 
     .agenda-goals-empty {
@@ -295,15 +332,28 @@ function injectAgendaGoalSideStyles() {
       display: none !important;
     }
 
+    .agenda-goals-unknown {
+      display: block;
+      margin-top: 3px;
+      padding: 3px 8px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.035);
+      border: 1px dashed rgba(255,255,255,0.10);
+    }
+
     @media (max-width: 720px) {
       .agenda-goals-row {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+      }
+
+      .agenda-goal-item {
+        font-size: 11px;
       }
     }
   `;
+
   document.head.append(style);
 }
-
 function localDateISO(date = new Date()) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -3022,9 +3072,6 @@ const SCORER_TEAM_HINTS = {
   "arturo vidal": ["colo colo"],
 };
 
-// Reglas puntuales para goles en contra cuando la fuente no lo marca bien.
-// Ejemplo real: Colo Colo vs Ñublense, Arturo Vidal marca en contra.
-// El gol debe contarse visualmente del lado de Ñublense y mostrarse como (E.C.).
 const SCORER_OWN_GOAL_RULES = [
   {
     player: "arturo vidal",
@@ -3032,10 +3079,6 @@ const SCORER_OWN_GOAL_RULES = [
     opponentAliases: ["nublense", "ñublense"],
   },
 ];
-
-const SCORER_FORCED_OWN_GOAL_PLAYERS = new Set(
-  SCORER_OWN_GOAL_RULES.map((rule) => rule.player)
-);
 
 function scorerPlayerKey(scorer) {
   return normalizeTeamForCompare(scorerName(scorer));
@@ -3107,10 +3150,6 @@ function knownScorerSide(scorer, home, away) {
   return "";
 }
 
-function scorerIsForcedOwnGoal(scorer) {
-  return SCORER_FORCED_OWN_GOAL_PLAYERS.has(scorerPlayerKey(scorer));
-}
-
 function oppositeSide(side) {
   if (side === "home") return "away";
   if (side === "away") return "home";
@@ -3155,10 +3194,105 @@ function scorerOwnGoalRule(scorer, home = "", away = "") {
   return null;
 }
 
+function scorerIsOwnGoal(scorer) {
+  const raw = [
+    scorer.tipo,
+    scorer.type,
+    scorer.detalle,
+    scorer.detail,
+    scorer.descripcion_tipo,
+    scorer.descripcion,
+    scorer.description,
+    scorer.text,
+    scorer.playText,
+    scorer.title,
+    scorer.headline,
+    scorerTypeLabel(scorer),
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const normalized = normalizeText(raw)
+    .replace(/[()._-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return (
+    /en contra/.test(normalized) ||
+    /contra propia/.test(normalized) ||
+    /own goal/.test(normalized) ||
+    /owngoal/.test(normalized) ||
+    /autogol/.test(normalized) ||
+    /\be c\b/.test(normalized) ||
+    /\bec\b/.test(normalized) ||
+    /\bo g\b/.test(normalized) ||
+    /\bog\b/.test(normalized)
+  );
+}
+
+function scorerPlayerTeamSide(scorer, home, away) {
+  const ownGoalRule = scorerOwnGoalRule(scorer, home, away);
+
+  if (ownGoalRule?.playerTeamSide) {
+    return ownGoalRule.playerTeamSide;
+  }
+
+  const knownSide = knownScorerSide(scorer, home, away);
+
+  if (knownSide) {
+    return knownSide;
+  }
+
+  const team = scorerTeamText(scorer);
+  const teamMatchesHome = teamValueMatches(team, home);
+  const teamMatchesAway = teamValueMatches(team, away);
+
+  if (teamMatchesHome && !teamMatchesAway) {
+    return "home";
+  }
+
+  if (teamMatchesAway && !teamMatchesHome) {
+    return "away";
+  }
+
+  const explicitSide = explicitScorerSide(scorer);
+
+  if (explicitSide) {
+    return explicitSide;
+  }
+
+  return "";
+}
+
+function scorerBelongsToSide(scorer, home, away) {
+  const ownGoalRule = scorerOwnGoalRule(scorer, home, away);
+
+  // Regla manual fuerte:
+  // Arturo Vidal pertenece a Colo Colo, pero si es contra Ñublense,
+  // el gol debe verse del lado de Ñublense.
+  if (ownGoalRule?.goalSide) {
+    return ownGoalRule.goalSide;
+  }
+
+  const playerTeamSide = scorerPlayerTeamSide(scorer, home, away);
+
+  // Regla general:
+  // si el evento es gol en contra, el gol se suma al rival del jugador.
+  if (scorerIsOwnGoal(scorer)) {
+    return oppositeSide(playerTeamSide) || "unknown";
+  }
+
+  return playerTeamSide || "unknown";
+}
+
 function scorerDisplayTypeLabel(scorer, side = "unknown", teamName = "", home = "", away = "") {
   const ownGoalRule = scorerOwnGoalRule(scorer, home, away);
 
-  if (ownGoalRule && side === ownGoalRule.goalSide) {
+  if (ownGoalRule?.goalSide && side === ownGoalRule.goalSide) {
+    return "(E.C.)";
+  }
+
+  if (scorerIsOwnGoal(scorer)) {
     return "(E.C.)";
   }
 
@@ -3170,7 +3304,8 @@ function scorerDisplayTypeLabel(scorer, side = "unknown", teamName = "", home = 
 
   const aliases = scorerKnownTeamAliases(scorer);
 
-  // Si conocemos el club del jugador y el gol está asignado al rival, mostrarlo como gol en contra.
+  // Si conocemos el club del jugador y el gol quedó del lado rival,
+  // lo mostramos como en contra.
   if (aliases.length && teamName && !aliasesMatchTeam(aliases, teamName)) {
     return "(E.C.)";
   }
@@ -3181,10 +3316,14 @@ function scorerDisplayTypeLabel(scorer, side = "unknown", teamName = "", home = 
 function scorerTeamText(scorer) {
   return String(
     scorer.equipo ||
-      scorer.team ||
       scorer.teamName ||
       scorer.club ||
       scorer.nombre_equipo ||
+      scorer.competitor?.displayName ||
+      scorer.competitor?.name ||
+      scorer.team?.displayName ||
+      scorer.team?.name ||
+      scorer.team ||
       ""
   ).trim();
 }
@@ -3197,6 +3336,7 @@ function scorerSideValue(scorer) {
       scorer.home_away ||
       scorer.teamSide ||
       scorer.team_side ||
+      scorer.local_visitante ||
       ""
   ).toLowerCase();
 }
@@ -3238,7 +3378,13 @@ function normalizeScorerList(match) {
       return false;
     }
 
-    const key = `${scorerMinute(scorer)}-${name}-${scorerTeamText(scorer)}-${scorerTypeLabel(scorer)}-${scorer._sideHint || ""}`;
+    const key = [
+      scorerMinute(scorer),
+      normalizeTeamForCompare(name),
+      normalizeTeamForCompare(scorerTeamText(scorer)),
+      scorerIsOwnGoal(scorer) ? "own-goal" : scorerTypeLabel(scorer),
+      scorer._sideHint || "",
+    ].join("-");
 
     if (seen.has(key)) {
       return false;
@@ -3247,46 +3393,6 @@ function normalizeScorerList(match) {
     seen.add(key);
     return true;
   });
-}
-
-function scorerBelongsToSide(scorer, home, away) {
-  const team = scorerTeamText(scorer);
-  const ownGoalRule = scorerOwnGoalRule(scorer, home, away);
-
-  // 1) Primero resolvemos goles en contra conocidos.
-  // Arturo Vidal pertenece a Colo Colo, pero en Colo Colo vs Ñublense este gol debe figurar del lado de Ñublense.
-  if (ownGoalRule?.goalSide) {
-    return ownGoalRule.goalSide;
-  }
-
-  const knownSide = knownScorerSide(scorer, home, away);
-
-  // 2) Después mandan los jugadores conocidos.
-  // Bradley Barcola debe ir con Paris Saint-Germain aunque el payload venga como local.
-  if (knownSide) {
-    return knownSide;
-  }
-
-  const teamMatchesHome = teamValueMatches(team, home);
-  const teamMatchesAway = teamValueMatches(team, away);
-
-  // 3) Después mandan los nombres de equipo si vienen claros.
-  if (teamMatchesHome && !teamMatchesAway) {
-    return "home";
-  }
-
-  if (teamMatchesAway && !teamMatchesHome) {
-    return "away";
-  }
-
-  // 4) Por último usamos el lado explícito del payload.
-  const explicitSide = explicitScorerSide(scorer);
-
-  if (explicitSide) {
-    return explicitSide;
-  }
-
-  return "unknown";
 }
 
 function goalItemMarkup(scorer, side = "unknown", teamName = "", home = "", away = "") {
@@ -3331,31 +3437,37 @@ function scorersMarkup(match, home = "", away = "") {
     }
   });
 
-  const homeMarkup = homeGoals.map((scorer) => goalItemMarkup(scorer, "home", home, home, away)).join("");
-  const awayMarkup = awayGoals.map((scorer) => goalItemMarkup(scorer, "away", away, home, away)).join("");
-  const unknown = unknownGoals.map((scorer) => goalItemMarkup(scorer, "unknown", scorerTeamText(scorer), home, away)).join("");
-  const hasKnownSideGoals = homeGoals.length > 0 || awayGoals.length > 0;
+  const homeMarkup = homeGoals
+    .map((scorer) => goalItemMarkup(scorer, "home", home, home, away))
+    .join("");
 
-  if (!hasKnownSideGoals && unknown) {
-    return `
-      <span class="agenda-goals-row has-single-side">
-        <span class="agenda-goals-team agenda-goals-unknown" data-goal-side="unknown">${unknown}</span>
-      </span>
-    `;
-  }
+  const awayMarkup = awayGoals
+    .map((scorer) => goalItemMarkup(scorer, "away", away, home, away))
+    .join("");
+
+  const unknownMarkup = unknownGoals
+    .map((scorer) => goalItemMarkup(scorer, "unknown", scorerTeamText(scorer), home, away))
+    .join("");
+
+  // Si no pudimos saber el lado, no inventamos.
+  // Lo mostramos abajo sin mezclarlo con local/visitante.
+  const unknownBlock = unknownMarkup
+    ? `<span class="agenda-goals-unknown" data-goal-side="unknown">${unknownMarkup}</span>`
+    : "";
 
   return `
     <span class="agenda-goals-row has-side-divider">
-      <span class="agenda-goals-team agenda-goals-home" data-goal-side="home" title="Gol de ${escapeHtml(home)}">
+      <span class="agenda-goals-team agenda-goals-home" data-goal-side="home" title="Goles de ${escapeHtml(home)}">
         ${homeMarkup || `<span class="agenda-goals-empty" aria-hidden="true"></span>`}
       </span>
-      <span class="agenda-goals-team agenda-goals-away" data-goal-side="away" title="Gol de ${escapeHtml(away)}">
+
+      <span class="agenda-goals-team agenda-goals-away" data-goal-side="away" title="Goles de ${escapeHtml(away)}">
         ${awayMarkup || `<span class="agenda-goals-empty" aria-hidden="true"></span>`}
       </span>
     </span>
+    ${unknownBlock}
   `;
 }
-
 function normalizeTeamForCompare(value) {
   return normalizeText(value)
     .replace(/\bclub\b|\batletico\b|\bdeportivo\b|\basociacion\b|\bca\b|\bfc\b/g, "")
