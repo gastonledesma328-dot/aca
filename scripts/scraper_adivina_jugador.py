@@ -200,6 +200,114 @@ FAMOSOS_FALLBACK = [
     },
 ]
 
+
+# ─── Correcciones de posición ─────────────────────────────────────────────────
+# ESPN a veces devuelve extremos como "Midfielder". Para el juego, estos
+# jugadores se tratan como Delantero/Atacante (F). Además, podés sumar nombres
+# sin tocar el script creando este archivo opcional:
+# adivinajugador/correcciones_posiciones.json
+# Ejemplo:
+# {
+#   "delanteros": ["Samuel Lino", "Francis Amuzu"],
+#   "defensores": [],
+#   "mediocampistas": [],
+#   "arqueros": []
+# }
+CORRECCIONES_POSICIONES_FILE = Path("adivinajugador/correcciones_posiciones.json")
+
+# Lista base de extremos / atacantes que ESPN suele clasificar como M.
+# La clave se compara normalizada con slugify(), así que no importan tildes ni mayúsculas.
+DELANTEROS_EXTREMOS_BASE = {
+    # Casos detectados en tu JSON
+    "samuel lino", "francis amuzu", "felipe anderson", "jhon arias",
+    "andre carrillo", "bernard", "gustavo scarpa", "jorge carrascal",
+    "luciano acosta", "david terans", "ganso", "alan patrick",
+    "matheus pereira", "rodrigo garro", "luiz araujo", "giorgian de arrascaeta",
+
+    # Premier League / Europa
+    "michael olise", "bukayo saka", "phil foden", "cole palmer", "noni madueke",
+    "jadon sancho", "marcus rashford", "alejandro garnacho", "mason mount",
+    "bruno fernandes", "mohamed salah", "luis diaz", "cody gakpo", "diogo jota",
+    "darwin nunez", "gabriel martinelli", "leandro trossard", "raheem sterling",
+    "pedro neto", "christopher nkunku", "anthony gordon", "jarrod bowen",
+    "mohammed kudus", "kaoru mitoma", "joao pedro", "ollie watkins",
+
+    # LaLiga
+    "vinicius junior", "vinicius jr", "rodrygo", "kylian mbappe", "jude bellingham",
+    "lamine yamal", "raphinha", "ferran torres", "dani olmo", "anssu fati",
+    "nico williams", "inaki williams", "oyarzabal", "mikel oyarzabal",
+    "antoine griezmann", "julian alvarez", "alex baena", "giovani lo celso",
+
+    # Serie A
+    "rafael leao", "christian pulisic", "samuel chukwueze", "khvicha kvaratskhelia",
+    "federico chiesa", "paulo dybala", "matias soule", "ademola lookman",
+    "mateo retegui", "nicolo zaniolo", "domenico berardi", "lauriente",
+
+    # Bundesliga / Ligue 1
+    "jamal musiala", "leroy sane", "serge gnabry", "kingsley coman",
+    "karim adeyemi", "julian brandt", "florian wirtz", "xavi simons",
+    "ousmane dembele", "bradley barcola", "desire doue", "mason greenwood",
+    "edon zhegrova", "georges mikautadze",
+
+    # América / otras ligas
+    "lionel messi", "cristiano ronaldo", "neymar", "memphis depay", "hulk",
+    "dudu", "bruno henrique", "everton", "gonzalo plata", "yeferson soteldo",
+    "cristian pavon", "mateus tete", "gabriel mec", "paulinho",
+    "ramon sosa", "vitor roque", "benjamin rollheiser", "gabriel barbosa",
+    "cucho hernandez", "luis suarez", "angel di maria", "keny arroyo",
+}
+
+_POSICIONES_EXTERNAS_CACHE: dict[str, str] | None = None
+
+
+def cargar_correcciones_posiciones() -> dict[str, str]:
+    """Carga correcciones opcionales desde adivinajugador/correcciones_posiciones.json."""
+    global _POSICIONES_EXTERNAS_CACHE
+    if _POSICIONES_EXTERNAS_CACHE is not None:
+        return _POSICIONES_EXTERNAS_CACHE
+
+    out: dict[str, str] = {}
+    if CORRECCIONES_POSICIONES_FILE.exists():
+        try:
+            data = json.loads(CORRECCIONES_POSICIONES_FILE.read_text(encoding="utf-8"))
+            grupos = {
+                "delanteros": "F", "atacantes": "F", "extremos": "F",
+                "defensores": "D", "mediocampistas": "M", "medios": "M",
+                "arqueros": "G", "porteros": "G",
+            }
+            if isinstance(data, dict):
+                for key, code in grupos.items():
+                    for nombre in data.get(key) or []:
+                        if nombre:
+                            out[slugify(nombre)] = code
+        except Exception as exc:
+            print(f"⚠️  No se pudo leer {CORRECCIONES_POSICIONES_FILE}: {exc}")
+
+    _POSICIONES_EXTERNAS_CACHE = out
+    return out
+
+
+def posicion_override_por_nombre(nombre: Any) -> str:
+    """Devuelve F/D/M/G si el nombre tiene corrección manual/base."""
+    key = slugify(nombre)
+    if not key:
+        return ""
+    externas = cargar_correcciones_posiciones()
+    if key in externas:
+        return externas[key]
+    if key in DELANTEROS_EXTREMOS_BASE:
+        return "F"
+    return ""
+
+
+def detalle_override_posicion(code: str) -> str:
+    return {
+        "F": "Winger / Forward",
+        "M": "Midfielder",
+        "D": "Defender",
+        "G": "Goalkeeper",
+    }.get(code, code)
+
 # ─── Utilidades ────────────────────────────────────────────────────────────────
 
 def slugify(text: Any) -> str:
@@ -474,6 +582,10 @@ def elegir_posicion_mejor(actual: dict, nuevo: dict) -> str:
     Corrige duplicados. Si el nuevo detalle dice Forward/Winger/Striker,
     permite cambiar M → F. Si dice Defender/Goalkeeper, también corrige.
     """
+    override = posicion_override_por_nombre(nuevo.get("nombre") or actual.get("nombre"))
+    if override in ("G", "D", "M", "F"):
+        return override
+
     cur = str(actual.get("posicion") or "").upper()
     new = str(nuevo.get("posicion") or "").upper()
 
@@ -770,6 +882,13 @@ def sanitizar_jugador(j: dict) -> dict:
     j["posicion"] = pos_from_det if pos_from_det in ("G", "D", "M", "F") else (pos if pos in ("G", "D", "M", "F") else "M")
     j["posicion_detalle"] = det or j["posicion"]
 
+    # Corrección final por nombre: si ESPN lo devuelve como M pero es extremo/atacante,
+    # lo pasamos a F. También permite correcciones externas desde JSON.
+    override_pos = posicion_override_por_nombre(j.get("nombre"))
+    if override_pos in ("G", "D", "M", "F"):
+        j["posicion"] = override_pos
+        j["posicion_detalle"] = detalle_override_posicion(override_pos)
+
     if not j.get("imagen") and j.get("espn_id"):
         j["imagen"] = headshot_url(str(j.get("espn_id")))
 
@@ -1021,6 +1140,8 @@ def main() -> None:
         "ligas": sorted({j.get("liga") for j in jugables if j.get("liga")}),
         "no_encontrados": no_encontrados,
         "calidad": calidad_stats(jugables, todos_sanitizados),
+        "correcciones_posicion_base": len(DELANTEROS_EXTREMOS_BASE),
+        "correcciones_posicion_externas": len(cargar_correcciones_posiciones()),
         "jugadores_incompletos": jugadores_incompletos[:80],
         "jugadores_no_aptos": jugadores_no_aptos[:120],
         "jugadores": jugables,
