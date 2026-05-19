@@ -642,8 +642,8 @@ function updateCountryPanel() {
   }
 
   playerSearch.placeholder = positionToShow
-    ? `Leyenda de ${round.country} para ${positionToShow}...`
-    : `Leyenda de ${round.country}...`;
+    ? `Jugador de ${round.country} para ${positionToShow}...`
+    : `Jugador de ${round.country}...`;
 }
 
 function selectSlot() {
