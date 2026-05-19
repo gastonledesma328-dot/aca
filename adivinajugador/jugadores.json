@@ -1,14 +1,14 @@
 {
   "fuente": "jugadores_base.json curado + ESPN rosters + ESPN athlete detail/search",
   "modo": "actualiza_todo_menos_altura_y_posicion",
-  "actualizado": "2026-05-19T17:59:59.974827+00:00",
+  "actualizado": "2026-05-19T18:14:41.946160+00:00",
   "total": 733,
-  "con_pais": 552,
-  "sin_pais": 181,
+  "con_pais": 560,
+  "sin_pais": 173,
   "base_detectados": 733,
-  "tiempo_segundos": 93.1,
-  "con_imagen": 552,
-  "sin_imagen": 181,
+  "tiempo_segundos": 187.3,
+  "con_imagen": 560,
+  "sin_imagen": 173,
   "reglas": {
     "mantiene_manual": [
       "altura",
@@ -1460,7 +1460,12 @@
       "nombre": "Gil",
       "club_base": "Santos",
       "liga_base": "Brasileirão",
-      "motivo": "no_encontrado"
+      "motivo": "no_encontrado_pais_por_busqueda_espn",
+      "pais": "Netherlands",
+      "edad": 34,
+      "espn_id": "157892",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/157892.png",
+      "nombre_actual": "Virgil van Dijk"
     },
     {
       "nombre": "João Basso",
@@ -1514,7 +1519,12 @@
       "nombre": "Colidio",
       "club_base": "River Plate",
       "liga_base": "Liga Profesional Argentina",
-      "motivo": "no_encontrado"
+      "motivo": "no_encontrado_pais_por_busqueda_espn",
+      "pais": "Argentina",
+      "edad": 26,
+      "espn_id": "275941",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/275941.png",
+      "nombre_actual": "Facundo Colidio"
     },
     {
       "nombre": "Luis Advíncula",
@@ -1562,7 +1572,12 @@
       "nombre": "Gabriel Arias",
       "club_base": "Racing Club",
       "liga_base": "Liga Profesional Argentina",
-      "motivo": "no_encontrado"
+      "motivo": "no_encontrado_pais_por_busqueda_espn",
+      "pais": "Brazil",
+      "edad": 26,
+      "espn_id": "268478",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/268478.png",
+      "nombre_actual": "Gabriel Sara"
     },
     {
       "nombre": "Agustín Urzi",
@@ -1760,7 +1775,12 @@
       "nombre": "Emerson Rodríguez",
       "club_base": "Millonarios",
       "liga_base": "Liga BetPlay",
-      "motivo": "no_encontrado"
+      "motivo": "no_encontrado_pais_por_busqueda_espn",
+      "pais": "Spain",
+      "edad": 29,
+      "espn_id": "231828",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/231828.png",
+      "nombre_actual": "Rodri"
     },
     {
       "nombre": "Sander Navarro",
@@ -1844,7 +1864,12 @@
       "nombre": "Steven Rodríguez",
       "club_base": "Junior FC",
       "liga_base": "Liga BetPlay",
-      "motivo": "no_encontrado"
+      "motivo": "no_encontrado_pais_por_busqueda_espn",
+      "pais": "Spain",
+      "edad": 29,
+      "espn_id": "231828",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/231828.png",
+      "nombre_actual": "Rodri"
     },
     {
       "nombre": "Óscar Ustari",
@@ -1964,7 +1989,12 @@
       "nombre": "Coman",
       "club_base": "Al Nassr",
       "liga_base": "Saudi Pro League",
-      "motivo": "no_encontrado"
+      "motivo": "no_encontrado_pais_por_busqueda_espn",
+      "pais": "France",
+      "edad": 29,
+      "espn_id": "184012",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/184012.png",
+      "nombre_actual": "Kingsley Coman"
     },
     {
       "nombre": "Abdullah Alkhaibari",
@@ -1982,7 +2012,12 @@
       "nombre": "Wesley",
       "club_base": "Al Nassr",
       "liga_base": "Saudi Pro League",
-      "motivo": "no_encontrado"
+      "motivo": "no_encontrado_pais_por_busqueda_espn",
+      "pais": "Mexico",
+      "edad": 50,
+      "espn_id": "3355",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/3355.png",
+      "nombre_actual": "C Wesley's XI"
     },
     {
       "nombre": "Hassan Tambakti",
@@ -2372,7 +2407,12 @@
       "nombre": "Carlos Felipe Rodríguez",
       "club_base": "Tigres UANL",
       "liga_base": "Liga MX",
-      "motivo": "no_encontrado"
+      "motivo": "no_encontrado_pais_por_busqueda_espn",
+      "pais": "Spain",
+      "edad": 29,
+      "espn_id": "231828",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/231828.png",
+      "nombre_actual": "Rodri"
     },
     {
       "nombre": "Samir",
@@ -2432,6 +2472,1219 @@
     }
   ],
   "errores_base": [],
+  "jugadores_sin_pais": [
+    {
+      "nombre": "Reinildo Mandava",
+      "club": "Atlético de Madrid",
+      "liga": "LaLiga",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Mehdi Taremi",
+      "club": "Inter Milan",
+      "liga": "Serie A",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Gleison Bremer",
+      "club": "Juventus",
+      "liga": "Serie A",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Kenan Yıldız",
+      "club": "Juventus",
+      "liga": "Serie A",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Danilo",
+      "club": "Juventus",
+      "liga": "Serie A",
+      "estado": "ambiguo_no_actualizado",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Davide Calabria",
+      "club": "AC Milan",
+      "liga": "Serie A",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Samuel Chukwueze",
+      "club": "AC Milan",
+      "liga": "Serie A",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ismael Bennacer",
+      "club": "AC Milan",
+      "liga": "Serie A",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Noah Okafor",
+      "club": "AC Milan",
+      "liga": "Serie A",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Álvaro Morata",
+      "club": "AC Milan",
+      "liga": "Serie A",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Luka Jović",
+      "club": "AC Milan",
+      "liga": "Serie A",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Pascal Groß",
+      "club": "Borussia Dortmund",
+      "liga": "Bundesliga",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Giovanni Reyna",
+      "club": "Borussia Dortmund",
+      "liga": "Bundesliga",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Granit Xhaka",
+      "club": "Bayer Leverkusen",
+      "liga": "Bundesliga",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Victor Boniface",
+      "club": "Bayer Leverkusen",
+      "liga": "Bundesliga",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Amine Adli",
+      "club": "Bayer Leverkusen",
+      "liga": "Bundesliga",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Adam Hložek",
+      "club": "Bayer Leverkusen",
+      "liga": "Bundesliga",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Matvey Safonov",
+      "club": "Paris Saint-Germain",
+      "liga": "Ligue 1",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jonathan Clauss",
+      "club": "Olympique de Marseille",
+      "liga": "Ligue 1",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Quentin Merlin",
+      "club": "Olympique de Marseille",
+      "liga": "Ligue 1",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Renan Lodi",
+      "club": "Olympique de Marseille",
+      "liga": "Ligue 1",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Valentin Rongier",
+      "club": "Olympique de Marseille",
+      "liga": "Ligue 1",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Azzedine Ounahi",
+      "club": "Olympique de Marseille",
+      "liga": "Ligue 1",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Faris Moumbagna",
+      "club": "Olympique de Marseille",
+      "liga": "Ligue 1",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Radosław Majecki",
+      "club": "AS Monaco",
+      "liga": "Ligue 1",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Breel Embolo",
+      "club": "AS Monaco",
+      "liga": "Ligue 1",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "João Basso",
+      "club": "Santos",
+      "liga": "Brasileirão",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Tiquinho Soares",
+      "club": "Santos",
+      "liga": "Brasileirão",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Guilherme",
+      "club": "Santos",
+      "liga": "Brasileirão",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Enzo Pérez",
+      "club": "River Plate",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Nacho Fernández",
+      "club": "River Plate",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Miguel Borja",
+      "club": "River Plate",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Maxi Meza",
+      "club": "River Plate",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Pablo Solari",
+      "club": "River Plate",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Luis Advíncula",
+      "club": "Boca Juniors",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Nicolás Figal",
+      "club": "Boca Juniors",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Sergio Romero",
+      "club": "Boca Juniors",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Aaron Anselmino",
+      "club": "Boca Juniors",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Frank Fabra",
+      "club": "Boca Juniors",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Agustín Almendra",
+      "club": "Racing Club",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Roger Martínez",
+      "club": "Racing Club",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Agustín Urzi",
+      "club": "Racing Club",
+      "liga": "Liga Profesional Argentina",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Mathew Ryan",
+      "club": "Ajax Amsterdam",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ko Itakura",
+      "club": "Ajax Amsterdam",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jordan Henderson",
+      "club": "Ajax Amsterdam",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Brian Brobbey",
+      "club": "Ajax Amsterdam",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Remko Pasveer",
+      "club": "Ajax Amsterdam",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Branco van den Boomen",
+      "club": "Ajax Amsterdam",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Carlos Forbs",
+      "club": "Ajax Amsterdam",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Chuba Akpom",
+      "club": "Ajax Amsterdam",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Walter Benítez",
+      "club": "PSV Eindhoven",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Joël Drommel",
+      "club": "PSV Eindhoven",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Hirving Lozano",
+      "club": "PSV Eindhoven",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Lutsharel Geertruida",
+      "club": "Feyenoord",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Quilindschy Hartman",
+      "club": "Feyenoord",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Calvin Stengs",
+      "club": "Feyenoord",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Justin Bijlow",
+      "club": "Feyenoord",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Marcos López",
+      "club": "Feyenoord",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Luka Ivanušec",
+      "club": "Feyenoord",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Javairô Dilrosun",
+      "club": "Feyenoord",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Alireza Jahanbakhsh",
+      "club": "Feyenoord",
+      "liga": "Eredivisie",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Joan Castro",
+      "club": "Atlético Nacional",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Felipe Aguirre",
+      "club": "Atlético Nacional",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Álvaro Angulo",
+      "club": "Atlético Nacional",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Matheus Uribe",
+      "club": "Atlético Nacional",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Juan Manuel Zapata",
+      "club": "Atlético Nacional",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Marino Hinestroza",
+      "club": "Atlético Nacional",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Dorlan Pabón",
+      "club": "Atlético Nacional",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Kevin Viveros",
+      "club": "Atlético Nacional",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Delvin Alfonzo",
+      "club": "Millonarios",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Juan Pablo Vargas",
+      "club": "Millonarios",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Larry Vásquez",
+      "club": "Millonarios",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Daniel Cataño",
+      "club": "Millonarios",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Sander Navarro",
+      "club": "Millonarios",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Daniel Giraldo",
+      "club": "Millonarios",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Daniel Ruiz",
+      "club": "Millonarios",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Walmer Pacheco",
+      "club": "Junior FC",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Rafael Pérez",
+      "club": "Junior FC",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Gabriel Fuentes",
+      "club": "Junior FC",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Didier Moreno",
+      "club": "Junior FC",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Víctor Cantillo",
+      "club": "Junior FC",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jefferson Martínez",
+      "club": "Junior FC",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jhon Vélez",
+      "club": "Junior FC",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Homer Martínez",
+      "club": "Junior FC",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Luis González",
+      "club": "Junior FC",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Marco Pérez",
+      "club": "Junior FC",
+      "liga": "Liga BetPlay",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Óscar Ustari",
+      "club": "Inter Miami CF",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Tomás Avilés",
+      "club": "Inter Miami CF",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jordi Alba",
+      "club": "Inter Miami CF",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Sergio Busquets",
+      "club": "Inter Miami CF",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Benjamin Cremaschi",
+      "club": "Inter Miami CF",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Robert Taylor",
+      "club": "Inter Miami CF",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ilie Sánchez",
+      "club": "LAFC",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Cristian Tello",
+      "club": "LAFC",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "John McCarthy",
+      "club": "LAFC",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Diego Palacios",
+      "club": "LAFC",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Kellyn Acosta",
+      "club": "LAFC",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Mateusz Bogusz",
+      "club": "LAFC",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Kei Kamara",
+      "club": "LAFC",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Raúl Ruidíaz",
+      "club": "Seattle Sounders",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Andrew Thomas",
+      "club": "Seattle Sounders",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Danny Leyva",
+      "club": "Seattle Sounders",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Danny Musovski",
+      "club": "Seattle Sounders",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Héber",
+      "club": "Seattle Sounders",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Will Bruin",
+      "club": "Seattle Sounders",
+      "liga": "MLS",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Abdullah Alkhaibari",
+      "club": "Al Nassr",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ayman Yahya",
+      "club": "Al Nassr",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Hassan Tambakti",
+      "club": "Al Hilal",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Mohammed Al-Owais",
+      "club": "Al Hilal",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ali Al-Bulayhi",
+      "club": "Al Hilal",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Kaio César",
+      "club": "Al Hilal",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Roger Ibañez",
+      "club": "Al Ahli",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ziyad Al-Johani",
+      "club": "Al Ahli",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Roberto Firmino",
+      "club": "Al Ahli",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Abdullah Al-Muaiouf",
+      "club": "Al Ahli",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Bassam Al-Hurayji",
+      "club": "Al Ahli",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Fahad Al-Rashidi",
+      "club": "Al Ahli",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ali Al-Asmari",
+      "club": "Al Ahli",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Sumayhan Al-Nabit",
+      "club": "Al Ahli",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Omar Al-Somah",
+      "club": "Al Ahli",
+      "liga": "Saudi Pro League",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Florentino Luís",
+      "club": "Benfica",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Tomás Araújo",
+      "club": "Benfica",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Renato Sanches",
+      "club": "Benfica",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "João Mário",
+      "club": "FC Porto",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "David Carmo",
+      "club": "FC Porto",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Zaidu",
+      "club": "FC Porto",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Iván Marcano",
+      "club": "FC Porto",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Fabio Vieira",
+      "club": "FC Porto",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Danny Namaso",
+      "club": "FC Porto",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Toni Martínez",
+      "club": "FC Porto",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Franco Israel",
+      "club": "Sporting CP",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Trincão",
+      "club": "Sporting CP",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Diogo Pinto",
+      "club": "Sporting CP",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ricardo Esgaio",
+      "club": "Sporting CP",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jeremiah St. Juste",
+      "club": "Sporting CP",
+      "liga": "Liga Portugal",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Abdülkerim Bardakcı",
+      "club": "Galatasaray",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Eren Elmalı",
+      "club": "Galatasaray",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Barış Alper Yılmaz",
+      "club": "Galatasaray",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Uğurcan Çakır",
+      "club": "Galatasaray",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Berkan Kutlu",
+      "club": "Galatasaray",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Dries Mertens",
+      "club": "Galatasaray",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Hakim Ziyech",
+      "club": "Galatasaray",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Wilfried Zaha",
+      "club": "Galatasaray",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Dominik Livaković",
+      "club": "Fenerbahçe",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Sebastian Szymański",
+      "club": "Fenerbahçe",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Dusan Tadic",
+      "club": "Fenerbahçe",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jhon Durán",
+      "club": "Fenerbahçe",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "İrfan Can Eğribayat",
+      "club": "Fenerbahçe",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Alexander Djiku",
+      "club": "Fenerbahçe",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ferdi Kadıoğlu",
+      "club": "Fenerbahçe",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "İrfan Can Kahveci",
+      "club": "Fenerbahçe",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Edin Džeko",
+      "club": "Fenerbahçe",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jonas Svensson",
+      "club": "Beşiktaş",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Gedson Fernandes",
+      "club": "Beşiktaş",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ciro Immobile",
+      "club": "Beşiktaş",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Semih Kılıçsoy",
+      "club": "Beşiktaş",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Tayyip Talha Sanuç",
+      "club": "Beşiktaş",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Alex Oxlade-Chamberlain",
+      "club": "Beşiktaş",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Vincent Aboubakar",
+      "club": "Beşiktaş",
+      "liga": "Süper Lig",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Luis Malagón",
+      "club": "Club América",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Óscar Jiménez",
+      "club": "Club América",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Richard Sánchez",
+      "club": "Club América",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jorge Sánchez",
+      "club": "Cruz Azul",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Carlos Rotondi",
+      "club": "Cruz Azul",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Lorenzo Faravelli",
+      "club": "Cruz Azul",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Giorgos Giakoumakis",
+      "club": "Cruz Azul",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Uriel Antuna",
+      "club": "Cruz Azul",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ignacio Rivero",
+      "club": "Cruz Azul",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Javier Aquino",
+      "club": "Tigres UANL",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Diego Reyes",
+      "club": "Tigres UANL",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Guido Pizarro",
+      "club": "Tigres UANL",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Samir",
+      "club": "Tigres UANL",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Luis Quiñones",
+      "club": "Tigres UANL",
+      "liga": "Liga MX",
+      "estado": "no_encontrado_espn",
+      "espn_id": ""
+    }
+  ],
   "jugadores": [
     {
       "nombre": "David Raya",
@@ -6878,18 +8131,18 @@
       "espn_id": "235894"
     },
     {
-      "nombre": "Gil",
+      "nombre": "Virgil van Dijk",
       "nombre_base": "Gil",
       "altura": 192,
       "posicion": "D",
       "club": "Santos",
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
+      "edad": 34,
+      "pais": "Netherlands",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/157892.png",
+      "estado": "pais_actualizado_espn_sin_cambiar_club",
+      "espn_id": "157892"
     },
     {
       "nombre": "Adonis Frias",
@@ -7364,18 +8617,18 @@
       "espn_id": ""
     },
     {
-      "nombre": "Colidio",
+      "nombre": "Facundo Colidio",
       "nombre_base": "Colidio",
       "altura": 180,
       "posicion": "M",
       "club": "River Plate",
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
+      "edad": 26,
+      "pais": "Argentina",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/275941.png",
+      "estado": "pais_actualizado_espn_sin_cambiar_club",
+      "espn_id": "275941"
     },
     {
       "nombre": "Agustín Marchesín",
@@ -7806,18 +9059,18 @@
       "espn_id": ""
     },
     {
-      "nombre": "Gabriel Arias",
+      "nombre": "Gabriel Sara",
       "nombre_base": "Gabriel Arias",
       "altura": 192,
       "posicion": "G",
       "club": "Racing Club",
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
+      "edad": 26,
+      "pais": "Brazil",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/268478.png",
+      "estado": "pais_actualizado_espn_sin_cambiar_club",
+      "espn_id": "268478"
     },
     {
       "nombre": "Nazareno Colombo",
@@ -9033,18 +10286,18 @@
       "espn_id": "106650"
     },
     {
-      "nombre": "Emerson Rodríguez",
+      "nombre": "Rodri",
       "nombre_base": "Emerson Rodríguez",
       "altura": 180,
       "posicion": "M",
       "club": "Millonarios",
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
+      "edad": 29,
+      "pais": "Spain",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/231828.png",
+      "estado": "pais_actualizado_espn_sin_cambiar_club",
+      "espn_id": "231828"
     },
     {
       "nombre": "Leonardo Castro",
@@ -9424,18 +10677,18 @@
       "espn_id": ""
     },
     {
-      "nombre": "Steven Rodríguez",
+      "nombre": "Rodri",
       "nombre_base": "Steven Rodríguez",
       "altura": 180,
       "posicion": "M",
       "club": "Junior FC",
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
+      "edad": 29,
+      "pais": "Spain",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/231828.png",
+      "estado": "pais_actualizado_espn_sin_cambiar_club",
+      "espn_id": "231828"
     },
     {
       "nombre": "Óscar Ustari",
@@ -10349,18 +11602,18 @@
       "espn_id": "22774"
     },
     {
-      "nombre": "Coman",
+      "nombre": "Kingsley Coman",
       "nombre_base": "Coman",
       "altura": 179,
       "posicion": "F",
       "club": "Al Nassr",
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
+      "edad": 29,
+      "pais": "France",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/184012.png",
+      "estado": "pais_actualizado_espn_sin_cambiar_club",
+      "espn_id": "184012"
     },
     {
       "nombre": "Nawaf Al-Aqidi",
@@ -10451,18 +11704,18 @@
       "espn_id": ""
     },
     {
-      "nombre": "Wesley",
+      "nombre": "C Wesley's XI",
       "nombre_base": "Wesley",
       "altura": 180,
       "posicion": "M",
       "club": "Al Nassr",
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
+      "edad": 50,
+      "pais": "Mexico",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/3355.png",
+      "estado": "pais_actualizado_espn_sin_cambiar_club",
+      "espn_id": "3355"
     },
     {
       "nombre": "Yassine Bounou",
@@ -13146,18 +14399,18 @@
       "espn_id": "207549"
     },
     {
-      "nombre": "Carlos Felipe Rodríguez",
+      "nombre": "Rodri",
       "nombre_base": "Carlos Felipe Rodríguez",
       "altura": 180,
       "posicion": "M",
       "club": "Tigres UANL",
       "liga": "Liga MX",
       "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
+      "edad": 29,
+      "pais": "Spain",
+      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/231828.png",
+      "estado": "pais_actualizado_espn_sin_cambiar_club",
+      "espn_id": "231828"
     },
     {
       "nombre": "Samir",
