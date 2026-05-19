@@ -583,13 +583,57 @@ def country_from_athlete(athlete: dict) -> str:
 
     return ""
 
-def construir_indice_espn() -> tuple[dict[str, dict], list[dict]]:
+def same_team(a: Any, b: Any) -> bool:
+    """Compara clubes aceptando alias como Inter/Internazionale o Atlético de Madrid/Atlético Madrid."""
+    if not a or not b:
+        return False
+
+    a_variants = set(TEAM_ALIASES.get(str(a), [])) | {str(a)}
+    b_variants = set(TEAM_ALIASES.get(str(b), [])) | {str(b)}
+    a_slugs = {slugify(x) for x in a_variants if x}
+    b_slugs = {slugify(x) for x in b_variants if x}
+
+    if a_slugs & b_slugs:
+        return True
+
+    # Comparación suave, pero evitando falsos positivos con nombres muy cortos.
+    for x in a_slugs:
+        for y in b_slugs:
+            if len(x) >= 5 and len(y) >= 5 and (x in y or y in x):
+                return True
+    return False
+
+
+def same_league(a: Any, b: Any) -> bool:
+    return bool(a and b and slugify(a) == slugify(b))
+
+
+def unique_candidates(candidates: list[dict]) -> list[dict]:
+    out: list[dict] = []
+    seen: set[str] = set()
+    for c in candidates:
+        key = c.get("espn_id") or f"{clean_player_name(c.get('nombre_espn'))}|{slugify(c.get('club'))}|{slugify(c.get('liga'))}"
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(c)
+    return out
+
+
+def construir_indice_espn() -> tuple[dict[str, list[dict]], list[dict]]:
     """
     Indexa jugadores actuales por nombre.
-    Cada entrada trae SOLO lo que queremos actualizar:
-    club, liga, edad, pais, espn_id.
+
+    IMPORTANTE:
+    Antes guardábamos un solo jugador por nombre. Eso rompía casos como:
+    - Pedro Flamengo → Pedro de Lazio
+    - Danilo Juventus → otro Danilo
+    - nombres cortos/repetidos
+
+    Ahora guardamos una LISTA de candidatos por nombre y resolvemos después
+    con una regla de confianza.
     """
-    index: dict[str, dict] = {}
+    index: dict[str, list[dict]] = {}
     no_encontrados_equipos: list[dict] = []
 
     for liga, cfg in LIGAS.items():
@@ -635,14 +679,62 @@ def construir_indice_espn() -> tuple[dict[str, dict], list[dict]]:
                 }
 
                 for key in name_variants(nombre):
-                    if key not in index:
-                        index[key] = item
+                    index.setdefault(key, []).append(item)
 
                 count += 1
 
             print(f"      {count} jugadores indexados")
 
+    # Deduplicar candidatos por cada nombre.
+    for key in list(index.keys()):
+        index[key] = unique_candidates(index[key])
+
     return index, no_encontrados_equipos
+
+
+def resolver_jugador_espn(jugador_base: dict, index_espn: dict[str, list[dict]]) -> tuple[dict | None, str, list[dict]]:
+    """
+    Devuelve (match, motivo, candidatos).
+
+    Reglas:
+    1. Si aparece en el mismo club base, lo aceptamos.
+    2. Si no está en el club base, solo aceptamos transferencia si el nombre es único.
+    3. Si el nombre es corto/repetido y no hay match de club, NO actualizamos para evitar falsos positivos.
+    """
+    nombre = jugador_base.get("nombre") or ""
+    club_base = jugador_base.get("club_base") or ""
+    liga_base = jugador_base.get("liga_base") or ""
+
+    candidatos: list[dict] = []
+    for key in name_variants(nombre):
+        candidatos.extend(index_espn.get(key, []))
+    candidatos = unique_candidates(candidatos)
+
+    if not candidatos:
+        return None, "no_encontrado", []
+
+    # Preferir el mismo club base. Esto corrige nombres repetidos.
+    mismos_clubes = [
+        c for c in candidatos
+        if same_team(club_base, c.get("club")) or same_team(club_base, c.get("club_espn"))
+    ]
+    if len(mismos_clubes) == 1:
+        return mismos_clubes[0], "mismo_club", candidatos
+    if len(mismos_clubes) > 1:
+        mismos_clubes.sort(key=lambda c: int(c.get("edad") or 0), reverse=True)
+        return mismos_clubes[0], "mismo_club_multiple", candidatos
+
+    # Si el jugador no está en el club base, puede ser transferencia.
+    # Solo aceptamos si el nombre completo es único en todas las ligas escaneadas.
+    if len(candidatos) == 1:
+        return candidatos[0], "transferencia_unica", candidatos
+
+    # Si hay varios candidatos, preferir misma liga solo si queda uno.
+    misma_liga = [c for c in candidatos if same_league(liga_base, c.get("liga"))]
+    if len(misma_liga) == 1:
+        return misma_liga[0], "misma_liga_unica", candidatos
+
+    return None, "ambiguo", candidatos
 
 def cargar_json_actual() -> dict:
     if not OUTPUT_FILE.exists():
@@ -672,14 +764,11 @@ def main() -> None:
     no_encontrados: list[dict] = []
     jugadores_finales: list[dict] = []
 
+    ambiguos: list[dict] = []
+
     for j in base:
         nombre = j["nombre"]
-        match = None
-
-        for key in name_variants(nombre):
-            if key in index_espn:
-                match = index_espn[key]
-                break
+        match, motivo_match, candidatos = resolver_jugador_espn(j, index_espn)
 
         if match:
             club_nuevo = match.get("club") or j.get("club_base") or "Sin datos"
@@ -688,8 +777,8 @@ def main() -> None:
             pais_nuevo = match.get("pais") or "Sin datos"
 
             if (
-                club_nuevo != (j.get("club_base") or "")
-                or liga_nueva != (j.get("liga_base") or "")
+                not same_team(club_nuevo, j.get("club_base") or "")
+                or not same_league(liga_nueva, j.get("liga_base") or "")
             ):
                 actualizaciones.append({
                     "nombre": nombre,
@@ -700,6 +789,7 @@ def main() -> None:
                     "edad": edad_nueva,
                     "pais": pais_nuevo,
                     "espn_id": match.get("espn_id") or "",
+                    "confianza": motivo_match,
                 })
 
             jugadores_finales.append({
@@ -712,14 +802,33 @@ def main() -> None:
                 "edad": edad_nueva,
                 "pais": pais_nuevo,
                 "estado": "actualizado_espn",
+                "confianza": motivo_match,
                 "espn_id": match.get("espn_id") or "",
             })
         else:
-            no_encontrados.append({
+            registro = {
                 "nombre": nombre,
                 "club_base": j.get("club_base") or "Sin datos",
                 "liga_base": j.get("liga_base") or "Sin datos",
-            })
+                "motivo": motivo_match,
+            }
+            no_encontrados.append(registro)
+
+            if motivo_match == "ambiguo":
+                ambiguos.append({
+                    **registro,
+                    "candidatos": [
+                        {
+                            "nombre_espn": c.get("nombre_espn"),
+                            "club": c.get("club"),
+                            "liga": c.get("liga"),
+                            "edad": c.get("edad"),
+                            "pais": c.get("pais"),
+                            "espn_id": c.get("espn_id"),
+                        }
+                        for c in candidatos[:8]
+                    ],
+                })
 
             jugadores_finales.append({
                 "nombre": nombre,
@@ -730,7 +839,7 @@ def main() -> None:
                 "competicion": j.get("liga_base") or "Sin datos",
                 "edad": 0,
                 "pais": "Sin datos",
-                "estado": "no_encontrado_espn",
+                "estado": "no_encontrado_espn" if motivo_match != "ambiguo" else "ambiguo_no_actualizado",
                 "espn_id": "",
             })
 
@@ -738,7 +847,7 @@ def main() -> None:
 
     payload = {
         "fuente": "jugadores_base.json curado + ESPN rosters",
-        "modo": "solo_actualiza_club_liga_edad_pais",
+        "modo": "solo_actualiza_club_liga_edad_pais_con_match_seguro",
         "actualizado": datetime.now(timezone.utc).isoformat(),
         "total": len(jugadores_finales),
         "base_detectados": len(base),
@@ -749,6 +858,7 @@ def main() -> None:
         },
         "actualizaciones": actualizaciones,
         "no_encontrados": no_encontrados,
+        "ambiguos_no_actualizados": ambiguos,
         "equipos_no_encontrados": equipos_no_encontrados,
         "errores_base": errores_base[:100],
         "jugadores": jugadores_finales,
