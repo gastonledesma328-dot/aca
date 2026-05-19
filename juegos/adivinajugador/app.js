@@ -102,6 +102,75 @@ function normalizeText(value) {
     .trim();
 }
 
+function normalizeSearchName(value) {
+  return normalizeText(value)
+    .replace(/['’´`]/g, '')
+    .replace(/[^a-z0-9ñ\s-]/g, ' ')
+    .replace(/-/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function getNameTokens(name) {
+  return normalizeSearchName(name).split(' ').filter(Boolean);
+}
+
+function isSuffixToken(token) {
+  return ['jr', 'junior', 'ii', 'iii'].includes(token);
+}
+
+function getPlayerAliases(player) {
+  const aliases = [];
+
+  if (Array.isArray(player.aliases)) aliases.push(...player.aliases);
+  if (Array.isArray(player.apodos)) aliases.push(...player.apodos);
+  if (player.alias) aliases.push(player.alias);
+  if (player.apodo) aliases.push(player.apodo);
+
+  return aliases
+    .map((item) => normalizeSearchName(item))
+    .filter((item) => item.length >= MIN_CHARS);
+}
+
+function isValidPlayerInputForName(player, query) {
+  const name = normalizeSearchName(player.nombre);
+  const q = normalizeSearchName(query);
+
+  if (!q || q.length < MIN_CHARS) return false;
+
+  // Nombre completo exacto: "Joshua Kimmich"
+  if (q === name) return true;
+
+  const aliases = getPlayerAliases(player);
+  if (aliases.includes(q)) return true;
+
+  const tokens = getNameTokens(player.nombre);
+  if (!tokens.length) return false;
+
+  // Jugadores de un solo nombre: "Neymar", "Rodrygo", "Pedri"
+  if (tokens.length === 1) return q === tokens[0];
+
+  const firstName = tokens[0];
+  const lastName = tokens[tokens.length - 1];
+  const lastTwo = tokens.length >= 2 ? tokens.slice(-2).join(' ') : '';
+
+  // Apellidos simples: "Kimmich" -> Joshua Kimmich
+  if (q === lastName && q !== firstName) return true;
+
+  // Apellidos compuestos: "van Dijk", "de Bruyne", "Mac Allister"
+  if (q === lastTwo && q !== firstName) return true;
+
+  // Permite cualquier parte del apellido, pero NO el primer nombre solo.
+  // Ejemplo: "Kimmich" sí. "Joshua" no.
+  const nonFirstTokens = tokens.slice(1).filter((token) => !isSuffixToken(token));
+  if (nonFirstTokens.includes(q)) return true;
+
+  // Casos tipo "Neymar Jr.", "Vinícius Jr."
+  if (tokens.length === 2 && isSuffixToken(tokens[1]) && q === firstName) return true;
+
+  return false;
+}
+
 function getPlayerEra(player) {
   return normalizeText(player.epoca || player.tipo || 'actual');
 }
@@ -295,23 +364,30 @@ function updateCounters() {
 
 function findPlayerByInput(input) {
   const raw = String(input || '').trim();
-  const q = normalizeText(raw);
+  const q = normalizeSearchName(raw);
 
   if (q.length < MIN_CHARS) {
     return { error: `Escribí al menos ${MIN_CHARS} letras.` };
   }
 
-  const exact = pool.find((player) => normalizeText(player.nombre) === q);
+  const exact = pool.find((player) => normalizeSearchName(player.nombre) === q);
   if (exact) return { player: exact };
 
-  const matches = pool.filter((player) => {
-    const name = normalizeText(player.nombre);
-    return name.includes(q) || q.includes(name);
-  });
+  const matches = pool.filter((player) => isValidPlayerInputForName(player, q));
 
   if (matches.length === 1) return { player: matches[0] };
 
   if (matches.length > 1) {
+    const sameLastName = matches.filter((player) => {
+      const tokens = getNameTokens(player.nombre);
+      const lastName = tokens[tokens.length - 1];
+      return lastName === q;
+    });
+
+    if (sameLastName.length === 1) {
+      return { player: sameLastName[0] };
+    }
+
     if (getDifficulty().autocomplete) {
       return { error: 'Hay varios jugadores parecidos. Elegí uno de la lista o escribí más del nombre.' };
     }
@@ -319,7 +395,7 @@ function findPlayerByInput(input) {
     return { error: 'Hay varios jugadores parecidos. Escribí el nombre más completo.' };
   }
 
-  return { error: 'No encontré ese jugador. Revisá el nombre o probá con otro jugador de la base.' };
+  return { error: 'No encontré ese jugador. Probá con el apellido o el nombre completo.' };
 }
 
 function compareText(value, target) {
