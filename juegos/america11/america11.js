@@ -1159,31 +1159,54 @@ function finishGame(reason) {
   playerSearch.disabled = true;
   surrenderBtn.disabled = true;
 
+  const resultEyebrow = document.getElementById("resultEyebrow");
+  const resultChips = document.getElementById("resultChips");
+
+  const modeLabel = GAME_MODES[currentMode].label;
+  const completed = completedSlots.length;
+  const total = CURRENT_GAME.positions.length;
+
+  if (resultChips) {
+    resultChips.innerHTML = `
+      <span class="result-chip">Dificultad ${modeLabel}</span>
+      <span class="result-chip">${CURRENT_GAME.formationName}</span>
+      <span class="result-chip">${completed}/${total} completados</span>
+      <span class="result-chip">${score} puntos</span>
+    `;
+  }
+
   if (reason === "surrender") {
+    if (resultEyebrow) resultEyebrow.textContent = "PARTIDA TERMINADA";
+
     resultTitle.textContent = "Te rendiste";
-    resultText.textContent =
-      `Completaste ${completedSlots.length} de ${CURRENT_GAME.positions.length} casilleros. ` +
-      `Modo ${GAME_MODES[currentMode].label}. Formación ${CURRENT_GAME.formationName}. ` +
-      `Puntaje final: ${score}. Podés jugar otro desafío ahora.`;
+
+    resultText.innerHTML =
+      `Completaste <strong>${completed}</strong> de <strong>${total}</strong> casilleros. ` +
+      `Puntaje final: <strong>${score}</strong>.`;
+
     return;
   }
 
   if (reason === "time") {
-    resultTitle.textContent = "Se terminó el tiempo";
-    resultText.textContent =
-      `Completaste ${completedSlots.length} de ${CURRENT_GAME.positions.length} casilleros. ` +
-      `Modo ${GAME_MODES[currentMode].label}. Formación ${CURRENT_GAME.formationName}. ` +
-      `Puntaje final: ${score}. Podés jugar otro desafío ahora.`;
+    if (resultEyebrow) resultEyebrow.textContent = "TIEMPO TERMINADO";
+
+    resultTitle.textContent = "Se acabó el tiempo";
+
+    resultText.innerHTML =
+      `Completaste <strong>${completed}</strong> de <strong>${total}</strong> casilleros. ` +
+      `Puntaje final: <strong>${score}</strong>.`;
+
     return;
   }
 
-  resultTitle.textContent = "Equipo completado";
-  resultText.textContent =
-    `Completaste el 11 en modo ${GAME_MODES[currentMode].label}. ` +
-    `Formación ${CURRENT_GAME.formationName}. Puntaje final: ${score}. ` +
-    `Podés jugar otro desafío ahora.`;
-}
+  if (resultEyebrow) resultEyebrow.textContent = "JUEGO COMPLETADO";
 
+  resultTitle.textContent = "¡Felicitaciones!";
+
+  resultText.innerHTML =
+    `Lograste completar tu 11 de América. ` +
+    `Puntaje final: <strong>${score}</strong>.`;
+}
 function surrenderGame() {
   if (gameFinished) return;
 
@@ -1211,24 +1234,13 @@ function getResultActions() {
 }
 
 function getOrCreateNextChallengeButton() {
-  let nextBtn = document.getElementById("nextChallengeBtn");
+  const nextBtn = document.getElementById("nextChallengeBtn");
 
-  if (nextBtn) return nextBtn;
-
-  const actions = getResultActions();
-
-  if (!actions) return null;
-
-  nextBtn = document.createElement("button");
-  nextBtn.type = "button";
-  nextBtn.id = "nextChallengeBtn";
-  nextBtn.textContent = "Siguiente desafío";
+  if (!nextBtn) return null;
 
   nextBtn.onclick = () => {
     initGame();
   };
-
-  actions.appendChild(nextBtn);
 
   return nextBtn;
 }
