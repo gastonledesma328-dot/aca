@@ -1,14 +1,1654 @@
 {
-  "fuente": "jugadores_base.json curado + ESPN rosters + ESPN athlete detail/search",
-  "modo": "actualiza_todo_menos_altura_y_posicion",
-  "actualizado": "2026-05-19T18:14:41.946160+00:00",
-  "total": 733,
-  "con_pais": 560,
-  "sin_pais": 173,
+  "fuente": "jugadores_base.json curado + ESPN rosters + ESPN athlete detail/search + bajas/overrides",
+  "modo": "actualiza_todo_menos_altura_y_posicion_y_excluye_no_actuales",
+  "actualizado": "2026-05-19T18:25:38.311525+00:00",
+  "total": 551,
+  "con_pais": 551,
+  "sin_pais": 0,
   "base_detectados": 733,
-  "tiempo_segundos": 187.3,
-  "con_imagen": 560,
-  "sin_imagen": 173,
+  "incluidos_en_juego": 551,
+  "excluidos_por_baja": [
+    {
+      "nombre": "Robert Lewandowski",
+      "club_base": "Barcelona",
+      "liga_base": "LaLiga",
+      "motivo": "Salida anunciada de FC Barcelona; evitar que siga saliendo como jugador de Barcelona si ESPN demora el roster."
+    }
+  ],
+  "excluidos_no_actuales": [
+    {
+      "nombre": "Reinildo Mandava",
+      "club_base": "Atlético de Madrid",
+      "liga_base": "LaLiga",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Mehdi Taremi",
+      "club_base": "Inter Milan",
+      "liga_base": "Serie A",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Gleison Bremer",
+      "club_base": "Juventus",
+      "liga_base": "Serie A",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Kenan Yıldız",
+      "club_base": "Juventus",
+      "liga_base": "Serie A",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Danilo",
+      "club_base": "Juventus",
+      "liga_base": "Serie A",
+      "motivo": "ambiguo",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Davide Calabria",
+      "club_base": "AC Milan",
+      "liga_base": "Serie A",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Samuel Chukwueze",
+      "club_base": "AC Milan",
+      "liga_base": "Serie A",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ismael Bennacer",
+      "club_base": "AC Milan",
+      "liga_base": "Serie A",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Noah Okafor",
+      "club_base": "AC Milan",
+      "liga_base": "Serie A",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Álvaro Morata",
+      "club_base": "AC Milan",
+      "liga_base": "Serie A",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Luka Jović",
+      "club_base": "AC Milan",
+      "liga_base": "Serie A",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Pascal Groß",
+      "club_base": "Borussia Dortmund",
+      "liga_base": "Bundesliga",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Giovanni Reyna",
+      "club_base": "Borussia Dortmund",
+      "liga_base": "Bundesliga",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Granit Xhaka",
+      "club_base": "Bayer Leverkusen",
+      "liga_base": "Bundesliga",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Victor Boniface",
+      "club_base": "Bayer Leverkusen",
+      "liga_base": "Bundesliga",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Amine Adli",
+      "club_base": "Bayer Leverkusen",
+      "liga_base": "Bundesliga",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Adam Hložek",
+      "club_base": "Bayer Leverkusen",
+      "liga_base": "Bundesliga",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Matvey Safonov",
+      "club_base": "Paris Saint-Germain",
+      "liga_base": "Ligue 1",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jonathan Clauss",
+      "club_base": "Olympique de Marseille",
+      "liga_base": "Ligue 1",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Quentin Merlin",
+      "club_base": "Olympique de Marseille",
+      "liga_base": "Ligue 1",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Renan Lodi",
+      "club_base": "Olympique de Marseille",
+      "liga_base": "Ligue 1",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Valentin Rongier",
+      "club_base": "Olympique de Marseille",
+      "liga_base": "Ligue 1",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Azzedine Ounahi",
+      "club_base": "Olympique de Marseille",
+      "liga_base": "Ligue 1",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Faris Moumbagna",
+      "club_base": "Olympique de Marseille",
+      "liga_base": "Ligue 1",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Radosław Majecki",
+      "club_base": "AS Monaco",
+      "liga_base": "Ligue 1",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Breel Embolo",
+      "club_base": "AS Monaco",
+      "liga_base": "Ligue 1",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Gil",
+      "club_base": "Santos",
+      "liga_base": "Brasileirão",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "João Basso",
+      "club_base": "Santos",
+      "liga_base": "Brasileirão",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Tiquinho Soares",
+      "club_base": "Santos",
+      "liga_base": "Brasileirão",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Guilherme",
+      "club_base": "Santos",
+      "liga_base": "Brasileirão",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Enzo Pérez",
+      "club_base": "River Plate",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Nacho Fernández",
+      "club_base": "River Plate",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Miguel Borja",
+      "club_base": "River Plate",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Maxi Meza",
+      "club_base": "River Plate",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Pablo Solari",
+      "club_base": "River Plate",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Colidio",
+      "club_base": "River Plate",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Luis Advíncula",
+      "club_base": "Boca Juniors",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Nicolás Figal",
+      "club_base": "Boca Juniors",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Sergio Romero",
+      "club_base": "Boca Juniors",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Aaron Anselmino",
+      "club_base": "Boca Juniors",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Frank Fabra",
+      "club_base": "Boca Juniors",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Agustín Almendra",
+      "club_base": "Racing Club",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Roger Martínez",
+      "club_base": "Racing Club",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Gabriel Arias",
+      "club_base": "Racing Club",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Agustín Urzi",
+      "club_base": "Racing Club",
+      "liga_base": "Liga Profesional Argentina",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Mathew Ryan",
+      "club_base": "Ajax Amsterdam",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ko Itakura",
+      "club_base": "Ajax Amsterdam",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jordan Henderson",
+      "club_base": "Ajax Amsterdam",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Brian Brobbey",
+      "club_base": "Ajax Amsterdam",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Remko Pasveer",
+      "club_base": "Ajax Amsterdam",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Branco van den Boomen",
+      "club_base": "Ajax Amsterdam",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Carlos Forbs",
+      "club_base": "Ajax Amsterdam",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Chuba Akpom",
+      "club_base": "Ajax Amsterdam",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Walter Benítez",
+      "club_base": "PSV Eindhoven",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Joël Drommel",
+      "club_base": "PSV Eindhoven",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Hirving Lozano",
+      "club_base": "PSV Eindhoven",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Lutsharel Geertruida",
+      "club_base": "Feyenoord",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Quilindschy Hartman",
+      "club_base": "Feyenoord",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Calvin Stengs",
+      "club_base": "Feyenoord",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Justin Bijlow",
+      "club_base": "Feyenoord",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Marcos López",
+      "club_base": "Feyenoord",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Luka Ivanušec",
+      "club_base": "Feyenoord",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Javairô Dilrosun",
+      "club_base": "Feyenoord",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Alireza Jahanbakhsh",
+      "club_base": "Feyenoord",
+      "liga_base": "Eredivisie",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Joan Castro",
+      "club_base": "Atlético Nacional",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Felipe Aguirre",
+      "club_base": "Atlético Nacional",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Álvaro Angulo",
+      "club_base": "Atlético Nacional",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Matheus Uribe",
+      "club_base": "Atlético Nacional",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Juan Manuel Zapata",
+      "club_base": "Atlético Nacional",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Marino Hinestroza",
+      "club_base": "Atlético Nacional",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Dorlan Pabón",
+      "club_base": "Atlético Nacional",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Kevin Viveros",
+      "club_base": "Atlético Nacional",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Delvin Alfonzo",
+      "club_base": "Millonarios",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Juan Pablo Vargas",
+      "club_base": "Millonarios",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Larry Vásquez",
+      "club_base": "Millonarios",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Daniel Cataño",
+      "club_base": "Millonarios",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Emerson Rodríguez",
+      "club_base": "Millonarios",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Sander Navarro",
+      "club_base": "Millonarios",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Daniel Giraldo",
+      "club_base": "Millonarios",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Daniel Ruiz",
+      "club_base": "Millonarios",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Walmer Pacheco",
+      "club_base": "Junior FC",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Rafael Pérez",
+      "club_base": "Junior FC",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Gabriel Fuentes",
+      "club_base": "Junior FC",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Didier Moreno",
+      "club_base": "Junior FC",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Víctor Cantillo",
+      "club_base": "Junior FC",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jefferson Martínez",
+      "club_base": "Junior FC",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jhon Vélez",
+      "club_base": "Junior FC",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Homer Martínez",
+      "club_base": "Junior FC",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Luis González",
+      "club_base": "Junior FC",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Marco Pérez",
+      "club_base": "Junior FC",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Steven Rodríguez",
+      "club_base": "Junior FC",
+      "liga_base": "Liga BetPlay",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Óscar Ustari",
+      "club_base": "Inter Miami CF",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Tomás Avilés",
+      "club_base": "Inter Miami CF",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jordi Alba",
+      "club_base": "Inter Miami CF",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Sergio Busquets",
+      "club_base": "Inter Miami CF",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Benjamin Cremaschi",
+      "club_base": "Inter Miami CF",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Robert Taylor",
+      "club_base": "Inter Miami CF",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ilie Sánchez",
+      "club_base": "LAFC",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Cristian Tello",
+      "club_base": "LAFC",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "John McCarthy",
+      "club_base": "LAFC",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Diego Palacios",
+      "club_base": "LAFC",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Kellyn Acosta",
+      "club_base": "LAFC",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Mateusz Bogusz",
+      "club_base": "LAFC",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Kei Kamara",
+      "club_base": "LAFC",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Raúl Ruidíaz",
+      "club_base": "Seattle Sounders",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Andrew Thomas",
+      "club_base": "Seattle Sounders",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Danny Leyva",
+      "club_base": "Seattle Sounders",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Danny Musovski",
+      "club_base": "Seattle Sounders",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Héber",
+      "club_base": "Seattle Sounders",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Will Bruin",
+      "club_base": "Seattle Sounders",
+      "liga_base": "MLS",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Coman",
+      "club_base": "Al Nassr",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Abdullah Alkhaibari",
+      "club_base": "Al Nassr",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ayman Yahya",
+      "club_base": "Al Nassr",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Wesley",
+      "club_base": "Al Nassr",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "Mexico",
+      "espn_id": "3355"
+    },
+    {
+      "nombre": "Hassan Tambakti",
+      "club_base": "Al Hilal",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Mohammed Al-Owais",
+      "club_base": "Al Hilal",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ali Al-Bulayhi",
+      "club_base": "Al Hilal",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Kaio César",
+      "club_base": "Al Hilal",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Roger Ibañez",
+      "club_base": "Al Ahli",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ziyad Al-Johani",
+      "club_base": "Al Ahli",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Roberto Firmino",
+      "club_base": "Al Ahli",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Abdullah Al-Muaiouf",
+      "club_base": "Al Ahli",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Bassam Al-Hurayji",
+      "club_base": "Al Ahli",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Fahad Al-Rashidi",
+      "club_base": "Al Ahli",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ali Al-Asmari",
+      "club_base": "Al Ahli",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Sumayhan Al-Nabit",
+      "club_base": "Al Ahli",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Omar Al-Somah",
+      "club_base": "Al Ahli",
+      "liga_base": "Saudi Pro League",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Florentino Luís",
+      "club_base": "Benfica",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Tomás Araújo",
+      "club_base": "Benfica",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Renato Sanches",
+      "club_base": "Benfica",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "João Mário",
+      "club_base": "FC Porto",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "David Carmo",
+      "club_base": "FC Porto",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Zaidu",
+      "club_base": "FC Porto",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Iván Marcano",
+      "club_base": "FC Porto",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Fabio Vieira",
+      "club_base": "FC Porto",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Danny Namaso",
+      "club_base": "FC Porto",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Toni Martínez",
+      "club_base": "FC Porto",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Franco Israel",
+      "club_base": "Sporting CP",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Trincão",
+      "club_base": "Sporting CP",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Diogo Pinto",
+      "club_base": "Sporting CP",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ricardo Esgaio",
+      "club_base": "Sporting CP",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jeremiah St. Juste",
+      "club_base": "Sporting CP",
+      "liga_base": "Liga Portugal",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Abdülkerim Bardakcı",
+      "club_base": "Galatasaray",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Eren Elmalı",
+      "club_base": "Galatasaray",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Barış Alper Yılmaz",
+      "club_base": "Galatasaray",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Uğurcan Çakır",
+      "club_base": "Galatasaray",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Berkan Kutlu",
+      "club_base": "Galatasaray",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Dries Mertens",
+      "club_base": "Galatasaray",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Hakim Ziyech",
+      "club_base": "Galatasaray",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Wilfried Zaha",
+      "club_base": "Galatasaray",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Dominik Livaković",
+      "club_base": "Fenerbahçe",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Sebastian Szymański",
+      "club_base": "Fenerbahçe",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Dusan Tadic",
+      "club_base": "Fenerbahçe",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jhon Durán",
+      "club_base": "Fenerbahçe",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "İrfan Can Eğribayat",
+      "club_base": "Fenerbahçe",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Alexander Djiku",
+      "club_base": "Fenerbahçe",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ferdi Kadıoğlu",
+      "club_base": "Fenerbahçe",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "İrfan Can Kahveci",
+      "club_base": "Fenerbahçe",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Edin Džeko",
+      "club_base": "Fenerbahçe",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jonas Svensson",
+      "club_base": "Beşiktaş",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Gedson Fernandes",
+      "club_base": "Beşiktaş",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ciro Immobile",
+      "club_base": "Beşiktaş",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Semih Kılıçsoy",
+      "club_base": "Beşiktaş",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Tayyip Talha Sanuç",
+      "club_base": "Beşiktaş",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Alex Oxlade-Chamberlain",
+      "club_base": "Beşiktaş",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Vincent Aboubakar",
+      "club_base": "Beşiktaş",
+      "liga_base": "Süper Lig",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Luis Malagón",
+      "club_base": "Club América",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Óscar Jiménez",
+      "club_base": "Club América",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Richard Sánchez",
+      "club_base": "Club América",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Jorge Sánchez",
+      "club_base": "Cruz Azul",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Carlos Rotondi",
+      "club_base": "Cruz Azul",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Lorenzo Faravelli",
+      "club_base": "Cruz Azul",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Giorgos Giakoumakis",
+      "club_base": "Cruz Azul",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Uriel Antuna",
+      "club_base": "Cruz Azul",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Ignacio Rivero",
+      "club_base": "Cruz Azul",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Javier Aquino",
+      "club_base": "Tigres UANL",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Diego Reyes",
+      "club_base": "Tigres UANL",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Guido Pizarro",
+      "club_base": "Tigres UANL",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Carlos Felipe Rodríguez",
+      "club_base": "Tigres UANL",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Samir",
+      "club_base": "Tigres UANL",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    },
+    {
+      "nombre": "Luis Quiñones",
+      "club_base": "Tigres UANL",
+      "liga_base": "Liga MX",
+      "motivo": "no_encontrado",
+      "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+      "pais_encontrado_por_busqueda": "",
+      "espn_id": ""
+    }
+  ],
+  "tiempo_segundos": 116.1,
+  "con_imagen": 551,
+  "sin_imagen": 0,
   "reglas": {
     "mantiene_manual": [
       "altura",
@@ -23,7 +1663,8 @@
       "pais",
       "imagen",
       "espn_id"
-    ]
+    ],
+    "no_mantiene_club_viejo_si_no_aparece_en_roster_actual": true
   },
   "actualizaciones": [
     {
@@ -1460,12 +3101,7 @@
       "nombre": "Gil",
       "club_base": "Santos",
       "liga_base": "Brasileirão",
-      "motivo": "no_encontrado_pais_por_busqueda_espn",
-      "pais": "Netherlands",
-      "edad": 34,
-      "espn_id": "157892",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/157892.png",
-      "nombre_actual": "Virgil van Dijk"
+      "motivo": "no_encontrado"
     },
     {
       "nombre": "João Basso",
@@ -1519,12 +3155,7 @@
       "nombre": "Colidio",
       "club_base": "River Plate",
       "liga_base": "Liga Profesional Argentina",
-      "motivo": "no_encontrado_pais_por_busqueda_espn",
-      "pais": "Argentina",
-      "edad": 26,
-      "espn_id": "275941",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/275941.png",
-      "nombre_actual": "Facundo Colidio"
+      "motivo": "no_encontrado"
     },
     {
       "nombre": "Luis Advíncula",
@@ -1572,12 +3203,7 @@
       "nombre": "Gabriel Arias",
       "club_base": "Racing Club",
       "liga_base": "Liga Profesional Argentina",
-      "motivo": "no_encontrado_pais_por_busqueda_espn",
-      "pais": "Brazil",
-      "edad": 26,
-      "espn_id": "268478",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/268478.png",
-      "nombre_actual": "Gabriel Sara"
+      "motivo": "no_encontrado"
     },
     {
       "nombre": "Agustín Urzi",
@@ -1775,12 +3401,7 @@
       "nombre": "Emerson Rodríguez",
       "club_base": "Millonarios",
       "liga_base": "Liga BetPlay",
-      "motivo": "no_encontrado_pais_por_busqueda_espn",
-      "pais": "Spain",
-      "edad": 29,
-      "espn_id": "231828",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/231828.png",
-      "nombre_actual": "Rodri"
+      "motivo": "no_encontrado"
     },
     {
       "nombre": "Sander Navarro",
@@ -1864,12 +3485,7 @@
       "nombre": "Steven Rodríguez",
       "club_base": "Junior FC",
       "liga_base": "Liga BetPlay",
-      "motivo": "no_encontrado_pais_por_busqueda_espn",
-      "pais": "Spain",
-      "edad": 29,
-      "espn_id": "231828",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/231828.png",
-      "nombre_actual": "Rodri"
+      "motivo": "no_encontrado"
     },
     {
       "nombre": "Óscar Ustari",
@@ -1989,12 +3605,7 @@
       "nombre": "Coman",
       "club_base": "Al Nassr",
       "liga_base": "Saudi Pro League",
-      "motivo": "no_encontrado_pais_por_busqueda_espn",
-      "pais": "France",
-      "edad": 29,
-      "espn_id": "184012",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/184012.png",
-      "nombre_actual": "Kingsley Coman"
+      "motivo": "no_encontrado"
     },
     {
       "nombre": "Abdullah Alkhaibari",
@@ -2407,12 +4018,7 @@
       "nombre": "Carlos Felipe Rodríguez",
       "club_base": "Tigres UANL",
       "liga_base": "Liga MX",
-      "motivo": "no_encontrado_pais_por_busqueda_espn",
-      "pais": "Spain",
-      "edad": 29,
-      "espn_id": "231828",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/231828.png",
-      "nombre_actual": "Rodri"
+      "motivo": "no_encontrado"
     },
     {
       "nombre": "Samir",
@@ -2472,1219 +4078,7 @@
     }
   ],
   "errores_base": [],
-  "jugadores_sin_pais": [
-    {
-      "nombre": "Reinildo Mandava",
-      "club": "Atlético de Madrid",
-      "liga": "LaLiga",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Mehdi Taremi",
-      "club": "Inter Milan",
-      "liga": "Serie A",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Gleison Bremer",
-      "club": "Juventus",
-      "liga": "Serie A",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Kenan Yıldız",
-      "club": "Juventus",
-      "liga": "Serie A",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Danilo",
-      "club": "Juventus",
-      "liga": "Serie A",
-      "estado": "ambiguo_no_actualizado",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Davide Calabria",
-      "club": "AC Milan",
-      "liga": "Serie A",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Samuel Chukwueze",
-      "club": "AC Milan",
-      "liga": "Serie A",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ismael Bennacer",
-      "club": "AC Milan",
-      "liga": "Serie A",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Noah Okafor",
-      "club": "AC Milan",
-      "liga": "Serie A",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Álvaro Morata",
-      "club": "AC Milan",
-      "liga": "Serie A",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Luka Jović",
-      "club": "AC Milan",
-      "liga": "Serie A",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Pascal Groß",
-      "club": "Borussia Dortmund",
-      "liga": "Bundesliga",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Giovanni Reyna",
-      "club": "Borussia Dortmund",
-      "liga": "Bundesliga",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Granit Xhaka",
-      "club": "Bayer Leverkusen",
-      "liga": "Bundesliga",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Victor Boniface",
-      "club": "Bayer Leverkusen",
-      "liga": "Bundesliga",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Amine Adli",
-      "club": "Bayer Leverkusen",
-      "liga": "Bundesliga",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Adam Hložek",
-      "club": "Bayer Leverkusen",
-      "liga": "Bundesliga",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Matvey Safonov",
-      "club": "Paris Saint-Germain",
-      "liga": "Ligue 1",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Jonathan Clauss",
-      "club": "Olympique de Marseille",
-      "liga": "Ligue 1",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Quentin Merlin",
-      "club": "Olympique de Marseille",
-      "liga": "Ligue 1",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Renan Lodi",
-      "club": "Olympique de Marseille",
-      "liga": "Ligue 1",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Valentin Rongier",
-      "club": "Olympique de Marseille",
-      "liga": "Ligue 1",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Azzedine Ounahi",
-      "club": "Olympique de Marseille",
-      "liga": "Ligue 1",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Faris Moumbagna",
-      "club": "Olympique de Marseille",
-      "liga": "Ligue 1",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Radosław Majecki",
-      "club": "AS Monaco",
-      "liga": "Ligue 1",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Breel Embolo",
-      "club": "AS Monaco",
-      "liga": "Ligue 1",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "João Basso",
-      "club": "Santos",
-      "liga": "Brasileirão",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Tiquinho Soares",
-      "club": "Santos",
-      "liga": "Brasileirão",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Guilherme",
-      "club": "Santos",
-      "liga": "Brasileirão",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Enzo Pérez",
-      "club": "River Plate",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Nacho Fernández",
-      "club": "River Plate",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Miguel Borja",
-      "club": "River Plate",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Maxi Meza",
-      "club": "River Plate",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Pablo Solari",
-      "club": "River Plate",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Luis Advíncula",
-      "club": "Boca Juniors",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Nicolás Figal",
-      "club": "Boca Juniors",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Sergio Romero",
-      "club": "Boca Juniors",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Aaron Anselmino",
-      "club": "Boca Juniors",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Frank Fabra",
-      "club": "Boca Juniors",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Agustín Almendra",
-      "club": "Racing Club",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Roger Martínez",
-      "club": "Racing Club",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Agustín Urzi",
-      "club": "Racing Club",
-      "liga": "Liga Profesional Argentina",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Mathew Ryan",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ko Itakura",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Jordan Henderson",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Brian Brobbey",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Remko Pasveer",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Branco van den Boomen",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Carlos Forbs",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Chuba Akpom",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Walter Benítez",
-      "club": "PSV Eindhoven",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Joël Drommel",
-      "club": "PSV Eindhoven",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Hirving Lozano",
-      "club": "PSV Eindhoven",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Lutsharel Geertruida",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Quilindschy Hartman",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Calvin Stengs",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Justin Bijlow",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Marcos López",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Luka Ivanušec",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Javairô Dilrosun",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Alireza Jahanbakhsh",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Joan Castro",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Felipe Aguirre",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Álvaro Angulo",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Matheus Uribe",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Juan Manuel Zapata",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Marino Hinestroza",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Dorlan Pabón",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Kevin Viveros",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Delvin Alfonzo",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Juan Pablo Vargas",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Larry Vásquez",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Daniel Cataño",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Sander Navarro",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Daniel Giraldo",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Daniel Ruiz",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Walmer Pacheco",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Rafael Pérez",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Gabriel Fuentes",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Didier Moreno",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Víctor Cantillo",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Jefferson Martínez",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Jhon Vélez",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Homer Martínez",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Luis González",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Marco Pérez",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Óscar Ustari",
-      "club": "Inter Miami CF",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Tomás Avilés",
-      "club": "Inter Miami CF",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Jordi Alba",
-      "club": "Inter Miami CF",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Sergio Busquets",
-      "club": "Inter Miami CF",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Benjamin Cremaschi",
-      "club": "Inter Miami CF",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Robert Taylor",
-      "club": "Inter Miami CF",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ilie Sánchez",
-      "club": "LAFC",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Cristian Tello",
-      "club": "LAFC",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "John McCarthy",
-      "club": "LAFC",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Diego Palacios",
-      "club": "LAFC",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Kellyn Acosta",
-      "club": "LAFC",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Mateusz Bogusz",
-      "club": "LAFC",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Kei Kamara",
-      "club": "LAFC",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Raúl Ruidíaz",
-      "club": "Seattle Sounders",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Andrew Thomas",
-      "club": "Seattle Sounders",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Danny Leyva",
-      "club": "Seattle Sounders",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Danny Musovski",
-      "club": "Seattle Sounders",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Héber",
-      "club": "Seattle Sounders",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Will Bruin",
-      "club": "Seattle Sounders",
-      "liga": "MLS",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Abdullah Alkhaibari",
-      "club": "Al Nassr",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ayman Yahya",
-      "club": "Al Nassr",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Hassan Tambakti",
-      "club": "Al Hilal",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Mohammed Al-Owais",
-      "club": "Al Hilal",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ali Al-Bulayhi",
-      "club": "Al Hilal",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Kaio César",
-      "club": "Al Hilal",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Roger Ibañez",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ziyad Al-Johani",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Roberto Firmino",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Abdullah Al-Muaiouf",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Bassam Al-Hurayji",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Fahad Al-Rashidi",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ali Al-Asmari",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Sumayhan Al-Nabit",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Omar Al-Somah",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Florentino Luís",
-      "club": "Benfica",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Tomás Araújo",
-      "club": "Benfica",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Renato Sanches",
-      "club": "Benfica",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "João Mário",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "David Carmo",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Zaidu",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Iván Marcano",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Fabio Vieira",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Danny Namaso",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Toni Martínez",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Franco Israel",
-      "club": "Sporting CP",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Trincão",
-      "club": "Sporting CP",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Diogo Pinto",
-      "club": "Sporting CP",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ricardo Esgaio",
-      "club": "Sporting CP",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Jeremiah St. Juste",
-      "club": "Sporting CP",
-      "liga": "Liga Portugal",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Abdülkerim Bardakcı",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Eren Elmalı",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Barış Alper Yılmaz",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Uğurcan Çakır",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Berkan Kutlu",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Dries Mertens",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Hakim Ziyech",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Wilfried Zaha",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Dominik Livaković",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Sebastian Szymański",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Dusan Tadic",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Jhon Durán",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "İrfan Can Eğribayat",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Alexander Djiku",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ferdi Kadıoğlu",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "İrfan Can Kahveci",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Edin Džeko",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Jonas Svensson",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Gedson Fernandes",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ciro Immobile",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Semih Kılıçsoy",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Tayyip Talha Sanuç",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Alex Oxlade-Chamberlain",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Vincent Aboubakar",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Luis Malagón",
-      "club": "Club América",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Óscar Jiménez",
-      "club": "Club América",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Richard Sánchez",
-      "club": "Club América",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Jorge Sánchez",
-      "club": "Cruz Azul",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Carlos Rotondi",
-      "club": "Cruz Azul",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Lorenzo Faravelli",
-      "club": "Cruz Azul",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Giorgos Giakoumakis",
-      "club": "Cruz Azul",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Uriel Antuna",
-      "club": "Cruz Azul",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ignacio Rivero",
-      "club": "Cruz Azul",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Javier Aquino",
-      "club": "Tigres UANL",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Diego Reyes",
-      "club": "Tigres UANL",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Guido Pizarro",
-      "club": "Tigres UANL",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Samir",
-      "club": "Tigres UANL",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Luis Quiñones",
-      "club": "Tigres UANL",
-      "liga": "Liga MX",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    }
-  ],
+  "jugadores_sin_pais": [],
   "jugadores": [
     {
       "nombre": "David Raya",
@@ -4887,21 +5281,6 @@
       "espn_id": "362150"
     },
     {
-      "nombre": "Robert Lewandowski",
-      "nombre_base": "Robert Lewandowski",
-      "altura": 185,
-      "posicion": "F",
-      "club": "Barcelona",
-      "liga": "LaLiga",
-      "competicion": "LaLiga",
-      "edad": 37,
-      "pais": "Poland",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/125824.png",
-      "estado": "actualizado_espn",
-      "confianza": "mismo_club",
-      "espn_id": "125824"
-    },
-    {
       "nombre": "Raphinha",
       "nombre_base": "Raphinha",
       "altura": 176,
@@ -5217,20 +5596,6 @@
       "espn_id": "193917"
     },
     {
-      "nombre": "Reinildo Mandava",
-      "nombre_base": "Reinildo Mandava",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Atlético de Madrid",
-      "liga": "LaLiga",
-      "competicion": "LaLiga",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Koke",
       "nombre_base": "Koke",
       "altura": 180,
@@ -5516,20 +5881,6 @@
       "espn_id": "250850"
     },
     {
-      "nombre": "Mehdi Taremi",
-      "nombre_base": "Mehdi Taremi",
-      "altura": 187,
-      "posicion": "F",
-      "club": "Inter Milan",
-      "liga": "Serie A",
-      "competicion": "Serie A",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Carlos Augusto",
       "nombre_base": "Carlos Augusto",
       "altura": 180,
@@ -5573,20 +5924,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "290129"
-    },
-    {
-      "nombre": "Gleison Bremer",
-      "nombre_base": "Gleison Bremer",
-      "altura": 188,
-      "posicion": "D",
-      "club": "Juventus",
-      "liga": "Serie A",
-      "competicion": "Serie A",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Federico Gatti",
@@ -5664,20 +6001,6 @@
       "espn_id": "258968"
     },
     {
-      "nombre": "Kenan Yıldız",
-      "nombre_base": "Kenan Yıldız",
-      "altura": 185,
-      "posicion": "F",
-      "club": "Juventus",
-      "liga": "Serie A",
-      "competicion": "Serie A",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Dusan Vlahovic",
       "nombre_base": "Dušan Vlahović",
       "altura": 190,
@@ -5721,20 +6044,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "121036"
-    },
-    {
-      "nombre": "Danilo",
-      "nombre_base": "Danilo",
-      "altura": 183,
-      "posicion": "D",
-      "club": "Juventus",
-      "liga": "Serie A",
-      "competicion": "Serie A",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "ambiguo_no_actualizado",
-      "espn_id": ""
     },
     {
       "nombre": "Weston McKennie",
@@ -5825,20 +6134,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "189026"
-    },
-    {
-      "nombre": "Davide Calabria",
-      "nombre_base": "Davide Calabria",
-      "altura": 180,
-      "posicion": "M",
-      "club": "AC Milan",
-      "liga": "Serie A",
-      "competicion": "Serie A",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Fikayo Tomori",
@@ -5961,20 +6256,6 @@
       "espn_id": "260775"
     },
     {
-      "nombre": "Samuel Chukwueze",
-      "nombre_base": "Samuel Chukwueze",
-      "altura": 170,
-      "posicion": "F",
-      "club": "AC Milan",
-      "liga": "Serie A",
-      "competicion": "Serie A",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Marco Sportiello",
       "nombre_base": "Marco Sportiello",
       "altura": 180,
@@ -6005,20 +6286,6 @@
       "espn_id": "303444"
     },
     {
-      "nombre": "Ismael Bennacer",
-      "nombre_base": "Ismael Bennacer",
-      "altura": 180,
-      "posicion": "M",
-      "club": "AC Milan",
-      "liga": "Serie A",
-      "competicion": "Serie A",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Yunus Musah",
       "nombre_base": "Yunus Musah",
       "altura": 178,
@@ -6032,48 +6299,6 @@
       "estado": "actualizado_espn",
       "confianza": "transferencia_unica",
       "espn_id": "307527"
-    },
-    {
-      "nombre": "Noah Okafor",
-      "nombre_base": "Noah Okafor",
-      "altura": 185,
-      "posicion": "F",
-      "club": "AC Milan",
-      "liga": "Serie A",
-      "competicion": "Serie A",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Álvaro Morata",
-      "nombre_base": "Álvaro Morata",
-      "altura": 180,
-      "posicion": "M",
-      "club": "AC Milan",
-      "liga": "Serie A",
-      "competicion": "Serie A",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Luka Jović",
-      "nombre_base": "Luka Jović",
-      "altura": 180,
-      "posicion": "M",
-      "club": "AC Milan",
-      "liga": "Serie A",
-      "competicion": "Serie A",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Manuel Neuer",
@@ -6421,20 +6646,6 @@
       "espn_id": "159142"
     },
     {
-      "nombre": "Pascal Groß",
-      "nombre_base": "Pascal Groß",
-      "altura": 181,
-      "posicion": "M",
-      "club": "Borussia Dortmund",
-      "liga": "Bundesliga",
-      "competicion": "Bundesliga",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Julian Brandt",
       "nombre_base": "Julian Brandt",
       "altura": 185,
@@ -6555,20 +6766,6 @@
       "espn_id": "173907"
     },
     {
-      "nombre": "Giovanni Reyna",
-      "nombre_base": "Giovanni Reyna",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Borussia Dortmund",
-      "liga": "Bundesliga",
-      "competicion": "Bundesliga",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Donyell Malen",
       "nombre_base": "Donyell Malen",
       "altura": 180,
@@ -6659,20 +6856,6 @@
       "espn_id": "166396"
     },
     {
-      "nombre": "Granit Xhaka",
-      "nombre_base": "Granit Xhaka",
-      "altura": 185,
-      "posicion": "M",
-      "club": "Bayer Leverkusen",
-      "liga": "Bundesliga",
-      "competicion": "Bundesliga",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Exequiel Palacios",
       "nombre_base": "Exequiel Palacios",
       "altura": 180,
@@ -6701,20 +6884,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "212330"
-    },
-    {
-      "nombre": "Victor Boniface",
-      "nombre_base": "Victor Boniface",
-      "altura": 188,
-      "posicion": "F",
-      "club": "Bayer Leverkusen",
-      "liga": "Bundesliga",
-      "competicion": "Bundesliga",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Jonas Hofmann",
@@ -6775,34 +6944,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "180998"
-    },
-    {
-      "nombre": "Amine Adli",
-      "nombre_base": "Amine Adli",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Bayer Leverkusen",
-      "liga": "Bundesliga",
-      "competicion": "Bundesliga",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Adam Hložek",
-      "nombre_base": "Adam Hložek",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Bayer Leverkusen",
-      "liga": "Bundesliga",
-      "competicion": "Bundesliga",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Martin Terrier",
@@ -6985,20 +7126,6 @@
       "espn_id": "229744"
     },
     {
-      "nombre": "Matvey Safonov",
-      "nombre_base": "Matvey Safonov",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Paris Saint-Germain",
-      "liga": "Ligue 1",
-      "competicion": "Ligue 1",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Lucas Beraldo",
       "nombre_base": "Lucas Beraldo",
       "altura": 186,
@@ -7089,20 +7216,6 @@
       "espn_id": "167192"
     },
     {
-      "nombre": "Jonathan Clauss",
-      "nombre_base": "Jonathan Clauss",
-      "altura": 181,
-      "posicion": "D",
-      "club": "Olympique de Marseille",
-      "liga": "Ligue 1",
-      "competicion": "Ligue 1",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Leonardo Balerdi",
       "nombre_base": "Leonardo Balerdi",
       "altura": 187,
@@ -7131,20 +7244,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "245243"
-    },
-    {
-      "nombre": "Quentin Merlin",
-      "nombre_base": "Quentin Merlin",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Olympique de Marseille",
-      "liga": "Ligue 1",
-      "competicion": "Ligue 1",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Pierre-Emile Højbjerg",
@@ -7237,34 +7336,6 @@
       "espn_id": "203061"
     },
     {
-      "nombre": "Renan Lodi",
-      "nombre_base": "Renan Lodi",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Olympique de Marseille",
-      "liga": "Ligue 1",
-      "competicion": "Ligue 1",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Valentin Rongier",
-      "nombre_base": "Valentin Rongier",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Olympique de Marseille",
-      "liga": "Ligue 1",
-      "competicion": "Ligue 1",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Amine Harit",
       "nombre_base": "Amine Harit",
       "altura": 180,
@@ -7280,20 +7351,6 @@
       "espn_id": "238917"
     },
     {
-      "nombre": "Azzedine Ounahi",
-      "nombre_base": "Azzedine Ounahi",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Olympique de Marseille",
-      "liga": "Ligue 1",
-      "competicion": "Ligue 1",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Luis Henrique",
       "nombre_base": "Luis Henrique",
       "altura": 180,
@@ -7307,34 +7364,6 @@
       "estado": "actualizado_espn",
       "confianza": "transferencia_unica",
       "espn_id": "286369"
-    },
-    {
-      "nombre": "Faris Moumbagna",
-      "nombre_base": "Faris Moumbagna",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Olympique de Marseille",
-      "liga": "Ligue 1",
-      "competicion": "Ligue 1",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Radosław Majecki",
-      "nombre_base": "Radosław Majecki",
-      "altura": 193,
-      "posicion": "G",
-      "club": "AS Monaco",
-      "liga": "Ligue 1",
-      "competicion": "Ligue 1",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Thilo Kehrer",
@@ -7470,20 +7499,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "282643"
-    },
-    {
-      "nombre": "Breel Embolo",
-      "nombre_base": "Breel Embolo",
-      "altura": 180,
-      "posicion": "M",
-      "club": "AS Monaco",
-      "liga": "Ligue 1",
-      "competicion": "Ligue 1",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Philipp Köhn",
@@ -8131,20 +8146,6 @@
       "espn_id": "235894"
     },
     {
-      "nombre": "Virgil van Dijk",
-      "nombre_base": "Gil",
-      "altura": 192,
-      "posicion": "D",
-      "club": "Santos",
-      "liga": "Brasileirão",
-      "competicion": "Brasileirão",
-      "edad": 34,
-      "pais": "Netherlands",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/157892.png",
-      "estado": "pais_actualizado_espn_sin_cambiar_club",
-      "espn_id": "157892"
-    },
-    {
       "nombre": "Adonis Frias",
       "nombre_base": "Adonis Frias",
       "altura": 180,
@@ -8280,20 +8281,6 @@
       "espn_id": "421507"
     },
     {
-      "nombre": "João Basso",
-      "nombre_base": "João Basso",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Santos",
-      "liga": "Brasileirão",
-      "competicion": "Brasileirão",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Christian Oliva",
       "nombre_base": "Christian Oliva",
       "altura": 180,
@@ -8337,34 +8324,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "292041"
-    },
-    {
-      "nombre": "Tiquinho Soares",
-      "nombre_base": "Tiquinho Soares",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Santos",
-      "liga": "Brasileirão",
-      "competicion": "Brasileirão",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Guilherme",
-      "nombre_base": "Guilherme",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Santos",
-      "liga": "Brasileirão",
-      "competicion": "Brasileirão",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Franco Armani",
@@ -8442,34 +8401,6 @@
       "espn_id": "157557"
     },
     {
-      "nombre": "Enzo Pérez",
-      "nombre_base": "Enzo Pérez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "River Plate",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Nacho Fernández",
-      "nombre_base": "Nacho Fernández",
-      "altura": 179,
-      "posicion": "M",
-      "club": "River Plate",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Juan Fernando Quintero",
       "nombre_base": "Juan Fernando Quintero",
       "altura": 168,
@@ -8498,20 +8429,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "195334"
-    },
-    {
-      "nombre": "Miguel Borja",
-      "nombre_base": "Miguel Borja",
-      "altura": 180,
-      "posicion": "F",
-      "club": "River Plate",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Facundo Colidio",
@@ -8574,20 +8491,6 @@
       "espn_id": "138341"
     },
     {
-      "nombre": "Maxi Meza",
-      "nombre_base": "Maxi Meza",
-      "altura": 180,
-      "posicion": "M",
-      "club": "River Plate",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Santiago Simón",
       "nombre_base": "Santiago Simón",
       "altura": 180,
@@ -8603,34 +8506,6 @@
       "espn_id": "297057"
     },
     {
-      "nombre": "Pablo Solari",
-      "nombre_base": "Pablo Solari",
-      "altura": 180,
-      "posicion": "M",
-      "club": "River Plate",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Facundo Colidio",
-      "nombre_base": "Colidio",
-      "altura": 180,
-      "posicion": "M",
-      "club": "River Plate",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 26,
-      "pais": "Argentina",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/275941.png",
-      "estado": "pais_actualizado_espn_sin_cambiar_club",
-      "espn_id": "275941"
-    },
-    {
       "nombre": "Agustín Marchesín",
       "nombre_base": "Agustín Marchesín",
       "altura": 188,
@@ -8644,34 +8519,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "195663"
-    },
-    {
-      "nombre": "Luis Advíncula",
-      "nombre_base": "Luis Advíncula",
-      "altura": 176,
-      "posicion": "D",
-      "club": "Boca Juniors",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Nicolás Figal",
-      "nombre_base": "Nicolás Figal",
-      "altura": 187,
-      "posicion": "D",
-      "club": "Boca Juniors",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Ayrton Costa",
@@ -8792,48 +8639,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "260812"
-    },
-    {
-      "nombre": "Sergio Romero",
-      "nombre_base": "Sergio Romero",
-      "altura": 192,
-      "posicion": "G",
-      "club": "Boca Juniors",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Aaron Anselmino",
-      "nombre_base": "Aaron Anselmino",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Boca Juniors",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Frank Fabra",
-      "nombre_base": "Frank Fabra",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Boca Juniors",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Tomás Belmonte",
@@ -8971,20 +8776,6 @@
       "espn_id": "238734"
     },
     {
-      "nombre": "Agustín Almendra",
-      "nombre_base": "Agustín Almendra",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Racing Club",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Juan Nardoni",
       "nombre_base": "Juan Nardoni",
       "altura": 180,
@@ -9045,34 +8836,6 @@
       "espn_id": "3038"
     },
     {
-      "nombre": "Roger Martínez",
-      "nombre_base": "Roger Martínez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Racing Club",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Gabriel Sara",
-      "nombre_base": "Gabriel Arias",
-      "altura": 192,
-      "posicion": "G",
-      "club": "Racing Club",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 26,
-      "pais": "Brazil",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/268478.png",
-      "estado": "pais_actualizado_espn_sin_cambiar_club",
-      "espn_id": "268478"
-    },
-    {
       "nombre": "Nazareno Colombo",
       "nombre_base": "Nazareno Colombo",
       "altura": 180,
@@ -9101,20 +8864,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "144267"
-    },
-    {
-      "nombre": "Agustín Urzi",
-      "nombre_base": "Agustín Urzi",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Racing Club",
-      "liga": "Liga Profesional Argentina",
-      "competicion": "Liga Profesional Argentina",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Tomás Conechny",
@@ -9162,20 +8911,6 @@
       "espn_id": "315926"
     },
     {
-      "nombre": "Mathew Ryan",
-      "nombre_base": "Mathew Ryan",
-      "altura": 184,
-      "posicion": "G",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Devyne Rensch",
       "nombre_base": "Devyne Rensch",
       "altura": 180,
@@ -9206,20 +8941,6 @@
       "espn_id": "353951"
     },
     {
-      "nombre": "Ko Itakura",
-      "nombre_base": "Ko Itakura",
-      "altura": 188,
-      "posicion": "D",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Owen Wijndal",
       "nombre_base": "Owen Wijndal",
       "altura": 180,
@@ -9233,20 +8954,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "241392"
-    },
-    {
-      "nombre": "Jordan Henderson",
-      "nombre_base": "Jordan Henderson",
-      "altura": 182,
-      "posicion": "M",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Davy Klaassen",
@@ -9309,34 +9016,6 @@
       "espn_id": "353363"
     },
     {
-      "nombre": "Brian Brobbey",
-      "nombre_base": "Brian Brobbey",
-      "altura": 180,
-      "posicion": "F",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Remko Pasveer",
-      "nombre_base": "Remko Pasveer",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Josip Sutalo",
       "nombre_base": "Josip Šutalo",
       "altura": 180,
@@ -9350,20 +9029,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "305552"
-    },
-    {
-      "nombre": "Branco van den Boomen",
-      "nombre_base": "Branco van den Boomen",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Kristian Hlynsson",
@@ -9381,34 +9046,6 @@
       "espn_id": "311168"
     },
     {
-      "nombre": "Carlos Forbs",
-      "nombre_base": "Carlos Forbs",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Chuba Akpom",
-      "nombre_base": "Chuba Akpom",
-      "altura": 180,
-      "posicion": "F",
-      "club": "Ajax Amsterdam",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Wout Weghorst",
       "nombre_base": "Wout Weghorst",
       "altura": 197,
@@ -9422,20 +9059,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "177042"
-    },
-    {
-      "nombre": "Walter Benítez",
-      "nombre_base": "Walter Benítez",
-      "altura": 189,
-      "posicion": "G",
-      "club": "PSV Eindhoven",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "André Ramalho",
@@ -9573,20 +9196,6 @@
       "espn_id": "255344"
     },
     {
-      "nombre": "Joël Drommel",
-      "nombre_base": "Joël Drommel",
-      "altura": 180,
-      "posicion": "M",
-      "club": "PSV Eindhoven",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Mauro Júnior",
       "nombre_base": "Mauro Júnior",
       "altura": 180,
@@ -9647,20 +9256,6 @@
       "espn_id": "240965"
     },
     {
-      "nombre": "Hirving Lozano",
-      "nombre_base": "Hirving Lozano",
-      "altura": 180,
-      "posicion": "M",
-      "club": "PSV Eindhoven",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Ricardo Pepi",
       "nombre_base": "Ricardo Pepi",
       "altura": 180,
@@ -9689,20 +9284,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "182424"
-    },
-    {
-      "nombre": "Lutsharel Geertruida",
-      "nombre_base": "Lutsharel Geertruida",
-      "altura": 184,
-      "posicion": "D",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Dávid Hancko",
@@ -9735,20 +9316,6 @@
       "espn_id": "149904"
     },
     {
-      "nombre": "Quilindschy Hartman",
-      "nombre_base": "Quilindschy Hartman",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Quinten Timber",
       "nombre_base": "Quinten Timber",
       "altura": 181,
@@ -9779,20 +9346,6 @@
       "espn_id": "282186"
     },
     {
-      "nombre": "Calvin Stengs",
-      "nombre_base": "Calvin Stengs",
-      "altura": 180,
-      "posicion": "F",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Anis Hadj Moussa",
       "nombre_base": "Anis Hadj Moussa",
       "altura": 176,
@@ -9806,20 +9359,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "341711"
-    },
-    {
-      "nombre": "Justin Bijlow",
-      "nombre_base": "Justin Bijlow",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Thomas Beelen",
@@ -9837,48 +9376,6 @@
       "espn_id": "324952"
     },
     {
-      "nombre": "Marcos López",
-      "nombre_base": "Marcos López",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Luka Ivanušec",
-      "nombre_base": "Luka Ivanušec",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Javairô Dilrosun",
-      "nombre_base": "Javairô Dilrosun",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Ayase Ueda",
       "nombre_base": "Ayase Ueda",
       "altura": 180,
@@ -9892,20 +9389,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "274277"
-    },
-    {
-      "nombre": "Alireza Jahanbakhsh",
-      "nombre_base": "Alireza Jahanbakhsh",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Feyenoord",
-      "liga": "Eredivisie",
-      "competicion": "Eredivisie",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "David Ospina",
@@ -9923,20 +9406,6 @@
       "espn_id": "121842"
     },
     {
-      "nombre": "Joan Castro",
-      "nombre_base": "Joan Castro",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "William Tesillo",
       "nombre_base": "William Tesillo",
       "altura": 184,
@@ -9952,48 +9421,6 @@
       "espn_id": "133628"
     },
     {
-      "nombre": "Felipe Aguirre",
-      "nombre_base": "Felipe Aguirre",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Álvaro Angulo",
-      "nombre_base": "Álvaro Angulo",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Matheus Uribe",
-      "nombre_base": "Matheus Uribe",
-      "altura": 182,
-      "posicion": "M",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Edwin Cardona",
       "nombre_base": "Edwin Cardona",
       "altura": 172,
@@ -10007,34 +9434,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "196767"
-    },
-    {
-      "nombre": "Juan Manuel Zapata",
-      "nombre_base": "Juan Manuel Zapata",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Marino Hinestroza",
-      "nombre_base": "Marino Hinestroza",
-      "altura": 172,
-      "posicion": "F",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Alfredo Morelos",
@@ -10127,34 +9526,6 @@
       "espn_id": "270221"
     },
     {
-      "nombre": "Dorlan Pabón",
-      "nombre_base": "Dorlan Pabón",
-      "altura": 170,
-      "posicion": "F",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Kevin Viveros",
-      "nombre_base": "Kevin Viveros",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Atlético Nacional",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Andrés Sarmiento",
       "nombre_base": "Andrés Sarmiento",
       "altura": 180,
@@ -10185,20 +9556,6 @@
       "espn_id": "166323"
     },
     {
-      "nombre": "Delvin Alfonzo",
-      "nombre_base": "Delvin Alfonzo",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Andres Llinas",
       "nombre_base": "Andrés Llinás",
       "altura": 185,
@@ -10212,20 +9569,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "287998"
-    },
-    {
-      "nombre": "Juan Pablo Vargas",
-      "nombre_base": "Juan Pablo Vargas",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Danovis Banguero",
@@ -10243,34 +9586,6 @@
       "espn_id": "115480"
     },
     {
-      "nombre": "Larry Vásquez",
-      "nombre_base": "Larry Vásquez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Daniel Cataño",
-      "nombre_base": "Daniel Cataño",
-      "altura": 174,
-      "posicion": "M",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "David Silva",
       "nombre_base": "David Silva",
       "altura": 180,
@@ -10284,20 +9599,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "106650"
-    },
-    {
-      "nombre": "Rodri",
-      "nombre_base": "Emerson Rodríguez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 29,
-      "pais": "Spain",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/231828.png",
-      "estado": "pais_actualizado_espn_sin_cambiar_club",
-      "espn_id": "231828"
     },
     {
       "nombre": "Leonardo Castro",
@@ -10345,34 +9646,6 @@
       "espn_id": "131470"
     },
     {
-      "nombre": "Sander Navarro",
-      "nombre_base": "Sander Navarro",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Daniel Giraldo",
-      "nombre_base": "Daniel Giraldo",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Jader Valencia",
       "nombre_base": "Jader Valencia",
       "altura": 180,
@@ -10386,20 +9659,6 @@
       "estado": "actualizado_espn",
       "confianza": "transferencia_unica",
       "espn_id": "258803"
-    },
-    {
-      "nombre": "Daniel Ruiz",
-      "nombre_base": "Daniel Ruiz",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Millonarios",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Santiago Giordana",
@@ -10447,34 +9706,6 @@
       "espn_id": "203067"
     },
     {
-      "nombre": "Walmer Pacheco",
-      "nombre_base": "Walmer Pacheco",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Rafael Pérez",
-      "nombre_base": "Rafael Pérez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Jermein Peña",
       "nombre_base": "Jermein Peña",
       "altura": 180,
@@ -10488,48 +9719,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "295070"
-    },
-    {
-      "nombre": "Gabriel Fuentes",
-      "nombre_base": "Gabriel Fuentes",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Didier Moreno",
-      "nombre_base": "Didier Moreno",
-      "altura": 182,
-      "posicion": "M",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Víctor Cantillo",
-      "nombre_base": "Víctor Cantillo",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Yimmi Chará",
@@ -10592,20 +9781,6 @@
       "espn_id": "98576"
     },
     {
-      "nombre": "Jefferson Martínez",
-      "nombre_base": "Jefferson Martínez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Emanuel Olivera",
       "nombre_base": "Emanuel Olivera",
       "altura": 180,
@@ -10619,90 +9794,6 @@
       "estado": "actualizado_espn",
       "confianza": "transferencia_unica",
       "espn_id": "138391"
-    },
-    {
-      "nombre": "Jhon Vélez",
-      "nombre_base": "Jhon Vélez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Homer Martínez",
-      "nombre_base": "Homer Martínez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Luis González",
-      "nombre_base": "Luis González",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Marco Pérez",
-      "nombre_base": "Marco Pérez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Rodri",
-      "nombre_base": "Steven Rodríguez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Junior FC",
-      "liga": "Liga BetPlay",
-      "competicion": "Liga BetPlay",
-      "edad": 29,
-      "pais": "Spain",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/231828.png",
-      "estado": "pais_actualizado_espn_sin_cambiar_club",
-      "espn_id": "231828"
-    },
-    {
-      "nombre": "Óscar Ustari",
-      "nombre_base": "Óscar Ustari",
-      "altura": 184,
-      "posicion": "G",
-      "club": "Inter Miami CF",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Marcelo Weigandt",
@@ -10720,20 +9811,6 @@
       "espn_id": "282589"
     },
     {
-      "nombre": "Tomás Avilés",
-      "nombre_base": "Tomás Avilés",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Inter Miami CF",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Noah Allen",
       "nombre_base": "Noah Allen",
       "altura": 175,
@@ -10747,34 +9824,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "316344"
-    },
-    {
-      "nombre": "Jordi Alba",
-      "nombre_base": "Jordi Alba",
-      "altura": 170,
-      "posicion": "D",
-      "club": "Inter Miami CF",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Sergio Busquets",
-      "nombre_base": "Sergio Busquets",
-      "altura": 189,
-      "posicion": "M",
-      "club": "Inter Miami CF",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Tadeo Allende",
@@ -10882,34 +9931,6 @@
       "espn_id": "229289"
     },
     {
-      "nombre": "Benjamin Cremaschi",
-      "nombre_base": "Benjamin Cremaschi",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Inter Miami CF",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Robert Taylor",
-      "nombre_base": "Robert Taylor",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Inter Miami CF",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Germán Berterame",
       "nombre_base": "Germán Berterame",
       "altura": 180,
@@ -11015,20 +10036,6 @@
       "espn_id": "213304"
     },
     {
-      "nombre": "Ilie Sánchez",
-      "nombre_base": "Ilie Sánchez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "LAFC",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Timothy Tillman",
       "nombre_base": "Timothy Tillman",
       "altura": 180,
@@ -11089,48 +10096,6 @@
       "espn_id": "88965"
     },
     {
-      "nombre": "Cristian Tello",
-      "nombre_base": "Cristian Tello",
-      "altura": 180,
-      "posicion": "M",
-      "club": "LAFC",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "John McCarthy",
-      "nombre_base": "John McCarthy",
-      "altura": 180,
-      "posicion": "M",
-      "club": "LAFC",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Diego Palacios",
-      "nombre_base": "Diego Palacios",
-      "altura": 180,
-      "posicion": "M",
-      "club": "LAFC",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Eddie Segura",
       "nombre_base": "Eddie Segura",
       "altura": 180,
@@ -11144,48 +10109,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "199904"
-    },
-    {
-      "nombre": "Kellyn Acosta",
-      "nombre_base": "Kellyn Acosta",
-      "altura": 180,
-      "posicion": "M",
-      "club": "LAFC",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Mateusz Bogusz",
-      "nombre_base": "Mateusz Bogusz",
-      "altura": 180,
-      "posicion": "M",
-      "club": "LAFC",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Kei Kamara",
-      "nombre_base": "Kei Kamara",
-      "altura": 180,
-      "posicion": "M",
-      "club": "LAFC",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "David Martínez",
@@ -11323,20 +10246,6 @@
       "espn_id": "210252"
     },
     {
-      "nombre": "Raúl Ruidíaz",
-      "nombre_base": "Raúl Ruidíaz",
-      "altura": 168,
-      "posicion": "F",
-      "club": "Seattle Sounders",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Pedro de la Vega",
       "nombre_base": "Pedro de la Vega",
       "altura": 172,
@@ -11350,20 +10259,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "280721"
-    },
-    {
-      "nombre": "Andrew Thomas",
-      "nombre_base": "Andrew Thomas",
-      "altura": 189,
-      "posicion": "G",
-      "club": "Seattle Sounders",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Jackson Ragen",
@@ -11381,20 +10276,6 @@
       "espn_id": "254383"
     },
     {
-      "nombre": "Danny Leyva",
-      "nombre_base": "Danny Leyva",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Seattle Sounders",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Paul Rothrock",
       "nombre_base": "Paul Rothrock",
       "altura": 180,
@@ -11408,48 +10289,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "254382"
-    },
-    {
-      "nombre": "Danny Musovski",
-      "nombre_base": "Danny Musovski",
-      "altura": 183,
-      "posicion": "F",
-      "club": "Seattle Sounders",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Héber",
-      "nombre_base": "Héber",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Seattle Sounders",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Will Bruin",
-      "nombre_base": "Will Bruin",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Seattle Sounders",
-      "liga": "MLS",
-      "competicion": "MLS",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Bento",
@@ -11602,20 +10441,6 @@
       "espn_id": "22774"
     },
     {
-      "nombre": "Kingsley Coman",
-      "nombre_base": "Coman",
-      "altura": 179,
-      "posicion": "F",
-      "club": "Al Nassr",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 29,
-      "pais": "France",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/184012.png",
-      "estado": "pais_actualizado_espn_sin_cambiar_club",
-      "espn_id": "184012"
-    },
-    {
       "nombre": "Nawaf Al-Aqidi",
       "nombre_base": "Nawaf Al-Aqidi",
       "altura": 180,
@@ -11661,20 +10486,6 @@
       "espn_id": "296972"
     },
     {
-      "nombre": "Abdullah Alkhaibari",
-      "nombre_base": "Abdullah Alkhaibari",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Nassr",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Abdulrahman Ghareeb",
       "nombre_base": "Abdulrahman Ghareeb",
       "altura": 180,
@@ -11688,34 +10499,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "270415"
-    },
-    {
-      "nombre": "Ayman Yahya",
-      "nombre_base": "Ayman Yahya",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Nassr",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "C Wesley's XI",
-      "nombre_base": "Wesley",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Nassr",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 50,
-      "pais": "Mexico",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/3355.png",
-      "estado": "pais_actualizado_espn_sin_cambiar_club",
-      "espn_id": "3355"
     },
     {
       "nombre": "Yassine Bounou",
@@ -11761,20 +10544,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "150312"
-    },
-    {
-      "nombre": "Hassan Tambakti",
-      "nombre_base": "Hassan Tambakti",
-      "altura": 182,
-      "posicion": "D",
-      "club": "Al Hilal",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Rúben Neves",
@@ -11867,34 +10636,6 @@
       "espn_id": "304571"
     },
     {
-      "nombre": "Mohammed Al-Owais",
-      "nombre_base": "Mohammed Al-Owais",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Hilal",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ali Al-Bulayhi",
-      "nombre_base": "Ali Al-Bulayhi",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Hilal",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Mohamed Kanno",
       "nombre_base": "Mohamed Kanno",
       "altura": 180,
@@ -11938,20 +10679,6 @@
       "estado": "actualizado_espn",
       "confianza": "transferencia_unica",
       "espn_id": "294239"
-    },
-    {
-      "nombre": "Kaio César",
-      "nombre_base": "Kaio César",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Hilal",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Édouard Mendy",
@@ -11999,20 +10726,6 @@
       "espn_id": "267178"
     },
     {
-      "nombre": "Roger Ibañez",
-      "nombre_base": "Roger Ibañez",
-      "altura": 185,
-      "posicion": "D",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Franck Kessié",
       "nombre_base": "Franck Kessié",
       "altura": 183,
@@ -12043,20 +10756,6 @@
       "espn_id": "307381"
     },
     {
-      "nombre": "Ziyad Al-Johani",
-      "nombre_base": "Ziyad Al-Johani",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Riyad Mahrez",
       "nombre_base": "Riyad Mahrez",
       "altura": 179,
@@ -12070,20 +10769,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "163940"
-    },
-    {
-      "nombre": "Roberto Firmino",
-      "nombre_base": "Roberto Firmino",
-      "altura": 181,
-      "posicion": "F",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Ivan Toney",
@@ -12116,76 +10801,6 @@
       "espn_id": "193281"
     },
     {
-      "nombre": "Abdullah Al-Muaiouf",
-      "nombre_base": "Abdullah Al-Muaiouf",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Bassam Al-Hurayji",
-      "nombre_base": "Bassam Al-Hurayji",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Fahad Al-Rashidi",
-      "nombre_base": "Fahad Al-Rashidi",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ali Al-Asmari",
-      "nombre_base": "Ali Al-Asmari",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Sumayhan Al-Nabit",
-      "nombre_base": "Sumayhan Al-Nabit",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Feras Al-Brikan",
       "nombre_base": "Feras Al-Brikan",
       "altura": 180,
@@ -12199,20 +10814,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "283331"
-    },
-    {
-      "nombre": "Omar Al-Somah",
-      "nombre_base": "Omar Al-Somah",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Al Ahli",
-      "liga": "Saudi Pro League",
-      "competicion": "Saudi Pro League",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Anatoliy Trubin",
@@ -12273,20 +10874,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "119289"
-    },
-    {
-      "nombre": "Florentino Luís",
-      "nombre_base": "Florentino Luís",
-      "altura": 184,
-      "posicion": "M",
-      "club": "Benfica",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Orkun Kökçü",
@@ -12379,20 +10966,6 @@
       "espn_id": "307631"
     },
     {
-      "nombre": "Tomás Araújo",
-      "nombre_base": "Tomás Araújo",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Benfica",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Leandro Barreiro",
       "nombre_base": "Leandro Barreiro",
       "altura": 180,
@@ -12406,20 +10979,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "271854"
-    },
-    {
-      "nombre": "Renato Sanches",
-      "nombre_base": "Renato Sanches",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Benfica",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Andreas Schjelderup",
@@ -12482,20 +11041,6 @@
       "espn_id": "238903"
     },
     {
-      "nombre": "João Mário",
-      "nombre_base": "João Mário",
-      "altura": 180,
-      "posicion": "M",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Nehuén Pérez",
       "nombre_base": "Nehuén Pérez",
       "altura": 184,
@@ -12509,34 +11054,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "268437"
-    },
-    {
-      "nombre": "David Carmo",
-      "nombre_base": "David Carmo",
-      "altura": 180,
-      "posicion": "M",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Zaidu",
-      "nombre_base": "Zaidu",
-      "altura": 180,
-      "posicion": "M",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Alan Varela",
@@ -12659,20 +11176,6 @@
       "espn_id": "199065"
     },
     {
-      "nombre": "Iván Marcano",
-      "nombre_base": "Iván Marcano",
-      "altura": 180,
-      "posicion": "M",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Stephen Eustáquio",
       "nombre_base": "Stephen Eustáquio",
       "altura": 180,
@@ -12686,62 +11189,6 @@
       "estado": "actualizado_espn",
       "confianza": "transferencia_unica",
       "espn_id": "270505"
-    },
-    {
-      "nombre": "Fabio Vieira",
-      "nombre_base": "Fabio Vieira",
-      "altura": 180,
-      "posicion": "M",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Danny Namaso",
-      "nombre_base": "Danny Namaso",
-      "altura": 180,
-      "posicion": "M",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Toni Martínez",
-      "nombre_base": "Toni Martínez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "FC Porto",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Franco Israel",
-      "nombre_base": "Franco Israel",
-      "altura": 190,
-      "posicion": "G",
-      "club": "Sporting CP",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Ousmane Diomande",
@@ -12849,20 +11296,6 @@
       "espn_id": "262591"
     },
     {
-      "nombre": "Trincão",
-      "nombre_base": "Trincão",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Sporting CP",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Geovany Quenda",
       "nombre_base": "Geovany Quenda",
       "altura": 172,
@@ -12876,48 +11309,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "376274"
-    },
-    {
-      "nombre": "Diogo Pinto",
-      "nombre_base": "Diogo Pinto",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Sporting CP",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ricardo Esgaio",
-      "nombre_base": "Ricardo Esgaio",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Sporting CP",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Jeremiah St. Juste",
-      "nombre_base": "Jeremiah St. Juste",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Sporting CP",
-      "liga": "Liga Portugal",
-      "competicion": "Liga Portugal",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Daniel Bragança",
@@ -13010,34 +11401,6 @@
       "espn_id": "197105"
     },
     {
-      "nombre": "Abdülkerim Bardakcı",
-      "nombre_base": "Abdülkerim Bardakcı",
-      "altura": 190,
-      "posicion": "D",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Eren Elmalı",
-      "nombre_base": "Eren Elmalı",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Lucas Torreira",
       "nombre_base": "Lucas Torreira",
       "altura": 166,
@@ -13083,20 +11446,6 @@
       "espn_id": "202641"
     },
     {
-      "nombre": "Barış Alper Yılmaz",
-      "nombre_base": "Barış Alper Yılmaz",
-      "altura": 186,
-      "posicion": "F",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Victor Osimhen",
       "nombre_base": "Victor Osimhen",
       "altura": 186,
@@ -13127,20 +11476,6 @@
       "espn_id": "167411"
     },
     {
-      "nombre": "Uğurcan Çakır",
-      "nombre_base": "Uğurcan Çakır",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Kaan Ayhan",
       "nombre_base": "Kaan Ayhan",
       "altura": 180,
@@ -13156,48 +11491,6 @@
       "espn_id": "159146"
     },
     {
-      "nombre": "Berkan Kutlu",
-      "nombre_base": "Berkan Kutlu",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Dries Mertens",
-      "nombre_base": "Dries Mertens",
-      "altura": 169,
-      "posicion": "F",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Hakim Ziyech",
-      "nombre_base": "Hakim Ziyech",
-      "altura": 181,
-      "posicion": "F",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Yunus Akgün",
       "nombre_base": "Yunus Akgün",
       "altura": 180,
@@ -13211,34 +11504,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "266575"
-    },
-    {
-      "nombre": "Wilfried Zaha",
-      "nombre_base": "Wilfried Zaha",
-      "altura": 180,
-      "posicion": "F",
-      "club": "Galatasaray",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Dominik Livaković",
-      "nombre_base": "Dominik Livaković",
-      "altura": 188,
-      "posicion": "G",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Mert Müldür",
@@ -13331,34 +11596,6 @@
       "espn_id": "161559"
     },
     {
-      "nombre": "Sebastian Szymański",
-      "nombre_base": "Sebastian Szymański",
-      "altura": 174,
-      "posicion": "M",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Dusan Tadic",
-      "nombre_base": "Dusan Tadic",
-      "altura": 181,
-      "posicion": "F",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Youssef En-Nesyri",
       "nombre_base": "Youssef En-Nesyri",
       "altura": 192,
@@ -13374,76 +11611,6 @@
       "espn_id": "242736"
     },
     {
-      "nombre": "Jhon Durán",
-      "nombre_base": "Jhon Durán",
-      "altura": 185,
-      "posicion": "F",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "İrfan Can Eğribayat",
-      "nombre_base": "İrfan Can Eğribayat",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Alexander Djiku",
-      "nombre_base": "Alexander Djiku",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Ferdi Kadıoğlu",
-      "nombre_base": "Ferdi Kadıoğlu",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "İrfan Can Kahveci",
-      "nombre_base": "İrfan Can Kahveci",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Cengiz Ünder",
       "nombre_base": "Cengiz Ünder",
       "altura": 178,
@@ -13457,20 +11624,6 @@
       "estado": "actualizado_espn",
       "confianza": "transferencia_unica",
       "espn_id": "239706"
-    },
-    {
-      "nombre": "Edin Džeko",
-      "nombre_base": "Edin Džeko",
-      "altura": 193,
-      "posicion": "F",
-      "club": "Fenerbahçe",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Michy Batshuayi",
@@ -13501,20 +11654,6 @@
       "estado": "actualizado_espn",
       "confianza": "transferencia_unica",
       "espn_id": "124880"
-    },
-    {
-      "nombre": "Jonas Svensson",
-      "nombre_base": "Jonas Svensson",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Gabriel Paulista",
@@ -13562,20 +11701,6 @@
       "espn_id": "165892"
     },
     {
-      "nombre": "Gedson Fernandes",
-      "nombre_base": "Gedson Fernandes",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Rafa Silva",
       "nombre_base": "Rafa Silva",
       "altura": 172,
@@ -13621,34 +11746,6 @@
       "espn_id": "220705"
     },
     {
-      "nombre": "Ciro Immobile",
-      "nombre_base": "Ciro Immobile",
-      "altura": 185,
-      "posicion": "F",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Semih Kılıçsoy",
-      "nombre_base": "Semih Kılıçsoy",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Ersin Destanoglu",
       "nombre_base": "Ersin Destanoğlu",
       "altura": 180,
@@ -13664,20 +11761,6 @@
       "espn_id": "268587"
     },
     {
-      "nombre": "Tayyip Talha Sanuç",
-      "nombre_base": "Tayyip Talha Sanuç",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Salih Ucan",
       "nombre_base": "Salih Uçan",
       "altura": 180,
@@ -13691,48 +11774,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "183152"
-    },
-    {
-      "nombre": "Alex Oxlade-Chamberlain",
-      "nombre_base": "Alex Oxlade-Chamberlain",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Vincent Aboubakar",
-      "nombre_base": "Vincent Aboubakar",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Beşiktaş",
-      "liga": "Süper Lig",
-      "competicion": "Süper Lig",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Luis Malagón",
-      "nombre_base": "Luis Malagón",
-      "altura": 188,
-      "posicion": "G",
-      "club": "Club América",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Kevin Álvarez",
@@ -13870,20 +11911,6 @@
       "espn_id": "93184"
     },
     {
-      "nombre": "Óscar Jiménez",
-      "nombre_base": "Óscar Jiménez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Club América",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Ramón Juarez",
       "nombre_base": "Ramón Juárez",
       "altura": 180,
@@ -13897,20 +11924,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "307891"
-    },
-    {
-      "nombre": "Richard Sánchez",
-      "nombre_base": "Richard Sánchez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Club América",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Érick Sánchez",
@@ -13988,20 +12001,6 @@
       "espn_id": "266587"
     },
     {
-      "nombre": "Jorge Sánchez",
-      "nombre_base": "Jorge Sánchez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Cruz Azul",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Willer Ditta",
       "nombre_base": "Willer Ditta",
       "altura": 180,
@@ -14032,20 +12031,6 @@
       "espn_id": "192166"
     },
     {
-      "nombre": "Carlos Rotondi",
-      "nombre_base": "Carlos Rotondi",
-      "altura": 181,
-      "posicion": "F",
-      "club": "Cruz Azul",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Erik Lira",
       "nombre_base": "Erik Lira",
       "altura": 174,
@@ -14059,20 +12044,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "276942"
-    },
-    {
-      "nombre": "Lorenzo Faravelli",
-      "nombre_base": "Lorenzo Faravelli",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Cruz Azul",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Carlos Rodríguez",
@@ -14105,34 +12076,6 @@
       "espn_id": "151850"
     },
     {
-      "nombre": "Giorgos Giakoumakis",
-      "nombre_base": "Giorgos Giakoumakis",
-      "altura": 186,
-      "posicion": "F",
-      "club": "Cruz Azul",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
-      "nombre": "Uriel Antuna",
-      "nombre_base": "Uriel Antuna",
-      "altura": 178,
-      "posicion": "F",
-      "club": "Cruz Azul",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Andrés Gudiño",
       "nombre_base": "Andrés Gudiño",
       "altura": 180,
@@ -14161,20 +12104,6 @@
       "estado": "actualizado_espn",
       "confianza": "transferencia_unica",
       "espn_id": "275892"
-    },
-    {
-      "nombre": "Ignacio Rivero",
-      "nombre_base": "Ignacio Rivero",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Cruz Azul",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Alexis Gutierrez",
@@ -14252,20 +12181,6 @@
       "espn_id": "68340"
     },
     {
-      "nombre": "Javier Aquino",
-      "nombre_base": "Javier Aquino",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Tigres UANL",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Joaquim",
       "nombre_base": "Joaquim",
       "altura": 190,
@@ -14281,20 +12196,6 @@
       "espn_id": "319520"
     },
     {
-      "nombre": "Diego Reyes",
-      "nombre_base": "Diego Reyes",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Tigres UANL",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Jesús Angulo",
       "nombre_base": "Jesús Angulo",
       "altura": 180,
@@ -14308,20 +12209,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "233130"
-    },
-    {
-      "nombre": "Guido Pizarro",
-      "nombre_base": "Guido Pizarro",
-      "altura": 186,
-      "posicion": "M",
-      "club": "Tigres UANL",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     },
     {
       "nombre": "Fernando Gorriarán",
@@ -14399,34 +12286,6 @@
       "espn_id": "207549"
     },
     {
-      "nombre": "Rodri",
-      "nombre_base": "Carlos Felipe Rodríguez",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Tigres UANL",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 29,
-      "pais": "Spain",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/231828.png",
-      "estado": "pais_actualizado_espn_sin_cambiar_club",
-      "espn_id": "231828"
-    },
-    {
-      "nombre": "Samir",
-      "nombre_base": "Samir",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Tigres UANL",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
-    },
-    {
       "nombre": "Diego Lainez",
       "nombre_base": "Diego Lainez",
       "altura": 180,
@@ -14485,20 +12344,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club",
       "espn_id": "176169"
-    },
-    {
-      "nombre": "Luis Quiñones",
-      "nombre_base": "Luis Quiñones",
-      "altura": 180,
-      "posicion": "M",
-      "club": "Tigres UANL",
-      "liga": "Liga MX",
-      "competicion": "Liga MX",
-      "edad": 0,
-      "pais": "Sin datos",
-      "imagen": "",
-      "estado": "no_encontrado_espn",
-      "espn_id": ""
     }
   ]
 }
