@@ -1,8 +1,8 @@
 # scraper_adivina_jugador.py
 # Modo lista curada:
 # - Lee /adivinajugador/jugadores_base.json
-# - Mantiene SIEMPRE nombre, altura y posicion de tu lista manual
-# - Actualiza SOLO club, liga, edad y país desde ESPN si encuentra al jugador
+# - Mantiene SIEMPRE altura y posicion de tu lista manual
+# - Actualiza desde ESPN: nombre, club, liga, edad, pais, imagen y espn_id si encuentra al jugador
 # - Acepta base plana o base por ligas/equipos/titulares/suplentes
 
 from __future__ import annotations
@@ -14,6 +14,7 @@ import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import quote
 
 import requests
 
@@ -23,6 +24,8 @@ OUTPUT_FILE = Path("adivinajugador/jugadores.json")
 REQUEST_TIMEOUT = 25
 SLEEP_BETWEEN_REQUESTS = 0.08
 MIN_PLAYERS_SAFE = 50
+DETAIL_CACHE: dict[str, dict] = {}
+SEARCH_CACHE: dict[str, dict | None] = {}
 
 HEADERS = {
     "User-Agent": (
@@ -583,6 +586,307 @@ def country_from_athlete(athlete: dict) -> str:
 
     return ""
 
+
+
+
+
+def image_from_athlete(athlete: dict) -> str:
+    """Extrae imagen/foto desde campos comunes de ESPN."""
+    if not isinstance(athlete, dict):
+        return ""
+
+    for key in ("headshot", "photo", "image", "images"):
+        val = athlete.get(key)
+        if isinstance(val, str) and val.startswith("http"):
+            return val
+        if isinstance(val, dict):
+            for sub in ("href", "url", "source", "src"):
+                subval = val.get(sub)
+                if isinstance(subval, str) and subval.startswith("http"):
+                    return subval
+        if isinstance(val, list):
+            for item in val:
+                if isinstance(item, str) and item.startswith("http"):
+                    return item
+                if isinstance(item, dict):
+                    for sub in ("href", "url", "source", "src"):
+                        subval = item.get(sub)
+                        if isinstance(subval, str) and subval.startswith("http"):
+                            return subval
+
+    espn_id = extract_athlete_id(athlete)
+    if espn_id:
+        return f"https://a.espncdn.com/i/headshots/soccer/players/full/{espn_id}.png"
+
+    return ""
+
+
+def deep_get_image(obj: Any) -> str:
+    """Busca imagen/foto en respuestas profundas de ESPN."""
+    direct = image_from_athlete(obj) if isinstance(obj, dict) else ""
+    if direct:
+        return direct
+
+    found: list[str] = []
+
+    def walk(x: Any) -> None:
+        if found:
+            return
+        if isinstance(x, dict):
+            for key in ("headshot", "photo", "image", "images"):
+                val = x.get(key)
+                if isinstance(val, str) and val.startswith("http"):
+                    found.append(val)
+                    return
+                if isinstance(val, dict):
+                    for sub in ("href", "url", "source", "src"):
+                        subval = val.get(sub)
+                        if isinstance(subval, str) and subval.startswith("http"):
+                            found.append(subval)
+                            return
+                if isinstance(val, list):
+                    for item in val:
+                        if isinstance(item, str) and item.startswith("http"):
+                            found.append(item)
+                            return
+                        if isinstance(item, dict):
+                            for sub in ("href", "url", "source", "src"):
+                                subval = item.get(sub)
+                                if isinstance(subval, str) and subval.startswith("http"):
+                                    found.append(subval)
+                                    return
+            for v in x.values():
+                walk(v)
+        elif isinstance(x, list):
+            for item in x:
+                walk(item)
+
+    walk(obj)
+    return found[0] if found else ""
+
+def deep_get_country(obj: Any) -> str:
+    """Busca país/nacionalidad en respuestas profundas de ESPN."""
+    direct = country_from_athlete(obj) if isinstance(obj, dict) else ""
+    if direct:
+        return direct
+
+    found: list[str] = []
+
+    def walk(x: Any, parent_key: str = "") -> None:
+        if len(found) >= 3:
+            return
+        if isinstance(x, dict):
+            # Casos típicos: birthPlace: { country: Brazil }, country: { displayName: Brazil }
+            for key in ("country", "countryName", "countryDisplayName", "nationality", "citizenship"):
+                val = x.get(key)
+                if isinstance(val, str) and val.strip():
+                    v = val.strip()
+                    if v not in ("Sin datos", "N/A", "-", "0") and len(v) > 1:
+                        found.append(v)
+                        return
+                elif isinstance(val, dict):
+                    for sub in ("displayName", "name", "country", "abbreviation"):
+                        subval = val.get(sub)
+                        if isinstance(subval, str) and subval.strip():
+                            v = subval.strip()
+                            if v not in ("Sin datos", "N/A", "-", "0") and len(v) > 1:
+                                found.append(v)
+                                return
+
+            # ESPN a veces devuelve flags/locations anidados.
+            for key in ("birthPlace", "birthplace", "flag"):
+                val = x.get(key)
+                if isinstance(val, dict):
+                    for sub in ("country", "countryName", "displayName", "name", "alt", "description"):
+                        subval = val.get(sub)
+                        if isinstance(subval, str) and subval.strip():
+                            v = subval.strip()
+                            if v not in ("Sin datos", "N/A", "-", "0") and len(v) > 1:
+                                found.append(v)
+                                return
+
+            for k, v in x.items():
+                walk(v, str(k))
+        elif isinstance(x, list):
+            for item in x:
+                walk(item, parent_key)
+
+    walk(obj)
+    return found[0] if found else ""
+
+
+def deep_get_age(obj: Any) -> int:
+    """Busca edad o fecha de nacimiento en respuestas profundas de ESPN."""
+    if isinstance(obj, dict):
+        age = age_from_athlete(obj)
+        if age:
+            return age
+
+    found: list[int] = []
+
+    def walk(x: Any) -> None:
+        if found:
+            return
+        if isinstance(x, dict):
+            for key in ("age", "dateOfBirth", "dob", "birthDate"):
+                if key in x:
+                    age = parse_age(x.get(key)) or parse_age_from_dob(x.get(key))
+                    if age:
+                        found.append(age)
+                        return
+            for v in x.values():
+                walk(v)
+        elif isinstance(x, list):
+            for item in x:
+                walk(item)
+
+    walk(obj)
+    return found[0] if found else 0
+
+
+def detail_athlete_by_id(espn_id: Any, league_slug: str = "") -> dict:
+    """Consulta detalle de atleta ESPN por id. Se usa para completar país cuando roster no lo trae."""
+    espn_id = str(espn_id or "").strip()
+    if not espn_id:
+        return {}
+
+    cache_key = f"{league_slug}:{espn_id}"
+    if cache_key in DETAIL_CACHE:
+        return DETAIL_CACHE[cache_key]
+
+    urls = [
+        f"https://site.web.api.espn.com/apis/common/v3/sports/soccer/athletes/{espn_id}",
+        f"https://sports.core.api.espn.com/v2/sports/soccer/athletes/{espn_id}?lang=en&region=us",
+    ]
+    if league_slug:
+        urls.extend([
+            f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{league_slug}/athletes/{espn_id}?lang=en&region=us",
+            f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/athletes/{espn_id}",
+        ])
+
+    merged: dict[str, Any] = {}
+    for url in urls:
+        data = get_json(url)
+        time.sleep(SLEEP_BETWEEN_REQUESTS)
+        if isinstance(data, dict):
+            # Guardamos todo; los extractores profundos buscan país/edad donde aparezca.
+            merged.update(data)
+            pais = deep_get_country(data)
+            edad = deep_get_age(data)
+            imagen = deep_get_image(data)
+            if pais:
+                merged["_pais_detalle"] = pais
+            if edad:
+                merged["_edad_detalle"] = edad
+            if imagen:
+                merged["_imagen_detalle"] = imagen
+            if pais and edad and imagen:
+                break
+
+    DETAIL_CACHE[cache_key] = merged
+    return merged
+
+
+def collect_named_athletes(obj: Any, target_name: str) -> list[dict]:
+    """Recorre una respuesta de búsqueda ESPN y devuelve candidatos cuyo nombre coincide."""
+    target_variants = name_variants(target_name)
+    out: list[dict] = []
+
+    def walk(x: Any) -> None:
+        if isinstance(x, dict):
+            name = athlete_display_name(x)
+            if name and (name_variants(name) & target_variants):
+                aid = extract_athlete_id(x)
+                out.append({"raw": x, "espn_id": aid, "nombre_espn": name})
+            for v in x.values():
+                walk(v)
+        elif isinstance(x, list):
+            for item in x:
+                walk(item)
+
+    walk(obj)
+
+    seen: set[str] = set()
+    unique: list[dict] = []
+    for c in out:
+        key = c.get("espn_id") or clean_player_name(c.get("nombre_espn"))
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(c)
+    return unique
+
+
+def search_athlete_country_by_name(nombre: str, liga_base: str = "") -> dict | None:
+    """
+    Fallback: busca el jugador por nombre en la API de búsqueda de ESPN.
+    Solo completa país/edad/espn_id. NO cambia club ni liga con esta búsqueda.
+    """
+    cache_key = clean_player_name(nombre)
+    if cache_key in SEARCH_CACHE:
+        return SEARCH_CACHE[cache_key]
+
+    if not cache_key:
+        SEARCH_CACHE[cache_key] = None
+        return None
+
+    urls = [
+        f"https://site.web.api.espn.com/apis/common/v3/search?query={quote(nombre)}&limit=20",
+        f"https://site.web.api.espn.com/apis/common/v3/search?query={quote(nombre + ' soccer')}&limit=20",
+    ]
+
+    candidatos: list[dict] = []
+    for url in urls:
+        data = get_json(url)
+        time.sleep(SLEEP_BETWEEN_REQUESTS)
+        if isinstance(data, dict):
+            candidatos.extend(collect_named_athletes(data, nombre))
+
+    # Deduplicar
+    dedup: dict[str, dict] = {}
+    for c in candidatos:
+        key = c.get("espn_id") or clean_player_name(c.get("nombre_espn"))
+        if key and key not in dedup:
+            dedup[key] = c
+    candidatos = list(dedup.values())
+
+    if not candidatos:
+        SEARCH_CACHE[cache_key] = None
+        return None
+
+    enriquecidos: list[dict] = []
+    for c in candidatos[:6]:
+        raw = c.get("raw") if isinstance(c.get("raw"), dict) else {}
+        espn_id = c.get("espn_id") or extract_athlete_id(raw)
+        detail = detail_athlete_by_id(espn_id)
+        pais = deep_get_country(detail) or deep_get_country(raw)
+        edad = deep_get_age(detail) or deep_get_age(raw)
+        imagen = deep_get_image(detail) or deep_get_image(raw)
+        if pais or edad or imagen:
+            enriquecidos.append({
+                "nombre_espn": c.get("nombre_espn") or nombre,
+                "espn_id": espn_id or "",
+                "pais": pais or "Sin datos",
+                "edad": edad or 0,
+                "imagen": imagen or (f"https://a.espncdn.com/i/headshots/soccer/players/full/{espn_id}.png" if espn_id else ""),
+            })
+
+    # Si hay un solo candidato con país, lo usamos. Si hay varios, solo usamos si todos tienen el mismo país.
+    con_pais = [c for c in enriquecidos if c.get("pais") and c.get("pais") != "Sin datos"]
+    if len(con_pais) == 1:
+        SEARCH_CACHE[cache_key] = con_pais[0]
+        return con_pais[0]
+
+    paises = {slugify(c.get("pais")) for c in con_pais if c.get("pais") and c.get("pais") != "Sin datos"}
+    if con_pais and len(paises) == 1:
+        # Misma nacionalidad en todos los candidatos: suficiente para completar país.
+        chosen = con_pais[0]
+        SEARCH_CACHE[cache_key] = chosen
+        return chosen
+
+    SEARCH_CACHE[cache_key] = None
+    return None
+
 def same_team(a: Any, b: Any) -> bool:
     """Compara clubes aceptando alias como Inter/Internazionale o Atlético de Madrid/Atlético Madrid."""
     if not a or not b:
@@ -668,14 +972,27 @@ def construir_indice_espn() -> tuple[dict[str, list[dict]], list[dict]]:
                 if not nombre:
                     continue
 
+                espn_id = extract_athlete_id(athlete)
+                edad = age_from_athlete(athlete)
+                pais = country_from_athlete(athlete)
+                imagen = image_from_athlete(athlete)
+
+                # Si el roster no trae país/edad/imagen, consultamos detalle del atleta por ESPN ID.
+                if espn_id and (not pais or not edad or not imagen):
+                    detail = detail_athlete_by_id(espn_id, league_slug)
+                    pais = pais or deep_get_country(detail)
+                    edad = edad or deep_get_age(detail)
+                    imagen = imagen or deep_get_image(detail)
+
                 item = {
                     "nombre_espn": nombre,
                     "club": club,
                     "club_espn": equipo["nombre"],
                     "liga": liga,
-                    "edad": age_from_athlete(athlete),
-                    "pais": country_from_athlete(athlete) or "Sin datos",
-                    "espn_id": extract_athlete_id(athlete),
+                    "edad": edad,
+                    "pais": pais or "Sin datos",
+                    "imagen": imagen or (f"https://a.espncdn.com/i/headshots/soccer/players/full/{espn_id}.png" if espn_id else ""),
+                    "espn_id": espn_id,
                 }
 
                 for key in name_variants(nombre):
@@ -771,10 +1088,12 @@ def main() -> None:
         match, motivo_match, candidatos = resolver_jugador_espn(j, index_espn)
 
         if match:
+            nombre_actual = match.get("nombre_espn") or nombre
             club_nuevo = match.get("club") or j.get("club_base") or "Sin datos"
             liga_nueva = match.get("liga") or j.get("liga_base") or "Sin datos"
             edad_nueva = int(match.get("edad") or 0)
             pais_nuevo = match.get("pais") or "Sin datos"
+            imagen_nueva = match.get("imagen") or (f"https://a.espncdn.com/i/headshots/soccer/players/full/{match.get('espn_id')}.png" if match.get("espn_id") else "")
 
             if (
                 not same_team(club_nuevo, j.get("club_base") or "")
@@ -782,6 +1101,7 @@ def main() -> None:
             ):
                 actualizaciones.append({
                     "nombre": nombre,
+                    "nombre_actual": nombre_actual,
                     "club_base": j.get("club_base") or "Sin datos",
                     "liga_base": j.get("liga_base") or "Sin datos",
                     "club_actual": club_nuevo,
@@ -793,7 +1113,8 @@ def main() -> None:
                 })
 
             jugadores_finales.append({
-                "nombre": nombre,
+                "nombre": nombre_actual,
+                "nombre_base": nombre,
                 "altura": int(j.get("altura") or 0),
                 "posicion": j.get("posicion") or "M",
                 "club": club_nuevo,
@@ -801,6 +1122,7 @@ def main() -> None:
                 "competicion": liga_nueva,
                 "edad": edad_nueva,
                 "pais": pais_nuevo,
+                "imagen": imagen_nueva,
                 "estado": "actualizado_espn",
                 "confianza": motivo_match,
                 "espn_id": match.get("espn_id") or "",
@@ -812,6 +1134,22 @@ def main() -> None:
                 "liga_base": j.get("liga_base") or "Sin datos",
                 "motivo": motivo_match,
             }
+
+            fallback = search_athlete_country_by_name(nombre, j.get("liga_base") or "")
+            edad_fallback = int((fallback or {}).get("edad") or 0)
+            pais_fallback = (fallback or {}).get("pais") or "Sin datos"
+            espn_id_fallback = (fallback or {}).get("espn_id") or ""
+            imagen_fallback = (fallback or {}).get("imagen") or (f"https://a.espncdn.com/i/headshots/soccer/players/full/{espn_id_fallback}.png" if espn_id_fallback else "")
+            nombre_fallback = (fallback or {}).get("nombre_espn") or nombre
+
+            if fallback and pais_fallback != "Sin datos":
+                registro["motivo"] = f"{motivo_match}_pais_por_busqueda_espn"
+                registro["pais"] = pais_fallback
+                registro["edad"] = edad_fallback
+                registro["espn_id"] = espn_id_fallback
+                registro["imagen"] = imagen_fallback
+                registro["nombre_actual"] = nombre_fallback
+
             no_encontrados.append(registro)
 
             if motivo_match == "ambiguo":
@@ -830,31 +1168,41 @@ def main() -> None:
                     ],
                 })
 
+            estado = "no_encontrado_espn" if motivo_match != "ambiguo" else "ambiguo_no_actualizado"
+            if fallback and pais_fallback != "Sin datos":
+                estado = "pais_actualizado_espn_sin_cambiar_club"
+
             jugadores_finales.append({
-                "nombre": nombre,
+                "nombre": nombre_fallback,
+                "nombre_base": nombre,
                 "altura": int(j.get("altura") or 0),
                 "posicion": j.get("posicion") or "M",
                 "club": j.get("club_base") or "Sin datos",
                 "liga": j.get("liga_base") or "Sin datos",
                 "competicion": j.get("liga_base") or "Sin datos",
-                "edad": 0,
-                "pais": "Sin datos",
-                "estado": "no_encontrado_espn" if motivo_match != "ambiguo" else "ambiguo_no_actualizado",
-                "espn_id": "",
+                "edad": edad_fallback,
+                "pais": pais_fallback,
+                "imagen": imagen_fallback,
+                "estado": estado,
+                "espn_id": espn_id_fallback,
             })
 
     elapsed = round(time.time() - t0, 1)
 
     payload = {
-        "fuente": "jugadores_base.json curado + ESPN rosters",
-        "modo": "solo_actualiza_club_liga_edad_pais_con_match_seguro",
+        "fuente": "jugadores_base.json curado + ESPN rosters + ESPN athlete detail/search",
+        "modo": "actualiza_todo_menos_altura_y_posicion",
         "actualizado": datetime.now(timezone.utc).isoformat(),
         "total": len(jugadores_finales),
+        "con_pais": sum(1 for x in jugadores_finales if x.get("pais") and x.get("pais") != "Sin datos"),
+        "sin_pais": sum(1 for x in jugadores_finales if not x.get("pais") or x.get("pais") == "Sin datos"),
         "base_detectados": len(base),
         "tiempo_segundos": elapsed,
+        "con_imagen": sum(1 for x in jugadores_finales if x.get("imagen")),
+        "sin_imagen": sum(1 for x in jugadores_finales if not x.get("imagen")),
         "reglas": {
-            "mantiene_manual": ["nombre", "altura", "posicion"],
-            "actualiza_espn": ["club", "liga", "edad", "pais"],
+            "mantiene_manual": ["altura", "posicion"],
+            "actualiza_espn": ["nombre", "club", "liga", "competicion", "edad", "pais", "imagen", "espn_id"],
         },
         "actualizaciones": actualizaciones,
         "no_encontrados": no_encontrados,
