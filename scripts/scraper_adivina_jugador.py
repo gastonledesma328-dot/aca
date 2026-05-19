@@ -11,6 +11,7 @@ import json
 import re
 import time
 import unicodedata
+from difflib import SequenceMatcher
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -269,7 +270,15 @@ def get_json(url: str) -> Any:
 
 def extract_id_from_ref(ref: Any) -> str:
     ref = str(ref or "")
-    for pattern in (r"/athletes/(\d+)", r"/players/(\d+)", r"/teams/(\d+)", r"[?&]id=(\d+)"):
+    for pattern in (
+        r"/athletes/(\d+)",
+        r"/players/(\d+)",
+        r"/player/_/id/(\d+)",
+        r"/athlete/_/id/(\d+)",
+        r"[?&]athlete=(\d+)",
+        r"[?&]playerId=(\d+)",
+        r"[?&]id=(\d+)",
+    ):
         m = re.search(pattern, ref)
         if m:
             return m.group(1)
@@ -278,13 +287,31 @@ def extract_id_from_ref(ref: Any) -> str:
 def extract_athlete_id(obj: Any) -> str:
     if not isinstance(obj, dict):
         return ""
-    return str(
-        obj.get("id")
-        or str(obj.get("uid", "")).split(":")[-1]
-        or extract_id_from_ref(obj.get("$ref"))
-        or extract_id_from_ref(obj.get("href"))
-        or ""
-    ).strip()
+
+    for key in ("id", "athleteId", "playerId"):
+        val = obj.get(key)
+        if val:
+            return str(val).strip()
+
+    uid = str(obj.get("uid", "")).strip()
+    if uid and uid.split(":")[-1].isdigit():
+        return uid.split(":")[-1]
+
+    for key in ("$ref", "href", "url", "link", "webUrl", "webURL", "canonical", "shortLink"):
+        got = extract_id_from_ref(obj.get(key))
+        if got:
+            return got
+
+    links = obj.get("links")
+    if isinstance(links, list):
+        for link in links:
+            if isinstance(link, dict):
+                for key in ("href", "url", "webUrl"):
+                    got = extract_id_from_ref(link.get(key))
+                    if got:
+                        return got
+
+    return ""
 
 def flatten_base_data(data: Any) -> tuple[list[dict], list[dict]]:
     """
@@ -744,6 +771,59 @@ def deep_get_age(obj: Any) -> int:
     return found[0] if found else 0
 
 
+def _is_empty_value(v: Any) -> bool:
+    try:
+        return v in (None, "", "Sin datos", "N/A", "-", 0, "0")
+    except Exception:
+        return False
+
+def merge_deep(base: dict, extra: dict) -> None:
+    """Fusiona respuestas ESPN sin pisar datos buenos con valores vacíos."""
+    if not isinstance(extra, dict):
+        return
+    for k, v in extra.items():
+        if k not in base or _is_empty_value(base.get(k)):
+            base[k] = v
+        elif isinstance(base.get(k), dict) and isinstance(v, dict):
+            merge_deep(base[k], v)
+
+def similar_name(a: Any, b: Any) -> float:
+    aa = clean_player_name(a)
+    bb = clean_player_name(b)
+    if not aa or not bb:
+        return 0.0
+    if aa == bb:
+        return 1.0
+    if aa in bb or bb in aa:
+        return 0.94
+    return SequenceMatcher(None, aa, bb).ratio()
+
+def is_probably_same_player_name(a: Any, b: Any) -> bool:
+    return similar_name(a, b) >= 0.88
+
+def extract_texts_from_obj(obj: Any) -> list[str]:
+    texts: list[str] = []
+    def walk(x: Any) -> None:
+        if isinstance(x, str):
+            if x.strip():
+                texts.append(x.strip())
+        elif isinstance(x, dict):
+            for v in x.values():
+                walk(v)
+        elif isinstance(x, list):
+            for item in x:
+                walk(item)
+    walk(obj)
+    return texts
+
+def name_from_espn_url(url: str) -> str:
+    # /soccer/player/_/id/123/mehdi-taremi -> Mehdi Taremi
+    url = str(url or "")
+    m = re.search(r"/player/_/id/\d+/([^/?#]+)", url) or re.search(r"/athlete/_/id/\d+/([^/?#]+)", url)
+    if not m:
+        return ""
+    return re.sub(r"[-_]+", " ", m.group(1)).strip().title()
+
 def detail_athlete_by_id(espn_id: Any, league_slug: str = "") -> dict:
     """Consulta detalle de atleta ESPN por id. Se usa para completar país cuando roster no lo trae."""
     espn_id = str(espn_id or "").strip()
@@ -755,14 +835,16 @@ def detail_athlete_by_id(espn_id: Any, league_slug: str = "") -> dict:
         return DETAIL_CACHE[cache_key]
 
     urls = [
-        f"https://site.web.api.espn.com/apis/common/v3/sports/soccer/athletes/{espn_id}",
+        f"https://site.web.api.espn.com/apis/common/v3/sports/soccer/athletes/{espn_id}?region=us&lang=en",
         f"https://sports.core.api.espn.com/v2/sports/soccer/athletes/{espn_id}?lang=en&region=us",
     ]
     if league_slug:
-        urls.extend([
-            f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{league_slug}/athletes/{espn_id}?lang=en&region=us",
+        urls = [
             f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/athletes/{espn_id}",
-        ])
+            f"https://site.web.api.espn.com/apis/common/v3/sports/soccer/{league_slug}/athletes/{espn_id}?region=us&lang=en",
+            f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{league_slug}/athletes/{espn_id}?lang=en&region=us",
+            f"https://sports.core.api.espn.com/v3/sports/soccer/{league_slug}/athletes/{espn_id}?lang=en&region=us",
+        ] + urls
 
     merged: dict[str, Any] = {}
     for url in urls:
@@ -770,7 +852,11 @@ def detail_athlete_by_id(espn_id: Any, league_slug: str = "") -> dict:
         time.sleep(SLEEP_BETWEEN_REQUESTS)
         if isinstance(data, dict):
             # Guardamos todo; los extractores profundos buscan país/edad donde aparezca.
-            merged.update(data)
+            merge_deep(merged, data)
+            for wrapper_key in ("athlete", "player", "person"):
+                wrapped = data.get(wrapper_key)
+                if isinstance(wrapped, dict):
+                    merge_deep(merged, wrapped)
             pais = deep_get_country(data)
             edad = deep_get_age(data)
             imagen = deep_get_image(data)
@@ -788,16 +874,41 @@ def detail_athlete_by_id(espn_id: Any, league_slug: str = "") -> dict:
 
 
 def collect_named_athletes(obj: Any, target_name: str) -> list[dict]:
-    """Recorre una respuesta de búsqueda ESPN y devuelve candidatos cuyo nombre coincide."""
+    """Recorre una respuesta de búsqueda ESPN y devuelve candidatos de futbolistas."""
     target_variants = name_variants(target_name)
     out: list[dict] = []
+
+    def add_candidate(raw: dict, name: str, aid: str = "") -> None:
+        name = str(name or "").strip()
+        aid = str(aid or extract_athlete_id(raw)).strip()
+        if not name and aid:
+            name = str(raw.get("displayName") or raw.get("fullName") or raw.get("name") or "").strip()
+        if not name:
+            return
+        # Aceptamos exacto, variante sin acentos/sufijos o similitud alta.
+        if not (name_variants(name) & target_variants) and not is_probably_same_player_name(name, target_name):
+            return
+        out.append({"raw": raw, "espn_id": aid, "nombre_espn": name})
 
     def walk(x: Any) -> None:
         if isinstance(x, dict):
             name = athlete_display_name(x)
-            if name and (name_variants(name) & target_variants):
-                aid = extract_athlete_id(x)
-                out.append({"raw": x, "espn_id": aid, "nombre_espn": name})
+            if name:
+                add_candidate(x, name)
+
+            # Muchas respuestas de search tienen el nombre/título en campos no deportivos.
+            for key in ("title", "headline", "description", "label", "text"):
+                val = x.get(key)
+                if isinstance(val, str) and val.strip():
+                    add_candidate(x, val.strip())
+
+            # Si aparece una URL /soccer/player/_/id/..., creamos candidato aunque el dict no tenga displayName.
+            for text in extract_texts_from_obj(x):
+                aid = extract_id_from_ref(text)
+                if aid and "/soccer/" in text and ("/player/" in text or "/athlete/" in text):
+                    url_name = name_from_espn_url(text)
+                    add_candidate(x, url_name or target_name, aid)
+
             for v in x.values():
                 walk(v)
         elif isinstance(x, list):
@@ -810,12 +921,11 @@ def collect_named_athletes(obj: Any, target_name: str) -> list[dict]:
     unique: list[dict] = []
     for c in out:
         key = c.get("espn_id") or clean_player_name(c.get("nombre_espn"))
-        if key in seen:
+        if not key or key in seen:
             continue
         seen.add(key)
         unique.append(c)
     return unique
-
 
 def search_athlete_country_by_name(nombre: str, liga_base: str = "") -> dict | None:
     """
@@ -831,8 +941,9 @@ def search_athlete_country_by_name(nombre: str, liga_base: str = "") -> dict | N
         return None
 
     urls = [
-        f"https://site.web.api.espn.com/apis/common/v3/search?query={quote(nombre)}&limit=20",
-        f"https://site.web.api.espn.com/apis/common/v3/search?query={quote(nombre + ' soccer')}&limit=20",
+        f"https://site.web.api.espn.com/apis/common/v3/search?query={quote(nombre)}&limit=50&region=us&lang=en",
+        f"https://site.web.api.espn.com/apis/common/v3/search?query={quote(nombre + ' soccer')}&limit=50&region=us&lang=en",
+        f"https://site.web.api.espn.com/apis/common/v3/search?query={quote(nombre + ' ESPN soccer player')}&limit=50&region=us&lang=en",
     ]
 
     candidatos: list[dict] = []
@@ -858,7 +969,7 @@ def search_athlete_country_by_name(nombre: str, liga_base: str = "") -> dict | N
     for c in candidatos[:6]:
         raw = c.get("raw") if isinstance(c.get("raw"), dict) else {}
         espn_id = c.get("espn_id") or extract_athlete_id(raw)
-        detail = detail_athlete_by_id(espn_id)
+        detail = detail_athlete_by_id(espn_id, league_slug_from_name(liga_base))
         pais = deep_get_country(detail) or deep_get_country(raw)
         edad = deep_get_age(detail) or deep_get_age(raw)
         imagen = deep_get_image(detail) or deep_get_image(raw)
@@ -910,6 +1021,14 @@ def same_team(a: Any, b: Any) -> bool:
 
 def same_league(a: Any, b: Any) -> bool:
     return bool(a and b and slugify(a) == slugify(b))
+
+
+def league_slug_from_name(liga: Any) -> str:
+    liga_slug = slugify(liga)
+    for nombre, cfg in LIGAS.items():
+        if slugify(nombre) == liga_slug:
+            return str(cfg.get("slug") or "")
+    return ""
 
 
 def unique_candidates(candidates: list[dict]) -> list[dict]:
@@ -1053,6 +1172,30 @@ def resolver_jugador_espn(jugador_base: dict, index_espn: dict[str, list[dict]])
 
     return None, "ambiguo", candidatos
 
+def pais_desde_json_previo(nombre: str) -> dict | None:
+    """Si el repo ya tenía jugadores.json con datos buenos, los usa como último respaldo."""
+    data = cargar_json_actual()
+    jugadores = data.get("jugadores") if isinstance(data, dict) else []
+    if not isinstance(jugadores, list):
+        return None
+    candidatos = []
+    for j in jugadores:
+        if not isinstance(j, dict):
+            continue
+        if is_probably_same_player_name(j.get("nombre"), nombre) or is_probably_same_player_name(j.get("nombre_base"), nombre):
+            if j.get("pais") and j.get("pais") != "Sin datos":
+                candidatos.append(j)
+    if len(candidatos) == 1:
+        j = candidatos[0]
+        return {
+            "nombre_espn": j.get("nombre") or nombre,
+            "pais": j.get("pais") or "Sin datos",
+            "edad": int(j.get("edad") or 0),
+            "imagen": j.get("imagen") or "",
+            "espn_id": j.get("espn_id") or "",
+        }
+    return None
+
 def cargar_json_actual() -> dict:
     if not OUTPUT_FILE.exists():
         return {}
@@ -1136,6 +1279,8 @@ def main() -> None:
             }
 
             fallback = search_athlete_country_by_name(nombre, j.get("liga_base") or "")
+            if not fallback:
+                fallback = pais_desde_json_previo(nombre)
             edad_fallback = int((fallback or {}).get("edad") or 0)
             pais_fallback = (fallback or {}).get("pais") or "Sin datos"
             espn_id_fallback = (fallback or {}).get("espn_id") or ""
@@ -1209,6 +1354,17 @@ def main() -> None:
         "ambiguos_no_actualizados": ambiguos,
         "equipos_no_encontrados": equipos_no_encontrados,
         "errores_base": errores_base[:100],
+        "jugadores_sin_pais": [
+            {
+                "nombre": x.get("nombre"),
+                "club": x.get("club"),
+                "liga": x.get("liga"),
+                "estado": x.get("estado"),
+                "espn_id": x.get("espn_id"),
+            }
+            for x in jugadores_finales
+            if not x.get("pais") or x.get("pais") == "Sin datos"
+        ],
         "jugadores": jugadores_finales,
     }
 
@@ -1222,6 +1378,7 @@ def main() -> None:
     print(f"Jugadores finales: {payload['total']}")
     print(f"Actualizaciones club/liga detectadas: {len(actualizaciones)}")
     print(f"No encontrados en ESPN: {len(no_encontrados)}")
+    print(f"Con país: {payload['con_pais']} | Sin país: {payload['sin_pais']}")
     print(f"Tiempo: {elapsed}s")
 
 if __name__ == "__main__":
