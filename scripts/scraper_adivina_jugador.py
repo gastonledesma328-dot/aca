@@ -2,7 +2,7 @@
 # Modo lista curada:
 # - Lee /adivinajugador/jugadores_base.json
 # - Mantiene SIEMPRE nombre, altura y posicion de tu lista manual
-# - Actualiza SOLO club, liga y edad desde ESPN si encuentra al jugador
+# - Actualiza SOLO club, liga, edad y país desde ESPN si encuentra al jugador
 # - Acepta base plana o base por ligas/equipos/titulares/suplentes
 
 from __future__ import annotations
@@ -536,11 +536,58 @@ def age_from_athlete(athlete: dict) -> int:
         or 0
     )
 
+def country_from_athlete(athlete: dict) -> str:
+    """
+    Extrae país desde los campos que ESPN suele traer en roster/detail.
+    No modifica nombre/altura/posición manual; solo completa pais para el JSON final.
+    """
+    if not isinstance(athlete, dict):
+        return ""
+
+    candidates: list[str] = []
+
+    # birthPlace puede venir como dict: {country, countryName, ...}
+    birth_place = athlete.get("birthPlace") or athlete.get("birthplace") or {}
+    if isinstance(birth_place, dict):
+        for key in ("country", "countryName", "countryDisplayName", "displayName", "name"):
+            val = birth_place.get(key)
+            if isinstance(val, str) and val.strip():
+                candidates.append(val.strip())
+    elif isinstance(birth_place, str) and birth_place.strip():
+        candidates.append(birth_place.strip())
+
+    # nationality / citizenship pueden venir como str o dict
+    for key in ("country", "nationality", "nationalityCountry", "citizenship", "citizenshipCountry"):
+        val = athlete.get(key)
+        if isinstance(val, str) and val.strip():
+            candidates.append(val.strip())
+        elif isinstance(val, dict):
+            for sub in ("displayName", "name", "country", "abbreviation"):
+                subval = val.get(sub)
+                if isinstance(subval, str) and subval.strip():
+                    candidates.append(subval.strip())
+                    break
+
+    # flag.alt a veces trae el país
+    flag = athlete.get("flag") or {}
+    if isinstance(flag, dict):
+        for key in ("alt", "description", "title"):
+            val = flag.get(key)
+            if isinstance(val, str) and val.strip():
+                candidates.append(val.strip())
+
+    for value in candidates:
+        value = value.strip()
+        if value and value not in ("Sin datos", "-", "N/A", "0") and len(value) > 1:
+            return value
+
+    return ""
+
 def construir_indice_espn() -> tuple[dict[str, dict], list[dict]]:
     """
     Indexa jugadores actuales por nombre.
     Cada entrada trae SOLO lo que queremos actualizar:
-    club, liga, edad, espn_id.
+    club, liga, edad, pais, espn_id.
     """
     index: dict[str, dict] = {}
     no_encontrados_equipos: list[dict] = []
@@ -583,6 +630,7 @@ def construir_indice_espn() -> tuple[dict[str, dict], list[dict]]:
                     "club_espn": equipo["nombre"],
                     "liga": liga,
                     "edad": age_from_athlete(athlete),
+                    "pais": country_from_athlete(athlete) or "Sin datos",
                     "espn_id": extract_athlete_id(athlete),
                 }
 
@@ -637,6 +685,7 @@ def main() -> None:
             club_nuevo = match.get("club") or j.get("club_base") or "Sin datos"
             liga_nueva = match.get("liga") or j.get("liga_base") or "Sin datos"
             edad_nueva = int(match.get("edad") or 0)
+            pais_nuevo = match.get("pais") or "Sin datos"
 
             if (
                 club_nuevo != (j.get("club_base") or "")
@@ -649,6 +698,7 @@ def main() -> None:
                     "club_actual": club_nuevo,
                     "liga_actual": liga_nueva,
                     "edad": edad_nueva,
+                    "pais": pais_nuevo,
                     "espn_id": match.get("espn_id") or "",
                 })
 
@@ -660,6 +710,7 @@ def main() -> None:
                 "liga": liga_nueva,
                 "competicion": liga_nueva,
                 "edad": edad_nueva,
+                "pais": pais_nuevo,
                 "estado": "actualizado_espn",
                 "espn_id": match.get("espn_id") or "",
             })
@@ -678,6 +729,7 @@ def main() -> None:
                 "liga": j.get("liga_base") or "Sin datos",
                 "competicion": j.get("liga_base") or "Sin datos",
                 "edad": 0,
+                "pais": "Sin datos",
                 "estado": "no_encontrado_espn",
                 "espn_id": "",
             })
@@ -686,14 +738,14 @@ def main() -> None:
 
     payload = {
         "fuente": "jugadores_base.json curado + ESPN rosters",
-        "modo": "solo_actualiza_club_liga_edad",
+        "modo": "solo_actualiza_club_liga_edad_pais",
         "actualizado": datetime.now(timezone.utc).isoformat(),
         "total": len(jugadores_finales),
         "base_detectados": len(base),
         "tiempo_segundos": elapsed,
         "reglas": {
             "mantiene_manual": ["nombre", "altura", "posicion"],
-            "actualiza_espn": ["club", "liga", "edad"],
+            "actualiza_espn": ["club", "liga", "edad", "pais"],
         },
         "actualizaciones": actualizaciones,
         "no_encontrados": no_encontrados,
