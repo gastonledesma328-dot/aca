@@ -1,10 +1,10 @@
 {
   "fuente": "jugadores_base.json curado + ESPN rosters",
-  "modo": "solo_actualiza_club_liga_edad",
-  "actualizado": "2026-05-19T01:45:38.547827+00:00",
+  "modo": "solo_actualiza_club_liga_edad_pais",
+  "actualizado": "2026-05-19T02:03:56.143184+00:00",
   "total": 733,
   "base_detectados": 733,
-  "tiempo_segundos": 16.5,
+  "tiempo_segundos": 19.5,
   "reglas": {
     "mantiene_manual": [
       "nombre",
@@ -14,7 +14,8 @@
     "actualiza_espn": [
       "club",
       "liga",
-      "edad"
+      "edad",
+      "pais"
     ]
   },
   "actualizaciones": [
@@ -25,6 +26,7 @@
       "club_actual": "Flamengo",
       "liga_actual": "Brasileirão",
       "edad": 34,
+      "pais": "Italy",
       "espn_id": "165778"
     },
     {
@@ -34,6 +36,7 @@
       "club_actual": "Marseille",
       "liga_actual": "Ligue 1",
       "edad": 19,
+      "pais": "England",
       "espn_id": "349733"
     },
     {
@@ -43,6 +46,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 30,
+      "pais": "Switzerland",
       "espn_id": "214562"
     },
     {
@@ -52,6 +56,7 @@
       "club_actual": "Real Madrid",
       "liga_actual": "LaLiga",
       "edad": 27,
+      "pais": "England",
       "espn_id": "223532"
     },
     {
@@ -61,6 +66,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 29,
+      "pais": "Colombia",
       "espn_id": "257390"
     },
     {
@@ -70,6 +76,7 @@
       "club_actual": "Lyon",
       "liga_actual": "Ligue 1",
       "edad": 19,
+      "pais": "Brazil",
       "espn_id": "346612"
     },
     {
@@ -79,6 +86,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 33,
+      "pais": "Slovenia",
       "espn_id": "149622"
     },
     {
@@ -88,6 +96,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 28,
+      "pais": "Argentina",
       "espn_id": "164826"
     },
     {
@@ -97,6 +106,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 31,
+      "pais": "Uruguay",
       "espn_id": "188398"
     },
     {
@@ -106,6 +116,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 29,
+      "pais": "Spain",
       "espn_id": "214888"
     },
     {
@@ -115,6 +126,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 31,
+      "pais": "Spain",
       "espn_id": "206474"
     },
     {
@@ -124,6 +136,7 @@
       "club_actual": "Inter Miami CF",
       "liga_actual": "MLS",
       "edad": 31,
+      "pais": "Argentina",
       "espn_id": "174466"
     },
     {
@@ -133,6 +146,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 22,
+      "pais": "Spain",
       "espn_id": "336634"
     },
     {
@@ -142,6 +156,7 @@
       "club_actual": "Tottenham Hotspur",
       "liga_actual": "Premier League",
       "edad": 26,
+      "pais": "England",
       "espn_id": "266696"
     },
     {
@@ -151,6 +166,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 35,
+      "pais": "France",
       "espn_id": "140416"
     },
     {
@@ -160,6 +176,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 26,
+      "pais": "Argentina",
       "espn_id": "277206"
     },
     {
@@ -169,6 +186,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 30,
+      "pais": "Norway",
       "espn_id": "188230"
     },
     {
@@ -178,6 +196,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 32,
+      "pais": "Argentina",
       "espn_id": "177927"
     },
     {
@@ -187,6 +206,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 30,
+      "pais": "France",
       "espn_id": "193917"
     },
     {
@@ -196,6 +216,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 34,
+      "pais": "Spain",
       "espn_id": "140791"
     },
     {
@@ -205,6 +226,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 25,
+      "pais": "Argentina",
       "espn_id": "277208"
     },
     {
@@ -214,6 +236,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 23,
+      "pais": "Argentina",
       "espn_id": "323838"
     },
     {
@@ -223,6 +246,7 @@
       "club_actual": "Tigres UANL",
       "liga_actual": "Liga MX",
       "edad": 31,
+      "pais": "Argentina",
       "espn_id": "195681"
     },
     {
@@ -232,6 +256,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 37,
+      "pais": "Switzerland",
       "espn_id": "93197"
     },
     {
@@ -241,6 +266,7 @@
       "club_actual": "Marseille",
       "liga_actual": "Ligue 1",
       "edad": 30,
+      "pais": "France",
       "espn_id": "215378"
     },
     {
@@ -250,6 +276,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 38,
+      "pais": "Italy",
       "espn_id": "148842"
     },
     {
@@ -259,6 +286,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 27,
+      "pais": "Italy",
       "espn_id": "249280"
     },
     {
@@ -268,6 +296,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 28,
+      "pais": "Italy",
       "espn_id": "194748"
     },
     {
@@ -277,6 +306,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 29,
+      "pais": "Italy",
       "espn_id": "204441"
     },
     {
@@ -286,6 +316,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 32,
+      "pais": "Türkiye",
       "espn_id": "170785"
     },
     {
@@ -295,6 +326,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 37,
+      "pais": "Armenia",
       "espn_id": "147625"
     },
     {
@@ -304,6 +336,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 30,
+      "pais": "Netherlands",
       "espn_id": "213248"
     },
     {
@@ -313,6 +346,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 28,
+      "pais": "Argentina",
       "espn_id": "219713"
     },
     {
@@ -322,6 +356,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 28,
+      "pais": "France",
       "espn_id": "217331"
     },
     {
@@ -331,6 +366,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 27,
+      "pais": "Spain",
       "espn_id": "240533"
     },
     {
@@ -340,6 +376,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 34,
+      "pais": "Netherlands",
       "espn_id": "141443"
     },
     {
@@ -349,6 +386,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 31,
+      "pais": "Poland",
       "espn_id": "177782"
     },
     {
@@ -358,6 +396,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 26,
+      "pais": "Italy",
       "espn_id": "250850"
     },
     {
@@ -367,6 +406,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 27,
+      "pais": "Brazil",
       "espn_id": "271769"
     },
     {
@@ -376,6 +416,7 @@
       "club_actual": "Botafogo",
       "liga_actual": "Brasileirão",
       "edad": 25,
+      "pais": "Brazil",
       "espn_id": "306764"
     },
     {
@@ -385,6 +426,7 @@
       "club_actual": "Aston Villa",
       "liga_actual": "Premier League",
       "edad": 28,
+      "pais": "Brazil",
       "espn_id": "320074"
     },
     {
@@ -394,6 +436,7 @@
       "club_actual": "AC Milan",
       "liga_actual": "Serie A",
       "edad": 31,
+      "pais": "France",
       "espn_id": "176203"
     },
     {
@@ -403,6 +446,7 @@
       "club_actual": "Tottenham Hotspur",
       "liga_actual": "Premier League",
       "edad": 27,
+      "pais": "France",
       "espn_id": "252971"
     },
     {
@@ -412,6 +456,7 @@
       "club_actual": "Al Hilal",
       "liga_actual": "Saudi Pro League",
       "edad": 28,
+      "pais": "France",
       "espn_id": "233621"
     },
     {
@@ -421,6 +466,7 @@
       "club_actual": "Atalanta",
       "liga_actual": "Serie A",
       "edad": 34,
+      "pais": "Italy",
       "espn_id": "174915"
     },
     {
@@ -430,6 +476,7 @@
       "club_actual": "Newcastle United",
       "liga_actual": "Premier League",
       "edad": 24,
+      "pais": "Germany",
       "espn_id": "303444"
     },
     {
@@ -439,6 +486,7 @@
       "club_actual": "Atalanta",
       "liga_actual": "Serie A",
       "edad": 23,
+      "pais": "USA",
       "espn_id": "307527"
     },
     {
@@ -448,6 +496,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 40,
+      "pais": "Germany",
       "espn_id": "84774"
     },
     {
@@ -457,6 +506,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 28,
+      "pais": "Austria",
       "espn_id": "169189"
     },
     {
@@ -466,6 +516,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 27,
+      "pais": "France",
       "espn_id": "222793"
     },
     {
@@ -475,6 +526,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 30,
+      "pais": "Germany",
       "espn_id": "188052"
     },
     {
@@ -484,6 +536,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 25,
+      "pais": "Canada",
       "espn_id": "236721"
     },
     {
@@ -493,6 +546,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 31,
+      "pais": "Germany",
       "espn_id": "190161"
     },
     {
@@ -502,6 +556,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 22,
+      "pais": "Germany",
       "espn_id": "359370"
     },
     {
@@ -511,6 +566,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 23,
+      "pais": "Germany",
       "espn_id": "303821"
     },
     {
@@ -520,6 +576,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 24,
+      "pais": "France",
       "espn_id": "286831"
     },
     {
@@ -529,6 +586,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 32,
+      "pais": "England",
       "espn_id": "142200"
     },
     {
@@ -538,6 +596,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 22,
+      "pais": "Germany",
       "espn_id": "323790"
     },
     {
@@ -547,6 +606,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 29,
+      "pais": "South Korea",
       "espn_id": "157688"
     },
     {
@@ -556,6 +616,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 32,
+      "pais": "Portugal",
       "espn_id": "176228"
     },
     {
@@ -565,6 +626,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 31,
+      "pais": "Germany",
       "espn_id": "174550"
     },
     {
@@ -574,6 +636,7 @@
       "club_actual": "Tottenham Hotspur",
       "liga_actual": "Premier League",
       "edad": 30,
+      "pais": "Portugal",
       "espn_id": "224144"
     },
     {
@@ -583,6 +646,7 @@
       "club_actual": "Bayern Munich",
       "liga_actual": "Bundesliga",
       "edad": 30,
+      "pais": "Germany",
       "espn_id": "178980"
     },
     {
@@ -592,6 +656,7 @@
       "club_actual": "Al Nassr",
       "liga_actual": "Saudi Pro League",
       "edad": 29,
+      "pais": "France",
       "espn_id": "184012"
     },
     {
@@ -601,6 +666,7 @@
       "club_actual": "Chelsea",
       "liga_actual": "Premier League",
       "edad": 21,
+      "pais": "England",
       "espn_id": "339879"
     },
     {
@@ -610,6 +676,7 @@
       "club_actual": "AS Roma",
       "liga_actual": "Serie A",
       "edad": 27,
+      "pais": "Netherlands",
       "espn_id": "259481"
     },
     {
@@ -619,6 +686,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 36,
+      "pais": "Finland",
       "espn_id": "134169"
     },
     {
@@ -628,6 +696,7 @@
       "club_actual": "Liverpool",
       "liga_actual": "Premier League",
       "edad": 25,
+      "pais": "Netherlands",
       "espn_id": "281119"
     },
     {
@@ -637,6 +706,7 @@
       "club_actual": "PSV Eindhoven",
       "liga_actual": "Eredivisie",
       "edad": 26,
+      "pais": "Czechia",
       "espn_id": "277313"
     },
     {
@@ -646,6 +716,7 @@
       "club_actual": "Arsenal",
       "liga_actual": "Premier League",
       "edad": 24,
+      "pais": "Ecuador",
       "espn_id": "292062"
     },
     {
@@ -655,6 +726,7 @@
       "club_actual": "Marseille",
       "liga_actual": "Ligue 1",
       "edad": 33,
+      "pais": "Argentina",
       "espn_id": "167192"
     },
     {
@@ -664,6 +736,7 @@
       "club_actual": "Marseille",
       "liga_actual": "Ligue 1",
       "edad": 27,
+      "pais": "Argentina",
       "espn_id": "271555"
     },
     {
@@ -673,6 +746,7 @@
       "club_actual": "Marseille",
       "liga_actual": "Ligue 1",
       "edad": 30,
+      "pais": "Morocco",
       "espn_id": "245243"
     },
     {
@@ -682,6 +756,7 @@
       "club_actual": "Marseille",
       "liga_actual": "Ligue 1",
       "edad": 30,
+      "pais": "Denmark",
       "espn_id": "159543"
     },
     {
@@ -691,6 +766,7 @@
       "club_actual": "Marseille",
       "liga_actual": "Ligue 1",
       "edad": 24,
+      "pais": "England",
       "espn_id": "276221"
     },
     {
@@ -700,6 +776,7 @@
       "club_actual": "Marseille",
       "liga_actual": "Ligue 1",
       "edad": 25,
+      "pais": "Brazil",
       "espn_id": "289114"
     },
     {
@@ -709,6 +786,7 @@
       "club_actual": "Marseille",
       "liga_actual": "Ligue 1",
       "edad": 26,
+      "pais": "Algeria",
       "espn_id": "259743"
     },
     {
@@ -718,6 +796,7 @@
       "club_actual": "Marseille",
       "liga_actual": "Ligue 1",
       "edad": 36,
+      "pais": "Gabon",
       "espn_id": "122260"
     },
     {
@@ -727,6 +806,7 @@
       "club_actual": "Real Betis",
       "liga_actual": "LaLiga",
       "edad": 31,
+      "pais": "Spain",
       "espn_id": "203061"
     },
     {
@@ -736,6 +816,7 @@
       "club_actual": "Başakşehir",
       "liga_actual": "Süper Lig",
       "edad": 28,
+      "pais": "Morocco",
       "espn_id": "238917"
     },
     {
@@ -745,6 +826,7 @@
       "club_actual": "Internazionale",
       "liga_actual": "Serie A",
       "edad": 24,
+      "pais": "Brazil",
       "espn_id": "286369"
     },
     {
@@ -754,6 +836,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 29,
+      "pais": "Germany",
       "espn_id": "214401"
     },
     {
@@ -763,6 +846,7 @@
       "club_actual": "Galatasaray",
       "liga_actual": "Süper Lig",
       "edad": 25,
+      "pais": "Ivory Coast",
       "espn_id": "286569"
     },
     {
@@ -772,6 +856,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 27,
+      "pais": "Ghana",
       "espn_id": "277718"
     },
     {
@@ -781,6 +866,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 28,
+      "pais": "Brazil",
       "espn_id": "240353"
     },
     {
@@ -790,6 +876,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 29,
+      "pais": "Switzerland",
       "espn_id": "222628"
     },
     {
@@ -799,6 +886,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 22,
+      "pais": "Senegal",
       "espn_id": "38721"
     },
     {
@@ -808,6 +896,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 24,
+      "pais": "France",
       "espn_id": "329690"
     },
     {
@@ -817,6 +906,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 31,
+      "pais": "Japan",
       "espn_id": "159348"
     },
     {
@@ -826,6 +916,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 24,
+      "pais": "USA",
       "espn_id": "282643"
     },
     {
@@ -835,6 +926,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 28,
+      "pais": "Switzerland",
       "espn_id": "258875"
     },
     {
@@ -844,6 +936,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 24,
+      "pais": "Brazil",
       "espn_id": "310640"
     },
     {
@@ -853,6 +946,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 26,
+      "pais": "Netherlands",
       "espn_id": "240660"
     },
     {
@@ -862,6 +956,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 29,
+      "pais": "Russia",
       "espn_id": "195501"
     },
     {
@@ -871,6 +966,7 @@
       "club_actual": "Bayer Leverkusen",
       "liga_actual": "Bundesliga",
       "edad": 21,
+      "pais": "Morocco",
       "espn_id": "346947"
     },
     {
@@ -880,6 +976,7 @@
       "club_actual": "Al Ittihad",
       "liga_actual": "Saudi Pro League",
       "edad": 19,
+      "pais": "France",
       "espn_id": "357108"
     },
     {
@@ -889,6 +986,7 @@
       "club_actual": "Monaco",
       "liga_actual": "Ligue 1",
       "edad": 23,
+      "pais": "Denmark",
       "espn_id": "308552"
     },
     {
@@ -898,6 +996,7 @@
       "club_actual": "Lazio",
       "liga_actual": "Serie A",
       "edad": 38,
+      "pais": "Spain",
       "espn_id": "114032"
     },
     {
@@ -907,6 +1006,7 @@
       "club_actual": "Manchester United",
       "liga_actual": "Premier League",
       "edad": 26,
+      "pais": "Brazil",
       "espn_id": "259902"
     },
     {
@@ -916,6 +1016,7 @@
       "club_actual": "Cruzeiro",
       "liga_actual": "Brasileirão",
       "edad": 28,
+      "pais": "Brazil",
       "espn_id": "210135"
     },
     {
@@ -925,6 +1026,7 @@
       "club_actual": "Grêmio",
       "liga_actual": "Brasileirão",
       "edad": 38,
+      "pais": "Brazil",
       "espn_id": "198983"
     },
     {
@@ -934,6 +1036,7 @@
       "club_actual": "River Plate",
       "liga_actual": "Liga Profesional Argentina",
       "edad": 27,
+      "pais": "Argentina",
       "espn_id": "286406"
     },
     {
@@ -943,6 +1046,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 30,
+      "pais": "Brazil",
       "espn_id": "236321"
     },
     {
@@ -952,6 +1056,7 @@
       "club_actual": "Grêmio",
       "liga_actual": "Brasileirão",
       "edad": 37,
+      "pais": "Brazil",
       "espn_id": "185994"
     },
     {
@@ -961,6 +1066,7 @@
       "club_actual": "Palmeiras",
       "liga_actual": "Brasileirão",
       "edad": 19,
+      "pais": "Brazil",
       "espn_id": "421507"
     },
     {
@@ -970,6 +1076,7 @@
       "club_actual": "Rosario Central",
       "liga_actual": "Liga Profesional Argentina",
       "edad": 33,
+      "pais": "Argentina",
       "espn_id": "195621"
     },
     {
@@ -979,6 +1086,7 @@
       "club_actual": "Atlético Nacional",
       "liga_actual": "Liga BetPlay",
       "edad": 38,
+      "pais": "Argentina",
       "espn_id": "135867"
     },
     {
@@ -988,6 +1096,7 @@
       "club_actual": "Toluca FC",
       "liga_actual": "Liga MX",
       "edad": 23,
+      "pais": "Argentina",
       "espn_id": "297057"
     },
     {
@@ -997,6 +1106,7 @@
       "club_actual": "Internacional",
       "liga_actual": "Brasileirão",
       "edad": 25,
+      "pais": "Argentina",
       "espn_id": "309131"
     },
     {
@@ -1006,6 +1116,7 @@
       "club_actual": "Grêmio",
       "liga_actual": "Brasileirão",
       "edad": 23,
+      "pais": "Argentina",
       "espn_id": "290594"
     },
     {
@@ -1015,6 +1126,7 @@
       "club_actual": "San Lorenzo",
       "liga_actual": "Liga Profesional Argentina",
       "edad": 32,
+      "pais": "Argentina",
       "espn_id": "168277"
     },
     {
@@ -1024,6 +1136,7 @@
       "club_actual": "River Plate",
       "liga_actual": "Liga Profesional Argentina",
       "edad": 28,
+      "pais": "Argentina",
       "espn_id": "233392"
     },
     {
@@ -1033,6 +1146,7 @@
       "club_actual": "AS Roma",
       "liga_actual": "Serie A",
       "edad": 23,
+      "pais": "Netherlands",
       "espn_id": "297300"
     },
     {
@@ -1042,6 +1156,7 @@
       "club_actual": "Chelsea",
       "liga_actual": "Premier League",
       "edad": 20,
+      "pais": "Netherlands",
       "espn_id": "353951"
     },
     {
@@ -1051,6 +1166,7 @@
       "club_actual": "Lazio",
       "liga_actual": "Serie A",
       "edad": 24,
+      "pais": "Netherlands",
       "espn_id": "282228"
     },
     {
@@ -1060,6 +1176,7 @@
       "club_actual": "FC Twente",
       "liga_actual": "Eredivisie",
       "edad": 22,
+      "pais": "Iceland",
       "espn_id": "311168"
     },
     {
@@ -1069,6 +1186,7 @@
       "club_actual": "Corinthians",
       "liga_actual": "Brasileirão",
       "edad": 34,
+      "pais": "Brazil",
       "espn_id": "194090"
     },
     {
@@ -1078,6 +1196,7 @@
       "club_actual": "Brighton & Hove Albion",
       "liga_actual": "Premier League",
       "edad": 28,
+      "pais": "France",
       "espn_id": "216017"
     },
     {
@@ -1087,6 +1206,7 @@
       "club_actual": "Bayer Leverkusen",
       "liga_actual": "Bundesliga",
       "edad": 23,
+      "pais": "USA",
       "espn_id": "301416"
     },
     {
@@ -1096,6 +1216,7 @@
       "club_actual": "RB Leipzig",
       "liga_actual": "Bundesliga",
       "edad": 23,
+      "pais": "Belgium",
       "espn_id": "310131"
     },
     {
@@ -1105,6 +1226,7 @@
       "club_actual": "FC Porto",
       "liga_actual": "Liga Portugal",
       "edad": 35,
+      "pais": "Netherlands",
       "espn_id": "127420"
     },
     {
@@ -1114,6 +1236,7 @@
       "club_actual": "Galatasaray",
       "liga_actual": "Süper Lig",
       "edad": 26,
+      "pais": "Netherlands",
       "espn_id": "255344"
     },
     {
@@ -1123,6 +1246,7 @@
       "club_actual": "Feyenoord Rotterdam",
       "liga_actual": "Eredivisie",
       "edad": 30,
+      "pais": "Germany",
       "espn_id": "182424"
     },
     {
@@ -1132,6 +1256,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 28,
+      "pais": "Slovakia",
       "espn_id": "257786"
     },
     {
@@ -1141,6 +1266,7 @@
       "club_actual": "Feyenoord Rotterdam",
       "liga_actual": "Eredivisie",
       "edad": 34,
+      "pais": "Austria",
       "espn_id": "149904"
     },
     {
@@ -1150,6 +1276,7 @@
       "club_actual": "Marseille",
       "liga_actual": "Ligue 1",
       "edad": 24,
+      "pais": "Netherlands",
       "espn_id": "282230"
     },
     {
@@ -1159,6 +1286,7 @@
       "club_actual": "Brighton & Hove Albion",
       "liga_actual": "Premier League",
       "edad": 26,
+      "pais": "Netherlands",
       "espn_id": "282186"
     },
     {
@@ -1168,6 +1296,7 @@
       "club_actual": "Feyenoord Rotterdam",
       "liga_actual": "Eredivisie",
       "edad": 24,
+      "pais": "Algeria",
       "espn_id": "341711"
     },
     {
@@ -1177,6 +1306,7 @@
       "club_actual": "Feyenoord Rotterdam",
       "liga_actual": "Eredivisie",
       "edad": 24,
+      "pais": "Netherlands",
       "espn_id": "324952"
     },
     {
@@ -1186,6 +1316,7 @@
       "club_actual": "Feyenoord Rotterdam",
       "liga_actual": "Eredivisie",
       "edad": 27,
+      "pais": "Japan",
       "espn_id": "274277"
     },
     {
@@ -1195,6 +1326,7 @@
       "club_actual": "Deportes Tolima",
       "liga_actual": "Liga BetPlay",
       "edad": 23,
+      "pais": "Colombia",
       "espn_id": "315576"
     },
     {
@@ -1204,6 +1336,7 @@
       "club_actual": "Deportes Tolima",
       "liga_actual": "Liga BetPlay",
       "edad": 28,
+      "pais": "Colombia",
       "espn_id": "270247"
     },
     {
@@ -1213,6 +1346,7 @@
       "club_actual": "Vélez Sarsfield",
       "liga_actual": "Liga Profesional Argentina",
       "edad": 31,
+      "pais": "Colombia",
       "espn_id": "166323"
     },
     {
@@ -1222,6 +1356,7 @@
       "club_actual": "Deportes Tolima",
       "liga_actual": "Liga BetPlay",
       "edad": 26,
+      "pais": "Colombia",
       "espn_id": "258803"
     },
     {
@@ -1231,6 +1366,7 @@
       "club_actual": "San Lorenzo",
       "liga_actual": "Liga Profesional Argentina",
       "edad": 30,
+      "pais": "Colombia",
       "espn_id": "223044"
     },
     {
@@ -1240,6 +1376,7 @@
       "club_actual": "Monterrey",
       "liga_actual": "Liga MX",
       "edad": 28,
+      "pais": "Uruguay",
       "espn_id": "203067"
     },
     {
@@ -1249,6 +1386,7 @@
       "club_actual": "Atlético Junior",
       "liga_actual": "Liga BetPlay",
       "edad": 26,
+      "pais": "Colombia",
       "espn_id": "295070"
     },
     {
@@ -1258,6 +1396,7 @@
       "club_actual": "Atlético Junior",
       "liga_actual": "Liga BetPlay",
       "edad": 35,
+      "pais": "Colombia",
       "espn_id": "197425"
     },
     {
@@ -1267,6 +1406,7 @@
       "club_actual": "Grêmio",
       "liga_actual": "Brasileirão",
       "edad": 27,
+      "pais": "Colombia",
       "espn_id": "286714"
     },
     {
@@ -1276,6 +1416,7 @@
       "club_actual": "Atlético Junior",
       "liga_actual": "Liga BetPlay",
       "edad": 39,
+      "pais": "Colombia",
       "espn_id": "121232"
     },
     {
@@ -1285,6 +1426,7 @@
       "club_actual": "Atlético Junior",
       "liga_actual": "Liga BetPlay",
       "edad": 41,
+      "pais": "Colombia",
       "espn_id": "98576"
     },
     {
@@ -1294,6 +1436,7 @@
       "club_actual": "Santa Fe",
       "liga_actual": "Liga BetPlay",
       "edad": 36,
+      "pais": "Argentina",
       "espn_id": "138391"
     },
     {
@@ -1303,6 +1446,7 @@
       "club_actual": "Boca Juniors",
       "liga_actual": "Liga Profesional Argentina",
       "edad": 26,
+      "pais": "Argentina",
       "espn_id": "282589"
     },
     {
@@ -1312,6 +1456,7 @@
       "club_actual": "Racing Club",
       "liga_actual": "Liga Profesional Argentina",
       "edad": 22,
+      "pais": "Argentina",
       "espn_id": "339804"
     },
     {
@@ -1321,6 +1466,7 @@
       "club_actual": "Lille",
       "liga_actual": "Ligue 1",
       "edad": 39,
+      "pais": "France",
       "espn_id": "88965"
     },
     {
@@ -1330,6 +1476,7 @@
       "club_actual": "Atlético Madrid",
       "liga_actual": "LaLiga",
       "edad": 20,
+      "pais": "Mexico",
       "espn_id": "318554"
     },
     {
@@ -1339,6 +1486,7 @@
       "club_actual": "Athletic Club",
       "liga_actual": "LaLiga",
       "edad": 31,
+      "pais": "Spain",
       "espn_id": "159317"
     },
     {
@@ -1348,6 +1496,7 @@
       "club_actual": "Fluminense",
       "liga_actual": "Brasileirão",
       "edad": 32,
+      "pais": "Brazil",
       "espn_id": "201547"
     },
     {
@@ -1357,6 +1506,7 @@
       "club_actual": "Al Hilal",
       "liga_actual": "Saudi Pro League",
       "edad": 30,
+      "pais": "Saudi Arabia",
       "espn_id": "296972"
     },
     {
@@ -1366,6 +1516,7 @@
       "club_actual": "Barcelona",
       "liga_actual": "LaLiga",
       "edad": 31,
+      "pais": "Portugal",
       "espn_id": "176399"
     },
     {
@@ -1375,6 +1526,7 @@
       "club_actual": "Al Nassr",
       "liga_actual": "Saudi Pro League",
       "edad": 26,
+      "pais": "Saudi Arabia",
       "espn_id": "294239"
     },
     {
@@ -1384,6 +1536,7 @@
       "club_actual": "FC Porto",
       "liga_actual": "Liga Portugal",
       "edad": 23,
+      "pais": "Spain",
       "espn_id": "307381"
     },
     {
@@ -1393,6 +1546,7 @@
       "club_actual": "Lens",
       "liga_actual": "Ligue 1",
       "edad": 29,
+      "pais": "France",
       "espn_id": "193281"
     },
     {
@@ -1402,6 +1556,7 @@
       "club_actual": "Besiktas",
       "liga_actual": "Süper Lig",
       "edad": 25,
+      "pais": "Türkiye",
       "espn_id": "272700"
     },
     {
@@ -1411,6 +1566,7 @@
       "club_actual": "Fenerbahçe",
       "liga_actual": "Süper Lig",
       "edad": 27,
+      "pais": "Türkiye",
       "espn_id": "306789"
     },
     {
@@ -1420,6 +1576,7 @@
       "club_actual": "Rosario Central",
       "liga_actual": "Liga Profesional Argentina",
       "edad": 38,
+      "pais": "Argentina",
       "espn_id": "108223"
     },
     {
@@ -1429,6 +1586,7 @@
       "club_actual": "Botafogo",
       "liga_actual": "Brasileirão",
       "edad": 28,
+      "pais": "Brazil",
       "espn_id": "224103"
     },
     {
@@ -1438,6 +1596,7 @@
       "club_actual": "Manchester City",
       "liga_actual": "Premier League",
       "edad": 24,
+      "pais": "Spain",
       "espn_id": "323986"
     },
     {
@@ -1447,6 +1606,7 @@
       "club_actual": "Al Ahli",
       "liga_actual": "Saudi Pro League",
       "edad": 28,
+      "pais": "Brazil",
       "espn_id": "259732"
     },
     {
@@ -1456,6 +1616,7 @@
       "club_actual": "São Paulo",
       "liga_actual": "Brasileirão",
       "edad": 32,
+      "pais": "Brazil",
       "espn_id": "199065"
     },
     {
@@ -1465,6 +1626,7 @@
       "club_actual": "LAFC",
       "liga_actual": "MLS",
       "edad": 29,
+      "pais": "Canada",
       "espn_id": "270505"
     },
     {
@@ -1474,6 +1636,7 @@
       "club_actual": "Fluminense",
       "liga_actual": "Brasileirão",
       "edad": 19,
+      "pais": "Mexico",
       "espn_id": "371529"
     },
     {
@@ -1483,6 +1646,7 @@
       "club_actual": "RB Leipzig",
       "liga_actual": "Bundesliga",
       "edad": 21,
+      "pais": "Denmark",
       "espn_id": "362794"
     },
     {
@@ -1492,6 +1656,7 @@
       "club_actual": "Estudiantes de La Plata",
       "liga_actual": "Liga Profesional Argentina",
       "edad": 39,
+      "pais": "Uruguay",
       "espn_id": "108622"
     },
     {
@@ -1501,6 +1666,7 @@
       "club_actual": "Real Betis",
       "liga_actual": "LaLiga",
       "edad": 29,
+      "pais": "Morocco",
       "espn_id": "195226"
     },
     {
@@ -1510,6 +1676,7 @@
       "club_actual": "Al Ittihad",
       "liga_actual": "Saudi Pro League",
       "edad": 28,
+      "pais": "Morocco",
       "espn_id": "242736"
     },
     {
@@ -1519,6 +1686,7 @@
       "club_actual": "Besiktas",
       "liga_actual": "Süper Lig",
       "edad": 28,
+      "pais": "Türkiye",
       "espn_id": "239706"
     },
     {
@@ -1528,6 +1696,7 @@
       "club_actual": "Eintracht Frankfurt",
       "liga_actual": "Bundesliga",
       "edad": 32,
+      "pais": "Belgium",
       "espn_id": "156479"
     },
     {
@@ -1537,6 +1706,7 @@
       "club_actual": "Fenerbahçe",
       "liga_actual": "Süper Lig",
       "edad": 37,
+      "pais": "Türkiye",
       "espn_id": "124880"
     },
     {
@@ -1546,6 +1716,7 @@
       "club_actual": "Corinthians",
       "liga_actual": "Brasileirão",
       "edad": 35,
+      "pais": "Brazil",
       "espn_id": "192226"
     },
     {
@@ -1555,6 +1726,7 @@
       "club_actual": "Besiktas",
       "liga_actual": "Süper Lig",
       "edad": 28,
+      "pais": "Germany",
       "espn_id": "233499"
     },
     {
@@ -1564,6 +1736,7 @@
       "club_actual": "Lens",
       "liga_actual": "Ligue 1",
       "edad": 32,
+      "pais": "Congo DR",
       "espn_id": "165892"
     },
     {
@@ -1573,6 +1746,7 @@
       "club_actual": "Benfica",
       "liga_actual": "Liga Portugal",
       "edad": 33,
+      "pais": "Portugal",
       "espn_id": "192421"
     },
     {
@@ -1582,6 +1756,7 @@
       "club_actual": "Trabzonspor",
       "liga_actual": "Süper Lig",
       "edad": 25,
+      "pais": "Albania",
       "espn_id": "305542"
     },
     {
@@ -1591,6 +1766,7 @@
       "club_actual": "Besiktas",
       "liga_actual": "Süper Lig",
       "edad": 29,
+      "pais": "Kosovo",
       "espn_id": "220705"
     },
     {
@@ -1600,6 +1776,7 @@
       "club_actual": "Besiktas",
       "liga_actual": "Süper Lig",
       "edad": 25,
+      "pais": "Türkiye",
       "espn_id": "268587"
     },
     {
@@ -1609,6 +1786,7 @@
       "club_actual": "Besiktas",
       "liga_actual": "Süper Lig",
       "edad": 32,
+      "pais": "Türkiye",
       "espn_id": "183152"
     },
     {
@@ -1618,6 +1796,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 27,
+      "pais": "Mexico",
       "espn_id": "195312"
     },
     {
@@ -1627,6 +1806,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 26,
+      "pais": "Uruguay",
       "espn_id": "285756"
     },
     {
@@ -1636,6 +1816,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 25,
+      "pais": "Mexico",
       "espn_id": "290414"
     },
     {
@@ -1645,6 +1826,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 33,
+      "pais": "Colombia",
       "espn_id": "132676"
     },
     {
@@ -1654,6 +1836,7 @@
       "club_actual": "Real Betis",
       "liga_actual": "LaLiga",
       "edad": 29,
+      "pais": "Mexico",
       "espn_id": "283827"
     },
     {
@@ -1663,6 +1846,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 36,
+      "pais": "Mexico",
       "espn_id": "137439"
     },
     {
@@ -1672,6 +1856,7 @@
       "club_actual": "Vélez Sarsfield",
       "liga_actual": "Liga Profesional Argentina",
       "edad": 32,
+      "pais": "Chile",
       "espn_id": "70983"
     },
     {
@@ -1681,6 +1866,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 25,
+      "pais": "Uruguay",
       "espn_id": "144325"
     },
     {
@@ -1690,6 +1876,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 33,
+      "pais": "Mexico",
       "espn_id": "93184"
     },
     {
@@ -1699,6 +1886,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 25,
+      "pais": "Mexico",
       "espn_id": "307891"
     },
     {
@@ -1708,6 +1896,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 26,
+      "pais": "Mexico",
       "espn_id": "129421"
     },
     {
@@ -1717,6 +1906,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 28,
+      "pais": "USA",
       "espn_id": "212824"
     },
     {
@@ -1726,6 +1916,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 28,
+      "pais": "Chile",
       "espn_id": "204923"
     },
     {
@@ -1735,6 +1926,7 @@
       "club_actual": "Tigres UANL",
       "liga_actual": "Liga MX",
       "edad": 31,
+      "pais": "Uruguay",
       "espn_id": "159042"
     },
     {
@@ -1744,6 +1936,7 @@
       "club_actual": "Guadalajara",
       "liga_actual": "Liga MX",
       "edad": 35,
+      "pais": "Mexico",
       "espn_id": "151850"
     },
     {
@@ -1753,6 +1946,7 @@
       "club_actual": "Tigres UANL",
       "liga_actual": "Liga MX",
       "edad": 23,
+      "pais": "Mexico",
       "espn_id": "275892"
     },
     {
@@ -1762,6 +1956,7 @@
       "club_actual": "América",
       "liga_actual": "Liga MX",
       "edad": 26,
+      "pais": "Mexico",
       "espn_id": "265866"
     },
     {
@@ -1771,6 +1966,7 @@
       "club_actual": "Guadalajara",
       "liga_actual": "Liga MX",
       "edad": 30,
+      "pais": "Mexico",
       "espn_id": "242614"
     },
     {
@@ -1780,6 +1976,7 @@
       "club_actual": "Toluca FC",
       "liga_actual": "Liga MX",
       "edad": 28,
+      "pais": "Mexico",
       "espn_id": "240144"
     },
     {
@@ -1789,6 +1986,7 @@
       "club_actual": "Cruz Azul",
       "liga_actual": "Liga MX",
       "edad": 31,
+      "pais": "Argentina",
       "espn_id": "207549"
     }
   ],
@@ -2714,6 +2912,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 30,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "196176"
     },
@@ -2725,6 +2924,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 28,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "241077"
     },
@@ -2736,6 +2936,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 25,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "277385"
     },
@@ -2747,6 +2948,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 28,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "236322"
     },
@@ -2758,6 +2960,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 19,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "352758"
     },
@@ -2769,6 +2972,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 27,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "238262"
     },
@@ -2780,6 +2984,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 27,
+      "pais": "Norway",
       "estado": "actualizado_espn",
       "espn_id": "203669"
     },
@@ -2791,6 +2996,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 29,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "209581"
     },
@@ -2802,6 +3008,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 24,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "280555"
     },
@@ -2813,6 +3020,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 27,
+      "pais": "Sweden",
       "estado": "actualizado_espn",
       "espn_id": "258906"
     },
@@ -2824,6 +3032,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 24,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "269844"
     },
@@ -2835,6 +3044,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 31,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "169532"
     },
@@ -2846,6 +3056,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 24,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "282716"
     },
@@ -2857,6 +3068,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 34,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "165778"
     },
@@ -2868,6 +3080,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 19,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "349733"
     },
@@ -2879,6 +3092,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 27,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "251400"
     },
@@ -2890,6 +3104,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 31,
+      "pais": "Belgium",
       "estado": "actualizado_espn",
       "espn_id": "174980"
     },
@@ -2901,6 +3116,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 26,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "231182"
     },
@@ -2912,6 +3128,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 27,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "217092"
     },
@@ -2923,6 +3140,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 29,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "234878"
     },
@@ -2934,6 +3152,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 24,
+      "pais": "Croatia",
       "estado": "actualizado_espn",
       "espn_id": "299910"
     },
@@ -2945,6 +3164,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 30,
+      "pais": "Switzerland",
       "estado": "actualizado_espn",
       "espn_id": "214562"
     },
@@ -2956,6 +3176,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 24,
+      "pais": "Algeria",
       "estado": "actualizado_espn",
       "espn_id": "272512"
     },
@@ -2967,6 +3188,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 29,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "231828"
     },
@@ -2978,6 +3200,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 27,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "261328"
     },
@@ -2989,6 +3212,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 25,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "250787"
     },
@@ -3000,6 +3224,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 23,
+      "pais": "Belgium",
       "estado": "actualizado_espn",
       "espn_id": "283672"
     },
@@ -3011,6 +3236,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 25,
+      "pais": "Norway",
       "estado": "actualizado_espn",
       "espn_id": "253989"
     },
@@ -3022,6 +3248,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 27,
+      "pais": "Egypt",
       "estado": "actualizado_espn",
       "espn_id": "303745"
     },
@@ -3033,6 +3260,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 23,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "307118"
     },
@@ -3044,6 +3272,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 31,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "157974"
     },
@@ -3055,6 +3284,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 31,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "159248"
     },
@@ -3066,6 +3296,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 32,
+      "pais": "Croatia",
       "estado": "actualizado_espn",
       "espn_id": "154595"
     },
@@ -3077,6 +3308,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 27,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "303785"
     },
@@ -3088,6 +3320,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 22,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "304470"
     },
@@ -3099,6 +3332,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 31,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "199833"
     },
@@ -3110,6 +3344,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 33,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "196876"
     },
@@ -3121,6 +3356,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 27,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "223532"
     },
@@ -3132,6 +3368,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 34,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "157892"
     },
@@ -3143,6 +3380,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 26,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "251634"
     },
@@ -3154,6 +3392,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 22,
+      "pais": "Hungary",
       "estado": "actualizado_espn",
       "espn_id": "323110"
     },
@@ -3165,6 +3404,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 27,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "249299"
     },
@@ -3176,6 +3416,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 25,
+      "pais": "Hungary",
       "estado": "actualizado_espn",
       "espn_id": "257206"
     },
@@ -3187,6 +3428,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 23,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "303748"
     },
@@ -3198,6 +3440,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 33,
+      "pais": "Egypt",
       "estado": "actualizado_espn",
       "espn_id": "173896"
     },
@@ -3209,6 +3452,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 26,
+      "pais": "Sweden",
       "estado": "actualizado_espn",
       "espn_id": "235662"
     },
@@ -3220,6 +3464,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 23,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "304901"
     },
@@ -3231,6 +3476,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 25,
+      "pais": "Georgia",
       "estado": "actualizado_espn",
       "espn_id": "274742"
     },
@@ -3242,6 +3488,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 28,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "102053"
     },
@@ -3253,6 +3500,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 22,
+      "pais": "Northern Ireland",
       "estado": "actualizado_espn",
       "espn_id": "250183"
     },
@@ -3264,6 +3512,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 24,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "274632"
     },
@@ -3275,6 +3524,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 33,
+      "pais": "Japan",
       "estado": "actualizado_espn",
       "espn_id": "152479"
     },
@@ -3286,6 +3536,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 27,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "249524"
     },
@@ -3297,6 +3548,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 29,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "257390"
     },
@@ -3308,6 +3560,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 34,
+      "pais": "Belgium",
       "estado": "actualizado_espn",
       "espn_id": "134283"
     },
@@ -3319,6 +3572,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 28,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "228402"
     },
@@ -3330,6 +3584,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 33,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "169438"
     },
@@ -3341,6 +3596,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 23,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "310637"
     },
@@ -3352,6 +3608,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 26,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "265919"
     },
@@ -3363,6 +3620,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 27,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "235818"
     },
@@ -3374,6 +3632,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 22,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "291281"
     },
@@ -3385,6 +3644,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 25,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "252107"
     },
@@ -3396,6 +3656,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 27,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "231388"
     },
@@ -3407,6 +3668,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 25,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "267804"
     },
@@ -3418,6 +3680,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 27,
+      "pais": "Ukraine",
       "estado": "actualizado_espn",
       "espn_id": "257237"
     },
@@ -3429,6 +3692,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 34,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "168531"
     },
@@ -3440,6 +3704,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 21,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "356000"
     },
@@ -3451,6 +3716,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 23,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "285150"
     },
@@ -3462,6 +3728,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 18,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "376473"
     },
@@ -3473,6 +3740,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 26,
+      "pais": "Morocco",
       "estado": "actualizado_espn",
       "espn_id": "246532"
     },
@@ -3484,6 +3752,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 19,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "346612"
     },
@@ -3495,6 +3764,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 25,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "297362"
     },
@@ -3506,6 +3776,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 27,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "231692"
     },
@@ -3517,6 +3788,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 19,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "368992"
     },
@@ -3528,6 +3800,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 27,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "270821"
     },
@@ -3539,6 +3812,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 22,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "323703"
     },
@@ -3550,6 +3824,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 23,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "250465"
     },
@@ -3561,6 +3836,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 29,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "219022"
     },
@@ -3572,6 +3848,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 28,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "227765"
     },
@@ -3583,6 +3860,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 18,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "362150"
     },
@@ -3594,6 +3872,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 37,
+      "pais": "Poland",
       "estado": "actualizado_espn",
       "espn_id": "125824"
     },
@@ -3605,6 +3884,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 29,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "231050"
     },
@@ -3616,6 +3896,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 36,
+      "pais": "Poland",
       "estado": "actualizado_espn",
       "espn_id": "131634"
     },
@@ -3627,6 +3908,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 25,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "128714"
     },
@@ -3638,6 +3920,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 30,
+      "pais": "Denmark",
       "estado": "actualizado_espn",
       "espn_id": "186430"
     },
@@ -3649,6 +3932,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 22,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "345489"
     },
@@ -3660,6 +3944,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 21,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "323702"
     },
@@ -3671,6 +3956,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 26,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "265869"
     },
@@ -3682,6 +3968,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 23,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "354334"
     },
@@ -3693,6 +3980,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 33,
+      "pais": "Slovenia",
       "estado": "actualizado_espn",
       "espn_id": "149622"
     },
@@ -3704,6 +3992,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 28,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "164826"
     },
@@ -3715,6 +4004,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 31,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "188398"
     },
@@ -3726,6 +4016,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 29,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "214888"
     },
@@ -3737,6 +4028,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 31,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "206474"
     },
@@ -3748,6 +4040,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 31,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "174466"
     },
@@ -3759,6 +4052,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 22,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "336634"
     },
@@ -3770,6 +4064,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 26,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "266696"
     },
@@ -3781,6 +4076,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 35,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "140416"
     },
@@ -3792,6 +4088,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 26,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "277206"
     },
@@ -3803,6 +4100,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 30,
+      "pais": "Norway",
       "estado": "actualizado_espn",
       "espn_id": "188230"
     },
@@ -3814,6 +4112,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 32,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "177927"
     },
@@ -3825,6 +4124,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 30,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "193917"
     },
@@ -3836,6 +4136,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -3847,6 +4148,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 34,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "140791"
     },
@@ -3858,6 +4160,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 25,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "277208"
     },
@@ -3869,6 +4172,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 23,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "323838"
     },
@@ -3880,6 +4184,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 31,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "195681"
     },
@@ -3891,6 +4196,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 37,
+      "pais": "Switzerland",
       "estado": "actualizado_espn",
       "espn_id": "93197"
     },
@@ -3902,6 +4208,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 30,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "215378"
     },
@@ -3913,6 +4220,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 38,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "148842"
     },
@@ -3924,6 +4232,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 27,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "249280"
     },
@@ -3935,6 +4244,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 28,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "194748"
     },
@@ -3946,6 +4256,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 29,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "204441"
     },
@@ -3957,6 +4268,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 32,
+      "pais": "Türkiye",
       "estado": "actualizado_espn",
       "espn_id": "170785"
     },
@@ -3968,6 +4280,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 37,
+      "pais": "Armenia",
       "estado": "actualizado_espn",
       "espn_id": "147625"
     },
@@ -3979,6 +4292,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 30,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "213248"
     },
@@ -3990,6 +4304,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 28,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "219713"
     },
@@ -4001,6 +4316,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 28,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "217331"
     },
@@ -4012,6 +4328,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 27,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "240533"
     },
@@ -4023,6 +4340,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 34,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "141443"
     },
@@ -4034,6 +4352,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 31,
+      "pais": "Poland",
       "estado": "actualizado_espn",
       "espn_id": "177782"
     },
@@ -4045,6 +4364,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 26,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "250850"
     },
@@ -4056,6 +4376,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4067,6 +4388,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 27,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "271769"
     },
@@ -4078,6 +4400,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 28,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "240055"
     },
@@ -4089,6 +4412,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 25,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "290129"
     },
@@ -4100,6 +4424,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4111,6 +4436,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 27,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "323147"
     },
@@ -4122,6 +4448,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 26,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "308029"
     },
@@ -4133,6 +4460,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 28,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "217538"
     },
@@ -4144,6 +4472,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 25,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "283139"
     },
@@ -4155,6 +4484,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 28,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "258968"
     },
@@ -4166,6 +4496,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4177,6 +4508,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 26,
+      "pais": "Serbia",
       "estado": "actualizado_espn",
       "espn_id": "235677"
     },
@@ -4188,6 +4520,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 23,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "312659"
     },
@@ -4199,6 +4532,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 36,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "121036"
     },
@@ -4210,6 +4544,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 25,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "306764"
     },
@@ -4221,6 +4556,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 27,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "256715"
     },
@@ -4232,6 +4568,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 28,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "320074"
     },
@@ -4243,6 +4580,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 31,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "176203"
     },
@@ -4254,6 +4592,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 32,
+      "pais": "Poland",
       "estado": "actualizado_espn",
       "espn_id": "179359"
     },
@@ -4265,6 +4604,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 27,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "252971"
     },
@@ -4276,6 +4616,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 30,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "189026"
     },
@@ -4287,6 +4628,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4298,6 +4640,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 28,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "236210"
     },
@@ -4309,6 +4652,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 24,
+      "pais": "Serbia",
       "estado": "actualizado_espn",
       "espn_id": "290375"
     },
@@ -4320,6 +4664,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 28,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "233621"
     },
@@ -4331,6 +4676,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 27,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "277307"
     },
@@ -4342,6 +4688,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 30,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "186505"
     },
@@ -4353,6 +4700,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 27,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "225607"
     },
@@ -4364,6 +4712,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 26,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "258917"
     },
@@ -4375,6 +4724,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 25,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "260775"
     },
@@ -4386,6 +4736,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4397,6 +4748,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 34,
+      "pais": "Italy",
       "estado": "actualizado_espn",
       "espn_id": "174915"
     },
@@ -4408,6 +4760,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 24,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "303444"
     },
@@ -4419,6 +4772,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4430,6 +4784,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 23,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "307527"
     },
@@ -4441,6 +4796,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4452,6 +4808,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4463,6 +4820,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4474,6 +4832,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 40,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "84774"
     },
@@ -4485,6 +4844,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 28,
+      "pais": "Austria",
       "estado": "actualizado_espn",
       "espn_id": "169189"
     },
@@ -4496,6 +4856,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 27,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "222793"
     },
@@ -4507,6 +4868,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 30,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "188052"
     },
@@ -4518,6 +4880,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 25,
+      "pais": "Canada",
       "estado": "actualizado_espn",
       "espn_id": "236721"
     },
@@ -4529,6 +4892,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 31,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "190161"
     },
@@ -4540,6 +4904,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 22,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "359370"
     },
@@ -4551,6 +4916,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 23,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "303821"
     },
@@ -4562,6 +4928,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 24,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "286831"
     },
@@ -4573,6 +4940,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 32,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "142200"
     },
@@ -4584,6 +4952,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 22,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "323790"
     },
@@ -4595,6 +4964,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 29,
+      "pais": "South Korea",
       "estado": "actualizado_espn",
       "espn_id": "157688"
     },
@@ -4606,6 +4976,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 32,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "176228"
     },
@@ -4617,6 +4988,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 31,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "174550"
     },
@@ -4628,6 +5000,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 30,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "224144"
     },
@@ -4639,6 +5012,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 30,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "178980"
     },
@@ -4650,6 +5024,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 29,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "184012"
     },
@@ -4661,6 +5036,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 28,
+      "pais": "Switzerland",
       "estado": "actualizado_espn",
       "espn_id": "238544"
     },
@@ -4672,6 +5048,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 28,
+      "pais": "Norway",
       "estado": "actualizado_espn",
       "espn_id": "222991"
     },
@@ -4683,6 +5060,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 29,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "220714"
     },
@@ -4694,6 +5072,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 26,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "286828"
     },
@@ -4705,6 +5084,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 31,
+      "pais": "Algeria",
       "estado": "actualizado_espn",
       "espn_id": "220703"
     },
@@ -4716,6 +5096,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 32,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "159142"
     },
@@ -4727,6 +5108,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4738,6 +5120,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 30,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "197628"
     },
@@ -4749,6 +5132,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 21,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "339879"
     },
@@ -4760,6 +5144,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 30,
+      "pais": "Guinea",
       "estado": "actualizado_espn",
       "espn_id": "186381"
     },
@@ -4771,6 +5156,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 24,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "274913"
     },
@@ -4782,6 +5168,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 35,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "178380"
     },
@@ -4793,6 +5180,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 30,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "186263"
     },
@@ -4804,6 +5192,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 25,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "281122"
     },
@@ -4815,6 +5204,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 32,
+      "pais": "Austria",
       "estado": "actualizado_espn",
       "espn_id": "173907"
     },
@@ -4826,6 +5216,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4837,6 +5228,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 27,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "259481"
     },
@@ -4848,6 +5240,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 23,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "290639"
     },
@@ -4859,6 +5252,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 36,
+      "pais": "Finland",
       "estado": "actualizado_espn",
       "espn_id": "134169"
     },
@@ -4870,6 +5264,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 25,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "281119"
     },
@@ -4881,6 +5276,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 27,
+      "pais": "Burkina Faso",
       "estado": "actualizado_espn",
       "espn_id": "257287"
     },
@@ -4892,6 +5288,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 30,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "166396"
     },
@@ -4903,6 +5300,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4914,6 +5312,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 27,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "228393"
     },
@@ -4925,6 +5324,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 30,
+      "pais": "Czechia",
       "estado": "actualizado_espn",
       "espn_id": "212330"
     },
@@ -4936,6 +5336,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -4947,6 +5348,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 29,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "174617"
     },
@@ -4958,6 +5360,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 26,
+      "pais": "Czechia",
       "estado": "actualizado_espn",
       "espn_id": "277313"
     },
@@ -4969,6 +5372,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 24,
+      "pais": "Ecuador",
       "estado": "actualizado_espn",
       "espn_id": "292062"
     },
@@ -4980,6 +5384,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 31,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "180998"
     },
@@ -4991,6 +5396,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -5002,6 +5408,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -5013,6 +5420,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 29,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "241662"
     },
@@ -5024,6 +5432,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 26,
+      "pais": "Nigeria",
       "estado": "actualizado_espn",
       "espn_id": "263134"
     },
@@ -5035,6 +5444,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 27,
+      "pais": "Morocco",
       "estado": "actualizado_espn",
       "espn_id": "240233"
     },
@@ -5046,6 +5456,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 32,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "159047"
     },
@@ -5057,6 +5468,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 24,
+      "pais": "Ecuador",
       "estado": "actualizado_espn",
       "espn_id": "287005"
     },
@@ -5068,6 +5480,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 23,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "290591"
     },
@@ -5079,6 +5492,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 26,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "288897"
     },
@@ -5090,6 +5504,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 21,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "355061"
     },
@@ -5101,6 +5516,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 20,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "345581"
     },
@@ -5112,6 +5528,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 23,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "328238"
     },
@@ -5123,6 +5540,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 24,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "288896"
     },
@@ -5134,6 +5552,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 29,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "229744"
     },
@@ -5145,6 +5564,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -5156,6 +5576,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 22,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "316128"
     },
@@ -5167,6 +5588,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 30,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "214596"
     },
@@ -5178,6 +5600,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 25,
+      "pais": "South Korea",
       "estado": "actualizado_espn",
       "espn_id": "274197"
     },
@@ -5189,6 +5612,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 20,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "336388"
     },
@@ -5200,6 +5624,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 25,
+      "pais": "Georgia",
       "estado": "actualizado_espn",
       "espn_id": "274745"
     },
@@ -5211,6 +5636,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 33,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "167192"
     },
@@ -5222,6 +5648,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -5233,6 +5660,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 27,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "271555"
     },
@@ -5244,6 +5672,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 30,
+      "pais": "Morocco",
       "estado": "actualizado_espn",
       "espn_id": "245243"
     },
@@ -5255,6 +5684,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -5266,6 +5696,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 30,
+      "pais": "Denmark",
       "estado": "actualizado_espn",
       "espn_id": "159543"
     },
@@ -5277,6 +5708,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 24,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "276221"
     },
@@ -5288,6 +5720,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 25,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "289114"
     },
@@ -5299,6 +5732,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 26,
+      "pais": "Algeria",
       "estado": "actualizado_espn",
       "espn_id": "259743"
     },
@@ -5310,6 +5744,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 36,
+      "pais": "Gabon",
       "estado": "actualizado_espn",
       "espn_id": "122260"
     },
@@ -5321,6 +5756,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 31,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "203061"
     },
@@ -5332,6 +5768,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -5343,6 +5780,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -5354,6 +5792,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 28,
+      "pais": "Morocco",
       "estado": "actualizado_espn",
       "espn_id": "238917"
     },
@@ -5365,6 +5804,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -5376,6 +5816,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 24,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "286369"
     },
@@ -5387,6 +5828,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -5398,6 +5840,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -5409,6 +5852,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 29,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "214401"
     },
@@ -5420,6 +5864,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 25,
+      "pais": "Ivory Coast",
       "estado": "actualizado_espn",
       "espn_id": "286569"
     },
@@ -5431,6 +5876,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 27,
+      "pais": "Ghana",
       "estado": "actualizado_espn",
       "espn_id": "277718"
     },
@@ -5442,6 +5888,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 28,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "240353"
     },
@@ -5453,6 +5900,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 29,
+      "pais": "Switzerland",
       "estado": "actualizado_espn",
       "espn_id": "222628"
     },
@@ -5464,6 +5912,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 22,
+      "pais": "Senegal",
       "estado": "actualizado_espn",
       "espn_id": "38721"
     },
@@ -5475,6 +5924,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 24,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "329690"
     },
@@ -5486,6 +5936,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 31,
+      "pais": "Japan",
       "estado": "actualizado_espn",
       "espn_id": "159348"
     },
@@ -5497,6 +5948,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 24,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "282643"
     },
@@ -5508,6 +5960,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -5519,6 +5972,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 28,
+      "pais": "Switzerland",
       "estado": "actualizado_espn",
       "espn_id": "258875"
     },
@@ -5530,6 +5984,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 24,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "310640"
     },
@@ -5541,6 +5996,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 26,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "240660"
     },
@@ -5552,6 +6008,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 29,
+      "pais": "Russia",
       "estado": "actualizado_espn",
       "espn_id": "195501"
     },
@@ -5563,6 +6020,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 21,
+      "pais": "Morocco",
       "estado": "actualizado_espn",
       "espn_id": "346947"
     },
@@ -5574,6 +6032,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 19,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "357108"
     },
@@ -5585,6 +6044,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 23,
+      "pais": "Denmark",
       "estado": "actualizado_espn",
       "espn_id": "308552"
     },
@@ -5596,6 +6056,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 30,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "215388"
     },
@@ -5607,6 +6068,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 27,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "246844"
     },
@@ -5618,6 +6080,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 30,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "252316"
     },
@@ -5629,6 +6092,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 30,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "145405"
     },
@@ -5640,6 +6104,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 35,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "125514"
     },
@@ -5651,6 +6116,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 32,
+      "pais": "Chile",
       "estado": "actualizado_espn",
       "espn_id": "202533"
     },
@@ -5662,6 +6128,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 31,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "179767"
     },
@@ -5673,6 +6140,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 26,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "253937"
     },
@@ -5684,6 +6152,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 38,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "114032"
     },
@@ -5695,6 +6164,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 25,
+      "pais": "Ecuador",
       "estado": "actualizado_espn",
       "espn_id": "277352"
     },
@@ -5706,6 +6176,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 26,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "259902"
     },
@@ -5717,6 +6188,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 28,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "203077"
     },
@@ -5728,6 +6200,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 28,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "210135"
     },
@@ -5739,6 +6212,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 28,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "251889"
     },
@@ -5750,6 +6224,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 29,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "234765"
     },
@@ -5761,6 +6236,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 35,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "201683"
     },
@@ -5772,6 +6248,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 38,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "198983"
     },
@@ -5783,6 +6260,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 22,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "315619"
     },
@@ -5794,6 +6272,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 33,
+      "pais": "Paraguay",
       "estado": "actualizado_espn",
       "espn_id": "118395"
     },
@@ -5805,6 +6284,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 29,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "252609"
     },
@@ -5816,6 +6296,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 27,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "254007"
     },
@@ -5827,6 +6308,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 27,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "286406"
     },
@@ -5838,6 +6320,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 30,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "210143"
     },
@@ -5849,6 +6332,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 30,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "236321"
     },
@@ -5860,6 +6344,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 33,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "152812"
     },
@@ -5871,6 +6356,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 21,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "329383"
     },
@@ -5882,6 +6368,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 25,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "258271"
     },
@@ -5893,6 +6380,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 27,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "276741"
     },
@@ -5904,6 +6392,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 37,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "185994"
     },
@@ -5915,6 +6404,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 27,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "257050"
     },
@@ -5926,6 +6416,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 31,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "186776"
     },
@@ -5937,6 +6428,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 24,
+      "pais": "Paraguay",
       "estado": "actualizado_espn",
       "espn_id": "289046"
     },
@@ -5948,6 +6440,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 25,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "311743"
     },
@@ -5959,6 +6452,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 26,
+      "pais": "Paraguay",
       "estado": "actualizado_espn",
       "espn_id": "301653"
     },
@@ -5970,6 +6464,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 25,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "266665"
     },
@@ -5981,6 +6476,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 29,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "235894"
     },
@@ -5992,6 +6488,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6003,6 +6500,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 28,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "234447"
     },
@@ -6014,6 +6512,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 29,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "236353"
     },
@@ -6025,6 +6524,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 32,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "201660"
     },
@@ -6036,6 +6536,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 25,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "301544"
     },
@@ -6047,6 +6548,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 34,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "132948"
     },
@@ -6058,6 +6560,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 25,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "279454"
     },
@@ -6069,6 +6572,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 29,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "182522"
     },
@@ -6080,6 +6584,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 26,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "269813"
     },
@@ -6091,6 +6596,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 19,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "421507"
     },
@@ -6102,6 +6608,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6113,6 +6620,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 29,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "270486"
     },
@@ -6124,6 +6632,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 31,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "218938"
     },
@@ -6135,6 +6644,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 27,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "292041"
     },
@@ -6146,6 +6656,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6157,6 +6668,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6168,6 +6680,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 39,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "118577"
     },
@@ -6179,6 +6692,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 29,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "228262"
     },
@@ -6190,6 +6704,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 30,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "219086"
     },
@@ -6201,6 +6716,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 31,
+      "pais": "Chile",
       "estado": "actualizado_espn",
       "espn_id": "184465"
     },
@@ -6212,6 +6728,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 34,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "157557"
     },
@@ -6223,6 +6740,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6234,6 +6752,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6245,6 +6764,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 33,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "177780"
     },
@@ -6256,6 +6776,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 30,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "195334"
     },
@@ -6267,6 +6788,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6278,6 +6800,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 26,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "275941"
     },
@@ -6289,6 +6812,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 33,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "195621"
     },
@@ -6300,6 +6824,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 38,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "135867"
     },
@@ -6311,6 +6836,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 34,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "138341"
     },
@@ -6322,6 +6848,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6333,6 +6860,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 23,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "297057"
     },
@@ -6344,6 +6872,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6355,6 +6884,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6366,6 +6896,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 38,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "195663"
     },
@@ -6377,6 +6908,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6388,6 +6920,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6399,6 +6932,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 26,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "286902"
     },
@@ -6410,6 +6944,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 27,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "290542"
     },
@@ -6421,6 +6956,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 34,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "152706"
     },
@@ -6432,6 +6968,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 31,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "153115"
     },
@@ -6443,6 +6980,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 24,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "290593"
     },
@@ -6454,6 +6992,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 24,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "297051"
     },
@@ -6465,6 +7004,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 39,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "95469"
     },
@@ -6476,6 +7016,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 30,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "260812"
     },
@@ -6487,6 +7028,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6498,6 +7040,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6509,6 +7052,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6520,6 +7064,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 27,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "256199"
     },
@@ -6531,6 +7076,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 23,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "286516"
     },
@@ -6542,6 +7088,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 29,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "310767"
     },
@@ -6553,6 +7100,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 25,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "309131"
     },
@@ -6564,6 +7112,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 29,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "233910"
     },
@@ -6575,6 +7124,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 26,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "302209"
     },
@@ -6586,6 +7136,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 24,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "301950"
     },
@@ -6597,6 +7148,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 27,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "271473"
     },
@@ -6608,6 +7160,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 28,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "238734"
     },
@@ -6619,6 +7172,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6630,6 +7184,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 23,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "290594"
     },
@@ -6641,6 +7196,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 32,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "168277"
     },
@@ -6652,6 +7208,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 28,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "233392"
     },
@@ -6663,6 +7220,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 33,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "3038"
     },
@@ -6674,6 +7232,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6685,6 +7244,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6696,6 +7256,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 27,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "268534"
     },
@@ -6707,6 +7268,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 33,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "144267"
     },
@@ -6718,6 +7280,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6729,6 +7292,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 28,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "228388"
     },
@@ -6740,6 +7304,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 29,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "226105"
     },
@@ -6751,6 +7316,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 28,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "315926"
     },
@@ -6762,6 +7328,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6773,6 +7340,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 23,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "297300"
     },
@@ -6784,6 +7352,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 20,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "353951"
     },
@@ -6795,6 +7364,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6806,6 +7376,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 26,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "241392"
     },
@@ -6817,6 +7388,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6828,6 +7400,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 33,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "168993"
     },
@@ -6839,6 +7412,7 @@
       "liga": "Serie A",
       "competicion": "Serie A",
       "edad": 24,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "282228"
     },
@@ -6850,6 +7424,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 22,
+      "pais": "Israel",
       "estado": "actualizado_espn",
       "espn_id": "325609"
     },
@@ -6861,6 +7436,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 20,
+      "pais": "Belgium",
       "estado": "actualizado_espn",
       "espn_id": "353363"
     },
@@ -6872,6 +7448,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6883,6 +7460,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6894,6 +7472,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 26,
+      "pais": "Croatia",
       "estado": "actualizado_espn",
       "espn_id": "305552"
     },
@@ -6905,6 +7484,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6916,6 +7496,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 22,
+      "pais": "Iceland",
       "estado": "actualizado_espn",
       "espn_id": "311168"
     },
@@ -6927,6 +7508,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6938,6 +7520,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6949,6 +7532,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 33,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "177042"
     },
@@ -6960,6 +7544,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -6971,6 +7556,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 34,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "194090"
     },
@@ -6982,6 +7568,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 28,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "216017"
     },
@@ -6993,6 +7580,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 37,
+      "pais": "Croatia",
       "estado": "actualizado_espn",
       "espn_id": "103485"
     },
@@ -7004,6 +7592,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 29,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "239998"
     },
@@ -7015,6 +7604,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 27,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "240912"
     },
@@ -7026,6 +7616,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 23,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "301416"
     },
@@ -7037,6 +7628,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 23,
+      "pais": "Belgium",
       "estado": "actualizado_espn",
       "espn_id": "310131"
     },
@@ -7048,6 +7640,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 35,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "127420"
     },
@@ -7059,6 +7652,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 26,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "255344"
     },
@@ -7070,6 +7664,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7081,6 +7676,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 27,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "259136"
     },
@@ -7092,6 +7688,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 23,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "304478"
     },
@@ -7103,6 +7700,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 25,
+      "pais": "Morocco",
       "estado": "actualizado_espn",
       "espn_id": "304572"
     },
@@ -7114,6 +7712,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 28,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "240965"
     },
@@ -7125,6 +7724,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7136,6 +7736,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 23,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "289120"
     },
@@ -7147,6 +7748,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 30,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "182424"
     },
@@ -7158,6 +7760,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7169,6 +7772,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 28,
+      "pais": "Slovakia",
       "estado": "actualizado_espn",
       "espn_id": "257786"
     },
@@ -7180,6 +7784,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 34,
+      "pais": "Austria",
       "estado": "actualizado_espn",
       "espn_id": "149904"
     },
@@ -7191,6 +7796,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7202,6 +7808,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 24,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "282230"
     },
@@ -7213,6 +7820,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 26,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "282186"
     },
@@ -7224,6 +7832,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7235,6 +7844,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 24,
+      "pais": "Algeria",
       "estado": "actualizado_espn",
       "espn_id": "341711"
     },
@@ -7246,6 +7856,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7257,6 +7868,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 24,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "324952"
     },
@@ -7268,6 +7880,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7279,6 +7892,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7290,6 +7904,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7301,6 +7916,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 27,
+      "pais": "Japan",
       "estado": "actualizado_espn",
       "espn_id": "274277"
     },
@@ -7312,6 +7928,7 @@
       "liga": "Eredivisie",
       "competicion": "Eredivisie",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7323,6 +7940,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 37,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "121842"
     },
@@ -7334,6 +7952,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7345,6 +7964,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 36,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "133628"
     },
@@ -7356,6 +7976,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7367,6 +7988,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7378,6 +8000,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7389,6 +8012,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 33,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "196767"
     },
@@ -7400,6 +8024,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7411,6 +8036,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7422,6 +8048,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 29,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "186087"
     },
@@ -7433,6 +8060,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 33,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "171513"
     },
@@ -7444,6 +8072,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 23,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "315576"
     },
@@ -7455,6 +8084,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 30,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "252488"
     },
@@ -7466,6 +8096,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 28,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "270247"
     },
@@ -7477,6 +8108,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 30,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "270221"
     },
@@ -7488,6 +8120,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7499,6 +8132,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7510,6 +8144,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 28,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "70721"
     },
@@ -7521,6 +8156,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 31,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "166323"
     },
@@ -7532,6 +8168,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7543,6 +8180,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 28,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "287998"
     },
@@ -7554,6 +8192,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7565,6 +8204,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 36,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "115480"
     },
@@ -7576,6 +8216,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7587,6 +8228,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7598,6 +8240,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 39,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "106650"
     },
@@ -7609,6 +8252,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7619,7 +8263,8 @@
       "club": "Millonarios",
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
-      "edad": 37,
+      "edad": 33,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "121216"
     },
@@ -7631,6 +8276,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 40,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "87706"
     },
@@ -7642,6 +8288,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 36,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "131470"
     },
@@ -7653,6 +8300,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7664,6 +8312,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7675,6 +8324,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 26,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "258803"
     },
@@ -7686,6 +8336,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7697,6 +8348,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 31,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "206677"
     },
@@ -7708,6 +8360,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 30,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "223044"
     },
@@ -7719,6 +8372,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 28,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "203067"
     },
@@ -7730,6 +8384,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7741,6 +8396,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7752,6 +8408,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 26,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "295070"
     },
@@ -7763,6 +8420,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7774,6 +8432,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7785,6 +8444,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7796,6 +8456,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 35,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "197425"
     },
@@ -7807,6 +8468,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 27,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "286714"
     },
@@ -7818,6 +8480,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 39,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "121232"
     },
@@ -7829,6 +8492,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 41,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "98576"
     },
@@ -7840,6 +8504,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7851,6 +8516,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 36,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "138391"
     },
@@ -7862,6 +8528,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7873,6 +8540,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7884,6 +8552,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7895,6 +8564,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7906,6 +8576,7 @@
       "liga": "Liga BetPlay",
       "competicion": "Liga BetPlay",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7917,6 +8588,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7928,6 +8600,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 26,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "282589"
     },
@@ -7939,6 +8612,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7950,6 +8624,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 22,
+      "pais": "Greece",
       "estado": "actualizado_espn",
       "espn_id": "316344"
     },
@@ -7961,6 +8636,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7972,6 +8648,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -7983,6 +8660,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 27,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "315801"
     },
@@ -7994,6 +8672,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 38,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "45843"
     },
@@ -8005,6 +8684,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 39,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "125088"
     },
@@ -8016,6 +8696,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 22,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "339804"
     },
@@ -8027,6 +8708,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 23,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "297047"
     },
@@ -8038,6 +8720,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 23,
+      "pais": "Jamaica",
       "estado": "actualizado_espn",
       "espn_id": "316269"
     },
@@ -8049,6 +8732,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 22,
+      "pais": "Honduras",
       "estado": "actualizado_espn",
       "espn_id": "229289"
     },
@@ -8060,6 +8744,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8071,6 +8756,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8082,6 +8768,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 27,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "228394"
     },
@@ -8093,6 +8780,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 20,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "387661"
     },
@@ -8104,6 +8792,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 39,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "43372"
     },
@@ -8115,6 +8804,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 30,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "218252"
     },
@@ -8126,6 +8816,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 33,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "201103"
     },
@@ -8137,6 +8828,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 35,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "183758"
     },
@@ -8148,6 +8840,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 31,
+      "pais": "Gabon",
       "estado": "actualizado_espn",
       "espn_id": "213304"
     },
@@ -8159,6 +8852,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8170,6 +8864,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 27,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "231192"
     },
@@ -8181,6 +8876,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 31,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "193171"
     },
@@ -8192,6 +8888,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 33,
+      "pais": "South Korea",
       "estado": "actualizado_espn",
       "espn_id": "149945"
     },
@@ -8203,6 +8900,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 39,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "88965"
     },
@@ -8214,6 +8912,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8225,6 +8924,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8236,6 +8936,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8247,6 +8948,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 29,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "199904"
     },
@@ -8258,6 +8960,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8269,6 +8972,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8280,6 +8984,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8291,6 +8996,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 20,
+      "pais": "Venezuela",
       "estado": "actualizado_espn",
       "espn_id": "115713"
     },
@@ -8302,6 +9008,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 40,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "131979"
     },
@@ -8313,6 +9020,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 29,
+      "pais": "El Salvador",
       "estado": "actualizado_espn",
       "espn_id": "256514"
     },
@@ -8324,6 +9032,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 33,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "206682"
     },
@@ -8335,6 +9044,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 28,
+      "pais": "Cameroon",
       "estado": "actualizado_espn",
       "espn_id": "252474"
     },
@@ -8346,6 +9056,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 30,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "216617"
     },
@@ -8357,6 +9068,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 20,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "318554"
     },
@@ -8368,6 +9080,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 31,
+      "pais": "Slovakia",
       "estado": "actualizado_espn",
       "espn_id": "171573"
     },
@@ -8379,6 +9092,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 31,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "210252"
     },
@@ -8390,6 +9104,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8401,6 +9116,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 25,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "280721"
     },
@@ -8412,6 +9128,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8423,6 +9140,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 27,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "254383"
     },
@@ -8434,6 +9152,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8445,6 +9164,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 27,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "254382"
     },
@@ -8456,6 +9176,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8467,6 +9188,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8478,6 +9200,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8489,6 +9212,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 26,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "301748"
     },
@@ -8500,6 +9224,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 32,
+      "pais": "Saudi Arabia",
       "estado": "actualizado_espn",
       "espn_id": "269485"
     },
@@ -8511,6 +9236,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 31,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "159317"
     },
@@ -8522,6 +9248,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 35,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "165562"
     },
@@ -8533,6 +9260,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 26,
+      "pais": "Saudi Arabia",
       "estado": "actualizado_espn",
       "espn_id": "331918"
     },
@@ -8544,6 +9272,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 33,
+      "pais": "Croatia",
       "estado": "actualizado_espn",
       "espn_id": "178383"
     },
@@ -8555,6 +9284,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 32,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "201547"
     },
@@ -8566,6 +9296,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 26,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "276350"
     },
@@ -8577,6 +9308,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 34,
+      "pais": "Senegal",
       "estado": "actualizado_espn",
       "espn_id": "169797"
     },
@@ -8588,6 +9320,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 41,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "22774"
     },
@@ -8599,6 +9332,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8610,6 +9344,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 26,
+      "pais": "Saudi Arabia",
       "estado": "actualizado_espn",
       "espn_id": "302332"
     },
@@ -8621,6 +9356,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 26,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "277306"
     },
@@ -8632,6 +9368,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 30,
+      "pais": "Saudi Arabia",
       "estado": "actualizado_espn",
       "espn_id": "296972"
     },
@@ -8643,6 +9380,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8654,6 +9392,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 29,
+      "pais": "Saudi Arabia",
       "estado": "actualizado_espn",
       "espn_id": "270415"
     },
@@ -8665,6 +9404,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8676,6 +9416,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8687,6 +9428,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 35,
+      "pais": "Saudi Arabia",
       "estado": "actualizado_espn",
       "espn_id": "175149"
     },
@@ -8698,6 +9440,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 31,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "176399"
     },
@@ -8709,6 +9452,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 34,
+      "pais": "Senegal",
       "estado": "actualizado_espn",
       "espn_id": "150312"
     },
@@ -8720,6 +9464,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8731,6 +9476,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 29,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "208128"
     },
@@ -8742,6 +9488,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 31,
+      "pais": "Serbia",
       "estado": "actualizado_espn",
       "espn_id": "211141"
     },
@@ -8753,6 +9500,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 34,
+      "pais": "Saudi Arabia",
       "estado": "actualizado_espn",
       "espn_id": "163850"
     },
@@ -8764,6 +9512,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 29,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "202191"
     },
@@ -8775,6 +9524,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 26,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "271788"
     },
@@ -8786,6 +9536,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 23,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "304571"
     },
@@ -8797,6 +9548,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8808,6 +9560,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8819,6 +9572,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 31,
+      "pais": "Saudi Arabia",
       "estado": "actualizado_espn",
       "espn_id": "262468"
     },
@@ -8830,6 +9584,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 27,
+      "pais": "Saudi Arabia",
       "estado": "actualizado_espn",
       "espn_id": "270417"
     },
@@ -8841,6 +9596,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 26,
+      "pais": "Saudi Arabia",
       "estado": "actualizado_espn",
       "espn_id": "294239"
     },
@@ -8852,6 +9608,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8863,6 +9620,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 34,
+      "pais": "Senegal",
       "estado": "actualizado_espn",
       "espn_id": "238362"
     },
@@ -8874,6 +9632,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 26,
+      "pais": "Saudi Arabia",
       "estado": "actualizado_espn",
       "espn_id": "331920"
     },
@@ -8885,6 +9644,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 28,
+      "pais": "Türkiye",
       "estado": "actualizado_espn",
       "espn_id": "267178"
     },
@@ -8896,6 +9656,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8907,6 +9668,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 29,
+      "pais": "Ivory Coast",
       "estado": "actualizado_espn",
       "espn_id": "194711"
     },
@@ -8918,6 +9680,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 23,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "307381"
     },
@@ -8929,6 +9692,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8940,6 +9704,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 35,
+      "pais": "Algeria",
       "estado": "actualizado_espn",
       "espn_id": "163940"
     },
@@ -8951,6 +9716,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8962,6 +9728,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 30,
+      "pais": "England",
       "estado": "actualizado_espn",
       "espn_id": "180639"
     },
@@ -8973,6 +9740,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 29,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "193281"
     },
@@ -8984,6 +9752,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -8995,6 +9764,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9006,6 +9776,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9017,6 +9788,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9028,6 +9800,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9039,6 +9812,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 26,
+      "pais": "Saudi Arabia",
       "estado": "actualizado_espn",
       "espn_id": "283331"
     },
@@ -9050,6 +9824,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9061,6 +9836,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 24,
+      "pais": "Ukraine",
       "estado": "actualizado_espn",
       "espn_id": "286109"
     },
@@ -9072,6 +9848,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 28,
+      "pais": "Denmark",
       "estado": "actualizado_espn",
       "espn_id": "265944"
     },
@@ -9083,6 +9860,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 22,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "346588"
     },
@@ -9094,6 +9872,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 38,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "119289"
     },
@@ -9105,6 +9884,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9116,6 +9896,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 25,
+      "pais": "Türkiye",
       "estado": "actualizado_espn",
       "espn_id": "272700"
     },
@@ -9127,6 +9908,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 30,
+      "pais": "Norway",
       "estado": "actualizado_espn",
       "espn_id": "212900"
     },
@@ -9138,6 +9920,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 27,
+      "pais": "Türkiye",
       "estado": "actualizado_espn",
       "espn_id": "306789"
     },
@@ -9149,6 +9932,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 27,
+      "pais": "Greece",
       "estado": "actualizado_espn",
       "espn_id": "220819"
     },
@@ -9160,6 +9944,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 38,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "108223"
     },
@@ -9171,6 +9956,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 23,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "307631"
     },
@@ -9182,6 +9968,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9193,6 +9980,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 26,
+      "pais": "Luxembourg",
       "estado": "actualizado_espn",
       "espn_id": "271854"
     },
@@ -9204,6 +9992,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9215,6 +10004,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 21,
+      "pais": "Norway",
       "estado": "actualizado_espn",
       "espn_id": "313415"
     },
@@ -9226,6 +10016,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 28,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "224103"
     },
@@ -9237,6 +10028,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 20,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "339191"
     },
@@ -9248,6 +10040,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 26,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "238903"
     },
@@ -9259,6 +10052,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9270,6 +10064,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 25,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "268437"
     },
@@ -9281,6 +10076,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9292,6 +10088,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9303,6 +10100,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 24,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "307601"
     },
@@ -9314,6 +10112,7 @@
       "liga": "Premier League",
       "competicion": "Premier League",
       "edad": 24,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "323986"
     },
@@ -9325,6 +10124,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 19,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "387204"
     },
@@ -9336,6 +10136,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 28,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "259732"
     },
@@ -9347,6 +10148,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 22,
+      "pais": "Spain",
       "estado": "actualizado_espn",
       "espn_id": "364815"
     },
@@ -9358,6 +10160,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 29,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "256909"
     },
@@ -9369,6 +10172,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 34,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "142670"
     },
@@ -9380,6 +10184,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 32,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "199065"
     },
@@ -9391,6 +10196,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9402,6 +10208,7 @@
       "liga": "MLS",
       "competicion": "MLS",
       "edad": 29,
+      "pais": "Canada",
       "estado": "actualizado_espn",
       "espn_id": "270505"
     },
@@ -9413,6 +10220,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9424,6 +10232,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9435,6 +10244,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9446,6 +10256,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9457,6 +10268,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 22,
+      "pais": "Ivory Coast",
       "estado": "actualizado_espn",
       "espn_id": "343964"
     },
@@ -9468,6 +10280,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 24,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "304106"
     },
@@ -9479,6 +10292,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 19,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "371529"
     },
@@ -9490,6 +10304,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 31,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "124204"
     },
@@ -9501,6 +10316,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 26,
+      "pais": "Denmark",
       "estado": "actualizado_espn",
       "espn_id": "274911"
     },
@@ -9512,6 +10328,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 31,
+      "pais": "Japan",
       "estado": "actualizado_espn",
       "espn_id": "270752"
     },
@@ -9523,6 +10340,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 27,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "262591"
     },
@@ -9534,6 +10352,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9545,6 +10364,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 19,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "376274"
     },
@@ -9556,6 +10376,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9567,6 +10388,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9578,6 +10400,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9589,6 +10412,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 26,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "290592"
     },
@@ -9600,6 +10424,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 26,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "287025"
     },
@@ -9611,6 +10436,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 21,
+      "pais": "Denmark",
       "estado": "actualizado_espn",
       "espn_id": "362794"
     },
@@ -9622,6 +10448,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 39,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "108622"
     },
@@ -9633,6 +10460,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 25,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "287225"
     },
@@ -9644,6 +10472,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 29,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "197105"
     },
@@ -9655,6 +10484,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9666,6 +10496,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9677,6 +10508,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 30,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "212973"
     },
@@ -9688,6 +10520,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 26,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "268478"
     },
@@ -9699,6 +10532,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 30,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "202641"
     },
@@ -9710,6 +10544,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9721,6 +10556,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 27,
+      "pais": "Nigeria",
       "estado": "actualizado_espn",
       "espn_id": "228296"
     },
@@ -9732,6 +10568,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 33,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "167411"
     },
@@ -9743,6 +10580,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9754,6 +10592,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 31,
+      "pais": "Türkiye",
       "estado": "actualizado_espn",
       "espn_id": "159146"
     },
@@ -9765,6 +10604,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9776,6 +10616,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9787,6 +10628,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9798,6 +10640,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 25,
+      "pais": "Türkiye",
       "estado": "actualizado_espn",
       "espn_id": "266575"
     },
@@ -9809,6 +10652,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9820,6 +10664,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9831,6 +10676,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 27,
+      "pais": "Türkiye",
       "estado": "actualizado_espn",
       "espn_id": "266002"
     },
@@ -9842,6 +10688,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 31,
+      "pais": "Slovakia",
       "estado": "actualizado_espn",
       "espn_id": "175195"
     },
@@ -9853,6 +10700,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 29,
+      "pais": "Türkiye",
       "estado": "actualizado_espn",
       "espn_id": "230757"
     },
@@ -9864,6 +10712,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 25,
+      "pais": "Netherlands",
       "estado": "actualizado_espn",
       "espn_id": "304866"
     },
@@ -9875,6 +10724,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 29,
+      "pais": "Morocco",
       "estado": "actualizado_espn",
       "espn_id": "195226"
     },
@@ -9886,6 +10736,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 33,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "161559"
     },
@@ -9897,6 +10748,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9908,6 +10760,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9919,6 +10772,7 @@
       "liga": "Saudi Pro League",
       "competicion": "Saudi Pro League",
       "edad": 28,
+      "pais": "Morocco",
       "estado": "actualizado_espn",
       "espn_id": "242736"
     },
@@ -9930,6 +10784,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9941,6 +10796,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9952,6 +10808,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9963,6 +10820,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9974,6 +10832,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -9985,6 +10844,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 28,
+      "pais": "Türkiye",
       "estado": "actualizado_espn",
       "espn_id": "239706"
     },
@@ -9996,6 +10856,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10007,6 +10868,7 @@
       "liga": "Bundesliga",
       "competicion": "Bundesliga",
       "edad": 32,
+      "pais": "Belgium",
       "estado": "actualizado_espn",
       "espn_id": "156479"
     },
@@ -10018,6 +10880,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 37,
+      "pais": "Türkiye",
       "estado": "actualizado_espn",
       "espn_id": "124880"
     },
@@ -10029,6 +10892,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10040,6 +10904,7 @@
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
       "edad": 35,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "192226"
     },
@@ -10051,6 +10916,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 28,
+      "pais": "Germany",
       "estado": "actualizado_espn",
       "espn_id": "233499"
     },
@@ -10062,6 +10928,7 @@
       "liga": "Ligue 1",
       "competicion": "Ligue 1",
       "edad": 32,
+      "pais": "Congo DR",
       "estado": "actualizado_espn",
       "espn_id": "165892"
     },
@@ -10073,6 +10940,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10084,6 +10952,7 @@
       "liga": "Liga Portugal",
       "competicion": "Liga Portugal",
       "edad": 33,
+      "pais": "Portugal",
       "estado": "actualizado_espn",
       "espn_id": "192421"
     },
@@ -10095,6 +10964,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 25,
+      "pais": "Albania",
       "estado": "actualizado_espn",
       "espn_id": "305542"
     },
@@ -10106,6 +10976,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 29,
+      "pais": "Kosovo",
       "estado": "actualizado_espn",
       "espn_id": "220705"
     },
@@ -10117,6 +10988,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10128,6 +11000,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10139,6 +11012,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 25,
+      "pais": "Türkiye",
       "estado": "actualizado_espn",
       "espn_id": "268587"
     },
@@ -10150,6 +11024,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10161,6 +11036,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 32,
+      "pais": "Türkiye",
       "estado": "actualizado_espn",
       "espn_id": "183152"
     },
@@ -10172,6 +11048,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10183,6 +11060,7 @@
       "liga": "Süper Lig",
       "competicion": "Süper Lig",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10194,6 +11072,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10205,6 +11084,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 27,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "195312"
     },
@@ -10216,6 +11096,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 26,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "285756"
     },
@@ -10227,6 +11108,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 25,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "290414"
     },
@@ -10238,6 +11120,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 33,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "132676"
     },
@@ -10249,6 +11132,7 @@
       "liga": "LaLiga",
       "competicion": "LaLiga",
       "edad": 29,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "283827"
     },
@@ -10260,6 +11144,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 36,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "137439"
     },
@@ -10271,6 +11156,7 @@
       "liga": "Liga Profesional Argentina",
       "competicion": "Liga Profesional Argentina",
       "edad": 32,
+      "pais": "Chile",
       "estado": "actualizado_espn",
       "espn_id": "70983"
     },
@@ -10282,6 +11168,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 25,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "144325"
     },
@@ -10293,6 +11180,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 33,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "93184"
     },
@@ -10304,6 +11192,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10315,6 +11204,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 25,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "307891"
     },
@@ -10326,6 +11216,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10337,6 +11228,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 26,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "129421"
     },
@@ -10348,6 +11240,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 28,
+      "pais": "USA",
       "estado": "actualizado_espn",
       "espn_id": "212824"
     },
@@ -10359,6 +11252,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 28,
+      "pais": "Chile",
       "estado": "actualizado_espn",
       "espn_id": "204923"
     },
@@ -10370,6 +11264,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 31,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "159042"
     },
@@ -10381,6 +11276,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 26,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "266587"
     },
@@ -10392,6 +11288,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10403,6 +11300,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 29,
+      "pais": "Colombia",
       "estado": "actualizado_espn",
       "espn_id": "270229"
     },
@@ -10414,6 +11312,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 31,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "192166"
     },
@@ -10425,6 +11324,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10436,6 +11336,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 26,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "276942"
     },
@@ -10447,6 +11348,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10458,6 +11360,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 29,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "239990"
     },
@@ -10469,6 +11372,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 35,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "151850"
     },
@@ -10480,6 +11384,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10491,6 +11396,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10502,6 +11408,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 29,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "224752"
     },
@@ -10513,6 +11420,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 23,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "275892"
     },
@@ -10524,6 +11432,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10535,6 +11444,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 26,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "265866"
     },
@@ -10546,6 +11456,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 30,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "242614"
     },
@@ -10557,6 +11468,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 20,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "365830"
     },
@@ -10568,6 +11480,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 32,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "115447"
     },
@@ -10579,6 +11492,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 40,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "68340"
     },
@@ -10590,6 +11504,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10601,6 +11516,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 27,
+      "pais": "Brazil",
       "estado": "actualizado_espn",
       "espn_id": "319520"
     },
@@ -10612,6 +11528,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10623,6 +11540,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 28,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "233130"
     },
@@ -10634,6 +11552,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10645,6 +11564,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 31,
+      "pais": "Uruguay",
       "estado": "actualizado_espn",
       "espn_id": "200636"
     },
@@ -10656,6 +11576,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 29,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "245771"
     },
@@ -10667,6 +11588,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 28,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "240144"
     },
@@ -10678,6 +11600,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 40,
+      "pais": "France",
       "estado": "actualizado_espn",
       "espn_id": "84854"
     },
@@ -10689,6 +11612,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 31,
+      "pais": "Argentina",
       "estado": "actualizado_espn",
       "espn_id": "207549"
     },
@@ -10700,6 +11624,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10711,6 +11636,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     },
@@ -10722,6 +11648,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 25,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "253830"
     },
@@ -10733,6 +11660,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 24,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "319255"
     },
@@ -10744,6 +11672,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 22,
+      "pais": "Canada",
       "estado": "actualizado_espn",
       "espn_id": "186489"
     },
@@ -10755,6 +11684,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 34,
+      "pais": "Mexico",
       "estado": "actualizado_espn",
       "espn_id": "176169"
     },
@@ -10766,6 +11696,7 @@
       "liga": "Liga MX",
       "competicion": "Liga MX",
       "edad": 0,
+      "pais": "Sin datos",
       "estado": "no_encontrado_espn",
       "espn_id": ""
     }
