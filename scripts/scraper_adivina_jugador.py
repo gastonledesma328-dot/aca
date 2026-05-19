@@ -28,6 +28,37 @@ MIN_PLAYERS_SAFE = 50
 DETAIL_CACHE: dict[str, dict] = {}
 SEARCH_CACHE: dict[str, dict | None] = {}
 
+# Si un jugador no aparece en ningún roster actual de ESPN, no se mantiene con el club viejo de la base.
+# Esto evita que el juego siga mostrando jugadores desactualizados por culpa del jugadores_base.json.
+ONLY_INCLUDE_CURRENT_ESPN_MATCHES = True
+
+# Archivo opcional para bajas/correcciones rápidas cuando una salida ya fue anunciada
+# pero ESPN todavía no actualizó el roster.
+# Ruta sugerida: adivinajugador/jugadores_overrides.json
+# Ejemplos:
+# [
+#   {"nombre":"Robert Lewandowski", "accion":"excluir", "motivo":"Salida anunciada de Barcelona"},
+#   {"nombre":"Jugador X", "club":"Nuevo Club", "liga":"Nueva Liga", "edad":25, "pais":"Argentina"}
+# ]
+OVERRIDES_FILE = Path("adivinajugador/jugadores_overrides.json")
+
+# Bajas conocidas que conviene aplicar aunque ESPN tarde en actualizar sus rosters.
+# Mantengo esto mínimo para no inventar transferencias.
+DEFAULT_PLAYER_OVERRIDES: list[dict[str, Any]] = [
+    {
+        "nombre": "Robert Lewandowski",
+        "club_base": "Barcelona",
+        "accion": "excluir",
+        "motivo": "Salida anunciada de FC Barcelona; evitar que siga saliendo como jugador de Barcelona si ESPN demora el roster.",
+    },
+    {
+        "nombre": "Robert Lewandowski",
+        "club_base": "FC Barcelona",
+        "accion": "excluir",
+        "motivo": "Salida anunciada de FC Barcelona; evitar que siga saliendo como jugador de Barcelona si ESPN demora el roster.",
+    },
+]
+
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -1205,12 +1236,86 @@ def cargar_json_actual() -> dict:
     except Exception:
         return {}
 
+
+def cargar_overrides() -> list[dict]:
+    overrides = list(DEFAULT_PLAYER_OVERRIDES)
+
+    if OVERRIDES_FILE.exists():
+        try:
+            data = json.loads(OVERRIDES_FILE.read_text(encoding="utf-8-sig"))
+            if isinstance(data, dict):
+                data = data.get("jugadores") or data.get("overrides") or []
+            if isinstance(data, list):
+                overrides.extend([x for x in data if isinstance(x, dict)])
+        except Exception as exc:
+            print(f"⚠️ No pude leer {OVERRIDES_FILE}: {exc}")
+
+    return overrides
+
+
+def buscar_override(jugador_base: dict, overrides: list[dict]) -> dict | None:
+    nombre = jugador_base.get("nombre") or ""
+    club_base = jugador_base.get("club_base") or ""
+    liga_base = jugador_base.get("liga_base") or ""
+
+    for ov in overrides:
+        ov_nombre = ov.get("nombre") or ov.get("name") or ""
+        if not is_probably_same_player_name(nombre, ov_nombre):
+            continue
+
+        ov_club_base = ov.get("club_base") or ov.get("club") or ""
+        ov_liga_base = ov.get("liga_base") or ov.get("liga") or ""
+
+        # Si el override especifica club/liga base, lo aplicamos solo para ese contexto.
+        if ov_club_base and club_base and not same_team(ov_club_base, club_base):
+            continue
+        if ov_liga_base and liga_base and not same_league(ov_liga_base, liga_base):
+            continue
+
+        return ov
+
+    return None
+
+
+def es_accion_excluir(override: dict | None) -> bool:
+    if not override:
+        return False
+    accion = slugify(override.get("accion") or override.get("action") or "")
+    return accion in {"excluir", "exclude", "remove", "baja", "no incluir", "no incluirlo", "quitar"}
+
+
+def jugador_desde_override(jugador_base: dict, override: dict) -> dict:
+    nombre = override.get("nombre_actual") or override.get("nombre") or jugador_base.get("nombre")
+    club = override.get("club_actual") or override.get("club") or jugador_base.get("club_base") or "Sin datos"
+    liga = override.get("liga_actual") or override.get("liga") or jugador_base.get("liga_base") or "Sin datos"
+    espn_id = str(override.get("espn_id") or "").strip()
+    imagen = override.get("imagen") or (f"https://a.espncdn.com/i/headshots/soccer/players/full/{espn_id}.png" if espn_id else "")
+
+    return {
+        "nombre": nombre,
+        "nombre_base": jugador_base.get("nombre") or nombre,
+        "altura": int(jugador_base.get("altura") or 0),
+        "posicion": jugador_base.get("posicion") or "M",
+        "club": club,
+        "liga": liga,
+        "competicion": liga,
+        "edad": int(override.get("edad") or 0),
+        "pais": override.get("pais") or "Sin datos",
+        "imagen": imagen,
+        "estado": "actualizado_override",
+        "confianza": "override_manual",
+        "espn_id": espn_id,
+    }
+
+
 def main() -> None:
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
     print(f"Leyendo base: {BASE_FILE}")
     base, errores_base = cargar_base()
     print(f"Jugadores base detectados: {len(base)}")
+    overrides = cargar_overrides()
+    print(f"Overrides/bajas cargadas: {len(overrides)}")
 
     if len(base) < MIN_PLAYERS_SAFE:
         raise ValueError(
@@ -1223,11 +1328,41 @@ def main() -> None:
     actualizaciones: list[dict] = []
     no_encontrados: list[dict] = []
     jugadores_finales: list[dict] = []
+    excluidos_por_baja: list[dict] = []
+    excluidos_no_actuales: list[dict] = []
 
     ambiguos: list[dict] = []
 
     for j in base:
         nombre = j["nombre"]
+        override = buscar_override(j, overrides)
+
+        if es_accion_excluir(override):
+            excluidos_por_baja.append({
+                "nombre": nombre,
+                "club_base": j.get("club_base") or "Sin datos",
+                "liga_base": j.get("liga_base") or "Sin datos",
+                "motivo": (override or {}).get("motivo") or "excluido_por_override",
+            })
+            continue
+
+        # Override de actualización explícita: útil si sabés el nuevo club antes que ESPN.
+        if override and (override.get("club") or override.get("club_actual") or override.get("liga") or override.get("liga_actual")):
+            jugadores_finales.append(jugador_desde_override(j, override))
+            actualizaciones.append({
+                "nombre": nombre,
+                "nombre_actual": override.get("nombre_actual") or override.get("nombre") or nombre,
+                "club_base": j.get("club_base") or "Sin datos",
+                "liga_base": j.get("liga_base") or "Sin datos",
+                "club_actual": override.get("club_actual") or override.get("club") or j.get("club_base") or "Sin datos",
+                "liga_actual": override.get("liga_actual") or override.get("liga") or j.get("liga_base") or "Sin datos",
+                "edad": int(override.get("edad") or 0),
+                "pais": override.get("pais") or "Sin datos",
+                "espn_id": override.get("espn_id") or "",
+                "confianza": "override_manual",
+            })
+            continue
+
         match, motivo_match, candidatos = resolver_jugador_espn(j, index_espn)
 
         if match:
@@ -1297,6 +1432,33 @@ def main() -> None:
 
             no_encontrados.append(registro)
 
+            if ONLY_INCLUDE_CURRENT_ESPN_MATCHES:
+                excluidos_no_actuales.append({
+                    "nombre": nombre,
+                    "club_base": j.get("club_base") or "Sin datos",
+                    "liga_base": j.get("liga_base") or "Sin datos",
+                    "motivo": motivo_match,
+                    "detalle": "No aparece con confianza en rosters actuales de ESPN; no se mantiene con club viejo de la base.",
+                    "pais_encontrado_por_busqueda": pais_fallback if pais_fallback != "Sin datos" else "",
+                    "espn_id": espn_id_fallback,
+                })
+                if motivo_match == "ambiguo":
+                    ambiguos.append({
+                        **registro,
+                        "candidatos": [
+                            {
+                                "nombre_espn": c.get("nombre_espn"),
+                                "club": c.get("club"),
+                                "liga": c.get("liga"),
+                                "edad": c.get("edad"),
+                                "pais": c.get("pais"),
+                                "espn_id": c.get("espn_id"),
+                            }
+                            for c in candidatos[:8]
+                        ],
+                    })
+                continue
+
             if motivo_match == "ambiguo":
                 ambiguos.append({
                     **registro,
@@ -1335,21 +1497,27 @@ def main() -> None:
     elapsed = round(time.time() - t0, 1)
 
     payload = {
-        "fuente": "jugadores_base.json curado + ESPN rosters + ESPN athlete detail/search",
-        "modo": "actualiza_todo_menos_altura_y_posicion",
+        "fuente": "jugadores_base.json curado + ESPN rosters + ESPN athlete detail/search + bajas/overrides",
+        "modo": "actualiza_todo_menos_altura_y_posicion_y_excluye_no_actuales",
         "actualizado": datetime.now(timezone.utc).isoformat(),
         "total": len(jugadores_finales),
         "con_pais": sum(1 for x in jugadores_finales if x.get("pais") and x.get("pais") != "Sin datos"),
         "sin_pais": sum(1 for x in jugadores_finales if not x.get("pais") or x.get("pais") == "Sin datos"),
         "base_detectados": len(base),
+        "incluidos_en_juego": len(jugadores_finales),
+        "excluidos_por_baja": len(excluidos_por_baja),
+        "excluidos_no_actuales": len(excluidos_no_actuales),
         "tiempo_segundos": elapsed,
         "con_imagen": sum(1 for x in jugadores_finales if x.get("imagen")),
         "sin_imagen": sum(1 for x in jugadores_finales if not x.get("imagen")),
         "reglas": {
             "mantiene_manual": ["altura", "posicion"],
             "actualiza_espn": ["nombre", "club", "liga", "competicion", "edad", "pais", "imagen", "espn_id"],
+            "no_mantiene_club_viejo_si_no_aparece_en_roster_actual": ONLY_INCLUDE_CURRENT_ESPN_MATCHES,
         },
         "actualizaciones": actualizaciones,
+        "excluidos_por_baja": excluidos_por_baja,
+        "excluidos_no_actuales": excluidos_no_actuales,
         "no_encontrados": no_encontrados,
         "ambiguos_no_actualizados": ambiguos,
         "equipos_no_encontrados": equipos_no_encontrados,
@@ -1375,8 +1543,10 @@ def main() -> None:
 
     print("\n" + "═" * 60)
     print(f"✅ Guardado: {OUTPUT_FILE}")
-    print(f"Jugadores finales: {payload['total']}")
+    print(f"Jugadores finales incluidos: {payload['total']}")
     print(f"Actualizaciones club/liga detectadas: {len(actualizaciones)}")
+    print(f"Excluidos por baja/override: {len(excluidos_por_baja)}")
+    print(f"Excluidos por no aparecer actuales en ESPN: {len(excluidos_no_actuales)}")
     print(f"No encontrados en ESPN: {len(no_encontrados)}")
     print(f"Con país: {payload['con_pais']} | Sin país: {payload['sin_pais']}")
     print(f"Tiempo: {elapsed}s")
