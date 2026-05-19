@@ -316,8 +316,8 @@ function fillDatalist() {
 
   if (!getDifficulty().autocomplete) return;
 
-  shuffle(pool)
-    .slice(0, 450)
+  pool
+    .slice()
     .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'))
     .forEach((player) => {
       const option = document.createElement('option');
@@ -326,6 +326,7 @@ function fillDatalist() {
       els.playersList.appendChild(option);
     });
 }
+
 
 function pickSecret() {
   if (!pool.length) return null;
