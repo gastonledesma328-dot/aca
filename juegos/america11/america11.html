@@ -119,16 +119,24 @@
     
 
     <section id="resultModal" class="result-modal hidden" aria-live="polite">
-      <div class="result-box">
-        <h2 id="resultTitle">Resultado</h2>
-        <p id="resultText"></p>
+  <div class="result-box completed-box">
+    <div class="result-icon">🏆</div>
 
-        <div class="result-actions">
-          <button id="shareBtn" type="button">Compartir</button>
-          <a id="backToGamesBtn" class="hidden" href="../../index.html#games">Volver a juegos</a>
-        </div>
-      </div>
-    </section>
+    <span id="resultEyebrow" class="result-eyebrow">JUEGO COMPLETADO</span>
+
+    <h2 id="resultTitle">¡Felicitaciones!</h2>
+
+    <p id="resultText"></p>
+
+    <div id="resultChips" class="result-chips"></div>
+
+    <div class="result-actions">
+      <button id="nextChallengeBtn" type="button">Nuevo juego</button>
+      <button id="shareBtn" type="button" class="secondary-result-btn">Compartir</button>
+      <a id="backToGamesBtn" class="hidden" href="../../index.html#games">Volver a juegos</a>
+    </div>
+  </div>
+</section>
 
     <section id="modeChangeModal" class="result-modal hidden" aria-live="polite">
       <div class="result-box">
