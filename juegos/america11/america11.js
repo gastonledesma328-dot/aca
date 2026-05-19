@@ -1272,8 +1272,13 @@ function hideFinalButtons() {
   const nextBtn = document.getElementById("nextChallengeBtn");
 
   if (nextBtn) {
-    nextBtn.classList.add("hidden");
-    nextBtn.style.display = "none";
+    nextBtn.classList.remove("hidden");
+    nextBtn.style.display = "inline-flex";
+  }
+
+  if (shareBtn) {
+    shareBtn.classList.remove("hidden");
+    shareBtn.style.display = "inline-flex";
   }
 
   if (backToGamesBtn) {
