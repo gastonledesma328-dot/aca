@@ -2249,19 +2249,84 @@ function agendaMatchKey(match) {
     .join("|");
 }
 
+function agendaMatchDedupeKey(match) {
+  const teams = agendaTeams(match);
+  const home = normalizeText(teams.home);
+  const away = normalizeText(teams.away);
+  const orderedTeams = [home, away].sort().join("~");
+  const date = agendaDate(match);
+  const time = String(match.hora_inicio || match.hora || agendaDisplayTime(match) || "")
+    .replace(/[^0-9:]/g, "")
+    .slice(0, 5);
+  const league = normalizeText(inferAgendaLeague(match));
+
+  return [date, time, league, orderedTeams].filter(Boolean).join("|");
+}
+
+function matchHasBetterAgendaData(candidate = {}, current = {}) {
+  const candidateGoals = candidate.goleadores || candidate.scorers || candidate.goles || [];
+  const currentGoals = current.goleadores || current.scorers || current.goles || [];
+
+  const candidateScore = Number(candidate.local_score ?? candidate.marcador_local ?? candidate.score_local ?? -1) +
+    Number(candidate.visitante_score ?? candidate.marcador_visitante ?? candidate.score_visitante ?? -1);
+  const currentScore = Number(current.local_score ?? current.marcador_local ?? current.score_local ?? -1) +
+    Number(current.visitante_score ?? current.marcador_visitante ?? current.score_visitante ?? -1);
+
+  if (Array.isArray(candidateGoals) && Array.isArray(currentGoals) && candidateGoals.length !== currentGoals.length) {
+    return candidateGoals.length > currentGoals.length;
+  }
+
+  if (Number.isFinite(candidateScore) && Number.isFinite(currentScore) && candidateScore !== currentScore) {
+    return candidateScore > currentScore;
+  }
+
+  const candidateLive = isAgendaMatchLive(candidate);
+  const currentLive = isAgendaMatchLive(current);
+
+  if (candidateLive !== currentLive) {
+    return candidateLive;
+  }
+
+  return Object.keys(candidate || {}).length > Object.keys(current || {}).length;
+}
+
+function combinarAgendaDuplicada(current = {}, candidate = {}) {
+  const base = matchHasBetterAgendaData(candidate, current) ? candidate : current;
+  const extra = base === candidate ? current : candidate;
+
+  return preservarIncidenciasExistentes(extra, {
+    ...extra,
+    ...base,
+    local: base.local || extra.local,
+    visitante: base.visitante || extra.visitante,
+    local_logo: base.local_logo || extra.local_logo,
+    visitante_logo: base.visitante_logo || extra.visitante_logo,
+    liga: base.liga || extra.liga,
+    liga_corta: base.liga_corta || extra.liga_corta,
+    liga_logo: base.liga_logo || extra.liga_logo,
+    prioridad_liga: base.prioridad_liga ?? extra.prioridad_liga,
+  });
+}
+
 function uniqueMatches(matches) {
-  const seen = new Set();
+  const byKey = new Map();
 
-  return matches.filter((match) => {
-    const key = agendaMatchKey(match);
+  (Array.isArray(matches) ? matches : []).forEach((match) => {
+    const key = agendaMatchDedupeKey(match) || agendaMatchKey(match);
 
-    if (seen.has(key)) {
-      return false;
+    if (!key) {
+      return;
     }
 
-    seen.add(key);
-    return true;
+    if (!byKey.has(key)) {
+      byKey.set(key, match);
+      return;
+    }
+
+    byKey.set(key, combinarAgendaDuplicada(byKey.get(key), match));
   });
+
+  return Array.from(byKey.values());
 }
 
 function sortAgendaMatchesStable(matches) {
