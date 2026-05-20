@@ -1,4 +1,9 @@
 const DATA_URLS = [
+  '../../data/adivina-jugador/base_jugadores_con_fotos.json',
+  '/data/adivina-jugador/base_jugadores_con_fotos.json',
+  '/aca/data/adivina-jugador/base_jugadores_con_fotos.json',
+
+  // Fallbacks viejos, por si todavía no existe el JSON con fotos
   '../../adivinajugador/jugadores.json',
   '/adivinajugador/jugadores.json',
   './jugadores.json',
@@ -222,6 +227,56 @@ function displayValue(player, category) {
 
 function playerLabel(player) {
   return `${player.nombre} · ${player.club} · ${player.competicion}`;
+}
+
+function normalizeImagePath(path) {
+  const value = String(path || '').trim();
+
+  if (!value) return '';
+
+  if (/^https?:\/\//i.test(value)) return value;
+  if (value.startsWith('/')) return value;
+  if (value.startsWith('./') || value.startsWith('../')) return value;
+
+  // Si viene como data/adivina-jugador/imagenes_jugadores/Messi.png
+  // y el juego está en /aca/adivinajugador/, subimos un nivel.
+  if (value.startsWith('data/')) return `../${value}`;
+
+  return value;
+}
+
+function getPlayerPhoto(player) {
+  return normalizeImagePath(
+    player?.foto_local ||
+      player?.foto ||
+      player?.foto_futbin ||
+      player?.imagen ||
+      player?.image ||
+      ''
+  );
+}
+
+function setResultIconContent(won) {
+  if (!els.resultIcon || !secret) return;
+
+  const photo = getPlayerPhoto(secret);
+
+  if (photo) {
+    els.resultIcon.innerHTML = `
+      <img
+        class="result-player-photo"
+        src="${photo}"
+        alt="${secret.nombre}"
+        loading="lazy"
+        onerror="this.remove(); this.parentElement.textContent='${won ? '🏆' : '⚽'}';"
+      >
+    `;
+    els.resultIcon.classList.add('has-player-photo');
+    return;
+  }
+
+  els.resultIcon.classList.remove('has-player-photo');
+  setResultIconContent(won);
 }
 
 function setMessage(text, type = '') {
@@ -486,7 +541,7 @@ function openResultModal(won) {
   const difficultyLabel = getDifficulty().label;
   const position = POS_LABELS[secret.posicion] || secret.posicion || '-';
 
-  els.resultIcon.textContent = won ? '🏆' : '⚽';
+  setResultIconContent(won);
   els.resultKicker.textContent = won ? 'Juego completado' : 'Fin del juego';
   els.resultTitle.textContent = won ? '¡Felicitaciones!' : 'Se terminaron los intentos';
   els.resultText.innerHTML = won
