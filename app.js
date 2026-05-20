@@ -114,7 +114,7 @@ const INCIDENCIAS_CACHE_TTL_MS = 120_000;
 const INCIDENCIAS_FETCH_TIMEOUT_MS = 5_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
-const APP_CACHE_VERSION = "v9-goles-local-visitante-ec";
+const APP_CACHE_VERSION = "v10-agenda-sin-doble-render";
 const CACHE_KEY_AGENDA = `agenda-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_LIVE = `agenda-live-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_TV = `tv-partidos-cache-${APP_CACHE_VERSION}`;
@@ -477,13 +477,14 @@ async function fetchJsonCached(url, cacheKey, ttl = CACHE_TTL_MS, options = {}) 
   return request;
 }
 
-function fetchAgendaPayload() {
+function fetchAgendaPayload(options = {}) {
   return fetchJsonCached(
     AGENDA_ENDPOINT,
     CACHE_KEY_AGENDA,
     CACHE_TTL_MS,
     {
-      networkFirst: true,
+      networkFirst: options.networkFirst === true,
+      timeoutMs: options.timeoutMs || 0,
     }
   );
 }
@@ -721,12 +722,9 @@ async function cargarTvPartidos() {
   }
 
   TV_PARTIDOS_LOADING = fetchJsonCached(
-    `${TV_PARTIDOS_URL}?v=${Date.now()}`,
+    `${TV_PARTIDOS_URL}?v=${Math.floor(Date.now() / CACHE_TTL_MS)}`,
     CACHE_KEY_TV,
-    CACHE_TTL_MS,
-    {
-      networkFirst: true,
-    }
+    CACHE_TTL_MS
   )
     .then((data) => {
       TV_PARTIDOS_CACHE = data && typeof data === "object"
@@ -4081,10 +4079,44 @@ async function loadAgenda(date = currentAgendaDate) {
   }
 
   agendaLoading = true;
-  leagueGrid.innerHTML = `<p class="empty-state">Cargando Agenda...</p>`;
+
+  const cachedData = readAnyJsonCache(CACHE_KEY_AGENDA);
+  const cachedMatches = Array.isArray(cachedData?.partidos)
+    ? aplicarIncidenciasPersistidasALista(
+        sortAgendaMatchesStable(
+          uniqueMatches(cachedData.partidos).filter((match) =>
+            agendaMatchesSelectedDate(match, selectedDate)
+          )
+        )
+      )
+    : [];
+
+  // Carga instantánea: si hay agenda guardada, la mostramos de una y no dejamos la pantalla vacía.
+  // Después se refresca /live y el Worker de incidencias toca solo minuto, marcador y goles.
+  if (cachedMatches.length) {
+    renderAgenda(cachedMatches, AGENDA_ENDPOINT, {
+      source: cachedData.fuente,
+      total: cachedData.total,
+      fromCache: true,
+    });
+
+    agendaCurrentMatches = cachedMatches;
+    agendaLoadedDate = selectedDate;
+    applyAgendaSearch();
+    setUtilityStatus("Agenda guardada cargada. Actualizando vivo...");
+
+    window.setTimeout(refreshAgendaLive, 150);
+    window.setTimeout(refreshIncidenciasLive, 800);
+  } else {
+    leagueGrid.innerHTML = `<p class="empty-state">Cargando Agenda...</p>`;
+  }
 
   try {
-    const data = await fetchAgendaPayload();
+    const data = await fetchAgendaPayload({
+      networkFirst: !cachedMatches.length,
+      timeoutMs: cachedMatches.length ? 2500 : 0,
+    });
+
     const partidos = Array.isArray(data.partidos) ? data.partidos : [];
 
     const dailyMatches = aplicarIncidenciasPersistidasALista(
@@ -4105,44 +4137,40 @@ async function loadAgenda(date = currentAgendaDate) {
       }
     }
 
-    renderAgenda(dailyMatches, AGENDA_ENDPOINT, {
-      source: data.fuente,
-      total: data.total,
-    });
+    // Si ya había cache dibujado, no recreamos la agenda salvo que cambie la cantidad de partidos.
+    // El marcador/minuto/goles se actualiza por DOM para evitar parpadeo.
+    if (cachedMatches.length && leagueGrid.querySelector(".agenda-row")) {
+      agendaCurrentMatches = dailyMatches.length ? dailyMatches : cachedMatches;
+      const domActualizado = actualizarLiveEnDOM(agendaCurrentMatches);
+      actualizarIncidenciasEnDOM(agendaCurrentMatches);
+
+      if (!domActualizado || dailyMatches.length !== cachedMatches.length) {
+        renderAgenda(agendaCurrentMatches, AGENDA_ENDPOINT, {
+          source: data.fuente,
+          total: data.total,
+        });
+      }
+    } else {
+      renderAgenda(dailyMatches, AGENDA_ENDPOINT, {
+        source: data.fuente,
+        total: data.total,
+      });
+    }
 
     applyAgendaSearch();
-
     agendaLoadedDate = selectedDate;
 
     if (!matchSearch.value.trim()) {
-      setUtilityStatus("");
+      setUtilityStatus(agendaLiveMatches.length ? "En vivo actualizado" : "");
     }
 
-    // El live se actualiza después, sin bloquear ni reordenar la primera carga.
     window.setTimeout(refreshAgendaLive, 250);
     window.setTimeout(refreshIncidenciasLive, 1500);
   } catch (error) {
     console.error("Error actualizando agenda desde Worker:", error);
 
-    const cachedData = readAnyJsonCache(CACHE_KEY_AGENDA);
-
-    if (cachedData && Array.isArray(cachedData.partidos)) {
-      const cachedMatches = aplicarIncidenciasPersistidasALista(
-        sortAgendaMatchesStable(
-          uniqueMatches(cachedData.partidos).filter((match) =>
-            agendaMatchesSelectedDate(match, selectedDate)
-          )
-        )
-      );
-
-      renderAgenda(cachedMatches, AGENDA_ENDPOINT, {
-        source: cachedData.fuente,
-        total: cachedData.total,
-        fromCache: true,
-      });
-
-      applyAgendaSearch();
-      setUtilityStatus("Mostrando agenda guardada. Reintentando actualización...");
+    if (cachedMatches.length) {
+      setUtilityStatus("Mostrando agenda guardada. Reintentando vivo...");
       return;
     }
 
@@ -4158,18 +4186,60 @@ async function loadAgenda(date = currentAgendaDate) {
   }
 }
 
+
+function actualizarTvEnDOM() {
+  if (activeTab !== "agenda" || !TV_PARTIDOS_READY) {
+    return;
+  }
+
+  const rows = Array.from(leagueGrid.querySelectorAll(".agenda-row"));
+
+  if (!rows.length || !Array.isArray(agendaCurrentMatches)) {
+    return;
+  }
+
+  rows.forEach((row, index) => {
+    const match = agendaCurrentMatches[index];
+
+    if (!match) {
+      return;
+    }
+
+    const agendaTeamsEl = row.querySelector(".agenda-teams");
+
+    if (!agendaTeamsEl) {
+      return;
+    }
+
+    const currentTvBox = agendaTeamsEl.querySelector(".tv-box");
+    const nextTvHtml = renderTvPartido(obtenerTvPartidoSync(match)).trim();
+
+    if (!nextTvHtml) {
+      return;
+    }
+
+    if (currentTvBox) {
+      const wrapper = document.createElement("span");
+      wrapper.innerHTML = nextTvHtml;
+      const nextTvBox = wrapper.querySelector(".tv-box");
+
+      if (nextTvBox && currentTvBox.outerHTML !== nextTvBox.outerHTML) {
+        currentTvBox.replaceWith(nextTvBox);
+      }
+
+      return;
+    }
+
+    agendaTeamsEl.insertAdjacentHTML("beforeend", nextTvHtml);
+  });
+
+  applyAgendaSearch();
+}
+
 function recargarAgendaConTvSiCorresponde() {
-  if (activeTab !== "agenda") {
-    return;
-  }
-
-  if (agendaLoading) {
-    window.setTimeout(recargarAgendaConTvSiCorresponde, 500);
-    return;
-  }
-
-  agendaLoadedDate = "";
-  loadAgenda(currentAgendaDate);
+  // Antes esto borraba y recreaba toda la agenda cuando terminaba de cargar tv_partidos.json.
+  // Eso producía la doble carga visual. Ahora solo agrega/actualiza el cuadro "Dónde ver".
+  actualizarTvEnDOM();
 }
 
 async function refreshAgendaLive() {
