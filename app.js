@@ -3915,7 +3915,36 @@ function mergeMatchesWithIncidencias(matches, incidenciasPorKey) {
   });
 }
 
+
+const LIGAS_OCULTAS_AGENDA = [
+  "nwsl estados unidos",
+  "nwsl",
+  "national women soccer league",
+  "national womens soccer league",
+  "national women's soccer league",
+  "estados unidos nwsl",
+];
+
+function ligaOcultaAgenda(match) {
+  const texto = normalizeText(
+    [
+      match?.liga,
+      match?.liga_corta,
+      match?.liga_slug,
+      match?.competicion?.nombre,
+      match?.competicion?.name,
+      match?.competicion?.slug,
+      inferAgendaLeague(match),
+    ]
+      .filter(Boolean)
+      .join(" ")
+  );
+
+  return LIGAS_OCULTAS_AGENDA.some((liga) => texto.includes(normalizeText(liga)));
+}
+
 function renderAgenda(matches, sourceUrl, meta = {}) {
+  matches = Array.isArray(matches) ? matches.filter((match) => !ligaOcultaAgenda(match)) : [];
   matches = aplicarIncidenciasPersistidasALista(matches);
   agendaCurrentMatches = Array.isArray(matches) ? matches : [];
   leagueGrid.innerHTML = "";
@@ -4085,7 +4114,7 @@ async function loadAgenda(date = currentAgendaDate) {
     ? aplicarIncidenciasPersistidasALista(
         sortAgendaMatchesStable(
           uniqueMatches(cachedData.partidos).filter((match) =>
-            agendaMatchesSelectedDate(match, selectedDate)
+            agendaMatchesSelectedDate(match, selectedDate) && !ligaOcultaAgenda(match)
           )
         )
       )
@@ -4122,7 +4151,7 @@ async function loadAgenda(date = currentAgendaDate) {
     const dailyMatches = aplicarIncidenciasPersistidasALista(
       sortAgendaMatchesStable(
         uniqueMatches(partidos).filter((match) =>
-          agendaMatchesSelectedDate(match, selectedDate)
+          agendaMatchesSelectedDate(match, selectedDate) && !ligaOcultaAgenda(match)
         )
       )
     );
@@ -4270,7 +4299,7 @@ async function refreshAgendaLive() {
     const dailyMatches = aplicarIncidenciasPersistidasALista(
       sortAgendaMatchesStable(
         uniqueMatches(mergedPartidos).filter((match) =>
-          agendaMatchesSelectedDate(match, selectedDate)
+          agendaMatchesSelectedDate(match, selectedDate) && !ligaOcultaAgenda(match)
         )
       )
     );
@@ -4491,7 +4520,7 @@ async function refreshIncidenciasLive() {
     : uniqueMatches(readAnyJsonCache(CACHE_KEY_AGENDA)?.partidos || []);
 
   const partidosParaIncidencias = uniqueMatches(partidosBase)
-    .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
+    .filter((match) => agendaMatchesSelectedDate(match, selectedDate) && !ligaOcultaAgenda(match))
     .filter(partidoDebeConsultarIncidencias)
     .sort((a, b) => prioridadConsultaIncidencias(a) - prioridadConsultaIncidencias(b))
     .slice(0, 120);
@@ -4530,7 +4559,7 @@ async function refreshIncidenciasLive() {
     const dailyMatches = aplicarIncidenciasPersistidasALista(
       sortAgendaMatchesStable(
         mergeMatchesWithIncidencias(agendaCurrentMatches, incidenciasPorKey)
-          .filter((match) => agendaMatchesSelectedDate(match, selectedDate))
+          .filter((match) => agendaMatchesSelectedDate(match, selectedDate) && !ligaOcultaAgenda(match))
       )
     );
 
