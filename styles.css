@@ -23,9 +23,7 @@ body {
   min-height: 100vh;
   margin: 0;
   color: var(--text);
-  background:
-    radial-gradient(circle at 88% 8%, rgba(95, 207, 128, 0.12), transparent 22rem),
-    linear-gradient(160deg, var(--bg) 0%, var(--bg2) 100%);
+  background: url("img/mundial-2026-bg.png") center center / cover fixed no-repeat;
   overflow-x: hidden;
 }
 
@@ -2033,10 +2031,4 @@ img.league-logo {
 .tv-chip:empty,
 .tv-chip-confirmado:empty {
   display: none;
-}
-
-/* Fondo temporal Mundial 2026: SOLO dentro del cuadro Juegos de fulbo.
-   No modifica body, :root, app-shell, cards, botones ni colores generales. */
-.games-section {
-  background: url("img/mundial-2026-bg.png") center center / cover no-repeat;
 }
