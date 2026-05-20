@@ -1525,9 +1525,7 @@ footer strong {
 
 @media (max-width: 640px) {
   body {
-    background:
-      radial-gradient(circle at 50% -8rem, rgba(95, 207, 128, 0.16), transparent 18rem),
-      linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+    background: url("img/mundial-2026-bg.png") center center / cover fixed no-repeat;
   }
 
   .app-shell,
