@@ -4499,6 +4499,11 @@ function updatePostCount() {
 function activateTab(tab) {
   activeTab = tab.dataset.tab;
 
+  if (activeTab === "games") {
+    window.location.href = "juegos/index.html";
+    return;
+  }
+
   tabs.forEach((item) => item.classList.toggle("active", item === tab));
   showSection(activeTab);
 
@@ -4685,6 +4690,12 @@ function abrirSeccionDesdeHash() {
   };
 
   const tabName = aliases[hash] || hash;
+
+  if (tabName === "games") {
+    window.location.href = "juegos/index.html";
+    return;
+  }
+
   const tabBtn = document.querySelector(`.tab[data-tab="${tabName}"]`);
 
   if (!tabBtn) return;
