@@ -46,6 +46,7 @@ jobs:
           REQUEST_TIMEOUT: "25"
         run: |
           python scripts/futbin_fotos/descargar_futbin_todos.py --headless
+          python scripts/futbin_fotos/aplicar_fotos_locales.py
 
       - name: Commit generated data
         run: |
