@@ -109,12 +109,12 @@ const LIVE_REFRESH_MS = 60_000;
 const LIVE_VISUAL_TIMER_MS = 1_000;
 const LIVE_CACHE_TTL_MS = 15_000;
 const LIVE_FETCH_TIMEOUT_MS = 3_000;
-const INCIDENCIAS_REFRESH_MS = 120_000;
+const INCIDENCIAS_REFRESH_MS = 30_000;
 const INCIDENCIAS_CACHE_TTL_MS = 120_000;
 const INCIDENCIAS_FETCH_TIMEOUT_MS = 5_000;
 const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
-const APP_CACHE_VERSION = "v10-agenda-sin-doble-render";
+const APP_CACHE_VERSION = "v11-agenda-goles-en-vivo";
 const CACHE_KEY_AGENDA = `agenda-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_LIVE = `agenda-live-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_TV = `tv-partidos-cache-${APP_CACHE_VERSION}`;
@@ -669,7 +669,7 @@ async function fetchIncidenciasPartido(match) {
   // No cacheamos respuestas vacías. Si el Worker 2 tarda en encontrar los datos,
   // una respuesta sin goles no debe bloquear futuras consultas durante 2 minutos.
   const fresh = readJsonCache(cacheKey, INCIDENCIAS_CACHE_TTL_MS);
-  if (fresh && incidenciasDataTieneDatos(normalizarIncidenciasPayload(fresh))) {
+  if (fresh && incidenciasCacheCompletaParaMarcador(match, fresh)) {
     return fresh;
   }
 
@@ -4315,6 +4315,11 @@ async function refreshAgendaLive() {
       // No renderizamos toda la agenda en cada refresh de /live.
       // Renderizar recrea las filas y hace que el cuadro del gol desaparezca y vuelva a aparecer.
       const domActualizado = actualizarLiveEnDOM(dailyMatches);
+      actualizarIncidenciasEnDOM(dailyMatches);
+
+      // Si /live subió el marcador, pedimos incidencias fresh enseguida.
+      // El cache solo se usa si ya tiene tantos goleadores como goles marca el resultado.
+      window.setTimeout(refreshIncidenciasLive, 300);
 
       if (!domActualizado || !leagueGrid.querySelector(".agenda-row")) {
         renderAgenda(dailyMatches, AGENDA_LIVE_ENDPOINT, {
@@ -4466,6 +4471,45 @@ function partidoTieneMarcadorConGoles(match) {
   const visitante = Number(matchScore[2]);
 
   return (Number.isFinite(local) && local > 0) || (Number.isFinite(visitante) && visitante > 0);
+}
+
+function totalGolesMarcador(match) {
+  const score = scoreMarkup(match);
+  const matchScore = String(score || "").match(/(\d+)\s*-\s*(\d+)/);
+
+  if (!matchScore) {
+    return 0;
+  }
+
+  const local = Number(matchScore[1]);
+  const visitante = Number(matchScore[2]);
+
+  if (!Number.isFinite(local) || !Number.isFinite(visitante)) {
+    return 0;
+  }
+
+  return Math.max(0, local) + Math.max(0, visitante);
+}
+
+function cantidadGoleadoresData(data) {
+  const normalizada = normalizarIncidenciasPayload(data);
+  return Array.isArray(normalizada?.goleadores) ? normalizada.goleadores.length : 0;
+}
+
+function incidenciasCacheCompletaParaMarcador(match, data) {
+  if (!incidenciasDataTieneDatos(normalizarIncidenciasPayload(data))) {
+    return false;
+  }
+
+  const totalMarcador = totalGolesMarcador(match);
+
+  // Si el marcador todavía no tiene goles, cualquier incidencia cacheada sirve.
+  if (!totalMarcador) {
+    return true;
+  }
+
+  // Si el partido va 2-2 y solo tenemos 3 goleadores cacheados, no usamos cache: pedimos fresh.
+  return cantidadGoleadoresData(data) >= totalMarcador;
 }
 
 function partidoDebeConsultarIncidencias(match) {
