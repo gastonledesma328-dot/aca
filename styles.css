@@ -2035,7 +2035,8 @@ img.league-logo {
   display: none;
 }
 
-/* Fondo temporal Mundial 2026 - solo sección Juegos de fulbo */
+/* Fondo temporal Mundial 2026: SOLO dentro del cuadro Juegos de fulbo.
+   No modifica body, :root, app-shell, cards, botones ni colores generales. */
 .games-section {
-  background: url("img/mundial-2026-bg.png") center / cover no-repeat;
+  background: url("img/mundial-2026-bg.png") center center / cover no-repeat;
 }
