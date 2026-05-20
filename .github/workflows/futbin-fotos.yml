@@ -19,6 +19,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: futbin-fotos-adivina-jugador
+  cancel-in-progress: false
+
 jobs:
   futbin-fotos:
     runs-on: ubuntu-latest
@@ -26,6 +30,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -53,5 +59,10 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add data/adivina-jugador scripts/futbin_fotos/aliases_futbin.json scripts/futbin_fotos/ignorar_futbin.json
-          git commit -m "Actualizar fotos FUTBIN Adivina Jugador" || echo "No changes"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "Actualizar fotos FUTBIN Adivina Jugador"
+          git pull --rebase origin main
+          git push origin main
