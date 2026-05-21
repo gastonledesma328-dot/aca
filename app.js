@@ -3564,14 +3564,8 @@ function goalItemMarkup(scorer, side = "unknown", teamName = "", home = "", away
 
 function redCardItemMarkup(card, side = "unknown") {
   const minute = card.minuto || card.minute || card.time || "";
-  const player = redCardPlayerName(card);
+  const player = redCardPlayerName(card) || "Tarjeta Roja";
   const sideClass = side === "home" ? "is-home-goal" : side === "away" ? "is-away-goal" : "is-unknown-goal";
-
-  // No mostramos rojas genéricas tipo "Expulsado" porque terminan duplicando
-  // la roja real cuando ESPN/worker manda el mismo evento en dos estructuras.
-  if (!player) {
-    return "";
-  }
 
   return `
     <span class="agenda-goal-item agenda-red-card-item ${sideClass}">
@@ -3587,7 +3581,7 @@ function crearTarjetaRojaSintetica(match, side = "away", index = 0) {
   const teamName = side === "home" ? teams.home : teams.away;
 
   return normalizarTarjetaRoja({
-    jugador: "Expulsado",
+    jugador: "Tarjeta Roja",
     minuto: "",
     local_visitante: side === "home" ? "local" : "visitante",
     equipo: teamName,
@@ -3634,9 +3628,16 @@ function redCardsSplitForScorersBox(match, home = "", away = "") {
     }
   });
 
-  // No creamos rojas sintéticas/genericas por contador.
-  // Si el worker no manda jugador real, preferimos no mostrar "Expulsado Roja"
-  // antes que mostrar duplicados o eventos inventados.
+  const targetHome = Number(counts.local || 0);
+  const targetAway = Number(counts.visitante || 0);
+
+  while (homeCards.length < targetHome) {
+    homeCards.push(crearTarjetaRojaSintetica(match, "home", homeCards.length));
+  }
+
+  while (awayCards.length < targetAway) {
+    awayCards.push(crearTarjetaRojaSintetica(match, "away", awayCards.length));
+  }
 
   return { homeCards, awayCards, unknownCards: stillUnknown };
 }
@@ -4271,16 +4272,18 @@ function uniqueRedCards(cards = []) {
     .filter((card) => {
       const jugadorKey = normalizeText(card.jugador);
       const minutoKey = String(card.minuto || "").replace(/[^0-9+]/g, "").trim();
+      const ladoKey = normalizeText(
+        card.local_visitante || card.homeAway || card.side || card.lado || card.equipo_lado || ""
+      );
+      const equipoKey = normalizeText(card.equipo || card.team || card.teamName || card.club || "");
 
-      // Si no hay jugador real, no lo mostramos. Esto evita los duplicados
-      // "Expulsado Roja" cuando el mismo evento llega como contador/fallback.
-      if (!jugadorKey || nombresGenericos.has(jugadorKey)) {
-        return false;
-      }
-
-      // La roja real se deduplica por jugador + minuto.
-      // Así Joao Vitor no se duplica aunque venga desde incidents y redCards.
-      const key = `jugador|${jugadorKey}|${minutoKey || "sin-minuto"}`;
+      // Si hay nombre real, deduplicamos por jugador + minuto.
+      // Si no hay nombre, igual mostramos una tarjeta genérica, pero deduplicada
+      // por lado/equipo + minuto para que no aparezca dos veces "Tarjeta Roja".
+      const tieneJugadorReal = jugadorKey && !nombresGenericos.has(jugadorKey);
+      const key = tieneJugadorReal
+        ? `jugador|${jugadorKey}|${minutoKey || "sin-minuto"}`
+        : `generica|${ladoKey || equipoKey || "sin-lado"}|${minutoKey || "sin-minuto"}`;
 
       if (seen.has(key)) {
         return false;
