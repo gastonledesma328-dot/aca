@@ -3727,9 +3727,34 @@ function redCardsForTeam(match, side, teamName) {
     );
   }).length;
 
-  // Si la tarjeta trae jugador pero no trae lado/equipo, no debemos ocultar la roja.
-  // En ese caso usamos el contador explícito del partido.
-  return matchedCount > 0 ? matchedCount : explicitCount;
+  if (matchedCount > 0) {
+    return matchedCount;
+  }
+
+  // Si hay lista de rojas pero no viene lado/equipo claro, no dejamos que un
+  // contador viejo duplique. Ejemplo: Olimpia vs Vasco, Joao Vitor aparecía x2.
+  const totalCards = cards.length;
+  const localExplicit = explicitRedCardCount(match, "home");
+  const awayExplicit = explicitRedCardCount(match, "away");
+
+  if (explicitCount > 0 && localExplicit + awayExplicit > totalCards) {
+    if (side === "home" && localExplicit > 0 && awayExplicit === 0) {
+      return Math.min(localExplicit, totalCards);
+    }
+
+    if (side === "away" && awayExplicit > 0 && localExplicit === 0) {
+      return Math.min(awayExplicit, totalCards);
+    }
+
+    if (totalCards === 1) {
+      if (side === "home" && localExplicit > awayExplicit) return 1;
+      if (side === "away" && awayExplicit >= localExplicit && awayExplicit > 0) return 1;
+    }
+
+    return Math.min(explicitCount, totalCards);
+  }
+
+  return explicitCount;
 }
 
 function cardsSearchText(match) {
@@ -4013,12 +4038,17 @@ function uniqueRedCards(cards = []) {
     .filter((card) => card && isRedCard(card))
     .map(normalizarTarjetaRoja)
     .filter((card) => {
-      const key = [
-        normalizeText(card.jugador),
-        normalizeText(card.equipo),
-        normalizeText(card.local_visitante),
-        String(card.minuto || "").trim(),
-      ].join("|");
+      const jugadorKey = normalizeText(card.jugador);
+      const equipoKey = normalizeText(card.equipo);
+      const ladoKey = normalizeText(card.local_visitante);
+      const minutoKey = String(card.minuto || "").replace(/[^0-9+]/g, "").trim();
+
+      // ESPN a veces manda la misma roja dos veces:
+      // una desde cards/redCards y otra desde incidents.
+      // Si hay jugador, el jugador es la clave más confiable dentro del mismo partido.
+      const key = jugadorKey
+        ? `jugador|${jugadorKey}|${equipoKey || ladoKey}`
+        : `sin-jugador|${equipoKey || ladoKey}|${minutoKey}`;
 
       if (seen.has(key)) {
         return false;
@@ -4031,9 +4061,11 @@ function uniqueRedCards(cards = []) {
 
 function ajustarConteoRojasPorLista(match, tarjetas = [], localRojas = 0, visitanteRojas = 0) {
   const lista = uniqueRedCards(tarjetas);
+  const localExplicit = Number(localRojas || 0);
+  const visitanteExplicit = Number(visitanteRojas || 0);
 
   if (!lista.length) {
-    return { local_rojas: Number(localRojas || 0), visitante_rojas: Number(visitanteRojas || 0) };
+    return { local_rojas: localExplicit, visitante_rojas: visitanteExplicit };
   }
 
   const teams = agendaTeams(match);
@@ -4047,8 +4079,7 @@ function ajustarConteoRojasPorLista(match, tarjetas = [], localRojas = 0, visita
   const porListaLocal = redCardsForTeam(temporal, "home", teams.home);
   const porListaVisitante = redCardsForTeam(temporal, "away", teams.away);
 
-  // Si la lista trae jugador/equipo/lado, esa lista es más confiable que un contador viejo.
-  // Si trae jugador pero sin lado/equipo, mantenemos el contador explícito para que no desaparezca.
+  // Si la lista trae equipo/lado, esa lista manda.
   if (porListaLocal + porListaVisitante > 0) {
     return {
       local_rojas: porListaLocal,
@@ -4056,9 +4087,31 @@ function ajustarConteoRojasPorLista(match, tarjetas = [], localRojas = 0, visita
     };
   }
 
+  // Si la lista trae jugador pero no lado/equipo, usamos el lado del contador,
+  // pero capamos la cantidad al total de rojas únicas para no duplicar.
+  const totalLista = lista.length;
+
+  if (localExplicit > 0 && visitanteExplicit === 0) {
+    return { local_rojas: Math.min(localExplicit, totalLista), visitante_rojas: 0 };
+  }
+
+  if (visitanteExplicit > 0 && localExplicit === 0) {
+    return { local_rojas: 0, visitante_rojas: Math.min(visitanteExplicit, totalLista) };
+  }
+
+  if (totalLista === 1) {
+    if (visitanteExplicit >= localExplicit && visitanteExplicit > 0) {
+      return { local_rojas: 0, visitante_rojas: 1 };
+    }
+
+    if (localExplicit > 0) {
+      return { local_rojas: 1, visitante_rojas: 0 };
+    }
+  }
+
   return {
-    local_rojas: Number(localRojas || 0),
-    visitante_rojas: Number(visitanteRojas || 0),
+    local_rojas: Math.min(localExplicit, totalLista),
+    visitante_rojas: Math.min(visitanteExplicit, Math.max(0, totalLista - Math.min(localExplicit, totalLista))),
   };
 }
 
