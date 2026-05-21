@@ -3682,14 +3682,20 @@ function explicitRedCardCount(match, side) {
 
 function redCardsForTeam(match, side, teamName) {
   const cards = uniqueRedCards(normalizeCardList(match));
+  const explicitCount = explicitRedCardCount(match, side);
 
-  if (cards.length) {
-    return cards.filter((card) => {
+  if (!cards.length) {
+    return explicitCount;
+  }
+
+  const matchedCount = cards.filter((card) => {
     if (!card || !isRedCard(card)) {
       return false;
     }
 
-    const cardSide = normalizeText(card.local_visitante || card.homeAway || card.side || "");
+    const cardSide = normalizeText(
+      card.local_visitante || card.homeAway || card.side || card.lado || card.equipo_lado || ""
+    );
 
     if (side === "home" && ["home", "local"].includes(cardSide)) {
       return true;
@@ -3699,11 +3705,15 @@ function redCardsForTeam(match, side, teamName) {
       return true;
     }
 
-    return teamValueMatches(card.equipo || card.team || card.teamName || "", teamName);
+    return teamValueMatches(
+      card.equipo || card.team || card.teamName || card.club || "",
+      teamName
+    );
   }).length;
-  }
 
-  return explicitRedCardCount(match, side);
+  // Si la tarjeta trae jugador pero no trae lado/equipo, no debemos ocultar la roja.
+  // En ese caso usamos el contador explícito del partido.
+  return matchedCount > 0 ? matchedCount : explicitCount;
 }
 
 function cardsSearchText(match) {
@@ -4022,7 +4032,7 @@ function ajustarConteoRojasPorLista(match, tarjetas = [], localRojas = 0, visita
   const porListaVisitante = redCardsForTeam(temporal, "away", teams.away);
 
   // Si la lista trae jugador/equipo/lado, esa lista es más confiable que un contador viejo.
-  // Ejemplo: Club Olimpia vs Vasco da Gama, una sola roja a Joao Vitor.
+  // Si trae jugador pero sin lado/equipo, mantenemos el contador explícito para que no desaparezca.
   if (porListaLocal + porListaVisitante > 0) {
     return {
       local_rojas: porListaLocal,
