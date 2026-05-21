@@ -3655,9 +3655,13 @@ function normalizeCardList(match = {}) {
   // como expulsiones. A veces el worker manda solo jugador/minuto/lado sin campo
   // tipo="Tarjeta roja". Si no las marcamos acá, isRedCard() las descarta
   // y desaparecen casos como Joao Vitor en Olimpia vs Vasco.
+  // incidents NO se marca todo como roja porque ahí también pueden venir goles/cambios;
+  // se agrega crudo y lo filtra isRedCard().
   return [
     ...(Array.isArray(match.tarjetas) ? match.tarjetas : []),
     ...(Array.isArray(match.cards) ? match.cards : []),
+    ...(Array.isArray(match.incidents) ? match.incidents : []),
+    ...(Array.isArray(match.incidencias) ? match.incidencias : []),
     ...marcarListaComoRoja(match.tarjetas_rojas),
     ...marcarListaComoRoja(match.rojas),
     ...marcarListaComoRoja(match.redCards),
@@ -3694,6 +3698,107 @@ function explicitRedCardCount(match, side) {
   }
 
   return 0;
+}
+
+
+function redCardSideForMatch(card = {}, match = {}) {
+  const teams = agendaTeams(match);
+  const rawSide = normalizeText(
+    card.local_visitante ||
+      card.homeAway ||
+      card.side ||
+      card.lado ||
+      card.equipo_lado ||
+      card.home_away ||
+      ""
+  );
+
+  if (["home", "local", "locales", "home team"].includes(rawSide)) {
+    return "home";
+  }
+
+  if (["away", "visitante", "visitantes", "visitor", "visitors", "away team"].includes(rawSide)) {
+    return "away";
+  }
+
+  const teamText = card.equipo || card.team || card.teamName || card.club || card.competitor || "";
+
+  if (teamValueMatches(teamText, teams.home)) {
+    return "home";
+  }
+
+  if (teamValueMatches(teamText, teams.away)) {
+    return "away";
+  }
+
+  return "";
+}
+
+function contarRojasUnicas(match = {}) {
+  const cards = uniqueRedCards(normalizeCardList(match));
+  const localExplicit = explicitRedCardCount(match, "home");
+  const awayExplicit = explicitRedCardCount(match, "away");
+
+  if (!cards.length) {
+    return { local: localExplicit, visitante: awayExplicit };
+  }
+
+  const vistas = new Set();
+  let local = 0;
+  let visitante = 0;
+  let desconocidas = 0;
+
+  for (const card of cards) {
+    const jugador = normalizeText(redCardPlayerName(card));
+    const minuto = String(card.minuto || card.minute || card.time || "").replace(/[^0-9+]/g, "").trim();
+    const equipo = normalizeText(card.equipo || card.team || card.teamName || card.club || "");
+    const lado = redCardSideForMatch(card, match);
+    const key = jugador
+      ? `jugador|${jugador}|${minuto || "sin-minuto"}`
+      : `sin-jugador|${equipo || lado || "sin-equipo"}|${minuto || "sin-minuto"}`;
+
+    if (vistas.has(key)) {
+      continue;
+    }
+
+    vistas.add(key);
+
+    if (lado === "home") {
+      local++;
+    } else if (lado === "away") {
+      visitante++;
+    } else {
+      desconocidas++;
+    }
+  }
+
+  // Si la lista ya trae el lado/equipo, esa lista manda y evita duplicados.
+  if (local + visitante > 0) {
+    return { local, visitante };
+  }
+
+  // Si hay roja con jugador pero sin lado claro, usamos el contador explícito
+  // del worker para ubicarla sin duplicarla. Esto arregla casos como
+  // Olimpia vs Vasco, donde Joao Vitor llega duplicado/parcial desde ESPN.
+  if (desconocidas > 0) {
+    if (localExplicit > 0 && awayExplicit === 0) {
+      return { local: Math.min(localExplicit, desconocidas), visitante: 0 };
+    }
+
+    if (awayExplicit > 0 && localExplicit === 0) {
+      return { local: 0, visitante: Math.min(awayExplicit, desconocidas) };
+    }
+
+    if (awayExplicit >= localExplicit && awayExplicit > 0) {
+      return { local: 0, visitante: Math.min(awayExplicit, desconocidas) };
+    }
+
+    if (localExplicit > 0) {
+      return { local: Math.min(localExplicit, desconocidas), visitante: 0 };
+    }
+  }
+
+  return { local: localExplicit, visitante: awayExplicit };
 }
 
 function redCardsForTeam(match, side, teamName) {
@@ -4389,8 +4494,9 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
         const away = match.visitante || match.partido?.split(" vs ")[1] || "Visitante";
         const isLive = isAgendaMatchLive(match);
         const score = scoreMarkup(match);
-        const homeRedCards = redCardsForTeam(match, "home", home);
-        const awayRedCards = redCardsForTeam(match, "away", away);
+        const rojasData = contarRojasUnicas(match);
+        const homeRedCards = rojasData.local || 0;
+        const awayRedCards = rojasData.visitante || 0;
         const tv = obtenerTvPartidoSync(match);
 
         if (isLive) {
