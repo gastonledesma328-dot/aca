@@ -322,6 +322,12 @@ function injectAgendaGoalSideStyles() {
       opacity: 0.75;
     }
 
+    .agenda-red-card-item em {
+      opacity: 1;
+      font-weight: 900;
+      color: #ff4d4f;
+    }
+
     .agenda-goals-empty {
       min-height: 18px;
       display: block;
@@ -2646,22 +2652,12 @@ function agendaDisplayTime(match) {
 
 function teamLogoMarkup(name, logo, redCards = 0) {
   const safeName = escapeHtml(name);
-  const logoHtml = logo
+
+  // Ya no mostramos la tarjeta roja arriba del escudo.
+  // Las expulsiones se muestran dentro del cuadro de goles/incidencias.
+  return logo
     ? `<img class="team-logo" src="${escapeHtml(logo)}" alt="${safeName}" loading="lazy" />`
     : `<span class="team-logo logo-fallback">${initials(name)}</span>`;
-
-  const cards = Number(redCards) || 0;
-
-  if (cards <= 0) {
-    return logoHtml;
-  }
-
-  return `
-    <span class="team-logo-wrap" title="${cards} tarjeta${cards === 1 ? "" : "s"} roja${cards === 1 ? "" : "s"}">
-      ${logoHtml}
-      <span class="mini-red-card">${cards > 1 ? cards : ""}</span>
-    </span>
-  `;
 }
 
 function initials(name = "") {
@@ -3566,10 +3562,61 @@ function goalItemMarkup(scorer, side = "unknown", teamName = "", home = "", away
   `;
 }
 
+function redCardItemMarkup(card, side = "unknown") {
+  const minute = card.minuto || card.minute || card.time || "";
+  const player = redCardPlayerName(card) || "Expulsado";
+  const sideClass = side === "home" ? "is-home-goal" : side === "away" ? "is-away-goal" : "is-unknown-goal";
+
+  return `
+    <span class="agenda-goal-item agenda-red-card-item ${sideClass}">
+      ${minute ? `<b>${escapeHtml(String(minute))}</b>` : ""}
+      <span>${escapeHtml(player)}</span>
+      <em>Roja</em>
+    </span>
+  `;
+}
+
+function redCardsSplitForScorersBox(match, home = "", away = "") {
+  const cards = uniqueRedCards(normalizeCardList(match));
+  const counts = contarRojasUnicas(match);
+  const homeCards = [];
+  const awayCards = [];
+  const unknownCards = [];
+
+  cards.forEach((card) => {
+    const side = redCardSideForMatch(card, match);
+
+    if (side === "home") {
+      homeCards.push(card);
+    } else if (side === "away") {
+      awayCards.push(card);
+    } else {
+      unknownCards.push(card);
+    }
+  });
+
+  // Si ESPN/worker trae jugador pero no lado/equipo, usamos el contador final
+  // para ubicar la roja dentro del cuadro correcto sin duplicarla.
+  const stillUnknown = [];
+
+  unknownCards.forEach((card) => {
+    if (awayCards.length < Number(counts.visitante || 0)) {
+      awayCards.push(card);
+    } else if (homeCards.length < Number(counts.local || 0)) {
+      homeCards.push(card);
+    } else {
+      stillUnknown.push(card);
+    }
+  });
+
+  return { homeCards, awayCards, unknownCards: stillUnknown };
+}
+
 function scorersMarkup(match, home = "", away = "") {
   const scorers = normalizeScorerList(match);
+  const redCards = redCardsSplitForScorersBox(match, home, away);
 
-  if (!scorers.length) {
+  if (!scorers.length && !redCards.homeCards.length && !redCards.awayCards.length) {
     return "";
   }
 
@@ -3589,19 +3636,21 @@ function scorersMarkup(match, home = "", away = "") {
     }
   });
 
-  const homeMarkup = homeGoals
-    .map((scorer) => goalItemMarkup(scorer, "home", home, home, away))
-    .join("");
+  const homeMarkup = [
+    ...homeGoals.map((scorer) => goalItemMarkup(scorer, "home", home, home, away)),
+    ...redCards.homeCards.map((card) => redCardItemMarkup(card, "home")),
+  ].join("");
 
-  const awayMarkup = awayGoals
-    .map((scorer) => goalItemMarkup(scorer, "away", away, home, away))
-    .join("");
+  const awayMarkup = [
+    ...awayGoals.map((scorer) => goalItemMarkup(scorer, "away", away, home, away)),
+    ...redCards.awayCards.map((card) => redCardItemMarkup(card, "away")),
+  ].join("");
 
   const unknownMarkup = unknownGoals
     .map((scorer) => goalItemMarkup(scorer, "unknown", scorerTeamText(scorer), home, away))
     .join("");
 
-  // Si no pudimos saber el lado, no inventamos.
+  // Si no pudimos saber el lado del gol, no inventamos.
   // Lo mostramos abajo sin mezclarlo con local/visitante.
   const unknownBlock = unknownMarkup
     ? `<span class="agenda-goals-unknown" data-goal-side="unknown">${unknownMarkup}</span>`
@@ -3609,11 +3658,11 @@ function scorersMarkup(match, home = "", away = "") {
 
   return `
     <span class="agenda-goals-row has-side-divider">
-      <span class="agenda-goals-team agenda-goals-home" data-goal-side="home" title="Goles de ${escapeHtml(home)}">
+      <span class="agenda-goals-team agenda-goals-home" data-goal-side="home" title="Goles y rojas de ${escapeHtml(home)}">
         ${homeMarkup || `<span class="agenda-goals-empty" aria-hidden="true"></span>`}
       </span>
 
-      <span class="agenda-goals-team agenda-goals-away" data-goal-side="away" title="Goles de ${escapeHtml(away)}">
+      <span class="agenda-goals-team agenda-goals-away" data-goal-side="away" title="Goles y rojas de ${escapeHtml(away)}">
         ${awayMarkup || `<span class="agenda-goals-empty" aria-hidden="true"></span>`}
       </span>
     </span>
