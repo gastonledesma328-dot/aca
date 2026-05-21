@@ -3493,6 +3493,30 @@ function scorerSideValue(scorer) {
   ).toLowerCase();
 }
 
+function esEventoRojaDesactivado(item = {}) {
+  const texto = normalizeText([
+    item?.tipo,
+    item?.type,
+    item?.card,
+    item?.descripcion,
+    item?.description,
+    item?.text,
+    item?.jugador,
+    item?.nombre,
+    item?.player,
+  ].filter(Boolean).join(" "));
+
+  return (
+    texto.includes("roja") ||
+    texto.includes("rojas") ||
+    texto.includes("red card") ||
+    texto.includes("red cards") ||
+    texto.includes("expulsado") ||
+    texto.includes("expulsion") ||
+    texto.includes("sent off")
+  );
+}
+
 function normalizeScorerList(match) {
   const list = [];
 
@@ -3506,9 +3530,9 @@ function normalizeScorerList(match) {
         return;
       }
 
-      // Las rojas pueden venir mezcladas en goleadores desde el worker.
-      // No las renderizamos como gol; se muestran abajo con redCardsSplitForScorersBox().
-      if (isRedCard(item)) {
+      // Tarjetas rojas desactivadas temporalmente.
+      // Si el worker las manda dentro de goleadores/incidencias, no las mostramos.
+      if (isRedCard(item) || esEventoRojaDesactivado(item)) {
         return;
       }
 
@@ -3660,79 +3684,12 @@ function crearTarjetaRojaSintetica(match, side = "away", index = 0) {
 }
 
 function redCardsSplitForScorersBox(match, home = "", away = "") {
-  const cards = uniqueRedCards(normalizeCardList(match));
-  const counts = contarRojasUnicas(match);
-  const homeCards = [];
-  const awayCards = [];
-  const unknownCards = [];
-
-  cards.forEach((card) => {
-    const side = redCardSideForMatch(card, match);
-
-    if (side === "home") {
-      homeCards.push(card);
-    } else if (side === "away") {
-      awayCards.push(card);
-    } else {
-      unknownCards.push(card);
-    }
-  });
-
-  // Si ESPN/worker trae jugador pero no lado/equipo, usamos el contador final
-  // para ubicar la roja dentro del cuadro correcto sin duplicarla.
-  const stillUnknown = [];
-
-  unknownCards.forEach((card) => {
-    if (awayCards.length < Number(counts.visitante || 0)) {
-      awayCards.push(card);
-    } else if (homeCards.length < Number(counts.local || 0)) {
-      homeCards.push(card);
-    } else if (Number(counts.visitante || 0) >= Number(counts.local || 0)) {
-      awayCards.push(card);
-    } else if (Number(counts.local || 0) > 0) {
-      homeCards.push(card);
-    } else {
-      stillUnknown.push(card);
-    }
-  });
-
-  const targetHome = Number(counts.local || 0);
-  const targetAway = Number(counts.visitante || 0);
-
-  // Fallback final: si el worker solo trae contador de roja pero no trae jugador,
-  // mostramos una sola tarjeta genérica por lado. No usamos while porque algunas
-  // fuentes mandan la misma roja duplicada en counters/incidents/cards.
-  if (targetHome > 0 && homeCards.length === 0) {
-    homeCards.push(crearTarjetaRojaSintetica(match, "home", 0));
-  }
-
-  if (targetAway > 0 && awayCards.length === 0) {
-    awayCards.push(crearTarjetaRojaSintetica(match, "away", 0));
-  }
-
-  const knownHome = knownRedCardPlayerForMatch(match, "home");
-  const knownAway = knownRedCardPlayerForMatch(match, "away");
-
-  if (knownHome && homeCards.length === 1) {
-    const currentHomeName = redCardPlayerName(homeCards[0]) || homeCards[0]?.jugador || "";
-
-    if (isGenericRedCardName(currentHomeName)) {
-      homeCards[0] = normalizarTarjetaRoja({ ...homeCards[0], jugador: knownHome, nombre: knownHome });
-    }
-  }
-
-  if (knownAway && awayCards.length === 1) {
-    const currentAwayName = redCardPlayerName(awayCards[0]) || awayCards[0]?.jugador || "";
-
-    if (isGenericRedCardName(currentAwayName)) {
-      awayCards[0] = normalizarTarjetaRoja({ ...awayCards[0], jugador: knownAway, nombre: knownAway });
-    }
-  }
-
+  // Tarjetas rojas desactivadas temporalmente.
+  // No se renderizan en el cuadro de incidencias hasta que el worker entregue datos limpios.
   return {
-    homeCards: uniqueRedCards(homeCards),
-    awayCards: uniqueRedCards(awayCards),
-    unknownCards: stillUnknown,
+    homeCards: [],
+    awayCards: [],
+    unknownCards: [],
   };
 }
 
@@ -3915,70 +3872,9 @@ function redCardSideForMatch(card = {}, match = {}) {
 }
 
 function contarRojasUnicas(match = {}) {
-  const cards = uniqueRedCards(normalizeCardList(match));
-  const localExplicit = explicitRedCardCount(match, "home");
-  const awayExplicit = explicitRedCardCount(match, "away");
-
-  if (!cards.length) {
-    return { local: localExplicit, visitante: awayExplicit };
-  }
-
-  const vistas = new Set();
-  let local = 0;
-  let visitante = 0;
-  let desconocidas = 0;
-
-  for (const card of cards) {
-    const jugador = normalizeText(redCardPlayerName(card));
-    const minuto = String(card.minuto || card.minute || card.time || "").replace(/[^0-9+]/g, "").trim();
-    const equipo = normalizeText(card.equipo || card.team || card.teamName || card.club || "");
-    const lado = redCardSideForMatch(card, match);
-    const key = jugador
-      ? `jugador|${jugador}|${minuto || "sin-minuto"}`
-      : `sin-jugador|${equipo || lado || "sin-equipo"}|${minuto || "sin-minuto"}`;
-
-    if (vistas.has(key)) {
-      continue;
-    }
-
-    vistas.add(key);
-
-    if (lado === "home") {
-      local++;
-    } else if (lado === "away") {
-      visitante++;
-    } else {
-      desconocidas++;
-    }
-  }
-
-  // Si la lista ya trae el lado/equipo, esa lista manda y evita duplicados.
-  if (local + visitante > 0) {
-    return { local, visitante };
-  }
-
-  // Si hay roja con jugador pero sin lado claro, usamos el contador explícito
-  // del worker para ubicarla sin duplicarla. Esto arregla casos como
-  // Olimpia vs Vasco, donde Joao Vitor llega duplicado/parcial desde ESPN.
-  if (desconocidas > 0) {
-    if (localExplicit > 0 && awayExplicit === 0) {
-      return { local: Math.min(localExplicit, desconocidas), visitante: 0 };
-    }
-
-    if (awayExplicit > 0 && localExplicit === 0) {
-      return { local: 0, visitante: Math.min(awayExplicit, desconocidas) };
-    }
-
-    if (awayExplicit >= localExplicit && awayExplicit > 0) {
-      return { local: 0, visitante: Math.min(awayExplicit, desconocidas) };
-    }
-
-    if (localExplicit > 0) {
-      return { local: Math.min(localExplicit, desconocidas), visitante: 0 };
-    }
-  }
-
-  return { local: localExplicit, visitante: awayExplicit };
+  // Tarjetas rojas desactivadas temporalmente.
+  // Esto evita badges en los escudos y cualquier duplicado visual.
+  return { local: 0, visitante: 0 };
 }
 
 function redCardsForTeam(match, side, teamName) {
