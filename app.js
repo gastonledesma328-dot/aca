@@ -2249,18 +2249,89 @@ function agendaMatchKey(match) {
     .join("|");
 }
 
-function agendaMatchDedupeKey(match) {
+function agendaStableId(match) {
+  return String(match?.id || match?.uid || "")
+    .trim()
+    .replace(/-\d{4}-\d{2}-\d{2}-continuacion$/i, "")
+    .replace(/-continuacion$/i, "");
+}
+
+function agendaNormalizedTime(match) {
+  const raw = String(match?.hora_inicio || match?.hora || agendaDisplayTime(match) || "").trim();
+  const found = raw.match(/\d{1,2}:\d{2}/);
+
+  if (!found) {
+    return "";
+  }
+
+  const [h, m] = found[0].split(":");
+  return `${String(Number(h)).padStart(2, "0")}:${m}`;
+}
+
+function agendaTeamsDedupeText(match) {
   const teams = agendaTeams(match);
   const home = normalizeText(teams.home);
   const away = normalizeText(teams.away);
-  const orderedTeams = [home, away].sort().join("~");
-  const date = agendaDate(match);
-  const time = String(match.hora_inicio || match.hora || agendaDisplayTime(match) || "")
-    .replace(/[^0-9:]/g, "")
-    .slice(0, 5);
-  const league = normalizeText(inferAgendaLeague(match));
+  return [home, away].sort().join("~");
+}
 
-  return [date, time, league, orderedTeams].filter(Boolean).join("|");
+function agendaMatchDedupeKey(match) {
+  const stableId = agendaStableId(match);
+
+  if (stableId) {
+    return `id|${stableId}`;
+  }
+
+  const teams = agendaTeamsDedupeText(match);
+  const date = agendaDate(match);
+  const time = agendaNormalizedTime(match);
+
+  return [date, time, teams].filter(Boolean).join("|");
+}
+
+function agendaIsContinuation(match) {
+  return /continuacion/i.test(String(match?.id || match?.uid || match?.estado || match?.estado_corto || ""));
+}
+
+function shouldMergeAgendaAsDuplicate(current, candidate) {
+  if (!current || !candidate) {
+    return false;
+  }
+
+  const currentId = agendaStableId(current);
+  const candidateId = agendaStableId(candidate);
+
+  if (currentId && candidateId && currentId === candidateId) {
+    return true;
+  }
+
+  const currentTeams = agendaTeams(current);
+  const candidateTeams = agendaTeams(candidate);
+  const sameOrder =
+    namesLookRelated(currentTeams.home, candidateTeams.home) &&
+    namesLookRelated(currentTeams.away, candidateTeams.away);
+  const swappedOrder =
+    namesLookRelated(currentTeams.home, candidateTeams.away) &&
+    namesLookRelated(currentTeams.away, candidateTeams.home);
+
+  if (!sameOrder && !swappedOrder) {
+    return false;
+  }
+
+  const sameTime = agendaNormalizedTime(current) &&
+    agendaNormalizedTime(current) === agendaNormalizedTime(candidate);
+
+  if (!sameTime) {
+    return false;
+  }
+
+  // Esto cubre el caso que te apareció: ESPN trae el partido original
+  // y además una copia "continuacion" para el día siguiente.
+  if (agendaIsContinuation(current) || agendaIsContinuation(candidate)) {
+    return true;
+  }
+
+  return agendaDate(current) === agendaDate(candidate);
 }
 
 function matchHasBetterAgendaData(candidate = {}, current = {}) {
@@ -2309,24 +2380,33 @@ function combinarAgendaDuplicada(current = {}, candidate = {}) {
 }
 
 function uniqueMatches(matches) {
+  const result = [];
   const byKey = new Map();
 
   (Array.isArray(matches) ? matches : []).forEach((match) => {
     const key = agendaMatchDedupeKey(match) || agendaMatchKey(match);
 
-    if (!key) {
+    if (key && byKey.has(key)) {
+      const index = byKey.get(key);
+      result[index] = combinarAgendaDuplicada(result[index], match);
       return;
     }
 
-    if (!byKey.has(key)) {
-      byKey.set(key, match);
+    const fuzzyIndex = result.findIndex((existing) =>
+      shouldMergeAgendaAsDuplicate(existing, match)
+    );
+
+    if (fuzzyIndex >= 0) {
+      result[fuzzyIndex] = combinarAgendaDuplicada(result[fuzzyIndex], match);
+      if (key) byKey.set(key, fuzzyIndex);
       return;
     }
 
-    byKey.set(key, combinarAgendaDuplicada(byKey.get(key), match));
+    result.push(match);
+    if (key) byKey.set(key, result.length - 1);
   });
 
-  return Array.from(byKey.values());
+  return result;
 }
 
 function sortAgendaMatchesStable(matches) {
@@ -4009,7 +4089,7 @@ function ligaOcultaAgenda(match) {
 }
 
 function renderAgenda(matches, sourceUrl, meta = {}) {
-  matches = Array.isArray(matches) ? matches.filter((match) => !ligaOcultaAgenda(match)) : [];
+  matches = uniqueMatches(Array.isArray(matches) ? matches.filter((match) => !ligaOcultaAgenda(match)) : []);
   matches = aplicarIncidenciasPersistidasALista(matches);
   agendaCurrentMatches = Array.isArray(matches) ? matches : [];
   leagueGrid.innerHTML = "";
