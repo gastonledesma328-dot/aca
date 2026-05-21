@@ -3203,6 +3203,10 @@ function scorerTypeLabel(scorer) {
 
   const normalized = normalizeText(raw);
 
+  if (/roja|red card|red-card|expuls|sent off/.test(normalized)) {
+    return "Roja";
+  }
+
   if (/penal|penalty|\bpen\b|tiro penal/.test(normalized)) {
     return "(Pen.)";
   }
@@ -3499,6 +3503,12 @@ function normalizeScorerList(match) {
 
     items.forEach((item) => {
       if (!item || typeof item !== "object") {
+        return;
+      }
+
+      // Las rojas pueden venir mezcladas en goleadores desde el worker.
+      // No las renderizamos como gol; se muestran abajo con redCardsSplitForScorersBox().
+      if (isRedCard(item)) {
         return;
       }
 
