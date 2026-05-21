@@ -3638,13 +3638,29 @@ function teamValueMatches(value, teamName) {
   return a === b || a.includes(b) || b.includes(a);
 }
 
-function normalizeCardList(match) {
+function marcarListaComoRoja(items = []) {
+  return (Array.isArray(items) ? items : [])
+    .filter((item) => item && typeof item === "object")
+    .map((item) => ({
+      ...item,
+      roja: true,
+      red: true,
+      redCard: true,
+      tipo: item.tipo || item.type || item.card || "Tarjeta roja",
+    }));
+}
+
+function normalizeCardList(match = {}) {
+  // Ojo: las listas llamadas tarjetas_rojas / rojas / redCards ya vienen filtradas
+  // como expulsiones. A veces el worker manda solo jugador/minuto/lado sin campo
+  // tipo="Tarjeta roja". Si no las marcamos acá, isRedCard() las descarta
+  // y desaparecen casos como Joao Vitor en Olimpia vs Vasco.
   return [
     ...(Array.isArray(match.tarjetas) ? match.tarjetas : []),
     ...(Array.isArray(match.cards) ? match.cards : []),
-    ...(Array.isArray(match.tarjetas_rojas) ? match.tarjetas_rojas : []),
-    ...(Array.isArray(match.rojas) ? match.rojas : []),
-    ...(Array.isArray(match.redCards) ? match.redCards : []),
+    ...marcarListaComoRoja(match.tarjetas_rojas),
+    ...marcarListaComoRoja(match.rojas),
+    ...marcarListaComoRoja(match.redCards),
   ];
 }
 
@@ -4059,17 +4075,17 @@ function normalizarIncidenciasPayload(payload) {
         ? payload.scorers
         : [];
 
-  const tarjetas = uniqueRedCards(
-    Array.isArray(payload.tarjetas_rojas)
-      ? payload.tarjetas_rojas
-      : Array.isArray(payload.rojas)
-        ? payload.rojas
+  const tarjetasRaw = Array.isArray(payload.tarjetas_rojas)
+    ? marcarListaComoRoja(payload.tarjetas_rojas)
+    : Array.isArray(payload.rojas)
+      ? marcarListaComoRoja(payload.rojas)
+      : Array.isArray(payload.redCards)
+        ? marcarListaComoRoja(payload.redCards)
         : Array.isArray(payload.cards)
           ? payload.cards
-          : Array.isArray(payload.redCards)
-            ? payload.redCards
-            : []
-  );
+          : [];
+
+  const tarjetas = uniqueRedCards(tarjetasRaw);
 
   const localRojas = numeroSeguro(
     payload.rojas?.local ??
