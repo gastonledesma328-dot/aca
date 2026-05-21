@@ -6,7 +6,6 @@ const WORKER_BASE_URL = "https://partidos-hoy-worker.gastonledesma328.workers.de
 const AGENDA_URL = `${WORKER_BASE_URL}/agenda`;
 const AGENDA_ENDPOINT = `${WORKER_BASE_URL}/agenda`;
 const AGENDA_LIVE_ENDPOINT = `${WORKER_BASE_URL}/live`;
-const LOCAL_AGENDA_URL = "./data/agenda.json";
 const TV_PARTIDOS_URL = "./data/tv_partidos.json";
 
 const INCIDENCIAS_WORKER_BASE_URL = "https://partidos-hoy-incidencias-worker.gastonledesma328.workers.dev";
@@ -106,8 +105,6 @@ const FEATURED_LOGO_FALLBACKS = {
 };
 
 const CACHE_TTL_MS = 90_000;
-const AGENDA_LOCAL_CACHE_TTL_MS = 5 * 60_000;
-const AGENDA_INSTANT_TIMEOUT_MS = 650;
 const LIVE_REFRESH_MS = 60_000;
 const LIVE_VISUAL_TIMER_MS = 1_000;
 const LIVE_CACHE_TTL_MS = 15_000;
@@ -119,7 +116,6 @@ const STALE_CACHE_TTL_MS = 20 * 60_000;
 const requestCache = new Map();
 const APP_CACHE_VERSION = "v11-agenda-goles-en-vivo";
 const CACHE_KEY_AGENDA = `agenda-worker-cache-${APP_CACHE_VERSION}`;
-const CACHE_KEY_AGENDA_LOCAL = `agenda-local-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_LIVE = `agenda-live-worker-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_TV = `tv-partidos-cache-${APP_CACHE_VERSION}`;
 const CACHE_KEY_STREAMS = `stream-events-cache-${APP_CACHE_VERSION}`;
@@ -497,53 +493,6 @@ function fetchAgendaPayload(options = {}) {
       timeoutMs: options.timeoutMs || 0,
     }
   );
-}
-
-function fetchLocalAgendaPayload(options = {}) {
-  const cacheBust = Math.floor(Date.now() / AGENDA_LOCAL_CACHE_TTL_MS);
-
-  return fetchJsonCached(
-    `${LOCAL_AGENDA_URL}?v=${cacheBust}`,
-    CACHE_KEY_AGENDA_LOCAL,
-    AGENDA_LOCAL_CACHE_TTL_MS,
-    {
-      networkFirst: options.networkFirst === true,
-      timeoutMs: options.timeoutMs || AGENDA_INSTANT_TIMEOUT_MS,
-    }
-  );
-}
-
-function agendaMatchesFromPayload(payload, selectedDate) {
-  const partidos = Array.isArray(payload?.partidos) ? payload.partidos : [];
-
-  return aplicarIncidenciasPersistidasALista(
-    sortAgendaMatchesStable(
-      uniqueMatches(partidos).filter((match) =>
-        agendaMatchesSelectedDate(match, selectedDate) && !ligaOcultaAgenda(match)
-      )
-    )
-  );
-}
-
-function mejorAgendaCacheParaFecha(selectedDate) {
-  const opciones = [
-    readAnyJsonCache(CACHE_KEY_AGENDA),
-    readAnyJsonCache(CACHE_KEY_AGENDA_LOCAL),
-  ].filter(Boolean);
-
-  for (const data of opciones) {
-    const matches = agendaMatchesFromPayload(data, selectedDate);
-
-    if (matches.length) {
-      return { data, matches };
-    }
-  }
-
-  return { data: null, matches: [] };
-}
-
-function esperar(ms) {
-  return new Promise((resolve) => window.setTimeout(resolve, ms));
 }
 
 function fetchAgendaLivePayload() {
@@ -1708,7 +1657,13 @@ async function fetchAgendaLiveMatches(date = new Date()) {
     Array.isArray(payload.partidos) ? payload.partidos : []
   );
 
-  return partidos.filter((match) => {
+  const partidosConArrastreNocturno = addOvernightLiveCarryOver(
+    partidos,
+    selectedDate,
+    agendaCurrentMatches
+  );
+
+  return partidosConArrastreNocturno.filter((match) => {
     return agendaMatchesSelectedDate(match, selectedDate) && isAgendaMatchLive(match);
   });
 }
@@ -2277,14 +2232,70 @@ function agendaMatchesSelectedDate(match, selectedDate) {
   const start = agendaStart(match);
   const end = agendaEnd(match);
 
-  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+  if (Number.isNaN(start.getTime())) {
     return false;
   }
 
   const dayStart = new Date(`${selectedDate}T00:00:00-03:00`);
   const dayEnd = new Date(`${selectedDate}T23:59:59-03:00`);
 
+  // Regla importante para partidos que arrancan tarde un día y siguen vivos después de medianoche.
+  // Ejemplo: empieza 23:00 del 20/05, a las 00:30 del 21/05 sigue en vivo.
+  // Aunque el Worker /agenda del nuevo día ya no lo traiga, NO lo borramos si el estado indica vivo.
+  const startedPreviousNight =
+    start < dayStart &&
+    start >= new Date(dayStart.getTime() - 12 * 60 * 60 * 1000);
+
+  if (startedPreviousNight && isAgendaMatchLive(match)) {
+    return true;
+  }
+
+  if (Number.isNaN(end.getTime())) {
+    return false;
+  }
+
   return start <= dayEnd && end >= dayStart;
+}
+
+function shouldKeepOvernightLiveMatch(match, selectedDate) {
+  const matchDate = agendaDate(match);
+
+  if (!matchDate || matchDate === selectedDate) {
+    return false;
+  }
+
+  if (!isAgendaMatchLive(match)) {
+    return false;
+  }
+
+  const start = agendaStart(match);
+
+  if (Number.isNaN(start.getTime())) {
+    return false;
+  }
+
+  const dayStart = new Date(`${selectedDate}T00:00:00-03:00`);
+
+  return (
+    start < dayStart &&
+    start >= new Date(dayStart.getTime() - 12 * 60 * 60 * 1000)
+  );
+}
+
+function addOvernightLiveCarryOver(matches, selectedDate, ...sources) {
+  const base = Array.isArray(matches) ? [...matches] : [];
+
+  for (const source of sources) {
+    if (!Array.isArray(source)) continue;
+
+    for (const match of source) {
+      if (shouldKeepOvernightLiveMatch(match, selectedDate)) {
+        base.push(match);
+      }
+    }
+  }
+
+  return uniqueMatches(base);
 }
 
 function agendaWindowDates(date) {
@@ -4507,11 +4518,10 @@ function normalizarIncidenciasPayload(payload) {
     });
 
   return {
-    goleadores: goleadoresNormalizados.filter((evento) => !/roja|red/i.test(String(evento?.tipo || evento?.descripcion || ""))),
-    // Tarjetas rojas desactivadas temporalmente: no se guardan ni se renderizan.
-    tarjetas_rojas: [],
-    local_rojas: 0,
-    visitante_rojas: 0,
+    goleadores: goleadoresNormalizados,
+    tarjetas_rojas: tarjetas,
+    local_rojas: localRojas,
+    visitante_rojas: visitanteRojas,
   };
 }
 
@@ -4719,9 +4729,9 @@ function renderAgenda(matches, sourceUrl, meta = {}) {
         const away = match.visitante || match.partido?.split(" vs ")[1] || "Visitante";
         const isLive = isAgendaMatchLive(match);
         const score = scoreMarkup(match);
-        // Tarjetas rojas desactivadas temporalmente.
-        const homeRedCards = 0;
-        const awayRedCards = 0;
+        const rojasData = contarRojasUnicas(match);
+        const homeRedCards = rojasData.local || 0;
+        const awayRedCards = rojasData.visitante || 0;
         const tv = obtenerTvPartidoSync(match);
 
         if (isLive) {
@@ -4776,72 +4786,59 @@ async function loadAgenda(date = currentAgendaDate) {
 
   agendaLoading = true;
 
-  let baseMatches = [];
-  let baseData = null;
-  let baseRendered = false;
+  const cachedData = readAnyJsonCache(CACHE_KEY_AGENDA);
+  const cachedMatches = Array.isArray(cachedData?.partidos)
+    ? aplicarIncidenciasPersistidasALista(
+        sortAgendaMatchesStable(
+          uniqueMatches(cachedData.partidos).filter((match) =>
+            agendaMatchesSelectedDate(match, selectedDate) && !ligaOcultaAgenda(match)
+          )
+        )
+      )
+    : [];
 
-  const cached = mejorAgendaCacheParaFecha(selectedDate);
-
-  if (cached.matches.length) {
-    baseData = cached.data;
-    baseMatches = cached.matches;
-    renderAgenda(baseMatches, AGENDA_ENDPOINT, {
-      source: baseData?.fuente || "cache local",
-      total: baseData?.total || baseMatches.length,
+  // Carga instantánea: si hay agenda guardada, la mostramos de una y no dejamos la pantalla vacía.
+  // Después se refresca /live y el Worker de incidencias toca solo minuto, marcador y goles.
+  if (cachedMatches.length) {
+    renderAgenda(cachedMatches, AGENDA_ENDPOINT, {
+      source: cachedData.fuente,
+      total: cachedData.total,
       fromCache: true,
     });
 
-    agendaCurrentMatches = baseMatches;
+    agendaCurrentMatches = cachedMatches;
     agendaLoadedDate = selectedDate;
-    baseRendered = true;
     applyAgendaSearch();
-    setUtilityStatus("Agenda cargada al instante. Actualizando vivo...");
+    setUtilityStatus("Agenda guardada cargada. Actualizando vivo...");
 
-    window.setTimeout(refreshAgendaLive, 120);
-    window.setTimeout(refreshIncidenciasLive, 700);
+    window.setTimeout(refreshAgendaLive, 150);
+    window.setTimeout(refreshIncidenciasLive, 800);
   } else {
-    leagueGrid.innerHTML = `<p class="empty-state">Cargando agenda...</p>`;
-
-    // Primera visita o cache vacío: intentamos mostrar el JSON local del repo
-    // antes de esperar al Worker. Esto hace que la agenda aparezca mucho más rápido.
-    try {
-      const localData = await Promise.race([
-        fetchLocalAgendaPayload({ timeoutMs: AGENDA_INSTANT_TIMEOUT_MS }),
-        esperar(AGENDA_INSTANT_TIMEOUT_MS).then(() => null),
-      ]);
-
-      const localMatches = agendaMatchesFromPayload(localData, selectedDate);
-
-      if (localMatches.length) {
-        baseData = localData;
-        baseMatches = localMatches;
-        renderAgenda(baseMatches, LOCAL_AGENDA_URL, {
-          source: localData?.fuente || "agenda local",
-          total: localData?.total || localMatches.length,
-          fromCache: true,
-        });
-
-        agendaCurrentMatches = baseMatches;
-        agendaLoadedDate = selectedDate;
-        baseRendered = true;
-        applyAgendaSearch();
-        setUtilityStatus("Agenda local cargada. Actualizando vivo...");
-
-        window.setTimeout(refreshAgendaLive, 120);
-        window.setTimeout(refreshIncidenciasLive, 700);
-      }
-    } catch (error) {
-      // Si el JSON local no llega rápido, seguimos con el Worker.
-    }
+    leagueGrid.innerHTML = `<p class="empty-state">Cargando Agenda...</p>`;
   }
 
   try {
     const data = await fetchAgendaPayload({
-      networkFirst: !baseRendered,
-      timeoutMs: baseRendered ? 2200 : 0,
+      networkFirst: !cachedMatches.length,
+      timeoutMs: cachedMatches.length ? 2500 : 0,
     });
 
-    const dailyMatches = agendaMatchesFromPayload(data, selectedDate);
+    const partidos = Array.isArray(data.partidos) ? data.partidos : [];
+
+    const partidosConArrastreNocturno = addOvernightLiveCarryOver(
+      partidos,
+      selectedDate,
+      agendaCurrentMatches,
+      cachedMatches
+    );
+
+    const dailyMatches = aplicarIncidenciasPersistidasALista(
+      sortAgendaMatchesStable(
+        uniqueMatches(partidosConArrastreNocturno).filter((match) =>
+          agendaMatchesSelectedDate(match, selectedDate) && !ligaOcultaAgenda(match)
+        )
+      )
+    );
 
     if (selectedDate === localDateISO()) {
       agendaLiveMatches = dailyMatches.filter(isAgendaMatchLive);
@@ -4853,14 +4850,14 @@ async function loadAgenda(date = currentAgendaDate) {
       }
     }
 
-    if (baseRendered && leagueGrid.querySelector(".agenda-row")) {
-      agendaCurrentMatches = dailyMatches.length ? dailyMatches : baseMatches;
+    // Si ya había cache dibujado, no recreamos la agenda salvo que cambie la cantidad de partidos.
+    // El marcador/minuto/goles se actualiza por DOM para evitar parpadeo.
+    if (cachedMatches.length && leagueGrid.querySelector(".agenda-row")) {
+      agendaCurrentMatches = dailyMatches.length ? dailyMatches : cachedMatches;
       const domActualizado = actualizarLiveEnDOM(agendaCurrentMatches);
       actualizarIncidenciasEnDOM(agendaCurrentMatches);
 
-      const cambioEstructural = dailyMatches.length && dailyMatches.length !== baseMatches.length;
-
-      if (!domActualizado || cambioEstructural) {
+      if (!domActualizado || dailyMatches.length !== cachedMatches.length) {
         renderAgenda(agendaCurrentMatches, AGENDA_ENDPOINT, {
           source: data.fuente,
           total: data.total,
@@ -4871,7 +4868,6 @@ async function loadAgenda(date = currentAgendaDate) {
         source: data.fuente,
         total: data.total,
       });
-      agendaCurrentMatches = dailyMatches;
     }
 
     applyAgendaSearch();
@@ -4882,11 +4878,11 @@ async function loadAgenda(date = currentAgendaDate) {
     }
 
     window.setTimeout(refreshAgendaLive, 250);
-    window.setTimeout(refreshIncidenciasLive, 1200);
+    window.setTimeout(refreshIncidenciasLive, 1500);
   } catch (error) {
     console.error("Error actualizando agenda desde Worker:", error);
 
-    if (baseRendered) {
+    if (cachedMatches.length) {
       setUtilityStatus("Mostrando agenda guardada. Reintentando vivo...");
       return;
     }
@@ -4902,6 +4898,7 @@ async function loadAgenda(date = currentAgendaDate) {
     agendaLoading = false;
   }
 }
+
 
 function actualizarTvEnDOM() {
   if (activeTab !== "agenda" || !TV_PARTIDOS_READY) {
@@ -4981,7 +4978,12 @@ async function refreshAgendaLive() {
     const liveData = await fetchAgendaLivePayload();
     const livePartidos = Array.isArray(liveData.partidos) ? liveData.partidos : [];
 
-    const mergedPartidos = mergeAgendaWithLive(basePartidos, livePartidos);
+    const mergedPartidos = addOvernightLiveCarryOver(
+      mergeAgendaWithLive(basePartidos, livePartidos),
+      selectedDate,
+      currentPartidos,
+      basePartidos
+    );
 
     const dailyMatches = aplicarIncidenciasPersistidasALista(
       sortAgendaMatchesStable(
@@ -5552,13 +5554,6 @@ window.addEventListener("DOMContentLoaded", abrirSeccionDesdeHash);
 window.addEventListener("hashchange", abrirSeccionDesdeHash);
 window.addEventListener("load", abrirSeccionDesdeHash);
 
-function precalentarAgendaLocal() {
-  // No bloquea el inicio. Solo deja listo el cache local para la próxima apertura.
-  window.setTimeout(() => {
-    fetchLocalAgendaPayload({ timeoutMs: 1200 }).catch(() => {});
-  }, 80);
-}
-
 /* ============================================================
    INIT
 ============================================================ */
@@ -5569,7 +5564,6 @@ showSection("agenda");
 setUtilityStatus("");
 updatePostCount();
 cargarIncidenciasPersistidas();
-precalentarAgendaLocal();
 loadAgenda();
 loadEvents();
 
