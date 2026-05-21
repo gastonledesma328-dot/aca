@@ -3576,6 +3576,21 @@ function redCardItemMarkup(card, side = "unknown") {
   `;
 }
 
+function crearTarjetaRojaSintetica(match, side = "away", index = 0) {
+  const teams = agendaTeams(match);
+  const teamName = side === "home" ? teams.home : teams.away;
+
+  return normalizarTarjetaRoja({
+    jugador: "Expulsado",
+    minuto: "",
+    local_visitante: side === "home" ? "local" : "visitante",
+    equipo: teamName,
+    tipo: "Tarjeta roja",
+    sintetica: true,
+    orden: index,
+  });
+}
+
 function redCardsSplitForScorersBox(match, home = "", away = "") {
   const cards = uniqueRedCards(normalizeCardList(match));
   const counts = contarRojasUnicas(match);
@@ -3608,6 +3623,20 @@ function redCardsSplitForScorersBox(match, home = "", away = "") {
       stillUnknown.push(card);
     }
   });
+
+  // Fallback importante: a veces /live trae solo el contador de rojas
+  // pero el array tarjetas_rojas llega vacío o tarde. En ese caso igual
+  // mostramos la incidencia dentro del cuadro para que no desaparezca.
+  const faltanHome = Math.max(0, Number(counts.local || 0) - homeCards.length);
+  const faltanAway = Math.max(0, Number(counts.visitante || 0) - awayCards.length);
+
+  for (let i = 0; i < faltanHome; i += 1) {
+    homeCards.push(crearTarjetaRojaSintetica(match, "home", i));
+  }
+
+  for (let i = 0; i < faltanAway; i += 1) {
+    awayCards.push(crearTarjetaRojaSintetica(match, "away", i));
+  }
 
   return { homeCards, awayCards, unknownCards: stillUnknown };
 }
@@ -3711,9 +3740,14 @@ function normalizeCardList(match = {}) {
     ...(Array.isArray(match.cards) ? match.cards : []),
     ...(Array.isArray(match.incidents) ? match.incidents : []),
     ...(Array.isArray(match.incidencias) ? match.incidencias : []),
+    ...(Array.isArray(match.eventos) ? match.eventos : []),
+    ...(Array.isArray(match.eventos_partido) ? match.eventos_partido : []),
     ...marcarListaComoRoja(match.tarjetas_rojas),
     ...marcarListaComoRoja(match.rojas),
     ...marcarListaComoRoja(match.redCards),
+    ...marcarListaComoRoja(match.red_cards),
+    ...marcarListaComoRoja(match.expulsados),
+    ...marcarListaComoRoja(match.expulsiones),
   ];
 }
 
@@ -3728,7 +3762,9 @@ function isRedCard(card) {
     card.redCard === true ||
     text.includes("roja") ||
     text.includes("red card") ||
-    text.includes("red-card")
+    text.includes("red-card") ||
+    text.includes("expuls") ||
+    text.includes("sent off")
   );
 }
 
