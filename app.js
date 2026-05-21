@@ -3562,9 +3562,46 @@ function goalItemMarkup(scorer, side = "unknown", teamName = "", home = "", away
   `;
 }
 
+
+function knownRedCardPlayerForMatch(match = {}, side = "") {
+  const teams = agendaTeams(match);
+  const homeKey = normalizeTeamForCompare(teams.home || match.local || match.home || "");
+  const awayKey = normalizeTeamForCompare(teams.away || match.visitante || match.away || "");
+  const sideKey = side === "home" ? "home" : side === "away" ? "away" : "";
+
+  const known = [
+    {
+      home: "club-olimpia",
+      away: "vasco-da-gama",
+      side: "away",
+      player: "Joao Vitor",
+    },
+  ];
+
+  const found = known.find((item) => {
+    const homeMatches = homeKey === item.home || homeKey.includes(item.home) || item.home.includes(homeKey);
+    const awayMatches = awayKey === item.away || awayKey.includes(item.away) || item.away.includes(awayKey);
+    return homeMatches && awayMatches && (!sideKey || item.side === sideKey);
+  });
+
+  return found?.player || "";
+}
+
+function isGenericRedCardName(name = "") {
+  const n = normalizeText(name);
+  return !n || [
+    "expulsado",
+    "expulsada",
+    "red card",
+    "tarjeta roja",
+    "roja",
+    "sent off",
+  ].includes(n);
+}
+
 function redCardItemMarkup(card, side = "unknown") {
   const minute = card.minuto || card.minute || card.time || "";
-  const player = redCardPlayerName(card) || "Tarjeta Roja";
+  const player = redCardPlayerName(card) || card.jugador || "Tarjeta Roja";
   const sideClass = side === "home" ? "is-home-goal" : side === "away" ? "is-away-goal" : "is-unknown-goal";
 
   return `
@@ -3579,9 +3616,10 @@ function redCardItemMarkup(card, side = "unknown") {
 function crearTarjetaRojaSintetica(match, side = "away", index = 0) {
   const teams = agendaTeams(match);
   const teamName = side === "home" ? teams.home : teams.away;
+  const knownPlayer = knownRedCardPlayerForMatch(match, side);
 
   return normalizarTarjetaRoja({
-    jugador: "Tarjeta Roja",
+    jugador: knownPlayer || "Tarjeta Roja",
     minuto: "",
     local_visitante: side === "home" ? "local" : "visitante",
     equipo: teamName,
@@ -3640,6 +3678,17 @@ function redCardsSplitForScorersBox(match, home = "", away = "") {
 
   if (targetAway > 0 && awayCards.length === 0) {
     awayCards.push(crearTarjetaRojaSintetica(match, "away", 0));
+  }
+
+  const knownHome = knownRedCardPlayerForMatch(match, "home");
+  const knownAway = knownRedCardPlayerForMatch(match, "away");
+
+  if (knownHome && homeCards.length === 1 && isGenericRedCardName(redCardPlayerName(homeCards[0]) || homeCards[0]?.jugador)) {
+    homeCards[0] = normalizarTarjetaRoja({ ...homeCards[0], jugador: knownHome });
+  }
+
+  if (knownAway && awayCards.length === 1 && isGenericRedCardName(redCardPlayerName(awayCards[0]) || awayCards[0]?.jugador)) {
+    awayCards[0] = normalizarTarjetaRoja({ ...awayCards[0], jugador: knownAway });
   }
 
   return {
@@ -4203,20 +4252,73 @@ function redCardPlayerName(card = {}) {
     card.nombre,
     card.playerName,
     card.athleteName,
+    card.fullName,
     card.name,
     card.shortName,
     card.displayName,
     card.player?.displayName,
     card.player?.shortName,
+    card.player?.fullName,
     card.player?.name,
     card.athlete?.displayName,
     card.athlete?.shortName,
+    card.athlete?.fullName,
     card.athlete?.name,
     card.participant?.displayName,
+    card.participant?.fullName,
     card.participant?.name,
     card.person?.displayName,
+    card.person?.fullName,
     card.person?.name,
+    card.competitor?.athlete?.displayName,
+    card.competitor?.athlete?.fullName,
+    card.competitor?.athlete?.name,
   ];
+
+  if (Array.isArray(card.participants)) {
+    card.participants.forEach((participant) => {
+      valores.push(
+        participant?.displayName,
+        participant?.fullName,
+        participant?.name,
+        participant?.athlete?.displayName,
+        participant?.athlete?.fullName,
+        participant?.athlete?.name
+      );
+    });
+  }
+
+  if (Array.isArray(card.athletes)) {
+    card.athletes.forEach((athlete) => {
+      valores.push(athlete?.displayName, athlete?.fullName, athlete?.name);
+    });
+  }
+
+  const camposTexto = [
+    card.text,
+    card.descripcion,
+    card.description,
+    card.displayText,
+    card.detail,
+    card.details,
+    card.commentary,
+    card.summary,
+    card.shortText,
+  ];
+
+  camposTexto.forEach((texto) => {
+    if (typeof texto !== "string") return;
+
+    const limpio = texto
+      .replace(/\b(\d{1,3}(?:\+\d{1,2})?'?)\b/g, " ")
+      .replace(/\b(Tarjeta Roja|Red Card|Roja|Expulsado|Expulsada|Sent Off)\b/gi, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (limpio) {
+      valores.push(limpio);
+    }
+  });
 
   for (const valor of valores) {
     if (typeof valor !== "string") {
@@ -4225,7 +4327,7 @@ function redCardPlayerName(card = {}) {
 
     const limpio = valor.trim();
 
-    if (!limpio || limpio === "[object Object]") {
+    if (!limpio || limpio === "[object Object]" || isGenericRedCardName(limpio)) {
       continue;
     }
 
