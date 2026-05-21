@@ -1,8 +1,8 @@
 {
   "fuente": "jugadores_base.json curado + confirmación por rosters actuales ESPN",
   "modo": "solo_activos_confirmados_actualiza_todo_menos_altura_y_posicion",
-  "actualizado": "2026-05-20T12:05:52.891205+00:00",
-  "total": 455,
+  "actualizado": "2026-05-21T12:29:21.658023+00:00",
+  "total": 454,
   "base_detectados": 756,
   "reglas": {
     "mantiene_manual": [
@@ -22,14 +22,14 @@
     "no_confirmado_en_roster": "se excluye del jugadores.json para evitar clubes desactualizados",
     "overrides": "adivinajugador/jugadores_overrides.json"
   },
-  "con_pais": 455,
+  "con_pais": 454,
   "sin_pais": 0,
-  "con_imagen": 455,
+  "con_imagen": 454,
   "sin_imagen": 0,
   "actualizaciones": [
     {
       "nombre": "Jorginho",
-      "nombre_actual": "Jorginho ",
+      "nombre_actual": "Jorginho",
       "club_base": "Arsenal",
       "liga_base": "Premier League",
       "club_actual": "Flamengo",
@@ -1722,6 +1722,12 @@
       "motivo": "no_confirmado_en_roster_actual"
     },
     {
+      "nombre": "Andreas Pereira",
+      "club_base": "Palmeiras",
+      "liga_base": "Brasileirão",
+      "motivo": "no_confirmado_en_roster_actual"
+    },
+    {
       "nombre": "Marcos Rocha",
       "club_base": "Palmeiras",
       "liga_base": "Brasileirão",
@@ -3335,7 +3341,7 @@
       "epoca": "actual"
     },
     {
-      "nombre": "Jorginho ",
+      "nombre": "Jorginho",
       "nombre_base": "Jorginho",
       "altura": 180,
       "posicion": "M",
@@ -3460,22 +3466,6 @@
       "estado": "actualizado_espn",
       "confianza": "mismo_club_confirmado",
       "espn_id": "315619",
-      "epoca": "actual"
-    },
-    {
-      "nombre": "Andreas Pereira",
-      "nombre_base": "Andreas Pereira",
-      "altura": 178,
-      "posicion": "M",
-      "club": "Palmeiras",
-      "liga": "Brasileirão",
-      "competicion": "Brasileirão",
-      "edad": 30,
-      "pais": "Brazil",
-      "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/210143.png",
-      "estado": "actualizado_espn",
-      "confianza": "mismo_club_confirmado",
-      "espn_id": "210143",
       "epoca": "actual"
     },
     {
@@ -3822,7 +3812,7 @@
       "club": "Santos",
       "liga": "Brasileirão",
       "competicion": "Brasileirão",
-      "edad": 27,
+      "edad": 28,
       "pais": "Argentina",
       "imagen": "https://a.espncdn.com/i/headshots/soccer/players/full/292041.png",
       "estado": "actualizado_espn",
@@ -5223,7 +5213,7 @@
       "epoca": "actual"
     },
     {
-      "nombre": "Gavi ",
+      "nombre": "Gavi",
       "nombre_base": "Gavi",
       "altura": 173,
       "posicion": "M",
@@ -9255,7 +9245,7 @@
       "epoca": "actual"
     },
     {
-      "nombre": "Savinho ",
+      "nombre": "Savinho",
       "nombre_base": "Savinho",
       "altura": 176,
       "posicion": "F",
