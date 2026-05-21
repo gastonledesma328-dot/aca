@@ -3619,23 +3619,29 @@ function redCardsSplitForScorersBox(match, home = "", away = "") {
       awayCards.push(card);
     } else if (homeCards.length < Number(counts.local || 0)) {
       homeCards.push(card);
+    } else if (Number(counts.visitante || 0) >= Number(counts.local || 0)) {
+      awayCards.push(card);
+    } else if (Number(counts.local || 0) > 0) {
+      homeCards.push(card);
     } else {
       stillUnknown.push(card);
     }
   });
 
-  // Fallback importante: a veces /live trae solo el contador de rojas
-  // pero el array tarjetas_rojas llega vacío o tarde. En ese caso igual
-  // mostramos la incidencia dentro del cuadro para que no desaparezca.
-  const faltanHome = Math.max(0, Number(counts.local || 0) - homeCards.length);
-  const faltanAway = Math.max(0, Number(counts.visitante || 0) - awayCards.length);
+  // Fallback solo cuando NO existe ninguna roja real en la lista.
+  // Antes se completaba hasta el contador explícito y eso duplicaba casos como
+  // Olimpia vs Vasco: una roja real + contador duplicado = dos "Expulsado Roja".
+  if (!cards.length) {
+    const faltanHome = Math.max(0, Number(counts.local || 0));
+    const faltanAway = Math.max(0, Number(counts.visitante || 0));
 
-  for (let i = 0; i < faltanHome; i += 1) {
-    homeCards.push(crearTarjetaRojaSintetica(match, "home", i));
-  }
+    for (let i = 0; i < faltanHome; i += 1) {
+      homeCards.push(crearTarjetaRojaSintetica(match, "home", i));
+    }
 
-  for (let i = 0; i < faltanAway; i += 1) {
-    awayCards.push(crearTarjetaRojaSintetica(match, "away", i));
+    for (let i = 0; i < faltanAway; i += 1) {
+      awayCards.push(crearTarjetaRojaSintetica(match, "away", i));
+    }
   }
 
   return { homeCards, awayCards, unknownCards: stillUnknown };
@@ -4190,15 +4196,41 @@ function contarRojasDesdeLista(items = [], side = "") {
 }
 
 function redCardPlayerName(card = {}) {
-  return String(
-    card.jugador ||
-      card.nombre ||
-      card.player ||
-      card.athlete ||
-      card.playerName ||
-      card.name ||
-      ""
-  ).trim();
+  const valores = [
+    card.jugador,
+    card.nombre,
+    card.playerName,
+    card.athleteName,
+    card.name,
+    card.shortName,
+    card.displayName,
+    card.player?.displayName,
+    card.player?.shortName,
+    card.player?.name,
+    card.athlete?.displayName,
+    card.athlete?.shortName,
+    card.athlete?.name,
+    card.participant?.displayName,
+    card.participant?.name,
+    card.person?.displayName,
+    card.person?.name,
+  ];
+
+  for (const valor of valores) {
+    if (typeof valor !== "string") {
+      continue;
+    }
+
+    const limpio = valor.trim();
+
+    if (!limpio || limpio === "[object Object]") {
+      continue;
+    }
+
+    return limpio;
+  }
+
+  return "";
 }
 
 function normalizarTarjetaRoja(card = {}) {
@@ -4207,7 +4239,7 @@ function normalizarTarjetaRoja(card = {}) {
   return {
     ...card,
     jugador: jugador || null,
-    minuto: card.minuto || card.minute || card.time || null,
+    minuto: card.minuto || card.minute || card.time || card.clock || null,
     local_visitante:
       card.local_visitante ||
       card.lado ||
@@ -4216,8 +4248,15 @@ function normalizarTarjetaRoja(card = {}) {
       card.home_away ||
       card.equipo_lado ||
       null,
-    equipo: card.equipo || card.team || card.teamName || card.club || null,
-    tipo: card.tipo || card.type || card.card || "Tarjeta roja",
+    equipo:
+      card.equipo ||
+      card.team ||
+      card.teamName ||
+      card.club ||
+      card.competitor?.displayName ||
+      card.competitor?.name ||
+      null,
+    tipo: card.tipo || card.type || card.card || card.eventType || "Tarjeta roja",
   };
 }
 
@@ -4232,13 +4271,14 @@ function uniqueRedCards(cards = []) {
       const equipoKey = normalizeText(card.equipo);
       const ladoKey = normalizeText(card.local_visitante);
       const minutoKey = String(card.minuto || "").replace(/[^0-9+]/g, "").trim();
+      const jugadorGenerico = !jugadorKey || jugadorKey === "expulsado" || jugadorKey === "red card" || jugadorKey === "tarjeta roja";
 
-      // ESPN a veces manda la misma roja dos veces:
-      // una desde cards/redCards y otra desde incidents.
-      // Si hay jugador, el jugador es la clave más confiable dentro del mismo partido.
-      const key = jugadorKey
-        ? `jugador|${jugadorKey}|${equipoKey || ladoKey}`
-        : `sin-jugador|${equipoKey || ladoKey}|${minutoKey}`;
+      // Si viene el jugador real, esa es la clave más confiable.
+      // Si no viene jugador, deduplicamos por minuto + equipo/lado para evitar
+      // que la misma roja llegue una vez desde cards y otra desde incidents.
+      const key = !jugadorGenerico
+        ? `jugador|${jugadorKey}|${minutoKey || "sin-minuto"}`
+        : `generica|${equipoKey || ladoKey || "sin-equipo"}|${minutoKey || "sin-minuto"}`;
 
       if (seen.has(key)) {
         return false;
