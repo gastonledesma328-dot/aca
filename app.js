@@ -3564,8 +3564,14 @@ function goalItemMarkup(scorer, side = "unknown", teamName = "", home = "", away
 
 function redCardItemMarkup(card, side = "unknown") {
   const minute = card.minuto || card.minute || card.time || "";
-  const player = redCardPlayerName(card) || "Expulsado";
+  const player = redCardPlayerName(card);
   const sideClass = side === "home" ? "is-home-goal" : side === "away" ? "is-away-goal" : "is-unknown-goal";
+
+  // No mostramos rojas genéricas tipo "Expulsado" porque terminan duplicando
+  // la roja real cuando ESPN/worker manda el mismo evento en dos estructuras.
+  if (!player) {
+    return "";
+  }
 
   return `
     <span class="agenda-goal-item agenda-red-card-item ${sideClass}">
@@ -3628,21 +3634,9 @@ function redCardsSplitForScorersBox(match, home = "", away = "") {
     }
   });
 
-  // Fallback solo cuando NO existe ninguna roja real en la lista.
-  // Antes se completaba hasta el contador explícito y eso duplicaba casos como
-  // Olimpia vs Vasco: una roja real + contador duplicado = dos "Expulsado Roja".
-  if (!cards.length) {
-    const faltanHome = Math.max(0, Number(counts.local || 0));
-    const faltanAway = Math.max(0, Number(counts.visitante || 0));
-
-    for (let i = 0; i < faltanHome; i += 1) {
-      homeCards.push(crearTarjetaRojaSintetica(match, "home", i));
-    }
-
-    for (let i = 0; i < faltanAway; i += 1) {
-      awayCards.push(crearTarjetaRojaSintetica(match, "away", i));
-    }
-  }
+  // No creamos rojas sintéticas/genericas por contador.
+  // Si el worker no manda jugador real, preferimos no mostrar "Expulsado Roja"
+  // antes que mostrar duplicados o eventos inventados.
 
   return { homeCards, awayCards, unknownCards: stillUnknown };
 }
@@ -4262,23 +4256,31 @@ function normalizarTarjetaRoja(card = {}) {
 
 function uniqueRedCards(cards = []) {
   const seen = new Set();
+  const nombresGenericos = new Set([
+    "expulsado",
+    "expulsada",
+    "red card",
+    "tarjeta roja",
+    "roja",
+    "sent off",
+  ]);
 
   return (Array.isArray(cards) ? cards : [])
     .filter((card) => card && isRedCard(card))
     .map(normalizarTarjetaRoja)
     .filter((card) => {
       const jugadorKey = normalizeText(card.jugador);
-      const equipoKey = normalizeText(card.equipo);
-      const ladoKey = normalizeText(card.local_visitante);
       const minutoKey = String(card.minuto || "").replace(/[^0-9+]/g, "").trim();
-      const jugadorGenerico = !jugadorKey || jugadorKey === "expulsado" || jugadorKey === "red card" || jugadorKey === "tarjeta roja";
 
-      // Si viene el jugador real, esa es la clave más confiable.
-      // Si no viene jugador, deduplicamos por minuto + equipo/lado para evitar
-      // que la misma roja llegue una vez desde cards y otra desde incidents.
-      const key = !jugadorGenerico
-        ? `jugador|${jugadorKey}|${minutoKey || "sin-minuto"}`
-        : `generica|${equipoKey || ladoKey || "sin-equipo"}|${minutoKey || "sin-minuto"}`;
+      // Si no hay jugador real, no lo mostramos. Esto evita los duplicados
+      // "Expulsado Roja" cuando el mismo evento llega como contador/fallback.
+      if (!jugadorKey || nombresGenericos.has(jugadorKey)) {
+        return false;
+      }
+
+      // La roja real se deduplica por jugador + minuto.
+      // Así Joao Vitor no se duplica aunque venga desde incidents y redCards.
+      const key = `jugador|${jugadorKey}|${minutoKey || "sin-minuto"}`;
 
       if (seen.has(key)) {
         return false;
