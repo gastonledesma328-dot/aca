@@ -3598,35 +3598,47 @@ function knownRedCardPlayerForMatch(match = {}, side = "") {
 }
 
 function isGenericRedCardName(name = "") {
-  const n = normalizeText(name)
-    .replace(/(roja|red|card|tarjeta|expulsado|expulsada|sent|off)/g, " ")
+  const raw = normalizeText(name)
+    .replace(/[^a-z0-9\s]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 
-  const raw = normalizeText(name);
+  const n = raw
+    .replace(/\b(roja|rojas|red|card|cards|tarjeta|tarjetas|expulsado|expulsada|expulsion|sent|off)\b/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 
   return (
     !raw ||
     !n ||
+    raw === "roja" ||
+    raw === "rojas" ||
+    raw === "tarjeta roja" ||
+    raw === "tarjetas rojas" ||
+    raw === "red card" ||
+    raw === "red cards" ||
     raw.includes("tarjeta roja") ||
+    raw.includes("tarjetas rojas") ||
     raw.includes("red card") ||
+    raw.includes("red cards") ||
     raw.includes("expulsado") ||
     raw.includes("expulsada") ||
-    raw.includes("sent off") ||
-    raw === "roja"
+    raw.includes("sent off")
   );
 }
 
 function redCardItemMarkup(card, side = "unknown") {
   const minute = card.minuto || card.minute || card.time || "";
-  const player = redCardPlayerName(card) || card.jugador || "Tarjeta Roja";
+  const rawPlayer = redCardPlayerName(card) || card.jugador || card.nombre || "";
+  const isGeneric = isGenericRedCardName(rawPlayer);
+  const player = isGeneric ? "Tarjeta Roja" : rawPlayer;
   const sideClass = side === "home" ? "is-home-goal" : side === "away" ? "is-away-goal" : "is-unknown-goal";
 
   return `
     <span class="agenda-goal-item agenda-red-card-item ${sideClass}">
       ${minute ? `<b>${escapeHtml(String(minute))}</b>` : ""}
       <span>${escapeHtml(player)}</span>
-      <em>Roja</em>
+      ${isGeneric ? "" : "<em>Roja</em>"}
     </span>
   `;
 }
