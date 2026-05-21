@@ -3631,15 +3631,22 @@ function redCardsSplitForScorersBox(match, home = "", away = "") {
   const targetHome = Number(counts.local || 0);
   const targetAway = Number(counts.visitante || 0);
 
-  while (homeCards.length < targetHome) {
-    homeCards.push(crearTarjetaRojaSintetica(match, "home", homeCards.length));
+  // Fallback final: si el worker solo trae contador de roja pero no trae jugador,
+  // mostramos una sola tarjeta genérica por lado. No usamos while porque algunas
+  // fuentes mandan la misma roja duplicada en counters/incidents/cards.
+  if (targetHome > 0 && homeCards.length === 0) {
+    homeCards.push(crearTarjetaRojaSintetica(match, "home", 0));
   }
 
-  while (awayCards.length < targetAway) {
-    awayCards.push(crearTarjetaRojaSintetica(match, "away", awayCards.length));
+  if (targetAway > 0 && awayCards.length === 0) {
+    awayCards.push(crearTarjetaRojaSintetica(match, "away", 0));
   }
 
-  return { homeCards, awayCards, unknownCards: stillUnknown };
+  return {
+    homeCards: uniqueRedCards(homeCards),
+    awayCards: uniqueRedCards(awayCards),
+    unknownCards: stillUnknown,
+  };
 }
 
 function scorersMarkup(match, home = "", away = "") {
@@ -4283,7 +4290,7 @@ function uniqueRedCards(cards = []) {
       const tieneJugadorReal = jugadorKey && !nombresGenericos.has(jugadorKey);
       const key = tieneJugadorReal
         ? `jugador|${jugadorKey}|${minutoKey || "sin-minuto"}`
-        : `generica|${ladoKey || equipoKey || "sin-lado"}|${minutoKey || "sin-minuto"}`;
+        : `generica|${ladoKey || equipoKey || "sin-lado"}`;
 
       if (seen.has(key)) {
         return false;
