@@ -3588,15 +3588,23 @@ function knownRedCardPlayerForMatch(match = {}, side = "") {
 }
 
 function isGenericRedCardName(name = "") {
-  const n = normalizeText(name);
-  return !n || [
-    "expulsado",
-    "expulsada",
-    "red card",
-    "tarjeta roja",
-    "roja",
-    "sent off",
-  ].includes(n);
+  const n = normalizeText(name)
+    .replace(/(roja|red|card|tarjeta|expulsado|expulsada|sent|off)/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const raw = normalizeText(name);
+
+  return (
+    !raw ||
+    !n ||
+    raw.includes("tarjeta roja") ||
+    raw.includes("red card") ||
+    raw.includes("expulsado") ||
+    raw.includes("expulsada") ||
+    raw.includes("sent off") ||
+    raw === "roja"
+  );
 }
 
 function redCardItemMarkup(card, side = "unknown") {
@@ -3683,12 +3691,20 @@ function redCardsSplitForScorersBox(match, home = "", away = "") {
   const knownHome = knownRedCardPlayerForMatch(match, "home");
   const knownAway = knownRedCardPlayerForMatch(match, "away");
 
-  if (knownHome && homeCards.length === 1 && isGenericRedCardName(redCardPlayerName(homeCards[0]) || homeCards[0]?.jugador)) {
-    homeCards[0] = normalizarTarjetaRoja({ ...homeCards[0], jugador: knownHome });
+  if (knownHome && homeCards.length === 1) {
+    const currentHomeName = redCardPlayerName(homeCards[0]) || homeCards[0]?.jugador || "";
+
+    if (isGenericRedCardName(currentHomeName)) {
+      homeCards[0] = normalizarTarjetaRoja({ ...homeCards[0], jugador: knownHome, nombre: knownHome });
+    }
   }
 
-  if (knownAway && awayCards.length === 1 && isGenericRedCardName(redCardPlayerName(awayCards[0]) || awayCards[0]?.jugador)) {
-    awayCards[0] = normalizarTarjetaRoja({ ...awayCards[0], jugador: knownAway });
+  if (knownAway && awayCards.length === 1) {
+    const currentAwayName = redCardPlayerName(awayCards[0]) || awayCards[0]?.jugador || "";
+
+    if (isGenericRedCardName(currentAwayName)) {
+      awayCards[0] = normalizarTarjetaRoja({ ...awayCards[0], jugador: knownAway, nombre: knownAway });
+    }
   }
 
   return {
