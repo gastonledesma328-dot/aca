@@ -533,6 +533,7 @@ function incidenciasDataTieneDatos(data) {
 
   return (
     listaConDatos(data.goleadores) ||
+    listaConDatos(data.tarjetas_rojas) ||
     numeroMayorQueCero(data.local_rojas) ||
     numeroMayorQueCero(data.visitante_rojas)
   );
@@ -541,6 +542,7 @@ function incidenciasDataTieneDatos(data) {
 function incidenciasDesdeMatch(match = {}) {
   return {
     goleadores: Array.isArray(match.goleadores) ? match.goleadores : [],
+    tarjetas_rojas: normalizeCardList(match).filter(isRedCard),
     local_rojas: Number(match.local_rojas || match.rojas_local || match.tarjetas_rojas_local || 0),
     visitante_rojas: Number(match.visitante_rojas || match.rojas_visitante || match.tarjetas_rojas_visitante || 0),
     actualizado_en: match.incidencias_actualizado_en || new Date().toISOString(),
@@ -550,9 +552,12 @@ function incidenciasDesdeMatch(match = {}) {
 function fusionarIncidenciasData(prev = {}, next = {}) {
   const prevGoles = Array.isArray(prev.goleadores) ? prev.goleadores : [];
   const nextGoles = Array.isArray(next.goleadores) ? next.goleadores : [];
+  const prevRojas = Array.isArray(prev.tarjetas_rojas) ? prev.tarjetas_rojas : [];
+  const nextRojas = Array.isArray(next.tarjetas_rojas) ? next.tarjetas_rojas : [];
 
   return {
     goleadores: listaConDatos(nextGoles) ? nextGoles : prevGoles,
+    tarjetas_rojas: listaConDatos(nextRojas) ? nextRojas : prevRojas,
     local_rojas: Math.max(Number(prev.local_rojas || 0), Number(next.local_rojas || 0)),
     visitante_rojas: Math.max(Number(prev.visitante_rojas || 0), Number(next.visitante_rojas || 0)),
     actualizado_en: next.actualizado_en || prev.actualizado_en || new Date().toISOString(),
@@ -614,7 +619,9 @@ function aplicarIncidenciasDataAlPartido(match, data) {
     goleadores: listaConDatos(data.goleadores)
       ? data.goleadores
       : match.goleadores || [],
-    tarjetas_rojas: [],
+    tarjetas_rojas: listaConDatos(data.tarjetas_rojas)
+      ? data.tarjetas_rojas
+      : normalizeCardList(match).filter(isRedCard),
     local_rojas: numeroMayorQueCero(data.local_rojas)
       ? Number(data.local_rojas)
       : Number(match.local_rojas || 0),
@@ -2476,6 +2483,8 @@ function preservarIncidenciasExistentes(matchAnterior = {}, matchNuevo = {}) {
   const golesPrevios = matchAnterior.goleadores || matchAnterior.scorers || matchAnterior.goles || [];
   const golesNuevos = matchNuevo.goleadores || matchNuevo.scorers || matchNuevo.goles || [];
 
+  const rojasPrevias = normalizeCardList(matchAnterior).filter(isRedCard);
+  const rojasNuevas = normalizeCardList(matchNuevo).filter(isRedCard);
   const localRojasPrevias = Number(matchAnterior.local_rojas || matchAnterior.rojas_local || matchAnterior.tarjetas_rojas_local || 0);
   const visitanteRojasPrevias = Number(matchAnterior.visitante_rojas || matchAnterior.rojas_visitante || matchAnterior.tarjetas_rojas_visitante || 0);
 
@@ -2485,9 +2494,9 @@ function preservarIncidenciasExistentes(matchAnterior = {}, matchNuevo = {}) {
     // Worker 1 /live no trae incidencias. Si ya tenemos goles desde Worker 2,
     // no los borramos al actualizar minuto, marcador o estado.
     goleadores: listaConDatos(golesNuevos) ? golesNuevos : golesPrevios,
-    tarjetas_rojas: [],
+    tarjetas_rojas: listaConDatos(rojasNuevas) ? rojasNuevas : rojasPrevias,
 
-    // No mostramos jugador expulsado. Solo mantenemos el conteo de rojas por equipo.
+    // Mantenemos el conteo de rojas por equipo sin duplicar cuando llega una fuente parcial.
     local_rojas: numeroMayorQueCero(matchNuevo.local_rojas)
       ? Number(matchNuevo.local_rojas)
       : localRojasPrevias,
@@ -3672,13 +3681,10 @@ function explicitRedCardCount(match, side) {
 }
 
 function redCardsForTeam(match, side, teamName) {
-  const explicit = explicitRedCardCount(match, side);
+  const cards = uniqueRedCards(normalizeCardList(match));
 
-  if (explicit > 0) {
-    return explicit;
-  }
-
-  return normalizeCardList(match).filter((card) => {
+  if (cards.length) {
+    return cards.filter((card) => {
     if (!card || !isRedCard(card)) {
       return false;
     }
@@ -3695,11 +3701,13 @@ function redCardsForTeam(match, side, teamName) {
 
     return teamValueMatches(card.equipo || card.team || card.teamName || "", teamName);
   }).length;
+  }
+
+  return explicitRedCardCount(match, side);
 }
 
 function cardsSearchText(match) {
-  return normalizeCardList(match)
-    .filter(isRedCard)
+  return uniqueRedCards(normalizeCardList(match))
     .map((card) => `${card.jugador || card.nombre || card.player || ""} ${card.equipo || card.team || ""} roja red card ${card.minuto || card.minute || ""}`)
     .join(" ");
 }
@@ -3940,6 +3948,94 @@ function contarRojasDesdeLista(items = [], side = "") {
   }).length;
 }
 
+function redCardPlayerName(card = {}) {
+  return String(
+    card.jugador ||
+      card.nombre ||
+      card.player ||
+      card.athlete ||
+      card.playerName ||
+      card.name ||
+      ""
+  ).trim();
+}
+
+function normalizarTarjetaRoja(card = {}) {
+  const jugador = redCardPlayerName(card);
+
+  return {
+    ...card,
+    jugador: jugador || null,
+    minuto: card.minuto || card.minute || card.time || null,
+    local_visitante:
+      card.local_visitante ||
+      card.lado ||
+      card.side ||
+      card.homeAway ||
+      card.home_away ||
+      card.equipo_lado ||
+      null,
+    equipo: card.equipo || card.team || card.teamName || card.club || null,
+    tipo: card.tipo || card.type || card.card || "Tarjeta roja",
+  };
+}
+
+function uniqueRedCards(cards = []) {
+  const seen = new Set();
+
+  return (Array.isArray(cards) ? cards : [])
+    .filter((card) => card && isRedCard(card))
+    .map(normalizarTarjetaRoja)
+    .filter((card) => {
+      const key = [
+        normalizeText(card.jugador),
+        normalizeText(card.equipo),
+        normalizeText(card.local_visitante),
+        String(card.minuto || "").trim(),
+      ].join("|");
+
+      if (seen.has(key)) {
+        return false;
+      }
+
+      seen.add(key);
+      return true;
+    });
+}
+
+function ajustarConteoRojasPorLista(match, tarjetas = [], localRojas = 0, visitanteRojas = 0) {
+  const lista = uniqueRedCards(tarjetas);
+
+  if (!lista.length) {
+    return { local_rojas: Number(localRojas || 0), visitante_rojas: Number(visitanteRojas || 0) };
+  }
+
+  const teams = agendaTeams(match);
+  const temporal = {
+    ...match,
+    tarjetas_rojas: lista,
+    local_rojas: 0,
+    visitante_rojas: 0,
+  };
+
+  const porListaLocal = redCardsForTeam(temporal, "home", teams.home);
+  const porListaVisitante = redCardsForTeam(temporal, "away", teams.away);
+
+  // Si la lista trae jugador/equipo/lado, esa lista es más confiable que un contador viejo.
+  // Ejemplo: Club Olimpia vs Vasco da Gama, una sola roja a Joao Vitor.
+  if (porListaLocal + porListaVisitante > 0) {
+    return {
+      local_rojas: porListaLocal,
+      visitante_rojas: porListaVisitante,
+    };
+  }
+
+  return {
+    local_rojas: Number(localRojas || 0),
+    visitante_rojas: Number(visitanteRojas || 0),
+  };
+}
+
 function normalizarIncidenciasPayload(payload) {
   if (!payload || typeof payload !== "object") {
     return null;
@@ -3953,11 +4049,17 @@ function normalizarIncidenciasPayload(payload) {
         ? payload.scorers
         : [];
 
-  const tarjetas = Array.isArray(payload.tarjetas_rojas)
-    ? payload.tarjetas_rojas
-    : Array.isArray(payload.rojas)
-      ? payload.rojas
-      : [];
+  const tarjetas = uniqueRedCards(
+    Array.isArray(payload.tarjetas_rojas)
+      ? payload.tarjetas_rojas
+      : Array.isArray(payload.rojas)
+        ? payload.rojas
+        : Array.isArray(payload.cards)
+          ? payload.cards
+          : Array.isArray(payload.redCards)
+            ? payload.redCards
+            : []
+  );
 
   const localRojas = numeroSeguro(
     payload.rojas?.local ??
@@ -3998,7 +4100,7 @@ function normalizarIncidenciasPayload(payload) {
 
   return {
     goleadores: goleadoresNormalizados,
-    tarjetas_rojas: [],
+    tarjetas_rojas: tarjetas,
     local_rojas: localRojas,
     visitante_rojas: visitanteRojas,
   };
@@ -4021,6 +4123,7 @@ function aplicarIncidenciasAlPartido(match, payload) {
     fusionarIncidenciasData(
       {
         goleadores: golesPrevios,
+        tarjetas_rojas: normalizeCardList(match).filter(isRedCard),
         local_rojas: match.local_rojas,
         visitante_rojas: match.visitante_rojas,
       },
@@ -4028,10 +4131,19 @@ function aplicarIncidenciasAlPartido(match, payload) {
     ),
     {
       goleadores: golesEntrantes,
+      tarjetas_rojas: incidencias.tarjetas_rojas,
       local_rojas: incidencias.local_rojas,
       visitante_rojas: incidencias.visitante_rojas,
       actualizado_en: new Date().toISOString(),
     }
+  );
+
+  const rojasFusionadas = uniqueRedCards(dataFusionada.tarjetas_rojas || []);
+  const conteoRojas = ajustarConteoRojasPorLista(
+    match,
+    rojasFusionadas,
+    dataFusionada.local_rojas,
+    dataFusionada.visitante_rojas
   );
 
   const actualizado = {
@@ -4041,9 +4153,9 @@ function aplicarIncidenciasAlPartido(match, payload) {
       : listaConDatos(golesPersistidos)
         ? golesPersistidos
         : golesPrevios,
-    tarjetas_rojas: [],
-    local_rojas: Number(dataFusionada.local_rojas || 0),
-    visitante_rojas: Number(dataFusionada.visitante_rojas || 0),
+    tarjetas_rojas: rojasFusionadas,
+    local_rojas: Number(conteoRojas.local_rojas || 0),
+    visitante_rojas: Number(conteoRojas.visitante_rojas || 0),
     incidencias_actualizadas: true,
     incidencias_actualizado_en: dataFusionada.actualizado_en,
   };
