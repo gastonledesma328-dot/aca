@@ -190,6 +190,31 @@ def normalizar(txt):
     return txt.strip()
 
 
+def limpiar_competicion(valor):
+    comp = limpiar_texto(valor)
+
+    if not comp:
+        return ""
+
+    n = normalizar(comp)
+
+    invalidas = {
+        "365scores",
+        "365 scores",
+        "fuente 365scores",
+        "fuente",
+        "-",
+        "sin datos",
+        "liga sin dato",
+    }
+
+    if n in invalidas:
+        return ""
+
+    return comp
+
+
+
 def slugify(text):
     text = normalizar(text)
     text = re.sub(r"[^a-z0-9]+", "-", text)
@@ -266,10 +291,10 @@ def obtener_url_equipo(equipo):
 def obtener_liga_equipo(equipo):
     """
     Devuelve la liga donde juega el equipo.
-    1) Usa liga/competicion/league del equipos.json si existe.
+    1) Usa liga/competicion/league del equipos.json si existe y no es 365Scores.
     2) Si no existe, usa un mapeo interno por nombre del equipo.
     """
-    liga = limpiar_texto(
+    liga = limpiar_competicion(
         equipo.get("liga")
         or equipo.get("competicion")
         or equipo.get("competition")
@@ -278,12 +303,11 @@ def obtener_liga_equipo(equipo):
         or ""
     )
 
-    if liga and normalizar(liga) != "365scores":
+    if liga:
         return liga
 
     nombre = obtener_nombre_equipo(equipo)
     return LIGAS_POR_EQUIPO_365.get(normalizar(nombre), "")
-
 
 
 def cargar_equipos():
@@ -426,6 +450,8 @@ def descargar_imagen(url, nombre_archivo):
 
 
 def limpiar_jugador_para_juego(j):
+    competicion_limpia = limpiar_competicion(j.get("competicion", ""))
+
     return {
         "id": j.get("id", ""),
         "nombre": j.get("nombre", ""),
@@ -447,10 +473,33 @@ def limpiar_jugador_para_juego(j):
 
 def es_staff_o_no_jugador(nombre, texto):
     """
-    Filtro conservador de staff.
-    No usamos palabras del texto cercano porque puede descartar jugadores reales.
+    Filtro de staff/entrenadores.
+    No descartamos por cualquier palabra suelta, pero sí por frases claras
+    de biografía de entrenador y por nombres conocidos que 365Scores mete
+    como si fueran jugadores dentro del plantel.
     """
     n = normalizar(nombre)
+    t = normalizar(texto)
+
+    frases_staff = [
+        "entrenador de futbol",
+        "entrenador de fútbol",
+        "entrenador portugues",
+        "entrenador portugués",
+        "entrenador argentino",
+        "entrenador espanol",
+        "entrenador español",
+        "football coach",
+        "head coach",
+        "manager",
+        "director tecnico",
+        "director técnico",
+        "cuerpo tecnico",
+        "cuerpo técnico",
+    ]
+
+    if any(frase in t for frase in frases_staff):
+        return True
 
     nombres_staff_comunes = {
         "mikel arteta",
@@ -469,7 +518,8 @@ def es_staff_o_no_jugador(nombre, texto):
         "toni tapalovic",
         "aleksandar kolarov",
         "claudio ubeda",
-        "eduardo coudet"
+        "eduardo coudet",
+        "leonardo jardim",
     }
 
     return n in nombres_staff_comunes
@@ -1026,9 +1076,13 @@ async def extraer_detalle_jugador(context, jugador):
 
         detalles = extraer_datos_desde_body_365(jugador["nombre"], data.get("bodyText") or "")
 
-        for campo in ["pais", "edad", "fecha_nacimiento", "altura", "numero", "competicion", "fin_contrato"]:
+        for campo in ["pais", "edad", "fecha_nacimiento", "altura", "numero", "fin_contrato"]:
             if detalles.get(campo):
                 jugador[campo] = detalles[campo]
+
+        detalle_competicion = limpiar_competicion(detalles.get("competicion", ""))
+        if detalle_competicion:
+            jugador["competicion"] = detalle_competicion
 
         imgs = data.get("imgs") or []
 
@@ -1092,11 +1146,11 @@ async def procesar_equipo(context, equipo, existentes):
         if jugador_existente and tiene_datos_completos(jugador_existente):
             liga_equipo_actual = jugador.get("competicion") or equipo_liga
             jugador.update(jugador_existente)
-            if not jugador.get("competicion") or normalizar(jugador.get("competicion")) == "365scores":
+            if not limpiar_competicion(jugador.get("competicion", "")):
                 jugador["competicion"] = liga_equipo_actual
             print(f"♻️ Jugador ya cargado con datos e imagen, omito perfil/descarga: {jugador['nombre']}")
         else:
-            if not jugador.get("competicion") or normalizar(jugador.get("competicion")) == "365scores":
+            if not limpiar_competicion(jugador.get("competicion", "")):
                 jugador["competicion"] = equipo_liga
 
             if imagen_existente:
@@ -1104,7 +1158,7 @@ async def procesar_equipo(context, equipo, existentes):
 
             jugador = await extraer_detalle_jugador(context, jugador)
 
-            if not jugador.get("competicion") or normalizar(jugador.get("competicion")) == "365scores":
+            if not limpiar_competicion(jugador.get("competicion", "")):
                 jugador["competicion"] = equipo_liga
 
             if imagen_existente:
@@ -1120,6 +1174,29 @@ async def procesar_equipo(context, equipo, existentes):
         resultados.append(limpiar_jugador_para_juego(jugador))
 
     return resultados
+
+def limpiar_dataset_final(jugadores):
+    """
+    Limpieza final antes de escribir JSON:
+    - elimina entrenadores/staff colados
+    - reemplaza competicion inválida tipo 365Scores por liga del equipo
+    """
+    salida = []
+
+    for j in jugadores:
+        if es_staff_o_no_jugador(j.get("nombre", ""), f"{j.get('nombre', '')} {j.get('posicion', '')}"):
+            print(f"🚫 Staff eliminado en limpieza final: {j.get('nombre')} ({j.get('club')})")
+            continue
+
+        comp = limpiar_competicion(j.get("competicion", ""))
+        if not comp:
+            comp = LIGAS_POR_EQUIPO_365.get(normalizar(j.get("club", "")), "")
+
+        j["competicion"] = comp
+        salida.append(j)
+
+    return salida
+
 
 
 def deduplicar_jugadores(jugadores):
@@ -1169,7 +1246,7 @@ async def main():
 
         await browser.close()
 
-    todos_los_jugadores = deduplicar_jugadores(todos_los_jugadores)
+    todos_los_jugadores = limpiar_dataset_final(deduplicar_jugadores(todos_los_jugadores))
 
     OUTPUT_JSON.write_text(
         json.dumps(todos_los_jugadores, ensure_ascii=False, indent=2),
@@ -1186,7 +1263,7 @@ async def main():
             "fecha_nacimiento": j.get("fecha_nacimiento", ""),
             "altura": j.get("altura", ""),
             "numero": j.get("numero", ""),
-            "competicion": j.get("competicion", ""),
+            "competicion": competicion_limpia,
             "fin_contrato": j.get("fin_contrato", ""),
             "imagen": j.get("imagen", ""),
             "fuente": FUENTE
