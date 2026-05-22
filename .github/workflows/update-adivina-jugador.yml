@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: actualizar-jugadores-adivina
+  cancel-in-progress: false
+
 jobs:
   scrape-jugadores:
     runs-on: ubuntu-latest
@@ -15,6 +19,8 @@ jobs:
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Instalar Python
         uses: actions/setup-python@v5
@@ -26,7 +32,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements_adivina_jugador.txt
 
-      - name: Scrappear jugadores actuales
+      - name: Scrappear jugadores actuales y descargar imágenes
         run: |
           python scripts/scraper_adivina_jugador.py
 
@@ -36,10 +42,13 @@ jobs:
           git config user.email "github-actions@github.com"
 
           git add adivinajugador/jugadores.json
+          git add juegos/adivinajugador/jugadores.json
+          git add data/adivina-jugador/imagenes_jugadores
 
           if git diff --cached --quiet; then
             echo "No hay cambios para guardar"
           else
-            git commit -m "Actualizar jugadores adivina jugador"
-            git push
+            git commit -m "Actualizar jugadores e imágenes Adivina Jugador"
+            git pull --rebase origin main
+            git push origin main
           fi
