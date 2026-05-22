@@ -17,7 +17,7 @@ GAME_DIR = Path("juegos/adivinajugador")
 OUTPUT_JSON = DATA_DIR / "plantilla_365_jugadores.json"
 OUTPUT_SIMPLE_JSON = DATA_DIR / "plantilla_365_jugadores_simple.json"
 
-OUTPUT_IMAGES_DIR = DATA_DIR / "imagenes_jugadores_365"
+# Las imágenes se guardan solo en la carpeta del juego para no duplicar miles de archivos.
 GAME_IMAGES_DIR = GAME_DIR / "imagenes_jugadores_365"
 
 GAME_JSON = GAME_DIR / "jugadores.json"
@@ -227,7 +227,6 @@ def cargar_equipos():
 def asegurar_carpetas():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     GAME_DIR.mkdir(parents=True, exist_ok=True)
-    OUTPUT_IMAGES_DIR.mkdir(parents=True, exist_ok=True)
     GAME_IMAGES_DIR.mkdir(parents=True, exist_ok=True)
 
 
@@ -255,19 +254,37 @@ def es_url_imagen_valida_365(url):
     return True
 
 
+
+def buscar_imagen_existente(nombre_archivo):
+    """
+    Si la imagen ya está cargada en la carpeta del juego,
+    no vuelve a descargarla. Devuelve la ruta relativa que usa el juego.
+    """
+    extensiones = [".png", ".jpg", ".jpeg", ".webp", ".avif"]
+
+    for ext in extensiones:
+        game_path = GAME_IMAGES_DIR / f"{nombre_archivo}{ext}"
+
+        if game_path.exists() and game_path.stat().st_size > 0:
+            return f"imagenes_jugadores_365/{nombre_archivo}{ext}"
+
+    return ""
+
+
 def descargar_imagen(url, nombre_archivo):
+    existente = buscar_imagen_existente(nombre_archivo)
+
+    if existente:
+        print(f"♻️ Imagen ya cargada, omito descarga: {existente}")
+        return existente
+
     if not es_url_imagen_valida_365(url):
         return ""
 
     ext = extension_desde_url(url)
 
-    data_path = OUTPUT_IMAGES_DIR / f"{nombre_archivo}{ext}"
     game_path = GAME_IMAGES_DIR / f"{nombre_archivo}{ext}"
-
     rel_game_path = f"imagenes_jugadores_365/{nombre_archivo}{ext}"
-
-    if game_path.exists() and game_path.stat().st_size > 0:
-        return rel_game_path
 
     try:
         r = requests.get(url, headers=HEADERS, timeout=30)
@@ -281,7 +298,6 @@ def descargar_imagen(url, nombre_archivo):
         if "image" not in content_type:
             return ""
 
-        data_path.write_bytes(r.content)
         game_path.write_bytes(r.content)
 
         return rel_game_path
@@ -310,10 +326,8 @@ def limpiar_jugador_para_juego(j):
 
 def es_staff_o_no_jugador(nombre, texto):
     """
-    Filtro de staff conservador.
-    Antes se descartaba por palabras como "asistente" dentro del texto cercano,
-    y eso podía eliminar jugadores reales como Marcelo Weigandt.
-    Ahora solo descartamos nombres claramente conocidos como staff.
+    Filtro conservador de staff.
+    No usamos palabras del texto cercano porque puede descartar jugadores reales.
     """
     n = normalizar(nombre)
 
@@ -332,7 +346,9 @@ def es_staff_o_no_jugador(nombre, texto):
         "sipke hulshoff",
         "marcus sorg",
         "toni tapalovic",
-        "aleksandar kolarov"
+        "aleksandar kolarov",
+        "claudio ubeda",
+        "eduardo coudet"
     }
 
     return n in nombres_staff_comunes
@@ -747,18 +763,24 @@ async def procesar_equipo(context, equipo):
     for i, jugador in enumerate(jugadores, start=1):
         print(f"[{i}/{len(jugadores)}] ⚽ {jugador['nombre']} - {equipo_nombre}")
 
-        jugador = await extraer_detalle_jugador(context, jugador)
-
         nombre_archivo = f"{slugify(jugador['club'])}-{slugify(jugador['nombre'])}-{jugador['id']}"
 
-        if jugador.get("imagen_url"):
-            jugador["imagen"] = descargar_imagen(jugador["imagen_url"], nombre_archivo)
+        imagen_existente = buscar_imagen_existente(nombre_archivo)
+
+        if imagen_existente:
+            jugador["imagen"] = imagen_existente
+            print(f"♻️ Jugador ya tiene imagen local, omito perfil/descarga: {jugador['nombre']}")
         else:
-            jugador["imagen"] = ""
+            jugador = await extraer_detalle_jugador(context, jugador)
+
+            if jugador.get("imagen_url"):
+                jugador["imagen"] = descargar_imagen(jugador["imagen_url"], nombre_archivo)
+            else:
+                jugador["imagen"] = ""
+
+            await asyncio.sleep(0.25)
 
         resultados.append(limpiar_jugador_para_juego(jugador))
-
-        await asyncio.sleep(0.25)
 
     return resultados
 
@@ -844,7 +866,6 @@ async def main():
     print(f"📄 JSON completo: {OUTPUT_JSON}")
     print(f"📄 JSON simple: {OUTPUT_SIMPLE_JSON}")
     print(f"🎮 JSON juego: {GAME_JSON}")
-    print(f"🖼️ Imágenes data: {OUTPUT_IMAGES_DIR}")
     print(f"🖼️ Imágenes juego: {GAME_IMAGES_DIR}")
     print(f"👥 Total jugadores: {len(simple)}")
     print(f"✅ Con imagen: {con_imagen}")
