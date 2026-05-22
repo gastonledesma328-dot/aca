@@ -1,4 +1,4 @@
-name: Actualizar jugadores Adivina Jugador
+name: Actualizar plantilla 365Scores Adivina Jugador
 
 on:
   workflow_dispatch:
@@ -9,11 +9,11 @@ permissions:
   contents: write
 
 concurrency:
-  group: actualizar-jugadores-adivina
+  group: actualizar-plantilla-365scores-adivina
   cancel-in-progress: false
 
 jobs:
-  scrape-jugadores:
+  actualizar-plantilla:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,25 +30,28 @@ jobs:
       - name: Instalar dependencias
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements_adivina_jugador.txt
+          pip install -r requirements_365_plantilla.txt
+          python -m playwright install --with-deps chromium
 
-      - name: Scrappear jugadores actuales y descargar imágenes
+      - name: Scrappear plantilla 365Scores e imágenes
         run: |
-          python scripts/scraper_adivina_jugador.py
+          python scripts/scraper_365_plantilla.py
 
       - name: Guardar cambios
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          git add adivinajugador/jugadores.json
+          git add data/adivina-jugador/plantilla_365_jugadores.json
+          git add data/adivina-jugador/plantilla_365_jugadores_simple.json
+          git add data/adivina-jugador/imagenes_jugadores_365/
           git add juegos/adivinajugador/jugadores.json
-          git add data/adivina-jugador/imagenes_jugadores
+          git add juegos/adivinajugador/imagenes_jugadores_365/
 
           if git diff --cached --quiet; then
             echo "No hay cambios para guardar"
           else
-            git commit -m "Actualizar jugadores e imágenes Adivina Jugador"
+            git commit -m "Actualizar plantilla 365Scores Adivina Jugador"
             git pull --rebase origin main
             git push origin main
           fi
