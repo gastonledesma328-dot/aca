@@ -1,14 +1,17 @@
 const DATA_URLS = [
-  // JSON actualizado por GitHub Actions con nombre + imagen de cada jugador
+  // Principal: JSON del juego actualizado por el scraper de 365Scores.
+  './jugadores.json',
+  'jugadores.json',
+
+  // Copias/fallbacks por compatibilidad.
   '../../adivinajugador/jugadores.json',
   '/adivinajugador/jugadores.json',
   '/aca/adivinajugador/jugadores.json',
 
-  // Copia simple dentro del juego, también actualizada por el scraper
-  './jugadores.json',
-  'jugadores.json',
+  '../../data/adivina-jugador/plantilla_365_jugadores_simple.json',
+  '/data/adivina-jugador/plantilla_365_jugadores_simple.json',
+  '/aca/data/adivina-jugador/plantilla_365_jugadores_simple.json',
 
-  // Fallbacks viejos por compatibilidad
   '../../data/adivina-jugador/base_jugadores_con_fotos.json',
   '/data/adivina-jugador/base_jugadores_con_fotos.json',
   '/aca/data/adivina-jugador/base_jugadores_con_fotos.json',
@@ -193,6 +196,10 @@ function getMaxTries() {
 
 function getAge(player) {
   if (typeof player.edad === 'number') return player.edad;
+
+  const edadNumerica = Number(player.edad);
+  if (Number.isFinite(edadNumerica) && edadNumerica > 0) return edadNumerica;
+
   if (!player.nacimiento) return 0;
 
   const birth = new Date(`${player.nacimiento}T00:00:00`);
@@ -229,7 +236,9 @@ function displayValue(player, category) {
 }
 
 function playerLabel(player) {
-  return `${player.nombre} · ${player.club} · ${player.competicion}`;
+  return [player.nombre, player.club, player.competicion || player.liga || player.fuente]
+    .filter(Boolean)
+    .join(' · ');
 }
 
 function normalizeImagePath(path) {
@@ -405,7 +414,7 @@ function startGame() {
   els.playerInput.value = '';
   els.playerInput.disabled = false;
   els.guessBtn.disabled = false;
-  els.secretCompetition.textContent = secret ? secret.competicion : '?';
+  els.secretCompetition.textContent = secret ? (secret.competicion || '-') : '?';
 
   renderTableHeader();
   updateCounters();
@@ -554,12 +563,12 @@ function openResultModal(won) {
 
   els.resultMeta.innerHTML = [
     `Dificultad ${difficultyLabel}`,
-    secret.pais || '-',
+    secret.pais || 'País sin dato',
     secret.club || '-',
     secret.competicion || '-',
     position,
-    `${age || '-'} años`,
-    `${secret.altura || '-'} cm`,
+    age ? `${age} años` : 'Edad sin dato',
+    secret.altura ? `${secret.altura} cm` : 'Altura sin dato',
   ]
     .map((item) => `<span>${item}</span>`)
     .join('');
@@ -651,18 +660,51 @@ async function fetchPlayersJson() {
   throw new Error(errors.join(' | '));
 }
 
+function normalizePlayerForGame(player) {
+  const nombre = String(player?.nombre || player?.name || '').trim();
+  const club = String(player?.club || player?.equipo || player?.team || '').trim();
+
+  const competicion = String(
+    player?.competicion ||
+      player?.liga ||
+      player?.liga_corta ||
+      player?.league ||
+      player?.torneo ||
+      player?.fuente ||
+      '365Scores'
+  ).trim();
+
+  const imagen = normalizeImagePath(
+    player?.imagen ||
+      player?.foto_local ||
+      player?.foto ||
+      player?.foto_futbin ||
+      player?.image ||
+      ''
+  );
+
+  return {
+    ...player,
+    nombre,
+    club,
+    competicion,
+    pais: player?.pais || player?.nacionalidad || '',
+    posicion: player?.posicion || player?.position || '',
+    edad: player?.edad || '',
+    altura: Number(player?.altura || 0),
+    imagen,
+    epoca: player?.epoca || player?.tipo || 'actual',
+  };
+}
+
 async function loadPlayers() {
   try {
     const data = await fetchPlayersJson();
 
     allPlayers = data
-      .filter((player) => player && player.nombre && player.club && player.competicion)
-      .filter((player) => getPlayerEra(player) === 'actual')
-      .map((player) => ({
-        ...player,
-        epoca: player.epoca || 'actual',
-        altura: Number(player.altura || 0),
-      }));
+      .map(normalizePlayerForGame)
+      .filter((player) => player && player.nombre && player.club)
+      .filter((player) => getPlayerEra(player) === 'actual');
 
     if (!allPlayers.length) {
       throw new Error('jugadores.json cargó, pero no tiene jugadores válidos.');
