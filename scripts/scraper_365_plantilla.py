@@ -24,6 +24,59 @@ GAME_JSON = GAME_DIR / "jugadores.json"
 
 FUENTE = "365Scores"
 
+# Mapeo para cuando equipos.json viene desde tu JSON viejo de equipos
+# y no trae url de 365Scores.
+EQUIPOS_365_FALLBACK = {
+    "boca-juniors": {
+        "equipo": "Boca Juniors",
+        "url": "https://www.365scores.com/es/football/team/boca-juniors-866/squad"
+    },
+    "river-plate": {
+        "equipo": "River Plate",
+        "url": "https://www.365scores.com/es/football/team/river-plate-868/squad"
+    },
+    "racing-club": {
+        "equipo": "Racing Club",
+        "url": "https://www.365scores.com/es/football/team/racing-club-876/squad"
+    },
+    "independiente": {
+        "equipo": "Independiente",
+        "url": "https://www.365scores.com/es/football/team/independiente-870/squad"
+    },
+    "san-lorenzo": {
+        "equipo": "San Lorenzo",
+        "url": "https://www.365scores.com/es/football/team/san-lorenzo-873/squad"
+    },
+    "arsenal": {
+        "equipo": "Arsenal",
+        "url": "https://www.365scores.com/es/football/team/arsenal-104/squad"
+    },
+    "manchester-city": {
+        "equipo": "Manchester City",
+        "url": "https://www.365scores.com/es/football/team/manchester-city-110/squad"
+    },
+    "liverpool": {
+        "equipo": "Liverpool",
+        "url": "https://www.365scores.com/es/football/team/liverpool-108/squad"
+    },
+    "real-madrid": {
+        "equipo": "Real Madrid",
+        "url": "https://www.365scores.com/es/football/team/real-madrid-131/squad"
+    },
+    "barcelona": {
+        "equipo": "Barcelona",
+        "url": "https://www.365scores.com/es/football/team/fc-barcelona-132/squad"
+    },
+    "atletico-madrid": {
+        "equipo": "Atlético de Madrid",
+        "url": "https://www.365scores.com/es/football/team/atletico-madrid-134/squad"
+    },
+    "inter-miami": {
+        "equipo": "Inter Miami CF",
+        "url": "https://www.365scores.com/es/football/team/inter-miami-54729/squad"
+    },
+}
+
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -84,10 +137,8 @@ def obtener_nombre_equipo(equipo):
 def obtener_url_equipo(equipo):
     """
     Acepta varios formatos para evitar que el workflow quede en 0 jugadores.
-    Formatos válidos:
-    { "equipo": "Boca Juniors", "url": "https://..." }
-    { "nombre": "Boca Juniors", "link": "https://..." }
-    { "equipo": "Boca Juniors", "url_365scores": "https://..." }
+    Si tu equipos.json viene desde data/equipos.json y no trae URL,
+    intenta armar la URL usando EQUIPOS_365_FALLBACK.
     """
     url = (
         equipo.get("url")
@@ -102,10 +153,26 @@ def obtener_url_equipo(equipo):
 
     url = limpiar_texto(url)
 
-    if url and "/squad" not in url:
-        url = url.rstrip("/") + "/squad"
+    if url:
+        if "/squad" not in url:
+            url = url.rstrip("/") + "/squad"
+        return url
 
-    return url
+    # Fallback por id del equipo.
+    equipo_id = normalizar(equipo.get("id", ""))
+    equipo_nombre_slug = slugify(
+        equipo.get("equipo")
+        or equipo.get("nombre")
+        or equipo.get("name")
+        or equipo.get("club")
+        or ""
+    )
+
+    for key in [equipo_id, equipo_nombre_slug]:
+        if key in EQUIPOS_365_FALLBACK:
+            return EQUIPOS_365_FALLBACK[key]["url"]
+
+    return ""
 
 
 def cargar_equipos():
@@ -137,6 +204,16 @@ def cargar_equipos():
 
         nombre = obtener_nombre_equipo(equipo)
         url = obtener_url_equipo(equipo)
+
+        equipo_id = normalizar(equipo.get("id", ""))
+        equipo_nombre_slug = slugify(nombre)
+
+        fallback = EQUIPOS_365_FALLBACK.get(equipo_id) or EQUIPOS_365_FALLBACK.get(equipo_nombre_slug)
+
+        if fallback:
+            nombre = fallback.get("equipo") or nombre
+            if not url:
+                url = fallback.get("url", "")
 
         equipos_limpios.append({
             **equipo,
