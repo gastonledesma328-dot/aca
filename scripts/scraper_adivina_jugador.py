@@ -9,6 +9,9 @@ import requests
 
 BASE_FILE = "adivinajugador/jugadores_base.json"
 OUTPUT_FILE = "adivinajugador/jugadores.json"
+GAME_OUTPUT_FILE = "juegos/adivinajugador/jugadores.json"
+IMAGES_DIR = "data/adivina-jugador/imagenes_jugadores"
+IMAGE_PUBLIC_PREFIX = "data/adivina-jugador/imagenes_jugadores"
 OVERRIDES_FILE = "adivinajugador/jugadores_overrides.json"
 
 HEADERS = {
@@ -101,6 +104,97 @@ def slug(value):
     value = value.replace("ß", "ss").replace("ı", "i")
     value = re.sub(r"[^a-z0-9]+", " ", value)
     return re.sub(r"\s+", " ", value).strip()
+
+
+def file_slug(value):
+    value = slug(value).replace(" ", "-")
+    value = re.sub(r"-+", "-", value).strip("-")
+    return value or "jugador"
+
+
+def image_extension_from_url(url):
+    clean = str(url or "").split("?")[0].lower()
+    for ext in (".png", ".jpg", ".jpeg", ".webp", ".avif"):
+        if clean.endswith(ext):
+            return ".jpg" if ext == ".jpeg" else ext
+    return ".png"
+
+
+def local_image_path(player):
+    player_id = str(player.get("espn_id") or player.get("id") or "").strip()
+    base = f'{file_slug(player.get("club"))}-{file_slug(player.get("nombre"))}'
+    if player_id:
+        base = f"{base}-{player_id}"
+    return base
+
+
+def download_player_image(player):
+    """
+    Descarga la foto del jugador para que GitHub Pages no dependa siempre
+    de una URL externa. Si falla, conserva la URL remota como respaldo.
+    """
+    url = player.get("imagen_url") or player.get("imagen") or ""
+
+    if not url or not re.match(r"^https?://", str(url), re.I):
+        return ""
+
+    os.makedirs(IMAGES_DIR, exist_ok=True)
+
+    ext = image_extension_from_url(url)
+    filename = f"{local_image_path(player)}{ext}"
+    disk_path = os.path.join(IMAGES_DIR, filename)
+    public_path = f"{IMAGE_PUBLIC_PREFIX}/{filename}"
+
+    if os.path.exists(disk_path) and os.path.getsize(disk_path) > 200:
+        return public_path
+
+    try:
+        r = requests.get(
+            url,
+            timeout=30,
+            headers={
+                "User-Agent": HEADERS["User-Agent"],
+                "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+                "Referer": "https://www.espn.com/",
+            },
+        )
+        print(f"🖼️ {r.status_code} imagen {player.get('nombre')} {url}")
+
+        if not r.ok:
+            return ""
+
+        content_type = r.headers.get("content-type", "").lower()
+        if "image" not in content_type and len(r.content) < 200:
+            return ""
+
+        with open(disk_path, "wb") as f:
+            f.write(r.content)
+
+        return public_path
+
+    except Exception as e:
+        print(f"⚠️ No se pudo descargar imagen de {player.get('nombre')}: {e}")
+        return ""
+
+
+def apply_local_images(jugadores):
+    for player in jugadores:
+        original = player.get("imagen") or ""
+        if original and re.match(r"^https?://", str(original), re.I):
+            player["imagen_url"] = original
+            local = download_player_image(player)
+            if local:
+                player["imagen"] = local
+                player["foto_local"] = local
+            else:
+                player["imagen"] = original
+        elif original:
+            player["foto_local"] = original
+        else:
+            player["imagen_url"] = ""
+            player["foto_local"] = ""
+
+    return jugadores
 
 
 def name_key(value):
@@ -333,6 +427,7 @@ def merge_player(base, espn, estado, confianza):
         "edad": int(espn.get("edad") or 0),
         "pais": espn.get("pais") or "Sin datos",
         "imagen": espn.get("imagen") or "",
+        "imagen_url": espn.get("imagen") or "",
         "estado": estado,
         "confianza": confianza,
         "espn_id": str(espn.get("espn_id") or ""),
@@ -442,6 +537,7 @@ def main():
             })
 
     jugadores.sort(key=lambda p: (p.get("liga", ""), p.get("club", ""), p.get("nombre", "")))
+    jugadores = apply_local_images(jugadores)
 
     output = {
         "fuente": "jugadores_base.json curado + confirmación por rosters actuales ESPN",
@@ -451,7 +547,7 @@ def main():
         "base_detectados": len(base_players),
         "reglas": {
             "mantiene_manual": ["altura", "posicion"],
-            "actualiza_espn": ["nombre", "club", "liga", "competicion", "edad", "pais", "imagen", "espn_id"],
+            "actualiza_espn": ["nombre", "club", "liga", "competicion", "edad", "pais", "imagen", "imagen_url", "foto_local", "espn_id"],
             "no_confirmado_en_roster": "se excluye del jugadores.json para evitar clubes desactualizados",
             "overrides": OVERRIDES_FILE,
         },
@@ -469,7 +565,12 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
+    os.makedirs(os.path.dirname(GAME_OUTPUT_FILE), exist_ok=True)
+    with open(GAME_OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump(jugadores, f, ensure_ascii=False, indent=2)
+
     print(f"✅ Generado {OUTPUT_FILE}")
+    print(f"✅ Generado copia simple para el juego: {GAME_OUTPUT_FILE}")
     print(f"✅ Jugadores activos confirmados: {len(jugadores)}")
     print(f"⚠️ Descartados/no confirmados: {len(descartados)}")
     print(f"⚠️ Ambiguos: {len(ambiguos)}")
