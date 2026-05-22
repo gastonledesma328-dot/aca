@@ -1,14 +1,17 @@
 const DATA_URLS = [
+  // JSON actualizado por GitHub Actions con nombre + imagen de cada jugador
+  '../../adivinajugador/jugadores.json',
+  '/adivinajugador/jugadores.json',
+  '/aca/adivinajugador/jugadores.json',
+
+  // Copia simple dentro del juego, también actualizada por el scraper
+  './jugadores.json',
+  'jugadores.json',
+
+  // Fallbacks viejos por compatibilidad
   '../../data/adivina-jugador/base_jugadores_con_fotos.json',
   '/data/adivina-jugador/base_jugadores_con_fotos.json',
   '/aca/data/adivina-jugador/base_jugadores_con_fotos.json',
-
-  // Fallbacks viejos, por si todavía no existe el JSON con fotos
-  '../../adivinajugador/jugadores.json',
-  '/adivinajugador/jugadores.json',
-  './jugadores.json',
-  'jugadores.json',
-  '/aca/adivinajugador/jugadores.json',
 ];
 const MIN_CHARS = 4;
 
@@ -240,7 +243,7 @@ function normalizeImagePath(path) {
 
   // Si viene como data/adivina-jugador/imagenes_jugadores/Messi.png
   // y el juego está en /aca/adivinajugador/, subimos un nivel.
-  if (value.startsWith('data/')) return `../${value}`;
+  if (value.startsWith('data/')) return `../../${value}`;
 
   return value;
 }
@@ -260,6 +263,7 @@ function setResultIconContent(won) {
   if (!els.resultIcon || !secret) return;
 
   const photo = getPlayerPhoto(secret);
+  const fallbackIcon = won ? '🏆' : '⚽';
 
   if (photo) {
     els.resultIcon.innerHTML = `
@@ -268,7 +272,7 @@ function setResultIconContent(won) {
         src="${photo}"
         alt="${secret.nombre}"
         loading="lazy"
-        onerror="this.remove(); this.parentElement.textContent='${won ? '🏆' : '⚽'}';"
+        onerror="this.remove(); this.parentElement.classList.remove('has-player-photo'); this.parentElement.textContent='${fallbackIcon}';"
       >
     `;
     els.resultIcon.classList.add('has-player-photo');
@@ -276,7 +280,7 @@ function setResultIconContent(won) {
   }
 
   els.resultIcon.classList.remove('has-player-photo');
-  setResultIconContent(won);
+  els.resultIcon.textContent = fallbackIcon;
 }
 
 function setMessage(text, type = '') {
