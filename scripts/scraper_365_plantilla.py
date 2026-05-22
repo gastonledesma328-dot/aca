@@ -77,6 +77,94 @@ EQUIPOS_365_FALLBACK = {
     },
 }
 
+LIGAS_POR_EQUIPO_365 = {
+    "arsenal": "Premier League",
+    "manchester city": "Premier League",
+    "liverpool": "Premier League",
+    "chelsea": "Premier League",
+    "manchester united": "Premier League",
+    "tottenham hotspur": "Premier League",
+
+    "real madrid": "LaLiga",
+    "barcelona": "LaLiga",
+    "fc barcelona": "LaLiga",
+    "atlético de madrid": "LaLiga",
+    "atletico de madrid": "LaLiga",
+    "sevilla": "LaLiga",
+    "real sociedad": "LaLiga",
+    "villarreal": "LaLiga",
+
+    "inter milan": "Serie A",
+    "juventus": "Serie A",
+    "ac milan": "Serie A",
+    "napoli": "Serie A",
+    "roma": "Serie A",
+    "lazio": "Serie A",
+
+    "bayern münchen": "Bundesliga",
+    "bayern munchen": "Bundesliga",
+    "bayern munich": "Bundesliga",
+    "borussia dortmund": "Bundesliga",
+    "bayer leverkusen": "Bundesliga",
+    "rb leipzig": "Bundesliga",
+
+    "paris saint-germain": "Ligue 1",
+    "psg": "Ligue 1",
+    "olympique de marseille": "Ligue 1",
+    "as monaco": "Ligue 1",
+    "monaco": "Ligue 1",
+    "olympique lyonnais": "Ligue 1",
+    "lyon": "Ligue 1",
+
+    "benfica": "Primeira Liga",
+    "fc porto": "Primeira Liga",
+    "sporting cp": "Primeira Liga",
+
+    "ajax amsterdam": "Eredivisie",
+    "ajax": "Eredivisie",
+    "psv eindhoven": "Eredivisie",
+    "feyenoord": "Eredivisie",
+
+    "boca juniors": "Liga Profesional Argentina",
+    "river plate": "Liga Profesional Argentina",
+    "racing club": "Liga Profesional Argentina",
+    "independiente": "Liga Profesional Argentina",
+    "san lorenzo": "Liga Profesional Argentina",
+
+    "flamengo": "Brasileirão",
+    "palmeiras": "Brasileirão",
+    "santos": "Brasileirão",
+    "corinthians": "Brasileirão",
+    "são paulo": "Brasileirão",
+    "sao paulo": "Brasileirão",
+
+    "atlético nacional": "Categoría Primera A",
+    "atletico nacional": "Categoría Primera A",
+    "millonarios": "Categoría Primera A",
+    "junior fc": "Categoría Primera A",
+
+    "inter miami cf": "MLS",
+    "inter miami": "MLS",
+    "lafc": "MLS",
+    "seattle sounders": "MLS",
+
+    "al nassr": "Saudi Pro League",
+    "al hilal": "Saudi Pro League",
+    "al ahli": "Saudi Pro League",
+
+    "galatasaray": "Süper Lig",
+    "fenerbahçe": "Süper Lig",
+    "fenerbahce": "Süper Lig",
+    "beşiktaş": "Süper Lig",
+    "besiktas": "Süper Lig",
+
+    "club américa": "Liga MX",
+    "club america": "Liga MX",
+    "cruz azul": "Liga MX",
+    "tigres uanl": "Liga MX",
+}
+
+
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -175,6 +263,29 @@ def obtener_url_equipo(equipo):
     return ""
 
 
+def obtener_liga_equipo(equipo):
+    """
+    Devuelve la liga donde juega el equipo.
+    1) Usa liga/competicion/league del equipos.json si existe.
+    2) Si no existe, usa un mapeo interno por nombre del equipo.
+    """
+    liga = limpiar_texto(
+        equipo.get("liga")
+        or equipo.get("competicion")
+        or equipo.get("competition")
+        or equipo.get("league")
+        or equipo.get("torneo")
+        or ""
+    )
+
+    if liga and normalizar(liga) != "365scores":
+        return liga
+
+    nombre = obtener_nombre_equipo(equipo)
+    return LIGAS_POR_EQUIPO_365.get(normalizar(nombre), "")
+
+
+
 def cargar_equipos():
     if not os.path.exists(EQUIPOS_FILE):
         ejemplo = [
@@ -215,10 +326,17 @@ def cargar_equipos():
             if not url:
                 url = fallback.get("url", "")
 
-        equipos_limpios.append({
+        liga = obtener_liga_equipo({
             **equipo,
             "equipo": nombre,
             "url": url
+        })
+
+        equipos_limpios.append({
+            **equipo,
+            "equipo": nombre,
+            "url": url,
+            "liga": liga
         })
 
     return equipos_limpios
@@ -580,7 +698,7 @@ async def hacer_scroll(page):
             pass
 
 
-async def extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url):
+async def extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url, equipo_liga=''):
     equipo_id = sacar_equipo_id_desde_url(equipo_url)
 
     jugadores = await page.evaluate(
@@ -809,6 +927,7 @@ async def extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url):
             "fecha_nacimiento": "",
             "altura": "",
             "fin_contrato": "",
+            "competicion": equipo_liga,
             "imagen_url": j.get("imagen_url") or "",
             "imagen": "",
             "url_365scores": j.get("url_365scores") or "",
@@ -933,6 +1052,7 @@ async def extraer_detalle_jugador(context, jugador):
 async def procesar_equipo(context, equipo, existentes):
     equipo_nombre = obtener_nombre_equipo(equipo)
     equipo_url = obtener_url_equipo(equipo)
+    equipo_liga = obtener_liga_equipo(equipo)
 
     if not equipo_url:
         print(f"⚠️ Equipo sin URL: {equipo_nombre}")
@@ -950,7 +1070,7 @@ async def procesar_equipo(context, equipo, existentes):
         await cerrar_cookies_o_popups(page)
         await hacer_scroll(page)
 
-        jugadores = await extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url)
+        jugadores = await extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url, equipo_liga)
         print(f"📦 Jugadores encontrados en {equipo_nombre}: {len(jugadores)}")
 
     except Exception as e:
@@ -970,13 +1090,22 @@ async def procesar_equipo(context, equipo, existentes):
         jugador_existente = buscar_jugador_existente(jugador, existentes)
 
         if jugador_existente and tiene_datos_completos(jugador_existente):
+            liga_equipo_actual = jugador.get("competicion") or equipo_liga
             jugador.update(jugador_existente)
+            if not jugador.get("competicion") or normalizar(jugador.get("competicion")) == "365scores":
+                jugador["competicion"] = liga_equipo_actual
             print(f"♻️ Jugador ya cargado con datos e imagen, omito perfil/descarga: {jugador['nombre']}")
         else:
+            if not jugador.get("competicion") or normalizar(jugador.get("competicion")) == "365scores":
+                jugador["competicion"] = equipo_liga
+
             if imagen_existente:
                 jugador["imagen"] = imagen_existente
 
             jugador = await extraer_detalle_jugador(context, jugador)
+
+            if not jugador.get("competicion") or normalizar(jugador.get("competicion")) == "365scores":
+                jugador["competicion"] = equipo_liga
 
             if imagen_existente:
                 jugador["imagen"] = imagen_existente
