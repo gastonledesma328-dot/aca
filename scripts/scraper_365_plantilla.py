@@ -71,6 +71,43 @@ def sacar_equipo_id_desde_url(url):
     return match.group(1) if match else ""
 
 
+def obtener_nombre_equipo(equipo):
+    return limpiar_texto(
+        equipo.get("equipo")
+        or equipo.get("nombre")
+        or equipo.get("name")
+        or equipo.get("club")
+        or "Equipo"
+    )
+
+
+def obtener_url_equipo(equipo):
+    """
+    Acepta varios formatos para evitar que el workflow quede en 0 jugadores.
+    Formatos válidos:
+    { "equipo": "Boca Juniors", "url": "https://..." }
+    { "nombre": "Boca Juniors", "link": "https://..." }
+    { "equipo": "Boca Juniors", "url_365scores": "https://..." }
+    """
+    url = (
+        equipo.get("url")
+        or equipo.get("link")
+        or equipo.get("squad")
+        or equipo.get("squad_url")
+        or equipo.get("plantel_url")
+        or equipo.get("url_365scores")
+        or equipo.get("href")
+        or ""
+    )
+
+    url = limpiar_texto(url)
+
+    if url and "/squad" not in url:
+        url = url.rstrip("/") + "/squad"
+
+    return url
+
+
 def cargar_equipos():
     if not os.path.exists(EQUIPOS_FILE):
         ejemplo = [
@@ -92,7 +129,22 @@ def cargar_equipos():
     if not isinstance(data, list):
         raise ValueError("equipos.json debe ser una lista.")
 
-    return data
+    equipos_limpios = []
+
+    for equipo in data:
+        if not isinstance(equipo, dict):
+            continue
+
+        nombre = obtener_nombre_equipo(equipo)
+        url = obtener_url_equipo(equipo)
+
+        equipos_limpios.append({
+            **equipo,
+            "equipo": nombre,
+            "url": url
+        })
+
+    return equipos_limpios
 
 
 def asegurar_carpetas():
@@ -601,17 +653,20 @@ async def extraer_detalle_jugador(context, jugador):
 
 
 async def procesar_equipo(context, equipo):
-    equipo_nombre = limpiar_texto(equipo.get("equipo") or equipo.get("nombre") or "Equipo")
-    equipo_url = equipo.get("url")
+    equipo_nombre = obtener_nombre_equipo(equipo)
+    equipo_url = obtener_url_equipo(equipo)
 
     if not equipo_url:
         print(f"⚠️ Equipo sin URL: {equipo_nombre}")
+        print(f"   Objeto recibido: {json.dumps(equipo, ensure_ascii=False)}")
         return []
 
     page = await context.new_page()
 
     try:
-        print(f"\\n🌐 Abriendo plantilla: {equipo_nombre}")
+        print(f"\n🌐 Abriendo plantilla: {equipo_nombre}")
+        print(f"🔗 URL: {equipo_url}")
+
         await page.goto(equipo_url, wait_until="domcontentloaded", timeout=60000)
         await page.wait_for_timeout(3500)
         await cerrar_cookies_o_popups(page)
@@ -666,6 +721,7 @@ async def main():
     asegurar_carpetas()
 
     equipos = cargar_equipos()
+    print(f"📋 Equipos cargados: {len(equipos)}")
 
     todos_los_jugadores = []
 
@@ -724,7 +780,7 @@ async def main():
     con_imagen = sum(1 for j in simple if j.get("imagen"))
     sin_imagen = len(simple) - con_imagen
 
-    print("\\n✅ Listo.")
+    print("\n✅ Listo.")
     print(f"📄 JSON completo: {OUTPUT_JSON}")
     print(f"📄 JSON simple: {OUTPUT_SIMPLE_JSON}")
     print(f"🎮 JSON juego: {GAME_JSON}")
