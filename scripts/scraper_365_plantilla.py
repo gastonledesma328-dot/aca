@@ -317,6 +317,9 @@ def limpiar_jugador_para_juego(j):
         "posicion": j.get("posicion", ""),
         "numero": j.get("numero", ""),
         "edad": j.get("edad", ""),
+        "fecha_nacimiento": j.get("fecha_nacimiento", ""),
+        "altura": j.get("altura", ""),
+        "fin_contrato": j.get("fin_contrato", ""),
         "imagen": j.get("imagen", ""),
         "imagen_url": j.get("imagen_url", ""),
         "url_365scores": j.get("url_365scores", ""),
@@ -373,6 +376,177 @@ def normalizar_posicion(pos):
         return "Delantero"
 
     return limpiar_texto(pos)
+
+
+
+def altura_a_cm(valor):
+    """
+    Convierte altura tipo "1.89" o "1,89" a 189.
+    Si ya viene como "189", devuelve 189.
+    """
+    raw = limpiar_texto(valor).replace(",", ".")
+
+    if not raw:
+        return ""
+
+    try:
+        n = float(raw)
+    except Exception:
+        return ""
+
+    if 1.0 <= n <= 2.5:
+        return int(round(n * 100))
+
+    if 100 <= n <= 250:
+        return int(round(n))
+
+    return ""
+
+
+def extraer_datos_desde_body_365(nombre, body_text):
+    """
+    Extrae datos visibles desde el perfil individual de 365Scores.
+    Ejemplo:
+    Franco Armani (Argentina, 39) es un jugador...
+    39 años
+    16/10/1986
+    1.89
+    Altura
+    1
+    Dorsal
+    """
+    body = limpiar_texto(body_text)
+    datos = {
+        "pais": "",
+        "edad": "",
+        "fecha_nacimiento": "",
+        "altura": "",
+        "numero": "",
+        "competicion": "",
+        "fin_contrato": "",
+    }
+
+    # País y edad desde la frase principal.
+    # Franco Armani (Argentina, 39) ...
+    patron = re.escape(nombre) + r"\s*\(([^,()]+),\s*(\d{1,2})\)"
+    m = re.search(patron, body, re.I)
+
+    if not m:
+        m = re.search(r"\(([^,()]+),\s*(\d{1,2})\)\s+es un jugador", body, re.I)
+
+    if m:
+        datos["pais"] = limpiar_texto(m.group(1))
+        datos["edad"] = limpiar_texto(m.group(2))
+
+    # Fecha nacimiento.
+    m = re.search(r"\b(\d{1,2}/\d{1,2}/\d{4})\b", body)
+    if m:
+        datos["fecha_nacimiento"] = m.group(1)
+
+    # Edad desde bloque de detalles.
+    if not datos["edad"]:
+        m = re.search(r"\b(\d{1,2})\s+años\b", body, re.I)
+        if m:
+            datos["edad"] = m.group(1)
+
+    # Altura: suele aparecer como "1.89 Altura".
+    m = re.search(r"\b([12][,.]\d{2})\s+Altura\b", body, re.I)
+    if m:
+        datos["altura"] = altura_a_cm(m.group(1))
+
+    # Dorsal: suele aparecer como "1 Dorsal".
+    m = re.search(r"\b(\d{1,3})\s+Dorsal\b", body, re.I)
+    if m:
+        datos["numero"] = m.group(1)
+
+    # Fin de contrato: "Fin del contrato 31/12/2026".
+    m = re.search(r"Fin del contrato\s+(\d{1,2}/\d{1,2}/\d{4})", body, re.I)
+    if m:
+        datos["fin_contrato"] = m.group(1)
+
+    # Competición principal: primera competición que aparece en estadísticas.
+    # Evita usar "365Scores" como liga.
+    posibles_ligas = [
+        "Liga Profesional Argentina",
+        "Premier League",
+        "LaLiga",
+        "Serie A",
+        "Bundesliga",
+        "Ligue 1",
+        "Brasileirão",
+        "MLS",
+        "Liga MX",
+        "Eredivisie",
+        "Primeira Liga",
+        "CONMEBOL Copa Libertadores",
+        "CONMEBOL Copa Sudamericana",
+        "UEFA Champions League",
+        "UEFA Europa League",
+        "Copa Argentina",
+        "Copa del Rey",
+        "Coppa Italia",
+        "DFB-Pokal",
+    ]
+
+    for liga in posibles_ligas:
+        if liga.lower() in body.lower():
+            datos["competicion"] = liga
+            break
+
+    return datos
+
+
+def tiene_datos_completos(player):
+    """
+    Sirve para ahorrar tiempo en siguientes corridas.
+    Si ya existe el jugador con imagen y datos básicos, no entra al perfil otra vez.
+    """
+    return bool(
+        player.get("imagen")
+        and player.get("pais")
+        and player.get("posicion")
+        and player.get("edad")
+        and player.get("altura")
+    )
+
+
+def cargar_jugadores_existentes():
+    """
+    Lee el JSON actual del juego para reutilizar datos ya cargados.
+    """
+    if not GAME_JSON.exists():
+        return {}
+
+    try:
+        data = json.loads(GAME_JSON.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+    existentes = {}
+
+    if not isinstance(data, list):
+        return existentes
+
+    for j in data:
+        if not isinstance(j, dict):
+            continue
+
+        key = f"{normalizar(j.get('club'))}|{normalizar(j.get('nombre'))}|{j.get('id', '')}"
+        existentes[key] = j
+
+        key_sin_id = f"{normalizar(j.get('club'))}|{normalizar(j.get('nombre'))}|"
+        existentes[key_sin_id] = j
+
+    return existentes
+
+
+def buscar_jugador_existente(jugador, existentes):
+    key = f"{normalizar(jugador.get('club'))}|{normalizar(jugador.get('nombre'))}|{jugador.get('id', '')}"
+    key_sin_id = f"{normalizar(jugador.get('club'))}|{normalizar(jugador.get('nombre'))}|"
+
+    return existentes.get(key) or existentes.get(key_sin_id) or None
+
+
 
 
 async def cerrar_cookies_o_popups(page):
@@ -632,6 +806,9 @@ async def extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url):
             "posicion": posicion,
             "pais": "",
             "edad": "",
+            "fecha_nacimiento": "",
+            "altura": "",
+            "fin_contrato": "",
             "imagen_url": j.get("imagen_url") or "",
             "imagen": "",
             "url_365scores": j.get("url_365scores") or "",
@@ -643,13 +820,10 @@ async def extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url):
 
 async def extraer_detalle_jugador(context, jugador):
     """
-    Perfil individual: lo usamos principalmente para completar imagen si en el plantel no salió.
-    No adivinamos país/posición desde todo el body porque eso generaba muchos errores.
+    Entra al perfil individual de 365Scores para completar:
+    país, edad, fecha de nacimiento, altura, dorsal, competición, contrato e imagen.
     """
     if not jugador.get("url_365scores"):
-        return jugador
-
-    if jugador.get("imagen_url") and es_url_imagen_valida_365(jugador["imagen_url"]):
         return jugador
 
     page = await context.new_page()
@@ -686,6 +860,27 @@ async def extraer_detalle_jugador(context, jugador):
                 }
 
                 const nombre = clean(document.querySelector("h1")?.innerText || "");
+                const bodyText = clean(document.body.innerText || "");
+
+                let posicion = "";
+
+                const h1 = document.querySelector("h1");
+                if (h1) {
+                    let node = h1;
+                    for (let i = 0; i < 5; i++) {
+                        if (!node.parentElement) break;
+                        node = node.parentElement;
+                        const txt = clean(node.innerText || node.textContent || "");
+                        const low = txt.toLowerCase();
+
+                        if (low.includes("portero")) posicion = "Portero";
+                        else if (low.includes("defensa") || low.includes("defensor")) posicion = "Defensa";
+                        else if (low.includes("mediocampista") || low.includes("medio")) posicion = "Mediocampista";
+                        else if (low.includes("delantero") || low.includes("extremo")) posicion = "Delantero";
+
+                        if (posicion) break;
+                    }
+                }
 
                 const imgs = Array.from(document.querySelectorAll("img"))
                     .map(img => ({
@@ -696,7 +891,7 @@ async def extraer_detalle_jugador(context, jugador):
                     }))
                     .filter(x => x.src);
 
-                return { nombre, imgs };
+                return { nombre, posicion, bodyText, imgs };
             }
             """
         )
@@ -706,17 +901,24 @@ async def extraer_detalle_jugador(context, jugador):
         if nombre_real and 2 <= len(nombre_real) <= 70:
             jugador["nombre"] = nombre_real
 
+        posicion = normalizar_posicion(data.get("posicion"))
+        if posicion:
+            jugador["posicion"] = posicion
+
+        detalles = extraer_datos_desde_body_365(jugador["nombre"], data.get("bodyText") or "")
+
+        for campo in ["pais", "edad", "fecha_nacimiento", "altura", "numero", "competicion", "fin_contrato"]:
+            if detalles.get(campo):
+                jugador[campo] = detalles[campo]
+
         imgs = data.get("imgs") or []
-        imagen_url = ""
 
-        for img in imgs:
-            src = img.get("src") or ""
-            if es_url_imagen_valida_365(src):
-                imagen_url = src
-                break
-
-        if imagen_url:
-            jugador["imagen_url"] = imagen_url
+        if not jugador.get("imagen_url") or not es_url_imagen_valida_365(jugador["imagen_url"]):
+            for img in imgs:
+                src = img.get("src") or ""
+                if es_url_imagen_valida_365(src):
+                    jugador["imagen_url"] = src
+                    break
 
         return jugador
 
@@ -728,7 +930,7 @@ async def extraer_detalle_jugador(context, jugador):
         await page.close()
 
 
-async def procesar_equipo(context, equipo):
+async def procesar_equipo(context, equipo, existentes):
     equipo_nombre = obtener_nombre_equipo(equipo)
     equipo_url = obtener_url_equipo(equipo)
 
@@ -764,16 +966,22 @@ async def procesar_equipo(context, equipo):
         print(f"[{i}/{len(jugadores)}] ⚽ {jugador['nombre']} - {equipo_nombre}")
 
         nombre_archivo = f"{slugify(jugador['club'])}-{slugify(jugador['nombre'])}-{jugador['id']}"
-
         imagen_existente = buscar_imagen_existente(nombre_archivo)
+        jugador_existente = buscar_jugador_existente(jugador, existentes)
 
-        if imagen_existente:
-            jugador["imagen"] = imagen_existente
-            print(f"♻️ Jugador ya tiene imagen local, omito perfil/descarga: {jugador['nombre']}")
+        if jugador_existente and tiene_datos_completos(jugador_existente):
+            jugador.update(jugador_existente)
+            print(f"♻️ Jugador ya cargado con datos e imagen, omito perfil/descarga: {jugador['nombre']}")
         else:
+            if imagen_existente:
+                jugador["imagen"] = imagen_existente
+
             jugador = await extraer_detalle_jugador(context, jugador)
 
-            if jugador.get("imagen_url"):
+            if imagen_existente:
+                jugador["imagen"] = imagen_existente
+                print(f"♻️ Imagen ya cargada, solo actualicé datos: {jugador['nombre']}")
+            elif jugador.get("imagen_url"):
                 jugador["imagen"] = descargar_imagen(jugador["imagen_url"], nombre_archivo)
             else:
                 jugador["imagen"] = ""
@@ -803,7 +1011,9 @@ async def main():
     asegurar_carpetas()
 
     equipos = cargar_equipos()
+    existentes = cargar_jugadores_existentes()
     print(f"📋 Equipos cargados: {len(equipos)}")
+    print(f"♻️ Jugadores existentes en JSON del juego: {len(existentes)}")
 
     todos_los_jugadores = []
 
@@ -825,7 +1035,7 @@ async def main():
         )
 
         for equipo in equipos:
-            jugadores_equipo = await procesar_equipo(context, equipo)
+            jugadores_equipo = await procesar_equipo(context, equipo, existentes)
             todos_los_jugadores.extend(jugadores_equipo)
 
         await browser.close()
@@ -843,6 +1053,12 @@ async def main():
             "club": j.get("club", ""),
             "pais": j.get("pais", ""),
             "posicion": j.get("posicion", ""),
+            "edad": j.get("edad", ""),
+            "fecha_nacimiento": j.get("fecha_nacimiento", ""),
+            "altura": j.get("altura", ""),
+            "numero": j.get("numero", ""),
+            "competicion": j.get("competicion", ""),
+            "fin_contrato": j.get("fin_contrato", ""),
             "imagen": j.get("imagen", ""),
             "fuente": FUENTE
         }
