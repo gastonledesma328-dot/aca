@@ -459,6 +459,7 @@ def limpiar_jugador_para_juego(j):
         "club_id": j.get("club_id", ""),
         "pais": j.get("pais", ""),
         "posicion": j.get("posicion", ""),
+        "competicion": limpiar_competicion(j.get("competicion", "")),
         "numero": j.get("numero", ""),
         "edad": j.get("edad", ""),
         "fecha_nacimiento": j.get("fecha_nacimiento", ""),
@@ -1263,7 +1264,7 @@ async def main():
             "fecha_nacimiento": j.get("fecha_nacimiento", ""),
             "altura": j.get("altura", ""),
             "numero": j.get("numero", ""),
-            "competicion": competicion_limpia,
+            "competicion": limpiar_competicion(j.get("competicion", "")),
             "fin_contrato": j.get("fin_contrato", ""),
             "imagen": j.get("imagen", ""),
             "fuente": FUENTE
