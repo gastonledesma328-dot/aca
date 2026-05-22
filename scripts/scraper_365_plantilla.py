@@ -309,25 +309,13 @@ def limpiar_jugador_para_juego(j):
 
 
 def es_staff_o_no_jugador(nombre, texto):
+    """
+    Filtro de staff conservador.
+    Antes se descartaba por palabras como "asistente" dentro del texto cercano,
+    y eso podía eliminar jugadores reales como Marcelo Weigandt.
+    Ahora solo descartamos nombres claramente conocidos como staff.
+    """
     n = normalizar(nombre)
-    t = normalizar(texto)
-
-    palabras_staff = [
-        "entrenador",
-        "tecnico",
-        "técnico",
-        "manager",
-        "coach",
-        "asistente",
-        "assistant",
-        "director tecnico",
-        "director técnico",
-        "dt",
-        "staff"
-    ]
-
-    if any(p in t for p in palabras_staff):
-        return True
 
     nombres_staff_comunes = {
         "mikel arteta",
@@ -575,11 +563,6 @@ async def extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url):
                 const sectionText = findSectionText(card);
                 const posicion = guessPosition(cardText, sectionText);
                 const numero = guessNumber(cardText);
-
-                const lowText = `${name} ${cardText}`.toLowerCase();
-                const staffWords = ["coach", "manager", "entrenador", "técnico", "tecnico", "assistant", "asistente"];
-
-                if (staffWords.some(w => lowText.includes(w))) continue;
 
                 if (!map.has(id)) {
                     map.set(id, {
