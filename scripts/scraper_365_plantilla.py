@@ -532,10 +532,7 @@ def limpiar_jugador_para_juego(j):
 
 def es_staff_o_no_jugador(nombre, texto):
     """
-    Filtro de staff/entrenadores.
-    No descartamos por cualquier palabra suelta, pero sí por frases claras
-    de biografía de entrenador y por nombres conocidos que 365Scores mete
-    como si fueran jugadores dentro del plantel.
+    Filtra entrenadores/staff claros sin eliminar jugadores reales que vengan sin posición.
     """
     n = normalizar(nombre)
     t = normalizar(texto)
@@ -543,13 +540,9 @@ def es_staff_o_no_jugador(nombre, texto):
     frases_staff = [
         "entrenador de futbol",
         "entrenador de fútbol",
-        "entrenador portugues",
-        "entrenador portugués",
-        "entrenador argentino",
-        "entrenador espanol",
-        "entrenador español",
         "football coach",
         "head coach",
+        "assistant coach",
         "manager",
         "director tecnico",
         "director técnico",
@@ -561,24 +554,100 @@ def es_staff_o_no_jugador(nombre, texto):
         return True
 
     nombres_staff_comunes = {
-        "mikel arteta",
-        "pep guardiola",
+        "abel ferreira",
+        "aleksandar kolarov",
+        "alfredo arias",
+        "alvaro arbeloa",
+        "andre jardine",
+        "andrey lopes",
+        "angelo gregucci",
+        "ante razov",
         "arne slot",
+        "brian schmetzer",
+        "carlos martinho",
+        "cesar sampaio",
+        "claudio ubeda",
+        "cristian chivu",
+        "cuca",
+        "cuquinha",
+        "daniel oldra",
+        "diego arias",
         "diego simeone",
+        "eduardo coudet",
+        "enrique duran",
+        "fabian bustos",
+        "francesco farioli",
+        "frederico juarez",
+        "gabriel heinze",
+        "gian piero gasperini",
+        "guido pizarro",
+        "guillermo hoyos",
+        "habib beye",
         "hans-dieter flick",
         "hansi flick",
-        "cristian chivu",
-        "alvaro arbeloa",
-        "gabriel heinze",
-        "nelson vivas",
-        "pepijn lijnders",
-        "sipke hulshoff",
-        "marcus sorg",
-        "toni tapalovic",
-        "aleksandar kolarov",
-        "claudio ubeda",
-        "eduardo coudet",
+        "irfan saraloglu",
+        "james freitas",
+        "javier morales",
+        "joao martins",
+        "joao tralhao",
+        "joel huiqui",
+        "john de wolf",
+        "jorge jesus",
+        "jose barros",
+        "jose mourinho",
+        "jose tavares",
+        "kasper hjulmand",
+        "kosta runjaic",
         "leonardo jardim",
+        "lucas pagano",
+        "lucho gonzalez",
+        "luciano spalletti",
+        "luis castro",
+        "luis enrique",
+        "luis garcia",
+        "luis zubeldia",
+        "marc dos santos",
+        "marcao",
+        "marco landucci",
+        "marcus sorg",
+        "martin demichelis",
+        "massimiliano allegri",
+        "massimiliano farris",
+        "matthias jaissle",
+        "maximiliano cuberas",
+        "maximiliano velazquez",
+        "michel der zakarian",
+        "mikel arteta",
+        "nelson vivas",
+        "niko kovac",
+        "okan buruk",
+        "oscar garcia",
+        "ozan koprulu",
+        "paulo rodrigues",
+        "pep guardiola",
+        "pepijn lijnders",
+        "peter bosz",
+        "preki",
+        "przemyslaw malecki",
+        "rafel pol",
+        "ricardo rocha",
+        "rob maas",
+        "roberto de zerbi",
+        "robin van persie",
+        "rogier meijer",
+        "rubi",
+        "rui borges",
+        "salvatore foti",
+        "sebastien pocognoli",
+        "sergen yalcin",
+        "simone inzaghi",
+        "sipke hulshoff",
+        "toni tapalovic",
+        "tullio gritti",
+        "vincent kompany",
+        "vitor castanheira",
+        "vitor severino",
+        "zeki murat gole"
     }
 
     return n in nombres_staff_comunes
@@ -1262,11 +1331,10 @@ def obtener_liga_por_club(club):
 
 def limpiar_dataset_final(jugadores):
     """
-    Limpieza final antes de escribir JSON:
-    - elimina entrenadores/staff colados
-    - omite jugadores sin posición
-    - fuerza la liga correcta según el club
-    - elimina cualquier competicion inválida como 365Scores
+    Limpieza final:
+    - elimina entrenadores/staff claros
+    - fuerza liga correcta por club
+    - NO elimina jugadores reales sin posición; les pone "Sin dato"
     """
     salida = []
 
@@ -1275,21 +1343,20 @@ def limpiar_dataset_final(jugadores):
         club = j.get("club", "")
         posicion = normalizar_posicion(j.get("posicion", ""))
 
-        if es_staff_o_no_jugador(nombre, f"{nombre} {posicion}"):
-            print(f"🚫 Staff eliminado en limpieza final: {nombre} ({club})")
-            continue
+        texto_staff = f"{nombre} {club} {j.get('posicion', '')} {j.get('competicion', '')}"
 
-        if not posicion:
-            print(f"⚠️ Jugador omitido sin posición: {nombre} ({club})")
+        if es_staff_o_no_jugador(nombre, texto_staff):
+            print(f"🚫 Staff eliminado en limpieza final: {nombre} ({club})")
             continue
 
         liga_por_club = obtener_liga_por_club(club)
         comp_actual = limpiar_competicion(j.get("competicion", ""))
 
-        if liga_por_club:
-            j["competicion"] = liga_por_club
-        else:
-            j["competicion"] = comp_actual
+        j["competicion"] = liga_por_club or comp_actual
+
+        if not posicion:
+            posicion = "Sin dato"
+            print(f"ℹ️ Jugador guardado sin posición detectada: {nombre} ({club})")
 
         j["posicion"] = posicion
 
@@ -1302,14 +1369,6 @@ def limpiar_dataset_final(jugadores):
         salida.append(j)
 
     return salida
-
-
-def limpiar_imagenes_alta_calidad_dataset(jugadores):
-    for j in jugadores:
-        if j.get("imagen_url"):
-            j["imagen_url"] = imagen_365_alta_calidad(j["imagen_url"])
-    return jugadores
-
 
 
 def deduplicar_jugadores(jugadores):
