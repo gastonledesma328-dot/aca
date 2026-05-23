@@ -1371,6 +1371,18 @@ def limpiar_dataset_final(jugadores):
     return salida
 
 
+def limpiar_imagenes_alta_calidad_dataset(jugadores):
+    """
+    Asegura que las URLs de imagen guardadas queden en calidad alta.
+    No descarga nada acá; solo normaliza image_url para el JSON.
+    """
+    for j in jugadores:
+        if j.get("imagen_url"):
+            j["imagen_url"] = imagen_365_alta_calidad(j["imagen_url"])
+    return jugadores
+
+
+
 def deduplicar_jugadores(jugadores):
     vistos = set()
     salida = []
