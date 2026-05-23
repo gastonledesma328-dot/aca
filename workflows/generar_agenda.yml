@@ -1,0 +1,40 @@
+name: Generar agenda diaria
+
+on:
+  schedule:
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generar-agenda:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repo
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generar agenda completa
+        run: |
+          node scripts/generar_agenda.mjs
+
+      - name: Sincronizar archivos públicos
+        run: |
+          mkdir -p public/data
+          cp data/agenda.json public/data/agenda.json
+          cp data/live.json public/data/live.json
+
+      - name: Guardar cambios
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add data/agenda.json data/live.json public/data/agenda.json public/data/live.json
+          git commit -m "Actualizar agenda diaria" || echo "Sin cambios"
+          git push
