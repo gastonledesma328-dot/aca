@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adivina el Jugador | Juegos de Fulbo</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <header class="game-header" aria-label="Cabecera del juego">
+            <a class="back-games-link" href="../../index.html#games" aria-label="Volver a Juegos de fulbo">← Volver</a>
+
+      <div class="brand-block">
+        <strong>Partidos.Hoy</strong>
+        <span>Adivina el jugador</span>
+      </div>
+
+      <button class="help-button" type="button" aria-label="Ayuda" title="Ayuda">?</button>
+    </header>
+
+    <section class="game-hero" aria-label="Presentación del juego">
+      <span class="limit-pill">Sin límite diario</span>
+
+      <h1>Adivina el jugador</h1>
+
+      <p class="hero-text">
+        Descubrí al futbolista oculto usando pistas de país, club, liga, posición, edad y altura.
+      </p>
+
+      <div class="difficulty-grid" aria-label="Elegir dificultad">
+        <button class="difficulty-card active" type="button" data-difficulty="facil">
+          <strong>Fácil</strong>
+          <span>Lista de jugadores + 8 intentos</span>
+        </button>
+
+        <button class="difficulty-card" type="button" data-difficulty="normal">
+          <strong>Normal</strong>
+          <span>Sin lista + 8 intentos</span>
+        </button>
+
+        <button class="difficulty-card" type="button" data-difficulty="dificil">
+          <strong>Difícil</strong>
+          <span>Sin lista + 5 intentos</span>
+        </button>
+      </div>
+
+    </section>
+
+    <section class="game-card" id="gameCard">
+      <div class="mode-panel">
+        <div class="pistas-block">
+          <span class="panel-label">Pistas activas</span>
+          <div class="button-group categories" aria-label="Elegir pistas activas">
+            <button class="chip-btn active" type="button" data-category="pais">País</button>
+            <button class="chip-btn active" type="button" data-category="club">Club</button>
+            <button class="chip-btn active" type="button" data-category="competicion">Liga</button>
+            <button class="chip-btn active" type="button" data-category="posicion">Posición</button>
+            <button class="chip-btn active" type="button" data-category="edad">Edad</button>
+            <button class="chip-btn active" type="button" data-category="altura">Altura</button>
+            <button class="chip-btn ghost" id="allCategoriesBtn" type="button">Todas</button>
+          </div>
+        </div>
+
+        <div class="hints-row">
+          <div class="hint-card">
+            <span>Liga del oculto</span>
+            <strong id="secretCompetition">?</strong>
+          </div>
+          <div class="hint-card">
+            <span>Intentos usados</span>
+            <strong id="triesUsed">0/8</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <label class="field search-field">
+          <span>Jugador</span>
+          <input
+            id="playerInput"
+            type="text"
+            placeholder="Ej: Messi, Mbappé, Neymar..."
+            autocomplete="off"
+            list="playersList"
+          />
+          <datalist id="playersList"></datalist>
+        </label>
+
+        <button id="guessBtn" class="primary-btn">Probar</button>
+        <button id="newGameBtn" class="ghost-btn">Nuevo</button>
+      </div>
+
+      <div id="message" class="message"></div>
+
+      <div class="table-wrap">
+        <table class="guess-table">
+          <thead id="tableHead"></thead>
+          <tbody id="guessesBody"></tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <div id="resultModal" class="result-modal hidden" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+      <div class="result-splash">
+        <div class="result-icon" id="resultIcon">🏆</div>
+        <p class="result-kicker" id="resultKicker">Juego completado</p>
+        <h2 id="resultTitle">¡Felicitaciones!</h2>
+        <p id="resultText" class="result-text"></p>
+        <div id="resultMeta" class="result-meta"></div>
+        <div class="result-actions">
+          <button id="resultNewGameBtn" class="primary-btn" type="button">Nuevo juego</button>
+          <button id="resultCloseBtn" class="ghost-btn" type="button">Ver tablero</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

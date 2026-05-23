@@ -1,0 +1,5564 @@
+{
+  "formations": [
+    {
+      "name": "3-5-2",
+      "rows": [
+        [
+          "ST",
+          "ST"
+        ],
+        [
+          "CAM"
+        ],
+        [
+          "LM",
+          "CDM",
+          "CDM",
+          "RM"
+        ],
+        [
+          "CB",
+          "CB",
+          "CB"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    },
+    {
+      "name": "4-3-3",
+      "rows": [
+        [
+          "LW",
+          "ST",
+          "RW"
+        ],
+        [
+          "CM",
+          "CM",
+          "CM"
+        ],
+        [
+          "LB",
+          "CB",
+          "CB",
+          "RB"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    },
+    {
+      "name": "4-4-2",
+      "rows": [
+        [
+          "ST",
+          "ST"
+        ],
+        [
+          "LM",
+          "CM",
+          "CM",
+          "RM"
+        ],
+        [
+          "LB",
+          "CB",
+          "CB",
+          "RB"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    },
+    {
+      "name": "4-2-3-1",
+      "rows": [
+        [
+          "ST"
+        ],
+        [
+          "LW",
+          "CAM",
+          "RW"
+        ],
+        [
+          "CDM",
+          "CDM"
+        ],
+        [
+          "LB",
+          "CB",
+          "CB",
+          "RB"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    },
+    {
+      "name": "4-3-1-2",
+      "rows": [
+        [
+          "ST",
+          "ST"
+        ],
+        [
+          "CAM"
+        ],
+        [
+          "CM",
+          "CM",
+          "CM"
+        ],
+        [
+          "LB",
+          "CB",
+          "CB",
+          "RB"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    },
+    {
+      "name": "3-4-3",
+      "rows": [
+        [
+          "LW",
+          "ST",
+          "RW"
+        ],
+        [
+          "LM",
+          "CM",
+          "CM",
+          "RM"
+        ],
+        [
+          "CB",
+          "CB",
+          "CB"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    },
+    {
+      "name": "5-3-2",
+      "rows": [
+        [
+          "ST",
+          "ST"
+        ],
+        [
+          "CM",
+          "CM",
+          "CM"
+        ],
+        [
+          "LWB",
+          "CB",
+          "CB",
+          "CB",
+          "RWB"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    }
+  ],
+  "countries": [
+    {
+      "country": "Argentina",
+      "flagCode": "ar",
+      "flagEmoji": "🇦🇷",
+      "players": [
+        {
+          "name": "Emiliano Martínez",
+          "position": "GK",
+          "aliases": [
+            "dibu",
+            "dibu martinez",
+            "dibu martínez"
+          ]
+        },
+        {
+          "name": "Ubaldo Fillol",
+          "position": "GK",
+          "aliases": [
+            "fillol",
+            "pato fillol"
+          ]
+        },
+        {
+          "name": "Sergio Goycochea",
+          "position": "GK",
+          "aliases": [
+            "goycochea"
+          ]
+        },
+        {
+          "name": "Daniel Passarella",
+          "position": "CB",
+          "aliases": [
+            "passarella"
+          ]
+        },
+        {
+          "name": "Javier Zanetti",
+          "position": "RB",
+          "aliases": [
+            "zanetti",
+            "pupi zanetti"
+          ]
+        },
+        {
+          "name": "Roberto Ayala",
+          "position": "CB",
+          "aliases": [
+            "ayala",
+            "raton ayala",
+            "ratón ayala"
+          ]
+        },
+        {
+          "name": "Oscar Ruggeri",
+          "position": "CB",
+          "aliases": [
+            "ruggeri"
+          ]
+        },
+        {
+          "name": "José Luis Brown",
+          "position": "CB",
+          "aliases": [
+            "brown",
+            "tata brown"
+          ]
+        },
+        {
+          "name": "Diego Maradona",
+          "position": "CAM",
+          "aliases": [
+            "maradona",
+            "diego armando maradona"
+          ]
+        },
+        {
+          "name": "Juan Román Riquelme",
+          "position": "CAM",
+          "aliases": [
+            "riquelme",
+            "roman",
+            "román"
+          ]
+        },
+        {
+          "name": "Fernando Redondo",
+          "position": "CDM",
+          "aliases": [
+            "redondo"
+          ]
+        },
+        {
+          "name": "Javier Mascherano",
+          "position": "CDM",
+          "aliases": [
+            "mascherano",
+            "jefecito"
+          ]
+        },
+        {
+          "name": "Ángel Di María",
+          "position": "RW",
+          "aliases": [
+            "di maria",
+            "di maría",
+            "fideo"
+          ]
+        },
+        {
+          "name": "Pablo Aimar",
+          "position": "CAM",
+          "aliases": [
+            "aimar",
+            "payaso aimar"
+          ]
+        },
+        {
+          "name": "Lionel Messi",
+          "position": "RW",
+          "aliases": [
+            "messi",
+            "leo messi",
+            "leo"
+          ]
+        },
+        {
+          "name": "Gabriel Batistuta",
+          "position": "ST",
+          "aliases": [
+            "batistuta",
+            "bati",
+            "batigol"
+          ]
+        },
+        {
+          "name": "Mario Kempes",
+          "position": "ST",
+          "aliases": [
+            "kempes",
+            "matador kempes"
+          ]
+        },
+        {
+          "name": "Sergio Agüero",
+          "position": "ST",
+          "aliases": [
+            "aguero",
+            "agüero",
+            "kun",
+            "kun aguero",
+            "kun agüero"
+          ]
+        },
+        {
+          "name": "Hernán Crespo",
+          "position": "ST",
+          "aliases": [
+            "crespo"
+          ]
+        },
+        {
+          "name": "Claudio Caniggia",
+          "position": "ST",
+          "aliases": [
+            "caniggia",
+            "cani"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Brasil",
+      "flagCode": "br",
+      "flagEmoji": "🇧🇷",
+      "players": [
+        {
+          "name": "Cláudio Taffarel",
+          "position": "GK",
+          "aliases": [
+            "taffarel"
+          ]
+        },
+        {
+          "name": "Dida",
+          "position": "GK",
+          "aliases": []
+        },
+        {
+          "name": "Marcos",
+          "position": "GK",
+          "aliases": []
+        },
+        {
+          "name": "Alisson Becker",
+          "position": "GK",
+          "aliases": [
+            "alisson"
+          ]
+        },
+        {
+          "name": "Cafu",
+          "position": "RB",
+          "aliases": []
+        },
+        {
+          "name": "Roberto Carlos",
+          "position": "LB",
+          "aliases": []
+        },
+        {
+          "name": "Carlos Alberto",
+          "position": "RB",
+          "aliases": [
+            "capita"
+          ]
+        },
+        {
+          "name": "Thiago Silva",
+          "position": "CB",
+          "aliases": [
+            "thiago"
+          ]
+        },
+        {
+          "name": "Lúcio",
+          "position": "CB",
+          "aliases": [
+            "lucio"
+          ]
+        },
+        {
+          "name": "Dani Alves",
+          "position": "RB",
+          "aliases": [
+            "daniel alves"
+          ]
+        },
+        {
+          "name": "Nilton Santos",
+          "position": "LB",
+          "aliases": []
+        },
+        {
+          "name": "Pelé",
+          "position": "CAM",
+          "aliases": [
+            "pele"
+          ]
+        },
+        {
+          "name": "Zico",
+          "position": "CAM",
+          "aliases": []
+        },
+        {
+          "name": "Sócrates",
+          "position": "CM",
+          "aliases": [
+            "socrates"
+          ]
+        },
+        {
+          "name": "Kaká",
+          "position": "CAM",
+          "aliases": [
+            "kaka"
+          ]
+        },
+        {
+          "name": "Ronaldinho",
+          "position": "LW",
+          "aliases": [
+            "dinho",
+            "ronaldinho gaucho",
+            "ronaldinho gaúcho"
+          ]
+        },
+        {
+          "name": "Rivaldo",
+          "position": "CAM",
+          "aliases": []
+        },
+        {
+          "name": "Dunga",
+          "position": "CDM",
+          "aliases": []
+        },
+        {
+          "name": "Ronaldo Nazário",
+          "position": "ST",
+          "aliases": [
+            "ronaldo",
+            "ronaldo nazario",
+            "fenomeno",
+            "fenómeno",
+            "el fenomeno",
+            "el fenómeno"
+          ]
+        },
+        {
+          "name": "Romário",
+          "position": "ST",
+          "aliases": [
+            "romario"
+          ]
+        },
+        {
+          "name": "Neymar",
+          "position": "LW",
+          "aliases": [
+            "neymar jr",
+            "neymar junior"
+          ]
+        },
+        {
+          "name": "Garrincha",
+          "position": "RW",
+          "aliases": [
+            "mane garrincha",
+            "mané garrincha"
+          ]
+        },
+        {
+          "name": "Bebeto",
+          "position": "ST",
+          "aliases": []
+        },
+        {
+          "name": "Adriano",
+          "position": "ST",
+          "aliases": [
+            "emperador"
+          ]
+        },
+        {
+          "name": "Jairzinho",
+          "position": "RW",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "country": "Uruguay",
+      "flagCode": "uy",
+      "flagEmoji": "🇺🇾",
+      "players": [
+        {
+          "name": "Ladislao Mazurkiewicz",
+          "position": "GK",
+          "aliases": [
+            "mazurkiewicz"
+          ]
+        },
+        {
+          "name": "Fernando Muslera",
+          "position": "GK",
+          "aliases": [
+            "muslera"
+          ]
+        },
+        {
+          "name": "Rodolfo Rodríguez",
+          "position": "GK",
+          "aliases": [
+            "rodolfo rodriguez"
+          ]
+        },
+        {
+          "name": "Diego Godín",
+          "position": "CB",
+          "aliases": [
+            "godin",
+            "godín"
+          ]
+        },
+        {
+          "name": "José Nasazzi",
+          "position": "CB",
+          "aliases": [
+            "nasazzi"
+          ]
+        },
+        {
+          "name": "Obdulio Varela",
+          "position": "CDM",
+          "aliases": [
+            "obdulio"
+          ]
+        },
+        {
+          "name": "Paolo Montero",
+          "position": "CB",
+          "aliases": [
+            "montero"
+          ]
+        },
+        {
+          "name": "José Santamaría",
+          "position": "CB",
+          "aliases": [
+            "santamaria",
+            "santamaría"
+          ]
+        },
+        {
+          "name": "Maximiliano Pereira",
+          "position": "RB",
+          "aliases": [
+            "maxi pereira"
+          ]
+        },
+        {
+          "name": "Enzo Francescoli",
+          "position": "CAM",
+          "aliases": [
+            "francescoli",
+            "principe",
+            "príncipe"
+          ]
+        },
+        {
+          "name": "Álvaro Recoba",
+          "position": "CAM",
+          "aliases": [
+            "recoba",
+            "chino recoba"
+          ]
+        },
+        {
+          "name": "Pablo Bengoechea",
+          "position": "CM",
+          "aliases": [
+            "bengoechea"
+          ]
+        },
+        {
+          "name": "Rubén Sosa",
+          "position": "LW",
+          "aliases": [
+            "ruben sosa"
+          ]
+        },
+        {
+          "name": "Juan Alberto Schiaffino",
+          "position": "CAM",
+          "aliases": [
+            "schiaffino"
+          ]
+        },
+        {
+          "name": "Luis Suárez",
+          "position": "ST",
+          "aliases": [
+            "suarez",
+            "suárez"
+          ]
+        },
+        {
+          "name": "Edinson Cavani",
+          "position": "ST",
+          "aliases": [
+            "cavani"
+          ]
+        },
+        {
+          "name": "Diego Forlán",
+          "position": "ST",
+          "aliases": [
+            "forlan",
+            "forlán"
+          ]
+        },
+        {
+          "name": "Alcides Ghiggia",
+          "position": "RW",
+          "aliases": [
+            "ghiggia"
+          ]
+        },
+        {
+          "name": "Héctor Scarone",
+          "position": "ST",
+          "aliases": [
+            "scarone"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Colombia",
+      "flagCode": "co",
+      "flagEmoji": "🇨🇴",
+      "players": [
+        {
+          "name": "René Higuita",
+          "position": "GK",
+          "aliases": [
+            "higuita"
+          ]
+        },
+        {
+          "name": "Óscar Córdoba",
+          "position": "GK",
+          "aliases": [
+            "oscar cordoba",
+            "óscar córdoba"
+          ]
+        },
+        {
+          "name": "David Ospina",
+          "position": "GK",
+          "aliases": [
+            "ospina"
+          ]
+        },
+        {
+          "name": "Faryd Mondragón",
+          "position": "GK",
+          "aliases": [
+            "mondragon",
+            "mondragón"
+          ]
+        },
+        {
+          "name": "Iván Córdoba",
+          "position": "CB",
+          "aliases": [
+            "ivan cordoba",
+            "iván córdoba"
+          ]
+        },
+        {
+          "name": "Mario Yepes",
+          "position": "CB",
+          "aliases": [
+            "yepes"
+          ]
+        },
+        {
+          "name": "Andrés Escobar",
+          "position": "CB",
+          "aliases": [
+            "andres escobar"
+          ]
+        },
+        {
+          "name": "Luis Amaranto Perea",
+          "position": "CB",
+          "aliases": [
+            "amaranto perea"
+          ]
+        },
+        {
+          "name": "Carlos Valderrama",
+          "position": "CAM",
+          "aliases": [
+            "valderrama",
+            "el pibe",
+            "pibe valderrama"
+          ]
+        },
+        {
+          "name": "James Rodríguez",
+          "position": "CAM",
+          "aliases": [
+            "james",
+            "james rodriguez"
+          ]
+        },
+        {
+          "name": "Freddy Rincón",
+          "position": "CM",
+          "aliases": [
+            "rincon",
+            "rincón"
+          ]
+        },
+        {
+          "name": "Leonel Álvarez",
+          "position": "CDM",
+          "aliases": [
+            "leonel alvarez"
+          ]
+        },
+        {
+          "name": "Juan Cuadrado",
+          "position": "RM",
+          "aliases": [
+            "cuadrado"
+          ]
+        },
+        {
+          "name": "Radamel Falcao",
+          "position": "ST",
+          "aliases": [
+            "falcao"
+          ]
+        },
+        {
+          "name": "Faustino Asprilla",
+          "position": "ST",
+          "aliases": [
+            "asprilla",
+            "tino asprilla"
+          ]
+        },
+        {
+          "name": "Carlos Bacca",
+          "position": "ST",
+          "aliases": [
+            "bacca"
+          ]
+        },
+        {
+          "name": "Teófilo Gutiérrez",
+          "position": "ST",
+          "aliases": [
+            "teo",
+            "teofilo gutierrez"
+          ]
+        },
+        {
+          "name": "Arnoldo Iguarán",
+          "position": "ST",
+          "aliases": [
+            "iguaran",
+            "iguarán"
+          ]
+        },
+        {
+          "name": "Luis Díaz",
+          "position": "LW",
+          "aliases": [
+            "luis diaz",
+            "lucho diaz",
+            "lucho díaz"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Chile",
+      "flagCode": "cl",
+      "flagEmoji": "🇨🇱",
+      "players": [
+        {
+          "name": "Claudio Bravo",
+          "position": "GK",
+          "aliases": [
+            "bravo"
+          ]
+        },
+        {
+          "name": "Roberto Rojas",
+          "position": "GK",
+          "aliases": [
+            "rojas"
+          ]
+        },
+        {
+          "name": "Sergio Livingstone",
+          "position": "GK",
+          "aliases": [
+            "livingstone"
+          ]
+        },
+        {
+          "name": "Elías Figueroa",
+          "position": "CB",
+          "aliases": [
+            "elias figueroa",
+            "figueroa"
+          ]
+        },
+        {
+          "name": "Gary Medel",
+          "position": "CB",
+          "aliases": [
+            "medel"
+          ]
+        },
+        {
+          "name": "Mauricio Isla",
+          "position": "RB",
+          "aliases": [
+            "isla"
+          ]
+        },
+        {
+          "name": "Gonzalo Jara",
+          "position": "CB",
+          "aliases": [
+            "jara"
+          ]
+        },
+        {
+          "name": "Waldo Ponce",
+          "position": "CB",
+          "aliases": [
+            "ponce"
+          ]
+        },
+        {
+          "name": "Arturo Vidal",
+          "position": "CM",
+          "aliases": [
+            "vidal",
+            "king arturo"
+          ]
+        },
+        {
+          "name": "Jorge Valdivia",
+          "position": "CAM",
+          "aliases": [
+            "valdivia",
+            "mago valdivia"
+          ]
+        },
+        {
+          "name": "Charles Aránguiz",
+          "position": "CM",
+          "aliases": [
+            "charles aranguiz",
+            "aránguiz"
+          ]
+        },
+        {
+          "name": "David Pizarro",
+          "position": "CM",
+          "aliases": [
+            "pizarro"
+          ]
+        },
+        {
+          "name": "Leonel Sánchez",
+          "position": "LW",
+          "aliases": [
+            "leonel sanchez"
+          ]
+        },
+        {
+          "name": "Alexis Sánchez",
+          "position": "LW",
+          "aliases": [
+            "alexis",
+            "alexis sanchez"
+          ]
+        },
+        {
+          "name": "Iván Zamorano",
+          "position": "ST",
+          "aliases": [
+            "zamorano",
+            "bam bam",
+            "ivan zamorano"
+          ]
+        },
+        {
+          "name": "Marcelo Salas",
+          "position": "ST",
+          "aliases": [
+            "salas",
+            "matador",
+            "el matador"
+          ]
+        },
+        {
+          "name": "Eduardo Vargas",
+          "position": "ST",
+          "aliases": [
+            "vargas"
+          ]
+        },
+        {
+          "name": "Humberto Suazo",
+          "position": "ST",
+          "aliases": [
+            "suazo",
+            "chupete"
+          ]
+        },
+        {
+          "name": "Carlos Caszely",
+          "position": "ST",
+          "aliases": [
+            "caszely"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Paraguay",
+      "flagCode": "py",
+      "flagEmoji": "🇵🇾",
+      "players": [
+        {
+          "name": "José Luis Chilavert",
+          "position": "GK",
+          "aliases": [
+            "chilavert"
+          ]
+        },
+        {
+          "name": "Justo Villar",
+          "position": "GK",
+          "aliases": [
+            "villar"
+          ]
+        },
+        {
+          "name": "Roberto Fernández",
+          "position": "GK",
+          "aliases": [
+            "roberto fernandez"
+          ]
+        },
+        {
+          "name": "Carlos Gamarra",
+          "position": "CB",
+          "aliases": [
+            "gamarra"
+          ]
+        },
+        {
+          "name": "Celso Ayala",
+          "position": "CB",
+          "aliases": [
+            "ayala"
+          ]
+        },
+        {
+          "name": "Paulo Da Silva",
+          "position": "CB",
+          "aliases": [
+            "da silva"
+          ]
+        },
+        {
+          "name": "Denis Caniza",
+          "position": "RB",
+          "aliases": [
+            "caniza"
+          ]
+        },
+        {
+          "name": "Julio César Cáceres",
+          "position": "CB",
+          "aliases": [
+            "caceres",
+            "cáceres"
+          ]
+        },
+        {
+          "name": "Julio César Romero",
+          "position": "CAM",
+          "aliases": [
+            "romerito"
+          ]
+        },
+        {
+          "name": "Roberto Acuña",
+          "position": "CM",
+          "aliases": [
+            "acuña",
+            "acuna"
+          ]
+        },
+        {
+          "name": "Cristian Riveros",
+          "position": "CM",
+          "aliases": [
+            "riveros"
+          ]
+        },
+        {
+          "name": "Miguel Almirón",
+          "position": "CAM",
+          "aliases": [
+            "almiron",
+            "almirón"
+          ]
+        },
+        {
+          "name": "Roque Santa Cruz",
+          "position": "ST",
+          "aliases": [
+            "santa cruz"
+          ]
+        },
+        {
+          "name": "José Saturnino Cardozo",
+          "position": "ST",
+          "aliases": [
+            "cardozo"
+          ]
+        },
+        {
+          "name": "Salvador Cabañas",
+          "position": "ST",
+          "aliases": [
+            "cabanas",
+            "cabañas"
+          ]
+        },
+        {
+          "name": "Nelson Haedo Valdez",
+          "position": "ST",
+          "aliases": [
+            "haedo",
+            "haedo valdez"
+          ]
+        },
+        {
+          "name": "Óscar Cardozo",
+          "position": "ST",
+          "aliases": [
+            "tacuara",
+            "oscar cardozo"
+          ]
+        },
+        {
+          "name": "Arsenio Erico",
+          "position": "ST",
+          "aliases": [
+            "erico",
+            "érico"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Perú",
+      "flagCode": "pe",
+      "flagEmoji": "🇵🇪",
+      "players": [
+        {
+          "name": "Ramón Quiroga",
+          "position": "GK",
+          "aliases": [
+            "quiroga"
+          ]
+        },
+        {
+          "name": "Pedro Gallese",
+          "position": "GK",
+          "aliases": [
+            "gallese"
+          ]
+        },
+        {
+          "name": "Óscar Ibáñez",
+          "position": "GK",
+          "aliases": [
+            "ibañez",
+            "ibanez"
+          ]
+        },
+        {
+          "name": "Héctor Chumpitaz",
+          "position": "CB",
+          "aliases": [
+            "chumpitaz"
+          ]
+        },
+        {
+          "name": "Julio Meléndez",
+          "position": "CB",
+          "aliases": [
+            "melendez",
+            "meléndez"
+          ]
+        },
+        {
+          "name": "Alberto Rodríguez",
+          "position": "CB",
+          "aliases": [
+            "mudo rodriguez",
+            "mudo rodríguez"
+          ]
+        },
+        {
+          "name": "Juan Reynoso",
+          "position": "CB",
+          "aliases": [
+            "reynoso"
+          ]
+        },
+        {
+          "name": "Nolberto Solano",
+          "position": "RM",
+          "aliases": [
+            "solano",
+            "ñol"
+          ]
+        },
+        {
+          "name": "Teófilo Cubillas",
+          "position": "CAM",
+          "aliases": [
+            "cubillas"
+          ]
+        },
+        {
+          "name": "César Cueto",
+          "position": "CM",
+          "aliases": [
+            "cueto"
+          ]
+        },
+        {
+          "name": "Roberto Chale",
+          "position": "CAM",
+          "aliases": [
+            "chale"
+          ]
+        },
+        {
+          "name": "Juan Carlos Oblitas",
+          "position": "LW",
+          "aliases": [
+            "oblitas"
+          ]
+        },
+        {
+          "name": "Christian Cueva",
+          "position": "CAM",
+          "aliases": [
+            "cueva"
+          ]
+        },
+        {
+          "name": "Paolo Guerrero",
+          "position": "ST",
+          "aliases": [
+            "guerrero"
+          ]
+        },
+        {
+          "name": "Claudio Pizarro",
+          "position": "ST",
+          "aliases": [
+            "pizarro"
+          ]
+        },
+        {
+          "name": "Jefferson Farfán",
+          "position": "RW",
+          "aliases": [
+            "farfan",
+            "farfán",
+            "foquita"
+          ]
+        },
+        {
+          "name": "Hugo Sotil",
+          "position": "ST",
+          "aliases": [
+            "sotil"
+          ]
+        },
+        {
+          "name": "Teodoro Fernández",
+          "position": "ST",
+          "aliases": [
+            "lolo fernandez",
+            "lolo fernández"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Ecuador",
+      "flagCode": "ec",
+      "flagEmoji": "🇪🇨",
+      "players": [
+        {
+          "name": "José Francisco Cevallos",
+          "position": "GK",
+          "aliases": [
+            "cevallos"
+          ]
+        },
+        {
+          "name": "Alexander Domínguez",
+          "position": "GK",
+          "aliases": [
+            "dominguez",
+            "domínguez"
+          ]
+        },
+        {
+          "name": "Hernán Galíndez",
+          "position": "GK",
+          "aliases": [
+            "galindez",
+            "galíndez"
+          ]
+        },
+        {
+          "name": "Iván Hurtado",
+          "position": "CB",
+          "aliases": [
+            "hurtado"
+          ]
+        },
+        {
+          "name": "Ulises de la Cruz",
+          "position": "RB",
+          "aliases": [
+            "de la cruz"
+          ]
+        },
+        {
+          "name": "Giovanny Espinoza",
+          "position": "CB",
+          "aliases": [
+            "espinoza"
+          ]
+        },
+        {
+          "name": "Neicer Reasco",
+          "position": "RB",
+          "aliases": [
+            "reasco"
+          ]
+        },
+        {
+          "name": "Pervis Estupiñán",
+          "position": "LB",
+          "aliases": [
+            "pervis",
+            "estupinan",
+            "estupiñán"
+          ]
+        },
+        {
+          "name": "Álex Aguinaga",
+          "position": "CAM",
+          "aliases": [
+            "alex aguinaga",
+            "aguinaga"
+          ]
+        },
+        {
+          "name": "Antonio Valencia",
+          "position": "RM",
+          "aliases": [
+            "valencia"
+          ]
+        },
+        {
+          "name": "Segundo Castillo",
+          "position": "CDM",
+          "aliases": [
+            "castillo"
+          ]
+        },
+        {
+          "name": "Edison Méndez",
+          "position": "CM",
+          "aliases": [
+            "mendez",
+            "méndez"
+          ]
+        },
+        {
+          "name": "Christian Noboa",
+          "position": "CM",
+          "aliases": [
+            "noboa"
+          ]
+        },
+        {
+          "name": "Moisés Caicedo",
+          "position": "CDM",
+          "aliases": [
+            "moises caicedo",
+            "moisés caicedo"
+          ]
+        },
+        {
+          "name": "Agustín Delgado",
+          "position": "ST",
+          "aliases": [
+            "tin delgado",
+            "agustin delgado"
+          ]
+        },
+        {
+          "name": "Enner Valencia",
+          "position": "ST",
+          "aliases": [
+            "enner"
+          ]
+        },
+        {
+          "name": "Felipe Caicedo",
+          "position": "ST",
+          "aliases": [
+            "felipao"
+          ]
+        },
+        {
+          "name": "Ángel Mena",
+          "position": "RW",
+          "aliases": [
+            "angel mena"
+          ]
+        },
+        {
+          "name": "Jaime Iván Kaviedes",
+          "position": "ST",
+          "aliases": [
+            "kaviedes"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Bolivia",
+      "flagCode": "bo",
+      "flagEmoji": "🇧🇴",
+      "players": [
+        {
+          "name": "Carlos Trucco",
+          "position": "GK",
+          "aliases": [
+            "trucco"
+          ]
+        },
+        {
+          "name": "José Carlo Fernández",
+          "position": "GK",
+          "aliases": [
+            "jose carlo fernandez",
+            "fernandez"
+          ]
+        },
+        {
+          "name": "Romel Quiñónez",
+          "position": "GK",
+          "aliases": [
+            "romel quinonez",
+            "quiñónez"
+          ]
+        },
+        {
+          "name": "Marco Sandy",
+          "position": "CB",
+          "aliases": [
+            "sandy"
+          ]
+        },
+        {
+          "name": "Ronald Raldes",
+          "position": "CB",
+          "aliases": [
+            "raldes"
+          ]
+        },
+        {
+          "name": "Luis Cristaldo",
+          "position": "LB",
+          "aliases": [
+            "cristaldo"
+          ]
+        },
+        {
+          "name": "Miguel Ángel Rimba",
+          "position": "RB",
+          "aliases": [
+            "rimba"
+          ]
+        },
+        {
+          "name": "Juan Manuel Peña",
+          "position": "CB",
+          "aliases": [
+            "peña",
+            "pena"
+          ]
+        },
+        {
+          "name": "Marco Etcheverry",
+          "position": "CAM",
+          "aliases": [
+            "etcheverry",
+            "diablo etcheverry"
+          ]
+        },
+        {
+          "name": "Julio César Baldivieso",
+          "position": "CAM",
+          "aliases": [
+            "baldivieso"
+          ]
+        },
+        {
+          "name": "Erwin Sánchez",
+          "position": "CM",
+          "aliases": [
+            "erwin sanchez",
+            "sanchez"
+          ]
+        },
+        {
+          "name": "Ramiro Castillo",
+          "position": "CM",
+          "aliases": [
+            "castillo"
+          ]
+        },
+        {
+          "name": "Milton Melgar",
+          "position": "CM",
+          "aliases": [
+            "melgar"
+          ]
+        },
+        {
+          "name": "Erwin Romero",
+          "position": "ST",
+          "aliases": [
+            "romero"
+          ]
+        },
+        {
+          "name": "Joaquín Botero",
+          "position": "ST",
+          "aliases": [
+            "joaquin botero",
+            "botero"
+          ]
+        },
+        {
+          "name": "Marcelo Martins Moreno",
+          "position": "ST",
+          "aliases": [
+            "marcelo moreno",
+            "martins",
+            "marcelo martins"
+          ]
+        },
+        {
+          "name": "Víctor Agustín Ugarte",
+          "position": "ST",
+          "aliases": [
+            "ugarte"
+          ]
+        },
+        {
+          "name": "William Ramallo",
+          "position": "ST",
+          "aliases": [
+            "ramallo"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Venezuela",
+      "flagCode": "ve",
+      "flagEmoji": "🇻🇪",
+      "players": [
+        {
+          "name": "Rafael Dudamel",
+          "position": "GK",
+          "aliases": [
+            "dudamel"
+          ]
+        },
+        {
+          "name": "Renny Vega",
+          "position": "GK",
+          "aliases": [
+            "vega"
+          ]
+        },
+        {
+          "name": "Wuilker Faríñez",
+          "position": "GK",
+          "aliases": [
+            "farinez",
+            "fariñez"
+          ]
+        },
+        {
+          "name": "Fernando Amorebieta",
+          "position": "CB",
+          "aliases": [
+            "amorebieta"
+          ]
+        },
+        {
+          "name": "Oswaldo Vizcarrondo",
+          "position": "CB",
+          "aliases": [
+            "vizcarrondo"
+          ]
+        },
+        {
+          "name": "Roberto Rosales",
+          "position": "RB",
+          "aliases": [
+            "rosales"
+          ]
+        },
+        {
+          "name": "José Manuel Rey",
+          "position": "CB",
+          "aliases": [
+            "rey"
+          ]
+        },
+        {
+          "name": "Wilker Ángel",
+          "position": "CB",
+          "aliases": [
+            "wilker angel",
+            "ángel"
+          ]
+        },
+        {
+          "name": "Juan Arango",
+          "position": "LM",
+          "aliases": [
+            "arango"
+          ]
+        },
+        {
+          "name": "Tomás Rincón",
+          "position": "CM",
+          "aliases": [
+            "tomas rincon",
+            "rincon",
+            "rincón"
+          ]
+        },
+        {
+          "name": "Luis Manuel Seijas",
+          "position": "CM",
+          "aliases": [
+            "seijas"
+          ]
+        },
+        {
+          "name": "Yangel Herrera",
+          "position": "CM",
+          "aliases": [
+            "yangel"
+          ]
+        },
+        {
+          "name": "Jefferson Savarino",
+          "position": "RW",
+          "aliases": [
+            "savarino"
+          ]
+        },
+        {
+          "name": "Rómulo Otero",
+          "position": "CAM",
+          "aliases": [
+            "otero"
+          ]
+        },
+        {
+          "name": "Salomón Rondón",
+          "position": "ST",
+          "aliases": [
+            "salomon rondon",
+            "rondon",
+            "rondón"
+          ]
+        },
+        {
+          "name": "Josef Martínez",
+          "position": "ST",
+          "aliases": [
+            "josef",
+            "josef martinez"
+          ]
+        },
+        {
+          "name": "Giancarlo Maldonado",
+          "position": "ST",
+          "aliases": [
+            "maldonado"
+          ]
+        },
+        {
+          "name": "Miku",
+          "position": "ST",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "country": "Francia",
+      "flagCode": "fr",
+      "flagEmoji": "🇫🇷",
+      "players": [
+        {
+          "name": "Fabien Barthez",
+          "position": "GK",
+          "aliases": [
+            "barthez"
+          ]
+        },
+        {
+          "name": "Hugo Lloris",
+          "position": "GK",
+          "aliases": [
+            "lloris"
+          ]
+        },
+        {
+          "name": "Joël Bats",
+          "position": "GK",
+          "aliases": [
+            "joel bats"
+          ]
+        },
+        {
+          "name": "Lilian Thuram",
+          "position": "RB",
+          "aliases": [
+            "thuram"
+          ]
+        },
+        {
+          "name": "Marcel Desailly",
+          "position": "CB",
+          "aliases": [
+            "desailly"
+          ]
+        },
+        {
+          "name": "Laurent Blanc",
+          "position": "CB",
+          "aliases": [
+            "blanc"
+          ]
+        },
+        {
+          "name": "Bixente Lizarazu",
+          "position": "LB",
+          "aliases": [
+            "lizarazu"
+          ]
+        },
+        {
+          "name": "Raphaël Varane",
+          "position": "CB",
+          "aliases": [
+            "varane"
+          ]
+        },
+        {
+          "name": "Patrick Vieira",
+          "position": "CM",
+          "aliases": [
+            "vieira"
+          ]
+        },
+        {
+          "name": "Zinedine Zidane",
+          "position": "CAM",
+          "aliases": [
+            "zidane",
+            "zizou"
+          ]
+        },
+        {
+          "name": "Michel Platini",
+          "position": "CAM",
+          "aliases": [
+            "platini"
+          ]
+        },
+        {
+          "name": "Didier Deschamps",
+          "position": "CDM",
+          "aliases": [
+            "deschamps"
+          ]
+        },
+        {
+          "name": "Claude Makélélé",
+          "position": "CDM",
+          "aliases": [
+            "makelele",
+            "makélélé"
+          ]
+        },
+        {
+          "name": "N'Golo Kanté",
+          "position": "CDM",
+          "aliases": [
+            "kante",
+            "kanté"
+          ]
+        },
+        {
+          "name": "Thierry Henry",
+          "position": "ST",
+          "aliases": [
+            "henry"
+          ]
+        },
+        {
+          "name": "Kylian Mbappé",
+          "position": "LW",
+          "aliases": [
+            "mbappe",
+            "mbappé"
+          ]
+        },
+        {
+          "name": "Karim Benzema",
+          "position": "ST",
+          "aliases": [
+            "benzema"
+          ]
+        },
+        {
+          "name": "Antoine Griezmann",
+          "position": "ST",
+          "aliases": [
+            "griezmann"
+          ]
+        },
+        {
+          "name": "Jean-Pierre Papin",
+          "position": "ST",
+          "aliases": [
+            "papin"
+          ]
+        },
+        {
+          "name": "David Trezeguet",
+          "position": "ST",
+          "aliases": [
+            "trezeguet"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "España",
+      "flagCode": "es",
+      "flagEmoji": "🇪🇸",
+      "players": [
+        {
+          "name": "Iker Casillas",
+          "position": "GK",
+          "aliases": [
+            "casillas"
+          ]
+        },
+        {
+          "name": "Andoni Zubizarreta",
+          "position": "GK",
+          "aliases": [
+            "zubizarreta"
+          ]
+        },
+        {
+          "name": "Luis Arconada",
+          "position": "GK",
+          "aliases": [
+            "arconada"
+          ]
+        },
+        {
+          "name": "Sergio Ramos",
+          "position": "CB",
+          "aliases": [
+            "ramos"
+          ]
+        },
+        {
+          "name": "Carles Puyol",
+          "position": "CB",
+          "aliases": [
+            "puyol"
+          ]
+        },
+        {
+          "name": "Gerard Piqué",
+          "position": "CB",
+          "aliases": [
+            "pique",
+            "piqué"
+          ]
+        },
+        {
+          "name": "Jordi Alba",
+          "position": "LB",
+          "aliases": [
+            "alba"
+          ]
+        },
+        {
+          "name": "Fernando Hierro",
+          "position": "CB",
+          "aliases": [
+            "hierro"
+          ]
+        },
+        {
+          "name": "Xavi",
+          "position": "CM",
+          "aliases": [
+            "xavi hernandez",
+            "xavi hernández"
+          ]
+        },
+        {
+          "name": "Andrés Iniesta",
+          "position": "CM",
+          "aliases": [
+            "iniesta"
+          ]
+        },
+        {
+          "name": "Sergio Busquets",
+          "position": "CDM",
+          "aliases": [
+            "busquets"
+          ]
+        },
+        {
+          "name": "Xabi Alonso",
+          "position": "CM",
+          "aliases": [
+            "xabi"
+          ]
+        },
+        {
+          "name": "David Silva",
+          "position": "CAM",
+          "aliases": [
+            "silva"
+          ]
+        },
+        {
+          "name": "Rodri",
+          "position": "CDM",
+          "aliases": []
+        },
+        {
+          "name": "David Villa",
+          "position": "ST",
+          "aliases": [
+            "villa"
+          ]
+        },
+        {
+          "name": "Raúl",
+          "position": "ST",
+          "aliases": [
+            "raul"
+          ]
+        },
+        {
+          "name": "Fernando Torres",
+          "position": "ST",
+          "aliases": [
+            "torres",
+            "niño torres"
+          ]
+        },
+        {
+          "name": "Emilio Butragueño",
+          "position": "ST",
+          "aliases": [
+            "butragueño",
+            "buitre"
+          ]
+        },
+        {
+          "name": "Fernando Morientes",
+          "position": "ST",
+          "aliases": [
+            "morientes"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Inglaterra",
+      "flagCode": "gb-eng",
+      "flagEmoji": "🏴",
+      "players": [
+        {
+          "name": "Gordon Banks",
+          "position": "GK",
+          "aliases": [
+            "banks"
+          ]
+        },
+        {
+          "name": "Peter Shilton",
+          "position": "GK",
+          "aliases": [
+            "shilton"
+          ]
+        },
+        {
+          "name": "David Seaman",
+          "position": "GK",
+          "aliases": [
+            "seaman"
+          ]
+        },
+        {
+          "name": "Bobby Moore",
+          "position": "CB",
+          "aliases": [
+            "moore"
+          ]
+        },
+        {
+          "name": "Rio Ferdinand",
+          "position": "CB",
+          "aliases": [
+            "ferdinand"
+          ]
+        },
+        {
+          "name": "John Terry",
+          "position": "CB",
+          "aliases": [
+            "terry"
+          ]
+        },
+        {
+          "name": "Ashley Cole",
+          "position": "LB",
+          "aliases": [
+            "cole"
+          ]
+        },
+        {
+          "name": "Gary Neville",
+          "position": "RB",
+          "aliases": [
+            "neville"
+          ]
+        },
+        {
+          "name": "Bobby Charlton",
+          "position": "CAM",
+          "aliases": [
+            "charlton"
+          ]
+        },
+        {
+          "name": "Steven Gerrard",
+          "position": "CM",
+          "aliases": [
+            "gerrard"
+          ]
+        },
+        {
+          "name": "Frank Lampard",
+          "position": "CM",
+          "aliases": [
+            "lampard"
+          ]
+        },
+        {
+          "name": "Paul Scholes",
+          "position": "CM",
+          "aliases": [
+            "scholes"
+          ]
+        },
+        {
+          "name": "David Beckham",
+          "position": "RM",
+          "aliases": [
+            "beckham"
+          ]
+        },
+        {
+          "name": "Wayne Rooney",
+          "position": "ST",
+          "aliases": [
+            "rooney"
+          ]
+        },
+        {
+          "name": "Harry Kane",
+          "position": "ST",
+          "aliases": [
+            "kane"
+          ]
+        },
+        {
+          "name": "Alan Shearer",
+          "position": "ST",
+          "aliases": [
+            "shearer"
+          ]
+        },
+        {
+          "name": "Gary Lineker",
+          "position": "ST",
+          "aliases": [
+            "lineker"
+          ]
+        },
+        {
+          "name": "Michael Owen",
+          "position": "ST",
+          "aliases": [
+            "owen"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Portugal",
+      "flagCode": "pt",
+      "flagEmoji": "🇵🇹",
+      "players": [
+        {
+          "name": "Vítor Baía",
+          "position": "GK",
+          "aliases": [
+            "vitor baia",
+            "baía",
+            "baia"
+          ]
+        },
+        {
+          "name": "Rui Patrício",
+          "position": "GK",
+          "aliases": [
+            "rui patricio"
+          ]
+        },
+        {
+          "name": "Diogo Costa",
+          "position": "GK",
+          "aliases": []
+        },
+        {
+          "name": "Pepe",
+          "position": "CB",
+          "aliases": []
+        },
+        {
+          "name": "Ricardo Carvalho",
+          "position": "CB",
+          "aliases": [
+            "carvalho"
+          ]
+        },
+        {
+          "name": "Fernando Couto",
+          "position": "CB",
+          "aliases": [
+            "couto"
+          ]
+        },
+        {
+          "name": "Paulo Ferreira",
+          "position": "RB",
+          "aliases": [
+            "ferreira"
+          ]
+        },
+        {
+          "name": "João Pinto",
+          "position": "RB",
+          "aliases": [
+            "joao pinto"
+          ]
+        },
+        {
+          "name": "Luís Figo",
+          "position": "RM",
+          "aliases": [
+            "figo",
+            "luis figo"
+          ]
+        },
+        {
+          "name": "Rui Costa",
+          "position": "CAM",
+          "aliases": []
+        },
+        {
+          "name": "Deco",
+          "position": "CAM",
+          "aliases": []
+        },
+        {
+          "name": "João Moutinho",
+          "position": "CM",
+          "aliases": [
+            "moutinho"
+          ]
+        },
+        {
+          "name": "Bruno Fernandes",
+          "position": "CAM",
+          "aliases": [
+            "bruno"
+          ]
+        },
+        {
+          "name": "Cristiano Ronaldo",
+          "position": "ST",
+          "aliases": [
+            "cristiano",
+            "cr7",
+            "ronaldo"
+          ]
+        },
+        {
+          "name": "Eusébio",
+          "position": "ST",
+          "aliases": [
+            "eusebio",
+            "pantera negra"
+          ]
+        },
+        {
+          "name": "Pauleta",
+          "position": "ST",
+          "aliases": []
+        },
+        {
+          "name": "Nuno Gomes",
+          "position": "ST",
+          "aliases": []
+        },
+        {
+          "name": "Bernardo Silva",
+          "position": "RW",
+          "aliases": [
+            "bernardo"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Países Bajos",
+      "flagCode": "nl",
+      "flagEmoji": "🇳🇱",
+      "players": [
+        {
+          "name": "Edwin van der Sar",
+          "position": "GK",
+          "aliases": [
+            "van der sar"
+          ]
+        },
+        {
+          "name": "Hans van Breukelen",
+          "position": "GK",
+          "aliases": [
+            "van breukelen"
+          ]
+        },
+        {
+          "name": "Jan Jongbloed",
+          "position": "GK",
+          "aliases": [
+            "jongbloed"
+          ]
+        },
+        {
+          "name": "Ronald Koeman",
+          "position": "CB",
+          "aliases": [
+            "koeman"
+          ]
+        },
+        {
+          "name": "Jaap Stam",
+          "position": "CB",
+          "aliases": [
+            "stam"
+          ]
+        },
+        {
+          "name": "Frank de Boer",
+          "position": "CB",
+          "aliases": [
+            "de boer"
+          ]
+        },
+        {
+          "name": "Virgil van Dijk",
+          "position": "CB",
+          "aliases": [
+            "van dijk"
+          ]
+        },
+        {
+          "name": "Ruud Krol",
+          "position": "LB",
+          "aliases": [
+            "krol"
+          ]
+        },
+        {
+          "name": "Johan Cruyff",
+          "position": "CAM",
+          "aliases": [
+            "cruyff"
+          ]
+        },
+        {
+          "name": "Ruud Gullit",
+          "position": "CAM",
+          "aliases": [
+            "gullit"
+          ]
+        },
+        {
+          "name": "Frank Rijkaard",
+          "position": "CDM",
+          "aliases": [
+            "rijkaard"
+          ]
+        },
+        {
+          "name": "Wesley Sneijder",
+          "position": "CAM",
+          "aliases": [
+            "sneijder"
+          ]
+        },
+        {
+          "name": "Clarence Seedorf",
+          "position": "CM",
+          "aliases": [
+            "seedorf"
+          ]
+        },
+        {
+          "name": "Marco van Basten",
+          "position": "ST",
+          "aliases": [
+            "van basten"
+          ]
+        },
+        {
+          "name": "Dennis Bergkamp",
+          "position": "ST",
+          "aliases": [
+            "bergkamp"
+          ]
+        },
+        {
+          "name": "Robin van Persie",
+          "position": "ST",
+          "aliases": [
+            "van persie"
+          ]
+        },
+        {
+          "name": "Arjen Robben",
+          "position": "RW",
+          "aliases": [
+            "robben"
+          ]
+        },
+        {
+          "name": "Ruud van Nistelrooy",
+          "position": "ST",
+          "aliases": [
+            "van nistelrooy"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Bélgica",
+      "flagCode": "be",
+      "flagEmoji": "🇧🇪",
+      "players": [
+        {
+          "name": "Thibaut Courtois",
+          "position": "GK",
+          "aliases": [
+            "courtois"
+          ]
+        },
+        {
+          "name": "Jean-Marie Pfaff",
+          "position": "GK",
+          "aliases": [
+            "pfaff"
+          ]
+        },
+        {
+          "name": "Michel Preud'homme",
+          "position": "GK",
+          "aliases": [
+            "preudhomme",
+            "preud'homme"
+          ]
+        },
+        {
+          "name": "Vincent Kompany",
+          "position": "CB",
+          "aliases": [
+            "kompany"
+          ]
+        },
+        {
+          "name": "Jan Vertonghen",
+          "position": "CB",
+          "aliases": [
+            "vertonghen"
+          ]
+        },
+        {
+          "name": "Toby Alderweireld",
+          "position": "CB",
+          "aliases": [
+            "alderweireld"
+          ]
+        },
+        {
+          "name": "Eric Gerets",
+          "position": "RB",
+          "aliases": [
+            "gerets"
+          ]
+        },
+        {
+          "name": "Thomas Vermaelen",
+          "position": "CB",
+          "aliases": [
+            "vermaelen"
+          ]
+        },
+        {
+          "name": "Kevin De Bruyne",
+          "position": "CM",
+          "aliases": [
+            "de bruyne",
+            "kdb"
+          ]
+        },
+        {
+          "name": "Eden Hazard",
+          "position": "LW",
+          "aliases": [
+            "hazard"
+          ]
+        },
+        {
+          "name": "Enzo Scifo",
+          "position": "CAM",
+          "aliases": [
+            "scifo"
+          ]
+        },
+        {
+          "name": "Axel Witsel",
+          "position": "CDM",
+          "aliases": [
+            "witsel"
+          ]
+        },
+        {
+          "name": "Youri Tielemans",
+          "position": "CM",
+          "aliases": [
+            "tielemans"
+          ]
+        },
+        {
+          "name": "Romelu Lukaku",
+          "position": "ST",
+          "aliases": [
+            "lukaku"
+          ]
+        },
+        {
+          "name": "Dries Mertens",
+          "position": "ST",
+          "aliases": [
+            "mertens"
+          ]
+        },
+        {
+          "name": "Marc Wilmots",
+          "position": "CAM",
+          "aliases": [
+            "wilmots"
+          ]
+        },
+        {
+          "name": "Paul Van Himst",
+          "position": "ST",
+          "aliases": [
+            "van himst"
+          ]
+        },
+        {
+          "name": "Divock Origi",
+          "position": "ST",
+          "aliases": [
+            "origi"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Alemania",
+      "flagCode": "de",
+      "flagEmoji": "🇩🇪",
+      "players": [
+        {
+          "name": "Manuel Neuer",
+          "position": "GK",
+          "aliases": [
+            "neuer"
+          ]
+        },
+        {
+          "name": "Pierre Littbarski",
+          "position": "RW",
+          "aliases": [
+            "Littbarski"
+          ]
+        },
+        {
+          "name": "Oliver Kahn",
+          "position": "GK",
+          "aliases": [
+            "kahn"
+          ]
+        },
+        {
+          "name": "Sepp Maier",
+          "position": "GK",
+          "aliases": [
+            "maier"
+          ]
+        },
+        {
+          "name": "Jens Lehmann",
+          "position": "GK",
+          "aliases": [
+            "lehmann"
+          ]
+        },
+        {
+          "name": "Franz Beckenbauer",
+          "position": "CB",
+          "aliases": [
+            "beckenbauer",
+            "kaiser"
+          ]
+        },
+        {
+          "name": "Philipp Lahm",
+          "position": "RB",
+          "aliases": [
+            "lahm"
+          ]
+        },
+        {
+          "name": "Mats Hummels",
+          "position": "CB",
+          "aliases": [
+            "hummels"
+          ]
+        },
+        {
+          "name": "Jürgen Kohler",
+          "position": "CB",
+          "aliases": [
+            "kohler"
+          ]
+        },
+        {
+          "name": "Andreas Brehme",
+          "position": "LB",
+          "aliases": [
+            "brehme"
+          ]
+        },
+        {
+          "name": "Lothar Matthäus",
+          "position": "CM",
+          "aliases": [
+            "matthaus",
+            "matthäus"
+          ]
+        },
+        {
+          "name": "Toni Kroos",
+          "position": "CM",
+          "aliases": [
+            "kroos"
+          ]
+        },
+        {
+          "name": "Bastian Schweinsteiger",
+          "position": "CM",
+          "aliases": [
+            "schweinsteiger"
+          ]
+        },
+        {
+          "name": "Michael Ballack",
+          "position": "CM",
+          "aliases": [
+            "ballack"
+          ]
+        },
+        {
+          "name": "Mesut Özil",
+          "position": "CAM",
+          "aliases": [
+            "ozil",
+            "özil"
+          ]
+        },
+        {
+          "name": "Miroslav Klose",
+          "position": "ST",
+          "aliases": [
+            "klose"
+          ]
+        },
+        {
+          "name": "Gerd Müller",
+          "position": "ST",
+          "aliases": [
+            "gerd muller",
+            "müller"
+          ]
+        },
+        {
+          "name": "Thomas Müller",
+          "position": "ST",
+          "aliases": [
+            "thomas muller",
+            "müller"
+          ]
+        },
+        {
+          "name": "Rudi Völler",
+          "position": "ST",
+          "aliases": [
+            "voller",
+            "völler"
+          ]
+        },
+        {
+          "name": "Jürgen Klinsmann",
+          "position": "ST",
+          "aliases": [
+            "klinsmann"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Italia",
+      "flagCode": "it",
+      "flagEmoji": "🇮🇹",
+      "players": [
+        {
+          "name": "Gianluigi Buffon",
+          "position": "GK",
+          "aliases": [
+            "buffon"
+          ]
+        },
+        {
+          "name": "Dino Zoff",
+          "position": "GK",
+          "aliases": [
+            "zoff"
+          ]
+        },
+        {
+          "name": "Walter Zenga",
+          "position": "GK",
+          "aliases": [
+            "zenga"
+          ]
+        },
+        {
+          "name": "Paolo Maldini",
+          "position": "LB",
+          "aliases": [
+            "maldini"
+          ]
+        },
+        {
+          "name": "Franco Baresi",
+          "position": "CB",
+          "aliases": [
+            "baresi"
+          ]
+        },
+        {
+          "name": "Fabio Cannavaro",
+          "position": "CB",
+          "aliases": [
+            "cannavaro"
+          ]
+        },
+        {
+          "name": "Alessandro Nesta",
+          "position": "CB",
+          "aliases": [
+            "nesta"
+          ]
+        },
+        {
+          "name": "Gaetano Scirea",
+          "position": "CB",
+          "aliases": [
+            "scirea"
+          ]
+        },
+        {
+          "name": "Giacinto Facchetti",
+          "position": "LB",
+          "aliases": [
+            "facchetti"
+          ]
+        },
+        {
+          "name": "Andrea Pirlo",
+          "position": "CM",
+          "aliases": [
+            "pirlo"
+          ]
+        },
+        {
+          "name": "Roberto Baggio",
+          "position": "CAM",
+          "aliases": [
+            "baggio",
+            "divin codino"
+          ]
+        },
+        {
+          "name": "Francesco Totti",
+          "position": "CAM",
+          "aliases": [
+            "totti"
+          ]
+        },
+        {
+          "name": "Gennaro Gattuso",
+          "position": "CDM",
+          "aliases": [
+            "gattuso"
+          ]
+        },
+        {
+          "name": "Daniele De Rossi",
+          "position": "CDM",
+          "aliases": [
+            "de rossi"
+          ]
+        },
+        {
+          "name": "Paolo Rossi",
+          "position": "ST",
+          "aliases": [
+            "rossi"
+          ]
+        },
+        {
+          "name": "Alessandro Del Piero",
+          "position": "ST",
+          "aliases": [
+            "del piero"
+          ]
+        },
+        {
+          "name": "Giuseppe Meazza",
+          "position": "ST",
+          "aliases": [
+            "meazza"
+          ]
+        },
+        {
+          "name": "Christian Vieri",
+          "position": "ST",
+          "aliases": [
+            "vieri"
+          ]
+        },
+        {
+          "name": "Filippo Inzaghi",
+          "position": "ST",
+          "aliases": [
+            "inzaghi"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Croacia",
+      "flagCode": "hr",
+      "flagEmoji": "🇭🇷",
+      "players": [
+        {
+          "name": "Danijel Subašić",
+          "position": "GK",
+          "aliases": [
+            "subasic",
+            "subašić"
+          ]
+        },
+        {
+          "name": "Dražen Ladić",
+          "position": "GK",
+          "aliases": [
+            "ladic",
+            "ladić"
+          ]
+        },
+        {
+          "name": "Stipe Pletikosa",
+          "position": "GK",
+          "aliases": [
+            "pletikosa"
+          ]
+        },
+        {
+          "name": "Dario Šimić",
+          "position": "CB",
+          "aliases": [
+            "simic",
+            "šimić"
+          ]
+        },
+        {
+          "name": "Robert Jarni",
+          "position": "LB",
+          "aliases": [
+            "jarni"
+          ]
+        },
+        {
+          "name": "Vedran Ćorluka",
+          "position": "CB",
+          "aliases": [
+            "corluka",
+            "ćorluka"
+          ]
+        },
+        {
+          "name": "Dejan Lovren",
+          "position": "CB",
+          "aliases": [
+            "lovren"
+          ]
+        },
+        {
+          "name": "Josip Šimunić",
+          "position": "CB",
+          "aliases": [
+            "simunic",
+            "šimunić"
+          ]
+        },
+        {
+          "name": "Luka Modrić",
+          "position": "CM",
+          "aliases": [
+            "modric",
+            "modrić"
+          ]
+        },
+        {
+          "name": "Zvonimir Boban",
+          "position": "CAM",
+          "aliases": [
+            "boban"
+          ]
+        },
+        {
+          "name": "Robert Prosinečki",
+          "position": "CAM",
+          "aliases": [
+            "prosinecki",
+            "prosinečki"
+          ]
+        },
+        {
+          "name": "Ivan Rakitić",
+          "position": "CM",
+          "aliases": [
+            "rakitic",
+            "rakitić"
+          ]
+        },
+        {
+          "name": "Mateo Kovačić",
+          "position": "CM",
+          "aliases": [
+            "kovacic",
+            "kovačić"
+          ]
+        },
+        {
+          "name": "Davor Šuker",
+          "position": "ST",
+          "aliases": [
+            "suker",
+            "šuker"
+          ]
+        },
+        {
+          "name": "Mario Mandžukić",
+          "position": "ST",
+          "aliases": [
+            "mandzukic",
+            "mandžukić"
+          ]
+        },
+        {
+          "name": "Ivan Perišić",
+          "position": "LW",
+          "aliases": [
+            "perisic",
+            "perišić"
+          ]
+        },
+        {
+          "name": "Alen Bokšić",
+          "position": "ST",
+          "aliases": [
+            "boksic",
+            "bokšić"
+          ]
+        },
+        {
+          "name": "Ivica Olić",
+          "position": "ST",
+          "aliases": [
+            "olic",
+            "olić"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Suiza",
+      "flagCode": "ch",
+      "flagEmoji": "🇨🇭",
+      "players": [
+        {
+          "name": "Yann Sommer",
+          "position": "GK",
+          "aliases": [
+            "sommer"
+          ]
+        },
+        {
+          "name": "Diego Benaglio",
+          "position": "GK",
+          "aliases": [
+            "benaglio"
+          ]
+        },
+        {
+          "name": "Pascal Zuberbühler",
+          "position": "GK",
+          "aliases": [
+            "zuberbuhler",
+            "zuberbühler"
+          ]
+        },
+        {
+          "name": "Stephan Lichtsteiner",
+          "position": "RB",
+          "aliases": [
+            "lichtsteiner"
+          ]
+        },
+        {
+          "name": "Manuel Akanji",
+          "position": "CB",
+          "aliases": [
+            "akanji"
+          ]
+        },
+        {
+          "name": "Fabian Schär",
+          "position": "CB",
+          "aliases": [
+            "schar",
+            "schär"
+          ]
+        },
+        {
+          "name": "Ricardo Rodríguez",
+          "position": "LB",
+          "aliases": [
+            "ricardo rodriguez"
+          ]
+        },
+        {
+          "name": "Stéphane Henchoz",
+          "position": "CB",
+          "aliases": [
+            "henchoz"
+          ]
+        },
+        {
+          "name": "Granit Xhaka",
+          "position": "CM",
+          "aliases": [
+            "xhaka"
+          ]
+        },
+        {
+          "name": "Xherdan Shaqiri",
+          "position": "RW",
+          "aliases": [
+            "shaqiri"
+          ]
+        },
+        {
+          "name": "Gökhan Inler",
+          "position": "CM",
+          "aliases": [
+            "inler"
+          ]
+        },
+        {
+          "name": "Ciriaco Sforza",
+          "position": "CM",
+          "aliases": [
+            "sforza"
+          ]
+        },
+        {
+          "name": "Valon Behrami",
+          "position": "CDM",
+          "aliases": [
+            "behrami"
+          ]
+        },
+        {
+          "name": "Alexander Frei",
+          "position": "ST",
+          "aliases": [
+            "frei"
+          ]
+        },
+        {
+          "name": "Stéphane Chapuisat",
+          "position": "ST",
+          "aliases": [
+            "chapuisat"
+          ]
+        },
+        {
+          "name": "Haris Seferović",
+          "position": "ST",
+          "aliases": [
+            "seferovic",
+            "seferović"
+          ]
+        },
+        {
+          "name": "Kubilay Türkyilmaz",
+          "position": "ST",
+          "aliases": [
+            "turkyilmaz",
+            "türkyilmaz"
+          ]
+        },
+        {
+          "name": "Breel Embolo",
+          "position": "ST",
+          "aliases": [
+            "embolo"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Dinamarca",
+      "flagCode": "dk",
+      "flagEmoji": "🇩🇰",
+      "players": [
+        {
+          "name": "Peter Schmeichel",
+          "position": "GK",
+          "aliases": [
+            "schmeichel"
+          ]
+        },
+        {
+          "name": "Kasper Schmeichel",
+          "position": "GK",
+          "aliases": [
+            "kasper"
+          ]
+        },
+        {
+          "name": "Thomas Sørensen",
+          "position": "GK",
+          "aliases": [
+            "sorensen",
+            "sørensen"
+          ]
+        },
+        {
+          "name": "Daniel Agger",
+          "position": "CB",
+          "aliases": [
+            "agger"
+          ]
+        },
+        {
+          "name": "Simon Kjær",
+          "position": "CB",
+          "aliases": [
+            "kjaer",
+            "kjær"
+          ]
+        },
+        {
+          "name": "Lars Olsen",
+          "position": "CB",
+          "aliases": [
+            "olsen"
+          ]
+        },
+        {
+          "name": "Morten Olsen",
+          "position": "CB",
+          "aliases": [
+            "morten olsen"
+          ]
+        },
+        {
+          "name": "John Sivebæk",
+          "position": "RB",
+          "aliases": [
+            "sivebaek",
+            "sivebæk"
+          ]
+        },
+        {
+          "name": "Michael Laudrup",
+          "position": "CAM",
+          "aliases": [
+            "laudrup"
+          ]
+        },
+        {
+          "name": "Brian Laudrup",
+          "position": "LW",
+          "aliases": [
+            "brian laudrup"
+          ]
+        },
+        {
+          "name": "Christian Eriksen",
+          "position": "CAM",
+          "aliases": [
+            "eriksen"
+          ]
+        },
+        {
+          "name": "Thomas Gravesen",
+          "position": "CM",
+          "aliases": [
+            "gravesen"
+          ]
+        },
+        {
+          "name": "Jesper Grønkjær",
+          "position": "RW",
+          "aliases": [
+            "gronkjaer",
+            "grønkjær"
+          ]
+        },
+        {
+          "name": "Preben Elkjær",
+          "position": "ST",
+          "aliases": [
+            "elkjaer",
+            "elkjær"
+          ]
+        },
+        {
+          "name": "Jon Dahl Tomasson",
+          "position": "ST",
+          "aliases": [
+            "tomasson"
+          ]
+        },
+        {
+          "name": "Nicklas Bendtner",
+          "position": "ST",
+          "aliases": [
+            "bendtner"
+          ]
+        },
+        {
+          "name": "Allan Simonsen",
+          "position": "ST",
+          "aliases": [
+            "simonsen"
+          ]
+        },
+        {
+          "name": "Poul Nielsen",
+          "position": "ST",
+          "aliases": [
+            "nielsen"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Austria",
+      "flagCode": "at",
+      "flagEmoji": "🇦🇹",
+      "players": [
+        {
+          "name": "Friedrich Koncilia",
+          "position": "GK",
+          "aliases": [
+            "koncilia"
+          ]
+        },
+        {
+          "name": "Michael Konsel",
+          "position": "GK",
+          "aliases": [
+            "konsel"
+          ]
+        },
+        {
+          "name": "Walter Zeman",
+          "position": "GK",
+          "aliases": [
+            "zeman"
+          ]
+        },
+        {
+          "name": "Bruno Pezzey",
+          "position": "CB",
+          "aliases": [
+            "pezzey"
+          ]
+        },
+        {
+          "name": "Aleksandar Dragović",
+          "position": "CB",
+          "aliases": [
+            "dragovic",
+            "dragović"
+          ]
+        },
+        {
+          "name": "David Alaba",
+          "position": "LB",
+          "aliases": [
+            "alaba"
+          ]
+        },
+        {
+          "name": "Andreas Ulmer",
+          "position": "LB",
+          "aliases": [
+            "ulmer"
+          ]
+        },
+        {
+          "name": "Ernst Happel",
+          "position": "CB",
+          "aliases": [
+            "happel"
+          ]
+        },
+        {
+          "name": "Matthias Sindelar",
+          "position": "CAM",
+          "aliases": [
+            "sindelar"
+          ]
+        },
+        {
+          "name": "Herbert Prohaska",
+          "position": "CM",
+          "aliases": [
+            "prohaska"
+          ]
+        },
+        {
+          "name": "Andreas Herzog",
+          "position": "CAM",
+          "aliases": [
+            "herzog"
+          ]
+        },
+        {
+          "name": "Julian Baumgartlinger",
+          "position": "CDM",
+          "aliases": [
+            "baumgartlinger"
+          ]
+        },
+        {
+          "name": "Zlatko Junuzović",
+          "position": "CM",
+          "aliases": [
+            "junuzovic",
+            "junuzović"
+          ]
+        },
+        {
+          "name": "Hans Krankl",
+          "position": "ST",
+          "aliases": [
+            "krankl"
+          ]
+        },
+        {
+          "name": "Toni Polster",
+          "position": "ST",
+          "aliases": [
+            "polster"
+          ]
+        },
+        {
+          "name": "Marko Arnautović",
+          "position": "ST",
+          "aliases": [
+            "arnautovic",
+            "arnautović"
+          ]
+        },
+        {
+          "name": "Anton Schall",
+          "position": "ST",
+          "aliases": [
+            "schall"
+          ]
+        },
+        {
+          "name": "Franz Binder",
+          "position": "ST",
+          "aliases": [
+            "binder"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Turquía",
+      "flagCode": "tr",
+      "flagEmoji": "🇹🇷",
+      "players": [
+        {
+          "name": "Rüştü Reçber",
+          "position": "GK",
+          "aliases": [
+            "rustu",
+            "rüştü",
+            "rustu recber",
+            "rüştü reçber"
+          ]
+        },
+        {
+          "name": "Volkan Demirel",
+          "position": "GK",
+          "aliases": [
+            "volkan"
+          ]
+        },
+        {
+          "name": "Şenol Güneş",
+          "position": "GK",
+          "aliases": [
+            "senol gunes",
+            "şenol güneş"
+          ]
+        },
+        {
+          "name": "Bülent Korkmaz",
+          "position": "CB",
+          "aliases": [
+            "bulent",
+            "bülent"
+          ]
+        },
+        {
+          "name": "Alpay Özalan",
+          "position": "CB",
+          "aliases": [
+            "alpay"
+          ]
+        },
+        {
+          "name": "Gökhan Gönül",
+          "position": "RB",
+          "aliases": [
+            "gokhan gonul",
+            "gökhan gönül"
+          ]
+        },
+        {
+          "name": "Hakan Balta",
+          "position": "LB",
+          "aliases": [
+            "balta"
+          ]
+        },
+        {
+          "name": "Çağlar Söyüncü",
+          "position": "CB",
+          "aliases": [
+            "caglar soyuncu",
+            "çağlar söyüncü"
+          ]
+        },
+        {
+          "name": "Hakan Çalhanoğlu",
+          "position": "CAM",
+          "aliases": [
+            "calhanoglu",
+            "çalhanoğlu"
+          ]
+        },
+        {
+          "name": "Arda Turan",
+          "position": "LM",
+          "aliases": [
+            "arda"
+          ]
+        },
+        {
+          "name": "Emre Belözoğlu",
+          "position": "CM",
+          "aliases": [
+            "emre"
+          ]
+        },
+        {
+          "name": "Tugay Kerimoğlu",
+          "position": "CM",
+          "aliases": [
+            "tugay"
+          ]
+        },
+        {
+          "name": "Oğuz Çetin",
+          "position": "CM",
+          "aliases": [
+            "oguz cetin",
+            "oğuz çetin"
+          ]
+        },
+        {
+          "name": "Hakan Şükür",
+          "position": "ST",
+          "aliases": [
+            "hakan sukur",
+            "şükür"
+          ]
+        },
+        {
+          "name": "Nihat Kahveci",
+          "position": "ST",
+          "aliases": [
+            "nihat"
+          ]
+        },
+        {
+          "name": "Burak Yılmaz",
+          "position": "ST",
+          "aliases": [
+            "burak yilmaz",
+            "burak"
+          ]
+        },
+        {
+          "name": "Lefter Küçükandonyadis",
+          "position": "ST",
+          "aliases": [
+            "lefter"
+          ]
+        },
+        {
+          "name": "Tuncay Şanlı",
+          "position": "ST",
+          "aliases": [
+            "tuncay"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Polonia",
+      "flagCode": "pl",
+      "flagEmoji": "🇵🇱",
+      "players": [
+        {
+          "name": "Jan Tomaszewski",
+          "position": "GK",
+          "aliases": [
+            "tomaszewski"
+          ]
+        },
+        {
+          "name": "Józef Młynarczyk",
+          "position": "GK",
+          "aliases": [
+            "mlynarczyk",
+            "młynarczyk"
+          ]
+        },
+        {
+          "name": "Wojciech Szczęsny",
+          "position": "GK",
+          "aliases": [
+            "szczesny",
+            "szczęsny"
+          ]
+        },
+        {
+          "name": "Władysław Żmuda",
+          "position": "CB",
+          "aliases": [
+            "zmuda",
+            "żmuda"
+          ]
+        },
+        {
+          "name": "Kamil Glik",
+          "position": "CB",
+          "aliases": [
+            "glik"
+          ]
+        },
+        {
+          "name": "Michał Żewłakow",
+          "position": "CB",
+          "aliases": [
+            "zewlakow",
+            "żewłakow"
+          ]
+        },
+        {
+          "name": "Łukasz Piszczek",
+          "position": "RB",
+          "aliases": [
+            "piszczek"
+          ]
+        },
+        {
+          "name": "Jakub Wawrzyniak",
+          "position": "LB",
+          "aliases": [
+            "wawrzyniak"
+          ]
+        },
+        {
+          "name": "Zbigniew Boniek",
+          "position": "CAM",
+          "aliases": [
+            "boniek"
+          ]
+        },
+        {
+          "name": "Kazimierz Deyna",
+          "position": "CM",
+          "aliases": [
+            "deyna"
+          ]
+        },
+        {
+          "name": "Grzegorz Lato",
+          "position": "RW",
+          "aliases": [
+            "lato"
+          ]
+        },
+        {
+          "name": "Jakub Błaszczykowski",
+          "position": "RM",
+          "aliases": [
+            "blaszczykowski",
+            "błaszczykowski",
+            "kuba"
+          ]
+        },
+        {
+          "name": "Piotr Zieliński",
+          "position": "CM",
+          "aliases": [
+            "zielinski",
+            "zieliński"
+          ]
+        },
+        {
+          "name": "Robert Lewandowski",
+          "position": "ST",
+          "aliases": [
+            "lewandowski",
+            "lewy"
+          ]
+        },
+        {
+          "name": "Włodzimierz Lubański",
+          "position": "ST",
+          "aliases": [
+            "lubanski",
+            "lubański"
+          ]
+        },
+        {
+          "name": "Ernest Wilimowski",
+          "position": "ST",
+          "aliases": [
+            "wilimowski"
+          ]
+        },
+        {
+          "name": "Andrzej Szarmach",
+          "position": "ST",
+          "aliases": [
+            "szarmach"
+          ]
+        },
+        {
+          "name": "Arkadiusz Milik",
+          "position": "ST",
+          "aliases": [
+            "milik"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Suecia",
+      "flagCode": "se",
+      "flagEmoji": "🇸🇪",
+      "players": [
+        {
+          "name": "Thomas Ravelli",
+          "position": "GK",
+          "aliases": [
+            "ravelli"
+          ]
+        },
+        {
+          "name": "Andreas Isaksson",
+          "position": "GK",
+          "aliases": [
+            "isaksson"
+          ]
+        },
+        {
+          "name": "Ronnie Hellström",
+          "position": "GK",
+          "aliases": [
+            "hellstrom",
+            "hellström"
+          ]
+        },
+        {
+          "name": "Patrik Andersson",
+          "position": "CB",
+          "aliases": [
+            "andersson"
+          ]
+        },
+        {
+          "name": "Olof Mellberg",
+          "position": "CB",
+          "aliases": [
+            "mellberg"
+          ]
+        },
+        {
+          "name": "Glenn Hysén",
+          "position": "CB",
+          "aliases": [
+            "hysen",
+            "hysén"
+          ]
+        },
+        {
+          "name": "Roland Nilsson",
+          "position": "RB",
+          "aliases": [
+            "nilsson"
+          ]
+        },
+        {
+          "name": "Martin Olsson",
+          "position": "LB",
+          "aliases": [
+            "olsson"
+          ]
+        },
+        {
+          "name": "Tomas Brolin",
+          "position": "CAM",
+          "aliases": [
+            "brolin"
+          ]
+        },
+        {
+          "name": "Fredrik Ljungberg",
+          "position": "RM",
+          "aliases": [
+            "ljungberg"
+          ]
+        },
+        {
+          "name": "Kim Källström",
+          "position": "CM",
+          "aliases": [
+            "kallstrom",
+            "källström"
+          ]
+        },
+        {
+          "name": "Nils Liedholm",
+          "position": "CM",
+          "aliases": [
+            "liedholm"
+          ]
+        },
+        {
+          "name": "Sebastian Larsson",
+          "position": "RM",
+          "aliases": [
+            "larsson"
+          ]
+        },
+        {
+          "name": "Zlatan Ibrahimović",
+          "position": "ST",
+          "aliases": [
+            "zlatan",
+            "ibrahimovic",
+            "ibrahimović"
+          ]
+        },
+        {
+          "name": "Henrik Larsson",
+          "position": "ST",
+          "aliases": [
+            "larsson"
+          ]
+        },
+        {
+          "name": "Gunnar Nordahl",
+          "position": "ST",
+          "aliases": [
+            "nordahl"
+          ]
+        },
+        {
+          "name": "Kurt Hamrin",
+          "position": "RW",
+          "aliases": [
+            "hamrin"
+          ]
+        },
+        {
+          "name": "Kenneth Andersson",
+          "position": "ST",
+          "aliases": [
+            "kenneth andersson"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Serbia",
+      "flagCode": "rs",
+      "flagEmoji": "🇷🇸",
+      "players": [
+        {
+          "name": "Vladimir Beara",
+          "position": "GK",
+          "aliases": [
+            "beara"
+          ]
+        },
+        {
+          "name": "Ivica Kralj",
+          "position": "GK",
+          "aliases": [
+            "kralj"
+          ]
+        },
+        {
+          "name": "Vladimir Stojković",
+          "position": "GK",
+          "aliases": [
+            "stojkovic",
+            "stojković"
+          ]
+        },
+        {
+          "name": "Nemanja Vidić",
+          "position": "CB",
+          "aliases": [
+            "vidic",
+            "vidić"
+          ]
+        },
+        {
+          "name": "Branislav Ivanović",
+          "position": "RB",
+          "aliases": [
+            "ivanovic",
+            "ivanović"
+          ]
+        },
+        {
+          "name": "Dragan Stojković",
+          "position": "CAM",
+          "aliases": [
+            "piksi",
+            "stojkovic",
+            "stojković"
+          ]
+        },
+        {
+          "name": "Siniša Mihajlović",
+          "position": "CB",
+          "aliases": [
+            "mihajlovic",
+            "mihajlović"
+          ]
+        },
+        {
+          "name": "Milorad Arsenijević",
+          "position": "CB",
+          "aliases": [
+            "arsenijevic"
+          ]
+        },
+        {
+          "name": "Dejan Stanković",
+          "position": "CM",
+          "aliases": [
+            "stankovic",
+            "stanković"
+          ]
+        },
+        {
+          "name": "Vladimir Jugović",
+          "position": "CM",
+          "aliases": [
+            "jugovic",
+            "jugović"
+          ]
+        },
+        {
+          "name": "Dejan Savićević",
+          "position": "CAM",
+          "aliases": [
+            "savicevic",
+            "savićević"
+          ]
+        },
+        {
+          "name": "Adem Ljajić",
+          "position": "CAM",
+          "aliases": [
+            "ljajic",
+            "ljajić"
+          ]
+        },
+        {
+          "name": "Dušan Tadić",
+          "position": "CAM",
+          "aliases": [
+            "tadic",
+            "tadić"
+          ]
+        },
+        {
+          "name": "Predrag Mijatović",
+          "position": "ST",
+          "aliases": [
+            "mijatovic",
+            "mijatović"
+          ]
+        },
+        {
+          "name": "Darko Kovačević",
+          "position": "ST",
+          "aliases": [
+            "kovacevic",
+            "kovačević"
+          ]
+        },
+        {
+          "name": "Savo Milošević",
+          "position": "ST",
+          "aliases": [
+            "milosevic",
+            "milošević"
+          ]
+        },
+        {
+          "name": "Aleksandar Mitrović",
+          "position": "ST",
+          "aliases": [
+            "mitrovic",
+            "mitrović"
+          ]
+        },
+        {
+          "name": "Dušan Vlahović",
+          "position": "ST",
+          "aliases": [
+            "vlahovic",
+            "vlahović"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "República Checa",
+      "flagCode": "cz",
+      "flagEmoji": "🇨🇿",
+      "players": [
+        {
+          "name": "Petr Čech",
+          "position": "GK",
+          "aliases": [
+            "cech",
+            "čech"
+          ]
+        },
+        {
+          "name": "Ivo Viktor",
+          "position": "GK",
+          "aliases": [
+            "viktor"
+          ]
+        },
+        {
+          "name": "Tomáš Vaclík",
+          "position": "GK",
+          "aliases": [
+            "vaclik",
+            "vaclík"
+          ]
+        },
+        {
+          "name": "Marek Jankulovski",
+          "position": "LB",
+          "aliases": [
+            "jankulovski"
+          ]
+        },
+        {
+          "name": "Tomáš Ujfaluši",
+          "position": "CB",
+          "aliases": [
+            "ujfalusi",
+            "ujfaluši"
+          ]
+        },
+        {
+          "name": "Karel Poborský",
+          "position": "RM",
+          "aliases": [
+            "poborsky",
+            "poborský"
+          ]
+        },
+        {
+          "name": "Zdeněk Grygera",
+          "position": "RB",
+          "aliases": [
+            "grygera"
+          ]
+        },
+        {
+          "name": "Jan Koller",
+          "position": "ST",
+          "aliases": [
+            "koller"
+          ]
+        },
+        {
+          "name": "Pavel Nedvěd",
+          "position": "CM",
+          "aliases": [
+            "nedved",
+            "nedvěd"
+          ]
+        },
+        {
+          "name": "Tomáš Rosický",
+          "position": "CAM",
+          "aliases": [
+            "rosicky",
+            "rosický"
+          ]
+        },
+        {
+          "name": "Antonín Panenka",
+          "position": "CAM",
+          "aliases": [
+            "panenka"
+          ]
+        },
+        {
+          "name": "Vladimír Šmicer",
+          "position": "CAM",
+          "aliases": [
+            "smicer",
+            "šmicer"
+          ]
+        },
+        {
+          "name": "Patrik Berger",
+          "position": "LM",
+          "aliases": [
+            "berger"
+          ]
+        },
+        {
+          "name": "Josef Bican",
+          "position": "ST",
+          "aliases": [
+            "bican"
+          ]
+        },
+        {
+          "name": "Milan Baroš",
+          "position": "ST",
+          "aliases": [
+            "baros",
+            "baroš"
+          ]
+        },
+        {
+          "name": "Patrik Schick",
+          "position": "ST",
+          "aliases": [
+            "schick"
+          ]
+        },
+        {
+          "name": "Oldřich Nejedlý",
+          "position": "ST",
+          "aliases": [
+            "nejedly",
+            "nejedlý"
+          ]
+        },
+        {
+          "name": "Tomáš Skuhravý",
+          "position": "ST",
+          "aliases": [
+            "skuhravy",
+            "skuhravý"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Noruega",
+      "flagCode": "no",
+      "flagEmoji": "🇳🇴",
+      "players": [
+        {
+          "name": "Erik Thorstvedt",
+          "position": "GK",
+          "aliases": [
+            "thorstvedt"
+          ]
+        },
+        {
+          "name": "Rune Jarstein",
+          "position": "GK",
+          "aliases": [
+            "jarstein"
+          ]
+        },
+        {
+          "name": "Frode Grodås",
+          "position": "GK",
+          "aliases": [
+            "grodas",
+            "grodås"
+          ]
+        },
+        {
+          "name": "Ronny Johnsen",
+          "position": "CB",
+          "aliases": [
+            "johnsen"
+          ]
+        },
+        {
+          "name": "Henning Berg",
+          "position": "CB",
+          "aliases": [
+            "berg"
+          ]
+        },
+        {
+          "name": "John Arne Riise",
+          "position": "LB",
+          "aliases": [
+            "riise"
+          ]
+        },
+        {
+          "name": "Brede Hangeland",
+          "position": "CB",
+          "aliases": [
+            "hangeland"
+          ]
+        },
+        {
+          "name": "Stig Inge Bjørnebye",
+          "position": "LB",
+          "aliases": [
+            "bjornebye",
+            "bjørnebye"
+          ]
+        },
+        {
+          "name": "Martin Ødegaard",
+          "position": "CAM",
+          "aliases": [
+            "odegaard",
+            "ødegaard"
+          ]
+        },
+        {
+          "name": "Kjetil Rekdal",
+          "position": "CM",
+          "aliases": [
+            "rekdal"
+          ]
+        },
+        {
+          "name": "Morten Gamst Pedersen",
+          "position": "LM",
+          "aliases": [
+            "gamst pedersen"
+          ]
+        },
+        {
+          "name": "Lars Bohinen",
+          "position": "CM",
+          "aliases": [
+            "bohinen"
+          ]
+        },
+        {
+          "name": "Ørjan Berg",
+          "position": "CM",
+          "aliases": [
+            "orjan berg",
+            "ørjan berg"
+          ]
+        },
+        {
+          "name": "Erling Haaland",
+          "position": "ST",
+          "aliases": [
+            "haaland"
+          ]
+        },
+        {
+          "name": "Ole Gunnar Solskjær",
+          "position": "ST",
+          "aliases": [
+            "solskjaer",
+            "solskjær"
+          ]
+        },
+        {
+          "name": "Tore André Flo",
+          "position": "ST",
+          "aliases": [
+            "tore andre flo",
+            "flo"
+          ]
+        },
+        {
+          "name": "John Carew",
+          "position": "ST",
+          "aliases": [
+            "carew"
+          ]
+        },
+        {
+          "name": "Steffen Iversen",
+          "position": "ST",
+          "aliases": [
+            "iversen"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Escocia",
+      "flagCode": "gb-sct",
+      "flagEmoji": "🏴",
+      "players": [
+        {
+          "name": "Jim Leighton",
+          "position": "GK",
+          "aliases": [
+            "leighton"
+          ]
+        },
+        {
+          "name": "Andy Goram",
+          "position": "GK",
+          "aliases": [
+            "goram"
+          ]
+        },
+        {
+          "name": "Alan Rough",
+          "position": "GK",
+          "aliases": [
+            "rough"
+          ]
+        },
+        {
+          "name": "Danny McGrain",
+          "position": "RB",
+          "aliases": [
+            "mcgrain"
+          ]
+        },
+        {
+          "name": "Alan Hansen",
+          "position": "CB",
+          "aliases": [
+            "hansen"
+          ]
+        },
+        {
+          "name": "Willie Miller",
+          "position": "CB",
+          "aliases": [
+            "miller"
+          ]
+        },
+        {
+          "name": "Andrew Robertson",
+          "position": "LB",
+          "aliases": [
+            "robertson"
+          ]
+        },
+        {
+          "name": "Billy McNeill",
+          "position": "CB",
+          "aliases": [
+            "mcneill"
+          ]
+        },
+        {
+          "name": "Kenny Dalglish",
+          "position": "CAM",
+          "aliases": [
+            "dalglish"
+          ]
+        },
+        {
+          "name": "Graeme Souness",
+          "position": "CM",
+          "aliases": [
+            "souness"
+          ]
+        },
+        {
+          "name": "Billy Bremner",
+          "position": "CM",
+          "aliases": [
+            "bremner"
+          ]
+        },
+        {
+          "name": "John Collins",
+          "position": "CM",
+          "aliases": [
+            "collins"
+          ]
+        },
+        {
+          "name": "Gary McAllister",
+          "position": "CM",
+          "aliases": [
+            "mcallister"
+          ]
+        },
+        {
+          "name": "Denis Law",
+          "position": "ST",
+          "aliases": [
+            "law"
+          ]
+        },
+        {
+          "name": "Ally McCoist",
+          "position": "ST",
+          "aliases": [
+            "mccoist"
+          ]
+        },
+        {
+          "name": "Joe Jordan",
+          "position": "ST",
+          "aliases": [
+            "jordan"
+          ]
+        },
+        {
+          "name": "Mo Johnston",
+          "position": "ST",
+          "aliases": [
+            "johnston"
+          ]
+        },
+        {
+          "name": "Archie Gemmill",
+          "position": "CM",
+          "aliases": [
+            "gemmill"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Gales",
+      "flagCode": "gb-wls",
+      "flagEmoji": "🏴",
+      "players": [
+        {
+          "name": "Neville Southall",
+          "position": "GK",
+          "aliases": [
+            "southall"
+          ]
+        },
+        {
+          "name": "Wayne Hennessey",
+          "position": "GK",
+          "aliases": [
+            "hennessey"
+          ]
+        },
+        {
+          "name": "Dai Davies",
+          "position": "GK",
+          "aliases": [
+            "davies"
+          ]
+        },
+        {
+          "name": "Ashley Williams",
+          "position": "CB",
+          "aliases": [
+            "williams"
+          ]
+        },
+        {
+          "name": "Ben Davies",
+          "position": "LB",
+          "aliases": [
+            "ben davies"
+          ]
+        },
+        {
+          "name": "Chris Gunter",
+          "position": "RB",
+          "aliases": [
+            "gunter"
+          ]
+        },
+        {
+          "name": "Joey Jones",
+          "position": "LB",
+          "aliases": [
+            "joey jones"
+          ]
+        },
+        {
+          "name": "Kevin Ratcliffe",
+          "position": "CB",
+          "aliases": [
+            "ratcliffe"
+          ]
+        },
+        {
+          "name": "Gareth Bale",
+          "position": "RW",
+          "aliases": [
+            "bale"
+          ]
+        },
+        {
+          "name": "Ryan Giggs",
+          "position": "LM",
+          "aliases": [
+            "giggs"
+          ]
+        },
+        {
+          "name": "Aaron Ramsey",
+          "position": "CM",
+          "aliases": [
+            "ramsey"
+          ]
+        },
+        {
+          "name": "Gary Speed",
+          "position": "CM",
+          "aliases": [
+            "speed"
+          ]
+        },
+        {
+          "name": "Mark Hughes",
+          "position": "ST",
+          "aliases": [
+            "hughes"
+          ]
+        },
+        {
+          "name": "Ian Rush",
+          "position": "ST",
+          "aliases": [
+            "rush"
+          ]
+        },
+        {
+          "name": "John Charles",
+          "position": "ST",
+          "aliases": [
+            "charles"
+          ]
+        },
+        {
+          "name": "Craig Bellamy",
+          "position": "ST",
+          "aliases": [
+            "bellamy"
+          ]
+        },
+        {
+          "name": "Dean Saunders",
+          "position": "ST",
+          "aliases": [
+            "saunders"
+          ]
+        },
+        {
+          "name": "Cliff Jones",
+          "position": "LW",
+          "aliases": [
+            "cliff jones"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Hungría",
+      "flagCode": "hu",
+      "flagEmoji": "🇭🇺",
+      "players": [
+        {
+          "name": "Gyula Grosics",
+          "position": "GK",
+          "aliases": [
+            "grosics"
+          ]
+        },
+        {
+          "name": "Gábor Király",
+          "position": "GK",
+          "aliases": [
+            "kiraly",
+            "király"
+          ]
+        },
+        {
+          "name": "Antal Szabó",
+          "position": "GK",
+          "aliases": [
+            "szabo",
+            "szabó"
+          ]
+        },
+        {
+          "name": "László Bálint",
+          "position": "CB",
+          "aliases": [
+            "balint",
+            "bálint"
+          ]
+        },
+        {
+          "name": "Sándor Mátrai",
+          "position": "CB",
+          "aliases": [
+            "matrai",
+            "mátrai"
+          ]
+        },
+        {
+          "name": "Jenő Buzánszky",
+          "position": "RB",
+          "aliases": [
+            "buzanszky",
+            "buzánszky"
+          ]
+        },
+        {
+          "name": "Kálmán Mészöly",
+          "position": "CB",
+          "aliases": [
+            "meszoly",
+            "mészöly"
+          ]
+        },
+        {
+          "name": "Ferenc Puskás",
+          "position": "ST",
+          "aliases": [
+            "puskas",
+            "puskás"
+          ]
+        },
+        {
+          "name": "Nándor Hidegkuti",
+          "position": "CAM",
+          "aliases": [
+            "hidegkuti"
+          ]
+        },
+        {
+          "name": "József Bozsik",
+          "position": "CM",
+          "aliases": [
+            "bozsik"
+          ]
+        },
+        {
+          "name": "Zoltán Czibor",
+          "position": "LW",
+          "aliases": [
+            "czibor"
+          ]
+        },
+        {
+          "name": "László Kubala",
+          "position": "CAM",
+          "aliases": [
+            "kubala"
+          ]
+        },
+        {
+          "name": "Sándor Kocsis",
+          "position": "ST",
+          "aliases": [
+            "kocsis"
+          ]
+        },
+        {
+          "name": "Flórián Albert",
+          "position": "ST",
+          "aliases": [
+            "florian albert",
+            "albert"
+          ]
+        },
+        {
+          "name": "Tibor Nyilasi",
+          "position": "CAM",
+          "aliases": [
+            "nyilasi"
+          ]
+        },
+        {
+          "name": "Lajos Détári",
+          "position": "CAM",
+          "aliases": [
+            "detari",
+            "détári"
+          ]
+        },
+        {
+          "name": "Balázs Dzsudzsák",
+          "position": "LW",
+          "aliases": [
+            "dzsudzsak",
+            "dzsudzsák"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Rumania",
+      "flagCode": "ro",
+      "flagEmoji": "🇷🇴",
+      "players": [
+        {
+          "name": "Helmuth Duckadam",
+          "position": "GK",
+          "aliases": [
+            "duckadam"
+          ]
+        },
+        {
+          "name": "Bogdan Stelea",
+          "position": "GK",
+          "aliases": [
+            "stelea"
+          ]
+        },
+        {
+          "name": "Silviu Lung",
+          "position": "GK",
+          "aliases": [
+            "lung"
+          ]
+        },
+        {
+          "name": "Dan Petrescu",
+          "position": "RB",
+          "aliases": [
+            "petrescu"
+          ]
+        },
+        {
+          "name": "Gheorghe Popescu",
+          "position": "CB",
+          "aliases": [
+            "popescu"
+          ]
+        },
+        {
+          "name": "Cristian Chivu",
+          "position": "CB",
+          "aliases": [
+            "chivu"
+          ]
+        },
+        {
+          "name": "Miodrag Belodedici",
+          "position": "CB",
+          "aliases": [
+            "belodedici"
+          ]
+        },
+        {
+          "name": "Răzvan Raț",
+          "position": "LB",
+          "aliases": [
+            "rat",
+            "raț"
+          ]
+        },
+        {
+          "name": "Gheorghe Hagi",
+          "position": "CAM",
+          "aliases": [
+            "hagi",
+            "maradona de los carpatos"
+          ]
+        },
+        {
+          "name": "Nicolae Dobrin",
+          "position": "CAM",
+          "aliases": [
+            "dobrin"
+          ]
+        },
+        {
+          "name": "Ilie Balaci",
+          "position": "CM",
+          "aliases": [
+            "balaci"
+          ]
+        },
+        {
+          "name": "Dorinel Munteanu",
+          "position": "CM",
+          "aliases": [
+            "munteanu"
+          ]
+        },
+        {
+          "name": "Mircea Lucescu",
+          "position": "RW",
+          "aliases": [
+            "lucescu"
+          ]
+        },
+        {
+          "name": "Adrian Mutu",
+          "position": "ST",
+          "aliases": [
+            "mutu"
+          ]
+        },
+        {
+          "name": "Florin Răducioiu",
+          "position": "ST",
+          "aliases": [
+            "raducioiu",
+            "răducioiu"
+          ]
+        },
+        {
+          "name": "Marius Lăcătuș",
+          "position": "ST",
+          "aliases": [
+            "lacatus",
+            "lăcătuș"
+          ]
+        },
+        {
+          "name": "Anghel Iordănescu",
+          "position": "ST",
+          "aliases": [
+            "iordanescu"
+          ]
+        },
+        {
+          "name": "Ciprian Marica",
+          "position": "ST",
+          "aliases": [
+            "marica"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Bulgaria",
+      "flagCode": "bg",
+      "flagEmoji": "🇧🇬",
+      "players": [
+        {
+          "name": "Borislav Mihaylov",
+          "position": "GK",
+          "aliases": [
+            "mihaylov"
+          ]
+        },
+        {
+          "name": "Georgi Naydenov",
+          "position": "GK",
+          "aliases": [
+            "naydenov"
+          ]
+        },
+        {
+          "name": "Nikolay Mihaylov",
+          "position": "GK",
+          "aliases": [
+            "nikolay mihaylov"
+          ]
+        },
+        {
+          "name": "Trifon Ivanov",
+          "position": "CB",
+          "aliases": [
+            "ivanov"
+          ]
+        },
+        {
+          "name": "Petar Hubchev",
+          "position": "CB",
+          "aliases": [
+            "hubchev"
+          ]
+        },
+        {
+          "name": "Zlatko Yankov",
+          "position": "CDM",
+          "aliases": [
+            "yankov"
+          ]
+        },
+        {
+          "name": "Ivan Ivanov",
+          "position": "CB",
+          "aliases": [
+            "ivanov"
+          ]
+        },
+        {
+          "name": "Ilian Kiriakov",
+          "position": "LB",
+          "aliases": [
+            "kiriakov"
+          ]
+        },
+        {
+          "name": "Hristo Stoichkov",
+          "position": "LW",
+          "aliases": [
+            "stoichkov"
+          ]
+        },
+        {
+          "name": "Krasimir Balakov",
+          "position": "CAM",
+          "aliases": [
+            "balakov"
+          ]
+        },
+        {
+          "name": "Yordan Letchkov",
+          "position": "CM",
+          "aliases": [
+            "letchkov"
+          ]
+        },
+        {
+          "name": "Stiliyan Petrov",
+          "position": "CM",
+          "aliases": [
+            "petrov"
+          ]
+        },
+        {
+          "name": "Martin Petrov",
+          "position": "LM",
+          "aliases": [
+            "martin petrov"
+          ]
+        },
+        {
+          "name": "Dimitar Berbatov",
+          "position": "ST",
+          "aliases": [
+            "berbatov"
+          ]
+        },
+        {
+          "name": "Emil Kostadinov",
+          "position": "ST",
+          "aliases": [
+            "kostadinov"
+          ]
+        },
+        {
+          "name": "Nasko Sirakov",
+          "position": "ST",
+          "aliases": [
+            "sirakov"
+          ]
+        },
+        {
+          "name": "Lyuboslav Penev",
+          "position": "ST",
+          "aliases": [
+            "penev"
+          ]
+        },
+        {
+          "name": "Georgi Asparuhov",
+          "position": "ST",
+          "aliases": [
+            "asparuhov",
+            "gundi"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Rusia",
+      "flagCode": "ru",
+      "flagEmoji": "🇷🇺",
+      "players": [
+        {
+          "name": "Lev Yashin",
+          "position": "GK",
+          "aliases": [
+            "yashin",
+            "araña negra",
+            "arana negra"
+          ]
+        },
+        {
+          "name": "Rinat Dasayev",
+          "position": "GK",
+          "aliases": [
+            "dasayev"
+          ]
+        },
+        {
+          "name": "Igor Akinfeev",
+          "position": "GK",
+          "aliases": [
+            "akinfeev"
+          ]
+        },
+        {
+          "name": "Viktor Onopko",
+          "position": "CB",
+          "aliases": [
+            "onopko"
+          ]
+        },
+        {
+          "name": "Sergei Ignashevich",
+          "position": "CB",
+          "aliases": [
+            "ignashevich"
+          ]
+        },
+        {
+          "name": "Yuri Zhirkov",
+          "position": "LB",
+          "aliases": [
+            "zhirkov"
+          ]
+        },
+        {
+          "name": "Vasili Berezutski",
+          "position": "CB",
+          "aliases": [
+            "berezutski"
+          ]
+        },
+        {
+          "name": "Albert Shesternyov",
+          "position": "CB",
+          "aliases": [
+            "shesternyov"
+          ]
+        },
+        {
+          "name": "Andrey Arshavin",
+          "position": "CAM",
+          "aliases": [
+            "arshavin"
+          ]
+        },
+        {
+          "name": "Aleksandr Mostovoi",
+          "position": "CAM",
+          "aliases": [
+            "mostovoi"
+          ]
+        },
+        {
+          "name": "Valery Karpin",
+          "position": "RM",
+          "aliases": [
+            "karpin"
+          ]
+        },
+        {
+          "name": "Igor Netto",
+          "position": "CM",
+          "aliases": [
+            "netto"
+          ]
+        },
+        {
+          "name": "Dmitri Alenichev",
+          "position": "CM",
+          "aliases": [
+            "alenichev"
+          ]
+        },
+        {
+          "name": "Oleg Blokhin",
+          "position": "ST",
+          "aliases": [
+            "blokhin"
+          ]
+        },
+        {
+          "name": "Aleksandr Kerzhakov",
+          "position": "ST",
+          "aliases": [
+            "kerzhakov"
+          ]
+        },
+        {
+          "name": "Roman Pavlyuchenko",
+          "position": "ST",
+          "aliases": [
+            "pavlyuchenko"
+          ]
+        },
+        {
+          "name": "Igor Kolyvanov",
+          "position": "ST",
+          "aliases": [
+            "kolyvanov"
+          ]
+        },
+        {
+          "name": "Fyodor Cherenkov",
+          "position": "CAM",
+          "aliases": [
+            "cherenkov"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Ucrania",
+      "flagCode": "ua",
+      "flagEmoji": "🇺🇦",
+      "players": [
+        {
+          "name": "Oleksandr Shovkovskyi",
+          "position": "GK",
+          "aliases": [
+            "shovkovskyi"
+          ]
+        },
+        {
+          "name": "Andriy Pyatov",
+          "position": "GK",
+          "aliases": [
+            "pyatov"
+          ]
+        },
+        {
+          "name": "Viktor Bannikov",
+          "position": "GK",
+          "aliases": [
+            "bannikov"
+          ]
+        },
+        {
+          "name": "Anatoliy Demyanenko",
+          "position": "LB",
+          "aliases": [
+            "demyanenko"
+          ]
+        },
+        {
+          "name": "Oleg Luzhny",
+          "position": "RB",
+          "aliases": [
+            "luzhny"
+          ]
+        },
+        {
+          "name": "Oleksandr Zinchenko",
+          "position": "LB",
+          "aliases": [
+            "zinchenko"
+          ]
+        },
+        {
+          "name": "Mykola Matviyenko",
+          "position": "CB",
+          "aliases": [
+            "matviyenko"
+          ]
+        },
+        {
+          "name": "Yaroslav Rakitskyi",
+          "position": "CB",
+          "aliases": [
+            "rakitskyi"
+          ]
+        },
+        {
+          "name": "Andriy Shevchenko",
+          "position": "ST",
+          "aliases": [
+            "shevchenko",
+            "sheva"
+          ]
+        },
+        {
+          "name": "Oleh Blokhin",
+          "position": "ST",
+          "aliases": [
+            "blokhin"
+          ]
+        },
+        {
+          "name": "Serhiy Rebrov",
+          "position": "ST",
+          "aliases": [
+            "rebrov"
+          ]
+        },
+        {
+          "name": "Anatoliy Tymoshchuk",
+          "position": "CDM",
+          "aliases": [
+            "tymoshchuk"
+          ]
+        },
+        {
+          "name": "Ruslan Rotan",
+          "position": "CM",
+          "aliases": [
+            "rotan"
+          ]
+        },
+        {
+          "name": "Andriy Yarmolenko",
+          "position": "RW",
+          "aliases": [
+            "yarmolenko"
+          ]
+        },
+        {
+          "name": "Yevhen Konoplyanka",
+          "position": "LW",
+          "aliases": [
+            "konoplyanka"
+          ]
+        },
+        {
+          "name": "Oleksandr Zavarov",
+          "position": "CAM",
+          "aliases": [
+            "zavarov"
+          ]
+        },
+        {
+          "name": "Viktor Leonenko",
+          "position": "ST",
+          "aliases": [
+            "leonenko"
+          ]
+        },
+        {
+          "name": "Artem Milevskyi",
+          "position": "ST",
+          "aliases": [
+            "milevskyi"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Grecia",
+      "flagCode": "gr",
+      "flagEmoji": "🇬🇷",
+      "players": [
+        {
+          "name": "Antonis Nikopolidis",
+          "position": "GK",
+          "aliases": [
+            "nikopolidis"
+          ]
+        },
+        {
+          "name": "Orestis Karnezis",
+          "position": "GK",
+          "aliases": [
+            "karnezis"
+          ]
+        },
+        {
+          "name": "Kostas Chalkias",
+          "position": "GK",
+          "aliases": [
+            "chalkias"
+          ]
+        },
+        {
+          "name": "Traianos Dellas",
+          "position": "CB",
+          "aliases": [
+            "dellas"
+          ]
+        },
+        {
+          "name": "Sokratis Papastathopoulos",
+          "position": "CB",
+          "aliases": [
+            "sokratis"
+          ]
+        },
+        {
+          "name": "Kostas Manolas",
+          "position": "CB",
+          "aliases": [
+            "manolas"
+          ]
+        },
+        {
+          "name": "Giourkas Seitaridis",
+          "position": "RB",
+          "aliases": [
+            "seitaridis"
+          ]
+        },
+        {
+          "name": "Takis Fyssas",
+          "position": "LB",
+          "aliases": [
+            "fyssas"
+          ]
+        },
+        {
+          "name": "Theodoros Zagorakis",
+          "position": "CM",
+          "aliases": [
+            "zagorakis"
+          ]
+        },
+        {
+          "name": "Giorgos Karagounis",
+          "position": "CM",
+          "aliases": [
+            "karagounis"
+          ]
+        },
+        {
+          "name": "Vasilis Tsiartas",
+          "position": "CAM",
+          "aliases": [
+            "tsiartas"
+          ]
+        },
+        {
+          "name": "Kostas Katsouranis",
+          "position": "CDM",
+          "aliases": [
+            "katsouranis"
+          ]
+        },
+        {
+          "name": "Stelios Giannakopoulos",
+          "position": "RM",
+          "aliases": [
+            "giannakopoulos"
+          ]
+        },
+        {
+          "name": "Angelos Charisteas",
+          "position": "ST",
+          "aliases": [
+            "charisteas"
+          ]
+        },
+        {
+          "name": "Nikos Machlas",
+          "position": "ST",
+          "aliases": [
+            "machlas"
+          ]
+        },
+        {
+          "name": "Dimitris Salpingidis",
+          "position": "ST",
+          "aliases": [
+            "salpingidis"
+          ]
+        },
+        {
+          "name": "Fanis Gekas",
+          "position": "ST",
+          "aliases": [
+            "gekas"
+          ]
+        },
+        {
+          "name": "Nikos Anastopoulos",
+          "position": "ST",
+          "aliases": [
+            "anastopoulos"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Irlanda",
+      "flagCode": "ie",
+      "flagEmoji": "🇮🇪",
+      "players": [
+        {
+          "name": "Shay Given",
+          "position": "GK",
+          "aliases": [
+            "given"
+          ]
+        },
+        {
+          "name": "Packie Bonner",
+          "position": "GK",
+          "aliases": [
+            "bonner"
+          ]
+        },
+        {
+          "name": "Pat Jennings",
+          "position": "GK",
+          "aliases": [
+            "jennings"
+          ]
+        },
+        {
+          "name": "Paul McGrath",
+          "position": "CB",
+          "aliases": [
+            "mcgrath"
+          ]
+        },
+        {
+          "name": "Denis Irwin",
+          "position": "LB",
+          "aliases": [
+            "irwin"
+          ]
+        },
+        {
+          "name": "Richard Dunne",
+          "position": "CB",
+          "aliases": [
+            "dunne"
+          ]
+        },
+        {
+          "name": "Steve Staunton",
+          "position": "LB",
+          "aliases": [
+            "staunton"
+          ]
+        },
+        {
+          "name": "John O'Shea",
+          "position": "CB",
+          "aliases": [
+            "oshea",
+            "o'shea"
+          ]
+        },
+        {
+          "name": "Roy Keane",
+          "position": "CM",
+          "aliases": [
+            "keane"
+          ]
+        },
+        {
+          "name": "Liam Brady",
+          "position": "CAM",
+          "aliases": [
+            "brady"
+          ]
+        },
+        {
+          "name": "Damien Duff",
+          "position": "LW",
+          "aliases": [
+            "duff"
+          ]
+        },
+        {
+          "name": "Ray Houghton",
+          "position": "RM",
+          "aliases": [
+            "houghton"
+          ]
+        },
+        {
+          "name": "Glenn Whelan",
+          "position": "CDM",
+          "aliases": [
+            "whelan"
+          ]
+        },
+        {
+          "name": "Robbie Keane",
+          "position": "ST",
+          "aliases": [
+            "robbie keane"
+          ]
+        },
+        {
+          "name": "Niall Quinn",
+          "position": "ST",
+          "aliases": [
+            "quinn"
+          ]
+        },
+        {
+          "name": "John Aldridge",
+          "position": "ST",
+          "aliases": [
+            "aldridge"
+          ]
+        },
+        {
+          "name": "Shane Long",
+          "position": "ST",
+          "aliases": [
+            "long"
+          ]
+        },
+        {
+          "name": "Tony Cascarino",
+          "position": "ST",
+          "aliases": [
+            "cascarino"
+          ]
+        }
+      ]
+    },
+    {
+      "country": "Bosnia y Herzegovina",
+      "flagCode": "ba",
+      "flagEmoji": "🇧🇦",
+      "players": [
+        {
+          "name": "Asmir Begović",
+          "position": "GK",
+          "aliases": [
+            "begovic",
+            "begović"
+          ]
+        },
+        {
+          "name": "Ibrahim Šehić",
+          "position": "GK",
+          "aliases": [
+            "sehic",
+            "šehić"
+          ]
+        },
+        {
+          "name": "Kenan Hasagić",
+          "position": "GK",
+          "aliases": [
+            "hasagic",
+            "hasagić"
+          ]
+        },
+        {
+          "name": "Emir Spahić",
+          "position": "CB",
+          "aliases": [
+            "spahic",
+            "spahić"
+          ]
+        },
+        {
+          "name": "Sead Kolašinac",
+          "position": "LB",
+          "aliases": [
+            "kolasinac",
+            "kolašinac"
+          ]
+        },
+        {
+          "name": "Muhamed Konjić",
+          "position": "CB",
+          "aliases": [
+            "konjic",
+            "konjić"
+          ]
+        },
+        {
+          "name": "Safet Nadarević",
+          "position": "CB",
+          "aliases": [
+            "nadarevic"
+          ]
+        },
+        {
+          "name": "Ermin Bičakčić",
+          "position": "CB",
+          "aliases": [
+            "bicakcic",
+            "bičakčić"
+          ]
+        },
+        {
+          "name": "Miralem Pjanić",
+          "position": "CM",
+          "aliases": [
+            "pjanic",
+            "pjanić"
+          ]
+        },
+        {
+          "name": "Zvjezdan Misimović",
+          "position": "CAM",
+          "aliases": [
+            "misimovic",
+            "misimović"
+          ]
+        },
+        {
+          "name": "Sergej Barbarez",
+          "position": "CAM",
+          "aliases": [
+            "barbarez"
+          ]
+        },
+        {
+          "name": "Mehmed Baždarević",
+          "position": "CM",
+          "aliases": [
+            "bazdarevic",
+            "baždarević"
+          ]
+        },
+        {
+          "name": "Hasan Salihamidžić",
+          "position": "RM",
+          "aliases": [
+            "salihamidzic",
+            "salihamidžić",
+            "brazzo"
+          ]
+        },
+        {
+          "name": "Edin Džeko",
+          "position": "ST",
+          "aliases": [
+            "dzeko",
+            "džeko"
+          ]
+        },
+        {
+          "name": "Vedad Ibišević",
+          "position": "ST",
+          "aliases": [
+            "ibisevic",
+            "ibišević"
+          ]
+        },
+        {
+          "name": "Elvir Bolić",
+          "position": "ST",
+          "aliases": [
+            "bolic",
+            "bolić"
+          ]
+        },
+        {
+          "name": "Haris Medunjanin",
+          "position": "CM",
+          "aliases": [
+            "medunjanin"
+          ]
+        },
+        {
+          "name": "Miroslav Stevanović",
+          "position": "RW",
+          "aliases": [
+            "stevanovic",
+            "stevanović"
+          ]
+        }
+      ]
+    }
+  ]
+}

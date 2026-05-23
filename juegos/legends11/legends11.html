@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Armá tu 11 de Leyendas | Partidos.Hoy</title>
+
+  <link rel="stylesheet" href="legends11.css" />
+</head>
+
+<body>
+  <main class="game-page">
+    <header class="topbar">
+      <a href="../../index.html#games" class="back">← Volver</a>
+
+      <div class="brand">
+        <strong>Partidos.Hoy</strong>
+        <span>Armá tu 11</span>
+      </div>
+
+      <button class="help-btn" type="button" id="helpBtn" aria-label="Ayuda">?</button>
+    </header>
+
+    <section class="game-header">
+      <span class="daily-badge">Desafío diario</span>
+      <h1>Armá tu 11 de Leyendas</h1>
+      <p>Elegí un casillero y completalo con una leyenda válida del país indicado.</p>
+    </section>
+
+    <section class="mode-card" aria-label="Modos de juego">
+      <button class="mode-btn active" type="button" data-mode="easy">
+        <strong>Fácil</strong>
+        <span>Con ayudas</span>
+      </button>
+
+      <button class="mode-btn" type="button" data-mode="normal">
+        <strong>Normal</strong>
+        <span>Sin tiempo</span>
+      </button>
+
+      <button class="mode-btn" type="button" data-mode="hard">
+        <strong>Difícil</strong>
+        <span>90 segundos</span>
+      </button>
+
+      <button class="mode-btn" type="button" data-mode="impossible">
+        <strong>Imposible</strong>
+        <span>30 segundos</span>
+      </button>
+    </section>
+
+    <section class="pitch-card" aria-label="Cancha">
+      <div class="pitch-lines"></div>
+      <div class="pitch-frame"></div>
+    </section>
+
+    <section class="country-panel">
+  <div class="country-current-card">
+    <img
+      id="countryFlag"
+      class="country-flag-img"
+      src="https://flagcdn.com/w40/un.png"
+      alt="Bandera"
+    />
+
+    <div class="country-current-info">
+      <strong id="countryName">Cargando...</strong>
+      <span id="positionName">Buscá una leyenda para esta posición.</span>
+    </div>
+  </div>
+
+  <form id="playerForm" class="search-area">
+    <input
+      id="playerSearch"
+      type="text"
+      autocomplete="off"
+      placeholder="Escribí una leyenda..."
+    />
+
+    <button
+      id="surrenderBtn"
+      class="surrender-btn"
+      type="button"
+      title="Rendirse"
+      aria-label="Rendirse"
+    >
+      ⚑
+    </button>
+  </form>
+
+  <div id="suggestions" class="suggestions"></div>
+
+  <p id="modeHint" class="mode-hint">Cargando desafío...</p>
+</section>
+
+<section class="status-card">
+      <div>
+        <span>Modo</span>
+        <strong id="modeText">Fácil</strong>
+      </div>
+
+      <div>
+        <span>Tiempo</span>
+        <strong id="timerText">Sin límite</strong>
+      </div>
+
+      <div>
+        <span>Completados</span>
+        <strong id="completedText">0/11</strong>
+      </div>
+
+      <div>
+        <span>Puntaje</span>
+        <strong id="scoreText">0</strong>
+      </div>
+    </section>
+
+    <section id="resultModal" class="result-modal hidden" aria-live="polite">
+      <div class="result-box">
+        <h2 id="resultTitle">Resultado</h2>
+        <p id="resultText"></p>
+
+        <div class="result-actions">
+          <button id="shareBtn" type="button">Compartir</button>
+          <a id="backToGamesBtn" class="hidden" href="../../index.html#games">Volver a juegos</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="modeChangeModal" class="result-modal hidden" aria-live="polite">
+      <div class="result-box">
+        <h2>Cambiar modo</h2>
+        <p>Si cambiás de modo se reinicia el desafío actual.</p>
+
+        <div class="result-actions">
+          <button id="confirmModeChangeBtn" type="button">Cambiar</button>
+          <button id="cancelModeChangeBtn" type="button" class="secondary-btn">Cancelar</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="legends11.js"></script>
+</body>
+</html>
