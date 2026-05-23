@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Armá tu 11 Mundial | Partidos.Hoy</title>
+
+  <link rel="stylesheet" href="worldcup11.css" />
+</head>
+
+<body>
+  <main class="game-page">
+
+    <header class="topbar">
+      <a href="../../index.html#games" class="back">← Volver</a>
+
+      <div class="brand">
+        <strong>Partidos.Hoy</strong>
+        <span>Armá tu 11</span>
+      </div>
+
+      <button class="help-btn" type="button" id="helpBtn" aria-label="Ayuda">?</button>
+    </header>
+
+    <section class="game-header">
+      <span class="daily-badge">Desafío diario</span>
+      <h1>Armá tu 11 Mundial</h1>
+      <p>Elegí un casillero y completalo con un jugador válido del país indicado.</p>
+    </section>
+
+    <section class="mode-panel" aria-label="Elegir dificultad">
+      <button class="mode-btn active" type="button" data-mode="easy">
+        Fácil
+        <small>Con ayudas</small>
+      </button>
+
+      <button class="mode-btn" type="button" data-mode="normal">
+        Normal
+        <small>Sin tiempo</small>
+      </button>
+
+      <button class="mode-btn" type="button" data-mode="hard">
+        Difícil
+        <small>90 segundos</small>
+      </button>
+
+      <button class="mode-btn" type="button" data-mode="impossible">
+        Imposible
+        <small>30 segundos</small>
+      </button>
+    </section>
+
+    <section class="tactical-board" aria-label="Campo táctico">
+      <div class="pitch-frame">
+        <div class="load-error">
+          <strong>Cargando desafío...</strong>
+          <span>Preparando la formación diaria</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="country-panel">
+  <div class="country-indicator">
+  <img
+    class="country-flag-img"
+    id="countryFlag"
+    src="https://flagcdn.com/w40/un.png"
+    alt="Bandera"
+  />
+
+  <div class="country-copy">
+    <strong id="countryName">Paraguay</strong>
+    <span id="countryRole">ST · Delantero</span>
+  </div>
+</div>
+
+    <form class="search-area" id="playerForm">
+      <input
+        type="search"
+        id="playerSearch"
+        placeholder="Jugador para armar tu 11..."
+        autocomplete="off"
+      />
+
+      <button class="surrender-btn" type="button" id="surrenderBtn" title="Rendirse" aria-label="Rendirse">
+        🏳️
+      </button>
+    </form>
+
+    <p class="mode-hint" id="modeHint">Cargando datos del juego...</p>
+
+    <div class="suggestions" id="suggestions"></div>
+  </div>
+</section>
+
+    <section class="status-panel">
+      <div>
+        <span>Modo</span>
+        <strong id="modeText">Fácil</strong>
+      </div>
+
+      <div>
+        <span>Tiempo</span>
+        <strong id="timerText">Sin límite</strong>
+      </div>
+
+      <div>
+        <span>Completados</span>
+        <strong id="completedText">0/11</strong>
+      </div>
+
+      <div>
+        <span>Puntaje</span>
+        <strong id="scoreText">0</strong>
+      </div>
+    </section>
+
+    <section class="result-modal hidden" id="resultModal" aria-live="polite">
+      <div class="result-card">
+        <h2 id="resultTitle">Resultado</h2>
+        <p id="resultText"></p>
+
+        <div class="result-actions">
+          <button type="button" id="shareBtn">Compartir</button>
+
+          <a href="index.html" id="backToGamesBtn" class="back-to-games hidden">
+            Volver a juegos
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="result-modal hidden" id="modeChangeModal" aria-live="polite">
+      <div class="result-card">
+        <h2>Cambiar dificultad</h2>
+
+        <p>
+          Ya empezaste este intento diario. Si cambiás el modo, se reinicia la alineación actual,
+          pero no perdés el intento de hoy.
+        </p>
+
+        <div class="result-actions">
+          <button type="button" id="confirmModeChangeBtn">Cambiar modo</button>
+          <button type="button" id="cancelModeChangeBtn">Cancelar</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="worldcup11.js"></script>
+</body>
+</html>
