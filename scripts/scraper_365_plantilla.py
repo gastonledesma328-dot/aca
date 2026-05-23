@@ -232,6 +232,62 @@ def extension_desde_url(url):
     return ".png"
 
 
+
+def extraer_athlete_id_desde_imagen(url):
+    """
+    Extrae el ID de atleta desde URLs tipo:
+    .../v21/Athletes/66391
+    .../Athletes/42367
+    """
+    if not url:
+        return ""
+
+    match = re.search(r"/Athletes/(\d+)", str(url), re.I)
+
+    if match:
+        return match.group(1)
+
+    return ""
+
+
+def extraer_athlete_version_desde_imagen(url):
+    """
+    Conserva la versión si viene en la URL, por ejemplo /v21/Athletes/66391.
+    Si no existe versión, usa v1.
+    """
+    if not url:
+        return "v1"
+
+    match = re.search(r"/(v\d+)/Athletes/\d+", str(url), re.I)
+
+    if match:
+        return match.group(1)
+
+    return "v1"
+
+
+def imagen_365_alta_calidad(url):
+    """
+    Convierte cualquier imagen de 365Scores de baja calidad a una URL 400x400.
+    Ejemplo:
+    https://imagecache.365scores.com/image/upload/f_png,w_400,h_400,c_limit,q_auto:best,dpr_2,d_Athletes:default.png,r_max,c_thumb,g_face,z_0.65/v1/Athletes/42367
+    """
+    athlete_id = extraer_athlete_id_desde_imagen(url)
+
+    if not athlete_id:
+        return url or ""
+
+    version = extraer_athlete_version_desde_imagen(url)
+
+    return (
+        "https://imagecache.365scores.com/image/upload/"
+        "f_png,w_400,h_400,c_limit,q_auto:best,dpr_2,"
+        "d_Athletes:default.png,r_max,c_thumb,g_face,z_0.65/"
+        f"{version}/Athletes/{athlete_id}"
+    )
+
+
+
 def sacar_equipo_id_desde_url(url):
     match = re.search(r"team/[^/]+-(\d+)", url or "")
     return match.group(1) if match else ""
@@ -420,6 +476,8 @@ def descargar_imagen(url, nombre_archivo):
         print(f"♻️ Imagen ya cargada, omito descarga: {existente}")
         return existente
 
+    url = imagen_365_alta_calidad(url)
+
     if not es_url_imagen_valida_365(url):
         return ""
 
@@ -430,7 +488,7 @@ def descargar_imagen(url, nombre_archivo):
 
     try:
         r = requests.get(url, headers=HEADERS, timeout=30)
-        print(f"🖼️ {r.status_code} imagen {url}")
+        print(f"🖼️ {r.status_code} imagen alta calidad {url}")
 
         if not r.ok:
             return ""
@@ -979,7 +1037,7 @@ async def extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url, equipo_
             "altura": "",
             "fin_contrato": "",
             "competicion": equipo_liga,
-            "imagen_url": j.get("imagen_url") or "",
+            "imagen_url": imagen_365_alta_calidad(j.get("imagen_url") or ""),
             "imagen": "",
             "url_365scores": j.get("url_365scores") or "",
             "fuente": FUENTE,
@@ -1246,6 +1304,14 @@ def limpiar_dataset_final(jugadores):
     return salida
 
 
+def limpiar_imagenes_alta_calidad_dataset(jugadores):
+    for j in jugadores:
+        if j.get("imagen_url"):
+            j["imagen_url"] = imagen_365_alta_calidad(j["imagen_url"])
+    return jugadores
+
+
+
 def deduplicar_jugadores(jugadores):
     vistos = set()
     salida = []
@@ -1293,7 +1359,7 @@ async def main():
 
         await browser.close()
 
-    todos_los_jugadores = limpiar_dataset_final(deduplicar_jugadores(todos_los_jugadores))
+    todos_los_jugadores = limpiar_imagenes_alta_calidad_dataset(limpiar_dataset_final(deduplicar_jugadores(todos_los_jugadores)))
 
     OUTPUT_JSON.write_text(
         json.dumps(todos_los_jugadores, ensure_ascii=False, indent=2),
