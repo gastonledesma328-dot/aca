@@ -1,0 +1,4151 @@
+{
+  "fuente": "base manual curada para Adivina Jugador; nombres/altura/posicion controlados manualmente; club/liga sirven como referencia y pueden actualizarse con scraper ESPN",
+  "actualizado": "2026-05-18",
+  "nota": "No es once oficial de cada fecha; es una base de jugadores reales, titulares/suplentes sugeridos para el juego.",
+  "ligas": [
+    {
+      "liga": "Premier League",
+      "equipos": [
+        {
+          "equipo": "Arsenal",
+          "titulares": [
+            {
+              "nombre": "David Raya",
+              "altura": 183,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Ben White",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "William Saliba",
+              "altura": 192,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Gabriel Magalhães",
+              "altura": 191,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Myles Lewis-Skelly",
+              "altura": 178,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Declan Rice",
+              "altura": 185,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Martin Ødegaard",
+              "altura": 178,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mikel Merino",
+              "altura": 189,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Bukayo Saka",
+              "altura": 178,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Viktor Gyökeres",
+              "altura": 187,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Gabriel Martinelli",
+              "altura": 178,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Kepa Arrizabalaga",
+              "altura": 189,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Jurriën Timber",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jorginho",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ethan Nwaneri",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Eberechi Eze",
+              "altura": 178,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Leandro Trossard",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Kai Havertz",
+              "altura": 194,
+              "posicion": "F"
+            }
+          ]
+        },
+        {
+          "equipo": "Manchester City",
+          "titulares": [
+            {
+              "nombre": "Gianluigi Donnarumma",
+              "altura": 196,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Rúben Dias",
+              "altura": 187,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Joško Gvardiol",
+              "altura": 185,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Manuel Akanji",
+              "altura": 188,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Rayan Aït-Nouri",
+              "altura": 180,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Rodri",
+              "altura": 191,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Tijjani Reijnders",
+              "altura": 185,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Phil Foden",
+              "altura": 171,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jérémy Doku",
+              "altura": 170,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Erling Haaland",
+              "altura": 194,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Omar Marmoush",
+              "altura": 183,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "James Trafford",
+              "altura": 197,
+              "posicion": "G"
+            },
+            {
+              "nombre": "John Stones",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Nathan Aké",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mateo Kovacic",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Matheus Nunes",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Savinho",
+              "altura": 176,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Bernardo Silva",
+              "altura": 173,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Liverpool",
+          "titulares": [
+            {
+              "nombre": "Alisson Becker",
+              "altura": 193,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Trent Alexander-Arnold",
+              "altura": 180,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Virgil van Dijk",
+              "altura": 193,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Ibrahima Konaté",
+              "altura": 194,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Milos Kerkez",
+              "altura": 180,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Alexis Mac Allister",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Dominik Szoboszlai",
+              "altura": 186,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Florian Wirtz",
+              "altura": 175,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mohamed Salah",
+              "altura": 175,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Alexander Isak",
+              "altura": 192,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Hugo Ekitike",
+              "altura": 190,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Giorgi Mamardashvili",
+              "altura": 199,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Joe Gomez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Conor Bradley",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ryan Gravenberch",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Wataru Endo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Cody Gakpo",
+              "altura": 189,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Luis Díaz",
+              "altura": 180,
+              "posicion": "F"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "LaLiga",
+      "equipos": [
+        {
+          "equipo": "Real Madrid",
+          "titulares": [
+            {
+              "nombre": "Thibaut Courtois",
+              "altura": 199,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Trent Alexander-Arnold",
+              "altura": 180,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Éder Militão",
+              "altura": 186,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Antonio Rüdiger",
+              "altura": 190,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Álvaro Carreras",
+              "altura": 186,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Aurélien Tchouaméni",
+              "altura": 187,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Federico Valverde",
+              "altura": 182,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jude Bellingham",
+              "altura": 186,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Vinícius Jr.",
+              "altura": 176,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Kylian Mbappé",
+              "altura": 178,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Rodrygo",
+              "altura": 174,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Andriy Lunin",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Dani Carvajal",
+              "altura": 173,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Dean Huijsen",
+              "altura": 195,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Eduardo Camavinga",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Franco Mastantuono",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Brahim Díaz",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Endrick",
+              "altura": 173,
+              "posicion": "F"
+            }
+          ]
+        },
+        {
+          "equipo": "Barcelona",
+          "titulares": [
+            {
+              "nombre": "Joan García",
+              "altura": 188,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Jules Koundé",
+              "altura": 178,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Pau Cubarsí",
+              "altura": 183,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Ronald Araújo",
+              "altura": 188,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Alejandro Balde",
+              "altura": 178,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Pedri",
+              "altura": 174,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Frenkie de Jong",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Dani Olmo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Lamine Yamal",
+              "altura": 180,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Robert Lewandowski",
+              "altura": 185,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Raphinha",
+              "altura": 176,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Wojciech Szczęsny",
+              "altura": 196,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Eric García",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Andreas Christensen",
+              "altura": 187,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Marc Casadó",
+              "altura": 172,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gavi",
+              "altura": 173,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ferran Torres",
+              "altura": 184,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Fermín López",
+              "altura": 174,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Atlético de Madrid",
+          "titulares": [
+            {
+              "nombre": "Jan Oblak",
+              "altura": 188,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Nahuel Molina",
+              "altura": 180,
+              "posicion": "D"
+            },
+            {
+              "nombre": "José María Giménez",
+              "altura": 185,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Robin Le Normand",
+              "altura": 189,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Marcos Llorente",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Rodrigo De Paul",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Pablo Barrios",
+              "altura": 183,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Conor Gallagher",
+              "altura": 182,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Antoine Griezmann",
+              "altura": 176,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Julián Álvarez",
+              "altura": 170,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Alexander Sørloth",
+              "altura": 194,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Juan Musso",
+              "altura": 191,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Clément Lenglet",
+              "altura": 186,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Reinildo Mandava",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Koke",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Thiago Almada",
+              "altura": 171,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Giuliano Simeone",
+              "altura": 173,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Ángel Correa",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "Serie A",
+      "equipos": [
+        {
+          "equipo": "Inter Milan",
+          "titulares": [
+            {
+              "nombre": "Yann Sommer",
+              "altura": 183,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Benjamin Pavard",
+              "altura": 186,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Francesco Acerbi",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Alessandro Bastoni",
+              "altura": 190,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Federico Dimarco",
+              "altura": 177,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Nicolò Barella",
+              "altura": 172,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Hakan Çalhanoğlu",
+              "altura": 179,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Henrikh Mkhitaryan",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Denzel Dumfries",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Lautaro Martínez",
+              "altura": 174,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Marcus Thuram",
+              "altura": 194,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Josep Martínez",
+              "altura": 191,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Stefan de Vrij",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Manuel Akanji",
+              "altura": 188,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Piotr Zieliński",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Davide Frattesi",
+              "altura": 184,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mehdi Taremi",
+              "altura": 187,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Carlos Augusto",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Juventus",
+          "titulares": [
+            {
+              "nombre": "Michele Di Gregorio",
+              "altura": 190,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Pierre Kalulu",
+              "altura": 184,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Gleison Bremer",
+              "altura": 188,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Federico Gatti",
+              "altura": 190,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Andrea Cambiaso",
+              "altura": 183,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Manuel Locatelli",
+              "altura": 185,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Khephren Thuram",
+              "altura": 192,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Teun Koopmeiners",
+              "altura": 183,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Kenan Yıldız",
+              "altura": 185,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Dušan Vlahović",
+              "altura": 190,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Francisco Conceição",
+              "altura": 175,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Carlo Pinsoglio",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Danilo",
+              "altura": 183,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Weston McKennie",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Douglas Luiz",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Adrien Rabiot",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Arkadiusz Milik",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Randal Kolo Muani",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "AC Milan",
+          "titulares": [
+            {
+              "nombre": "Mike Maignan",
+              "altura": 191,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Davide Calabria",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Fikayo Tomori",
+              "altura": 185,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Strahinja Pavlović",
+              "altura": 194,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Theo Hernández",
+              "altura": 184,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Youssouf Fofana",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ruben Loftus-Cheek",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Christian Pulisic",
+              "altura": 178,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Rafael Leão",
+              "altura": 188,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Santiago Giménez",
+              "altura": 185,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Samuel Chukwueze",
+              "altura": 170,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Marco Sportiello",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Malick Thiaw",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ismael Bennacer",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Yunus Musah",
+              "altura": 178,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Noah Okafor",
+              "altura": 185,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Álvaro Morata",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Luka Jović",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "Bundesliga",
+      "equipos": [
+        {
+          "equipo": "Bayern München",
+          "titulares": [
+            {
+              "nombre": "Manuel Neuer",
+              "altura": 193,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Konrad Laimer",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Dayot Upamecano",
+              "altura": 186,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Jonathan Tah",
+              "altura": 195,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Alphonso Davies",
+              "altura": 180,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Joshua Kimmich",
+              "altura": 177,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Aleksandar Pavlović",
+              "altura": 188,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jamal Musiala",
+              "altura": 184,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Michael Olise",
+              "altura": 181,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Harry Kane",
+              "altura": 188,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Luis Díaz",
+              "altura": 180,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Jonas Urbig",
+              "altura": 189,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Kim Min-jae",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Raphaël Guerreiro",
+              "altura": 170,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Leon Goretzka",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "João Palhinha",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Serge Gnabry",
+              "altura": 176,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Kingsley Coman",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Borussia Dortmund",
+          "titulares": [
+            {
+              "nombre": "Gregor Kobel",
+              "altura": 194,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Julian Ryerson",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Waldemar Anton",
+              "altura": 189,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Nico Schlotterbeck",
+              "altura": 189,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Ramy Bensebaini",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Emre Can",
+              "altura": 184,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Pascal Groß",
+              "altura": 181,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Julian Brandt",
+              "altura": 185,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jamie Gittens",
+              "altura": 172,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Serhou Guirassy",
+              "altura": 185,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Karim Adeyemi",
+              "altura": 181,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Alexander Meyer",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Niklas Süle",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Felix Nmecha",
+              "altura": 190,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Marcel Sabitzer",
+              "altura": 178,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Giovanni Reyna",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Donyell Malen",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Maximilian Beier",
+              "altura": 185,
+              "posicion": "F"
+            }
+          ]
+        },
+        {
+          "equipo": "Bayer Leverkusen",
+          "titulares": [
+            {
+              "nombre": "Lukáš Hrádecký",
+              "altura": 194,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Jeremie Frimpong",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jonathan Tah",
+              "altura": 195,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Edmond Tapsoba",
+              "altura": 194,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Alejandro Grimaldo",
+              "altura": 170,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Granit Xhaka",
+              "altura": 185,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Exequiel Palacios",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Florian Wirtz",
+              "altura": 175,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Patrik Schick",
+              "altura": 186,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Victor Boniface",
+              "altura": 188,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Jonas Hofmann",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Matej Kovář",
+              "altura": 196,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Piero Hincapié",
+              "altura": 184,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Robert Andrich",
+              "altura": 187,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Amine Adli",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Adam Hložek",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Martin Terrier",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Nathan Tella",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "Ligue 1",
+      "equipos": [
+        {
+          "equipo": "Paris Saint-Germain",
+          "titulares": [
+            {
+              "nombre": "Gianluigi Donnarumma",
+              "altura": 196,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Achraf Hakimi",
+              "altura": 181,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Marquinhos",
+              "altura": 183,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Willian Pacho",
+              "altura": 187,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Nuno Mendes",
+              "altura": 181,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Vitinha",
+              "altura": 170,
+              "posicion": "M"
+            },
+            {
+              "nombre": "João Neves",
+              "altura": 177,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Warren Zaïre-Emery",
+              "altura": 182,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Bradley Barcola",
+              "altura": 181,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Gonçalo Ramos",
+              "altura": 185,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Ousmane Dembélé",
+              "altura": 178,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Matvey Safonov",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Lucas Beraldo",
+              "altura": 186,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Fabian Ruiz",
+              "altura": 189,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Lee Kang-in",
+              "altura": 174,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Désiré Doué",
+              "altura": 181,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Khvicha Kvaratskhelia",
+              "altura": 183,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Randal Kolo Muani",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Olympique de Marseille",
+          "titulares": [
+            {
+              "nombre": "Gerónimo Rulli",
+              "altura": 189,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Jonathan Clauss",
+              "altura": 181,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Leonardo Balerdi",
+              "altura": 187,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Nayef Aguerd",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Quentin Merlin",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Pierre-Emile Højbjerg",
+              "altura": 187,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Adrien Rabiot",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mason Greenwood",
+              "altura": 181,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Igor Paixão",
+              "altura": 175,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Amine Gouiri",
+              "altura": 180,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Pierre-Emerick Aubameyang",
+              "altura": 187,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Pau López",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Renan Lodi",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Valentin Rongier",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Amine Harit",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Azzedine Ounahi",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Luis Henrique",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Faris Moumbagna",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "AS Monaco",
+          "titulares": [
+            {
+              "nombre": "Radosław Majecki",
+              "altura": 193,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Thilo Kehrer",
+              "altura": 186,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Wilfried Singo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mohammed Salisu",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Caio Henrique",
+              "altura": 179,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Denis Zakaria",
+              "altura": 191,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Lamine Camara",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Maghnes Akliouche",
+              "altura": 183,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Takumi Minamino",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Folarin Balogun",
+              "altura": 179,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Breel Embolo",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Philipp Köhn",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Vanderson",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jordan Teze",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Aleksandr Golovin",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Eliesse Ben Seghir",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "George Ilenikhena",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mika Biereth",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "Brasileirão",
+      "equipos": [
+        {
+          "equipo": "Flamengo",
+          "titulares": [
+            {
+              "nombre": "Agustín Rossi",
+              "altura": 193,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Emerson Royal",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Léo Ortiz",
+              "altura": 185,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Léo Pereira",
+              "altura": 189,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Alex Sandro",
+              "altura": 180,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Jorginho",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Erick Pulgar",
+              "altura": 188,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Giorgian de Arrascaeta",
+              "altura": 173,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Samuel Lino",
+              "altura": 178,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Pedro",
+              "altura": 185,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Gonzalo Plata",
+              "altura": 178,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Matheus Cunha",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Danilo",
+              "altura": 183,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Ayrton Lucas",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gerson",
+              "altura": 183,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Nicolás de la Cruz",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Luiz Araújo",
+              "altura": 175,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Bruno Henrique",
+              "altura": 183,
+              "posicion": "F"
+            }
+          ]
+        },
+        {
+          "equipo": "Palmeiras",
+          "titulares": [
+            {
+              "nombre": "Weverton",
+              "altura": 188,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Agustín Giay",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gustavo Gómez",
+              "altura": 185,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Murilo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Joaquín Piquerez",
+              "altura": 183,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Aníbal Moreno",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Andreas Pereira",
+              "altura": 178,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Raphael Veiga",
+              "altura": 176,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Felipe Anderson",
+              "altura": 175,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Vitor Roque",
+              "altura": 178,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Paulinho",
+              "altura": 178,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Carlos Miguel",
+              "altura": 204,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Marcos Rocha",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Bruno Fuchs",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Lucas Evangelista",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mauricio",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Flaco López",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ramón Sosa",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Santos",
+          "titulares": [
+            {
+              "nombre": "Gabriel Brazão",
+              "altura": 193,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Igor",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gil",
+              "altura": 192,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Adonis Frias",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gonzalo Escobar",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Zé Rafael",
+              "altura": 175,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gabriel Menino",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Neymar",
+              "altura": 175,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Álvaro Barreal",
+              "altura": 172,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Gabriel Barbosa",
+              "altura": 178,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Benjamín Rollheiser",
+              "altura": 173,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "João Paulo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "João Basso",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Christian Oliva",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Thaciano",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Lautaro Díaz",
+              "altura": 181,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Tiquinho Soares",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Guilherme",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "Liga Profesional Argentina",
+      "equipos": [
+        {
+          "equipo": "River Plate",
+          "titulares": [
+            {
+              "nombre": "Franco Armani",
+              "altura": 189,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Gonzalo Montiel",
+              "altura": 176,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Lucas Martínez Quarta",
+              "altura": 183,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Paulo Díaz",
+              "altura": 184,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Marcos Acuña",
+              "altura": 172,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Santiago Beltrán",
+              "altura": 190,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Nacho Fernández",
+              "altura": 179,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Juan Fernando Quintero",
+              "altura": 168,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Sebastián Driussi",
+              "altura": 179,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Miguel Borja",
+              "altura": 180,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Facundo Colidio",
+              "altura": 184,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Jeremías Ledesma",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Milton Casco",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Germán Pezzella",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Maxi Meza",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Santiago Simón",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Pablo Solari",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Colidio",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Boca Juniors",
+          "titulares": [
+            {
+              "nombre": "Agustín Marchesín",
+              "altura": 188,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Luis Advíncula",
+              "altura": 176,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Nicolás Figal",
+              "altura": 187,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Ayrton Costa",
+              "altura": 179,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Lautaro Blanco",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Rodrigo Battaglia",
+              "altura": 187,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Leandro Paredes",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Kevin Zenón",
+              "altura": 177,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Exequiel Zeballos",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Edinson Cavani",
+              "altura": 184,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Miguel Merentiel",
+              "altura": 181,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Sergio Romero",
+              "altura": 192,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Aaron Anselmino",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Frank Fabra",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Tomás Belmonte",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Alan Velasco",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Milton Giménez",
+              "altura": 184,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Brian Aguirre",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Racing Club",
+          "titulares": [
+            {
+              "nombre": "Facundo Cambeses",
+              "altura": 184,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Gastón Martirena",
+              "altura": 173,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Marco Di Césare",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Santiago Sosa",
+              "altura": 179,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gabriel Rojas",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Agustín Almendra",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Juan Nardoni",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Luciano Vietto",
+              "altura": 173,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Maximiliano Salas",
+              "altura": 179,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Adrián Martínez",
+              "altura": 181,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Roger Martínez",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Gabriel Arias",
+              "altura": 192,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Nazareno Colombo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Bruno Zuculini",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Agustín Urzi",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Tomás Conechny",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Duván Vergara",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Santiago Solari",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "Eredivisie",
+      "equipos": [
+        {
+          "equipo": "Ajax Amsterdam",
+          "titulares": [
+            {
+              "nombre": "Mathew Ryan",
+              "altura": 184,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Devyne Rensch",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jorrel Hato",
+              "altura": 181,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Ko Itakura",
+              "altura": 188,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Owen Wijndal",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jordan Henderson",
+              "altura": 182,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Davy Klaassen",
+              "altura": 179,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Kenneth Taylor",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Oscar Gloukh",
+              "altura": 170,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mika Godts",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Brian Brobbey",
+              "altura": 180,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Remko Pasveer",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Josip Šutalo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Branco van den Boomen",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Kristian Hlynsson",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Carlos Forbs",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Chuba Akpom",
+              "altura": 180,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Wout Weghorst",
+              "altura": 197,
+              "posicion": "F"
+            }
+          ]
+        },
+        {
+          "equipo": "PSV Eindhoven",
+          "titulares": [
+            {
+              "nombre": "Walter Benítez",
+              "altura": 189,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Jordan Teze",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "André Ramalho",
+              "altura": 183,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Olivier Boscagli",
+              "altura": 185,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Ivan Perišić",
+              "altura": 186,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Jerdy Schouten",
+              "altura": 185,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Joey Veerman",
+              "altura": 182,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Malik Tillman",
+              "altura": 187,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Johan Bakayoko",
+              "altura": 183,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Luuk de Jong",
+              "altura": 188,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Noa Lang",
+              "altura": 176,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Joël Drommel",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mauro Júnior",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ryan Flamingo",
+              "altura": 187,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Ismael Saibari",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Guus Til",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Hirving Lozano",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ricardo Pepi",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Feyenoord",
+          "titulares": [
+            {
+              "nombre": "Timon Wellenreuther",
+              "altura": 196,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Lutsharel Geertruida",
+              "altura": 184,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Dávid Hancko",
+              "altura": 187,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Gernot Trauner",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Quilindschy Hartman",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Quinten Timber",
+              "altura": 181,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mats Wieffer",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Calvin Stengs",
+              "altura": 180,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Igor Paixão",
+              "altura": 175,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Santiago Giménez",
+              "altura": 185,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Anis Hadj Moussa",
+              "altura": 176,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Justin Bijlow",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Thomas Beelen",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Marcos López",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Luka Ivanušec",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Javairô Dilrosun",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ayase Ueda",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Alireza Jahanbakhsh",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "Liga BetPlay",
+      "equipos": [
+        {
+          "equipo": "Atlético Nacional",
+          "titulares": [
+            {
+              "nombre": "David Ospina",
+              "altura": 183,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Joan Castro",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "William Tesillo",
+              "altura": 184,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Felipe Aguirre",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Álvaro Angulo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Matheus Uribe",
+              "altura": 182,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Edwin Cardona",
+              "altura": 172,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Juan Manuel Zapata",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Marino Hinestroza",
+              "altura": 172,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Alfredo Morelos",
+              "altura": 180,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Dairon Asprilla",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Luis Marquínez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Andrés Román",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Sebastián Guzmán",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jorman Campuzano",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Dorlan Pabón",
+              "altura": 170,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Kevin Viveros",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Andrés Sarmiento",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Millonarios",
+          "titulares": [
+            {
+              "nombre": "Álvaro Montero",
+              "altura": 188,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Delvin Alfonzo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Andrés Llinás",
+              "altura": 185,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Juan Pablo Vargas",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Danovis Banguero",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Larry Vásquez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Daniel Cataño",
+              "altura": 174,
+              "posicion": "M"
+            },
+            {
+              "nombre": "David Silva",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Emerson Rodríguez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Leonardo Castro",
+              "altura": 180,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Radamel Falcao",
+              "altura": 177,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Diego Novoa",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Sander Navarro",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Daniel Giraldo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jader Valencia",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Daniel Ruiz",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Santiago Giordana",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Diego Herazo",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Junior FC",
+          "titulares": [
+            {
+              "nombre": "Santiago Mele",
+              "altura": 185,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Walmer Pacheco",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Rafael Pérez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jermein Peña",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gabriel Fuentes",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Didier Moreno",
+              "altura": 182,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Víctor Cantillo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Yimmi Chará",
+              "altura": 166,
+              "posicion": "F"
+            },
+            {
+              "nombre": "José Enamorado",
+              "altura": 170,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Carlos Bacca",
+              "altura": 177,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Teófilo Gutiérrez",
+              "altura": 178,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Jefferson Martínez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Emanuel Olivera",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jhon Vélez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Homer Martínez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Luis González",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Marco Pérez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Steven Rodríguez",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "MLS",
+      "equipos": [
+        {
+          "equipo": "Inter Miami CF",
+          "titulares": [
+            {
+              "nombre": "Óscar Ustari",
+              "altura": 184,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Marcelo Weigandt",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Tomás Avilés",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Noah Allen",
+              "altura": 175,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Jordi Alba",
+              "altura": 170,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Sergio Busquets",
+              "altura": 189,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Rodrigo De Paul",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Tadeo Allende",
+              "altura": 185,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Lionel Messi",
+              "altura": 170,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Luis Suárez",
+              "altura": 182,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Baltasar Rodríguez",
+              "altura": 176,
+              "posicion": "M"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Rocco Ríos Novo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ian Fray",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "David Ruiz",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Benjamin Cremaschi",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Robert Taylor",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Germán Berterame",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mateo Silvetti",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "LAFC",
+          "titulares": [
+            {
+              "nombre": "Hugo Lloris",
+              "altura": 188,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Sergi Palencia",
+              "altura": 172,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Aaron Long",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ryan Hollingshead",
+              "altura": 186,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Denis Bouanga",
+              "altura": 172,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Ilie Sánchez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Timothy Tillman",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mark Delgado",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Son Heung-min",
+              "altura": 183,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Olivier Giroud",
+              "altura": 193,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Cristian Tello",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "John McCarthy",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Diego Palacios",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Eddie Segura",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Kellyn Acosta",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mateusz Bogusz",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Kei Kamara",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "David Martínez",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Seattle Sounders",
+          "titulares": [
+            {
+              "nombre": "Stefan Frei",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Alex Roldan",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Yeimar Gómez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Nouhou Tolo",
+              "altura": 178,
+              "posicion": "D"
+            },
+            {
+              "nombre": "João Paulo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Cristian Roldan",
+              "altura": 173,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Obed Vargas",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Albert Rusnák",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jordan Morris",
+              "altura": 183,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Raúl Ruidíaz",
+              "altura": 168,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Pedro de la Vega",
+              "altura": 172,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Andrew Thomas",
+              "altura": 189,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Jackson Ragen",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Danny Leyva",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Paul Rothrock",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Danny Musovski",
+              "altura": 183,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Héber",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Will Bruin",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "Saudi Pro League",
+      "equipos": [
+        {
+          "equipo": "Al Nassr",
+          "titulares": [
+            {
+              "nombre": "Bento",
+              "altura": 190,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Sultan Al-Ghannam",
+              "altura": 173,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Aymeric Laporte",
+              "altura": 189,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Iñigo Martínez",
+              "altura": 182,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Nawaf Boushal",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Marcelo Brozović",
+              "altura": 181,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Otávio",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "João Félix",
+              "altura": 181,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Sadio Mané",
+              "altura": 175,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Cristiano Ronaldo",
+              "altura": 187,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Coman",
+              "altura": 179,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Nawaf Al-Aqidi",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mohamed Simakan",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ali Lajami",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Abdullah Alkhaibari",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Abdulrahman Ghareeb",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ayman Yahya",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Wesley",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Al Hilal",
+          "titulares": [
+            {
+              "nombre": "Yassine Bounou",
+              "altura": 192,
+              "posicion": "G"
+            },
+            {
+              "nombre": "João Cancelo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Kalidou Koulibaly",
+              "altura": 188,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Hassan Tambakti",
+              "altura": 182,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Theo Hernández",
+              "altura": 184,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Rúben Neves",
+              "altura": 181,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Sergej Milinković-Savić",
+              "altura": 191,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Salem Al-Dawsari",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Malcom",
+              "altura": 171,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Darwin Núñez",
+              "altura": 187,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Marcos Leonardo",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Mohammed Al-Owais",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ali Al-Bulayhi",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Mohamed Kanno",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Nasser Al-Dawsari",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Abdullah Al-Hamdan",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Kaio César",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Renan Lodi",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Al Ahli",
+          "titulares": [
+            {
+              "nombre": "Édouard Mendy",
+              "altura": 194,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Ali Majrashi",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Merih Demiral",
+              "altura": 190,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Roger Ibañez",
+              "altura": 185,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Franck Kessié",
+              "altura": 183,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gabri Veiga",
+              "altura": 184,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ziyad Al-Johani",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Riyad Mahrez",
+              "altura": 179,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Roberto Firmino",
+              "altura": 181,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Ivan Toney",
+              "altura": 183,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Allan Saint-Maximin",
+              "altura": 173,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Abdullah Al-Muaiouf",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Bassam Al-Hurayji",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Fahad Al-Rashidi",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ali Al-Asmari",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Sumayhan Al-Nabit",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Feras Al-Brikan",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Omar Al-Somah",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "Liga Portugal",
+      "equipos": [
+        {
+          "equipo": "Benfica",
+          "titulares": [
+            {
+              "nombre": "Anatoliy Trubin",
+              "altura": 199,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Alexander Bah",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "António Silva",
+              "altura": 187,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Nicolás Otamendi",
+              "altura": 183,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Álvaro Carreras",
+              "altura": 186,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Florentino Luís",
+              "altura": 184,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Orkun Kökçü",
+              "altura": 175,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Fredrik Aursnes",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Kerem Aktürkoğlu",
+              "altura": 173,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Vangelis Pavlidis",
+              "altura": 188,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Ángel Di María",
+              "altura": 178,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Samuel Soares",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Tomás Araújo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Leandro Barreiro",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Renato Sanches",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Andreas Schjelderup",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Arthur Cabral",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gianluca Prestianni",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "FC Porto",
+          "titulares": [
+            {
+              "nombre": "Diogo Costa",
+              "altura": 190,
+              "posicion": "G"
+            },
+            {
+              "nombre": "João Mário",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Nehuén Pérez",
+              "altura": 184,
+              "posicion": "D"
+            },
+            {
+              "nombre": "David Carmo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Zaidu",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Alan Varela",
+              "altura": 182,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Nico González",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Rodrigo Mora",
+              "altura": 168,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Galeno",
+              "altura": 171,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Samu Aghehowa",
+              "altura": 193,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Pepê",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Cláudio Ramos",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Wendell",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Iván Marcano",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Stephen Eustáquio",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Fabio Vieira",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Danny Namaso",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Toni Martínez",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Sporting CP",
+          "titulares": [
+            {
+              "nombre": "Franco Israel",
+              "altura": 190,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Ousmane Diomande",
+              "altura": 190,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Gonçalo Inácio",
+              "altura": 186,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Matheus Reis",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Nuno Santos",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Morten Hjulmand",
+              "altura": 185,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Hidemasa Morita",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Pedro Gonçalves",
+              "altura": 173,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Trincão",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Viktor Gyökeres",
+              "altura": 187,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Geovany Quenda",
+              "altura": 172,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Diogo Pinto",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ricardo Esgaio",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jeremiah St. Juste",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Daniel Bragança",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Maxi Araújo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Conrad Harder",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Paulinho",
+              "altura": 178,
+              "posicion": "F"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "Süper Lig",
+      "equipos": [
+        {
+          "equipo": "Galatasaray",
+          "titulares": [
+            {
+              "nombre": "Fernando Muslera",
+              "altura": 190,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Sacha Boey",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Davinson Sánchez",
+              "altura": 187,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Abdülkerim Bardakcı",
+              "altura": 190,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Eren Elmalı",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Lucas Torreira",
+              "altura": 166,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gabriel Sara",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Leroy Sané",
+              "altura": 183,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Barış Alper Yılmaz",
+              "altura": 186,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Victor Osimhen",
+              "altura": 186,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Mauro Icardi",
+              "altura": 181,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Uğurcan Çakır",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Kaan Ayhan",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Berkan Kutlu",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Dries Mertens",
+              "altura": 169,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Hakim Ziyech",
+              "altura": 181,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Yunus Akgün",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Wilfried Zaha",
+              "altura": 180,
+              "posicion": "F"
+            }
+          ]
+        },
+        {
+          "equipo": "Fenerbahçe",
+          "titulares": [
+            {
+              "nombre": "Dominik Livaković",
+              "altura": 188,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Mert Müldür",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Milan Škriniar",
+              "altura": 188,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Çağlar Söyüncü",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jayden Oosterwolde",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Sofyan Amrabat",
+              "altura": 185,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Fred",
+              "altura": 179,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Sebastian Szymański",
+              "altura": 174,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Dusan Tadic",
+              "altura": 181,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Youssef En-Nesyri",
+              "altura": 192,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Jhon Durán",
+              "altura": 185,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "İrfan Can Eğribayat",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Alexander Djiku",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ferdi Kadıoğlu",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "İrfan Can Kahveci",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Cengiz Ünder",
+              "altura": 178,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Edin Džeko",
+              "altura": 193,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Michy Batshuayi",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Beşiktaş",
+          "titulares": [
+            {
+              "nombre": "Mert Günok",
+              "altura": 196,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Jonas Svensson",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gabriel Paulista",
+              "altura": 187,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Felix Uduokhai",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Arthur Masuaku",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gedson Fernandes",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Rafa Silva",
+              "altura": 172,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ernest Muçi",
+              "altura": 180,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Milot Rashica",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ciro Immobile",
+              "altura": 185,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Semih Kılıçsoy",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Ersin Destanoğlu",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Tayyip Talha Sanuç",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Salih Uçan",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "João Mário",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Alex Oxlade-Chamberlain",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Vincent Aboubakar",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Wout Weghorst",
+              "altura": 197,
+              "posicion": "F"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "liga": "Liga MX",
+      "equipos": [
+        {
+          "equipo": "Club América",
+          "titulares": [
+            {
+              "nombre": "Luis Malagón",
+              "altura": 188,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Kevin Álvarez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Sebastián Cáceres",
+              "altura": 180,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Israel Reyes",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Cristian Borja",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Álvaro Fidalgo",
+              "altura": 175,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jonathan dos Santos",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Diego Valdés",
+              "altura": 178,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Brian Rodríguez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Henry Martín",
+              "altura": 182,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Allan Saint-Maximin",
+              "altura": 173,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Óscar Jiménez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ramón Juárez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Richard Sánchez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Érick Sánchez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Alejandro Zendejas",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Víctor Dávila",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Rodrigo Aguirre",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Cruz Azul",
+          "titulares": [
+            {
+              "nombre": "Kevin Mier",
+              "altura": 190,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Jorge Sánchez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Willer Ditta",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gonzalo Piovi",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Carlos Rotondi",
+              "altura": 181,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Erik Lira",
+              "altura": 174,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Lorenzo Faravelli",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Carlos Rodríguez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ángel Sepúlveda",
+              "altura": 180,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Giorgos Giakoumakis",
+              "altura": 186,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Uriel Antuna",
+              "altura": 178,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Andrés Gudiño",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Rafael Guerrero",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ignacio Rivero",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Alexis Gutiérrez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Luis Romo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Amaury Morales",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Gabriel Fernández",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        },
+        {
+          "equipo": "Tigres UANL",
+          "titulares": [
+            {
+              "nombre": "Nahuel Guzmán",
+              "altura": 193,
+              "posicion": "G"
+            },
+            {
+              "nombre": "Javier Aquino",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Joaquim",
+              "altura": 190,
+              "posicion": "D"
+            },
+            {
+              "nombre": "Diego Reyes",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Jesús Angulo",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Guido Pizarro",
+              "altura": 186,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Fernando Gorriarán",
+              "altura": 177,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Juan Brunetta",
+              "altura": 175,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Sebastián Córdova",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "André-Pierre Gignac",
+              "altura": 187,
+              "posicion": "F"
+            },
+            {
+              "nombre": "Nicolás Ibáñez",
+              "altura": 180,
+              "posicion": "F"
+            }
+          ],
+          "suplentes": [
+            {
+              "nombre": "Carlos Felipe Rodríguez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Samir",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Diego Lainez",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Ozziel Herrera",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Marcelo Flores",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Juan Pablo Vigón",
+              "altura": 180,
+              "posicion": "M"
+            },
+            {
+              "nombre": "Luis Quiñones",
+              "altura": 180,
+              "posicion": "M"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
