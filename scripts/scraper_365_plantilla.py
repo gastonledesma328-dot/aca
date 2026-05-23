@@ -459,7 +459,7 @@ def limpiar_jugador_para_juego(j):
         "club_id": j.get("club_id", ""),
         "pais": j.get("pais", ""),
         "posicion": j.get("posicion", ""),
-        "competicion": limpiar_competicion(j.get("competicion", "")),
+        "competicion": obtener_liga_por_club(j.get("club", "")) or limpiar_competicion(j.get("competicion", "")),
         "numero": j.get("numero", ""),
         "edad": j.get("edad", ""),
         "fecha_nacimiento": j.get("fecha_nacimiento", ""),
@@ -1082,7 +1082,7 @@ async def extraer_detalle_jugador(context, jugador):
                 jugador[campo] = detalles[campo]
 
         detalle_competicion = limpiar_competicion(detalles.get("competicion", ""))
-        if detalle_competicion:
+        if detalle_competicion and not jugador.get("competicion"):
             jugador["competicion"] = detalle_competicion
 
         imgs = data.get("imgs") or []
@@ -1145,22 +1145,39 @@ async def procesar_equipo(context, equipo, existentes):
         jugador_existente = buscar_jugador_existente(jugador, existentes)
 
         if jugador_existente and tiene_datos_completos(jugador_existente):
-            liga_equipo_actual = jugador.get("competicion") or equipo_liga
+            liga_equipo_actual = equipo_liga or obtener_liga_por_club(jugador.get("club", ""))
+            posicion_actual = jugador.get("posicion", "")
+
             jugador.update(jugador_existente)
-            if not limpiar_competicion(jugador.get("competicion", "")):
+
+            if liga_equipo_actual:
                 jugador["competicion"] = liga_equipo_actual
+            elif not limpiar_competicion(jugador.get("competicion", "")):
+                jugador["competicion"] = ""
+
+            if not jugador.get("posicion") and posicion_actual:
+                jugador["posicion"] = posicion_actual
+
             print(f"♻️ Jugador ya cargado con datos e imagen, omito perfil/descarga: {jugador['nombre']}")
         else:
-            if not limpiar_competicion(jugador.get("competicion", "")):
-                jugador["competicion"] = equipo_liga
+            liga_equipo_actual = equipo_liga or obtener_liga_por_club(jugador.get("club", ""))
+
+            if liga_equipo_actual:
+                jugador["competicion"] = liga_equipo_actual
+            elif not limpiar_competicion(jugador.get("competicion", "")):
+                jugador["competicion"] = ""
 
             if imagen_existente:
                 jugador["imagen"] = imagen_existente
 
             jugador = await extraer_detalle_jugador(context, jugador)
 
-            if not limpiar_competicion(jugador.get("competicion", "")):
-                jugador["competicion"] = equipo_liga
+            liga_equipo_actual = equipo_liga or obtener_liga_por_club(jugador.get("club", ""))
+
+            if liga_equipo_actual:
+                jugador["competicion"] = liga_equipo_actual
+            elif not limpiar_competicion(jugador.get("competicion", "")):
+                jugador["competicion"] = ""
 
             if imagen_existente:
                 jugador["imagen"] = imagen_existente
@@ -1176,28 +1193,57 @@ async def procesar_equipo(context, equipo, existentes):
 
     return resultados
 
+def obtener_liga_por_club(club):
+    """
+    Liga final confiable según el club.
+    Evita errores cacheados como Seattle Sounders -> LaLiga.
+    """
+    return LIGAS_POR_EQUIPO_365.get(normalizar(club), "")
+
+
+
 def limpiar_dataset_final(jugadores):
     """
     Limpieza final antes de escribir JSON:
     - elimina entrenadores/staff colados
-    - reemplaza competicion inválida tipo 365Scores por liga del equipo
+    - omite jugadores sin posición
+    - fuerza la liga correcta según el club
+    - elimina cualquier competicion inválida como 365Scores
     """
     salida = []
 
     for j in jugadores:
-        if es_staff_o_no_jugador(j.get("nombre", ""), f"{j.get('nombre', '')} {j.get('posicion', '')}"):
-            print(f"🚫 Staff eliminado en limpieza final: {j.get('nombre')} ({j.get('club')})")
+        nombre = j.get("nombre", "")
+        club = j.get("club", "")
+        posicion = normalizar_posicion(j.get("posicion", ""))
+
+        if es_staff_o_no_jugador(nombre, f"{nombre} {posicion}"):
+            print(f"🚫 Staff eliminado en limpieza final: {nombre} ({club})")
             continue
 
-        comp = limpiar_competicion(j.get("competicion", ""))
-        if not comp:
-            comp = LIGAS_POR_EQUIPO_365.get(normalizar(j.get("club", "")), "")
+        if not posicion:
+            print(f"⚠️ Jugador omitido sin posición: {nombre} ({club})")
+            continue
 
-        j["competicion"] = comp
+        liga_por_club = obtener_liga_por_club(club)
+        comp_actual = limpiar_competicion(j.get("competicion", ""))
+
+        if liga_por_club:
+            j["competicion"] = liga_por_club
+        else:
+            j["competicion"] = comp_actual
+
+        j["posicion"] = posicion
+
+        if str(j.get("edad", "")).strip() in ["0", "0.0"]:
+            j["edad"] = ""
+
+        if str(j.get("altura", "")).strip() in ["0", "0.0"]:
+            j["altura"] = ""
+
         salida.append(j)
 
     return salida
-
 
 
 def deduplicar_jugadores(jugadores):
@@ -1264,7 +1310,7 @@ async def main():
             "fecha_nacimiento": j.get("fecha_nacimiento", ""),
             "altura": j.get("altura", ""),
             "numero": j.get("numero", ""),
-            "competicion": limpiar_competicion(j.get("competicion", "")),
+            "competicion": obtener_liga_por_club(j.get("club", "")) or limpiar_competicion(j.get("competicion", "")),
             "fin_contrato": j.get("fin_contrato", ""),
             "imagen": j.get("imagen", ""),
             "fuente": FUENTE
