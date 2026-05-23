@@ -453,6 +453,28 @@ def es_url_imagen_valida_365(url):
 
 
 
+def imagen_local_existe(ruta_imagen):
+    """
+    Verifica si la imagen que figura en el JSON existe realmente en la carpeta del juego.
+    Importante cuando se borra la carpeta imagenes_jugadores_365:
+    el JSON viejo puede decir que existe, pero el archivo ya no está.
+    """
+    ruta = str(ruta_imagen or "").replace("\\", "/").strip()
+
+    if not ruta:
+        return False
+
+    nombre_archivo = ruta.split("/")[-1]
+
+    if not nombre_archivo:
+        return False
+
+    path = GAME_IMAGES_DIR / nombre_archivo
+
+    return path.exists() and path.is_file() and path.stat().st_size > 0
+
+
+
 def buscar_imagen_existente(nombre_archivo):
     """
     Si la imagen ya está cargada en la carpeta del juego,
@@ -795,10 +817,12 @@ def extraer_datos_desde_body_365(nombre, body_text):
 def tiene_datos_completos(player):
     """
     Sirve para ahorrar tiempo en siguientes corridas.
-    Si ya existe el jugador con imagen y datos básicos, no entra al perfil otra vez.
+    Pero solo cuenta como completo si la imagen existe físicamente en la carpeta.
+    Si borraste imagenes_jugadores_365, fuerza a descargar de nuevo.
     """
     return bool(
         player.get("imagen")
+        and imagen_local_existe(player.get("imagen"))
         and player.get("pais")
         and player.get("posicion")
         and player.get("edad")
@@ -1285,7 +1309,7 @@ async def procesar_equipo(context, equipo, existentes):
             if not jugador.get("posicion") and posicion_actual:
                 jugador["posicion"] = posicion_actual
 
-            print(f"♻️ Jugador ya cargado con datos e imagen, omito perfil/descarga: {jugador['nombre']}")
+            print(f"♻️ Jugador ya cargado con datos e imagen real, omito perfil/descarga: {jugador['nombre']}")
         else:
             liga_equipo_actual = equipo_liga or obtener_liga_por_club(jugador.get("club", ""))
 
@@ -1293,6 +1317,9 @@ async def procesar_equipo(context, equipo, existentes):
                 jugador["competicion"] = liga_equipo_actual
             elif not limpiar_competicion(jugador.get("competicion", "")):
                 jugador["competicion"] = ""
+
+            if jugador.get("imagen") and not imagen_local_existe(jugador.get("imagen")):
+                jugador["imagen"] = ""
 
             if imagen_existente:
                 jugador["imagen"] = imagen_existente
@@ -1305,6 +1332,9 @@ async def procesar_equipo(context, equipo, existentes):
                 jugador["competicion"] = liga_equipo_actual
             elif not limpiar_competicion(jugador.get("competicion", "")):
                 jugador["competicion"] = ""
+
+            if jugador.get("imagen") and not imagen_local_existe(jugador.get("imagen")):
+                jugador["imagen"] = ""
 
             if imagen_existente:
                 jugador["imagen"] = imagen_existente
@@ -1448,8 +1478,10 @@ async def main():
 
     equipos = cargar_equipos()
     existentes = cargar_jugadores_existentes()
+    imagenes_existentes_reales = sum(1 for j in existentes.values() if imagen_local_existe(j.get("imagen", "")))
     print(f"📋 Equipos cargados: {len(equipos)}")
     print(f"♻️ Jugadores existentes en JSON del juego: {len(existentes)}")
+    print(f"🖼️ Imágenes físicas existentes detectadas: {imagenes_existentes_reales}")
 
     todos_los_jugadores = []
 
