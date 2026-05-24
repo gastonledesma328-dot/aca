@@ -222,7 +222,7 @@ let pool = [];
 let secret = null;
 let guesses = [];
 let finished = false;
-let newButtonLocked = false;
+let newGameLocked = false;
 let selectedDifficulty = 'facil';
 let activeCategories = new Set(CATEGORIES.map((item) => item.key));
 
@@ -255,25 +255,43 @@ const els = {
 };
 
 
-function updateNewButtonLock() {
-  if (!els?.newGameBtn) return;
 
-  const shouldDisable = newButtonLocked && !finished;
-  els.newGameBtn.disabled = shouldDisable;
-  els.newGameBtn.classList.toggle('is-disabled', shouldDisable);
-  els.newGameBtn.title = shouldDisable
-    ? 'Terminá la partida actual para empezar una nueva.'
-    : '';
+
+
+function getNewGameButton() {
+  return els?.newGameBtn || document.getElementById('newGameBtn');
 }
 
-function lockNewButtonAfterGuess() {
-  newButtonLocked = true;
-  updateNewButtonLock();
+function setNewGameLocked(locked) {
+  newGameLocked = Boolean(locked);
+
+  const btn = getNewGameButton();
+  if (!btn) return;
+
+  const shouldLock = newGameLocked && !finished;
+
+  btn.disabled = shouldLock;
+  btn.setAttribute('aria-disabled', shouldLock ? 'true' : 'false');
+  btn.classList.toggle('is-disabled', shouldLock);
+  btn.title = shouldLock ? 'Terminá la partida actual para empezar una nueva.' : '';
 }
 
-function unlockNewButtonAfterGameEnd() {
-  newButtonLocked = false;
-  updateNewButtonLock();
+function lockNewGameButton() {
+  setNewGameLocked(true);
+}
+
+function unlockNewGameButton() {
+  setNewGameLocked(false);
+}
+
+function canStartNewGameFromButton() {
+  if (newGameLocked && !finished) {
+    setMessage('Terminá la partida actual antes de empezar una nueva.', 'bad');
+    setNewGameLocked(true);
+    return false;
+  }
+
+  return true;
 }
 
 function normalizeText(value) {
@@ -599,8 +617,7 @@ function pickSecret() {
 }
 
 function startGame() {
-  newButtonLocked = false;
-  updateNewButtonLock();
+  setNewGameLocked(false);
   filterPool();
   updateDifficultyInfo();
   fillDatalist();
@@ -622,7 +639,7 @@ function startGame() {
 }
 
 function updateCounters() {
-  updateNewButtonLock();
+  setNewGameLocked(newGameLocked);
   const maxTries = getMaxTries();
   const left = Math.max(0, maxTries - guesses.length);
   if (els.triesLeft) {
@@ -741,7 +758,7 @@ function rerenderGuesses() {
 }
 
 function showAnswer(won) {
-  unlockNewButtonAfterGameEnd();
+  unlockNewGameButton();
   finished = true;
   els.playerInput.disabled = true;
   els.guessBtn.disabled = true;
@@ -814,7 +831,7 @@ function submitGuess() {
   }
 
   guesses.push(player);
-  lockNewButtonAfterGuess();
+  lockNewGameButton();
   renderGuess(player);
   updateCounters();
   els.playerInput.value = '';
@@ -965,10 +982,10 @@ async function loadPlayers() {
 }
 
 els.guessBtn.addEventListener('click', submitGuess);
-els.newGameBtn.addEventListener('click', () => {
-  if (newButtonLocked && !finished) {
-    setMessage('Terminá la partida actual antes de empezar una nueva.', 'bad');
-    updateNewButtonLock();
+els.newGameBtn.addEventListener('click', (event) => {
+  if (!canStartNewGameFromButton()) {
+    event.preventDefault();
+    event.stopPropagation();
     return;
   }
 
