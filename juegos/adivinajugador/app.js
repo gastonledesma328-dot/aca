@@ -122,6 +122,72 @@ const TEAM_DIFFICULTY_TIERS = {
   'cruz azul': 3,
 };
 
+
+const GAME_PLAYER_BLACKLIST = [
+  { nombre: 'Aaron Danks', club: 'Bayern München' },
+  { nombre: 'Leonardo Jardim' },
+  { nombre: 'Claudio Úbeda' },
+  { nombre: 'Eduardo Coudet' },
+  { nombre: 'Frederico Juarez', club: 'Seattle Sounders' },
+  { nombre: 'Roberto De Zerbi' },
+  { nombre: 'Rubi' },
+  { nombre: 'Martin Demichelis' },
+  { nombre: 'Luciano Spalletti' },
+  { nombre: 'Massimiliano Allegri' },
+  { nombre: 'Gian Piero Gasperini' },
+  { nombre: 'Vincent Kompany' },
+  { nombre: 'Niko Kovač' },
+  { nombre: 'Luis Enrique' },
+  { nombre: 'José Mourinho' },
+  { nombre: 'Robin van Persie' },
+  { nombre: 'Abel Ferreira' },
+  { nombre: 'Cuca' },
+  { nombre: 'Jorge Jesus' },
+  { nombre: 'Simone Inzaghi' },
+  { nombre: 'André Jardine' },
+  { nombre: 'Guido Pizarro' }
+];
+
+function isBlacklistedPlayer(player) {
+  const playerName = normalizeText(player?.nombre || player?.name || '');
+  const playerClub = normalizeText(player?.club || player?.equipo || player?.team || '');
+
+  return GAME_PLAYER_BLACKLIST.some((item) => {
+    const itemName = normalizeText(item.nombre || '');
+    const itemClub = normalizeText(item.club || '');
+
+    if (!itemName) return false;
+
+    if (itemClub) {
+      return itemName === playerName && itemClub === playerClub;
+    }
+
+    return itemName === playerName;
+  });
+}
+
+function cleanNumberField(value) {
+  const raw = String(value ?? '').trim();
+
+  if (
+    !raw ||
+    raw === '0' ||
+    raw === '0.0' ||
+    raw.toLowerCase() === 'undefined' ||
+    raw.toLowerCase() === 'null'
+  ) {
+    return '';
+  }
+
+  const number = Number(raw);
+
+  if (Number.isFinite(number) && number <= 0) {
+    return '';
+  }
+
+  return value;
+}
+
 const CATEGORIES = [
   { key: 'pais', label: 'País', type: 'text' },
   { key: 'club', label: 'Club', type: 'text' },
@@ -156,6 +222,7 @@ let pool = [];
 let secret = null;
 let guesses = [];
 let finished = false;
+let newButtonLocked = false;
 let selectedDifficulty = 'facil';
 let activeCategories = new Set(CATEGORIES.map((item) => item.key));
 
@@ -186,6 +253,28 @@ const els = {
   resultNewGameBtn: $('resultNewGameBtn'),
   resultCloseBtn: $('resultCloseBtn'),
 };
+
+
+function updateNewButtonLock() {
+  if (!els?.newGameBtn) return;
+
+  const shouldDisable = newButtonLocked && !finished;
+  els.newGameBtn.disabled = shouldDisable;
+  els.newGameBtn.classList.toggle('is-disabled', shouldDisable);
+  els.newGameBtn.title = shouldDisable
+    ? 'Terminá la partida actual para empezar una nueva.'
+    : '';
+}
+
+function lockNewButtonAfterGuess() {
+  newButtonLocked = true;
+  updateNewButtonLock();
+}
+
+function unlockNewButtonAfterGameEnd() {
+  newButtonLocked = false;
+  updateNewButtonLock();
+}
 
 function normalizeText(value) {
   return String(value || '')
@@ -294,7 +383,7 @@ function isPlayerAllowedByDifficulty(player) {
 
 
 function getAge(player) {
-  if (typeof player.edad === 'number') return player.edad;
+  if (typeof player.edad === 'number' && player.edad > 0) return player.edad;
 
   const edadNumerica = Number(player.edad);
   if (Number.isFinite(edadNumerica) && edadNumerica > 0) return edadNumerica;
@@ -510,6 +599,8 @@ function pickSecret() {
 }
 
 function startGame() {
+  newButtonLocked = false;
+  updateNewButtonLock();
   filterPool();
   updateDifficultyInfo();
   fillDatalist();
@@ -531,6 +622,7 @@ function startGame() {
 }
 
 function updateCounters() {
+  updateNewButtonLock();
   const maxTries = getMaxTries();
   const left = Math.max(0, maxTries - guesses.length);
   if (els.triesLeft) {
@@ -649,6 +741,7 @@ function rerenderGuesses() {
 }
 
 function showAnswer(won) {
+  unlockNewButtonAfterGameEnd();
   finished = true;
   els.playerInput.disabled = true;
   els.guessBtn.disabled = true;
@@ -694,6 +787,7 @@ function openResultModal(won) {
     .join('');
 
   els.resultModal.classList.remove('hidden');
+  setTimeout(replaySecretImageAnimation, 40);
 }
 
 function closeResultModal() {
@@ -720,6 +814,7 @@ function submitGuess() {
   }
 
   guesses.push(player);
+  lockNewButtonAfterGuess();
   renderGuess(player);
   updateCounters();
   els.playerInput.value = '';
@@ -840,8 +935,8 @@ function normalizePlayerForGame(player) {
     competicion,
     pais: player?.pais || player?.nacionalidad || '',
     posicion: player?.posicion || player?.position || '',
-    edad: player?.edad || '',
-    altura: Number(player?.altura || 0),
+    edad: cleanNumberField(player?.edad),
+    altura: cleanNumberField(player?.altura),
     imagen,
     epoca: player?.epoca || player?.tipo || 'actual',
   };
@@ -854,6 +949,7 @@ async function loadPlayers() {
     allPlayers = data
       .map(normalizePlayerForGame)
       .filter((player) => player && player.nombre && player.club)
+      .filter((player) => !isBlacklistedPlayer(player))
       .filter((player) => getPlayerEra(player) === 'actual');
 
     if (!allPlayers.length) {
@@ -869,7 +965,15 @@ async function loadPlayers() {
 }
 
 els.guessBtn.addEventListener('click', submitGuess);
-els.newGameBtn.addEventListener('click', startGame);
+els.newGameBtn.addEventListener('click', () => {
+  if (newButtonLocked && !finished) {
+    setMessage('Terminá la partida actual antes de empezar una nueva.', 'bad');
+    updateNewButtonLock();
+    return;
+  }
+
+  startGame();
+});
 els.playerInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') submitGuess();
 });
