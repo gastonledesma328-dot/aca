@@ -655,3 +655,18 @@ button:disabled {
     animation: none;
   }
 }
+
+/* Botón Nuevo bloqueado durante una partida iniciada */
+button.is-disabled,
+.is-disabled {
+  opacity: 0.52;
+  cursor: not-allowed !important;
+  filter: grayscale(0.35);
+  pointer-events: none;
+}
+
+button.is-disabled:hover,
+.is-disabled:hover {
+  transform: none !important;
+}
+
