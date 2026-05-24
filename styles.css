@@ -155,7 +155,7 @@ svg {
 .brand {
   color: var(--text);
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   text-decoration: none;
   font-size: 26px;
   font-style: italic;
@@ -172,13 +172,20 @@ svg {
 }
 
 .ball {
-  width: 18px;
-  height: 18px;
-  margin: 0 1px;
+  width: 24px;
+  height: 24px;
+  margin: 0 2px;
+  display: inline-block;
+  flex: 0 0 24px;
   color: transparent;
+  font-size: 0;
+  line-height: 0;
   border-radius: 50%;
-  background: var(--primary);
-  box-shadow: 0 0 0 2px var(--bg2);
+  background-image: url("assets/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  box-shadow: none;
 }
 
 .top-actions {
@@ -1556,8 +1563,10 @@ footer strong {
   }
 
   .ball {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+    margin: 0 2px;
   }
 
   .top-actions {
