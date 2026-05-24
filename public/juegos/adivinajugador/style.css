@@ -613,3 +613,73 @@ button:disabled {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Animación de aparición para la imagen del jugador oculto: giro tipo moneda */
+.player-photo-reveal {
+  animation: playerPhotoCoinFlip 920ms cubic-bezier(0.18, 0.89, 0.32, 1.18) both;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes playerPhotoCoinFlip {
+  0% {
+    opacity: 0;
+    transform: perspective(900px) rotateY(90deg) scale(0.86);
+    filter: blur(7px) brightness(0.72);
+  }
+
+  35% {
+    opacity: 1;
+    transform: perspective(900px) rotateY(360deg) scale(1.04);
+    filter: blur(1px) brightness(1.15);
+  }
+
+  68% {
+    opacity: 1;
+    transform: perspective(900px) rotateY(720deg) scale(1.02);
+    filter: blur(0) brightness(1.08);
+  }
+
+  100% {
+    opacity: 1;
+    transform: perspective(900px) rotateY(1080deg) scale(1);
+    filter: blur(0) brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .player-photo-reveal {
+    animation: none;
+  }
+}
+
+/* Botón Nuevo bloqueado durante una partida iniciada */
+button.is-disabled,
+.is-disabled,
+button[aria-disabled="true"],
+#newGameBtn:disabled {
+  opacity: 0.52;
+  cursor: not-allowed !important;
+  filter: grayscale(0.35);
+  transform: none !important;
+}
+
+button.is-disabled:hover,
+.is-disabled:hover,
+button[aria-disabled="true"]:hover,
+#newGameBtn:disabled:hover {
+  transform: none !important;
+  border-color: var(--border);
+}
+
+#newGameBtn.is-disabled,
+#newGameBtn[aria-disabled="true"],
+#newGameBtn:disabled {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(243, 255, 247, 0.58);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
