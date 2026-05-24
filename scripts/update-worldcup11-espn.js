@@ -7,10 +7,11 @@
 
   Que hace:
     - Conserva tus formaciones actuales.
-    - Intenta traer selecciones desde ESPN fifa.world.
+    - Busca selecciones reales de ESPN fifa.world.
+    - Descarta placeholders de ESPN tipo Group A Winner, Quarterfinal Winner, Round of 16 Winner, etc.
+    - El JSON final queda SOLO con paises/selecciones participantes encontrados en ESPN.
     - Intenta traer jugadores/roster por seleccion.
-    - Normaliza posiciones al formato del juego: GK, RB, CB, LB, CDM, CM, CAM, LM, RM, LW, RW, ST.
-    - Si ESPN no trae suficientes datos de una seleccion, conserva los jugadores existentes de tu JSON.
+    - Si ESPN no trae suficientes jugadores de una seleccion participante, conserva los jugadores existentes de tu JSON.
     - Guarda en data/worldcup11-players.json.
     - Si existe public/data, tambien copia el mismo JSON a public/data/worldcup11-players.json.
 */
@@ -85,7 +86,21 @@ const COUNTRY_NAME_FIXES = new Map([
   ["Tunisia", "Túnez"],
   ["Japan", "Japón"],
   ["Iran", "Irán"],
-  ["Qatar", "Qatar"]
+  ["Qatar", "Qatar"],
+  ["Cape Verde", "Cabo Verde"],
+  ["Curacao", "Curazao"],
+  ["Curaçao", "Curazao"],
+  ["Congo DR", "RD Congo"],
+  ["DR Congo", "RD Congo"],
+  ["Democratic Republic of the Congo", "RD Congo"],
+  ["Egypt", "Egipto"],
+  ["Haiti", "Haití"],
+  ["Iraq", "Irak"],
+  ["Jordan", "Jordania"],
+  ["New Zealand", "Nueva Zelanda"],
+  ["Panama", "Panamá"],
+  ["South Africa", "Sudáfrica"],
+  ["Uzbekistan", "Uzbekistán"]
 ]);
 
 const FIFA_FLAG_FIXES = {
@@ -135,7 +150,19 @@ const FIFA_FLAG_FIXES = {
   JPN: "jp",
   IRN: "ir",
   KSA: "sa",
-  QAT: "qa"
+  QAT: "qa",
+  CPV: "cv",
+  CTA: "cw",
+  CUW: "cw",
+  COD: "cd",
+  EGY: "eg",
+  HAI: "ht",
+  IRQ: "iq",
+  JOR: "jo",
+  NZL: "nz",
+  PAN: "pa",
+  RSA: "za",
+  UZB: "uz"
 };
 
 function sleep(ms) {
@@ -149,7 +176,7 @@ async function fetchJson(url, options = {}) {
     try {
       const res = await fetch(url, {
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "User-Agent": "PartidosHoy-WorldCup11-Scraper/1.0"
         }
       });
@@ -205,6 +232,33 @@ function makeCountryKey(name) {
   return normalizeText(normalizeCountryName(name));
 }
 
+function isPlaceholderTeam(team) {
+  const nameParts = [
+    team?.displayName,
+    team?.name,
+    team?.location,
+    team?.shortDisplayName,
+    team?.abbreviation,
+    team?.slug
+  ];
+
+  const text = normalizeText(nameParts.filter(Boolean).join(" "));
+
+  if (!text) return true;
+
+  return /\bgroup\b/.test(text)
+    || /\bwinner\b/.test(text)
+    || /\bloser\b/.test(text)
+    || /\b2nd place\b/.test(text)
+    || /\bsecond place\b/.test(text)
+    || /\bround of 16\b/.test(text)
+    || /\bquarterfinal\b/.test(text)
+    || /\bsemifinal\b/.test(text)
+    || /\bthird place\b/.test(text)
+    || /\btbd\b/.test(text)
+    || /\bto be determined\b/.test(text);
+}
+
 function normalizePosition(position) {
   const raw = String(position || "").trim();
   const compact = normalizeText(raw).replace(/\s+/g, " ");
@@ -240,7 +294,7 @@ function getAthletePosition(athlete) {
 }
 
 function getFlagCode(team) {
-  const abbreviation = String(team?.abbreviation || team?.abbrev || team?.shortDisplayName || "").toUpperCase();
+  const abbreviation = String(team?.abbreviation || team?.abbrev || "").toUpperCase();
   if (FIFA_FLAG_FIXES[abbreviation]) return FIFA_FLAG_FIXES[abbreviation];
 
   const slug = String(team?.slug || "").toLowerCase();
@@ -255,7 +309,7 @@ function dedupePlayers(players) {
   const seen = new Set();
   const clean = [];
 
-  for (const player of players) {
+  for (const player of players || []) {
     const name = String(player.name || "").trim();
     if (!name) continue;
 
@@ -302,7 +356,9 @@ async function getTeams() {
   try {
     const siteTeams = await fetchJson(`${ESPN_SITE_BASE}/teams?limit=${MAX_TEAMS}`);
     for (const team of extractTeamsFromSitePayload(siteTeams)) {
-      teamsById.set(String(team.id), team);
+      if (!isPlaceholderTeam(team)) {
+        teamsById.set(String(team.id), team);
+      }
     }
   } catch (error) {
     console.warn(`Aviso: no se pudieron leer equipos desde site.api: ${error.message}`);
@@ -319,7 +375,8 @@ async function getTeams() {
       try {
         const coreTeam = await resolveRef(ref);
         const team = coreTeam.team || coreTeam;
-        if (team?.id) {
+
+        if (team?.id && !isPlaceholderTeam(team)) {
           teamsById.set(String(team.id), {
             ...teamsById.get(String(team.id)),
             ...team
@@ -333,7 +390,13 @@ async function getTeams() {
     console.warn(`Aviso: no se pudieron leer equipos desde core.api: ${error.message}`);
   }
 
-  return Array.from(teamsById.values()).filter(team => team?.id);
+  return Array.from(teamsById.values())
+    .filter(team => team?.id && !isPlaceholderTeam(team))
+    .sort((a, b) => {
+      const nameA = normalizeCountryName(a.displayName || a.name || a.location || a.shortDisplayName || "");
+      const nameB = normalizeCountryName(b.displayName || b.name || b.location || b.shortDisplayName || "");
+      return nameA.localeCompare(nameB, "es");
+    });
 }
 
 async function getRosterFromSite(teamId) {
@@ -347,17 +410,9 @@ async function getRosterFromSite(teamId) {
       const payload = await fetchJson(url);
       const athletes = [];
 
-      if (Array.isArray(payload?.athletes)) {
-        athletes.push(...payload.athletes);
-      }
-
-      if (Array.isArray(payload?.team?.athletes)) {
-        athletes.push(...payload.team.athletes);
-      }
-
-      if (Array.isArray(payload?.roster?.athletes)) {
-        athletes.push(...payload.roster.athletes);
-      }
+      if (Array.isArray(payload?.athletes)) athletes.push(...payload.athletes);
+      if (Array.isArray(payload?.team?.athletes)) athletes.push(...payload.team.athletes);
+      if (Array.isArray(payload?.roster?.athletes)) athletes.push(...payload.roster.athletes);
 
       if (Array.isArray(payload?.groups)) {
         for (const group of payload.groups) {
@@ -433,50 +488,45 @@ async function getTeamRoster(teamId) {
   return getRosterFromCore(teamId);
 }
 
-function buildExistingCountryMap(existing) {
+function buildExistingCountryMap(existingCountries) {
   const map = new Map();
 
-  for (const country of existing.countries || []) {
+  for (const country of existingCountries || []) {
     map.set(makeCountryKey(country.country), country);
   }
 
   return map;
 }
 
-function mergeCountries(existingCountries, scrapedCountries) {
-  const existingMap = buildExistingCountryMap({ countries: existingCountries });
-  const scrapedMap = new Map(scrapedCountries.map(country => [makeCountryKey(country.country), country]));
+function buildFinalParticipantCountries(existingCountries, scrapedCountries) {
+  const existingMap = buildExistingCountryMap(existingCountries);
   const finalCountries = [];
   const used = new Set();
 
-  for (const existingCountry of existingCountries) {
-    const key = makeCountryKey(existingCountry.country);
-    const scrapedCountry = scrapedMap.get(key);
-
-    if (scrapedCountry && scrapedCountry.players.length >= MIN_PLAYERS_TO_REPLACE_COUNTRY) {
-      finalCountries.push({
-        country: existingCountry.country || scrapedCountry.country,
-        flagCode: existingCountry.flagCode || scrapedCountry.flagCode || "un",
-        dt: existingCountry.dt || scrapedCountry.dt || "",
-        players: scrapedCountry.players
-      });
-    } else {
-      finalCountries.push({
-        ...existingCountry,
-        players: dedupePlayers(existingCountry.players || [])
-      });
-    }
-
-    used.add(key);
-  }
-
   for (const scrapedCountry of scrapedCountries) {
     const key = makeCountryKey(scrapedCountry.country);
-    if (used.has(key)) continue;
-    if (existingMap.has(key)) continue;
-    if (scrapedCountry.players.length < MIN_PLAYERS_TO_REPLACE_COUNTRY) continue;
+    if (!key || used.has(key)) continue;
 
-    finalCountries.push(scrapedCountry);
+    const existingCountry = existingMap.get(key);
+    const scrapedHasGoodRoster = scrapedCountry.players.length >= MIN_PLAYERS_TO_REPLACE_COUNTRY;
+
+    if (scrapedHasGoodRoster) {
+      finalCountries.push({
+        country: existingCountry?.country || scrapedCountry.country,
+        flagCode: existingCountry?.flagCode || scrapedCountry.flagCode || "un",
+        dt: existingCountry?.dt || scrapedCountry.dt || "",
+        players: scrapedCountry.players
+      });
+    } else if (existingCountry && Array.isArray(existingCountry.players) && existingCountry.players.length) {
+      finalCountries.push({
+        ...existingCountry,
+        flagCode: existingCountry.flagCode || scrapedCountry.flagCode || "un",
+        players: dedupePlayers(existingCountry.players)
+      });
+    } else {
+      console.warn(`  Omitido ${scrapedCountry.country}: ESPN no trajo jugadores suficientes y no existe respaldo manual.`);
+    }
+
     used.add(key);
   }
 
@@ -491,9 +541,9 @@ async function main() {
     throw new Error("El JSON actual no tiene formations.");
   }
 
-  console.log("Consultando equipos de ESPN fifa.world...");
+  console.log("Consultando solo selecciones participantes reales de ESPN fifa.world...");
   const teams = await getTeams();
-  console.log(`Equipos encontrados: ${teams.length}`);
+  console.log(`Selecciones participantes encontradas: ${teams.length}`);
 
   const scrapedCountries = [];
 
@@ -502,7 +552,7 @@ async function main() {
     const countryName = normalizeCountryName(rawName);
     const teamId = team.id;
 
-    if (!countryName || !teamId) continue;
+    if (!countryName || !teamId || isPlaceholderTeam(team)) continue;
 
     console.log(`[${index + 1}/${teams.length}] ${countryName} (${teamId})`);
 
@@ -515,7 +565,7 @@ async function main() {
     }
 
     if (!players.length) {
-      console.warn("  Sin jugadores desde ESPN. Se conservara el JSON existente si ya estaba.");
+      console.warn("  Sin jugadores desde ESPN. Se usara respaldo manual si existe.");
     } else {
       console.log(`  Jugadores ESPN: ${players.length}`);
     }
@@ -528,18 +578,19 @@ async function main() {
     });
   }
 
+  const finalCountries = buildFinalParticipantCountries(existing.countries || [], scrapedCountries);
+
   const finalJson = {
     formations: existing.formations,
-    countries: mergeCountries(existing.countries || [], scrapedCountries),
+    countries: finalCountries,
     meta: {
-      source: "ESPN fifa.world + respaldo manual del JSON anterior",
+      source: "ESPN fifa.world participantes reales + respaldo manual del JSON anterior",
       updatedAt: new Date().toISOString(),
-      totalCountries: 0,
-      note: "Generado por scripts/update-worldcup11-espn.js. Si ESPN no trae suficientes jugadores de una seleccion, se conserva el plantel anterior."
+      totalCountries: finalCountries.length,
+      espnTeamsFound: teams.length,
+      note: "Generado por scripts/update-worldcup11-espn.js. El resultado final incluye solo selecciones reales encontradas en ESPN fifa.world. Se descartan placeholders como Group Winner, Round of 16 Winner, Quarterfinal Winner, etc."
     }
   };
-
-  finalJson.meta.totalCountries = finalJson.countries.length;
 
   const output = `${JSON.stringify(finalJson, null, 2)}\n`;
 
@@ -551,7 +602,7 @@ async function main() {
     console.log(`Copiado: ${path.relative(ROOT_DIR, PUBLIC_JSON_PATH)}`);
   }
 
-  console.log("Listo.");
+  console.log(`Listo. JSON final con ${finalCountries.length} selecciones participantes.`);
 }
 
 main().catch(error => {
