@@ -25,7 +25,7 @@ const GAME_MODES = {
   expert: {
     label: "Experto",
     showHints: false,
-    timeLimit: 45,
+    timeLimit: 90,
     points: 300,
     help: "Modo experto: puede salir cualquier club de América."
   }
