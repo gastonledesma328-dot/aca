@@ -23,20 +23,103 @@ const DIFFICULTIES = {
     label: 'Fácil',
     maxTries: 8,
     autocomplete: true,
-    help: 'Fácil: tenés lista de jugadores al escribir y 8 intentos.',
+    maxTeamTier: 1,
+    help: 'Fácil: salen jugadores de clubes muy conocidos. Tenés lista al escribir y 8 intentos.',
   },
   normal: {
     label: 'Normal',
     maxTries: 8,
     autocomplete: false,
-    help: 'Normal: sin lista de jugadores al escribir. Tenés 8 intentos.',
+    maxTeamTier: 2,
+    help: 'Normal: salen clubes conocidos y algunos intermedios. Sin lista y con 8 intentos.',
   },
   dificil: {
     label: 'Difícil',
     maxTries: 5,
     autocomplete: false,
-    help: 'Difícil: sin lista de jugadores y solo 5 intentos.',
+    maxTeamTier: 3,
+    help: 'Difícil: pueden salir todos los clubes, incluidos los menos conocidos. Solo 5 intentos.',
   },
+};
+
+const TEAM_DIFFICULTY_TIERS = {
+  // Tier 1: clubes muy conocidos / fáciles
+  'real madrid': 1,
+  'fc barcelona': 1,
+  'barcelona': 1,
+  'manchester city': 1,
+  'liverpool': 1,
+  'arsenal': 1,
+  'manchester united': 1,
+  'chelsea': 1,
+  'bayern munchen': 1,
+  'bayern münchen': 1,
+  'paris saint-germain': 1,
+  'psg': 1,
+  'juventus': 1,
+  'inter milan': 1,
+  'ac milan': 1,
+  'boca juniors': 1,
+  'river plate': 1,
+  'flamengo': 1,
+  'palmeiras': 1,
+  'inter miami cf': 1,
+  'inter miami': 1,
+  'al nassr': 1,
+  'al hilal': 1,
+
+  // Tier 2: conocidos / dificultad normal
+  'atletico de madrid': 2,
+  'atlético de madrid': 2,
+  'tottenham hotspur': 2,
+  'napoli': 2,
+  'roma': 2,
+  'as roma': 2,
+  'borussia dortmund': 2,
+  'bayer leverkusen': 2,
+  'rb leipzig': 2,
+  'olympique de marseille': 2,
+  'monaco': 2,
+  'as monaco': 2,
+  'benfica': 2,
+  'fc porto': 2,
+  'sporting cp': 2,
+  'ajax amsterdam': 2,
+  'ajax': 2,
+  'psv eindhoven': 2,
+  'feyenoord': 2,
+  'racing club': 2,
+  'independiente': 2,
+  'san lorenzo': 2,
+  'santos': 2,
+  'corinthians': 2,
+  'sao paulo': 2,
+  'são paulo': 2,
+  'club america': 2,
+  'club américa': 2,
+  'tigres uanl': 2,
+  'galatasaray': 2,
+  'fenerbahce': 2,
+  'fenerbahçe': 2,
+  'besiktas': 2,
+  'beşiktaş': 2,
+
+  // Tier 3: menos conocidos / difícil
+  'sevilla': 3,
+  'real sociedad': 3,
+  'villarreal': 3,
+  'lazio': 3,
+  'olympique lyonnais': 3,
+  'lyon': 3,
+  'atletico nacional': 3,
+  'atlético nacional': 3,
+  'millonarios': 3,
+  'junior fc': 3,
+  'lafc': 3,
+  'los angeles fc': 3,
+  'seattle sounders': 3,
+  'al ahli': 3,
+  'cruz azul': 3,
 };
 
 const CATEGORIES = [
@@ -194,6 +277,22 @@ function getMaxTries() {
   return getDifficulty().maxTries;
 }
 
+function getTeamTier(player) {
+  const club = normalizeText(player?.club || player?.equipo || '');
+
+  if (!club) return 3;
+
+  return TEAM_DIFFICULTY_TIERS[club] || 3;
+}
+
+function isPlayerAllowedByDifficulty(player) {
+  const difficulty = getDifficulty();
+  const maxTeamTier = difficulty.maxTeamTier || 3;
+
+  return getTeamTier(player) <= maxTeamTier;
+}
+
+
 function getAge(player) {
   if (typeof player.edad === 'number') return player.edad;
 
@@ -308,11 +407,18 @@ function setDifficulty(mode) {
     button.classList.toggle('active', button.dataset.difficulty === selectedDifficulty);
   });
 
+  filterPool();
   updateDifficultyInfo();
   fillDatalist();
   updateCounters();
 
   if (finished) return;
+
+  if (secret && !isPlayerAllowedByDifficulty(secret)) {
+    startGame();
+    setMessage(`Dificultad: ${getDifficulty().label}. Cambió el jugador oculto para respetar la dificultad.`, 'ok');
+    return;
+  }
 
   if (guesses.length >= getMaxTries()) {
     setMessage('Al cambiar a esta dificultad ya no te quedan intentos.', 'bad');
@@ -320,7 +426,7 @@ function setDifficulty(mode) {
     return;
   }
 
-  setMessage(`Dificultad: ${getDifficulty().label}. El jugador oculto sigue siendo el mismo.`, 'ok');
+  setMessage(`Dificultad: ${getDifficulty().label}.`, 'ok');
 }
 
 function toggleCategory(key) {
@@ -376,7 +482,9 @@ function updateDifficultyInfo() {
 }
 
 function filterPool() {
-  pool = allPlayers.filter((player) => getPlayerEra(player) === 'actual');
+  pool = allPlayers
+    .filter((player) => getPlayerEra(player) === 'actual')
+    .filter(isPlayerAllowedByDifficulty);
 }
 
 function fillDatalist() {
@@ -418,7 +526,7 @@ function startGame() {
 
   renderTableHeader();
   updateCounters();
-  setMessage('Elegí la dificultad, activá las pistas que quieras y probá un jugador.', '');
+  setMessage(`Modo ${getDifficulty().label}: ${getDifficulty().help}`, '');
   els.playerInput.focus();
 }
 
