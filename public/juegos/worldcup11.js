@@ -395,7 +395,7 @@ function generateDailyGame() {
   const flatPositions = formation.rows.flat();
   const selectedCountries = buildCountriesForCurrentMode(flatPositions, random);
 
-  const rounds = selectedCountries.map((country, index) => {
+  const roundsInBoardOrder = selectedCountries.map((country, index) => {
     const position = flatPositions[index];
 
     const compatiblePlayers = country.players.filter(player => {
@@ -410,6 +410,8 @@ function generateDailyGame() {
       players: shuffleArray(compatiblePlayers, random)
     };
   });
+
+  const rounds = shuffleArray(roundsInBoardOrder, random);
 
   return {
     date: todayKey,
