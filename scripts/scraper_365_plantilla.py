@@ -10,6 +10,7 @@ from playwright.async_api import async_playwright
 
 
 EQUIPOS_FILE = "equipos.json"
+BLACKLIST_FILE = "blacklist_jugadores.json"
 
 DATA_DIR = Path("data/adivina-jugador")
 GAME_DIR = Path("juegos/adivinajugador")
@@ -41,7 +42,7 @@ EQUIPOS_365_FALLBACK = {
     },
     "independiente": {
         "equipo": "Independiente",
-        "url": "https://www.365scores.com/es/football/team/independiente-870/squad"
+        "url": "https://www.365scores.com/es/football/team/independiente-874/squad"
     },
     "san-lorenzo": {
         "equipo": "San Lorenzo",
@@ -420,6 +421,104 @@ def cargar_equipos():
         })
 
     return equipos_limpios
+
+
+def cargar_blacklist_jugadores():
+    """
+    Lee blacklist_jugadores.json.
+    Formatos válidos:
+
+    [
+      { "nombre": "Leonardo Jardim" },
+      { "nombre": "Frederico Juarez", "club": "Seattle Sounders" },
+      { "id": "12345" }
+    ]
+
+    Se puede bloquear por:
+    - id exacto
+    - nombre exacto
+    - nombre + club
+    """
+    if not os.path.exists(BLACKLIST_FILE):
+        ejemplo = [
+            {
+                "nombre": "Leonardo Jardim"
+            },
+            {
+                "nombre": "Claudio Úbeda"
+            },
+            {
+                "nombre": "Eduardo Coudet"
+            },
+            {
+                "nombre": "Frederico Juarez",
+                "club": "Seattle Sounders"
+            }
+        ]
+
+        with open(BLACKLIST_FILE, "w", encoding="utf-8") as f:
+            json.dump(ejemplo, f, ensure_ascii=False, indent=2)
+
+        print(f"⚠️ No existía {BLACKLIST_FILE}. Se creó uno de ejemplo.")
+        return ejemplo
+
+    try:
+        with open(BLACKLIST_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if not isinstance(data, list):
+            print(f"⚠️ {BLACKLIST_FILE} debe ser una lista. Se ignora blacklist.")
+            return []
+
+        return [x for x in data if isinstance(x, dict)]
+
+    except Exception as e:
+        print(f"⚠️ No se pudo leer {BLACKLIST_FILE}: {e}")
+        return []
+
+
+def jugador_en_blacklist(jugador, blacklist):
+    if not blacklist:
+        return False
+
+    jugador_id = limpiar_texto(jugador.get("id", ""))
+    nombre = normalizar(jugador.get("nombre", ""))
+    club = normalizar(jugador.get("club", ""))
+
+    for item in blacklist:
+        item_id = limpiar_texto(item.get("id", ""))
+        item_nombre = normalizar(item.get("nombre", ""))
+        item_club = normalizar(item.get("club", ""))
+
+        # Bloqueo por ID exacto.
+        if item_id and jugador_id and item_id == jugador_id:
+            return True
+
+        # Bloqueo por nombre + club.
+        if item_nombre and item_club:
+            if item_nombre == nombre and item_club == club:
+                return True
+            continue
+
+        # Bloqueo por nombre exacto.
+        if item_nombre and item_nombre == nombre:
+            return True
+
+    return False
+
+
+def aplicar_blacklist_jugadores(jugadores, blacklist):
+    salida = []
+
+    for jugador in jugadores:
+        if jugador_en_blacklist(jugador, blacklist):
+            print(f"🚫 Jugador bloqueado por blacklist: {jugador.get('nombre')} ({jugador.get('club')})")
+            continue
+
+        salida.append(jugador)
+
+    return salida
+
 
 
 def asegurar_carpetas():
@@ -869,6 +968,31 @@ def buscar_jugador_existente(jugador, existentes):
 
 
 
+def equipo_url_valida_por_pagina(equipo_nombre, page_text):
+    """
+    Validación suave para evitar guardar jugadores de un equipo con nombre equivocado
+    cuando una URL de 365Scores apunta a otro club.
+    """
+    equipo = normalizar(equipo_nombre)
+    texto = normalizar(page_text)
+
+    if not equipo or not texto:
+        return True
+
+    alias = {
+        "independiente": ["independiente"],
+        "boca juniors": ["boca juniors", "boca"],
+        "river plate": ["river plate", "river"],
+        "racing club": ["racing club", "racing"],
+        "san lorenzo": ["san lorenzo"],
+    }
+
+    opciones = alias.get(equipo, [equipo])
+
+    return any(op in texto for op in opciones)
+
+
+
 async def cerrar_cookies_o_popups(page):
     textos = [
         "Aceptar",
@@ -1276,7 +1400,15 @@ async def procesar_equipo(context, equipo, existentes):
         await cerrar_cookies_o_popups(page)
         await hacer_scroll(page)
 
-        jugadores = await extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url, equipo_liga)
+        page_text = await page.evaluate("document.body.innerText || ''")
+
+        if not equipo_url_valida_por_pagina(equipo_nombre, page_text):
+            print(f"🚫 URL descartada: parece no corresponder a {equipo_nombre}")
+            print(f"🔗 URL problemática: {equipo_url}")
+            jugadores = []
+        else:
+            jugadores = await extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url, equipo_liga)
+
         print(f"📦 Jugadores encontrados en {equipo_nombre}: {len(jugadores)}")
 
     except Exception as e:
@@ -1509,6 +1641,7 @@ async def main():
         await browser.close()
 
     todos_los_jugadores = limpiar_imagenes_alta_calidad_dataset(limpiar_dataset_final(deduplicar_jugadores(todos_los_jugadores)))
+    todos_los_jugadores = aplicar_blacklist_jugadores(todos_los_jugadores, blacklist)
 
     OUTPUT_JSON.write_text(
         json.dumps(todos_los_jugadores, ensure_ascii=False, indent=2),
