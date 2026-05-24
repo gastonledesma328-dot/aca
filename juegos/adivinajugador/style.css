@@ -658,15 +658,28 @@ button:disabled {
 
 /* Botón Nuevo bloqueado durante una partida iniciada */
 button.is-disabled,
-.is-disabled {
+.is-disabled,
+button[aria-disabled="true"],
+#newGameBtn:disabled {
   opacity: 0.52;
   cursor: not-allowed !important;
   filter: grayscale(0.35);
-  pointer-events: none;
+  transform: none !important;
 }
 
 button.is-disabled:hover,
-.is-disabled:hover {
+.is-disabled:hover,
+button[aria-disabled="true"]:hover,
+#newGameBtn:disabled:hover {
   transform: none !important;
+  border-color: var(--border);
+}
+
+#newGameBtn.is-disabled,
+#newGameBtn[aria-disabled="true"],
+#newGameBtn:disabled {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(243, 255, 247, 0.58);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
