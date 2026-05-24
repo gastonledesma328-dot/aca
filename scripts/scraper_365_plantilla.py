@@ -2,6 +2,7 @@ import asyncio
 import json
 import os
 import re
+import time
 import unicodedata
 from pathlib import Path
 
@@ -18,15 +19,149 @@ GAME_DIR = Path("juegos/adivinajugador")
 OUTPUT_JSON = DATA_DIR / "plantilla_365_jugadores.json"
 OUTPUT_SIMPLE_JSON = DATA_DIR / "plantilla_365_jugadores_simple.json"
 
-# Las imágenes se guardan solo en la carpeta del juego para no duplicar miles de archivos.
 GAME_IMAGES_DIR = GAME_DIR / "imagenes_jugadores_365"
-
 GAME_JSON = GAME_DIR / "jugadores.json"
 
-FUENTE = "365Scores"
+# Ahora los DATOS salen de API-Football.
+# 365Scores queda solo para imágenes.
+FUENTE = "API-Football datos + 365Scores imágenes"
 
-# Mapeo para cuando equipos.json viene desde tu JSON viejo de equipos
-# y no trae url de 365Scores.
+# Te dejo la key puesta porque me lo pediste.
+# Mejor práctica: regenerar la key y usar variable de entorno API_FOOTBALL_KEY.
+API_FOOTBALL_KEY = os.environ.get("API_FOOTBALL_KEY", "f8d6138db2d0f658eb99c22cd2ed91e9")
+API_FOOTBALL_BASE_URL = "https://v3.football.api-sports.io"
+API_FOOTBALL_SEASON = int(os.environ.get("API_FOOTBALL_SEASON", "2025"))
+API_FOOTBALL_DELAY = float(os.environ.get("API_FOOTBALL_DELAY", "0.35"))
+
+API_FOOTBALL_HEADERS = {
+    "x-apisports-key": API_FOOTBALL_KEY,
+}
+
+HEADERS_365 = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/124.0.0.0 Safari/537.36"
+    ),
+    "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+    "Referer": "https://www.365scores.com/",
+}
+
+# Si el equipo no trae api_football_team_id en equipos.json,
+# se intenta usar este mapa o buscar automáticamente con /teams?search=.
+API_FOOTBALL_TEAM_IDS = {
+    "arsenal": 42,
+    "manchester city": 50,
+    "liverpool": 40,
+    "chelsea": 49,
+    "manchester united": 33,
+    "tottenham hotspur": 47,
+
+    "real madrid": 541,
+    "barcelona": 529,
+    "fc barcelona": 529,
+    "atletico madrid": 530,
+    "atletico de madrid": 530,
+    "atlético de madrid": 530,
+    "sevilla": 536,
+    "real sociedad": 548,
+    "villarreal": 533,
+
+    "inter milan": 505,
+    "inter": 505,
+    "juventus": 496,
+    "ac milan": 489,
+    "milan": 489,
+    "napoli": 492,
+    "roma": 497,
+    "lazio": 487,
+
+    "bayern munchen": 157,
+    "bayern münchen": 157,
+    "bayern munich": 157,
+    "borussia dortmund": 165,
+    "bayer leverkusen": 168,
+    "rb leipzig": 173,
+
+    "paris saint-germain": 85,
+    "psg": 85,
+    "olympique de marseille": 81,
+    "marseille": 81,
+    "as monaco": 91,
+    "monaco": 91,
+    "olympique lyonnais": 80,
+    "lyon": 80,
+
+    "benfica": 211,
+    "fc porto": 212,
+    "sporting cp": 228,
+    "sporting lisbon": 228,
+
+    "ajax": 194,
+    "ajax amsterdam": 194,
+    "psv eindhoven": 197,
+    "psv": 197,
+    "feyenoord": 209,
+
+    "boca juniors": 451,
+    "river plate": 435,
+    "racing club": 436,
+    "independiente": 442,
+    "san lorenzo": 438,
+
+    "flamengo": 127,
+    "palmeiras": 121,
+    "santos": 128,
+    "corinthians": 131,
+    "sao paulo": 126,
+    "são paulo": 126,
+
+    "atlético nacional": 1127,
+    "atletico nacional": 1127,
+    "millonarios": 1138,
+    "junior fc": 1136,
+
+    "inter miami": 9568,
+    "inter miami cf": 9568,
+    "lafc": 1616,
+    "los angeles fc": 1616,
+    "seattle sounders": 1595,
+
+    "al nassr": 2939,
+    "al hilal": 2932,
+    "al ahli": 2929,
+
+    "galatasaray": 645,
+    "fenerbahce": 611,
+    "fenerbahçe": 611,
+    "besiktas": 549,
+    "beşiktaş": 549,
+
+    "club america": 2287,
+    "club américa": 2287,
+    "cruz azul": 2295,
+    "tigres uanl": 2279,
+}
+
+API_FOOTBALL_LEAGUE_IDS = {
+    "Premier League": 39,
+    "LaLiga": 140,
+    "Serie A": 135,
+    "Bundesliga": 78,
+    "Ligue 1": 61,
+    "Primeira Liga": 94,
+    "Eredivisie": 88,
+    "Liga Profesional Argentina": 128,
+    "Brasileirão": 71,
+    "Brasileirao": 71,
+    "Categoría Primera A": 239,
+    "MLS": 253,
+    "Saudi Pro League": 307,
+    "Süper Lig": 203,
+    "Super Lig": 203,
+    "Liga MX": 262,
+}
+
 EQUIPOS_365_FALLBACK = {
     "boca-juniors": {
         "equipo": "Boca Juniors",
@@ -78,7 +213,7 @@ EQUIPOS_365_FALLBACK = {
     },
 }
 
-LIGAS_POR_EQUIPO_365 = {
+LIGAS_POR_EQUIPO = {
     "arsenal": "Premier League",
     "manchester city": "Premier League",
     "liverpool": "Premier League",
@@ -166,17 +301,6 @@ LIGAS_POR_EQUIPO_365 = {
 }
 
 
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/124.0.0.0 Safari/537.36"
-    ),
-    "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
-    "Referer": "https://www.365scores.com/",
-}
-
-
 def limpiar_texto(txt):
     if not txt:
         return ""
@@ -189,6 +313,13 @@ def normalizar(txt):
     txt = "".join(c for c in txt if unicodedata.category(c) != "Mn")
     txt = re.sub(r"\s+", " ", txt)
     return txt.strip()
+
+
+def slugify(text):
+    text = normalizar(text)
+    text = re.sub(r"[^a-z0-9]+", "-", text)
+    text = text.strip("-")
+    return text or "item"
 
 
 def limpiar_competicion(valor):
@@ -215,83 +346,60 @@ def limpiar_competicion(valor):
     return comp
 
 
+def normalizar_posicion(pos):
+    p = normalizar(pos)
 
-def slugify(text):
-    text = normalizar(text)
-    text = re.sub(r"[^a-z0-9]+", "-", text)
-    text = text.strip("-")
-    return text or "jugador"
-
-
-def extension_desde_url(url):
-    url_limpia = str(url or "").split("?")[0].lower()
-
-    for ext in [".png", ".jpg", ".jpeg", ".webp", ".avif"]:
-        if url_limpia.endswith(ext):
-            return ext.replace(".jpeg", ".jpg")
-
-    return ".png"
-
-
-
-def extraer_athlete_id_desde_imagen(url):
-    """
-    Extrae el ID de atleta desde URLs tipo:
-    .../v21/Athletes/66391
-    .../Athletes/42367
-    """
-    if not url:
+    if not p:
         return ""
 
-    match = re.search(r"/Athletes/(\d+)", str(url), re.I)
+    if any(x in p for x in ["arquero", "portero", "goalkeeper"]):
+        return "Portero"
 
-    if match:
-        return match.group(1)
+    if any(x in p for x in ["defensa", "defensor", "defender", "centre back", "center back", "left back", "right back", "lateral"]):
+        return "Defensa"
+
+    if any(x in p for x in ["mediocampista", "medio", "volante", "midfielder"]):
+        return "Mediocampista"
+
+    if any(x in p for x in ["delantero", "forward", "striker", "extremo", "winger", "attacker"]):
+        return "Delantero"
+
+    return limpiar_texto(pos)
+
+
+def altura_a_cm(valor):
+    raw = limpiar_texto(valor).lower()
+    raw = raw.replace("cm", "").replace(",", ".").strip()
+
+    if not raw:
+        return ""
+
+    m = re.search(r"\d+(?:\.\d+)?", raw)
+    if not m:
+        return ""
+
+    try:
+        n = float(m.group(0))
+    except Exception:
+        return ""
+
+    if 1.0 <= n <= 2.5:
+        return int(round(n * 100))
+
+    if 100 <= n <= 250:
+        return int(round(n))
 
     return ""
 
 
-def extraer_athlete_version_desde_imagen(url):
-    """
-    Conserva la versión si viene en la URL, por ejemplo /v21/Athletes/66391.
-    Si no existe versión, usa v1.
-    """
-    if not url:
-        return "v1"
+def fecha_api_a_ddmmyyyy(fecha):
+    fecha = limpiar_texto(fecha)
+    m = re.match(r"^(\d{4})-(\d{2})-(\d{2})$", fecha)
 
-    match = re.search(r"/(v\d+)/Athletes/\d+", str(url), re.I)
+    if not m:
+        return fecha
 
-    if match:
-        return match.group(1)
-
-    return "v1"
-
-
-def imagen_365_alta_calidad(url):
-    """
-    Convierte cualquier imagen de 365Scores de baja calidad a una URL 400x400.
-    Ejemplo:
-    https://imagecache.365scores.com/image/upload/f_png,w_400,h_400,c_limit,q_auto:best,dpr_2,d_Athletes:default.png,r_max,c_thumb,g_face,z_0.65/v1/Athletes/42367
-    """
-    athlete_id = extraer_athlete_id_desde_imagen(url)
-
-    if not athlete_id:
-        return url or ""
-
-    version = extraer_athlete_version_desde_imagen(url)
-
-    return (
-        "https://imagecache.365scores.com/image/upload/"
-        "f_png,w_400,h_400,c_limit,q_auto:best,dpr_2,"
-        "d_Athletes:default.png,r_max,c_thumb,g_face,z_0.65/"
-        f"{version}/Athletes/{athlete_id}"
-    )
-
-
-
-def sacar_equipo_id_desde_url(url):
-    match = re.search(r"team/[^/]+-(\d+)", url or "")
-    return match.group(1) if match else ""
+    return f"{m.group(3)}/{m.group(2)}/{m.group(1)}"
 
 
 def obtener_nombre_equipo(equipo):
@@ -304,12 +412,7 @@ def obtener_nombre_equipo(equipo):
     )
 
 
-def obtener_url_equipo(equipo):
-    """
-    Acepta varios formatos para evitar que el workflow quede en 0 jugadores.
-    Si tu equipos.json viene desde data/equipos.json y no trae URL,
-    intenta armar la URL usando EQUIPOS_365_FALLBACK.
-    """
+def obtener_url_365_equipo(equipo):
     url = (
         equipo.get("url")
         or equipo.get("link")
@@ -328,17 +431,10 @@ def obtener_url_equipo(equipo):
             url = url.rstrip("/") + "/squad"
         return url
 
-    # Fallback por id del equipo.
     equipo_id = normalizar(equipo.get("id", ""))
-    equipo_nombre_slug = slugify(
-        equipo.get("equipo")
-        or equipo.get("nombre")
-        or equipo.get("name")
-        or equipo.get("club")
-        or ""
-    )
+    equipo_slug = slugify(obtener_nombre_equipo(equipo))
 
-    for key in [equipo_id, equipo_nombre_slug]:
+    for key in [equipo_id, equipo_slug]:
         if key in EQUIPOS_365_FALLBACK:
             return EQUIPOS_365_FALLBACK[key]["url"]
 
@@ -346,11 +442,6 @@ def obtener_url_equipo(equipo):
 
 
 def obtener_liga_equipo(equipo):
-    """
-    Devuelve la liga donde juega el equipo.
-    1) Usa liga/competicion/league del equipos.json si existe y no es 365Scores.
-    2) Si no existe, usa un mapeo interno por nombre del equipo.
-    """
     liga = limpiar_competicion(
         equipo.get("liga")
         or equipo.get("competicion")
@@ -363,16 +454,40 @@ def obtener_liga_equipo(equipo):
     if liga:
         return liga
 
-    nombre = obtener_nombre_equipo(equipo)
-    return LIGAS_POR_EQUIPO_365.get(normalizar(nombre), "")
+    return LIGAS_POR_EQUIPO.get(normalizar(obtener_nombre_equipo(equipo)), "")
+
+
+def obtener_liga_por_club(club):
+    return LIGAS_POR_EQUIPO.get(normalizar(club), "")
+
+
+def obtener_api_league_id(liga):
+    liga = limpiar_competicion(liga)
+
+    if not liga:
+        return ""
+
+    for key, value in API_FOOTBALL_LEAGUE_IDS.items():
+        if normalizar(key) == normalizar(liga):
+            return value
+
+    return ""
+
+
+def asegurar_carpetas():
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    GAME_DIR.mkdir(parents=True, exist_ok=True)
+    GAME_IMAGES_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def cargar_equipos():
     if not os.path.exists(EQUIPOS_FILE):
         ejemplo = [
             {
-                "equipo": "Racing Club",
-                "url": "https://www.365scores.com/es/football/team/racing-club-876/squad"
+                "equipo": "Arsenal",
+                "url": "https://www.365scores.com/es/football/team/arsenal-104/squad",
+                "api_football_team_id": 42,
+                "liga": "Premier League"
             }
         ]
 
@@ -388,72 +503,33 @@ def cargar_equipos():
     if not isinstance(data, list):
         raise ValueError("equipos.json debe ser una lista.")
 
-    equipos_limpios = []
+    equipos = []
 
     for equipo in data:
         if not isinstance(equipo, dict):
             continue
 
         nombre = obtener_nombre_equipo(equipo)
-        url = obtener_url_equipo(equipo)
+        url_365 = obtener_url_365_equipo(equipo)
+        liga = obtener_liga_equipo({**equipo, "equipo": nombre})
 
-        equipo_id = normalizar(equipo.get("id", ""))
-        equipo_nombre_slug = slugify(nombre)
-
-        fallback = EQUIPOS_365_FALLBACK.get(equipo_id) or EQUIPOS_365_FALLBACK.get(equipo_nombre_slug)
-
-        if fallback:
-            nombre = fallback.get("equipo") or nombre
-            if not url:
-                url = fallback.get("url", "")
-
-        liga = obtener_liga_equipo({
+        equipos.append({
             **equipo,
             "equipo": nombre,
-            "url": url
+            "url": url_365,
+            "liga": liga,
         })
 
-        equipos_limpios.append({
-            **equipo,
-            "equipo": nombre,
-            "url": url,
-            "liga": liga
-        })
-
-    return equipos_limpios
+    return equipos
 
 
 def cargar_blacklist_jugadores():
-    """
-    Lee blacklist_jugadores.json.
-    Formatos válidos:
-
-    [
-      { "nombre": "Leonardo Jardim" },
-      { "nombre": "Frederico Juarez", "club": "Seattle Sounders" },
-      { "id": "12345" }
-    ]
-
-    Se puede bloquear por:
-    - id exacto
-    - nombre exacto
-    - nombre + club
-    """
     if not os.path.exists(BLACKLIST_FILE):
         ejemplo = [
-            {
-                "nombre": "Leonardo Jardim"
-            },
-            {
-                "nombre": "Claudio Úbeda"
-            },
-            {
-                "nombre": "Eduardo Coudet"
-            },
-            {
-                "nombre": "Frederico Juarez",
-                "club": "Seattle Sounders"
-            }
+            {"nombre": "Leonardo Jardim"},
+            {"nombre": "Claudio Úbeda"},
+            {"nombre": "Eduardo Coudet"},
+            {"nombre": "Frederico Juarez", "club": "Seattle Sounders"},
         ]
 
         with open(BLACKLIST_FILE, "w", encoding="utf-8") as f:
@@ -482,25 +558,27 @@ def jugador_en_blacklist(jugador, blacklist):
         return False
 
     jugador_id = limpiar_texto(jugador.get("id", ""))
+    api_id = limpiar_texto(jugador.get("api_football_id", ""))
     nombre = normalizar(jugador.get("nombre", ""))
     club = normalizar(jugador.get("club", ""))
 
     for item in blacklist:
         item_id = limpiar_texto(item.get("id", ""))
+        item_api_id = limpiar_texto(item.get("api_football_id", ""))
         item_nombre = normalizar(item.get("nombre", ""))
         item_club = normalizar(item.get("club", ""))
 
-        # Bloqueo por ID exacto.
         if item_id and jugador_id and item_id == jugador_id:
             return True
 
-        # Bloqueo por nombre + club.
+        if item_api_id and api_id and item_api_id == api_id:
+            return True
+
         if item_nombre and item_club:
             if item_nombre == nombre and item_club == club:
                 return True
             continue
 
-        # Bloqueo por nombre exacto.
         if item_nombre and item_nombre == nombre:
             return True
 
@@ -520,141 +598,7 @@ def aplicar_blacklist_jugadores(jugadores, blacklist):
     return salida
 
 
-
-def asegurar_carpetas():
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    GAME_DIR.mkdir(parents=True, exist_ok=True)
-    GAME_IMAGES_DIR.mkdir(parents=True, exist_ok=True)
-
-
-def es_url_imagen_valida_365(url):
-    if not url:
-        return False
-
-    low = url.lower()
-
-    if "athletes/" not in low:
-        return False
-
-    basura = [
-        "/website/",
-        "appstore",
-        "googleplay",
-        "badge",
-        "store",
-        "favicon"
-    ]
-
-    if any(x in low for x in basura):
-        return False
-
-    return True
-
-
-
-def imagen_local_existe(ruta_imagen):
-    """
-    Verifica si la imagen que figura en el JSON existe realmente en la carpeta del juego.
-    Importante cuando se borra la carpeta imagenes_jugadores_365:
-    el JSON viejo puede decir que existe, pero el archivo ya no está.
-    """
-    ruta = str(ruta_imagen or "").replace("\\", "/").strip()
-
-    if not ruta:
-        return False
-
-    nombre_archivo = ruta.split("/")[-1]
-
-    if not nombre_archivo:
-        return False
-
-    path = GAME_IMAGES_DIR / nombre_archivo
-
-    return path.exists() and path.is_file() and path.stat().st_size > 0
-
-
-
-def buscar_imagen_existente(nombre_archivo):
-    """
-    Si la imagen ya está cargada en la carpeta del juego,
-    no vuelve a descargarla. Devuelve la ruta relativa que usa el juego.
-    """
-    extensiones = [".png", ".jpg", ".jpeg", ".webp", ".avif"]
-
-    for ext in extensiones:
-        game_path = GAME_IMAGES_DIR / f"{nombre_archivo}{ext}"
-
-        if game_path.exists() and game_path.stat().st_size > 0:
-            return f"imagenes_jugadores_365/{nombre_archivo}{ext}"
-
-    return ""
-
-
-def descargar_imagen(url, nombre_archivo):
-    existente = buscar_imagen_existente(nombre_archivo)
-
-    if existente:
-        print(f"♻️ Imagen ya cargada, omito descarga: {existente}")
-        return existente
-
-    url = imagen_365_alta_calidad(url)
-
-    if not es_url_imagen_valida_365(url):
-        return ""
-
-    ext = extension_desde_url(url)
-
-    game_path = GAME_IMAGES_DIR / f"{nombre_archivo}{ext}"
-    rel_game_path = f"imagenes_jugadores_365/{nombre_archivo}{ext}"
-
-    try:
-        r = requests.get(url, headers=HEADERS, timeout=30)
-        print(f"🖼️ {r.status_code} imagen alta calidad {url}")
-
-        if not r.ok:
-            return ""
-
-        content_type = r.headers.get("content-type", "").lower()
-
-        if "image" not in content_type:
-            return ""
-
-        game_path.write_bytes(r.content)
-
-        return rel_game_path
-
-    except Exception as e:
-        print(f"❌ Error descargando imagen {url}: {e}")
-        return ""
-
-
-def limpiar_jugador_para_juego(j):
-    competicion_limpia = limpiar_competicion(j.get("competicion", ""))
-
-    return {
-        "id": j.get("id", ""),
-        "nombre": j.get("nombre", ""),
-        "club": j.get("club", ""),
-        "club_id": j.get("club_id", ""),
-        "pais": j.get("pais", ""),
-        "posicion": j.get("posicion", ""),
-        "competicion": obtener_liga_por_club(j.get("club", "")) or limpiar_competicion(j.get("competicion", "")),
-        "numero": j.get("numero", ""),
-        "edad": j.get("edad", ""),
-        "fecha_nacimiento": j.get("fecha_nacimiento", ""),
-        "altura": j.get("altura", ""),
-        "fin_contrato": j.get("fin_contrato", ""),
-        "imagen": j.get("imagen", ""),
-        "imagen_url": j.get("imagen_url", ""),
-        "url_365scores": j.get("url_365scores", ""),
-        "fuente": FUENTE,
-    }
-
-
-def es_staff_o_no_jugador(nombre, texto):
-    """
-    Filtra entrenadores/staff claros sin eliminar jugadores reales que vengan sin posición.
-    """
+def es_staff_o_no_jugador(nombre, texto=""):
     n = normalizar(nombre)
     t = normalizar(texto)
 
@@ -768,171 +712,13 @@ def es_staff_o_no_jugador(nombre, texto):
         "vincent kompany",
         "vitor castanheira",
         "vitor severino",
-        "zeki murat gole"
+        "zeki murat gole",
     }
 
     return n in nombres_staff_comunes
 
 
-def normalizar_posicion(pos):
-    p = normalizar(pos)
-
-    if not p:
-        return ""
-
-    if any(x in p for x in ["arquero", "portero", "goalkeeper"]):
-        return "Portero"
-
-    if any(x in p for x in ["defensa", "defensor", "defender", "centre back", "center back", "left back", "right back", "lateral"]):
-        return "Defensa"
-
-    if any(x in p for x in ["mediocampista", "medio", "volante", "midfielder"]):
-        return "Mediocampista"
-
-    if any(x in p for x in ["delantero", "forward", "striker", "extremo", "winger", "attacker"]):
-        return "Delantero"
-
-    return limpiar_texto(pos)
-
-
-
-def altura_a_cm(valor):
-    """
-    Convierte altura tipo "1.89" o "1,89" a 189.
-    Si ya viene como "189", devuelve 189.
-    """
-    raw = limpiar_texto(valor).replace(",", ".")
-
-    if not raw:
-        return ""
-
-    try:
-        n = float(raw)
-    except Exception:
-        return ""
-
-    if 1.0 <= n <= 2.5:
-        return int(round(n * 100))
-
-    if 100 <= n <= 250:
-        return int(round(n))
-
-    return ""
-
-
-def extraer_datos_desde_body_365(nombre, body_text):
-    """
-    Extrae datos visibles desde el perfil individual de 365Scores.
-    Ejemplo:
-    Franco Armani (Argentina, 39) es un jugador...
-    39 años
-    16/10/1986
-    1.89
-    Altura
-    1
-    Dorsal
-    """
-    body = limpiar_texto(body_text)
-    datos = {
-        "pais": "",
-        "edad": "",
-        "fecha_nacimiento": "",
-        "altura": "",
-        "numero": "",
-        "competicion": "",
-        "fin_contrato": "",
-    }
-
-    # País y edad desde la frase principal.
-    # Franco Armani (Argentina, 39) ...
-    patron = re.escape(nombre) + r"\s*\(([^,()]+),\s*(\d{1,2})\)"
-    m = re.search(patron, body, re.I)
-
-    if not m:
-        m = re.search(r"\(([^,()]+),\s*(\d{1,2})\)\s+es un jugador", body, re.I)
-
-    if m:
-        datos["pais"] = limpiar_texto(m.group(1))
-        datos["edad"] = limpiar_texto(m.group(2))
-
-    # Fecha nacimiento.
-    m = re.search(r"\b(\d{1,2}/\d{1,2}/\d{4})\b", body)
-    if m:
-        datos["fecha_nacimiento"] = m.group(1)
-
-    # Edad desde bloque de detalles.
-    if not datos["edad"]:
-        m = re.search(r"\b(\d{1,2})\s+años\b", body, re.I)
-        if m:
-            datos["edad"] = m.group(1)
-
-    # Altura: suele aparecer como "1.89 Altura".
-    m = re.search(r"\b([12][,.]\d{2})\s+Altura\b", body, re.I)
-    if m:
-        datos["altura"] = altura_a_cm(m.group(1))
-
-    # Dorsal: suele aparecer como "1 Dorsal".
-    m = re.search(r"\b(\d{1,3})\s+Dorsal\b", body, re.I)
-    if m:
-        datos["numero"] = m.group(1)
-
-    # Fin de contrato: "Fin del contrato 31/12/2026".
-    m = re.search(r"Fin del contrato\s+(\d{1,2}/\d{1,2}/\d{4})", body, re.I)
-    if m:
-        datos["fin_contrato"] = m.group(1)
-
-    # Competición principal: primera competición que aparece en estadísticas.
-    # Evita usar "365Scores" como liga.
-    posibles_ligas = [
-        "Liga Profesional Argentina",
-        "Premier League",
-        "LaLiga",
-        "Serie A",
-        "Bundesliga",
-        "Ligue 1",
-        "Brasileirão",
-        "MLS",
-        "Liga MX",
-        "Eredivisie",
-        "Primeira Liga",
-        "CONMEBOL Copa Libertadores",
-        "CONMEBOL Copa Sudamericana",
-        "UEFA Champions League",
-        "UEFA Europa League",
-        "Copa Argentina",
-        "Copa del Rey",
-        "Coppa Italia",
-        "DFB-Pokal",
-    ]
-
-    for liga in posibles_ligas:
-        if liga.lower() in body.lower():
-            datos["competicion"] = liga
-            break
-
-    return datos
-
-
-def tiene_datos_completos(player):
-    """
-    Sirve para ahorrar tiempo en siguientes corridas.
-    Pero solo cuenta como completo si la imagen existe físicamente en la carpeta.
-    Si borraste imagenes_jugadores_365, fuerza a descargar de nuevo.
-    """
-    return bool(
-        player.get("imagen")
-        and imagen_local_existe(player.get("imagen"))
-        and player.get("pais")
-        and player.get("posicion")
-        and player.get("edad")
-        and player.get("altura")
-    )
-
-
 def cargar_jugadores_existentes():
-    """
-    Lee el JSON actual del juego para reutilizar datos ya cargados.
-    """
     if not GAME_JSON.exists():
         return {}
 
@@ -950,47 +736,402 @@ def cargar_jugadores_existentes():
         if not isinstance(j, dict):
             continue
 
-        key = f"{normalizar(j.get('club'))}|{normalizar(j.get('nombre'))}|{j.get('id', '')}"
-        existentes[key] = j
+        keys = [
+            f"api:{j.get('api_football_id', '')}",
+            f"{normalizar(j.get('club'))}|{normalizar(j.get('nombre'))}",
+        ]
 
-        key_sin_id = f"{normalizar(j.get('club'))}|{normalizar(j.get('nombre'))}|"
-        existentes[key_sin_id] = j
+        for key in keys:
+            if key.strip() and not key.endswith(":"):
+                existentes[key] = j
 
     return existentes
 
 
 def buscar_jugador_existente(jugador, existentes):
-    key = f"{normalizar(jugador.get('club'))}|{normalizar(jugador.get('nombre'))}|{jugador.get('id', '')}"
-    key_sin_id = f"{normalizar(jugador.get('club'))}|{normalizar(jugador.get('nombre'))}|"
+    keys = [
+        f"api:{jugador.get('api_football_id', '')}",
+        f"{normalizar(jugador.get('club'))}|{normalizar(jugador.get('nombre'))}",
+    ]
 
-    return existentes.get(key) or existentes.get(key_sin_id) or None
+    for key in keys:
+        if key in existentes:
+            return existentes[key]
+
+    return None
 
 
+def extraer_athlete_id_desde_imagen(url):
+    if not url:
+        return ""
+
+    match = re.search(r"/Athletes/(\d+)", str(url), re.I)
+    return match.group(1) if match else ""
 
 
-def equipo_url_valida_por_pagina(equipo_nombre, page_text):
-    """
-    Validación suave para evitar guardar jugadores de un equipo con nombre equivocado
-    cuando una URL de 365Scores apunta a otro club.
-    """
-    equipo = normalizar(equipo_nombre)
-    texto = normalizar(page_text)
+def extraer_athlete_version_desde_imagen(url):
+    if not url:
+        return "v1"
 
-    if not equipo or not texto:
-        return True
+    match = re.search(r"/(v\d+)/Athletes/\d+", str(url), re.I)
+    return match.group(1) if match else "v1"
 
-    alias = {
-        "independiente": ["independiente"],
-        "boca juniors": ["boca juniors", "boca"],
-        "river plate": ["river plate", "river"],
-        "racing club": ["racing club", "racing"],
-        "san lorenzo": ["san lorenzo"],
+
+def imagen_365_alta_calidad(url):
+    athlete_id = extraer_athlete_id_desde_imagen(url)
+
+    if not athlete_id:
+        return url or ""
+
+    version = extraer_athlete_version_desde_imagen(url)
+
+    return (
+        "https://imagecache.365scores.com/image/upload/"
+        "f_png,w_400,h_400,c_limit,q_auto:best,dpr_2,"
+        "d_Athletes:default.png,r_max,c_thumb,g_face,z_0.65/"
+        f"{version}/Athletes/{athlete_id}"
+    )
+
+
+def es_url_imagen_valida_365(url):
+    if not url:
+        return False
+
+    low = url.lower()
+
+    if "athletes/" not in low:
+        return False
+
+    basura = [
+        "/website/",
+        "appstore",
+        "googleplay",
+        "badge",
+        "store",
+        "favicon",
+    ]
+
+    if any(x in low for x in basura):
+        return False
+
+    return True
+
+
+def extension_desde_url(url):
+    url_limpia = str(url or "").split("?")[0].lower()
+
+    for ext in [".png", ".jpg", ".jpeg", ".webp", ".avif"]:
+        if url_limpia.endswith(ext):
+            return ext.replace(".jpeg", ".jpg")
+
+    return ".png"
+
+
+def imagen_local_existe(ruta_imagen):
+    ruta = str(ruta_imagen or "").replace("\\", "/").strip()
+
+    if not ruta:
+        return False
+
+    nombre_archivo = ruta.split("/")[-1]
+
+    if not nombre_archivo:
+        return False
+
+    path = GAME_IMAGES_DIR / nombre_archivo
+
+    return path.exists() and path.is_file() and path.stat().st_size > 0
+
+
+def buscar_imagen_existente(nombre_archivo):
+    extensiones = [".png", ".jpg", ".jpeg", ".webp", ".avif"]
+
+    for ext in extensiones:
+        game_path = GAME_IMAGES_DIR / f"{nombre_archivo}{ext}"
+
+        if game_path.exists() and game_path.stat().st_size > 0:
+            return f"imagenes_jugadores_365/{nombre_archivo}{ext}"
+
+    return ""
+
+
+def descargar_imagen_365(url, nombre_archivo):
+    existente = buscar_imagen_existente(nombre_archivo)
+
+    if existente:
+        print(f"♻️ Imagen ya cargada, omito descarga: {existente}")
+        return existente
+
+    url = imagen_365_alta_calidad(url)
+
+    if not es_url_imagen_valida_365(url):
+        return ""
+
+    ext = extension_desde_url(url)
+    game_path = GAME_IMAGES_DIR / f"{nombre_archivo}{ext}"
+    rel_game_path = f"imagenes_jugadores_365/{nombre_archivo}{ext}"
+
+    try:
+        r = requests.get(url, headers=HEADERS_365, timeout=30)
+        print(f"🖼️ {r.status_code} imagen 365Scores {url}")
+
+        if not r.ok:
+            return ""
+
+        content_type = r.headers.get("content-type", "").lower()
+
+        if "image" not in content_type:
+            return ""
+
+        game_path.write_bytes(r.content)
+
+        return rel_game_path
+
+    except Exception as e:
+        print(f"❌ Error descargando imagen 365Scores {url}: {e}")
+        return ""
+
+
+def api_football_get(endpoint, params=None):
+    params = params or {}
+
+    if not API_FOOTBALL_KEY:
+        print("❌ Falta API_FOOTBALL_KEY.")
+        return None
+
+    url = API_FOOTBALL_BASE_URL.rstrip("/") + endpoint
+
+    try:
+        time.sleep(API_FOOTBALL_DELAY)
+
+        r = requests.get(
+            url,
+            headers=API_FOOTBALL_HEADERS,
+            params={k: v for k, v in params.items() if v not in [None, ""]},
+            timeout=40,
+        )
+
+        if r.status_code == 429:
+            print("⚠️ API-Football: límite de requests alcanzado.")
+            return None
+
+        if not r.ok:
+            print(f"⚠️ API-Football HTTP {r.status_code}: {r.text[:300]}")
+            return None
+
+        data = r.json()
+        errores = data.get("errors") or {}
+
+        if errores:
+            print(f"⚠️ API-Football errores: {errores}")
+
+        return data
+
+    except Exception as e:
+        print(f"⚠️ Error consultando API-Football {endpoint}: {e}")
+        return None
+
+
+def obtener_api_team_id_desde_equipo(equipo):
+    for key in ["api_football_team_id", "api_team_id", "team_id", "api_id"]:
+        valor = equipo.get(key)
+
+        if valor:
+            try:
+                return int(valor)
+            except Exception:
+                pass
+
+    nombre = obtener_nombre_equipo(equipo)
+    n = normalizar(nombre)
+
+    if n in API_FOOTBALL_TEAM_IDS:
+        return API_FOOTBALL_TEAM_IDS[n]
+
+    data = api_football_get("/teams", {"search": nombre})
+
+    if not data:
+        return ""
+
+    response = data.get("response") or []
+
+    if not response:
+        print(f"⚠️ API-Football no encontró team_id para: {nombre}")
+        return ""
+
+    for item in response:
+        team = item.get("team") or {}
+
+        if normalizar(team.get("name")) == n:
+            team_id = team.get("id")
+
+            if team_id:
+                print(f"🔎 API-Football team_id exacto: {nombre} -> {team_id}")
+                return int(team_id)
+
+    team = response[0].get("team") or {}
+    team_id = team.get("id")
+
+    if team_id:
+        print(f"🔎 API-Football team_id aproximado: {nombre} -> {team.get('name')} ({team_id})")
+        return int(team_id)
+
+    return ""
+
+
+def jugador_api_a_json(item, equipo_nombre="", equipo_liga=""):
+    player = item.get("player") or {}
+    stats = item.get("statistics") or []
+    stat = stats[0] if stats else {}
+
+    team = stat.get("team") or {}
+    league = stat.get("league") or {}
+    games = stat.get("games") or {}
+
+    player_id = player.get("id") or ""
+    api_nombre = limpiar_texto(player.get("name"))
+    firstname = limpiar_texto(player.get("firstname"))
+    lastname = limpiar_texto(player.get("lastname"))
+    nombre_completo = limpiar_texto(f"{firstname} {lastname}") if firstname or lastname else api_nombre
+
+    club = limpiar_texto(team.get("name") or equipo_nombre)
+    club_id = team.get("id") or ""
+
+    competicion = limpiar_competicion(league.get("name") or equipo_liga)
+    posicion = normalizar_posicion(games.get("position") or "")
+    numero = games.get("number")
+    numero = str(numero) if numero not in [None, ""] else ""
+
+    birth = player.get("birth") or {}
+
+    pais = limpiar_texto(player.get("nationality") or birth.get("country"))
+    edad = player.get("age")
+    edad = str(edad) if edad not in [None, ""] else ""
+
+    fecha_nacimiento = fecha_api_a_ddmmyyyy(birth.get("date") or "")
+    altura = altura_a_cm(player.get("height") or "")
+
+    return {
+        "id": str(player_id),
+        "api_football_id": str(player_id),
+        "nombre": api_nombre,
+        "nombre_completo": nombre_completo,
+        "firstname": firstname,
+        "lastname": lastname,
+        "club": club,
+        "club_id": str(club_id),
+        "api_football_team_id": str(club_id),
+        "pais": pais,
+        "posicion": posicion,
+        "competicion": competicion,
+        "numero": numero,
+        "edad": edad,
+        "fecha_nacimiento": fecha_nacimiento,
+        "altura": altura,
+        "fin_contrato": "",
+        "imagen": "",
+        "imagen_url": "",
+        "url_365scores": "",
+        "fuente": FUENTE,
     }
 
-    opciones = alias.get(equipo, [equipo])
 
-    return any(op in texto for op in opciones)
+def obtener_jugadores_api_football(equipo):
+    equipo_nombre = obtener_nombre_equipo(equipo)
+    equipo_liga = obtener_liga_equipo(equipo)
+    team_id = obtener_api_team_id_desde_equipo(equipo)
 
+    if not team_id:
+        print(f"⚠️ Sin team_id de API-Football para {equipo_nombre}. No se pueden traer datos.")
+        return []
+
+    league_id = obtener_api_league_id(equipo_liga)
+
+    print(f"\n🌍 API-Football datos: {equipo_nombre} | team={team_id} | league={league_id or 'auto'} | season={API_FOOTBALL_SEASON}")
+
+    jugadores = []
+    page = 1
+    total_pages = 1
+
+    while page <= total_pages:
+        params = {
+            "team": team_id,
+            "season": API_FOOTBALL_SEASON,
+            "page": page,
+        }
+
+        if league_id:
+            params["league"] = league_id
+
+        data = api_football_get("/players", params)
+
+        if not data:
+            break
+
+        paging = data.get("paging") or {}
+        total_pages = int(paging.get("total") or 1)
+
+        response = data.get("response") or []
+
+        for item in response:
+            jugador = jugador_api_a_json(item, equipo_nombre, equipo_liga)
+
+            if jugador.get("nombre"):
+                jugadores.append(jugador)
+
+        print(f"📘 API-Football {equipo_nombre}: página {page}/{total_pages}, jugadores acumulados {len(jugadores)}")
+
+        page += 1
+
+    if not jugadores and league_id:
+        print(f"↪️ API-Football: reintento sin league para {equipo_nombre}")
+
+        page = 1
+        total_pages = 1
+
+        while page <= total_pages:
+            data = api_football_get("/players", {
+                "team": team_id,
+                "season": API_FOOTBALL_SEASON,
+                "page": page,
+            })
+
+            if not data:
+                break
+
+            paging = data.get("paging") or {}
+            total_pages = int(paging.get("total") or 1)
+
+            response = data.get("response") or []
+
+            for item in response:
+                jugador = jugador_api_a_json(item, equipo_nombre, equipo_liga)
+
+                if jugador.get("nombre"):
+                    jugadores.append(jugador)
+
+            print(f"📘 API-Football {equipo_nombre} sin league: página {page}/{total_pages}, jugadores acumulados {len(jugadores)}")
+
+            page += 1
+
+    salida = []
+    vistos = set()
+
+    for j in jugadores:
+        key = j.get("api_football_id") or f"{normalizar(j.get('club'))}|{normalizar(j.get('nombre'))}"
+
+        if key in vistos:
+            continue
+
+        vistos.add(key)
+
+        if es_staff_o_no_jugador(j.get("nombre", ""), f"{j.get('nombre')} {j.get('posicion')}"):
+            print(f"🚫 Staff descartado desde API: {j.get('nombre')} ({j.get('club')})")
+            continue
+
+        salida.append(j)
+
+    return salida
 
 
 async def cerrar_cookies_o_popups(page):
@@ -1001,12 +1142,13 @@ async def cerrar_cookies_o_popups(page):
         "Accept",
         "Accept all",
         "OK",
-        "Entendido"
+        "Entendido",
     ]
 
     for texto in textos:
         try:
             btn = page.get_by_role("button", name=re.compile(texto, re.I))
+
             if await btn.count() > 0:
                 await btn.first.click(timeout=1500)
                 await page.wait_for_timeout(700)
@@ -1019,279 +1161,58 @@ async def hacer_scroll(page):
     for y in [0, 700, 1400, 2300, 3400, 4600, 6000, 7600, 9500, 12000]:
         try:
             await page.evaluate(f"window.scrollTo(0, {y})")
-            await page.wait_for_timeout(550)
+            await page.wait_for_timeout(500)
         except Exception:
             pass
 
 
-async def extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url, equipo_liga=''):
-    equipo_id = sacar_equipo_id_desde_url(equipo_url)
-
-    jugadores = await page.evaluate(
-        """
-        ({ equipoNombre, equipoId }) => {
-            const BASE = location.origin;
-            const anchors = Array.from(document.querySelectorAll('a[href*="/football/player/"]'));
-            const map = new Map();
-
-            function clean(s) {
-                return String(s || "").replace(/\\s+/g, " ").trim();
-            }
-
-            function playerIdFromHref(href) {
-                const m = href.match(/-(\\d+)(?:\\?|#|$)/);
-                return m ? m[1] : href;
-            }
-
-            function getImgSrc(img) {
-                if (!img) return "";
-                if (img.currentSrc) return img.currentSrc;
-                if (img.src) return img.src;
-                if (img.getAttribute("data-src")) return img.getAttribute("data-src");
-
-                const srcset = img.getAttribute("srcset");
-                if (srcset) {
-                    const parts = srcset
-                        .split(",")
-                        .map(x => x.trim().split(" ")[0])
-                        .filter(Boolean);
-
-                    if (parts.length) return parts[parts.length - 1];
-                }
-
-                return "";
-            }
-
-            function hasPlayerImage(src) {
-                const low = String(src || "").toLowerCase();
-                return low.includes("athletes/");
-            }
-
-            function getBestCard(a) {
-                let card = a;
-
-                for (let i = 0; i < 8; i++) {
-                    if (!card.parentElement) break;
-
-                    const next = card.parentElement;
-                    const links = next.querySelectorAll('a[href*="/football/player/"]').length;
-                    const txt = clean(next.innerText || next.textContent || "");
-
-                    if (links === 1 && txt.length >= 2 && txt.length <= 260) {
-                        card = next;
-                    } else if (links > 1) {
-                        break;
-                    } else {
-                        card = next;
-                    }
-                }
-
-                return card;
-            }
-
-            function guessName(a, card) {
-                const img = a.querySelector("img") || card.querySelector("img");
-
-                if (img && clean(img.alt)) {
-                    return clean(img.alt);
-                }
-
-                const aria = clean(a.getAttribute("aria-label"));
-                if (aria) return aria;
-
-                const text = clean(a.innerText || a.textContent || "");
-                if (!text) return "";
-
-                const parts = text
-                    .split(/\\n|\\r|\\t|•|·/)
-                    .map(clean)
-                    .filter(Boolean);
-
-                if (parts.length) return parts[0];
-
-                return text;
-            }
-
-            function guessPosition(cardText, sectionText) {
-                const source = `${sectionText} ${cardText}`.toLowerCase();
-
-                const checks = [
-                    ["Portero", ["portero", "arquero", "goalkeeper"]],
-                    ["Defensa", ["defensa", "defensor", "defender", "centre back", "center back", "left back", "right back", "lateral"]],
-                    ["Mediocampista", ["mediocampista", "medio", "volante", "midfielder"]],
-                    ["Delantero", ["delantero", "forward", "striker", "extremo", "winger", "attacker"]]
-                ];
-
-                for (const [label, words] of checks) {
-                    if (words.some(w => source.includes(w))) return label;
-                }
-
-                return "";
-            }
-
-            function findSectionText(card) {
-                let node = card;
-
-                for (let up = 0; up < 6; up++) {
-                    if (!node || !node.parentElement) break;
-
-                    const parent = node.parentElement;
-                    const children = Array.from(parent.children);
-                    const idx = children.indexOf(node);
-
-                    for (let i = idx - 1; i >= Math.max(0, idx - 8); i--) {
-                        const txt = clean(children[i].innerText || children[i].textContent || "");
-                        const low = txt.toLowerCase();
-
-                        if (
-                            low.includes("portero") ||
-                            low.includes("arquero") ||
-                            low.includes("defensa") ||
-                            low.includes("defensor") ||
-                            low.includes("mediocampista") ||
-                            low.includes("delantero") ||
-                            low.includes("plantilla")
-                        ) {
-                            return txt;
-                        }
-                    }
-
-                    node = parent;
-                }
-
-                return "";
-            }
-
-            function guessNumber(cardText) {
-                const lines = String(cardText || "")
-                    .split(/\\n|\\r|\\t/)
-                    .map(clean)
-                    .filter(Boolean);
-
-                for (const line of lines) {
-                    if (/^#?\\d{1,2}$/.test(line)) {
-                        return line.replace("#", "");
-                    }
-                }
-
-                return "";
-            }
-
-            for (const a of anchors) {
-                const hrefRaw = a.getAttribute("href");
-                if (!hrefRaw) continue;
-
-                const href = new URL(hrefRaw, BASE).href;
-                const id = playerIdFromHref(href);
-
-                const card = getBestCard(a);
-                const cardText = clean(card.innerText || card.textContent || "");
-
-                const name = guessName(a, card);
-
-                if (!name || name.length < 2 || name.length > 70) continue;
-
-                const img = a.querySelector("img") || card.querySelector("img");
-                const imgSrc = getImgSrc(img);
-
-                const sectionText = findSectionText(card);
-                const posicion = guessPosition(cardText, sectionText);
-                const numero = guessNumber(cardText);
-
-                if (!map.has(id)) {
-                    map.set(id, {
-                        id,
-                        nombre: name,
-                        club: equipoNombre,
-                        club_id: equipoId,
-                        numero,
-                        posicion,
-                        pais: "",
-                        edad: "",
-                        imagen_url_plantel: imgSrc,
-                        imagen_url: hasPlayerImage(imgSrc) ? imgSrc : "",
-                        imagen: "",
-                        url_365scores: href,
-                        texto_detectado: cardText,
-                        seccion_detectada: sectionText
-                    });
-                }
-            }
-
-            return Array.from(map.values());
-        }
-        """,
-        {
-            "equipoNombre": equipo_nombre,
-            "equipoId": equipo_id
-        }
-    )
-
-    salida = []
-
-    for j in jugadores:
-        nombre = limpiar_texto(j.get("nombre"))
-        texto = limpiar_texto(j.get("texto_detectado"))
-        posicion = normalizar_posicion(j.get("posicion"))
-
-        if not nombre:
-            continue
-
-        if es_staff_o_no_jugador(nombre, texto):
-            print(f"🚫 Staff descartado: {nombre} ({equipo_nombre})")
-            continue
-
-        salida.append({
-            "id": str(j.get("id") or ""),
-            "nombre": nombre,
-            "club": equipo_nombre,
-            "club_id": str(j.get("club_id") or equipo_id),
-            "numero": limpiar_texto(j.get("numero")),
-            "posicion": posicion,
-            "pais": "",
-            "edad": "",
-            "fecha_nacimiento": "",
-            "altura": "",
-            "fin_contrato": "",
-            "competicion": equipo_liga,
-            "imagen_url": imagen_365_alta_calidad(j.get("imagen_url") or ""),
-            "imagen": "",
-            "url_365scores": j.get("url_365scores") or "",
-            "fuente": FUENTE,
-        })
-
-    return salida
-
-
-async def extraer_detalle_jugador(context, jugador):
+async def obtener_imagenes_365_equipo(context, equipo):
     """
-    Entra al perfil individual de 365Scores para completar:
-    país, edad, fecha de nacimiento, altura, dorsal, competición, contrato e imagen.
+    Solo abre 365Scores para extraer:
+    - nombre detectado
+    - imagen_url
+    - url_365scores
+
+    NO usa país, edad, altura, dorsal, posición ni competición de 365Scores.
     """
-    if not jugador.get("url_365scores"):
-        return jugador
+    equipo_nombre = obtener_nombre_equipo(equipo)
+    url_365 = obtener_url_365_equipo(equipo)
+
+    if not url_365:
+        print(f"⚠️ {equipo_nombre}: sin URL 365Scores para imágenes.")
+        return {}
 
     page = await context.new_page()
 
     try:
-        await page.goto(jugador["url_365scores"], wait_until="domcontentloaded", timeout=60000)
-        await page.wait_for_timeout(1700)
-        await cerrar_cookies_o_popups(page)
+        print(f"🖼️ 365Scores imágenes: {equipo_nombre}")
+        print(f"🔗 URL: {url_365}")
 
-        data = await page.evaluate(
+        await page.goto(url_365, wait_until="domcontentloaded", timeout=60000)
+        await page.wait_for_timeout(3500)
+        await cerrar_cookies_o_popups(page)
+        await hacer_scroll(page)
+
+        imagenes = await page.evaluate(
             """
             () => {
+                const BASE = location.origin;
+                const anchors = Array.from(document.querySelectorAll('a[href*="/football/player/"]'));
+                const map = new Map();
+
                 function clean(s) {
                     return String(s || "").replace(/\\s+/g, " ").trim();
                 }
 
-                function getBestSrc(img) {
+                function getImgSrc(img) {
                     if (!img) return "";
+
                     if (img.currentSrc) return img.currentSrc;
                     if (img.src) return img.src;
                     if (img.getAttribute("data-src")) return img.getAttribute("data-src");
 
                     const srcset = img.getAttribute("srcset");
+
                     if (srcset) {
                         const parts = srcset
                             .split(",")
@@ -1304,252 +1225,185 @@ async def extraer_detalle_jugador(context, jugador):
                     return "";
                 }
 
-                const nombre = clean(document.querySelector("h1")?.innerText || "");
-                const bodyText = clean(document.body.innerText || "");
+                function getBestCard(a) {
+                    let card = a;
 
-                let posicion = "";
+                    for (let i = 0; i < 8; i++) {
+                        if (!card.parentElement) break;
 
-                const h1 = document.querySelector("h1");
-                if (h1) {
-                    let node = h1;
-                    for (let i = 0; i < 5; i++) {
-                        if (!node.parentElement) break;
-                        node = node.parentElement;
-                        const txt = clean(node.innerText || node.textContent || "");
-                        const low = txt.toLowerCase();
+                        const next = card.parentElement;
+                        const links = next.querySelectorAll('a[href*="/football/player/"]').length;
+                        const txt = clean(next.innerText || next.textContent || "");
 
-                        if (low.includes("portero")) posicion = "Portero";
-                        else if (low.includes("defensa") || low.includes("defensor")) posicion = "Defensa";
-                        else if (low.includes("mediocampista") || low.includes("medio")) posicion = "Mediocampista";
-                        else if (low.includes("delantero") || low.includes("extremo")) posicion = "Delantero";
+                        if (links === 1 && txt.length >= 2 && txt.length <= 260) {
+                            card = next;
+                        } else if (links > 1) {
+                            break;
+                        } else {
+                            card = next;
+                        }
+                    }
 
-                        if (posicion) break;
+                    return card;
+                }
+
+                function guessName(a, card) {
+                    const img = a.querySelector("img") || card.querySelector("img");
+
+                    if (img && clean(img.alt)) {
+                        return clean(img.alt);
+                    }
+
+                    const aria = clean(a.getAttribute("aria-label"));
+                    if (aria) return aria;
+
+                    const text = clean(a.innerText || a.textContent || "");
+                    if (!text) return "";
+
+                    const parts = text
+                        .split(/\\n|\\r|\\t|•|·/)
+                        .map(clean)
+                        .filter(Boolean);
+
+                    if (parts.length) return parts[0];
+
+                    return text;
+                }
+
+                for (const a of anchors) {
+                    const hrefRaw = a.getAttribute("href");
+                    if (!hrefRaw) continue;
+
+                    const href = new URL(hrefRaw, BASE).href;
+                    const card = getBestCard(a);
+                    const name = guessName(a, card);
+
+                    if (!name || name.length < 2 || name.length > 70) continue;
+
+                    const img = a.querySelector("img") || card.querySelector("img");
+                    const imgSrc = getImgSrc(img);
+
+                    if (!imgSrc || !String(imgSrc).toLowerCase().includes("athletes/")) continue;
+
+                    if (!map.has(name)) {
+                        map.set(name, {
+                            nombre: name,
+                            imagen_url: imgSrc,
+                            url_365scores: href
+                        });
                     }
                 }
 
-                const imgs = Array.from(document.querySelectorAll("img"))
-                    .map(img => ({
-                        src: getBestSrc(img),
-                        alt: clean(img.alt || ""),
-                        width: img.naturalWidth || img.width || 0,
-                        height: img.naturalHeight || img.height || 0
-                    }))
-                    .filter(x => x.src);
-
-                return { nombre, posicion, bodyText, imgs };
+                return Array.from(map.values());
             }
             """
         )
 
-        nombre_real = limpiar_texto(data.get("nombre"))
+        index = {}
 
-        if nombre_real and 2 <= len(nombre_real) <= 70:
-            jugador["nombre"] = nombre_real
+        for item in imagenes:
+            nombre = limpiar_texto(item.get("nombre", ""))
+            imagen_url = imagen_365_alta_calidad(item.get("imagen_url", ""))
+            url_jugador = limpiar_texto(item.get("url_365scores", ""))
 
-        posicion = normalizar_posicion(data.get("posicion"))
-        if posicion:
-            jugador["posicion"] = posicion
+            if not nombre or not es_url_imagen_valida_365(imagen_url):
+                continue
 
-        detalles = extraer_datos_desde_body_365(jugador["nombre"], data.get("bodyText") or "")
+            index[normalizar(nombre)] = {
+                "nombre_365": nombre,
+                "imagen_url": imagen_url,
+                "url_365scores": url_jugador,
+            }
 
-        for campo in ["pais", "edad", "fecha_nacimiento", "altura", "numero", "fin_contrato"]:
-            if detalles.get(campo):
-                jugador[campo] = detalles[campo]
+        print(f"🖼️ Imágenes encontradas en 365Scores para {equipo_nombre}: {len(index)}")
 
-        detalle_competicion = limpiar_competicion(detalles.get("competicion", ""))
-        if detalle_competicion and not jugador.get("competicion"):
-            jugador["competicion"] = detalle_competicion
-
-        imgs = data.get("imgs") or []
-
-        if not jugador.get("imagen_url") or not es_url_imagen_valida_365(jugador["imagen_url"]):
-            for img in imgs:
-                src = img.get("src") or ""
-                if es_url_imagen_valida_365(src):
-                    jugador["imagen_url"] = src
-                    break
-
-        return jugador
+        return index
 
     except Exception as e:
-        print(f"⚠️ No se pudo completar detalle de {jugador.get('nombre')}: {e}")
-        return jugador
+        print(f"⚠️ No se pudieron obtener imágenes 365Scores de {equipo_nombre}: {e}")
+        return {}
 
     finally:
         await page.close()
 
 
-async def procesar_equipo(context, equipo, existentes):
-    equipo_nombre = obtener_nombre_equipo(equipo)
-    equipo_url = obtener_url_equipo(equipo)
-    equipo_liga = obtener_liga_equipo(equipo)
+def buscar_imagen_365_para_jugador(jugador, index_imagenes):
+    if not index_imagenes:
+        return None
 
-    if not equipo_url:
-        print(f"⚠️ Equipo sin URL: {equipo_nombre}")
-        print(f"   Objeto recibido: {json.dumps(equipo, ensure_ascii=False)}")
-        return []
+    nombres = [
+        jugador.get("nombre", ""),
+        jugador.get("nombre_completo", ""),
+        f"{jugador.get('firstname', '')} {jugador.get('lastname', '')}",
+    ]
 
-    page = await context.new_page()
+    for nombre in nombres:
+        key = normalizar(nombre)
 
-    try:
-        print(f"\n🌐 Abriendo plantilla: {equipo_nombre}")
-        print(f"🔗 URL: {equipo_url}")
+        if key and key in index_imagenes:
+            return index_imagenes[key]
 
-        await page.goto(equipo_url, wait_until="domcontentloaded", timeout=60000)
-        await page.wait_for_timeout(3500)
-        await cerrar_cookies_o_popups(page)
-        await hacer_scroll(page)
+    n_jugador = normalizar(jugador.get("nombre", ""))
 
-        page_text = await page.evaluate("document.body.innerText || ''")
+    if not n_jugador:
+        return None
 
-        if not equipo_url_valida_por_pagina(equipo_nombre, page_text):
-            print(f"🚫 URL descartada: parece no corresponder a {equipo_nombre}")
-            print(f"🔗 URL problemática: {equipo_url}")
-            jugadores = []
-        else:
-            jugadores = await extraer_jugadores_del_plantel(page, equipo_nombre, equipo_url, equipo_liga)
-
-        print(f"📦 Jugadores encontrados en {equipo_nombre}: {len(jugadores)}")
-
-    except Exception as e:
-        print(f"❌ Error abriendo {equipo_nombre}: {e}")
-        jugadores = []
-
-    finally:
-        await page.close()
-
-    resultados = []
-
-    for i, jugador in enumerate(jugadores, start=1):
-        print(f"[{i}/{len(jugadores)}] ⚽ {jugador['nombre']} - {equipo_nombre}")
-
-        nombre_archivo = f"{slugify(jugador['club'])}-{slugify(jugador['nombre'])}-{jugador['id']}"
-        imagen_existente = buscar_imagen_existente(nombre_archivo)
-        jugador_existente = buscar_jugador_existente(jugador, existentes)
-
-        if jugador_existente and tiene_datos_completos(jugador_existente):
-            liga_equipo_actual = equipo_liga or obtener_liga_por_club(jugador.get("club", ""))
-            posicion_actual = jugador.get("posicion", "")
-
-            jugador.update(jugador_existente)
-
-            if liga_equipo_actual:
-                jugador["competicion"] = liga_equipo_actual
-            elif not limpiar_competicion(jugador.get("competicion", "")):
-                jugador["competicion"] = ""
-
-            if not jugador.get("posicion") and posicion_actual:
-                jugador["posicion"] = posicion_actual
-
-            print(f"♻️ Jugador ya cargado con datos e imagen real, omito perfil/descarga: {jugador['nombre']}")
-        else:
-            liga_equipo_actual = equipo_liga or obtener_liga_por_club(jugador.get("club", ""))
-
-            if liga_equipo_actual:
-                jugador["competicion"] = liga_equipo_actual
-            elif not limpiar_competicion(jugador.get("competicion", "")):
-                jugador["competicion"] = ""
-
-            if jugador.get("imagen") and not imagen_local_existe(jugador.get("imagen")):
-                jugador["imagen"] = ""
-
-            if imagen_existente:
-                jugador["imagen"] = imagen_existente
-
-            jugador = await extraer_detalle_jugador(context, jugador)
-
-            liga_equipo_actual = equipo_liga or obtener_liga_por_club(jugador.get("club", ""))
-
-            if liga_equipo_actual:
-                jugador["competicion"] = liga_equipo_actual
-            elif not limpiar_competicion(jugador.get("competicion", "")):
-                jugador["competicion"] = ""
-
-            if jugador.get("imagen") and not imagen_local_existe(jugador.get("imagen")):
-                jugador["imagen"] = ""
-
-            if imagen_existente:
-                jugador["imagen"] = imagen_existente
-                print(f"♻️ Imagen ya cargada, solo actualicé datos: {jugador['nombre']}")
-            elif jugador.get("imagen_url"):
-                jugador["imagen"] = descargar_imagen(jugador["imagen_url"], nombre_archivo)
-            else:
-                jugador["imagen"] = ""
-
-            await asyncio.sleep(0.25)
-
-        resultados.append(limpiar_jugador_para_juego(jugador))
-
-    return resultados
-
-def obtener_liga_por_club(club):
-    """
-    Liga final confiable según el club.
-    Evita errores cacheados como Seattle Sounders -> LaLiga.
-    """
-    return LIGAS_POR_EQUIPO_365.get(normalizar(club), "")
-
-
-
-def limpiar_dataset_final(jugadores):
-    """
-    Limpieza final:
-    - elimina entrenadores/staff claros
-    - fuerza liga correcta por club
-    - NO elimina jugadores reales sin posición; les pone "Sin dato"
-    """
-    salida = []
-
-    for j in jugadores:
-        nombre = j.get("nombre", "")
-        club = j.get("club", "")
-        posicion = normalizar_posicion(j.get("posicion", ""))
-
-        texto_staff = f"{nombre} {club} {j.get('posicion', '')} {j.get('competicion', '')}"
-
-        if es_staff_o_no_jugador(nombre, texto_staff):
-            print(f"🚫 Staff eliminado en limpieza final: {nombre} ({club})")
+    # Matching suave.
+    for key, datos in index_imagenes.items():
+        if not key:
             continue
 
-        liga_por_club = obtener_liga_por_club(club)
-        comp_actual = limpiar_competicion(j.get("competicion", ""))
+        if key == n_jugador:
+            return datos
 
-        j["competicion"] = liga_por_club or comp_actual
+        if len(key) >= 8 and len(n_jugador) >= 8:
+            if key in n_jugador or n_jugador in key:
+                return datos
 
-        if not posicion:
-            posicion = "Sin dato"
-            print(f"ℹ️ Jugador guardado sin posición detectada: {nombre} ({club})")
-
-        j["posicion"] = posicion
-
-        if str(j.get("edad", "")).strip() in ["0", "0.0"]:
-            j["edad"] = ""
-
-        if str(j.get("altura", "")).strip() in ["0", "0.0"]:
-            j["altura"] = ""
-
-        salida.append(j)
-
-    return salida
+    return None
 
 
-def limpiar_imagenes_alta_calidad_dataset(jugadores):
-    """
-    Asegura que las URLs de imagen guardadas queden en calidad alta.
-    No descarga nada acá; solo normaliza image_url para el JSON.
-    """
-    for j in jugadores:
-        if j.get("imagen_url"):
-            j["imagen_url"] = imagen_365_alta_calidad(j["imagen_url"])
-    return jugadores
+def limpiar_jugador_final(j):
+    club = j.get("club", "")
+    competicion = obtener_liga_por_club(club) or limpiar_competicion(j.get("competicion", ""))
+
+    posicion = normalizar_posicion(j.get("posicion", ""))
+
+    if not posicion:
+        posicion = "Sin dato"
+
+    edad = j.get("edad", "")
+    altura = j.get("altura", "")
+
+    if str(edad).strip() in ["0", "0.0"]:
+        edad = ""
+
+    if str(altura).strip() in ["0", "0.0"]:
+        altura = ""
+
+    return {
+        "id": str(j.get("id", "") or j.get("api_football_id", "")),
+        "api_football_id": str(j.get("api_football_id", "")),
+        "nombre": j.get("nombre", ""),
+        "club": club,
+        "club_id": str(j.get("club_id", "")),
+        "api_football_team_id": str(j.get("api_football_team_id", "")),
+        "pais": j.get("pais", ""),
+        "posicion": posicion,
+        "competicion": competicion,
+        "numero": j.get("numero", ""),
+        "edad": edad,
+        "fecha_nacimiento": j.get("fecha_nacimiento", ""),
+        "altura": altura,
+        "fin_contrato": j.get("fin_contrato", ""),
+        "imagen": j.get("imagen", ""),
+        "imagen_url": j.get("imagen_url", ""),
+        "url_365scores": j.get("url_365scores", ""),
+        "fuente": FUENTE,
+    }
 
 
 def limpiar_imagenes_huerfanas(jugadores):
-    """
-    Borra de juegos/adivinajugador/imagenes_jugadores_365/ las imágenes que
-    ya no están referenciadas por el JSON final. Esto limpia entrenadores/staff
-    y jugadores viejos que quedaron de corridas anteriores.
-    """
     if not GAME_IMAGES_DIR.exists():
         return
 
@@ -1561,8 +1415,6 @@ def limpiar_imagenes_huerfanas(jugadores):
         if not imagen:
             continue
 
-        # El JSON guarda rutas tipo:
-        # imagenes_jugadores_365/river-plate-franco-armani-11493.png
         nombre_archivo = imagen.split("/")[-1]
 
         if nombre_archivo:
@@ -1589,6 +1441,47 @@ def limpiar_imagenes_huerfanas(jugadores):
     print(f"🧹 Imágenes huérfanas eliminadas: {borradas}")
 
 
+async def procesar_equipo(context, equipo, existentes):
+    equipo_nombre = obtener_nombre_equipo(equipo)
+
+    jugadores_api = obtener_jugadores_api_football(equipo)
+
+    if not jugadores_api:
+        print(f"⚠️ {equipo_nombre}: no se obtuvieron jugadores desde API-Football.")
+        return []
+
+    index_imagenes_365 = await obtener_imagenes_365_equipo(context, equipo)
+
+    resultados = []
+
+    for i, jugador in enumerate(jugadores_api, start=1):
+        print(f"[{i}/{len(jugadores_api)}] ⚽ {jugador.get('nombre')} - {jugador.get('club')}")
+
+        existente = buscar_jugador_existente(jugador, existentes)
+
+        if existente and imagen_local_existe(existente.get("imagen", "")):
+            jugador["imagen"] = existente.get("imagen", "")
+            jugador["imagen_url"] = existente.get("imagen_url", "")
+            jugador["url_365scores"] = existente.get("url_365scores", "")
+            print(f"♻️ Imagen existente reutilizada: {jugador.get('nombre')}")
+        else:
+            img_365 = buscar_imagen_365_para_jugador(jugador, index_imagenes_365)
+
+            if img_365:
+                jugador["imagen_url"] = img_365.get("imagen_url", "")
+                jugador["url_365scores"] = img_365.get("url_365scores", "")
+
+                nombre_archivo = f"{slugify(jugador.get('club'))}-{slugify(jugador.get('nombre'))}-{jugador.get('api_football_id')}"
+                jugador["imagen"] = descargar_imagen_365(jugador["imagen_url"], nombre_archivo)
+            else:
+                jugador["imagen"] = ""
+                jugador["imagen_url"] = ""
+                jugador["url_365scores"] = ""
+                print(f"⚠️ Sin imagen 365Scores para: {jugador.get('nombre')} ({jugador.get('club')})")
+
+        resultados.append(limpiar_jugador_final(jugador))
+
+    return resultados
 
 
 def deduplicar_jugadores(jugadores):
@@ -1596,9 +1489,11 @@ def deduplicar_jugadores(jugadores):
     salida = []
 
     for j in jugadores:
-        key = f"{normalizar(j.get('club'))}|{normalizar(j.get('nombre'))}|{j.get('id')}"
+        key = j.get("api_football_id") or f"{normalizar(j.get('club'))}|{normalizar(j.get('nombre'))}"
+
         if key in vistos:
             continue
+
         vistos.add(key)
         salida.append(j)
 
@@ -1609,11 +1504,20 @@ async def main():
     asegurar_carpetas()
 
     equipos = cargar_equipos()
+    blacklist = cargar_blacklist_jugadores()
     existentes = cargar_jugadores_existentes()
-    imagenes_existentes_reales = sum(1 for j in existentes.values() if imagen_local_existe(j.get("imagen", "")))
+
+    imagenes_existentes_reales = sum(
+        1 for j in existentes.values()
+        if imagen_local_existe(j.get("imagen", ""))
+    )
+
     print(f"📋 Equipos cargados: {len(equipos)}")
+    print(f"🚫 Blacklist cargada: {len(blacklist)}")
     print(f"♻️ Jugadores existentes en JSON del juego: {len(existentes)}")
     print(f"🖼️ Imágenes físicas existentes detectadas: {imagenes_existentes_reales}")
+    print(f"🌍 API-Football season: {API_FOOTBALL_SEASON}")
+    print("✅ Modo activo: datos solo desde API-Football, imágenes solo desde 365Scores.")
 
     todos_los_jugadores = []
 
@@ -1625,11 +1529,11 @@ async def main():
                 "--no-sandbox",
                 "--disable-dev-shm-usage",
                 "--disable-gpu",
-            ]
+            ],
         )
 
         context = await browser.new_context(
-            user_agent=HEADERS["User-Agent"],
+            user_agent=HEADERS_365["User-Agent"],
             viewport={"width": 1366, "height": 900},
             locale="es-ES",
         )
@@ -1640,12 +1544,12 @@ async def main():
 
         await browser.close()
 
-    todos_los_jugadores = limpiar_imagenes_alta_calidad_dataset(limpiar_dataset_final(deduplicar_jugadores(todos_los_jugadores)))
+    todos_los_jugadores = deduplicar_jugadores(todos_los_jugadores)
     todos_los_jugadores = aplicar_blacklist_jugadores(todos_los_jugadores, blacklist)
 
     OUTPUT_JSON.write_text(
         json.dumps(todos_los_jugadores, ensure_ascii=False, indent=2),
-        encoding="utf-8"
+        encoding="utf-8",
     )
 
     simple = [
@@ -1658,22 +1562,22 @@ async def main():
             "fecha_nacimiento": j.get("fecha_nacimiento", ""),
             "altura": j.get("altura", ""),
             "numero": j.get("numero", ""),
-            "competicion": obtener_liga_por_club(j.get("club", "")) or limpiar_competicion(j.get("competicion", "")),
+            "competicion": j.get("competicion", ""),
             "fin_contrato": j.get("fin_contrato", ""),
             "imagen": j.get("imagen", ""),
-            "fuente": FUENTE
+            "fuente": FUENTE,
         }
         for j in todos_los_jugadores
     ]
 
     OUTPUT_SIMPLE_JSON.write_text(
         json.dumps(simple, ensure_ascii=False, indent=2),
-        encoding="utf-8"
+        encoding="utf-8",
     )
 
     GAME_JSON.write_text(
         json.dumps(simple, ensure_ascii=False, indent=2),
-        encoding="utf-8"
+        encoding="utf-8",
     )
 
     limpiar_imagenes_huerfanas(simple)
@@ -1681,14 +1585,23 @@ async def main():
     con_imagen = sum(1 for j in simple if j.get("imagen"))
     sin_imagen = len(simple) - con_imagen
 
+    con_pais = sum(1 for j in simple if j.get("pais"))
+    con_altura = sum(1 for j in simple if j.get("altura"))
+    con_numero = sum(1 for j in simple if j.get("numero"))
+    con_posicion = sum(1 for j in simple if j.get("posicion") and j.get("posicion") != "Sin dato")
+
     print("\n✅ Listo.")
     print(f"📄 JSON completo: {OUTPUT_JSON}")
     print(f"📄 JSON simple: {OUTPUT_SIMPLE_JSON}")
     print(f"🎮 JSON juego: {GAME_JSON}")
     print(f"🖼️ Imágenes juego: {GAME_IMAGES_DIR}")
     print(f"👥 Total jugadores: {len(simple)}")
-    print(f"✅ Con imagen: {con_imagen}")
-    print(f"⚠️ Sin imagen: {sin_imagen}")
+    print(f"✅ Con imagen 365Scores: {con_imagen}")
+    print(f"⚠️ Sin imagen 365Scores: {sin_imagen}")
+    print(f"🌍 Con país API: {con_pais}")
+    print(f"📏 Con altura API: {con_altura}")
+    print(f"🔢 Con dorsal API: {con_numero}")
+    print(f"📌 Con posición API: {con_posicion}")
 
 
 if __name__ == "__main__":
