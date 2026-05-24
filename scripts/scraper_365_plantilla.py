@@ -11,7 +11,7 @@ from playwright.async_api import async_playwright
 
 
 # ============================================================
-# SCRAPER: DATOS DESDE ESPN + IMÁGENES ESPN / 365Scores
+# SCRAPER: IMÁGENES DESDE 365SCORES + DATOS PERSONALES DESDE ESPN
 # ============================================================
 #
 # Basado en:
@@ -44,10 +44,10 @@ from playwright.async_api import async_playwright
 # Si no ponés espn_team_id, el scraper lo busca por nombre dentro de /teams.
 # Si no ponés espn_slug, lo deduce por liga/equipo.
 #
-# Datos salen de ESPN.
-# Imagen:
-# Solo 365Scores.
+# Imagen: SIEMPRE desde 365Scores.
+# Datos personales: desde ESPN.
 # Si el jugador de ESPN no aparece con imagen en la plantilla de 365Scores, no se guarda.
+# No se usa imagen/headshot de ESPN.
 #
 # ============================================================
 
@@ -64,7 +64,7 @@ OUTPUT_SIMPLE_JSON = DATA_DIR / "plantilla_365_jugadores_simple.json"
 GAME_IMAGES_DIR = GAME_DIR / "imagenes_jugadores_365"
 GAME_JSON = GAME_DIR / "jugadores.json"
 
-FUENTE = "ESPN datos + 365Scores imágenes filtradas"
+FUENTE = "365Scores imágenes + ESPN datos personales"
 
 ESPN_SITE_BASE = "https://site.api.espn.com/apis/site/v2/sports/soccer"
 ESPN_CORE_BASE = "https://sports.core.api.espn.com/v2/sports/soccer/leagues"
@@ -1152,7 +1152,8 @@ def atleta_espn_a_json(athlete, equipo_nombre, equipo_id, liga_nombre, espn_slug
         or ""
     )
 
-    imagen_url = extraer_imagen_headshot(athlete)
+    # No usamos imagen de ESPN. La imagen_url se completa después con 365Scores.
+    imagen_url = ""
 
     return {
         "id": athlete_id,
@@ -1745,11 +1746,11 @@ def limpiar_imagenes_huerfanas(jugadores):
 
 async def procesar_equipo(context, equipo, existentes):
     """
-    Flujo estricto:
-    1) Lee jugadores desde ESPN.
-    2) Lee imágenes desde la plantilla de 365Scores.
-    3) Solo guarda jugadores ESPN que tienen match con imagen de 365Scores.
-    4) No usa imagen de ESPN.
+    Flujo final:
+    1) 365Scores trae la plantilla visual y la imagen real del jugador.
+    2) ESPN trae solamente datos personales/deportivos del jugador.
+    3) Solo se guardan jugadores que existen en ESPN y además tienen imagen en 365Scores.
+    4) No se usa imagen de ESPN y no se genera ninguna imagen.
     """
     equipo_nombre = obtener_nombre_equipo(equipo)
 
@@ -1778,6 +1779,7 @@ async def procesar_equipo(context, equipo, existentes):
             print(f"🚫 No está en plantilla 365Scores con imagen, omitido: {jugador.get('nombre')} ({jugador.get('club')})")
             continue
 
+        # Imagen SIEMPRE desde 365Scores. Nunca usar headshot de ESPN.
         jugador["imagen_url"] = img_365.get("imagen_url", "")
         jugador["url_365scores"] = img_365.get("url_365scores", "")
 
@@ -1838,8 +1840,8 @@ async def main():
     print(f"🚫 Blacklist cargada: {len(blacklist)}")
     print(f"♻️ Jugadores existentes en JSON del juego: {len(existentes)}")
     print(f"🖼️ Imágenes físicas existentes detectadas: {imagenes_existentes_reales}")
-    print("✅ Modo activo: datos desde ESPN roster, pero SOLO jugadores con imagen encontrada en plantilla 365Scores.")
-    print("🖼️ No se usa imagen generada ni imagen ESPN; solo imagen real de 365Scores.")
+    print("✅ Modo activo: imagen SIEMPRE desde 365Scores + datos personales desde ESPN.")
+    print("🖼️ No se usa imagen generada ni imagen ESPN.")
 
     todos_los_jugadores = []
 
