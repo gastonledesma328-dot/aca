@@ -1,1 +1,232 @@
-__PLACEHOLDER__
+{
+  "formations": [
+    { "name": "3-5-2", "rows": [["ST", "ST"], ["CAM"], ["LM", "CDM", "CDM", "RM"], ["CB", "CB", "CB"], ["GK"]] },
+    { "name": "4-3-3", "rows": [["LW", "ST", "RW"], ["CM", "CM", "CM"], ["LB", "CB", "CB", "RB"], ["GK"]] },
+    { "name": "4-4-2", "rows": [["ST", "ST"], ["LM", "CM", "CM", "RM"], ["LB", "CB", "CB", "RB"], ["GK"]] },
+    { "name": "4-2-3-1", "rows": [["ST"], ["LW", "CAM", "RW"], ["CDM", "CDM"], ["LB", "CB", "CB", "RB"], ["GK"]] }
+  ],
+  "countries": [
+    {
+      "country": "Argentina", "flagCode": "ar", "dt": "Lionel Scaloni",
+      "players": [
+        { "name": "Emiliano Martínez", "position": "GK", "status": "Titular" },
+        { "name": "Nahuel Molina", "position": "RB", "status": "Titular" },
+        { "name": "Cristian Romero", "position": "CB", "status": "Titular" },
+        { "name": "Nicolás Otamendi", "position": "CB", "status": "Suplente" },
+        { "name": "Nicolás Tagliafico", "position": "LB", "status": "Titular" },
+        { "name": "Leandro Paredes", "position": "CDM", "status": "Suplente" },
+        { "name": "Rodrigo De Paul", "position": "CM", "status": "Titular" },
+        { "name": "Enzo Fernández", "position": "CM", "status": "Titular" },
+        { "name": "Paulo Dybala", "position": "CAM", "status": "Suplente" },
+        { "name": "Nicolás González", "position": "LW", "status": "Suplente" },
+        { "name": "Lionel Messi", "position": "RW", "status": "Titular" },
+        { "name": "Lautaro Martínez", "position": "ST", "status": "Titular" },
+        { "name": "Julián Álvarez", "position": "ST", "status": "Titular" }
+      ]
+    },
+    {
+      "country": "Brasil", "flagCode": "br", "dt": "Carlo Ancelotti",
+      "players": [
+        { "name": "Alisson Becker", "position": "GK", "status": "Titular" },
+        { "name": "Danilo", "position": "RB", "status": "Titular" },
+        { "name": "Marquinhos", "position": "CB", "status": "Titular" },
+        { "name": "Gabriel Magalhães", "position": "CB", "status": "Titular" },
+        { "name": "Guilherme Arana", "position": "LB", "status": "Titular" },
+        { "name": "Casemiro", "position": "CDM", "status": "Suplente" },
+        { "name": "Bruno Guimarães", "position": "CM", "status": "Titular" },
+        { "name": "João Gomes", "position": "CM", "status": "Titular" },
+        { "name": "Lucas Paquetá", "position": "CAM", "status": "Titular" },
+        { "name": "Vinícius Júnior", "position": "LW", "status": "Titular" },
+        { "name": "Rodrygo", "position": "RW", "status": "Titular" },
+        { "name": "Raphinha", "position": "RW", "status": "Titular" },
+        { "name": "Endrick", "position": "ST", "status": "Suplente" }
+      ]
+    },
+    {
+      "country": "Francia", "flagCode": "fr", "dt": "Didier Deschamps",
+      "players": [
+        { "name": "Mike Maignan", "position": "GK", "status": "Titular" },
+        { "name": "Jules Koundé", "position": "RB", "status": "Titular" },
+        { "name": "William Saliba", "position": "CB", "status": "Titular" },
+        { "name": "Ibrahima Konaté", "position": "CB", "status": "Titular" },
+        { "name": "Theo Hernández", "position": "LB", "status": "Titular" },
+        { "name": "Aurélien Tchouaméni", "position": "CDM", "status": "Titular" },
+        { "name": "Eduardo Camavinga", "position": "CM", "status": "Titular" },
+        { "name": "Adrien Rabiot", "position": "CM", "status": "Titular" },
+        { "name": "Christopher Nkunku", "position": "CAM", "status": "Suplente" },
+        { "name": "Bradley Barcola", "position": "LW", "status": "Suplente" },
+        { "name": "Ousmane Dembélé", "position": "RW", "status": "Titular" },
+        { "name": "Kylian Mbappé", "position": "ST", "status": "Titular" },
+        { "name": "Marcus Thuram", "position": "ST", "status": "Titular" }
+      ]
+    },
+    {
+      "country": "España", "flagCode": "es", "dt": "Luis de la Fuente",
+      "players": [
+        { "name": "Unai Simón", "position": "GK", "status": "Titular" },
+        { "name": "Dani Carvajal", "position": "RB", "status": "Titular" },
+        { "name": "Robin Le Normand", "position": "CB", "status": "Titular" },
+        { "name": "Pau Cubarsí", "position": "CB", "status": "Titular" },
+        { "name": "Alejandro Grimaldo", "position": "LB", "status": "Titular" },
+        { "name": "Rodri", "position": "CDM", "status": "Titular" },
+        { "name": "Pedri", "position": "CM", "status": "Titular" },
+        { "name": "Fabián Ruiz", "position": "CM", "status": "Titular" },
+        { "name": "Dani Olmo", "position": "CAM", "status": "Suplente" },
+        { "name": "Nico Williams", "position": "LW", "status": "Titular" },
+        { "name": "Lamine Yamal", "position": "RW", "status": "Titular" },
+        { "name": "Álvaro Morata", "position": "ST", "status": "Titular" },
+        { "name": "Mikel Oyarzabal", "position": "ST", "status": "Suplente" }
+      ]
+    },
+    {
+      "country": "Portugal", "flagCode": "pt", "dt": "Roberto Martínez",
+      "players": [
+        { "name": "Diogo Costa", "position": "GK", "status": "Titular" },
+        { "name": "João Cancelo", "position": "RB", "status": "Titular" },
+        { "name": "Rúben Dias", "position": "CB", "status": "Titular" },
+        { "name": "António Silva", "position": "CB", "status": "Suplente" },
+        { "name": "Nuno Mendes", "position": "LB", "status": "Titular" },
+        { "name": "João Palhinha", "position": "CDM", "status": "Titular" },
+        { "name": "Vitinha", "position": "CM", "status": "Titular" },
+        { "name": "Bruno Fernandes", "position": "CM", "status": "Titular" },
+        { "name": "Bernardo Silva", "position": "CAM", "status": "Titular" },
+        { "name": "Rafael Leão", "position": "LW", "status": "Titular" },
+        { "name": "Pedro Neto", "position": "RW", "status": "Suplente" },
+        { "name": "Cristiano Ronaldo", "position": "ST", "status": "Titular" },
+        { "name": "Gonçalo Ramos", "position": "ST", "status": "Suplente" }
+      ]
+    },
+    {
+      "country": "Alemania", "flagCode": "de", "dt": "Julian Nagelsmann",
+      "players": [
+        { "name": "Marc-André ter Stegen", "position": "GK", "status": "Titular" },
+        { "name": "Joshua Kimmich", "position": "RB", "status": "Titular" },
+        { "name": "Antonio Rüdiger", "position": "CB", "status": "Titular" },
+        { "name": "Jonathan Tah", "position": "CB", "status": "Titular" },
+        { "name": "David Raum", "position": "LB", "status": "Titular" },
+        { "name": "Robert Andrich", "position": "CDM", "status": "Titular" },
+        { "name": "Aleksandar Pavlović", "position": "CM", "status": "Titular" },
+        { "name": "Pascal Groß", "position": "CM", "status": "Titular" },
+        { "name": "Florian Wirtz", "position": "CAM", "status": "Titular" },
+        { "name": "Serge Gnabry", "position": "LW", "status": "Titular" },
+        { "name": "Leroy Sané", "position": "RW", "status": "Titular" },
+        { "name": "Kai Havertz", "position": "ST", "status": "Titular" },
+        { "name": "Niclas Füllkrug", "position": "ST", "status": "Suplente" }
+      ]
+    },
+    {
+      "country": "Uruguay", "flagCode": "uy", "dt": "Marcelo Bielsa",
+      "players": [
+        { "name": "Sergio Rochet", "position": "GK", "status": "Titular" },
+        { "name": "Nahitan Nández", "position": "RB", "status": "Titular" },
+        { "name": "Ronald Araújo", "position": "CB", "status": "Titular" },
+        { "name": "José María Giménez", "position": "CB", "status": "Titular" },
+        { "name": "Mathías Olivera", "position": "LB", "status": "Titular" },
+        { "name": "Manuel Ugarte", "position": "CDM", "status": "Titular" },
+        { "name": "Federico Valverde", "position": "CM", "status": "Titular" },
+        { "name": "Rodrigo Bentancur", "position": "CM", "status": "Titular" },
+        { "name": "Giorgian De Arrascaeta", "position": "CAM", "status": "Suplente" },
+        { "name": "Maximiliano Araújo", "position": "LW", "status": "Titular" },
+        { "name": "Facundo Pellistri", "position": "RW", "status": "Titular" },
+        { "name": "Darwin Núñez", "position": "ST", "status": "Titular" },
+        { "name": "Luis Suárez", "position": "ST", "status": "Suplente" }
+      ]
+    },
+    {
+      "country": "Colombia", "flagCode": "co", "dt": "Néstor Lorenzo",
+      "players": [
+        { "name": "Camilo Vargas", "position": "GK", "status": "Titular" },
+        { "name": "Daniel Muñoz", "position": "RB", "status": "Titular" },
+        { "name": "Davinson Sánchez", "position": "CB", "status": "Titular" },
+        { "name": "Jhon Lucumí", "position": "CB", "status": "Titular" },
+        { "name": "Johan Mojica", "position": "LB", "status": "Titular" },
+        { "name": "Jefferson Lerma", "position": "CDM", "status": "Titular" },
+        { "name": "Richard Ríos", "position": "CM", "status": "Titular" },
+        { "name": "Mateus Uribe", "position": "CM", "status": "Suplente" },
+        { "name": "James Rodríguez", "position": "CAM", "status": "Titular" },
+        { "name": "Luis Díaz", "position": "LW", "status": "Titular" },
+        { "name": "Jhon Arias", "position": "RW", "status": "Titular" },
+        { "name": "Jhon Durán", "position": "ST", "status": "Suplente" },
+        { "name": "Rafael Santos Borré", "position": "ST", "status": "Suplente" }
+      ]
+    },
+    {
+      "country": "México", "flagCode": "mx", "dt": "Javier Aguirre",
+      "players": [
+        { "name": "Luis Malagón", "position": "GK", "status": "Titular" },
+        { "name": "Jorge Sánchez", "position": "RB", "status": "Titular" },
+        { "name": "César Montes", "position": "CB", "status": "Titular" },
+        { "name": "Johan Vásquez", "position": "CB", "status": "Titular" },
+        { "name": "Gerardo Arteaga", "position": "LB", "status": "Suplente" },
+        { "name": "Edson Álvarez", "position": "CDM", "status": "Titular" },
+        { "name": "Luis Romo", "position": "CM", "status": "Titular" },
+        { "name": "Erick Sánchez", "position": "CM", "status": "Suplente" },
+        { "name": "Orbelín Pineda", "position": "CAM", "status": "Titular" },
+        { "name": "Alexis Vega", "position": "LW", "status": "Suplente" },
+        { "name": "Hirving Lozano", "position": "RW", "status": "Titular" },
+        { "name": "Santiago Giménez", "position": "ST", "status": "Titular" },
+        { "name": "Raúl Jiménez", "position": "ST", "status": "Suplente" }
+      ]
+    },
+    {
+      "country": "Estados Unidos", "flagCode": "us", "dt": "Mauricio Pochettino",
+      "players": [
+        { "name": "Matt Turner", "position": "GK", "status": "Titular" },
+        { "name": "Sergiño Dest", "position": "RB", "status": "Titular" },
+        { "name": "Chris Richards", "position": "CB", "status": "Titular" },
+        { "name": "Tim Ream", "position": "CB", "status": "Suplente" },
+        { "name": "Antonee Robinson", "position": "LB", "status": "Titular" },
+        { "name": "Tyler Adams", "position": "CDM", "status": "Titular" },
+        { "name": "Weston McKennie", "position": "CM", "status": "Titular" },
+        { "name": "Yunus Musah", "position": "CM", "status": "Titular" },
+        { "name": "Gio Reyna", "position": "CAM", "status": "Suplente" },
+        { "name": "Christian Pulisic", "position": "LW", "status": "Titular" },
+        { "name": "Timothy Weah", "position": "RW", "status": "Titular" },
+        { "name": "Folarin Balogun", "position": "ST", "status": "Titular" },
+        { "name": "Ricardo Pepi", "position": "ST", "status": "Suplente" }
+      ]
+    },
+    {
+      "country": "Canadá", "flagCode": "ca", "dt": "Jesse Marsch",
+      "players": [
+        { "name": "Maxime Crépeau", "position": "GK", "status": "Titular" },
+        { "name": "Alistair Johnston", "position": "RB", "status": "Titular" },
+        { "name": "Moïse Bombito", "position": "CB", "status": "Titular" },
+        { "name": "Derek Cornelius", "position": "CB", "status": "Titular" },
+        { "name": "Alphonso Davies", "position": "LB", "status": "Titular" },
+        { "name": "Stephen Eustáquio", "position": "CDM", "status": "Titular" },
+        { "name": "Ismaël Koné", "position": "CM", "status": "Titular" },
+        { "name": "Jonathan Osorio", "position": "CM", "status": "Suplente" },
+        { "name": "Tajon Buchanan", "position": "CAM", "status": "Titular" },
+        { "name": "Jacob Shaffelburg", "position": "LW", "status": "Suplente" },
+        { "name": "Junior Hoilett", "position": "RW", "status": "Suplente" },
+        { "name": "Jonathan David", "position": "ST", "status": "Titular" },
+        { "name": "Cyle Larin", "position": "ST", "status": "Titular" }
+      ]
+    },
+    {
+      "country": "Marruecos", "flagCode": "ma", "dt": "Walid Regragui",
+      "players": [
+        { "name": "Yassine Bounou", "position": "GK", "status": "Titular" },
+        { "name": "Achraf Hakimi", "position": "RB", "status": "Titular" },
+        { "name": "Nayef Aguerd", "position": "CB", "status": "Titular" },
+        { "name": "Romain Saïss", "position": "CB", "status": "Titular" },
+        { "name": "Noussair Mazraoui", "position": "LB", "status": "Titular" },
+        { "name": "Sofyan Amrabat", "position": "CDM", "status": "Titular" },
+        { "name": "Azzedine Ounahi", "position": "CM", "status": "Titular" },
+        { "name": "Amir Richardson", "position": "CM", "status": "Titular" },
+        { "name": "Bilal El Khannouss", "position": "CAM", "status": "Titular" },
+        { "name": "Abde Ezzalzouli", "position": "LW", "status": "Titular" },
+        { "name": "Hakim Ziyech", "position": "RW", "status": "Titular" },
+        { "name": "Youssef En-Nesyri", "position": "ST", "status": "Titular" },
+        { "name": "Ayoub El Kaabi", "position": "ST", "status": "Suplente" }
+      ]
+    }
+  ],
+  "meta": {
+    "source": "Respaldo estable manual para WorldCup11",
+    "updatedAt": "2026-05-24T00:00:00.000Z",
+    "totalCountries": 12,
+    "note": "JSON restaurado para que el juego cargue. ESPN queda solo como referencia; no se deben reemplazar planteles si las posiciones vienen mal."
+  }
+}
