@@ -46,8 +46,8 @@ from playwright.async_api import async_playwright
 #
 # Datos salen de ESPN.
 # Imagen:
-# 1) ESPN headshot si viene.
-# 2) Si ESPN no trae imagen, fallback 365Scores.
+# Solo 365Scores.
+# Si el jugador de ESPN no aparece con imagen en la plantilla de 365Scores, no se guarda.
 #
 # ============================================================
 
@@ -64,13 +64,14 @@ OUTPUT_SIMPLE_JSON = DATA_DIR / "plantilla_365_jugadores_simple.json"
 GAME_IMAGES_DIR = GAME_DIR / "imagenes_jugadores_365"
 GAME_JSON = GAME_DIR / "jugadores.json"
 
-FUENTE = "ESPN datos + ESPN/365Scores imágenes"
+FUENTE = "ESPN datos + 365Scores imágenes filtradas"
 
 ESPN_SITE_BASE = "https://site.api.espn.com/apis/site/v2/sports/soccer"
 ESPN_CORE_BASE = "https://sports.core.api.espn.com/v2/sports/soccer/leagues"
 
 REQUEST_DELAY = float(os.environ.get("ESPN_SCRAPER_DELAY", "0.15"))
-ONLY_WITH_IMAGE = os.environ.get("ONLY_WITH_IMAGE", "0").strip() == "1"
+# Modo obligatorio: solo se guardan jugadores que tengan imagen encontrada en la plantilla de 365Scores.
+ONLY_WITH_IMAGE = True
 
 HEADERS = {
     "User-Agent": (
@@ -1743,7 +1744,21 @@ def limpiar_imagenes_huerfanas(jugadores):
 
 
 async def procesar_equipo(context, equipo, existentes):
+    """
+    Flujo estricto:
+    1) Lee jugadores desde ESPN.
+    2) Lee imágenes desde la plantilla de 365Scores.
+    3) Solo guarda jugadores ESPN que tienen match con imagen de 365Scores.
+    4) No usa imagen de ESPN.
+    """
     equipo_nombre = obtener_nombre_equipo(equipo)
+
+    # Primero 365Scores, porque ahora es el filtro obligatorio.
+    index_imagenes_365 = await obtener_imagenes_365_equipo(context, equipo)
+
+    if not index_imagenes_365:
+        print(f"🛑 {equipo_nombre}: no se encontraron imágenes en 365Scores. No se guardan jugadores de este equipo.")
+        return []
 
     jugadores_espn = obtener_jugadores_espn(equipo)
 
@@ -1751,67 +1766,42 @@ async def procesar_equipo(context, equipo, existentes):
         print(f"⚠️ {equipo_nombre}: no se obtuvieron jugadores desde ESPN.")
         return []
 
-    # Solo usamos 365Scores como fallback si falta headshot ESPN.
-    necesita_365 = any(not j.get("imagen_url") for j in jugadores_espn)
-    index_imagenes_365 = {}
-
-    if necesita_365:
-        index_imagenes_365 = await obtener_imagenes_365_equipo(context, equipo)
-
     resultados = []
 
     for i, jugador in enumerate(jugadores_espn, start=1):
         print(f"[{i}/{len(jugadores_espn)}] ⚽ {jugador.get('nombre')} - {jugador.get('club')}")
 
+        # Match obligatorio con imagen de 365Scores.
+        img_365 = buscar_imagen_365_para_jugador(jugador, index_imagenes_365)
+
+        if not img_365:
+            print(f"🚫 No está en plantilla 365Scores con imagen, omitido: {jugador.get('nombre')} ({jugador.get('club')})")
+            continue
+
+        jugador["imagen_url"] = img_365.get("imagen_url", "")
+        jugador["url_365scores"] = img_365.get("url_365scores", "")
+
         existente = buscar_jugador_existente(jugador, existentes)
 
         if existente and imagen_local_existe(existente.get("imagen", "")):
             jugador["imagen"] = existente.get("imagen", "")
-            if not jugador.get("imagen_url"):
-                jugador["imagen_url"] = existente.get("imagen_url", "")
-            jugador["url_365scores"] = existente.get("url_365scores", "")
-            print(f"♻️ Imagen existente reutilizada: {jugador.get('nombre')}")
+            print(f"♻️ Imagen 365Scores existente reutilizada: {jugador.get('nombre')}")
         else:
-            imagen_descargada = ""
+            nombre_archivo = f"{slugify(jugador.get('club'))}-{slugify(jugador.get('nombre'))}-{jugador.get('espn_id')}"
+            jugador["imagen"] = descargar_imagen(
+                jugador["imagen_url"],
+                nombre_archivo,
+                headers=HEADERS_365,
+                etiqueta="imagen 365Scores"
+            )
 
-            # 1) Imagen ESPN.
-            if jugador.get("imagen_url"):
-                nombre_archivo = f"{slugify(jugador.get('club'))}-{slugify(jugador.get('nombre'))}-{jugador.get('espn_id')}"
-                imagen_descargada = descargar_imagen(
-                    jugador["imagen_url"],
-                    nombre_archivo,
-                    headers=HEADERS_IMAGE,
-                    etiqueta="imagen ESPN"
-                )
-
-            # 2) Fallback 365.
-            if not imagen_descargada:
-                img_365 = buscar_imagen_365_para_jugador(jugador, index_imagenes_365)
-
-                if img_365:
-                    jugador["imagen_url"] = img_365.get("imagen_url", "")
-                    jugador["url_365scores"] = img_365.get("url_365scores", "")
-
-                    nombre_archivo = f"{slugify(jugador.get('club'))}-{slugify(jugador.get('nombre'))}-{jugador.get('espn_id')}"
-                    imagen_descargada = descargar_imagen(
-                        jugador["imagen_url"],
-                        nombre_archivo,
-                        headers=HEADERS_365,
-                        etiqueta="imagen 365Scores"
-                    )
-
-            jugador["imagen"] = imagen_descargada or ""
-
-            if not jugador["imagen"]:
-                print(f"⚠️ Sin imagen para: {jugador.get('nombre')} ({jugador.get('club')})")
-
-        final = limpiar_jugador_final(jugador)
-
-        if ONLY_WITH_IMAGE and not final.get("imagen"):
-            print(f"🚫 Sin imagen, omitido por ONLY_WITH_IMAGE=1: {final.get('nombre')}")
+        if not jugador.get("imagen"):
+            print(f"🚫 Imagen 365Scores no descargada, omitido: {jugador.get('nombre')} ({jugador.get('club')})")
             continue
 
-        resultados.append(final)
+        resultados.append(limpiar_jugador_final(jugador))
+
+    print(f"✅ {equipo_nombre}: guardados {len(resultados)} jugadores con datos ESPN + imagen 365Scores.")
 
     return resultados
 
@@ -1848,8 +1838,8 @@ async def main():
     print(f"🚫 Blacklist cargada: {len(blacklist)}")
     print(f"♻️ Jugadores existentes en JSON del juego: {len(existentes)}")
     print(f"🖼️ Imágenes físicas existentes detectadas: {imagenes_existentes_reales}")
-    print("✅ Modo activo: datos desde ESPN roster, imagen ESPN con fallback 365Scores.")
-    print(f"🧹 ONLY_WITH_IMAGE: {ONLY_WITH_IMAGE}")
+    print("✅ Modo activo: datos desde ESPN roster, pero SOLO jugadores con imagen encontrada en plantilla 365Scores.")
+    print("🖼️ No se usa imagen generada ni imagen ESPN; solo imagen real de 365Scores.")
 
     todos_los_jugadores = []
 
