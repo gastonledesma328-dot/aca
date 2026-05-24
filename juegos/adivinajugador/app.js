@@ -236,7 +236,7 @@ function displayValue(player, category) {
 }
 
 function playerLabel(player) {
-  return [player.nombre, player.club, player.competicion || player.liga || player.fuente]
+  return [player.nombre, player.club, getCompetitionLabel(player)]
     .filter(Boolean)
     .join(' · ');
 }
@@ -414,7 +414,7 @@ function startGame() {
   els.playerInput.value = '';
   els.playerInput.disabled = false;
   els.guessBtn.disabled = false;
-  els.secretCompetition.textContent = secret ? (secret.competicion || '-') : '?';
+  els.secretCompetition.textContent = secret ? getCompetitionLabel(secret) : '?';
 
   renderTableHeader();
   updateCounters();
@@ -547,6 +547,18 @@ function showAnswer(won) {
   openResultModal(won);
 }
 
+
+function replaySecretImageAnimation() {
+  const img = document.querySelector('.result-player-photo, .winner-player-photo, .secret-player-photo, .modal-player-photo, .result-photo img, .winner-photo img, .secret-photo img');
+  const box = document.querySelector('.result-photo-frame, .winner-photo-frame, .secret-photo-frame, .modal-photo-frame, .result-photo, .winner-photo, .secret-photo');
+
+  [img, box].filter(Boolean).forEach((el) => {
+    el.classList.remove('player-photo-reveal');
+    void el.offsetWidth;
+    el.classList.add('player-photo-reveal');
+  });
+}
+
 function openResultModal(won) {
   if (!els.resultModal || !secret) return;
 
@@ -565,7 +577,7 @@ function openResultModal(won) {
     `Dificultad ${difficultyLabel}`,
     secret.pais || 'País sin dato',
     secret.club || '-',
-    secret.competicion || '-',
+    getCompetitionLabel(secret),
     position,
     age ? `${age} años` : 'Edad sin dato',
     secret.altura ? `${secret.altura} cm` : 'Altura sin dato',
@@ -660,19 +672,49 @@ async function fetchPlayersJson() {
   throw new Error(errors.join(' | '));
 }
 
-function normalizePlayerForGame(player) {
-  const nombre = String(player?.nombre || player?.name || '').trim();
-  const club = String(player?.club || player?.equipo || player?.team || '').trim();
-
-  const competicion = String(
+function getCompetitionLabel(player) {
+  const raw = String(
     player?.competicion ||
       player?.liga ||
       player?.liga_corta ||
       player?.league ||
       player?.torneo ||
-      player?.fuente ||
-      '365Scores'
+      ''
   ).trim();
+
+  if (!raw) return 'Liga sin dato';
+
+  const normalized = raw
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+
+  if (
+    normalized === '365scores' ||
+    normalized === '365 scores' ||
+    normalized === 'fuente 365scores'
+  ) {
+    return 'Liga sin dato';
+  }
+
+  return raw;
+}
+
+function getDisplayValue(value, fallback = '-') {
+  const raw = String(value ?? '').trim();
+
+  if (!raw || raw === '0' || raw.toLowerCase() === 'undefined' || raw.toLowerCase() === 'null') {
+    return fallback;
+  }
+
+  return raw;
+}
+
+function normalizePlayerForGame(player) {
+  const nombre = String(player?.nombre || player?.name || '').trim();
+  const club = String(player?.club || player?.equipo || player?.team || '').trim();
+
+  const competicion = getCompetitionLabel(player);
 
   const imagen = normalizeImagePath(
     player?.imagen ||
