@@ -10,6 +10,41 @@ import requests
 from playwright.async_api import async_playwright
 
 
+# ============================================================
+# SCRAPER: DATOS DESDE apifootball.com + IMÁGENES DESDE 365Scores
+# ============================================================
+#
+# API usada:
+# https://apiv3.apifootball.com/
+#
+# Endpoints principales:
+# - get_teams: trae equipos y dentro trae players.
+# - get_leagues: ayuda a encontrar league_id si no lo pusiste.
+# - get_standings: ayuda a encontrar team_id si solo tenés league_id.
+#
+# IMPORTANTE:
+# Esta API NO usa los mismos IDs que api-sports.io.
+# Ejemplo documentación:
+# Premier League league_id = 152
+# Arsenal team_id/team_key = 141
+#
+# Formato recomendado en equipos.json:
+# [
+#   {
+#     "equipo": "Arsenal",
+#     "url": "https://www.365scores.com/es/football/team/arsenal-104/squad",
+#     "apifootball_league_id": "152",
+#     "apifootball_team_id": "141",
+#     "liga": "Premier League"
+#   }
+# ]
+#
+# Si no ponés apifootball_team_id, intenta buscar el equipo dentro de la liga.
+# Si no ponés apifootball_league_id, intenta buscar la liga por nombre.
+#
+# ============================================================
+
+
 EQUIPOS_FILE = "equipos.json"
 BLACKLIST_FILE = "blacklist_jugadores.json"
 
@@ -22,12 +57,10 @@ OUTPUT_SIMPLE_JSON = DATA_DIR / "plantilla_365_jugadores_simple.json"
 GAME_IMAGES_DIR = GAME_DIR / "imagenes_jugadores_365"
 GAME_JSON = GAME_DIR / "jugadores.json"
 
-# DATOS: apifootball.com
-# IMÁGENES: 365Scores
 FUENTE = "apifootball.com datos + 365Scores imágenes"
 
 # Te dejo la key puesta porque me lo pediste.
-# Mejor práctica: regenerar la key y usar variable de entorno APIFOOTBALL_KEY.
+# Recomendado: regenerarla luego y usar variable de entorno APIFOOTBALL_KEY.
 APIFOOTBALL_KEY = os.environ.get(
     "APIFOOTBALL_KEY",
     "dc112beaffd4422ca582b1d4dd444b259fb1223403736845ca898937beab38c0"
@@ -46,71 +79,38 @@ HEADERS_365 = {
     "Referer": "https://www.365scores.com/",
 }
 
-# IDs conocidos de APIFootball.com.
-# IMPORTANTE: estos IDs NO son los mismos que API-Sports.
-# Si agregás en equipos.json "apifootball_team_id", el scraper lo usa directo.
+# IDs confirmados por documentación:
+# Premier League league_id 152, Arsenal team_key/team_id 141.
+# El resto se intenta buscar automáticamente por get_leagues/get_teams/get_standings.
+APIFOOTBALL_LEAGUE_IDS = {
+    "premier league": "152",
+    "la liga": "302",
+    "laliga": "302",
+}
+
 APIFOOTBALL_TEAM_IDS = {
-    # Ejemplos conocidos por documentación / uso común.
     "arsenal": "141",
 }
 
-# IDs de ligas en APIFootball.com.
-# Si una liga no está acá, el scraper intenta encontrarla con get_leagues.
-APIFOOTBALL_LEAGUE_IDS = {
-    "Premier League": "152",
-    "La Liga": "302",
-    "LaLiga": "302",
-}
-
-EQUIPOS_365_FALLBACK = {
-    "boca-juniors": {
-        "equipo": "Boca Juniors",
-        "url": "https://www.365scores.com/es/football/team/boca-juniors-866/squad"
-    },
-    "river-plate": {
-        "equipo": "River Plate",
-        "url": "https://www.365scores.com/es/football/team/river-plate-868/squad"
-    },
-    "racing-club": {
-        "equipo": "Racing Club",
-        "url": "https://www.365scores.com/es/football/team/racing-club-876/squad"
-    },
-    "independiente": {
-        "equipo": "Independiente",
-        "url": "https://www.365scores.com/es/football/team/independiente-874/squad"
-    },
-    "san-lorenzo": {
-        "equipo": "San Lorenzo",
-        "url": "https://www.365scores.com/es/football/team/san-lorenzo-873/squad"
-    },
-    "arsenal": {
-        "equipo": "Arsenal",
-        "url": "https://www.365scores.com/es/football/team/arsenal-104/squad"
-    },
-    "manchester-city": {
-        "equipo": "Manchester City",
-        "url": "https://www.365scores.com/es/football/team/manchester-city-110/squad"
-    },
-    "liverpool": {
-        "equipo": "Liverpool",
-        "url": "https://www.365scores.com/es/football/team/liverpool-108/squad"
-    },
-    "real-madrid": {
-        "equipo": "Real Madrid",
-        "url": "https://www.365scores.com/es/football/team/real-madrid-131/squad"
-    },
-    "barcelona": {
-        "equipo": "Barcelona",
-        "url": "https://www.365scores.com/es/football/team/fc-barcelona-132/squad"
-    },
-    "atletico-madrid": {
-        "equipo": "Atlético de Madrid",
-        "url": "https://www.365scores.com/es/football/team/atletico-madrid-134/squad"
-    },
-    "inter-miami": {
-        "equipo": "Inter Miami CF",
-        "url": "https://www.365scores.com/es/football/team/inter-miami-54729/squad"
-    },
+# Para acelerar búsqueda de ligas.
+COUNTRY_HINTS = {
+    "Premier League": "England",
+    "LaLiga": "Spain",
+    "La Liga": "Spain",
+    "Serie A": "Italy",
+    "Bundesliga": "Germany",
+    "Ligue 1": "France",
+    "Primeira Liga": "Portugal",
+    "Eredivisie": "Netherlands",
+    "Liga Profesional Argentina": "Argentina",
+    "Brasileirão": "Brazil",
+    "Brasileirao": "Brazil",
+    "Categoría Primera A": "Colombia",
+    "MLS": "USA",
+    "Saudi Pro League": "Saudi Arabia",
+    "Süper Lig": "Turkey",
+    "Super Lig": "Turkey",
+    "Liga MX": "Mexico",
 }
 
 LIGAS_POR_EQUIPO = {
@@ -200,9 +200,67 @@ LIGAS_POR_EQUIPO = {
     "tigres uanl": "Liga MX",
 }
 
-LEAGUES_CACHE = None
-TEAMS_BY_LEAGUE_CACHE = {}
+EQUIPOS_365_FALLBACK = {
+    "boca-juniors": {
+        "equipo": "Boca Juniors",
+        "url": "https://www.365scores.com/es/football/team/boca-juniors-866/squad"
+    },
+    "river-plate": {
+        "equipo": "River Plate",
+        "url": "https://www.365scores.com/es/football/team/river-plate-868/squad"
+    },
+    "racing-club": {
+        "equipo": "Racing Club",
+        "url": "https://www.365scores.com/es/football/team/racing-club-876/squad"
+    },
+    "independiente": {
+        "equipo": "Independiente",
+        "url": "https://www.365scores.com/es/football/team/independiente-874/squad"
+    },
+    "san-lorenzo": {
+        "equipo": "San Lorenzo",
+        "url": "https://www.365scores.com/es/football/team/san-lorenzo-873/squad"
+    },
+    "arsenal": {
+        "equipo": "Arsenal",
+        "url": "https://www.365scores.com/es/football/team/arsenal-104/squad"
+    },
+    "manchester-city": {
+        "equipo": "Manchester City",
+        "url": "https://www.365scores.com/es/football/team/manchester-city-110/squad"
+    },
+    "liverpool": {
+        "equipo": "Liverpool",
+        "url": "https://www.365scores.com/es/football/team/liverpool-108/squad"
+    },
+    "real-madrid": {
+        "equipo": "Real Madrid",
+        "url": "https://www.365scores.com/es/football/team/real-madrid-131/squad"
+    },
+    "barcelona": {
+        "equipo": "Barcelona",
+        "url": "https://www.365scores.com/es/football/team/fc-barcelona-132/squad"
+    },
+    "atletico-madrid": {
+        "equipo": "Atlético de Madrid",
+        "url": "https://www.365scores.com/es/football/team/atletico-madrid-134/squad"
+    },
+    "inter-miami": {
+        "equipo": "Inter Miami CF",
+        "url": "https://www.365scores.com/es/football/team/inter-miami-54729/squad"
+    },
+}
 
+LEAGUES_CACHE = None
+LEAGUES_BY_COUNTRY_CACHE = {}
+TEAMS_BY_LEAGUE_CACHE = {}
+STANDINGS_BY_LEAGUE_CACHE = {}
+COUNTRIES_CACHE = None
+
+
+# ============================================================
+# UTILIDADES
+# ============================================================
 
 def limpiar_texto(txt):
     if not txt:
@@ -345,14 +403,18 @@ def asegurar_carpetas():
     GAME_IMAGES_DIR.mkdir(parents=True, exist_ok=True)
 
 
+# ============================================================
+# ARCHIVOS BASE
+# ============================================================
+
 def cargar_equipos():
     if not os.path.exists(EQUIPOS_FILE):
         ejemplo = [
             {
                 "equipo": "Arsenal",
                 "url": "https://www.365scores.com/es/football/team/arsenal-104/squad",
-                "apifootball_team_id": "141",
                 "apifootball_league_id": "152",
+                "apifootball_team_id": "141",
                 "liga": "Premier League"
             }
         ]
@@ -418,6 +480,53 @@ def cargar_blacklist_jugadores():
         print(f"⚠️ No se pudo leer {BLACKLIST_FILE}: {e}")
         return []
 
+
+def cargar_jugadores_existentes():
+    if not GAME_JSON.exists():
+        return {}
+
+    try:
+        data = json.loads(GAME_JSON.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+    existentes = {}
+
+    if not isinstance(data, list):
+        return existentes
+
+    for j in data:
+        if not isinstance(j, dict):
+            continue
+
+        keys = [
+            f"api:{j.get('apifootball_player_id', '')}",
+            f"{normalizar(j.get('club'))}|{normalizar(j.get('nombre'))}",
+        ]
+
+        for key in keys:
+            if key.strip() and not key.endswith(":"):
+                existentes[key] = j
+
+    return existentes
+
+
+def buscar_jugador_existente(jugador, existentes):
+    keys = [
+        f"api:{jugador.get('apifootball_player_id', '')}",
+        f"{normalizar(jugador.get('club'))}|{normalizar(jugador.get('nombre'))}",
+    ]
+
+    for key in keys:
+        if key in existentes:
+            return existentes[key]
+
+    return None
+
+
+# ============================================================
+# BLACKLIST / STAFF
+# ============================================================
 
 def jugador_en_blacklist(jugador, blacklist):
     if not blacklist:
@@ -586,48 +695,9 @@ def es_staff_o_no_jugador(nombre, texto=""):
     return n in nombres_staff_comunes
 
 
-def cargar_jugadores_existentes():
-    if not GAME_JSON.exists():
-        return {}
-
-    try:
-        data = json.loads(GAME_JSON.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
-
-    existentes = {}
-
-    if not isinstance(data, list):
-        return existentes
-
-    for j in data:
-        if not isinstance(j, dict):
-            continue
-
-        keys = [
-            f"api:{j.get('apifootball_player_id', '')}",
-            f"{normalizar(j.get('club'))}|{normalizar(j.get('nombre'))}",
-        ]
-
-        for key in keys:
-            if key.strip() and not key.endswith(":"):
-                existentes[key] = j
-
-    return existentes
-
-
-def buscar_jugador_existente(jugador, existentes):
-    keys = [
-        f"api:{jugador.get('apifootball_player_id', '')}",
-        f"{normalizar(jugador.get('club'))}|{normalizar(jugador.get('nombre'))}",
-    ]
-
-    for key in keys:
-        if key in existentes:
-            return existentes[key]
-
-    return None
-
+# ============================================================
+# APIFOOTBALL.COM
+# ============================================================
 
 def apifootball_get(action, params=None):
     params = params or {}
@@ -658,9 +728,15 @@ def apifootball_get(action, params=None):
 
         data = r.json()
 
-        if isinstance(data, dict) and data.get("error"):
-            print(f"⚠️ APIFootball error: {data}")
-            return None
+        if isinstance(data, dict):
+            # Formatos de error frecuentes.
+            if data.get("error"):
+                print(f"⚠️ APIFootball error: {data}")
+                return None
+
+            if data.get("message") or data.get("error_message"):
+                print(f"⚠️ APIFootball mensaje: {data}")
+                return None
 
         return data
 
@@ -669,8 +745,68 @@ def apifootball_get(action, params=None):
         return None
 
 
-def cargar_ligas_apifootball():
+def cargar_paises_apifootball():
+    global COUNTRIES_CACHE
+
+    if COUNTRIES_CACHE is not None:
+        return COUNTRIES_CACHE
+
+    data = apifootball_get("get_countries")
+
+    if not isinstance(data, list):
+        COUNTRIES_CACHE = []
+    else:
+        COUNTRIES_CACHE = data
+
+    print(f"🌎 Países APIFootball cargados: {len(COUNTRIES_CACHE)}")
+
+    return COUNTRIES_CACHE
+
+
+def obtener_country_id_por_nombre(country_name):
+    if not country_name:
+        return ""
+
+    paises = cargar_paises_apifootball()
+    buscado = normalizar(country_name)
+
+    for p in paises:
+        nombre = normalizar(p.get("country_name", ""))
+        country_id = p.get("country_id", "")
+
+        if country_id and nombre == buscado:
+            return str(country_id)
+
+    for p in paises:
+        nombre = normalizar(p.get("country_name", ""))
+        country_id = p.get("country_id", "")
+
+        if country_id and (buscado in nombre or nombre in buscado):
+            return str(country_id)
+
+    return ""
+
+
+def cargar_ligas_apifootball(country_id=""):
     global LEAGUES_CACHE
+    global LEAGUES_BY_COUNTRY_CACHE
+
+    if country_id:
+        country_id = str(country_id)
+
+        if country_id in LEAGUES_BY_COUNTRY_CACHE:
+            return LEAGUES_BY_COUNTRY_CACHE[country_id]
+
+        data = apifootball_get("get_leagues", {"country_id": country_id})
+
+        if not isinstance(data, list):
+            LEAGUES_BY_COUNTRY_CACHE[country_id] = []
+        else:
+            LEAGUES_BY_COUNTRY_CACHE[country_id] = data
+
+        print(f"📚 Ligas APIFootball país {country_id}: {len(LEAGUES_BY_COUNTRY_CACHE[country_id])}")
+
+        return LEAGUES_BY_COUNTRY_CACHE[country_id]
 
     if LEAGUES_CACHE is not None:
         return LEAGUES_CACHE
@@ -683,6 +819,7 @@ def cargar_ligas_apifootball():
         LEAGUES_CACHE = data
 
     print(f"📚 Ligas APIFootball cargadas: {len(LEAGUES_CACHE)}")
+
     return LEAGUES_CACHE
 
 
@@ -695,15 +832,19 @@ def obtener_apifootball_league_id(equipo):
 
     liga = obtener_liga_equipo(equipo)
 
-    for key, value in APIFOOTBALL_LEAGUE_IDS.items():
-        if normalizar(key) == normalizar(liga):
-            return str(value)
-
     if not liga:
         return ""
 
-    ligas = cargar_ligas_apifootball()
     liga_norm = normalizar(liga)
+
+    if liga_norm in APIFOOTBALL_LEAGUE_IDS:
+        return str(APIFOOTBALL_LEAGUE_IDS[liga_norm])
+
+    # Primero intenta por país para reducir ruido.
+    country_hint = COUNTRY_HINTS.get(liga, "")
+    country_id = obtener_country_id_por_nombre(country_hint) if country_hint else ""
+
+    ligas = cargar_ligas_apifootball(country_id) if country_id else cargar_ligas_apifootball()
 
     candidatas = []
 
@@ -719,15 +860,33 @@ def obtener_apifootball_league_id(equipo):
         elif liga_norm in nombre or nombre in liga_norm:
             candidatas.append(item)
 
+    # Si por país no encontró, intenta global.
+    if not candidatas and country_id:
+        ligas = cargar_ligas_apifootball()
+
+        for item in ligas:
+            nombre = normalizar(item.get("league_name", ""))
+            league_id = item.get("league_id")
+
+            if not league_id:
+                continue
+
+            if nombre == liga_norm or liga_norm in nombre or nombre in liga_norm:
+                candidatas.append(item)
+
     if not candidatas:
         print(f"⚠️ APIFootball no encontró league_id para liga: {liga}")
         return ""
 
-    # Si hay varias temporadas, usa la última por texto.
+    # Usa la candidata con season más alta según texto.
     candidatas.sort(key=lambda x: str(x.get("league_season", "")), reverse=True)
 
     elegido = candidatas[0]
-    print(f"🔎 APIFootball league_id encontrado: {liga} -> {elegido.get('league_name')} ({elegido.get('league_id')}) season={elegido.get('league_season')}")
+    print(
+        f"🔎 APIFootball league_id encontrado: {liga} -> "
+        f"{elegido.get('league_name')} ({elegido.get('league_id')}) "
+        f"season={elegido.get('league_season')}"
+    )
 
     return str(elegido.get("league_id"))
 
@@ -745,12 +904,30 @@ def cargar_equipos_de_liga_apifootball(league_id):
     else:
         TEAMS_BY_LEAGUE_CACHE[league_id] = data
 
-    print(f"📦 Equipos APIFootball en liga {league_id}: {len(TEAMS_BY_LEAGUE_CACHE[league_id])}")
+    print(f"📦 Equipos APIFootball get_teams league_id={league_id}: {len(TEAMS_BY_LEAGUE_CACHE[league_id])}")
 
     return TEAMS_BY_LEAGUE_CACHE[league_id]
 
 
-def obtener_apifootball_team_id(equipo):
+def cargar_standings_de_liga_apifootball(league_id):
+    league_id = str(league_id)
+
+    if league_id in STANDINGS_BY_LEAGUE_CACHE:
+        return STANDINGS_BY_LEAGUE_CACHE[league_id]
+
+    data = apifootball_get("get_standings", {"league_id": league_id})
+
+    if not isinstance(data, list):
+        STANDINGS_BY_LEAGUE_CACHE[league_id] = []
+    else:
+        STANDINGS_BY_LEAGUE_CACHE[league_id] = data
+
+    print(f"📊 Standings APIFootball league_id={league_id}: {len(STANDINGS_BY_LEAGUE_CACHE[league_id])}")
+
+    return STANDINGS_BY_LEAGUE_CACHE[league_id]
+
+
+def obtener_apifootball_team_id(equipo, league_id=""):
     for key in ["apifootball_team_id", "api_football_team_id", "api_team_id", "team_id", "api_id"]:
         valor = equipo.get(key)
 
@@ -763,27 +940,24 @@ def obtener_apifootball_team_id(equipo):
     if n in APIFOOTBALL_TEAM_IDS:
         return str(APIFOOTBALL_TEAM_IDS[n])
 
-    league_id = obtener_apifootball_league_id(equipo)
+    if not league_id:
+        league_id = obtener_apifootball_league_id(equipo)
 
     if not league_id:
         print(f"⚠️ No hay league_id para buscar team_id de: {nombre}")
         return ""
 
+    # 1) Buscar en get_teams.
     equipos_liga = cargar_equipos_de_liga_apifootball(league_id)
-
-    if not equipos_liga:
-        print(f"⚠️ Liga sin equipos en APIFootball: {league_id}")
-        return ""
 
     for item in equipos_liga:
         team_name = item.get("team_name", "")
         team_key = item.get("team_key", "")
 
         if team_key and normalizar(team_name) == n:
-            print(f"🔎 APIFootball team_id exacto: {nombre} -> {team_name} ({team_key})")
+            print(f"🔎 APIFootball team_id exacto get_teams: {nombre} -> {team_name} ({team_key})")
             return str(team_key)
 
-    # Matching suave.
     for item in equipos_liga:
         team_name = item.get("team_name", "")
         team_key = item.get("team_key", "")
@@ -793,8 +967,31 @@ def obtener_apifootball_team_id(equipo):
             continue
 
         if tn in n or n in tn:
-            print(f"🔎 APIFootball team_id aproximado: {nombre} -> {team_name} ({team_key})")
+            print(f"🔎 APIFootball team_id aproximado get_teams: {nombre} -> {team_name} ({team_key})")
             return str(team_key)
+
+    # 2) Buscar en standings si get_teams no matcheó.
+    standings = cargar_standings_de_liga_apifootball(league_id)
+
+    for item in standings:
+        team_name = item.get("team_name", "")
+        team_id = item.get("team_id", "")
+
+        if team_id and normalizar(team_name) == n:
+            print(f"🔎 APIFootball team_id exacto standings: {nombre} -> {team_name} ({team_id})")
+            return str(team_id)
+
+    for item in standings:
+        team_name = item.get("team_name", "")
+        team_id = item.get("team_id", "")
+        tn = normalizar(team_name)
+
+        if not team_id or not tn:
+            continue
+
+        if tn in n or n in tn:
+            print(f"🔎 APIFootball team_id aproximado standings: {nombre} -> {team_name} ({team_id})")
+            return str(team_id)
 
     print(f"⚠️ No se encontró team_id para {nombre} dentro de league_id {league_id}")
     return ""
@@ -810,8 +1007,8 @@ def player_apifootball_a_json(player, equipo_nombre, equipo_id, equipo_liga):
     edad = limpiar_texto(player.get("player_age"))
     fecha_nacimiento = fecha_api_a_ddmmyyyy(player.get("player_birthdate") or "")
 
-    # APIFootball.com generalmente NO entrega altura en get_teams/get_players.
-    # Dejamos el campo vacío para no inventar.
+    # La documentación de get_teams/get_players no muestra altura.
+    # No inventamos altura. Si la API algún día trae player_height, se usa.
     altura = limpiar_texto(player.get("player_height") or player.get("height") or "")
 
     return {
@@ -836,49 +1033,58 @@ def player_apifootball_a_json(player, equipo_nombre, equipo_id, equipo_liga):
     }
 
 
+def elegir_team_obj_desde_lista(equipos_liga, equipo_nombre, team_id=""):
+    if not isinstance(equipos_liga, list) or not equipos_liga:
+        return None
+
+    n = normalizar(equipo_nombre)
+    team_id = str(team_id or "")
+
+    if team_id:
+        for item in equipos_liga:
+            if str(item.get("team_key", "")) == team_id:
+                return item
+
+    for item in equipos_liga:
+        if normalizar(item.get("team_name", "")) == n:
+            return item
+
+    for item in equipos_liga:
+        tn = normalizar(item.get("team_name", ""))
+
+        if tn and len(n) > 4 and (tn in n or n in tn):
+            return item
+
+    return None
+
+
 def obtener_jugadores_apifootball(equipo):
     equipo_nombre_original = obtener_nombre_equipo(equipo)
     equipo_liga = obtener_liga_equipo(equipo)
 
-    team_id = obtener_apifootball_team_id(equipo)
     league_id = obtener_apifootball_league_id(equipo)
+    team_id = obtener_apifootball_team_id(equipo, league_id)
 
-    if not team_id and not league_id:
-        print(f"⚠️ {equipo_nombre_original}: sin team_id/league_id de APIFootball.")
-        return []
-
-    print(f"\n🌍 APIFootball datos: {equipo_nombre_original} | team={team_id or 'auto'} | league={league_id or 'sin liga'}")
+    print(
+        f"\n🌍 APIFootball datos: {equipo_nombre_original} | "
+        f"team={team_id or 'sin team_id'} | league={league_id or 'sin league_id'}"
+    )
 
     team_obj = None
 
-    if team_id:
+    # Modo principal:
+    # Si hay league_id, get_teams devuelve los equipos de esa liga y players dentro.
+    if league_id:
+        equipos_liga = cargar_equipos_de_liga_apifootball(league_id)
+        team_obj = elegir_team_obj_desde_lista(equipos_liga, equipo_nombre_original, team_id)
+
+    # Fallback:
+    # Si no hay league_id o no matcheó, probar get_teams por team_id.
+    if team_obj is None and team_id:
         data_team = apifootball_get("get_teams", {"team_id": team_id})
 
         if isinstance(data_team, list) and data_team:
-            # Si viene más de uno, intenta exacto por nombre.
-            for item in data_team:
-                if normalizar(item.get("team_name")) == normalizar(equipo_nombre_original):
-                    team_obj = item
-                    break
-
-            if team_obj is None:
-                team_obj = data_team[0]
-
-    if team_obj is None and league_id:
-        equipos_liga = cargar_equipos_de_liga_apifootball(league_id)
-
-        for item in equipos_liga:
-            if str(item.get("team_key", "")) == str(team_id):
-                team_obj = item
-                break
-
-        if team_obj is None:
-            n = normalizar(equipo_nombre_original)
-            for item in equipos_liga:
-                tn = normalizar(item.get("team_name", ""))
-                if tn == n or (len(n) > 4 and (tn in n or n in tn)):
-                    team_obj = item
-                    break
+            team_obj = elegir_team_obj_desde_lista(data_team, equipo_nombre_original, team_id) or data_team[0]
 
     if team_obj is None:
         print(f"⚠️ {equipo_nombre_original}: APIFootball no devolvió objeto de equipo.")
@@ -912,6 +1118,10 @@ def obtener_jugadores_apifootball(equipo):
 
     return jugadores
 
+
+# ============================================================
+# IMÁGENES 365SCORES
+# ============================================================
 
 def extraer_athlete_id_desde_imagen(url):
     if not url:
@@ -1235,7 +1445,7 @@ def buscar_imagen_365_para_jugador(jugador, index_imagenes):
 
     nombres = [
         jugador.get("nombre", ""),
-        re.sub(r"^[A-Z]\.\s+", "", jugador.get("nombre", "")),  # K. Benzema -> Benzema
+        re.sub(r"^[A-ZÁÉÍÓÚÑ]\.\s+", "", jugador.get("nombre", "")),  # K. Benzema -> Benzema
     ]
 
     for nombre in nombres:
@@ -1277,6 +1487,10 @@ def buscar_imagen_365_para_jugador(jugador, index_imagenes):
 
     return None
 
+
+# ============================================================
+# SALIDA
+# ============================================================
 
 def limpiar_jugador_final(j):
     club = j.get("club", "")
@@ -1431,7 +1645,7 @@ async def main():
     print(f"🚫 Blacklist cargada: {len(blacklist)}")
     print(f"♻️ Jugadores existentes en JSON del juego: {len(existentes)}")
     print(f"🖼️ Imágenes físicas existentes detectadas: {imagenes_existentes_reales}")
-    print("✅ Modo activo: datos desde apifootball.com, imágenes desde 365Scores.")
+    print("✅ Modo activo: datos desde apifootball.com/get_teams, imágenes desde 365Scores.")
 
     todos_los_jugadores = []
 
