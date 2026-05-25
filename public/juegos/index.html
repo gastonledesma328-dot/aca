@@ -275,6 +275,8 @@
 
       .game-card {
         min-width: 0;
+        height: 230px;
+        min-height: 230px;
         border: 1px solid var(--border);
         border-radius: 12px;
         background: #244839;
@@ -282,6 +284,7 @@
         padding: 14px;
         display: grid;
         gap: 10px;
+        align-content: start;
         text-decoration: none;
         transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
       }
@@ -322,6 +325,7 @@
       .game-card.legend-card,
       .game-card.guess-card {
         position: relative;
+        height: 230px;
         min-height: 230px;
         overflow: hidden;
         grid-column: span 1;
@@ -358,6 +362,7 @@
 
       .legend-content,
       .guess-content {
+        height: 230px;
         min-height: 230px;
         display: flex;
         flex-direction: column;
@@ -585,8 +590,10 @@
         .section-head { align-items: flex-start; flex-direction: column; }
         .section-link { width: 100%; text-align: center; }
         .games-grid { grid-template-columns: 1fr; }
-        .game-card.legend-card, .game-card.guess-card { min-height: 250px; }
-        .legend-content, .guess-content { min-height: 250px; padding: 98px 14px 14px; }
+        .game-card,
+        .game-card.legend-card,
+        .game-card.guess-card { height: 250px; min-height: 250px; }
+        .legend-content, .guess-content { height: 250px; min-height: 250px; padding: 98px 14px 14px; }
         footer { margin-top: 0; padding-bottom: 10px; text-align: center; }
       }
 
