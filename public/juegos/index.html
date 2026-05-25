@@ -94,11 +94,7 @@
         box-shadow: 0 0 0 2px var(--bg2);
       }
 
-      .top-actions {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
+      .top-actions { display: flex; align-items: center; gap: 8px; }
 
       .icon-btn, .profile-btn {
         border: 0;
@@ -282,9 +278,9 @@
         background: #244839;
         color: var(--text);
         padding: 14px;
-        display: grid;
+        display: flex;
+        flex-direction: column;
         gap: 10px;
-        align-content: start;
         text-decoration: none;
         transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
       }
@@ -318,13 +314,16 @@
         font-weight: 900;
         text-decoration: none;
         padding: 10px 14px;
+        margin-top: auto;
       }
 
       .game-card button:disabled { color: #56665e; background: #f2f7f3; cursor: not-allowed; }
 
       .game-card.legend-card,
-      .game-card.guess-card {
+      .game-card.guess-card,
+      .game-card.world-card {
         position: relative;
+        display: block;
         height: 230px;
         min-height: 230px;
         overflow: hidden;
@@ -336,7 +335,8 @@
       }
 
       .legend-card::before,
-      .guess-card::before {
+      .guess-card::before,
+      .world-card::before {
         content: "";
         position: absolute;
         inset: 0;
@@ -347,7 +347,8 @@
       }
 
       .legend-card::after,
-      .guess-card::after {
+      .guess-card::after,
+      .world-card::after {
         content: "";
         position: absolute;
         inset: 12px;
@@ -361,7 +362,8 @@
       }
 
       .legend-content,
-      .guess-content {
+      .guess-content,
+      .world-content {
         height: 230px;
         min-height: 230px;
         display: flex;
@@ -375,7 +377,8 @@
       }
 
       .legend-top,
-      .guess-top {
+      .guess-top,
+      .world-top {
         display: flex;
         justify-content: space-between;
         gap: 8px;
@@ -387,7 +390,9 @@
 
       .legend-badge,
       .legend-daily,
-      .guess-badge {
+      .guess-badge,
+      .world-badge,
+      .world-tag {
         width: max-content;
         border: 1px solid rgba(242, 195, 91, 0.55);
         border-radius: 999px;
@@ -401,14 +406,16 @@
       }
 
       .legend-daily,
-      .guess-question {
+      .guess-question,
+      .world-tag {
         color: #15301e;
         background: var(--gold);
         border-color: var(--gold2);
       }
 
       .legend-players,
-      .guess-visual {
+      .guess-visual,
+      .world-visual {
         position: absolute;
         inset: 42px 14px 70px;
         z-index: 1;
@@ -460,7 +467,8 @@
       .legend-token:nth-child(n+5) { display: none; }
 
       .legend-card strong,
-      .guess-card strong {
+      .guess-card strong,
+      .world-card strong {
         max-width: 280px;
         color: #fffbe6;
         font-size: clamp(20px, 2.8vw, 26px);
@@ -470,17 +478,20 @@
       }
 
       .legend-card p,
-      .guess-card p {
+      .guess-card p,
+      .world-card p {
         max-width: 300px;
         color: #e6f4df;
         font-size: 12px;
       }
 
       .legend-meta,
-      .guess-clues { display: flex; flex-wrap: wrap; gap: 5px; }
+      .guess-clues,
+      .world-meta { display: flex; flex-wrap: wrap; gap: 5px; }
 
       .legend-meta span,
-      .guess-clues span {
+      .guess-clues span,
+      .world-meta span {
         width: auto;
         height: auto;
         min-height: 22px;
@@ -494,17 +505,20 @@
       }
 
       .legend-card .game-play-link,
-      .guess-card .game-play-link {
+      .guess-card .game-play-link,
+      .world-card .game-play-link {
         width: max-content;
         min-height: 34px;
         padding: 9px 13px;
         color: #1f2b13;
         background: var(--gold);
         border: 1px solid var(--gold2);
+        margin-top: 0;
       }
 
       .legend-card:hover,
-      .guess-card:hover { background: #123d25; border-color: var(--gold); }
+      .guess-card:hover,
+      .world-card:hover { background: #123d25; border-color: var(--gold); }
       .legend-card:hover .legend-token { transform: translateY(-3px) rotate(0deg); }
 
       .guess-question {
@@ -554,6 +568,65 @@
       }
 
       .guess-card:hover .guess-question { transform: rotate(8deg) scale(1.04); }
+
+      .world-cup {
+        position: absolute;
+        left: 50%;
+        top: 2px;
+        width: 58px;
+        height: 74px;
+        transform: translateX(-50%);
+        display: grid;
+        place-items: center;
+        color: #3a2911;
+        filter: drop-shadow(0 0 16px rgba(242,195,91,0.38));
+      }
+
+      .world-cup::before {
+        content: "";
+        width: 42px;
+        height: 46px;
+        border-radius: 12px 12px 20px 20px;
+        background: linear-gradient(180deg, #fff0b6, #f2c35b 62%, #b98228);
+        box-shadow: inset 0 0 0 3px rgba(255,255,255,0.18);
+      }
+
+      .world-cup::after {
+        content: "";
+        position: absolute;
+        bottom: 4px;
+        width: 48px;
+        height: 12px;
+        border-radius: 999px;
+        background: #d69b34;
+        box-shadow: 0 -12px 0 -4px #f2c35b;
+      }
+
+      .world-flags {
+        position: absolute;
+        inset: 0;
+      }
+
+      .world-flags span {
+        position: absolute;
+        width: 32px;
+        height: 22px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 6px;
+        background: rgba(17, 51, 33, 0.82);
+        font-size: 14px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.22);
+      }
+
+      .world-flags span:nth-child(1) { left: 5%; top: 36%; transform: rotate(-7deg); }
+      .world-flags span:nth-child(2) { right: 6%; top: 34%; transform: rotate(8deg); }
+      .world-flags span:nth-child(3) { left: 25%; top: 0; transform: rotate(6deg); }
+      .world-flags span:nth-child(4) { right: 25%; top: 2%; transform: rotate(-6deg); }
+
+      .world-card:hover .world-cup { transform: translateX(-50%) translateY(-3px) scale(1.03); }
+
       .locked-card { opacity: 1; }
 
       footer {
@@ -592,8 +665,9 @@
         .games-grid { grid-template-columns: 1fr; }
         .game-card,
         .game-card.legend-card,
-        .game-card.guess-card { height: 250px; min-height: 250px; }
-        .legend-content, .guess-content { height: 250px; min-height: 250px; padding: 98px 14px 14px; }
+        .game-card.guess-card,
+        .game-card.world-card { height: 250px; min-height: 250px; }
+        .legend-content, .guess-content, .world-content { height: 250px; min-height: 250px; padding: 98px 14px 14px; }
         footer { margin-top: 0; padding-bottom: 10px; text-align: center; }
       }
 
@@ -603,9 +677,9 @@
         .brand { font-size: 20px; }
         .top-actions { gap: 4px; }
         .icon-btn, .profile-btn { width: 34px; height: 34px; flex-basis: 34px; }
-        .legend-top, .guess-top { flex-direction: column; gap: 5px; align-items: flex-start; }
-        .legend-players, .guess-visual { inset: 72px 14px 90px; }
-        .legend-card strong, .guess-card strong { font-size: 24px; }
+        .legend-top, .guess-top, .world-top { flex-direction: column; gap: 5px; align-items: flex-start; }
+        .legend-players, .guess-visual, .world-visual { inset: 72px 14px 90px; }
+        .legend-card strong, .guess-card strong, .world-card strong { font-size: 24px; }
       }
     </style>
   </head>
@@ -705,11 +779,32 @@
             </div>
           </article>
 
-          <article class="game-card">
-            <span>🏆</span>
-            <strong>Armá tu 11 Mundial</strong>
-            <p>Elegí un jugador por país y completá una formación sin repetir posiciones.</p>
-            <a class="game-play-link" href="worldcup11.html">Jugar</a>
+          <article class="game-card world-card" aria-label="Armá tu 11 Mundial">
+            <div class="world-top">
+              <span class="world-badge">Mundial</span>
+              <span class="world-tag">Selecciones</span>
+            </div>
+
+            <div class="world-visual" aria-hidden="true">
+              <span class="world-cup"></span>
+              <div class="world-flags">
+                <span>🇦🇷</span>
+                <span>🇧🇷</span>
+                <span>🇫🇷</span>
+                <span>🇪🇸</span>
+              </div>
+            </div>
+
+            <div class="world-content">
+              <strong>Armá tu 11 Mundial</strong>
+              <p>Completá una formación con jugadores por país, sin repetir posiciones.</p>
+              <div class="world-meta" aria-label="Desafíos disponibles">
+                <span>Países</span>
+                <span>Posiciones</span>
+                <span>Once ideal</span>
+              </div>
+              <a class="game-play-link" href="worldcup11.html">Jugar</a>
+            </div>
           </article>
 
           <article class="game-card locked-card">
