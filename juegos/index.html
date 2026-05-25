@@ -13,6 +13,8 @@
         --card2: #f5f5f0;
         --border: #2f5948;
         --primary: #5fcf80;
+        --gold: #f2c35b;
+        --gold2: #fff0b6;
         --live: #e8533a;
         --text: #f0faf4;
         --muted: #b6cfc0;
@@ -23,9 +25,7 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
       body {
         min-height: 100vh;
@@ -35,18 +35,9 @@
         overflow-x: hidden;
       }
 
-      a,
-      button {
-        font: inherit;
-      }
-
-      a {
-        color: inherit;
-      }
-
-      button {
-        cursor: pointer;
-      }
+      a, button { font: inherit; }
+      a { color: inherit; }
+      button { cursor: pointer; }
 
       svg {
         width: 1.15rem;
@@ -67,10 +58,7 @@
         gap: 14px;
       }
 
-      .topbar,
-      .tabs,
-      .hero,
-      .games-section {
+      .topbar, .tabs, .hero, .games-section {
         border: 1px solid var(--border);
         background: var(--card);
         border-radius: var(--rad);
@@ -121,8 +109,7 @@
         gap: 8px;
       }
 
-      .icon-btn,
-      .profile-btn {
+      .icon-btn, .profile-btn {
         border: 0;
         color: var(--text);
         background: #244839;
@@ -138,9 +125,7 @@
         transition: background 0.15s ease;
       }
 
-      .icon-btn:hover {
-        background: #2f5948;
-      }
+      .icon-btn:hover { background: #2f5948; }
 
       .profile-btn {
         width: 38px;
@@ -199,18 +184,14 @@
         transition: background 0.15s ease, color 0.15s ease;
       }
 
-      .tab:hover:not(.active) {
-        background: #244839;
-      }
-
+      .tab:hover:not(.active) { background: #244839; }
       .tab.active {
         color: var(--chip-fg);
         background: var(--chip-bg);
         box-shadow: var(--shadow);
       }
 
-      .tab span,
-      .live-pill {
+      .tab span, .live-pill {
         color: #fff;
         background: var(--live);
         border: 0;
@@ -244,9 +225,7 @@
         gap: 10px;
       }
 
-      .eyebrow,
-      .section-head span,
-      .hero-stat span {
+      .eyebrow, .section-head span, .hero-stat span {
         margin: 0;
         color: var(--muted);
         font-size: 10px;
@@ -296,9 +275,7 @@
         line-height: 1.15;
       }
 
-      .games-section {
-        padding: 14px;
-      }
+      .games-section { padding: 14px; }
 
       .section-head {
         display: flex;
@@ -362,9 +339,7 @@
         font-weight: 900;
       }
 
-      .game-card strong {
-        font-size: 16px;
-      }
+      .game-card strong { font-size: 16px; }
 
       .game-card p {
         margin: 0;
@@ -373,8 +348,7 @@
         line-height: 1.45;
       }
 
-      .game-play-link,
-      .game-card button {
+      .game-play-link, .game-card button {
         min-height: 34px;
         display: inline-flex;
         align-items: center;
@@ -395,9 +369,187 @@
         cursor: not-allowed;
       }
 
-      .locked-card {
-        opacity: 1;
+      .game-card.legend-card {
+        position: relative;
+        min-height: 340px;
+        overflow: hidden;
+        grid-column: span 2;
+        padding: 0;
+        isolation: isolate;
+        border-color: #927037;
+        background: #113321;
       }
+
+      .legend-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background:
+          linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 12.5%),
+          repeating-linear-gradient(90deg, #147334 0 54px, #19813b 54px 108px);
+      }
+
+      .legend-card::after {
+        content: "";
+        position: absolute;
+        inset: 18px;
+        z-index: -1;
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 20px;
+        background:
+          linear-gradient(90deg, transparent calc(50% - 1px), rgba(255,255,255,0.18) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+          radial-gradient(circle at 50% 50%, transparent 0 46px, rgba(255,255,255,0.16) 47px 48px, transparent 49px),
+          linear-gradient(180deg, rgba(9, 30, 20, 0.18), rgba(9, 30, 20, 0.4));
+      }
+
+      .legend-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 18px 18px 0;
+        position: relative;
+        z-index: 2;
+      }
+
+      .legend-badge,
+      .legend-daily {
+        width: max-content;
+        border: 1px solid rgba(242, 195, 91, 0.55);
+        border-radius: 999px;
+        color: #fff5c9;
+        background: #23422a;
+        padding: 7px 10px;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .legend-daily {
+        color: #15301e;
+        background: var(--gold);
+        border-color: var(--gold2);
+      }
+
+      .legend-players {
+        position: absolute;
+        inset: 50px 22px 88px;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .legend-token {
+        position: absolute;
+        width: 64px;
+        height: 86px;
+        display: grid;
+        place-items: end center;
+        padding-bottom: 10px;
+        color: #3a2911;
+        background: #efe4c8;
+        border: 2px solid #e3bd5d;
+        clip-path: polygon(12% 0, 88% 0, 100% 13%, 100% 82%, 50% 100%, 0 82%, 0 13%);
+        box-shadow: 0 0 0 3px rgba(88, 63, 25, 0.42), 0 0 22px rgba(242, 195, 91, 0.48);
+        font-size: 10px;
+        font-weight: 950;
+      }
+
+      .legend-token::before {
+        content: "";
+        position: absolute;
+        top: 12px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: #3c352b;
+        box-shadow: inset 0 -10px 0 rgba(255,255,255,0.12);
+      }
+
+      .legend-token::after {
+        content: "";
+        position: absolute;
+        top: 42px;
+        width: 42px;
+        height: 26px;
+        border-radius: 22px 22px 4px 4px;
+        background: #66563a;
+      }
+
+      .legend-token b { position: relative; z-index: 2; }
+      .legend-token:nth-child(1) { left: 8%; top: 38%; transform: rotate(-6deg); }
+      .legend-token:nth-child(2) { left: 31%; top: 2%; transform: rotate(4deg); }
+      .legend-token:nth-child(3) { left: 55%; top: 0; transform: rotate(-3deg); }
+      .legend-token:nth-child(4) { right: 8%; top: 34%; transform: rotate(6deg); }
+      .legend-token:nth-child(5) { left: 20%; bottom: 0; transform: rotate(5deg); }
+      .legend-token:nth-child(6) { left: 48%; bottom: 2%; transform: rotate(-4deg); }
+      .legend-token:nth-child(7) { right: 20%; bottom: 0; transform: rotate(3deg); }
+
+      .legend-content {
+        min-height: 340px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 12px;
+        padding: 118px 20px 20px;
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(180deg, rgba(11, 44, 27, 0.02), rgba(7, 28, 19, 0.82) 68%, rgba(7, 28, 19, 0.94));
+      }
+
+      .legend-card strong {
+        max-width: 480px;
+        color: #fffbe6;
+        font-size: clamp(25px, 4vw, 42px);
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+        text-shadow: 0 2px 0 #4a3513;
+      }
+
+      .legend-card p {
+        max-width: 520px;
+        color: #e6f4df;
+        font-size: 14px;
+      }
+
+      .legend-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .legend-meta span {
+        width: auto;
+        height: auto;
+        min-height: 28px;
+        border: 1px solid rgba(255,255,255,0.22);
+        border-radius: 999px;
+        color: #f6ffe7;
+        background: #1d5b34;
+        padding: 7px 10px;
+        font-size: 11px;
+        font-weight: 900;
+      }
+
+      .legend-card .game-play-link {
+        width: max-content;
+        min-height: 42px;
+        padding: 11px 18px;
+        color: #1f2b13;
+        background: var(--gold);
+        border: 1px solid var(--gold2);
+      }
+
+      .legend-card:hover {
+        background: #123d25;
+        border-color: var(--gold);
+      }
+
+      .legend-card:hover .legend-token {
+        transform: translateY(-4px) rotate(0deg);
+      }
+
+      .locked-card { opacity: 1; }
 
       footer {
         width: min(100% - 2rem, 1180px);
@@ -415,22 +567,15 @@
       }
 
       @media (max-width: 860px) {
-        .hero {
-          grid-template-columns: 1fr;
-        }
-
-        .games-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
+        .hero { grid-template-columns: 1fr; }
+        .games-grid { grid-template-columns: repeat(2, 1fr); }
+        .game-card.legend-card { grid-column: span 2; }
       }
 
       @media (max-width: 640px) {
-        body {
-          background: url("../img/mundial-2026-bg.png") center center / cover fixed no-repeat;
-        }
+        body { background: url("../img/mundial-2026-bg.png") center center / cover fixed no-repeat; }
 
-        .app-shell,
-        footer {
+        .app-shell, footer {
           width: 100%;
           padding-left: 10px;
           padding-right: 10px;
@@ -457,12 +602,9 @@
           height: 16px;
         }
 
-        .top-actions {
-          gap: 6px;
-        }
+        .top-actions { gap: 6px; }
 
-        .icon-btn,
-        .profile-btn {
+        .icon-btn, .profile-btn {
           width: 36px;
           height: 36px;
           flex: 0 0 36px;
@@ -478,9 +620,7 @@
           scrollbar-width: none;
         }
 
-        .tabs::-webkit-scrollbar {
-          display: none;
-        }
+        .tabs::-webkit-scrollbar { display: none; }
 
         .tab {
           min-width: max-content;
@@ -492,20 +632,13 @@
           white-space: nowrap;
         }
 
-        .hero,
-        .games-section {
+        .hero, .games-section {
           padding: 12px;
           border-radius: 12px;
         }
 
-        .hero-copy,
-        .hero-stat {
-          border-radius: 12px;
-        }
-
-        .hero-copy {
-          padding: 14px;
-        }
+        .hero-copy, .hero-stat { border-radius: 12px; }
+        .hero-copy { padding: 14px; }
 
         .section-head {
           align-items: flex-start;
@@ -517,9 +650,12 @@
           text-align: center;
         }
 
-        .games-grid {
-          grid-template-columns: 1fr;
-        }
+        .games-grid { grid-template-columns: 1fr; }
+        .game-card.legend-card { grid-column: span 1; min-height: 360px; }
+        .legend-content { min-height: 360px; padding: 132px 16px 16px; }
+        .legend-token { width: 54px; height: 74px; font-size: 9px; }
+        .legend-token:nth-child(4) { right: 3%; }
+        .legend-token:nth-child(7) { right: 10%; }
 
         footer {
           margin-top: 0;
@@ -529,30 +665,30 @@
       }
 
       @media (max-width: 420px) {
-        .app-shell,
-        footer {
+        .app-shell, footer {
           padding-left: 8px;
           padding-right: 8px;
         }
 
-        .topbar {
-          padding: 9px 10px;
-        }
+        .topbar { padding: 9px 10px; }
+        .brand { font-size: 20px; }
+        .top-actions { gap: 4px; }
 
-        .brand {
-          font-size: 20px;
-        }
-
-        .top-actions {
-          gap: 4px;
-        }
-
-        .icon-btn,
-        .profile-btn {
+        .icon-btn, .profile-btn {
           width: 34px;
           height: 34px;
           flex-basis: 34px;
         }
+
+        .legend-top {
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .legend-players { inset: 74px 16px 104px; }
+        .legend-token:nth-child(2) { left: 27%; }
+        .legend-token:nth-child(3) { left: 55%; }
+        .legend-card strong { font-size: 30px; }
       }
     </style>
   </head>
@@ -604,9 +740,7 @@
         <article class="hero-copy">
           <p class="eyebrow">Juegos de fulbo</p>
           <h1>Elegí un reto rápido</h1>
-          <p>
-            Armá equipos, adiviná jugadores y completá desafíos de fútbol con el mismo estilo visual de Partidos.Hoy.
-          </p>
+          <p>Armá equipos, adiviná jugadores y completá desafíos de fútbol con el mismo estilo visual de Partidos.Hoy.</p>
         </article>
 
         <aside class="hero-side" aria-label="Resumen de juegos">
@@ -616,8 +750,8 @@
           </div>
 
           <div class="hero-stat">
-            <span>Próximo</span>
-            <strong>Grilla futbolera</strong>
+            <span>Destacado</span>
+            <strong>Armá 11 Leyendas</strong>
           </div>
         </aside>
       </section>
@@ -640,11 +774,33 @@
             <a class="game-play-link" href="america11/america11.html">Jugar</a>
           </article>
 
-          <article class="game-card">
-            <span>⭐</span>
-            <strong>Armá 11 Leyendas</strong>
-            <p>Completá tu equipo con jugadores históricos y leyendas del fútbol mundial.</p>
-            <a class="game-play-link" href="legends11/legends11.html">Jugar</a>
+          <article class="game-card legend-card" aria-label="Armá 11 Leyendas">
+            <div class="legend-top">
+              <span class="legend-badge">Juego destacado</span>
+              <span class="legend-daily">Desafío diario</span>
+            </div>
+
+            <div class="legend-players" aria-hidden="true">
+              <span class="legend-token"><b>10</b></span>
+              <span class="legend-token"><b>9</b></span>
+              <span class="legend-token"><b>7</b></span>
+              <span class="legend-token"><b>14</b></span>
+              <span class="legend-token"><b>3</b></span>
+              <span class="legend-token"><b>6</b></span>
+              <span class="legend-token"><b>1</b></span>
+            </div>
+
+            <div class="legend-content">
+              <strong>Armá tu 11 de Leyendas</strong>
+              <p>Completá la cancha con históricos del fútbol mundial. Elegí país, posición y dificultad para desbloquear el once perfecto.</p>
+              <div class="legend-meta" aria-label="Modos disponibles">
+                <span>Fácil</span>
+                <span>Normal</span>
+                <span>Difícil 90s</span>
+                <span>Imposible 30s</span>
+              </div>
+              <a class="game-play-link" href="legends11/legends11.html">Jugar leyendas</a>
+            </div>
           </article>
 
           <article class="game-card">
