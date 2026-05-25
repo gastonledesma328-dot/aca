@@ -569,63 +569,129 @@
 
       .guess-card:hover .guess-question { transform: rotate(8deg) scale(1.04); }
 
+      .world-card {
+        border-color: #f2c35b;
+        box-shadow: inset 0 0 0 1px rgba(255, 240, 182, 0.14);
+      }
+
+      .world-card::before {
+        background:
+          radial-gradient(circle at 50% 16%, rgba(255, 240, 182, 0.32) 0 10%, transparent 28%),
+          radial-gradient(circle at 16% 22%, rgba(62, 158, 255, 0.34) 0 8%, transparent 24%),
+          radial-gradient(circle at 84% 24%, rgba(232, 83, 58, 0.28) 0 8%, transparent 23%),
+          linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 12.5%),
+          repeating-linear-gradient(90deg, #116936 0 42px, #18823d 42px 84px);
+      }
+
+      .world-card::after {
+        background:
+          linear-gradient(90deg, transparent calc(50% - 1px), rgba(255,255,255,0.16) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+          radial-gradient(circle at 50% 50%, transparent 0 30px, rgba(255,255,255,0.16) 31px 32px, transparent 33px),
+          linear-gradient(180deg, rgba(12, 57, 34, 0.04), rgba(7, 28, 19, 0.36));
+      }
+
+      .world-content {
+        background: linear-gradient(180deg, rgba(11, 44, 27, 0) 0%, rgba(8, 31, 21, 0.06) 33%, rgba(8, 29, 19, 0.88) 55%, rgba(7, 25, 18, 0.98) 100%);
+      }
+
+      .world-badge {
+        background: #132f65;
+        border-color: rgba(118, 188, 255, 0.65);
+        color: #e8f4ff;
+      }
+
+      .world-tag {
+        background: linear-gradient(90deg, #f2c35b, #fff0b6);
+        color: #15301e;
+      }
+
       .world-cup {
         position: absolute;
         left: 50%;
-        top: 2px;
-        width: 58px;
-        height: 74px;
+        top: -2px;
+        width: 64px;
+        height: 80px;
         transform: translateX(-50%);
         display: grid;
         place-items: center;
         color: #3a2911;
-        filter: drop-shadow(0 0 16px rgba(242,195,91,0.38));
+        filter: drop-shadow(0 0 18px rgba(242,195,91,0.56));
       }
 
       .world-cup::before {
         content: "";
-        width: 42px;
-        height: 46px;
-        border-radius: 12px 12px 20px 20px;
-        background: linear-gradient(180deg, #fff0b6, #f2c35b 62%, #b98228);
-        box-shadow: inset 0 0 0 3px rgba(255,255,255,0.18);
+        width: 46px;
+        height: 50px;
+        border-radius: 13px 13px 22px 22px;
+        background: linear-gradient(180deg, #fff8cc, #f2c35b 56%, #a86f1f);
+        box-shadow: inset 0 0 0 3px rgba(255,255,255,0.2), 0 0 0 5px rgba(242,195,91,0.12);
       }
 
       .world-cup::after {
         content: "";
         position: absolute;
         bottom: 4px;
-        width: 48px;
-        height: 12px;
+        width: 52px;
+        height: 13px;
         border-radius: 999px;
         background: #d69b34;
-        box-shadow: 0 -12px 0 -4px #f2c35b;
+        box-shadow: 0 -13px 0 -4px #f2c35b;
       }
 
-      .world-flags {
+      .world-flags { position: absolute; inset: 0; }
+
+      .world-flags span {
+        position: absolute;
+        width: 34px;
+        height: 24px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255,255,255,0.34);
+        border-radius: 7px;
+        background: rgba(12, 36, 27, 0.84);
+        font-size: 15px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.22);
+      }
+
+      .world-flags span:nth-child(1) { left: 5%; top: 35%; transform: rotate(-8deg); }
+      .world-flags span:nth-child(2) { right: 6%; top: 34%; transform: rotate(8deg); }
+      .world-flags span:nth-child(3) { left: 24%; top: -2px; transform: rotate(7deg); }
+      .world-flags span:nth-child(4) { right: 24%; top: 0; transform: rotate(-7deg); }
+
+      .world-ribbon {
+        position: absolute;
+        left: 50%;
+        top: 58px;
+        width: 154px;
+        height: 20px;
+        transform: translateX(-50%);
+        border-radius: 999px;
+        background: linear-gradient(90deg, #2f8dff 0 25%, #fff 25% 50%, #e8533a 50% 75%, #f2c35b 75% 100%);
+        opacity: 0.9;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+      }
+
+      .world-confetti {
         position: absolute;
         inset: 0;
       }
 
-      .world-flags span {
+      .world-confetti span {
         position: absolute;
-        width: 32px;
-        height: 22px;
-        display: grid;
-        place-items: center;
-        border: 1px solid rgba(255,255,255,0.25);
-        border-radius: 6px;
-        background: rgba(17, 51, 33, 0.82);
-        font-size: 14px;
-        box-shadow: 0 0 12px rgba(0,0,0,0.22);
+        width: 6px;
+        height: 10px;
+        border-radius: 2px;
+        background: #fff0b6;
+        opacity: 0.85;
       }
 
-      .world-flags span:nth-child(1) { left: 5%; top: 36%; transform: rotate(-7deg); }
-      .world-flags span:nth-child(2) { right: 6%; top: 34%; transform: rotate(8deg); }
-      .world-flags span:nth-child(3) { left: 25%; top: 0; transform: rotate(6deg); }
-      .world-flags span:nth-child(4) { right: 25%; top: 2%; transform: rotate(-6deg); }
+      .world-confetti span:nth-child(1) { left: 12%; top: 9%; transform: rotate(18deg); background: #2f8dff; }
+      .world-confetti span:nth-child(2) { left: 72%; top: 8%; transform: rotate(-22deg); background: #e8533a; }
+      .world-confetti span:nth-child(3) { left: 18%; top: 62%; transform: rotate(-12deg); background: #fff0b6; }
+      .world-confetti span:nth-child(4) { right: 14%; top: 60%; transform: rotate(25deg); background: #5fcf80; }
 
-      .world-card:hover .world-cup { transform: translateX(-50%) translateY(-3px) scale(1.03); }
+      .world-card:hover .world-cup { transform: translateX(-50%) translateY(-3px) scale(1.04); }
+      .world-card:hover .world-ribbon { transform: translateX(-50%) translateY(-2px); }
 
       .locked-card { opacity: 1; }
 
@@ -781,12 +847,19 @@
 
           <article class="game-card world-card" aria-label="Armá tu 11 Mundial">
             <div class="world-top">
-              <span class="world-badge">Mundial</span>
+              <span class="world-badge">Copa del Mundo</span>
               <span class="world-tag">Selecciones</span>
             </div>
 
             <div class="world-visual" aria-hidden="true">
               <span class="world-cup"></span>
+              <span class="world-ribbon"></span>
+              <div class="world-confetti">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
               <div class="world-flags">
                 <span>🇦🇷</span>
                 <span>🇧🇷</span>
@@ -797,10 +870,10 @@
 
             <div class="world-content">
               <strong>Armá tu 11 Mundial</strong>
-              <p>Completá una formación con jugadores por país, sin repetir posiciones.</p>
+              <p>Completá una formación mundialista con jugadores por país, sin repetir posiciones.</p>
               <div class="world-meta" aria-label="Desafíos disponibles">
                 <span>Países</span>
-                <span>Posiciones</span>
+                <span>Copa</span>
                 <span>Once ideal</span>
               </div>
               <a class="game-play-link" href="worldcup11.html">Jugar</a>
