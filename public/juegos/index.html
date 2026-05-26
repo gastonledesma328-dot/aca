@@ -319,6 +319,213 @@
 
       .game-card button:disabled { color: #56665e; background: #f2f7f3; cursor: not-allowed; }
 
+      .game-card.america-card {
+        position: relative;
+        display: block;
+        height: 230px;
+        min-height: 230px;
+        overflow: hidden;
+        padding: 0;
+        isolation: isolate;
+        border-color: rgba(95, 207, 128, 0.75);
+        background: #0f3725;
+      }
+
+      .america-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -3;
+        background:
+          radial-gradient(circle at 18% 20%, rgba(89, 184, 255, 0.28) 0 9%, transparent 25%),
+          radial-gradient(circle at 84% 18%, rgba(242, 195, 91, 0.25) 0 9%, transparent 24%),
+          radial-gradient(circle at 72% 68%, rgba(232, 83, 58, 0.22) 0 8%, transparent 24%),
+          linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 12.5%),
+          repeating-linear-gradient(90deg, #116b35 0 42px, #188340 42px 84px);
+      }
+
+      .america-card::after {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        z-index: -2;
+        border: 1px solid rgba(255,255,255,0.16);
+        border-radius: 16px;
+        background:
+          linear-gradient(90deg, transparent calc(50% - 1px), rgba(255,255,255,0.16) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+          radial-gradient(circle at 50% 50%, transparent 0 30px, rgba(255,255,255,0.16) 31px 32px, transparent 33px),
+          linear-gradient(180deg, rgba(8, 36, 25, 0.04), rgba(7, 28, 19, 0.36));
+      }
+
+      .america-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 12px 12px 0;
+        position: absolute;
+        inset: 0 0 auto;
+        z-index: 4;
+      }
+
+      .america-badge,
+      .america-tag {
+        width: max-content;
+        border: 1px solid rgba(95, 207, 128, 0.55);
+        border-radius: 999px;
+        color: #dcffe6;
+        background: rgba(19, 66, 43, 0.9);
+        padding: 5px 7px;
+        font-size: 8px;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .america-tag {
+        color: #10251d;
+        background: linear-gradient(90deg, #5fcf80, #fff0b6);
+        border-color: rgba(255,255,255,0.45);
+      }
+
+      .america-visual {
+        position: absolute;
+        inset: 42px 14px 70px;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .america-map {
+        position: absolute;
+        left: 50%;
+        top: 3px;
+        width: 64px;
+        height: 82px;
+        transform: translateX(-50%) rotate(-10deg);
+        filter: drop-shadow(0 0 16px rgba(95, 207, 128, 0.34));
+      }
+
+      .america-map::before,
+      .america-map::after {
+        content: "";
+        position: absolute;
+        background: linear-gradient(180deg, #fff0b6, #5fcf80 55%, #1b7f42);
+        opacity: 0.92;
+      }
+
+      .america-map::before {
+        left: 14px;
+        top: 0;
+        width: 38px;
+        height: 46px;
+        border-radius: 55% 45% 48% 52%;
+        transform: rotate(22deg);
+      }
+
+      .america-map::after {
+        left: 25px;
+        top: 38px;
+        width: 26px;
+        height: 44px;
+        border-radius: 45% 55% 60% 40%;
+        transform: rotate(-13deg);
+      }
+
+      .america-ball {
+        position: absolute;
+        left: 50%;
+        top: 58px;
+        width: 30px;
+        height: 30px;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 50% 50%, #10251d 0 16%, transparent 17%),
+          linear-gradient(45deg, transparent 42%, rgba(16,37,29,0.65) 43% 57%, transparent 58%),
+          linear-gradient(-45deg, transparent 42%, rgba(16,37,29,0.65) 43% 57%, transparent 58%),
+          #f2f7f3;
+        box-shadow: 0 0 0 4px rgba(255,255,255,0.12), 0 10px 18px rgba(0,0,0,0.2);
+      }
+
+      .america-flags { position: absolute; inset: 0; }
+
+      .america-flags span {
+        position: absolute;
+        width: 34px;
+        height: 24px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255,255,255,0.34);
+        border-radius: 7px;
+        background: rgba(12, 36, 27, 0.84);
+        font-size: 15px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.22);
+      }
+
+      .america-flags span:nth-child(1) { left: 5%; top: 34%; transform: rotate(-8deg); }
+      .america-flags span:nth-child(2) { right: 6%; top: 34%; transform: rotate(8deg); }
+      .america-flags span:nth-child(3) { left: 24%; top: 0; transform: rotate(7deg); }
+      .america-flags span:nth-child(4) { right: 24%; top: 2px; transform: rotate(-7deg); }
+
+      .america-content {
+        height: 230px;
+        min-height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 8px;
+        padding: 88px 14px 14px;
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(180deg, rgba(11, 44, 27, 0) 0%, rgba(8, 31, 21, 0.08) 34%, rgba(7, 28, 19, 0.86) 58%, rgba(7, 28, 19, 0.96) 100%);
+      }
+
+      .america-card strong {
+        max-width: 280px;
+        color: #fffbe6;
+        font-size: clamp(20px, 2.8vw, 26px);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+        text-shadow: 0 2px 0 #164021;
+      }
+
+      .america-card p {
+        max-width: 300px;
+        color: #e6f4df;
+        font-size: 12px;
+      }
+
+      .america-meta { display: flex; flex-wrap: wrap; gap: 5px; }
+
+      .america-meta span {
+        min-height: 22px;
+        border: 1px solid rgba(255,255,255,0.22);
+        border-radius: 999px;
+        color: #f6ffe7;
+        background: #1d5b34;
+        padding: 5px 7px;
+        font-size: 9px;
+        font-weight: 900;
+      }
+
+      .america-card .game-play-link {
+        width: max-content;
+        min-height: 34px;
+        padding: 9px 13px;
+        color: #10251d;
+        background: linear-gradient(90deg, #5fcf80, #fff0b6);
+        border: 1px solid rgba(255,255,255,0.45);
+        margin-top: 0;
+      }
+
+      .america-card:hover {
+        background: #123d25;
+        border-color: #5fcf80;
+      }
+
+      .america-card:hover .america-map {
+        transform: translateX(-50%) translateY(-3px) rotate(-7deg) scale(1.04);
+      }
+
       .game-card.legend-card,
       .game-card.guess-card,
       .game-card.world-card {
@@ -727,10 +934,11 @@
         .section-link { width: 100%; text-align: center; }
         .games-grid { grid-template-columns: 1fr; }
         .game-card,
+        .game-card.america-card,
         .game-card.legend-card,
         .game-card.guess-card,
         .game-card.world-card { height: 250px; min-height: 250px; }
-        .legend-content, .guess-content, .world-content { height: 250px; min-height: 250px; padding: 98px 14px 14px; }
+        .america-content, .legend-content, .guess-content, .world-content { height: 250px; min-height: 250px; padding: 98px 14px 14px; }
         footer { margin-top: 0; padding-bottom: 10px; text-align: center; }
       }
 
@@ -740,9 +948,9 @@
         .brand { font-size: 20px; }
         .top-actions { gap: 4px; }
         .icon-btn, .profile-btn { width: 34px; height: 34px; flex-basis: 34px; }
-        .legend-top, .guess-top, .world-top { flex-direction: column; gap: 5px; align-items: flex-start; }
-        .legend-players, .guess-visual, .world-visual { inset: 72px 14px 90px; }
-        .legend-card strong, .guess-card strong, .world-card strong { font-size: 24px; }
+        .america-top, .legend-top, .guess-top, .world-top { flex-direction: column; gap: 5px; align-items: flex-start; }
+        .america-visual, .legend-players, .guess-visual, .world-visual { inset: 72px 14px 90px; }
+        .america-card strong, .legend-card strong, .guess-card strong, .world-card strong { font-size: 24px; }
       }
     </style>
   </head>
@@ -806,11 +1014,33 @@
         </div>
 
         <div class="games-grid">
-          <article class="game-card">
-            <span>🌎</span>
-            <strong>Armá 11 América</strong>
-            <p>Formá un 11 con jugadores actuales de clubes americanos, con desafíos por país, liga y dificultad.</p>
-            <a class="game-play-link" href="america11/america11.html">Jugar</a>
+          <article class="game-card america-card" aria-label="Armá 11 América">
+            <div class="america-top">
+              <span class="america-badge">América</span>
+              <span class="america-tag">Clubes</span>
+            </div>
+
+            <div class="america-visual" aria-hidden="true">
+              <span class="america-map"></span>
+              <span class="america-ball"></span>
+              <div class="america-flags">
+                <span>🇦🇷</span>
+                <span>🇧🇷</span>
+                <span>🇺🇾</span>
+                <span>🇨🇴</span>
+              </div>
+            </div>
+
+            <div class="america-content">
+              <strong>Armá 11 América</strong>
+              <p>Formá un once con jugadores actuales de clubes americanos.</p>
+              <div class="america-meta" aria-label="Desafíos disponibles">
+                <span>Clubes</span>
+                <span>Ligas</span>
+                <span>Países</span>
+              </div>
+              <a class="game-play-link" href="america11/america11.html">Jugar</a>
+            </div>
           </article>
 
           <article class="game-card legend-card" aria-label="Armá 11 Leyendas">
