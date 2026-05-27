@@ -14,6 +14,13 @@ const teamsGrid = document.querySelector("#competitionTeamsGrid");
 const tabButtons = document.querySelectorAll(".competition-tab");
 const sections = document.querySelectorAll(".competition-section");
 
+const BRACKET_PHASES = [
+  { key: "octavos", title: "Octavos de final", slots: 8 },
+  { key: "cuartos", title: "Cuartos de final", slots: 4 },
+  { key: "semis", title: "Semifinales", slots: 2 },
+  { key: "final", title: "Final", slots: 1 },
+];
+
 function setText(element, value) {
   if (element) element.textContent = value;
 }
@@ -231,35 +238,277 @@ function renderTeams(competition) {
     .join(""));
 }
 
-function renderBracketPhase(title, matches) {
-  const content = Array.isArray(matches) && matches.length
-    ? matches.map((match) => {
-        const local = match.local?.equipo || {};
-        const visitante = match.visitante?.equipo || {};
-        const winner = match.ganador ? teamName(match.ganador) : "Por definirse";
-        return `
-          <article class="competition-bracket-match">
-            <div class="competition-bracket-date">${escapeHtml(formatDate(match.fecha))}</div>
-            <div class="competition-bracket-teams">
-              <span>${teamLogo(local)} ${escapeHtml(teamName(local))}</span>
-              <strong>${escapeHtml(matchScore(match))}</strong>
-              <span>${teamLogo(visitante)} ${escapeHtml(teamName(visitante))}</span>
-            </div>
-            <div class="competition-bracket-winner">Pasa: <strong>${escapeHtml(winner)}</strong></div>
-          </article>`;
-      }).join("")
-    : `<p class="competition-empty">Sin cruces cargados en ESPN.</p>`;
+function injectBracketStyles() {
+  if (document.querySelector("#competition-bracket-final-style")) return;
+
+  const style = document.createElement("style");
+  style.id = "competition-bracket-final-style";
+  style.textContent = `
+    .competition-bracket {
+      width: 100%;
+      overflow-x: auto;
+      padding: 0 14px 14px;
+    }
+
+    .competition-bracket-tournament {
+      min-width: 980px;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 0.9fr 0.85fr;
+      gap: 18px;
+      align-items: stretch;
+      padding: 8px 0 2px;
+    }
+
+    .competition-bracket-phase {
+      position: relative;
+      min-width: 0;
+      border-radius: 0;
+      background: linear-gradient(180deg, rgba(20, 73, 45, 0.92), rgba(12, 57, 35, 0.92));
+      overflow: visible;
+      padding: 0 8px 8px;
+    }
+
+    .competition-bracket-phase::after {
+      content: "";
+      position: absolute;
+      top: 38px;
+      right: -10px;
+      bottom: 12px;
+      width: 1px;
+      background: rgba(150, 255, 158, 0.12);
+    }
+
+    .competition-bracket-phase:last-child::after {
+      display: none;
+    }
+
+    .competition-bracket-phase h3 {
+      margin: 0 0 8px;
+      padding: 0;
+      min-height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      border: 0;
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .competition-bracket-list {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0;
+    }
+
+    .competition-bracket-phase[data-phase="octavos"] .competition-bracket-list {
+      justify-content: flex-start;
+    }
+
+    .competition-bracket-phase[data-phase="cuartos"] .competition-bracket-list {
+      justify-content: space-around;
+      padding-block: 28px;
+    }
+
+    .competition-bracket-phase[data-phase="semis"] .competition-bracket-list {
+      justify-content: space-around;
+      padding-block: 88px;
+    }
+
+    .competition-bracket-phase[data-phase="final"] .competition-bracket-list {
+      justify-content: center;
+      padding-block: 170px;
+    }
+
+    .competition-bracket-match {
+      position: relative;
+      display: grid;
+      gap: 0;
+      border-radius: 4px;
+      color: #eaffef;
+      background: rgba(0, 111, 47, 0.82);
+      border: 1px solid rgba(105, 255, 133, 0.16);
+      padding: 0;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .competition-bracket-match:not(.is-empty)::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      top: 50%;
+      width: 18px;
+      height: 1px;
+      background: rgba(186, 255, 120, 0.38);
+    }
+
+    .competition-bracket-phase[data-phase="final"] .competition-bracket-match::after {
+      display: none;
+    }
+
+    .competition-bracket-date,
+    .competition-bracket-winner {
+      display: none;
+    }
+
+    .competition-bracket-team-row {
+      min-height: 25px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 26px;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 6px;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .competition-bracket-team-row + .competition-bracket-team-row {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .competition-bracket-team-row.is-winner {
+      color: #fff36c;
+      background: rgba(45, 170, 70, 0.45);
+    }
+
+    .competition-bracket-team-row.is-empty-team {
+      color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .competition-bracket-team-name {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .competition-bracket-team-name img,
+    .competition-bracket-team-name .competition-team-logo {
+      width: 15px;
+      height: 15px;
+      flex: 0 0 15px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .competition-bracket-team-score {
+      justify-self: end;
+      min-width: 18px;
+      text-align: right;
+      color: inherit;
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .competition-bracket-badge {
+      position: absolute;
+      top: -11px;
+      right: -8px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      border-radius: 999px;
+      color: #173520;
+      background: #f6d431;
+      padding: 2px 7px;
+      font-size: 8px;
+      font-weight: 950;
+      text-transform: uppercase;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+    }
+
+    .competition-bracket-placeholder-note {
+      margin: 8px 14px 0;
+      color: rgba(240, 250, 244, 0.62);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    @media (max-width: 760px) {
+      .competition-bracket-tournament {
+        min-width: 860px;
+        gap: 12px;
+      }
+
+      .competition-bracket-team-row {
+        font-size: 10px;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function asScore(value) {
+  return value === "" || value == null ? "" : String(value);
+}
+
+function isWinner(match, side) {
+  return match?.[side]?.ganador === true;
+}
+
+function renderBracketTeamRow(team, score, winner, emptyText = "Por definir") {
+  const isEmpty = !team || (!team.nombre && !team.nombre_corto && !team.logo);
+  return `
+    <div class="competition-bracket-team-row ${winner ? "is-winner" : ""} ${isEmpty ? "is-empty-team" : ""}">
+      <span class="competition-bracket-team-name">
+        ${isEmpty ? `<span class="competition-team-logo"></span>` : teamLogo(team)}
+        <span>${escapeHtml(isEmpty ? emptyText : teamName(team))}</span>
+      </span>
+      <span class="competition-bracket-team-score">${escapeHtml(asScore(score))}</span>
+    </div>`;
+}
+
+function normalizePhaseMatches(matches, slots) {
+  const list = Array.isArray(matches) ? matches.slice(0, slots) : [];
+  while (list.length < slots) {
+    list.push({ empty: true });
+  }
+  return list;
+}
+
+function renderBracketMatch(match, phaseKey) {
+  const local = match?.local?.equipo || null;
+  const visitante = match?.visitante?.equipo || null;
+  const localScore = match?.local?.marcador;
+  const awayScore = match?.visitante?.marcador;
+  const showFinalBadge = phaseKey === "final" && !match?.empty;
 
   return `
-    <section class="competition-bracket-phase">
-      <h3>${escapeHtml(title)}</h3>
-      <div class="competition-bracket-list">${content}</div>
+    <article class="competition-bracket-match ${match?.empty ? "is-empty" : ""}">
+      ${showFinalBadge ? `<span class="competition-bracket-badge">🏆 Final</span>` : ""}
+      ${renderBracketTeamRow(local, localScore, isWinner(match, "local"))}
+      ${renderBracketTeamRow(visitante, awayScore, isWinner(match, "visitante"))}
+    </article>`;
+}
+
+function renderBracketPhase(phase, matches) {
+  const slots = normalizePhaseMatches(matches, phase.slots);
+  return `
+    <section class="competition-bracket-phase" data-phase="${escapeHtml(phase.key)}">
+      <h3>${escapeHtml(phase.title)}</h3>
+      <div class="competition-bracket-list">
+        ${slots.map((match) => renderBracketMatch(match, phase.key)).join("")}
+      </div>
     </section>`;
 }
 
 function renderLigaProfesionalExtras(competition) {
   const especial = competition.especial || null;
   if (especial?.tipo !== "liga_profesional_argentina") return;
+
+  injectBracketStyles();
 
   const existing = document.querySelector("#competitionLigaProfesionalExtras");
   if (existing) existing.remove();
@@ -272,21 +521,20 @@ function renderLigaProfesionalExtras(competition) {
     <div class="competition-card-head">
       <div>
         <p class="competition-section-kicker">Liga Profesional</p>
-        <h2>Apertura, Clausura y cuadro final</h2>
+        <h2>Cuadro de enfrentamientos</h2>
       </div>
     </div>
     <div class="competition-lpf-info">
       <article><span>Torneo terminado</span><strong>${escapeHtml(especial.torneo_anterior || "Apertura")}</strong></article>
       <article><span>Torneo siguiente</span><strong>${escapeHtml(especial.torneo_actual || "Clausura")}</strong></article>
-      <article><span>Formato</span><strong>Zonas + Playoffs</strong></article>
+      <article><span>Formato</span><strong>16 equipos · Eliminación directa</strong></article>
     </div>
     <div class="competition-bracket">
-      ${renderBracketPhase("Octavos", fases.octavos || [])}
-      ${renderBracketPhase("Cuartos", fases.cuartos || [])}
-      ${renderBracketPhase("Semifinales", fases.semis || [])}
-      ${renderBracketPhase("Final", fases.final || [])}
+      <div class="competition-bracket-tournament">
+        ${BRACKET_PHASES.map((phase) => renderBracketPhase(phase, fases[phase.key] || [])).join("")}
+      </div>
     </div>
-    <p class="competition-empty">${escapeHtml(especial.eliminatorias?.nota || "Los cruces se actualizan cuando ESPN los publica en el scoreboard.")}</p>
+    <p class="competition-bracket-placeholder-note">${escapeHtml(especial.eliminatorias?.nota || "Los cruces se actualizan cuando ESPN los publica en el scoreboard.")}</p>
   `;
 
   const grid = document.querySelector(".competition-grid");
@@ -296,7 +544,7 @@ function renderLigaProfesionalExtras(competition) {
 }
 
 function setActiveTab(tab) {
-  tabButtons.forEach((button) => button.classList.toggle("active", button.dataset.competitionTab === tab));
+  tabButtons.forEach((button) => button.classList.toggle("active", button.datasetCompetitionTab === tab || button.dataset.competitionTab === tab));
   sections.forEach((section) => section.classList.toggle("hidden", section.dataset.competitionSection !== tab));
 }
 
