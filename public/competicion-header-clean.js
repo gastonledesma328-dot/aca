@@ -79,23 +79,20 @@ function obtenerCompetitionIdActual() {
   return document.body?.dataset?.competitionId || new URLSearchParams(window.location.search).get("id") || "";
 }
 
+function esNumeroPenales(valor) {
+  return /^\d+$/.test(String(valor ?? "").trim());
+}
+
 function textoPenales(match) {
   if (!match) return "";
 
   const local = match.penales?.local || match.local?.penales || "";
   const visitante = match.penales?.visitante || match.visitante?.penales || "";
 
-  if (local !== "" && visitante !== "") {
+  // Solo mostramos penales si ESPN entrega marcador real de tanda para ambos equipos.
+  // Si no se disputó por penales, o si solo aparece texto genérico, no se agrega nada.
+  if (esNumeroPenales(local) && esNumeroPenales(visitante)) {
     return `Penales ${local} - ${visitante}`;
-  }
-
-  if (match.penales?.texto) {
-    return match.penales.texto;
-  }
-
-  const texto = `${match.estado || ""} ${match.clasificacion_texto || ""} ${match.nombre || ""}`.toLowerCase();
-  if (/penal|penales|penalty|penalties|shootout|tanda/.test(texto)) {
-    return "Definido por penales";
   }
 
   return "";
