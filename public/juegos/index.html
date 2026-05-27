@@ -22,27 +22,13 @@
       }
 
       * { box-sizing: border-box; }
-      body {
-        min-height: 100vh;
-        margin: 0;
-        color: var(--text);
-        background: url("../img/mundial-2026-bg.png") center center / cover fixed no-repeat;
-        overflow-x: hidden;
-      }
+      body { min-height: 100vh; margin: 0; color: var(--text); background: url("../img/mundial-2026-bg.png") center center / cover fixed no-repeat; overflow-x: hidden; }
       a, button { font: inherit; }
       a { color: inherit; }
       button { cursor: pointer; }
       svg { width: 1.15rem; height: 1.15rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
 
-      .app-shell {
-        width: min(100% - 2rem, 1180px);
-        margin: 0 auto;
-        padding: 18px 0 24px;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-
+      .app-shell { width: min(100% - 2rem, 1180px); margin: 0 auto; padding: 18px 0 24px; display: flex; flex-direction: column; gap: 14px; }
       .topbar, .tabs, .hero, .games-section { border: 1px solid var(--border); background: var(--card); border-radius: var(--rad); }
       .topbar { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 20px; }
       .brand { color: var(--text); display: inline-flex; align-items: baseline; text-decoration: none; font-size: 26px; font-style: italic; font-weight: 900; line-height: 1; }
@@ -104,13 +90,14 @@
       .america-badge { color: #f8f8f8; background: rgba(38,54,48,.92); border-color: rgba(229,229,229,.58); }
       .america-tag { background: linear-gradient(90deg, #e7e7e7, #fff8cc); border-color: rgba(229,229,229,.58); }
 
-      .america-cup { position: absolute; left: 50%; top: -13px; width: 78px; height: 98px; transform: translateX(-50%); filter: drop-shadow(0 0 18px rgba(255,255,255,.42)); }
-      .america-cup::before { content: ""; position: absolute; left: 50%; top: 0; width: 52px; height: 62px; transform: translateX(-50%); border: 2px solid rgba(7,7,7,.78); border-radius: 27% 27% 40% 40% / 16% 16% 58% 58%; background: repeating-linear-gradient(90deg, transparent 0 6px, rgba(0,0,0,.15) 6px 8px, transparent 8px 14px), linear-gradient(90deg, #777 0%, #efefef 18%, #bdbdbd 40%, #f7f7f7 62%, #8c8c8c 100%); box-shadow: inset 0 7px 0 rgba(255,255,255,.55), inset 0 -9px 0 rgba(0,0,0,.15); }
-      .america-cup::after { content: ""; position: absolute; left: 50%; top: 52px; width: 70px; height: 45px; transform: translateX(-50%); border-radius: 4px 4px 18px 18px; background: radial-gradient(ellipse at 18% 50%, #f8edbd 0 10%, transparent 11%), radial-gradient(ellipse at 39% 50%, #f8edbd 0 10%, transparent 11%), radial-gradient(ellipse at 62% 50%, #f8edbd 0 10%, transparent 11%), radial-gradient(ellipse at 84% 50%, #f8edbd 0 10%, transparent 11%), linear-gradient(180deg, transparent 0 7px, #5a3922 7px 18px, #2d180f 18px 20px, #70482c 20px 32px, #2d180f 32px 34px, #5b3823 34px 45px); box-shadow: 0 7px 0 rgba(26,16,10,.96), inset 0 -2px 0 rgba(0,0,0,.25); }
-      .america-cup-top { position: absolute; left: 50%; top: -6px; width: 42px; height: 12px; transform: translateX(-50%); border: 2px solid rgba(7,7,7,.78); border-radius: 999px; background: linear-gradient(90deg, #777, #f6f6f6, #929292); box-shadow: inset 0 3px 0 rgba(255,255,255,.55); }
-      .america-cup-band { position: absolute; left: 50%; top: 22px; width: 60px; height: 15px; transform: translateX(-50%); border-top: 2px solid rgba(0,0,0,.58); border-bottom: 2px solid rgba(0,0,0,.58); background: repeating-linear-gradient(135deg, transparent 0 10px, rgba(0,0,0,.25) 10px 12px, transparent 12px 22px); opacity: .75; }
-      .america-cup-shine { position: absolute; left: 50%; top: 8px; width: 34px; height: 43px; transform: translateX(-50%); border-radius: 40% 40% 48% 48%; border-top: 3px solid rgba(255,255,255,.9); border-left: 2px solid rgba(255,255,255,.42); border-bottom: 2px solid rgba(0,0,0,.24); opacity: .8; }
-      .america-cup-rings { position: absolute; left: 50%; top: 63px; width: 64px; height: 24px; transform: translateX(-50%); background: radial-gradient(ellipse at 17% 37%, #fff6b8 0 10%, transparent 11%), radial-gradient(ellipse at 39% 37%, #fff6b8 0 10%, transparent 11%), radial-gradient(ellipse at 62% 37%, #fff6b8 0 10%, transparent 11%), radial-gradient(ellipse at 84% 37%, #fff6b8 0 10%, transparent 11%); opacity: .96; }
+      .america-cup { position: absolute; left: 50%; top: -16px; width: 96px; height: 124px; transform: translateX(-50%); filter: drop-shadow(0 8px 14px rgba(0,0,0,.28)) drop-shadow(0 0 12px rgba(255,255,255,.14)); }
+      .america-cup::before { content: ""; position: absolute; left: 50%; top: 0; width: 62px; height: 82px; transform: translateX(-50%); border: 2px solid rgba(15,15,15,.75); border-radius: 22px 22px 18px 18px / 14px 14px 28px 28px; clip-path: polygon(18% 0%, 82% 0%, 88% 8%, 88% 18%, 79% 24%, 80% 39%, 86% 46%, 82% 60%, 67% 74%, 61% 88%, 56% 100%, 44% 100%, 39% 88%, 33% 74%, 18% 60%, 14% 46%, 20% 39%, 21% 24%, 12% 18%, 12% 8%); background: linear-gradient(105deg, transparent 0 18%, rgba(255,255,255,.75) 19% 22%, transparent 23% 100%), repeating-linear-gradient(90deg, transparent 0 5px, rgba(35,35,35,.18) 5px 7px, transparent 7px 11px), linear-gradient(90deg, #767676 0%, #f4f4f4 18%, #c7c7c7 36%, #fbfbfb 54%, #b8b8b8 72%, #7b7b7b 100%); box-shadow: inset 0 6px 0 rgba(255,255,255,.32), inset 0 -8px 0 rgba(0,0,0,.10); }
+      .america-cup::after { content: ""; position: absolute; left: 50%; bottom: 0; width: 92px; height: 56px; transform: translateX(-50%); border: 2px solid rgba(20,12,8,.78); border-radius: 0 0 26px 26px; background: linear-gradient(180deg, transparent 0 8px, #6d452b 8px 21px, #2f1a10 21px 23px, #6d452b 23px 36px, #2b180f 36px 38px, #70472c 38px 100%); box-shadow: 0 8px 0 rgba(34,20,13,.96), inset 0 1px 0 rgba(255,255,255,.08); }
+      .america-cup-shine { position: absolute; left: 50%; top: 4px; width: 70px; height: 82px; transform: translateX(-50%); pointer-events: none; }
+      .america-cup-shine::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 10%, transparent 0 20px, rgba(40,40,40,.34) 20px 22px, transparent 22px), linear-gradient(180deg, transparent 0 18px, rgba(40,40,40,.38) 18px 20px, transparent 20px 100%), radial-gradient(ellipse at 50% 34px, transparent 0 21px, rgba(40,40,40,.34) 21px 22px, transparent 22px), linear-gradient(180deg, transparent 0 37px, rgba(40,40,40,.34) 37px 39px, transparent 39px 100%); opacity: .85; }
+      .america-cup-shine::after { content: ""; position: absolute; left: 11px; top: 8px; width: 12px; height: 54px; border-radius: 999px; background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.12)); transform: rotate(14deg); opacity: .8; }
+      .america-cup-rings { position: absolute; left: 50%; top: 73px; width: 82px; height: 28px; transform: translateX(-50%); pointer-events: none; background: radial-gradient(ellipse at 8% 35%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 27% 35%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 50% 35%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 73% 35%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 92% 35%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 15% 90%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 39% 90%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 63% 90%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 87% 90%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%); opacity: .95; }
+
       .america-flags, .world-flags, .world-confetti { position: absolute; inset: 0; }
       .america-flags span, .world-flags span { position: absolute; width: 34px; height: 24px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.34); border-radius: 7px; background: rgba(12,36,27,.84); font-size: 15px; box-shadow: 0 0 12px rgba(0,0,0,.22); }
       .america-flags span:nth-child(1) { left: 5%; top: 34%; transform: rotate(-8deg); }
@@ -226,7 +213,7 @@
           <article class="game-card america-card" aria-label="Armá 11 América">
             <div class="america-top"><span class="america-badge">América</span><span class="america-tag">Clubes</span></div>
             <div class="america-visual" aria-hidden="true">
-              <span class="america-cup"></span><span class="america-cup-top"></span><span class="america-cup-band"></span><span class="america-cup-shine"></span><span class="america-cup-rings"></span>
+              <span class="america-cup"></span><span class="america-cup-shine"></span><span class="america-cup-rings"></span>
               <div class="america-flags"><span title="Argentina">🇦🇷</span><span title="Brasil">🇧🇷</span><span title="Uruguay">🇺🇾</span><span title="Colombia">🇨🇴</span></div>
             </div>
             <div class="america-content"><strong>Armá 11 América</strong><p>Formá un once con jugadores actuales de clubes americanos.</p><div class="america-meta" aria-label="Desafíos disponibles"><span>Clubes</span><span>Ligas</span><span>Países</span></div><a class="game-play-link" href="america11/america11.html">Jugar</a></div>
