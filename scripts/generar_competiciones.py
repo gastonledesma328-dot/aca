@@ -22,7 +22,6 @@ COMPETICIONES = [
     {"id": "liga-profesional", "grupo": "Argentina", "nombre": "Liga Profesional", "nombre_largo": "Liga Profesional Argentina", "slug": "arg.1", "pais": "Argentina", "destacado": True},
     {"id": "primera-nacional", "grupo": "Argentina", "nombre": "Primera Nacional", "nombre_largo": "Primera Nacional Argentina", "slug": "arg.2", "pais": "Argentina", "destacado": True},
     {"id": "copa-argentina", "grupo": "Argentina", "nombre": "Copa Argentina", "nombre_largo": "Copa Argentina", "slug": "arg.copa", "pais": "Argentina", "destacado": True},
-
     {"id": "libertadores", "grupo": "Internacional", "nombre": "Libertadores", "nombre_largo": "Copa Libertadores", "slug": "conmebol.libertadores", "pais": "CONMEBOL", "destacado": True},
     {"id": "sudamericana", "grupo": "Internacional", "nombre": "Sudamericana", "nombre_largo": "Copa Sudamericana", "slug": "conmebol.sudamericana", "pais": "CONMEBOL", "destacado": True},
     {"id": "champions", "grupo": "Internacional", "nombre": "Champions", "nombre_largo": "UEFA Champions League", "slug": "uefa.champions", "pais": "Europa", "destacado": True},
@@ -32,7 +31,6 @@ COMPETICIONES = [
     {"id": "eliminatorias-conmebol", "grupo": "Selecciones", "nombre": "Eliminatorias Conmebol", "nombre_largo": "Eliminatorias CONMEBOL", "slug": "fifa.worldq.conmebol", "pais": "CONMEBOL", "destacado": True},
     {"id": "eliminatorias-uefa", "grupo": "Selecciones", "nombre": "Eliminatorias UEFA", "nombre_largo": "Eliminatorias UEFA", "slug": "fifa.worldq.uefa", "pais": "Europa"},
     {"id": "mundial", "grupo": "Selecciones", "nombre": "Mundial", "nombre_largo": "Mundial FIFA", "slug": "fifa.world", "pais": "FIFA", "destacado": True},
-
     {"id": "premier-league", "grupo": "Inglaterra", "nombre": "Premier League", "nombre_largo": "Premier League", "slug": "eng.1", "pais": "Inglaterra"},
     {"id": "laliga", "grupo": "España", "nombre": "LaLiga", "nombre_largo": "LaLiga", "slug": "esp.1", "pais": "España"},
     {"id": "serie-a", "grupo": "Italia", "nombre": "Serie A", "nombre_largo": "Serie A", "slug": "ita.1", "pais": "Italia"},
@@ -59,6 +57,15 @@ def slug_text(texto):
     texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
     texto = re.sub(r"[^a-z0-9]+", "-", texto)
     return texto.strip("-")
+
+
+def normalizar(texto):
+    texto = str(texto or "").lower().strip()
+    texto = unicodedata.normalize("NFD", texto)
+    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
+    texto = re.sub(r"[^a-z0-9.\s]+", " ", texto)
+    texto = re.sub(r"\s+", " ", texto)
+    return texto.strip()
 
 
 def get_json(url, params=None, tries=2):
@@ -249,12 +256,47 @@ def parse_competitor(comp):
     }
 
 
+def evento_texto_clasificacion(event):
+    pieces = [
+        event.get("name"),
+        event.get("shortName"),
+        event.get("season", {}).get("displayName") if isinstance(event.get("season"), dict) else "",
+        event.get("season", {}).get("slug") if isinstance(event.get("season"), dict) else "",
+        event.get("week", {}).get("text") if isinstance(event.get("week"), dict) else "",
+    ]
+
+    comp = (event.get("competitions") or [{}])[0]
+    if isinstance(comp, dict):
+        for note in comp.get("notes") or []:
+            if isinstance(note, dict):
+                pieces.extend([note.get("type"), note.get("headline"), note.get("text")])
+        pieces.append(comp.get("type", {}).get("text") if isinstance(comp.get("type"), dict) else "")
+
+    return normalizar(" ".join(str(p or "") for p in pieces))
+
+
+def detectar_fase_eliminatoria(event):
+    texto = evento_texto_clasificacion(event)
+
+    if any(x in texto for x in ["octavos", "round of 16", "8vos", "oitavos"]):
+        return "octavos"
+    if any(x in texto for x in ["cuartos", "quarter", "quarterfinal", "4tos"]):
+        return "cuartos"
+    if any(x in texto for x in ["semi", "semifinal"]):
+        return "semis"
+    if "final" in texto and "semifinal" not in texto:
+        return "final"
+
+    return ""
+
+
 def parse_event(event):
     comp = (event.get("competitions") or [{}])[0]
     competitors = comp.get("competitors") or []
     local = next((c for c in competitors if c.get("homeAway") == "home"), competitors[0] if competitors else {})
     visitante = next((c for c in competitors if c.get("homeAway") == "away"), competitors[-1] if competitors else {})
     status = (event.get("status") or {}).get("type") or {}
+    fase = detectar_fase_eliminatoria(event)
 
     return {
         "id": str(event.get("id") or ""),
@@ -263,6 +305,8 @@ def parse_event(event):
         "estado": status.get("description") or status.get("name") or "",
         "estado_tipo": status.get("state") or "",
         "completado": status.get("completed") is True,
+        "fase": fase,
+        "clasificacion_texto": evento_texto_clasificacion(event),
         "local": parse_competitor(local),
         "visitante": parse_competitor(visitante),
         "url": ((event.get("links") or [{}])[0] or {}).get("href") or "",
@@ -286,7 +330,119 @@ def cargar_partidos(league_slug, limit=14):
     return {
         "ultimos": finalizados[:limit],
         "proximos": proximos[:limit],
+        "todos": sorted(partidos, key=sort_key),
         "total_scoreboard": len(partidos),
+    }
+
+
+def num_stat(stats, key):
+    try:
+        value = str((stats or {}).get(key, "0")).replace("-", "0").replace(",", ".")
+        return int(float(value))
+    except Exception:
+        return 0
+
+
+def clasificar_tablas_liga_profesional(tabla):
+    zonas = {"zona_a": [], "zona_b": []}
+    anual = []
+    otras = []
+
+    for row in tabla or []:
+        grupo = normalizar(row.get("grupo", ""))
+
+        if "anual" in grupo or "acumul" in grupo or "overall" in grupo:
+            anual.append(row)
+        elif ("zona a" in grupo or "grupo a" in grupo or "zone a" in grupo or grupo.endswith(" a")) and "anual" not in grupo:
+            zonas["zona_a"].append(row)
+        elif ("zona b" in grupo or "grupo b" in grupo or "zone b" in grupo or grupo.endswith(" b")) and "anual" not in grupo:
+            zonas["zona_b"].append(row)
+        else:
+            otras.append(row)
+
+    # Si ESPN devuelve dos grupos sin nombre claro, repartimos por grupos detectados.
+    if not zonas["zona_a"] and not zonas["zona_b"]:
+        grupos = {}
+        for row in tabla or []:
+            grupos.setdefault(row.get("grupo") or "General", []).append(row)
+        grupos_validos = [items for items in grupos.values() if len(items) >= 8]
+        if len(grupos_validos) >= 2:
+            zonas["zona_a"] = grupos_validos[0]
+            zonas["zona_b"] = grupos_validos[1]
+
+    # Fallback de tabla anual: si ESPN no la trae, se arma una acumulada con las zonas disponibles.
+    anual_estimado = False
+    if not anual:
+        base = zonas["zona_a"] + zonas["zona_b"]
+        if not base:
+            base = tabla or []
+        anual = sorted(base, key=lambda r: (num_stat(r.get("stats"), "pts"), num_stat(r.get("stats"), "dg"), num_stat(r.get("stats"), "gf")), reverse=True)
+        anual_estimado = True
+        for i, row in enumerate(anual, start=1):
+            row = dict(row)
+            row["stats"] = dict(row.get("stats") or {})
+            row["stats"]["posicion"] = str(i)
+            row["grupo"] = "Tabla anual"
+            anual[i - 1] = row
+
+    return {
+        "zona_a": zonas["zona_a"],
+        "zona_b": zonas["zona_b"],
+        "tabla_anual": anual,
+        "tabla_anual_estimado": anual_estimado,
+        "otras_tablas": otras,
+    }
+
+
+def ganador_partido(match):
+    if match.get("local", {}).get("ganador"):
+        return match.get("local", {}).get("equipo")
+    if match.get("visitante", {}).get("ganador"):
+        return match.get("visitante", {}).get("equipo")
+    return None
+
+
+def armar_eliminatorias_liga_profesional(partidos):
+    fases = {
+        "octavos": [],
+        "cuartos": [],
+        "semis": [],
+        "final": [],
+    }
+
+    for match in partidos.get("todos", []) if isinstance(partidos, dict) else []:
+        fase = match.get("fase") or ""
+        if fase in fases:
+            item = dict(match)
+            item["ganador"] = ganador_partido(match)
+            fases[fase].append(item)
+
+    orden = {"octavos": 0, "cuartos": 1, "semis": 2, "final": 3}
+    for fase, items in fases.items():
+        items.sort(key=lambda x: x.get("fecha") or "")
+
+    return {
+        "nombre": "Playoffs Torneo Apertura",
+        "fases": fases,
+        "orden": list(orden.keys()),
+        "tiene_datos": any(len(v) for v in fases.values()),
+        "nota": "Los cruces se toman desde ESPN cuando el evento llega identificado como octavos, cuartos, semifinal o final.",
+    }
+
+
+def especial_liga_profesional(tabla, partidos):
+    tablas = clasificar_tablas_liga_profesional(tabla)
+    return {
+        "tipo": "liga_profesional_argentina",
+        "torneo_actual": "Clausura",
+        "torneo_anterior": "Apertura",
+        "zonas": {
+            "a": tablas["zona_a"],
+            "b": tablas["zona_b"],
+        },
+        "tabla_anual": tablas["tabla_anual"],
+        "tabla_anual_estimado": tablas["tabla_anual_estimado"],
+        "eliminatorias": armar_eliminatorias_liga_profesional(partidos),
     }
 
 
@@ -298,7 +454,7 @@ def obtener_info_liga(config):
     tabla = cargar_tabla(slug)
     partidos = cargar_partidos(slug)
 
-    return {
+    info = {
         **config,
         "season": SEASON,
         "actualizado": ahora_iso(),
@@ -319,6 +475,11 @@ def obtener_info_liga(config):
         "tabla": tabla,
         "partidos": partidos,
     }
+
+    if config.get("id") == "liga-profesional":
+        info["especial"] = especial_liga_profesional(tabla, partidos)
+
+    return info
 
 
 def main():
