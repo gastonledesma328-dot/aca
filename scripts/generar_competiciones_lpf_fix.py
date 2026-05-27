@@ -64,7 +64,6 @@ def penalty_score_from_competitor(comp):
         return ""
 
     direct = first_score_from_obj(comp)
-    # Evitamos confundir el marcador normal con penales: el campo "score" directo no cuenta solo.
     if direct and any(k in comp for k in ["shootoutScore", "penaltyScore", "penalties", "penaltyShootoutScore", "shootout", "pkScore"]):
         return direct
 
@@ -94,6 +93,39 @@ def parse_competitor_patched(comp):
     return parsed
 
 
+def extraer_numero_fecha(event):
+    candidates = []
+    week = event.get("week") if isinstance(event.get("week"), dict) else {}
+    season = event.get("season") if isinstance(event.get("season"), dict) else {}
+    competitions = event.get("competitions") or []
+    comp = competitions[0] if competitions and isinstance(competitions[0], dict) else {}
+
+    for source in [week, season, comp.get("type") if isinstance(comp.get("type"), dict) else {}, event]:
+        if not isinstance(source, dict):
+            continue
+        for key in ["number", "week", "round", "matchday", "value"]:
+            value = source.get(key)
+            if isinstance(value, int) and value > 0:
+                return value
+            if isinstance(value, str) and value.strip().isdigit():
+                return int(value.strip())
+        for key in ["text", "name", "displayName", "description", "shortName"]:
+            value = str(source.get(key) or "")
+            candidates.append(value)
+
+    for text in candidates:
+        clean = g.normalizar(text)
+        for marker in ["fecha", "jornada", "matchday", "round"]:
+            if marker in clean:
+                parts = clean.replace("-", " ").split()
+                for i, part in enumerate(parts):
+                    if part == marker and i + 1 < len(parts) and parts[i + 1].isdigit():
+                        return int(parts[i + 1])
+                    if part.startswith(marker) and part.replace(marker, "").isdigit():
+                        return int(part.replace(marker, ""))
+    return None
+
+
 def parse_event_patched(event):
     parsed = ORIGINAL_PARSE_EVENT(event)
     comp = (event.get("competitions") or [{}])[0]
@@ -105,7 +137,6 @@ def parse_event_patched(event):
     local_pen = penalty_score_from_competitor(local_raw)
     visitante_pen = penalty_score_from_competitor(visitante_raw)
 
-    # Algunos endpoints de ESPN no devuelven un campo obvio, pero sí indican Final por penales en textos.
     status_text = " ".join([
         status.get("description") or "",
         status.get("detail") or "",
@@ -128,6 +159,8 @@ def parse_event_patched(event):
         "visitante": visitante_pen,
         "texto": f"Penales {local_pen} - {visitante_pen}" if local_pen and visitante_pen else "Definido por penales" if hay_penales else "",
     }
+    parsed["fecha_numero"] = extraer_numero_fecha(event)
+    parsed["fecha_grupo"] = date_key(parsed.get("fecha"))
 
     return parsed
 
@@ -144,10 +177,22 @@ def dedupe_matches(matches):
     return out
 
 
-def fetch_scoreboard_range(league_slug, start, end):
-    matches = []
-    current = start
+def fetch_scoreboard_date_range_param(league_slug, start, end):
+    data = g.get_json(
+        f"https://site.api.espn.com/apis/site/v2/sports/soccer/{league_slug}/scoreboard",
+        {"limit": "1000", "dates": f"{start.strftime('%Y%m%d')}-{end.strftime('%Y%m%d')}"},
+        tries=1,
+    )
+    events = data.get("events") if isinstance(data, dict) else []
+    return dedupe_matches([g.parse_event(e) for e in events or []])
 
+
+def fetch_scoreboard_range(league_slug, start, end):
+    matches = fetch_scoreboard_date_range_param(league_slug, start, end)
+    if matches:
+        return matches
+
+    current = start
     while current <= end:
         dates = current.strftime("%Y%m%d")
         data = g.get_json(
@@ -167,8 +212,6 @@ def phase_by_date(match):
     if not d:
         return match.get("fase") or ""
 
-    # Torneo Apertura 2026: calendario de playoffs informado públicamente.
-    # Si ESPN no etiqueta la fase, la inferimos por fecha.
     if datetime(2026, 5, 9).date() <= d <= datetime(2026, 5, 10).date():
         return "octavos"
     if datetime(2026, 5, 12).date() <= d <= datetime(2026, 5, 14).date():
@@ -185,10 +228,10 @@ def cargar_partidos_patched(league_slug, limit=14):
     if league_slug != "arg.1":
         return ORIGINAL_CARGAR_PARTIDOS(league_slug, limit)
 
-    # Default actual + rango completo de playoffs del Apertura.
     base = ORIGINAL_CARGAR_PARTIDOS(league_slug, limit=300)
     extra = fetch_scoreboard_range(league_slug, datetime(2026, 5, 1), datetime(2026, 5, 25))
-    partidos = dedupe_matches((base.get("todos") or []) + extra)
+    clausura_futuro = fetch_scoreboard_range(league_slug, datetime(2026, 7, 1), datetime(2026, 12, 31))
+    partidos = dedupe_matches((base.get("todos") or []) + extra + clausura_futuro)
 
     for match in partidos:
         if not match.get("fase"):
@@ -249,7 +292,6 @@ def patched_clasificar_tablas_liga_profesional(tabla):
         grupo = g.normalizar(row.get("grupo", ""))
 
         if "anual" in grupo or "acumul" in grupo or "overall" in grupo or "general" in grupo:
-            # No usamos "General" como anual si contiene 30 equipos repetidos de zonas mezcladas sin grupo claro.
             if grupo != "general":
                 anual.append(row)
             else:
@@ -270,7 +312,6 @@ def patched_clasificar_tablas_liga_profesional(tabla):
             zonas["zona_a"] = grupos_validos[0]
             zonas["zona_b"] = grupos_validos[1]
 
-    # Último fallback: si ESPN entrega una sola tabla de 30, se separa 15/15 solo para no dejar vacío.
     if (not zonas["zona_a"] or not zonas["zona_b"]) and len(tabla or []) >= 30:
         zonas["zona_a"] = (tabla or [])[:15]
         zonas["zona_b"] = (tabla or [])[15:30]
@@ -282,8 +323,6 @@ def patched_clasificar_tablas_liga_profesional(tabla):
         anual = renumber(sort_table(anual), "Tabla anual")
         anual_estimado = False
     else:
-        # Como el Clausura todavía no empezó, la anual correcta sale de sumar/ordenar la fase de zonas disponible.
-        # Cuando ESPN publique Clausura, este mismo bloque tomará los puntos disponibles que traiga la API.
         base = zonas["zona_a"] + zonas["zona_b"]
         anual = renumber(sort_table(base), "Tabla anual")
         anual_estimado = True
@@ -327,11 +366,83 @@ def patched_armar_eliminatorias_liga_profesional(partidos):
     }
 
 
+def pertenece_rango(match, inicio, fin):
+    d = parse_date(match.get("fecha"))
+    return bool(d and inicio.date() <= d <= fin.date())
+
+
+def agrupar_fechas(matches):
+    matches = sorted(matches or [], key=lambda p: p.get("fecha") or "")
+    grupos = {}
+
+    for match in matches:
+        numero = match.get("fecha_numero")
+        if numero:
+            key = f"fecha-{numero:02d}"
+            label = f"Fecha {numero}"
+        else:
+            key = match.get("fecha_grupo") or date_key(match.get("fecha")) or "sin-fecha"
+            label = "Fecha por confirmar" if key == "sin-fecha" else f"Fecha {len(grupos) + 1}"
+
+        if key not in grupos:
+            grupos[key] = {"id": key, "nombre": label, "partidos": []}
+        grupos[key]["partidos"].append(match)
+
+    fechas = list(grupos.values())
+    fechas.sort(key=lambda item: item["partidos"][0].get("fecha") if item["partidos"] else "")
+
+    if not any(m.get("fecha_numero") for m in matches):
+        for index, item in enumerate(fechas, start=1):
+            item["nombre"] = f"Fecha {index}"
+
+    return fechas
+
+
+def cargar_fechas_liga_profesional(partidos):
+    todos = partidos.get("todos", []) if isinstance(partidos, dict) else []
+    apertura_inicio = datetime(2026, 1, 1)
+    apertura_fin = datetime(2026, 6, 30)
+    clausura_inicio = datetime(2026, 7, 1)
+    clausura_fin = datetime(2026, 12, 31)
+
+    apertura = [m for m in todos if pertenece_rango(m, apertura_inicio, apertura_fin) and not (m.get("fase") in ["octavos", "cuartos", "semis", "final"])]
+    clausura = [m for m in todos if pertenece_rango(m, clausura_inicio, clausura_fin) and not (m.get("fase") in ["octavos", "cuartos", "semis", "final"])]
+
+    return {
+        "apertura": agrupar_fechas(apertura),
+        "clausura": agrupar_fechas(clausura),
+        "rangos": {
+            "apertura": "20260101-20260630",
+            "clausura": "20260701-20261231",
+        },
+        "fuente": "ESPN scoreboard arg.1 con parámetro dates",
+        "nota": "Las fechas se llenan automáticamente cuando ESPN publica partidos en el scoreboard. Si ESPN no trae número de fecha, se agrupa por día/calendario.",
+    }
+
+
+def patched_especial_liga_profesional(tabla, partidos):
+    tablas = patched_clasificar_tablas_liga_profesional(tabla)
+    return {
+        "tipo": "liga_profesional_argentina",
+        "torneo_actual": "Clausura",
+        "torneo_anterior": "Apertura",
+        "zonas": {
+            "a": tablas["zona_a"],
+            "b": tablas["zona_b"],
+        },
+        "tabla_anual": tablas["tabla_anual"],
+        "tabla_anual_estimado": tablas["tabla_anual_estimado"],
+        "eliminatorias": patched_armar_eliminatorias_liga_profesional(partidos),
+        "fechas": cargar_fechas_liga_profesional(partidos),
+    }
+
+
 g.parse_competitor = parse_competitor_patched
 g.parse_event = parse_event_patched
 g.cargar_partidos = cargar_partidos_patched
 g.clasificar_tablas_liga_profesional = patched_clasificar_tablas_liga_profesional
 g.armar_eliminatorias_liga_profesional = patched_armar_eliminatorias_liga_profesional
+g.especial_liga_profesional = patched_especial_liga_profesional
 
 if __name__ == "__main__":
     g.main()
