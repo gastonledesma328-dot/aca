@@ -21,11 +21,44 @@ function limpiarCabezaCompeticion() {
   }
 }
 
-limpiarCabezaCompeticion();
+function obtenerTabActivaCompeticion() {
+  const active = document.querySelector(".competition-tab.active");
+  return active?.dataset?.competitionTab || "tabla";
+}
+
+function actualizarVisibilidadCuadro() {
+  const cuadro = document.querySelector("#competitionLigaProfesionalExtras");
+  if (!cuadro) return;
+
+  const tabActiva = obtenerTabActivaCompeticion();
+  cuadro.style.display = tabActiva === "tabla" ? "" : "none";
+}
+
+function iniciarControlCuadro() {
+  document.querySelectorAll(".competition-tab").forEach((button) => {
+    if (button.dataset.bracketVisibilityBound === "1") return;
+    button.dataset.bracketVisibilityBound = "1";
+
+    button.addEventListener("click", () => {
+      window.setTimeout(actualizarVisibilidadCuadro, 0);
+      window.setTimeout(actualizarVisibilidadCuadro, 80);
+    });
+  });
+
+  actualizarVisibilidadCuadro();
+}
+
+function mantenimientoCompeticion() {
+  limpiarCabezaCompeticion();
+  iniciarControlCuadro();
+  actualizarVisibilidadCuadro();
+}
+
+mantenimientoCompeticion();
 
 let cleanHeaderTries = 0;
 const cleanHeaderInterval = window.setInterval(() => {
-  limpiarCabezaCompeticion();
+  mantenimientoCompeticion();
   cleanHeaderTries += 1;
 
   if (cleanHeaderTries > 80) {
@@ -33,5 +66,5 @@ const cleanHeaderInterval = window.setInterval(() => {
   }
 }, 100);
 
-const cleanHeaderObserver = new MutationObserver(() => limpiarCabezaCompeticion());
+const cleanHeaderObserver = new MutationObserver(() => mantenimientoCompeticion());
 cleanHeaderObserver.observe(document.body, { childList: true, subtree: true, characterData: true });
