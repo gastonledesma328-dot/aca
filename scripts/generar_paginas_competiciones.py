@@ -64,6 +64,7 @@ def html_page(competition_id, title):
 
       <nav class="competition-tabs" aria-label="Secciones de la competición">
         <button class="competition-tab active" type="button" data-competition-tab="tabla">Tabla</button>
+        <button class="competition-tab" type="button" data-competition-tab="fechas">Fechas</button>
         <button class="competition-tab" type="button" data-competition-tab="proximos">Próximos partidos</button>
         <button class="competition-tab" type="button" data-competition-tab="ultimos">Últimos resultados</button>
         <button class="competition-tab" type="button" data-competition-tab="equipos">Equipos</button>
@@ -98,6 +99,16 @@ def html_page(competition_id, title):
               </tbody>
             </table>
           </div>
+        </article>
+
+        <article class="competition-card competition-section hidden" data-competition-section="fechas">
+          <div class="competition-card-head">
+            <div>
+              <p class="competition-section-kicker">Calendario</p>
+              <h2>Fechas Apertura / Clausura</h2>
+            </div>
+          </div>
+          <div class="competition-list" id="competitionDatesList"></div>
         </article>
 
         <article class="competition-card competition-section hidden" data-competition-section="proximos">
