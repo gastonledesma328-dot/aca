@@ -1,0 +1,189 @@
+/* ================================
+   SIDEBAR DE COMPETICIONES - AGENDA
+================================ */
+
+.agenda-with-competitions {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.competitions-sidebar {
+  position: sticky;
+  top: 14px;
+  max-height: calc(100vh - 28px);
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 40% 0%, rgba(95, 207, 128, 0.16), transparent 16rem),
+    linear-gradient(180deg, rgba(11, 88, 45, 0.96), rgba(5, 55, 30, 0.98));
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+  padding: 12px 10px;
+  backdrop-filter: blur(8px);
+  z-index: 3;
+}
+
+.competitions-sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.competitions-sidebar::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.competition-sidebar-title,
+.competition-country-toggle,
+.competition-filter-btn,
+.competition-clear-btn {
+  width: 100%;
+  border: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.competition-sidebar-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 0 8px;
+  color: #9ee65f;
+  background: transparent;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.competition-featured-list {
+  display: grid;
+  gap: 2px;
+  margin-bottom: 12px;
+}
+
+.competition-filter-btn,
+.competition-clear-btn {
+  min-height: 30px;
+  border-radius: 9px;
+  color: #ffffff;
+  background: transparent;
+  text-align: left;
+  padding: 7px 9px;
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.15;
+}
+
+.competition-filter-btn:hover,
+.competition-clear-btn:hover,
+.competition-filter-btn.active,
+.competition-clear-btn.active {
+  color: #baff78;
+  background: rgba(158, 230, 95, 0.15);
+}
+
+.competition-clear-btn {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.competition-country {
+  border-top: 1px solid rgba(255, 255, 255, 0.085);
+}
+
+.competition-country-toggle {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: #ffffff;
+  background: transparent;
+  text-align: left;
+  padding: 9px 2px;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.competition-country-toggle span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.competition-country-toggle span:last-child {
+  color: rgba(255, 255, 255, 0.9);
+  transition: transform 0.16s ease;
+}
+
+.competition-country.open .competition-country-toggle span:last-child {
+  transform: rotate(180deg);
+}
+
+.competition-leagues {
+  display: none;
+  gap: 3px;
+  padding: 0 0 8px 12px;
+}
+
+.competition-country.open .competition-leagues {
+  display: grid;
+}
+
+.agenda-group.competition-hidden,
+.league-card.competition-hidden,
+.agenda-row.competition-hidden,
+.empty-state.competition-hidden,
+.agenda-summary.competition-hidden {
+  display: none !important;
+}
+
+.competition-filter-status {
+  margin: 8px 0 0;
+  color: rgba(240, 250, 244, 0.68);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.competition-filter-status strong {
+  color: #baff78;
+}
+
+@media (max-width: 980px) {
+  .agenda-with-competitions {
+    grid-template-columns: 1fr;
+  }
+
+  .competitions-sidebar {
+    position: relative;
+    top: 0;
+    max-height: none;
+    border-radius: 14px;
+  }
+
+  .competition-featured-list,
+  .competition-leagues {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .competitions-sidebar {
+    padding: 10px;
+  }
+
+  .competition-featured-list,
+  .competition-leagues {
+    grid-template-columns: 1fr;
+  }
+}
