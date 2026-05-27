@@ -7,6 +7,8 @@
 
     <style>
       :root {
+        --bg: #1e3a2f;
+        --bg2: #162d24;
         --card: #1a3228;
         --border: #2f5948;
         --primary: #5fcf80;
@@ -54,10 +56,7 @@
         gap: 14px;
       }
 
-      .topbar,
-      .tabs,
-      .hero,
-      .games-section {
+      .topbar, .tabs, .hero, .games-section {
         border: 1px solid var(--border);
         background: var(--card);
         border-radius: var(--rad);
@@ -92,26 +91,37 @@
         color: transparent;
         border-radius: 50%;
         background: var(--primary);
-        box-shadow: 0 0 0 2px #162d24;
+        box-shadow: 0 0 0 2px var(--bg2);
       }
 
       .top-actions { display: flex; align-items: center; gap: 8px; }
 
-      .icon-btn,
-      .profile-btn {
-        width: 38px;
-        height: 38px;
+      .icon-btn, .profile-btn {
         border: 0;
-        border-radius: 50%;
         color: var(--text);
         background: #244839;
+      }
+
+      .icon-btn {
+        width: 38px;
+        height: 38px;
         display: grid;
         place-items: center;
+        border-radius: 50%;
         text-decoration: none;
       }
 
       .icon-btn:hover { background: #2f5948; }
-      .profile-btn { position: relative; background: var(--primary); }
+
+      .profile-btn {
+        width: 38px;
+        height: 38px;
+        position: relative;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--primary);
+      }
 
       .avatar {
         display: block;
@@ -159,7 +169,7 @@
       .tab:hover:not(.active) { background: #244839; }
       .tab.active { color: var(--chip-fg); background: var(--chip-bg); }
 
-      .tab span {
+      .tab span, .live-pill {
         color: #fff;
         background: var(--live);
         border-radius: 5px;
@@ -178,14 +188,10 @@
         padding: 18px;
       }
 
-      .hero-copy,
-      .hero-stat {
+      .hero-copy {
         border: 1px solid var(--border);
         border-radius: 12px;
         background: #244839;
-      }
-
-      .hero-copy {
         padding: 18px;
         display: flex;
         flex-direction: column;
@@ -193,9 +199,7 @@
         gap: 10px;
       }
 
-      .eyebrow,
-      .section-head span,
-      .hero-stat span {
+      .eyebrow, .section-head span, .hero-stat span {
         margin: 0;
         color: var(--muted);
         font-size: 10px;
@@ -225,6 +229,9 @@
 
       .hero-stat {
         min-height: 78px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #244839;
         padding: 14px;
         display: grid;
         align-content: center;
@@ -295,8 +302,7 @@
       .game-card strong { font-size: 16px; }
       .game-card p { margin: 0; color: #c7dbcf; font-size: 13px; line-height: 1.45; }
 
-      .game-play-link,
-      .game-card button {
+      .game-play-link, .game-card button {
         min-height: 34px;
         display: inline-flex;
         align-items: center;
@@ -313,10 +319,7 @@
 
       .game-card button:disabled { color: #56665e; background: #f2f7f3; cursor: not-allowed; }
 
-      .america-card,
-      .legend-card,
-      .guess-card,
-      .world-card {
+      .game-card.america-card {
         position: relative;
         display: block;
         height: 230px;
@@ -324,27 +327,24 @@
         overflow: hidden;
         padding: 0;
         isolation: isolate;
-        border-color: #927037;
-        background: #113321;
+        border-color: rgba(95, 207, 128, 0.75);
+        background: #0f3725;
       }
 
-      .america-card::before,
-      .legend-card::before,
-      .guess-card::before,
-      .world-card::before {
+      .america-card::before {
         content: "";
         position: absolute;
         inset: 0;
         z-index: -3;
         background:
+          radial-gradient(circle at 18% 20%, rgba(89, 184, 255, 0.28) 0 9%, transparent 25%),
+          radial-gradient(circle at 84% 18%, rgba(242, 195, 91, 0.25) 0 9%, transparent 24%),
+          radial-gradient(circle at 72% 68%, rgba(232, 83, 58, 0.22) 0 8%, transparent 24%),
           linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 12.5%),
-          repeating-linear-gradient(90deg, #147334 0 42px, #19813b 42px 84px);
+          repeating-linear-gradient(90deg, #116b35 0 42px, #188340 42px 84px);
       }
 
-      .america-card::after,
-      .legend-card::after,
-      .guess-card::after,
-      .world-card::after {
+      .america-card::after {
         content: "";
         position: absolute;
         inset: 12px;
@@ -352,31 +352,12 @@
         border: 1px solid rgba(255,255,255,0.16);
         border-radius: 16px;
         background:
-          linear-gradient(90deg, transparent calc(50% - 1px), rgba(255,255,255,0.14) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
-          radial-gradient(circle at 50% 50%, transparent 0 30px, rgba(255,255,255,0.14) 31px 32px, transparent 33px),
-          linear-gradient(180deg, rgba(9, 30, 20, 0.10), rgba(9, 30, 20, 0.34));
+          linear-gradient(90deg, transparent calc(50% - 1px), rgba(255,255,255,0.16) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+          radial-gradient(circle at 50% 50%, transparent 0 30px, rgba(255,255,255,0.16) 31px 32px, transparent 33px),
+          linear-gradient(180deg, rgba(8, 36, 25, 0.04), rgba(7, 28, 19, 0.36));
       }
 
-      .america-content,
-      .legend-content,
-      .guess-content,
-      .world-content {
-        height: 230px;
-        min-height: 230px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        gap: 8px;
-        padding: 88px 14px 14px;
-        position: relative;
-        z-index: 2;
-        background: linear-gradient(180deg, rgba(11, 44, 27, 0) 0%, rgba(8, 31, 21, 0.10) 36%, rgba(7, 28, 19, 0.86) 58%, rgba(7, 28, 19, 0.96) 100%);
-      }
-
-      .america-top,
-      .legend-top,
-      .guess-top,
-      .world-top {
+      .america-top {
         display: flex;
         justify-content: space-between;
         gap: 8px;
@@ -387,17 +368,12 @@
       }
 
       .america-badge,
-      .america-tag,
-      .legend-badge,
-      .legend-daily,
-      .guess-badge,
-      .world-badge,
-      .world-tag {
+      .america-tag {
         width: max-content;
-        border: 1px solid rgba(242, 195, 91, 0.55);
+        border: 1px solid rgba(95, 207, 128, 0.55);
         border-radius: 999px;
-        color: #fff5c9;
-        background: #23422a;
+        color: #dcffe6;
+        background: rgba(19, 66, 43, 0.9);
         padding: 5px 7px;
         font-size: 8px;
         font-weight: 900;
@@ -405,152 +381,69 @@
         text-transform: uppercase;
       }
 
-      .america-card strong,
-      .legend-card strong,
-      .guess-card strong,
-      .world-card strong {
-        max-width: 280px;
-        color: #fffbe6;
-        font-size: clamp(20px, 2.8vw, 26px);
-        line-height: 0.98;
-        letter-spacing: -0.04em;
-        text-shadow: 0 2px 0 #4a3513;
-      }
-
-      .america-card p,
-      .legend-card p,
-      .guess-card p,
-      .world-card p {
-        max-width: 300px;
-        color: #e6f4df;
-        font-size: 12px;
-      }
-
-      .america-meta,
-      .legend-meta,
-      .guess-clues,
-      .world-meta { display: flex; flex-wrap: wrap; gap: 5px; }
-
-      .america-meta span,
-      .legend-meta span,
-      .guess-clues span,
-      .world-meta span {
-        min-height: 22px;
-        border: 1px solid rgba(255,255,255,0.22);
-        border-radius: 999px;
-        color: #f6ffe7;
-        background: #1d5b34;
-        padding: 5px 7px;
-        font-size: 9px;
-        font-weight: 900;
-      }
-
-      .america-card .game-play-link,
-      .legend-card .game-play-link,
-      .guess-card .game-play-link,
-      .world-card .game-play-link {
-        width: max-content;
-        min-height: 34px;
-        padding: 9px 13px;
-        color: #1f2b13;
-        background: var(--gold);
-        border: 1px solid var(--gold2);
-        margin-top: 0;
-      }
-
-      .america-card:hover,
-      .legend-card:hover,
-      .guess-card:hover,
-      .world-card:hover { background: #123d25; border-color: var(--gold); }
-
-      .america-card {
-        border-color: rgba(255, 240, 182, 0.92);
-        box-shadow: inset 0 0 0 1px rgba(255, 240, 182, 0.16);
-      }
-
-      .america-card::before {
-        background:
-          radial-gradient(circle at 50% 18%, rgba(255, 240, 182, 0.40) 0 10%, transparent 28%),
-          radial-gradient(circle at 14% 22%, rgba(89, 184, 255, 0.30) 0 8%, transparent 23%),
-          radial-gradient(circle at 86% 26%, rgba(232, 83, 58, 0.28) 0 8%, transparent 23%),
-          linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 12.5%),
-          repeating-linear-gradient(90deg, #116b35 0 42px, #188340 42px 84px);
-      }
-
-      .america-badge {
-        color: #e8f4ff;
-        background: #12396b;
-        border-color: rgba(89, 184, 255, 0.65);
-      }
-
       .america-tag {
-        color: #15301e;
+        color: #10251d;
         background: linear-gradient(90deg, #5fcf80, #fff0b6);
         border-color: rgba(255,255,255,0.45);
       }
 
-      .america-visual,
-      .legend-players,
-      .guess-visual,
-      .world-visual {
+      .america-visual {
         position: absolute;
         inset: 42px 14px 70px;
         z-index: 1;
         pointer-events: none;
       }
 
-      .america-trophy {
+      .america-map {
         position: absolute;
         left: 50%;
-        top: -9px;
-        width: 70px;
-        height: 90px;
-        transform: translateX(-50%);
-        filter: drop-shadow(0 0 20px rgba(242,195,91,0.58));
+        top: 3px;
+        width: 64px;
+        height: 82px;
+        transform: translateX(-50%) rotate(-10deg);
+        filter: drop-shadow(0 0 16px rgba(95, 207, 128, 0.34));
       }
 
-      .america-trophy::before {
+      .america-map::before,
+      .america-map::after {
         content: "";
         position: absolute;
-        left: 50%;
+        background: linear-gradient(180deg, #fff0b6, #5fcf80 55%, #1b7f42);
+        opacity: 0.92;
+      }
+
+      .america-map::before {
+        left: 14px;
         top: 0;
-        width: 54px;
-        height: 72px;
-        transform: translateX(-50%);
-        border-radius: 48% 48% 35% 35% / 35% 35% 62% 62%;
-        background:
-          radial-gradient(circle at 34% 33%, rgba(255, 215, 42, 0.98) 0 9%, transparent 10%),
-          radial-gradient(ellipse at 34% 36%, rgba(181, 139, 0, 0.28) 0 13%, transparent 14%),
-          linear-gradient(128deg, transparent 0 43%, rgba(181, 139, 0, 0.24) 44% 70%, transparent 71%),
-          linear-gradient(180deg, #fff05c 0%, #ffd418 42%, #e5b800 100%);
-        clip-path: polygon(16% 0, 84% 0, 100% 26%, 84% 52%, 72% 77%, 66% 100%, 34% 100%, 28% 77%, 16% 52%, 0 26%);
-        box-shadow: inset -12px 0 0 rgba(153, 118, 0, 0.14), inset 8px 0 0 rgba(255,255,255,0.12);
+        width: 38px;
+        height: 46px;
+        border-radius: 55% 45% 48% 52%;
+        transform: rotate(22deg);
       }
 
-      .america-trophy::after {
-        content: "";
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        width: 58px;
-        height: 22px;
-        transform: translateX(-50%);
-        background:
-          linear-gradient(180deg, transparent 0 4px, #006b37 4px 10px, #ffd418 10px 15px, #006b37 15px 21px, transparent 21px),
-          linear-gradient(180deg, #ffd418, #e5b800);
-        clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+      .america-map::after {
+        left: 25px;
+        top: 38px;
+        width: 26px;
+        height: 44px;
+        border-radius: 45% 55% 60% 40%;
+        transform: rotate(-13deg);
       }
 
-      .america-cup-text {
+      .america-ball {
         position: absolute;
         left: 50%;
-        top: 69px;
+        top: 58px;
+        width: 30px;
+        height: 30px;
         transform: translateX(-50%);
-        color: rgba(255,255,255,0.86);
-        font-size: 15px;
-        font-weight: 950;
-        letter-spacing: 0.16em;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 50% 50%, #10251d 0 16%, transparent 17%),
+          linear-gradient(45deg, transparent 42%, rgba(16,37,29,0.65) 43% 57%, transparent 58%),
+          linear-gradient(-45deg, transparent 42%, rgba(16,37,29,0.65) 43% 57%, transparent 58%),
+          #f2f7f3;
+        box-shadow: 0 0 0 4px rgba(255,255,255,0.12), 0 10px 18px rgba(0,0,0,0.2);
       }
 
       .america-flags { position: absolute; inset: 0; }
@@ -568,26 +461,173 @@
         box-shadow: 0 0 12px rgba(0,0,0,0.22);
       }
 
-      .america-flags span:nth-child(1) { left: 5%; top: 35%; transform: rotate(-8deg); }
+      .america-flags span:nth-child(1) { left: 5%; top: 34%; transform: rotate(-8deg); }
       .america-flags span:nth-child(2) { right: 6%; top: 34%; transform: rotate(8deg); }
-      .america-flags span:nth-child(3) { left: 22%; top: -1px; transform: rotate(7deg); }
-      .america-flags span:nth-child(4) { right: 22%; top: 1px; transform: rotate(-7deg); }
+      .america-flags span:nth-child(3) { left: 24%; top: 0; transform: rotate(7deg); }
+      .america-flags span:nth-child(4) { right: 24%; top: 2px; transform: rotate(-7deg); }
 
-      .america-ribbon {
-        position: absolute;
-        left: 50%;
-        top: 55px;
-        width: 160px;
-        height: 18px;
-        transform: translateX(-50%);
-        border-radius: 999px;
-        background: linear-gradient(90deg, #75aadb 0 20%, #fff 20% 40%, #009c3b 40% 60%, #ffdf00 60% 80%, #ce1126 80% 100%);
-        opacity: 0.86;
-        box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+      .america-content {
+        height: 230px;
+        min-height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 8px;
+        padding: 88px 14px 14px;
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(180deg, rgba(11, 44, 27, 0) 0%, rgba(8, 31, 21, 0.08) 34%, rgba(7, 28, 19, 0.86) 58%, rgba(7, 28, 19, 0.96) 100%);
       }
 
-      .america-card:hover .america-trophy { transform: translateX(-50%) translateY(-3px) scale(1.04); }
-      .america-card:hover .america-ribbon { transform: translateX(-50%) translateY(-2px); }
+      .america-card strong {
+        max-width: 280px;
+        color: #fffbe6;
+        font-size: clamp(20px, 2.8vw, 26px);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+        text-shadow: 0 2px 0 #164021;
+      }
+
+      .america-card p {
+        max-width: 300px;
+        color: #e6f4df;
+        font-size: 12px;
+      }
+
+      .america-meta { display: flex; flex-wrap: wrap; gap: 5px; }
+
+      .america-meta span {
+        min-height: 22px;
+        border: 1px solid rgba(255,255,255,0.22);
+        border-radius: 999px;
+        color: #f6ffe7;
+        background: #1d5b34;
+        padding: 5px 7px;
+        font-size: 9px;
+        font-weight: 900;
+      }
+
+      .america-card .game-play-link {
+        width: max-content;
+        min-height: 34px;
+        padding: 9px 13px;
+        color: #10251d;
+        background: linear-gradient(90deg, #5fcf80, #fff0b6);
+        border: 1px solid rgba(255,255,255,0.45);
+        margin-top: 0;
+      }
+
+      .america-card:hover {
+        background: #123d25;
+        border-color: #5fcf80;
+      }
+
+      .america-card:hover .america-map {
+        transform: translateX(-50%) translateY(-3px) rotate(-7deg) scale(1.04);
+      }
+
+      .game-card.legend-card,
+      .game-card.guess-card,
+      .game-card.world-card {
+        position: relative;
+        display: block;
+        height: 230px;
+        min-height: 230px;
+        overflow: hidden;
+        grid-column: span 1;
+        padding: 0;
+        isolation: isolate;
+        border-color: #927037;
+        background: #113321;
+      }
+
+      .legend-card::before,
+      .guess-card::before,
+      .world-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -3;
+        background:
+          linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 12.5%),
+          repeating-linear-gradient(90deg, #147334 0 42px, #19813b 42px 84px);
+      }
+
+      .legend-card::after,
+      .guess-card::after,
+      .world-card::after {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        z-index: -2;
+        border: 1px solid rgba(255,255,255,0.16);
+        border-radius: 16px;
+        background:
+          linear-gradient(90deg, transparent calc(50% - 1px), rgba(255,255,255,0.14) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+          radial-gradient(circle at 50% 50%, transparent 0 30px, rgba(255,255,255,0.14) 31px 32px, transparent 33px),
+          linear-gradient(180deg, rgba(9, 30, 20, 0.10), rgba(9, 30, 20, 0.34));
+      }
+
+      .legend-content,
+      .guess-content,
+      .world-content {
+        height: 230px;
+        min-height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 8px;
+        padding: 88px 14px 14px;
+        position: relative;
+        z-index: 2;
+        background: linear-gradient(180deg, rgba(11, 44, 27, 0) 0%, rgba(8, 31, 21, 0.12) 38%, rgba(7, 28, 19, 0.86) 58%, rgba(7, 28, 19, 0.96) 100%);
+      }
+
+      .legend-top,
+      .guess-top,
+      .world-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 12px 12px 0;
+        position: absolute;
+        inset: 0 0 auto;
+        z-index: 4;
+      }
+
+      .legend-badge,
+      .legend-daily,
+      .guess-badge,
+      .world-badge,
+      .world-tag {
+        width: max-content;
+        border: 1px solid rgba(242, 195, 91, 0.55);
+        border-radius: 999px;
+        color: #fff5c9;
+        background: #23422a;
+        padding: 5px 7px;
+        font-size: 8px;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .legend-daily,
+      .guess-question,
+      .world-tag {
+        color: #15301e;
+        background: var(--gold);
+        border-color: var(--gold2);
+      }
+
+      .legend-players,
+      .guess-visual,
+      .world-visual {
+        position: absolute;
+        inset: 42px 14px 70px;
+        z-index: 1;
+        pointer-events: none;
+      }
 
       .legend-token {
         position: absolute;
@@ -632,15 +672,61 @@
       .legend-token:nth-child(3) { right: 18%; top: 2%; transform: rotate(-3deg); }
       .legend-token:nth-child(4) { right: 2%; top: 38%; transform: rotate(6deg); }
       .legend-token:nth-child(n+5) { display: none; }
-      .legend-card:hover .legend-token { transform: translateY(-3px) rotate(0deg); }
 
-      .legend-daily,
-      .guess-question,
-      .world-tag {
-        color: #15301e;
-        background: var(--gold);
-        border-color: var(--gold2);
+      .legend-card strong,
+      .guess-card strong,
+      .world-card strong {
+        max-width: 280px;
+        color: #fffbe6;
+        font-size: clamp(20px, 2.8vw, 26px);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+        text-shadow: 0 2px 0 #4a3513;
       }
+
+      .legend-card p,
+      .guess-card p,
+      .world-card p {
+        max-width: 300px;
+        color: #e6f4df;
+        font-size: 12px;
+      }
+
+      .legend-meta,
+      .guess-clues,
+      .world-meta { display: flex; flex-wrap: wrap; gap: 5px; }
+
+      .legend-meta span,
+      .guess-clues span,
+      .world-meta span {
+        width: auto;
+        height: auto;
+        min-height: 22px;
+        border: 1px solid rgba(255,255,255,0.22);
+        border-radius: 999px;
+        color: #f6ffe7;
+        background: #1d5b34;
+        padding: 5px 7px;
+        font-size: 9px;
+        font-weight: 900;
+      }
+
+      .legend-card .game-play-link,
+      .guess-card .game-play-link,
+      .world-card .game-play-link {
+        width: max-content;
+        min-height: 34px;
+        padding: 9px 13px;
+        color: #1f2b13;
+        background: var(--gold);
+        border: 1px solid var(--gold2);
+        margin-top: 0;
+      }
+
+      .legend-card:hover,
+      .guess-card:hover,
+      .world-card:hover { background: #123d25; border-color: var(--gold); }
+      .legend-card:hover .legend-token { transform: translateY(-3px) rotate(0deg); }
 
       .guess-question {
         width: 28px;
@@ -690,7 +776,10 @@
 
       .guess-card:hover .guess-question { transform: rotate(8deg) scale(1.04); }
 
-      .world-card { border-color: #f2c35b; box-shadow: inset 0 0 0 1px rgba(255, 240, 182, 0.14); }
+      .world-card {
+        border-color: #f2c35b;
+        box-shadow: inset 0 0 0 1px rgba(255, 240, 182, 0.14);
+      }
 
       .world-card::before {
         background:
@@ -701,8 +790,27 @@
           repeating-linear-gradient(90deg, #116936 0 42px, #18823d 42px 84px);
       }
 
-      .world-badge { background: #132f65; border-color: rgba(118, 188, 255, 0.65); color: #e8f4ff; }
-      .world-tag { background: linear-gradient(90deg, #f2c35b, #fff0b6); color: #15301e; }
+      .world-card::after {
+        background:
+          linear-gradient(90deg, transparent calc(50% - 1px), rgba(255,255,255,0.16) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
+          radial-gradient(circle at 50% 50%, transparent 0 30px, rgba(255,255,255,0.16) 31px 32px, transparent 33px),
+          linear-gradient(180deg, rgba(12, 57, 34, 0.04), rgba(7, 28, 19, 0.36));
+      }
+
+      .world-content {
+        background: linear-gradient(180deg, rgba(11, 44, 27, 0) 0%, rgba(8, 31, 21, 0.06) 33%, rgba(8, 29, 19, 0.88) 55%, rgba(7, 25, 18, 0.98) 100%);
+      }
+
+      .world-badge {
+        background: #132f65;
+        border-color: rgba(118, 188, 255, 0.65);
+        color: #e8f4ff;
+      }
+
+      .world-tag {
+        background: linear-gradient(90deg, #f2c35b, #fff0b6);
+        color: #15301e;
+      }
 
       .world-cup {
         position: absolute;
@@ -808,6 +916,7 @@
       }
 
       @media (max-width: 640px) {
+        body { background: url("../img/mundial-2026-bg.png") center center / cover fixed no-repeat; }
         .app-shell, footer { width: 100%; padding-left: 10px; padding-right: 10px; }
         .app-shell { padding-top: 10px; gap: 10px; }
         .topbar { min-height: 58px; padding: 10px 12px; border-radius: 12px; }
@@ -825,10 +934,10 @@
         .section-link { width: 100%; text-align: center; }
         .games-grid { grid-template-columns: 1fr; }
         .game-card,
-        .america-card,
-        .legend-card,
-        .guess-card,
-        .world-card { height: 250px; min-height: 250px; }
+        .game-card.america-card,
+        .game-card.legend-card,
+        .game-card.guess-card,
+        .game-card.world-card { height: 250px; min-height: 250px; }
         .america-content, .legend-content, .guess-content, .world-content { height: 250px; min-height: 250px; padding: 98px 14px 14px; }
         footer { margin-top: 0; padding-bottom: 10px; text-align: center; }
       }
@@ -912,20 +1021,19 @@
             </div>
 
             <div class="america-visual" aria-hidden="true">
-              <span class="america-trophy"></span>
-              <span class="america-ribbon"></span>
-              <span class="america-cup-text">FIFA</span>
+              <span class="america-map"></span>
+              <span class="america-ball"></span>
               <div class="america-flags">
-                <span title="Argentina">🇦🇷</span>
-                <span title="Brasil">🇧🇷</span>
-                <span title="Uruguay">🇺🇾</span>
-                <span title="Colombia">🇨🇴</span>
+                <span>🇦🇷</span>
+                <span>🇧🇷</span>
+                <span>🇺🇾</span>
+                <span>🇨🇴</span>
               </div>
             </div>
 
             <div class="america-content">
               <strong>Armá 11 América</strong>
-              <p>Formá un once con figuras actuales de clubes americanos.</p>
+              <p>Formá un once con jugadores actuales de clubes americanos.</p>
               <div class="america-meta" aria-label="Desafíos disponibles">
                 <span>Clubes</span>
                 <span>Ligas</span>
