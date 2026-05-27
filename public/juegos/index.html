@@ -94,11 +94,7 @@
         box-shadow: 0 0 0 2px var(--bg2);
       }
 
-      .top-actions {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
+      .top-actions { display: flex; align-items: center; gap: 8px; }
 
       .icon-btn, .profile-btn {
         border: 0;
@@ -436,12 +432,13 @@
       }
 
       .america-card {
-        border-color: rgba(95, 207, 128, 0.75);
+        border-color: rgba(229, 229, 229, 0.78);
         background: #0f3725;
       }
 
       .america-card::before {
         background:
+          radial-gradient(circle at 50% 16%, rgba(255,255,255,0.32) 0 10%, transparent 28%),
           radial-gradient(circle at 18% 20%, rgba(89, 184, 255, 0.28) 0 9%, transparent 25%),
           radial-gradient(circle at 84% 18%, rgba(242, 195, 91, 0.25) 0 9%, transparent 24%),
           radial-gradient(circle at 72% 68%, rgba(232, 83, 58, 0.22) 0 8%, transparent 24%),
@@ -450,70 +447,89 @@
       }
 
       .america-badge,
-      .america-tag {
-        border-color: rgba(95, 207, 128, 0.55);
-      }
+      .america-tag { border-color: rgba(229, 229, 229, 0.58); }
 
       .america-badge {
-        color: #dcffe6;
-        background: rgba(19, 66, 43, 0.9);
+        color: #f8f8f8;
+        background: rgba(38, 54, 48, 0.92);
       }
 
       .america-tag {
-        background: linear-gradient(90deg, #5fcf80, #fff0b6);
+        background: linear-gradient(90deg, #e7e7e7, #fff8cc);
       }
 
-      .america-map {
+      .america-cup {
         position: absolute;
         left: 50%;
-        top: 3px;
-        width: 64px;
-        height: 82px;
-        transform: translateX(-50%) rotate(-10deg);
-        filter: drop-shadow(0 0 16px rgba(95, 207, 128, 0.34));
+        top: -12px;
+        width: 74px;
+        height: 96px;
+        transform: translateX(-50%);
+        filter: drop-shadow(0 0 18px rgba(255,255,255,0.42));
       }
 
-      .america-map::before,
-      .america-map::after {
+      .america-cup::before {
         content: "";
         position: absolute;
-        background: linear-gradient(180deg, #fff0b6, #5fcf80 55%, #1b7f42);
+        left: 50%;
+        top: 0;
+        width: 54px;
+        height: 60px;
+        transform: translateX(-50%);
+        border: 2px solid rgba(12, 12, 12, 0.78);
+        border-radius: 24% 24% 38% 38% / 16% 16% 58% 58%;
+        background:
+          repeating-linear-gradient(90deg, transparent 0 8px, rgba(20,20,20,0.18) 8px 10px, transparent 10px 16px),
+          radial-gradient(ellipse at 36% 48%, rgba(255,255,255,0.92) 0 12%, transparent 28%),
+          linear-gradient(90deg, #9c9c9c 0%, #f4f4f4 26%, #c8c8c8 54%, #f8f8f8 72%, #777 100%);
+        box-shadow: inset 0 7px 0 rgba(255,255,255,0.45), inset 0 -8px 0 rgba(25,25,25,0.15);
+      }
+
+      .america-cup::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 52px;
+        width: 68px;
+        height: 42px;
+        transform: translateX(-50%);
+        background:
+          radial-gradient(ellipse at 50% 8%, rgba(245,245,245,0.9) 0 10%, transparent 12%),
+          linear-gradient(180deg, transparent 0 12px, #5a3922 12px 21px, #2f1b11 21px 22px, #6c4328 22px 31px, #2b1810 31px 32px, #5b3823 32px 42px);
+        border-radius: 0 0 18px 18px;
+        box-shadow: 0 7px 0 rgba(26, 16, 10, 0.96), inset 0 -2px 0 rgba(0,0,0,0.24);
+      }
+
+      .america-cup-shine {
+        position: absolute;
+        left: 50%;
+        top: 7px;
+        width: 34px;
+        height: 44px;
+        transform: translateX(-50%);
+        border-radius: 40% 40% 48% 48%;
+        border-top: 3px solid rgba(255,255,255,0.86);
+        border-bottom: 2px solid rgba(0,0,0,0.24);
+        opacity: 0.78;
+      }
+
+      .america-cup-rings {
+        position: absolute;
+        left: 50%;
+        top: 63px;
+        width: 64px;
+        height: 24px;
+        transform: translateX(-50%);
+        background:
+          radial-gradient(ellipse at 17% 37%, #fff6b8 0 10%, transparent 11%),
+          radial-gradient(ellipse at 39% 37%, #fff6b8 0 10%, transparent 11%),
+          radial-gradient(ellipse at 62% 37%, #fff6b8 0 10%, transparent 11%),
+          radial-gradient(ellipse at 84% 37%, #fff6b8 0 10%, transparent 11%);
         opacity: 0.92;
       }
 
-      .america-map::before {
-        left: 14px;
-        top: 0;
-        width: 38px;
-        height: 46px;
-        border-radius: 55% 45% 48% 52%;
-        transform: rotate(22deg);
-      }
-
-      .america-map::after {
-        left: 25px;
-        top: 38px;
-        width: 26px;
-        height: 44px;
-        border-radius: 45% 55% 60% 40%;
-        transform: rotate(-13deg);
-      }
-
-      .america-ball {
-        position: absolute;
-        left: 50%;
-        top: 58px;
-        width: 30px;
-        height: 30px;
-        transform: translateX(-50%);
-        border-radius: 50%;
-        background:
-          radial-gradient(circle at 50% 50%, #10251d 0 16%, transparent 17%),
-          linear-gradient(45deg, transparent 42%, rgba(16,37,29,0.65) 43% 57%, transparent 58%),
-          linear-gradient(-45deg, transparent 42%, rgba(16,37,29,0.65) 43% 57%, transparent 58%),
-          #f2f7f3;
-        box-shadow: 0 0 0 4px rgba(255,255,255,0.12), 0 10px 18px rgba(0,0,0,0.2);
-      }
+      .america-map,
+      .america-ball { display: none; }
 
       .america-flags,
       .world-flags,
@@ -535,16 +551,16 @@
 
       .america-flags span:nth-child(1) { left: 5%; top: 34%; transform: rotate(-8deg); }
       .america-flags span:nth-child(2) { right: 6%; top: 34%; transform: rotate(8deg); }
-      .america-flags span:nth-child(3) { left: 24%; top: 0; transform: rotate(7deg); }
-      .america-flags span:nth-child(4) { right: 24%; top: 2px; transform: rotate(-7deg); }
+      .america-flags span:nth-child(3) { left: 23%; top: 0; transform: rotate(7deg); }
+      .america-flags span:nth-child(4) { right: 23%; top: 2px; transform: rotate(-7deg); }
 
       .america-card:hover {
         background: #123d25;
-        border-color: #5fcf80;
+        border-color: #e7e7e7;
       }
 
-      .america-card:hover .america-map {
-        transform: translateX(-50%) translateY(-3px) rotate(-7deg) scale(1.04);
+      .america-card:hover .america-cup {
+        transform: translateX(-50%) translateY(-3px) scale(1.04);
       }
 
       .legend-token {
@@ -948,13 +964,14 @@
             </div>
 
             <div class="america-visual" aria-hidden="true">
-              <span class="america-map"></span>
-              <span class="america-ball"></span>
+              <span class="america-cup"></span>
+              <span class="america-cup-shine"></span>
+              <span class="america-cup-rings"></span>
               <div class="america-flags">
-                <span>🇦🇷</span>
-                <span>🇧🇷</span>
-                <span>🇺🇾</span>
-                <span>🇨🇴</span>
+                <span title="Argentina">🇦🇷</span>
+                <span title="Brasil">🇧🇷</span>
+                <span title="Uruguay">🇺🇾</span>
+                <span title="Colombia">🇨🇴</span>
               </div>
             </div>
 
