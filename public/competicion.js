@@ -8,12 +8,19 @@ const heroSubtitle = document.querySelector("#competitionHeroSubtitle");
 const updated = document.querySelector("#competitionUpdated");
 const summary = document.querySelector("#competitionSummary");
 const tableBody = document.querySelector("#competitionTableBody");
-const tableCard = document.querySelector("#competitionTableCard");
 const nextList = document.querySelector("#competitionNextList");
 const lastList = document.querySelector("#competitionLastList");
 const teamsGrid = document.querySelector("#competitionTeamsGrid");
 const tabButtons = document.querySelectorAll(".competition-tab");
 const sections = document.querySelectorAll(".competition-section");
+
+function setText(element, value) {
+  if (element) element.textContent = value;
+}
+
+function setHtml(element, value) {
+  if (element) element.innerHTML = value;
+}
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -52,14 +59,14 @@ function teamName(team) {
 
 function renderSummary(competition) {
   const resumen = competition.resumen || {};
-  summary.innerHTML = [
+  setHtml(summary, [
     ["Equipos", resumen.equipos ?? competition.equipos?.length ?? 0],
     ["Tabla", resumen.posiciones ?? competition.tabla?.length ?? 0],
     ["Próximos", resumen.proximos ?? competition.partidos?.proximos?.length ?? 0],
     ["Últimos", resumen.ultimos ?? competition.partidos?.ultimos?.length ?? 0],
   ]
     .map(([label, value]) => `<article class="competition-stat-box"><span>${label}</span><strong>${escapeHtml(value)}</strong></article>`)
-    .join("");
+    .join(""));
 }
 
 function groupedTableRows(tabla) {
@@ -76,7 +83,7 @@ function renderTable(competition) {
   const tabla = Array.isArray(competition.tabla) ? competition.tabla : [];
 
   if (!tabla.length) {
-    tableBody.innerHTML = `<tr><td colspan="10" class="team-cell">No hay tabla disponible desde ESPN para esta competición.</td></tr>`;
+    setHtml(tableBody, `<tr><td colspan="10" class="team-cell">No hay tabla disponible desde ESPN para esta competición.</td></tr>`);
     return;
   }
 
@@ -113,7 +120,7 @@ function renderTable(competition) {
     });
   });
 
-  tableBody.innerHTML = html;
+  setHtml(tableBody, html);
 }
 
 function matchScore(match) {
@@ -142,29 +149,31 @@ function renderMatch(match) {
 }
 
 function renderMatches(container, matches, emptyText) {
+  if (!container) return;
+
   if (!Array.isArray(matches) || !matches.length) {
-    container.innerHTML = `<p class="competition-empty">${escapeHtml(emptyText)}</p>`;
+    setHtml(container, `<p class="competition-empty">${escapeHtml(emptyText)}</p>`);
     return;
   }
 
-  container.innerHTML = matches.map(renderMatch).join("");
+  setHtml(container, matches.map(renderMatch).join(""));
 }
 
 function renderTeams(competition) {
   const teams = Array.isArray(competition.equipos) ? competition.equipos : [];
 
   if (!teams.length) {
-    teamsGrid.innerHTML = `<p class="competition-empty">No hay equipos disponibles desde ESPN para esta competición.</p>`;
+    setHtml(teamsGrid, `<p class="competition-empty">No hay equipos disponibles desde ESPN para esta competición.</p>`);
     return;
   }
 
-  teamsGrid.innerHTML = teams
+  setHtml(teamsGrid, teams
     .map((team) => `
       <article class="competition-team-card">
         ${teamLogo(team)}
         <span>${escapeHtml(teamName(team))}</span>
       </article>`)
-    .join("");
+    .join(""));
 }
 
 function setActiveTab(tab) {
@@ -175,10 +184,11 @@ function setActiveTab(tab) {
 function renderCompetition(competition) {
   const title = competition.nombre_largo || competition.nombre || "Competición";
   document.title = `${title} | Partidos Hoy`;
-  pageTitle.textContent = title;
-  heroTitle.textContent = title;
-  heroSubtitle.textContent = `${competition.pais || competition.grupo || "Fútbol"} · Temporada ${competition.season || "actual"} · Fuente: ${competition.fuente || "ESPN API"}`;
-  updated.textContent = `Actualizado: ${formatDate(competition.actualizado)}`;
+
+  setText(pageTitle, title);
+  setText(heroTitle, title);
+  setText(heroSubtitle, `${competition.pais || competition.grupo || "Fútbol"} · Temporada ${competition.season || "actual"} · Fuente: ${competition.fuente || "ESPN API"}`);
+  setText(updated, `Actualizado: ${formatDate(competition.actualizado)}`);
 
   renderSummary(competition);
   renderTable(competition);
@@ -206,10 +216,11 @@ async function init() {
     renderCompetition(competition);
     setActiveTab("tabla");
   } catch (error) {
-    heroTitle.textContent = "No se pudo cargar la competición";
-    heroSubtitle.textContent = error.message;
-    summary.innerHTML = "";
-    tableBody.innerHTML = `<tr><td colspan="10" class="team-cell">Ejecutá el workflow Generar competiciones ESPN para crear public/data/competiciones.json.</td></tr>`;
+    setText(heroTitle, "No se pudo cargar la competición");
+    setText(heroSubtitle, error.message);
+    setText(updated, "Actualizando...");
+    setHtml(summary, "");
+    setHtml(tableBody, `<tr><td colspan="10" class="team-cell">Ejecutá el workflow Generar competiciones ESPN para crear public/data/competiciones.json.</td></tr>`);
     setActiveTab("tabla");
   }
 }
