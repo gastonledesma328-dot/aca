@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-05-27T18:40:33.418779+00:00",
+  "actualizado": "2026-05-27T18:49:26.279767+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:27.763353+00:00",
+      "actualizado": "2026-05-27T18:49:20.664483+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -24,8 +24,8 @@
       "resumen": {
         "equipos": 30,
         "posiciones": 30,
-        "partidos_scoreboard": 1,
-        "ultimos": 1,
+        "partidos_scoreboard": 30,
+        "ultimos": 14,
         "proximos": 0
       },
       "equipos": [
@@ -1124,10 +1124,1732 @@
               "ganador": true
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401873392/belgrano-cordoba-river-plate"
+          },
+          {
+            "id": "401872677",
+            "nombre": "Belgrano (Córdoba) at Argentinos Juniors",
+            "fecha": "2026-05-17T20:00Z",
+            "estado": "Final Score - After Penalties",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "semis",
+            "clasificacion_texto": "belgrano cordoba at argentinos juniors bel argj apertura semifinals event belgrano cordoba advance 4 3 on penalties belgrano cordoba advance 4 3 on penalties",
+            "local": {
+              "equipo": {
+                "id": "3",
+                "uid": "s:600~t:3",
+                "nombre": "Argentinos Juniors",
+                "nombre_corto": "Argentinos ",
+                "abreviatura": "ARGJ",
+                "slug": "argentinos-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "4",
+                "uid": "s:600~t:4",
+                "nombre": "Belgrano (Córdoba)",
+                "nombre_corto": "Belgrano ",
+                "abreviatura": "BEL",
+                "slug": "belgrano-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                "color": "0060f0"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872677/belgrano-cordoba-argentinos-juniors"
+          },
+          {
+            "id": "401872650",
+            "nombre": "Rosario Central at River Plate",
+            "fecha": "2026-05-16T22:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "semis",
+            "clasificacion_texto": "rosario central at river plate ros riv apertura semifinals",
+            "local": {
+              "equipo": {
+                "id": "16",
+                "uid": "s:600~t:16",
+                "nombre": "River Plate",
+                "nombre_corto": "River Plate",
+                "abreviatura": "RIV",
+                "slug": "river-plate",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "17",
+                "uid": "s:600~t:17",
+                "nombre": "Rosario Central",
+                "nombre_corto": "Rosario Central",
+                "abreviatura": "ROS",
+                "slug": "rosario-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                "color": "ffff00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872650/rosario-central-river-plate"
+          },
+          {
+            "id": "401872546",
+            "nombre": "Gimnasia La Plata at River Plate",
+            "fecha": "2026-05-14T00:45Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "cuartos",
+            "clasificacion_texto": "gimnasia la plata at river plate glp riv apertura quarterfinals",
+            "local": {
+              "equipo": {
+                "id": "16",
+                "uid": "s:600~t:16",
+                "nombre": "River Plate",
+                "nombre_corto": "River Plate",
+                "abreviatura": "RIV",
+                "slug": "river-plate",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "9",
+                "uid": "s:600~t:9",
+                "nombre": "Gimnasia La Plata",
+                "nombre_corto": "Gimnasia LP",
+                "abreviatura": "GLP",
+                "slug": "gimnasia-la-plata",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+                "color": "288A00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872546/gimnasia-la-plata-river-plate"
+          },
+          {
+            "id": "401872179",
+            "nombre": "Racing Club at Rosario Central",
+            "fecha": "2026-05-13T21:45Z",
+            "estado": "Final Score - After Extra Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "cuartos",
+            "clasificacion_texto": "racing club at rosario central rac ros apertura quarterfinals",
+            "local": {
+              "equipo": {
+                "id": "17",
+                "uid": "s:600~t:17",
+                "nombre": "Rosario Central",
+                "nombre_corto": "Rosario Central",
+                "abreviatura": "ROS",
+                "slug": "rosario-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "15",
+                "uid": "s:600~t:15",
+                "nombre": "Racing Club",
+                "nombre_corto": "Racing ",
+                "abreviatura": "RAC",
+                "slug": "racing-club",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+                "color": "409fff"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872179/racing-club-rosario-central"
+          },
+          {
+            "id": "401872291",
+            "nombre": "Huracán at Argentinos Juniors",
+            "fecha": "2026-05-13T00:30Z",
+            "estado": "Final Score - After Extra Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "cuartos",
+            "clasificacion_texto": "huracan at argentinos juniors hur argj apertura quarterfinals",
+            "local": {
+              "equipo": {
+                "id": "3",
+                "uid": "s:600~t:3",
+                "nombre": "Argentinos Juniors",
+                "nombre_corto": "Argentinos ",
+                "abreviatura": "ARGJ",
+                "slug": "argentinos-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10",
+                "uid": "s:600~t:10",
+                "nombre": "Huracán",
+                "nombre_corto": "Huracán ",
+                "abreviatura": "HUR",
+                "slug": "huracan",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872291/huracan-argentinos-juniors"
+          },
+          {
+            "id": "401872290",
+            "nombre": "Unión (Santa Fe) at Belgrano (Córdoba)",
+            "fecha": "2026-05-12T22:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "cuartos",
+            "clasificacion_texto": "union santa fe at belgrano cordoba usf bel apertura quarterfinals",
+            "local": {
+              "equipo": {
+                "id": "4",
+                "uid": "s:600~t:4",
+                "nombre": "Belgrano (Córdoba)",
+                "nombre_corto": "Belgrano ",
+                "abreviatura": "BEL",
+                "slug": "belgrano-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                "color": "0060f0"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "20",
+                "uid": "s:600~t:20",
+                "nombre": "Unión (Santa Fe)",
+                "nombre_corto": "Unión (SF)",
+                "abreviatura": "USF",
+                "slug": "union-santa-fe",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872290/union-santa-fe-belgrano-cordoba"
+          },
+          {
+            "id": "401871436",
+            "nombre": "Gimnasia La Plata at Vélez Sarsfield",
+            "fecha": "2026-05-11T00:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "gimnasia la plata at velez sarsfield glp vel apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "21",
+                "uid": "s:600~t:21",
+                "nombre": "Vélez Sarsfield",
+                "nombre_corto": "Vélez ",
+                "abreviatura": "VEL",
+                "slug": "velez-sarsfield",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+                "color": "0070b0"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "9",
+                "uid": "s:600~t:9",
+                "nombre": "Gimnasia La Plata",
+                "nombre_corto": "Gimnasia LP",
+                "abreviatura": "GLP",
+                "slug": "gimnasia-la-plata",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+                "color": "288A00"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871436/gimnasia-la-plata-velez-sarsfield"
+          },
+          {
+            "id": "401871430",
+            "nombre": "San Lorenzo at River Plate",
+            "fecha": "2026-05-10T22:00Z",
+            "estado": "Final Score - After Penalties",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "san lorenzo at river plate slo riv apertura round of 16 event river plate advance 4 3 on penalties river plate advance 4 3 on penalties",
+            "local": {
+              "equipo": {
+                "id": "16",
+                "uid": "s:600~t:16",
+                "nombre": "River Plate",
+                "nombre_corto": "River Plate",
+                "abreviatura": "RIV",
+                "slug": "river-plate",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "18",
+                "uid": "s:600~t:18",
+                "nombre": "San Lorenzo",
+                "nombre_corto": "San Lorenzo ",
+                "abreviatura": "SLO",
+                "slug": "san-lorenzo",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+                "color": "0060f0"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871430/san-lorenzo-river-plate"
+          },
+          {
+            "id": "401871434",
+            "nombre": "Racing Club at Estudiantes de La Plata",
+            "fecha": "2026-05-10T20:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "racing club at estudiantes de la plata rac est apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "8",
+                "uid": "s:600~t:8",
+                "nombre": "Estudiantes de La Plata",
+                "nombre_corto": "Estudiantes",
+                "abreviatura": "EST",
+                "slug": "estudiantes-de-la-plata",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "15",
+                "uid": "s:600~t:15",
+                "nombre": "Racing Club",
+                "nombre_corto": "Racing ",
+                "abreviatura": "RAC",
+                "slug": "racing-club",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+                "color": "409fff"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871434/racing-club-estudiantes-de-la-plata"
+          },
+          {
+            "id": "401871431",
+            "nombre": "Independiente at Rosario Central",
+            "fecha": "2026-05-10T18:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "independiente at rosario central ind ros apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "17",
+                "uid": "s:600~t:17",
+                "nombre": "Rosario Central",
+                "nombre_corto": "Rosario Central",
+                "abreviatura": "ROS",
+                "slug": "rosario-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "3",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "11",
+                "uid": "s:600~t:11",
+                "nombre": "Independiente",
+                "nombre_corto": "Independiente",
+                "abreviatura": "IND",
+                "slug": "independiente",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871431/independiente-rosario-central"
+          },
+          {
+            "id": "401871435",
+            "nombre": "Lanús at Argentinos Juniors",
+            "fecha": "2026-05-10T01:15Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "lanus at argentinos juniors lan argj apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "3",
+                "uid": "s:600~t:3",
+                "nombre": "Argentinos Juniors",
+                "nombre_corto": "Argentinos ",
+                "abreviatura": "ARGJ",
+                "slug": "argentinos-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "12",
+                "uid": "s:600~t:12",
+                "nombre": "Lanús",
+                "nombre_corto": "Lanús ",
+                "abreviatura": "LAN",
+                "slug": "lanus",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+                "color": "9f0000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871435/lanus-argentinos-juniors"
+          },
+          {
+            "id": "401871433",
+            "nombre": "Unión (Santa Fe) at Independiente Rivadavia",
+            "fecha": "2026-05-10T00:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "union santa fe at independiente rivadavia usf riv apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "9744",
+                "uid": "s:600~t:9744",
+                "nombre": "Independiente Rivadavia",
+                "nombre_corto": "Ind. Rivadavia",
+                "abreviatura": "RIV",
+                "slug": "independiente-rivadavia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
+                "color": "000061"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "20",
+                "uid": "s:600~t:20",
+                "nombre": "Unión (Santa Fe)",
+                "nombre_corto": "Unión (SF)",
+                "abreviatura": "USF",
+                "slug": "union-santa-fe",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871433/union-santa-fe-independiente-rivadavia"
+          },
+          {
+            "id": "401871437",
+            "nombre": "Huracán at Boca Juniors",
+            "fecha": "2026-05-09T22:00Z",
+            "estado": "Final Score - After Extra Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "huracan at boca juniors hur cabj apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "5",
+                "uid": "s:600~t:5",
+                "nombre": "Boca Juniors",
+                "nombre_corto": "Boca ",
+                "abreviatura": "CABJ",
+                "slug": "boca-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+                "color": "fcb000"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10",
+                "uid": "s:600~t:10",
+                "nombre": "Huracán",
+                "nombre_corto": "Huracán ",
+                "abreviatura": "HUR",
+                "slug": "huracan",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "3",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871437/huracan-boca-juniors"
           }
         ],
         "proximos": [],
         "todos": [
+          {
+            "id": "762905",
+            "nombre": "Banfield at Barracas Central",
+            "fecha": "2026-05-02T17:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "banfield at barracas central ban bar torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "10060",
+                "uid": "s:600~t:10060",
+                "nombre": "Barracas Central",
+                "nombre_corto": "Barracas",
+                "abreviatura": "BAR",
+                "slug": "barracas-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "235",
+                "uid": "s:600~t:235",
+                "nombre": "Banfield",
+                "nombre_corto": "Banfield",
+                "abreviatura": "BAN",
+                "slug": "banfield",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
+                "color": "288A00"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762905/banfield-barracas-central"
+          },
+          {
+            "id": "762896",
+            "nombre": "Deportivo Riestra at Lanús",
+            "fecha": "2026-05-02T17:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "deportivo riestra at lanus rie lan torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "12",
+                "uid": "s:600~t:12",
+                "nombre": "Lanús",
+                "nombre_corto": "Lanús ",
+                "abreviatura": "LAN",
+                "slug": "lanus",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+                "color": "9f0000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "17702",
+                "uid": "s:600~t:17702",
+                "nombre": "Deportivo Riestra",
+                "nombre_corto": "Riestra",
+                "abreviatura": "RIE",
+                "slug": "deportivo-riestra",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
+                "color": "212121"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762896/deportivo-riestra-lanus"
+          },
+          {
+            "id": "762907",
+            "nombre": "Boca Juniors at Central Córdoba (Santiago del Estero)",
+            "fecha": "2026-05-02T19:15Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "boca juniors at central cordoba santiago del estero cabj ctr torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "11989",
+                "uid": "s:600~t:11989",
+                "nombre": "Central Córdoba (Santiago del Estero)",
+                "nombre_corto": "C. Córdoba (SE)",
+                "abreviatura": "CTR",
+                "slug": "central-cordoba-santiago-del-estero",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "5",
+                "uid": "s:600~t:5",
+                "nombre": "Boca Juniors",
+                "nombre_corto": "Boca ",
+                "abreviatura": "CABJ",
+                "slug": "boca-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+                "color": "fcb000"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762907/boca-juniors-central-cordoba-santiago-del-estero"
+          },
+          {
+            "id": "762901",
+            "nombre": "Independiente at San Lorenzo",
+            "fecha": "2026-05-02T21:45Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "independiente at san lorenzo ind slo torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "18",
+                "uid": "s:600~t:18",
+                "nombre": "San Lorenzo",
+                "nombre_corto": "San Lorenzo ",
+                "abreviatura": "SLO",
+                "slug": "san-lorenzo",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+                "color": "0060f0"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "11",
+                "uid": "s:600~t:11",
+                "nombre": "Independiente",
+                "nombre_corto": "Independiente",
+                "abreviatura": "IND",
+                "slug": "independiente",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762901/independiente-san-lorenzo"
+          },
+          {
+            "id": "762902",
+            "nombre": "Talleres (Córdoba) at Unión (Santa Fe)",
+            "fecha": "2026-05-02T21:45Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "talleres cordoba at union santa fe tall usf torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "20",
+                "uid": "s:600~t:20",
+                "nombre": "Unión (Santa Fe)",
+                "nombre_corto": "Unión (SF)",
+                "abreviatura": "USF",
+                "slug": "union-santa-fe",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762902/talleres-cordoba-union-santa-fe"
+          },
+          {
+            "id": "762897",
+            "nombre": "Estudiantes de La Plata at Platense",
+            "fecha": "2026-05-03T00:15Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "estudiantes de la plata at platense est pla torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "7764",
+                "uid": "s:600~t:7764",
+                "nombre": "Platense",
+                "nombre_corto": "Platense",
+                "abreviatura": "PLA",
+                "slug": "platense",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "8",
+                "uid": "s:600~t:8",
+                "nombre": "Estudiantes de La Plata",
+                "nombre_corto": "Estudiantes",
+                "abreviatura": "EST",
+                "slug": "estudiantes-de-la-plata",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762897/estudiantes-de-la-plata-platense"
+          },
+          {
+            "id": "762904",
+            "nombre": "Independiente Rivadavia at Aldosivi",
+            "fecha": "2026-05-03T16:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "independiente rivadavia at aldosivi riv aldo torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "9739",
+                "uid": "s:600~t:9739",
+                "nombre": "Aldosivi",
+                "nombre_corto": "Aldosivi",
+                "abreviatura": "ALDO",
+                "slug": "aldosivi",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
+                "color": "288A00"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "9744",
+                "uid": "s:600~t:9744",
+                "nombre": "Independiente Rivadavia",
+                "nombre_corto": "Ind. Rivadavia",
+                "abreviatura": "RIV",
+                "slug": "independiente-rivadavia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
+                "color": "000061"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762904/independiente-rivadavia-aldosivi"
+          },
+          {
+            "id": "762906",
+            "nombre": "Sarmiento (Junín) at Belgrano (Córdoba)",
+            "fecha": "2026-05-03T19:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "sarmiento junin at belgrano cordoba sarm bel torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "4",
+                "uid": "s:600~t:4",
+                "nombre": "Belgrano (Córdoba)",
+                "nombre_corto": "Belgrano ",
+                "abreviatura": "BEL",
+                "slug": "belgrano-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                "color": "0060f0"
+              },
+              "localia": "home",
+              "marcador": "4",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10158",
+                "uid": "s:600~t:10158",
+                "nombre": "Sarmiento (Junín)",
+                "nombre_corto": "Sarmiento (J)",
+                "abreviatura": "SARM",
+                "slug": "sarmiento-junin",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10158.png",
+                "color": "288A00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762906/sarmiento-junin-belgrano-cordoba"
+          },
+          {
+            "id": "762894",
+            "nombre": "Argentinos Juniors at Gimnasia La Plata",
+            "fecha": "2026-05-03T19:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "argentinos juniors at gimnasia la plata argj glp torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "9",
+                "uid": "s:600~t:9",
+                "nombre": "Gimnasia La Plata",
+                "nombre_corto": "Gimnasia LP",
+                "abreviatura": "GLP",
+                "slug": "gimnasia-la-plata",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+                "color": "288A00"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "3",
+                "uid": "s:600~t:3",
+                "nombre": "Argentinos Juniors",
+                "nombre_corto": "Argentinos ",
+                "abreviatura": "ARGJ",
+                "slug": "argentinos-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762894/argentinos-juniors-gimnasia-la-plata"
+          },
+          {
+            "id": "762898",
+            "nombre": "Huracán at Racing Club",
+            "fecha": "2026-05-03T19:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "huracan at racing club hur rac torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "15",
+                "uid": "s:600~t:15",
+                "nombre": "Racing Club",
+                "nombre_corto": "Racing ",
+                "abreviatura": "RAC",
+                "slug": "racing-club",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+                "color": "409fff"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10",
+                "uid": "s:600~t:10",
+                "nombre": "Huracán",
+                "nombre_corto": "Huracán ",
+                "abreviatura": "HUR",
+                "slug": "huracan",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762898/huracan-racing-club"
+          },
+          {
+            "id": "762900",
+            "nombre": "Tigre at Rosario Central",
+            "fecha": "2026-05-03T19:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "tigre at rosario central tig ros torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "17",
+                "uid": "s:600~t:17",
+                "nombre": "Rosario Central",
+                "nombre_corto": "Rosario Central",
+                "abreviatura": "ROS",
+                "slug": "rosario-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "7767",
+                "uid": "s:600~t:7767",
+                "nombre": "Tigre",
+                "nombre_corto": "Tigre",
+                "abreviatura": "TIG",
+                "slug": "tigre",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762900/tigre-rosario-central"
+          },
+          {
+            "id": "762899",
+            "nombre": "Atlético Tucumán at River Plate",
+            "fecha": "2026-05-03T21:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "atletico tucuman at river plate cat riv torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "16",
+                "uid": "s:600~t:16",
+                "nombre": "River Plate",
+                "nombre_corto": "River Plate",
+                "abreviatura": "RIV",
+                "slug": "river-plate",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "9785",
+                "uid": "s:600~t:9785",
+                "nombre": "Atlético Tucumán",
+                "nombre_corto": "Atl Tucumán",
+                "abreviatura": "CAT",
+                "slug": "atletico-tucuman",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
+                "color": "0093EC"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762899/atletico-tucuman-river-plate"
+          },
+          {
+            "id": "762895",
+            "nombre": "Defensa y Justicia at Gimnasia (Mendoza)",
+            "fecha": "2026-05-04T20:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "defensa y justicia at gimnasia mendoza dyj gmz torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "11972",
+                "uid": "s:600~t:11972",
+                "nombre": "Gimnasia (Mendoza)",
+                "nombre_corto": "Gimnasia (M)",
+                "abreviatura": "GMZ",
+                "slug": "gimnasia-mendoza",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762895/defensa-y-justicia-gimnasia-mendoza"
+          },
+          {
+            "id": "762903",
+            "nombre": "Newell's Old Boys at Vélez Sarsfield",
+            "fecha": "2026-05-04T22:15Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "newell s old boys at velez sarsfield nob vel torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "21",
+                "uid": "s:600~t:21",
+                "nombre": "Vélez Sarsfield",
+                "nombre_corto": "Vélez ",
+                "abreviatura": "VEL",
+                "slug": "velez-sarsfield",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+                "color": "0070b0"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "14",
+                "uid": "s:600~t:14",
+                "nombre": "Newell's Old Boys",
+                "nombre_corto": "Newell's",
+                "abreviatura": "NOB",
+                "slug": "newell-s-old-boys",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762903/newells-old-boys-velez-sarsfield"
+          },
+          {
+            "id": "762908",
+            "nombre": "Instituto (Córdoba) at Estudiantes de Río Cuarto",
+            "fecha": "2026-05-05T00:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "instituto cordoba at estudiantes de rio cuarto iacc aae torneo apertura",
+            "local": {
+              "equipo": {
+                "id": "19685",
+                "uid": "s:600~t:19685",
+                "nombre": "Estudiantes de Río Cuarto",
+                "nombre_corto": "Estudiantes RC",
+                "abreviatura": "AAE",
+                "slug": "estudiantes-de-rio-cuarto",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19685.png",
+                "color": "008bd0"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2975",
+                "uid": "s:600~t:2975",
+                "nombre": "Instituto (Córdoba)",
+                "nombre_corto": "Instituto",
+                "abreviatura": "IACC",
+                "slug": "instituto-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/762908/instituto-cordoba-estudiantes-de-rio-cuarto"
+          },
+          {
+            "id": "401871432",
+            "nombre": "Belgrano (Córdoba) at Talleres (Córdoba)",
+            "fecha": "2026-05-09T19:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "belgrano cordoba at talleres cordoba bel tall apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "4",
+                "uid": "s:600~t:4",
+                "nombre": "Belgrano (Córdoba)",
+                "nombre_corto": "Belgrano ",
+                "abreviatura": "BEL",
+                "slug": "belgrano-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                "color": "0060f0"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871432/belgrano-cordoba-talleres-cordoba"
+          },
+          {
+            "id": "401871437",
+            "nombre": "Huracán at Boca Juniors",
+            "fecha": "2026-05-09T22:00Z",
+            "estado": "Final Score - After Extra Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "huracan at boca juniors hur cabj apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "5",
+                "uid": "s:600~t:5",
+                "nombre": "Boca Juniors",
+                "nombre_corto": "Boca ",
+                "abreviatura": "CABJ",
+                "slug": "boca-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+                "color": "fcb000"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10",
+                "uid": "s:600~t:10",
+                "nombre": "Huracán",
+                "nombre_corto": "Huracán ",
+                "abreviatura": "HUR",
+                "slug": "huracan",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "3",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871437/huracan-boca-juniors"
+          },
+          {
+            "id": "401871433",
+            "nombre": "Unión (Santa Fe) at Independiente Rivadavia",
+            "fecha": "2026-05-10T00:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "union santa fe at independiente rivadavia usf riv apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "9744",
+                "uid": "s:600~t:9744",
+                "nombre": "Independiente Rivadavia",
+                "nombre_corto": "Ind. Rivadavia",
+                "abreviatura": "RIV",
+                "slug": "independiente-rivadavia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
+                "color": "000061"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "20",
+                "uid": "s:600~t:20",
+                "nombre": "Unión (Santa Fe)",
+                "nombre_corto": "Unión (SF)",
+                "abreviatura": "USF",
+                "slug": "union-santa-fe",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871433/union-santa-fe-independiente-rivadavia"
+          },
+          {
+            "id": "401871435",
+            "nombre": "Lanús at Argentinos Juniors",
+            "fecha": "2026-05-10T01:15Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "lanus at argentinos juniors lan argj apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "3",
+                "uid": "s:600~t:3",
+                "nombre": "Argentinos Juniors",
+                "nombre_corto": "Argentinos ",
+                "abreviatura": "ARGJ",
+                "slug": "argentinos-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "12",
+                "uid": "s:600~t:12",
+                "nombre": "Lanús",
+                "nombre_corto": "Lanús ",
+                "abreviatura": "LAN",
+                "slug": "lanus",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+                "color": "9f0000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871435/lanus-argentinos-juniors"
+          },
+          {
+            "id": "401871431",
+            "nombre": "Independiente at Rosario Central",
+            "fecha": "2026-05-10T18:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "independiente at rosario central ind ros apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "17",
+                "uid": "s:600~t:17",
+                "nombre": "Rosario Central",
+                "nombre_corto": "Rosario Central",
+                "abreviatura": "ROS",
+                "slug": "rosario-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "3",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "11",
+                "uid": "s:600~t:11",
+                "nombre": "Independiente",
+                "nombre_corto": "Independiente",
+                "abreviatura": "IND",
+                "slug": "independiente",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871431/independiente-rosario-central"
+          },
+          {
+            "id": "401871434",
+            "nombre": "Racing Club at Estudiantes de La Plata",
+            "fecha": "2026-05-10T20:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "racing club at estudiantes de la plata rac est apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "8",
+                "uid": "s:600~t:8",
+                "nombre": "Estudiantes de La Plata",
+                "nombre_corto": "Estudiantes",
+                "abreviatura": "EST",
+                "slug": "estudiantes-de-la-plata",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "15",
+                "uid": "s:600~t:15",
+                "nombre": "Racing Club",
+                "nombre_corto": "Racing ",
+                "abreviatura": "RAC",
+                "slug": "racing-club",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+                "color": "409fff"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871434/racing-club-estudiantes-de-la-plata"
+          },
+          {
+            "id": "401871430",
+            "nombre": "San Lorenzo at River Plate",
+            "fecha": "2026-05-10T22:00Z",
+            "estado": "Final Score - After Penalties",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "san lorenzo at river plate slo riv apertura round of 16 event river plate advance 4 3 on penalties river plate advance 4 3 on penalties",
+            "local": {
+              "equipo": {
+                "id": "16",
+                "uid": "s:600~t:16",
+                "nombre": "River Plate",
+                "nombre_corto": "River Plate",
+                "abreviatura": "RIV",
+                "slug": "river-plate",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "18",
+                "uid": "s:600~t:18",
+                "nombre": "San Lorenzo",
+                "nombre_corto": "San Lorenzo ",
+                "abreviatura": "SLO",
+                "slug": "san-lorenzo",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+                "color": "0060f0"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871430/san-lorenzo-river-plate"
+          },
+          {
+            "id": "401871436",
+            "nombre": "Gimnasia La Plata at Vélez Sarsfield",
+            "fecha": "2026-05-11T00:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "octavos",
+            "clasificacion_texto": "gimnasia la plata at velez sarsfield glp vel apertura round of 16",
+            "local": {
+              "equipo": {
+                "id": "21",
+                "uid": "s:600~t:21",
+                "nombre": "Vélez Sarsfield",
+                "nombre_corto": "Vélez ",
+                "abreviatura": "VEL",
+                "slug": "velez-sarsfield",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+                "color": "0070b0"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "9",
+                "uid": "s:600~t:9",
+                "nombre": "Gimnasia La Plata",
+                "nombre_corto": "Gimnasia LP",
+                "abreviatura": "GLP",
+                "slug": "gimnasia-la-plata",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+                "color": "288A00"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401871436/gimnasia-la-plata-velez-sarsfield"
+          },
+          {
+            "id": "401872290",
+            "nombre": "Unión (Santa Fe) at Belgrano (Córdoba)",
+            "fecha": "2026-05-12T22:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "cuartos",
+            "clasificacion_texto": "union santa fe at belgrano cordoba usf bel apertura quarterfinals",
+            "local": {
+              "equipo": {
+                "id": "4",
+                "uid": "s:600~t:4",
+                "nombre": "Belgrano (Córdoba)",
+                "nombre_corto": "Belgrano ",
+                "abreviatura": "BEL",
+                "slug": "belgrano-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                "color": "0060f0"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "20",
+                "uid": "s:600~t:20",
+                "nombre": "Unión (Santa Fe)",
+                "nombre_corto": "Unión (SF)",
+                "abreviatura": "USF",
+                "slug": "union-santa-fe",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872290/union-santa-fe-belgrano-cordoba"
+          },
+          {
+            "id": "401872291",
+            "nombre": "Huracán at Argentinos Juniors",
+            "fecha": "2026-05-13T00:30Z",
+            "estado": "Final Score - After Extra Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "cuartos",
+            "clasificacion_texto": "huracan at argentinos juniors hur argj apertura quarterfinals",
+            "local": {
+              "equipo": {
+                "id": "3",
+                "uid": "s:600~t:3",
+                "nombre": "Argentinos Juniors",
+                "nombre_corto": "Argentinos ",
+                "abreviatura": "ARGJ",
+                "slug": "argentinos-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10",
+                "uid": "s:600~t:10",
+                "nombre": "Huracán",
+                "nombre_corto": "Huracán ",
+                "abreviatura": "HUR",
+                "slug": "huracan",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872291/huracan-argentinos-juniors"
+          },
+          {
+            "id": "401872179",
+            "nombre": "Racing Club at Rosario Central",
+            "fecha": "2026-05-13T21:45Z",
+            "estado": "Final Score - After Extra Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "cuartos",
+            "clasificacion_texto": "racing club at rosario central rac ros apertura quarterfinals",
+            "local": {
+              "equipo": {
+                "id": "17",
+                "uid": "s:600~t:17",
+                "nombre": "Rosario Central",
+                "nombre_corto": "Rosario Central",
+                "abreviatura": "ROS",
+                "slug": "rosario-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "15",
+                "uid": "s:600~t:15",
+                "nombre": "Racing Club",
+                "nombre_corto": "Racing ",
+                "abreviatura": "RAC",
+                "slug": "racing-club",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+                "color": "409fff"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872179/racing-club-rosario-central"
+          },
+          {
+            "id": "401872546",
+            "nombre": "Gimnasia La Plata at River Plate",
+            "fecha": "2026-05-14T00:45Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "cuartos",
+            "clasificacion_texto": "gimnasia la plata at river plate glp riv apertura quarterfinals",
+            "local": {
+              "equipo": {
+                "id": "16",
+                "uid": "s:600~t:16",
+                "nombre": "River Plate",
+                "nombre_corto": "River Plate",
+                "abreviatura": "RIV",
+                "slug": "river-plate",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "9",
+                "uid": "s:600~t:9",
+                "nombre": "Gimnasia La Plata",
+                "nombre_corto": "Gimnasia LP",
+                "abreviatura": "GLP",
+                "slug": "gimnasia-la-plata",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+                "color": "288A00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872546/gimnasia-la-plata-river-plate"
+          },
+          {
+            "id": "401872650",
+            "nombre": "Rosario Central at River Plate",
+            "fecha": "2026-05-16T22:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "semis",
+            "clasificacion_texto": "rosario central at river plate ros riv apertura semifinals",
+            "local": {
+              "equipo": {
+                "id": "16",
+                "uid": "s:600~t:16",
+                "nombre": "River Plate",
+                "nombre_corto": "River Plate",
+                "abreviatura": "RIV",
+                "slug": "river-plate",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": true
+            },
+            "visitante": {
+              "equipo": {
+                "id": "17",
+                "uid": "s:600~t:17",
+                "nombre": "Rosario Central",
+                "nombre_corto": "Rosario Central",
+                "abreviatura": "ROS",
+                "slug": "rosario-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                "color": "ffff00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872650/rosario-central-river-plate"
+          },
+          {
+            "id": "401872677",
+            "nombre": "Belgrano (Córdoba) at Argentinos Juniors",
+            "fecha": "2026-05-17T20:00Z",
+            "estado": "Final Score - After Penalties",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "semis",
+            "clasificacion_texto": "belgrano cordoba at argentinos juniors bel argj apertura semifinals event belgrano cordoba advance 4 3 on penalties belgrano cordoba advance 4 3 on penalties",
+            "local": {
+              "equipo": {
+                "id": "3",
+                "uid": "s:600~t:3",
+                "nombre": "Argentinos Juniors",
+                "nombre_corto": "Argentinos ",
+                "abreviatura": "ARGJ",
+                "slug": "argentinos-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false
+            },
+            "visitante": {
+              "equipo": {
+                "id": "4",
+                "uid": "s:600~t:4",
+                "nombre": "Belgrano (Córdoba)",
+                "nombre_corto": "Belgrano ",
+                "abreviatura": "BEL",
+                "slug": "belgrano-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                "color": "0060f0"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": true
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872677/belgrano-cordoba-argentinos-juniors"
+          },
           {
             "id": "401873392",
             "nombre": "Belgrano (Córdoba) at River Plate",
@@ -1170,644 +2892,771 @@
             "url": "https://www.espn.com/soccer/match/_/gameId/401873392/belgrano-cordoba-river-plate"
           }
         ],
-        "total_scoreboard": 1
+        "total_scoreboard": 30
       },
       "especial": {
         "tipo": "liga_profesional_argentina",
         "torneo_actual": "Clausura",
         "torneo_anterior": "Apertura",
         "zonas": {
-          "a": [],
-          "b": []
+          "a": [
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "8",
+                "uid": "s:600~t:8",
+                "nombre": "Estudiantes de La Plata",
+                "nombre_corto": "Estudiantes",
+                "abreviatura": "EST",
+                "slug": "estudiantes-de-la-plata",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "1",
+                "pj": "16",
+                "g": "9",
+                "e": "4",
+                "p": "3",
+                "gf": "19",
+                "gc": "7",
+                "dg": "+12",
+                "pts": "31",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "5",
+                "uid": "s:600~t:5",
+                "nombre": "Boca Juniors",
+                "nombre_corto": "Boca ",
+                "abreviatura": "CABJ",
+                "slug": "boca-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "2",
+                "pj": "16",
+                "g": "8",
+                "e": "6",
+                "p": "2",
+                "gf": "22",
+                "gc": "9",
+                "dg": "+13",
+                "pts": "30",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "21",
+                "uid": "s:600~t:21",
+                "nombre": "Vélez Sarsfield",
+                "nombre_corto": "Vélez ",
+                "abreviatura": "VEL",
+                "slug": "velez-sarsfield",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "3",
+                "pj": "16",
+                "g": "7",
+                "e": "7",
+                "p": "2",
+                "gf": "18",
+                "gc": "12",
+                "dg": "+6",
+                "pts": "28",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "4",
+                "pj": "16",
+                "g": "7",
+                "e": "5",
+                "p": "4",
+                "gf": "17",
+                "gc": "13",
+                "dg": "+4",
+                "pts": "26",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "11",
+                "uid": "s:600~t:11",
+                "nombre": "Independiente",
+                "nombre_corto": "Independiente",
+                "abreviatura": "IND",
+                "slug": "independiente",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "5",
+                "pj": "16",
+                "g": "6",
+                "e": "6",
+                "p": "4",
+                "gf": "24",
+                "gc": "20",
+                "dg": "+4",
+                "pts": "24",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "12",
+                "uid": "s:600~t:12",
+                "nombre": "Lanús",
+                "nombre_corto": "Lanús ",
+                "abreviatura": "LAN",
+                "slug": "lanus",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "6",
+                "pj": "16",
+                "g": "6",
+                "e": "6",
+                "p": "4",
+                "gf": "18",
+                "gc": "15",
+                "dg": "+3",
+                "pts": "24",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "18",
+                "uid": "s:600~t:18",
+                "nombre": "San Lorenzo",
+                "nombre_corto": "San Lorenzo ",
+                "abreviatura": "SLO",
+                "slug": "san-lorenzo",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "7",
+                "pj": "16",
+                "g": "5",
+                "e": "7",
+                "p": "4",
+                "gf": "14",
+                "gc": "14",
+                "dg": "0",
+                "pts": "22",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "20",
+                "uid": "s:600~t:20",
+                "nombre": "Unión (Santa Fe)",
+                "nombre_corto": "Unión (SF)",
+                "abreviatura": "USF",
+                "slug": "union-santa-fe",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "8",
+                "pj": "16",
+                "g": "5",
+                "e": "6",
+                "p": "5",
+                "gf": "24",
+                "gc": "20",
+                "dg": "+4",
+                "pts": "21",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "2975",
+                "uid": "s:600~t:2975",
+                "nombre": "Instituto (Córdoba)",
+                "nombre_corto": "Instituto",
+                "abreviatura": "IACC",
+                "slug": "instituto-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "9",
+                "pj": "16",
+                "g": "6",
+                "e": "3",
+                "p": "7",
+                "gf": "17",
+                "gc": "17",
+                "dg": "0",
+                "pts": "21",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "11972",
+                "uid": "s:600~t:11972",
+                "nombre": "Gimnasia (Mendoza)",
+                "nombre_corto": "Gimnasia (M)",
+                "abreviatura": "GMZ",
+                "slug": "gimnasia-mendoza",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "10",
+                "pj": "16",
+                "g": "5",
+                "e": "4",
+                "p": "7",
+                "gf": "14",
+                "gc": "22",
+                "dg": "-8",
+                "pts": "19",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "11",
+                "pj": "16",
+                "g": "4",
+                "e": "7",
+                "p": "5",
+                "gf": "18",
+                "gc": "21",
+                "dg": "-3",
+                "pts": "19",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "11989",
+                "uid": "s:600~t:11989",
+                "nombre": "Central Córdoba (Santiago del Estero)",
+                "nombre_corto": "C. Córdoba (SE)",
+                "abreviatura": "CTR",
+                "slug": "central-cordoba-santiago-del-estero",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "12",
+                "pj": "16",
+                "g": "4",
+                "e": "4",
+                "p": "8",
+                "gf": "11",
+                "gc": "21",
+                "dg": "-10",
+                "pts": "16",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "7764",
+                "uid": "s:600~t:7764",
+                "nombre": "Platense",
+                "nombre_corto": "Platense",
+                "abreviatura": "PLA",
+                "slug": "platense",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "13",
+                "pj": "16",
+                "g": "3",
+                "e": "7",
+                "p": "6",
+                "gf": "10",
+                "gc": "15",
+                "dg": "-5",
+                "pts": "16",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "14",
+                "uid": "s:600~t:14",
+                "nombre": "Newell's Old Boys",
+                "nombre_corto": "Newell's",
+                "abreviatura": "NOB",
+                "slug": "newell-s-old-boys",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "14",
+                "pj": "16",
+                "g": "3",
+                "e": "6",
+                "p": "7",
+                "gf": "15",
+                "gc": "27",
+                "dg": "-12",
+                "pts": "15",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona A",
+              "equipo": {
+                "id": "17702",
+                "uid": "s:600~t:17702",
+                "nombre": "Deportivo Riestra",
+                "nombre_corto": "Riestra",
+                "abreviatura": "RIE",
+                "slug": "deportivo-riestra",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "15",
+                "pj": "16",
+                "g": "1",
+                "e": "8",
+                "p": "7",
+                "gf": "5",
+                "gc": "12",
+                "dg": "-7",
+                "pts": "11",
+                "racha": "-"
+              }
+            }
+          ],
+          "b": [
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "9744",
+                "uid": "s:600~t:9744",
+                "nombre": "Independiente Rivadavia",
+                "nombre_corto": "Ind. Rivadavia",
+                "abreviatura": "RIV",
+                "slug": "independiente-rivadavia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "1",
+                "pj": "16",
+                "g": "10",
+                "e": "4",
+                "p": "2",
+                "gf": "29",
+                "gc": "15",
+                "dg": "+14",
+                "pts": "34",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "16",
+                "uid": "s:600~t:16",
+                "nombre": "River Plate",
+                "nombre_corto": "River Plate",
+                "abreviatura": "RIV",
+                "slug": "river-plate",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "2",
+                "pj": "16",
+                "g": "9",
+                "e": "2",
+                "p": "5",
+                "gf": "22",
+                "gc": "12",
+                "dg": "+10",
+                "pts": "29",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "3",
+                "uid": "s:600~t:3",
+                "nombre": "Argentinos Juniors",
+                "nombre_corto": "Argentinos ",
+                "abreviatura": "ARGJ",
+                "slug": "argentinos-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "3",
+                "pj": "16",
+                "g": "8",
+                "e": "5",
+                "p": "3",
+                "gf": "17",
+                "gc": "13",
+                "dg": "+4",
+                "pts": "29",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "17",
+                "uid": "s:600~t:17",
+                "nombre": "Rosario Central",
+                "nombre_corto": "Rosario Central",
+                "abreviatura": "ROS",
+                "slug": "rosario-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "4",
+                "pj": "16",
+                "g": "8",
+                "e": "4",
+                "p": "4",
+                "gf": "20",
+                "gc": "16",
+                "dg": "+4",
+                "pts": "28",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "4",
+                "uid": "s:600~t:4",
+                "nombre": "Belgrano (Córdoba)",
+                "nombre_corto": "Belgrano ",
+                "abreviatura": "BEL",
+                "slug": "belgrano-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "5",
+                "pj": "16",
+                "g": "7",
+                "e": "5",
+                "p": "4",
+                "gf": "17",
+                "gc": "13",
+                "dg": "+4",
+                "pts": "26",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "9",
+                "uid": "s:600~t:9",
+                "nombre": "Gimnasia La Plata",
+                "nombre_corto": "Gimnasia LP",
+                "abreviatura": "GLP",
+                "slug": "gimnasia-la-plata",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "6",
+                "pj": "16",
+                "g": "8",
+                "e": "2",
+                "p": "6",
+                "gf": "19",
+                "gc": "19",
+                "dg": "0",
+                "pts": "26",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "10",
+                "uid": "s:600~t:10",
+                "nombre": "Huracán",
+                "nombre_corto": "Huracán ",
+                "abreviatura": "HUR",
+                "slug": "huracan",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "7",
+                "pj": "16",
+                "g": "5",
+                "e": "7",
+                "p": "4",
+                "gf": "17",
+                "gc": "13",
+                "dg": "+4",
+                "pts": "22",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "15",
+                "uid": "s:600~t:15",
+                "nombre": "Racing Club",
+                "nombre_corto": "Racing ",
+                "abreviatura": "RAC",
+                "slug": "racing-club",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "8",
+                "pj": "16",
+                "g": "5",
+                "e": "6",
+                "p": "5",
+                "gf": "17",
+                "gc": "15",
+                "dg": "+2",
+                "pts": "21",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "10060",
+                "uid": "s:600~t:10060",
+                "nombre": "Barracas Central",
+                "nombre_corto": "Barracas",
+                "abreviatura": "BAR",
+                "slug": "barracas-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "9",
+                "pj": "16",
+                "g": "5",
+                "e": "6",
+                "p": "5",
+                "gf": "15",
+                "gc": "15",
+                "dg": "0",
+                "pts": "21",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "7767",
+                "uid": "s:600~t:7767",
+                "nombre": "Tigre",
+                "nombre_corto": "Tigre",
+                "abreviatura": "TIG",
+                "slug": "tigre",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "10",
+                "pj": "16",
+                "g": "4",
+                "e": "8",
+                "p": "4",
+                "gf": "18",
+                "gc": "15",
+                "dg": "+3",
+                "pts": "20",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "10158",
+                "uid": "s:600~t:10158",
+                "nombre": "Sarmiento (Junín)",
+                "nombre_corto": "Sarmiento (J)",
+                "abreviatura": "SARM",
+                "slug": "sarmiento-junin",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10158.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "11",
+                "pj": "16",
+                "g": "6",
+                "e": "1",
+                "p": "9",
+                "gf": "13",
+                "gc": "20",
+                "dg": "-7",
+                "pts": "19",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "235",
+                "uid": "s:600~t:235",
+                "nombre": "Banfield",
+                "nombre_corto": "Banfield",
+                "abreviatura": "BAN",
+                "slug": "banfield",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "12",
+                "pj": "16",
+                "g": "5",
+                "e": "3",
+                "p": "8",
+                "gf": "17",
+                "gc": "19",
+                "dg": "-2",
+                "pts": "18",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "9785",
+                "uid": "s:600~t:9785",
+                "nombre": "Atlético Tucumán",
+                "nombre_corto": "Atl Tucumán",
+                "abreviatura": "CAT",
+                "slug": "atletico-tucuman",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "13",
+                "pj": "16",
+                "g": "3",
+                "e": "5",
+                "p": "8",
+                "gf": "15",
+                "gc": "20",
+                "dg": "-5",
+                "pts": "14",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "9739",
+                "uid": "s:600~t:9739",
+                "nombre": "Aldosivi",
+                "nombre_corto": "Aldosivi",
+                "abreviatura": "ALDO",
+                "slug": "aldosivi",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "14",
+                "pj": "16",
+                "g": "0",
+                "e": "8",
+                "p": "8",
+                "gf": "6",
+                "gc": "19",
+                "dg": "-13",
+                "pts": "8",
+                "racha": "-"
+              }
+            },
+            {
+              "grupo": "Zona B",
+              "equipo": {
+                "id": "19685",
+                "uid": "s:600~t:19685",
+                "nombre": "Estudiantes de Río Cuarto",
+                "nombre_corto": "Estudiantes RC",
+                "abreviatura": "AAE",
+                "slug": "estudiantes-de-rio-cuarto",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19685.png",
+                "color": ""
+              },
+              "stats": {
+                "posicion": "15",
+                "pj": "16",
+                "g": "1",
+                "e": "2",
+                "p": "13",
+                "gf": "5",
+                "gc": "24",
+                "dg": "-19",
+                "pts": "5",
+                "racha": "-"
+              }
+            }
+          ]
         },
         "tabla_anual": [
           {
-            "grupo": "overall",
-            "equipo": {
-              "id": "5",
-              "uid": "s:600~t:5",
-              "nombre": "Boca Juniors",
-              "nombre_corto": "Boca ",
-              "abreviatura": "CABJ",
-              "slug": "boca-juniors",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "2",
-              "pj": "16",
-              "g": "8",
-              "e": "6",
-              "p": "2",
-              "gf": "22",
-              "gc": "9",
-              "dg": "+13",
-              "pts": "30",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "8",
-              "uid": "s:600~t:8",
-              "nombre": "Estudiantes de La Plata",
-              "nombre_corto": "Estudiantes",
-              "abreviatura": "EST",
-              "slug": "estudiantes-de-la-plata",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "1",
-              "pj": "16",
-              "g": "9",
-              "e": "4",
-              "p": "3",
-              "gf": "19",
-              "gc": "7",
-              "dg": "+12",
-              "pts": "31",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "11",
-              "uid": "s:600~t:11",
-              "nombre": "Independiente",
-              "nombre_corto": "Independiente",
-              "abreviatura": "IND",
-              "slug": "independiente",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "5",
-              "pj": "16",
-              "g": "6",
-              "e": "6",
-              "p": "4",
-              "gf": "24",
-              "gc": "20",
-              "dg": "+4",
-              "pts": "24",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "12",
-              "uid": "s:600~t:12",
-              "nombre": "Lanús",
-              "nombre_corto": "Lanús ",
-              "abreviatura": "LAN",
-              "slug": "lanus",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "6",
-              "pj": "16",
-              "g": "6",
-              "e": "6",
-              "p": "4",
-              "gf": "18",
-              "gc": "15",
-              "dg": "+3",
-              "pts": "24",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "14",
-              "uid": "s:600~t:14",
-              "nombre": "Newell's Old Boys",
-              "nombre_corto": "Newell's",
-              "abreviatura": "NOB",
-              "slug": "newell-s-old-boys",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "14",
-              "pj": "16",
-              "g": "3",
-              "e": "6",
-              "p": "7",
-              "gf": "15",
-              "gc": "27",
-              "dg": "-12",
-              "pts": "15",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "18",
-              "uid": "s:600~t:18",
-              "nombre": "San Lorenzo",
-              "nombre_corto": "San Lorenzo ",
-              "abreviatura": "SLO",
-              "slug": "san-lorenzo",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "7",
-              "pj": "16",
-              "g": "5",
-              "e": "7",
-              "p": "4",
-              "gf": "14",
-              "gc": "14",
-              "dg": "0",
-              "pts": "22",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "19",
-              "uid": "s:600~t:19",
-              "nombre": "Talleres (Córdoba)",
-              "nombre_corto": "Talleres ",
-              "abreviatura": "TALL",
-              "slug": "talleres-cordoba",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "4",
-              "pj": "16",
-              "g": "7",
-              "e": "5",
-              "p": "4",
-              "gf": "17",
-              "gc": "13",
-              "dg": "+4",
-              "pts": "26",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "20",
-              "uid": "s:600~t:20",
-              "nombre": "Unión (Santa Fe)",
-              "nombre_corto": "Unión (SF)",
-              "abreviatura": "USF",
-              "slug": "union-santa-fe",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "8",
-              "pj": "16",
-              "g": "5",
-              "e": "6",
-              "p": "5",
-              "gf": "24",
-              "gc": "20",
-              "dg": "+4",
-              "pts": "21",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "21",
-              "uid": "s:600~t:21",
-              "nombre": "Vélez Sarsfield",
-              "nombre_corto": "Vélez ",
-              "abreviatura": "VEL",
-              "slug": "velez-sarsfield",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "3",
-              "pj": "16",
-              "g": "7",
-              "e": "7",
-              "p": "2",
-              "gf": "18",
-              "gc": "12",
-              "dg": "+6",
-              "pts": "28",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "2975",
-              "uid": "s:600~t:2975",
-              "nombre": "Instituto (Córdoba)",
-              "nombre_corto": "Instituto",
-              "abreviatura": "IACC",
-              "slug": "instituto-cordoba",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "9",
-              "pj": "16",
-              "g": "6",
-              "e": "3",
-              "p": "7",
-              "gf": "17",
-              "gc": "17",
-              "dg": "0",
-              "pts": "21",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "7764",
-              "uid": "s:600~t:7764",
-              "nombre": "Platense",
-              "nombre_corto": "Platense",
-              "abreviatura": "PLA",
-              "slug": "platense",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "12",
-              "pj": "16",
-              "g": "3",
-              "e": "7",
-              "p": "6",
-              "gf": "10",
-              "gc": "15",
-              "dg": "-5",
-              "pts": "16",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "8950",
-              "uid": "s:600~t:8950",
-              "nombre": "Defensa y Justicia",
-              "nombre_corto": "Def. y Jus.",
-              "abreviatura": "DYJ",
-              "slug": "defensa-y-justicia",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "10",
-              "pj": "16",
-              "g": "4",
-              "e": "7",
-              "p": "5",
-              "gf": "18",
-              "gc": "21",
-              "dg": "-3",
-              "pts": "19",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "11972",
-              "uid": "s:600~t:11972",
-              "nombre": "Gimnasia (Mendoza)",
-              "nombre_corto": "Gimnasia (M)",
-              "abreviatura": "GMZ",
-              "slug": "gimnasia-mendoza",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "11",
-              "pj": "16",
-              "g": "5",
-              "e": "4",
-              "p": "7",
-              "gf": "14",
-              "gc": "22",
-              "dg": "-8",
-              "pts": "19",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "11989",
-              "uid": "s:600~t:11989",
-              "nombre": "Central Córdoba (Santiago del Estero)",
-              "nombre_corto": "C. Córdoba (SE)",
-              "abreviatura": "CTR",
-              "slug": "central-cordoba-santiago-del-estero",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "13",
-              "pj": "16",
-              "g": "4",
-              "e": "4",
-              "p": "8",
-              "gf": "11",
-              "gc": "21",
-              "dg": "-10",
-              "pts": "16",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "17702",
-              "uid": "s:600~t:17702",
-              "nombre": "Deportivo Riestra",
-              "nombre_corto": "Riestra",
-              "abreviatura": "RIE",
-              "slug": "deportivo-riestra",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "15",
-              "pj": "16",
-              "g": "1",
-              "e": "8",
-              "p": "7",
-              "gf": "5",
-              "gc": "12",
-              "dg": "-7",
-              "pts": "11",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "3",
-              "uid": "s:600~t:3",
-              "nombre": "Argentinos Juniors",
-              "nombre_corto": "Argentinos ",
-              "abreviatura": "ARGJ",
-              "slug": "argentinos-juniors",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "3",
-              "pj": "16",
-              "g": "8",
-              "e": "5",
-              "p": "3",
-              "gf": "17",
-              "gc": "13",
-              "dg": "+4",
-              "pts": "29",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "4",
-              "uid": "s:600~t:4",
-              "nombre": "Belgrano (Córdoba)",
-              "nombre_corto": "Belgrano ",
-              "abreviatura": "BEL",
-              "slug": "belgrano-cordoba",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "5",
-              "pj": "16",
-              "g": "7",
-              "e": "5",
-              "p": "4",
-              "gf": "17",
-              "gc": "13",
-              "dg": "+4",
-              "pts": "26",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "9",
-              "uid": "s:600~t:9",
-              "nombre": "Gimnasia La Plata",
-              "nombre_corto": "Gimnasia LP",
-              "abreviatura": "GLP",
-              "slug": "gimnasia-la-plata",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "6",
-              "pj": "16",
-              "g": "8",
-              "e": "2",
-              "p": "6",
-              "gf": "19",
-              "gc": "19",
-              "dg": "0",
-              "pts": "26",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "10",
-              "uid": "s:600~t:10",
-              "nombre": "Huracán",
-              "nombre_corto": "Huracán ",
-              "abreviatura": "HUR",
-              "slug": "huracan",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "7",
-              "pj": "16",
-              "g": "5",
-              "e": "7",
-              "p": "4",
-              "gf": "17",
-              "gc": "13",
-              "dg": "+4",
-              "pts": "22",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "15",
-              "uid": "s:600~t:15",
-              "nombre": "Racing Club",
-              "nombre_corto": "Racing ",
-              "abreviatura": "RAC",
-              "slug": "racing-club",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "8",
-              "pj": "16",
-              "g": "5",
-              "e": "6",
-              "p": "5",
-              "gf": "17",
-              "gc": "15",
-              "dg": "+2",
-              "pts": "21",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "16",
-              "uid": "s:600~t:16",
-              "nombre": "River Plate",
-              "nombre_corto": "River Plate",
-              "abreviatura": "RIV",
-              "slug": "river-plate",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "2",
-              "pj": "16",
-              "g": "9",
-              "e": "2",
-              "p": "5",
-              "gf": "22",
-              "gc": "12",
-              "dg": "+10",
-              "pts": "29",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "17",
-              "uid": "s:600~t:17",
-              "nombre": "Rosario Central",
-              "nombre_corto": "Rosario Central",
-              "abreviatura": "ROS",
-              "slug": "rosario-central",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "4",
-              "pj": "16",
-              "g": "8",
-              "e": "4",
-              "p": "4",
-              "gf": "20",
-              "gc": "16",
-              "dg": "+4",
-              "pts": "28",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "235",
-              "uid": "s:600~t:235",
-              "nombre": "Banfield",
-              "nombre_corto": "Banfield",
-              "abreviatura": "BAN",
-              "slug": "banfield",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "12",
-              "pj": "16",
-              "g": "5",
-              "e": "3",
-              "p": "8",
-              "gf": "17",
-              "gc": "19",
-              "dg": "-2",
-              "pts": "18",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "7767",
-              "uid": "s:600~t:7767",
-              "nombre": "Tigre",
-              "nombre_corto": "Tigre",
-              "abreviatura": "TIG",
-              "slug": "tigre",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "10",
-              "pj": "16",
-              "g": "4",
-              "e": "8",
-              "p": "4",
-              "gf": "18",
-              "gc": "15",
-              "dg": "+3",
-              "pts": "20",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
-            "equipo": {
-              "id": "9739",
-              "uid": "s:600~t:9739",
-              "nombre": "Aldosivi",
-              "nombre_corto": "Aldosivi",
-              "abreviatura": "ALDO",
-              "slug": "aldosivi",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
-              "color": ""
-            },
-            "stats": {
-              "posicion": "14",
-              "pj": "16",
-              "g": "0",
-              "e": "8",
-              "p": "8",
-              "gf": "6",
-              "gc": "19",
-              "dg": "-13",
-              "pts": "8",
-              "racha": "-"
-            }
-          },
-          {
-            "grupo": "overall",
+            "grupo": "Tabla anual",
             "equipo": {
               "id": "9744",
               "uid": "s:600~t:9744",
@@ -1832,32 +3681,407 @@
             }
           },
           {
-            "grupo": "overall",
+            "grupo": "Tabla anual",
             "equipo": {
-              "id": "9785",
-              "uid": "s:600~t:9785",
-              "nombre": "Atlético Tucumán",
-              "nombre_corto": "Atl Tucumán",
-              "abreviatura": "CAT",
-              "slug": "atletico-tucuman",
-              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
+              "id": "8",
+              "uid": "s:600~t:8",
+              "nombre": "Estudiantes de La Plata",
+              "nombre_corto": "Estudiantes",
+              "abreviatura": "EST",
+              "slug": "estudiantes-de-la-plata",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "2",
+              "pj": "16",
+              "g": "9",
+              "e": "4",
+              "p": "3",
+              "gf": "19",
+              "gc": "7",
+              "dg": "+12",
+              "pts": "31",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "5",
+              "uid": "s:600~t:5",
+              "nombre": "Boca Juniors",
+              "nombre_corto": "Boca ",
+              "abreviatura": "CABJ",
+              "slug": "boca-juniors",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "3",
+              "pj": "16",
+              "g": "8",
+              "e": "6",
+              "p": "2",
+              "gf": "22",
+              "gc": "9",
+              "dg": "+13",
+              "pts": "30",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "16",
+              "uid": "s:600~t:16",
+              "nombre": "River Plate",
+              "nombre_corto": "River Plate",
+              "abreviatura": "RIV",
+              "slug": "river-plate",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "4",
+              "pj": "16",
+              "g": "9",
+              "e": "2",
+              "p": "5",
+              "gf": "22",
+              "gc": "12",
+              "dg": "+10",
+              "pts": "29",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "3",
+              "uid": "s:600~t:3",
+              "nombre": "Argentinos Juniors",
+              "nombre_corto": "Argentinos ",
+              "abreviatura": "ARGJ",
+              "slug": "argentinos-juniors",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "5",
+              "pj": "16",
+              "g": "8",
+              "e": "5",
+              "p": "3",
+              "gf": "17",
+              "gc": "13",
+              "dg": "+4",
+              "pts": "29",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "21",
+              "uid": "s:600~t:21",
+              "nombre": "Vélez Sarsfield",
+              "nombre_corto": "Vélez ",
+              "abreviatura": "VEL",
+              "slug": "velez-sarsfield",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "6",
+              "pj": "16",
+              "g": "7",
+              "e": "7",
+              "p": "2",
+              "gf": "18",
+              "gc": "12",
+              "dg": "+6",
+              "pts": "28",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "17",
+              "uid": "s:600~t:17",
+              "nombre": "Rosario Central",
+              "nombre_corto": "Rosario Central",
+              "abreviatura": "ROS",
+              "slug": "rosario-central",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "7",
+              "pj": "16",
+              "g": "8",
+              "e": "4",
+              "p": "4",
+              "gf": "20",
+              "gc": "16",
+              "dg": "+4",
+              "pts": "28",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "19",
+              "uid": "s:600~t:19",
+              "nombre": "Talleres (Córdoba)",
+              "nombre_corto": "Talleres ",
+              "abreviatura": "TALL",
+              "slug": "talleres-cordoba",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "8",
+              "pj": "16",
+              "g": "7",
+              "e": "5",
+              "p": "4",
+              "gf": "17",
+              "gc": "13",
+              "dg": "+4",
+              "pts": "26",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "4",
+              "uid": "s:600~t:4",
+              "nombre": "Belgrano (Córdoba)",
+              "nombre_corto": "Belgrano ",
+              "abreviatura": "BEL",
+              "slug": "belgrano-cordoba",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "9",
+              "pj": "16",
+              "g": "7",
+              "e": "5",
+              "p": "4",
+              "gf": "17",
+              "gc": "13",
+              "dg": "+4",
+              "pts": "26",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "9",
+              "uid": "s:600~t:9",
+              "nombre": "Gimnasia La Plata",
+              "nombre_corto": "Gimnasia LP",
+              "abreviatura": "GLP",
+              "slug": "gimnasia-la-plata",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "10",
+              "pj": "16",
+              "g": "8",
+              "e": "2",
+              "p": "6",
+              "gf": "19",
+              "gc": "19",
+              "dg": "0",
+              "pts": "26",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "11",
+              "uid": "s:600~t:11",
+              "nombre": "Independiente",
+              "nombre_corto": "Independiente",
+              "abreviatura": "IND",
+              "slug": "independiente",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "11",
+              "pj": "16",
+              "g": "6",
+              "e": "6",
+              "p": "4",
+              "gf": "24",
+              "gc": "20",
+              "dg": "+4",
+              "pts": "24",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "12",
+              "uid": "s:600~t:12",
+              "nombre": "Lanús",
+              "nombre_corto": "Lanús ",
+              "abreviatura": "LAN",
+              "slug": "lanus",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "12",
+              "pj": "16",
+              "g": "6",
+              "e": "6",
+              "p": "4",
+              "gf": "18",
+              "gc": "15",
+              "dg": "+3",
+              "pts": "24",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "10",
+              "uid": "s:600~t:10",
+              "nombre": "Huracán",
+              "nombre_corto": "Huracán ",
+              "abreviatura": "HUR",
+              "slug": "huracan",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
               "color": ""
             },
             "stats": {
               "posicion": "13",
               "pj": "16",
-              "g": "3",
-              "e": "5",
-              "p": "8",
-              "gf": "15",
-              "gc": "20",
-              "dg": "-5",
-              "pts": "14",
+              "g": "5",
+              "e": "7",
+              "p": "4",
+              "gf": "17",
+              "gc": "13",
+              "dg": "+4",
+              "pts": "22",
               "racha": "-"
             }
           },
           {
-            "grupo": "overall",
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "18",
+              "uid": "s:600~t:18",
+              "nombre": "San Lorenzo",
+              "nombre_corto": "San Lorenzo ",
+              "abreviatura": "SLO",
+              "slug": "san-lorenzo",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "14",
+              "pj": "16",
+              "g": "5",
+              "e": "7",
+              "p": "4",
+              "gf": "14",
+              "gc": "14",
+              "dg": "0",
+              "pts": "22",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "20",
+              "uid": "s:600~t:20",
+              "nombre": "Unión (Santa Fe)",
+              "nombre_corto": "Unión (SF)",
+              "abreviatura": "USF",
+              "slug": "union-santa-fe",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "15",
+              "pj": "16",
+              "g": "5",
+              "e": "6",
+              "p": "5",
+              "gf": "24",
+              "gc": "20",
+              "dg": "+4",
+              "pts": "21",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "15",
+              "uid": "s:600~t:15",
+              "nombre": "Racing Club",
+              "nombre_corto": "Racing ",
+              "abreviatura": "RAC",
+              "slug": "racing-club",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "16",
+              "pj": "16",
+              "g": "5",
+              "e": "6",
+              "p": "5",
+              "gf": "17",
+              "gc": "15",
+              "dg": "+2",
+              "pts": "21",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "2975",
+              "uid": "s:600~t:2975",
+              "nombre": "Instituto (Córdoba)",
+              "nombre_corto": "Instituto",
+              "abreviatura": "IACC",
+              "slug": "instituto-cordoba",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "17",
+              "pj": "16",
+              "g": "6",
+              "e": "3",
+              "p": "7",
+              "gf": "17",
+              "gc": "17",
+              "dg": "0",
+              "pts": "21",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
             "equipo": {
               "id": "10060",
               "uid": "s:600~t:10060",
@@ -1869,7 +4093,7 @@
               "color": ""
             },
             "stats": {
-              "posicion": "9",
+              "posicion": "18",
               "pj": "16",
               "g": "5",
               "e": "6",
@@ -1882,7 +4106,57 @@
             }
           },
           {
-            "grupo": "overall",
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "7767",
+              "uid": "s:600~t:7767",
+              "nombre": "Tigre",
+              "nombre_corto": "Tigre",
+              "abreviatura": "TIG",
+              "slug": "tigre",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "19",
+              "pj": "16",
+              "g": "4",
+              "e": "8",
+              "p": "4",
+              "gf": "18",
+              "gc": "15",
+              "dg": "+3",
+              "pts": "20",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "11972",
+              "uid": "s:600~t:11972",
+              "nombre": "Gimnasia (Mendoza)",
+              "nombre_corto": "Gimnasia (M)",
+              "abreviatura": "GMZ",
+              "slug": "gimnasia-mendoza",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "20",
+              "pj": "16",
+              "g": "5",
+              "e": "4",
+              "p": "7",
+              "gf": "14",
+              "gc": "22",
+              "dg": "-8",
+              "pts": "19",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
             "equipo": {
               "id": "10158",
               "uid": "s:600~t:10158",
@@ -1894,7 +4168,7 @@
               "color": ""
             },
             "stats": {
-              "posicion": "11",
+              "posicion": "21",
               "pj": "16",
               "g": "6",
               "e": "1",
@@ -1907,7 +4181,207 @@
             }
           },
           {
-            "grupo": "overall",
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "8950",
+              "uid": "s:600~t:8950",
+              "nombre": "Defensa y Justicia",
+              "nombre_corto": "Def. y Jus.",
+              "abreviatura": "DYJ",
+              "slug": "defensa-y-justicia",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "22",
+              "pj": "16",
+              "g": "4",
+              "e": "7",
+              "p": "5",
+              "gf": "18",
+              "gc": "21",
+              "dg": "-3",
+              "pts": "19",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "235",
+              "uid": "s:600~t:235",
+              "nombre": "Banfield",
+              "nombre_corto": "Banfield",
+              "abreviatura": "BAN",
+              "slug": "banfield",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "23",
+              "pj": "16",
+              "g": "5",
+              "e": "3",
+              "p": "8",
+              "gf": "17",
+              "gc": "19",
+              "dg": "-2",
+              "pts": "18",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "11989",
+              "uid": "s:600~t:11989",
+              "nombre": "Central Córdoba (Santiago del Estero)",
+              "nombre_corto": "C. Córdoba (SE)",
+              "abreviatura": "CTR",
+              "slug": "central-cordoba-santiago-del-estero",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "24",
+              "pj": "16",
+              "g": "4",
+              "e": "4",
+              "p": "8",
+              "gf": "11",
+              "gc": "21",
+              "dg": "-10",
+              "pts": "16",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "7764",
+              "uid": "s:600~t:7764",
+              "nombre": "Platense",
+              "nombre_corto": "Platense",
+              "abreviatura": "PLA",
+              "slug": "platense",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "25",
+              "pj": "16",
+              "g": "3",
+              "e": "7",
+              "p": "6",
+              "gf": "10",
+              "gc": "15",
+              "dg": "-5",
+              "pts": "16",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "14",
+              "uid": "s:600~t:14",
+              "nombre": "Newell's Old Boys",
+              "nombre_corto": "Newell's",
+              "abreviatura": "NOB",
+              "slug": "newell-s-old-boys",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "26",
+              "pj": "16",
+              "g": "3",
+              "e": "6",
+              "p": "7",
+              "gf": "15",
+              "gc": "27",
+              "dg": "-12",
+              "pts": "15",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "9785",
+              "uid": "s:600~t:9785",
+              "nombre": "Atlético Tucumán",
+              "nombre_corto": "Atl Tucumán",
+              "abreviatura": "CAT",
+              "slug": "atletico-tucuman",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "27",
+              "pj": "16",
+              "g": "3",
+              "e": "5",
+              "p": "8",
+              "gf": "15",
+              "gc": "20",
+              "dg": "-5",
+              "pts": "14",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "17702",
+              "uid": "s:600~t:17702",
+              "nombre": "Deportivo Riestra",
+              "nombre_corto": "Riestra",
+              "abreviatura": "RIE",
+              "slug": "deportivo-riestra",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "28",
+              "pj": "16",
+              "g": "1",
+              "e": "8",
+              "p": "7",
+              "gf": "5",
+              "gc": "12",
+              "dg": "-7",
+              "pts": "11",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
+            "equipo": {
+              "id": "9739",
+              "uid": "s:600~t:9739",
+              "nombre": "Aldosivi",
+              "nombre_corto": "Aldosivi",
+              "abreviatura": "ALDO",
+              "slug": "aldosivi",
+              "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
+              "color": ""
+            },
+            "stats": {
+              "posicion": "29",
+              "pj": "16",
+              "g": "0",
+              "e": "8",
+              "p": "8",
+              "gf": "6",
+              "gc": "19",
+              "dg": "-13",
+              "pts": "8",
+              "racha": "-"
+            }
+          },
+          {
+            "grupo": "Tabla anual",
             "equipo": {
               "id": "19685",
               "uid": "s:600~t:19685",
@@ -1919,7 +4393,7 @@
               "color": ""
             },
             "stats": {
-              "posicion": "15",
+              "posicion": "30",
               "pj": "16",
               "g": "1",
               "e": "2",
@@ -1936,9 +4410,726 @@
         "eliminatorias": {
           "nombre": "Playoffs Torneo Apertura",
           "fases": {
-            "octavos": [],
-            "cuartos": [],
-            "semis": [],
+            "octavos": [
+              {
+                "id": "401871432",
+                "nombre": "Belgrano (Córdoba) at Talleres (Córdoba)",
+                "fecha": "2026-05-09T19:30Z",
+                "estado": "Full Time",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "octavos",
+                "clasificacion_texto": "belgrano cordoba at talleres cordoba bel tall apertura round of 16",
+                "local": {
+                  "equipo": {
+                    "id": "19",
+                    "uid": "s:600~t:19",
+                    "nombre": "Talleres (Córdoba)",
+                    "nombre_corto": "Talleres ",
+                    "abreviatura": "TALL",
+                    "slug": "talleres-cordoba",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                    "color": "000000"
+                  },
+                  "localia": "home",
+                  "marcador": "0",
+                  "ganador": false
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "4",
+                    "uid": "s:600~t:4",
+                    "nombre": "Belgrano (Córdoba)",
+                    "nombre_corto": "Belgrano ",
+                    "abreviatura": "BEL",
+                    "slug": "belgrano-cordoba",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                    "color": "0060f0"
+                  },
+                  "localia": "away",
+                  "marcador": "1",
+                  "ganador": true
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401871432/belgrano-cordoba-talleres-cordoba",
+                "ganador": {
+                  "id": "4",
+                  "uid": "s:600~t:4",
+                  "nombre": "Belgrano (Córdoba)",
+                  "nombre_corto": "Belgrano ",
+                  "abreviatura": "BEL",
+                  "slug": "belgrano-cordoba",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                  "color": "0060f0"
+                }
+              },
+              {
+                "id": "401871437",
+                "nombre": "Huracán at Boca Juniors",
+                "fecha": "2026-05-09T22:00Z",
+                "estado": "Final Score - After Extra Time",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "octavos",
+                "clasificacion_texto": "huracan at boca juniors hur cabj apertura round of 16",
+                "local": {
+                  "equipo": {
+                    "id": "5",
+                    "uid": "s:600~t:5",
+                    "nombre": "Boca Juniors",
+                    "nombre_corto": "Boca ",
+                    "abreviatura": "CABJ",
+                    "slug": "boca-juniors",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+                    "color": "fcb000"
+                  },
+                  "localia": "home",
+                  "marcador": "2",
+                  "ganador": false
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "10",
+                    "uid": "s:600~t:10",
+                    "nombre": "Huracán",
+                    "nombre_corto": "Huracán ",
+                    "abreviatura": "HUR",
+                    "slug": "huracan",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+                    "color": "C60000"
+                  },
+                  "localia": "away",
+                  "marcador": "3",
+                  "ganador": true
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401871437/huracan-boca-juniors",
+                "ganador": {
+                  "id": "10",
+                  "uid": "s:600~t:10",
+                  "nombre": "Huracán",
+                  "nombre_corto": "Huracán ",
+                  "abreviatura": "HUR",
+                  "slug": "huracan",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+                  "color": "C60000"
+                }
+              },
+              {
+                "id": "401871433",
+                "nombre": "Unión (Santa Fe) at Independiente Rivadavia",
+                "fecha": "2026-05-10T00:30Z",
+                "estado": "Full Time",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "octavos",
+                "clasificacion_texto": "union santa fe at independiente rivadavia usf riv apertura round of 16",
+                "local": {
+                  "equipo": {
+                    "id": "9744",
+                    "uid": "s:600~t:9744",
+                    "nombre": "Independiente Rivadavia",
+                    "nombre_corto": "Ind. Rivadavia",
+                    "abreviatura": "RIV",
+                    "slug": "independiente-rivadavia",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
+                    "color": "000061"
+                  },
+                  "localia": "home",
+                  "marcador": "1",
+                  "ganador": false
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "20",
+                    "uid": "s:600~t:20",
+                    "nombre": "Unión (Santa Fe)",
+                    "nombre_corto": "Unión (SF)",
+                    "abreviatura": "USF",
+                    "slug": "union-santa-fe",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+                    "color": "C60000"
+                  },
+                  "localia": "away",
+                  "marcador": "2",
+                  "ganador": true
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401871433/union-santa-fe-independiente-rivadavia",
+                "ganador": {
+                  "id": "20",
+                  "uid": "s:600~t:20",
+                  "nombre": "Unión (Santa Fe)",
+                  "nombre_corto": "Unión (SF)",
+                  "abreviatura": "USF",
+                  "slug": "union-santa-fe",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+                  "color": "C60000"
+                }
+              },
+              {
+                "id": "401871435",
+                "nombre": "Lanús at Argentinos Juniors",
+                "fecha": "2026-05-10T01:15Z",
+                "estado": "Full Time",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "octavos",
+                "clasificacion_texto": "lanus at argentinos juniors lan argj apertura round of 16",
+                "local": {
+                  "equipo": {
+                    "id": "3",
+                    "uid": "s:600~t:3",
+                    "nombre": "Argentinos Juniors",
+                    "nombre_corto": "Argentinos ",
+                    "abreviatura": "ARGJ",
+                    "slug": "argentinos-juniors",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                    "color": "C60000"
+                  },
+                  "localia": "home",
+                  "marcador": "2",
+                  "ganador": true
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "12",
+                    "uid": "s:600~t:12",
+                    "nombre": "Lanús",
+                    "nombre_corto": "Lanús ",
+                    "abreviatura": "LAN",
+                    "slug": "lanus",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+                    "color": "9f0000"
+                  },
+                  "localia": "away",
+                  "marcador": "0",
+                  "ganador": false
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401871435/lanus-argentinos-juniors",
+                "ganador": {
+                  "id": "3",
+                  "uid": "s:600~t:3",
+                  "nombre": "Argentinos Juniors",
+                  "nombre_corto": "Argentinos ",
+                  "abreviatura": "ARGJ",
+                  "slug": "argentinos-juniors",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                  "color": "C60000"
+                }
+              },
+              {
+                "id": "401871431",
+                "nombre": "Independiente at Rosario Central",
+                "fecha": "2026-05-10T18:00Z",
+                "estado": "Full Time",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "octavos",
+                "clasificacion_texto": "independiente at rosario central ind ros apertura round of 16",
+                "local": {
+                  "equipo": {
+                    "id": "17",
+                    "uid": "s:600~t:17",
+                    "nombre": "Rosario Central",
+                    "nombre_corto": "Rosario Central",
+                    "abreviatura": "ROS",
+                    "slug": "rosario-central",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                    "color": "ffff00"
+                  },
+                  "localia": "home",
+                  "marcador": "3",
+                  "ganador": true
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "11",
+                    "uid": "s:600~t:11",
+                    "nombre": "Independiente",
+                    "nombre_corto": "Independiente",
+                    "abreviatura": "IND",
+                    "slug": "independiente",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+                    "color": "C60000"
+                  },
+                  "localia": "away",
+                  "marcador": "1",
+                  "ganador": false
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401871431/independiente-rosario-central",
+                "ganador": {
+                  "id": "17",
+                  "uid": "s:600~t:17",
+                  "nombre": "Rosario Central",
+                  "nombre_corto": "Rosario Central",
+                  "abreviatura": "ROS",
+                  "slug": "rosario-central",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                  "color": "ffff00"
+                }
+              },
+              {
+                "id": "401871434",
+                "nombre": "Racing Club at Estudiantes de La Plata",
+                "fecha": "2026-05-10T20:00Z",
+                "estado": "Full Time",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "octavos",
+                "clasificacion_texto": "racing club at estudiantes de la plata rac est apertura round of 16",
+                "local": {
+                  "equipo": {
+                    "id": "8",
+                    "uid": "s:600~t:8",
+                    "nombre": "Estudiantes de La Plata",
+                    "nombre_corto": "Estudiantes",
+                    "abreviatura": "EST",
+                    "slug": "estudiantes-de-la-plata",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+                    "color": "C60000"
+                  },
+                  "localia": "home",
+                  "marcador": "0",
+                  "ganador": false
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "15",
+                    "uid": "s:600~t:15",
+                    "nombre": "Racing Club",
+                    "nombre_corto": "Racing ",
+                    "abreviatura": "RAC",
+                    "slug": "racing-club",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+                    "color": "409fff"
+                  },
+                  "localia": "away",
+                  "marcador": "1",
+                  "ganador": true
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401871434/racing-club-estudiantes-de-la-plata",
+                "ganador": {
+                  "id": "15",
+                  "uid": "s:600~t:15",
+                  "nombre": "Racing Club",
+                  "nombre_corto": "Racing ",
+                  "abreviatura": "RAC",
+                  "slug": "racing-club",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+                  "color": "409fff"
+                }
+              },
+              {
+                "id": "401871430",
+                "nombre": "San Lorenzo at River Plate",
+                "fecha": "2026-05-10T22:00Z",
+                "estado": "Final Score - After Penalties",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "octavos",
+                "clasificacion_texto": "san lorenzo at river plate slo riv apertura round of 16 event river plate advance 4 3 on penalties river plate advance 4 3 on penalties",
+                "local": {
+                  "equipo": {
+                    "id": "16",
+                    "uid": "s:600~t:16",
+                    "nombre": "River Plate",
+                    "nombre_corto": "River Plate",
+                    "abreviatura": "RIV",
+                    "slug": "river-plate",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                    "color": "C60000"
+                  },
+                  "localia": "home",
+                  "marcador": "2",
+                  "ganador": true
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "18",
+                    "uid": "s:600~t:18",
+                    "nombre": "San Lorenzo",
+                    "nombre_corto": "San Lorenzo ",
+                    "abreviatura": "SLO",
+                    "slug": "san-lorenzo",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+                    "color": "0060f0"
+                  },
+                  "localia": "away",
+                  "marcador": "2",
+                  "ganador": false
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401871430/san-lorenzo-river-plate",
+                "ganador": {
+                  "id": "16",
+                  "uid": "s:600~t:16",
+                  "nombre": "River Plate",
+                  "nombre_corto": "River Plate",
+                  "abreviatura": "RIV",
+                  "slug": "river-plate",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                  "color": "C60000"
+                }
+              },
+              {
+                "id": "401871436",
+                "nombre": "Gimnasia La Plata at Vélez Sarsfield",
+                "fecha": "2026-05-11T00:30Z",
+                "estado": "Full Time",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "octavos",
+                "clasificacion_texto": "gimnasia la plata at velez sarsfield glp vel apertura round of 16",
+                "local": {
+                  "equipo": {
+                    "id": "21",
+                    "uid": "s:600~t:21",
+                    "nombre": "Vélez Sarsfield",
+                    "nombre_corto": "Vélez ",
+                    "abreviatura": "VEL",
+                    "slug": "velez-sarsfield",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+                    "color": "0070b0"
+                  },
+                  "localia": "home",
+                  "marcador": "0",
+                  "ganador": false
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "9",
+                    "uid": "s:600~t:9",
+                    "nombre": "Gimnasia La Plata",
+                    "nombre_corto": "Gimnasia LP",
+                    "abreviatura": "GLP",
+                    "slug": "gimnasia-la-plata",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+                    "color": "288A00"
+                  },
+                  "localia": "away",
+                  "marcador": "1",
+                  "ganador": true
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401871436/gimnasia-la-plata-velez-sarsfield",
+                "ganador": {
+                  "id": "9",
+                  "uid": "s:600~t:9",
+                  "nombre": "Gimnasia La Plata",
+                  "nombre_corto": "Gimnasia LP",
+                  "abreviatura": "GLP",
+                  "slug": "gimnasia-la-plata",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+                  "color": "288A00"
+                }
+              }
+            ],
+            "cuartos": [
+              {
+                "id": "401872290",
+                "nombre": "Unión (Santa Fe) at Belgrano (Córdoba)",
+                "fecha": "2026-05-12T22:00Z",
+                "estado": "Full Time",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "cuartos",
+                "clasificacion_texto": "union santa fe at belgrano cordoba usf bel apertura quarterfinals",
+                "local": {
+                  "equipo": {
+                    "id": "4",
+                    "uid": "s:600~t:4",
+                    "nombre": "Belgrano (Córdoba)",
+                    "nombre_corto": "Belgrano ",
+                    "abreviatura": "BEL",
+                    "slug": "belgrano-cordoba",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                    "color": "0060f0"
+                  },
+                  "localia": "home",
+                  "marcador": "2",
+                  "ganador": true
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "20",
+                    "uid": "s:600~t:20",
+                    "nombre": "Unión (Santa Fe)",
+                    "nombre_corto": "Unión (SF)",
+                    "abreviatura": "USF",
+                    "slug": "union-santa-fe",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+                    "color": "C60000"
+                  },
+                  "localia": "away",
+                  "marcador": "0",
+                  "ganador": false
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401872290/union-santa-fe-belgrano-cordoba",
+                "ganador": {
+                  "id": "4",
+                  "uid": "s:600~t:4",
+                  "nombre": "Belgrano (Córdoba)",
+                  "nombre_corto": "Belgrano ",
+                  "abreviatura": "BEL",
+                  "slug": "belgrano-cordoba",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                  "color": "0060f0"
+                }
+              },
+              {
+                "id": "401872291",
+                "nombre": "Huracán at Argentinos Juniors",
+                "fecha": "2026-05-13T00:30Z",
+                "estado": "Final Score - After Extra Time",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "cuartos",
+                "clasificacion_texto": "huracan at argentinos juniors hur argj apertura quarterfinals",
+                "local": {
+                  "equipo": {
+                    "id": "3",
+                    "uid": "s:600~t:3",
+                    "nombre": "Argentinos Juniors",
+                    "nombre_corto": "Argentinos ",
+                    "abreviatura": "ARGJ",
+                    "slug": "argentinos-juniors",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                    "color": "C60000"
+                  },
+                  "localia": "home",
+                  "marcador": "1",
+                  "ganador": true
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "10",
+                    "uid": "s:600~t:10",
+                    "nombre": "Huracán",
+                    "nombre_corto": "Huracán ",
+                    "abreviatura": "HUR",
+                    "slug": "huracan",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+                    "color": "C60000"
+                  },
+                  "localia": "away",
+                  "marcador": "0",
+                  "ganador": false
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401872291/huracan-argentinos-juniors",
+                "ganador": {
+                  "id": "3",
+                  "uid": "s:600~t:3",
+                  "nombre": "Argentinos Juniors",
+                  "nombre_corto": "Argentinos ",
+                  "abreviatura": "ARGJ",
+                  "slug": "argentinos-juniors",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                  "color": "C60000"
+                }
+              },
+              {
+                "id": "401872179",
+                "nombre": "Racing Club at Rosario Central",
+                "fecha": "2026-05-13T21:45Z",
+                "estado": "Final Score - After Extra Time",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "cuartos",
+                "clasificacion_texto": "racing club at rosario central rac ros apertura quarterfinals",
+                "local": {
+                  "equipo": {
+                    "id": "17",
+                    "uid": "s:600~t:17",
+                    "nombre": "Rosario Central",
+                    "nombre_corto": "Rosario Central",
+                    "abreviatura": "ROS",
+                    "slug": "rosario-central",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                    "color": "ffff00"
+                  },
+                  "localia": "home",
+                  "marcador": "2",
+                  "ganador": true
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "15",
+                    "uid": "s:600~t:15",
+                    "nombre": "Racing Club",
+                    "nombre_corto": "Racing ",
+                    "abreviatura": "RAC",
+                    "slug": "racing-club",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+                    "color": "409fff"
+                  },
+                  "localia": "away",
+                  "marcador": "1",
+                  "ganador": false
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401872179/racing-club-rosario-central",
+                "ganador": {
+                  "id": "17",
+                  "uid": "s:600~t:17",
+                  "nombre": "Rosario Central",
+                  "nombre_corto": "Rosario Central",
+                  "abreviatura": "ROS",
+                  "slug": "rosario-central",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                  "color": "ffff00"
+                }
+              },
+              {
+                "id": "401872546",
+                "nombre": "Gimnasia La Plata at River Plate",
+                "fecha": "2026-05-14T00:45Z",
+                "estado": "Full Time",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "cuartos",
+                "clasificacion_texto": "gimnasia la plata at river plate glp riv apertura quarterfinals",
+                "local": {
+                  "equipo": {
+                    "id": "16",
+                    "uid": "s:600~t:16",
+                    "nombre": "River Plate",
+                    "nombre_corto": "River Plate",
+                    "abreviatura": "RIV",
+                    "slug": "river-plate",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                    "color": "C60000"
+                  },
+                  "localia": "home",
+                  "marcador": "2",
+                  "ganador": true
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "9",
+                    "uid": "s:600~t:9",
+                    "nombre": "Gimnasia La Plata",
+                    "nombre_corto": "Gimnasia LP",
+                    "abreviatura": "GLP",
+                    "slug": "gimnasia-la-plata",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+                    "color": "288A00"
+                  },
+                  "localia": "away",
+                  "marcador": "0",
+                  "ganador": false
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401872546/gimnasia-la-plata-river-plate",
+                "ganador": {
+                  "id": "16",
+                  "uid": "s:600~t:16",
+                  "nombre": "River Plate",
+                  "nombre_corto": "River Plate",
+                  "abreviatura": "RIV",
+                  "slug": "river-plate",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                  "color": "C60000"
+                }
+              }
+            ],
+            "semis": [
+              {
+                "id": "401872650",
+                "nombre": "Rosario Central at River Plate",
+                "fecha": "2026-05-16T22:30Z",
+                "estado": "Full Time",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "semis",
+                "clasificacion_texto": "rosario central at river plate ros riv apertura semifinals",
+                "local": {
+                  "equipo": {
+                    "id": "16",
+                    "uid": "s:600~t:16",
+                    "nombre": "River Plate",
+                    "nombre_corto": "River Plate",
+                    "abreviatura": "RIV",
+                    "slug": "river-plate",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                    "color": "C60000"
+                  },
+                  "localia": "home",
+                  "marcador": "1",
+                  "ganador": true
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "17",
+                    "uid": "s:600~t:17",
+                    "nombre": "Rosario Central",
+                    "nombre_corto": "Rosario Central",
+                    "abreviatura": "ROS",
+                    "slug": "rosario-central",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                    "color": "ffff00"
+                  },
+                  "localia": "away",
+                  "marcador": "0",
+                  "ganador": false
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401872650/rosario-central-river-plate",
+                "ganador": {
+                  "id": "16",
+                  "uid": "s:600~t:16",
+                  "nombre": "River Plate",
+                  "nombre_corto": "River Plate",
+                  "abreviatura": "RIV",
+                  "slug": "river-plate",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+                  "color": "C60000"
+                }
+              },
+              {
+                "id": "401872677",
+                "nombre": "Belgrano (Córdoba) at Argentinos Juniors",
+                "fecha": "2026-05-17T20:00Z",
+                "estado": "Final Score - After Penalties",
+                "estado_tipo": "post",
+                "completado": true,
+                "fase": "semis",
+                "clasificacion_texto": "belgrano cordoba at argentinos juniors bel argj apertura semifinals event belgrano cordoba advance 4 3 on penalties belgrano cordoba advance 4 3 on penalties",
+                "local": {
+                  "equipo": {
+                    "id": "3",
+                    "uid": "s:600~t:3",
+                    "nombre": "Argentinos Juniors",
+                    "nombre_corto": "Argentinos ",
+                    "abreviatura": "ARGJ",
+                    "slug": "argentinos-juniors",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+                    "color": "C60000"
+                  },
+                  "localia": "home",
+                  "marcador": "1",
+                  "ganador": false
+                },
+                "visitante": {
+                  "equipo": {
+                    "id": "4",
+                    "uid": "s:600~t:4",
+                    "nombre": "Belgrano (Córdoba)",
+                    "nombre_corto": "Belgrano ",
+                    "abreviatura": "BEL",
+                    "slug": "belgrano-cordoba",
+                    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                    "color": "0060f0"
+                  },
+                  "localia": "away",
+                  "marcador": "1",
+                  "ganador": true
+                },
+                "url": "https://www.espn.com/soccer/match/_/gameId/401872677/belgrano-cordoba-argentinos-juniors",
+                "ganador": {
+                  "id": "4",
+                  "uid": "s:600~t:4",
+                  "nombre": "Belgrano (Córdoba)",
+                  "nombre_corto": "Belgrano ",
+                  "abreviatura": "BEL",
+                  "slug": "belgrano-cordoba",
+                  "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                  "color": "0060f0"
+                }
+              }
+            ],
             "final": [
               {
                 "id": "401873392",
@@ -2000,7 +5191,7 @@
             "final"
           ],
           "tiene_datos": true,
-          "nota": "Los cruces se toman desde ESPN cuando el evento llega identificado como octavos, cuartos, semifinal o final."
+          "nota": "Los cruces se completan con ESPN. Si ESPN no etiqueta la fase, se infiere por fecha del calendario del Apertura 2026."
         }
       }
     },
@@ -2013,7 +5204,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:27.925110+00:00",
+      "actualizado": "2026-05-27T18:49:20.878676+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -3473,7 +6664,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:29.285437+00:00",
+      "actualizado": "2026-05-27T18:49:22.126352+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -4312,7 +7503,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:29.452994+00:00",
+      "actualizado": "2026-05-27T18:49:22.311673+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -6080,7 +9271,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:29.688525+00:00",
+      "actualizado": "2026-05-27T18:49:22.523026+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -8052,7 +11243,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:29.941815+00:00",
+      "actualizado": "2026-05-27T18:49:22.696499+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -9429,7 +12620,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:30.129342+00:00",
+      "actualizado": "2026-05-27T18:49:22.855990+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -10806,7 +13997,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:30.278484+00:00",
+      "actualizado": "2026-05-27T18:49:23.089349+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -12184,7 +15375,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:30.492078+00:00",
+      "actualizado": "2026-05-27T18:49:23.269131+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -13422,7 +16613,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:30.685897+00:00",
+      "actualizado": "2026-05-27T18:49:23.424364+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -14217,7 +17408,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:30.860581+00:00",
+      "actualizado": "2026-05-27T18:49:23.586728+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -16471,7 +19662,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:31.025835+00:00",
+      "actualizado": "2026-05-27T18:49:23.807404+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -18350,7 +21541,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:31.213152+00:00",
+      "actualizado": "2026-05-27T18:49:24.019996+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -19905,7 +23096,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:31.448445+00:00",
+      "actualizado": "2026-05-27T18:49:24.214377+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -20722,7 +23913,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:31.605596+00:00",
+      "actualizado": "2026-05-27T18:49:24.412492+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -22031,7 +25222,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:31.751701+00:00",
+      "actualizado": "2026-05-27T18:49:24.591759+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -23434,7 +26625,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:31.965820+00:00",
+      "actualizado": "2026-05-27T18:49:24.787261+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -24837,7 +28028,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:32.097768+00:00",
+      "actualizado": "2026-05-27T18:49:24.958799+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -26240,7 +29431,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:32.282312+00:00",
+      "actualizado": "2026-05-27T18:49:25.223642+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -27385,7 +30576,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:32.425399+00:00",
+      "actualizado": "2026-05-27T18:49:25.419398+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -28062,7 +31253,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:32.575348+00:00",
+      "actualizado": "2026-05-27T18:49:25.602671+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -28763,7 +31954,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:32.745776+00:00",
+      "actualizado": "2026-05-27T18:49:25.748233+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -29662,7 +32853,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:32.980045+00:00",
+      "actualizado": "2026-05-27T18:49:25.905718+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -30421,7 +33612,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:33.139820+00:00",
+      "actualizado": "2026-05-27T18:49:26.121221+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -31168,7 +34359,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-05-27T18:40:33.418763+00:00",
+      "actualizado": "2026-05-27T18:49:26.279751+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
