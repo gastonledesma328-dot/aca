@@ -1,0 +1,128 @@
+/* ================================
+   TABLAS COMPACTAS - COMPETICIONES
+================================ */
+
+.competition-page-shell {
+  width: min(100% - 1.25rem, 1080px);
+}
+
+.competition-card-head {
+  min-height: 44px;
+  padding: 10px 12px;
+}
+
+.competition-card-head h2 {
+  font-size: 16px;
+}
+
+.competition-special-tables {
+  gap: 10px;
+  padding: 10px;
+}
+
+.competition-subtable {
+  border-radius: 10px;
+}
+
+.competition-subtable-head {
+  min-height: 36px;
+  padding: 8px 10px;
+}
+
+.competition-subtable-head strong {
+  font-size: 13px;
+}
+
+.competition-table-wrap {
+  overflow-x: auto;
+}
+
+.competition-table {
+  width: 100%;
+  min-width: 560px;
+  table-layout: fixed;
+}
+
+.competition-table th,
+.competition-table td {
+  padding: 6px 6px;
+  font-size: 10px;
+  line-height: 1.15;
+}
+
+.competition-table th {
+  font-size: 8px;
+}
+
+.competition-table .team-cell {
+  width: 190px;
+  min-width: 190px;
+}
+
+.competition-team-inline {
+  gap: 6px;
+}
+
+.competition-team-inline img,
+.competition-team-inline .competition-team-logo,
+.competition-team-logo {
+  width: 18px;
+  height: 18px;
+  flex-basis: 18px;
+}
+
+.competition-table td:first-child,
+.competition-table th:first-child {
+  width: 32px;
+}
+
+.competition-table td:nth-child(3),
+.competition-table th:nth-child(3),
+.competition-table td:nth-child(4),
+.competition-table th:nth-child(4),
+.competition-table td:nth-child(5),
+.competition-table th:nth-child(5),
+.competition-table td:nth-child(6),
+.competition-table th:nth-child(6),
+.competition-table td:nth-child(7),
+.competition-table th:nth-child(7),
+.competition-table td:nth-child(8),
+.competition-table th:nth-child(8),
+.competition-table td:nth-child(9),
+.competition-table th:nth-child(9),
+.competition-table td:nth-child(10),
+.competition-table th:nth-child(10) {
+  width: 42px;
+}
+
+@media (min-width: 900px) {
+  .competition-special-tables {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .competition-subtable:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .competition-page-shell {
+    padding: 8px;
+  }
+
+  .competition-table {
+    min-width: 520px;
+  }
+
+  .competition-table .team-cell {
+    width: 170px;
+    min-width: 170px;
+  }
+
+  .competition-table th,
+  .competition-table td {
+    padding: 5px 5px;
+    font-size: 9px;
+  }
+}
