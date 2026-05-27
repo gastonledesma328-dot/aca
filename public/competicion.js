@@ -59,11 +59,17 @@ function teamName(team) {
 
 function renderSummary(competition) {
   const resumen = competition.resumen || {};
+  const especial = competition.especial || null;
+  const extra = especial?.tipo === "liga_profesional_argentina"
+    ? [["Formato", "Apertura/Clausura"], ["Anual", especial.tabla_anual?.length || 0]]
+    : [];
+
   setHtml(summary, [
     ["Equipos", resumen.equipos ?? competition.equipos?.length ?? 0],
     ["Tabla", resumen.posiciones ?? competition.tabla?.length ?? 0],
     ["Próximos", resumen.proximos ?? competition.partidos?.proximos?.length ?? 0],
     ["Últimos", resumen.ultimos ?? competition.partidos?.ultimos?.length ?? 0],
+    ...extra,
   ]
     .map(([label, value]) => `<article class="competition-stat-box"><span>${label}</span><strong>${escapeHtml(value)}</strong></article>`)
     .join(""));
@@ -79,7 +85,78 @@ function groupedTableRows(tabla) {
   return groups;
 }
 
+function tableRowsHtml(rows, forceGroupName = "") {
+  let html = "";
+  (rows || []).forEach((row, index) => {
+    const stats = row.stats || {};
+    const equipo = row.equipo || {};
+    html += `
+      <tr>
+        <td>${escapeHtml(stats.posicion || index + 1)}</td>
+        <td class="team-cell">
+          <span class="competition-team-inline">
+            ${teamLogo(equipo)}
+            <span>${escapeHtml(teamName(equipo))}</span>
+          </span>
+        </td>
+        <td>${escapeHtml(stats.pj)}</td>
+        <td>${escapeHtml(stats.g)}</td>
+        <td>${escapeHtml(stats.e)}</td>
+        <td>${escapeHtml(stats.p)}</td>
+        <td>${escapeHtml(stats.gf)}</td>
+        <td>${escapeHtml(stats.gc)}</td>
+        <td>${escapeHtml(stats.dg)}</td>
+        <td><strong>${escapeHtml(stats.pts)}</strong></td>
+      </tr>`;
+  });
+  return html || `<tr><td colspan="10" class="team-cell">No hay datos disponibles para ${escapeHtml(forceGroupName || "esta tabla")}.</td></tr>`;
+}
+
+function tableHtml(title, rows, note = "") {
+  return `
+    <article class="competition-subtable">
+      <div class="competition-subtable-head">
+        <strong>${escapeHtml(title)}</strong>
+        ${note ? `<span>${escapeHtml(note)}</span>` : ""}
+      </div>
+      <div class="competition-table-wrap">
+        <table class="competition-table">
+          <thead>
+            <tr>
+              <th>#</th><th class="team-cell">Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>PTS</th>
+            </tr>
+          </thead>
+          <tbody>${tableRowsHtml(rows, title)}</tbody>
+        </table>
+      </div>
+    </article>`;
+}
+
 function renderTable(competition) {
+  const especial = competition.especial || null;
+
+  if (especial?.tipo === "liga_profesional_argentina") {
+    const zonaA = especial.zonas?.a || [];
+    const zonaB = especial.zonas?.b || [];
+    const anual = especial.tabla_anual || [];
+    const notaAnual = especial.tabla_anual_estimado
+      ? "estimada con los datos disponibles de ESPN"
+      : "tabla anual desde ESPN";
+
+    setHtml(tableBody, `
+      <tr>
+        <td colspan="10" class="competition-special-cell">
+          <div class="competition-special-tables">
+            ${tableHtml("Zona A", zonaA)}
+            ${tableHtml("Zona B", zonaB)}
+            ${tableHtml("Tabla anual", anual, notaAnual)}
+          </div>
+        </td>
+      </tr>
+    `);
+    return;
+  }
+
   const tabla = Array.isArray(competition.tabla) ? competition.tabla : [];
 
   if (!tabla.length) {
@@ -95,29 +172,7 @@ function renderTable(competition) {
     if (showGroup) {
       html += `<tr><td colspan="10" class="competition-group-title">${escapeHtml(groupName)}</td></tr>`;
     }
-
-    rows.forEach((row, index) => {
-      const stats = row.stats || {};
-      const equipo = row.equipo || {};
-      html += `
-        <tr>
-          <td>${escapeHtml(stats.posicion || index + 1)}</td>
-          <td class="team-cell">
-            <span class="competition-team-inline">
-              ${teamLogo(equipo)}
-              <span>${escapeHtml(teamName(equipo))}</span>
-            </span>
-          </td>
-          <td>${escapeHtml(stats.pj)}</td>
-          <td>${escapeHtml(stats.g)}</td>
-          <td>${escapeHtml(stats.e)}</td>
-          <td>${escapeHtml(stats.p)}</td>
-          <td>${escapeHtml(stats.gf)}</td>
-          <td>${escapeHtml(stats.gc)}</td>
-          <td>${escapeHtml(stats.dg)}</td>
-          <td><strong>${escapeHtml(stats.pts)}</strong></td>
-        </tr>`;
-    });
+    html += tableRowsHtml(rows, groupName);
   });
 
   setHtml(tableBody, html);
@@ -176,6 +231,70 @@ function renderTeams(competition) {
     .join(""));
 }
 
+function renderBracketPhase(title, matches) {
+  const content = Array.isArray(matches) && matches.length
+    ? matches.map((match) => {
+        const local = match.local?.equipo || {};
+        const visitante = match.visitante?.equipo || {};
+        const winner = match.ganador ? teamName(match.ganador) : "Por definirse";
+        return `
+          <article class="competition-bracket-match">
+            <div class="competition-bracket-date">${escapeHtml(formatDate(match.fecha))}</div>
+            <div class="competition-bracket-teams">
+              <span>${teamLogo(local)} ${escapeHtml(teamName(local))}</span>
+              <strong>${escapeHtml(matchScore(match))}</strong>
+              <span>${teamLogo(visitante)} ${escapeHtml(teamName(visitante))}</span>
+            </div>
+            <div class="competition-bracket-winner">Pasa: <strong>${escapeHtml(winner)}</strong></div>
+          </article>`;
+      }).join("")
+    : `<p class="competition-empty">Sin cruces cargados en ESPN.</p>`;
+
+  return `
+    <section class="competition-bracket-phase">
+      <h3>${escapeHtml(title)}</h3>
+      <div class="competition-bracket-list">${content}</div>
+    </section>`;
+}
+
+function renderLigaProfesionalExtras(competition) {
+  const especial = competition.especial || null;
+  if (especial?.tipo !== "liga_profesional_argentina") return;
+
+  const existing = document.querySelector("#competitionLigaProfesionalExtras");
+  if (existing) existing.remove();
+
+  const fases = especial.eliminatorias?.fases || {};
+  const card = document.createElement("article");
+  card.className = "competition-card competition-lpf-extras";
+  card.id = "competitionLigaProfesionalExtras";
+  card.innerHTML = `
+    <div class="competition-card-head">
+      <div>
+        <p class="competition-section-kicker">Liga Profesional</p>
+        <h2>Apertura, Clausura y cuadro final</h2>
+      </div>
+    </div>
+    <div class="competition-lpf-info">
+      <article><span>Torneo terminado</span><strong>${escapeHtml(especial.torneo_anterior || "Apertura")}</strong></article>
+      <article><span>Torneo siguiente</span><strong>${escapeHtml(especial.torneo_actual || "Clausura")}</strong></article>
+      <article><span>Formato</span><strong>Zonas + Playoffs</strong></article>
+    </div>
+    <div class="competition-bracket">
+      ${renderBracketPhase("Octavos", fases.octavos || [])}
+      ${renderBracketPhase("Cuartos", fases.cuartos || [])}
+      ${renderBracketPhase("Semifinales", fases.semis || [])}
+      ${renderBracketPhase("Final", fases.final || [])}
+    </div>
+    <p class="competition-empty">${escapeHtml(especial.eliminatorias?.nota || "Los cruces se actualizan cuando ESPN los publica en el scoreboard.")}</p>
+  `;
+
+  const grid = document.querySelector(".competition-grid");
+  if (grid) {
+    grid.insertBefore(card, grid.firstChild);
+  }
+}
+
 function setActiveTab(tab) {
   tabButtons.forEach((button) => button.classList.toggle("active", button.dataset.competitionTab === tab));
   sections.forEach((section) => section.classList.toggle("hidden", section.dataset.competitionSection !== tab));
@@ -192,6 +311,7 @@ function renderCompetition(competition) {
 
   renderSummary(competition);
   renderTable(competition);
+  renderLigaProfesionalExtras(competition);
   renderMatches(nextList, competition.partidos?.proximos, "No hay próximos partidos disponibles para esta competición.");
   renderMatches(lastList, competition.partidos?.ultimos, "No hay últimos resultados disponibles para esta competición.");
   renderTeams(competition);
