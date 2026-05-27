@@ -26,14 +26,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Generar competiciones desde ESPN
+      - name: Generar datos de competiciones desde ESPN
         run: |
           python scripts/generar_competiciones.py
+
+      - name: Generar páginas HTML de competiciones
+        run: |
+          python scripts/generar_paginas_competiciones.py
 
       - name: Guardar cambios
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add data/competiciones.json public/data/competiciones.json
+          git add data/competiciones.json public/data/competiciones.json public/competiciones/*.html
           git commit -m "Actualizar competiciones ESPN" || echo "Sin cambios"
           git push
