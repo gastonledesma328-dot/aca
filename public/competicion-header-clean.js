@@ -89,9 +89,17 @@ function textoPenales(match) {
   const local = match.penales?.local || match.local?.penales || "";
   const visitante = match.penales?.visitante || match.visitante?.penales || "";
 
-  // Solo mostramos penales si ESPN entrega marcador real de tanda para ambos equipos.
-  // Si no se disputó por penales, o si solo aparece texto genérico, no se agrega nada.
-  if (esNumeroPenales(local) && esNumeroPenales(visitante)) {
+  const localNum = Number(local);
+  const visitanteNum = Number(visitante);
+
+  // Solo mostramos penales si hay marcador real de tanda para ambos equipos.
+  // Penales 0 - 0 no es una tanda disputada: es dato vacío/mal interpretado.
+  if (
+    esNumeroPenales(local) &&
+    esNumeroPenales(visitante) &&
+    (localNum > 0 || visitanteNum > 0) &&
+    localNum !== visitanteNum
+  ) {
     return `Penales ${local} - ${visitante}`;
   }
 
@@ -135,10 +143,20 @@ async function aplicarPenalesUltimosResultados() {
 
   const cards = section.querySelectorAll(".competition-match");
   cards.forEach((card, index) => {
-    if (card.dataset.penalesAplicados === "1") return;
-
+    const oldPill = card.querySelector(".competition-penalty-result");
     const label = textoPenales(ultimos[index]);
-    if (!label) return;
+
+    if (!label) {
+      if (oldPill) oldPill.remove();
+      card.dataset.penalesAplicados = "";
+      return;
+    }
+
+    if (oldPill) {
+      oldPill.textContent = label;
+      card.dataset.penalesAplicados = "1";
+      return;
+    }
 
     const marcador = card.querySelector(".competition-match-teams");
     if (!marcador) return;
