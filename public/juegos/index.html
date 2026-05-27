@@ -89,14 +89,12 @@
       .america-card::before { background: radial-gradient(circle at 50% 15%, rgba(255,255,255,.36) 0 10%, transparent 28%), radial-gradient(circle at 15% 22%, rgba(89,184,255,.25) 0 8%, transparent 24%), radial-gradient(circle at 84% 22%, rgba(242,195,91,.20) 0 8%, transparent 24%), linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 12.5%), repeating-linear-gradient(90deg, #116b35 0 42px, #188340 42px 84px); }
       .america-badge { color: #f8f8f8; background: rgba(38,54,48,.92); border-color: rgba(229,229,229,.58); }
       .america-tag { background: linear-gradient(90deg, #e7e7e7, #fff8cc); border-color: rgba(229,229,229,.58); }
-
-      .america-cup { position: absolute; left: 50%; top: -16px; width: 96px; height: 124px; transform: translateX(-50%); filter: drop-shadow(0 8px 14px rgba(0,0,0,.28)) drop-shadow(0 0 12px rgba(255,255,255,.14)); }
-      .america-cup::before { content: ""; position: absolute; left: 50%; top: 0; width: 62px; height: 82px; transform: translateX(-50%); border: 2px solid rgba(15,15,15,.75); border-radius: 22px 22px 18px 18px / 14px 14px 28px 28px; clip-path: polygon(18% 0%, 82% 0%, 88% 8%, 88% 18%, 79% 24%, 80% 39%, 86% 46%, 82% 60%, 67% 74%, 61% 88%, 56% 100%, 44% 100%, 39% 88%, 33% 74%, 18% 60%, 14% 46%, 20% 39%, 21% 24%, 12% 18%, 12% 8%); background: linear-gradient(105deg, transparent 0 18%, rgba(255,255,255,.75) 19% 22%, transparent 23% 100%), repeating-linear-gradient(90deg, transparent 0 5px, rgba(35,35,35,.18) 5px 7px, transparent 7px 11px), linear-gradient(90deg, #767676 0%, #f4f4f4 18%, #c7c7c7 36%, #fbfbfb 54%, #b8b8b8 72%, #7b7b7b 100%); box-shadow: inset 0 6px 0 rgba(255,255,255,.32), inset 0 -8px 0 rgba(0,0,0,.10); }
-      .america-cup::after { content: ""; position: absolute; left: 50%; bottom: 0; width: 92px; height: 56px; transform: translateX(-50%); border: 2px solid rgba(20,12,8,.78); border-radius: 0 0 26px 26px; background: linear-gradient(180deg, transparent 0 8px, #6d452b 8px 21px, #2f1a10 21px 23px, #6d452b 23px 36px, #2b180f 36px 38px, #70472c 38px 100%); box-shadow: 0 8px 0 rgba(34,20,13,.96), inset 0 1px 0 rgba(255,255,255,.08); }
-      .america-cup-shine { position: absolute; left: 50%; top: 4px; width: 70px; height: 82px; transform: translateX(-50%); pointer-events: none; }
-      .america-cup-shine::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 10%, transparent 0 20px, rgba(40,40,40,.34) 20px 22px, transparent 22px), linear-gradient(180deg, transparent 0 18px, rgba(40,40,40,.38) 18px 20px, transparent 20px 100%), radial-gradient(ellipse at 50% 34px, transparent 0 21px, rgba(40,40,40,.34) 21px 22px, transparent 22px), linear-gradient(180deg, transparent 0 37px, rgba(40,40,40,.34) 37px 39px, transparent 39px 100%); opacity: .85; }
-      .america-cup-shine::after { content: ""; position: absolute; left: 11px; top: 8px; width: 12px; height: 54px; border-radius: 999px; background: linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.12)); transform: rotate(14deg); opacity: .8; }
-      .america-cup-rings { position: absolute; left: 50%; top: 73px; width: 82px; height: 28px; transform: translateX(-50%); pointer-events: none; background: radial-gradient(ellipse at 8% 35%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 27% 35%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 50% 35%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 73% 35%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 92% 35%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 15% 90%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 39% 90%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 63% 90%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%), radial-gradient(ellipse at 87% 90%, #fff1b6 0 7%, #d7c686 8% 10%, transparent 11%); opacity: .95; }
+      .america-cup-svg { position: absolute; left: 50%; top: -24px; width: 96px; height: 128px; transform: translateX(-50%); filter: drop-shadow(0 8px 12px rgba(0,0,0,.32)) drop-shadow(0 0 12px rgba(255,255,255,.20)); overflow: visible; }
+      .america-cup-svg .line { fill: none; stroke: #161616; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+      .america-cup-svg .thin { fill: none; stroke: rgba(20,20,20,.58); stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
+      .america-cup-svg .shine { fill: none; stroke: rgba(255,255,255,.75); stroke-width: 2; stroke-linecap: round; }
+      .america-card:hover { background: #123d25; border-color: #e7e7e7; }
+      .america-card:hover .america-cup-svg { transform: translateX(-50%) translateY(-3px) scale(1.035); }
 
       .america-flags, .world-flags, .world-confetti { position: absolute; inset: 0; }
       .america-flags span, .world-flags span { position: absolute; width: 34px; height: 24px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.34); border-radius: 7px; background: rgba(12,36,27,.84); font-size: 15px; box-shadow: 0 0 12px rgba(0,0,0,.22); }
@@ -104,8 +102,6 @@
       .america-flags span:nth-child(2) { right: 6%; top: 34%; transform: rotate(8deg); }
       .america-flags span:nth-child(3) { left: 23%; top: 0; transform: rotate(7deg); }
       .america-flags span:nth-child(4) { right: 23%; top: 2px; transform: rotate(-7deg); }
-      .america-card:hover { background: #123d25; border-color: #e7e7e7; }
-      .america-card:hover .america-cup { transform: translateX(-50%) translateY(-3px) scale(1.04); }
 
       .legend-token { position: absolute; width: 44px; height: 60px; display: grid; place-items: end center; padding-bottom: 7px; color: #3a2911; background: #efe4c8; border: 1px solid #e3bd5d; clip-path: polygon(12% 0, 88% 0, 100% 13%, 100% 82%, 50% 100%, 0 82%, 0 13%); box-shadow: 0 0 0 2px rgba(88,63,25,.32), 0 0 16px rgba(242,195,91,.38); font-size: 8px; font-weight: 950; }
       .legend-token::before { content: ""; position: absolute; top: 8px; width: 24px; height: 24px; border-radius: 50%; background: #3c352b; box-shadow: inset 0 -7px 0 rgba(255,255,255,.12); }
@@ -213,7 +209,36 @@
           <article class="game-card america-card" aria-label="Armá 11 América">
             <div class="america-top"><span class="america-badge">América</span><span class="america-tag">Clubes</span></div>
             <div class="america-visual" aria-hidden="true">
-              <span class="america-cup"></span><span class="america-cup-shine"></span><span class="america-cup-rings"></span>
+              <svg class="america-cup-svg" viewBox="0 0 120 160" role="img" aria-label="Copa América">
+                <defs>
+                  <linearGradient id="silverCup" x1="0" x2="1"><stop offset="0" stop-color="#707070"/><stop offset=".22" stop-color="#f8f8f8"/><stop offset=".48" stop-color="#bdbdbd"/><stop offset=".68" stop-color="#ffffff"/><stop offset="1" stop-color="#777"/></linearGradient>
+                  <linearGradient id="woodBase" x1="0" x2="1"><stop offset="0" stop-color="#2c170d"/><stop offset=".35" stop-color="#805236"/><stop offset=".62" stop-color="#4c2b18"/><stop offset="1" stop-color="#24130b"/></linearGradient>
+                  <radialGradient id="plateGold" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#fff6bd"/><stop offset=".55" stop-color="#ddc36e"/><stop offset="1" stop-color="#9e7e28"/></radialGradient>
+                </defs>
+                <path class="line" fill="url(#silverCup)" d="M39 5h42c2 0 4 3 2 6l-5 8c7 2 11 7 11 14v14c0 8-9 12-12 19-2 5-2 13-8 19l-5 5v14h-8V90l-5-5c-6-6-6-14-8-19-3-7-12-11-12-19V33c0-7 4-12 11-14l-5-8c-2-3 0-6 2-6z"/>
+                <ellipse class="line" cx="60" cy="8" rx="25" ry="5" fill="#ededed"/>
+                <path class="thin" d="M38 21h44M34 37h52M35 52h50"/>
+                <path class="thin" d="M38 45c8-8 14-8 22 0s14 8 22 0"/>
+                <path class="thin" d="M47 27v20M56 26v23M65 26v23M74 27v20"/>
+                <path class="thin" d="M45 59h30l-4 20c-2 8-7 12-11 15-4-3-9-7-11-15z"/>
+                <path class="thin" d="M49 83c6-10 16-10 22 0M53 88c4-7 10-7 14 0"/>
+                <path class="shine" d="M45 26c-6 19-5 38 7 55"/>
+                <path class="line" fill="url(#silverCup)" d="M51 104h18l5 18H46z"/>
+                <path class="thin" d="M55 106c2 6 2 10 0 15M61 106c2 6 2 10 0 15M67 106c2 6 2 10 0 15"/>
+                <path class="line" fill="url(#woodBase)" d="M33 122h54v13H33z"/>
+                <path class="line" fill="url(#woodBase)" d="M22 135h76v14H22z"/>
+                <path class="line" fill="url(#woodBase)" d="M14 149h92v11H14z"/>
+                <ellipse cx="44" cy="128" rx="8" ry="5" fill="url(#plateGold)"/>
+                <ellipse cx="61" cy="128" rx="8" ry="5" fill="url(#plateGold)"/>
+                <ellipse cx="78" cy="128" rx="8" ry="5" fill="url(#plateGold)"/>
+                <ellipse cx="37" cy="142" rx="8" ry="5" fill="url(#plateGold)"/>
+                <ellipse cx="57" cy="142" rx="8" ry="5" fill="url(#plateGold)"/>
+                <ellipse cx="77" cy="142" rx="8" ry="5" fill="url(#plateGold)"/>
+                <ellipse cx="97" cy="142" rx="6" ry="5" fill="url(#plateGold)"/>
+                <ellipse cx="35" cy="154" rx="8" ry="4" fill="url(#plateGold)"/>
+                <ellipse cx="60" cy="154" rx="8" ry="4" fill="url(#plateGold)"/>
+                <ellipse cx="85" cy="154" rx="8" ry="4" fill="url(#plateGold)"/>
+              </svg>
               <div class="america-flags"><span title="Argentina">🇦🇷</span><span title="Brasil">🇧🇷</span><span title="Uruguay">🇺🇾</span><span title="Colombia">🇨🇴</span></div>
             </div>
             <div class="america-content"><strong>Armá 11 América</strong><p>Formá un once con jugadores actuales de clubes americanos.</p><div class="america-meta" aria-label="Desafíos disponibles"><span>Clubes</span><span>Ligas</span><span>Países</span></div><a class="game-play-link" href="america11/america11.html">Jugar</a></div>
