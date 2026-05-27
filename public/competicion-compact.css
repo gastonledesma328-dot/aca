@@ -3,12 +3,12 @@
 ================================ */
 
 .competition-page-shell {
-  width: min(100% - 1.25rem, 1080px);
+  width: min(100% - 1.25rem, 1120px);
 }
 
 .competition-card-head {
-  min-height: 44px;
-  padding: 10px 12px;
+  min-height: 42px;
+  padding: 9px 11px;
 }
 
 .competition-card-head h2 {
@@ -34,20 +34,22 @@
 }
 
 .competition-table-wrap {
-  overflow-x: auto;
+  width: 100%;
+  overflow-x: visible;
 }
 
 .competition-table {
   width: 100%;
-  min-width: 560px;
+  min-width: 0;
   table-layout: fixed;
 }
 
 .competition-table th,
 .competition-table td {
-  padding: 6px 6px;
+  padding: 6px 4px;
   font-size: 10px;
-  line-height: 1.15;
+  line-height: 1.12;
+  white-space: nowrap;
 }
 
 .competition-table th {
@@ -55,25 +57,35 @@
 }
 
 .competition-table .team-cell {
-  width: 190px;
-  min-width: 190px;
+  width: auto;
+  min-width: 0;
+  text-align: left;
 }
 
 .competition-team-inline {
-  gap: 6px;
+  width: 100%;
+  gap: 5px;
+  min-width: 0;
+}
+
+.competition-team-inline span:last-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .competition-team-inline img,
 .competition-team-inline .competition-team-logo,
 .competition-team-logo {
-  width: 18px;
-  height: 18px;
-  flex-basis: 18px;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
 }
 
 .competition-table td:first-child,
 .competition-table th:first-child {
-  width: 32px;
+  width: 28px;
 }
 
 .competition-table td:nth-child(3),
@@ -92,7 +104,12 @@
 .competition-table th:nth-child(9),
 .competition-table td:nth-child(10),
 .competition-table th:nth-child(10) {
-  width: 42px;
+  width: 31px;
+}
+
+.competition-table td:nth-child(10),
+.competition-table th:nth-child(10) {
+  width: 36px;
 }
 
 @media (min-width: 900px) {
@@ -104,6 +121,44 @@
   .competition-subtable:last-child {
     grid-column: 1 / -1;
   }
+
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table th,
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table td {
+    padding-left: 3px;
+    padding-right: 3px;
+    font-size: 9px;
+  }
+
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table th {
+    font-size: 7.5px;
+  }
+
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table td:first-child,
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table th:first-child {
+    width: 24px;
+  }
+
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table td:nth-child(3),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table th:nth-child(3),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table td:nth-child(4),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table th:nth-child(4),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table td:nth-child(5),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table th:nth-child(5),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table td:nth-child(6),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table th:nth-child(6),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table td:nth-child(7),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table th:nth-child(7),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table td:nth-child(8),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table th:nth-child(8),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table td:nth-child(9),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table th:nth-child(9) {
+    width: 26px;
+  }
+
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table td:nth-child(10),
+  .competition-special-tables .competition-subtable:not(:last-child) .competition-table th:nth-child(10) {
+    width: 32px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -111,18 +166,52 @@
     padding: 8px;
   }
 
-  .competition-table {
-    min-width: 520px;
-  }
-
-  .competition-table .team-cell {
-    width: 170px;
-    min-width: 170px;
+  .competition-special-tables {
+    grid-template-columns: 1fr;
   }
 
   .competition-table th,
   .competition-table td {
-    padding: 5px 5px;
-    font-size: 9px;
+    padding: 5px 3px;
+    font-size: 8.5px;
+  }
+
+  .competition-table th {
+    font-size: 7px;
+  }
+
+  .competition-table td:first-child,
+  .competition-table th:first-child {
+    width: 23px;
+  }
+
+  .competition-table td:nth-child(3),
+  .competition-table th:nth-child(3),
+  .competition-table td:nth-child(4),
+  .competition-table th:nth-child(4),
+  .competition-table td:nth-child(5),
+  .competition-table th:nth-child(5),
+  .competition-table td:nth-child(6),
+  .competition-table th:nth-child(6),
+  .competition-table td:nth-child(7),
+  .competition-table th:nth-child(7),
+  .competition-table td:nth-child(8),
+  .competition-table th:nth-child(8),
+  .competition-table td:nth-child(9),
+  .competition-table th:nth-child(9) {
+    width: 24px;
+  }
+
+  .competition-table td:nth-child(10),
+  .competition-table th:nth-child(10) {
+    width: 30px;
+  }
+
+  .competition-team-inline img,
+  .competition-team-inline .competition-team-logo,
+  .competition-team-logo {
+    width: 14px;
+    height: 14px;
+    flex-basis: 14px;
   }
 }
