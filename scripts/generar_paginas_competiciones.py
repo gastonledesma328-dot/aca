@@ -40,6 +40,7 @@ def html_page(competition_id, title):
     <title>{title} | Partidos Hoy</title>
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../competicion.css" />
+    <link rel="stylesheet" href="../competicion-compact.css" />
   </head>
 
   <body data-competition-id="{competition_id}">
