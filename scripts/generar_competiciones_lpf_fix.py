@@ -6,6 +6,8 @@ import generar_competiciones as g
 ORIGINAL_CARGAR_PARTIDOS = g.cargar_partidos
 ORIGINAL_CLASIFICAR_TABLAS = g.clasificar_tablas_liga_profesional
 ORIGINAL_ARMAR_ELIMINATORIAS = g.armar_eliminatorias_liga_profesional
+ORIGINAL_PARSE_COMPETITOR = g.parse_competitor
+ORIGINAL_PARSE_EVENT = g.parse_event
 
 
 def parse_date(value):
@@ -20,6 +22,114 @@ def parse_date(value):
 def date_key(value):
     d = parse_date(value)
     return d.isoformat() if d else ""
+
+
+def clean_score(value):
+    if value in [None, ""]:
+        return ""
+    if isinstance(value, bool):
+        return ""
+    if isinstance(value, float) and value.is_integer():
+        return str(int(value))
+    return str(value)
+
+
+def first_score_from_obj(obj):
+    if not isinstance(obj, dict):
+        return clean_score(obj)
+
+    for key in [
+        "shootoutScore",
+        "shootoutscore",
+        "penaltyScore",
+        "penaltyscore",
+        "penalties",
+        "penaltyShootoutScore",
+        "shootout",
+        "pkScore",
+        "pkscore",
+        "score",
+        "displayValue",
+        "value",
+    ]:
+        value = obj.get(key)
+        if value not in [None, ""] and not isinstance(value, (dict, list)):
+            return clean_score(value)
+
+    return ""
+
+
+def penalty_score_from_competitor(comp):
+    if not isinstance(comp, dict):
+        return ""
+
+    direct = first_score_from_obj(comp)
+    # Evitamos confundir el marcador normal con penales: el campo "score" directo no cuenta solo.
+    if direct and any(k in comp for k in ["shootoutScore", "penaltyScore", "penalties", "penaltyShootoutScore", "shootout", "pkScore"]):
+        return direct
+
+    for key in ["shootout", "shootoutResult", "penalty", "penalties", "penaltyShootout", "statistics"]:
+        value = comp.get(key)
+        if isinstance(value, dict):
+            score = first_score_from_obj(value)
+            if score:
+                return score
+        elif isinstance(value, list):
+            for item in value:
+                score = first_score_from_obj(item)
+                if score:
+                    return score
+
+    return ""
+
+
+def texto_indica_penales(*values):
+    text = g.normalizar(" ".join(str(v or "") for v in values))
+    return any(term in text for term in ["penal", "penales", "penalty", "penalties", "shootout", "tanda"])
+
+
+def parse_competitor_patched(comp):
+    parsed = ORIGINAL_PARSE_COMPETITOR(comp)
+    parsed["penales"] = penalty_score_from_competitor(comp)
+    return parsed
+
+
+def parse_event_patched(event):
+    parsed = ORIGINAL_PARSE_EVENT(event)
+    comp = (event.get("competitions") or [{}])[0]
+    competitors = comp.get("competitors") or [] if isinstance(comp, dict) else []
+    local_raw = next((c for c in competitors if c.get("homeAway") == "home"), competitors[0] if competitors else {})
+    visitante_raw = next((c for c in competitors if c.get("homeAway") == "away"), competitors[-1] if competitors else {})
+    status = (event.get("status") or {}).get("type") or {}
+
+    local_pen = penalty_score_from_competitor(local_raw)
+    visitante_pen = penalty_score_from_competitor(visitante_raw)
+
+    # Algunos endpoints de ESPN no devuelven un campo obvio, pero sí indican Final por penales en textos.
+    status_text = " ".join([
+        status.get("description") or "",
+        status.get("detail") or "",
+        status.get("shortDetail") or "",
+        status.get("name") or "",
+        parsed.get("estado") or "",
+        parsed.get("clasificacion_texto") or "",
+    ])
+
+    hay_penales = bool(local_pen and visitante_pen) or texto_indica_penales(status_text)
+
+    if local_pen:
+        parsed.setdefault("local", {})["penales"] = local_pen
+    if visitante_pen:
+        parsed.setdefault("visitante", {})["penales"] = visitante_pen
+
+    parsed["penales"] = {
+        "definicion": hay_penales,
+        "local": local_pen,
+        "visitante": visitante_pen,
+        "texto": f"Penales {local_pen} - {visitante_pen}" if local_pen and visitante_pen else "Definido por penales" if hay_penales else "",
+    }
+
+    return parsed
 
 
 def dedupe_matches(matches):
@@ -217,6 +327,8 @@ def patched_armar_eliminatorias_liga_profesional(partidos):
     }
 
 
+g.parse_competitor = parse_competitor_patched
+g.parse_event = parse_event_patched
 g.cargar_partidos = cargar_partidos_patched
 g.clasificar_tablas_liga_profesional = patched_clasificar_tablas_liga_profesional
 g.armar_eliminatorias_liga_profesional = patched_armar_eliminatorias_liga_profesional
