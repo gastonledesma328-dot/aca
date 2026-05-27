@@ -7,47 +7,47 @@ const COMPETITION_GROUPS = [
     title: "DESTACADO",
     featured: true,
     items: [
-      ["Liga Profesional", ["liga profesional", "torneo betano", "arg.1"]],
-      ["Primera Nacional", ["primera nacional", "arg.2"]],
-      ["Libertadores", ["libertadores", "conmebol.libertadores"]],
-      ["Sudamericana", ["sudamericana", "conmebol.sudamericana"]],
-      ["Copa Argentina", ["copa argentina"]],
-      ["Champions", ["champions", "uefa.champions"]],
-      ["Eliminatorias Conmebol", ["eliminatorias conmebol", "fifa.worldq.conmebol"]],
-      ["Mundial", ["mundial", "fifa.world", "fifa.cwc", "mundial de clubes"]],
+      ["Liga Profesional", ["liga profesional", "torneo betano", "arg.1"], "liga-profesional"],
+      ["Primera Nacional", ["primera nacional", "arg.2"], "primera-nacional"],
+      ["Libertadores", ["libertadores", "conmebol.libertadores"], "libertadores"],
+      ["Sudamericana", ["sudamericana", "conmebol.sudamericana"], "sudamericana"],
+      ["Copa Argentina", ["copa argentina"], "copa-argentina"],
+      ["Champions", ["champions", "uefa.champions"], "champions"],
+      ["Eliminatorias Conmebol", ["eliminatorias conmebol", "fifa.worldq.conmebol"], "eliminatorias-conmebol"],
+      ["Mundial", ["mundial", "fifa.world", "fifa.cwc", "mundial de clubes"], "mundial"],
     ],
   },
   {
     title: "🇦🇷 ARGENTINA",
     items: [
-      ["Liga Profesional", ["liga profesional", "torneo betano", "arg.1"]],
-      ["Primera Nacional", ["primera nacional", "arg.2"]],
-      ["Copa Argentina", ["copa argentina"]],
+      ["Liga Profesional", ["liga profesional", "torneo betano", "arg.1"], "liga-profesional"],
+      ["Primera Nacional", ["primera nacional", "arg.2"], "primera-nacional"],
+      ["Copa Argentina", ["copa argentina"], "copa-argentina"],
     ],
   },
   {
     title: "🌐 INTERNACIONAL",
     items: [
-      ["Libertadores", ["libertadores", "conmebol.libertadores"]],
-      ["Sudamericana", ["sudamericana", "conmebol.sudamericana"]],
-      ["Mundial de Clubes", ["mundial de clubes", "fifa.cwc"]],
-      ["Mundial", ["mundial", "fifa.world"]],
+      ["Libertadores", ["libertadores", "conmebol.libertadores"], "libertadores"],
+      ["Sudamericana", ["sudamericana", "conmebol.sudamericana"], "sudamericana"],
+      ["Mundial de Clubes", ["mundial de clubes", "fifa.cwc"], "mundial-clubes"],
+      ["Mundial", ["mundial", "fifa.world"], "mundial"],
     ],
   },
-  { title: "🏴 INGLATERRA", items: [["Premier League", ["premier league", "eng.1"]], ["FA Cup", ["fa cup"]]] },
-  { title: "🇪🇸 ESPAÑA", items: [["LaLiga", ["laliga", "la liga", "esp.1"]], ["Copa del Rey", ["copa del rey"]]] },
-  { title: "🇮🇹 ITALIA", items: [["Serie A", ["serie a", "ita.1"]], ["Coppa Italia", ["coppa italia"]]] },
-  { title: "🇩🇪 ALEMANIA", items: [["Bundesliga", ["bundesliga", "ger.1"]]] },
-  { title: "🇵🇹 PORTUGAL", items: [["Primeira Liga", ["primeira liga", "por.1"]]] },
-  { title: "🇫🇷 FRANCIA", items: [["Ligue 1", ["ligue 1", "fra.1"]]] },
-  { title: "🇧🇷 BRASIL", items: [["Brasileirão", ["brasileirao", "brasileirão", "bra.1"]], ["Copa do Brasil", ["copa do brasil"]]] },
-  { title: "🇺🇾 URUGUAY", items: [["Campeonato Uruguayo", ["campeonato uruguayo", "uruguayan championship", "uru.1"]]] },
-  { title: "🇵🇾 PARAGUAY", items: [["Primera División", ["paraguay", "par.1", "copa de primera"]]] },
-  { title: "🇨🇴 COLOMBIA", items: [["Primera A", ["colombia", "col.1", "primera a"]]] },
-  { title: "🇨🇱 CHILE", items: [["Primera División", ["chile", "chi.1"]]] },
-  { title: "🇲🇽 MÉXICO", items: [["Liga MX", ["liga mx", "mex.1"]]] },
-  { title: "🇺🇸 EEUU", items: [["MLS", ["mls", "usa.1"]]] },
-  { title: "🌐 SELECCIONES", items: [["Eliminatorias", ["eliminatorias", "worldq"]], ["Amistosos", ["amistosos", "friendly"]]] },
+  { title: "🏴 INGLATERRA", items: [["Premier League", ["premier league", "eng.1"], "premier-league"]] },
+  { title: "🇪🇸 ESPAÑA", items: [["LaLiga", ["laliga", "la liga", "esp.1"], "laliga"]] },
+  { title: "🇮🇹 ITALIA", items: [["Serie A", ["serie a", "ita.1"], "serie-a"]] },
+  { title: "🇩🇪 ALEMANIA", items: [["Bundesliga", ["bundesliga", "ger.1"], "bundesliga"]] },
+  { title: "🇵🇹 PORTUGAL", items: [["Primeira Liga", ["primeira liga", "por.1"], "primeira-liga"]] },
+  { title: "🇫🇷 FRANCIA", items: [["Ligue 1", ["ligue 1", "fra.1"], "ligue-1"]] },
+  { title: "🇧🇷 BRASIL", items: [["Brasileirão", ["brasileirao", "brasileirão", "bra.1"], "brasileirao"]] },
+  { title: "🇺🇾 URUGUAY", items: [["Campeonato Uruguayo", ["campeonato uruguayo", "uruguayan championship", "uru.1"], "uruguay"]] },
+  { title: "🇵🇾 PARAGUAY", items: [["Primera División", ["paraguay", "par.1", "copa de primera"], "paraguay"]] },
+  { title: "🇨🇴 COLOMBIA", items: [["Primera A", ["colombia", "col.1", "primera a"], "colombia"]] },
+  { title: "🇨🇱 CHILE", items: [["Primera División", ["chile", "chi.1"], "chile"]] },
+  { title: "🇲🇽 MÉXICO", items: [["Liga MX", ["liga mx", "mex.1"], "mexico"]] },
+  { title: "🇺🇸 EEUU", items: [["MLS", ["mls", "usa.1"], "mls"]] },
+  { title: "🌐 SELECCIONES", items: [["Eliminatorias", ["eliminatorias", "worldq"], "eliminatorias-conmebol"], ["Mundial", ["mundial", "fifa.world"], "mundial"]] },
 ];
 
 let activeCompetitionFilter = null;
@@ -106,13 +106,25 @@ function applyCompetitionFilter(filter) {
   }
 }
 
-function buildCompetitionButton(label, terms) {
+function openCompetitionPage(id) {
+  if (!id) return;
+  window.location.href = `competiciones/${id}.html`;
+}
+
+function buildCompetitionButton(label, terms, pageId) {
   const button = document.createElement("button");
   button.type = "button";
   button.className = "competition-filter-btn";
   button.textContent = label;
   button.dataset.filterLabel = label;
-  button.addEventListener("click", () => applyCompetitionFilter({ label, terms }));
+  button.dataset.competitionPage = pageId || "";
+  button.addEventListener("click", () => {
+    if (pageId) {
+      openCompetitionPage(pageId);
+      return;
+    }
+    applyCompetitionFilter({ label, terms });
+  });
   return button;
 }
 
@@ -138,7 +150,7 @@ function createCompetitionsSidebar() {
 
       const list = document.createElement("div");
       list.className = "competition-featured-list";
-      group.items.forEach(([label, terms]) => list.appendChild(buildCompetitionButton(label, terms)));
+      group.items.forEach(([label, terms, pageId]) => list.appendChild(buildCompetitionButton(label, terms, pageId)));
       aside.appendChild(list);
       return;
     }
@@ -154,7 +166,7 @@ function createCompetitionsSidebar() {
 
     const leagues = document.createElement("div");
     leagues.className = "competition-leagues";
-    group.items.forEach(([label, terms]) => leagues.appendChild(buildCompetitionButton(label, terms)));
+    group.items.forEach(([label, terms, pageId]) => leagues.appendChild(buildCompetitionButton(label, terms, pageId)));
 
     country.append(toggle, leagues);
     aside.appendChild(country);
@@ -163,7 +175,7 @@ function createCompetitionsSidebar() {
   const status = document.createElement("p");
   status.className = "competition-filter-status";
   status.id = "competitionFilterStatus";
-  status.textContent = "Mostrando todas las competiciones";
+  status.textContent = "Tocá una competición para abrir su sección";
   aside.appendChild(status);
 
   return aside;
