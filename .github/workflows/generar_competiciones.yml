@@ -28,7 +28,7 @@ jobs:
 
       - name: Generar datos de competiciones desde ESPN
         run: |
-          python scripts/generar_competiciones.py
+          python scripts/generar_competiciones_lpf_fix.py
 
       - name: Generar páginas HTML de competiciones
         run: |
