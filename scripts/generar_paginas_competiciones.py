@@ -55,10 +55,10 @@ def html_page(competition_id, title):
         <div>
           <p class="competition-kicker">Competición</p>
           <h1 id="competitionHeroTitle">{title}</h1>
-          <p class="competition-subtitle" id="competitionHeroSubtitle">Cargando datos desde ESPN...</p>
-          <p class="competition-updated" id="competitionUpdated">Actualizando...</p>
+          <p class="competition-subtitle" id="competitionHeroSubtitle">Cargando datos...</p>
+          <p class="competition-updated" id="competitionUpdated"></p>
         </div>
-        <div class="competition-summary-grid" id="competitionSummary"></div>
+        <div class="competition-summary-grid" id="competitionSummary" style="display:none"></div>
       </section>
 
       <nav class="competition-tabs" aria-label="Secciones de la competición">
@@ -133,6 +133,7 @@ def html_page(competition_id, title):
 
     <footer>Desarrollado por <strong>AzWink</strong></footer>
     <script src="../competicion.js"></script>
+    <script src="../competicion-header-clean.js"></script>
   </body>
 </html>
 '''
