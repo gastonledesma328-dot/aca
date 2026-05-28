@@ -1,0 +1,5 @@
+/* Oculta el texto largo del encabezado de Tabla anual */
+.competition-special-tables .competition-subtable:nth-child(3) .competition-subtable-head::after {
+  content: none !important;
+  display: none !important;
+}
