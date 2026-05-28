@@ -1,13 +1,78 @@
 import copy
-from datetime import datetime, timedelta
+import json
+import os
+import re
+import time
+import unicodedata
+from datetime import datetime, timedelta, timezone
+from html import unescape
+from urllib.parse import quote, urlencode
 
 import generar_competiciones as g
 
+ORIGINAL_CARGAR_EQUIPOS = g.cargar_equipos
 ORIGINAL_CARGAR_PARTIDOS = g.cargar_partidos
 ORIGINAL_CLASIFICAR_TABLAS = g.clasificar_tablas_liga_profesional
 ORIGINAL_ARMAR_ELIMINATORIAS = g.armar_eliminatorias_liga_profesional
 ORIGINAL_PARSE_COMPETITOR = g.parse_competitor
 ORIGINAL_PARSE_EVENT = g.parse_event
+
+TITULOS_DATA_FILE = "data/titulos-liga-profesional.json"
+TITULOS_PUBLIC_FILE = "public/data/titulos-liga-profesional.json"
+WIKIPEDIA_API_URL = "https://es.wikipedia.org/w/api.php"
+
+CLUBES_WIKIPEDIA = {
+    "argentinos-juniors": "Asociación Atlética Argentinos Juniors",
+    "atletico-tucuman": "Club Atlético Tucumán",
+    "banfield": "Club Atlético Banfield",
+    "barracas-central": "Club Atlético Barracas Central",
+    "belgrano": "Club Atlético Belgrano",
+    "boca-juniors": "Club Atlético Boca Juniors",
+    "central-cordoba-santiago": "Club Atlético Central Córdoba (Santiago del Estero)",
+    "defensa-y-justicia": "Club Social y Deportivo Defensa y Justicia",
+    "deportivo-riestra": "Deportivo Riestra Asociación de Fomento Barrio Colón",
+    "estudiantes-de-la-plata": "Club Estudiantes de La Plata",
+    "gimnasia-la-plata": "Club de Gimnasia y Esgrima La Plata",
+    "godoy-cruz": "Club Deportivo Godoy Cruz Antonio Tomba",
+    "huracan": "Club Atlético Huracán",
+    "independiente": "Club Atlético Independiente",
+    "independiente-rivadavia": "Club Sportivo Independiente Rivadavia",
+    "instituto": "Instituto Atlético Central Córdoba",
+    "lanus": "Club Atlético Lanús",
+    "newells-old-boys": "Club Atlético Newell's Old Boys",
+    "platense": "Club Atlético Platense",
+    "racing-club": "Racing Club",
+    "river-plate": "Club Atlético River Plate",
+    "rosario-central": "Club Atlético Rosario Central",
+    "san-lorenzo": "Club Atlético San Lorenzo de Almagro",
+    "san-martin-san-juan": "Club Atlético San Martín (San Juan)",
+    "sarmiento-junin": "Club Atlético Sarmiento (Junín)",
+    "talleres-de-cordoba": "Club Atlético Talleres (Córdoba)",
+    "tigre": "Club Atlético Tigre",
+    "union-santa-fe": "Club Atlético Unión (Santa Fe)",
+    "velez-sarsfield": "Club Atlético Vélez Sarsfield",
+}
+
+TITULOS_FALLBACK = {
+    "river-plate": 38,
+    "boca-juniors": 35,
+    "racing-club": 18,
+    "independiente": 16,
+    "san-lorenzo": 15,
+    "velez-sarsfield": 10,
+    "estudiantes-de-la-plata": 6,
+    "newells-old-boys": 6,
+    "huracan": 5,
+    "rosario-central": 4,
+    "argentinos-juniors": 3,
+    "lanus": 2,
+    "banfield": 1,
+    "gimnasia-la-plata": 1,
+}
+
+
+def ahora_iso():
+    return datetime.now(timezone.utc).isoformat()
 
 
 def parse_date(value):
@@ -22,6 +87,167 @@ def parse_date(value):
 def date_key(value):
     d = parse_date(value)
     return d.isoformat() if d else ""
+
+
+def normalizar_wiki(texto):
+    texto = str(texto or "").lower().strip()
+    texto = unicodedata.normalize("NFD", texto)
+    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
+    texto = re.sub(r"[^a-z0-9]+", " ", texto)
+    return re.sub(r"\s+", " ", texto).strip()
+
+
+def slug_wiki(texto):
+    return normalizar_wiki(texto).replace(" ", "-")
+
+
+def strip_html(html):
+    html = re.sub(r"<script[\s\S]*?</script>", " ", str(html or ""), flags=re.I)
+    html = re.sub(r"<style[\s\S]*?</style>", " ", html, flags=re.I)
+    text = re.sub(r"<[^>]+>", " ", html)
+    return re.sub(r"\s+", " ", unescape(text)).strip()
+
+
+def wiki_get(params):
+    url = f"{WIKIPEDIA_API_URL}?{urlencode(params)}"
+    response = g.requests.get(url, headers={**g.HEADERS, "Accept": "application/json,text/plain,*/*"}, timeout=25)
+    print(f"🌐 Wikipedia {response.status_code} {params.get('page') or ''}")
+    if response.ok:
+        return response.json()
+    return None
+
+
+def buscar_section_titulos(page):
+    data = wiki_get({"action": "parse", "page": page, "prop": "sections", "format": "json", "redirects": "1"})
+    sections = data.get("parse", {}).get("sections", []) if isinstance(data, dict) else []
+    preferidas = []
+    candidatas = []
+    for section in sections:
+        title = normalizar_wiki(section.get("line") or "")
+        index = section.get("index")
+        if not index:
+            continue
+        if "titulos oficiales" in title:
+            preferidas.append(index)
+        elif "titulos" in title or "palmares" in title:
+            candidatas.append(index)
+    return (preferidas or candidatas or [None])[0]
+
+
+def leer_html_titulos(page):
+    section = buscar_section_titulos(page)
+    params = {"action": "parse", "page": page, "prop": "text", "format": "json", "redirects": "1"}
+    if section:
+        params["section"] = section
+    data = wiki_get(params)
+    return data.get("parse", {}).get("text", {}).get("*") if isinstance(data, dict) else ""
+
+
+def extraer_titulos_primera(texto):
+    limpio = normalizar_wiki(texto)
+    patrones = [
+        r"primera division[^()]{0,260}\((\d+)\s*/\s*\d+\)",
+        r"liga argentina[^()]{0,260}\((\d+)\s*/\s*\d+\)",
+        r"campeonato de primera[^()]{0,260}\((\d+)\s*/\s*\d+\)",
+    ]
+    for patron in patrones:
+        match = re.search(patron, limpio, flags=re.I)
+        if match:
+            return int(match.group(1))
+
+    match = re.search(r"\((\d+)\s*/\s*\d+\)", texto)
+    if match:
+        return int(match.group(1))
+    return None
+
+
+def obtener_titulos_club(slug, page):
+    try:
+        html = leer_html_titulos(page)
+        text = strip_html(html)
+        titulos = extraer_titulos_primera(text)
+        fuente = "wikipedia"
+        if titulos is None:
+            titulos = TITULOS_FALLBACK.get(slug, 0)
+            fuente = "fallback"
+        return {
+            "slug": slug,
+            "pagina": page,
+            "url": f"https://es.wikipedia.org/wiki/{quote(page.replace(' ', '_'))}#Títulos_oficiales",
+            "titulos": int(titulos),
+            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+            "fuente": fuente,
+            "actualizado": ahora_iso(),
+        }
+    except Exception as error:
+        print(f"⚠️ Wikipedia falló para {page}: {error}")
+        return {
+            "slug": slug,
+            "pagina": page,
+            "titulos": int(TITULOS_FALLBACK.get(slug, 0)),
+            "criterio": "Fallback por error al leer Wikipedia.",
+            "fuente": "fallback",
+            "error": str(error),
+            "actualizado": ahora_iso(),
+        }
+
+
+def generar_titulos_wikipedia():
+    os.makedirs("data", exist_ok=True)
+    os.makedirs("public/data", exist_ok=True)
+    clubes = {}
+    for slug, page in CLUBES_WIKIPEDIA.items():
+        clubes[slug] = obtener_titulos_club(slug, page)
+        time.sleep(0.25)
+
+    payload = {
+        "actualizado": ahora_iso(),
+        "criterio_general": "Se toma solo el primer número de los pares títulos/subcampeonatos. Ejemplo: (35/23) => 35.",
+        "clubes": clubes,
+    }
+    for path in [TITULOS_DATA_FILE, TITULOS_PUBLIC_FILE]:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+        print(f"✅ Generado {path}")
+    return payload
+
+
+def cargar_titulos_guardados():
+    if not os.path.exists(TITULOS_DATA_FILE):
+        return {}
+    try:
+        with open(TITULOS_DATA_FILE, "r", encoding="utf-8") as f:
+            return (json.load(f).get("clubes") or {})
+    except Exception:
+        return {}
+
+
+def buscar_titulo_para_equipo(team, titulos):
+    keys = [team.get("slug"), team.get("id"), team.get("nombre"), team.get("nombre_corto")]
+    for key in keys:
+        slug = slug_wiki(key)
+        if slug in titulos:
+            return titulos[slug]
+    return {"titulos": 0, "fuente": "sin-datos"}
+
+
+def cargar_equipos_patched(league_slug):
+    equipos = ORIGINAL_CARGAR_EQUIPOS(league_slug)
+    if league_slug != "arg.1":
+        return equipos
+
+    titulos = cargar_titulos_guardados()
+    for team in equipos:
+        info = buscar_titulo_para_equipo(team, titulos)
+        total = int(info.get("titulos") or 0)
+        team["titulos"] = {
+            "total": total,
+            "liga": total,
+            "fuente": info.get("fuente") or "wikipedia",
+            "url": info.get("url") or "",
+            "criterio": info.get("criterio") or "",
+        }
+    return equipos
 
 
 def clean_score(value):
@@ -437,6 +663,7 @@ def patched_especial_liga_profesional(tabla, partidos):
     }
 
 
+g.cargar_equipos = cargar_equipos_patched
 g.parse_competitor = parse_competitor_patched
 g.parse_event = parse_event_patched
 g.cargar_partidos = cargar_partidos_patched
@@ -445,4 +672,5 @@ g.armar_eliminatorias_liga_profesional = patched_armar_eliminatorias_liga_profes
 g.especial_liga_profesional = patched_especial_liga_profesional
 
 if __name__ == "__main__":
+    generar_titulos_wikipedia()
     g.main()
