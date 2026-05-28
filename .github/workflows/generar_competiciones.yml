@@ -26,7 +26,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Generar datos de competiciones desde ESPN
+      - name: Generar títulos desde Wikipedia y competiciones
         run: |
           python scripts/generar_competiciones_lpf_fix.py
 
@@ -38,6 +38,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add data/competiciones.json public/data/competiciones.json public/competiciones/*.html
-          git commit -m "Actualizar competiciones ESPN" || echo "Sin cambios"
+          git add data/competiciones.json public/data/competiciones.json data/titulos-liga-profesional.json public/data/titulos-liga-profesional.json public/competiciones/*.html
+          git commit -m "Actualizar competiciones y títulos" || echo "Sin cambios"
           git push
