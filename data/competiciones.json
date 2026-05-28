@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-05-28T02:53:31.064767+00:00",
+  "actualizado": "2026-05-28T02:59:34.834981+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:18.146901+00:00",
+      "actualizado": "2026-05-28T02:59:25.912799+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -31886,7 +31886,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:18.712526+00:00",
+      "actualizado": "2026-05-28T02:59:26.249365+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -33386,7 +33386,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:20.754936+00:00",
+      "actualizado": "2026-05-28T02:59:27.806506+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -34265,7 +34265,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:21.231175+00:00",
+      "actualizado": "2026-05-28T02:59:28.155798+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -34276,8 +34276,8 @@
         "equipos": 44,
         "posiciones": 32,
         "partidos_scoreboard": 6,
-        "ultimos": 2,
-        "proximos": 4
+        "ultimos": 6,
+        "proximos": 0
       },
       "equipos": [
         {
@@ -35526,6 +35526,210 @@
       "partidos": {
         "ultimos": [
           {
+            "id": "401865564",
+            "nombre": "Independiente Rivadavia at Bolívar",
+            "fecha": "2026-05-28T00:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "independiente rivadavia at bolivar riv bol group stage",
+            "local": {
+              "equipo": {
+                "id": "2681",
+                "uid": "s:600~t:2681",
+                "nombre": "Bolívar",
+                "nombre_corto": "Bolívar",
+                "abreviatura": "BOL",
+                "slug": "bolivar",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2681.png",
+                "color": "3c96c4"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "9744",
+                "uid": "s:600~t:9744",
+                "nombre": "Independiente Rivadavia",
+                "nombre_corto": "Ind. Rivadavia",
+                "abreviatura": "RIV",
+                "slug": "independiente-rivadavia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
+                "color": "000061"
+              },
+              "localia": "away",
+              "marcador": "3",
+              "ganador": true,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865564/independiente-rivadavia-bolivar",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-28"
+          },
+          {
+            "id": "401865552",
+            "nombre": "Platense at Corinthians",
+            "fecha": "2026-05-28T00:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "platense at corinthians pla cor group stage",
+            "local": {
+              "equipo": {
+                "id": "874",
+                "uid": "s:600~t:874",
+                "nombre": "Corinthians",
+                "nombre_corto": "Corinthians",
+                "abreviatura": "COR",
+                "slug": "corinthians",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "7764",
+                "uid": "s:600~t:7764",
+                "nombre": "Platense",
+                "nombre_corto": "Platense",
+                "abreviatura": "PLA",
+                "slug": "platense",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": true,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865552/platense-corinthians",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-28"
+          },
+          {
+            "id": "401865563",
+            "nombre": "Deportivo La Guaira at Fluminense",
+            "fecha": "2026-05-28T00:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "deportivo la guaira at fluminense dep flu group stage",
+            "local": {
+              "equipo": {
+                "id": "3445",
+                "uid": "s:600~t:3445",
+                "nombre": "Fluminense",
+                "nombre_corto": "Fluminense",
+                "abreviatura": "FLU",
+                "slug": "fluminense",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3445.png",
+                "color": "7E0202"
+              },
+              "localia": "home",
+              "marcador": "3",
+              "ganador": true,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "17090",
+                "uid": "s:600~t:17090",
+                "nombre": "Deportivo La Guaira",
+                "nombre_corto": "La Guaira",
+                "abreviatura": "DEP",
+                "slug": "deportivo-la-guaira",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
+                "color": "fc4401"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865563/deportivo-la-guaira-fluminense",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-28"
+          },
+          {
+            "id": "401865556",
+            "nombre": "Independiente Santa Fe at Peñarol",
+            "fecha": "2026-05-28T00:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "independiente santa fe at penarol sfe pen group stage",
+            "local": {
+              "equipo": {
+                "id": "2683",
+                "uid": "s:600~t:2683",
+                "nombre": "Peñarol",
+                "nombre_corto": "Peñarol",
+                "abreviatura": "PEN",
+                "slug": "penarol",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2683.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "5488",
+                "uid": "s:600~t:5488",
+                "nombre": "Independiente Santa Fe",
+                "nombre_corto": "Santa Fe",
+                "abreviatura": "SFE",
+                "slug": "independiente-santa-fe",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5488.png",
+                "color": "E33439"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": true,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865556/independiente-santa-fe-penarol",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-28"
+          },
+          {
             "id": "401865562",
             "nombre": "Rosario Central at Independiente del Valle",
             "fecha": "2026-05-27T22:00Z",
@@ -35628,212 +35832,7 @@
             "fecha_grupo": "2026-05-27"
           }
         ],
-        "proximos": [
-          {
-            "id": "401865564",
-            "nombre": "Independiente Rivadavia at Bolívar",
-            "fecha": "2026-05-28T00:30Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "independiente rivadavia at bolivar riv bol group stage",
-            "local": {
-              "equipo": {
-                "id": "2681",
-                "uid": "s:600~t:2681",
-                "nombre": "Bolívar",
-                "nombre_corto": "Bolívar",
-                "abreviatura": "BOL",
-                "slug": "bolivar",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2681.png",
-                "color": "3c96c4"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "9744",
-                "uid": "s:600~t:9744",
-                "nombre": "Independiente Rivadavia",
-                "nombre_corto": "Ind. Rivadavia",
-                "abreviatura": "RIV",
-                "slug": "independiente-rivadavia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-                "color": "000061"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865564/independiente-rivadavia-bolivar",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-28"
-          },
-          {
-            "id": "401865552",
-            "nombre": "Platense at Corinthians",
-            "fecha": "2026-05-28T00:30Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "platense at corinthians pla cor group stage",
-            "local": {
-              "equipo": {
-                "id": "874",
-                "uid": "s:600~t:874",
-                "nombre": "Corinthians",
-                "nombre_corto": "Corinthians",
-                "abreviatura": "COR",
-                "slug": "corinthians",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "7764",
-                "uid": "s:600~t:7764",
-                "nombre": "Platense",
-                "nombre_corto": "Platense",
-                "abreviatura": "PLA",
-                "slug": "platense",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865552/platense-corinthians",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-28"
-          },
-          {
-            "id": "401865563",
-            "nombre": "Deportivo La Guaira at Fluminense",
-            "fecha": "2026-05-28T00:30Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "deportivo la guaira at fluminense dep flu group stage",
-            "local": {
-              "equipo": {
-                "id": "3445",
-                "uid": "s:600~t:3445",
-                "nombre": "Fluminense",
-                "nombre_corto": "Fluminense",
-                "abreviatura": "FLU",
-                "slug": "fluminense",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3445.png",
-                "color": "7E0202"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "17090",
-                "uid": "s:600~t:17090",
-                "nombre": "Deportivo La Guaira",
-                "nombre_corto": "La Guaira",
-                "abreviatura": "DEP",
-                "slug": "deportivo-la-guaira",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
-                "color": "fc4401"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865563/deportivo-la-guaira-fluminense",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-28"
-          },
-          {
-            "id": "401865556",
-            "nombre": "Independiente Santa Fe at Peñarol",
-            "fecha": "2026-05-28T00:30Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "independiente santa fe at penarol sfe pen group stage",
-            "local": {
-              "equipo": {
-                "id": "2683",
-                "uid": "s:600~t:2683",
-                "nombre": "Peñarol",
-                "nombre_corto": "Peñarol",
-                "abreviatura": "PEN",
-                "slug": "penarol",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2683.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "5488",
-                "uid": "s:600~t:5488",
-                "nombre": "Independiente Santa Fe",
-                "nombre_corto": "Santa Fe",
-                "abreviatura": "SFE",
-                "slug": "independiente-santa-fe",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5488.png",
-                "color": "E33439"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865556/independiente-santa-fe-penarol",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-28"
-          }
-        ],
+        "proximos": [],
         "todos": [
           {
             "id": "401865562",
@@ -35941,9 +35940,9 @@
             "id": "401865564",
             "nombre": "Independiente Rivadavia at Bolívar",
             "fecha": "2026-05-28T00:30Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "independiente rivadavia at bolivar riv bol group stage",
             "local": {
@@ -35958,7 +35957,7 @@
                 "color": "3c96c4"
               },
               "localia": "home",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
               "penales": "0"
             },
@@ -35974,8 +35973,8 @@
                 "color": "000061"
               },
               "localia": "away",
-              "marcador": "0",
-              "ganador": false,
+              "marcador": "3",
+              "ganador": true,
               "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401865564/independiente-rivadavia-bolivar",
@@ -35992,9 +35991,9 @@
             "id": "401865552",
             "nombre": "Platense at Corinthians",
             "fecha": "2026-05-28T00:30Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "platense at corinthians pla cor group stage",
             "local": {
@@ -36025,8 +36024,8 @@
                 "color": "000000"
               },
               "localia": "away",
-              "marcador": "0",
-              "ganador": false,
+              "marcador": "2",
+              "ganador": true,
               "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401865552/platense-corinthians",
@@ -36043,9 +36042,9 @@
             "id": "401865563",
             "nombre": "Deportivo La Guaira at Fluminense",
             "fecha": "2026-05-28T00:30Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "deportivo la guaira at fluminense dep flu group stage",
             "local": {
@@ -36060,8 +36059,8 @@
                 "color": "7E0202"
               },
               "localia": "home",
-              "marcador": "0",
-              "ganador": false,
+              "marcador": "3",
+              "ganador": true,
               "penales": "0"
             },
             "visitante": {
@@ -36076,7 +36075,7 @@
                 "color": "fc4401"
               },
               "localia": "away",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
               "penales": "0"
             },
@@ -36094,9 +36093,9 @@
             "id": "401865556",
             "nombre": "Independiente Santa Fe at Peñarol",
             "fecha": "2026-05-28T00:30Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "independiente santa fe at penarol sfe pen group stage",
             "local": {
@@ -36127,8 +36126,8 @@
                 "color": "E33439"
               },
               "localia": "away",
-              "marcador": "0",
-              "ganador": false,
+              "marcador": "1",
+              "ganador": true,
               "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401865556/independiente-santa-fe-penarol",
@@ -36154,7 +36153,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:21.749038+00:00",
+      "actualizado": "2026-05-28T02:59:28.477386+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -38286,7 +38285,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:22.289018+00:00",
+      "actualizado": "2026-05-28T02:59:28.774253+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -39683,7 +39682,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:22.662925+00:00",
+      "actualizado": "2026-05-28T02:59:29.030295+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -41080,7 +41079,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:23.282520+00:00",
+      "actualizado": "2026-05-28T02:59:29.291252+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -42478,7 +42477,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:23.655229+00:00",
+      "actualizado": "2026-05-28T02:59:29.785249+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -43736,7 +43735,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:23.982803+00:00",
+      "actualizado": "2026-05-28T02:59:30.052555+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -44631,7 +44630,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:24.547025+00:00",
+      "actualizado": "2026-05-28T02:59:30.372943+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -46965,7 +46964,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:25.022622+00:00",
+      "actualizado": "2026-05-28T02:59:30.685831+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -48884,7 +48883,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:25.476597+00:00",
+      "actualizado": "2026-05-28T02:59:31.115485+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -50639,7 +50638,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:26.003259+00:00",
+      "actualizado": "2026-05-28T02:59:31.457257+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -51476,7 +51475,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:26.532274+00:00",
+      "actualizado": "2026-05-28T02:59:31.708701+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -52925,7 +52924,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:27.018685+00:00",
+      "actualizado": "2026-05-28T02:59:31.969648+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -54508,7 +54507,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:27.431563+00:00",
+      "actualizado": "2026-05-28T02:59:32.266831+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -56091,7 +56090,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:27.881282+00:00",
+      "actualizado": "2026-05-28T02:59:32.642586+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -57674,7 +57673,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:28.266818+00:00",
+      "actualizado": "2026-05-28T02:59:33.002002+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -58919,7 +58918,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:28.540617+00:00",
+      "actualizado": "2026-05-28T02:59:33.295778+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -59616,7 +59615,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:28.939673+00:00",
+      "actualizado": "2026-05-28T02:59:33.583488+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -60377,7 +60376,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:29.729939+00:00",
+      "actualizado": "2026-05-28T02:59:33.923898+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -61316,7 +61315,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:30.046079+00:00",
+      "actualizado": "2026-05-28T02:59:34.207459+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -62115,7 +62114,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:30.512076+00:00",
+      "actualizado": "2026-05-28T02:59:34.558974+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -62882,7 +62881,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-05-28T02:53:31.064752+00:00",
+      "actualizado": "2026-05-28T02:59:34.834972+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
