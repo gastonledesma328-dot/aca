@@ -82,6 +82,38 @@ jobs:
               "velez-sarsfield": "Club Atlético Vélez Sarsfield",
           }
 
+          TITLE_LIMITS = {
+              "argentinos-juniors": (0, 10),
+              "atletico-tucuman": (0, 0),
+              "banfield": (0, 5),
+              "barracas-central": (0, 0),
+              "belgrano": (0, 0),
+              "boca-juniors": (20, 45),
+              "central-cordoba-santiago": (0, 0),
+              "defensa-y-justicia": (0, 0),
+              "deportivo-riestra": (0, 0),
+              "estudiantes-de-la-plata": (3, 15),
+              "gimnasia-la-plata": (0, 5),
+              "godoy-cruz": (0, 0),
+              "huracan": (1, 8),
+              "independiente": (8, 25),
+              "independiente-rivadavia": (0, 0),
+              "instituto": (0, 0),
+              "lanus": (1, 6),
+              "newells-old-boys": (3, 10),
+              "platense": (0, 0),
+              "racing-club": (8, 25),
+              "river-plate": (25, 50),
+              "rosario-central": (2, 8),
+              "san-lorenzo": (8, 25),
+              "san-martin-san-juan": (0, 0),
+              "sarmiento-junin": (0, 0),
+              "talleres-de-cordoba": (0, 0),
+              "tigre": (0, 0),
+              "union-santa-fe": (0, 0),
+              "velez-sarsfield": (5, 15),
+          }
+
           def now_iso():
               return datetime.now(timezone.utc).isoformat()
 
@@ -90,13 +122,6 @@ jobs:
               html = re.sub(r"<style[\s\S]*?</style>", " ", html, flags=re.I)
               text = re.sub(r"<[^>]+>", " ", html)
               return re.sub(r"\s+", " ", unescape(text)).strip()
-
-          def normalize_for_search(text):
-              text = str(text or "").lower().strip()
-              text = unicodedata.normalize("NFD", text)
-              text = "".join(c for c in text if unicodedata.category(c) != "Mn")
-              text = re.sub(r"[^a-z0-9]+", " ", text)
-              return re.sub(r"\s+", " ", text).strip()
 
           def wiki_page_text(page):
               params = {
@@ -122,13 +147,16 @@ jobs:
                   return strip_html(html)
               return ""
 
-          def extract_titles(text):
+          def in_limits(slug, value):
+              low, high = TITLE_LIMITS.get(slug, (0, 80))
+              return low <= int(value) <= high
+
+          def extract_titles(slug, text):
               raw = str(text or "")
               raw = unicodedata.normalize("NFKC", raw)
               raw = raw.replace("\xa0", " ")
               raw = re.sub(r"\s+", " ", raw)
 
-              # Primer intento: usar el texto crudo, porque ahí todavía existen paréntesis y barras: (35/23).
               raw_patterns = [
                   r"Primera\s+Divisi[oó]n.{0,450}?\((\d+)\s*/\s*\d+\)",
                   r"Liga\s+Argentina.{0,450}?\((\d+)\s*/\s*\d+\)",
@@ -137,23 +165,8 @@ jobs:
               for pattern in raw_patterns:
                   match = re.search(pattern, raw, flags=re.I)
                   if match:
-                      return int(match.group(1))
-
-              # Segundo intento: localizar el bloque cercano a Primera División y tomar el primer par número/número.
-              clean = normalize_for_search(raw)
-              marker = re.search(r"primera division", clean)
-              if marker:
-                  block = clean[marker.start():marker.start() + 900]
-                  pair = re.search(r"(\d+)\s+(\d+)", block)
-                  if pair:
-                      value = int(pair.group(1))
-                      if 0 <= value <= 80:
-                          return value
-
-              # Último intento: primer par explícito (x/y) en texto crudo.
-              pair = re.search(r"\((\d+)\s*/\s*\d+\)", raw)
-              if pair:
-                  return int(pair.group(1))
+                      value = int(match.group(1))
+                      return value if in_limits(slug, value) else None
 
               return None
 
@@ -162,7 +175,7 @@ jobs:
 
           for slug, page in CLUBES.items():
               text = wiki_page_text(page)
-              titles = extract_titles(text)
+              titles = extract_titles(slug, text)
               print(f"Titulos detectados {slug}: {titles}")
               info = {
                   "slug": slug,
@@ -171,7 +184,7 @@ jobs:
                   "titulos": titles,
                   "fuente": "wikipedia" if titles is not None else "sin-datos",
                   "sin_fallback": titles is None,
-                  "criterio": "Solo primer número del par títulos/subcampeonatos. Ejemplo: (35/23) => 35.",
+                  "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
                   "actualizado": now_iso(),
               }
               clubes[slug] = info
@@ -181,7 +194,7 @@ jobs:
 
           payload = {
               "actualizado": now_iso(),
-              "criterio_general": "Sin fallback manual. Solo títulos encontrados en Wikipedia. Se ignora el número de subcampeonatos.",
+              "criterio_general": "Sin fallback manual. Solo títulos de Primera División encontrados explícitamente en Wikipedia. Se ignora el número de subcampeonatos.",
               "clubes": clubes,
           }
 
@@ -204,7 +217,7 @@ jobs:
                               "total": total,
                               "liga": total,
                               "fuente": "wikipedia",
-                              "criterio": "Solo primer número del par títulos/subcampeonatos. Ejemplo: (35/23) => 35.",
+                              "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
                           }
                       else:
                           team.pop("titulos", None)
