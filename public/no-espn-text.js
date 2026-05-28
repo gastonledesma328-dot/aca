@@ -65,17 +65,52 @@
     limpiarElemento(document.body || document.documentElement);
   }
 
-  document.addEventListener("DOMContentLoaded", limpiarTodo);
+  function mejorarVisibilidadTitulosCero() {
+    if (document.querySelector("#competition-zero-titles-style")) return;
+
+    const style = document.createElement("style");
+    style.id = "competition-zero-titles-style";
+    style.textContent = `
+      body[data-competition-id="liga-profesional"] .competition-team-titles {
+        max-width: 150px !important;
+      }
+
+      body[data-competition-id="liga-profesional"] .competition-team-titles.no-titles {
+        opacity: 1 !important;
+        color: #eaffef !important;
+        background: rgba(234, 255, 239, 0.16) !important;
+        border: 1px solid rgba(234, 255, 239, 0.28) !important;
+      }
+
+      body[data-competition-id="liga-profesional"] .competition-team-titles.no-titles strong {
+        color: #ffffff !important;
+      }
+
+      body[data-competition-id="liga-profesional"] .competition-team-titles.no-titles small {
+        color: rgba(234, 255, 239, 0.92) !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    limpiarTodo();
+    mejorarVisibilidadTitulosCero();
+  });
   limpiarTodo();
+  mejorarVisibilidadTitulosCero();
   window.setTimeout(limpiarTodo, 250);
   window.setTimeout(limpiarTodo, 1000);
   window.setTimeout(limpiarTodo, 2500);
+  window.setTimeout(mejorarVisibilidadTitulosCero, 250);
+  window.setTimeout(mejorarVisibilidadTitulosCero, 1000);
 
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       mutation.addedNodes.forEach(limpiarElemento);
       if (mutation.type === "characterData") limpiarNodoTexto(mutation.target);
     });
+    mejorarVisibilidadTitulosCero();
   });
 
   observer.observe(document.documentElement, {
