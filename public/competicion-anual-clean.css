@@ -53,20 +53,44 @@ body[data-competition-id="liga-profesional"] [data-competition-section="ultimos"
   box-shadow: 0 6px 14px rgba(95, 207, 128, 0.22) !important;
 }
 
-/* Equipos: mismo tema verde para las tarjetas. */
+/* Equipos: mismo tema verde para las tarjetas y mismo tamaño. */
+body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-teams-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+  align-items: stretch !important;
+}
+
 body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-team-card {
+  width: 100% !important;
+  min-height: 86px !important;
+  height: 86px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
   color: #ffffff !important;
   background: linear-gradient(180deg, rgba(21, 93, 55, 0.96), rgba(10, 62, 38, 0.96)) !important;
   border: 1px solid rgba(95, 207, 128, 0.35) !important;
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22) !important;
+  overflow: hidden !important;
 }
 
 body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-team-card span {
+  min-width: 0 !important;
+  max-width: 120px !important;
   color: #ffffff !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
 }
 
 body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-team-card .competition-team-logo,
 body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-team-card img {
+  width: 34px !important;
+  height: 34px !important;
+  flex: 0 0 34px !important;
+  object-fit: contain !important;
   background: rgba(255, 255, 255, 0.95) !important;
   border: 2px solid rgba(95, 207, 128, 0.45) !important;
   box-shadow: 0 6px 14px rgba(95, 207, 128, 0.18) !important;
