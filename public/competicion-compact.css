@@ -112,6 +112,32 @@
   width: 36px;
 }
 
+/* Top 8 Zona A / Zona B: clasifican a octavos */
+.competition-special-tables .competition-subtable:nth-child(1) tbody tr:nth-child(-n + 8) td,
+.competition-special-tables .competition-subtable:nth-child(2) tbody tr:nth-child(-n + 8) td {
+  background: rgba(95, 207, 128, 0.13);
+}
+
+.competition-special-tables .competition-subtable:nth-child(1) tbody tr:nth-child(-n + 8) td:first-child,
+.competition-special-tables .competition-subtable:nth-child(2) tbody tr:nth-child(-n + 8) td:first-child {
+  border-left: 3px solid #5fcf80;
+  color: #baff78;
+  font-weight: 950;
+}
+
+.competition-special-tables .competition-subtable:nth-child(1) .competition-subtable-head::after,
+.competition-special-tables .competition-subtable:nth-child(2) .competition-subtable-head::after {
+  content: "Top 8 a octavos";
+  border-radius: 999px;
+  color: #173520;
+  background: #5fcf80;
+  padding: 4px 8px;
+  font-size: 9px;
+  font-weight: 950;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 @media (min-width: 900px) {
   .competition-special-tables {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -213,5 +239,11 @@
     width: 14px;
     height: 14px;
     flex-basis: 14px;
+  }
+
+  .competition-special-tables .competition-subtable:nth-child(1) .competition-subtable-head::after,
+  .competition-special-tables .competition-subtable:nth-child(2) .competition-subtable-head::after {
+    font-size: 7px;
+    padding: 3px 6px;
   }
 }
