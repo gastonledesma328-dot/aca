@@ -44,6 +44,45 @@ jobs:
         run: |
           python scripts/actualizar_titulos_liga_profesional.py
 
+      - name: Validar títulos de Liga Profesional
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("public/data/competiciones.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          comp = next((c for c in data.get("competiciones", []) if c.get("id") == "liga-profesional"), None)
+          if not comp:
+              raise SystemExit("No se encontró liga-profesional en competiciones.json")
+
+          equipos = {e.get("slug") or e.get("nombre"): e for e in comp.get("equipos", [])}
+          esperados = {
+              "river-plate": 38,
+              "boca-juniors": 35,
+              "racing-club": 18,
+              "rosario-central": 5,
+          }
+
+          errores = []
+          for slug, esperado in esperados.items():
+              equipo = equipos.get(slug)
+              detectado = None
+              if equipo:
+                  detectado = equipo.get("titulos_primera_division")
+                  if detectado is None:
+                      detectado = (equipo.get("titulos") or {}).get("primera_division")
+                  if detectado is None:
+                      detectado = (equipo.get("titulos") or {}).get("total")
+              if int(detectado or 0) != esperado:
+                  errores.append(f"{slug}: esperado {esperado}, detectado {detectado}")
+
+          if errores:
+              raise SystemExit("Títulos inválidos. No se publica JSON roto: " + " | ".join(errores))
+
+          print("✅ Títulos validados correctamente")
+          PY
+
       - name: Generar páginas HTML de competiciones
         run: |
           python scripts/generar_paginas_competiciones.py
