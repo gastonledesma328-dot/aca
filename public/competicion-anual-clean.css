@@ -14,3 +14,8 @@ body[data-competition-id="liga-profesional"] #competitionTableCard > .competitio
 body[data-competition-id="liga-profesional"] #competitionLigaProfesionalExtras .competition-lpf-info {
   display: none !important;
 }
+
+/* Cuadro de enfrentamientos: oculta la nota inferior de los cruces. */
+body[data-competition-id="liga-profesional"] #competitionLigaProfesionalExtras .competition-bracket-placeholder-note {
+  display: none !important;
+}
