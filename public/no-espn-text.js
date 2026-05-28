@@ -71,13 +71,52 @@
     const style = document.createElement("style");
     style.id = "competition-zero-titles-style";
     style.textContent = `
+      body[data-competition-id="liga-profesional"] .competition-teams-grid {
+        grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)) !important;
+        gap: 10px !important;
+        align-items: stretch !important;
+      }
+
+      body[data-competition-id="liga-profesional"] .competition-team-card {
+        min-height: 86px !important;
+        display: grid !important;
+        grid-template-columns: 46px minmax(0, 1fr) 38px !important;
+        align-items: center !important;
+        gap: 12px !important;
+        padding: 14px 16px !important;
+      }
+
+      body[data-competition-id="liga-profesional"] .competition-team-card > .competition-team-logo {
+        width: 42px !important;
+        height: 42px !important;
+        justify-self: center !important;
+      }
+
+      body[data-competition-id="liga-profesional"] .competition-team-card-main {
+        min-width: 0 !important;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 38px !important;
+        align-items: center !important;
+        gap: 10px !important;
+      }
+
+      body[data-competition-id="liga-profesional"] .competition-team-card-name {
+        min-width: 0 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        line-height: 1.1 !important;
+      }
+
       body[data-competition-id="liga-profesional"] .competition-team-titles {
-        width: 34px !important;
-        min-width: 34px !important;
-        max-width: 34px !important;
-        height: 22px !important;
+        width: 36px !important;
+        min-width: 36px !important;
+        max-width: 36px !important;
+        height: 24px !important;
         justify-content: center !important;
+        justify-self: end !important;
         padding: 0 !important;
+        border-radius: 999px !important;
       }
 
       body[data-competition-id="liga-profesional"] .competition-team-titles small {
@@ -87,6 +126,7 @@
       body[data-competition-id="liga-profesional"] .competition-team-titles strong {
         font-size: 13px !important;
         line-height: 1 !important;
+        text-align: center !important;
       }
 
       body[data-competition-id="liga-profesional"] .competition-team-titles.has-titles {
@@ -109,6 +149,16 @@
 
       body[data-competition-id="liga-profesional"] .competition-team-titles.no-titles strong {
         color: #ffffff !important;
+      }
+
+      @media (max-width: 720px) {
+        body[data-competition-id="liga-profesional"] .competition-teams-grid {
+          grid-template-columns: 1fr !important;
+        }
+
+        body[data-competition-id="liga-profesional"] .competition-team-card {
+          grid-template-columns: 44px minmax(0, 1fr) 36px !important;
+        }
       }
     `;
     document.head.appendChild(style);
