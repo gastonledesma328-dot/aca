@@ -138,6 +138,61 @@
   white-space: nowrap;
 }
 
+/* Tabla anual: copas y descenso */
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(1) td {
+  background: rgba(246, 212, 49, 0.18);
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(1) td:first-child {
+  border-left: 3px solid #f6d431;
+  color: #ffe76a;
+  font-weight: 950;
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(2) td,
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(3) td {
+  background: rgba(66, 153, 225, 0.16);
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(2) td:first-child,
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(3) td:first-child {
+  border-left: 3px solid #4299e1;
+  color: #90cdf4;
+  font-weight: 950;
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(n + 4):nth-child(-n + 9) td {
+  background: rgba(128, 90, 213, 0.15);
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(n + 4):nth-child(-n + 9) td:first-child {
+  border-left: 3px solid #805ad5;
+  color: #d6bcfa;
+  font-weight: 950;
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(30) td {
+  background: rgba(245, 101, 101, 0.17);
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(30) td:first-child {
+  border-left: 3px solid #f56565;
+  color: #feb2b2;
+  font-weight: 950;
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) .competition-subtable-head::after {
+  content: "1 Campeón · 2-3 Libertadores · 4-9 Sudamericana · 30 Descenso";
+  border-radius: 999px;
+  color: #173520;
+  background: #f6d431;
+  padding: 4px 8px;
+  font-size: 8px;
+  font-weight: 950;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 @media (min-width: 900px) {
   .competition-special-tables {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -243,6 +298,12 @@
 
   .competition-special-tables .competition-subtable:nth-child(1) .competition-subtable-head::after,
   .competition-special-tables .competition-subtable:nth-child(2) .competition-subtable-head::after {
+    font-size: 7px;
+    padding: 3px 6px;
+  }
+
+  .competition-special-tables .competition-subtable:nth-child(3) .competition-subtable-head::after {
+    content: "Copas / Descenso";
     font-size: 7px;
     padding: 3px 6px;
   }
