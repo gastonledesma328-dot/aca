@@ -30,6 +30,52 @@ jobs:
         run: |
           python scripts/generar_competiciones_lpf_fix.py
 
+      - name: Quitar títulos fallback
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          title_files = [
+              Path("data/titulos-liga-profesional.json"),
+              Path("public/data/titulos-liga-profesional.json"),
+          ]
+
+          valid_titles = {}
+          for path in title_files:
+              if not path.exists():
+                  continue
+              data = json.loads(path.read_text(encoding="utf-8"))
+              for slug, info in (data.get("clubes") or {}).items():
+                  if (info.get("fuente") or "").lower() != "wikipedia":
+                      info["titulos"] = None
+                      info["sin_fallback"] = True
+                  elif info.get("titulos") is not None:
+                      valid_titles[slug] = int(info.get("titulos") or 0)
+              path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+          for path in [Path("data/competiciones.json"), Path("public/data/competiciones.json")]:
+              if not path.exists():
+                  continue
+              data = json.loads(path.read_text(encoding="utf-8"))
+              for comp in data.get("competiciones") or []:
+                  if comp.get("id") != "liga-profesional":
+                      continue
+                  for team in comp.get("equipos") or []:
+                      slug = team.get("slug") or ""
+                      if slug in valid_titles:
+                          total = valid_titles[slug]
+                          team["titulos"] = {
+                              "total": total,
+                              "liga": total,
+                              "fuente": "wikipedia",
+                              "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
+                          }
+                      else:
+                          team.pop("titulos", None)
+              path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+          PY
+
       - name: Generar páginas HTML de competiciones
         run: |
           python scripts/generar_paginas_competiciones.py
