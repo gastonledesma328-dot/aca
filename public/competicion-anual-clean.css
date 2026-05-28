@@ -95,3 +95,15 @@ body[data-competition-id="liga-profesional"] [data-competition-section="equipos"
   border: 2px solid rgba(95, 207, 128, 0.45) !important;
   box-shadow: 0 6px 14px rgba(95, 207, 128, 0.18) !important;
 }
+
+/* Insignia de títulos: color más visible y separado del fondo verde. */
+body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-title-badge {
+  color: #ffffff !important;
+  background: linear-gradient(180deg, #1d4ed8, #172554) !important;
+  border: 1px solid rgba(191, 219, 254, 0.85) !important;
+  padding: 5px 10px !important;
+  font-size: 12px !important;
+  font-weight: 950 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55) !important;
+  box-shadow: 0 7px 16px rgba(29, 78, 216, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+}
