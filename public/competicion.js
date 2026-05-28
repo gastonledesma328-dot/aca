@@ -64,6 +64,35 @@ function teamName(team) {
   return team?.nombre || team?.nombre_corto || "Equipo";
 }
 
+function teamTitles(team) {
+  const direct = team?.titulos_primera_division;
+  const nested = team?.titulos?.primera_division ?? team?.titulos?.liga ?? team?.titulos?.total;
+  const value = direct ?? nested;
+
+  if (value === "" || value == null || Number.isNaN(Number(value))) {
+    return 0;
+  }
+
+  return Number(value);
+}
+
+function isLigaProfesionalPage(competition) {
+  return competition?.id === "liga-profesional" || competition?.slug === "arg.1" || competition?.especial?.tipo === "liga_profesional_argentina";
+}
+
+function teamTitlesHtml(team, competition) {
+  if (!isLigaProfesionalPage(competition)) return "";
+
+  const titles = teamTitles(team);
+  const label = titles === 1 ? "campeonato de Primera" : "campeonatos de Primera";
+
+  return `
+    <span class="competition-team-titles ${titles > 0 ? "has-titles" : "no-titles"}">
+      <strong>${escapeHtml(titles)}</strong>
+      <small>${escapeHtml(label)}</small>
+    </span>`;
+}
+
 function renderSummary(competition) {
   const resumen = competition.resumen || {};
   const especial = competition.especial || null;
@@ -229,11 +258,25 @@ function renderTeams(competition) {
     return;
   }
 
-  setHtml(teamsGrid, teams
+  const sortedTeams = [...teams].sort((a, b) => {
+    if (!isLigaProfesionalPage(competition)) {
+      return teamName(a).localeCompare(teamName(b), "es");
+    }
+
+    const diff = teamTitles(b) - teamTitles(a);
+    if (diff !== 0) return diff;
+
+    return teamName(a).localeCompare(teamName(b), "es");
+  });
+
+  setHtml(teamsGrid, sortedTeams
     .map((team) => `
       <article class="competition-team-card">
         ${teamLogo(team)}
-        <span>${escapeHtml(teamName(team))}</span>
+        <span class="competition-team-card-main">
+          <span class="competition-team-card-name">${escapeHtml(teamName(team))}</span>
+          ${teamTitlesHtml(team, competition)}
+        </span>
       </article>`)
     .join(""));
 }
