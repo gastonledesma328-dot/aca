@@ -72,7 +72,21 @@
     style.id = "competition-zero-titles-style";
     style.textContent = `
       body[data-competition-id="liga-profesional"] .competition-team-titles {
-        max-width: 150px !important;
+        width: 34px !important;
+        min-width: 34px !important;
+        max-width: 34px !important;
+        height: 22px !important;
+        justify-content: center !important;
+        padding: 0 !important;
+      }
+
+      body[data-competition-id="liga-profesional"] .competition-team-titles small {
+        display: none !important;
+      }
+
+      body[data-competition-id="liga-profesional"] .competition-team-titles strong {
+        font-size: 13px !important;
+        line-height: 1 !important;
       }
 
       body[data-competition-id="liga-profesional"] .competition-team-titles.has-titles {
@@ -82,8 +96,7 @@
         box-shadow: 0 8px 18px rgba(15, 118, 110, 0.28) !important;
       }
 
-      body[data-competition-id="liga-profesional"] .competition-team-titles.has-titles strong,
-      body[data-competition-id="liga-profesional"] .competition-team-titles.has-titles small {
+      body[data-competition-id="liga-profesional"] .competition-team-titles.has-titles strong {
         color: #ffffff !important;
       }
 
@@ -96,10 +109,6 @@
 
       body[data-competition-id="liga-profesional"] .competition-team-titles.no-titles strong {
         color: #ffffff !important;
-      }
-
-      body[data-competition-id="liga-profesional"] .competition-team-titles.no-titles small {
-        color: rgba(234, 255, 239, 0.92) !important;
       }
     `;
     document.head.appendChild(style);
