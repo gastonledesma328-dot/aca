@@ -20,15 +20,17 @@ body[data-competition-id="liga-profesional"] #competitionLigaProfesionalExtras .
   display: none !important;
 }
 
-/* Próximos partidos: tema verde para los cuadros. */
-body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-match {
+/* Próximos partidos y últimos resultados: mismo tema verde para los cuadros. */
+body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-match,
+body[data-competition-id="liga-profesional"] [data-competition-section="ultimos"] .competition-match {
   color: #eaffef !important;
   background: linear-gradient(180deg, rgba(21, 93, 55, 0.96), rgba(10, 62, 38, 0.96)) !important;
   border: 1px solid rgba(95, 207, 128, 0.35) !important;
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22) !important;
 }
 
-body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-match-top {
+body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-match-top,
+body[data-competition-id="liga-profesional"] [data-competition-section="ultimos"] .competition-match-top {
   color: #baff78 !important;
 }
 
@@ -37,11 +39,13 @@ body[data-competition-id="liga-profesional"] [data-competition-section="proximos
   display: none !important;
 }
 
-body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-match-team {
+body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-match-team,
+body[data-competition-id="liga-profesional"] [data-competition-section="ultimos"] .competition-match-team {
   color: #ffffff !important;
 }
 
-body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-score {
+body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-score,
+body[data-competition-id="liga-profesional"] [data-competition-section="ultimos"] .competition-score {
   color: #173520 !important;
   background: #5fcf80 !important;
   border-radius: 999px !important;
