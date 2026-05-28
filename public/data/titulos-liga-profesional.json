@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-05-28T03:56:26.530615+00:00",
-  "criterio_general": "Sin fallback manual. Solo títulos de Primera División encontrados explícitamente en Wikipedia. Se ignora el número de subcampeonatos.",
+  "actualizado": "2026-05-28T04:20:26.855396+00:00",
+  "criterio_general": "Sin fallback manual. Solo títulos de Primera División encontrados en wikitext de Wikipedia. Se ignora el número de subcampeonatos.",
   "clubes": {
     "argentinos-juniors": {
       "slug": "argentinos-juniors",
@@ -9,8 +9,8 @@
       "titulos": 3,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:53:27.797865+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:17:29.081516+00:00"
     },
     "atletico-tucuman": {
       "slug": "atletico-tucuman",
@@ -19,8 +19,8 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:53:34.110638+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:17:35.233034+00:00"
     },
     "banfield": {
       "slug": "banfield",
@@ -29,8 +29,8 @@
       "titulos": 1,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:53:40.259518+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:17:41.355233+00:00"
     },
     "barracas-central": {
       "slug": "barracas-central",
@@ -39,8 +39,8 @@
       "titulos": 0,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:53:46.380135+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:17:47.444788+00:00"
     },
     "belgrano": {
       "slug": "belgrano",
@@ -49,8 +49,8 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:53:52.547898+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:17:53.573085+00:00"
     },
     "boca-juniors": {
       "slug": "boca-juniors",
@@ -59,8 +59,8 @@
       "titulos": 35,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:53:58.779945+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:17:59.739737+00:00"
     },
     "central-cordoba-santiago": {
       "slug": "central-cordoba-santiago",
@@ -69,8 +69,8 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:54:04.916004+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:18:05.850362+00:00"
     },
     "defensa-y-justicia": {
       "slug": "defensa-y-justicia",
@@ -79,8 +79,8 @@
       "titulos": 0,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:54:11.042064+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:18:11.982424+00:00"
     },
     "deportivo-riestra": {
       "slug": "deportivo-riestra",
@@ -89,8 +89,8 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:54:17.161926+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:18:18.103061+00:00"
     },
     "estudiantes-de-la-plata": {
       "slug": "estudiantes-de-la-plata",
@@ -99,8 +99,8 @@
       "titulos": 7,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:54:23.396195+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:18:24.259920+00:00"
     },
     "gimnasia-la-plata": {
       "slug": "gimnasia-la-plata",
@@ -109,8 +109,8 @@
       "titulos": 1,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:54:29.594193+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:18:30.387062+00:00"
     },
     "godoy-cruz": {
       "slug": "godoy-cruz",
@@ -119,8 +119,8 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:54:35.821911+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:18:36.534521+00:00"
     },
     "huracan": {
       "slug": "huracan",
@@ -129,8 +129,8 @@
       "titulos": 5,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:54:42.019626+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:18:42.682485+00:00"
     },
     "independiente": {
       "slug": "independiente",
@@ -139,8 +139,8 @@
       "titulos": 16,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:54:48.159866+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:18:48.789785+00:00"
     },
     "independiente-rivadavia": {
       "slug": "independiente-rivadavia",
@@ -149,8 +149,8 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:54:54.354748+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:18:54.897870+00:00"
     },
     "instituto": {
       "slug": "instituto",
@@ -159,8 +159,8 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:55:00.494683+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:19:01.005086+00:00"
     },
     "lanus": {
       "slug": "lanus",
@@ -169,8 +169,8 @@
       "titulos": 2,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:55:06.639672+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:19:07.163184+00:00"
     },
     "newells-old-boys": {
       "slug": "newells-old-boys",
@@ -179,8 +179,8 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:55:12.786218+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:19:13.321947+00:00"
     },
     "platense": {
       "slug": "platense",
@@ -189,28 +189,28 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:55:18.928991+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:19:19.471028+00:00"
     },
     "racing-club": {
       "slug": "racing-club",
       "pagina": "Racing Club",
       "url": "https://es.wikipedia.org/wiki/Racing_Club#Títulos_oficiales",
-      "titulos": null,
-      "fuente": "sin-datos",
-      "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:55:25.055615+00:00"
+      "titulos": 18,
+      "fuente": "wikipedia",
+      "sin_fallback": false,
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:19:25.584473+00:00"
     },
     "river-plate": {
       "slug": "river-plate",
       "pagina": "Club Atlético River Plate",
       "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_River_Plate#Títulos_oficiales",
-      "titulos": 38,
-      "fuente": "wikipedia",
-      "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:55:31.244148+00:00"
+      "titulos": null,
+      "fuente": "sin-datos",
+      "sin_fallback": true,
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:19:31.762987+00:00"
     },
     "rosario-central": {
       "slug": "rosario-central",
@@ -219,18 +219,18 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:55:37.431010+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:19:37.904901+00:00"
     },
     "san-lorenzo": {
       "slug": "san-lorenzo",
       "pagina": "Club Atlético San Lorenzo de Almagro",
       "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_San_Lorenzo_de_Almagro#Títulos_oficiales",
-      "titulos": 15,
-      "fuente": "wikipedia",
-      "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:55:43.567437+00:00"
+      "titulos": null,
+      "fuente": "sin-datos",
+      "sin_fallback": true,
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:19:44.046929+00:00"
     },
     "san-martin-san-juan": {
       "slug": "san-martin-san-juan",
@@ -239,8 +239,8 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:55:49.681484+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:19:50.187709+00:00"
     },
     "sarmiento-junin": {
       "slug": "sarmiento-junin",
@@ -249,8 +249,8 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:55:55.821973+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:19:56.308115+00:00"
     },
     "talleres-de-cordoba": {
       "slug": "talleres-de-cordoba",
@@ -259,8 +259,8 @@
       "titulos": 0,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:56:02.080540+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:20:02.477846+00:00"
     },
     "tigre": {
       "slug": "tigre",
@@ -269,8 +269,8 @@
       "titulos": 0,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:56:08.251896+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:20:08.621453+00:00"
     },
     "union-santa-fe": {
       "slug": "union-santa-fe",
@@ -279,8 +279,8 @@
       "titulos": null,
       "fuente": "sin-datos",
       "sin_fallback": true,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:56:14.383941+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:20:14.721656+00:00"
     },
     "velez-sarsfield": {
       "slug": "velez-sarsfield",
@@ -289,8 +289,8 @@
       "titulos": 11,
       "fuente": "wikipedia",
       "sin_fallback": false,
-      "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
-      "actualizado": "2026-05-28T03:56:20.530465+00:00"
+      "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
+      "actualizado": "2026-05-28T04:20:20.855235+00:00"
     }
   }
 }
