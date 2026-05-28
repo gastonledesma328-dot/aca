@@ -41,6 +41,7 @@ def html_page(competition_id, title):
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../competicion.css" />
     <link rel="stylesheet" href="../competicion-compact.css" />
+    <link rel="stylesheet" href="../competicion-anual-clean.css" />
   </head>
 
   <body data-competition-id="{competition_id}">
@@ -144,8 +145,11 @@ def html_page(competition_id, title):
     </main>
 
     <footer>Desarrollado por <strong>AzWink</strong></footer>
+    <script src="../no-espn-text.js"></script>
     <script src="../competicion.js"></script>
+    <script src="../competicion-bracket-lines.js"></script>
     <script src="../competicion-header-clean.js"></script>
+    <script src="../competicion-bracket-order-fix.js"></script>
   </body>
 </html>
 '''
