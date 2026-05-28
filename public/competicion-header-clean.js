@@ -42,6 +42,7 @@ function iniciarControlCuadro() {
       window.setTimeout(actualizarVisibilidadCuadro, 0);
       window.setTimeout(actualizarVisibilidadCuadro, 80);
       window.setTimeout(aplicarPenalesUltimosResultados, 120);
+      window.setTimeout(corregirOrdenBracketLigaProfesional, 180);
     });
   });
 
@@ -92,8 +93,6 @@ function textoPenales(match) {
   const localNum = Number(local);
   const visitanteNum = Number(visitante);
 
-  // Solo mostramos penales si hay marcador real de tanda para ambos equipos.
-  // Penales 0 - 0 no es una tanda disputada: es dato vacío/mal interpretado.
   if (
     esNumeroPenales(local) &&
     esNumeroPenales(visitante) &&
@@ -108,27 +107,36 @@ function textoPenales(match) {
 
 let penalesCache = null;
 let penalesCargando = false;
+let competicionCache = null;
+let competicionCargando = false;
 
-async function cargarPenalesCompeticion() {
-  if (penalesCache || penalesCargando) return penalesCache || [];
+async function cargarCompeticionActual() {
+  if (competicionCache || competicionCargando) return competicionCache;
 
   const competitionId = obtenerCompetitionIdActual();
-  if (!competitionId) return [];
+  if (!competitionId) return null;
 
-  penalesCargando = true;
+  competicionCargando = true;
 
   try {
     const response = await fetch(`../data/competiciones.json?v=${Date.now()}`, { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
-    const competition = (data.competiciones || []).find((item) => item.id === competitionId || item.slug === competitionId);
-    penalesCache = competition?.partidos?.ultimos || [];
+    competicionCache = (data.competiciones || []).find((item) => item.id === competitionId || item.slug === competitionId) || null;
   } catch (error) {
-    penalesCache = [];
+    competicionCache = null;
   } finally {
-    penalesCargando = false;
+    competicionCargando = false;
   }
 
+  return competicionCache;
+}
+
+async function cargarPenalesCompeticion() {
+  if (penalesCache || penalesCargando) return penalesCache || [];
+
+  const competition = await cargarCompeticionActual();
+  penalesCache = competition?.partidos?.ultimos || [];
   return penalesCache;
 }
 
@@ -169,11 +177,160 @@ async function aplicarPenalesUltimosResultados() {
   });
 }
 
+function normalizarTextoBracket(value) {
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function teamKey(team) {
+  if (!team) return "";
+  return String(team.id || team.slug || normalizarTextoBracket(team.nombre || team.nombre_corto || ""));
+}
+
+function teamNameBracket(team) {
+  return team?.nombre || team?.nombre_corto || "Por definir";
+}
+
+function teamLogoBracket(team) {
+  const logo = team?.logo || "";
+  return logo
+    ? `<img class="competition-team-logo" src="${logo.replace(/"/g, "&quot;")}" alt="" loading="lazy" />`
+    : `<span class="competition-team-logo"></span>`;
+}
+
+function equiposDelPartido(match) {
+  return [match?.local?.equipo, match?.visitante?.equipo].filter(Boolean);
+}
+
+function ganadorDelPartido(match) {
+  if (match?.ganador) return match.ganador;
+  if (match?.local?.ganador) return match.local.equipo;
+  if (match?.visitante?.ganador) return match.visitante.equipo;
+  return null;
+}
+
+function keysEsperadasDesdePrevios(prevMatches) {
+  const keys = [];
+  (prevMatches || []).forEach((match) => {
+    const winner = ganadorDelPartido(match);
+    if (winner) {
+      const key = teamKey(winner);
+      if (key) keys.push(key);
+      return;
+    }
+
+    equiposDelPartido(match).forEach((team) => {
+      const key = teamKey(team);
+      if (key) keys.push(key);
+    });
+  });
+  return [...new Set(keys)];
+}
+
+function matchContieneKey(match, key) {
+  return equiposDelPartido(match).some((team) => teamKey(team) === key);
+}
+
+function ordenarFasePorLlaves(prevOrdered, phaseMatches, slots) {
+  const remaining = Array.isArray(phaseMatches) ? [...phaseMatches] : [];
+  const ordered = [];
+
+  for (let slot = 0; slot < slots; slot += 1) {
+    const prevPair = prevOrdered.slice(slot * 2, slot * 2 + 2);
+    const expected = keysEsperadasDesdePrevios(prevPair);
+
+    let foundIndex = -1;
+    if (expected.length) {
+      foundIndex = remaining.findIndex((match) => expected.filter((key) => matchContieneKey(match, key)).length >= Math.min(2, expected.length));
+      if (foundIndex < 0) {
+        foundIndex = remaining.findIndex((match) => expected.some((key) => matchContieneKey(match, key)));
+      }
+    }
+
+    if (foundIndex < 0) foundIndex = remaining.findIndex((match) => !match.empty);
+    ordered.push(foundIndex >= 0 ? remaining.splice(foundIndex, 1)[0] : { empty: true });
+  }
+
+  return ordered;
+}
+
+function normalizePhaseMatchesBracket(matches, slots) {
+  const list = Array.isArray(matches) ? matches.slice(0, slots) : [];
+  while (list.length < slots) list.push({ empty: true });
+  return list;
+}
+
+function ordenarFasesEliminacion(fases) {
+  const octavos = normalizePhaseMatchesBracket(fases.octavos || [], 8);
+  const cuartos = ordenarFasePorLlaves(octavos, fases.cuartos || [], 4);
+  const semis = ordenarFasePorLlaves(cuartos, fases.semis || [], 2);
+  const final = ordenarFasePorLlaves(semis, fases.final || [], 1);
+  return { octavos, cuartos, semis, final };
+}
+
+function renderBracketTeamRowFix(team, score, winner) {
+  const empty = !team || (!team.nombre && !team.nombre_corto && !team.logo);
+  return `
+    <div class="competition-bracket-team-row ${winner ? "is-winner" : ""} ${empty ? "is-empty-team" : ""}">
+      <span class="competition-bracket-team-name">
+        ${empty ? `<span class="competition-team-logo"></span>` : teamLogoBracket(team)}
+        <span>${empty ? "Por definir" : teamNameBracket(team)}</span>
+      </span>
+      <span class="competition-bracket-team-score">${score == null ? "" : String(score)}</span>
+    </div>`;
+}
+
+function renderBracketMatchFix(match, phaseKey) {
+  const local = match?.local?.equipo || null;
+  const visitante = match?.visitante?.equipo || null;
+  return `
+    <article class="competition-bracket-match ${match?.empty ? "is-empty" : ""}">
+      ${phaseKey === "final" && !match?.empty ? `<span class="competition-bracket-badge">🏆 Final</span>` : ""}
+      ${renderBracketTeamRowFix(local, match?.local?.marcador, match?.local?.ganador)}
+      ${renderBracketTeamRowFix(visitante, match?.visitante?.marcador, match?.visitante?.ganador)}
+    </article>`;
+}
+
+function renderBracketPhaseFix(key, title, matches) {
+  return `
+    <section class="competition-bracket-phase" data-phase="${key}">
+      <h3>${title}</h3>
+      <div class="competition-bracket-list">
+        ${matches.map((match) => renderBracketMatchFix(match, key)).join("")}
+      </div>
+    </section>`;
+}
+
+async function corregirOrdenBracketLigaProfesional() {
+  if (obtenerCompetitionIdActual() !== "liga-profesional") return;
+
+  const tournament = document.querySelector(".competition-bracket-tournament");
+  if (!tournament || tournament.dataset.llavesCorregidas === "1") return;
+
+  const competition = await cargarCompeticionActual();
+  const fases = competition?.especial?.eliminatorias?.fases;
+  if (!fases) return;
+
+  const ordered = ordenarFasesEliminacion(fases);
+  tournament.innerHTML = `
+    ${renderBracketPhaseFix("octavos", "Octavos de final", ordered.octavos)}
+    ${renderBracketPhaseFix("cuartos", "Cuartos de final", ordered.cuartos)}
+    ${renderBracketPhaseFix("semis", "Semifinales", ordered.semis)}
+    ${renderBracketPhaseFix("final", "Final", ordered.final)}
+  `;
+  tournament.dataset.llavesCorregidas = "1";
+}
+
 function mantenimientoCompeticionSeguro() {
   limpiarCabezaCompeticion();
   iniciarControlCuadro();
   actualizarVisibilidadCuadro();
   aplicarPenalesUltimosResultados();
+  corregirOrdenBracketLigaProfesional();
 }
 
 mantenimientoCompeticionSeguro();
@@ -183,6 +340,7 @@ document.addEventListener("click", (event) => {
     window.setTimeout(mantenimientoCompeticionSeguro, 0);
     window.setTimeout(mantenimientoCompeticionSeguro, 80);
     window.setTimeout(aplicarPenalesUltimosResultados, 250);
+    window.setTimeout(corregirOrdenBracketLigaProfesional, 300);
   }
 });
 
