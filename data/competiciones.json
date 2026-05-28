@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-05-28T02:44:24.354939+00:00",
+  "actualizado": "2026-05-28T02:53:31.064767+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:17.152755+00:00",
+      "actualizado": "2026-05-28T02:53:18.146901+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -37,14 +37,7 @@
           "abreviatura": "ALDO",
           "slug": "arg.aldosivi",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
-          "color": "288A00",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "sin-datos",
-            "url": "",
-            "criterio": ""
-          }
+          "color": "288A00"
         },
         {
           "id": "3",
@@ -54,14 +47,7 @@
           "abreviatura": "ARGJ",
           "slug": "arg.argentinos_juniors",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
-          "color": "C60000",
-          "titulos": {
-            "total": 3,
-            "liga": 3,
-            "fuente": "wikipedia",
-            "url": "https://es.wikipedia.org/wiki/Asociaci%C3%B3n_Atl%C3%A9tica_Argentinos_Juniors#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "C60000"
         },
         {
           "id": "9785",
@@ -71,14 +57,7 @@
           "abreviatura": "CAT",
           "slug": "arg.atltico_tucumn",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
-          "color": "0093EC",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Tucum%C3%A1n#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "0093EC"
         },
         {
           "id": "235",
@@ -88,14 +67,7 @@
           "abreviatura": "BAN",
           "slug": "arg.banfield",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
-          "color": "288A00",
-          "titulos": {
-            "total": 1,
-            "liga": 1,
-            "fuente": "wikipedia",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Banfield#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "288A00"
         },
         {
           "id": "10060",
@@ -105,14 +77,7 @@
           "abreviatura": "BAR",
           "slug": "arg.barracas_central",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
-          "color": "000000",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "wikipedia",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Barracas_Central#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "000000"
         },
         {
           "id": "4",
@@ -122,14 +87,7 @@
           "abreviatura": "BEL",
           "slug": "arg.belgrano_de_cordoba",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
-          "color": "0060f0",
-          "titulos": {
-            "total": 1,
-            "liga": 1,
-            "fuente": "wikipedia",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Belgrano#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "0060f0"
         },
         {
           "id": "5",
@@ -139,14 +97,7 @@
           "abreviatura": "CABJ",
           "slug": "arg.boca_juniors",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
-          "color": "fcb000",
-          "titulos": {
-            "total": 35,
-            "liga": 35,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Boca_Juniors#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "fcb000"
         },
         {
           "id": "11989",
@@ -156,14 +107,7 @@
           "abreviatura": "CTR",
           "slug": "arg.ctral._crdoba_se",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
-          "color": "000000",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "sin-datos",
-            "url": "",
-            "criterio": ""
-          }
+          "color": "000000"
         },
         {
           "id": "8950",
@@ -173,14 +117,7 @@
           "abreviatura": "DYJ",
           "slug": "arg.defensa_y_justicia",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-          "color": "ffff00",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Social_y_Deportivo_Defensa_y_Justicia#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "ffff00"
         },
         {
           "id": "17702",
@@ -190,14 +127,7 @@
           "abreviatura": "RIE",
           "slug": "deportivo_riestra",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
-          "color": "212121",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "wikipedia",
-            "url": "https://es.wikipedia.org/wiki/Deportivo_Riestra_Asociaci%C3%B3n_de_Fomento_Barrio_Col%C3%B3n#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "212121"
         },
         {
           "id": "8",
@@ -207,14 +137,7 @@
           "abreviatura": "EST",
           "slug": "arg.estudiantes_la_plata",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
-          "color": "C60000",
-          "titulos": {
-            "total": 7,
-            "liga": 7,
-            "fuente": "wikipedia",
-            "url": "https://es.wikipedia.org/wiki/Club_Estudiantes_de_La_Plata#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "C60000"
         },
         {
           "id": "19685",
@@ -224,14 +147,7 @@
           "abreviatura": "AAE",
           "slug": "estudiantes_de_ro_cuarto",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19685.png",
-          "color": "008bd0",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "sin-datos",
-            "url": "",
-            "criterio": ""
-          }
+          "color": "008bd0"
         },
         {
           "id": "11972",
@@ -241,14 +157,7 @@
           "abreviatura": "GMZ",
           "slug": "arg.gimnasia_m",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
-          "color": "000000",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "sin-datos",
-            "url": "",
-            "criterio": ""
-          }
+          "color": "000000"
         },
         {
           "id": "9",
@@ -258,14 +167,7 @@
           "abreviatura": "GLP",
           "slug": "arg.gimnasia_la_plata",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
-          "color": "288A00",
-          "titulos": {
-            "total": 1,
-            "liga": 1,
-            "fuente": "wikipedia",
-            "url": "https://es.wikipedia.org/wiki/Club_de_Gimnasia_y_Esgrima_La_Plata#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "288A00"
         },
         {
           "id": "10",
@@ -275,14 +177,7 @@
           "abreviatura": "HUR",
           "slug": "arg.huracan",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
-          "color": "C60000",
-          "titulos": {
-            "total": 5,
-            "liga": 5,
-            "fuente": "wikipedia",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Hurac%C3%A1n#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "C60000"
         },
         {
           "id": "11",
@@ -292,14 +187,7 @@
           "abreviatura": "IND",
           "slug": "arg.independiente",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
-          "color": "C60000",
-          "titulos": {
-            "total": 16,
-            "liga": 16,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Independiente#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "C60000"
         },
         {
           "id": "9744",
@@ -309,14 +197,7 @@
           "abreviatura": "RIV",
           "slug": "arg.independiente_rivadavia",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-          "color": "000061",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Sportivo_Independiente_Rivadavia#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "000061"
         },
         {
           "id": "2975",
@@ -326,14 +207,7 @@
           "abreviatura": "IACC",
           "slug": "arg.instituto_de_cordoba",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
-          "color": "C60000",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Instituto_Atl%C3%A9tico_Central_C%C3%B3rdoba#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "C60000"
         },
         {
           "id": "12",
@@ -343,14 +217,7 @@
           "abreviatura": "LAN",
           "slug": "arg.lanus",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
-          "color": "9f0000",
-          "titulos": {
-            "total": 2,
-            "liga": 2,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Lan%C3%BAs#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "9f0000"
         },
         {
           "id": "14",
@@ -360,14 +227,7 @@
           "abreviatura": "NOB",
           "slug": "arg.newells_old_boys",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-          "color": "000000",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "sin-datos",
-            "url": "",
-            "criterio": ""
-          }
+          "color": "000000"
         },
         {
           "id": "7764",
@@ -377,14 +237,7 @@
           "abreviatura": "PLA",
           "slug": "betbrain.platense",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
-          "color": "000000",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Platense#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "000000"
         },
         {
           "id": "15",
@@ -394,14 +247,7 @@
           "abreviatura": "RAC",
           "slug": "arg.racing_club",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
-          "color": "409fff",
-          "titulos": {
-            "total": 18,
-            "liga": 18,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Racing_Club#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "409fff"
         },
         {
           "id": "16",
@@ -411,14 +257,7 @@
           "abreviatura": "RIV",
           "slug": "arg.river_plate",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
-          "color": "C60000",
-          "titulos": {
-            "total": 38,
-            "liga": 38,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_River_Plate#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "C60000"
         },
         {
           "id": "17",
@@ -428,14 +267,7 @@
           "abreviatura": "ROS",
           "slug": "arg.rosario_central",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
-          "color": "ffff00",
-          "titulos": {
-            "total": 4,
-            "liga": 4,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Rosario_Central#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "ffff00"
         },
         {
           "id": "18",
@@ -445,14 +277,7 @@
           "abreviatura": "SLO",
           "slug": "arg.san_lorenzo",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
-          "color": "0060f0",
-          "titulos": {
-            "total": 15,
-            "liga": 15,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_San_Lorenzo_de_Almagro#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "0060f0"
         },
         {
           "id": "10158",
@@ -462,14 +287,7 @@
           "abreviatura": "SARM",
           "slug": "arg.sarmiento_de_junn",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10158.png",
-          "color": "288A00",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Sarmiento_%28Jun%C3%ADn%29#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "288A00"
         },
         {
           "id": "19",
@@ -479,14 +297,7 @@
           "abreviatura": "TALL",
           "slug": "arg.talleres_de_cordoba",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-          "color": "000000",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "sin-datos",
-            "url": "",
-            "criterio": ""
-          }
+          "color": "000000"
         },
         {
           "id": "7767",
@@ -496,14 +307,7 @@
           "abreviatura": "TIG",
           "slug": "arg.tigre",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
-          "color": "C60000",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Tigre#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "C60000"
         },
         {
           "id": "20",
@@ -513,14 +317,7 @@
           "abreviatura": "USF",
           "slug": "arg.union_de_santa_fe",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
-          "color": "C60000",
-          "titulos": {
-            "total": 0,
-            "liga": 0,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Uni%C3%B3n_%28Santa_Fe%29#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "C60000"
         },
         {
           "id": "21",
@@ -530,14 +327,7 @@
           "abreviatura": "VEL",
           "slug": "arg.velez_sarsfield",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
-          "color": "0070b0",
-          "titulos": {
-            "total": 10,
-            "liga": 10,
-            "fuente": "fallback",
-            "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield#Títulos_oficiales",
-            "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
-          }
+          "color": "0070b0"
         }
       ],
       "tabla": [
@@ -32096,7 +31886,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:17.470380+00:00",
+      "actualizado": "2026-05-28T02:53:18.712526+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -33596,7 +33386,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:19.060570+00:00",
+      "actualizado": "2026-05-28T02:53:20.754936+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -34475,7 +34265,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:19.326051+00:00",
+      "actualizado": "2026-05-28T02:53:21.231175+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -34486,8 +34276,8 @@
         "equipos": 44,
         "posiciones": 32,
         "partidos_scoreboard": 6,
-        "ultimos": 6,
-        "proximos": 0
+        "ultimos": 2,
+        "proximos": 4
       },
       "equipos": [
         {
@@ -35736,210 +35526,6 @@
       "partidos": {
         "ultimos": [
           {
-            "id": "401865564",
-            "nombre": "Independiente Rivadavia at Bolívar",
-            "fecha": "2026-05-28T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "independiente rivadavia at bolivar riv bol group stage",
-            "local": {
-              "equipo": {
-                "id": "2681",
-                "uid": "s:600~t:2681",
-                "nombre": "Bolívar",
-                "nombre_corto": "Bolívar",
-                "abreviatura": "BOL",
-                "slug": "bolivar",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2681.png",
-                "color": "3c96c4"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "9744",
-                "uid": "s:600~t:9744",
-                "nombre": "Independiente Rivadavia",
-                "nombre_corto": "Ind. Rivadavia",
-                "abreviatura": "RIV",
-                "slug": "independiente-rivadavia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-                "color": "000061"
-              },
-              "localia": "away",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865564/independiente-rivadavia-bolivar",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-28"
-          },
-          {
-            "id": "401865552",
-            "nombre": "Platense at Corinthians",
-            "fecha": "2026-05-28T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "platense at corinthians pla cor group stage",
-            "local": {
-              "equipo": {
-                "id": "874",
-                "uid": "s:600~t:874",
-                "nombre": "Corinthians",
-                "nombre_corto": "Corinthians",
-                "abreviatura": "COR",
-                "slug": "corinthians",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "7764",
-                "uid": "s:600~t:7764",
-                "nombre": "Platense",
-                "nombre_corto": "Platense",
-                "abreviatura": "PLA",
-                "slug": "platense",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865552/platense-corinthians",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-28"
-          },
-          {
-            "id": "401865563",
-            "nombre": "Deportivo La Guaira at Fluminense",
-            "fecha": "2026-05-28T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "deportivo la guaira at fluminense dep flu group stage",
-            "local": {
-              "equipo": {
-                "id": "3445",
-                "uid": "s:600~t:3445",
-                "nombre": "Fluminense",
-                "nombre_corto": "Fluminense",
-                "abreviatura": "FLU",
-                "slug": "fluminense",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3445.png",
-                "color": "7E0202"
-              },
-              "localia": "home",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "17090",
-                "uid": "s:600~t:17090",
-                "nombre": "Deportivo La Guaira",
-                "nombre_corto": "La Guaira",
-                "abreviatura": "DEP",
-                "slug": "deportivo-la-guaira",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
-                "color": "fc4401"
-              },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865563/deportivo-la-guaira-fluminense",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-28"
-          },
-          {
-            "id": "401865556",
-            "nombre": "Independiente Santa Fe at Peñarol",
-            "fecha": "2026-05-28T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "independiente santa fe at penarol sfe pen group stage",
-            "local": {
-              "equipo": {
-                "id": "2683",
-                "uid": "s:600~t:2683",
-                "nombre": "Peñarol",
-                "nombre_corto": "Peñarol",
-                "abreviatura": "PEN",
-                "slug": "penarol",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2683.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "5488",
-                "uid": "s:600~t:5488",
-                "nombre": "Independiente Santa Fe",
-                "nombre_corto": "Santa Fe",
-                "abreviatura": "SFE",
-                "slug": "independiente-santa-fe",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5488.png",
-                "color": "E33439"
-              },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865556/independiente-santa-fe-penarol",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-28"
-          },
-          {
             "id": "401865562",
             "nombre": "Rosario Central at Independiente del Valle",
             "fecha": "2026-05-27T22:00Z",
@@ -36042,7 +35628,212 @@
             "fecha_grupo": "2026-05-27"
           }
         ],
-        "proximos": [],
+        "proximos": [
+          {
+            "id": "401865564",
+            "nombre": "Independiente Rivadavia at Bolívar",
+            "fecha": "2026-05-28T00:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "independiente rivadavia at bolivar riv bol group stage",
+            "local": {
+              "equipo": {
+                "id": "2681",
+                "uid": "s:600~t:2681",
+                "nombre": "Bolívar",
+                "nombre_corto": "Bolívar",
+                "abreviatura": "BOL",
+                "slug": "bolivar",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2681.png",
+                "color": "3c96c4"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "9744",
+                "uid": "s:600~t:9744",
+                "nombre": "Independiente Rivadavia",
+                "nombre_corto": "Ind. Rivadavia",
+                "abreviatura": "RIV",
+                "slug": "independiente-rivadavia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
+                "color": "000061"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865564/independiente-rivadavia-bolivar",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-28"
+          },
+          {
+            "id": "401865552",
+            "nombre": "Platense at Corinthians",
+            "fecha": "2026-05-28T00:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "platense at corinthians pla cor group stage",
+            "local": {
+              "equipo": {
+                "id": "874",
+                "uid": "s:600~t:874",
+                "nombre": "Corinthians",
+                "nombre_corto": "Corinthians",
+                "abreviatura": "COR",
+                "slug": "corinthians",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/874.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "7764",
+                "uid": "s:600~t:7764",
+                "nombre": "Platense",
+                "nombre_corto": "Platense",
+                "abreviatura": "PLA",
+                "slug": "platense",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865552/platense-corinthians",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-28"
+          },
+          {
+            "id": "401865563",
+            "nombre": "Deportivo La Guaira at Fluminense",
+            "fecha": "2026-05-28T00:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "deportivo la guaira at fluminense dep flu group stage",
+            "local": {
+              "equipo": {
+                "id": "3445",
+                "uid": "s:600~t:3445",
+                "nombre": "Fluminense",
+                "nombre_corto": "Fluminense",
+                "abreviatura": "FLU",
+                "slug": "fluminense",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3445.png",
+                "color": "7E0202"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "17090",
+                "uid": "s:600~t:17090",
+                "nombre": "Deportivo La Guaira",
+                "nombre_corto": "La Guaira",
+                "abreviatura": "DEP",
+                "slug": "deportivo-la-guaira",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
+                "color": "fc4401"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865563/deportivo-la-guaira-fluminense",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-28"
+          },
+          {
+            "id": "401865556",
+            "nombre": "Independiente Santa Fe at Peñarol",
+            "fecha": "2026-05-28T00:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "independiente santa fe at penarol sfe pen group stage",
+            "local": {
+              "equipo": {
+                "id": "2683",
+                "uid": "s:600~t:2683",
+                "nombre": "Peñarol",
+                "nombre_corto": "Peñarol",
+                "abreviatura": "PEN",
+                "slug": "penarol",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2683.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "5488",
+                "uid": "s:600~t:5488",
+                "nombre": "Independiente Santa Fe",
+                "nombre_corto": "Santa Fe",
+                "abreviatura": "SFE",
+                "slug": "independiente-santa-fe",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5488.png",
+                "color": "E33439"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865556/independiente-santa-fe-penarol",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-28"
+          }
+        ],
         "todos": [
           {
             "id": "401865562",
@@ -36150,9 +35941,9 @@
             "id": "401865564",
             "nombre": "Independiente Rivadavia at Bolívar",
             "fecha": "2026-05-28T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
             "clasificacion_texto": "independiente rivadavia at bolivar riv bol group stage",
             "local": {
@@ -36167,7 +35958,7 @@
                 "color": "3c96c4"
               },
               "localia": "home",
-              "marcador": "1",
+              "marcador": "0",
               "ganador": false,
               "penales": "0"
             },
@@ -36183,8 +35974,8 @@
                 "color": "000061"
               },
               "localia": "away",
-              "marcador": "3",
-              "ganador": true,
+              "marcador": "0",
+              "ganador": false,
               "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401865564/independiente-rivadavia-bolivar",
@@ -36201,9 +35992,9 @@
             "id": "401865552",
             "nombre": "Platense at Corinthians",
             "fecha": "2026-05-28T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
             "clasificacion_texto": "platense at corinthians pla cor group stage",
             "local": {
@@ -36234,8 +36025,8 @@
                 "color": "000000"
               },
               "localia": "away",
-              "marcador": "2",
-              "ganador": true,
+              "marcador": "0",
+              "ganador": false,
               "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401865552/platense-corinthians",
@@ -36252,9 +36043,9 @@
             "id": "401865563",
             "nombre": "Deportivo La Guaira at Fluminense",
             "fecha": "2026-05-28T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
             "clasificacion_texto": "deportivo la guaira at fluminense dep flu group stage",
             "local": {
@@ -36269,8 +36060,8 @@
                 "color": "7E0202"
               },
               "localia": "home",
-              "marcador": "3",
-              "ganador": true,
+              "marcador": "0",
+              "ganador": false,
               "penales": "0"
             },
             "visitante": {
@@ -36285,7 +36076,7 @@
                 "color": "fc4401"
               },
               "localia": "away",
-              "marcador": "1",
+              "marcador": "0",
               "ganador": false,
               "penales": "0"
             },
@@ -36303,9 +36094,9 @@
             "id": "401865556",
             "nombre": "Independiente Santa Fe at Peñarol",
             "fecha": "2026-05-28T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
             "clasificacion_texto": "independiente santa fe at penarol sfe pen group stage",
             "local": {
@@ -36336,8 +36127,8 @@
                 "color": "E33439"
               },
               "localia": "away",
-              "marcador": "1",
-              "ganador": true,
+              "marcador": "0",
+              "ganador": false,
               "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401865556/independiente-santa-fe-penarol",
@@ -36363,7 +36154,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:19.690556+00:00",
+      "actualizado": "2026-05-28T02:53:21.749038+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -38495,7 +38286,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:19.867955+00:00",
+      "actualizado": "2026-05-28T02:53:22.289018+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -39892,7 +39683,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:20.110483+00:00",
+      "actualizado": "2026-05-28T02:53:22.662925+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -41289,7 +41080,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:20.300179+00:00",
+      "actualizado": "2026-05-28T02:53:23.282520+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -42687,7 +42478,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:20.489918+00:00",
+      "actualizado": "2026-05-28T02:53:23.655229+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -43945,7 +43736,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:20.797698+00:00",
+      "actualizado": "2026-05-28T02:53:23.982803+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -44840,7 +44631,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:21.037827+00:00",
+      "actualizado": "2026-05-28T02:53:24.547025+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -47174,7 +46965,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:21.357910+00:00",
+      "actualizado": "2026-05-28T02:53:25.022622+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -49093,7 +48884,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:21.571134+00:00",
+      "actualizado": "2026-05-28T02:53:25.476597+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -50848,7 +50639,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:21.765470+00:00",
+      "actualizado": "2026-05-28T02:53:26.003259+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -51685,7 +51476,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:21.977183+00:00",
+      "actualizado": "2026-05-28T02:53:26.532274+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -53134,7 +52925,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:22.140681+00:00",
+      "actualizado": "2026-05-28T02:53:27.018685+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -54717,7 +54508,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:22.465408+00:00",
+      "actualizado": "2026-05-28T02:53:27.431563+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -56300,7 +56091,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:22.674670+00:00",
+      "actualizado": "2026-05-28T02:53:27.881282+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -57883,7 +57674,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:22.977756+00:00",
+      "actualizado": "2026-05-28T02:53:28.266818+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -59128,7 +58919,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:23.256296+00:00",
+      "actualizado": "2026-05-28T02:53:28.540617+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -59825,7 +59616,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:23.441125+00:00",
+      "actualizado": "2026-05-28T02:53:28.939673+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -60586,7 +60377,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:23.726642+00:00",
+      "actualizado": "2026-05-28T02:53:29.729939+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -61525,7 +61316,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:23.910843+00:00",
+      "actualizado": "2026-05-28T02:53:30.046079+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -62324,7 +62115,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:24.126711+00:00",
+      "actualizado": "2026-05-28T02:53:30.512076+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -63091,7 +62882,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-05-28T02:44:24.354925+00:00",
+      "actualizado": "2026-05-28T02:53:31.064752+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
