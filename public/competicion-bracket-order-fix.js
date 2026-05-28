@@ -1,16 +1,35 @@
 /* ================================
-   BRACKET LPF - ORDEN SIN VACÍOS
+   BRACKET LPF - ORDEN POR LLAVES REALES
 ================================ */
 
 (function () {
-  function keyTeam(team) {
-    if (!team) return "";
-    return String(team.id || team.slug || team.nombre || team.nombre_corto || "")
+  const OCTAVOS_ORDER_NAMES = [
+    ["Argentinos Juniors", "Lanús"],
+    ["Boca Juniors", "Huracán"],
+    ["Independiente Rivadavia", "Unión"],
+    ["Talleres", "Belgrano"],
+    ["Rosario Central", "Independiente"],
+    ["Estudiantes", "Racing"],
+    ["River Plate", "San Lorenzo"],
+    ["Vélez", "Gimnasia"],
+  ];
+
+  function normalizeText(value) {
+    return String(value || "")
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/[^a-z0-9]+/g, " ")
       .trim();
+  }
+
+  function keyTeam(team) {
+    if (!team) return "";
+    return normalizeText(team.id || team.slug || team.nombre || team.nombre_corto || "");
+  }
+
+  function nameKey(value) {
+    return normalizeText(value);
   }
 
   function teams(match) {
@@ -33,7 +52,22 @@
   function matchHasTeam(match, team) {
     const key = keyTeam(team);
     if (!key) return false;
-    return teams(match).some((t) => keyTeam(t) === key);
+    return teams(match).some((t) => keyTeam(t) === key || normalizeText(t.nombre || t.nombre_corto || "") === key);
+  }
+
+  function matchHasName(match, name) {
+    const key = nameKey(name);
+    if (!key) return false;
+    return teams(match).some((team) => {
+      const full = normalizeText(team?.nombre || "");
+      const short = normalizeText(team?.nombre_corto || "");
+      const slug = normalizeText(team?.slug || "");
+      return full.includes(key) || key.includes(full) || short.includes(key) || key.includes(short) || slug.includes(key) || key.includes(slug);
+    });
+  }
+
+  function findMatchByNames(matches, homeName, awayName) {
+    return (matches || []).find((match) => matchHasName(match, homeName) && matchHasName(match, awayName)) || null;
   }
 
   function findMatch(rawMatches, groupA, groupB) {
@@ -62,8 +96,6 @@
   function take(match, remaining) {
     let selected = match;
 
-    // Punto clave: si no hay coincidencia por nombres/IDs, no ponemos "Por definir".
-    // Usamos el siguiente partido real que quede para no vaciar cuartos, semis o final.
     if (!selected) {
       selected = remaining.find((item) => item && !item.empty) || null;
     }
@@ -82,13 +114,31 @@
     return list;
   }
 
+  function orderRoundOf16(octavosRaw) {
+    const remaining = [...(octavosRaw || [])];
+    const ordered = [];
+
+    OCTAVOS_ORDER_NAMES.forEach(([a, b]) => {
+      const found = findMatchByNames(remaining, a, b);
+      ordered.push(take(found, remaining));
+    });
+
+    return normalize(ordered, 8);
+  }
+
   function orderQuarterFinals(octavos, cuartosRaw) {
     const remaining = [...(cuartosRaw || [])];
+
+    // Si los octavos están ordenados como arriba:
+    // C1 = ganador O1 vs ganador O4
+    // C2 = ganador O2 vs ganador O3
+    // C3 = ganador O5 vs ganador O8
+    // C4 = ganador O6 vs ganador O7
     const relations = [
-      [0, 7],
-      [1, 6],
-      [2, 5],
-      [3, 4],
+      [0, 3],
+      [1, 2],
+      [4, 7],
+      [5, 6],
     ];
 
     return relations.map(([a, b]) => {
@@ -100,8 +150,8 @@
   function orderSemis(cuartos, semisRaw) {
     const remaining = [...(semisRaw || [])];
     const relations = [
-      [0, 3],
-      [1, 2],
+      [0, 1],
+      [2, 3],
     ];
 
     return relations.map(([a, b]) => {
@@ -122,7 +172,7 @@
     const tournament = document.querySelector(".competition-bracket-tournament");
     if (!tournament) return;
 
-    const octavos = normalize(fases.octavos || [], 8);
+    const octavos = orderRoundOf16(fases.octavos || []);
     const cuartos = orderQuarterFinals(octavos, fases.cuartos || []);
     const semis = orderSemis(cuartos, fases.semis || []);
     const final = orderFinal(semis, fases.final || []);
