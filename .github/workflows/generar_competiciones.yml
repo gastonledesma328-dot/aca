@@ -38,15 +38,14 @@ jobs:
           import time
           import unicodedata
           from datetime import datetime, timezone
-          from html import unescape
           from pathlib import Path
           from urllib.parse import quote
 
           import requests
 
-          API_URL = "https://es.wikipedia.org/w/api.php"
+          WIKI_API = "https://es.wikipedia.org/w/api.php"
           HEADERS = {
-              "User-Agent": "PartidosHoy/1.0 (GitHub Actions; títulos de clubes)",
+              "User-Agent": "PartidosHoy/1.0 (GitHub Actions; titulos de clubes)",
               "Accept": "application/json,text/plain,*/*",
           }
 
@@ -117,22 +116,10 @@ jobs:
           def now_iso():
               return datetime.now(timezone.utc).isoformat()
 
-          def strip_html(html):
-              html = re.sub(r"<script[\s\S]*?</script>", " ", str(html or ""), flags=re.I)
-              html = re.sub(r"<style[\s\S]*?</style>", " ", html, flags=re.I)
-              text = re.sub(r"<[^>]+>", " ", html)
-              return re.sub(r"\s+", " ", unescape(text)).strip()
-
-          def wiki_page_text(page):
-              params = {
-                  "action": "parse",
-                  "page": page,
-                  "prop": "text",
-                  "format": "json",
-                  "redirects": "1",
-              }
+          def wiki_get(params):
               for attempt in range(1, 6):
-                  response = requests.get(API_URL, params=params, headers=HEADERS, timeout=35)
+                  response = requests.get(WIKI_API, params=params, headers=HEADERS, timeout=35)
+                  page = params.get("page") or params.get("titles") or params.get("srsearch") or ""
                   print(f"Wikipedia {response.status_code} {page} intento {attempt}")
                   if response.status_code == 429:
                       wait = 45 * attempt
@@ -142,31 +129,70 @@ jobs:
                   if not response.ok:
                       time.sleep(10 * attempt)
                       continue
-                  data = response.json()
-                  html = data.get("parse", {}).get("text", {}).get("*") or ""
-                  return strip_html(html)
-              return ""
+                  return response.json()
+              return None
+
+          def obtener_wikitext(title):
+              data = wiki_get({
+                  "action": "parse",
+                  "page": title,
+                  "prop": "wikitext",
+                  "format": "json",
+                  "redirects": "1",
+              })
+              if not isinstance(data, dict) or "error" in data:
+                  return ""
+              return data.get("parse", {}).get("wikitext", {}).get("*") or ""
+
+          def normalizar(text):
+              text = str(text or "").lower().strip()
+              text = unicodedata.normalize("NFD", text)
+              text = "".join(c for c in text if unicodedata.category(c) != "Mn")
+              text = re.sub(r"[^a-z0-9]+", " ", text)
+              return re.sub(r"\s+", " ", text).strip()
+
+          def limpiar_wikitext(text):
+              text = unicodedata.normalize("NFKC", str(text or ""))
+              text = text.replace("\xa0", " ")
+              text = re.sub(r"<!--.*?-->", " ", text, flags=re.S)
+              text = re.sub(r"<ref[^>/]*/>", " ", text, flags=re.I)
+              text = re.sub(r"<ref[^>]*>.*?</ref>", " ", text, flags=re.I | re.S)
+              text = re.sub(r"\{\{[^{}]*\}\}", " ", text)
+              text = text.replace("[[", " ").replace("]]", " ")
+              text = text.replace("|", " ")
+              return re.sub(r"\s+", " ", text).strip()
 
           def in_limits(slug, value):
               low, high = TITLE_LIMITS.get(slug, (0, 80))
               return low <= int(value) <= high
 
-          def extract_titles(slug, text):
-              raw = str(text or "")
-              raw = unicodedata.normalize("NFKC", raw)
-              raw = raw.replace("\xa0", " ")
-              raw = re.sub(r"\s+", " ", raw)
+          def extraer_primera_division(slug, wikitext):
+              raw = limpiar_wikitext(wikitext)
 
-              raw_patterns = [
-                  r"Primera\s+Divisi[oó]n.{0,450}?\((\d+)\s*/\s*\d+\)",
-                  r"Liga\s+Argentina.{0,450}?\((\d+)\s*/\s*\d+\)",
-                  r"Campeonato\s+de\s+Primera.{0,450}?\((\d+)\s*/\s*\d+\)",
+              patrones_explicitos = [
+                  r"Primera\s+Divisi[oó]n.{0,500}?\((\d+)\s*/\s*\d+\)",
+                  r"Liga\s+Argentina.{0,500}?\((\d+)\s*/\s*\d+\)",
+                  r"Campeonato\s+de\s+Primera.{0,500}?\((\d+)\s*/\s*\d+\)",
+                  r"\((\d+)\s*/\s*\d+\).{0,160}?Primera\s+Divisi[oó]n",
+                  r"\((\d+)\s*/\s*\d+\).{0,160}?Liga\s+Argentina",
               ]
-              for pattern in raw_patterns:
-                  match = re.search(pattern, raw, flags=re.I)
-                  if match:
-                      value = int(match.group(1))
-                      return value if in_limits(slug, value) else None
+              for pat in patrones_explicitos:
+                  m = re.search(pat, raw, re.IGNORECASE)
+                  if m:
+                      n = int(m.group(1))
+                      return n if in_limits(slug, n) else None
+
+              # Patrones de texto tipo: "35 campeonatos de Primera División".
+              patrones_texto = [
+                  r"(\d+)\s+campeonatos?\s+de\s+(?:la\s+)?(?:Primera\s+Divisi[oó]n|Liga)",
+                  r"(\d+)\s+t[ií]tulos?\s+de\s+(?:la\s+)?(?:Primera\s+Divisi[oó]n|Liga)",
+                  r"Primera\s+Divisi[oó]n.{0,90}?(\d+)\s+campeonatos?",
+              ]
+              for pat in patrones_texto:
+                  m = re.search(pat, raw, re.IGNORECASE)
+                  if m:
+                      n = int(m.group(1))
+                      return n if in_limits(slug, n) else None
 
               return None
 
@@ -174,8 +200,8 @@ jobs:
           valid_titles = {}
 
           for slug, page in CLUBES.items():
-              text = wiki_page_text(page)
-              titles = extract_titles(slug, text)
+              wikitext = obtener_wikitext(page)
+              titles = extraer_primera_division(slug, wikitext)
               print(f"Titulos detectados {slug}: {titles}")
               info = {
                   "slug": slug,
@@ -184,7 +210,7 @@ jobs:
                   "titulos": titles,
                   "fuente": "wikipedia" if titles is not None else "sin-datos",
                   "sin_fallback": titles is None,
-                  "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
+                  "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Se toma el primer número de títulos/subcampeonatos, por ejemplo (35/23) => 35. Sin fallback manual.",
                   "actualizado": now_iso(),
               }
               clubes[slug] = info
@@ -194,7 +220,7 @@ jobs:
 
           payload = {
               "actualizado": now_iso(),
-              "criterio_general": "Sin fallback manual. Solo títulos de Primera División encontrados explícitamente en Wikipedia. Se ignora el número de subcampeonatos.",
+              "criterio_general": "Sin fallback manual. Solo títulos de Primera División encontrados en wikitext de Wikipedia. Se ignora el número de subcampeonatos.",
               "clubes": clubes,
           }
 
@@ -217,7 +243,7 @@ jobs:
                               "total": total,
                               "liga": total,
                               "fuente": "wikipedia",
-                              "criterio": "Solo primer número del par títulos/subcampeonatos en Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
+                              "criterio": "Wikitext de Wikipedia. Solo títulos de Primera División. Ejemplo: (35/23) => 35. Sin fallback manual.",
                           }
                       else:
                           team.pop("titulos", None)
