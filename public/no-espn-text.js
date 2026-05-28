@@ -87,49 +87,14 @@
 
 /* ================================
    EQUIPOS LPF - COPAS/TÍTULOS
+   Usa solo los datos generados por el workflow.
 ================================ */
 
 (function () {
-  const TITULOS = {
-    "river-plate": 38,
-    "boca-juniors": 35,
-    "racing-club": 18,
-    "independiente": 16,
-    "san-lorenzo": 15,
-    "velez-sarsfield": 10,
-    "estudiantes-de-la-plata": 6,
-    "newells-old-boys": 6,
-    "huracan": 5,
-    "rosario-central": 4,
-    "argentinos-juniors": 3,
-    "ferro-carril-oeste": 2,
-    "lanus": 2,
-    "quilmes": 2,
-    "banfield": 1,
-    "arsenal-de-sarandi": 1,
-    "gimnasia-la-plata": 1,
-    "gimnasia-y-esgrima-la-plata": 1
-  };
-
-  function normalizar(value) {
-    return String(value || "")
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
-  }
-
   function obtenerTitulos(team) {
-    const directo = team?.titulos?.total ?? team?.titulos_liga ?? team?.titles ?? team?.championships;
+    const directo = team?.titulos?.total;
     const numero = Number(directo);
-    if (Number.isFinite(numero) && numero >= 0) return numero;
-
-    const keys = [team?.slug, team?.id, team?.nombre, team?.nombre_corto].map(normalizar).filter(Boolean);
-    for (const key of keys) {
-      if (Object.prototype.hasOwnProperty.call(TITULOS, key)) return TITULOS[key];
-    }
-    return 0;
+    return Number.isFinite(numero) && numero >= 0 ? numero : null;
   }
 
   async function cargarEquiposLiga() {
@@ -198,7 +163,7 @@
       const name = card.querySelector("span:not(.competition-team-logo)");
       const cantidad = obtenerTitulos(team);
 
-      card.innerHTML = `<span class="competition-team-main"></span><span class="competition-title-badge" title="Títulos"><span class="cup-emoji">🏆</span> ${cantidad}</span>`;
+      card.innerHTML = `<span class="competition-team-main"></span><span class="competition-title-badge" title="Títulos"><span class="cup-emoji">🏆</span> ${cantidad === null ? "-" : cantidad}</span>`;
       const main = card.querySelector(".competition-team-main");
       if (logo) main.appendChild(logo);
       if (name) main.appendChild(name);
