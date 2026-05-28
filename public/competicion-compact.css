@@ -182,7 +182,7 @@
 }
 
 .competition-special-tables .competition-subtable:nth-child(3) .competition-subtable-head::after {
-  content: "1 Campeón · 2-3 Libertadores · 4-9 Sudamericana · 30 Descenso";
+  content: "1 Libertadores 2027 + Supercopa 2026 · 2-3 Libertadores · 4-9 Sudamericana · 30 Descenso";
   border-radius: 999px;
   color: #173520;
   background: #f6d431;
@@ -191,6 +191,57 @@
   font-weight: 950;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) .competition-table .team-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) .competition-table .team-cell .competition-team-inline {
+  width: auto;
+  flex: 1 1 auto;
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(1) .team-cell::after,
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(2) .team-cell::after,
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(3) .team-cell::after,
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(n + 4):nth-child(-n + 9) .team-cell::after,
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(30) .team-cell::after {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 3px 7px;
+  font-size: 8px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(1) .team-cell::after {
+  content: "Libertadores 2027 + Supercopa 2026";
+  color: #173520;
+  background: #f6d431;
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(2) .team-cell::after,
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(3) .team-cell::after {
+  content: "CONMEBOL Libertadores";
+  color: #ffffff;
+  background: #2b6cb0;
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(n + 4):nth-child(-n + 9) .team-cell::after {
+  content: "CONMEBOL Sudamericana";
+  color: #ffffff;
+  background: #6b46c1;
+}
+
+.competition-special-tables .competition-subtable:nth-child(3) tbody tr:nth-child(30) .team-cell::after {
+  content: "Descenso";
+  color: #ffffff;
+  background: #e53e3e;
 }
 
 @media (min-width: 900px) {
@@ -306,5 +357,14 @@
     content: "Copas / Descenso";
     font-size: 7px;
     padding: 3px 6px;
+  }
+
+  .competition-special-tables .competition-subtable:nth-child(3) tbody .team-cell::after {
+    max-width: 118px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 6.8px;
+    padding: 2px 5px;
   }
 }
