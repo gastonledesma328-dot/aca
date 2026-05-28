@@ -85,18 +85,18 @@ jobs:
           def now_iso():
               return datetime.now(timezone.utc).isoformat()
 
-          def norm(text):
-              text = str(text or "").lower().strip()
-              text = unicodedata.normalize("NFD", text)
-              text = "".join(c for c in text if unicodedata.category(c) != "Mn")
-              text = re.sub(r"[^a-z0-9]+", " ", text)
-              return re.sub(r"\s+", " ", text).strip()
-
           def strip_html(html):
               html = re.sub(r"<script[\s\S]*?</script>", " ", str(html or ""), flags=re.I)
               html = re.sub(r"<style[\s\S]*?</style>", " ", html, flags=re.I)
               text = re.sub(r"<[^>]+>", " ", html)
               return re.sub(r"\s+", " ", unescape(text)).strip()
+
+          def normalize_for_search(text):
+              text = str(text or "").lower().strip()
+              text = unicodedata.normalize("NFD", text)
+              text = "".join(c for c in text if unicodedata.category(c) != "Mn")
+              text = re.sub(r"[^a-z0-9]+", " ", text)
+              return re.sub(r"\s+", " ", text).strip()
 
           def wiki_page_text(page):
               params = {
@@ -123,16 +123,38 @@ jobs:
               return ""
 
           def extract_titles(text):
-              clean = norm(text)
-              patterns = [
-                  r"primera division[^()]{0,320}\((\d+)\s*/\s*\d+\)",
-                  r"liga argentina[^()]{0,320}\((\d+)\s*/\s*\d+\)",
-                  r"campeonato de primera[^()]{0,320}\((\d+)\s*/\s*\d+\)",
+              raw = str(text or "")
+              raw = unicodedata.normalize("NFKC", raw)
+              raw = raw.replace("\xa0", " ")
+              raw = re.sub(r"\s+", " ", raw)
+
+              # Primer intento: usar el texto crudo, porque ahí todavía existen paréntesis y barras: (35/23).
+              raw_patterns = [
+                  r"Primera\s+Divisi[oó]n.{0,450}?\((\d+)\s*/\s*\d+\)",
+                  r"Liga\s+Argentina.{0,450}?\((\d+)\s*/\s*\d+\)",
+                  r"Campeonato\s+de\s+Primera.{0,450}?\((\d+)\s*/\s*\d+\)",
               ]
-              for pattern in patterns:
-                  match = re.search(pattern, clean, flags=re.I)
+              for pattern in raw_patterns:
+                  match = re.search(pattern, raw, flags=re.I)
                   if match:
                       return int(match.group(1))
+
+              # Segundo intento: localizar el bloque cercano a Primera División y tomar el primer par número/número.
+              clean = normalize_for_search(raw)
+              marker = re.search(r"primera division", clean)
+              if marker:
+                  block = clean[marker.start():marker.start() + 900]
+                  pair = re.search(r"(\d+)\s+(\d+)", block)
+                  if pair:
+                      value = int(pair.group(1))
+                      if 0 <= value <= 80:
+                          return value
+
+              # Último intento: primer par explícito (x/y) en texto crudo.
+              pair = re.search(r"\((\d+)\s*/\s*\d+\)", raw)
+              if pair:
+                  return int(pair.group(1))
+
               return None
 
           clubes = {}
@@ -141,6 +163,7 @@ jobs:
           for slug, page in CLUBES.items():
               text = wiki_page_text(page)
               titles = extract_titles(text)
+              print(f"Titulos detectados {slug}: {titles}")
               info = {
                   "slug": slug,
                   "pagina": page,
