@@ -213,49 +213,8 @@ function ganadorDelPartido(match) {
   return null;
 }
 
-function keysEsperadasDesdePrevios(prevMatches) {
-  const keys = [];
-  (prevMatches || []).forEach((match) => {
-    const winner = ganadorDelPartido(match);
-    if (winner) {
-      const key = teamKey(winner);
-      if (key) keys.push(key);
-      return;
-    }
-
-    equiposDelPartido(match).forEach((team) => {
-      const key = teamKey(team);
-      if (key) keys.push(key);
-    });
-  });
-  return [...new Set(keys)];
-}
-
 function matchContieneKey(match, key) {
   return equiposDelPartido(match).some((team) => teamKey(team) === key);
-}
-
-function ordenarFasePorLlaves(prevOrdered, phaseMatches, slots) {
-  const remaining = Array.isArray(phaseMatches) ? [...phaseMatches] : [];
-  const ordered = [];
-
-  for (let slot = 0; slot < slots; slot += 1) {
-    const prevPair = prevOrdered.slice(slot * 2, slot * 2 + 2);
-    const expected = keysEsperadasDesdePrevios(prevPair);
-
-    let foundIndex = -1;
-    if (expected.length) {
-      foundIndex = remaining.findIndex((match) => expected.filter((key) => matchContieneKey(match, key)).length >= Math.min(2, expected.length));
-      if (foundIndex < 0) {
-        foundIndex = remaining.findIndex((match) => expected.some((key) => matchContieneKey(match, key)));
-      }
-    }
-
-    if (foundIndex < 0) foundIndex = remaining.findIndex((match) => !match.empty);
-    ordered.push(foundIndex >= 0 ? remaining.splice(foundIndex, 1)[0] : { empty: true });
-  }
-
-  return ordered;
 }
 
 function normalizePhaseMatchesBracket(matches, slots) {
@@ -264,11 +223,83 @@ function normalizePhaseMatchesBracket(matches, slots) {
   return list;
 }
 
+function buscarPartidoPorEquipos(partidos, equipoA, equipoB) {
+  if (!equipoA || !equipoB) return null;
+
+  const keyA = teamKey(equipoA);
+  const keyB = teamKey(equipoB);
+
+  return (partidos || []).find((match) => matchContieneKey(match, keyA) && matchContieneKey(match, keyB)) || null;
+}
+
+function buscarPartidoPorCandidatos(partidos, candidatosA, candidatosB) {
+  for (const equipoA of candidatosA || []) {
+    for (const equipoB of candidatosB || []) {
+      const match = buscarPartidoPorEquipos(partidos, equipoA, equipoB);
+      if (match) return match;
+    }
+  }
+
+  return null;
+}
+
+function candidatosGanador(match) {
+  if (!match || match.empty) return [];
+  const ganador = ganadorDelPartido(match);
+  return ganador ? [ganador] : equiposDelPartido(match);
+}
+
+function consumirPartido(match, remaining) {
+  if (!match) return { empty: true };
+  const index = remaining.indexOf(match);
+  if (index >= 0) remaining.splice(index, 1);
+  return match;
+}
+
+function ordenarCuartosPorReglamento(octavos, cuartosRaw) {
+  const remaining = [...(cuartosRaw || [])];
+
+  // Orden real del Apertura: C1=P1 vs P8, C2=P2 vs P7, C3=P3 vs P6, C4=P4 vs P5.
+  // Esto evita que ESPN, al devolver por fecha, desacomode las llaves.
+  const relaciones = [
+    [0, 7],
+    [1, 6],
+    [2, 5],
+    [3, 4],
+  ];
+
+  return relaciones.map(([a, b]) => {
+    const match = buscarPartidoPorCandidatos(remaining, candidatosGanador(octavos[a]), candidatosGanador(octavos[b]));
+    return consumirPartido(match, remaining);
+  });
+}
+
+function ordenarSemisPorReglamento(cuartos, semisRaw) {
+  const remaining = [...(semisRaw || [])];
+
+  // Orden real del Apertura: S1=C1 vs C4, S2=C2 vs C3.
+  const relaciones = [
+    [0, 3],
+    [1, 2],
+  ];
+
+  return relaciones.map(([a, b]) => {
+    const match = buscarPartidoPorCandidatos(remaining, candidatosGanador(cuartos[a]), candidatosGanador(cuartos[b]));
+    return consumirPartido(match, remaining);
+  });
+}
+
+function ordenarFinalPorReglamento(semis, finalRaw) {
+  const remaining = [...(finalRaw || [])];
+  const match = buscarPartidoPorCandidatos(remaining, candidatosGanador(semis[0]), candidatosGanador(semis[1]));
+  return [consumirPartido(match, remaining)];
+}
+
 function ordenarFasesEliminacion(fases) {
   const octavos = normalizePhaseMatchesBracket(fases.octavos || [], 8);
-  const cuartos = ordenarFasePorLlaves(octavos, fases.cuartos || [], 4);
-  const semis = ordenarFasePorLlaves(cuartos, fases.semis || [], 2);
-  const final = ordenarFasePorLlaves(semis, fases.final || [], 1);
+  const cuartos = ordenarCuartosPorReglamento(octavos, fases.cuartos || []);
+  const semis = ordenarSemisPorReglamento(cuartos, fases.semis || []);
+  const final = ordenarFinalPorReglamento(semis, fases.final || []);
   return { octavos, cuartos, semis, final };
 }
 
@@ -309,7 +340,7 @@ async function corregirOrdenBracketLigaProfesional() {
   if (obtenerCompetitionIdActual() !== "liga-profesional") return;
 
   const tournament = document.querySelector(".competition-bracket-tournament");
-  if (!tournament || tournament.dataset.llavesCorregidas === "1") return;
+  if (!tournament) return;
 
   const competition = await cargarCompeticionActual();
   const fases = competition?.especial?.eliminatorias?.fases;
