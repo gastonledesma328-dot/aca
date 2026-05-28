@@ -9,3 +9,8 @@
 body[data-competition-id="liga-profesional"] #competitionTableCard > .competition-table-wrap > .competition-table > thead {
   display: none !important;
 }
+
+/* Cuadro de enfrentamientos: oculta los cuadros informativos superiores. */
+body[data-competition-id="liga-profesional"] #competitionLigaProfesionalExtras .competition-lpf-info {
+  display: none !important;
+}
