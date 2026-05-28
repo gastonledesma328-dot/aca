@@ -3,3 +3,9 @@
   content: none !important;
   display: none !important;
 }
+
+/* Liga Profesional: oculta el encabezado repetido de la tabla principal.
+   Se mantienen los encabezados propios de Zona A, Zona B y Tabla anual. */
+body[data-competition-id="liga-profesional"] #competitionTableCard > .competition-table-wrap > .competition-table > thead {
+  display: none !important;
+}
