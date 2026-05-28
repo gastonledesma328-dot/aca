@@ -129,11 +129,6 @@
   function orderQuarterFinals(octavos, cuartosRaw) {
     const remaining = [...(cuartosRaw || [])];
 
-    // Si los octavos están ordenados como arriba:
-    // C1 = ganador O1 vs ganador O4
-    // C2 = ganador O2 vs ganador O3
-    // C3 = ganador O5 vs ganador O8
-    // C4 = ganador O6 vs ganador O7
     const relations = [
       [0, 3],
       [1, 2],
@@ -174,16 +169,13 @@
     return full.includes(key) || key.includes(full) || short.includes(key) || key.includes(short) || slug.includes(key) || key.includes(slug);
   }
 
-  function invertirBelgranoUnion(match) {
+  function invertirSiCoincide(match, equipoLocalActual, equipoVisitanteActual) {
     if (!match || match.empty || !match.local || !match.visitante) return match;
 
     const localTeam = match.local.equipo;
     const visitorTeam = match.visitante.equipo;
-    const localEsBelgrano = isTeamName(localTeam, "Belgrano");
-    const visitanteEsUnion = isTeamName(visitorTeam, "Unión");
 
-    // Pedido específico: que no quede Belgrano (Córdoba) VS Unión (Santa Fe), sino Unión VS Belgrano.
-    if (localEsBelgrano && visitanteEsUnion) {
+    if (isTeamName(localTeam, equipoLocalActual) && isTeamName(visitorTeam, equipoVisitanteActual)) {
       return {
         ...match,
         local: match.visitante,
@@ -194,8 +186,20 @@
     return match;
   }
 
+  function normalizarPartidoLocalVisitante(match) {
+    let salida = match;
+
+    // Unión debe mostrarse arriba de Belgrano.
+    salida = invertirSiCoincide(salida, "Belgrano", "Unión");
+
+    // Pedido específico: que no quede River Plate VS Belgrano, sino Belgrano VS River Plate.
+    salida = invertirSiCoincide(salida, "River Plate", "Belgrano");
+
+    return salida;
+  }
+
   function normalizarOrdenLocalVisitante(matches) {
-    return (matches || []).map(invertirBelgranoUnion);
+    return (matches || []).map(normalizarPartidoLocalVisitante);
   }
 
   function renderOrderedBracket(fases) {
