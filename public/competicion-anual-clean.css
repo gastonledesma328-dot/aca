@@ -32,6 +32,11 @@ body[data-competition-id="liga-profesional"] [data-competition-section="proximos
   color: #baff78 !important;
 }
 
+/* Próximos partidos: oculta el estado Scheduled/Programado del cuadro. */
+body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-match-top span:nth-child(2) {
+  display: none !important;
+}
+
 body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-match-team {
   color: #ffffff !important;
 }
