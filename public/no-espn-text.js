@@ -75,6 +75,18 @@
         max-width: 150px !important;
       }
 
+      body[data-competition-id="liga-profesional"] .competition-team-titles.has-titles {
+        color: #ffffff !important;
+        background: linear-gradient(180deg, #0ea5a4, #0f766e) !important;
+        border: 1px solid rgba(153, 246, 228, 0.55) !important;
+        box-shadow: 0 8px 18px rgba(15, 118, 110, 0.28) !important;
+      }
+
+      body[data-competition-id="liga-profesional"] .competition-team-titles.has-titles strong,
+      body[data-competition-id="liga-profesional"] .competition-team-titles.has-titles small {
+        color: #ffffff !important;
+      }
+
       body[data-competition-id="liga-profesional"] .competition-team-titles.no-titles {
         opacity: 1 !important;
         color: #eaffef !important;
