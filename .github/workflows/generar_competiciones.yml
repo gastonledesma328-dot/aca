@@ -28,6 +28,16 @@ jobs:
 
       - name: Generar competiciones
         run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("scripts/generar_competiciones_lpf_fix.py")
+          text = path.read_text(encoding="utf-8")
+          text = text.replace(
+              'if __name__ == "__main__":\n    generar_titulos_wikipedia()\n    g.main()\n',
+              'if __name__ == "__main__":\n    g.main()\n'
+          )
+          path.write_text(text, encoding="utf-8")
+          PY
           python scripts/generar_competiciones_lpf_fix.py
 
       - name: Actualizar títulos de Liga Profesional
