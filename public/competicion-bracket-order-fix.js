@@ -166,16 +166,48 @@
     return [take(found, remaining)];
   }
 
+  function isTeamName(team, expected) {
+    const key = normalizeText(expected);
+    const full = normalizeText(team?.nombre || "");
+    const short = normalizeText(team?.nombre_corto || "");
+    const slug = normalizeText(team?.slug || "");
+    return full.includes(key) || key.includes(full) || short.includes(key) || key.includes(short) || slug.includes(key) || key.includes(slug);
+  }
+
+  function invertirBelgranoUnion(match) {
+    if (!match || match.empty || !match.local || !match.visitante) return match;
+
+    const localTeam = match.local.equipo;
+    const visitorTeam = match.visitante.equipo;
+    const localEsBelgrano = isTeamName(localTeam, "Belgrano");
+    const visitanteEsUnion = isTeamName(visitorTeam, "Unión");
+
+    // Pedido específico: que no quede Belgrano (Córdoba) VS Unión (Santa Fe), sino Unión VS Belgrano.
+    if (localEsBelgrano && visitanteEsUnion) {
+      return {
+        ...match,
+        local: match.visitante,
+        visitante: match.local,
+      };
+    }
+
+    return match;
+  }
+
+  function normalizarOrdenLocalVisitante(matches) {
+    return (matches || []).map(invertirBelgranoUnion);
+  }
+
   function renderOrderedBracket(fases) {
     if (!fases || !window.renderBracketPhaseFix) return;
 
     const tournament = document.querySelector(".competition-bracket-tournament");
     if (!tournament) return;
 
-    const octavos = orderRoundOf16(fases.octavos || []);
-    const cuartos = orderQuarterFinals(octavos, fases.cuartos || []);
-    const semis = orderSemis(cuartos, fases.semis || []);
-    const final = orderFinal(semis, fases.final || []);
+    const octavos = normalizarOrdenLocalVisitante(orderRoundOf16(fases.octavos || []));
+    const cuartos = normalizarOrdenLocalVisitante(orderQuarterFinals(octavos, fases.cuartos || []));
+    const semis = normalizarOrdenLocalVisitante(orderSemis(cuartos, fases.semis || []));
+    const final = normalizarOrdenLocalVisitante(orderFinal(semis, fases.final || []));
 
     tournament.innerHTML = `
       ${window.renderBracketPhaseFix("octavos", "Octavos de final", octavos)}
