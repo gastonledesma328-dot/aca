@@ -160,14 +160,21 @@
         flex: 0 0 auto;
         display: inline-flex;
         align-items: center;
-        gap: 4px;
+        justify-content: center;
+        gap: 5px;
         border-radius: 999px;
-        color: #173520;
-        background: #f6d431;
-        padding: 4px 8px;
-        font-size: 11px;
+        color: #ffffff;
+        background: linear-gradient(180deg, #7c2d12, #431407);
+        border: 1px solid rgba(255, 237, 213, 0.55);
+        padding: 5px 9px;
+        font-size: 12px;
         font-weight: 950;
-        box-shadow: 0 6px 14px rgba(246, 212, 49, 0.22);
+        line-height: 1;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+        box-shadow: 0 7px 16px rgba(124, 45, 18, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+      }
+      body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-title-badge .cup-emoji {
+        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
       }
     `;
     document.head.appendChild(style);
@@ -191,7 +198,7 @@
       const name = card.querySelector("span:not(.competition-team-logo)");
       const cantidad = obtenerTitulos(team);
 
-      card.innerHTML = `<span class="competition-team-main"></span><span class="competition-title-badge" title="Títulos">🏆 ${cantidad}</span>`;
+      card.innerHTML = `<span class="competition-team-main"></span><span class="competition-title-badge" title="Títulos"><span class="cup-emoji">🏆</span> ${cantidad}</span>`;
       const main = card.querySelector(".competition-team-main");
       if (logo) main.appendChild(logo);
       if (name) main.appendChild(name);
