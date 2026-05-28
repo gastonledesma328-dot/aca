@@ -1,0 +1,267 @@
+{
+  "actualizado": "2026-05-28T02:44:16.475865+00:00",
+  "criterio_general": "Se toma solo el primer número de los pares títulos/subcampeonatos. Ejemplo: (35/23) => 35.",
+  "clubes": {
+    "argentinos-juniors": {
+      "slug": "argentinos-juniors",
+      "pagina": "Asociación Atlética Argentinos Juniors",
+      "url": "https://es.wikipedia.org/wiki/Asociaci%C3%B3n_Atl%C3%A9tica_Argentinos_Juniors#Títulos_oficiales",
+      "titulos": 3,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "wikipedia",
+      "actualizado": "2026-05-28T02:43:50.060368+00:00"
+    },
+    "atletico-tucuman": {
+      "slug": "atletico-tucuman",
+      "pagina": "Club Atlético Tucumán",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Tucum%C3%A1n#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:43:55.223712+00:00"
+    },
+    "banfield": {
+      "slug": "banfield",
+      "pagina": "Club Atlético Banfield",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Banfield#Títulos_oficiales",
+      "titulos": 1,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "wikipedia",
+      "actualizado": "2026-05-28T02:43:57.360903+00:00"
+    },
+    "barracas-central": {
+      "slug": "barracas-central",
+      "pagina": "Club Atlético Barracas Central",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Barracas_Central#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "wikipedia",
+      "actualizado": "2026-05-28T02:43:58.458993+00:00"
+    },
+    "belgrano": {
+      "slug": "belgrano",
+      "pagina": "Club Atlético Belgrano",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Belgrano#Títulos_oficiales",
+      "titulos": 1,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "wikipedia",
+      "actualizado": "2026-05-28T02:43:59.012747+00:00"
+    },
+    "boca-juniors": {
+      "slug": "boca-juniors",
+      "pagina": "Club Atlético Boca Juniors",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Boca_Juniors#Títulos_oficiales",
+      "titulos": 35,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:43:59.321838+00:00"
+    },
+    "central-cordoba-santiago": {
+      "slug": "central-cordoba-santiago",
+      "pagina": "Club Atlético Central Córdoba (Santiago del Estero)",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Central_C%C3%B3rdoba_%28Santiago_del_Estero%29#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:43:59.627834+00:00"
+    },
+    "defensa-y-justicia": {
+      "slug": "defensa-y-justicia",
+      "pagina": "Club Social y Deportivo Defensa y Justicia",
+      "url": "https://es.wikipedia.org/wiki/Club_Social_y_Deportivo_Defensa_y_Justicia#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:43:59.935500+00:00"
+    },
+    "deportivo-riestra": {
+      "slug": "deportivo-riestra",
+      "pagina": "Deportivo Riestra Asociación de Fomento Barrio Colón",
+      "url": "https://es.wikipedia.org/wiki/Deportivo_Riestra_Asociaci%C3%B3n_de_Fomento_Barrio_Col%C3%B3n#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "wikipedia",
+      "actualizado": "2026-05-28T02:44:02.597156+00:00"
+    },
+    "estudiantes-de-la-plata": {
+      "slug": "estudiantes-de-la-plata",
+      "pagina": "Club Estudiantes de La Plata",
+      "url": "https://es.wikipedia.org/wiki/Club_Estudiantes_de_La_Plata#Títulos_oficiales",
+      "titulos": 7,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "wikipedia",
+      "actualizado": "2026-05-28T02:44:04.874722+00:00"
+    },
+    "gimnasia-la-plata": {
+      "slug": "gimnasia-la-plata",
+      "pagina": "Club de Gimnasia y Esgrima La Plata",
+      "url": "https://es.wikipedia.org/wiki/Club_de_Gimnasia_y_Esgrima_La_Plata#Títulos_oficiales",
+      "titulos": 1,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "wikipedia",
+      "actualizado": "2026-05-28T02:44:07.400185+00:00"
+    },
+    "godoy-cruz": {
+      "slug": "godoy-cruz",
+      "pagina": "Club Deportivo Godoy Cruz Antonio Tomba",
+      "url": "https://es.wikipedia.org/wiki/Club_Deportivo_Godoy_Cruz_Antonio_Tomba#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:07.982783+00:00"
+    },
+    "huracan": {
+      "slug": "huracan",
+      "pagina": "Club Atlético Huracán",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Hurac%C3%A1n#Títulos_oficiales",
+      "titulos": 5,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "wikipedia",
+      "actualizado": "2026-05-28T02:44:11.272939+00:00"
+    },
+    "independiente": {
+      "slug": "independiente",
+      "pagina": "Club Atlético Independiente",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Independiente#Títulos_oficiales",
+      "titulos": 16,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:11.584091+00:00"
+    },
+    "independiente-rivadavia": {
+      "slug": "independiente-rivadavia",
+      "pagina": "Club Sportivo Independiente Rivadavia",
+      "url": "https://es.wikipedia.org/wiki/Club_Sportivo_Independiente_Rivadavia#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:11.891506+00:00"
+    },
+    "instituto": {
+      "slug": "instituto",
+      "pagina": "Instituto Atlético Central Córdoba",
+      "url": "https://es.wikipedia.org/wiki/Instituto_Atl%C3%A9tico_Central_C%C3%B3rdoba#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:12.198289+00:00"
+    },
+    "lanus": {
+      "slug": "lanus",
+      "pagina": "Club Atlético Lanús",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Lan%C3%BAs#Títulos_oficiales",
+      "titulos": 2,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:12.506297+00:00"
+    },
+    "newells-old-boys": {
+      "slug": "newells-old-boys",
+      "pagina": "Club Atlético Newell's Old Boys",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Newell%27s_Old_Boys#Títulos_oficiales",
+      "titulos": 6,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:12.815086+00:00"
+    },
+    "platense": {
+      "slug": "platense",
+      "pagina": "Club Atlético Platense",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Platense#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:13.122551+00:00"
+    },
+    "racing-club": {
+      "slug": "racing-club",
+      "pagina": "Racing Club",
+      "url": "https://es.wikipedia.org/wiki/Racing_Club#Títulos_oficiales",
+      "titulos": 18,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:13.430153+00:00"
+    },
+    "river-plate": {
+      "slug": "river-plate",
+      "pagina": "Club Atlético River Plate",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_River_Plate#Títulos_oficiales",
+      "titulos": 38,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:13.739879+00:00"
+    },
+    "rosario-central": {
+      "slug": "rosario-central",
+      "pagina": "Club Atlético Rosario Central",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Rosario_Central#Títulos_oficiales",
+      "titulos": 4,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:14.050676+00:00"
+    },
+    "san-lorenzo": {
+      "slug": "san-lorenzo",
+      "pagina": "Club Atlético San Lorenzo de Almagro",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_San_Lorenzo_de_Almagro#Títulos_oficiales",
+      "titulos": 15,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:14.360838+00:00"
+    },
+    "san-martin-san-juan": {
+      "slug": "san-martin-san-juan",
+      "pagina": "Club Atlético San Martín (San Juan)",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_San_Mart%C3%ADn_%28San_Juan%29#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:14.670785+00:00"
+    },
+    "sarmiento-junin": {
+      "slug": "sarmiento-junin",
+      "pagina": "Club Atlético Sarmiento (Junín)",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Sarmiento_%28Jun%C3%ADn%29#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:14.980683+00:00"
+    },
+    "talleres-de-cordoba": {
+      "slug": "talleres-de-cordoba",
+      "pagina": "Club Atlético Talleres (Córdoba)",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Talleres_%28C%C3%B3rdoba%29#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:15.290599+00:00"
+    },
+    "tigre": {
+      "slug": "tigre",
+      "pagina": "Club Atlético Tigre",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Tigre#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:15.607271+00:00"
+    },
+    "union-santa-fe": {
+      "slug": "union-santa-fe",
+      "pagina": "Club Atlético Unión (Santa Fe)",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_Uni%C3%B3n_%28Santa_Fe%29#Títulos_oficiales",
+      "titulos": 0,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:15.917237+00:00"
+    },
+    "velez-sarsfield": {
+      "slug": "velez-sarsfield",
+      "pagina": "Club Atlético Vélez Sarsfield",
+      "url": "https://es.wikipedia.org/wiki/Club_Atl%C3%A9tico_V%C3%A9lez_Sarsfield#Títulos_oficiales",
+      "titulos": 10,
+      "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35.",
+      "fuente": "fallback",
+      "actualizado": "2026-05-28T02:44:16.225722+00:00"
+    }
+  }
+}
