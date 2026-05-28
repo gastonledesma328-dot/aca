@@ -26,33 +26,145 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Generar títulos desde Wikipedia y competiciones
+      - name: Generar competiciones
         run: |
           python scripts/generar_competiciones_lpf_fix.py
 
-      - name: Quitar títulos fallback
+      - name: Regenerar títulos desde Wikipedia sin fallback
         run: |
           python - <<'PY'
           import json
+          import re
+          import time
+          import unicodedata
+          from datetime import datetime, timezone
+          from html import unescape
           from pathlib import Path
+          from urllib.parse import quote
 
-          title_files = [
-              Path("data/titulos-liga-profesional.json"),
-              Path("public/data/titulos-liga-profesional.json"),
-          ]
+          import requests
 
+          API_URL = "https://es.wikipedia.org/w/api.php"
+          HEADERS = {
+              "User-Agent": "PartidosHoy/1.0 (GitHub Actions; títulos de clubes)",
+              "Accept": "application/json,text/plain,*/*",
+          }
+
+          CLUBES = {
+              "argentinos-juniors": "Asociación Atlética Argentinos Juniors",
+              "atletico-tucuman": "Club Atlético Tucumán",
+              "banfield": "Club Atlético Banfield",
+              "barracas-central": "Club Atlético Barracas Central",
+              "belgrano": "Club Atlético Belgrano",
+              "boca-juniors": "Club Atlético Boca Juniors",
+              "central-cordoba-santiago": "Club Atlético Central Córdoba (Santiago del Estero)",
+              "defensa-y-justicia": "Club Social y Deportivo Defensa y Justicia",
+              "deportivo-riestra": "Deportivo Riestra Asociación de Fomento Barrio Colón",
+              "estudiantes-de-la-plata": "Club Estudiantes de La Plata",
+              "gimnasia-la-plata": "Club de Gimnasia y Esgrima La Plata",
+              "godoy-cruz": "Club Deportivo Godoy Cruz Antonio Tomba",
+              "huracan": "Club Atlético Huracán",
+              "independiente": "Club Atlético Independiente",
+              "independiente-rivadavia": "Club Sportivo Independiente Rivadavia",
+              "instituto": "Instituto Atlético Central Córdoba",
+              "lanus": "Club Atlético Lanús",
+              "newells-old-boys": "Club Atlético Newell's Old Boys",
+              "platense": "Club Atlético Platense",
+              "racing-club": "Racing Club",
+              "river-plate": "Club Atlético River Plate",
+              "rosario-central": "Club Atlético Rosario Central",
+              "san-lorenzo": "Club Atlético San Lorenzo de Almagro",
+              "san-martin-san-juan": "Club Atlético San Martín (San Juan)",
+              "sarmiento-junin": "Club Atlético Sarmiento (Junín)",
+              "talleres-de-cordoba": "Club Atlético Talleres (Córdoba)",
+              "tigre": "Club Atlético Tigre",
+              "union-santa-fe": "Club Atlético Unión (Santa Fe)",
+              "velez-sarsfield": "Club Atlético Vélez Sarsfield",
+          }
+
+          def now_iso():
+              return datetime.now(timezone.utc).isoformat()
+
+          def norm(text):
+              text = str(text or "").lower().strip()
+              text = unicodedata.normalize("NFD", text)
+              text = "".join(c for c in text if unicodedata.category(c) != "Mn")
+              text = re.sub(r"[^a-z0-9]+", " ", text)
+              return re.sub(r"\s+", " ", text).strip()
+
+          def strip_html(html):
+              html = re.sub(r"<script[\s\S]*?</script>", " ", str(html or ""), flags=re.I)
+              html = re.sub(r"<style[\s\S]*?</style>", " ", html, flags=re.I)
+              text = re.sub(r"<[^>]+>", " ", html)
+              return re.sub(r"\s+", " ", unescape(text)).strip()
+
+          def wiki_page_text(page):
+              params = {
+                  "action": "parse",
+                  "page": page,
+                  "prop": "text",
+                  "format": "json",
+                  "redirects": "1",
+              }
+              for attempt in range(1, 6):
+                  response = requests.get(API_URL, params=params, headers=HEADERS, timeout=35)
+                  print(f"Wikipedia {response.status_code} {page} intento {attempt}")
+                  if response.status_code == 429:
+                      wait = 45 * attempt
+                      print(f"Rate limit Wikipedia. Esperando {wait}s")
+                      time.sleep(wait)
+                      continue
+                  if not response.ok:
+                      time.sleep(10 * attempt)
+                      continue
+                  data = response.json()
+                  html = data.get("parse", {}).get("text", {}).get("*") or ""
+                  return strip_html(html)
+              return ""
+
+          def extract_titles(text):
+              clean = norm(text)
+              patterns = [
+                  r"primera division[^()]{0,320}\((\d+)\s*/\s*\d+\)",
+                  r"liga argentina[^()]{0,320}\((\d+)\s*/\s*\d+\)",
+                  r"campeonato de primera[^()]{0,320}\((\d+)\s*/\s*\d+\)",
+              ]
+              for pattern in patterns:
+                  match = re.search(pattern, clean, flags=re.I)
+                  if match:
+                      return int(match.group(1))
+              return None
+
+          clubes = {}
           valid_titles = {}
-          for path in title_files:
-              if not path.exists():
-                  continue
-              data = json.loads(path.read_text(encoding="utf-8"))
-              for slug, info in (data.get("clubes") or {}).items():
-                  if (info.get("fuente") or "").lower() != "wikipedia":
-                      info["titulos"] = None
-                      info["sin_fallback"] = True
-                  elif info.get("titulos") is not None:
-                      valid_titles[slug] = int(info.get("titulos") or 0)
-              path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+          for slug, page in CLUBES.items():
+              text = wiki_page_text(page)
+              titles = extract_titles(text)
+              info = {
+                  "slug": slug,
+                  "pagina": page,
+                  "url": f"https://es.wikipedia.org/wiki/{quote(page.replace(' ', '_'))}#Títulos_oficiales",
+                  "titulos": titles,
+                  "fuente": "wikipedia" if titles is not None else "sin-datos",
+                  "sin_fallback": titles is None,
+                  "criterio": "Solo primer número del par títulos/subcampeonatos. Ejemplo: (35/23) => 35.",
+                  "actualizado": now_iso(),
+              }
+              clubes[slug] = info
+              if titles is not None:
+                  valid_titles[slug] = int(titles)
+              time.sleep(6)
+
+          payload = {
+              "actualizado": now_iso(),
+              "criterio_general": "Sin fallback manual. Solo títulos encontrados en Wikipedia. Se ignora el número de subcampeonatos.",
+              "clubes": clubes,
+          }
+
+          for path in [Path("data/titulos-liga-profesional.json"), Path("public/data/titulos-liga-profesional.json")]:
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
           for path in [Path("data/competiciones.json"), Path("public/data/competiciones.json")]:
               if not path.exists():
@@ -69,7 +181,7 @@ jobs:
                               "total": total,
                               "liga": total,
                               "fuente": "wikipedia",
-                              "criterio": "Primer número del par títulos/subcampeonatos en Títulos oficiales. Ejemplo: (35/23) => 35."
+                              "criterio": "Solo primer número del par títulos/subcampeonatos. Ejemplo: (35/23) => 35.",
                           }
                       else:
                           team.pop("titulos", None)
