@@ -1,10 +1,6 @@
 /* ================================
    FECHAS + FASES ELIMINATORIAS
-   - Ordena por fecha real del calendario
-   - Apertura regular: enero/abril-mayo
-   - Luego octavos, cuartos, semifinales y final
-   - Clausura regular después
-   - Si hay penales, los muestra arriba del marcador
+   Diseño tipo tabla compacta estilo Promiedos.
 ================================ */
 
 (function () {
@@ -68,7 +64,7 @@
       return new Intl.DateTimeFormat("es-AR", {
         weekday: "short",
         day: "2-digit",
-        month: "short",
+        month: "2-digit",
       }).format(new Date(`${key}T12:00:00`)).replace(/\./g, "");
     } catch (error) {
       return key;
@@ -90,18 +86,18 @@
 
   function logo(team) {
     const src = team?.logo || "";
-    return src ? `<img class="competition-team-logo" src="${escapeHtml(src)}" alt="" loading="lazy" />` : `<span class="competition-team-logo"></span>`;
+    return src ? `<img class="season-team-logo" src="${escapeHtml(src)}" alt="" loading="lazy" />` : `<span class="season-team-logo"></span>`;
   }
 
   function nombre(team) {
-    return team?.nombre || team?.nombre_corto || "Equipo";
+    return team?.nombre_corto || team?.nombre || "Equipo";
   }
 
   function score(match) {
     const l = match?.local?.marcador;
     const v = match?.visitante?.marcador;
     if (l !== "" && l != null && v !== "" && v != null) return `${l} - ${v}`;
-    return "vs";
+    return "-";
   }
 
   function numeroValido(value) {
@@ -272,31 +268,44 @@
     return proxima?.key || items[items.length - 1]?.key || "";
   }
 
+  function nombreFechaCorto(nombreItem) {
+    return String(nombreItem || "")
+      .replace(/^Apertura\s*·\s*/i, "")
+      .replace(/^Clausura\s*·\s*/i, "")
+      .trim()
+      .toUpperCase();
+  }
+
+  function indiceActual() {
+    return Math.max(0, state?.items?.findIndex((x) => x.key === state.selected) ?? 0);
+  }
+
+  function seleccionarPorIndice(nextIndex) {
+    if (!state?.items?.length) return;
+    const safe = Math.max(0, Math.min(state.items.length - 1, nextIndex));
+    state.selected = state.items[safe].key;
+    render();
+  }
+
   function marcadorConPenales(match) {
     const penales = penalesInfo(match);
     return `
-      <span class="competition-score-stack">
-        ${penales ? `<span class="competition-penalty-line">${escapeHtml(penales)}</span>` : ""}
-        <strong class="competition-score">${escapeHtml(score(match))}</strong>
+      <span class="season-score-stack">
+        ${penales ? `<span class="season-penalty-line">${escapeHtml(penales.replace("Penales ", "PEN "))}</span>` : ""}
+        <strong class="season-score">${escapeHtml(score(match))}</strong>
       </span>`;
   }
 
   function renderPartido(match) {
     const local = match?.local?.equipo || {};
     const visitante = match?.visitante?.equipo || {};
-    const estado = match?.estado || (match?.completado ? "Finalizado" : "Programado");
     return `
-      <article class="competition-date-match">
-        <div class="competition-date-match-time">
-          <strong>${escapeHtml(hora(match?.fecha))}</strong>
-          <span>${escapeHtml(estado)}</span>
-        </div>
-        <div class="competition-date-match-teams">
-          <span class="competition-match-team">${logo(local)}<span>${escapeHtml(nombre(local))}</span></span>
-          ${marcadorConPenales(match)}
-          <span class="competition-match-team">${logo(visitante)}<span>${escapeHtml(nombre(visitante))}</span></span>
-        </div>
-      </article>`;
+      <div class="season-row">
+        <div class="season-time">${escapeHtml(hora(match?.fecha))}</div>
+        <div class="season-team season-home"><span>${escapeHtml(nombre(local))}</span>${logo(local)}</div>
+        ${marcadorConPenales(match)}
+        <div class="season-team season-away">${logo(visitante)}<span>${escapeHtml(nombre(visitante))}</span></div>
+      </div>`;
   }
 
   function render() {
@@ -308,35 +317,30 @@
       return;
     }
 
-    const mini = state.items.map((x) => `
-      <button class="competition-mini-date ${x.key === item.key ? "is-selected" : ""} ${x.tipo === "fase" ? "is-knockout" : ""} ${estado(x) === "En disputa" ? "is-today" : ""}" type="button" data-fechas-fases-key="${escapeHtml(x.key)}">
-        <span>${escapeHtml(x.nombre)}</span>
-        <em>${escapeHtml(x.dateLabel)}</em>
-        <strong>${escapeHtml(x.partidos.length)}</strong>
-      </button>`).join("");
+    const index = indiceActual();
+    const canPrev = index > 0;
+    const canNext = index < state.items.length - 1;
+    const options = state.items.map((x) => `<option value="${escapeHtml(x.key)}" ${x.key === item.key ? "selected" : ""}>${escapeHtml(x.nombre)} · ${escapeHtml(x.dateLabel)}</option>`).join("");
 
     box.innerHTML = `
-      <div class="competition-dates-panel fechas-fases-panel">
-        <div class="competition-dates-toolbar">
-          <div>
-            <span>${item.tipo === "fase" ? "Fase seleccionada" : "Fecha seleccionada"}</span>
-            <strong>${escapeHtml(item.nombre)}</strong>
-            <em>${escapeHtml(item.dateLabel)}</em>
-          </div>
-          <small>${escapeHtml(estado(item))}</small>
+      <div class="season-fixture-card">
+        <h3 class="season-title">TEMPORADA</h3>
+        <div class="season-nav">
+          <button class="season-arrow" type="button" data-season-prev ${canPrev ? "" : "disabled"} aria-label="Fecha anterior">‹</button>
+          <label class="season-select-wrap">
+            <span>${escapeHtml(nombreFechaCorto(item.nombre))}▼</span>
+            <select class="season-select" data-season-select aria-label="Seleccionar fecha o fase">
+              ${options}
+            </select>
+          </label>
+          <button class="season-arrow" type="button" data-season-next ${canNext ? "" : "disabled"} aria-label="Fecha siguiente">›</button>
         </div>
-        <div class="competition-mini-calendar" aria-label="Seleccionar fecha o fase">
-          ${mini}
+        <div class="season-table">
+          <div class="season-date-head">${escapeHtml(item.dateLabel)}</div>
+          <div class="season-rows">
+            ${item.partidos.length ? item.partidos.map(renderPartido).join("") : `<div class="season-empty">No hay partidos cargados.</div>`}
+          </div>
         </div>
-        <section class="competition-date-group">
-          <div class="competition-date-head">
-            <span>${escapeHtml(estado(item))}</span>
-            <strong>${escapeHtml(item.nombre)} · ${escapeHtml(item.dateLabel)}</strong>
-          </div>
-          <div class="competition-date-matches">
-            ${item.partidos.length ? item.partidos.map(renderPartido).join("") : `<p class="competition-empty">No hay partidos cargados.</p>`}
-          </div>
-        </section>
       </div>`;
   }
 
@@ -345,13 +349,37 @@
     const s = document.createElement("style");
     s.id = "fechas-fases-style";
     s.textContent = `
-      .competition-mini-date.is-knockout{background:linear-gradient(180deg,rgba(32,109,65,.98),rgba(11,77,46,.98))!important;border-color:rgba(246,210,76,.55)!important;}
-      .competition-mini-date.is-knockout strong{background:#f7d24c!important;color:#442500!important;}
-      .competition-mini-date span{text-align:center!important;}
-      .competition-mini-date em{display:block;color:#baff78;font-style:normal;font-size:10px;font-weight:900;text-align:center;}
-      .competition-score-stack{display:inline-grid;justify-items:center;align-items:center;gap:4px;min-width:72px;}
-      .competition-penalty-line{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:3px 8px;color:#442500;background:#f7d24c;border:1px solid rgba(255,226,101,.9);font-size:10px;font-weight:950;line-height:1;white-space:nowrap;box-shadow:0 4px 10px rgba(247,210,76,.2);}
-      .competition-score-stack .competition-score{display:inline-flex!important;align-items:center!important;justify-content:center!important;}
+      body[data-competition-id="liga-profesional"] [data-competition-section="fechas"] .competition-card-head{display:none!important;}
+      body[data-competition-id="liga-profesional"] [data-competition-section="fechas"],
+      body[data-competition-id="liga-profesional"] #competitionDatesList{background:transparent!important;border:0!important;padding:0!important;}
+      .season-fixture-card{width:min(340px,100%);margin:0 auto;padding:14px 14px 16px;border-radius:0 0 12px 12px;background:#05391f;color:#fff;box-shadow:0 18px 36px rgba(0,0,0,.22);font-family:inherit;}
+      .season-title{margin:0 0 22px;text-align:center;font-size:16px;line-height:1;font-weight:950;color:#fff;text-transform:uppercase;text-shadow:1px 1px 0 rgba(0,0,0,.55);}
+      .season-nav{display:grid;grid-template-columns:38px minmax(0,1fr) 38px;align-items:center;gap:8px;margin-bottom:10px;}
+      .season-arrow{width:34px;height:34px;border:0;background:transparent;color:#fff;font-size:34px;line-height:1;font-weight:400;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;text-shadow:1px 1px 0 rgba(0,0,0,.5);}
+      .season-arrow:disabled{opacity:.28;cursor:not-allowed;}
+      .season-select-wrap{position:relative;min-width:0;display:flex;align-items:center;justify-content:center;height:32px;cursor:pointer;}
+      .season-select-wrap span{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;font-size:15px;font-weight:950;color:#fff;text-transform:uppercase;text-shadow:1px 1px 0 rgba(0,0,0,.55);}
+      .season-select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;}
+      .season-table{border:1px solid rgba(255,255,255,.32);border-radius:6px;overflow:hidden;background:#062f1b;}
+      .season-date-head{height:22px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(255,255,255,.32);background:#07391f;color:#fff;font-size:12px;font-weight:800;line-height:1;}
+      .season-rows{display:grid;}
+      .season-row{min-height:37px;display:grid;grid-template-columns:63px minmax(0,1fr) 36px minmax(0,1fr);align-items:center;border-bottom:1px solid rgba(255,255,255,.28);background:#06351e;}
+      .season-row:last-child{border-bottom:0;}
+      .season-time{height:100%;display:flex;align-items:center;justify-content:center;border-right:1px solid rgba(255,255,255,.28);font-size:12px;font-weight:950;color:#fff;}
+      .season-team{min-width:0;display:flex;align-items:center;gap:4px;padding:0 6px;font-size:12px;font-weight:950;line-height:1.05;color:#fff;text-shadow:1px 1px 0 rgba(0,0,0,.45);}
+      .season-team span{min-width:0;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+      .season-home{justify-content:flex-end;text-align:right;}
+      .season-away{justify-content:flex-start;text-align:left;}
+      .season-team-logo{width:16px!important;height:16px!important;flex:0 0 16px!important;object-fit:contain!important;border:0!important;background:transparent!important;box-shadow:none!important;border-radius:50%;}
+      .season-score-stack{display:grid;justify-items:center;align-items:center;gap:1px;min-width:0;color:#fff;font-weight:950;text-align:center;}
+      .season-score{display:block!important;min-width:0!important;padding:0!important;background:transparent!important;border-radius:0!important;box-shadow:none!important;color:#fff!important;font-size:14px!important;font-weight:950!important;text-shadow:1px 1px 0 rgba(0,0,0,.55)!important;}
+      .season-penalty-line{display:inline-flex;align-items:center;justify-content:center;margin-bottom:1px;border-radius:999px;padding:2px 4px;color:#10351f;background:#f7d24c;border:1px solid rgba(255,226,101,.9);font-size:8px;font-weight:950;line-height:1;white-space:nowrap;box-shadow:0 2px 6px rgba(247,210,76,.18);}
+      .season-empty{padding:16px;text-align:center;color:#d8ffe6;font-size:13px;font-weight:800;}
+      @media (max-width:720px){
+        .season-fixture-card{width:100%;max-width:340px;padding:14px 10px 16px;}
+        .season-row{grid-template-columns:63px minmax(0,1fr) 34px minmax(0,1fr);}
+        .season-team{font-size:11px;padding:0 5px;}
+      }
     `;
     document.head.appendChild(s);
   }
@@ -361,9 +389,10 @@
     if (!box) return;
     document.querySelectorAll('[data-competition-tab="proximos"], [data-competition-section="proximos"]').forEach((el) => el.remove());
     const title = document.querySelector('[data-competition-section="fechas"] h2');
-    if (title) title.textContent = "Fechas, fases y partidos";
+    if (title) title.textContent = "Temporada";
     const kicker = document.querySelector('[data-competition-section="fechas"] .competition-section-kicker');
-    if (kicker) kicker.textContent = "Calendario completo";
+    if (kicker) kicker.textContent = "Calendario";
+    style();
     if (state && !force) return;
 
     try {
@@ -375,16 +404,20 @@
       const items = buildItems(comp);
       state = { items, selected: seleccionInicial(items) };
       render();
-      style();
     } catch (error) {
       box.innerHTML = `<p class="competition-empty">No se pudieron cargar las fechas y fases.</p>`;
     }
   }
 
   document.addEventListener("click", (event) => {
-    const btn = event.target.closest("[data-fechas-fases-key]");
-    if (!btn || !state) return;
-    state.selected = btn.dataset.fechasFasesKey;
+    if (event.target.closest("[data-season-prev]")) return seleccionarPorIndice(indiceActual() - 1);
+    if (event.target.closest("[data-season-next]")) return seleccionarPorIndice(indiceActual() + 1);
+  });
+
+  document.addEventListener("change", (event) => {
+    const select = event.target.closest("[data-season-select]");
+    if (!select || !state) return;
+    state.selected = select.value;
     render();
   });
 
