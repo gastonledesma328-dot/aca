@@ -1,11 +1,19 @@
 /* ================================
-   OCULTAR TEXTO VISIBLE CON ESPN
+   PERSONALIZACIONES COMPETICIÓN
+   - Oculta texto visible con ESPN
+   - Mueve Próximos partidos a Fechas
+   - Permite seleccionar fechas anteriores y futuras
+   - Mantiene estilos de equipos/títulos
 ================================ */
 
 (function () {
   const ESPN_REGEX = /ESPN/gi;
   const DATA_URL = "../data/competiciones.json";
+  const TZ = "America/Argentina/Buenos_Aires";
+
   let fechasState = null;
+  let fechasCargadasPara = "";
+  let usuarioSeleccionoFecha = false;
 
   function limpiarTexto(value) {
     return String(value || "")
@@ -38,8 +46,12 @@
 
   function limpiarElemento(root) {
     if (!root) return;
-    if (root.nodeType === Node.TEXT_NODE) return limpiarNodoTexto(root);
+    if (root.nodeType === Node.TEXT_NODE) {
+      limpiarNodoTexto(root);
+      return;
+    }
     if (root.nodeType !== Node.ELEMENT_NODE && root.nodeType !== Node.DOCUMENT_NODE) return;
+
     limpiarAtributos(root);
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
     let node = walker.currentNode;
@@ -48,6 +60,10 @@
       if (node.nodeType === Node.ELEMENT_NODE) limpiarAtributos(node);
       node = walker.nextNode();
     }
+  }
+
+  function limpiarTodo() {
+    limpiarElemento(document.body || document.documentElement);
   }
 
   function escapeHtml(value) {
@@ -66,10 +82,10 @@
   function fechaKey(value) {
     if (!value) return "sin-fecha";
     try {
-      const date = new Date(value);
+      const date = value instanceof Date ? value : new Date(value);
       if (Number.isNaN(date.getTime())) return "sin-fecha";
       const parts = new Intl.DateTimeFormat("en-CA", {
-        timeZone: "America/Argentina/Buenos_Aires",
+        timeZone: TZ,
         year: "numeric",
         month: "2-digit",
         day: "2-digit",
@@ -82,7 +98,7 @@
   }
 
   function todayKey() {
-    return fechaKey(new Date().toISOString());
+    return fechaKey(new Date());
   }
 
   function fechaCorta(value) {
@@ -93,7 +109,7 @@
         weekday: "short",
         day: "2-digit",
         month: "short",
-      }).format(date).replace(".", "");
+      }).format(date).replace(/\./g, "");
     } catch (error) {
       return value;
     }
@@ -105,7 +121,7 @@
       return new Intl.DateTimeFormat("es-AR", {
         hour: "2-digit",
         minute: "2-digit",
-        timeZone: "America/Argentina/Buenos_Aires",
+        timeZone: TZ,
       }).format(new Date(value));
     } catch (error) {
       return String(value).slice(11, 16) || "--:--";
@@ -134,39 +150,146 @@
     document.querySelectorAll('[data-competition-tab="proximos"], [data-competition-section="proximos"]').forEach((node) => node.remove());
   }
 
-  function mergePartidos(partidos) {
-    const all = [];
-    const seen = new Set();
-    [partidos?.todos, partidos?.ultimos, partidos?.proximos].forEach((list) => {
-      (Array.isArray(list) ? list : []).forEach((match) => {
-        const key = match?.id || `${match?.local?.equipo?.nombre || ""}|${match?.visitante?.equipo?.nombre || ""}|${match?.fecha || ""}`;
-        if (!match || seen.has(key)) return;
-        seen.add(key);
-        all.push(match);
-      });
-    });
-    return all.sort((a, b) => String(a.fecha || "").localeCompare(String(b.fecha || "")));
+  function matchKey(match) {
+    return match?.id || `${match?.local?.equipo?.nombre || ""}|${match?.visitante?.equipo?.nombre || ""}|${match?.fecha || ""}`;
   }
 
-  function estadoFecha(key, matches) {
+  function dedupeMatches(list) {
+    const seen = new Set();
+    const out = [];
+    (Array.isArray(list) ? list : []).forEach((match) => {
+      const key = matchKey(match);
+      if (!match || seen.has(key)) return;
+      seen.add(key);
+      out.push(match);
+    });
+    return out.sort((a, b) => String(a.fecha || "").localeCompare(String(b.fecha || "")));
+  }
+
+  function mergePartidos(partidos) {
+    return dedupeMatches([
+      ...(Array.isArray(partidos?.todos) ? partidos.todos : []),
+      ...(Array.isArray(partidos?.ultimos) ? partidos.ultimos : []),
+      ...(Array.isArray(partidos?.proximos) ? partidos.proximos : []),
+    ]);
+  }
+
+  function numeroFecha(match, fallbackIndex = null) {
+    const value = match?.fecha_numero ?? match?.jornada ?? match?.round ?? match?.week;
+    const number = Number(value);
+    if (Number.isFinite(number) && number > 0) return number;
+    return fallbackIndex;
+  }
+
+  function labelRangoFecha(matches) {
+    const keys = [...new Set((matches || []).map((match) => fechaKey(match.fecha)).filter(Boolean))].filter((key) => key !== "sin-fecha").sort();
+    if (!keys.length) return "A confirmar";
+    if (keys.length === 1) return fechaCorta(keys[0]);
+    return `${fechaCorta(keys[0])} - ${fechaCorta(keys[keys.length - 1])}`;
+  }
+
+  function firstDateKey(matches) {
+    return [...new Set((matches || []).map((match) => fechaKey(match.fecha)).filter((key) => key && key !== "sin-fecha"))].sort()[0] || "sin-fecha";
+  }
+
+  function buildJornadasFromEspecial(competition) {
+    const fechas = competition?.especial?.fechas || {};
+    const bloques = [];
+
+    ["apertura", "clausura"].forEach((torneo) => {
+      (Array.isArray(fechas[torneo]) ? fechas[torneo] : []).forEach((item, index) => {
+        const partidos = dedupeMatches(item?.partidos || []);
+        if (!partidos.length) return;
+
+        const nombre = item?.nombre || `Fecha ${index + 1}`;
+        const numeroMatch = String(nombre).match(/(\d+)/);
+        const numero = numeroMatch ? Number(numeroMatch[1]) : index + 1;
+        const key = `${torneo}-fecha-${String(numero).padStart(2, "0")}`;
+
+        bloques.push({
+          key,
+          numero,
+          torneo,
+          nombre,
+          partidos,
+          firstDate: firstDateKey(partidos),
+          dateLabel: labelRangoFecha(partidos),
+        });
+      });
+    });
+
+    return bloques;
+  }
+
+  function buildJornadasFromPartidos(partidos) {
+    const grupos = new Map();
+    const sorted = dedupeMatches(partidos);
+
+    sorted.forEach((match) => {
+      const num = numeroFecha(match, null);
+      const key = num ? `fecha-${String(num).padStart(2, "0")}` : `dia-${fechaKey(match.fecha)}`;
+      if (!grupos.has(key)) {
+        grupos.set(key, {
+          key,
+          numero: num || null,
+          torneo: "",
+          nombre: num ? `Fecha ${num}` : fechaCorta(fechaKey(match.fecha)),
+          partidos: [],
+          firstDate: fechaKey(match.fecha),
+          dateLabel: "",
+        });
+      }
+      grupos.get(key).partidos.push(match);
+    });
+
+    return [...grupos.values()]
+      .map((jornada) => ({
+        ...jornada,
+        partidos: dedupeMatches(jornada.partidos),
+        firstDate: firstDateKey(jornada.partidos),
+        dateLabel: labelRangoFecha(jornada.partidos),
+      }))
+      .sort((a, b) => {
+        if (a.numero && b.numero && a.numero !== b.numero) return a.numero - b.numero;
+        return String(a.firstDate).localeCompare(String(b.firstDate));
+      });
+  }
+
+  function buildJornadas(competition) {
+    const fromEspecial = buildJornadasFromEspecial(competition);
+    if (fromEspecial.length) {
+      return fromEspecial.sort((a, b) => {
+        if (a.torneo !== b.torneo) return a.torneo === "apertura" ? -1 : 1;
+        return (a.numero || 0) - (b.numero || 0);
+      });
+    }
+    return buildJornadasFromPartidos(mergePartidos(competition?.partidos || {}));
+  }
+
+  function estadoJornada(jornada) {
     const today = todayKey();
-    if (key === today) return "En disputa";
-    if (key < today) return "Fecha anterior";
+    const dates = [...new Set(jornada.partidos.map((match) => fechaKey(match.fecha)).filter((key) => key !== "sin-fecha"))].sort();
+    if (dates.includes(today)) return "En disputa";
+    if (dates.length && dates[dates.length - 1] < today) return "Fecha anterior";
     return "Próxima fecha";
   }
 
-  function seleccionarFechaInicial(keys) {
+  function seleccionarJornadaInicial(jornadas) {
     const today = todayKey();
-    if (keys.includes(today)) return today;
-    const proxima = keys.find((key) => key > today);
-    if (proxima) return proxima;
-    return keys[keys.length - 1] || "";
+    const enDisputa = jornadas.find((jornada) => jornada.partidos.some((match) => fechaKey(match.fecha) === today));
+    if (enDisputa) return enDisputa.key;
+
+    const proxima = jornadas.find((jornada) => (jornada.firstDate || "") >= today);
+    if (proxima) return proxima.key;
+
+    return jornadas[jornadas.length - 1]?.key || "";
   }
 
   function renderMatchFecha(match) {
     const local = match?.local?.equipo || {};
     const visitante = match?.visitante?.equipo || {};
     const estado = match?.estado || (match?.completado ? "Finalizado" : "Programado");
+
     return `
       <article class="competition-date-match">
         <div class="competition-date-match-time">
@@ -184,13 +307,19 @@
   function renderFechasSeleccionadas() {
     const container = document.querySelector("#competitionDatesList");
     if (!container || !fechasState) return;
-    const { grupos, keys, selected } = fechasState;
-    const matches = grupos.get(selected) || [];
 
-    const miniCalendario = keys.map((key) => `
-      <button class="competition-mini-date ${key === selected ? "is-selected" : ""} ${key === todayKey() ? "is-today" : ""}" type="button" data-date-key="${escapeHtml(key)}">
-        <span>${escapeHtml(fechaCorta(key))}</span>
-        <strong>${escapeHtml((grupos.get(key) || []).length)}</strong>
+    const { jornadas, selected } = fechasState;
+    const jornada = jornadas.find((item) => item.key === selected) || jornadas[0];
+    if (!jornada) {
+      container.innerHTML = `<p class="competition-empty">No hay fechas disponibles para esta competición.</p>`;
+      return;
+    }
+
+    const miniCalendario = jornadas.map((item) => `
+      <button class="competition-mini-date ${item.key === jornada.key ? "is-selected" : ""} ${estadoJornada(item) === "En disputa" ? "is-today" : ""}" type="button" data-jornada-key="${escapeHtml(item.key)}">
+        <span>${escapeHtml(item.nombre)}</span>
+        <em>${escapeHtml(item.dateLabel)}</em>
+        <strong>${escapeHtml(item.partidos.length)}</strong>
       </button>`).join("");
 
     container.innerHTML = `
@@ -198,46 +327,27 @@
         <div class="competition-dates-toolbar">
           <div>
             <span>Fecha seleccionada</span>
-            <strong>${escapeHtml(fechaCorta(selected))}</strong>
+            <strong>${escapeHtml(jornada.nombre)}</strong>
+            <em>${escapeHtml(jornada.dateLabel)}</em>
           </div>
-          <small>${escapeHtml(estadoFecha(selected, matches))}</small>
+          <small>${escapeHtml(estadoJornada(jornada))}</small>
         </div>
         <div class="competition-mini-calendar" aria-label="Seleccionar fecha">
           ${miniCalendario}
         </div>
-        <section class="competition-date-group" id="fecha-${escapeHtml(selected)}">
+        <section class="competition-date-group" id="${escapeHtml(jornada.key)}">
           <div class="competition-date-head">
-            <span>${escapeHtml(estadoFecha(selected, matches))}</span>
-            <strong>${escapeHtml(fechaCorta(selected))}</strong>
+            <span>${escapeHtml(estadoJornada(jornada))}</span>
+            <strong>${escapeHtml(jornada.nombre)} · ${escapeHtml(jornada.dateLabel)}</strong>
           </div>
           <div class="competition-date-matches">
-            ${matches.length ? matches.map(renderMatchFecha).join("") : `<p class="competition-empty">No hay partidos cargados para esta fecha.</p>`}
+            ${jornada.partidos.length ? jornada.partidos.map(renderMatchFecha).join("") : `<p class="competition-empty">No hay partidos cargados para esta fecha.</p>`}
           </div>
         </section>
       </div>`;
   }
 
-  function renderFechasHtml(matches) {
-    const partidos = mergePartidos({ todos: matches });
-    if (!partidos.length) return `<p class="competition-empty">No hay fechas disponibles para esta competición.</p>`;
-
-    const grupos = new Map();
-    partidos.forEach((match) => {
-      const key = fechaKey(match.fecha);
-      if (!grupos.has(key)) grupos.set(key, []);
-      grupos.get(key).push(match);
-    });
-
-    const keys = [...grupos.keys()].sort();
-    fechasState = {
-      grupos,
-      keys,
-      selected: seleccionarFechaInicial(keys),
-    };
-    return "";
-  }
-
-  async function renderizarFechasProximas() {
+  async function renderizarFechas() {
     const container = document.querySelector("#competitionDatesList");
     if (!container) return;
 
@@ -248,19 +358,31 @@
     if (kicker) kicker.textContent = "Calendario completo";
 
     try {
+      const currentId = competitionId();
       const response = await fetch(`${DATA_URL}?v=${Date.now()}`, { cache: "no-store" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
       const data = await response.json();
-      const comp = (data.competiciones || []).find((item) => item.id === competitionId() || item.slug === competitionId());
-      if (!comp) throw new Error("No se encontró la competición");
-      renderFechasHtml(mergePartidos(comp.partidos || {}));
+      const competition = (data.competiciones || []).find((item) => item.id === currentId || item.slug === currentId);
+      if (!competition) throw new Error("No se encontró la competición");
+
+      const jornadas = buildJornadas(competition);
+      const keys = jornadas.map((item) => item.key);
+      const previousSelected = fechasState?.selected;
+      const keepSelected = usuarioSeleccionoFecha && previousSelected && keys.includes(previousSelected);
+
+      fechasState = {
+        jornadas,
+        selected: keepSelected ? previousSelected : seleccionarJornadaInicial(jornadas),
+      };
+      fechasCargadasPara = currentId;
       renderFechasSeleccionadas();
     } catch (error) {
       container.innerHTML = `<p class="competition-empty">No se pudieron cargar las fechas.</p>`;
     }
   }
 
-  function mejorarVisibilidadTitulosCero() {
+  function aplicarEstilos() {
     if (document.querySelector("#competition-zero-titles-style")) return;
 
     const style = document.createElement("style");
@@ -329,8 +451,6 @@
         border-radius: 999px !important;
         font-weight: 950 !important;
         letter-spacing: -0.2px !important;
-        position: relative !important;
-        overflow: visible !important;
       }
 
       body[data-competition-id="liga-profesional"] .competition-team-titles::before {
@@ -353,11 +473,8 @@
       body[data-competition-id="liga-profesional"] .competition-team-titles strong {
         font-size: 14px !important;
         line-height: 1 !important;
-        text-align: center !important;
         color: #442500 !important;
         text-shadow: none !important;
-        position: relative !important;
-        z-index: 1 !important;
       }
 
       body[data-competition-id="liga-profesional"] .competition-team-titles.has-titles {
@@ -377,7 +494,6 @@
 
       body[data-competition-id="liga-profesional"] .competition-team-titles.no-titles strong {
         color: #fff6c7 !important;
-        text-shadow: none !important;
       }
 
       .competition-dates-panel {
@@ -411,6 +527,15 @@
         margin-top: 2px;
       }
 
+      .competition-dates-toolbar em {
+        display: block;
+        color: #baff78;
+        font-style: normal;
+        font-size: 12px;
+        font-weight: 900;
+        margin-top: 2px;
+      }
+
       .competition-dates-toolbar small {
         color: #173520;
         background: #5fcf80;
@@ -430,14 +555,13 @@
       }
 
       .competition-mini-date {
-        min-width: 98px;
-        min-height: 62px;
+        min-width: 116px;
+        min-height: 76px;
         display: grid;
         align-content: center;
         justify-items: center;
-        gap: 4px;
+        gap: 3px;
         color: #eaffef;
-        text-decoration: none;
         border-radius: 16px;
         background: linear-gradient(180deg, rgba(21, 93, 55, 0.98), rgba(8, 62, 38, 0.98));
         border: 1px solid rgba(95, 207, 128, 0.35);
@@ -446,27 +570,34 @@
       }
 
       .competition-mini-date span {
-        font-size: 11px;
-        font-weight: 900;
-        color: #baff78;
+        font-size: 12px;
+        font-weight: 950;
+        color: #ffffff;
         text-transform: uppercase;
       }
 
+      .competition-mini-date em {
+        color: #baff78;
+        font-style: normal;
+        font-size: 10px;
+        font-weight: 900;
+      }
+
       .competition-mini-date strong {
-        min-width: 26px;
-        height: 24px;
+        min-width: 24px;
+        height: 22px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         border-radius: 999px;
         color: #173520;
         background: #5fcf80;
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 950;
       }
 
       .competition-mini-date.is-today {
-        border-color: rgba(186, 255, 120, 0.55);
+        border-color: rgba(186, 255, 120, 0.65);
       }
 
       .competition-mini-date.is-selected {
@@ -612,29 +743,29 @@
     document.head.appendChild(style);
   }
 
-  function limpiarTodo() {
-    limpiarElemento(document.body || document.documentElement);
-  }
-
-  function initPersonalizaciones() {
+  function initPersonalizaciones(forceReload = false) {
     quitarTabProximos();
     limpiarTodo();
-    mejorarVisibilidadTitulosCero();
-    renderizarFechasProximas();
+    aplicarEstilos();
+
+    const id = competitionId();
+    const shouldLoad = forceReload || !fechasState || fechasCargadasPara !== id;
+    if (shouldLoad) renderizarFechas();
   }
 
   document.addEventListener("click", (event) => {
-    const button = event.target.closest(".competition-mini-date[data-date-key]");
+    const button = event.target.closest(".competition-mini-date[data-jornada-key]");
     if (!button || !fechasState) return;
-    fechasState.selected = button.dataset.dateKey;
+    usuarioSeleccionoFecha = true;
+    fechasState.selected = button.dataset.jornadaKey;
     renderFechasSeleccionadas();
   });
 
-  document.addEventListener("DOMContentLoaded", initPersonalizaciones);
-  initPersonalizaciones();
-  window.setTimeout(initPersonalizaciones, 250);
-  window.setTimeout(initPersonalizaciones, 1000);
-  window.setTimeout(initPersonalizaciones, 2500);
+  document.addEventListener("DOMContentLoaded", () => initPersonalizaciones(true));
+  initPersonalizaciones(false);
+  window.setTimeout(() => initPersonalizaciones(false), 250);
+  window.setTimeout(() => initPersonalizaciones(false), 1000);
+  window.setTimeout(() => initPersonalizaciones(false), 2500);
 
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
@@ -642,7 +773,7 @@
       if (mutation.type === "characterData") limpiarNodoTexto(mutation.target);
     });
     quitarTabProximos();
-    mejorarVisibilidadTitulosCero();
+    aplicarEstilos();
   });
 
   observer.observe(document.documentElement, {
