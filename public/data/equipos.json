@@ -11,7 +11,7 @@
     "fundacion": "1905/04/08",
     "estadio": "Jorge Luis Hirschi",
     "ciudad": "La Plata",
-    "actualizado": "2026-05-29T01:32:07.565906+00:00",
+    "actualizado": "2026-05-29T05:58:21.807172+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -1088,7 +1088,7 @@
     "fundacion": "1905/03/04",
     "estadio": "Alberto J. Armando",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-29T01:32:08.684422+00:00",
+    "actualizado": "2026-05-29T05:58:22.735677+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -1998,6 +1998,20 @@
         "proximosPartidos": [],
         "resultados": [
           {
+            "id": "401865549",
+            "dia": "2026-05-28",
+            "fecha_iso": "2026-05-28T21:30:00",
+            "fecha_iso_utc": "2026-05-29T00:30Z",
+            "local": "Boca Juniors",
+            "visitante": "Universidad Católica",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/885.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865549/universidad-catolica-boca-juniors",
+            "resultado": "0 - 1",
+            "estado": "",
+            "hora": "21:30"
+          },
+          {
             "id": "401865538",
             "dia": "2026-05-19",
             "fecha_iso": "2026-05-19T21:30:00",
@@ -2076,13 +2090,13 @@
         },
         "generales": {
           "posicion": "3",
-          "partidos": "5",
+          "partidos": "6",
           "ganados": "2",
           "empatados": "1",
-          "perdidos": "2",
+          "perdidos": "3",
           "golesFavor": "6",
-          "golesContra": "4",
-          "diferenciaGol": "+2",
+          "golesContra": "5",
+          "diferenciaGol": "+1",
           "puntos": "7",
           "racha": "-"
         }
@@ -2129,7 +2143,7 @@
     "fundacion": "1910/01/01",
     "estadio": "José Amalfitani",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-29T01:32:09.732408+00:00",
+    "actualizado": "2026-05-29T05:58:23.563258+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -2993,7 +3007,7 @@
     "fundacion": "1913/12/10",
     "estadio": "Mario Alberto Kempes",
     "ciudad": "Córdoba",
-    "actualizado": "2026-05-29T01:32:10.511072+00:00",
+    "actualizado": "2026-05-29T05:58:24.247221+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -3813,7 +3827,7 @@
     "fundacion": "1905/01/01",
     "estadio": "Libertadores de América - Ricardo Enrique Bochini",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-29T01:32:11.272607+00:00",
+    "actualizado": "2026-05-29T05:58:25.038605+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -4095,11 +4109,6 @@
         }
       ],
       "delanteros": [
-        {
-          "nombre": "Rodrigo Fernández",
-          "edad": 19,
-          "altura": "5' 9\""
-        },
         {
           "nombre": "Ignacio Pussetto",
           "edad": 30,
@@ -4740,7 +4749,7 @@
     "fundacion": "1915/03/01",
     "estadio": "Ciudad de Lanús - Néstor Díaz Pérez",
     "ciudad": "Lanús",
-    "actualizado": "2026-05-29T01:32:12.295578+00:00",
+    "actualizado": "2026-05-29T05:58:25.772977+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -5072,11 +5081,6 @@
         }
       ],
       "delanteros": [
-        {
-          "nombre": "Alexis González",
-          "edad": 21,
-          "altura": "6' 0\""
-        },
         {
           "nombre": "Matias Sepulveda",
           "edad": 20,
@@ -5776,7 +5780,7 @@
     "fundacion": "1908/01/04",
     "estadio": "Pedro Bidegain",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-29T01:32:12.993174+00:00",
+    "actualizado": "2026-05-29T05:58:26.344628+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -6113,11 +6117,6 @@
         }
       ],
       "delanteros": [
-        {
-          "nombre": "Facundo Altamira",
-          "edad": 24,
-          "altura": "6' 0\""
-        },
         {
           "nombre": "Ezequiel Cerutti",
           "edad": 34,
@@ -6810,7 +6809,7 @@
     "fundacion": "1907/15/04",
     "estadio": "15 de Abril",
     "ciudad": "Santa Fe",
-    "actualizado": "2026-05-29T01:32:14.062633+00:00",
+    "actualizado": "2026-05-29T05:58:27.043605+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -7676,7 +7675,7 @@
     "fundacion": "1918/08/08",
     "estadio": "Juan Domingo Perón",
     "ciudad": "Córdoba",
-    "actualizado": "2026-05-29T01:32:14.768991+00:00",
+    "actualizado": "2026-05-29T05:58:27.533342+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -8576,7 +8575,7 @@
     "fundacion": "1935/20/03",
     "estadio": "Norberto Tomaghello",
     "ciudad": "Florencio Varela",
-    "actualizado": "2026-05-29T01:32:15.479698+00:00",
+    "actualizado": "2026-05-29T05:58:28.309976+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -8815,11 +8814,6 @@
           "nombre": "Máximo Rodríguez",
           "edad": 21,
           "altura": "-"
-        },
-        {
-          "nombre": "Santiago Sosa",
-          "edad": 27,
-          "altura": "6' 0\""
         },
         {
           "nombre": "Santiago Toloza",
@@ -9450,7 +9444,7 @@
     "fundacion": "1908/30/08",
     "estadio": "Víctor Antonio Legrotaglie",
     "ciudad": "Mendoza",
-    "actualizado": "2026-05-29T01:32:16.375669+00:00",
+    "actualizado": "2026-05-29T05:58:28.707023+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -10329,7 +10323,7 @@
     "fundacion": "1905/25/05",
     "estadio": "Ciudad de Vicente López",
     "ciudad": "Vicente López",
-    "actualizado": "2026-05-29T01:32:17.277971+00:00",
+    "actualizado": "2026-05-29T05:58:29.578849+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -11291,7 +11285,7 @@
     "fundacion": "1919/03/06",
     "estadio": "Único Madre de Ciudades",
     "ciudad": "Santiago del Estero",
-    "actualizado": "2026-05-29T01:32:18.073298+00:00",
+    "actualizado": "2026-05-29T05:58:30.194254+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -11455,11 +11449,6 @@
       ],
       "defensores": [
         {
-          "nombre": "Santiago Moya",
-          "edad": 22,
-          "altura": "6' 2\""
-        },
-        {
           "nombre": "Alejandro Maciel",
           "edad": 29,
           "altura": "6' 0\""
@@ -11537,11 +11526,6 @@
           "nombre": "Agustín Romero",
           "edad": 17,
           "altura": "5' 11\""
-        },
-        {
-          "nombre": "Lucas González",
-          "edad": 28,
-          "altura": "6' 1\""
         },
         {
           "nombre": "Michael Santos",
@@ -12084,7 +12068,7 @@
     "fundacion": "1903/03/11",
     "estadio": "Marcelo Bielsa",
     "ciudad": "Rosario",
-    "actualizado": "2026-05-29T01:32:18.822190+00:00",
+    "actualizado": "2026-05-29T05:58:30.679052+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -12320,11 +12304,6 @@
           "altura": "5' 6\""
         },
         {
-          "nombre": "Lautaro Ríos",
-          "edad": 25,
-          "altura": "5' 11\""
-        },
-        {
           "nombre": "Marcelo Esponda",
           "edad": 23,
           "altura": "5' 10\""
@@ -12356,11 +12335,6 @@
         }
       ],
       "delanteros": [
-        {
-          "nombre": "Martín Ortega",
-          "edad": 19,
-          "altura": "6' 0\""
-        },
         {
           "nombre": "Juan Ramírez",
           "edad": 29,
@@ -12939,7 +12913,7 @@
     "fundacion": "1931/22/02",
     "estadio": "Guillermo Laza",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-29T01:32:19.866307+00:00",
+    "actualizado": "2026-05-29T05:58:31.156521+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -13815,7 +13789,7 @@
     "fundacion": "1913/24/01",
     "estadio": "Bautista Gargantini",
     "ciudad": "Mendoza",
-    "actualizado": "2026-05-29T01:32:20.604132+00:00",
+    "actualizado": "2026-05-29T05:58:31.793639+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -14868,7 +14842,7 @@
     "fundacion": "1901/25/05",
     "estadio": "Mâs Monumental",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-29T01:32:21.312999+00:00",
+    "actualizado": "2026-05-29T05:58:32.257484+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -15979,7 +15953,7 @@
     "fundacion": "1904/15/08",
     "estadio": "Diego Armando Maradona",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-29T01:32:22.197818+00:00",
+    "actualizado": "2026-05-29T05:58:32.756986+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -16968,7 +16942,7 @@
     "fundacion": "1889/24/12",
     "estadio": "Gigante de Arroyito",
     "ciudad": "Rosario",
-    "actualizado": "2026-05-29T01:32:23.430913+00:00",
+    "actualizado": "2026-05-29T05:58:33.881533+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -18038,7 +18012,7 @@
     "fundacion": "1905/19/03",
     "estadio": "Julio César Villagra",
     "ciudad": "Córdoba",
-    "actualizado": "2026-05-29T01:32:24.195269+00:00",
+    "actualizado": "2026-05-29T05:58:34.339135+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -18938,7 +18912,7 @@
     "fundacion": "1887/03/06",
     "estadio": "Juan Carmelo Zerillo",
     "ciudad": "La Plata",
-    "actualizado": "2026-05-29T01:32:25.200165+00:00",
+    "actualizado": "2026-05-29T05:58:34.843187+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -19779,7 +19753,7 @@
     "fundacion": "1908/01/11",
     "estadio": "Tomás Adolfo Ducó",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-29T01:32:26.103395+00:00",
+    "actualizado": "2026-05-29T05:58:35.474189+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -20633,7 +20607,7 @@
     "fundacion": "1903/25/03",
     "estadio": "Presidente Perón",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-05-29T01:32:26.850913+00:00",
+    "actualizado": "2026-05-29T05:58:36.072939+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -21700,7 +21674,7 @@
     "fundacion": "1904/05/04",
     "estadio": "Claudio Chiqui Tapia",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-05-29T01:32:27.729226+00:00",
+    "actualizado": "2026-05-29T05:58:36.747248+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -22719,7 +22693,7 @@
     "fundacion": "1902/03/08",
     "estadio": "José Dellagiovanna",
     "ciudad": "Victoria",
-    "actualizado": "2026-05-29T01:32:28.403592+00:00",
+    "actualizado": "2026-05-29T05:58:37.184840+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -23617,6 +23591,20 @@
         "proximosPartidos": [],
         "resultados": [
           {
+            "id": "401865458",
+            "dia": "2026-05-28",
+            "fecha_iso": "2026-05-28T21:30:00",
+            "fecha_iso_utc": "2026-05-29T00:30Z",
+            "local": "Tigre",
+            "visitante": "Alianza Atlético",
+            "local_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
+            "visitante_logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5267.png",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401865458/alianza-atletico-tigre",
+            "resultado": "2 - 0",
+            "estado": "",
+            "hora": "21:30"
+          },
+          {
             "id": "401865440",
             "dia": "2026-05-19",
             "fecha_iso": "2026-05-19T23:00:00",
@@ -23694,15 +23682,15 @@
           "rojas": []
         },
         "generales": {
-          "posicion": "3",
-          "partidos": "5",
-          "ganados": "1",
+          "posicion": "2",
+          "partidos": "6",
+          "ganados": "2",
           "empatados": "3",
           "perdidos": "1",
-          "golesFavor": "6",
+          "golesFavor": "8",
           "golesContra": "5",
-          "diferenciaGol": "+1",
-          "puntos": "6",
+          "diferenciaGol": "+3",
+          "puntos": "9",
           "racha": "-"
         }
       }
@@ -23720,7 +23708,7 @@
     "fundacion": "1911/01/04",
     "estadio": "Eva Perón",
     "ciudad": "Junín",
-    "actualizado": "2026-05-29T01:32:29.168557+00:00",
+    "actualizado": "2026-05-29T05:58:37.657149+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -24590,7 +24578,7 @@
     "fundacion": "1896/21/01",
     "estadio": "Florencio Sola",
     "ciudad": "Banfield",
-    "actualizado": "2026-05-29T01:32:29.861751+00:00",
+    "actualizado": "2026-05-29T05:58:38.149046+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -25392,7 +25380,7 @@
     "fundacion": "1902/27/09",
     "estadio": "Monumental José Fierro",
     "ciudad": "San Miguel de Tucumán",
-    "actualizado": "2026-05-29T01:32:30.542992+00:00",
+    "actualizado": "2026-05-29T05:58:38.818992+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -26230,7 +26218,7 @@
     "fundacion": "1913/29/03",
     "estadio": "José María Minella",
     "ciudad": "Mar del Plata",
-    "actualizado": "2026-05-29T01:32:31.316234+00:00",
+    "actualizado": "2026-05-29T05:58:39.327929+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -27040,7 +27028,7 @@
     "fundacion": "1912/21/09",
     "estadio": "Antonio Candini",
     "ciudad": "Río Cuarto",
-    "actualizado": "2026-05-29T01:32:32.198737+00:00",
+    "actualizado": "2026-05-29T05:58:39.944099+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -27396,11 +27384,6 @@
           "nombre": "Ramiro Bornia",
           "edad": 21,
           "altura": "6' 2\""
-        },
-        {
-          "nombre": "Benjamin Moyano",
-          "edad": 20,
-          "altura": "-"
         }
       ]
     },
