@@ -1,10 +1,10 @@
 /* ================================
    FECHAS + FASES ELIMINATORIAS
-   Orden correcto:
-   - Apertura: Fecha 1, 2, 3...
-   - Playoffs Apertura: Octavos, cuartos, semifinales, final
-   - Clausura: Fecha 1, 2, 3...
-   - Si hay penales, muestra la definición arriba del marcador
+   - Ordena por fecha real del calendario
+   - Apertura regular: enero/abril-mayo
+   - Luego octavos, cuartos, semifinales y final
+   - Clausura regular después
+   - Si hay penales, los muestra arriba del marcador
 ================================ */
 
 (function () {
@@ -15,6 +15,14 @@
     ["cuartos", "Cuartos de final"],
     ["semis", "Semifinales"],
     ["final", "Final"],
+  ];
+  const FASE_LABEL = Object.fromEntries(FASES);
+  const FASE_ORDER = Object.fromEntries(FASES.map(([key], index) => [key, index + 1]));
+  const PLAYOFF_RANGES_APERTURA = [
+    ["octavos", "2026-05-09", "2026-05-10"],
+    ["cuartos", "2026-05-12", "2026-05-14"],
+    ["semis", "2026-05-16", "2026-05-18"],
+    ["final", "2026-05-23", "2026-05-25"],
   ];
 
   let state = null;
@@ -119,14 +127,10 @@
     const penales = match?.penales || {};
     const local = numeroValido(penales.local ?? match?.local?.penales ?? match?.local_penales ?? match?.homePenaltyScore ?? match?.shootoutLocal);
     const visitante = numeroValido(penales.visitante ?? match?.visitante?.penales ?? match?.visitante_penales ?? match?.awayPenaltyScore ?? match?.shootoutVisitante);
-
     if (local === null || visitante === null) return null;
     if (local === 0 && visitante === 0) return null;
-
     const huboDefinicion = penales.definicion === true || textoIndicaPenales(match) || local !== visitante;
-    if (!huboDefinicion) return null;
-
-    return `Penales ${local} - ${visitante}`;
+    return huboDefinicion ? `Penales ${local} - ${visitante}` : null;
   }
 
   function keyPartido(match) {
@@ -145,124 +149,127 @@
       .sort((a, b) => String(a.fecha || "").localeCompare(String(b.fecha || "")));
   }
 
-  function rango(partidos) {
-    const keys = [...new Set((partidos || []).map((p) => fechaKey(p.fecha)).filter((k) => k && k !== "sin-fecha"))].sort();
-    if (!keys.length) return "A confirmar";
-    if (keys.length === 1) return fechaCorta(keys[0]);
-    return `${fechaCorta(keys[0])} - ${fechaCorta(keys[keys.length - 1])}`;
-  }
-
   function firstDate(partidos) {
     return [...new Set((partidos || []).map((p) => fechaKey(p.fecha)).filter((k) => k && k !== "sin-fecha"))].sort()[0] || "sin-fecha";
   }
 
-  function nombreConTorneo(torneo, nombre) {
-    if (torneo === "apertura") return `Apertura · ${nombre}`;
-    if (torneo === "clausura") return `Clausura · ${nombre}`;
-    return nombre;
+  function lastDate(partidos) {
+    const keys = [...new Set((partidos || []).map((p) => fechaKey(p.fecha)).filter((k) => k && k !== "sin-fecha"))].sort();
+    return keys[keys.length - 1] || "sin-fecha";
   }
 
-  function fechasRegulares(comp) {
-    const out = [];
-    const fechas = comp?.especial?.fechas || {};
-
-    ["apertura", "clausura"].forEach((torneo) => {
-      (Array.isArray(fechas[torneo]) ? fechas[torneo] : []).forEach((item, index) => {
-        const partidos = dedupe(item?.partidos || []);
-        if (!partidos.length) return;
-        const nombreBase = item?.nombre || `Fecha ${index + 1}`;
-        const n = Number(String(nombreBase).match(/(\d+)/)?.[1] || index + 1);
-
-        out.push({
-          key: `${torneo}-fecha-${String(n).padStart(2, "0")}`,
-          nombre: nombreConTorneo(torneo, nombreBase),
-          tipo: "fecha",
-          torneo,
-          orden: torneo === "apertura" ? n : 100 + n,
-          partidos,
-          firstDate: firstDate(partidos),
-          dateLabel: rango(partidos),
-        });
-      });
-    });
-
-    return out;
+  function rango(partidos) {
+    const a = firstDate(partidos);
+    const b = lastDate(partidos);
+    if (a === "sin-fecha") return "A confirmar";
+    if (a === b) return fechaCorta(a);
+    return `${fechaCorta(a)} - ${fechaCorta(b)}`;
   }
 
-  function fasesEliminatorias(comp) {
-    const out = [];
+  function fasePorFecha(match) {
+    const k = fechaKey(match?.fecha);
+    for (const [fase, desde, hasta] of PLAYOFF_RANGES_APERTURA) {
+      if (k >= desde && k <= hasta) return fase;
+    }
+    return "";
+  }
+
+  function fasePartido(match) {
+    const txt = String(match?.fase || "").toLowerCase();
+    const detectada = FASES.find(([key]) => txt === key || txt.includes(key));
+    return detectada ? detectada[0] : fasePorFecha(match);
+  }
+
+  function torneoPartido(match) {
+    const k = fechaKey(match?.fecha);
+    if (k >= "2026-07-01") return "clausura";
+    return "apertura";
+  }
+
+  function numeroFecha(match) {
+    const value = match?.fecha_numero ?? match?.jornada ?? match?.round ?? match?.week;
+    const n = Number(value);
+    return Number.isFinite(n) && n > 0 && n <= 30 ? n : null;
+  }
+
+  function crearItem(key, nombre, tipo, torneo, orden, partidos) {
+    const clean = dedupe(partidos);
+    return {
+      key,
+      nombre,
+      tipo,
+      torneo,
+      orden,
+      partidos: clean,
+      firstDate: firstDate(clean),
+      lastDate: lastDate(clean),
+      dateLabel: rango(clean),
+    };
+  }
+
+  function agregarFasesEspeciales(comp, grupos) {
     const fases = comp?.especial?.eliminatorias?.fases || {};
-
-    FASES.forEach(([key, title], index) => {
-      const partidos = dedupe(fases[key] || []);
+    FASES.forEach(([fase, title]) => {
+      const partidos = dedupe(fases[fase] || []);
       if (!partidos.length) return;
-      out.push({
-        key: `fase-${key}`,
-        nombre: title,
-        tipo: "fase",
-        torneo: "playoffs",
-        orden: 40 + index,
-        partidos,
-        firstDate: firstDate(partidos),
-        dateLabel: rango(partidos),
-      });
+      const key = `apertura-fase-${fase}`;
+      const existentes = grupos.get(key)?.partidos || [];
+      grupos.set(key, crearItem(key, `Apertura · ${title}`, "fase", "apertura", 500 + FASE_ORDER[fase], [...existentes, ...partidos]));
     });
-
-    return out;
   }
 
-  function fallbackPorPartidos(comp) {
+  function buildItems(comp) {
+    const grupos = new Map();
     const all = dedupe([
       ...(comp?.partidos?.todos || []),
       ...(comp?.partidos?.ultimos || []),
       ...(comp?.partidos?.proximos || []),
     ]);
-    const grupos = new Map();
 
     all.forEach((match) => {
-      const faseTxt = String(match?.fase || "").toLowerCase();
-      const fase = FASES.find(([k]) => faseTxt === k || faseTxt.includes(k));
-      const num = Number(match?.fecha_numero || match?.jornada || match?.round || match?.week || 0);
-      const key = fase ? `fase-${fase[0]}` : num > 0 ? `fecha-${String(num).padStart(2, "0")}` : `dia-${fechaKey(match.fecha)}`;
-      const nombre = fase ? fase[1] : num > 0 ? `Fecha ${num}` : fechaCorta(fechaKey(match.fecha));
-      const orden = fase ? 40 + FASES.findIndex(([k]) => k === fase[0]) : num > 0 ? num : 200;
+      const fase = fasePartido(match);
+      const torneo = torneoPartido(match);
 
-      if (!grupos.has(key)) grupos.set(key, { key, nombre, tipo: fase ? "fase" : "fecha", orden, partidos: [] });
-      grupos.get(key).partidos.push(match);
+      if (fase) {
+        const key = `${torneo}-fase-${fase}`;
+        const title = `${torneo === "clausura" ? "Clausura" : "Apertura"} · ${FASE_LABEL[fase] || "Fase"}`;
+        const prev = grupos.get(key)?.partidos || [];
+        grupos.set(key, crearItem(key, title, "fase", torneo, torneo === "clausura" ? 1500 + FASE_ORDER[fase] : 500 + FASE_ORDER[fase], [...prev, match]));
+        return;
+      }
+
+      const numero = numeroFecha(match);
+      const date = fechaKey(match.fecha);
+      const key = numero ? `${torneo}-fecha-${String(numero).padStart(2, "0")}` : `${torneo}-dia-${date}`;
+      const labelTorneo = torneo === "clausura" ? "Clausura" : "Apertura";
+      const title = numero ? `${labelTorneo} · Fecha ${numero}` : `${labelTorneo} · ${fechaCorta(date)}`;
+      const orden = torneo === "clausura" ? 1000 + (numero || 900) : (numero || 300);
+      const prev = grupos.get(key)?.partidos || [];
+      grupos.set(key, crearItem(key, title, "fecha", torneo, orden, [...prev, match]));
     });
 
-    return [...grupos.values()].map((item) => ({
-      ...item,
-      partidos: dedupe(item.partidos),
-      firstDate: firstDate(item.partidos),
-      dateLabel: rango(item.partidos),
-    }));
-  }
+    agregarFasesEspeciales(comp, grupos);
 
-  function buildItems(comp) {
-    const items = [...fechasRegulares(comp), ...fasesEliminatorias(comp)];
-    const finalItems = items.length ? items : fallbackPorPartidos(comp);
-    return finalItems.sort((a, b) => {
-      if (a.orden !== b.orden) return a.orden - b.orden;
-      return String(a.firstDate).localeCompare(String(b.firstDate));
+    return [...grupos.values()].sort((a, b) => {
+      if (a.firstDate !== b.firstDate) return String(a.firstDate).localeCompare(String(b.firstDate));
+      if (a.tipo !== b.tipo) return a.tipo === "fecha" ? -1 : 1;
+      return a.orden - b.orden;
     });
   }
 
   function estado(item) {
     const today = todayKey();
-    const dates = [...new Set(item.partidos.map((p) => fechaKey(p.fecha)).filter((k) => k !== "sin-fecha"))].sort();
-    if (dates.includes(today)) return "En disputa";
-    if (dates.length && dates[dates.length - 1] < today) return item.tipo === "fase" ? "Fase anterior" : "Fecha anterior";
+    if (item.firstDate <= today && item.lastDate >= today) return "En disputa";
+    if (item.lastDate !== "sin-fecha" && item.lastDate < today) return item.tipo === "fase" ? "Fase anterior" : "Fecha anterior";
     return item.tipo === "fase" ? "Próxima fase" : "Próxima fecha";
   }
 
   function seleccionInicial(items) {
     const today = todayKey();
-    const enDisputa = items.find((item) => item.partidos.some((p) => fechaKey(p.fecha) === today));
-    if (enDisputa) return enDisputa.key;
-    const proxima = items.find((item) => (item.firstDate || "") >= today);
-    if (proxima) return proxima.key;
-    return items[items.length - 1]?.key || "";
+    const actual = items.find((item) => item.firstDate <= today && item.lastDate >= today);
+    if (actual) return actual.key;
+    const proxima = items.find((item) => item.firstDate >= today);
+    return proxima?.key || items[items.length - 1]?.key || "";
   }
 
   function marcadorConPenales(match) {
@@ -295,7 +302,6 @@
   function render() {
     const box = document.querySelector("#competitionDatesList");
     if (!box || !state) return;
-
     const item = state.items.find((x) => x.key === state.selected) || state.items[0];
     if (!item) {
       box.innerHTML = `<p class="competition-empty">No hay fechas disponibles para esta competición.</p>`;
@@ -353,14 +359,11 @@
   async function init(force = false) {
     const box = document.querySelector("#competitionDatesList");
     if (!box) return;
-
     document.querySelectorAll('[data-competition-tab="proximos"], [data-competition-section="proximos"]').forEach((el) => el.remove());
-
     const title = document.querySelector('[data-competition-section="fechas"] h2');
     if (title) title.textContent = "Fechas, fases y partidos";
     const kicker = document.querySelector('[data-competition-section="fechas"] .competition-section-kicker');
     if (kicker) kicker.textContent = "Calendario completo";
-
     if (state && !force) return;
 
     try {
