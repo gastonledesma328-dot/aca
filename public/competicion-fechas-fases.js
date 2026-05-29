@@ -1,11 +1,14 @@
 /* ================================
    FECHAS + FASES ELIMINATORIAS
    Diseño tipo tabla compacta estilo Promiedos.
+   Agrupa por FECHA de torneo, no por día suelto.
+   Ejemplo: Fecha 1 puede contener jue/vie/sáb/dom.
 ================================ */
 
 (function () {
   const DATA_URL = "../data/competiciones.json";
   const TZ = "America/Argentina/Buenos_Aires";
+  const PARTIDOS_POR_FECHA_LPF = 15;
   const FASES = [
     ["octavos", "Octavos de final"],
     ["cuartos", "Cuartos de final"],
@@ -182,12 +185,6 @@
     return "apertura";
   }
 
-  function numeroFecha(match) {
-    const value = match?.fecha_numero ?? match?.jornada ?? match?.round ?? match?.week;
-    const n = Number(value);
-    return Number.isFinite(n) && n > 0 && n <= 30 ? n : null;
-  }
-
   function crearItem(key, nombre, tipo, torneo, orden, partidos) {
     const clean = dedupe(partidos);
     return {
@@ -214,8 +211,23 @@
     });
   }
 
+  function agregarFechasPorBloques(grupos, torneo, partidos) {
+    const ordenados = dedupe(partidos).filter((match) => fechaKey(match.fecha) !== "sin-fecha");
+    const labelTorneo = torneo === "clausura" ? "Clausura" : "Apertura";
+    const baseOrden = torneo === "clausura" ? 1000 : 0;
+
+    for (let i = 0; i < ordenados.length; i += PARTIDOS_POR_FECHA_LPF) {
+      const bloque = ordenados.slice(i, i + PARTIDOS_POR_FECHA_LPF);
+      if (!bloque.length) continue;
+      const numero = Math.floor(i / PARTIDOS_POR_FECHA_LPF) + 1;
+      const key = `${torneo}-fecha-${String(numero).padStart(2, "0")}`;
+      grupos.set(key, crearItem(key, `${labelTorneo} · Fecha ${numero}`, "fecha", torneo, baseOrden + numero, bloque));
+    }
+  }
+
   function buildItems(comp) {
     const grupos = new Map();
+    const regulares = { apertura: [], clausura: [] };
     const all = dedupe([
       ...(comp?.partidos?.todos || []),
       ...(comp?.partidos?.ultimos || []),
@@ -234,22 +246,16 @@
         return;
       }
 
-      const numero = numeroFecha(match);
-      const date = fechaKey(match.fecha);
-      const key = numero ? `${torneo}-fecha-${String(numero).padStart(2, "0")}` : `${torneo}-dia-${date}`;
-      const labelTorneo = torneo === "clausura" ? "Clausura" : "Apertura";
-      const title = numero ? `${labelTorneo} · Fecha ${numero}` : `${labelTorneo} · ${fechaCorta(date)}`;
-      const orden = torneo === "clausura" ? 1000 + (numero || 900) : (numero || 300);
-      const prev = grupos.get(key)?.partidos || [];
-      grupos.set(key, crearItem(key, title, "fecha", torneo, orden, [...prev, match]));
+      regulares[torneo].push(match);
     });
 
+    agregarFechasPorBloques(grupos, "apertura", regulares.apertura);
     agregarFasesEspeciales(comp, grupos);
+    agregarFechasPorBloques(grupos, "clausura", regulares.clausura);
 
     return [...grupos.values()].sort((a, b) => {
-      if (a.firstDate !== b.firstDate) return String(a.firstDate).localeCompare(String(b.firstDate));
-      if (a.tipo !== b.tipo) return a.tipo === "fecha" ? -1 : 1;
-      return a.orden - b.orden;
+      if (a.orden !== b.orden) return a.orden - b.orden;
+      return String(a.firstDate).localeCompare(String(b.firstDate));
     });
   }
 
@@ -308,6 +314,20 @@
       </div>`;
   }
 
+  function renderPartidosPorDia(partidos) {
+    const grupos = new Map();
+    dedupe(partidos).forEach((match) => {
+      const key = fechaKey(match.fecha);
+      if (!grupos.has(key)) grupos.set(key, []);
+      grupos.get(key).push(match);
+    });
+
+    return [...grupos.keys()].sort().map((key) => `
+      <div class="season-date-head">${escapeHtml(fechaCorta(key))}</div>
+      ${grupos.get(key).map(renderPartido).join("")}
+    `).join("");
+  }
+
   function render() {
     const box = document.querySelector("#competitionDatesList");
     if (!box || !state) return;
@@ -336,9 +356,8 @@
           <button class="season-arrow" type="button" data-season-next ${canNext ? "" : "disabled"} aria-label="Fecha siguiente">›</button>
         </div>
         <div class="season-table">
-          <div class="season-date-head">${escapeHtml(item.dateLabel)}</div>
           <div class="season-rows">
-            ${item.partidos.length ? item.partidos.map(renderPartido).join("") : `<div class="season-empty">No hay partidos cargados.</div>`}
+            ${item.partidos.length ? renderPartidosPorDia(item.partidos) : `<div class="season-empty">No hay partidos cargados.</div>`}
           </div>
         </div>
       </div>`;
