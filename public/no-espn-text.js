@@ -4,6 +4,7 @@
 
 (function () {
   const ESPN_REGEX = /ESPN/gi;
+  const DATA_URL = "../data/competiciones.json";
 
   function limpiarTexto(value) {
     return String(value || "")
@@ -61,12 +62,176 @@
     }
   }
 
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function competitionId() {
+    return document.body?.dataset?.competitionId || new URLSearchParams(window.location.search).get("id") || "";
+  }
+
+  function fechaKey(value) {
+    if (!value) return "sin-fecha";
+    try {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return "sin-fecha";
+      const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "America/Argentina/Buenos_Aires",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }).formatToParts(date);
+      const get = (type) => parts.find((part) => part.type === type)?.value || "";
+      return `${get("year")}-${get("month")}-${get("day")}`;
+    } catch (error) {
+      return String(value).slice(0, 10) || "sin-fecha";
+    }
+  }
+
+  function fechaCorta(value) {
+    if (!value || value === "sin-fecha") return "A confirmar";
+    try {
+      const date = new Date(`${value}T12:00:00`);
+      return new Intl.DateTimeFormat("es-AR", {
+        weekday: "short",
+        day: "2-digit",
+        month: "short",
+      }).format(date).replace(".", "");
+    } catch (error) {
+      return value;
+    }
+  }
+
+  function horaPartido(value) {
+    if (!value) return "--:--";
+    try {
+      return new Intl.DateTimeFormat("es-AR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "America/Argentina/Buenos_Aires",
+      }).format(new Date(value));
+    } catch (error) {
+      return String(value).slice(11, 16) || "--:--";
+    }
+  }
+
+  function teamName(team) {
+    return team?.nombre || team?.nombre_corto || "Equipo";
+  }
+
+  function teamLogo(team) {
+    const logo = team?.logo || "";
+    return logo
+      ? `<img class="competition-team-logo" src="${escapeHtml(logo)}" alt="" loading="lazy" />`
+      : `<span class="competition-team-logo"></span>`;
+  }
+
+  function scoreText(match) {
+    const local = match?.local?.marcador;
+    const visitante = match?.visitante?.marcador;
+    if (local !== "" && local != null && visitante !== "" && visitante != null) return `${local} - ${visitante}`;
+    return "vs";
+  }
+
+  function quitarTabProximos() {
+    document.querySelectorAll('[data-competition-tab="proximos"], [data-competition-section="proximos"]').forEach((node) => node.remove());
+  }
+
+  function renderMatchFecha(match) {
+    const local = match?.local?.equipo || {};
+    const visitante = match?.visitante?.equipo || {};
+    return `
+      <article class="competition-date-match">
+        <div class="competition-date-match-time">${escapeHtml(horaPartido(match?.fecha))}</div>
+        <div class="competition-date-match-teams">
+          <span class="competition-match-team">${teamLogo(local)}<span>${escapeHtml(teamName(local))}</span></span>
+          <strong class="competition-score">${escapeHtml(scoreText(match))}</strong>
+          <span class="competition-match-team">${teamLogo(visitante)}<span>${escapeHtml(teamName(visitante))}</span></span>
+        </div>
+      </article>`;
+  }
+
+  function renderFechasHtml(matches) {
+    const proximos = (Array.isArray(matches) ? matches : [])
+      .filter((match) => match && !match.completado)
+      .sort((a, b) => String(a.fecha || "").localeCompare(String(b.fecha || "")));
+
+    if (!proximos.length) {
+      return `<p class="competition-empty">No hay próximos partidos disponibles para esta competición.</p>`;
+    }
+
+    const grupos = new Map();
+    proximos.forEach((match) => {
+      const key = fechaKey(match.fecha);
+      if (!grupos.has(key)) grupos.set(key, []);
+      grupos.get(key).push(match);
+    });
+
+    const keys = [...grupos.keys()].sort();
+    const miniCalendario = keys.slice(0, 10).map((key, index) => `
+      <a class="competition-mini-date ${index === 0 ? "is-next" : ""}" href="#fecha-${escapeHtml(key)}">
+        <span>${escapeHtml(fechaCorta(key))}</span>
+        <strong>${escapeHtml(grupos.get(key).length)}</strong>
+      </a>`).join("");
+
+    const fechas = keys.map((key, index) => `
+      <section class="competition-date-group" id="fecha-${escapeHtml(key)}">
+        <div class="competition-date-head">
+          <span>${index === 0 ? "Próxima fecha" : "Fecha"}</span>
+          <strong>${escapeHtml(fechaCorta(key))}</strong>
+        </div>
+        <div class="competition-date-matches">
+          ${grupos.get(key).map(renderMatchFecha).join("")}
+        </div>
+      </section>`).join("");
+
+    return `
+      <div class="competition-dates-panel">
+        <div class="competition-mini-calendar">
+          ${miniCalendario}
+        </div>
+        ${fechas}
+      </div>`;
+  }
+
+  async function renderizarFechasProximas() {
+    const container = document.querySelector("#competitionDatesList");
+    if (!container) return;
+
+    const cardTitle = document.querySelector('[data-competition-section="fechas"] h2');
+    if (cardTitle) cardTitle.textContent = "Próximos partidos por fecha";
+
+    const kicker = document.querySelector('[data-competition-section="fechas"] .competition-section-kicker');
+    if (kicker) kicker.textContent = "Calendario";
+
+    try {
+      const response = await fetch(`${DATA_URL}?v=${Date.now()}`, { cache: "no-store" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      const comp = (data.competiciones || []).find((item) => item.id === competitionId() || item.slug === competitionId());
+      if (!comp) throw new Error("No se encontró la competición");
+      container.innerHTML = renderFechasHtml(comp.partidos?.proximos || []);
+    } catch (error) {
+      container.innerHTML = `<p class="competition-empty">No se pudieron cargar las fechas próximas.</p>`;
+    }
+  }
+
   function mejorarVisibilidadTitulosCero() {
     if (document.querySelector("#competition-zero-titles-style")) return;
 
     const style = document.createElement("style");
     style.id = "competition-zero-titles-style";
     style.textContent = `
+      body[data-competition-id="liga-profesional"] [data-competition-tab="proximos"],
+      body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] {
+        display: none !important;
+      }
+
       body[data-competition-id="liga-profesional"] .competition-teams-grid {
         grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)) !important;
         gap: 12px !important;
@@ -176,6 +341,141 @@
         text-shadow: none !important;
       }
 
+      .competition-dates-panel {
+        display: grid;
+        gap: 16px;
+      }
+
+      .competition-mini-calendar {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 2px 2px 8px;
+        scrollbar-width: thin;
+      }
+
+      .competition-mini-date {
+        min-width: 92px;
+        min-height: 58px;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        gap: 4px;
+        color: #eaffef;
+        text-decoration: none;
+        border-radius: 16px;
+        background: linear-gradient(180deg, rgba(21, 93, 55, 0.98), rgba(8, 62, 38, 0.98));
+        border: 1px solid rgba(95, 207, 128, 0.35);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+      }
+
+      .competition-mini-date span {
+        font-size: 11px;
+        font-weight: 900;
+        color: #baff78;
+        text-transform: uppercase;
+      }
+
+      .competition-mini-date strong {
+        min-width: 26px;
+        height: 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        color: #173520;
+        background: #5fcf80;
+        font-size: 13px;
+        font-weight: 950;
+      }
+
+      .competition-mini-date.is-next {
+        border-color: rgba(186, 255, 120, 0.7);
+        box-shadow: 0 0 0 1px rgba(186, 255, 120, 0.12), 0 12px 24px rgba(0, 0, 0, 0.22);
+      }
+
+      .competition-date-group {
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid rgba(95, 207, 128, 0.26);
+        background: rgba(5, 35, 23, 0.38);
+      }
+
+      .competition-date-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        background: rgba(14, 82, 50, 0.82);
+        border-bottom: 1px solid rgba(95, 207, 128, 0.22);
+      }
+
+      .competition-date-head span {
+        color: #9fb3a8;
+        font-size: 11px;
+        font-weight: 950;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .competition-date-head strong {
+        color: #ffffff;
+        font-size: 15px;
+      }
+
+      .competition-date-matches {
+        display: grid;
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .competition-date-match {
+        display: grid;
+        grid-template-columns: 58px minmax(0, 1fr);
+        align-items: center;
+        gap: 10px;
+        padding: 12px;
+        border-radius: 16px;
+        color: #eaffef;
+        background: linear-gradient(180deg, rgba(21, 93, 55, 0.96), rgba(10, 62, 38, 0.96));
+        border: 1px solid rgba(95, 207, 128, 0.35);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+      }
+
+      .competition-date-match-time {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 32px;
+        border-radius: 999px;
+        color: #173520;
+        background: #5fcf80;
+        font-size: 12px;
+        font-weight: 950;
+      }
+
+      .competition-date-match-teams {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: center;
+        gap: 10px;
+      }
+
+      .competition-date-match-teams .competition-match-team {
+        min-width: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #ffffff;
+        font-weight: 900;
+      }
+
+      .competition-date-match-teams .competition-match-team:last-child {
+        justify-content: flex-end;
+        text-align: right;
+      }
+
       @media (max-width: 720px) {
         body[data-competition-id="liga-profesional"] .competition-teams-grid {
           grid-template-columns: 1fr !important;
@@ -190,6 +490,24 @@
         body[data-competition-id="liga-profesional"] .competition-team-card-main {
           gap: 10px !important;
         }
+
+        .competition-date-match {
+          grid-template-columns: 1fr;
+        }
+
+        .competition-date-match-time {
+          width: fit-content;
+          padding: 0 12px;
+        }
+
+        .competition-date-match-teams {
+          grid-template-columns: 1fr;
+        }
+
+        .competition-date-match-teams .competition-score {
+          width: fit-content;
+          justify-self: center;
+        }
       }
     `;
     document.head.appendChild(style);
@@ -199,23 +517,25 @@
     limpiarElemento(document.body || document.documentElement);
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  function initPersonalizaciones() {
+    quitarTabProximos();
     limpiarTodo();
     mejorarVisibilidadTitulosCero();
-  });
-  limpiarTodo();
-  mejorarVisibilidadTitulosCero();
-  window.setTimeout(limpiarTodo, 250);
-  window.setTimeout(limpiarTodo, 1000);
-  window.setTimeout(limpiarTodo, 2500);
-  window.setTimeout(mejorarVisibilidadTitulosCero, 250);
-  window.setTimeout(mejorarVisibilidadTitulosCero, 1000);
+    renderizarFechasProximas();
+  }
+
+  document.addEventListener("DOMContentLoaded", initPersonalizaciones);
+  initPersonalizaciones();
+  window.setTimeout(initPersonalizaciones, 250);
+  window.setTimeout(initPersonalizaciones, 1000);
+  window.setTimeout(initPersonalizaciones, 2500);
 
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       mutation.addedNodes.forEach(limpiarElemento);
       if (mutation.type === "characterData") limpiarNodoTexto(mutation.target);
     });
+    quitarTabProximos();
     mejorarVisibilidadTitulosCero();
   });
 
