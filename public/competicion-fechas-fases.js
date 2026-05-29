@@ -1,9 +1,9 @@
 /* ================================
    FECHAS + FASES ELIMINATORIAS
-   Reemplaza el contenido de la pestaña Fechas con:
-   - Fechas regulares Apertura / Clausura
-   - Octavos, cuartos, semifinales y final
-   - Selector clickeable sin resetear la selección
+   Orden correcto:
+   - Apertura: Fecha 1, 2, 3...
+   - Playoffs Apertura: Octavos, cuartos, semifinales, final
+   - Clausura: Fecha 1, 2, 3...
 ================================ */
 
 (function () {
@@ -17,7 +17,6 @@
   ];
 
   let state = null;
-  let userSelected = false;
 
   function idCompeticion() {
     return document.body?.dataset?.competitionId || new URLSearchParams(location.search).get("id") || "";
@@ -123,6 +122,12 @@
     return [...new Set((partidos || []).map((p) => fechaKey(p.fecha)).filter((k) => k && k !== "sin-fecha"))].sort()[0] || "sin-fecha";
   }
 
+  function nombreConTorneo(torneo, nombre) {
+    if (torneo === "apertura") return `Apertura · ${nombre}`;
+    if (torneo === "clausura") return `Clausura · ${nombre}`;
+    return nombre;
+  }
+
   function fechasRegulares(comp) {
     const out = [];
     const fechas = comp?.especial?.fechas || {};
@@ -131,13 +136,15 @@
       (Array.isArray(fechas[torneo]) ? fechas[torneo] : []).forEach((item, index) => {
         const partidos = dedupe(item?.partidos || []);
         if (!partidos.length) return;
-        const nombre = item?.nombre || `Fecha ${index + 1}`;
-        const n = Number(String(nombre).match(/(\d+)/)?.[1] || index + 1);
+        const nombreBase = item?.nombre || `Fecha ${index + 1}`;
+        const n = Number(String(nombreBase).match(/(\d+)/)?.[1] || index + 1);
+
         out.push({
           key: `${torneo}-fecha-${String(n).padStart(2, "0")}`,
-          nombre,
+          nombre: nombreConTorneo(torneo, nombreBase),
           tipo: "fecha",
-          orden: torneo === "apertura" ? n : 50 + n,
+          torneo,
+          orden: torneo === "apertura" ? n : 100 + n,
           partidos,
           firstDate: firstDate(partidos),
           dateLabel: rango(partidos),
@@ -159,7 +166,8 @@
         key: `fase-${key}`,
         nombre: title,
         tipo: "fase",
-        orden: 100 + index,
+        torneo: "playoffs",
+        orden: 40 + index,
         partidos,
         firstDate: firstDate(partidos),
         dateLabel: rango(partidos),
@@ -183,7 +191,7 @@
       const num = Number(match?.fecha_numero || match?.jornada || match?.round || match?.week || 0);
       const key = fase ? `fase-${fase[0]}` : num > 0 ? `fecha-${String(num).padStart(2, "0")}` : `dia-${fechaKey(match.fecha)}`;
       const nombre = fase ? fase[1] : num > 0 ? `Fecha ${num}` : fechaCorta(fechaKey(match.fecha));
-      const orden = fase ? 100 + FASES.findIndex(([k]) => k === fase[0]) : num > 0 ? num : 200;
+      const orden = fase ? 40 + FASES.findIndex(([k]) => k === fase[0]) : num > 0 ? num : 200;
 
       if (!grupos.has(key)) grupos.set(key, { key, nombre, tipo: fase ? "fase" : "fecha", orden, partidos: [] });
       grupos.get(key).partidos.push(match);
