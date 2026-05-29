@@ -1,7 +1,8 @@
 /* ================================
    LEYENDA TABLA ANUAL LPF
    - Oculta el texto gris de la esquina superior derecha.
-   - Agrega la explicación de colores al pie de la tabla anual.
+   - Quita los textos internos dentro de la tabla anual.
+   - Agrega la explicación de colores al pie con los mismos colores de los puestos.
 ================================ */
 
 (function () {
@@ -48,8 +49,30 @@
     const style = document.createElement("style");
     style.id = "competition-annual-legend-style";
     style.textContent = `
-      body[data-competition-id="liga-profesional"] .competition-subtable .competition-subtable-head span {
-        font-size: 0;
+      /* Quitar texto gris de la esquina superior derecha */
+      body[data-competition-id="liga-profesional"] .competition-special-tables .competition-subtable:nth-child(3) .competition-subtable-head span {
+        display: none !important;
+      }
+
+      /* Quitar el texto amarillo que estaba en el encabezado desde competicion-compact.css */
+      body[data-competition-id="liga-profesional"] .competition-special-tables .competition-subtable:nth-child(3) .competition-subtable-head::after {
+        content: none !important;
+        display: none !important;
+      }
+
+      /* Quitar textos internos de clasificación dentro de las filas de la Tabla anual */
+      body[data-competition-id="liga-profesional"] .competition-special-tables .competition-subtable:nth-child(3) tbody tr .team-cell::after {
+        content: none !important;
+        display: none !important;
+      }
+
+      body[data-competition-id="liga-profesional"] .competition-special-tables .competition-subtable:nth-child(3) .competition-table .team-cell {
+        justify-content: flex-start !important;
+      }
+
+      body[data-competition-id="liga-profesional"] .competition-special-tables .competition-subtable:nth-child(3) .competition-table .team-cell .competition-team-inline {
+        width: 100% !important;
+        flex: 1 1 auto !important;
       }
 
       body[data-competition-id="liga-profesional"] .competition-annual-legend {
@@ -86,20 +109,21 @@
         font: inherit;
       }
 
+      /* Mismos colores que los puestos de la Tabla anual */
       body[data-competition-id="liga-profesional"] .competition-annual-legend-item.legend-libertadores-top i {
-        background: #5fcf80;
+        background: #f6d431;
       }
 
       body[data-competition-id="liga-profesional"] .competition-annual-legend-item.legend-libertadores i {
-        background: #2ebdff;
+        background: #4299e1;
       }
 
       body[data-competition-id="liga-profesional"] .competition-annual-legend-item.legend-sudamericana i {
-        background: #f7d24c;
+        background: #805ad5;
       }
 
       body[data-competition-id="liga-profesional"] .competition-annual-legend-item.legend-descenso i {
-        background: #ff5d5d;
+        background: #f56565;
       }
 
       @media (max-width: 720px) {
