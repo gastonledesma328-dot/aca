@@ -148,6 +148,7 @@ def html_page(competition_id, title):
     <script src="../no-espn-text.js"></script>
     <script src="../competicion.js"></script>
     <script src="../competicion-fechas-fases.js"></script>
+    <script src="../competicion-horarios-fix.js"></script>
     <script src="../competicion-bracket-lines.js"></script>
     <script src="../competicion-header-clean.js"></script>
     <script src="../competicion-bracket-order-fix.js"></script>
