@@ -4,6 +4,7 @@
    - Apertura: Fecha 1, 2, 3...
    - Playoffs Apertura: Octavos, cuartos, semifinales, final
    - Clausura: Fecha 1, 2, 3...
+   - Si hay penales, muestra la definición arriba del marcador
 ================================ */
 
 (function () {
@@ -93,6 +94,39 @@
     const v = match?.visitante?.marcador;
     if (l !== "" && l != null && v !== "" && v != null) return `${l} - ${v}`;
     return "vs";
+  }
+
+  function numeroValido(value) {
+    if (value === "" || value == null || value === false) return null;
+    const n = Number(value);
+    return Number.isFinite(n) && n >= 0 ? n : null;
+  }
+
+  function textoIndicaPenales(match) {
+    const txt = [
+      match?.estado,
+      match?.estado_tipo,
+      match?.clasificacion_texto,
+      match?.penales?.texto,
+      match?.status?.description,
+      match?.status?.detail,
+      match?.status?.shortDetail,
+    ].filter(Boolean).join(" ").toLowerCase();
+    return /penal|penales|penalty|penalties|shootout|tanda/.test(txt);
+  }
+
+  function penalesInfo(match) {
+    const penales = match?.penales || {};
+    const local = numeroValido(penales.local ?? match?.local?.penales ?? match?.local_penales ?? match?.homePenaltyScore ?? match?.shootoutLocal);
+    const visitante = numeroValido(penales.visitante ?? match?.visitante?.penales ?? match?.visitante_penales ?? match?.awayPenaltyScore ?? match?.shootoutVisitante);
+
+    if (local === null || visitante === null) return null;
+    if (local === 0 && visitante === 0) return null;
+
+    const huboDefinicion = penales.definicion === true || textoIndicaPenales(match) || local !== visitante;
+    if (!huboDefinicion) return null;
+
+    return `Penales ${local} - ${visitante}`;
   }
 
   function keyPartido(match) {
@@ -231,6 +265,15 @@
     return items[items.length - 1]?.key || "";
   }
 
+  function marcadorConPenales(match) {
+    const penales = penalesInfo(match);
+    return `
+      <span class="competition-score-stack">
+        ${penales ? `<span class="competition-penalty-line">${escapeHtml(penales)}</span>` : ""}
+        <strong class="competition-score">${escapeHtml(score(match))}</strong>
+      </span>`;
+  }
+
   function renderPartido(match) {
     const local = match?.local?.equipo || {};
     const visitante = match?.visitante?.equipo || {};
@@ -243,7 +286,7 @@
         </div>
         <div class="competition-date-match-teams">
           <span class="competition-match-team">${logo(local)}<span>${escapeHtml(nombre(local))}</span></span>
-          <strong class="competition-score">${escapeHtml(score(match))}</strong>
+          ${marcadorConPenales(match)}
           <span class="competition-match-team">${logo(visitante)}<span>${escapeHtml(nombre(visitante))}</span></span>
         </div>
       </article>`;
@@ -300,6 +343,9 @@
       .competition-mini-date.is-knockout strong{background:#f7d24c!important;color:#442500!important;}
       .competition-mini-date span{text-align:center!important;}
       .competition-mini-date em{display:block;color:#baff78;font-style:normal;font-size:10px;font-weight:900;text-align:center;}
+      .competition-score-stack{display:inline-grid;justify-items:center;align-items:center;gap:4px;min-width:72px;}
+      .competition-penalty-line{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:3px 8px;color:#442500;background:#f7d24c;border:1px solid rgba(255,226,101,.9);font-size:10px;font-weight:950;line-height:1;white-space:nowrap;box-shadow:0 4px 10px rgba(247,210,76,.2);}
+      .competition-score-stack .competition-score{display:inline-flex!important;align-items:center!important;justify-content:center!important;}
     `;
     document.head.appendChild(s);
   }
