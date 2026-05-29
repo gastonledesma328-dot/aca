@@ -5,6 +5,7 @@
 (function () {
   const ESPN_REGEX = /ESPN/gi;
   const DATA_URL = "../data/competiciones.json";
+  let fechasState = null;
 
   function limpiarTexto(value) {
     return String(value || "")
@@ -24,37 +25,24 @@
   function limpiarNodoTexto(node) {
     if (!node || node.nodeType !== Node.TEXT_NODE) return;
     if (!ESPN_REGEX.test(node.nodeValue || "")) return;
-
-    const limpio = limpiarTexto(node.nodeValue);
-    node.nodeValue = limpio;
+    node.nodeValue = limpiarTexto(node.nodeValue);
   }
 
   function limpiarAtributos(element) {
     if (!element || element.nodeType !== Node.ELEMENT_NODE) return;
-
     ["title", "aria-label", "alt", "placeholder"].forEach((attr) => {
       const value = element.getAttribute(attr);
-      if (value && /ESPN/i.test(value)) {
-        element.setAttribute(attr, limpiarTexto(value));
-      }
+      if (value && /ESPN/i.test(value)) element.setAttribute(attr, limpiarTexto(value));
     });
   }
 
   function limpiarElemento(root) {
     if (!root) return;
-
-    if (root.nodeType === Node.TEXT_NODE) {
-      limpiarNodoTexto(root);
-      return;
-    }
-
+    if (root.nodeType === Node.TEXT_NODE) return limpiarNodoTexto(root);
     if (root.nodeType !== Node.ELEMENT_NODE && root.nodeType !== Node.DOCUMENT_NODE) return;
-
     limpiarAtributos(root);
-
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
     let node = walker.currentNode;
-
     while (node) {
       if (node.nodeType === Node.TEXT_NODE) limpiarNodoTexto(node);
       if (node.nodeType === Node.ELEMENT_NODE) limpiarAtributos(node);
@@ -91,6 +79,10 @@
     } catch (error) {
       return String(value).slice(0, 10) || "sin-fecha";
     }
+  }
+
+  function todayKey() {
+    return fechaKey(new Date().toISOString());
   }
 
   function fechaCorta(value) {
@@ -142,12 +134,45 @@
     document.querySelectorAll('[data-competition-tab="proximos"], [data-competition-section="proximos"]').forEach((node) => node.remove());
   }
 
+  function mergePartidos(partidos) {
+    const all = [];
+    const seen = new Set();
+    [partidos?.todos, partidos?.ultimos, partidos?.proximos].forEach((list) => {
+      (Array.isArray(list) ? list : []).forEach((match) => {
+        const key = match?.id || `${match?.local?.equipo?.nombre || ""}|${match?.visitante?.equipo?.nombre || ""}|${match?.fecha || ""}`;
+        if (!match || seen.has(key)) return;
+        seen.add(key);
+        all.push(match);
+      });
+    });
+    return all.sort((a, b) => String(a.fecha || "").localeCompare(String(b.fecha || "")));
+  }
+
+  function estadoFecha(key, matches) {
+    const today = todayKey();
+    if (key === today) return "En disputa";
+    if (key < today) return "Fecha anterior";
+    return "Próxima fecha";
+  }
+
+  function seleccionarFechaInicial(keys) {
+    const today = todayKey();
+    if (keys.includes(today)) return today;
+    const proxima = keys.find((key) => key > today);
+    if (proxima) return proxima;
+    return keys[keys.length - 1] || "";
+  }
+
   function renderMatchFecha(match) {
     const local = match?.local?.equipo || {};
     const visitante = match?.visitante?.equipo || {};
+    const estado = match?.estado || (match?.completado ? "Finalizado" : "Programado");
     return `
       <article class="competition-date-match">
-        <div class="competition-date-match-time">${escapeHtml(horaPartido(match?.fecha))}</div>
+        <div class="competition-date-match-time">
+          <strong>${escapeHtml(horaPartido(match?.fecha))}</strong>
+          <span>${escapeHtml(estado)}</span>
+        </div>
         <div class="competition-date-match-teams">
           <span class="competition-match-team">${teamLogo(local)}<span>${escapeHtml(teamName(local))}</span></span>
           <strong class="competition-score">${escapeHtml(scoreText(match))}</strong>
@@ -156,47 +181,60 @@
       </article>`;
   }
 
-  function renderFechasHtml(matches) {
-    const proximos = (Array.isArray(matches) ? matches : [])
-      .filter((match) => match && !match.completado)
-      .sort((a, b) => String(a.fecha || "").localeCompare(String(b.fecha || "")));
+  function renderFechasSeleccionadas() {
+    const container = document.querySelector("#competitionDatesList");
+    if (!container || !fechasState) return;
+    const { grupos, keys, selected } = fechasState;
+    const matches = grupos.get(selected) || [];
 
-    if (!proximos.length) {
-      return `<p class="competition-empty">No hay próximos partidos disponibles para esta competición.</p>`;
-    }
+    const miniCalendario = keys.map((key) => `
+      <button class="competition-mini-date ${key === selected ? "is-selected" : ""} ${key === todayKey() ? "is-today" : ""}" type="button" data-date-key="${escapeHtml(key)}">
+        <span>${escapeHtml(fechaCorta(key))}</span>
+        <strong>${escapeHtml((grupos.get(key) || []).length)}</strong>
+      </button>`).join("");
+
+    container.innerHTML = `
+      <div class="competition-dates-panel">
+        <div class="competition-dates-toolbar">
+          <div>
+            <span>Fecha seleccionada</span>
+            <strong>${escapeHtml(fechaCorta(selected))}</strong>
+          </div>
+          <small>${escapeHtml(estadoFecha(selected, matches))}</small>
+        </div>
+        <div class="competition-mini-calendar" aria-label="Seleccionar fecha">
+          ${miniCalendario}
+        </div>
+        <section class="competition-date-group" id="fecha-${escapeHtml(selected)}">
+          <div class="competition-date-head">
+            <span>${escapeHtml(estadoFecha(selected, matches))}</span>
+            <strong>${escapeHtml(fechaCorta(selected))}</strong>
+          </div>
+          <div class="competition-date-matches">
+            ${matches.length ? matches.map(renderMatchFecha).join("") : `<p class="competition-empty">No hay partidos cargados para esta fecha.</p>`}
+          </div>
+        </section>
+      </div>`;
+  }
+
+  function renderFechasHtml(matches) {
+    const partidos = mergePartidos({ todos: matches });
+    if (!partidos.length) return `<p class="competition-empty">No hay fechas disponibles para esta competición.</p>`;
 
     const grupos = new Map();
-    proximos.forEach((match) => {
+    partidos.forEach((match) => {
       const key = fechaKey(match.fecha);
       if (!grupos.has(key)) grupos.set(key, []);
       grupos.get(key).push(match);
     });
 
     const keys = [...grupos.keys()].sort();
-    const miniCalendario = keys.slice(0, 10).map((key, index) => `
-      <a class="competition-mini-date ${index === 0 ? "is-next" : ""}" href="#fecha-${escapeHtml(key)}">
-        <span>${escapeHtml(fechaCorta(key))}</span>
-        <strong>${escapeHtml(grupos.get(key).length)}</strong>
-      </a>`).join("");
-
-    const fechas = keys.map((key, index) => `
-      <section class="competition-date-group" id="fecha-${escapeHtml(key)}">
-        <div class="competition-date-head">
-          <span>${index === 0 ? "Próxima fecha" : "Fecha"}</span>
-          <strong>${escapeHtml(fechaCorta(key))}</strong>
-        </div>
-        <div class="competition-date-matches">
-          ${grupos.get(key).map(renderMatchFecha).join("")}
-        </div>
-      </section>`).join("");
-
-    return `
-      <div class="competition-dates-panel">
-        <div class="competition-mini-calendar">
-          ${miniCalendario}
-        </div>
-        ${fechas}
-      </div>`;
+    fechasState = {
+      grupos,
+      keys,
+      selected: seleccionarFechaInicial(keys),
+    };
+    return "";
   }
 
   async function renderizarFechasProximas() {
@@ -204,10 +242,10 @@
     if (!container) return;
 
     const cardTitle = document.querySelector('[data-competition-section="fechas"] h2');
-    if (cardTitle) cardTitle.textContent = "Próximos partidos por fecha";
+    if (cardTitle) cardTitle.textContent = "Fechas y partidos";
 
     const kicker = document.querySelector('[data-competition-section="fechas"] .competition-section-kicker');
-    if (kicker) kicker.textContent = "Calendario";
+    if (kicker) kicker.textContent = "Calendario completo";
 
     try {
       const response = await fetch(`${DATA_URL}?v=${Date.now()}`, { cache: "no-store" });
@@ -215,9 +253,10 @@
       const data = await response.json();
       const comp = (data.competiciones || []).find((item) => item.id === competitionId() || item.slug === competitionId());
       if (!comp) throw new Error("No se encontró la competición");
-      container.innerHTML = renderFechasHtml(comp.partidos?.proximos || []);
+      renderFechasHtml(mergePartidos(comp.partidos || {}));
+      renderFechasSeleccionadas();
     } catch (error) {
-      container.innerHTML = `<p class="competition-empty">No se pudieron cargar las fechas próximas.</p>`;
+      container.innerHTML = `<p class="competition-empty">No se pudieron cargar las fechas.</p>`;
     }
   }
 
@@ -346,6 +385,42 @@
         gap: 16px;
       }
 
+      .competition-dates-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(21, 93, 55, 0.96), rgba(10, 62, 38, 0.96));
+        border: 1px solid rgba(95, 207, 128, 0.35);
+      }
+
+      .competition-dates-toolbar span {
+        display: block;
+        color: #9fb3a8;
+        font-size: 11px;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .competition-dates-toolbar strong {
+        display: block;
+        color: #ffffff;
+        font-size: 18px;
+        margin-top: 2px;
+      }
+
+      .competition-dates-toolbar small {
+        color: #173520;
+        background: #5fcf80;
+        border-radius: 999px;
+        padding: 7px 10px;
+        font-size: 12px;
+        font-weight: 950;
+        white-space: nowrap;
+      }
+
       .competition-mini-calendar {
         display: flex;
         gap: 10px;
@@ -355,8 +430,8 @@
       }
 
       .competition-mini-date {
-        min-width: 92px;
-        min-height: 58px;
+        min-width: 98px;
+        min-height: 62px;
         display: grid;
         align-content: center;
         justify-items: center;
@@ -367,6 +442,7 @@
         background: linear-gradient(180deg, rgba(21, 93, 55, 0.98), rgba(8, 62, 38, 0.98));
         border: 1px solid rgba(95, 207, 128, 0.35);
         box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+        cursor: pointer;
       }
 
       .competition-mini-date span {
@@ -389,9 +465,14 @@
         font-weight: 950;
       }
 
-      .competition-mini-date.is-next {
-        border-color: rgba(186, 255, 120, 0.7);
-        box-shadow: 0 0 0 1px rgba(186, 255, 120, 0.12), 0 12px 24px rgba(0, 0, 0, 0.22);
+      .competition-mini-date.is-today {
+        border-color: rgba(186, 255, 120, 0.55);
+      }
+
+      .competition-mini-date.is-selected {
+        border-color: rgba(186, 255, 120, 0.95);
+        box-shadow: 0 0 0 2px rgba(186, 255, 120, 0.18), 0 12px 24px rgba(0, 0, 0, 0.22);
+        transform: translateY(-1px);
       }
 
       .competition-date-group {
@@ -432,7 +513,7 @@
 
       .competition-date-match {
         display: grid;
-        grid-template-columns: 58px minmax(0, 1fr);
+        grid-template-columns: 74px minmax(0, 1fr);
         align-items: center;
         gap: 10px;
         padding: 12px;
@@ -444,6 +525,12 @@
       }
 
       .competition-date-match-time {
+        display: grid;
+        justify-items: center;
+        gap: 3px;
+      }
+
+      .competition-date-match-time strong {
         display: inline-flex;
         justify-content: center;
         align-items: center;
@@ -453,6 +540,14 @@
         background: #5fcf80;
         font-size: 12px;
         font-weight: 950;
+        padding: 0 10px;
+      }
+
+      .competition-date-match-time span {
+        color: #9fb3a8;
+        font-size: 10px;
+        font-weight: 900;
+        text-align: center;
       }
 
       .competition-date-match-teams {
@@ -491,13 +586,17 @@
           gap: 10px !important;
         }
 
+        .competition-dates-toolbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
         .competition-date-match {
           grid-template-columns: 1fr;
         }
 
         .competition-date-match-time {
           width: fit-content;
-          padding: 0 12px;
         }
 
         .competition-date-match-teams {
@@ -523,6 +622,13 @@
     mejorarVisibilidadTitulosCero();
     renderizarFechasProximas();
   }
+
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest(".competition-mini-date[data-date-key]");
+    if (!button || !fechasState) return;
+    fechasState.selected = button.dataset.dateKey;
+    renderFechasSeleccionadas();
+  });
 
   document.addEventListener("DOMContentLoaded", initPersonalizaciones);
   initPersonalizaciones();
