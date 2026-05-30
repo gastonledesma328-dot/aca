@@ -10,6 +10,8 @@ SEASON = "2026"
 OUTPUT_FILE = "data/primera_nacional_fechas.json"
 PUBLIC_OUTPUT_FILE = "public/data/primera_nacional_fechas.json"
 PARTIDOS_POR_FECHA = 18
+TOTAL_FECHAS_REGULARES = 36
+TOTAL_PARTIDOS_REGULARES = PARTIDOS_POR_FECHA * TOTAL_FECHAS_REGULARES
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
@@ -175,9 +177,28 @@ def cargar_partidos_liga():
     return partidos
 
 
+def separar_fase_regular(partidos):
+    """
+    La pestaña Fechas debe mostrar solo la fase regular:
+    36 fechas x 18 partidos = 648 partidos.
+
+    ESPN puede devolver partidos extra de final/reducido/desempates después de la fase regular.
+    Esos partidos no deben crear una Fecha 37 en esta vista.
+    """
+    partidos_ordenados = sorted(partidos, key=lambda x: x.get("fecha_iso") or x.get("dia") or "")
+    regulares = partidos_ordenados[:TOTAL_PARTIDOS_REGULARES]
+    extras = partidos_ordenados[TOTAL_PARTIDOS_REGULARES:]
+    if extras:
+        print(f"ℹ️ Se separaron {len(extras)} partidos extra fuera de las 36 fechas regulares")
+    return regulares, extras
+
+
 def crear_fechas(partidos):
     fechas = []
+    partidos = partidos[:TOTAL_PARTIDOS_REGULARES]
     for i in range(0, len(partidos), PARTIDOS_POR_FECHA):
+        if len(fechas) >= TOTAL_FECHAS_REGULARES:
+            break
         bloque = partidos[i:i + PARTIDOS_POR_FECHA]
         if not bloque:
             continue
@@ -201,25 +222,31 @@ def guardar(data):
 
 
 def main():
-    partidos = cargar_partidos_liga()
-    fechas = crear_fechas(partidos)
+    partidos_totales = cargar_partidos_liga()
+    partidos_regulares, partidos_extra = separar_fase_regular(partidos_totales)
+    fechas = crear_fechas(partidos_regulares)
     data = {
         "competicion": "Primera Nacional",
         "league_slug": LEAGUE_SLUG,
         "season": SEASON,
         "formato": "Fase de grupos",
         "partidos_por_fecha": PARTIDOS_POR_FECHA,
-        "total_partidos": len(partidos),
+        "total_fechas_regulares_esperadas": TOTAL_FECHAS_REGULARES,
+        "total_partidos_regulares_esperados": TOTAL_PARTIDOS_REGULARES,
+        "total_partidos_espn": len(partidos_totales),
+        "total_partidos": len(partidos_regulares),
+        "total_partidos_extra": len(partidos_extra),
         "total_fechas": len(fechas),
         "actualizado": datetime.now(timezone.utc).isoformat(),
         "fechas": fechas,
-        "partidos": partidos,
+        "partidos": partidos_regulares,
+        "partidos_extra": partidos_extra,
     }
 
-    if len(fechas) < 30:
-        print(f"⚠️ ESPN devolvió solo {len(fechas)} fechas desde scoreboard. Se guarda igual, pero no parece calendario completo.")
+    if len(fechas) != TOTAL_FECHAS_REGULARES:
+        print(f"⚠️ Se generaron {len(fechas)} fechas regulares. Esperadas: {TOTAL_FECHAS_REGULARES}.")
     else:
-        print(f"✅ Calendario completo estimado: {len(fechas)} fechas, {len(partidos)} partidos")
+        print(f"✅ Calendario regular: {len(fechas)} fechas, {len(partidos_regulares)} partidos")
 
     guardar(data)
 
