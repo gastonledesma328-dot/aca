@@ -33,7 +33,10 @@ COMPETICIONES = [
 
 def extra_scripts(competition_id):
     if competition_id == "primera-nacional":
-        return '    <script src="../primera-nacional-tabla.js"></script>\n'
+        return (
+            '    <script src="../primera-nacional-tabla.js"></script>\n'
+            '    <script src="../primera-nacional-fechas.js"></script>\n'
+        )
     return ""
 
 
