@@ -26,9 +26,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Generar datos de Primera Nacional
+      - name: Generar datos completos de Primera Nacional
         run: |
-          python scripts/scraper_primera_nacional.py
+          python scripts/scraper_primera_nacional_full.py
 
       - name: Aplicar reglas de tabla de Primera Nacional
         run: |
