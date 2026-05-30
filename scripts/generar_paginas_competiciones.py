@@ -31,6 +31,12 @@ COMPETICIONES = [
 ]
 
 
+def extra_scripts(competition_id):
+    if competition_id == "primera-nacional":
+        return '    <script src="../primera-nacional-tabla.js"></script>\n'
+    return ""
+
+
 def html_page(competition_id, title):
     return f'''<!doctype html>
 <html lang="es">
@@ -153,7 +159,7 @@ def html_page(competition_id, title):
     <script src="../competicion-bracket-lines.js"></script>
     <script src="../competicion-header-clean.js"></script>
     <script src="../competicion-bracket-order-fix.js"></script>
-  </body>
+{extra_scripts(competition_id)}  </body>
 </html>
 '''
 
