@@ -2,7 +2,8 @@
   const competitionId = document.body?.dataset?.competitionId || new URLSearchParams(window.location.search).get("id") || "";
   if (competitionId !== "primera-nacional") return;
 
-  const DATA_URL = "../data/equipos_primera_nacional.json";
+  const FECHAS_URL = "../data/primera_nacional_fechas.json";
+  const EQUIPOS_URL = "../data/equipos_primera_nacional.json";
   const TZ = "America/Argentina/Buenos_Aires";
   const PARTIDOS_POR_FECHA = 18;
   let state = null;
@@ -116,7 +117,7 @@
     };
   }
 
-  function collectMatches(equipos) {
+  function collectMatchesFromEquipos(equipos) {
     const map = new Map();
 
     (Array.isArray(equipos) ? equipos : []).forEach((equipo) => {
@@ -150,7 +151,7 @@
     return `${fechaCorta(a)} - ${fechaCorta(b)}`;
   }
 
-  function buildItems(matches) {
+  function buildItemsFromMatches(matches) {
     const sorted = [...matches].sort((a, b) => String(a.fecha_iso || a.dia).localeCompare(String(b.fecha_iso || b.dia)));
     const items = [];
 
@@ -169,6 +170,22 @@
     }
 
     return items;
+  }
+
+  function buildItemsFromFechasJson(data) {
+    const fechas = Array.isArray(data?.fechas) ? data.fechas : [];
+    return fechas.map((fecha, index) => {
+      const partidos = Array.isArray(fecha?.partidos) ? fecha.partidos.map((x) => normalizeMatch(x, x?.completado ? "resultado" : "proximo")) : [];
+      const numero = fecha?.numero || index + 1;
+      return {
+        key: `fecha-${String(numero).padStart(2, "0")}`,
+        nombre: fecha?.nombre || `Fecha ${numero}`,
+        partidos,
+        firstDate: fecha?.fecha_desde || firstDate(partidos),
+        lastDate: fecha?.fecha_hasta || lastDate(partidos),
+        dateLabel: rango(partidos),
+      };
+    });
   }
 
   function seleccionInicial(items) {
@@ -270,6 +287,26 @@
     document.head.appendChild(s);
   }
 
+  async function fetchJson(url) {
+    const res = await fetch(`${url}?v=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  }
+
+  async function loadItems() {
+    try {
+      const data = await fetchJson(FECHAS_URL);
+      const items = buildItemsFromFechasJson(data);
+      if (items.length >= 30) return items;
+    } catch (error) {
+      console.warn("No se pudo leer primera_nacional_fechas.json", error);
+    }
+
+    const equipos = await fetchJson(EQUIPOS_URL);
+    const matches = collectMatchesFromEquipos(equipos);
+    return buildItemsFromMatches(matches);
+  }
+
   async function init() {
     const box = document.querySelector("#competitionDatesList");
     if (!box) return;
@@ -282,11 +319,7 @@
     injectStyles();
 
     try {
-      const res = await fetch(`${DATA_URL}?v=${Date.now()}`, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const equipos = await res.json();
-      const matches = collectMatches(equipos);
-      const items = buildItems(matches);
+      const items = await loadItems();
       state = { items, selected: seleccionInicial(items) };
       render();
     } catch (error) {
