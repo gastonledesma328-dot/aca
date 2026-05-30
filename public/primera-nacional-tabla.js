@@ -5,6 +5,67 @@
   const COMPETICIONES_URL = "../data/competiciones.json";
   const EQUIPOS_PN_URL = "../data/equipos_primera_nacional.json";
 
+  const ZONA_A_TEAMS = new Set([
+    "deportivo moron",
+    "ciudad de bolivar",
+    "los andes",
+    "colon",
+    "ferro carril oeste",
+    "ferro",
+    "godoy cruz",
+    "deportivo madryn",
+    "almirante brown",
+    "san miguel",
+    "mitre",
+    "mitre sde",
+    "mitre sd e",
+    "defensores de belgrano",
+    "estudiantes ba",
+    "estudiantes buenos aires",
+    "estudiantes de buenos aires",
+    "san telmo",
+    "racing c",
+    "racing cordoba",
+    "racing de cordoba",
+    "acassuso",
+    "all boys",
+    "central norte",
+    "central norte s",
+    "chaco for ever"
+  ]);
+
+  const ZONA_B_TEAMS = new Set([
+    "gimnasia y esgrima j",
+    "gimnasia jujuy",
+    "gimnasia y esgrima de jujuy",
+    "atlanta",
+    "tristan suarez",
+    "ferrocarril midland",
+    "midland",
+    "atletico de rafaela",
+    "atletico rafaela",
+    "san martin t",
+    "san martin tucuman",
+    "san martin de tucuman",
+    "san martin sj",
+    "san martin san juan",
+    "san martin de san juan",
+    "deportivo maipu",
+    "nueva chicago",
+    "chacarita juniors",
+    "chacarita",
+    "patronato",
+    "temperley",
+    "gimnasia y tiro",
+    "gimnasia y tiro s",
+    "colegiales",
+    "agropecuario",
+    "guemes",
+    "guemes sde",
+    "quilmes",
+    "almagro"
+  ]);
+
   function escapeHtml(value) {
     return String(value ?? "")
       .replace(/&/g, "&amp;")
@@ -19,9 +80,22 @@
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .toLowerCase()
+      .replace(/\([^)]*\)/g, " ")
       .replace(/[^a-z0-9]+/g, " ")
       .replace(/\s+/g, " ")
       .trim();
+  }
+
+  function normalizeTeamKey(value) {
+    const base = normalizeText(value)
+      .replace(/^club atletico /, "")
+      .replace(/^club /, "")
+      .replace(/^ca /, "")
+      .replace(/\batletico\b/g, "atletico")
+      .replace(/\bsd e\b/g, "sde")
+      .replace(/\s+/g, " ")
+      .trim();
+    return base;
   }
 
   function teamName(team) {
@@ -36,7 +110,11 @@
   }
 
   function numberValue(value, fallback = 999) {
-    const n = Number(String(value ?? "").replace(",", ".").replace("-", ""));
+    const cleaned = String(value ?? "")
+      .replace("−", "-")
+      .replace(",", ".")
+      .replace(/[^0-9.-]/g, "");
+    const n = Number(cleaned);
     return Number.isFinite(n) ? n : fallback;
   }
 
@@ -48,6 +126,25 @@
   function isZonaB(group) {
     const g = normalizeText(group);
     return g.includes("zona b") || g.includes("grupo b") || g.includes("group b") || g.includes("zone b") || g.endsWith(" b") || g === "b";
+  }
+
+  function teamZone(row) {
+    const explicit = row?.grupo || row?.zona || row?.stats?.zona || "";
+    if (isZonaA(explicit)) return "A";
+    if (isZonaB(explicit)) return "B";
+
+    const name = normalizeTeamKey(teamName(row?.equipo || {}));
+    if (ZONA_A_TEAMS.has(name)) return "A";
+    if (ZONA_B_TEAMS.has(name)) return "B";
+
+    for (const key of ZONA_A_TEAMS) {
+      if (name === key || name.includes(key) || key.includes(name)) return "A";
+    }
+    for (const key of ZONA_B_TEAMS) {
+      if (name === key || name.includes(key) || key.includes(name)) return "B";
+    }
+
+    return "";
   }
 
   function sortRows(rows) {
@@ -75,50 +172,25 @@
   }
 
   function classifyRows(tabla) {
-    let zonaA = [];
-    let zonaB = [];
-    const grouped = new Map();
+    const zonaA = [];
+    const zonaB = [];
     const allRows = Array.isArray(tabla) ? tabla.filter(Boolean) : [];
 
     allRows.forEach((row) => {
-      const group = row?.grupo || row?.zona || row?.stats?.zona || "General";
-      if (isZonaA(group)) zonaA.push(row);
-      else if (isZonaB(group)) zonaB.push(row);
-      else {
-        if (!grouped.has(group)) grouped.set(group, []);
-        grouped.get(group).push(row);
-      }
+      const zone = teamZone(row);
+      if (zone === "A") zonaA.push(row);
+      else if (zone === "B") zonaB.push(row);
     });
 
-    if (!zonaA.length && !zonaB.length) {
-      const validGroups = [...grouped.values()]
-        .filter((rows) => rows.length >= 8)
-        .sort((a, b) => b.length - a.length);
-
-      if (validGroups.length >= 2) {
-        zonaA = validGroups[0];
-        zonaB = validGroups[1];
-      }
-    }
-
-    // Último respaldo: ESPN a veces manda todo como “General”. Si hay una tabla larga,
-    // se parte en dos mitades para no dejar la sección vacía.
-    if ((!zonaA.length || !zonaB.length) && allRows.length >= 16) {
-      const sorted = sortRows([...allRows]);
-      const half = Math.ceil(sorted.length / 2);
-      zonaA = sorted.slice(0, half);
-      zonaB = sorted.slice(half);
-    }
-
-    zonaA = fixPositions(sortRows([...zonaA]));
-    zonaB = fixPositions(sortRows([...zonaB]));
-
-    return { zonaA, zonaB };
+    return {
+      zonaA: fixPositions(sortRows([...zonaA])),
+      zonaB: fixPositions(sortRows([...zonaB])),
+    };
   }
 
   function rowFromEquipo(equipo) {
     const generales = equipo?.estadisticasGenerales || {};
-    const zona = equipo?.zona || generales?.zona || "General";
+    const zona = equipo?.zona || generales?.zona || "";
     return {
       grupo: zona,
       zona,
@@ -278,7 +350,6 @@
         const equipos = await fetchJson(EQUIPOS_PN_URL);
         if (Array.isArray(equipos) && equipos.length) {
           rows = equipos.map(rowFromEquipo);
-          classified = classifyRows(rows);
         }
       } catch (error) {
         console.warn("No se pudo leer equipos_primera_nacional.json", error);
