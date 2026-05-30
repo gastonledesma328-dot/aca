@@ -87,15 +87,13 @@
   }
 
   function normalizeTeamKey(value) {
-    const base = normalizeText(value)
+    return normalizeText(value)
       .replace(/^club atletico /, "")
       .replace(/^club /, "")
       .replace(/^ca /, "")
-      .replace(/\batletico\b/g, "atletico")
       .replace(/\bsd e\b/g, "sde")
       .replace(/\s+/g, " ")
       .trim();
-    return base;
   }
 
   function teamName(team) {
@@ -212,6 +210,17 @@
         pts: generales?.puntos || generales?.pts || "-",
       },
     };
+  }
+
+  function rowsHaveFreshStats(rows) {
+    if (!Array.isArray(rows) || !rows.length) return false;
+    return rows.some((row) => {
+      const stats = row?.stats || {};
+      return ["pj", "g", "e", "p", "gf", "gc", "dg", "pts"].some((key) => {
+        const value = stats[key];
+        return value !== undefined && value !== null && value !== "" && value !== "-";
+      });
+    });
   }
 
   function destinoFor(position, totalRows) {
@@ -331,28 +340,34 @@
     return response.json();
   }
 
+  async function loadRowsFromPrimeraNacionalJson() {
+    const equipos = await fetchJson(EQUIPOS_PN_URL);
+    if (!Array.isArray(equipos) || !equipos.length) return [];
+    return equipos.map(rowFromEquipo);
+  }
+
+  async function loadRowsFromCompeticionesJson() {
+    const data = await fetchJson(COMPETICIONES_URL);
+    const competitions = Array.isArray(data?.competiciones) ? data.competiciones : [];
+    const competition = competitions.find((item) => item?.id === "primera-nacional" || item?.slug === "arg.2");
+    return Array.isArray(competition?.tabla) ? competition.tabla : [];
+  }
+
   async function initPrimeraNacionalTable() {
     let rows = [];
 
     try {
-      const data = await fetchJson(COMPETICIONES_URL);
-      const competitions = Array.isArray(data?.competiciones) ? data.competiciones : [];
-      const competition = competitions.find((item) => item?.id === "primera-nacional" || item?.slug === "arg.2");
-      rows = Array.isArray(competition?.tabla) ? competition.tabla : [];
+      rows = await loadRowsFromPrimeraNacionalJson();
     } catch (error) {
-      console.warn("No se pudo leer competiciones.json para Primera Nacional", error);
+      console.warn("No se pudo leer primero equipos_primera_nacional.json", error);
     }
 
-    let classified = classifyRows(rows);
-
-    if (!classified.zonaA.length || !classified.zonaB.length) {
+    if (!rowsHaveFreshStats(rows)) {
       try {
-        const equipos = await fetchJson(EQUIPOS_PN_URL);
-        if (Array.isArray(equipos) && equipos.length) {
-          rows = equipos.map(rowFromEquipo);
-        }
+        const fallbackRows = await loadRowsFromCompeticionesJson();
+        if (rowsHaveFreshStats(fallbackRows)) rows = fallbackRows;
       } catch (error) {
-        console.warn("No se pudo leer equipos_primera_nacional.json", error);
+        console.warn("No se pudo leer fallback competiciones.json para Primera Nacional", error);
       }
     }
 
