@@ -91,6 +91,8 @@
   function normalizeMatch(raw, tipo) {
     const fecha = raw?.fecha_iso || raw?.fecha || raw?.dia || "";
     const resultado = String(raw?.resultado || "");
+    const estadoTipo = raw?.estado_tipo || raw?.estadoTipo || "";
+    const completado = raw?.completado === true || raw?.completed === true;
     let marcadorLocal = raw?.marcador_local ?? "";
     let marcadorVisitante = raw?.marcador_visitante ?? "";
 
@@ -114,6 +116,8 @@
       marcador_local: marcadorLocal,
       marcador_visitante: marcadorVisitante,
       estado: raw?.estado || (tipo === "resultado" ? "Final" : "Programado"),
+      estado_tipo: estadoTipo,
+      completado,
     };
   }
 
@@ -207,7 +211,18 @@
     render();
   }
 
+  function partidoJugado(match) {
+    const estadoTipo = normalizeText(match?.estado_tipo || "");
+    const estado = normalizeText(match?.estado || "");
+    if (match?.completado === true) return true;
+    if (["post", "final", "finalizado", "fin", "ft"].some((x) => estadoTipo === x || estado.includes(x))) return true;
+    if (["pre", "scheduled", "programado", "a confirmar", "por jugar"].some((x) => estadoTipo === x || estado.includes(x))) return false;
+    if (["in", "live", "en vivo"].some((x) => estadoTipo === x || estado.includes(x))) return true;
+    return false;
+  }
+
   function score(match) {
+    if (!partidoJugado(match)) return "-";
     const l = match?.marcador_local;
     const v = match?.marcador_visitante;
     if (l !== "" && l != null && v !== "" && v != null) return `${l} - ${v}`;
