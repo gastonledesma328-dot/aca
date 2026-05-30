@@ -11,6 +11,20 @@ DATA_PATHS = [
 ]
 
 
+def cargar_json_seguro(path, default):
+    if not path.exists():
+        return default
+    raw = path.read_text(encoding="utf-8").strip()
+    if not raw:
+        print(f"⚠️ {path} está vacío. Se reconstruye desde fixture oficial.")
+        return default
+    try:
+        return json.loads(raw)
+    except Exception as e:
+        print(f"⚠️ {path} tiene JSON inválido: {e}. Se reconstruye desde fixture oficial.")
+        return default
+
+
 def normalizar(texto):
     texto = str(texto or "").lower().strip()
     texto = unicodedata.normalize("NFD", texto)
@@ -122,6 +136,9 @@ def aplicar_fixture(data, fixture):
     ids_usados = {p.get("id") for p in partidos_usados if p.get("id")}
     partidos_extra = [p for p in candidatos if p.get("id") and p.get("id") not in ids_usados]
 
+    data["competicion"] = "Primera Nacional"
+    data["season"] = data.get("season", fixture.get("season", "2026"))
+    data["formato"] = "Fase de grupos"
     data["fechas"] = fechas
     data["partidos"] = partidos_usados
     data["partidos_extra"] = partidos_extra
@@ -138,16 +155,16 @@ def main():
     if not FIXTURE_PATH.exists():
         raise SystemExit("No existe data/primera_nacional_fixture_oficial.json")
 
-    fixture = json.loads(FIXTURE_PATH.read_text(encoding="utf-8"))
+    fixture = cargar_json_seguro(FIXTURE_PATH, {"fechas": []})
+    if not fixture.get("fechas"):
+        raise SystemExit("El fixture oficial fijo no tiene fechas")
 
     for path in DATA_PATHS:
-        if not path.exists():
-            print(f"⚠️ No existe {path}, se omite")
-            continue
-        data = json.loads(path.read_text(encoding="utf-8"))
+        data = cargar_json_seguro(path, {})
         data = aplicar_fixture(data, fixture)
+        path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-        print(f"✅ Fixture oficial aplicado en {path}")
+        print(f"✅ Fixture oficial aplicado en {path}: {data['total_fechas']} fechas, {data['total_partidos']} partidos")
 
 
 if __name__ == "__main__":
