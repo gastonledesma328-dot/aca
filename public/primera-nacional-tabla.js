@@ -224,9 +224,9 @@
   }
 
   function destinoFor(position, totalRows) {
-    if (position === 1) return { code: "final", label: "Final", description: "1°: va a la final" };
-    if (position >= 2 && position <= 8) return { code: "playoff", label: "Playoffs", description: "2° al 8°: playoffs" };
-    if (totalRows >= 2 && position >= totalRows - 1) return { code: "descenso", label: "Descenso", description: "Últimos 2: descenso" };
+    if (position === 1) return { code: "final", label: "Final", description: "1° Final" };
+    if (position >= 2 && position <= 8) return { code: "playoff", label: "Playoffs", description: "2° al 8° Playoffs" };
+    if (totalRows >= 2 && position >= totalRows - 1) return { code: "descenso", label: "Descenso", description: "Últimos 2 Descenso" };
     return { code: "permanencia", label: "Permanece", description: "Permanece" };
   }
 
@@ -253,8 +253,16 @@
         <td>${escapeHtml(stats.gc ?? "-")}</td>
         <td>${escapeHtml(stats.dg ?? "-")}</td>
         <td><strong>${escapeHtml(stats.pts ?? "-")}</strong></td>
-        <td><span class="pn-destino pn-destino-${escapeHtml(destino.code)}" title="${escapeHtml(destino.description)}">${escapeHtml(destino.label)}</span></td>
       </tr>`;
+  }
+
+  function zoneDestinosFooterHtml() {
+    return `
+      <div class="pn-zone-footer" aria-label="Destinos de la zona">
+        <span class="pn-destino pn-destino-final">1° Final</span>
+        <span class="pn-destino pn-destino-playoff">2° al 8° Playoffs</span>
+        <span class="pn-destino pn-destino-descenso">Últimos 2 Descenso</span>
+      </div>`;
   }
 
   function zoneTableHtml(title, rows) {
@@ -269,14 +277,15 @@
           <table class="competition-table primera-nacional-table">
             <thead>
               <tr>
-                <th>#</th><th class="team-cell">Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>PTS</th><th>Destino</th>
+                <th>#</th><th class="team-cell">Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>PTS</th>
               </tr>
             </thead>
             <tbody>
-              ${safeRows.length ? safeRows.map((row, index) => rowHtml(row, index, safeRows.length)).join("") : `<tr><td colspan="11" class="team-cell">No hay datos disponibles para ${escapeHtml(title)}.</td></tr>`}
+              ${safeRows.length ? safeRows.map((row, index) => rowHtml(row, index, safeRows.length)).join("") : `<tr><td colspan="10" class="team-cell">No hay datos disponibles para ${escapeHtml(title)}.</td></tr>`}
             </tbody>
           </table>
         </div>
+        ${zoneDestinosFooterHtml()}
       </article>`;
   }
 
@@ -286,22 +295,18 @@
     style.id = "primera-nacional-tabla-style";
     style.textContent = `
       .primera-nacional-format-box { display: grid; gap: 12px; padding: 8px 0; }
-      .primera-nacional-rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 8px; }
-      .primera-nacional-rule { border-radius: 14px; border: 1px solid rgba(255,255,255,.12); background: rgba(6,40,24,.62); padding: 10px 12px; }
-      .primera-nacional-rule strong { display:block; color:#fff; font-size:13px; font-weight:950; }
-      .primera-nacional-rule span { display:block; margin-top:3px; color:rgba(232,255,238,.78); font-size:11px; font-weight:800; }
       .primera-nacional-zones { display:grid; gap:16px; }
       .primera-nacional-zone-head strong { color:#fff; font-size:18px; }
-      .primera-nacional-table th:last-child, .primera-nacional-table td:last-child { text-align:center; }
       .pn-row-final { background:rgba(255,220,80,.14); box-shadow:inset 4px 0 0 #ffd447; }
       .pn-row-playoff { background:rgba(65,180,255,.10); box-shadow:inset 4px 0 0 #55c6ff; }
       .pn-row-descenso { background:rgba(255,75,75,.13); box-shadow:inset 4px 0 0 #ff5c5c; }
-      .pn-destino { display:inline-flex; align-items:center; justify-content:center; min-width:78px; border-radius:999px; padding:4px 8px; font-size:10px; font-weight:950; text-transform:uppercase; letter-spacing:.02em; }
+      .pn-zone-footer { display:flex; flex-wrap:wrap; gap:7px; align-items:center; padding:10px 12px 12px; border-top:1px solid rgba(255,255,255,.08); background:rgba(0,0,0,.08); }
+      .pn-zone-footer::before { content:"Destinos:"; color:rgba(232,255,238,.72); font-size:10px; font-weight:950; text-transform:uppercase; letter-spacing:.04em; margin-right:2px; }
+      .pn-destino { display:inline-flex; align-items:center; justify-content:center; border-radius:999px; padding:4px 8px; font-size:10px; font-weight:950; text-transform:uppercase; letter-spacing:.02em; white-space:nowrap; }
       .pn-destino-final { color:#2b2500; background:#ffd447; }
       .pn-destino-playoff { color:#022337; background:#55c6ff; }
       .pn-destino-descenso { color:#fff; background:#e33f3f; }
-      .pn-destino-permanencia { color:#dfffe8; background:rgba(255,255,255,.12); }
-      @media (max-width:760px){ .primera-nacional-rules{grid-template-columns:1fr;} .pn-destino{min-width:70px;font-size:9px;padding:3px 6px;} }
+      @media (max-width:760px){ .pn-zone-footer{gap:5px;padding:8px;} .pn-destino{font-size:8.5px;padding:3px 6px;} .pn-zone-footer::before{width:100%;margin-bottom:1px;} }
     `;
     document.head.appendChild(style);
   }
@@ -317,11 +322,6 @@
       <tr>
         <td colspan="10" class="competition-special-cell">
           <div class="primera-nacional-format-box">
-            <div class="primera-nacional-rules">
-              <article class="primera-nacional-rule"><strong>1° de cada zona</strong><span>Va directo a la final por el ascenso.</span></article>
-              <article class="primera-nacional-rule"><strong>2° al 8° de cada zona</strong><span>Clasifican a los playoffs / reducido.</span></article>
-              <article class="primera-nacional-rule"><strong>Últimos 2 de cada zona</strong><span>Quedan marcados en zona de descenso.</span></article>
-            </div>
             <div class="primera-nacional-zones">
               ${zoneTableHtml("Zona A", zonaA)}
               ${zoneTableHtml("Zona B", zonaB)}
