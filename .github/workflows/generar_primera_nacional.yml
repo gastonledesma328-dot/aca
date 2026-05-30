@@ -34,6 +34,10 @@ jobs:
         run: |
           python scripts/generar_fechas_primera_nacional.py
 
+      - name: Reordenar fechas oficiales de Primera Nacional
+        run: |
+          python scripts/reordenar_fechas_primera_nacional.py
+
       - name: Aplicar reglas de tabla de Primera Nacional
         run: |
           python scripts/aplicar_reglas_primera_nacional.py
