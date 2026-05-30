@@ -42,6 +42,10 @@ jobs:
         run: |
           python scripts/asegurar_fixture_oficial_primera_nacional.py
 
+      - name: Corregir fixture oficial fijo
+        run: |
+          python scripts/corregir_fixture_oficial_primera_nacional.py
+
       - name: Aplicar fixture oficial fijo a fechas
         run: |
           python scripts/aplicar_fixture_oficial_primera_nacional.py
