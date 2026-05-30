@@ -38,6 +38,14 @@ jobs:
         run: |
           python scripts/reordenar_fechas_primera_nacional.py
 
+      - name: Crear fixture oficial fijo si falta
+        run: |
+          python scripts/asegurar_fixture_oficial_primera_nacional.py
+
+      - name: Aplicar fixture oficial fijo a fechas
+        run: |
+          python scripts/aplicar_fixture_oficial_primera_nacional.py
+
       - name: Aplicar reglas de tabla de Primera Nacional
         run: |
           python scripts/aplicar_reglas_primera_nacional.py
@@ -46,6 +54,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add data/equipos_primera_nacional.json public/data/equipos_primera_nacional.json data/primera_nacional_fechas.json public/data/primera_nacional_fechas.json
+          git add data/equipos_primera_nacional.json public/data/equipos_primera_nacional.json data/primera_nacional_fechas.json public/data/primera_nacional_fechas.json data/primera_nacional_fixture_oficial.json public/data/primera_nacional_fixture_oficial.json
           git commit -m "Actualizar Primera Nacional" || echo "Sin cambios"
           git push
