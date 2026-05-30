@@ -50,6 +50,10 @@ jobs:
         run: |
           python scripts/aplicar_fixture_oficial_primera_nacional.py
 
+      - name: No dividir partidos del mismo día
+        run: |
+          python scripts/unir_partidos_mismo_dia_primera_nacional.py
+
       - name: Validar fechas de Primera Nacional
         run: |
           python scripts/validar_primera_nacional_fechas.py
