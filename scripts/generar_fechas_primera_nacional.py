@@ -1,6 +1,8 @@
 import json
 import os
+import re
 import time
+from collections import defaultdict
 from datetime import datetime, timezone
 
 import requests
@@ -33,6 +35,73 @@ def get_json(url):
     except Exception as e:
         print(f"⚠️ Error leyendo JSON: {e} | {url}")
         return None
+
+
+def int_o_none(value):
+    try:
+        if value is None or value == "":
+            return None
+        return int(float(str(value).strip()))
+    except Exception:
+        return None
+
+
+def extraer_numero_fecha(evento):
+    candidatos = []
+
+    for key in ["week", "round", "matchday", "fecha", "jornada"]:
+        value = evento.get(key)
+        if isinstance(value, dict):
+            candidatos.extend([
+                value.get("number"),
+                value.get("value"),
+                value.get("displayValue"),
+                value.get("text"),
+                value.get("label"),
+                value.get("name"),
+            ])
+        else:
+            candidatos.append(value)
+
+    season = evento.get("season") or {}
+    if isinstance(season, dict):
+        for key in ["week", "round", "matchday"]:
+            value = season.get(key)
+            if isinstance(value, dict):
+                candidatos.extend([value.get("number"), value.get("value"), value.get("displayValue"), value.get("name")])
+            else:
+                candidatos.append(value)
+
+    competitions = evento.get("competitions") or []
+    for competition in competitions:
+        if not isinstance(competition, dict):
+            continue
+        for key in ["week", "round", "matchday", "fecha", "jornada"]:
+            value = competition.get(key)
+            if isinstance(value, dict):
+                candidatos.extend([
+                    value.get("number"),
+                    value.get("value"),
+                    value.get("displayValue"),
+                    value.get("text"),
+                    value.get("label"),
+                    value.get("name"),
+                ])
+            else:
+                candidatos.append(value)
+
+    for candidato in candidatos:
+        numero = int_o_none(candidato)
+        if numero and 1 <= numero <= TOTAL_FECHAS_REGULARES:
+            return numero
+        texto = str(candidato or "")
+        match = re.search(r"(?:fecha|jornada|round|week|matchday)\s*(\d{1,2})", texto, re.I)
+        if match:
+            numero = int_o_none(match.group(1))
+            if numero and 1 <= numero <= TOTAL_FECHAS_REGULARES:
+                return numero
+
+    return None
 
 
 def extraer_logo_team(team):
@@ -106,11 +175,15 @@ def parse_event(evento):
     if "T" in str(fecha_iso):
         hora = str(fecha_iso).split("T")[1][:5]
 
+    numero_fecha = extraer_numero_fecha(evento)
+
     return {
         "id": str(evento.get("id") or ""),
         "dia": formatear_fecha(fecha_iso),
         "fecha_iso": fecha_iso,
         "hora": hora,
+        "numero_fecha": numero_fecha,
+        "fecha_torneo": numero_fecha,
         "local": local,
         "visitante": visitante,
         "local_id": local_id,
@@ -143,7 +216,6 @@ def cargar_scoreboard_rango(desde, hasta):
 
 
 def cargar_partidos_liga():
-    # Consultas por mes. ESPN suele responder mejor por rangos medianos que por toda la temporada completa.
     rangos = [
         ("20260101", "20260131"),
         ("20260201", "20260229"),
@@ -178,22 +250,53 @@ def cargar_partidos_liga():
 
 
 def separar_fase_regular(partidos):
-    """
-    La pestaña Fechas debe mostrar solo la fase regular:
-    36 fechas x 18 partidos = 648 partidos.
-
-    ESPN puede devolver partidos extra de final/reducido/desempates después de la fase regular.
-    Esos partidos no deben crear una Fecha 37 en esta vista.
-    """
     partidos_ordenados = sorted(partidos, key=lambda x: x.get("fecha_iso") or x.get("dia") or "")
-    regulares = partidos_ordenados[:TOTAL_PARTIDOS_REGULARES]
-    extras = partidos_ordenados[TOTAL_PARTIDOS_REGULARES:]
+
+    con_fecha = [p for p in partidos_ordenados if int_o_none(p.get("numero_fecha")) and 1 <= int_o_none(p.get("numero_fecha")) <= TOTAL_FECHAS_REGULARES]
+    sin_fecha = [p for p in partidos_ordenados if not int_o_none(p.get("numero_fecha"))]
+
+    if con_fecha:
+        regulares = con_fecha[:TOTAL_PARTIDOS_REGULARES]
+        extras = [p for p in partidos_ordenados if p not in regulares]
+    else:
+        regulares = partidos_ordenados[:TOTAL_PARTIDOS_REGULARES]
+        extras = partidos_ordenados[TOTAL_PARTIDOS_REGULARES:]
+
+    if sin_fecha:
+        print(f"⚠️ {len(sin_fecha)} partidos no traen numero_fecha desde ESPN; solo se usarán como respaldo si no hay jornada.")
     if extras:
         print(f"ℹ️ Se separaron {len(extras)} partidos extra fuera de las 36 fechas regulares")
+
     return regulares, extras
 
 
-def crear_fechas(partidos):
+def crear_fechas_por_jornada(partidos):
+    grupos = defaultdict(list)
+    for partido in partidos:
+        numero = int_o_none(partido.get("numero_fecha"))
+        if numero and 1 <= numero <= TOTAL_FECHAS_REGULARES:
+            grupos[numero].append(partido)
+
+    if not grupos:
+        return []
+
+    fechas = []
+    for numero in range(1, TOTAL_FECHAS_REGULARES + 1):
+        bloque = sorted(grupos.get(numero, []), key=lambda x: x.get("fecha_iso") or x.get("dia") or "")
+        if not bloque:
+            continue
+        fechas.append({
+            "numero": numero,
+            "nombre": f"Fecha {numero}",
+            "partidos": bloque,
+            "fecha_desde": bloque[0].get("dia", ""),
+            "fecha_hasta": bloque[-1].get("dia", ""),
+            "metodo_agrupacion": "espn-numero-fecha",
+        })
+    return fechas
+
+
+def crear_fechas_por_bloques(partidos):
     fechas = []
     partidos = partidos[:TOTAL_PARTIDOS_REGULARES]
     for i in range(0, len(partidos), PARTIDOS_POR_FECHA):
@@ -209,8 +312,20 @@ def crear_fechas(partidos):
             "partidos": bloque,
             "fecha_desde": bloque[0].get("dia", ""),
             "fecha_hasta": bloque[-1].get("dia", ""),
+            "metodo_agrupacion": "respaldo-bloques-18",
         })
     return fechas
+
+
+def crear_fechas(partidos):
+    fechas = crear_fechas_por_jornada(partidos)
+    if fechas:
+        total_partidos = sum(len(f.get("partidos", [])) for f in fechas)
+        print(f"✅ Fechas agrupadas por numero_fecha de ESPN: {len(fechas)} fechas, {total_partidos} partidos")
+        return fechas
+
+    print("⚠️ ESPN no entregó numero_fecha. Se usa respaldo por bloques de 18 partidos.")
+    return crear_fechas_por_bloques(partidos)
 
 
 def guardar(data):
@@ -234,19 +349,19 @@ def main():
         "total_fechas_regulares_esperadas": TOTAL_FECHAS_REGULARES,
         "total_partidos_regulares_esperados": TOTAL_PARTIDOS_REGULARES,
         "total_partidos_espn": len(partidos_totales),
-        "total_partidos": len(partidos_regulares),
+        "total_partidos": sum(len(f.get("partidos", [])) for f in fechas),
         "total_partidos_extra": len(partidos_extra),
         "total_fechas": len(fechas),
         "actualizado": datetime.now(timezone.utc).isoformat(),
         "fechas": fechas,
-        "partidos": partidos_regulares,
+        "partidos": [p for f in fechas for p in f.get("partidos", [])],
         "partidos_extra": partidos_extra,
     }
 
     if len(fechas) != TOTAL_FECHAS_REGULARES:
         print(f"⚠️ Se generaron {len(fechas)} fechas regulares. Esperadas: {TOTAL_FECHAS_REGULARES}.")
     else:
-        print(f"✅ Calendario regular: {len(fechas)} fechas, {len(partidos_regulares)} partidos")
+        print(f"✅ Calendario regular: {len(fechas)} fechas")
 
     guardar(data)
 
