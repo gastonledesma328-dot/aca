@@ -12,7 +12,6 @@ PUBLIC_OUTPUT_FILE = "public/data/primera_nacional_fechas.json"
 PARTIDOS_POR_FECHA = 18
 TOTAL_FECHAS_REGULARES = 36
 TOTAL_PARTIDOS_REGULARES = PARTIDOS_POR_FECHA * TOTAL_FECHAS_REGULARES
-MAX_DIAS_MISMA_FECHA = 4
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
@@ -67,14 +66,6 @@ def formatear_fecha(fecha_iso):
     if not fecha_iso:
         return "Sin fecha"
     return str(fecha_iso).split("T")[0]
-
-
-def fecha_dt(partido):
-    value = partido.get("dia") or formatear_fecha(partido.get("fecha_iso"))
-    try:
-        return datetime.fromisoformat(str(value)[:10])
-    except Exception:
-        return None
 
 
 def parse_event(evento):
@@ -194,53 +185,24 @@ def separar_fase_regular(partidos):
     return regulares, extras
 
 
-def crear_fechas_por_ventanas(partidos):
+def crear_fechas_por_bloques_estables(partidos):
     """
-    No corta por 18 partidos ni confía en el week/round de ESPN.
-    Agrupa por ventanas reales de calendario.
+    Genera exactamente 36 fechas de 18 partidos.
 
-    Ejemplo: si la Fecha 15 empieza domingo 31/05 y sigue lunes/martes,
-    todos esos partidos quedan en Fecha 15. Solo arranca una fecha nueva
-    cuando aparece un salto grande de días respecto del último día de la ventana.
+    Motivo: ESPN devuelve todos los partidos, pero su week/round puede venir corrido
+    y agrupar por ventanas de días junta varias fechas. Para esta vista necesitamos
+    36 fechas regulares estables. Ordenamos por fecha real y cortamos en 18.
     """
-    partidos_ordenados = sorted(partidos, key=lambda x: x.get("fecha_iso") or x.get("dia") or "")
-    ventanas = []
-    actual = []
-    ultimo_dia = None
-
-    for partido in partidos_ordenados:
-        dia = fecha_dt(partido)
-        if not actual:
-            actual = [partido]
-            ultimo_dia = dia
-            continue
-
-        diferencia = None
-        if dia and ultimo_dia:
-            diferencia = (dia - ultimo_dia).days
-
-        if diferencia is not None and diferencia > MAX_DIAS_MISMA_FECHA:
-            ventanas.append(actual)
-            actual = [partido]
-        else:
-            actual.append(partido)
-
-        if dia:
-            ultimo_dia = dia
-
-    if actual:
-        ventanas.append(actual)
-
+    partidos_ordenados = sorted(partidos, key=lambda x: x.get("fecha_iso") or x.get("dia") or "")[:TOTAL_PARTIDOS_REGULARES]
     fechas = []
-    partidos_extra = []
 
-    for ventana in ventanas:
-        if len(fechas) >= TOTAL_FECHAS_REGULARES:
-            partidos_extra.extend(ventana)
+    for numero in range(1, TOTAL_FECHAS_REGULARES + 1):
+        start = (numero - 1) * PARTIDOS_POR_FECHA
+        end = start + PARTIDOS_POR_FECHA
+        bloque = partidos_ordenados[start:end]
+        if not bloque:
             continue
 
-        numero = len(fechas) + 1
-        bloque = sorted(ventana, key=lambda x: x.get("fecha_iso") or x.get("dia") or "")
         for partido in bloque:
             partido["numero_fecha"] = numero
             partido["fecha_torneo"] = numero
@@ -251,10 +213,10 @@ def crear_fechas_por_ventanas(partidos):
             "partidos": bloque,
             "fecha_desde": bloque[0].get("dia", ""),
             "fecha_hasta": bloque[-1].get("dia", ""),
-            "metodo_agrupacion": "ventana-calendario",
+            "metodo_agrupacion": "bloques-18-estables",
         })
 
-    return fechas, partidos_extra
+    return fechas
 
 
 def guardar(data):
@@ -267,23 +229,21 @@ def guardar(data):
 
 def main():
     partidos_totales = cargar_partidos_liga()
-    partidos_regulares, partidos_extra_por_cantidad = separar_fase_regular(partidos_totales)
-    fechas, partidos_extra_por_ventana = crear_fechas_por_ventanas(partidos_regulares)
-    partidos_extra = partidos_extra_por_cantidad + partidos_extra_por_ventana
+    partidos_regulares, partidos_extra = separar_fase_regular(partidos_totales)
+    fechas = crear_fechas_por_bloques_estables(partidos_regulares)
 
     data = {
         "competicion": "Primera Nacional",
         "league_slug": LEAGUE_SLUG,
         "season": SEASON,
         "formato": "Fase de grupos",
-        "partidos_por_fecha_referencia": PARTIDOS_POR_FECHA,
+        "partidos_por_fecha": PARTIDOS_POR_FECHA,
         "total_fechas_regulares_esperadas": TOTAL_FECHAS_REGULARES,
         "total_partidos_regulares_esperados": TOTAL_PARTIDOS_REGULARES,
         "total_partidos_espn": len(partidos_totales),
         "total_partidos": sum(len(f.get("partidos", [])) for f in fechas),
         "total_partidos_extra": len(partidos_extra),
         "total_fechas": len(fechas),
-        "max_dias_misma_fecha": MAX_DIAS_MISMA_FECHA,
         "actualizado": datetime.now(timezone.utc).isoformat(),
         "fechas": fechas,
         "partidos": [p for f in fechas for p in f.get("partidos", [])],
@@ -291,9 +251,9 @@ def main():
     }
 
     if len(fechas) != TOTAL_FECHAS_REGULARES:
-        print(f"⚠️ Se generaron {len(fechas)} fechas regulares. Esperadas: {TOTAL_FECHAS_REGULARES}.")
+        print(f"⚠️ Se generaron {len(fechas)} fechas. Esperadas: {TOTAL_FECHAS_REGULARES}.")
     else:
-        print(f"✅ Calendario regular agrupado por ventanas: {len(fechas)} fechas")
+        print(f"✅ Calendario regular estable: {len(fechas)} fechas, {data['total_partidos']} partidos")
 
     guardar(data)
 
