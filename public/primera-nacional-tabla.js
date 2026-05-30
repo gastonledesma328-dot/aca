@@ -2,7 +2,8 @@
   const competitionId = document.body?.dataset?.competitionId || new URLSearchParams(window.location.search).get("id") || "";
   if (competitionId !== "primera-nacional") return;
 
-  const DATA_URL = "../data/competiciones.json";
+  const COMPETICIONES_URL = "../data/competiciones.json";
+  const EQUIPOS_PN_URL = "../data/equipos_primera_nacional.json";
 
   function escapeHtml(value) {
     return String(value ?? "")
@@ -24,7 +25,7 @@
   }
 
   function teamName(team) {
-    return team?.nombre || team?.nombre_corto || "Equipo";
+    return team?.nombre || team?.nombre_corto || team?.displayName || team?.name || "Equipo";
   }
 
   function teamLogo(team) {
@@ -49,13 +50,38 @@
     return g.includes("zona b") || g.includes("grupo b") || g.includes("group b") || g.includes("zone b") || g.endsWith(" b") || g === "b";
   }
 
-  function classifyRows(tabla) {
-    const zonaA = [];
-    const zonaB = [];
-    const grouped = new Map();
+  function sortRows(rows) {
+    rows.sort((a, b) => {
+      const pa = numberValue(a?.stats?.posicion);
+      const pb = numberValue(b?.stats?.posicion);
+      if (pa !== pb) return pa - pb;
+      const pts = numberValue(b?.stats?.pts, 0) - numberValue(a?.stats?.pts, 0);
+      if (pts !== 0) return pts;
+      const dg = numberValue(b?.stats?.dg, 0) - numberValue(a?.stats?.dg, 0);
+      if (dg !== 0) return dg;
+      const gf = numberValue(b?.stats?.gf, 0) - numberValue(a?.stats?.gf, 0);
+      if (gf !== 0) return gf;
+      return teamName(a?.equipo).localeCompare(teamName(b?.equipo), "es");
+    });
+    return rows;
+  }
 
-    (tabla || []).forEach((row) => {
-      const group = row?.grupo || "General";
+  function fixPositions(rows) {
+    return rows.map((row, index) => {
+      const cloned = { ...row, stats: { ...(row?.stats || {}) } };
+      if (!cloned.stats.posicion || cloned.stats.posicion === "-") cloned.stats.posicion = String(index + 1);
+      return cloned;
+    });
+  }
+
+  function classifyRows(tabla) {
+    let zonaA = [];
+    let zonaB = [];
+    const grouped = new Map();
+    const allRows = Array.isArray(tabla) ? tabla.filter(Boolean) : [];
+
+    allRows.forEach((row) => {
+      const group = row?.grupo || row?.zona || row?.stats?.zona || "General";
       if (isZonaA(group)) zonaA.push(row);
       else if (isZonaB(group)) zonaB.push(row);
       else {
@@ -65,39 +91,61 @@
     });
 
     if (!zonaA.length && !zonaB.length) {
-      const validGroups = [...grouped.values()].filter((rows) => rows.length >= 8);
+      const validGroups = [...grouped.values()]
+        .filter((rows) => rows.length >= 8)
+        .sort((a, b) => b.length - a.length);
+
       if (validGroups.length >= 2) {
-        zonaA.push(...validGroups[0]);
-        zonaB.push(...validGroups[1]);
+        zonaA = validGroups[0];
+        zonaB = validGroups[1];
       }
     }
 
-    [zonaA, zonaB].forEach((rows) => {
-      rows.sort((a, b) => {
-        const pa = numberValue(a?.stats?.posicion);
-        const pb = numberValue(b?.stats?.posicion);
-        if (pa !== pb) return pa - pb;
-        const pts = numberValue(b?.stats?.pts, 0) - numberValue(a?.stats?.pts, 0);
-        if (pts !== 0) return pts;
-        const dg = numberValue(b?.stats?.dg, 0) - numberValue(a?.stats?.dg, 0);
-        if (dg !== 0) return dg;
-        return teamName(a?.equipo).localeCompare(teamName(b?.equipo), "es");
-      });
-    });
+    // Último respaldo: ESPN a veces manda todo como “General”. Si hay una tabla larga,
+    // se parte en dos mitades para no dejar la sección vacía.
+    if ((!zonaA.length || !zonaB.length) && allRows.length >= 16) {
+      const sorted = sortRows([...allRows]);
+      const half = Math.ceil(sorted.length / 2);
+      zonaA = sorted.slice(0, half);
+      zonaB = sorted.slice(half);
+    }
+
+    zonaA = fixPositions(sortRows([...zonaA]));
+    zonaB = fixPositions(sortRows([...zonaB]));
 
     return { zonaA, zonaB };
   }
 
+  function rowFromEquipo(equipo) {
+    const generales = equipo?.estadisticasGenerales || {};
+    const zona = equipo?.zona || generales?.zona || "General";
+    return {
+      grupo: zona,
+      zona,
+      equipo: {
+        id: equipo?.espn_id || equipo?.id || "",
+        nombre: equipo?.nombre || "Equipo",
+        nombre_corto: equipo?.nombre_corto || equipo?.nombre || "Equipo",
+        logo: equipo?.logo || "",
+      },
+      stats: {
+        posicion: generales?.posicionZona || equipo?.posicionZona || generales?.posicion || "-",
+        pj: generales?.partidos || generales?.pj || "-",
+        g: generales?.ganados || generales?.g || "-",
+        e: generales?.empatados || generales?.e || "-",
+        p: generales?.perdidos || generales?.p || "-",
+        gf: generales?.golesFavor || generales?.gf || "-",
+        gc: generales?.golesContra || generales?.gc || "-",
+        dg: generales?.diferenciaGol || generales?.dg || "-",
+        pts: generales?.puntos || generales?.pts || "-",
+      },
+    };
+  }
+
   function destinoFor(position, totalRows) {
-    if (position === 1) {
-      return { code: "final", label: "Final", description: "1°: va a la final" };
-    }
-    if (position >= 2 && position <= 8) {
-      return { code: "playoff", label: "Playoffs", description: "2° al 8°: playoffs" };
-    }
-    if (totalRows >= 2 && position >= totalRows - 1) {
-      return { code: "descenso", label: "Descenso", description: "Últimos 2: descenso" };
-    }
+    if (position === 1) return { code: "final", label: "Final", description: "1°: va a la final" };
+    if (position >= 2 && position <= 8) return { code: "playoff", label: "Playoffs", description: "2° al 8°: playoffs" };
+    if (totalRows >= 2 && position >= totalRows - 1) return { code: "descenso", label: "Descenso", description: "Últimos 2: descenso" };
     return { code: "permanencia", label: "Permanece", description: "Permanece" };
   }
 
@@ -140,17 +188,7 @@
           <table class="competition-table primera-nacional-table">
             <thead>
               <tr>
-                <th>#</th>
-                <th class="team-cell">Equipo</th>
-                <th>PJ</th>
-                <th>G</th>
-                <th>E</th>
-                <th>P</th>
-                <th>GF</th>
-                <th>GC</th>
-                <th>DG</th>
-                <th>PTS</th>
-                <th>Destino</th>
+                <th>#</th><th class="team-cell">Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>PTS</th><th>Destino</th>
               </tr>
             </thead>
             <tbody>
@@ -166,126 +204,32 @@
     const style = document.createElement("style");
     style.id = "primera-nacional-tabla-style";
     style.textContent = `
-      .primera-nacional-format-box {
-        display: grid;
-        gap: 12px;
-        padding: 8px 0;
-      }
-
-      .primera-nacional-rules {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
-        margin-bottom: 8px;
-      }
-
-      .primera-nacional-rule {
-        border-radius: 14px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        background: rgba(6, 40, 24, 0.62);
-        padding: 10px 12px;
-      }
-
-      .primera-nacional-rule strong {
-        display: block;
-        color: #ffffff;
-        font-size: 13px;
-        font-weight: 950;
-      }
-
-      .primera-nacional-rule span {
-        display: block;
-        margin-top: 3px;
-        color: rgba(232, 255, 238, 0.78);
-        font-size: 11px;
-        font-weight: 800;
-      }
-
-      .primera-nacional-zones {
-        display: grid;
-        gap: 16px;
-      }
-
-      .primera-nacional-zone-head strong {
-        color: #ffffff;
-        font-size: 18px;
-      }
-
-      .primera-nacional-table th:last-child,
-      .primera-nacional-table td:last-child {
-        text-align: center;
-      }
-
-      .pn-row-final {
-        background: rgba(255, 220, 80, 0.14);
-        box-shadow: inset 4px 0 0 #ffd447;
-      }
-
-      .pn-row-playoff {
-        background: rgba(65, 180, 255, 0.10);
-        box-shadow: inset 4px 0 0 #55c6ff;
-      }
-
-      .pn-row-descenso {
-        background: rgba(255, 75, 75, 0.13);
-        box-shadow: inset 4px 0 0 #ff5c5c;
-      }
-
-      .pn-destino {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 78px;
-        border-radius: 999px;
-        padding: 4px 8px;
-        font-size: 10px;
-        font-weight: 950;
-        text-transform: uppercase;
-        letter-spacing: 0.02em;
-      }
-
-      .pn-destino-final {
-        color: #2b2500;
-        background: #ffd447;
-      }
-
-      .pn-destino-playoff {
-        color: #022337;
-        background: #55c6ff;
-      }
-
-      .pn-destino-descenso {
-        color: #ffffff;
-        background: #e33f3f;
-      }
-
-      .pn-destino-permanencia {
-        color: #dfffe8;
-        background: rgba(255, 255, 255, 0.12);
-      }
-
-      @media (max-width: 760px) {
-        .primera-nacional-rules {
-          grid-template-columns: 1fr;
-        }
-
-        .pn-destino {
-          min-width: 70px;
-          font-size: 9px;
-          padding: 3px 6px;
-        }
-      }
+      .primera-nacional-format-box { display: grid; gap: 12px; padding: 8px 0; }
+      .primera-nacional-rules { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 8px; }
+      .primera-nacional-rule { border-radius: 14px; border: 1px solid rgba(255,255,255,.12); background: rgba(6,40,24,.62); padding: 10px 12px; }
+      .primera-nacional-rule strong { display:block; color:#fff; font-size:13px; font-weight:950; }
+      .primera-nacional-rule span { display:block; margin-top:3px; color:rgba(232,255,238,.78); font-size:11px; font-weight:800; }
+      .primera-nacional-zones { display:grid; gap:16px; }
+      .primera-nacional-zone-head strong { color:#fff; font-size:18px; }
+      .primera-nacional-table th:last-child, .primera-nacional-table td:last-child { text-align:center; }
+      .pn-row-final { background:rgba(255,220,80,.14); box-shadow:inset 4px 0 0 #ffd447; }
+      .pn-row-playoff { background:rgba(65,180,255,.10); box-shadow:inset 4px 0 0 #55c6ff; }
+      .pn-row-descenso { background:rgba(255,75,75,.13); box-shadow:inset 4px 0 0 #ff5c5c; }
+      .pn-destino { display:inline-flex; align-items:center; justify-content:center; min-width:78px; border-radius:999px; padding:4px 8px; font-size:10px; font-weight:950; text-transform:uppercase; letter-spacing:.02em; }
+      .pn-destino-final { color:#2b2500; background:#ffd447; }
+      .pn-destino-playoff { color:#022337; background:#55c6ff; }
+      .pn-destino-descenso { color:#fff; background:#e33f3f; }
+      .pn-destino-permanencia { color:#dfffe8; background:rgba(255,255,255,.12); }
+      @media (max-width:760px){ .primera-nacional-rules{grid-template-columns:1fr;} .pn-destino{min-width:70px;font-size:9px;padding:3px 6px;} }
     `;
     document.head.appendChild(style);
   }
 
-  function renderPrimeraNacionalTable(competition) {
+  function renderPrimeraNacionalTable(rowsSource) {
     const tableBody = document.querySelector("#competitionTableBody");
     if (!tableBody) return;
 
-    const tabla = Array.isArray(competition?.tabla) ? competition.tabla : [];
-    const { zonaA, zonaB } = classifyRows(tabla);
-
+    const { zonaA, zonaB } = classifyRows(rowsSource);
     injectStyles();
 
     tableBody.innerHTML = `
@@ -293,18 +237,9 @@
         <td colspan="10" class="competition-special-cell">
           <div class="primera-nacional-format-box">
             <div class="primera-nacional-rules">
-              <article class="primera-nacional-rule">
-                <strong>1° de cada zona</strong>
-                <span>Va directo a la final por el ascenso.</span>
-              </article>
-              <article class="primera-nacional-rule">
-                <strong>2° al 8° de cada zona</strong>
-                <span>Clasifican a los playoffs / reducido.</span>
-              </article>
-              <article class="primera-nacional-rule">
-                <strong>Últimos 2 de cada zona</strong>
-                <span>Quedan marcados en zona de descenso.</span>
-              </article>
+              <article class="primera-nacional-rule"><strong>1° de cada zona</strong><span>Va directo a la final por el ascenso.</span></article>
+              <article class="primera-nacional-rule"><strong>2° al 8° de cada zona</strong><span>Clasifican a los playoffs / reducido.</span></article>
+              <article class="primera-nacional-rule"><strong>Últimos 2 de cada zona</strong><span>Quedan marcados en zona de descenso.</span></article>
             </div>
             <div class="primera-nacional-zones">
               ${zoneTableHtml("Zona A", zonaA)}
@@ -318,21 +253,41 @@
     if (tableTitle) tableTitle.textContent = "Tabla de posiciones · Fase de grupos";
   }
 
-  async function initPrimeraNacionalTable() {
-    try {
-      const response = await fetch(`${DATA_URL}?pn=${Date.now()}`, { cache: "no-store" });
-      if (!response.ok) return;
-      const data = await response.json();
-      const competitions = Array.isArray(data?.competiciones) ? data.competiciones : [];
-      const competition = competitions.find((item) => item?.id === "primera-nacional" || item?.slug === "arg.2");
-      if (!competition) return;
-      renderPrimeraNacionalTable(competition);
-    } catch (error) {
-      console.warn("No se pudo renderizar la tabla especial de Primera Nacional", error);
-    }
+  async function fetchJson(url) {
+    const response = await fetch(`${url}?v=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return response.json();
   }
 
-  // competicion.js también carga datos en async. Este render corre después y pisa solo la tabla de Primera Nacional.
+  async function initPrimeraNacionalTable() {
+    let rows = [];
+
+    try {
+      const data = await fetchJson(COMPETICIONES_URL);
+      const competitions = Array.isArray(data?.competiciones) ? data.competiciones : [];
+      const competition = competitions.find((item) => item?.id === "primera-nacional" || item?.slug === "arg.2");
+      rows = Array.isArray(competition?.tabla) ? competition.tabla : [];
+    } catch (error) {
+      console.warn("No se pudo leer competiciones.json para Primera Nacional", error);
+    }
+
+    let classified = classifyRows(rows);
+
+    if (!classified.zonaA.length || !classified.zonaB.length) {
+      try {
+        const equipos = await fetchJson(EQUIPOS_PN_URL);
+        if (Array.isArray(equipos) && equipos.length) {
+          rows = equipos.map(rowFromEquipo);
+          classified = classifyRows(rows);
+        }
+      } catch (error) {
+        console.warn("No se pudo leer equipos_primera_nacional.json", error);
+      }
+    }
+
+    renderPrimeraNacionalTable(rows);
+  }
+
   setTimeout(initPrimeraNacionalTable, 250);
   setTimeout(initPrimeraNacionalTable, 1000);
 })();
