@@ -34,9 +34,20 @@ jobs:
         run: |
           python scripts/scraper_primera_nacional_365scores.py
 
-      - name: Validar fechas de Primera Nacional
+      - name: Validar fechas 365Scores o usar fallback ESPN
         run: |
-          python scripts/validar_primera_nacional_fechas.py
+          if python scripts/validar_primera_nacional_fechas.py; then
+            echo "✅ Fechas válidas desde 365Scores"
+          else
+            echo "⚠️ 365Scores no generó suficientes fechas. Usando fallback ESPN corregido."
+            python scripts/generar_fechas_primera_nacional.py
+            python scripts/reordenar_fechas_primera_nacional.py
+            python scripts/asegurar_fixture_oficial_primera_nacional.py
+            python scripts/corregir_fixture_oficial_primera_nacional.py
+            python scripts/aplicar_fixture_oficial_primera_nacional.py
+            python scripts/unir_partidos_mismo_dia_primera_nacional.py
+            python scripts/validar_primera_nacional_fechas.py
+          fi
 
       - name: Aplicar reglas de tabla de Primera Nacional
         run: |
@@ -46,6 +57,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add data/equipos_primera_nacional.json public/data/equipos_primera_nacional.json data/primera_nacional_fechas.json public/data/primera_nacional_fechas.json
+          git add data/equipos_primera_nacional.json public/data/equipos_primera_nacional.json data/primera_nacional_fechas.json public/data/primera_nacional_fechas.json data/primera_nacional_fixture_oficial.json public/data/primera_nacional_fixture_oficial.json
           git commit -m "Actualizar Primera Nacional" || echo "Sin cambios"
           git push
