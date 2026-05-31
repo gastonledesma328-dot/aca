@@ -12,7 +12,9 @@ START_DATE = datetime(2026, 1, 1)
 END_DATE = datetime(2026, 12, 31)
 MIN_FECHAS_VALIDAS = 30
 MAX_FECHAS_VALIDAS = 45
+MIN_PARTIDOS_VALIDOS = 500
 PARTIDOS_REFERENCIA_POR_FECHA = 18
+SEED_GAME_IDS = [4644182]
 OUTPUTS = [
     Path("data/primera_nacional_fechas.json"),
     Path("public/data/primera_nacional_fechas.json"),
@@ -22,6 +24,7 @@ BASE_URLS = [
     "https://webws.365scores.com/web/games/allscores/",
     "https://webws.365scores.com/web/games/current/",
 ]
+PAGED_URL = "https://webws.365scores.com/web/games/"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36",
@@ -45,6 +48,34 @@ def parse_int(value, default=None):
 
 def clean_text(value):
     return re.sub(r"\s+", " ", str(value or "").strip())
+
+
+def extract_games_payload(data):
+    if not isinstance(data, dict):
+        return []
+    candidates = [
+        data.get("games"),
+        data.get("Games"),
+        data.get("gamesByDate"),
+        data.get("GamesByDate"),
+    ]
+    for value in candidates:
+        if isinstance(value, list):
+            games = []
+            for item in value:
+                if isinstance(item, dict) and isinstance(item.get("games"), list):
+                    games.extend(item.get("games") or [])
+                elif isinstance(item, dict) and isinstance(item.get("Games"), list):
+                    games.extend(item.get("Games") or [])
+                elif isinstance(item, dict) and (item.get("homeCompetitor") or item.get("homeTeam") or item.get("home")):
+                    games.append(item)
+            if games:
+                return games
+        elif isinstance(value, dict):
+            nested = value.get("games") or value.get("Games")
+            if isinstance(nested, list):
+                return nested
+    return []
 
 
 def normalize_status(game):
@@ -125,12 +156,6 @@ def round_from_text(value):
 
 
 def recursive_find_round(obj, depth=0):
-    """Busca la jornada en objetos anidados de 365Scores.
-
-    Importante: no usamos stageNum como fecha porque 365Scores suele usarlo para fase/etapa
-    y puede devolver 1 para todos los partidos. Ese fue el motivo de que antes se generara
-    una sola fecha gigante.
-    """
     if depth > 5:
         return None
 
@@ -286,7 +311,7 @@ def request_games_for_date(date_str):
                 if not r.ok:
                     continue
                 data = r.json()
-                games = data.get("games") or data.get("Games") or []
+                games = extract_games_payload(data)
                 if games:
                     return games
             except Exception as exc:
@@ -294,7 +319,72 @@ def request_games_for_date(date_str):
     return []
 
 
-def collect_games():
+def request_games_aftergame(aftergame, direction):
+    params = {
+        "langId": 14,
+        "timezoneId": 64,
+        "userCountryId": 401,
+        "competitions": LEAGUE_ID,
+        "games": 1,
+        "aftergame": aftergame,
+        "direction": direction,
+    }
+    try:
+        r = session.get(PAGED_URL, params=params, timeout=25)
+        print(f"🌐 {r.status_code} {PAGED_URL} aftergame={aftergame} direction={direction}")
+        if not r.ok:
+            return []
+        data = r.json()
+        return extract_games_payload(data)
+    except Exception as exc:
+        print(f"⚠️ Error 365Scores paginado aftergame={aftergame} direction={direction}: {exc}")
+        return []
+
+
+def collect_games_by_aftergame():
+    games = []
+    seen_game_ids = set()
+
+    def add_raw_games(raw_games):
+        added = 0
+        for raw in raw_games:
+            game = parse_game(raw)
+            key = game.get("id") or f"{game.get('dia')}-{game.get('local')}-{game.get('visitante')}"
+            if not key or key in seen_game_ids:
+                continue
+            seen_game_ids.add(key)
+            games.append(game)
+            added += 1
+        return added
+
+    for seed in SEED_GAME_IDS:
+        for direction in [1, -1]:
+            aftergame = seed
+            seen_aftergames = set()
+            for _ in range(120):
+                if aftergame in seen_aftergames:
+                    break
+                seen_aftergames.add(aftergame)
+                raw_games = request_games_aftergame(aftergame, direction)
+                if not raw_games:
+                    break
+                add_raw_games(raw_games)
+                next_id = None
+                for raw in reversed(raw_games):
+                    next_id = raw.get("id") or raw.get("gameId")
+                    if next_id:
+                        break
+                if not next_id or str(next_id) == str(aftergame):
+                    break
+                aftergame = next_id
+                time.sleep(0.12)
+
+    games.sort(key=lambda g: (g.get("fecha_iso") or g.get("dia") or "", g.get("hora") or ""))
+    print(f"ℹ️ 365Scores paginado: {len(games)} partidos únicos")
+    return games
+
+
+def collect_games_by_date():
     current = START_DATE
     seen = set()
     games = []
@@ -304,10 +394,7 @@ def collect_games():
         raw_games = request_games_for_date(date_str)
         for raw in raw_games:
             game = parse_game(raw)
-            if not game.get("id"):
-                key = f"{game.get('dia')}-{game.get('local')}-{game.get('visitante')}"
-            else:
-                key = game["id"]
+            key = game.get("id") or f"{game.get('dia')}-{game.get('local')}-{game.get('visitante')}"
             if key in seen:
                 continue
             seen.add(key)
@@ -316,16 +403,30 @@ def collect_games():
         time.sleep(0.08)
 
     games.sort(key=lambda g: (g.get("fecha_iso") or g.get("dia") or "", g.get("hora") or ""))
+    print(f"ℹ️ 365Scores por fecha: {len(games)} partidos únicos")
     return games
 
 
-def fallback_rounds_by_order(games):
-    """Agrupa por orden cronológico sin partir un mismo día.
+def collect_games():
+    paged = collect_games_by_aftergame()
+    if len(paged) >= MIN_PARTIDOS_VALIDOS:
+        return paged
 
-    Se usa cuando 365Scores no entrega número de fecha confiable.
-    Si una fecha ya tiene 18 partidos pero el próximo partido es del mismo día,
-    se mantiene en la misma fecha para no cortar el día.
-    """
+    dated = collect_games_by_date()
+    merged = []
+    seen = set()
+    for game in paged + dated:
+        key = game.get("id") or f"{game.get('dia')}-{game.get('local')}-{game.get('visitante')}"
+        if key in seen:
+            continue
+        seen.add(key)
+        merged.append(game)
+    merged.sort(key=lambda g: (g.get("fecha_iso") or g.get("dia") or "", g.get("hora") or ""))
+    print(f"ℹ️ 365Scores combinado: {len(merged)} partidos únicos")
+    return merged
+
+
+def fallback_rounds_by_order(games):
     fechas = []
     current = []
     current_round = 1
@@ -411,6 +512,14 @@ def build_fechas(games):
     return fechas, method
 
 
+def calendario_valido(fechas, total_partidos):
+    if len(fechas) < MIN_FECHAS_VALIDAS:
+        return False, f"pocas fechas: {len(fechas)}"
+    if total_partidos < MIN_PARTIDOS_VALIDOS:
+        return False, f"pocos partidos: {total_partidos}"
+    return True, "ok"
+
+
 def save_json(data):
     for path in OUTPUTS:
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -425,6 +534,9 @@ def main():
 
     fechas, method = build_fechas(games)
     all_games = [p for f in fechas for p in f.get("partidos", [])]
+    valido, motivo = calendario_valido(fechas, len(all_games))
+    if not valido:
+        raise SystemExit(f"365Scores no generó calendario válido: {motivo}. No se sobrescribe el JSON bueno.")
 
     data = {
         "competicion": "Primera Nacional",
@@ -433,7 +545,7 @@ def main():
         "formato": "Fase de grupos",
         "fuente": "365Scores",
         "metodo_agrupacion": method,
-        "descripcion": "Fechas generadas desde 365Scores. Si la Fecha/Jornada de 365Scores no es confiable, se agrupa por orden cronológico sin cortar partidos del mismo día.",
+        "descripcion": "Fechas generadas desde 365Scores. Primero intenta paginar por aftergame; si no alcanza, combina con búsqueda por día. Si la Fecha/Jornada no es confiable, agrupa por orden cronológico sin cortar partidos del mismo día.",
         "total_fechas": len(fechas),
         "total_partidos": len(all_games),
         "actualizado": datetime.now(timezone.utc).isoformat(),
