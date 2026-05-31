@@ -30,13 +30,22 @@ jobs:
         run: |
           python scripts/scraper_primera_nacional_full.py
 
-      - name: Generar fechas de Primera Nacional desde 365Scores
+      - name: Intentar generar fechas desde 365Scores
         run: |
+          set +e
           python scripts/scraper_primera_nacional_365scores.py
+          code=$?
+          echo "SCRAPER_365_EXIT=$code" >> "$GITHUB_ENV"
+          if [ "$code" -eq 0 ]; then
+            echo "✅ 365Scores generó un calendario candidato"
+          else
+            echo "⚠️ 365Scores no generó un calendario válido. Se usará fallback ESPN corregido."
+          fi
+          exit 0
 
       - name: Validar fechas 365Scores o usar fallback ESPN
         run: |
-          if python scripts/validar_primera_nacional_fechas.py; then
+          if [ "${SCRAPER_365_EXIT}" = "0" ] && python scripts/validar_primera_nacional_fechas.py; then
             echo "✅ Fechas válidas desde 365Scores"
           else
             echo "⚠️ 365Scores no generó suficientes fechas. Usando fallback ESPN corregido."
