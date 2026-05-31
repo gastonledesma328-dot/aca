@@ -1,5 +1,4 @@
 import json
-import os
 import re
 import time
 from datetime import datetime, timedelta, timezone
@@ -11,6 +10,9 @@ LEAGUE_ID = 419
 SEASON = "2026"
 START_DATE = datetime(2026, 1, 1)
 END_DATE = datetime(2026, 12, 31)
+MIN_FECHAS_VALIDAS = 30
+MAX_FECHAS_VALIDAS = 45
+PARTIDOS_REFERENCIA_POR_FECHA = 18
 OUTPUTS = [
     Path("data/primera_nacional_fechas.json"),
     Path("public/data/primera_nacional_fechas.json"),
@@ -110,35 +112,106 @@ def score_value(game, side):
     return None
 
 
+def round_from_text(value):
+    text = clean_text(value)
+    if not text:
+        return None
+    match = re.search(r"(?:fecha|jornada|round|week|matchday)\s*(\d{1,2})", text, re.I)
+    if match:
+        n = parse_int(match.group(1))
+        if n and 1 <= n <= 60:
+            return n
+    return None
+
+
+def recursive_find_round(obj, depth=0):
+    """Busca la jornada en objetos anidados de 365Scores.
+
+    Importante: no usamos stageNum como fecha porque 365Scores suele usarlo para fase/etapa
+    y puede devolver 1 para todos los partidos. Ese fue el motivo de que antes se generara
+    una sola fecha gigante.
+    """
+    if depth > 5:
+        return None
+
+    if isinstance(obj, dict):
+        strong_number_keys = {
+            "roundnum",
+            "roundnumber",
+            "round",
+            "week",
+            "weeknumber",
+            "matchday",
+            "matchdaynumber",
+            "fixture",
+            "fixturenumber",
+        }
+        text_keys = {
+            "roundname",
+            "weekname",
+            "matchdayname",
+            "fixturetitle",
+            "stagetext",
+            "grouptitle",
+            "name",
+            "title",
+        }
+
+        for key, value in obj.items():
+            low = str(key).lower()
+            if low in strong_number_keys:
+                n = parse_int(value)
+                if n and 1 <= n <= 60:
+                    return n
+            if low in text_keys:
+                n = round_from_text(value)
+                if n:
+                    return n
+
+        for value in obj.values():
+            n = recursive_find_round(value, depth + 1)
+            if n:
+                return n
+
+    elif isinstance(obj, list):
+        for item in obj:
+            n = recursive_find_round(item, depth + 1)
+            if n:
+                return n
+
+    return None
+
+
 def extract_round(game):
-    candidates = [
+    top_level_candidates = [
         game.get("roundNum"),
         game.get("roundNumber"),
+        game.get("round"),
         game.get("week"),
-        game.get("stageNum"),
+        game.get("weekNumber"),
+        game.get("matchday"),
+        game.get("fixture"),
     ]
 
-    for value in candidates:
+    for value in top_level_candidates:
         n = parse_int(value)
         if n and 1 <= n <= 60:
             return n
 
     text_candidates = [
         game.get("roundName"),
-        game.get("stageName"),
+        game.get("weekName"),
+        game.get("matchdayName"),
         game.get("groupName"),
         game.get("competitionDisplayName"),
         game.get("seasonName"),
     ]
     for text in text_candidates:
-        text = clean_text(text)
-        match = re.search(r"(?:fecha|jornada|round|week)\s*(\d{1,2})", text, re.I)
-        if match:
-            n = parse_int(match.group(1))
-            if n and 1 <= n <= 60:
-                return n
+        n = round_from_text(text)
+        if n:
+            return n
 
-    return None
+    return recursive_find_round(game)
 
 
 def parse_game(game):
@@ -247,7 +320,12 @@ def collect_games():
 
 
 def fallback_rounds_by_order(games):
-    """Solo se usa si 365 no entrega round/fecha. No corta un mismo día."""
+    """Agrupa por orden cronológico sin partir un mismo día.
+
+    Se usa cuando 365Scores no entrega número de fecha confiable.
+    Si una fecha ya tiene 18 partidos pero el próximo partido es del mismo día,
+    se mantiene en la misma fecha para no cortar el día.
+    """
     fechas = []
     current = []
     current_round = 1
@@ -259,7 +337,7 @@ def fallback_rounds_by_order(games):
 
         last_day = current[-1].get("dia")
         this_day = game.get("dia")
-        if len(current) >= 18 and this_day != last_day:
+        if len(current) >= PARTIDOS_REFERENCIA_POR_FECHA and this_day != last_day:
             for p in current:
                 p["numero_fecha"] = current_round
                 p["fecha_torneo"] = current_round
@@ -278,24 +356,42 @@ def fallback_rounds_by_order(games):
     return fechas
 
 
-def build_fechas(games):
-    with_round = [g for g in games if parse_int(g.get("numero_fecha"))]
+def grupos_round_confiables(groups, total_games):
+    if not groups:
+        return False, "sin grupos"
+    total_grouped = sum(len(v) for v in groups.values())
+    group_count = len(groups)
+    max_group = max(len(v) for v in groups.values())
 
-    if len(with_round) >= max(1, int(len(games) * 0.6)):
-        groups = {}
-        for game in games:
-            n = parse_int(game.get("numero_fecha"))
-            if not n:
-                # Si queda algún partido sin fecha, lo ubicamos por cercanía cronológica al final.
-                n = max(groups.keys(), default=0) + 1
-                game["numero_fecha"] = n
-                game["fecha_torneo"] = n
+    if total_grouped < max(1, int(total_games * 0.6)):
+        return False, f"pocos partidos con round: {total_grouped}/{total_games}"
+    if group_count < MIN_FECHAS_VALIDAS:
+        return False, f"pocas fechas detectadas por round: {group_count}"
+    if group_count > MAX_FECHAS_VALIDAS:
+        return False, f"demasiadas fechas detectadas por round: {group_count}"
+    if max_group > 35:
+        return False, f"grupo demasiado grande: {max_group} partidos"
+
+    return True, f"{group_count} fechas / máximo {max_group} partidos"
+
+
+def build_fechas(games):
+    groups = {}
+    for game in games:
+        n = parse_int(game.get("numero_fecha"))
+        if n:
             groups.setdefault(n, []).append(game)
+
+    confiable, motivo = grupos_round_confiables(groups, len(games))
+
+    if confiable:
         ordered_groups = [groups[n] for n in sorted(groups)]
-        method = "365scores-round"
+        method = "365scores-round-confiable"
+        print(f"✅ 365Scores round confiable: {motivo}")
     else:
         ordered_groups = fallback_rounds_by_order(games)
         method = "365scores-fallback-sin-cortar-mismo-dia"
+        print(f"⚠️ 365Scores round no confiable ({motivo}). Uso fallback sin cortar mismo día.")
 
     fechas = []
     for idx, partidos in enumerate(ordered_groups, start=1):
@@ -337,7 +433,7 @@ def main():
         "formato": "Fase de grupos",
         "fuente": "365Scores",
         "metodo_agrupacion": method,
-        "descripcion": "Fechas generadas desde 365Scores. Los partidos se agrupan por la Fecha/Jornada que devuelve 365Scores. Si no hay jornada, se agrupa sin cortar partidos del mismo día.",
+        "descripcion": "Fechas generadas desde 365Scores. Si la Fecha/Jornada de 365Scores no es confiable, se agrupa por orden cronológico sin cortar partidos del mismo día.",
         "total_fechas": len(fechas),
         "total_partidos": len(all_games),
         "actualizado": datetime.now(timezone.utc).isoformat(),
