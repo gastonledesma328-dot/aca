@@ -2134,16 +2134,6 @@
           "status": "Actual"
         },
         {
-          "name": "Gi-Hyuk Lee",
-          "position": "CM",
-          "status": "Actual"
-        },
-        {
-          "name": "Han-Beom Lee",
-          "position": "CM",
-          "status": "Actual"
-        },
-        {
           "name": "Hwang Hee-Chan",
           "position": "CM",
           "status": "Actual"
@@ -2159,12 +2149,12 @@
           "status": "Actual"
         },
         {
-          "name": "Jin-Gyu Kim",
+          "name": "Jo Hyeon-Woo",
           "position": "CM",
           "status": "Actual"
         },
         {
-          "name": "Jo Hyeon-Woo",
+          "name": "Kim Jin-Gyu",
           "position": "CM",
           "status": "Actual"
         },
@@ -2190,6 +2180,16 @@
         },
         {
           "name": "Lee Dong-Gyeong",
+          "position": "CM",
+          "status": "Actual"
+        },
+        {
+          "name": "Lee Gi-Hyuk",
+          "position": "CM",
+          "status": "Actual"
+        },
+        {
+          "name": "Lee Han-Beom",
           "position": "CM",
           "status": "Actual"
         },
@@ -7601,7 +7601,7 @@
   ],
   "meta": {
     "source": "ESPN fifa.world participantes reales + respaldo manual del JSON anterior",
-    "updatedAt": "2026-05-30T09:47:41.829Z",
+    "updatedAt": "2026-05-31T10:05:44.234Z",
     "totalCountries": 48,
     "espnTeamsFound": 48,
     "note": "Generado por scripts/update-worldcup11-espn.js. El resultado final incluye solo selecciones reales encontradas en ESPN fifa.world. Se descartan placeholders como Group Winner, Round of 16 Winner, Quarterfinal Winner, etc."
