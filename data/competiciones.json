@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-05-31T10:29:01.485055+00:00",
+  "actualizado": "2026-05-31T15:46:17.280690+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:52.875317+00:00",
+      "actualizado": "2026-05-31T15:46:08.533051+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:53.244597+00:00",
+      "actualizado": "2026-05-31T15:46:08.880275+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -56919,7 +56919,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -56935,14 +56935,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401843896/gimnasia-y-tiro-salta-atlanta",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-05-31"
@@ -57533,7 +57533,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -57549,14 +57549,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401843896/gimnasia-y-tiro-salta-atlanta",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-05-31"
@@ -58135,7 +58135,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:54.802750+00:00",
+      "actualizado": "2026-05-31T15:46:10.469914+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -59014,7 +59014,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:55.122209+00:00",
+      "actualizado": "2026-05-31T15:46:10.866625+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -59194,7 +59194,7 @@
           "uid": "s:600~t:17090",
           "nombre": "Deportivo La Guaira",
           "nombre_corto": "La Guaira",
-          "abreviatura": "DEP",
+          "abreviatura": "LGA",
           "slug": "deportivo_la_guaira",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
           "color": "fc4401"
@@ -59204,7 +59204,7 @@
           "uid": "s:600~t:4818",
           "nombre": "Deportivo Táchira",
           "nombre_corto": "Táchira",
-          "abreviatura": "DTC",
+          "abreviatura": "TAC",
           "slug": "ven.tachira",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4818.png",
           "color": "1a1a1a"
@@ -59440,6 +59440,16 @@
           "color": "3bb8e2"
         },
         {
+          "id": "10094",
+          "uid": "s:600~t:10094",
+          "nombre": "UCV FC",
+          "nombre_corto": "UCV FC",
+          "abreviatura": "UCV",
+          "slug": "ven.ucv_fc",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
+          "color": "000000"
+        },
+        {
           "id": "885",
           "uid": "s:600~t:885",
           "nombre": "Universidad Católica",
@@ -59448,16 +59458,6 @@
           "slug": "chi.universidad_catolica",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/885.png",
           "color": "0a4f8d"
-        },
-        {
-          "id": "10094",
-          "uid": "s:600~t:10094",
-          "nombre": "Universidad Central",
-          "nombre_corto": "UCV",
-          "abreviatura": "UCV",
-          "slug": "ven.ucv_fc",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
-          "color": "000000"
         },
         {
           "id": "2685",
@@ -59753,7 +59753,7 @@
             "uid": "s:600~t:17090",
             "nombre": "Deportivo La Guaira",
             "nombre_corto": "La Guaira",
-            "abreviatura": "DEP",
+            "abreviatura": "LGA",
             "slug": "deportivo-la-guaira",
             "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17090.png",
             "color": ""
@@ -60226,10 +60226,10 @@
           "equipo": {
             "id": "10094",
             "uid": "s:600~t:10094",
-            "nombre": "Universidad Central",
-            "nombre_corto": "UCV",
+            "nombre": "UCV FC",
+            "nombre_corto": "UCV FC",
             "abreviatura": "UCV",
-            "slug": "universidad-central",
+            "slug": "ucv-fc",
             "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
             "color": ""
           },
@@ -60698,7 +60698,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:55.416526+00:00",
+      "actualizado": "2026-05-31T15:46:11.413923+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -60718,7 +60718,7 @@
           "uid": "s:600~t:18995",
           "nombre": "Academia Puerto Cabello",
           "nombre_corto": "Puerto Cabello",
-          "abreviatura": "CAB",
+          "abreviatura": "APC",
           "slug": "academia_puerto_cabello",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18995.png",
           "color": "212121"
@@ -60838,7 +60838,7 @@
           "uid": "s:600~t:4811",
           "nombre": "Caracas FC",
           "nombre_corto": "Caracas",
-          "abreviatura": "CAR",
+          "abreviatura": "CFC",
           "slug": "ven.caracas",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4811.png",
           "color": "E22B2D"
@@ -60996,7 +60996,7 @@
         {
           "id": "13481",
           "uid": "s:600~t:13481",
-          "nombre": "Metropolitanos FC",
+          "nombre": "Metropolitanos",
           "nombre_corto": "Metropolitanos",
           "abreviatura": "MET",
           "slug": "ven.dep._metropolitano",
@@ -61018,7 +61018,7 @@
           "uid": "s:600~t:6041",
           "nombre": "Monagas SC",
           "nombre_corto": "Monagas",
-          "abreviatura": "MON",
+          "abreviatura": "MSC",
           "slug": "ven.monagas_sc",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6041.png",
           "color": "212121"
@@ -61377,7 +61377,7 @@
             "uid": "s:600~t:18995",
             "nombre": "Academia Puerto Cabello",
             "nombre_corto": "Puerto Cabello",
-            "abreviatura": "CAB",
+            "abreviatura": "APC",
             "slug": "academia-puerto-cabello",
             "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18995.png",
             "color": ""
@@ -61627,7 +61627,7 @@
             "uid": "s:600~t:4811",
             "nombre": "Caracas FC",
             "nombre_corto": "Caracas",
-            "abreviatura": "CAR",
+            "abreviatura": "CFC",
             "slug": "caracas-fc",
             "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4811.png",
             "color": ""
@@ -62218,7 +62218,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:55.765580+00:00",
+      "actualizado": "2026-05-31T15:46:11.719545+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -63615,7 +63615,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:56.031575+00:00",
+      "actualizado": "2026-05-31T15:46:12.016685+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -65012,7 +65012,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:56.356673+00:00",
+      "actualizado": "2026-05-31T15:46:12.334129+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -66410,7 +66410,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:56.670115+00:00",
+      "actualizado": "2026-05-31T15:46:12.681848+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -67668,7 +67668,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:56.946589+00:00",
+      "actualizado": "2026-05-31T15:46:12.969661+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -68563,7 +68563,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:57.303505+00:00",
+      "actualizado": "2026-05-31T15:46:13.306066+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70897,7 +70897,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:57.590955+00:00",
+      "actualizado": "2026-05-31T15:46:13.576419+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -72816,7 +72816,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:57.840438+00:00",
+      "actualizado": "2026-05-31T15:46:13.858211+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -74571,7 +74571,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:58.110299+00:00",
+      "actualizado": "2026-05-31T15:46:14.173491+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -75408,7 +75408,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:58.475145+00:00",
+      "actualizado": "2026-05-31T15:46:14.424669+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -76857,7 +76857,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:58.764301+00:00",
+      "actualizado": "2026-05-31T15:46:14.654387+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -78440,7 +78440,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:59.119314+00:00",
+      "actualizado": "2026-05-31T15:46:14.955308+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -80023,7 +80023,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:59.403032+00:00",
+      "actualizado": "2026-05-31T15:46:15.196474+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -81606,7 +81606,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:59.719192+00:00",
+      "actualizado": "2026-05-31T15:46:15.498932+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -82331,8 +82331,8 @@
             "id": "401841141",
             "nombre": "Internacional at Red Bull Bragantino",
             "fecha": "2026-05-31T14:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "estado": "Second Half",
+            "estado_tipo": "in",
             "completado": false,
             "fase": "",
             "clasificacion_texto": "internacional at red bull bragantino int bra 2026 brasileiro serie a",
@@ -82348,9 +82348,9 @@
                 "color": "000000"
               },
               "localia": "home",
-              "marcador": "0",
+              "marcador": "3",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -82364,16 +82364,16 @@
                 "color": "C60000"
               },
               "localia": "away",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841141/internacional-red-bull-bragantino",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841141",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-05-31"
@@ -82588,8 +82588,8 @@
             "id": "401841141",
             "nombre": "Internacional at Red Bull Bragantino",
             "fecha": "2026-05-31T14:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "estado": "Second Half",
+            "estado_tipo": "in",
             "completado": false,
             "fase": "",
             "clasificacion_texto": "internacional at red bull bragantino int bra 2026 brasileiro serie a",
@@ -82605,9 +82605,9 @@
                 "color": "000000"
               },
               "localia": "home",
-              "marcador": "0",
+              "marcador": "3",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -82621,16 +82621,16 @@
                 "color": "C60000"
               },
               "localia": "away",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841141/internacional-red-bull-bragantino",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841141",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-05-31"
@@ -82851,7 +82851,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-05-31T10:28:59.970943+00:00",
+      "actualizado": "2026-05-31T15:46:15.782502+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -82862,8 +82862,8 @@
         "equipos": 16,
         "posiciones": 16,
         "partidos_scoreboard": 3,
-        "ultimos": 0,
-        "proximos": 3
+        "ultimos": 1,
+        "proximos": 2
       },
       "equipos": [
         {
@@ -83430,15 +83430,14 @@
         }
       ],
       "partidos": {
-        "ultimos": [],
-        "proximos": [
+        "ultimos": [
           {
             "id": "401872695",
             "nombre": "Montevideo City Torque at Albion FC",
             "fecha": "2026-05-31T13:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "montevideo city torque at albion fc mct alb torneo intermedio",
             "local": {
@@ -83453,7 +83452,7 @@
                 "color": "000000"
               },
               "localia": "home",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
               "penales": ""
             },
@@ -83469,8 +83468,8 @@
                 "color": "6bc7f5"
               },
               "localia": "away",
-              "marcador": "0",
-              "ganador": false,
+              "marcador": "2",
+              "ganador": true,
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401872695/montevideo-city-torque-albion-fc",
@@ -83482,7 +83481,9 @@
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-05-31"
-          },
+          }
+        ],
+        "proximos": [
           {
             "id": "401872699",
             "nombre": "Montevideo Wanderers at Juventud",
@@ -83591,9 +83592,9 @@
             "id": "401872695",
             "nombre": "Montevideo City Torque at Albion FC",
             "fecha": "2026-05-31T13:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "montevideo city torque at albion fc mct alb torneo intermedio",
             "local": {
@@ -83608,7 +83609,7 @@
                 "color": "000000"
               },
               "localia": "home",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
               "penales": ""
             },
@@ -83624,8 +83625,8 @@
                 "color": "6bc7f5"
               },
               "localia": "away",
-              "marcador": "0",
-              "ganador": false,
+              "marcador": "2",
+              "ganador": true,
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401872695/montevideo-city-torque-albion-fc",
@@ -83752,7 +83753,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-05-31T10:29:00.228465+00:00",
+      "actualizado": "2026-05-31T15:46:16.058838+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -84513,7 +84514,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-05-31T10:29:00.499357+00:00",
+      "actualizado": "2026-05-31T15:46:16.333273+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -85350,7 +85351,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-05-31T10:29:00.868211+00:00",
+      "actualizado": "2026-05-31T15:46:16.706822+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -85954,7 +85955,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -85970,14 +85971,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401850581/coquimbo-unido-deportes-limache",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-05-31"
@@ -86160,7 +86161,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -86176,14 +86177,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401850581/coquimbo-unido-deportes-limache",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-05-31"
@@ -86353,7 +86354,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-05-31T10:29:01.190356+00:00",
+      "actualizado": "2026-05-31T15:46:17.004407+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -87120,7 +87121,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-05-31T10:29:01.485035+00:00",
+      "actualizado": "2026-05-31T15:46:17.280675+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
