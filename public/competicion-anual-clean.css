@@ -20,7 +20,7 @@ body[data-competition-id="liga-profesional"] #competitionLigaProfesionalExtras .
   display: none !important;
 }
 
-/* Próximos partidos y últimos resultados: mismo tema verde para los cuadros. */
+/* PrÃ³ximos partidos y Ãºltimos resultados: mismo tema verde para los cuadros. */
 body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-match,
 body[data-competition-id="liga-profesional"] [data-competition-section="ultimos"] .competition-match {
   color: #eaffef !important;
@@ -34,7 +34,7 @@ body[data-competition-id="liga-profesional"] [data-competition-section="ultimos"
   color: #baff78 !important;
 }
 
-/* Próximos partidos: oculta el estado Scheduled/Programado del cuadro. */
+/* PrÃ³ximos partidos: oculta el estado Scheduled/Programado del cuadro. */
 body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-match-top span:nth-child(2) {
   display: none !important;
 }
@@ -53,7 +53,7 @@ body[data-competition-id="liga-profesional"] [data-competition-section="ultimos"
   box-shadow: 0 6px 14px rgba(95, 207, 128, 0.22) !important;
 }
 
-/* Equipos: tarjetas verdes, nombres completos y badge de títulos dorado. */
+/* Equipos: tarjetas verdes, nombres completos y badge de tÃ­tulos dorado. */
 body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-teams-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)) !important;
@@ -142,7 +142,7 @@ body[data-competition-id="liga-profesional"] [data-competition-section="equipos"
 }
 
 body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-team-titles::before {
-  content: "🏆" !important;
+  content: "ð" !important;
   display: inline-block !important;
   font-size: 14px !important;
   line-height: 1 !important;
@@ -200,4 +200,95 @@ body[data-competition-id="liga-profesional"] [data-competition-section="equipos"
   body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-team-card-main {
     gap: 10px !important;
   }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   PRIMERA NACIONAL — Últimos resultados y Equipos
+   Misma estética que Liga Profesional
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Últimos resultados: tarjeta de partido ── */
+body[data-competition-id="primera-nacional"] [data-competition-section="ultimos"] .competition-match {
+  border-radius: 12px;
+  border: 0.8px solid rgba(95, 207, 128, 0.35);
+  padding: 12px;
+  background: transparent;
+  color: rgb(234, 255, 239);
+}
+
+body[data-competition-id="primera-nacional"] [data-competition-section="ultimos"] .competition-match-top {
+  background: transparent;
+  color: rgb(186, 255, 120);
+}
+
+body[data-competition-id="primera-nacional"] [data-competition-section="ultimos"] .competition-match-top span {
+  color: rgb(186, 255, 120);
+  font-size: 10px;
+  font-weight: 950;
+}
+
+body[data-competition-id="primera-nacional"] [data-competition-section="ultimos"] .competition-match-team {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 900;
+  color: rgb(255, 255, 255);
+}
+
+body[data-competition-id="primera-nacional"] [data-competition-section="ultimos"] .competition-match-teams {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+body[data-competition-id="primera-nacional"] [data-competition-section="ultimos"] .competition-match-team:last-child {
+  direction: rtl;
+}
+
+body[data-competition-id="primera-nacional"] [data-competition-section="ultimos"] .competition-score {
+  background-color: rgb(95, 207, 128);
+  color: rgb(23, 53, 32);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+body[data-competition-id="primera-nacional"] [data-competition-section="ultimos"] .competition-list {
+  display: grid;
+  gap: 8px;
+}
+
+/* ── Equipos: tarjetas grandes ── */
+body[data-competition-id="primera-nacional"] [data-competition-section="equipos"] .competition-teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+body[data-competition-id="primera-nacional"] [data-competition-section="equipos"] .competition-team-card {
+  width: 100%;
+  min-height: 80px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 0.8px solid rgba(95, 207, 128, 0.35);
+  background: transparent;
+  font-size: 14px;
+  font-weight: 900;
+  color: rgb(240, 250, 244);
+}
+
+body[data-competition-id="primera-nacional"] [data-competition-section="equipos"] .competition-team-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
 }
