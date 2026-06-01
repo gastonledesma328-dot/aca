@@ -266,20 +266,20 @@
     const index = indiceActual();
     const canPrev = index > 0;
     const canNext = index < state.items.length - 1;
-    const options = state.items.map((x) => `<option value="${escapeHtml(x.key)}" ${x.key === item.key ? "selected" : ""}>${escapeHtml(x.nombre)} Â· ${escapeHtml(x.dateLabel)}</option>`).join("");
+    const options = state.items.map((x) => `<option value="${escapeHtml(x.key)}" ${x.key === item.key ? "selected" : ""}>${escapeHtml(x.nombre)} ÃÂ· ${escapeHtml(x.dateLabel)}</option>`).join("");
 
     box.innerHTML = `
       <div class="season-fixture-card pn-fixture-card">
         <h3 class="season-title">PRIMERA NACIONAL</h3>
         <div class="season-nav">
-          <button class="season-arrow" type="button" data-pn-season-prev ${canPrev ? "" : "disabled"} aria-label="Fecha anterior">â¹</button>
+          <button class="season-arrow" type="button" data-pn-season-prev ${canPrev ? "" : "disabled"} aria-label="Fecha anterior">Ã¢ÂÂ¹</button>
           <label class="season-select-wrap">
-            <span>${escapeHtml(item.nombre.toUpperCase())}â¼</span>
+            <span>${escapeHtml(item.nombre.toUpperCase())}Ã¢ÂÂ¼</span>
             <select class="season-select" data-pn-season-select aria-label="Seleccionar fecha">
               ${options}
             </select>
           </label>
-          <button class="season-arrow" type="button" data-pn-season-next ${canNext ? "" : "disabled"} aria-label="Fecha siguiente">âº</button>
+          <button class="season-arrow" type="button" data-pn-season-next ${canNext ? "" : "disabled"} aria-label="Fecha siguiente">Ã¢ÂÂº</button>
         </div>
         <div class="season-table">
           <div class="season-rows">
@@ -356,4 +356,79 @@
 
   document.addEventListener("DOMContentLoaded", () => setTimeout(init, 350));
   window.setTimeout(init, 1200);
+})();
+
+
+// ── Ranking de Campeones (sobreescribe el grid de equipos) ───────────────────
+(function overrideTeamsSection() {
+  const CAMPEONES_URL = '../data/campeones_primera_nacional_equipos.json';
+
+  function renderRanking(equipos) {
+    const grid = document.getElementById('competitionTeamsGrid');
+    if (!grid) return;
+    if (!equipos || !equipos.length) return;
+
+    // Change section kicker
+    const section = grid.closest('[data-competition-section="equipos"]');
+    if (section) {
+      const kicker = section.querySelector('.competition-section-kicker');
+      const title  = section.querySelector('h2');
+      if (kicker) kicker.textContent = 'Campeones Históricos';
+      if (title)  title.textContent  = 'Ranking de Campeones';
+    }
+
+    grid.parentElement.replaceChild(
+      Object.assign(document.createElement('div'), {
+        className: 'pn-ranking-wrap',
+        innerHTML: `
+          <div class="pn-ranking-table">
+            <div class="pn-ranking-header">
+              <span>Equipos</span>
+              <span>Títulos</span>
+            </div>
+            ${equipos.map(team => `
+              <div class="pn-ranking-row">
+                <span class="pn-ranking-team">
+                  <img class="pn-ranking-logo" src="${team.logo}" alt="" loading="lazy">
+                  <span>
+                    <div class="pn-ranking-name">${team.nombre}</div>
+                    <div class="pn-ranking-name pn-ranking-name-sub">${team.torneos.join(' · ')}</div>
+                  </span>
+                </span>
+                <span class="pn-ranking-count">${team.titulos}</span>
+              </div>
+            `).join('')}
+          </div>
+        `
+      }),
+      grid
+    );
+  }
+
+  // Hook into tab switch
+  document.addEventListener('click', function(e) {
+    const tab = e.target.closest('[data-tab]') || e.target.closest('.competition-tab');
+    if (!tab) return;
+    const isEquipos = tab.textContent?.trim() === 'Equipos' || tab.dataset?.tab === 'equipos';
+    if (!isEquipos) return;
+    setTimeout(function() {
+      if (document.getElementById('competitionTeamsGrid')) {
+        fetch(CAMPEONES_URL + '?v=' + Date.now())
+          .then(function(r){ return r.json(); })
+          .then(renderRanking)
+          .catch(function(){});
+      }
+    }, 150);
+  });
+
+  // Also run on page load if equipos tab is active
+  window.addEventListener('load', function() {
+    const activeTab = document.querySelector('.competition-tab.active');
+    if (activeTab && activeTab.textContent?.trim() === 'Equipos') {
+      fetch(CAMPEONES_URL + '?v=' + Date.now())
+        .then(function(r){ return r.json(); })
+        .then(renderRanking)
+        .catch(function(){});
+    }
+  });
 })();

@@ -20,7 +20,7 @@ body[data-competition-id="liga-profesional"] #competitionLigaProfesionalExtras .
   display: none !important;
 }
 
-/* PrÃ³ximos partidos y Ãºltimos resultados: mismo tema verde para los cuadros. */
+/* PrÃÂ³ximos partidos y ÃÂºltimos resultados: mismo tema verde para los cuadros. */
 body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-match,
 body[data-competition-id="liga-profesional"] [data-competition-section="ultimos"] .competition-match {
   color: #eaffef !important;
@@ -34,7 +34,7 @@ body[data-competition-id="liga-profesional"] [data-competition-section="ultimos"
   color: #baff78 !important;
 }
 
-/* PrÃ³ximos partidos: oculta el estado Scheduled/Programado del cuadro. */
+/* PrÃÂ³ximos partidos: oculta el estado Scheduled/Programado del cuadro. */
 body[data-competition-id="liga-profesional"] [data-competition-section="proximos"] .competition-match-top span:nth-child(2) {
   display: none !important;
 }
@@ -53,7 +53,7 @@ body[data-competition-id="liga-profesional"] [data-competition-section="ultimos"
   box-shadow: 0 6px 14px rgba(95, 207, 128, 0.22) !important;
 }
 
-/* Equipos: tarjetas verdes, nombres completos y badge de tÃ­tulos dorado. */
+/* Equipos: tarjetas verdes, nombres completos y badge de tÃÂ­tulos dorado. */
 body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-teams-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)) !important;
@@ -142,7 +142,7 @@ body[data-competition-id="liga-profesional"] [data-competition-section="equipos"
 }
 
 body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-team-titles::before {
-  content: "ð" !important;
+  content: "Ã°ÂÂÂ" !important;
   display: inline-block !important;
   font-size: 14px !important;
   line-height: 1 !important;
@@ -203,12 +203,12 @@ body[data-competition-id="liga-profesional"] [data-competition-section="equipos"
 }
 
 
-/* ═══════════════════════════════════════════════════════════
-   PRIMERA NACIONAL — Últimos resultados y Equipos
-   Misma estética que Liga Profesional
-   ═══════════════════════════════════════════════════════════ */
+/* âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+   PRIMERA NACIONAL â Ãltimos resultados y Equipos
+   Misma estÃ©tica que Liga Profesional
+   âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 
-/* ── Últimos resultados: tarjeta de partido ── */
+/* ââ Ãltimos resultados: tarjeta de partido ââ */
 body[data-competition-id="primera-nacional"] [data-competition-section="ultimos"] .competition-match {
   border-radius: 12px;
   border: 0.8px solid rgba(95, 207, 128, 0.35);
@@ -263,7 +263,7 @@ body[data-competition-id="primera-nacional"] [data-competition-section="ultimos"
   gap: 8px;
 }
 
-/* ── Equipos: tarjetas grandes ── */
+/* ââ Equipos: tarjetas grandes ââ */
 body[data-competition-id="primera-nacional"] [data-competition-section="equipos"] .competition-teams-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -291,4 +291,82 @@ body[data-competition-id="primera-nacional"] [data-competition-section="equipos"
   width: 44px;
   height: 44px;
   object-fit: contain;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PRIMERA NACIONAL — Ranking de Campeones (tab Equipos)
+   ═══════════════════════════════════════════════════════ */
+body[data-competition-id="primera-nacional"] .pn-ranking-wrap {
+  padding: 0;
+}
+body[data-competition-id="primera-nacional"] .pn-ranking-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(234,255,239,0.5);
+  padding: 4px 0 12px;
+}
+body[data-competition-id="primera-nacional"] .pn-ranking-table {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 0.8px solid rgba(95,207,128,0.2);
+}
+body[data-competition-id="primera-nacional"] .pn-ranking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 16px;
+  background: rgba(95,207,128,0.10);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(186,255,120,0.85);
+}
+body[data-competition-id="primera-nacional"] .pn-ranking-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 16px;
+  border-top: 0.8px solid rgba(95,207,128,0.08);
+  gap: 8px;
+}
+body[data-competition-id="primera-nacional"] .pn-ranking-row:nth-child(odd) {
+  background: rgba(95,207,128,0.03);
+}
+body[data-competition-id="primera-nacional"] .pn-ranking-team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+body[data-competition-id="primera-nacional"] .pn-ranking-logo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+body[data-competition-id="primera-nacional"] .pn-ranking-name {
+  font-weight: 700;
+  font-size: 13px;
+  color: rgb(234,255,239);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+body[data-competition-id="primera-nacional"] .pn-ranking-name.pn-ranking-name-sub {
+  font-size: 11px;
+  color: rgba(234,255,239,0.55);
+  font-weight: 500;
+}
+body[data-competition-id="primera-nacional"] .pn-ranking-count {
+  font-size: 14px;
+  font-weight: 900;
+  color: rgb(95,207,128);
+  min-width: 24px;
+  text-align: right;
+  flex-shrink: 0;
 }
