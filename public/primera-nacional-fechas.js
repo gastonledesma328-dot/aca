@@ -390,7 +390,7 @@
               <div class="pn-ranking-row">
                 <span class="pn-ranking-count">${team.titulos}</span>
                 <span class="pn-ranking-team">
-                  <img class="pn-ranking-logo" src="${team.logo}" alt="" loading="lazy">
+                  ${team.logo ? '<img class="pn-ranking-logo" src="' + team.logo + '" alt="" loading="lazy">' : '<span class="pn-ranking-logo pn-ranking-initials">' + team.nombre.split(' ').slice(0,2).map(function(w){return w[0];}).join('') + '</span>'}
                   <span>
                     <div class="pn-ranking-name">${team.nombre}</div>
                     <div class="pn-ranking-name pn-ranking-name-sub">${team.torneos.join(' ' + String.fromCharCode(183) + ' ')}</div>
