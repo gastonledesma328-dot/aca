@@ -3,7 +3,7 @@
   if (competitionId !== "primera-nacional") return;
 
   const FECHAS_URL = "../data/primera_nacional_fechas.json";
-  const EQUIPOS_URL = "../data/equipos_primera_nacional.json";
+  const EQUIPOS_URL = "../data/campeones_primera_nacional_equipos.json";
   const TZ = "America/Argentina/Buenos_Aires";
   const PARTIDOS_POR_FECHA = 18;
   let state = null;
@@ -266,20 +266,20 @@
     const index = indiceActual();
     const canPrev = index > 0;
     const canNext = index < state.items.length - 1;
-    const options = state.items.map((x) => `<option value="${escapeHtml(x.key)}" ${x.key === item.key ? "selected" : ""}>${escapeHtml(x.nombre)} · ${escapeHtml(x.dateLabel)}</option>`).join("");
+    const options = state.items.map((x) => `<option value="${escapeHtml(x.key)}" ${x.key === item.key ? "selected" : ""}>${escapeHtml(x.nombre)} Â· ${escapeHtml(x.dateLabel)}</option>`).join("");
 
     box.innerHTML = `
       <div class="season-fixture-card pn-fixture-card">
         <h3 class="season-title">PRIMERA NACIONAL</h3>
         <div class="season-nav">
-          <button class="season-arrow" type="button" data-pn-season-prev ${canPrev ? "" : "disabled"} aria-label="Fecha anterior">‹</button>
+          <button class="season-arrow" type="button" data-pn-season-prev ${canPrev ? "" : "disabled"} aria-label="Fecha anterior">â¹</button>
           <label class="season-select-wrap">
-            <span>${escapeHtml(item.nombre.toUpperCase())}▼</span>
+            <span>${escapeHtml(item.nombre.toUpperCase())}â¼</span>
             <select class="season-select" data-pn-season-select aria-label="Seleccionar fecha">
               ${options}
             </select>
           </label>
-          <button class="season-arrow" type="button" data-pn-season-next ${canNext ? "" : "disabled"} aria-label="Fecha siguiente">›</button>
+          <button class="season-arrow" type="button" data-pn-season-next ${canNext ? "" : "disabled"} aria-label="Fecha siguiente">âº</button>
         </div>
         <div class="season-table">
           <div class="season-rows">
