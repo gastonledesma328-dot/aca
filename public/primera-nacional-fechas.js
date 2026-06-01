@@ -266,20 +266,20 @@
     const index = indiceActual();
     const canPrev = index > 0;
     const canNext = index < state.items.length - 1;
-    const options = state.items.map((x) => `<option value="${escapeHtml(x.key)}" ${x.key === item.key ? "selected" : ""}>${escapeHtml(x.nombre)} ÃÂ· ${escapeHtml(x.dateLabel)}</option>`).join("");
+    const options = state.items.map((x) => `<option value="${escapeHtml(x.key)}" ${x.key === item.key ? "selected" : ""}>${escapeHtml(x.nombre)} ÃÂÃÂ· ${escapeHtml(x.dateLabel)}</option>`).join("");
 
     box.innerHTML = `
       <div class="season-fixture-card pn-fixture-card">
         <h3 class="season-title">PRIMERA NACIONAL</h3>
         <div class="season-nav">
-          <button class="season-arrow" type="button" data-pn-season-prev ${canPrev ? "" : "disabled"} aria-label="Fecha anterior">Ã¢ÂÂ¹</button>
+          <button class="season-arrow" type="button" data-pn-season-prev ${canPrev ? "" : "disabled"} aria-label="Fecha anterior">ÃÂ¢ÃÂÃÂ¹</button>
           <label class="season-select-wrap">
-            <span>${escapeHtml(item.nombre.toUpperCase())}Ã¢ÂÂ¼</span>
+            <span>${escapeHtml(item.nombre.toUpperCase())}ÃÂ¢ÃÂÃÂ¼</span>
             <select class="season-select" data-pn-season-select aria-label="Seleccionar fecha">
               ${options}
             </select>
           </label>
-          <button class="season-arrow" type="button" data-pn-season-next ${canNext ? "" : "disabled"} aria-label="Fecha siguiente">Ã¢ÂÂº</button>
+          <button class="season-arrow" type="button" data-pn-season-next ${canNext ? "" : "disabled"} aria-label="Fecha siguiente">ÃÂ¢ÃÂÃÂº</button>
         </div>
         <div class="season-table">
           <div class="season-rows">
@@ -359,7 +359,7 @@
 })();
 
 
-// ── Ranking de Campeones (sobreescribe el grid de equipos) ───────────────────
+// ââ Ranking de Campeones (sobreescribe el grid de equipos) âââââââââââââââââââ
 (function overrideTeamsSection() {
   const CAMPEONES_URL = '../data/campeones_primera_nacional_equipos.json';
 
@@ -373,7 +373,7 @@
     if (section) {
       const kicker = section.querySelector('.competition-section-kicker');
       const title  = section.querySelector('h2');
-      if (kicker) kicker.textContent = 'Campeones Históricos';
+      if (kicker) kicker.textContent = 'Campeones HistÃ³ricos';
       if (title)  title.textContent  = 'Ranking de Campeones';
     }
 
@@ -384,18 +384,18 @@
           <div class="pn-ranking-table">
             <div class="pn-ranking-header">
               <span>Equipos</span>
-              <span>Títulos</span>
+              <span>TÃ­tulos</span>
             </div>
             ${equipos.map(team => `
               <div class="pn-ranking-row">
+                <span class="pn-ranking-count">${team.titulos}</span>
                 <span class="pn-ranking-team">
                   <img class="pn-ranking-logo" src="${team.logo}" alt="" loading="lazy">
                   <span>
                     <div class="pn-ranking-name">${team.nombre}</div>
-                    <div class="pn-ranking-name pn-ranking-name-sub">${team.torneos.join(' · ')}</div>
+                    <div class="pn-ranking-name pn-ranking-name-sub">${team.torneos.join(' Â· ')}</div>
                   </span>
                 </span>
-                <span class="pn-ranking-count">${team.titulos}</span>
               </div>
             `).join('')}
           </div>
