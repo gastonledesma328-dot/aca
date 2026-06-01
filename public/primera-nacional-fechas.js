@@ -393,7 +393,7 @@
                   <img class="pn-ranking-logo" src="${team.logo}" alt="" loading="lazy">
                   <span>
                     <div class="pn-ranking-name">${team.nombre}</div>
-                    <div class="pn-ranking-name pn-ranking-name-sub">${team.torneos.join(' \u00c3\u0082\u00b7 ')}</div>
+                    <div class="pn-ranking-name pn-ranking-name-sub">${team.torneos.join(' ' + String.fromCharCode(183) + ' ')}</div>
                   </span>
                 </span>
               </div>
