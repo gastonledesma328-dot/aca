@@ -1,1663 +1,1555 @@
 {
   "competicion": "Copa Argentina",
   "league_slug": "arg.copa",
-  "season": 2025,
-  "actualizado": "2026-06-02T02:31:09.566Z",
-  "campeon": {
-    "id": "9744",
-    "nombre": "Independiente Rivadavia",
-    "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png"
-  },
+  "season": 2026,
+  "actualizado": "2026-06-02T17:34:42.366522Z",
+  "campeon": null,
   "fases": {
-    "treintaidosavos": [
-      {
-        "id": "728201",
-        "nombre": "Argentino Monte Maíz at Boca Juniors",
-        "fecha": "2025-01-23",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "5",
-          "nombre": "Boca Juniors",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
-          "score": "5",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "22166",
-          "nombre": "Argentino Monte Maíz",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22166.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Brigadier Gral. Estanislao López",
-        "nota": ""
-      },
-      {
-        "id": "728213",
-        "nombre": "General Lamadrid at Lanús",
-        "fecha": "2025-02-05",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "12",
-          "nombre": "Lanús",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
-          "score": "4",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "17699",
-          "nombre": "General Lamadrid",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17699.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Julio Humberto Grondona",
-        "nota": ""
-      },
-      {
-        "id": "728206",
-        "nombre": "Deportivo Español at Gimnasia La Plata",
-        "fecha": "2025-02-06",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "9",
-          "nombre": "Gimnasia La Plata",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "17701",
-          "nombre": "Deportivo Español",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17701.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Estadio Centenario Ciudad de Quilmes",
-        "nota": ""
-      },
-      {
-        "id": "728220",
-        "nombre": "Colón (Santa Fe) at San Martín (Tucumán)",
-        "fecha": "2025-02-12",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "17814",
-          "nombre": "San Martín (Tucumán)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
-          "score": "0",
-          "penaltis": 3,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "7",
-          "nombre": "Colón (Santa Fe)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7.png",
-          "score": "0",
-          "penaltis": 1,
-          "ganador": false
-        },
-        "estadio": "Nuevo Monumental",
-        "nota": "San Martín (Tucumán) advance 3-1 on penalties"
-      },
-      {
-        "id": "728207",
-        "nombre": "Nueva Chicago at Gimnasia (Mendoza)",
-        "fecha": "2025-02-12",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "11972",
-          "nombre": "Gimnasia (Mendoza)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "236",
-          "nombre": "Nueva Chicago",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Estadio Único de San Nicolás",
-        "nota": ""
-      },
-      {
-        "id": "728203",
-        "nombre": "Racing (Córdoba) at Defensa y Justicia",
-        "fecha": "2025-02-20",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "8950",
-          "nombre": "Defensa y Justicia",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "19145",
-          "nombre": "Racing (Córdoba)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19145.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Estadio Único de San Nicolás",
-        "nota": ""
-      },
-      {
-        "id": "728205",
-        "nombre": "Sarmiento de La Banda at Estudiantes de La Plata",
-        "fecha": "2025-02-25",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "8",
-          "nombre": "Estudiantes de La Plata",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "22521",
-          "nombre": "Sarmiento de La Banda",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22521.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "15 de Abril",
-        "nota": ""
-      },
-      {
-        "id": "728196",
-        "nombre": "Midland at Vélez Sarsfield",
-        "fecha": "2025-02-26",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "21",
-          "nombre": "Vélez Sarsfield",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "10109",
-          "nombre": "Midland",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Ciudad de Vicente López",
-        "nota": ""
-      },
-      {
-        "id": "728210",
-        "nombre": "Sp. Belgrano at Independiente",
-        "fecha": "2025-02-27",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "11",
-          "nombre": "Independiente",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "11991",
-          "nombre": "Sp. Belgrano",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11991.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Estadio Único de San Nicolás",
-        "nota": ""
-      },
-      {
-        "id": "728208",
-        "nombre": "Excursionistas at Godoy Cruz Antonio Tomba",
-        "fecha": "2025-02-27",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "6756",
-          "nombre": "Godoy Cruz Antonio Tomba",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6756.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "10054",
-          "nombre": "Excursionistas",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10054.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "El Gigante de Alberdi",
-        "nota": ""
-      },
-      {
-        "id": "728204",
-        "nombre": "San Telmo at Deportivo Riestra",
-        "fecha": "2025-03-05",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "17702",
-          "nombre": "Deportivo Riestra",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
-          "score": "2",
-          "penaltis": 3,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "10157",
-          "nombre": "San Telmo",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10157.png",
-          "score": "2",
-          "penaltis": 1,
-          "ganador": false
-        },
-        "estadio": "Ciudad de Caseros",
-        "nota": "Deportivo Riestra advance 3-1 on penalties"
-      },
-      {
-        "id": "728224",
-        "nombre": "Colegiales at Unión (Santa Fe)",
-        "fecha": "2025-03-05",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "20",
-          "nombre": "Unión (Santa Fe)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "10149",
-          "nombre": "Colegiales",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10149.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Estadio Único de San Nicolás",
-        "nota": ""
-      },
-      {
-        "id": "728214",
-        "nombre": "Argentino de Quilmes at Platense",
-        "fecha": "2025-03-12",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "7764",
-          "nombre": "Platense",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "17693",
-          "nombre": "Argentino de Quilmes",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17693.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Ciudad de Caseros",
-        "nota": ""
-      },
-      {
-        "id": "728209",
-        "nombre": "San Martín de Formosa at Huracán",
-        "fecha": "2025-03-13",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "10",
-          "nombre": "Huracán",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "18328",
-          "nombre": "San Martín de Formosa",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18328.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Julio Humberto Grondona",
-        "nota": ""
-      },
-      {
-        "id": "728225",
-        "nombre": "Gimnasia y Tiro (Salta) at Aldosivi",
-        "fecha": "2025-03-19",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "9739",
-          "nombre": "Aldosivi",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
-          "score": "1",
-          "penaltis": 6,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "10743",
-          "nombre": "Gimnasia y Tiro (Salta)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
-          "score": "1",
-          "penaltis": 5,
-          "ganador": false
-        },
-        "estadio": "Julio Humberto Grondona",
-        "nota": "Aldosivi advance 6-5 on penalties"
-      },
-      {
-        "id": "728222",
-        "nombre": "Deportivo Armenio at Talleres (Córdoba)",
-        "fecha": "2025-03-19",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "19",
-          "nombre": "Talleres (Córdoba)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-          "score": "3",
-          "penaltis": 4,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "10152",
-          "nombre": "Deportivo Armenio",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10152.png",
-          "score": "3",
-          "penaltis": 5,
-          "ganador": true
-        },
-        "estadio": "Brigadier Gral. Estanislao López",
-        "nota": "Deportivo Armenio advance 5-4 on penalties"
-      },
-      {
-        "id": "728216",
-        "nombre": "Ciudad de Bolívar at River Plate",
-        "fecha": "2025-03-20",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "16",
-          "nombre": "River Plate",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "21799",
-          "nombre": "Ciudad de Bolívar",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21799.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Estadio Único Madre de Ciudades",
-        "nota": ""
-      },
-      {
-        "id": "728223",
-        "nombre": "Berazategui at Tigre",
-        "fecha": "2025-03-22",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "7767",
-          "nombre": "Tigre",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "17349",
-          "nombre": "Berazategui",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17349.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Nuevo Francisco Urbano",
-        "nota": ""
-      },
-      {
-        "id": "728202",
-        "nombre": "Quilmes at Central Córdoba (Santiago del Estero)",
-        "fecha": "2025-03-23",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "11989",
-          "nombre": "Central Córdoba (Santiago del Estero)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "2741",
-          "nombre": "Quilmes",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "El Gigante de Alberdi",
-        "nota": ""
-      },
-      {
-        "id": "728215",
-        "nombre": "Santamarina at Racing Club",
-        "fecha": "2025-03-23",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "15",
-          "nombre": "Racing Club",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "10996",
-          "nombre": "Santamarina",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10996.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Ciudad de Lanús",
-        "nota": ""
-      },
-      {
-        "id": "728218",
-        "nombre": "Sportivo Las Parejas at San Lorenzo",
-        "fecha": "2025-03-23",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "18",
-          "nombre": "San Lorenzo",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
-          "score": "0",
-          "penaltis": 6,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "18664",
-          "nombre": "Sportivo Las Parejas",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18664.png",
-          "score": "0",
-          "penaltis": 5,
-          "ganador": false
-        },
-        "estadio": "Estadio Único de San Nicolás",
-        "nota": "San Lorenzo advance 6-5 on penalties"
-      },
-      {
-        "id": "728219",
-        "nombre": "Gimnasia y Esgrima (Jujuy) at San Martín (San Juan)",
-        "fecha": "2025-03-26",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "7845",
-          "nombre": "San Martín (San Juan)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7845.png",
-          "score": "0",
-          "penaltis": 3,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "5263",
-          "nombre": "Gimnasia y Esgrima (Jujuy)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "El Gigante de Alberdi",
-        "nota": "San Martín (San Juan) advance 3-0 on penalties"
-      },
-      {
-        "id": "728198",
-        "nombre": "Villa Mitre at Banfield",
-        "fecha": "2025-04-01",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "235",
-          "nombre": "Banfield",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "11931",
-          "nombre": "Villa Mitre",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11931.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Norberto Tomaghello",
-        "nota": ""
-      },
-      {
-        "id": "728197",
-        "nombre": "All Boys at Atlético Tucumán",
-        "fecha": "2025-04-02",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "9785",
-          "nombre": "Atlético Tucumán",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "9786",
-          "nombre": "All Boys",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9786.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Nuevo Monumental",
-        "nota": ""
-      },
-      {
-        "id": "728212",
-        "nombre": "Deportivo Madryn at Instituto (Córdoba)",
-        "fecha": "2025-04-03",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "2975",
-          "nombre": "Instituto (Córdoba)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "18260",
-          "nombre": "Deportivo Madryn",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18260.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Ciudad de Caseros",
-        "nota": ""
-      },
-      {
-        "id": "728194",
-        "nombre": "Kimberley de Mar del Plata at Newell's Old Boys",
-        "fecha": "2025-04-04",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "14",
-          "nombre": "Newell's Old Boys",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-          "score": "0",
-          "penaltis": 5,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "22531",
-          "nombre": "Kimberley de Mar del Plata",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22531.png",
-          "score": "0",
-          "penaltis": 4,
-          "ganador": false
-        },
-        "estadio": "Ciudad de Vicente López",
-        "nota": "Newell's Old Boys advance 5-4 on penalties"
-      },
-      {
-        "id": "728217",
-        "nombre": "Los Andes at Rosario Central",
-        "fecha": "2025-04-09",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "17",
-          "nombre": "Rosario Central",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "13",
-          "nombre": "Los Andes",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/13.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Estadio Único de San Nicolás",
-        "nota": ""
-      },
-      {
-        "id": "728221",
-        "nombre": "Central Córdoba (Rosario) at Sarmiento (Junín)",
-        "fecha": "2025-04-10",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "10158",
-          "nombre": "Sarmiento (Junín)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10158.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "10148",
-          "nombre": "Central Córdoba (Rosario)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10148.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Ciudad de Caseros",
-        "nota": ""
-      },
-      {
-        "id": "728211",
-        "nombre": "Estudiantes (Buenos Aires) at Independiente Rivadavia",
-        "fecha": "2025-04-16",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "9744",
-          "nombre": "Independiente Rivadavia",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "17352",
-          "nombre": "Estudiantes (Buenos Aires)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17352.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Juan Gilberto Funes",
-        "nota": ""
-      },
-      {
-        "id": "728195",
-        "nombre": "Central Norte at Argentinos Juniors",
-        "fecha": "2025-04-16",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "3",
-          "nombre": "Argentinos Juniors",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "11993",
-          "nombre": "Central Norte",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11993.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Ciudad de Caseros",
-        "nota": ""
-      },
-      {
-        "id": "728200",
-        "nombre": "Real Pilar at Belgrano (Córdoba)",
-        "fecha": "2025-04-17",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "4",
-          "nombre": "Belgrano (Córdoba)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "18844",
-          "nombre": "Real Pilar",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18844.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Nuevo Monumental",
-        "nota": ""
-      },
-      {
-        "id": "728199",
-        "nombre": "Defensores de Belgrano at Barracas Central",
-        "fecha": "2025-04-17",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "10060",
-          "nombre": "Barracas Central",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "10151",
-          "nombre": "Defensores de Belgrano",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10151.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Julio Humberto Grondona",
-        "nota": ""
-      }
-    ],
-    "dieciseisavos": [
-      {
-        "id": "735302",
-        "nombre": "Gimnasia La Plata at Central Córdoba (Rosario)",
-        "fecha": "2025-05-11",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "10148",
-          "nombre": "Central Córdoba (Rosario)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10148.png",
-          "score": "1",
-          "penaltis": 5,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "9",
-          "nombre": "Gimnasia La Plata",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
-          "score": "1",
-          "penaltis": 4,
-          "ganador": false
-        },
-        "estadio": "Estadio Único de San Nicolás",
-        "nota": "Central Córdoba (Rosario) advance 5-4 on penalties"
-      },
-      {
-        "id": "735154",
-        "nombre": "Vélez Sarsfield at Lanús",
-        "fecha": "2025-05-22",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "12",
-          "nombre": "Lanús",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "21",
-          "nombre": "Vélez Sarsfield",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Estadio Municipal El Morón",
-        "nota": ""
-      },
-      {
-        "id": "735192",
-        "nombre": "Newell's Old Boys at Defensa y Justicia",
-        "fecha": "2025-05-23",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "8950",
-          "nombre": "Defensa y Justicia",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "14",
-          "nombre": "Newell's Old Boys",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Estadio Único de San Nicolás",
-        "nota": ""
-      },
-      {
-        "id": "735151",
-        "nombre": "Deportivo Armenio at Deportivo Riestra",
-        "fecha": "2025-05-24",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "17702",
-          "nombre": "Deportivo Riestra",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
-          "score": "2",
-          "penaltis": 4,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "10152",
-          "nombre": "Deportivo Armenio",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10152.png",
-          "score": "2",
-          "penaltis": 3,
-          "ganador": false
-        },
-        "estadio": "Ciudad de Caseros",
-        "nota": "Deportivo Riestra advance 4-3 on penalties"
-      },
-      {
-        "id": "735463",
-        "nombre": "Argentinos Juniors at Excursionistas",
-        "fecha": "2025-05-28",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "10054",
-          "nombre": "Excursionistas",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10054.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "3",
-          "nombre": "Argentinos Juniors",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Nuevo Gasómetro",
-        "nota": ""
-      },
-      {
-        "id": "735150",
-        "nombre": "Aldosivi at Estudiantes de La Plata",
-        "fecha": "2025-06-01",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "8",
-          "nombre": "Estudiantes de La Plata",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
-          "score": "1",
-          "penaltis": 2,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "9739",
-          "nombre": "Aldosivi",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
-          "score": "1",
-          "penaltis": 4,
-          "ganador": true
-        },
-        "estadio": "Norberto Tomaghello",
-        "nota": "Aldosivi advance 4-2 on penalties"
-      },
-      {
-        "id": "735157",
-        "nombre": "Banfield at Tigre",
-        "fecha": "2025-06-26",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "7767",
-          "nombre": "Tigre",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "235",
-          "nombre": "Banfield",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Nuevo Francisco Urbano",
-        "nota": ""
-      },
-      {
-        "id": "735464",
-        "nombre": "Defensores de Belgrano at Belgrano (Córdoba)",
-        "fecha": "2025-06-28",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "4",
-          "nombre": "Belgrano (Córdoba)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "10151",
-          "nombre": "Defensores de Belgrano",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10151.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Estadio Único Madre de Ciudades",
-        "nota": ""
-      },
-      {
-        "id": "735301",
-        "nombre": "Unión (Santa Fe) at Rosario Central",
-        "fecha": "2025-06-28",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "17",
-          "nombre": "Rosario Central",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
-          "score": "0",
-          "penaltis": 1,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "20",
-          "nombre": "Unión (Santa Fe)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
-          "score": "0",
-          "penaltis": 3,
-          "ganador": true
-        },
-        "estadio": "Estadio Único de San Nicolás",
-        "nota": "Unión (Santa Fe) advance 3-1 on penalties"
-      },
-      {
-        "id": "735153",
-        "nombre": "Independiente at Gimnasia (Mendoza)",
-        "fecha": "2025-06-29",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "11972",
-          "nombre": "Gimnasia (Mendoza)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "11",
-          "nombre": "Independiente",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Juan Gilberto Funes",
-        "nota": ""
-      },
-      {
-        "id": "735152",
-        "nombre": "San Martín (San Juan) at Racing Club",
-        "fecha": "2025-07-02",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "15",
-          "nombre": "Racing Club",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "7845",
-          "nombre": "San Martín (San Juan)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7845.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Juan Gilberto Funes",
-        "nota": ""
-      },
-      {
-        "id": "735462",
-        "nombre": "Independiente Rivadavia at Platense",
-        "fecha": "2025-07-03",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "7764",
-          "nombre": "Platense",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
-          "score": "2",
-          "penaltis": 1,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "9744",
-          "nombre": "Independiente Rivadavia",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-          "score": "2",
-          "penaltis": 3,
-          "ganador": true
-        },
-        "estadio": "Marcelo Bielsa",
-        "nota": "Independiente Rivadavia advance 3-1 on penalties"
-      },
-      {
-        "id": "735191",
-        "nombre": "Huracán at Instituto (Córdoba)",
-        "fecha": "2025-07-03",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "2975",
-          "nombre": "Instituto (Córdoba)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
-          "score": "0",
-          "penaltis": 2,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "10",
-          "nombre": "Huracán",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
-          "score": "0",
-          "penaltis": 3,
-          "ganador": true
-        },
-        "estadio": "Marcelo Bielsa",
-        "nota": "Huracán advance 3-2 on penalties"
-      },
-      {
-        "id": "735155",
-        "nombre": "Quilmes at San Lorenzo",
-        "fecha": "2025-07-05",
-        "estado": "Final Score - After Penalties",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "id": "18",
-          "nombre": "San Lorenzo",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
-          "score": "0",
-          "penaltis": 4,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "2741",
-          "nombre": "Quilmes",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
-          "score": "0",
-          "penaltis": 3,
-          "ganador": false
-        },
-        "estadio": "Ciudad de Lanús",
-        "nota": "San Lorenzo advance 4-3 on penalties"
-      },
-      {
-        "id": "735158",
-        "nombre": "Atlético Tucumán at Boca Juniors",
-        "fecha": "2025-07-24",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "5",
-          "nombre": "Boca Juniors",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "9785",
-          "nombre": "Atlético Tucumán",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Estadio Único Madre de Ciudades",
-        "nota": ""
-      },
-      {
-        "id": "735149",
-        "nombre": "River Plate at San Martín (Tucumán)",
-        "fecha": "2025-08-03",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "17814",
-          "nombre": "San Martín (Tucumán)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "16",
-          "nombre": "River Plate",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Estadio Único Madre de Ciudades",
-        "nota": ""
-      }
-    ],
+    "treintaidosavos": [],
+    "dieciseisavos": [],
     "octavos": [
       {
-        "id": "749915",
-        "nombre": "Central Córdoba (Rosario) at Independiente Rivadavia",
-        "fecha": "2025-07-30",
-        "estado": "Full Time",
+        "id": "401845536",
+        "nombre": "Estudiantes (Buenos Aires) at Independiente Rivadavia",
+        "fecha": "2026-01-18",
+        "fecha_iso": "2026-01-18T22:00Z",
+        "estado": "FT",
         "completado": true,
         "penaltis": false,
         "local": {
-          "id": "9744",
           "nombre": "Independiente Rivadavia",
+          "nombre_corto": "Ind. Rivadavia",
+          "espn_id": "9744",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-          "score": "2",
+          "marcador": "2",
           "penaltis": null,
           "ganador": true
         },
         "visitante": {
-          "id": "10148",
-          "nombre": "Central Córdoba (Rosario)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10148.png",
-          "score": "1",
+          "nombre": "Estudiantes (Buenos Aires)",
+          "nombre_corto": "Estudiantes ",
+          "espn_id": "17352",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17352.png",
+          "marcador": "0",
           "penaltis": null,
           "ganador": false
         },
-        "estadio": "Juan Gilberto Funes",
+        "estadio": "Estadio Único de Villa Mercedes, San Luis",
         "nota": ""
       },
       {
-        "id": "738187",
-        "nombre": "Argentinos Juniors at Aldosivi",
-        "fecha": "2025-08-01",
-        "estado": "Full Time",
+        "id": "401845535",
+        "nombre": "Sarmiento de La Banda at Lanús",
+        "fecha": "2026-01-18",
+        "fecha_iso": "2026-01-19T00:15Z",
+        "estado": "FT",
         "completado": true,
         "penaltis": false,
         "local": {
-          "id": "9739",
-          "nombre": "Aldosivi",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "3",
-          "nombre": "Argentinos Juniors",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Norberto Tomaghello",
-        "nota": ""
-      },
-      {
-        "id": "747871",
-        "nombre": "Independiente at Belgrano (Córdoba)",
-        "fecha": "2025-08-01",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "4",
-          "nombre": "Belgrano (Córdoba)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "11",
-          "nombre": "Independiente",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Gigante de Arroyito",
-        "nota": ""
-      },
-      {
-        "id": "749914",
-        "nombre": "Huracán at Lanús",
-        "fecha": "2025-08-01",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "12",
           "nombre": "Lanús",
+          "nombre_corto": "Lanús ",
+          "espn_id": "12",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
-          "score": "2",
+          "marcador": "4",
           "penaltis": null,
           "ganador": true
         },
         "visitante": {
-          "id": "10",
-          "nombre": "Huracán",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
-          "score": "0",
+          "nombre": "Sarmiento de La Banda",
+          "nombre_corto": "Sarmiento (LB)",
+          "espn_id": "22521",
+          "logo": "",
+          "marcador": "1",
           "penaltis": null,
           "ganador": false
         },
-        "estadio": "Estadio Centenario Ciudad de Quilmes",
+        "estadio": "Estadio Ciudad de Caseros, Caseros",
         "nota": ""
       },
       {
-        "id": "751353",
-        "nombre": "Tigre at San Lorenzo",
-        "fecha": "2025-08-02",
-        "estado": "Full Time",
+        "id": "401845537",
+        "nombre": "Ituzaingó at Estudiantes de La Plata",
+        "fecha": "2026-01-19",
+        "fecha_iso": "2026-01-20T00:15Z",
+        "estado": "FT",
         "completado": true,
         "penaltis": false,
         "local": {
-          "id": "18",
-          "nombre": "San Lorenzo",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "7767",
-          "nombre": "Tigre",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Nuevo Francisco Urbano",
-        "nota": ""
-      },
-      {
-        "id": "749916",
-        "nombre": "Deportivo Riestra at Racing Club",
-        "fecha": "2025-08-03",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "15",
-          "nombre": "Racing Club",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
-          "score": "3",
+          "nombre": "Estudiantes de La Plata",
+          "nombre_corto": "Estudiantes",
+          "espn_id": "8",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+          "marcador": "4",
           "penaltis": null,
           "ganador": true
         },
         "visitante": {
-          "id": "17702",
-          "nombre": "Deportivo Riestra",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
-          "score": "0",
+          "nombre": "Ituzaingó",
+          "nombre_corto": "Ituzaingó",
+          "espn_id": "10105",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10105.png",
+          "marcador": "0",
           "penaltis": null,
           "ganador": false
         },
-        "estadio": "Ciudad de Lanús",
+        "estadio": "Florencio Solá, Buenos Aires",
         "nota": ""
       },
       {
-        "id": "751352",
-        "nombre": "Newell's Old Boys at Atlético Tucumán",
-        "fecha": "2025-08-13",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "9785",
-          "nombre": "Atlético Tucumán",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "14",
-          "nombre": "Newell's Old Boys",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Padre Ernesto Martearena",
-        "nota": ""
-      },
-      {
-        "id": "751354",
-        "nombre": "River Plate at Unión (Santa Fe)",
-        "fecha": "2025-08-29",
-        "estado": "Final Score - After Penalties",
+        "id": "401845538",
+        "nombre": "Midland at Argentinos Juniors",
+        "fecha": "2026-01-21",
+        "fecha_iso": "2026-01-22T00:15Z",
+        "estado": "FT-Pens",
         "completado": true,
         "penaltis": true,
         "local": {
-          "id": "20",
-          "nombre": "Unión (Santa Fe)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
-          "score": "0",
-          "penaltis": 3,
+          "nombre": "Argentinos Juniors",
+          "nombre_corto": "Argentinos ",
+          "espn_id": "3",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
+          "marcador": "1",
+          "penaltis": null,
           "ganador": false
         },
         "visitante": {
-          "id": "16",
-          "nombre": "River Plate",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
-          "score": "0",
-          "penaltis": 4,
+          "nombre": "Midland",
+          "nombre_corto": "Midland",
+          "espn_id": "10109",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
+          "marcador": "1",
+          "penaltis": null,
           "ganador": true
         },
-        "estadio": "Malvinas Argentinas (Mendoza)",
-        "nota": "River Plate advance 4-3 on penalties"
+        "estadio": "Ciudad de Lanús, Buenos Aires",
+        "nota": "Midland advance 6-5 on penalties"
+      },
+      {
+        "id": "401846919",
+        "nombre": "Argentino de Merlo at Talleres (Córdoba)",
+        "fecha": "2026-02-04",
+        "fecha_iso": "2026-02-04T22:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Talleres (Córdoba)",
+          "nombre_corto": "Talleres ",
+          "espn_id": "19",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Argentino de Merlo",
+          "nombre_corto": "Argentino Merlo",
+          "espn_id": "17700",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17700.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Marcelo Bielsa, Rosario",
+        "nota": ""
+      },
+      {
+        "id": "401846918",
+        "nombre": "Argentino Monte Maíz at Platense",
+        "fecha": "2026-02-04",
+        "fecha_iso": "2026-02-05T00:15Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Platense",
+          "nombre_corto": "Platense",
+          "espn_id": "7764",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Argentino Monte Maíz",
+          "nombre_corto": "Argentino MM",
+          "espn_id": "22166",
+          "logo": "",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Ciudad de Caseros, Caseros",
+        "nota": ""
+      },
+      {
+        "id": "401846921",
+        "nombre": "Deportivo Maipú at Deportivo Riestra",
+        "fecha": "2026-02-05",
+        "fecha_iso": "2026-02-05T22:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Deportivo Riestra",
+          "nombre_corto": "Riestra",
+          "espn_id": "17702",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Deportivo Maipú",
+          "nombre_corto": "Maipú",
+          "espn_id": "11978",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11978.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Ciudad de Caseros, Caseros",
+        "nota": ""
+      },
+      {
+        "id": "401846923",
+        "nombre": "Sp. Belgrano at Rosario Central",
+        "fecha": "2026-02-11",
+        "fecha_iso": "2026-02-11T22:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Rosario Central",
+          "nombre_corto": "Rosario Central",
+          "espn_id": "17",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Sp. Belgrano",
+          "nombre_corto": "Sp. Belgrano",
+          "espn_id": "11991",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11991.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "15 de Abril, Rosario, Santa Fe",
+        "nota": ""
+      },
+      {
+        "id": "401846924",
+        "nombre": "San Miguel at Aldosivi",
+        "fecha": "2026-02-17",
+        "fecha_iso": "2026-02-17T20:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Aldosivi",
+          "nombre_corto": "Aldosivi",
+          "espn_id": "9739",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
+          "marcador": "3",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "San Miguel",
+          "nombre_corto": "San Miguel",
+          "espn_id": "10058",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10058.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Norberto Tomaghello, Buenos Aires",
+        "nota": ""
+      },
+      {
+        "id": "401846926",
+        "nombre": "Claypole at Tigre",
+        "fecha": "2026-02-17",
+        "fecha_iso": "2026-02-17T22:45Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Tigre",
+          "nombre_corto": "Tigre",
+          "espn_id": "7767",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Claypole",
+          "nombre_corto": "Claypole",
+          "espn_id": "10102",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10102.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Nuevo Francisco Urbano, Morón",
+        "nota": ""
+      },
+      {
+        "id": "401846925",
+        "nombre": "Ciudad de Bolívar at River Plate",
+        "fecha": "2026-02-17",
+        "fecha_iso": "2026-02-18T01:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "River Plate",
+          "nombre_corto": "River Plate",
+          "espn_id": "16",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Ciudad de Bolívar",
+          "nombre_corto": "Ciudad Bolívar",
+          "espn_id": "21799",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21799.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Único de Villa Mercedes, San Luis",
+        "nota": ""
+      },
+      {
+        "id": "401846944",
+        "nombre": "Gimnasia Chivilcoy at Boca Juniors",
+        "fecha": "2026-02-24",
+        "fecha_iso": "2026-02-25T00:15Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Boca Juniors",
+          "nombre_corto": "Boca ",
+          "espn_id": "5",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Gimnasia Chivilcoy",
+          "nombre_corto": "Chivilcoy",
+          "espn_id": "131651",
+          "logo": "",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Padre Ernesto Martearena, Salta",
+        "nota": ""
+      },
+      {
+        "id": "401846928",
+        "nombre": "Deportivo Madryn at San Martín (San Juan)",
+        "fecha": "2026-02-25",
+        "fecha_iso": "2026-02-25T20:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "San Martín (San Juan)",
+          "nombre_corto": "San Martín SJ",
+          "espn_id": "7845",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7845.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Deportivo Madryn",
+          "nombre_corto": "Dep. Madryn",
+          "espn_id": "18260",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18260.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Regional de Los Andes, Trasandino",
+        "nota": ""
+      },
+      {
+        "id": "401846927",
+        "nombre": "Deportivo Morón at Godoy Cruz Antonio Tomba",
+        "fecha": "2026-02-25",
+        "fecha_iso": "2026-02-26T00:15Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Godoy Cruz Antonio Tomba",
+          "nombre_corto": "Godoy Cruz",
+          "espn_id": "6756",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6756.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Deportivo Morón",
+          "nombre_corto": "Morón",
+          "espn_id": "10154",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10154.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "Monumental de Victoria (José Dellagiovanna), Buenos Aires",
+        "nota": ""
+      },
+      {
+        "id": "401846929",
+        "nombre": "Deportivo Rincón at San Lorenzo",
+        "fecha": "2026-03-20",
+        "fecha_iso": "2026-03-21T00:15Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "San Lorenzo",
+          "nombre_corto": "San Lorenzo ",
+          "espn_id": "18",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+          "marcador": "5",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Deportivo Rincón",
+          "nombre_corto": "Rincón",
+          "espn_id": "19144",
+          "logo": "",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Centenario Ciudad de Quilmes, Quilmes, Buenos Aires",
+        "nota": ""
+      },
+      {
+        "id": "401846930",
+        "nombre": "Sportivo Barracas at Atlético Tucumán",
+        "fecha": "2026-03-25",
+        "fecha_iso": "2026-03-25T22:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Atlético Tucumán",
+          "nombre_corto": "Atl Tucumán",
+          "espn_id": "9785",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Sportivo Barracas",
+          "nombre_corto": "Sp. Barracas",
+          "espn_id": "17706",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17706.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Ciudad de Caseros, Caseros",
+        "nota": ""
+      },
+      {
+        "id": "401846931",
+        "nombre": "Real Pilar at Banfield",
+        "fecha": "2026-03-25",
+        "fecha_iso": "2026-03-26T00:15Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Banfield",
+          "nombre_corto": "Banfield",
+          "espn_id": "235",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
+          "marcador": "3",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Real Pilar",
+          "nombre_corto": "Real Pilar",
+          "espn_id": "18844",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18844.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Alfredo Beranger, Temperley, Pcia. de Buenos Aires",
+        "nota": ""
+      },
+      {
+        "id": "401846945",
+        "nombre": "Sportivo Atenas at Independiente",
+        "fecha": "2026-03-27",
+        "fecha_iso": "2026-03-27T20:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Independiente",
+          "nombre_corto": "Independiente",
+          "espn_id": "11",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+          "marcador": "4",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Sportivo Atenas",
+          "nombre_corto": "Atenas",
+          "espn_id": "131652",
+          "logo": "",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Norberto Tomaghello, Buenos Aires",
+        "nota": ""
+      },
+      {
+        "id": "401846932",
+        "nombre": "Atletico Rafaela at Belgrano (Córdoba)",
+        "fecha": "2026-03-27",
+        "fecha_iso": "2026-03-28T01:15Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Belgrano (Córdoba)",
+          "nombre_corto": "Belgrano ",
+          "espn_id": "4",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+          "marcador": "3",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Atletico Rafaela",
+          "nombre_corto": "Rafaela",
+          "espn_id": "9747",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Único de Villa Mercedes, San Luis",
+        "nota": ""
+      },
+      {
+        "id": "401846933",
+        "nombre": "San Martín de Formosa at Racing Club",
+        "fecha": "2026-03-28",
+        "fecha_iso": "2026-03-29T00:15Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Racing Club",
+          "nombre_corto": "Racing ",
+          "espn_id": "15",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "San Martín de Formosa",
+          "nombre_corto": "SM Formosa",
+          "espn_id": "18328",
+          "logo": "",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Florencio Solá, Buenos Aires",
+        "nota": ""
+      },
+      {
+        "id": "401846934",
+        "nombre": "Olimpo at Huracán",
+        "fecha": "2026-03-29",
+        "fecha_iso": "2026-03-29T21:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Huracán",
+          "nombre_corto": "Huracán ",
+          "espn_id": "10",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Olimpo",
+          "nombre_corto": "Olimpo",
+          "espn_id": "2636",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2636.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Ciudad de Caseros, Caseros",
+        "nota": ""
+      },
+      {
+        "id": "401846935",
+        "nombre": "Acassuso at Newell's Old Boys",
+        "fecha": "2026-03-29",
+        "fecha_iso": "2026-03-29T23:15Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Newell's Old Boys",
+          "nombre_corto": "Newell's",
+          "espn_id": "14",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Acassuso",
+          "nombre_corto": "Acassuso",
+          "espn_id": "10145",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10145.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "Estadio Nuevo Monumental, Rafaela",
+        "nota": ""
+      },
+      {
+        "id": "401846936",
+        "nombre": "Agropecuario at Unión (Santa Fe)",
+        "fecha": "2026-03-30",
+        "fecha_iso": "2026-03-31T00:15Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Unión (Santa Fe)",
+          "nombre_corto": "Unión (SF)",
+          "espn_id": "20",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Agropecuario",
+          "nombre_corto": "Agropecuario",
+          "espn_id": "13913",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/13913.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Marcelo Bielsa, Rosario",
+        "nota": ""
+      },
+      {
+        "id": "401846937",
+        "nombre": "Chaco For Ever at Defensa y Justicia",
+        "fecha": "2026-04-01",
+        "fecha_iso": "2026-04-01T22:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Defensa y Justicia",
+          "nombre_corto": "Def. y Jus.",
+          "espn_id": "8950",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Chaco For Ever",
+          "nombre_corto": "Chaco",
+          "espn_id": "11963",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11963.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Florencio Solá, Buenos Aires",
+        "nota": ""
+      },
+      {
+        "id": "401846938",
+        "nombre": "Atlanta at Instituto (Córdoba)",
+        "fecha": "2026-04-01",
+        "fecha_iso": "2026-04-02T00:15Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Instituto (Córdoba)",
+          "nombre_corto": "Instituto",
+          "espn_id": "2975",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Atlanta",
+          "nombre_corto": "Atlanta",
+          "espn_id": "10146",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10146.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Nuevo Monumental, Rafaela",
+        "nota": ""
+      },
+      {
+        "id": "401846941",
+        "nombre": "Deportivo Armenio at Vélez Sarsfield",
+        "fecha": "2026-04-07",
+        "fecha_iso": "2026-04-07T21:30Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Vélez Sarsfield",
+          "nombre_corto": "Vélez ",
+          "espn_id": "21",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+          "marcador": "4",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Deportivo Armenio",
+          "nombre_corto": "Armenio",
+          "espn_id": "10152",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10152.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Julio Humberto Grondona, Buenos Aires",
+        "nota": ""
+      },
+      {
+        "id": "401846943",
+        "nombre": "Tristán Suárez at Sarmiento (Junín)",
+        "fecha": "2026-04-08",
+        "fecha_iso": "2026-04-09T00:10Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Sarmiento (Junín)",
+          "nombre_corto": "Sarmiento (J)",
+          "espn_id": "10158",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10158.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Tristán Suárez",
+          "nombre_corto": "T. Suárez",
+          "espn_id": "10163",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10163.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Julio Humberto Grondona, Buenos Aires",
+        "nota": ""
+      },
+      {
+        "id": "401846942",
+        "nombre": "Camioneros at Gimnasia La Plata",
+        "fecha": "2026-04-09",
+        "fecha_iso": "2026-04-10T00:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Gimnasia La Plata",
+          "nombre_corto": "Gimnasia LP",
+          "espn_id": "9",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+          "marcador": "4",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Camioneros",
+          "nombre_corto": "Camioneros",
+          "espn_id": "18662",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18662.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Florencio Solá, Buenos Aires",
+        "nota": ""
+      },
+      {
+        "id": "401867740",
+        "nombre": "Gimnasia La Plata at Acassuso",
+        "fecha": "2026-04-22",
+        "fecha_iso": "2026-04-22T22:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Acassuso",
+          "nombre_corto": "Acassuso",
+          "espn_id": "10145",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10145.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Gimnasia La Plata",
+          "nombre_corto": "Gimnasia LP",
+          "espn_id": "9",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9.png",
+          "marcador": "3",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "Estadio Ciudad de Caseros, Caseros",
+        "nota": ""
+      },
+      {
+        "id": "401862732",
+        "nombre": "Midland at Deportivo Morón",
+        "fecha": "2026-04-22",
+        "fecha_iso": "2026-04-23T00:15Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Deportivo Morón",
+          "nombre_corto": "Morón",
+          "espn_id": "10154",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10154.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Midland",
+          "nombre_corto": "Midland",
+          "espn_id": "10109",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "Alfredo Beranger, Temperley, Pcia. de Buenos Aires",
+        "nota": ""
+      },
+      {
+        "id": "401867738",
+        "nombre": "Gimnasia y Tiro (Salta) at Vélez Sarsfield",
+        "fecha": "2026-04-30",
+        "fecha_iso": "2026-05-01T00:15Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Vélez Sarsfield",
+          "nombre_corto": "Vélez ",
+          "espn_id": "21",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Gimnasia y Tiro (Salta)",
+          "nombre_corto": "G y T (Salta)",
+          "espn_id": "10743",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Ciudad de Caseros, Caseros",
+        "nota": ""
+      },
+      {
+        "id": "401866728",
+        "nombre": "Atlético Tucumán at Talleres (Córdoba)",
+        "fecha": "2026-05-20",
+        "fecha_iso": "2026-05-20T20:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Talleres (Córdoba)",
+          "nombre_corto": "Talleres ",
+          "espn_id": "19",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Atlético Tucumán",
+          "nombre_corto": "Atl Tucumán",
+          "espn_id": "9785",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
+          "marcador": "3",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "Marcelo Bielsa, Rosario",
+        "nota": ""
+      },
+      {
+        "id": "401867164",
+        "nombre": "Independiente at Unión (Santa Fe)",
+        "fecha": "2026-05-22",
+        "fecha_iso": "2026-05-22T23:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Unión (Santa Fe)",
+          "nombre_corto": "Unión (SF)",
+          "espn_id": "20",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Independiente",
+          "nombre_corto": "Independiente",
+          "espn_id": "11",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "Marcelo Bielsa, Rosario",
+        "nota": ""
+      },
+      {
+        "id": "401867325",
+        "nombre": "Lanús at Instituto (Córdoba)",
+        "fecha": "2026-05-30",
+        "fecha_iso": "2026-05-30T21:00Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Instituto (Córdoba)",
+          "nombre_corto": "Instituto",
+          "espn_id": "2975",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Lanús",
+          "nombre_corto": "Lanús ",
+          "espn_id": "12",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Marcelo Bielsa, Rosario",
+        "nota": ""
+      },
+      {
+        "id": "401873936",
+        "nombre": "Rosario Central at Estudiantes de La Plata",
+        "fecha": "2026-05-31",
+        "fecha_iso": "2026-05-31T18:30Z",
+        "estado": "FT",
+        "completado": true,
+        "penaltis": false,
+        "local": {
+          "nombre": "Estudiantes de La Plata",
+          "nombre_corto": "Estudiantes",
+          "espn_id": "8",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+          "marcador": "3",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Rosario Central",
+          "nombre_corto": "Rosario Central",
+          "espn_id": "17",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Mario Alberto Kempes, Córdoba",
+        "nota": ""
+      },
+      {
+        "id": "401867324",
+        "nombre": "Defensa y Justicia at Racing Club",
+        "fecha": "2026-05-31",
+        "fecha_iso": "2026-05-31T22:00Z",
+        "estado": "Postponed",
+        "completado": false,
+        "penaltis": false,
+        "local": {
+          "nombre": "Racing Club",
+          "nombre_corto": "Racing ",
+          "espn_id": "15",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Defensa y Justicia",
+          "nombre_corto": "Def. y Jus.",
+          "espn_id": "8950",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "23 de Agosto, San Salvador de Jujuy",
+        "nota": ""
+      },
+      {
+        "id": "401873937",
+        "nombre": "Huracán at Barracas Central",
+        "fecha": "2026-06-02",
+        "fecha_iso": "2026-06-03T00:10Z",
+        "estado": "Scheduled",
+        "completado": false,
+        "penaltis": false,
+        "local": {
+          "nombre": "Barracas Central",
+          "nombre_corto": "Barracas",
+          "espn_id": "10060",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Huracán",
+          "nombre_corto": "Huracán ",
+          "espn_id": "10",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Julio Humberto Grondona, Buenos Aires",
+        "nota": ""
+      },
+      {
+        "id": "401873912",
+        "nombre": "Deportivo Riestra at San Lorenzo",
+        "fecha": "2026-06-03",
+        "fecha_iso": "2026-06-04T00:10Z",
+        "estado": "Scheduled",
+        "completado": false,
+        "penaltis": false,
+        "local": {
+          "nombre": "San Lorenzo",
+          "nombre_corto": "San Lorenzo ",
+          "espn_id": "18",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Deportivo Riestra",
+          "nombre_corto": "Riestra",
+          "espn_id": "17702",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Nuevo Francisco Urbano, Morón",
+        "nota": ""
+      },
+      {
+        "id": "401866135",
+        "nombre": "Deportivo Riestra at San Lorenzo",
+        "fecha": "2026-06-06",
+        "fecha_iso": "2026-06-06T04:00Z",
+        "estado": "Scheduled",
+        "completado": false,
+        "penaltis": false,
+        "local": {
+          "nombre": "San Lorenzo",
+          "nombre_corto": "San Lorenzo ",
+          "espn_id": "18",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Deportivo Riestra",
+          "nombre_corto": "Riestra",
+          "espn_id": "17702",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "",
+        "nota": ""
+      },
+      {
+        "id": "401867163",
+        "nombre": "Huracán at Barracas Central",
+        "fecha": "2026-06-07",
+        "fecha_iso": "2026-06-07T04:00Z",
+        "estado": "Scheduled",
+        "completado": false,
+        "penaltis": false,
+        "local": {
+          "nombre": "Barracas Central",
+          "nombre_corto": "Barracas",
+          "espn_id": "10060",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Huracán",
+          "nombre_corto": "Huracán ",
+          "espn_id": "10",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "",
+        "nota": ""
+      },
+      {
+        "id": "401861495",
+        "nombre": "Rosario Central at Estudiantes de La Plata",
+        "fecha": "2026-06-07",
+        "fecha_iso": "2026-06-07T04:00Z",
+        "estado": "Scheduled",
+        "completado": false,
+        "penaltis": false,
+        "local": {
+          "nombre": "Estudiantes de La Plata",
+          "nombre_corto": "Estudiantes",
+          "espn_id": "8",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Rosario Central",
+          "nombre_corto": "Rosario Central",
+          "espn_id": "17",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "",
+        "nota": ""
+      },
+      {
+        "id": "401861868",
+        "nombre": "Tigre at Independiente Rivadavia",
+        "fecha": "2026-06-07",
+        "fecha_iso": "2026-06-07T04:00Z",
+        "estado": "Scheduled",
+        "completado": false,
+        "penaltis": false,
+        "local": {
+          "nombre": "Independiente Rivadavia",
+          "nombre_corto": "Ind. Rivadavia",
+          "espn_id": "9744",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Tigre",
+          "nombre_corto": "Tigre",
+          "espn_id": "7767",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "",
+        "nota": ""
+      },
+      {
+        "id": "401861869",
+        "nombre": "Aldosivi at River Plate",
+        "fecha": "2026-06-07",
+        "fecha_iso": "2026-06-07T04:00Z",
+        "estado": "Scheduled",
+        "completado": false,
+        "penaltis": false,
+        "local": {
+          "nombre": "River Plate",
+          "nombre_corto": "River Plate",
+          "espn_id": "16",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Aldosivi",
+          "nombre_corto": "Aldosivi",
+          "espn_id": "9739",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "",
+        "nota": ""
+      },
+      {
+        "id": "401867737",
+        "nombre": "Boca Juniors at Sarmiento (Junín)",
+        "fecha": "2026-06-07",
+        "fecha_iso": "2026-06-07T04:00Z",
+        "estado": "Scheduled",
+        "completado": false,
+        "penaltis": false,
+        "local": {
+          "nombre": "Sarmiento (Junín)",
+          "nombre_corto": "Sarmiento (J)",
+          "espn_id": "10158",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10158.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Boca Juniors",
+          "nombre_corto": "Boca ",
+          "espn_id": "5",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "",
+        "nota": ""
+      },
+      {
+        "id": "401873660",
+        "nombre": "Independiente at Atlético Tucumán",
+        "fecha": "2026-08-30",
+        "fecha_iso": "2026-08-30T04:00Z",
+        "estado": "Scheduled",
+        "completado": false,
+        "penaltis": false,
+        "local": {
+          "nombre": "Atlético Tucumán",
+          "nombre_corto": "Atl Tucumán",
+          "espn_id": "9785",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9785.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Independiente",
+          "nombre_corto": "Independiente",
+          "espn_id": "11",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "",
+        "nota": ""
+      },
+      {
+        "id": "401872289",
+        "nombre": "Midland at Banfield",
+        "fecha": "2026-08-30",
+        "fecha_iso": "2026-08-30T04:00Z",
+        "estado": "Scheduled",
+        "completado": false,
+        "penaltis": false,
+        "local": {
+          "nombre": "Banfield",
+          "nombre_corto": "Banfield",
+          "espn_id": "235",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Midland",
+          "nombre_corto": "Midland",
+          "espn_id": "10109",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "",
+        "nota": ""
       }
     ],
     "cuartos": [
       {
-        "id": "756210",
-        "nombre": "Independiente Rivadavia at Tigre",
-        "fecha": "2025-09-06",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "7767",
-          "nombre": "Tigre",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "9744",
-          "nombre": "Independiente Rivadavia",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Marcelo Bielsa",
-        "nota": ""
-      },
-      {
-        "id": "756211",
-        "nombre": "Lanús at Argentinos Juniors",
-        "fecha": "2025-09-09",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "3",
-          "nombre": "Argentinos Juniors",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "id": "12",
-          "nombre": "Lanús",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Presidente Perón (Cilindro de Avellaneda)",
-        "nota": ""
-      },
-      {
-        "id": "756213",
-        "nombre": "Belgrano (Córdoba) at Newell's Old Boys",
-        "fecha": "2025-09-17",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "14",
-          "nombre": "Newell's Old Boys",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "4",
-          "nombre": "Belgrano (Córdoba)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
-          "score": "3",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Estadio Único Madre de Ciudades",
-        "nota": ""
-      },
-      {
-        "id": "756212",
-        "nombre": "River Plate at Racing Club",
-        "fecha": "2025-10-02",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "15",
-          "nombre": "Racing Club",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/15.png",
-          "score": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "16",
-          "nombre": "River Plate",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Gigante de Arroyito",
-        "nota": ""
-      }
-    ],
-    "semis": [
-      {
-        "id": "759213",
-        "nombre": "Argentinos Juniors at Belgrano (Córdoba)",
-        "fecha": "2025-10-24",
-        "estado": "Full Time",
-        "completado": true,
-        "penaltis": false,
-        "local": {
-          "id": "4",
-          "nombre": "Belgrano (Córdoba)",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
-          "score": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "id": "3",
-          "nombre": "Argentinos Juniors",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
-          "score": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Gigante de Arroyito",
-        "nota": ""
-      },
-      {
-        "id": "759664",
-        "nombre": "River Plate at Independiente Rivadavia",
-        "fecha": "2025-10-25",
-        "estado": "Final Score - After Penalties",
+        "id": "401846920",
+        "nombre": "Temperley at Barracas Central",
+        "fecha": "2026-02-05",
+        "fecha_iso": "2026-02-06T00:15Z",
+        "estado": "FT-Pens",
         "completado": true,
         "penaltis": true,
         "local": {
-          "id": "9744",
-          "nombre": "Independiente Rivadavia",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-          "score": "0",
-          "penaltis": 4,
+          "nombre": "Barracas Central",
+          "nombre_corto": "Barracas",
+          "espn_id": "10060",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
+          "marcador": "2",
+          "penaltis": null,
           "ganador": true
         },
         "visitante": {
-          "id": "16",
-          "nombre": "River Plate",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
-          "score": "0",
-          "penaltis": 3,
+          "nombre": "Temperley",
+          "nombre_corto": "Temperley",
+          "espn_id": "10162",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10162.png",
+          "marcador": "2",
+          "penaltis": null,
           "ganador": false
         },
-        "estadio": "Mario Alberto Kempes",
-        "nota": "Independiente Rivadavia advance 4-3 on penalties"
-      }
-    ],
-    "final": [
+        "estadio": "Julio Humberto Grondona, Buenos Aires",
+        "nota": "Barracas Central advance 4-3 on penalties"
+      },
       {
-        "id": "760203",
-        "nombre": "Argentinos Juniors at Independiente Rivadavia",
-        "fecha": "2025-11-06",
-        "estado": "Final Score - After Penalties",
+        "id": "401846922",
+        "nombre": "Gimnasia y Esgrima (Jujuy) at Central Córdoba (Santiago del Estero)",
+        "fecha": "2026-02-11",
+        "fecha_iso": "2026-02-12T00:15Z",
+        "estado": "FT-Pens",
         "completado": true,
         "penaltis": true,
         "local": {
-          "id": "9744",
-          "nombre": "Independiente Rivadavia",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-          "score": "2",
-          "penaltis": 5,
+          "nombre": "Central Córdoba (Santiago del Estero)",
+          "nombre_corto": "C. Córdoba (SE)",
+          "espn_id": "11989",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Gimnasia y Esgrima (Jujuy)",
+          "nombre_corto": "Gimnasia J.",
+          "espn_id": "5263",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "Padre Ernesto Martearena, Salta",
+        "nota": "Gimnasia y Esgrima (Jujuy) advance 5-4 on penalties"
+      },
+      {
+        "id": "401846939",
+        "nombre": "San Martín (Tucumán) at Estudiantes de Río Cuarto",
+        "fecha": "2026-04-07",
+        "fecha_iso": "2026-04-07T19:00Z",
+        "estado": "FT-Pens",
+        "completado": true,
+        "penaltis": true,
+        "local": {
+          "nombre": "Estudiantes de Río Cuarto",
+          "nombre_corto": "Estudiantes RC",
+          "espn_id": "19685",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19685.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "San Martín (Tucumán)",
+          "nombre_corto": "San Martín (T)",
+          "espn_id": "17814",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "El Gigante de Alberdi, Córdoba",
+        "nota": "San Martín (Tucumán) advance 4-3 on penalties"
+      },
+      {
+        "id": "401846940",
+        "nombre": "Gimnasia y Tiro (Salta) at Gimnasia (Mendoza)",
+        "fecha": "2026-04-15",
+        "fecha_iso": "2026-04-15T17:10Z",
+        "estado": "FT-Pens",
+        "completado": true,
+        "penaltis": true,
+        "local": {
+          "nombre": "Gimnasia (Mendoza)",
+          "nombre_corto": "Gimnasia (M)",
+          "espn_id": "11972",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Gimnasia y Tiro (Salta)",
+          "nombre_corto": "G y T (Salta)",
+          "espn_id": "10743",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "Eduardo Gallardón, Buenos Aires",
+        "nota": "Gimnasia y Tiro (Salta) advance 4-3 on penalties"
+      },
+      {
+        "id": "401867739",
+        "nombre": "San Martín (Tucumán) at Banfield",
+        "fecha": "2026-05-08",
+        "fecha_iso": "2026-05-09T00:10Z",
+        "estado": "FT-Pens",
+        "completado": true,
+        "penaltis": true,
+        "local": {
+          "nombre": "Banfield",
+          "nombre_corto": "Banfield",
+          "espn_id": "235",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
+          "marcador": "1",
+          "penaltis": null,
           "ganador": true
         },
         "visitante": {
-          "id": "3",
-          "nombre": "Argentinos Juniors",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3.png",
-          "score": "2",
-          "penaltis": 3,
+          "nombre": "San Martín (Tucumán)",
+          "nombre_corto": "San Martín (T)",
+          "espn_id": "17814",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
+          "marcador": "1",
+          "penaltis": null,
           "ganador": false
         },
-        "estadio": "Monumental Presidente Perón",
-        "nota": "Independiente Rivadavia win 5-3 on penalties"
+        "estadio": "Padre Ernesto Martearena, Salta",
+        "nota": "Banfield advance 5-4 on penalties"
+      },
+      {
+        "id": "401862733",
+        "nombre": "San Martín (San Juan) at Platense",
+        "fecha": "2026-05-13",
+        "fecha_iso": "2026-05-13T19:15Z",
+        "estado": "FT-Pens",
+        "completado": true,
+        "penaltis": true,
+        "local": {
+          "nombre": "Platense",
+          "nombre_corto": "Platense",
+          "espn_id": "7764",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "San Martín (San Juan)",
+          "nombre_corto": "San Martín SJ",
+          "espn_id": "7845",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7845.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Nuevo Francisco Urbano, Morón",
+        "nota": "Platense advance 4-3 on penalties"
+      },
+      {
+        "id": "401867016",
+        "nombre": "Belgrano (Córdoba) at Gimnasia y Esgrima (Jujuy)",
+        "fecha": "2026-05-30",
+        "fecha_iso": "2026-05-30T18:30Z",
+        "estado": "FT-Pens",
+        "completado": true,
+        "penaltis": true,
+        "local": {
+          "nombre": "Gimnasia y Esgrima (Jujuy)",
+          "nombre_corto": "Gimnasia J.",
+          "espn_id": "5263",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Belgrano (Córdoba)",
+          "nombre_corto": "Belgrano ",
+          "espn_id": "4",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "'Estadio Único Madre de Ciudades, Santiago del Estero",
+        "nota": "Belgrano (Córdoba) advance 4-2 on penalties"
       }
-    ]
-  }
+    ],
+    "semis": [],
+    "final": []
+  },
+  "total_partidos": 53
 }
