@@ -2,12 +2,10 @@
   "competicion": "Copa Argentina",
   "league_slug": "arg.copa",
   "season": 2026,
-  "actualizado": "2026-06-02T17:34:42.366522Z",
+  "actualizado": "2026-06-02T17:37:44.123782Z",
   "campeon": null,
   "fases": {
-    "treintaidosavos": [],
-    "dieciseisavos": [],
-    "octavos": [
+    "treintaidosavos": [
       {
         "id": "401845536",
         "nombre": "Estudiantes (Buenos Aires) at Independiente Rivadavia",
@@ -212,6 +210,35 @@
         "nota": ""
       },
       {
+        "id": "401846920",
+        "nombre": "Temperley at Barracas Central",
+        "fecha": "2026-02-05",
+        "fecha_iso": "2026-02-06T00:15Z",
+        "estado": "FT-Pens",
+        "completado": true,
+        "penaltis": true,
+        "local": {
+          "nombre": "Barracas Central",
+          "nombre_corto": "Barracas",
+          "espn_id": "10060",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "Temperley",
+          "nombre_corto": "Temperley",
+          "espn_id": "10162",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10162.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Julio Humberto Grondona, Buenos Aires",
+        "nota": "Barracas Central advance 4-3 on penalties"
+      },
+      {
         "id": "401846923",
         "nombre": "Sp. Belgrano at Rosario Central",
         "fecha": "2026-02-11",
@@ -239,6 +266,35 @@
         },
         "estadio": "15 de Abril, Rosario, Santa Fe",
         "nota": ""
+      },
+      {
+        "id": "401846922",
+        "nombre": "Gimnasia y Esgrima (Jujuy) at Central Córdoba (Santiago del Estero)",
+        "fecha": "2026-02-11",
+        "fecha_iso": "2026-02-12T00:15Z",
+        "estado": "FT-Pens",
+        "completado": true,
+        "penaltis": true,
+        "local": {
+          "nombre": "Central Córdoba (Santiago del Estero)",
+          "nombre_corto": "C. Córdoba (SE)",
+          "espn_id": "11989",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Gimnasia y Esgrima (Jujuy)",
+          "nombre_corto": "Gimnasia J.",
+          "espn_id": "5263",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "Padre Ernesto Martearena, Salta",
+        "nota": "Gimnasia y Esgrima (Jujuy) advance 5-4 on penalties"
       },
       {
         "id": "401846924",
@@ -734,6 +790,35 @@
         "nota": ""
       },
       {
+        "id": "401846939",
+        "nombre": "San Martín (Tucumán) at Estudiantes de Río Cuarto",
+        "fecha": "2026-04-07",
+        "fecha_iso": "2026-04-07T19:00Z",
+        "estado": "FT-Pens",
+        "completado": true,
+        "penaltis": true,
+        "local": {
+          "nombre": "Estudiantes de Río Cuarto",
+          "nombre_corto": "Estudiantes RC",
+          "espn_id": "19685",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19685.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "San Martín (Tucumán)",
+          "nombre_corto": "San Martín (T)",
+          "espn_id": "17814",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "El Gigante de Alberdi, Córdoba",
+        "nota": "San Martín (Tucumán) advance 4-3 on penalties"
+      },
+      {
         "id": "401846941",
         "nombre": "Deportivo Armenio at Vélez Sarsfield",
         "fecha": "2026-04-07",
@@ -820,6 +905,37 @@
         "estadio": "Florencio Solá, Buenos Aires",
         "nota": ""
       },
+      {
+        "id": "401846940",
+        "nombre": "Gimnasia y Tiro (Salta) at Gimnasia (Mendoza)",
+        "fecha": "2026-04-15",
+        "fecha_iso": "2026-04-15T17:10Z",
+        "estado": "FT-Pens",
+        "completado": true,
+        "penaltis": true,
+        "local": {
+          "nombre": "Gimnasia (Mendoza)",
+          "nombre_corto": "Gimnasia (M)",
+          "espn_id": "11972",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Gimnasia y Tiro (Salta)",
+          "nombre_corto": "G y T (Salta)",
+          "espn_id": "10743",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "Eduardo Gallardón, Buenos Aires",
+        "nota": "Gimnasia y Tiro (Salta) advance 4-3 on penalties"
+      }
+    ],
+    "dieciseisavos": [
       {
         "id": "401867740",
         "nombre": "Gimnasia La Plata at Acassuso",
@@ -908,6 +1024,64 @@
         "nota": ""
       },
       {
+        "id": "401867739",
+        "nombre": "San Martín (Tucumán) at Banfield",
+        "fecha": "2026-05-08",
+        "fecha_iso": "2026-05-09T00:10Z",
+        "estado": "FT-Pens",
+        "completado": true,
+        "penaltis": true,
+        "local": {
+          "nombre": "Banfield",
+          "nombre_corto": "Banfield",
+          "espn_id": "235",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "San Martín (Tucumán)",
+          "nombre_corto": "San Martín (T)",
+          "espn_id": "17814",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
+          "marcador": "1",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Padre Ernesto Martearena, Salta",
+        "nota": "Banfield advance 5-4 on penalties"
+      },
+      {
+        "id": "401862733",
+        "nombre": "San Martín (San Juan) at Platense",
+        "fecha": "2026-05-13",
+        "fecha_iso": "2026-05-13T19:15Z",
+        "estado": "FT-Pens",
+        "completado": true,
+        "penaltis": true,
+        "local": {
+          "nombre": "Platense",
+          "nombre_corto": "Platense",
+          "espn_id": "7764",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": true
+        },
+        "visitante": {
+          "nombre": "San Martín (San Juan)",
+          "nombre_corto": "San Martín SJ",
+          "espn_id": "7845",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7845.png",
+          "marcador": "0",
+          "penaltis": null,
+          "ganador": false
+        },
+        "estadio": "Estadio Nuevo Francisco Urbano, Morón",
+        "nota": "Platense advance 4-3 on penalties"
+      },
+      {
         "id": "401866728",
         "nombre": "Atlético Tucumán at Talleres (Córdoba)",
         "fecha": "2026-05-20",
@@ -964,6 +1138,35 @@
         },
         "estadio": "Marcelo Bielsa, Rosario",
         "nota": ""
+      },
+      {
+        "id": "401867016",
+        "nombre": "Belgrano (Córdoba) at Gimnasia y Esgrima (Jujuy)",
+        "fecha": "2026-05-30",
+        "fecha_iso": "2026-05-30T18:30Z",
+        "estado": "FT-Pens",
+        "completado": true,
+        "penaltis": true,
+        "local": {
+          "nombre": "Gimnasia y Esgrima (Jujuy)",
+          "nombre_corto": "Gimnasia J.",
+          "espn_id": "5263",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": false
+        },
+        "visitante": {
+          "nombre": "Belgrano (Córdoba)",
+          "nombre_corto": "Belgrano ",
+          "espn_id": "4",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+          "marcador": "2",
+          "penaltis": null,
+          "ganador": true
+        },
+        "estadio": "'Estadio Único Madre de Ciudades, Santiago del Estero",
+        "nota": "Belgrano (Córdoba) advance 4-2 on penalties"
       },
       {
         "id": "401867325",
@@ -1196,7 +1399,9 @@
         },
         "estadio": "",
         "nota": ""
-      },
+      }
+    ],
+    "octavos": [
       {
         "id": "401861868",
         "nombre": "Tigre at Independiente Rivadavia",
@@ -1343,211 +1548,7 @@
         "nota": ""
       }
     ],
-    "cuartos": [
-      {
-        "id": "401846920",
-        "nombre": "Temperley at Barracas Central",
-        "fecha": "2026-02-05",
-        "fecha_iso": "2026-02-06T00:15Z",
-        "estado": "FT-Pens",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "nombre": "Barracas Central",
-          "nombre_corto": "Barracas",
-          "espn_id": "10060",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
-          "marcador": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "nombre": "Temperley",
-          "nombre_corto": "Temperley",
-          "espn_id": "10162",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10162.png",
-          "marcador": "2",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Julio Humberto Grondona, Buenos Aires",
-        "nota": "Barracas Central advance 4-3 on penalties"
-      },
-      {
-        "id": "401846922",
-        "nombre": "Gimnasia y Esgrima (Jujuy) at Central Córdoba (Santiago del Estero)",
-        "fecha": "2026-02-11",
-        "fecha_iso": "2026-02-12T00:15Z",
-        "estado": "FT-Pens",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "nombre": "Central Córdoba (Santiago del Estero)",
-          "nombre_corto": "C. Córdoba (SE)",
-          "espn_id": "11989",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
-          "marcador": "2",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "nombre": "Gimnasia y Esgrima (Jujuy)",
-          "nombre_corto": "Gimnasia J.",
-          "espn_id": "5263",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
-          "marcador": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Padre Ernesto Martearena, Salta",
-        "nota": "Gimnasia y Esgrima (Jujuy) advance 5-4 on penalties"
-      },
-      {
-        "id": "401846939",
-        "nombre": "San Martín (Tucumán) at Estudiantes de Río Cuarto",
-        "fecha": "2026-04-07",
-        "fecha_iso": "2026-04-07T19:00Z",
-        "estado": "FT-Pens",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "nombre": "Estudiantes de Río Cuarto",
-          "nombre_corto": "Estudiantes RC",
-          "espn_id": "19685",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19685.png",
-          "marcador": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "nombre": "San Martín (Tucumán)",
-          "nombre_corto": "San Martín (T)",
-          "espn_id": "17814",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
-          "marcador": "0",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "El Gigante de Alberdi, Córdoba",
-        "nota": "San Martín (Tucumán) advance 4-3 on penalties"
-      },
-      {
-        "id": "401846940",
-        "nombre": "Gimnasia y Tiro (Salta) at Gimnasia (Mendoza)",
-        "fecha": "2026-04-15",
-        "fecha_iso": "2026-04-15T17:10Z",
-        "estado": "FT-Pens",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "nombre": "Gimnasia (Mendoza)",
-          "nombre_corto": "Gimnasia (M)",
-          "espn_id": "11972",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
-          "marcador": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "nombre": "Gimnasia y Tiro (Salta)",
-          "nombre_corto": "G y T (Salta)",
-          "espn_id": "10743",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
-          "marcador": "0",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "Eduardo Gallardón, Buenos Aires",
-        "nota": "Gimnasia y Tiro (Salta) advance 4-3 on penalties"
-      },
-      {
-        "id": "401867739",
-        "nombre": "San Martín (Tucumán) at Banfield",
-        "fecha": "2026-05-08",
-        "fecha_iso": "2026-05-09T00:10Z",
-        "estado": "FT-Pens",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "nombre": "Banfield",
-          "nombre_corto": "Banfield",
-          "espn_id": "235",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/235.png",
-          "marcador": "1",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "nombre": "San Martín (Tucumán)",
-          "nombre_corto": "San Martín (T)",
-          "espn_id": "17814",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
-          "marcador": "1",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Padre Ernesto Martearena, Salta",
-        "nota": "Banfield advance 5-4 on penalties"
-      },
-      {
-        "id": "401862733",
-        "nombre": "San Martín (San Juan) at Platense",
-        "fecha": "2026-05-13",
-        "fecha_iso": "2026-05-13T19:15Z",
-        "estado": "FT-Pens",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "nombre": "Platense",
-          "nombre_corto": "Platense",
-          "espn_id": "7764",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
-          "marcador": "0",
-          "penaltis": null,
-          "ganador": true
-        },
-        "visitante": {
-          "nombre": "San Martín (San Juan)",
-          "nombre_corto": "San Martín SJ",
-          "espn_id": "7845",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7845.png",
-          "marcador": "0",
-          "penaltis": null,
-          "ganador": false
-        },
-        "estadio": "Estadio Nuevo Francisco Urbano, Morón",
-        "nota": "Platense advance 4-3 on penalties"
-      },
-      {
-        "id": "401867016",
-        "nombre": "Belgrano (Córdoba) at Gimnasia y Esgrima (Jujuy)",
-        "fecha": "2026-05-30",
-        "fecha_iso": "2026-05-30T18:30Z",
-        "estado": "FT-Pens",
-        "completado": true,
-        "penaltis": true,
-        "local": {
-          "nombre": "Gimnasia y Esgrima (Jujuy)",
-          "nombre_corto": "Gimnasia J.",
-          "espn_id": "5263",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
-          "marcador": "2",
-          "penaltis": null,
-          "ganador": false
-        },
-        "visitante": {
-          "nombre": "Belgrano (Córdoba)",
-          "nombre_corto": "Belgrano ",
-          "espn_id": "4",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
-          "marcador": "2",
-          "penaltis": null,
-          "ganador": true
-        },
-        "estadio": "'Estadio Único Madre de Ciudades, Santiago del Estero",
-        "nota": "Belgrano (Córdoba) advance 4-2 on penalties"
-      }
-    ],
+    "cuartos": [],
     "semis": [],
     "final": []
   },
