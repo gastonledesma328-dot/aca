@@ -37,18 +37,18 @@ jobs:
           code=$?
           echo "SCRAPER_365_EXIT=$code" >> "$GITHUB_ENV"
           if [ "$code" -eq 0 ]; then
-            echo "â 365Scores generÃ³ un calendario candidato"
+            echo "OK: 365Scores genero un calendario candidato"
           else
-            echo "â ï¸ 365Scores no generÃ³ un calendario vÃ¡lido. Se usarÃ¡ fallback ESPN corregido."
+            echo "WARN: 365Scores no genero un calendario valido. Se usara fallback ESPN corregido."
           fi
           exit 0
 
       - name: Validar fechas 365Scores o usar fallback ESPN
         run: |
           if [ "${SCRAPER_365_EXIT}" = "0" ] && python scripts/validar_primera_nacional_fechas.py; then
-            echo "â Fechas vÃ¡lidas desde 365Scores"
+            echo "OK: Fechas validas desde 365Scores"
           else
-            echo "â ï¸ 365Scores no generÃ³ suficientes fechas. Usando fallback ESPN corregido."
+            echo "WARN: 365Scores no genero suficientes fechas. Usando fallback ESPN corregido."
             python scripts/generar_fechas_primera_nacional.py
             python scripts/reordenar_fechas_primera_nacional.py
             python scripts/asegurar_fixture_oficial_primera_nacional.py
@@ -58,7 +58,7 @@ jobs:
             python scripts/validar_primera_nacional_fechas.py
           fi
 
-      - name: Generar campeones históricos de Primera Nacional
+      - name: Generar historial de campeones de Primera Nacional
         run: |
           python scripts/generar_campeones_primera_nacional.py
 
@@ -74,6 +74,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add data/equipos_primera_nacional.json public/data/equipos_primera_nacional.json data/primera_nacional_fechas.json public/data/primera_nacional_fechas.json data/primera_nacional_fixture_oficial.json public/data/primera_nacional_fixture_oficial.json data/campeones_primera_nacional.json public/data/campeones_primera_nacional.json data/campeones_primera_nacional_equipos.json public/data/campeones_primera_nacional_equipos.json
+          git add data/equipos_primera_nacional.json public/data/equipos_primera_nacional.json data/primera_nacional_fechas.json public/data/primera_nacional_fechas.json data/primera_nacional_fixture_oficial.json public/data/primera_nacional_fixture_oficial.json data/campeones_primera_nacional.json public/data/campeones_primera_nacional.json
           git commit -m "Actualizar Primera Nacional" || echo "Sin cambios"
           git push
