@@ -141,13 +141,7 @@ body[data-competition-id="liga-profesional"] [data-competition-section="equipos"
   overflow: visible !important;
 }
 
-body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-team-titles::before {
-  content: "ÃÂ°ÃÂÃÂÃÂ" !important;
-  display: inline-block !important;
-  font-size: 14px !important;
-  line-height: 1 !important;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3)) !important;
-}
+
 
 body[data-competition-id="liga-profesional"] [data-competition-section="equipos"] .competition-team-titles::after {
   content: none !important;
