@@ -253,7 +253,7 @@
 
    /* ---------- render principal ---------- */
    function render(data) {
-          const container = document.getElementById("copa-argentina-bracket");
+          const container = document.getElementById("competitionTableCard");
           if (!container) return;
 
        const fases = data.fases || {};
@@ -286,7 +286,7 @@
    function init() {
           if (!isCopaPage()) return;
 
-       const el = document.getElementById("copa-argentina-bracket");
+       const el = document.getElementById("competitionTableCard");
           if (!el) return;
 
        el.innerHTML = `<div style="padding:20px;text-align:center;color:rgba(255,255,255,.4);font-size:12px">Cargando cuadro...</div>`;
@@ -295,7 +295,7 @@
             .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
             .then(render)
             .catch(() => {
-                       const el2 = document.getElementById("copa-argentina-bracket");
+                       const el2 = document.getElementById("competitionTableCard");
                        if (el2) el2.innerHTML = `<div style="padding:20px;text-align:center;color:rgba(255,255,255,.3);font-size:12px">No se pudo cargar el cuadro.</div>`;
             });
    }
