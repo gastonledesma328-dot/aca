@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-01T22:40:35.926199+00:00",
+  "actualizado": "2026-06-02T12:23:56.476588+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:29.929584+00:00",
+      "actualizado": "2026-06-02T12:23:48.265895+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:30.156041+00:00",
+      "actualizado": "2026-06-02T12:23:48.607150+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -55625,9 +55625,9 @@
       "resumen": {
         "equipos": 36,
         "posiciones": 36,
-        "partidos_scoreboard": 11,
-        "ultimos": 11,
-        "proximos": 0
+        "partidos_scoreboard": 1,
+        "ultimos": 0,
+        "proximos": 1
       },
       "equipos": [
         {
@@ -56894,543 +56894,18 @@
         }
       ],
       "partidos": {
-        "ultimos": [
+        "ultimos": [],
+        "proximos": [
           {
-            "id": "401843902",
-            "nombre": "Chacarita Juniors at Deportivo Maipú",
-            "fecha": "2026-05-31T20:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401843912",
+            "nombre": "Midland at Gimnasia y Tiro (Salta)",
+            "fecha": "2026-06-06T00:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
-            "clasificacion_texto": "chacarita juniors at deportivo maipu cha cdm regular season",
+            "clasificacion_texto": "midland at gimnasia y tiro salta mid gyt regular season",
             "local": {
-              "equipo": {
-                "id": "11978",
-                "uid": "s:600~t:11978",
-                "nombre": "Deportivo Maipú",
-                "nombre_corto": "Maipú",
-                "abreviatura": "CDM",
-                "slug": "deportivo-maipu",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11978.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "6",
-                "uid": "s:600~t:6",
-                "nombre": "Chacarita Juniors",
-                "nombre_corto": "Chacarita ",
-                "abreviatura": "CHA",
-                "slug": "chacarita-juniors",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "2",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843902/chacarita-juniors-deportivo-maipu",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843890",
-            "nombre": "Atletico Rafaela at Quilmes",
-            "fecha": "2026-05-31T20:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "atletico rafaela at quilmes raf qui regular season",
-            "local": {
-              "equipo": {
-                "id": "2741",
-                "uid": "s:600~t:2741",
-                "nombre": "Quilmes",
-                "nombre_corto": "Quilmes",
-                "abreviatura": "QUI",
-                "slug": "quilmes",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
-                "color": "0060f0"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "9747",
-                "uid": "s:600~t:9747",
-                "nombre": "Atletico Rafaela",
-                "nombre_corto": "Rafaela",
-                "abreviatura": "RAF",
-                "slug": "atletico-rafaela",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
-                "color": "0a82ab"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843890/atletico-rafaela-quilmes",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843897",
-            "nombre": "Chaco For Ever at Central Norte",
-            "fecha": "2026-05-31T19:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "chaco for ever at central norte cfe cno regular season",
-            "local": {
-              "equipo": {
-                "id": "11993",
-                "uid": "s:600~t:11993",
-                "nombre": "Central Norte",
-                "nombre_corto": "Central Norte",
-                "abreviatura": "CNO",
-                "slug": "central-norte",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11993.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "11963",
-                "uid": "s:600~t:11963",
-                "nombre": "Chaco For Ever",
-                "nombre_corto": "Chaco",
-                "abreviatura": "CFE",
-                "slug": "chaco-for-ever",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11963.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843897/chaco-for-ever-central-norte",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843898",
-            "nombre": "San Miguel at Ciudad de Bolívar",
-            "fecha": "2026-05-31T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "san miguel at ciudad de bolivar san cdb regular season",
-            "local": {
-              "equipo": {
-                "id": "21799",
-                "uid": "s:600~t:21799",
-                "nombre": "Ciudad de Bolívar",
-                "nombre_corto": "Ciudad Bolívar",
-                "abreviatura": "CDB",
-                "slug": "ciudad-de-bolivar",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21799.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "10058",
-                "uid": "s:600~t:10058",
-                "nombre": "San Miguel",
-                "nombre_corto": "San Miguel",
-                "abreviatura": "SAN",
-                "slug": "san-miguel",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10058.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843898/san-miguel-ciudad-de-bolivar",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843886",
-            "nombre": "San Martín (Tucumán) at Midland",
-            "fecha": "2026-05-31T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "san martin tucuman at midland san mid regular season",
-            "local": {
-              "equipo": {
-                "id": "10109",
-                "uid": "s:600~t:10109",
-                "nombre": "Midland",
-                "nombre_corto": "Midland",
-                "abreviatura": "MID",
-                "slug": "midland",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "17814",
-                "uid": "s:600~t:17814",
-                "nombre": "San Martín (Tucumán)",
-                "nombre_corto": "San Martín (T)",
-                "abreviatura": "SAN",
-                "slug": "san-martin-tucuman",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
-                "color": "212121"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843886/san-martin-tucuman-midland",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843888",
-            "nombre": "Deportivo Morón at Mitre (Santiago del Estero)",
-            "fecha": "2026-05-31T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "deportivo moron at mitre santiago del estero mor mit regular season",
-            "local": {
-              "equipo": {
-                "id": "11990",
-                "uid": "s:600~t:11990",
-                "nombre": "Mitre (Santiago del Estero)",
-                "nombre_corto": "Mitre (SE)",
-                "abreviatura": "MIT",
-                "slug": "mitre-santiago-del-estero",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11990.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "10154",
-                "uid": "s:600~t:10154",
-                "nombre": "Deportivo Morón",
-                "nombre_corto": "Morón",
-                "abreviatura": "MOR",
-                "slug": "deportivo-moron",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10154.png",
-                "color": "212121"
-              },
-              "localia": "away",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843888/deportivo-moron-mitre-santiago-del-estero",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843889",
-            "nombre": "Tristán Suárez at Patronato",
-            "fecha": "2026-05-31T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "tristan suarez at patronato tri cap regular season",
-            "local": {
-              "equipo": {
-                "id": "10374",
-                "uid": "s:600~t:10374",
-                "nombre": "Patronato",
-                "nombre_corto": "Patronato",
-                "abreviatura": "CAP",
-                "slug": "patronato",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10374.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "10163",
-                "uid": "s:600~t:10163",
-                "nombre": "Tristán Suárez",
-                "nombre_corto": "T. Suárez",
-                "abreviatura": "TRI",
-                "slug": "tristan-suarez",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10163.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843889/tristan-suarez-patronato",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843892",
-            "nombre": "San Martín (San Juan) at Temperley",
-            "fecha": "2026-05-31T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "san martin san juan at temperley smsj temp regular season",
-            "local": {
-              "equipo": {
-                "id": "10162",
-                "uid": "s:600~t:10162",
-                "nombre": "Temperley",
-                "nombre_corto": "Temperley",
-                "abreviatura": "TEMP",
-                "slug": "temperley",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10162.png",
-                "color": "409fff"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "7845",
-                "uid": "s:600~t:7845",
-                "nombre": "San Martín (San Juan)",
-                "nombre_corto": "San Martín SJ",
-                "abreviatura": "SMSJ",
-                "slug": "san-martin-san-juan",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7845.png",
-                "color": "288A00"
-              },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843892/san-martin-san-juan-temperley",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843894",
-            "nombre": "Güemes at Almagro",
-            "fecha": "2026-05-31T18:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "guemes at almagro cag alm regular season",
-            "local": {
-              "equipo": {
-                "id": "2",
-                "uid": "s:600~t:2",
-                "nombre": "Almagro",
-                "nombre_corto": "Almagro ",
-                "abreviatura": "ALM",
-                "slug": "almagro",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2.png",
-                "color": "212121"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "18284",
-                "uid": "s:600~t:18284",
-                "nombre": "Güemes",
-                "nombre_corto": "Güemes",
-                "abreviatura": "CAG",
-                "slug": "guemes",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18284.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843894/guemes-almagro",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401873885",
-            "nombre": "Acassuso at Deportivo Madryn",
-            "fecha": "2026-05-31T18:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "acassuso at deportivo madryn aca dma regular season",
-            "local": {
-              "equipo": {
-                "id": "18260",
-                "uid": "s:600~t:18260",
-                "nombre": "Deportivo Madryn",
-                "nombre_corto": "Dep. Madryn",
-                "abreviatura": "DMA",
-                "slug": "deportivo-madryn",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18260.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "10145",
-                "uid": "s:600~t:10145",
-                "nombre": "Acassuso",
-                "nombre_corto": "Acassuso",
-                "abreviatura": "ACA",
-                "slug": "acassuso",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10145.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401873885/acassuso-deportivo-madryn",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843896",
-            "nombre": "Gimnasia y Tiro (Salta) at Atlanta",
-            "fecha": "2026-05-31T16:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "gimnasia y tiro salta at atlanta gyt atl regular season",
-            "local": {
-              "equipo": {
-                "id": "10146",
-                "uid": "s:600~t:10146",
-                "nombre": "Atlanta",
-                "nombre_corto": "Atlanta",
-                "abreviatura": "ATL",
-                "slug": "atlanta",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10146.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
               "equipo": {
                 "id": "10743",
                 "uid": "s:600~t:10743",
@@ -57441,50 +56916,49 @@
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
                 "color": "000000"
               },
-              "localia": "away",
-              "marcador": "1",
+              "localia": "home",
+              "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843896/gimnasia-y-tiro-salta-atlanta",
+            "visitante": {
+              "equipo": {
+                "id": "10109",
+                "uid": "s:600~t:10109",
+                "nombre": "Midland",
+                "nombre_corto": "Midland",
+                "abreviatura": "MID",
+                "slug": "midland",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843912/midland-gimnasia-y-tiro-salta",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
+            "fecha_grupo": "2026-06-06"
           }
         ],
-        "proximos": [],
         "todos": [
           {
-            "id": "401843896",
-            "nombre": "Gimnasia y Tiro (Salta) at Atlanta",
-            "fecha": "2026-05-31T16:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401843912",
+            "nombre": "Midland at Gimnasia y Tiro (Salta)",
+            "fecha": "2026-06-06T00:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
-            "clasificacion_texto": "gimnasia y tiro salta at atlanta gyt atl regular season",
+            "clasificacion_texto": "midland at gimnasia y tiro salta mid gyt regular season",
             "local": {
-              "equipo": {
-                "id": "10146",
-                "uid": "s:600~t:10146",
-                "nombre": "Atlanta",
-                "nombre_corto": "Atlanta",
-                "abreviatura": "ATL",
-                "slug": "atlanta",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10146.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
               "equipo": {
                 "id": "10743",
                 "uid": "s:600~t:10743",
@@ -57495,184 +56969,12 @@
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
                 "color": "000000"
               },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843896/gimnasia-y-tiro-salta-atlanta",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401873885",
-            "nombre": "Acassuso at Deportivo Madryn",
-            "fecha": "2026-05-31T18:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "acassuso at deportivo madryn aca dma regular season",
-            "local": {
-              "equipo": {
-                "id": "18260",
-                "uid": "s:600~t:18260",
-                "nombre": "Deportivo Madryn",
-                "nombre_corto": "Dep. Madryn",
-                "abreviatura": "DMA",
-                "slug": "deportivo-madryn",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18260.png",
-                "color": "000000"
-              },
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
             "visitante": {
-              "equipo": {
-                "id": "10145",
-                "uid": "s:600~t:10145",
-                "nombre": "Acassuso",
-                "nombre_corto": "Acassuso",
-                "abreviatura": "ACA",
-                "slug": "acassuso",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10145.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401873885/acassuso-deportivo-madryn",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843894",
-            "nombre": "Güemes at Almagro",
-            "fecha": "2026-05-31T18:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "guemes at almagro cag alm regular season",
-            "local": {
-              "equipo": {
-                "id": "2",
-                "uid": "s:600~t:2",
-                "nombre": "Almagro",
-                "nombre_corto": "Almagro ",
-                "abreviatura": "ALM",
-                "slug": "almagro",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2.png",
-                "color": "212121"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "18284",
-                "uid": "s:600~t:18284",
-                "nombre": "Güemes",
-                "nombre_corto": "Güemes",
-                "abreviatura": "CAG",
-                "slug": "guemes",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18284.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843894/guemes-almagro",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843898",
-            "nombre": "San Miguel at Ciudad de Bolívar",
-            "fecha": "2026-05-31T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "san miguel at ciudad de bolivar san cdb regular season",
-            "local": {
-              "equipo": {
-                "id": "21799",
-                "uid": "s:600~t:21799",
-                "nombre": "Ciudad de Bolívar",
-                "nombre_corto": "Ciudad Bolívar",
-                "abreviatura": "CDB",
-                "slug": "ciudad-de-bolivar",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21799.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "10058",
-                "uid": "s:600~t:10058",
-                "nombre": "San Miguel",
-                "nombre_corto": "San Miguel",
-                "abreviatura": "SAN",
-                "slug": "san-miguel",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10058.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843898/san-miguel-ciudad-de-bolivar",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843886",
-            "nombre": "San Martín (Tucumán) at Midland",
-            "fecha": "2026-05-31T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "san martin tucuman at midland san mid regular season",
-            "local": {
               "equipo": {
                 "id": "10109",
                 "uid": "s:600~t:10109",
@@ -57683,345 +56985,23 @@
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
                 "color": "000000"
               },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "17814",
-                "uid": "s:600~t:17814",
-                "nombre": "San Martín (Tucumán)",
-                "nombre_corto": "San Martín (T)",
-                "abreviatura": "SAN",
-                "slug": "san-martin-tucuman",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
-                "color": "212121"
-              },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843886/san-martin-tucuman-midland",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843912/midland-gimnasia-y-tiro-salta",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843888",
-            "nombre": "Deportivo Morón at Mitre (Santiago del Estero)",
-            "fecha": "2026-05-31T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "deportivo moron at mitre santiago del estero mor mit regular season",
-            "local": {
-              "equipo": {
-                "id": "11990",
-                "uid": "s:600~t:11990",
-                "nombre": "Mitre (Santiago del Estero)",
-                "nombre_corto": "Mitre (SE)",
-                "abreviatura": "MIT",
-                "slug": "mitre-santiago-del-estero",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11990.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "10154",
-                "uid": "s:600~t:10154",
-                "nombre": "Deportivo Morón",
-                "nombre_corto": "Morón",
-                "abreviatura": "MOR",
-                "slug": "deportivo-moron",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10154.png",
-                "color": "212121"
-              },
-              "localia": "away",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843888/deportivo-moron-mitre-santiago-del-estero",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843889",
-            "nombre": "Tristán Suárez at Patronato",
-            "fecha": "2026-05-31T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "tristan suarez at patronato tri cap regular season",
-            "local": {
-              "equipo": {
-                "id": "10374",
-                "uid": "s:600~t:10374",
-                "nombre": "Patronato",
-                "nombre_corto": "Patronato",
-                "abreviatura": "CAP",
-                "slug": "patronato",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10374.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "10163",
-                "uid": "s:600~t:10163",
-                "nombre": "Tristán Suárez",
-                "nombre_corto": "T. Suárez",
-                "abreviatura": "TRI",
-                "slug": "tristan-suarez",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10163.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843889/tristan-suarez-patronato",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843892",
-            "nombre": "San Martín (San Juan) at Temperley",
-            "fecha": "2026-05-31T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "san martin san juan at temperley smsj temp regular season",
-            "local": {
-              "equipo": {
-                "id": "10162",
-                "uid": "s:600~t:10162",
-                "nombre": "Temperley",
-                "nombre_corto": "Temperley",
-                "abreviatura": "TEMP",
-                "slug": "temperley",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10162.png",
-                "color": "409fff"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "7845",
-                "uid": "s:600~t:7845",
-                "nombre": "San Martín (San Juan)",
-                "nombre_corto": "San Martín SJ",
-                "abreviatura": "SMSJ",
-                "slug": "san-martin-san-juan",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7845.png",
-                "color": "288A00"
-              },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843892/san-martin-san-juan-temperley",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843897",
-            "nombre": "Chaco For Ever at Central Norte",
-            "fecha": "2026-05-31T19:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "chaco for ever at central norte cfe cno regular season",
-            "local": {
-              "equipo": {
-                "id": "11993",
-                "uid": "s:600~t:11993",
-                "nombre": "Central Norte",
-                "nombre_corto": "Central Norte",
-                "abreviatura": "CNO",
-                "slug": "central-norte",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11993.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "11963",
-                "uid": "s:600~t:11963",
-                "nombre": "Chaco For Ever",
-                "nombre_corto": "Chaco",
-                "abreviatura": "CFE",
-                "slug": "chaco-for-ever",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11963.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843897/chaco-for-ever-central-norte",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843902",
-            "nombre": "Chacarita Juniors at Deportivo Maipú",
-            "fecha": "2026-05-31T20:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "chacarita juniors at deportivo maipu cha cdm regular season",
-            "local": {
-              "equipo": {
-                "id": "11978",
-                "uid": "s:600~t:11978",
-                "nombre": "Deportivo Maipú",
-                "nombre_corto": "Maipú",
-                "abreviatura": "CDM",
-                "slug": "deportivo-maipu",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11978.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "6",
-                "uid": "s:600~t:6",
-                "nombre": "Chacarita Juniors",
-                "nombre_corto": "Chacarita ",
-                "abreviatura": "CHA",
-                "slug": "chacarita-juniors",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "2",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843902/chacarita-juniors-deportivo-maipu",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401843890",
-            "nombre": "Atletico Rafaela at Quilmes",
-            "fecha": "2026-05-31T20:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "atletico rafaela at quilmes raf qui regular season",
-            "local": {
-              "equipo": {
-                "id": "2741",
-                "uid": "s:600~t:2741",
-                "nombre": "Quilmes",
-                "nombre_corto": "Quilmes",
-                "abreviatura": "QUI",
-                "slug": "quilmes",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
-                "color": "0060f0"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "9747",
-                "uid": "s:600~t:9747",
-                "nombre": "Atletico Rafaela",
-                "nombre_corto": "Rafaela",
-                "abreviatura": "RAF",
-                "slug": "atletico-rafaela",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
-                "color": "0a82ab"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843890/atletico-rafaela-quilmes",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
+            "fecha_grupo": "2026-06-06"
           }
         ],
-        "total_scoreboard": 11
+        "total_scoreboard": 1
       }
     },
     {
@@ -58033,7 +57013,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:31.574224+00:00",
+      "actualizado": "2026-06-02T12:23:50.201203+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -58079,16 +57059,6 @@
           "color": "288A00"
         },
         {
-          "id": "17700",
-          "uid": "s:600~t:17700",
-          "nombre": "Argentino (Merlo)",
-          "nombre_corto": "Argentino Merlo",
-          "abreviatura": "ARG",
-          "slug": "argentino_merlo",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17700.png",
-          "color": "000000"
-        },
-        {
           "id": "22166",
           "uid": "s:600~t:22166",
           "nombre": "Argentino Monte Maíz",
@@ -58096,6 +57066,16 @@
           "abreviatura": "AMM",
           "slug": "argentino_monte_maiz",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22166.png",
+          "color": "000000"
+        },
+        {
+          "id": "17700",
+          "uid": "s:600~t:17700",
+          "nombre": "Argentino de Merlo",
+          "nombre_corto": "Argentino Merlo",
+          "abreviatura": "ADM",
+          "slug": "argentino_merlo",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17700.png",
           "color": "000000"
         },
         {
@@ -58243,7 +57223,7 @@
           "uid": "s:600~t:10152",
           "nombre": "Deportivo Armenio",
           "nombre_corto": "Armenio",
-          "abreviatura": "DEP",
+          "abreviatura": "ARM",
           "slug": "arg.deportivo_armenio",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10152.png",
           "color": "000000"
@@ -58503,7 +57483,7 @@
           "uid": "s:600~t:18844",
           "nombre": "Real Pilar",
           "nombre_corto": "Real Pilar",
-          "abreviatura": "RPR",
+          "abreviatura": "PIL",
           "slug": "real_pilar",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18844.png",
           "color": "000000"
@@ -58810,7 +57790,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:31.826995+00:00",
+      "actualizado": "2026-06-02T12:23:50.615824+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -60494,7 +59474,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:32.067437+00:00",
+      "actualizado": "2026-06-02T12:23:50.968373+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -60538,6 +59518,16 @@
           "slug": "col.america-cali",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8109.png",
           "color": "ff0000"
+        },
+        {
+          "id": "6137",
+          "uid": "s:600~t:6137",
+          "nombre": "Atlético Bucaramanga",
+          "nombre_corto": "Bucaramanga",
+          "abreviatura": "BUC",
+          "slug": "betbrain.bucaramanga",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6137.png",
+          "color": "212121"
         },
         {
           "id": "5264",
@@ -60608,16 +59598,6 @@
           "slug": "bra.botafogo",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6086.png",
           "color": "000000"
-        },
-        {
-          "id": "6137",
-          "uid": "s:600~t:6137",
-          "nombre": "Bucaramanga",
-          "nombre_corto": "Bucaramanga",
-          "abreviatura": "BUC",
-          "slug": "betbrain.bucaramanga",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6137.png",
-          "color": "212121"
         },
         {
           "id": "6037",
@@ -60914,7 +59894,7 @@
           "uid": "s:600~t:22137",
           "nombre": "San Antonio Bulo Bulo",
           "nombre_corto": "Bulo Bulo",
-          "abreviatura": "SABB",
+          "abreviatura": "BULO",
           "slug": "san_antonio_bulo_bulo",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22137.png",
           "color": "000000"
@@ -62014,7 +60994,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:32.322279+00:00",
+      "actualizado": "2026-06-02T12:23:51.246952+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -63411,7 +62391,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:32.465051+00:00",
+      "actualizado": "2026-06-02T12:23:51.491852+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -64808,7 +63788,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:32.605327+00:00",
+      "actualizado": "2026-06-02T12:23:51.748893+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -66206,7 +65186,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:32.783562+00:00",
+      "actualizado": "2026-06-02T12:23:52.007837+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -67464,7 +66444,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:33.044323+00:00",
+      "actualizado": "2026-06-02T12:23:52.290412+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -68359,7 +67339,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:33.241858+00:00",
+      "actualizado": "2026-06-02T12:23:52.639313+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70693,7 +69673,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:33.396995+00:00",
+      "actualizado": "2026-06-02T12:23:52.876745+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -72612,7 +71592,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:33.634465+00:00",
+      "actualizado": "2026-06-02T12:23:53.088026+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -74367,7 +73347,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:33.794898+00:00",
+      "actualizado": "2026-06-02T12:23:53.334972+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -75204,7 +74184,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:33.984846+00:00",
+      "actualizado": "2026-06-02T12:23:53.560699+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -76653,7 +75633,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:34.145453+00:00",
+      "actualizado": "2026-06-02T12:23:53.885831+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -78236,7 +77216,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:34.340886+00:00",
+      "actualizado": "2026-06-02T12:23:54.333956+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -79819,7 +78799,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:34.546539+00:00",
+      "actualizado": "2026-06-02T12:23:54.589040+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -81402,7 +80382,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:34.715372+00:00",
+      "actualizado": "2026-06-02T12:23:54.848101+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -82647,7 +81627,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:34.958984+00:00",
+      "actualizado": "2026-06-02T12:23:55.118347+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -82658,8 +81638,8 @@
         "equipos": 16,
         "posiciones": 16,
         "partidos_scoreboard": 2,
-        "ultimos": 1,
-        "proximos": 1
+        "ultimos": 2,
+        "proximos": 0
       },
       "equipos": [
         {
@@ -82863,13 +81843,13 @@
           },
           "stats": {
             "posicion": "2",
-            "pj": "2",
+            "pj": "3",
             "g": "2",
             "e": "0",
-            "p": "0",
+            "p": "1",
             "gf": "4",
-            "gc": "1",
-            "dg": "+3",
+            "gc": "2",
+            "dg": "+2",
             "pts": "6",
             "racha": "-"
           }
@@ -82912,7 +81892,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "4",
+            "posicion": "5",
             "pj": "3",
             "g": "1",
             "e": "1",
@@ -82962,7 +81942,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "3",
+            "posicion": "4",
             "pj": "3",
             "g": "1",
             "e": "2",
@@ -83012,15 +81992,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "5",
-            "pj": "2",
-            "g": "1",
+            "posicion": "3",
+            "pj": "3",
+            "g": "2",
             "e": "0",
             "p": "1",
-            "gf": "2",
+            "gf": "3",
             "gc": "2",
-            "dg": "0",
-            "pts": "3",
+            "dg": "+1",
+            "pts": "6",
             "racha": "-"
           }
         },
@@ -83228,6 +82208,57 @@
       "partidos": {
         "ultimos": [
           {
+            "id": "401872698",
+            "nombre": "Central Español Fútbol Club at Peñarol",
+            "fecha": "2026-06-01T23:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "central espanol futbol club at penarol cefc pen torneo intermedio",
+            "local": {
+              "equipo": {
+                "id": "2683",
+                "uid": "s:600~t:2683",
+                "nombre": "Peñarol",
+                "nombre_corto": "Peñarol",
+                "abreviatura": "PEN",
+                "slug": "penarol",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2683.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "131688",
+                "uid": "s:600~t:131688",
+                "nombre": "Central Español Fútbol Club",
+                "nombre_corto": "Central Español",
+                "abreviatura": "CEFC",
+                "slug": "central-espanol-futbol-club",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131688.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": true,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872698/central-espanol-futbol-club-penarol",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-01"
+          },
+          {
             "id": "401872696",
             "nombre": "Liverpool at Boston River",
             "fecha": "2026-06-01T18:00Z",
@@ -83250,7 +82281,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -83266,72 +82297,20 @@
               "localia": "away",
               "marcador": "1",
               "ganador": true,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401872696/liverpool-boston-river",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-01"
           }
         ],
-        "proximos": [
-          {
-            "id": "401872698",
-            "nombre": "Central Español Fútbol Club at Peñarol",
-            "fecha": "2026-06-01T23:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "central espanol futbol club at penarol cefc pen torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "2683",
-                "uid": "s:600~t:2683",
-                "nombre": "Peñarol",
-                "nombre_corto": "Peñarol",
-                "abreviatura": "PEN",
-                "slug": "penarol",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2683.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "131688",
-                "uid": "s:600~t:131688",
-                "nombre": "Central Español Fútbol Club",
-                "nombre_corto": "Central Español",
-                "abreviatura": "CEFC",
-                "slug": "central-espanol-futbol-club",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131688.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872698/central-espanol-futbol-club-penarol",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-01"
-          }
-        ],
+        "proximos": [],
         "todos": [
           {
             "id": "401872696",
@@ -83356,7 +82335,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -83372,14 +82351,14 @@
               "localia": "away",
               "marcador": "1",
               "ganador": true,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401872696/liverpool-boston-river",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-01"
@@ -83388,9 +82367,9 @@
             "id": "401872698",
             "nombre": "Central Español Fútbol Club at Peñarol",
             "fecha": "2026-06-01T23:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "central espanol futbol club at penarol cefc pen torneo intermedio",
             "local": {
@@ -83407,7 +82386,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -83421,16 +82400,16 @@
                 "color": "000000"
               },
               "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
+              "marcador": "1",
+              "ganador": true,
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401872698/central-espanol-futbol-club-penarol",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-01"
@@ -83447,7 +82426,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:35.140847+00:00",
+      "actualizado": "2026-06-02T12:23:55.421977+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -84208,7 +83187,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:35.414283+00:00",
+      "actualizado": "2026-06-02T12:23:55.700004+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -84244,6 +83223,16 @@
           "color": "ff0000"
         },
         {
+          "id": "6137",
+          "uid": "s:600~t:6137",
+          "nombre": "Atlético Bucaramanga",
+          "nombre_corto": "Bucaramanga",
+          "abreviatura": "BUC",
+          "slug": "betbrain.bucaramanga",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6137.png",
+          "color": "212121"
+        },
+        {
           "id": "4815",
           "uid": "s:600~t:4815",
           "nombre": "Atlético Junior",
@@ -84266,22 +83255,12 @@
         {
           "id": "5480",
           "uid": "s:600~t:5480",
-          "nombre": "Boyacá Chicó",
+          "nombre": "Boyacá Chicó FC",
           "nombre_corto": "Chicó FC",
           "abreviatura": "CHI",
           "slug": "col.boyaca_chico_fc",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5480.png",
           "color": "0202db"
-        },
-        {
-          "id": "6137",
-          "uid": "s:600~t:6137",
-          "nombre": "Bucaramanga",
-          "nombre_corto": "Bucaramanga",
-          "abreviatura": "BUC",
-          "slug": "betbrain.bucaramanga",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6137.png",
-          "color": "212121"
         },
         {
           "id": "6101",
@@ -84386,8 +83365,8 @@
         {
           "id": "7915",
           "uid": "s:600~t:7915",
-          "nombre": "Llaneros",
-          "nombre_corto": "Llaneros",
+          "nombre": "Llaneros FC",
+          "nombre_corto": "Llaneros FC",
           "abreviatura": "LLA",
           "slug": "col.llanero",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7915.png",
@@ -84730,10 +83709,10 @@
           "equipo": {
             "id": "6137",
             "uid": "s:600~t:6137",
-            "nombre": "Bucaramanga",
+            "nombre": "Atlético Bucaramanga",
             "nombre_corto": "Bucaramanga",
             "abreviatura": "BUC",
-            "slug": "bucaramanga",
+            "slug": "atletico-bucaramanga",
             "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6137.png",
             "color": ""
           },
@@ -84755,10 +83734,10 @@
           "equipo": {
             "id": "7915",
             "uid": "s:600~t:7915",
-            "nombre": "Llaneros",
-            "nombre_corto": "Llaneros",
+            "nombre": "Llaneros FC",
+            "nombre_corto": "Llaneros FC",
             "abreviatura": "LLA",
-            "slug": "llaneros",
+            "slug": "llaneros-fc",
             "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7915.png",
             "color": ""
           },
@@ -84855,10 +83834,10 @@
           "equipo": {
             "id": "5480",
             "uid": "s:600~t:5480",
-            "nombre": "Boyacá Chicó",
+            "nombre": "Boyacá Chicó FC",
             "nombre_corto": "Chicó FC",
             "abreviatura": "CHI",
-            "slug": "boyaca-chico",
+            "slug": "boyaca-chico-fc",
             "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5480.png",
             "color": ""
           },
@@ -85045,7 +84024,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:35.571346+00:00",
+      "actualizado": "2026-06-02T12:23:55.959546+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -86048,7 +85027,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:35.750838+00:00",
+      "actualizado": "2026-06-02T12:23:56.234030+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -86815,7 +85794,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-01T22:40:35.926186+00:00",
+      "actualizado": "2026-06-02T12:23:56.476575+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
