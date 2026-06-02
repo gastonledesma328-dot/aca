@@ -75,7 +75,7 @@
   function normalizeText(value) {
     return String(value ?? "")
       .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[\u0300-\u036F]/g, "")
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, " ")
       .replace(/\s+/g, " ")
@@ -266,20 +266,20 @@
     const index = indiceActual();
     const canPrev = index > 0;
     const canNext = index < state.items.length - 1;
-    const options = state.items.map((x) => `<option value="${escapeHtml(x.key)}" ${x.key === item.key ? "selected" : ""}>${escapeHtml(x.nombre)} \u00c3\u0083\u00c2\u0083\u00c3\u0082\u00c2\u0082\u00c3\u0083\u00c2\u0082\u00c3\u0082\u00b7 ${escapeHtml(x.dateLabel)}</option>`).join("");
+    const options = state.items.map((x) => `<option value="${escapeHtml(x.key)}" ${x.key === item.key ? "selected" : ""}>${escapeHtml(x.nombre)} \u00B7 ${escapeHtml(x.dateLabel)}</option>`).join("");
 
     box.innerHTML = `
       <div class="season-fixture-card pn-fixture-card">
         <h3 class="season-title">PRIMERA NACIONAL</h3>
         <div class="season-nav">
-          <button class="season-arrow" type="button" data-pn-season-prev ${canPrev ? "" : "disabled"} aria-label="Fecha anterior">\u00c3\u0083\u00c2\u0083\u00c3\u0082\u00c2\u00a2\u00c3\u0083\u00c2\u0082\u00c3\u0082\u00c2\u0080\u00c3\u0083\u00c2\u0082\u00c3\u0082\u00c2\u00b9</button>
+          <button class="season-arrow" type="button" data-pn-season-prev ${canPrev ? "" : "disabled"} aria-label="Fecha anterior">\u2039</button>
           <label class="season-select-wrap">
-            <span>${escapeHtml(item.nombre.toUpperCase())}\u00c3\u0083\u00c2\u0083\u00c3\u0082\u00c2\u00a2\u00c3\u0083\u00c2\u0082\u00c3\u0082\u00c2\u0096\u00c3\u0083\u00c2\u0082\u00c3\u0082\u00c2\u00bc</span>
+            <span>${escapeHtml(item.nombre.toUpperCase())}\u25BC</span>
             <select class="season-select" data-pn-season-select aria-label="Seleccionar fecha">
               ${options}
             </select>
           </label>
-          <button class="season-arrow" type="button" data-pn-season-next ${canNext ? "" : "disabled"} aria-label="Fecha siguiente">\u00c3\u0083\u00c2\u0083\u00c3\u0082\u00c2\u00a2\u00c3\u0083\u00c2\u0082\u00c3\u0082\u00c2\u0080\u00c3\u0083\u00c2\u0082\u00c3\u0082\u00c2\u00ba</button>
+          <button class="season-arrow" type="button" data-pn-season-next ${canNext ? "" : "disabled"} aria-label="Fecha siguiente">\u203A</button>
         </div>
         <div class="season-table">
           <div class="season-rows">
@@ -359,7 +359,7 @@
 })();
 
 
-// \u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080 Ranking de Campeones (sobreescribe el grid de equipos) \u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080\u00c3\u00a2\u00c2\u0094\u00c2\u0080
+// \u2500\u2500 Ranking de Campeones (sobreescribe el grid de equipos) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 (function overrideTeamsSection() {
   const CAMPEONES_URL = '../data/campeones_primera_nacional_equipos.json';
 
@@ -373,7 +373,7 @@
     if (section) {
       const kicker = section.querySelector('.competition-section-kicker');
       const title  = section.querySelector('h2');
-      if (kicker) kicker.textContent = 'Campeones Hist\u00f3ricos';
+      if (kicker) kicker.textContent = 'Campeones Hist\u00F3ricos';
       if (title)  title.textContent  = 'Ranking de Campeones';
     }
 
@@ -384,7 +384,7 @@
           <div class="pn-ranking-table">
             <div class="pn-ranking-header">
               <span>Equipos</span>
-              <span>T\u00edtulos</span>
+              <span>T\u00EDtulos</span>
             </div>
             ${equipos.map(team => `
               <div class="pn-ranking-row">
