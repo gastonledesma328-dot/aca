@@ -1,6 +1,6 @@
 name: Generar Primera Nacional ESPN
 
-on:
+"on":
   schedule:
     - cron: "40 8,14,20 * * *"
   workflow_dispatch:
