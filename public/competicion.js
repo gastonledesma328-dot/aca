@@ -114,8 +114,8 @@ function renderSummary(competition) {
   setHtml(summary, [
     ["Equipos", resumen.equipos ?? competition.equipos?.length ?? 0],
     ["Tabla", resumen.posiciones ?? competition.tabla?.length ?? 0],
-    ["PrÃ³ximos", resumen.proximos ?? competition.partidos?.proximos?.length ?? 0],
-    ["Ãltimos", resumen.ultimos ?? competition.partidos?.ultimos?.length ?? 0],
+    ["Próximos", resumen.proximos ?? competition.partidos?.proximos?.length ?? 0],
+    ["Últimos", resumen.ultimos ?? competition.partidos?.ultimos?.length ?? 0],
     ...extra,
   ]
     .map(([label, value]) => `<article class="competition-stat-box"><span>${label}</span><strong>${escapeHtml(value)}</strong></article>`)
@@ -207,7 +207,7 @@ function renderTable(competition) {
   const tabla = Array.isArray(competition.tabla) ? competition.tabla : [];
 
   if (!tabla.length) {
-    setHtml(tableBody, `<tr><td colspan="10" class="team-cell">No hay tabla disponible desde ESPN para esta competiciÃ³n.</td></tr>`);
+    setHtml(tableBody, `<tr><td colspan="10" class="team-cell">No hay tabla disponible desde ESPN para esta competición.</td></tr>`);
     return;
   }
 
@@ -265,7 +265,7 @@ function renderTeams(competition) {
   const teams = Array.isArray(competition.equipos) ? competition.equipos : [];
 
   if (!teams.length) {
-    setHtml(teamsGrid, `<p class="competition-empty">No hay equipos disponibles desde ESPN para esta competiciÃ³n.</p>`);
+    setHtml(teamsGrid, `<p class="competition-empty">No hay equipos disponibles desde ESPN para esta competición.</p>`);
     return;
   }
 
@@ -581,7 +581,7 @@ function renderLigaProfesionalExtras(competition) {
     <div class="competition-lpf-info">
       <article><span>Torneo terminado</span><strong>${escapeHtml(especial.torneo_anterior || "Apertura")}</strong></article>
       <article><span>Torneo siguiente</span><strong>${escapeHtml(especial.torneo_actual || "Clausura")}</strong></article>
-      <article><span>Formato</span><strong>16 equipos Â· EliminaciÃ³n directa</strong></article>
+      <article><span>Formato</span><strong>16 equipos · Eliminación directa</strong></article>
     </div>
     <div class="competition-bracket">
       <div class="competition-bracket-tournament">
@@ -603,19 +603,19 @@ function setActiveTab(tab) {
 }
 
 function renderCompetition(competition) {
-  const title = competition.nombre_largo || competition.nombre || "CompeticiÃ³n";
+  const title = competition.nombre_largo || competition.nombre || "Competición";
   document.title = `${title} | Partidos Hoy`;
 
   setText(pageTitle, title);
   setText(heroTitle, title);
-  setText(heroSubtitle, `${competition.pais || competition.grupo || "FÃºtbol"} Â· Temporada ${competition.season || "actual"} Â· Fuente: ${competition.fuente || "ESPN API"}`);
+  setText(heroSubtitle, `${competition.pais || competition.grupo || "Fútbol"} · Temporada ${competition.season || "actual"} · Fuente: ${competition.fuente || "ESPN API"}`);
   setText(updated, `Actualizado: ${formatDate(competition.actualizado)}`);
 
   renderSummary(competition);
   renderTable(competition);
   renderLigaProfesionalExtras(competition);
-  renderMatches(nextList, competition.partidos?.proximos, "No hay prÃ³ximos partidos disponibles para esta competiciÃ³n.");
-  renderMatches(lastList, competition.partidos?.ultimos, "No hay Ãºltimos resultados disponibles para esta competiciÃ³n.");
+  renderMatches(nextList, competition.partidos?.proximos, "No hay próximos partidos disponibles para esta competición.");
+  renderMatches(lastList, competition.partidos?.ultimos, "No hay últimos resultados disponibles para esta competición.");
   renderTeams(competition);
 }
 
@@ -632,17 +632,17 @@ async function init() {
     const competition = competitions.find((item) => item.id === COMPETITION_ID || item.slug === COMPETITION_ID);
 
     if (!competition) {
-      throw new Error(`No se encontrÃ³ la competiciÃ³n: ${COMPETITION_ID}`);
+      throw new Error(`No se encontró la competición: ${COMPETITION_ID}`);
     }
 
     renderCompetition(competition);
     setActiveTab("tabla");
   } catch (error) {
-    setText(heroTitle, "No se pudo cargar la competiciÃ³n");
+    setText(heroTitle, "No se pudo cargar la competición");
     setText(heroSubtitle, error.message);
     setText(updated, "Actualizando...");
     setHtml(summary, "");
-    setHtml(tableBody, `<tr><td colspan="10" class="team-cell">EjecutÃ¡ el workflow Generar competiciones ESPN para crear public/data/competiciones.json.</td></tr>`);
+    setHtml(tableBody, `<tr><td colspan="10" class="team-cell">Ejecutá el workflow Generar competiciones ESPN para crear public/data/competiciones.json.</td></tr>`);
     setActiveTab("tabla");
   }
 }
