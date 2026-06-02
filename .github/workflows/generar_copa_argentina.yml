@@ -37,9 +37,3 @@ jobs:
           git add data/copa_argentina_bracket.json public/data/copa_argentina_bracket.json
           git commit -m "Actualizar Copa Argentina" || echo "Sin cambios"
           git push
-
-      - name: Deploy a Cloudflare Workers
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
