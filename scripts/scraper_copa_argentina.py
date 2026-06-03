@@ -1,236 +1,211 @@
 """
-scraper_copa_argentina.py
-Scraper de Copa Argentina desde la API pública de ESPN (arg.copa).
+Scraper Copa Argentina - ESPN API
+Genera copa_argentina_bracket.json con mapeo de cruces real.
+
+LOGICA DE CRUCES (sorteo abierto):
+Copa Argentina NO tiene llaves fijas. Cada fase se define por sorteo.
+Solucion: al parsear cada fase, buscamos en la fase anterior cual
+partido produjo a cada equipo (por nombre de ganador) y guardamos
+src_local y src_visitante (indices de los partidos fuente).
+El bracket JS usa estos indices para dibujar las lineas correctas.
 """
 
-import json, re, time, requests
+import requests, json, os
 from datetime import datetime
-from pathlib import Path
-from zoneinfo import ZoneInfo
 
-LEAGUE   = "arg.copa"
-ESPN_SB  = f"https://site.api.espn.com/apis/site/v2/sports/soccer/{LEAGUE}/scoreboard"
-ESPN_CORE= f"https://sports.core.api.espn.com/v2/sports/soccer/leagues/{LEAGUE}"
+BASE = "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/scoreboard"
+SEASONS = [2026]
+OUT_DATA   = os.path.join(os.path.dirname(__file__), "../data/copa_argentina_bracket.json")
+OUT_PUBLIC = os.path.join(os.path.dirname(__file__), "../public/data/copa_argentina_bracket.json")
 
-OUTPUTS = [
-    Path("data/copa_argentina_bracket.json"),
-    Path("public/data/copa_argentina_bracket.json"),
-]
+ORDEN = ["treintaidosavos","dieciseisavos","octavos","cuartos","semis","final"]
 
-TZ_ARG = ZoneInfo("America/Argentina/Buenos_Aires")
-H = {"User-Agent": "Mozilla/5.0", "Accept": "application/json"}
+ROUND_MAP = {
+    "round of 64":"treintaidosavos","32avos":"treintaidosavos","primera ronda":"treintaidosavos",
+    "round of 32":"dieciseisavos","16avos":"dieciseisavos","dieciseisavos":"dieciseisavos","segunda ronda":"dieciseisavos",
+    "round of 16":"octavos","octavos":"octavos","tercera ronda":"octavos",
+    "quarterfinal":"cuartos","cuartos":"cuartos",
+    "semifinal":"semis","semifinales":"semis","semis":"semis",
+    "final":"final","gran final":"final",
+}
 
-FASE_SLOTS  = [
-    ("treintaidosavos", "32avos de Final",   32),
-    ("dieciseisavos",   "16avos de Final",   16),
-    ("octavos",         "Octavos de Final",   8),
-    ("cuartos",         "Cuartos de Final",   4),
-    ("semis",           "Semifinales",         2),
-    ("final",           "Final",               1),
-]
-
-def get(url, params=None):
-    for _ in range(3):
-        try:
-            r = requests.get(url, params=params, headers=H, timeout=20)
-            if r.status_code == 200:
-                return r.json()
-        except Exception as e:
-            print(f"  WARN {url}: {e}")
-        time.sleep(1.5)
+def clasificar(texto):
+    if not texto: return None
+    t = texto.lower()
+    for k,v in ROUND_MAP.items():
+        if k in t: return v
     return None
 
-def arg_date(iso_str):
-    if not iso_str: return ""
-    try:
-        dt = datetime.fromisoformat(iso_str.replace("Z", "+00:00"))
-        return dt.astimezone(TZ_ARG).strftime("%Y-%m-%d")
-    except Exception:
-        return str(iso_str)[:10]
-
-def build_team(competitor):
-    team = competitor.get("team") or {}
-    score = str(competitor.get("score") or "").strip()
-    winner = competitor.get("winner") is True
-    logo_url = ""
-    logos = team.get("logos") or []
-    if logos:
-        logo_url = logos[0].get("href", "")
-    elif team.get("logo"):
-        logo_url = team["logo"]
+def parse_team(c, completado):
+    t = c.get("team",{})
+    logos = t.get("logos",[])
+    logo = logos[0].get("href","") if logos else ""
     return {
-        "nombre":       team.get("displayName") or team.get("name") or "",
-        "nombre_corto": team.get("shortDisplayName") or team.get("abbreviation") or "",
-        "espn_id":      str(team.get("id") or ""),
-        "logo":         logo_url,
-        "marcador":     score,
-        "penaltis":     None,
-        "ganador":      winner,
+        "id": t.get("id",""),
+        "nombre": t.get("displayName", t.get("name","")),
+        "nombre_corto": t.get("abbreviation", t.get("shortDisplayName","")),
+        "logo": logo,
+        "marcador": c.get("score","") if completado else "",
+        "ganador": bool(c.get("winner")) if completado else False,
     }
 
-def build_partido(event):
-    comp = (event.get("competitions") or [{}])[0]
-    competitors = comp.get("competitors") or []
-    home = next((c for c in competitors if c.get("homeAway") == "home"), competitors[0] if competitors else {})
-    away = next((c for c in competitors if c.get("homeAway") == "away"), competitors[1] if len(competitors) > 1 else {})
-    status_type = (event.get("status") or {}).get("type") or {}
-    completed = status_type.get("completed") is True
-    estado = status_type.get("shortDetail") or status_type.get("description") or ""
-    venue = comp.get("venue") or {}
-    estadio = venue.get("fullName") or ""
-    city = (venue.get("address") or {}).get("city") or ""
-    if city and estadio:
-        estadio = f"{estadio}, {city}"
-    pen_nota = ""
+def parse_evento(ev):
+    comp = (ev.get("competitions") or [{}])[0]
+    comps = comp.get("competitors",[])
+    local    = next((c for c in comps if c.get("homeAway")=="home"), comps[0] if comps else {})
+    visitante= next((c for c in comps if c.get("homeAway")=="away"), comps[1] if len(comps)>1 else {})
+    completado = ev.get("status",{}).get("type",{}).get("completed",False)
+
     pen = False
-    for note in comp.get("notes") or []:
-        h = note.get("headline") or ""
-        if "penal" in h.lower() or "penalty" in h.lower() or "penalt" in h.lower():
-            pen_nota = h
-            pen = True
+    nota_txt = ""
+    for n in comp.get("notes",[]):
+        h = n.get("headline","")
+        if h:
+            nota_txt = h
+            if any(x in h.lower() for x in ["pen","penalt","penales"]): pen=True
+
+    fase = clasificar(nota_txt) or clasificar(ev.get("name",""))
+
+    venue = comp.get("venue",{})
+    estadio = venue.get("fullName","") or venue.get("shortName","")
+    ciudad  = venue.get("address",{}).get("city","")
+    if ciudad and estadio: estadio = f"{estadio}, {ciudad}"
+
+    fecha_iso = ev.get("date","")
     return {
-        "id":         event.get("id") or "",
-        "nombre":     event.get("name") or "",
-        "fecha":      arg_date(event.get("date") or ""),
-        "fecha_iso":  event.get("date") or "",
-        "estado":     estado,
-        "completado": completed,
-        "penaltis":   pen,
-        "local":      build_team(home),
-        "visitante":  build_team(away),
-        "estadio":    estadio,
-        "nota":       pen_nota,
+        "id":       ev.get("id",""),
+        "fase":     fase,
+        "nombre":   ev.get("name",""),
+        "fecha":    fecha_iso[:10] if fecha_iso else "",
+        "fecha_iso":fecha_iso,
+        "local":    parse_team(local, completado),
+        "visitante":parse_team(visitante, completado),
+        "completado": completado,
+        "penaltis": pen,
+        "estadio":  estadio,
+        "nota":     nota_txt,
+        # campos de cruce (se calculan despuÃ©s)
+        "src_local":    None,
+        "src_visitante":None,
     }
 
-def get_current_season():
-    d = get(f"{ESPN_CORE}/seasons", params={"lang": "es", "limit": 5})
-    if d and d.get("items"):
-        years = []
-        for item in d["items"]:
-            m = re.search(r"/(\d{4})$", item.get("$ref", ""))
-            if m: years.append(int(m.group(1)))
-        if years: return max(years)
-    return datetime.now().year
-
-def scrape_season(year):
-    all_events = []
-    for dr in [f"{year}0101-{year}0630", f"{year}0701-{year}1231"]:
-        d = get(ESPN_SB, params={"dates": dr, "limit": 200})
-        if d and d.get("events"):
-            all_events.extend(d["events"])
-        time.sleep(0.4)
-    seen = set()
-    unique = []
-    for ev in all_events:
+def fetch_year(year):
+    events = []
+    for start,end in [(f"{year}0101",f"{year}0630"),(f"{year}0701",f"{year}1231")]:
+        url = f"{BASE}?dates={start}-{end}&limit=200"
+        try:
+            r = requests.get(url, timeout=15)
+            r.raise_for_status()
+            evs = r.json().get("events",[])
+            events.extend(evs)
+            print(f"  {start}-{end}: {len(evs)} ev")
+        except Exception as e:
+            print(f"  ERROR {start}-{end}: {e}")
+    seen, unique = set(), []
+    for ev in events:
         eid = ev.get("id")
         if eid and eid not in seen:
             seen.add(eid); unique.append(ev)
     return unique
 
-def assign_fases(events):
+def build_winner_index(partidos):
+    """Mapa: nombre_normalizado -> indice del partido donde ese equipo fue ganador."""
+    idx = {}
+    for i, p in enumerate(partidos):
+        for team_key in ["local","visitante"]:
+            t = p.get(team_key,{})
+            if t.get("ganador"):
+                for nombre in [t.get("nombre_corto",""), t.get("nombre","")]:
+                    n = nombre.strip()
+                    if n: idx[n] = i
+    return idx
+
+def nombres_equipo(p, key):
+    t = p.get(key,{})
+    names = []
+    for k in ["nombre_corto","nombre"]:
+        n = t.get(k,"").strip()
+        if n: names.append(n)
+    return names
+
+def calcular_cruces(por_fase):
     """
-    Asigna fases a los partidos usando una estrategia multi-nivel:
-    1. Si el partido tiene nota 'advance' de una ronda específica, usa esa ronda.
-    2. Ordena todos los partidos por fecha y asigna fases en bloques
-       según los FASE_SLOTS definidos (32, 16, 8, 4, 2, 1).
+    Para cada partido de cada fase (desde la segunda),
+    busca en la fase anterior cuÃ¡l partido produjo cada equipo
+    (por nombre de ganador) y guarda el Ã­ndice como src_local / src_visitante.
     """
-    partidos = [build_partido(ev) for ev in events]
-    partidos.sort(key=lambda p: (p.get("fecha_iso") or p.get("fecha") or ""))
+    for fi in range(1, len(ORDEN)):
+        fase_actual   = ORDEN[fi]
+        fase_anterior = ORDEN[fi-1]
+        partidos_act  = por_fase.get(fase_actual, [])
+        partidos_ant  = por_fase.get(fase_anterior, [])
+        win_idx       = build_winner_index(partidos_ant)
 
-    total = len(partidos)
-    print(f"  Total partidos: {total}")
+        for p in partidos_act:
+            # buscar src_local
+            for n in nombres_equipo(p,"local"):
+                if n in win_idx:
+                    p["src_local"] = win_idx[n]; break
+            # buscar src_visitante
+            for n in nombres_equipo(p,"visitante"):
+                if n in win_idx:
+                    p["src_visitante"] = win_idx[n]; break
 
-    # Strategy: assign by chronological blocks
-    # Copa Argentina is single-elimination, so:
-    # - If we have ~32+ matches early: those are 32avos
-    # - Then ~16: dieciseisavos, etc.
-    # We use cumulative count to decide the round
+    return por_fase
 
-    # First pass: detect explicitly tagged matches (advance notes)
-    # Map from event_id to detected fase
-    explicit_fase = {}
-    for ev in events:
-        comp = (ev.get("competitions") or [{}])[0]
-        for note in comp.get("notes") or []:
-            h = (note.get("headline") or "").lower()
-            # ESPN Copa Argentina advance notes don't specify round, just "X advance Y-Z on penalties"
-            # So we can't use notes alone for round detection
+def build(year):
+    print(f"\n=== Copa Argentina {year} ===")
+    evs_raw = fetch_year(year)
+    print(f"Total: {len(evs_raw)} eventos Ãºnicos")
+    if not evs_raw: return None
 
-    # Strategy: group by date clusters, then assign rounds
-    # First cluster = 32avos (expect 32 matches)
-    # We define breakpoints based on cumulative count
-    cumulative_slots = []
-    acc = 0
-    for key, label, slots in FASE_SLOTS:
-        acc += slots
-        cumulative_slots.append((key, label, acc))
+    partidos = []
+    for ev in evs_raw:
+        p = parse_evento(ev)
+        if p["fase"]: partidos.append(p)
+        else: print(f"  Sin fase: {ev.get('name',''[:60])} | id={ev.get('id')}")
 
-    fases_dict = {k: [] for k, _, _ in FASE_SLOTS}
+    por_fase = {k:[] for k in ORDEN}
+    for p in partidos:
+        if p["fase"] in por_fase:
+            por_fase[p["fase"]].append(p)
 
-    # Sort and assign
-    assigned = 0
-    for key, label, cum_limit in cumulative_slots:
-        while assigned < cum_limit and assigned < len(partidos):
-            fases_dict[key].append(partidos[assigned])
-            assigned += 1
+    # Ordenar cada fase por fecha + id (orden cronolÃ³gico dentro de la fase)
+    for fase in ORDEN:
+        por_fase[fase].sort(key=lambda p: (p.get("fecha",""), p.get("id","")))
 
-    # Any overflow goes to the last fase
-    while assigned < len(partidos):
-        fases_dict["final"].append(partidos[assigned])
-        assigned += 1
+    # Calcular cruces
+    por_fase = calcular_cruces(por_fase)
 
-    return fases_dict
+    for fase in ORDEN:
+        n = len(por_fase[fase])
+        j = sum(1 for p in por_fase[fase] if p.get("completado"))
+        mapeados = sum(1 for p in por_fase[fase] if p.get("src_local") is not None)
+        if n: print(f"  {fase}: {n} partidos, {j} jugados, {mapeados} con src mapeado")
 
-def find_campeon(fases):
-    for p in fases.get("final") or []:
+    # CampeÃ³n
+    campeon = None
+    for p in por_fase.get("final",[]):
         if p.get("completado"):
-            local = p.get("local") or {}
-            visit = p.get("visitante") or {}
-            if local.get("ganador"):
-                return {"id": local["espn_id"], "nombre": local["nombre"], "logo": local["logo"]}
-            elif visit.get("ganador"):
-                return {"id": visit["espn_id"], "nombre": visit["nombre"], "logo": visit["logo"]}
-    return None
+            t = p["local"] if p["local"].get("ganador") else p["visitante"]
+            campeon = {"nombre": t["nombre"], "logo": t["logo"]}
 
-def main():
-    print("Scrapeando Copa Argentina desde ESPN API...\n")
-    season = get_current_season()
-    print(f"Temporada: {season}")
-    events = scrape_season(season)
-    if not events:
-        season -= 1
-        print(f"  Sin datos, probando {season}...")
-        events = scrape_season(season)
-    if not events:
-        print("ERROR: Sin datos"); return
-
-    fases = assign_fases(events)
-    campeon = find_campeon(fases)
-    total = sum(len(v) for v in fases.values())
-
-    print(f"\n=== Resumen ===")
-    for key, label, _ in FASE_SLOTS:
-        partidos = fases.get(key, [])
-        done = sum(1 for p in partidos if p.get("completado"))
-        print(f"  {label}: {len(partidos)} partidos ({done} completados)")
-    if campeon:
-        print(f"  Campeon: {campeon['nombre']}")
-
-    result = {
-        "competicion": "Copa Argentina",
-        "league_slug": LEAGUE,
-        "season": season,
-        "actualizado": datetime.utcnow().isoformat() + "Z",
+    return {
+        "season": year,
         "campeon": campeon,
-        "fases": fases,
-        "total_partidos": total,
+        "actualizado": datetime.utcnow().isoformat()+"Z",
+        "fases": por_fase,
     }
 
-    for path in OUTPUTS:
-        path.parent.mkdir(parents=True, exist_ok=True)
-        with open(path, "w", encoding="utf-8") as f:
-            json.dump(result, f, ensure_ascii=False, indent=2)
-        print(f"Guardado: {path}")
+def save(data, path):
+    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+    with open(path,"w",encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print(f"Guardado: {path}")
 
 if __name__ == "__main__":
-    main()
+    for year in SEASONS:
+        data = build(year)
+        if data:
+            save(data, OUT_DATA)
+            save(data, OUT_PUBLIC)
