@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "campeon": null,
-  "actualizado": "2026-06-03T01:50:46.652279Z",
+  "actualizado": "2026-06-03T13:24:20.072052Z",
   "fases": {
     "treintaidosavos": [
       {
@@ -1307,18 +1307,18 @@
           "nombre": "Barracas Central",
           "nombre_corto": "BAR",
           "logo": "",
-          "marcador": "",
-          "ganador": false
+          "marcador": "1",
+          "ganador": true
         },
         "visitante": {
           "id": "10",
           "nombre": "Huracán",
           "nombre_corto": "HUR",
           "logo": "",
-          "marcador": "",
+          "marcador": "0",
           "ganador": false
         },
-        "completado": false,
+        "completado": true,
         "penaltis": false,
         "estadio": "Julio Humberto Grondona, Buenos Aires",
         "nota": "",
