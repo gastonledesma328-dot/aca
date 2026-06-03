@@ -20,63 +20,111 @@ function fmtDate(iso){
   catch(e){return (iso||"").slice(5,10);}
 }
 
-/* Calcula las posiciones Y de cada columna usando src_local/src_visitante */
-/* Primer columna: equiespaciado. Columnas siguientes: centrado entre sus dos fuentes */
-function calcPositions(fasesVis, ord){
-  var n0 = (ord[fasesVis[0].key]||[]).length;
-  if(n0===0) n0 = fasesVis[0].slots;
-  var slotH = MH + VGAP;
-  var totalH = n0 * slotH;
+/*
+  reorderForBracket: dado que los partidos de la fase siguiente tienen src_local/src_visitante
+  que apuntan a indices de la fase anterior, reordena la fase anterior para que los pares
+  que se cruzan queden adyacentes (en posiciones 2k y 2k+1).
+  Devuelve el nuevo array ordenado Y actualiza los src de la fase siguiente.
+*/
+function reorderPrev(prevPartidos, nextPartidos){
+  // Construir lista de pares de src usados por nextPartidos
+  var placed = [];  // nuevas posiciones de prevPartidos
+  var used = {};
+  for(var mi=0;mi<nextPartidos.length;mi++){
+    var p = nextPartidos[mi];
+    var sL = p.src_local;
+    var sV = p.src_visitante;
+    if(sL!=null && !used[sL]){ placed.push(sL); used[sL]=true; }
+    if(sV!=null && !used[sV]){ placed.push(sV); used[sV]=true; }
+  }
+  // Agregar los que no tienen src en nextPartidos
+  for(var i=0;i<prevPartidos.length;i++){
+    if(!used[i]){ placed.push(i); used[i]=true; }
+  }
+  // Construir array reordenado
+  var reordered = [];
+  for(var j=0;j<placed.length;j++) reordered.push(prevPartidos[placed[j]]);
+  // Construir mapa old_index -> new_index
+  var indexMap = {};
+  for(var k=0;k<placed.length;k++) indexMap[placed[k]] = k;
+  // Actualizar src en nextPartidos
+  for(var mi2=0;mi2<nextPartidos.length;mi2++){
+    var p2 = nextPartidos[mi2];
+    if(p2.src_local!=null) p2.src_local = indexMap[p2.src_local];
+    if(p2.src_visitante!=null) p2.src_visitante = indexMap[p2.src_visitante];
+  }
+  return reordered;
+}
+
+function buildBracket(fases){
+  var pi=FASES.findIndex(function(f){return (fases[f.key]||[]).length>0;});
+  if(pi<0)return null;
+  var fv=FASES.slice(pi);
+  // Copiar arrays para no mutar el JSON original
+  var ord={};
+  fv.forEach(function(f){
+    var arr=(fases[f.key]||[]).slice();
+    arr.sort(function(a,b){return (a.llave_num||0)-(b.llave_num||0);});
+    // Deep copy para no perder src originals
+    ord[f.key]=arr.map(function(p){return Object.assign({},p);});
+  });
   
-  // Ronda 0: equiespaciado
-  var posY = [];
-  var r0 = [];
-  for(var i=0;i<n0;i++) r0.push(i*slotH + slotH/2);
+  // Reordenar cada fase anterior segun como la consume la siguiente
+  for(var ri=0;ri<fv.length-1;ri++){
+    var prevKey=fv[ri].key;
+    var nextKey=fv[ri+1].key;
+    if((ord[nextKey]||[]).some(function(p){return p.src_local!=null;})){
+      ord[prevKey] = reorderPrev(ord[prevKey], ord[nextKey]);
+    }
+  }
+  
+  // Calcular posiciones Y: ronda 0 equiespaciada, siguientes centradas entre sus hijos
+  var n0=(ord[fv[0].key]||[]).length;
+  if(n0===0)n0=fv[0].slots;
+  var slotH=MH+VGAP;
+  var totalH=n0*slotH;
+  var posY=[];
+  var r0=[];
+  for(var i=0;i<n0;i++) r0.push(i*slotH+slotH/2);
   posY.push(r0);
-  
-  // Rondas siguientes: usar src_local/src_visitante si disponibles, sino arbol binario
-  for(var ri=1;ri<fasesVis.length;ri++){
-    var partidos = ord[fasesVis[ri].key]||[];
-    var prevY = posY[ri-1];
-    var rY = [];
-    for(var mi=0;mi<partidos.length;mi++){
-      var p = partidos[mi];
-      var srcL = (p.src_local!=null) ? p.src_local : mi*2;
-      var srcV = (p.src_visitante!=null) ? p.src_visitante : mi*2+1;
-      var yL = (srcL < prevY.length) ? prevY[srcL] : prevY[prevY.length-1];
-      var yV = (srcV < prevY.length) ? prevY[srcV] : yL;
+  for(var ri2=1;ri2<fv.length;ri2++){
+    var pts=ord[fv[ri2].key]||[];
+    var prevY=posY[ri2-1];
+    var rY=[];
+    for(var mi=0;mi<pts.length;mi++){
+      var p=pts[mi];
+      var sL=(p.src_local!=null)?p.src_local:mi*2;
+      var sV=(p.src_visitante!=null)?p.src_visitante:mi*2+1;
+      var yL=(sL<prevY.length)?prevY[sL]:(prevY[prevY.length-1]||totalH/2);
+      var yV=(sV<prevY.length)?prevY[sV]:yL;
       rY.push((yL+yV)/2);
     }
-    // Completar slots vacios con interpolacion
-    var nSlots = fasesVis[ri].slots;
-    while(rY.length < nSlots){
-      var last = rY[rY.length-1] || totalH/2;
-      rY.push(last + slotH);
+    // Completar hasta slots
+    while(rY.length<fv[ri2].slots){
+      var last=rY[rY.length-1]||(totalH/2);
+      rY.push(last+slotH*Math.pow(2,ri2));
     }
     posY.push(rY);
   }
-  return {posY: posY, totalH: totalH};
+  return {fv:fv, ord:ord, posY:posY, totalH:totalH};
 }
 
-function buildLines(posY, fasesVis, ord){
-  var lines=[], cx=0;
-  for(var ri=0;ri<fasesVis.length-1;ri++){
+function buildLines(posY,fv,ord){
+  var lines=[],cx=0;
+  for(var ri=0;ri<fv.length-1;ri++){
     var xr=cx+MW, xl=cx+MW+CG, xm=xr+CG/2;
-    var partidos = ord[fasesVis[ri+1].key]||[];
-    var prevY = posY[ri];
-    var nextY = posY[ri+1];
-    for(var mi=0;mi<partidos.length;mi++){
-      var p = partidos[mi];
-      var cy = nextY[mi]+HD;
-      var srcL = (p.src_local!=null) ? p.src_local : mi*2;
-      var srcV = (p.src_visitante!=null) ? p.src_visitante : mi*2+1;
-      var cy1 = ((srcL<prevY.length)?prevY[srcL]:cy-20)+HD;
-      var cy2 = ((srcV<prevY.length)?prevY[srcV]:cy+20)+HD;
-      // linea del hijo izq
+    var pts=ord[fv[ri+1].key]||[];
+    var prevY=posY[ri];
+    var nextY=posY[ri+1];
+    for(var mi=0;mi<pts.length;mi++){
+      var p=pts[mi];
+      var cy=nextY[mi]+HD;
+      var sL=(p.src_local!=null)?p.src_local:mi*2;
+      var sV=(p.src_visitante!=null)?p.src_visitante:mi*2+1;
+      var cy1=((sL<prevY.length)?prevY[sL]:(cy-10))+HD;
+      var cy2=((sV<prevY.length)?prevY[sV]:(cy+10))+HD;
       lines.push("<path d=\"M"+xr+","+cy1+" H"+xm+" V"+cy+" H"+xl+"\" fill=\"none\" stroke=\"rgba(125,255,179,.35)\" stroke-width=\"1.5\"/>");
-      // linea del hijo der (solo si es distinto)
-      if(srcL!==srcV)
-        lines.push("<path d=\"M"+xr+","+cy2+" H"+xm+" V"+cy+" H"+xl+"\" fill=\"none\" stroke=\"rgba(125,255,179,.35)\" stroke-width=\"1.5\"/>");
+      if(sL!==sV) lines.push("<path d=\"M"+xr+","+cy2+" H"+xm+" V"+cy+" H"+xl+"\" fill=\"none\" stroke=\"rgba(125,255,179,.35)\" stroke-width=\"1.5\"/>");
     }
     cx+=MW+CG;
   }
@@ -154,67 +202,42 @@ function injStyles(){
 function render(data){
   var c=document.getElementById("competitionTableCard");
   if(!c)return;
-  var fases=data.fases||{};
-  var camp=data.campeon||null;
   var season=data.season||new Date().getFullYear();
   var upd=data.actualizado?new Date(data.actualizado).toLocaleString("es-AR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",timeZone:TZ}):"";
   injStyles();
-  
-  // Determinar fases visibles (desde la primera con datos)
-  var pi=FASES.findIndex(function(f){return (fases[f.key]||[]).length>0;});
-  if(pi<0){
+  var tree=buildBracket(data.fases||{});
+  if(!tree){
     c.innerHTML="<div id=\"copa-argentina-bracket\"><div class=\"cb-hdr\"><span class=\"cb-ht\">Cuadro de Llaves</span></div><p style=\"padding:20px;text-align:center;color:rgba(255,255,255,.3);font-size:12px\">Sin datos disponibles</p></div>";
     return;
   }
-  var fv=FASES.slice(pi);
-  
-  // Ordenar cada fase por llave_num
-  var ord={};
-  fv.forEach(function(f){
-    var arr=(fases[f.key]||[]).slice();
-    arr.sort(function(a,b){return (a.llave_num||0)-(b.llave_num||0);});
-    ord[f.key]=arr;
-  });
-  
-  // Calcular posiciones Y usando src_local/src_visitante
-  var calc=calcPositions(fv,ord);
-  var posY=calc.posY;
-  var totalH=calc.totalH;
-  var svgH=totalH+HD;
+  var fv=tree.fv, ord=tree.ord, posY=tree.posY, totalH=tree.totalH;
+  var camp=data.campeon||null;
   var totalW=fv.length*(MW+CG)+(camp?120:0);
-  
-  // Construir HTML
-  var mds=[], rhs=[], cx=0;
+  var svgH=totalH+HD;
+  var mds=[],rhs=[],cx=0;
   for(var ri=0;ri<fv.length;ri++){
     var fase=fv[ri];
     var pts=ord[fase.key]||[];
     var cY=posY[ri]||[];
     var j=0; pts.forEach(function(p){if(p.completado)j++;});
     var tot=pts.length;
-    var badge=tot>0
-      ?"<span class=\"cb-badge "+(j===tot?"dn":"")+"\">"+(j)+"/"+tot+"</span>"
-      :"<span class=\"cb-badge\">"+fase.slots+"</span>";
+    var badge=tot>0?"<span class=\"cb-badge "+(j===tot?"dn":"")+"\">"+(j)+"/"+tot+"</span>":"<span class=\"cb-badge\">"+fase.slots+"</span>";
     rhs.push("<div class=\"cb-rh\" style=\"left:"+cx+"px;width:"+MW+"px\">"+esc(fase.label)+badge+"</div>");
-    // Slots = max(partidos reales, posiciones calculadas)
-    var nSlots=cY.length;
+    var nSlots=Math.max(cY.length, pts.length);
     for(var mi=0;mi<nSlots;mi++){
       var p=mi<pts.length?pts[mi]:null;
-      var y=Math.round(cY[mi]-MH/2+HD);
+      var y=Math.round((mi<cY.length?cY[mi]:cY[cY.length-1]||(totalH/2))-MH/2+HD);
       mds.push(renderMatch(p,fase.key,cx,y));
     }
     cx+=MW+CG;
   }
-  
-  // Campeon
   if(camp){
     var lY=(posY[posY.length-1][0]||totalH/2)+HD;
     mds.push("<div class=\"cb-camp\" style=\"left:"+(cx-CG+4)+"px;top:"+Math.round(lY-35)+"px\">"+
       (camp.logo?"<img src=\""+esc(camp.logo)+"\" alt=\"\" class=\"cb-clog\">":"")+
       "<div class=\"cb-clbl\">Campeon</div><div class=\"cb-cnm\">"+esc(camp.nombre||"")+"</div></div>");
   }
-  
   var svgLines=buildLines(posY,fv,ord);
-  
   c.innerHTML="<div id=\"copa-argentina-bracket\">"+
     "<div class=\"cb-hdr\"><span class=\"cb-ht\">Cuadro de Llaves</span><span class=\"cb-hs\">"+season+"</span>"+(upd?"<span class=\"cb-hu\">Act. "+upd+"</span>":"")+",</div>"+
     "<div class=\"cb-outer\"><div class=\"cb-wrap\" style=\"width:"+totalW+"px;height:"+svgH+"px\">"+
@@ -223,7 +246,6 @@ function render(data){
 }
 
 function isP(){return (document.body&&document.body.dataset.competitionId)==="copa-argentina";}
-
 function init(){
   if(!isP())return;
   var el=document.getElementById("competitionTableCard");
@@ -237,7 +259,6 @@ function init(){
       if(el2)el2.innerHTML="<div style=\"padding:20px;text-align:center;color:rgba(255,255,255,.25);font-size:12px\">No se pudo cargar el bracket.</div>";
     });
 }
-
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);
 else init();
 })();
