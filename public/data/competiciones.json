@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-03T22:35:46.424597+00:00",
+  "actualizado": "2026-06-04T11:28:52.853760+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:41.047366+00:00",
+      "actualizado": "2026-06-04T11:28:40.359819+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:41.228006+00:00",
+      "actualizado": "2026-06-04T11:28:40.864040+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -57013,7 +57013,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:42.593142+00:00",
+      "actualizado": "2026-06-04T11:28:42.726396+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -57674,9 +57674,9 @@
         "ultimos": [],
         "proximos": [
           {
-            "id": "401873912",
+            "id": "401866135",
             "nombre": "Deportivo Riestra at San Lorenzo",
-            "fecha": "2026-06-04T00:10Z",
+            "fecha": "2026-06-06T04:00Z",
             "estado": "Scheduled",
             "estado_tipo": "pre",
             "completado": false,
@@ -57714,7 +57714,7 @@
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401873912/deportivo-riestra-san-lorenzo",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401866135/deportivo-riestra-san-lorenzo",
             "penales": {
               "definicion": false,
               "local": "",
@@ -57722,14 +57722,14 @@
               "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-06-04"
+            "fecha_grupo": "2026-06-06"
           }
         ],
         "todos": [
           {
-            "id": "401873912",
+            "id": "401866135",
             "nombre": "Deportivo Riestra at San Lorenzo",
-            "fecha": "2026-06-04T00:10Z",
+            "fecha": "2026-06-06T04:00Z",
             "estado": "Scheduled",
             "estado_tipo": "pre",
             "completado": false,
@@ -57767,7 +57767,7 @@
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401873912/deportivo-riestra-san-lorenzo",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401866135/deportivo-riestra-san-lorenzo",
             "penales": {
               "definicion": false,
               "local": "",
@@ -57775,7 +57775,7 @@
               "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-06-04"
+            "fecha_grupo": "2026-06-06"
           }
         ],
         "total_scoreboard": 1
@@ -57790,7 +57790,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:42.757980+00:00",
+      "actualizado": "2026-06-04T11:28:43.146709+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -59474,7 +59474,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:42.948163+00:00",
+      "actualizado": "2026-06-04T11:28:43.583053+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -59482,7 +59482,7 @@
         "standings": "https://site.web.api.espn.com/apis/v2/sports/soccer/conmebol.sudamericana/standings"
       },
       "resumen": {
-        "equipos": 48,
+        "equipos": 56,
         "posiciones": 32,
         "partidos_scoreboard": 2,
         "ultimos": 2,
@@ -59578,6 +59578,26 @@
           "slug": "bol.blooming",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6047.png",
           "color": "212121"
+        },
+        {
+          "id": "5",
+          "uid": "s:600~t:5",
+          "nombre": "Boca Juniors",
+          "nombre_corto": "Boca ",
+          "abreviatura": "CABJ",
+          "slug": "arg.boca_juniors",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+          "color": "fcb000"
+        },
+        {
+          "id": "2681",
+          "uid": "s:600~t:2681",
+          "nombre": "Bolívar",
+          "nombre_corto": "Bolívar",
+          "abreviatura": "BOL",
+          "slug": "bol.bolivar",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2681.png",
+          "color": "3c96c4"
         },
         {
           "id": "9999",
@@ -59720,6 +59740,16 @@
           "color": "212121"
         },
         {
+          "id": "2690",
+          "uid": "s:600~t:2690",
+          "nombre": "Independiente Medellín",
+          "nombre_corto": "Ind. Medellín",
+          "abreviatura": "DIM",
+          "slug": "col.independiente_medellin",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
+          "color": "d70000"
+        },
+        {
           "id": "20889",
           "uid": "s:600~t:20889",
           "nombre": "Independiente Petrolero",
@@ -59730,6 +59760,16 @@
           "color": "000000"
         },
         {
+          "id": "5488",
+          "uid": "s:600~t:5488",
+          "nombre": "Independiente Santa Fe",
+          "nombre_corto": "Santa Fe",
+          "abreviatura": "SFE",
+          "slug": "col.independiente_santa_fe",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5488.png",
+          "color": "E33439"
+        },
+        {
           "id": "8416",
           "uid": "s:600~t:8416",
           "nombre": "Juventud",
@@ -59738,6 +59778,16 @@
           "slug": "uru.juventud",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8416.png",
           "color": "023396"
+        },
+        {
+          "id": "12",
+          "uid": "s:600~t:12",
+          "nombre": "Lanús",
+          "nombre_corto": "Lanús ",
+          "abreviatura": "LAN",
+          "slug": "arg.lanus",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+          "color": "9f0000"
         },
         {
           "id": "21843",
@@ -59808,6 +59858,16 @@
           "slug": "torque",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19002.png",
           "color": "6bc7f5"
+        },
+        {
+          "id": "2684",
+          "uid": "s:600~t:2684",
+          "nombre": "Nacional",
+          "nombre_corto": "Nacional",
+          "abreviatura": "NAC",
+          "slug": "uru.nacional",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2684.png",
+          "color": "345BBC"
         },
         {
           "id": "5584",
@@ -59920,6 +59980,16 @@
           "color": "000000"
         },
         {
+          "id": "2673",
+          "uid": "s:600~t:2673",
+          "nombre": "Sporting Cristal",
+          "nombre_corto": "Sporting Cristal",
+          "abreviatura": "SCR",
+          "slug": "per.sporting_cristal",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2673.png",
+          "color": "3bb8e2"
+        },
+        {
           "id": "7466",
           "uid": "s:600~t:7466",
           "nombre": "Sportivo Trinidense",
@@ -59948,6 +60018,16 @@
           "slug": "arg.tigre",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
           "color": "C60000"
+        },
+        {
+          "id": "10094",
+          "uid": "s:600~t:10094",
+          "nombre": "UCV FC",
+          "nombre_corto": "UCV FC",
+          "abreviatura": "UCV",
+          "slug": "ven.ucv_fc",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
+          "color": "000000"
         },
         {
           "id": "4139",
@@ -60994,7 +61074,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:43.105573+00:00",
+      "actualizado": "2026-06-04T11:28:44.007411+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -62391,7 +62471,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:43.248262+00:00",
+      "actualizado": "2026-06-04T11:28:44.377533+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -63788,7 +63868,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:43.389367+00:00",
+      "actualizado": "2026-06-04T11:28:44.845761+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -65186,7 +65266,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:43.576197+00:00",
+      "actualizado": "2026-06-04T11:28:45.225154+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -66444,7 +66524,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:43.842259+00:00",
+      "actualizado": "2026-06-04T11:28:45.684553+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -67339,7 +67419,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:44.029828+00:00",
+      "actualizado": "2026-06-04T11:28:46.071636+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -69673,7 +69753,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:44.210496+00:00",
+      "actualizado": "2026-06-04T11:28:46.452099+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -71592,7 +71672,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:44.375055+00:00",
+      "actualizado": "2026-06-04T11:28:46.854806+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -73347,7 +73427,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:44.509315+00:00",
+      "actualizado": "2026-06-04T11:28:47.344646+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -74184,7 +74264,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:44.680083+00:00",
+      "actualizado": "2026-06-04T11:28:48.559526+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -75633,7 +75713,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:44.839057+00:00",
+      "actualizado": "2026-06-04T11:28:49.040399+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -77216,7 +77296,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:45.002753+00:00",
+      "actualizado": "2026-06-04T11:28:49.514128+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -78799,7 +78879,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:45.157934+00:00",
+      "actualizado": "2026-06-04T11:28:49.949596+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -80382,7 +80462,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:45.316311+00:00",
+      "actualizado": "2026-06-04T11:28:50.314505+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -81627,7 +81707,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:45.479057+00:00",
+      "actualizado": "2026-06-04T11:28:50.705474+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -83038,7 +83118,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:45.673762+00:00",
+      "actualizado": "2026-06-04T11:28:51.197404+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -83799,7 +83879,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:45.852588+00:00",
+      "actualizado": "2026-06-04T11:28:51.581213+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -84636,7 +84716,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:46.064161+00:00",
+      "actualizado": "2026-06-04T11:28:51.994581+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -85639,7 +85719,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:46.240145+00:00",
+      "actualizado": "2026-06-04T11:28:52.401347+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -86406,7 +86486,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-03T22:35:46.424582+00:00",
+      "actualizado": "2026-06-04T11:28:52.853745+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
