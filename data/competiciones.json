@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-04T21:58:59.273845+00:00",
+  "actualizado": "2026-06-05T11:40:57.517223+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:53.195185+00:00",
+      "actualizado": "2026-06-05T11:40:48.610878+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -2233,57 +2233,6 @@
             "fecha_grupo": "2026-07-26"
           },
           {
-            "id": "401841448",
-            "nombre": "Aldosivi at Defensa y Justicia",
-            "fecha": "2026-07-26T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "aldosivi at defensa y justicia aldo dyj torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "9739",
-                "uid": "s:600~t:9739",
-                "nombre": "Aldosivi",
-                "nombre_corto": "Aldosivi",
-                "abreviatura": "ALDO",
-                "slug": "aldosivi",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
-                "color": "288A00"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841448/aldosivi-defensa-y-justicia",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-26"
-          },
-          {
             "id": "401841447",
             "nombre": "Boca Juniors at Deportivo Riestra",
             "fecha": "2026-07-26T04:00Z",
@@ -2835,6 +2784,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841437/argentinos-juniors-sarmiento-junin",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-07-26"
+          },
+          {
+            "id": "401841436",
+            "nombre": "Instituto (Córdoba) at Vélez Sarsfield",
+            "fecha": "2026-07-26T04:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "instituto cordoba at velez sarsfield iacc vel torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "21",
+                "uid": "s:600~t:21",
+                "nombre": "Vélez Sarsfield",
+                "nombre_corto": "Vélez ",
+                "abreviatura": "VEL",
+                "slug": "velez-sarsfield",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+                "color": "0070b0"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2975",
+                "uid": "s:600~t:2975",
+                "nombre": "Instituto (Córdoba)",
+                "nombre_corto": "Instituto",
+                "abreviatura": "IACC",
+                "slug": "instituto-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841436/instituto-cordoba-velez-sarsfield",
             "penales": {
               "definicion": false,
               "local": "",
@@ -15954,57 +15954,6 @@
             "fecha_grupo": "2026-07-26"
           },
           {
-            "id": "401841448",
-            "nombre": "Aldosivi at Defensa y Justicia",
-            "fecha": "2026-07-26T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "aldosivi at defensa y justicia aldo dyj torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "9739",
-                "uid": "s:600~t:9739",
-                "nombre": "Aldosivi",
-                "nombre_corto": "Aldosivi",
-                "abreviatura": "ALDO",
-                "slug": "aldosivi",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
-                "color": "288A00"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841448/aldosivi-defensa-y-justicia",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-26"
-          },
-          {
             "id": "401841447",
             "nombre": "Boca Juniors at Deportivo Riestra",
             "fecha": "2026-07-26T04:00Z",
@@ -16617,6 +16566,57 @@
             "fecha_grupo": "2026-07-26"
           },
           {
+            "id": "401841448",
+            "nombre": "Aldosivi at Defensa y Justicia",
+            "fecha": "2026-07-26T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "aldosivi at defensa y justicia aldo dyj torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "9739",
+                "uid": "s:600~t:9739",
+                "nombre": "Aldosivi",
+                "nombre_corto": "Aldosivi",
+                "abreviatura": "ALDO",
+                "slug": "aldosivi",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
+                "color": "288A00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841448/aldosivi-defensa-y-justicia",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-07-26"
+          },
+          {
             "id": "401841449",
             "nombre": "Estudiantes de Río Cuarto at Argentinos Juniors",
             "fecha": "2026-07-29T04:00Z",
@@ -16862,57 +16862,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841459/atletico-tucuman-central-cordoba-santiago-del-estero",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-29"
-          },
-          {
-            "id": "401841458",
-            "nombre": "Deportivo Riestra at Defensa y Justicia",
-            "fecha": "2026-07-29T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "deportivo riestra at defensa y justicia rie dyj torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "17702",
-                "uid": "s:600~t:17702",
-                "nombre": "Deportivo Riestra",
-                "nombre_corto": "Riestra",
-                "abreviatura": "RIE",
-                "slug": "deportivo-riestra",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
-                "color": "212121"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841458/deportivo-riestra-defensa-y-justicia",
             "penales": {
               "definicion": false,
               "local": "",
@@ -17382,6 +17331,57 @@
             "fecha_grupo": "2026-07-29"
           },
           {
+            "id": "401841458",
+            "nombre": "Deportivo Riestra at Defensa y Justicia",
+            "fecha": "2026-07-29T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "deportivo riestra at defensa y justicia rie dyj torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "17702",
+                "uid": "s:600~t:17702",
+                "nombre": "Deportivo Riestra",
+                "nombre_corto": "Riestra",
+                "abreviatura": "RIE",
+                "slug": "deportivo-riestra",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
+                "color": "212121"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841458/deportivo-riestra-defensa-y-justicia",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-07-29"
+          },
+          {
             "id": "401841470",
             "nombre": "Gimnasia La Plata at Aldosivi",
             "fecha": "2026-08-02T04:00Z",
@@ -17576,57 +17576,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841467/barracas-central-deportivo-riestra",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-08-02"
-          },
-          {
-            "id": "401841478",
-            "nombre": "Defensa y Justicia at Estudiantes de La Plata",
-            "fecha": "2026-08-02T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "defensa y justicia at estudiantes de la plata dyj est torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "8",
-                "uid": "s:600~t:8",
-                "nombre": "Estudiantes de La Plata",
-                "nombre_corto": "Estudiantes",
-                "abreviatura": "EST",
-                "slug": "estudiantes-de-la-plata",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
-                "color": "C60000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841478/defensa-y-justicia-estudiantes-de-la-plata",
             "penales": {
               "definicion": false,
               "local": "",
@@ -18147,6 +18096,57 @@
             "fecha_grupo": "2026-08-02"
           },
           {
+            "id": "401841478",
+            "nombre": "Defensa y Justicia at Estudiantes de La Plata",
+            "fecha": "2026-08-02T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "defensa y justicia at estudiantes de la plata dyj est torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "8",
+                "uid": "s:600~t:8",
+                "nombre": "Estudiantes de La Plata",
+                "nombre_corto": "Estudiantes",
+                "abreviatura": "EST",
+                "slug": "estudiantes-de-la-plata",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841478/defensa-y-justicia-estudiantes-de-la-plata",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-02"
+          },
+          {
             "id": "401841485",
             "nombre": "Racing Club at Argentinos Juniors",
             "fecha": "2026-08-09T04:00Z",
@@ -18341,57 +18341,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841482/velez-sarsfield-boca-juniors",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-08-09"
-          },
-          {
-            "id": "401841481",
-            "nombre": "Newell's Old Boys at Defensa y Justicia",
-            "fecha": "2026-08-09T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "newell s old boys at defensa y justicia nob dyj torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "14",
-                "uid": "s:600~t:14",
-                "nombre": "Newell's Old Boys",
-                "nombre_corto": "Newell's",
-                "abreviatura": "NOB",
-                "slug": "newell-s-old-boys",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841481/newells-old-boys-defensa-y-justicia",
             "penales": {
               "definicion": false,
               "local": "",
@@ -18902,6 +18851,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841487/central-cordoba-santiago-del-estero-union-santa-fe",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-09"
+          },
+          {
+            "id": "401841481",
+            "nombre": "Newell's Old Boys at Defensa y Justicia",
+            "fecha": "2026-08-09T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "newell s old boys at defensa y justicia nob dyj torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "14",
+                "uid": "s:600~t:14",
+                "nombre": "Newell's Old Boys",
+                "nombre_corto": "Newell's",
+                "abreviatura": "NOB",
+                "slug": "newell-s-old-boys",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841481/newells-old-boys-defensa-y-justicia",
             "penales": {
               "definicion": false,
               "local": "",
@@ -19628,7 +19628,7 @@
           {
             "id": "401841495",
             "nombre": "Defensa y Justicia at Vélez Sarsfield",
-            "fecha": "2026-08-16T04:00Z",
+            "fecha": "2026-08-16T18:00Z",
             "estado": "Scheduled",
             "estado_tipo": "pre",
             "completado": false,
@@ -19820,57 +19820,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841509/platense-barracas-central",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-08-23"
-          },
-          {
-            "id": "401841510",
-            "nombre": "Defensa y Justicia at Belgrano (Córdoba)",
-            "fecha": "2026-08-23T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "defensa y justicia at belgrano cordoba dyj bel torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "4",
-                "uid": "s:600~t:4",
-                "nombre": "Belgrano (Córdoba)",
-                "nombre_corto": "Belgrano ",
-                "abreviatura": "BEL",
-                "slug": "belgrano-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
-                "color": "0060f0"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841510/defensa-y-justicia-belgrano-cordoba",
             "penales": {
               "definicion": false,
               "local": "",
@@ -20442,6 +20391,57 @@
             "fecha_grupo": "2026-08-23"
           },
           {
+            "id": "401841510",
+            "nombre": "Defensa y Justicia at Belgrano (Córdoba)",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "defensa y justicia at belgrano cordoba dyj bel torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "4",
+                "uid": "s:600~t:4",
+                "nombre": "Belgrano (Córdoba)",
+                "nombre_corto": "Belgrano ",
+                "abreviatura": "BEL",
+                "slug": "belgrano-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                "color": "0060f0"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841510/defensa-y-justicia-belgrano-cordoba",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
             "id": "401841524",
             "nombre": "Aldosivi at Argentinos Juniors",
             "fecha": "2026-08-30T04:00Z",
@@ -20636,57 +20636,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841527/lanus-boca-juniors",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-08-30"
-          },
-          {
-            "id": "401841528",
-            "nombre": "Platense at Defensa y Justicia",
-            "fecha": "2026-08-30T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "platense at defensa y justicia pla dyj torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "7764",
-                "uid": "s:600~t:7764",
-                "nombre": "Platense",
-                "nombre_corto": "Platense",
-                "abreviatura": "PLA",
-                "slug": "platense",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841528/platense-defensa-y-justicia",
             "penales": {
               "definicion": false,
               "local": "",
@@ -21207,6 +21156,57 @@
             "fecha_grupo": "2026-08-30"
           },
           {
+            "id": "401841528",
+            "nombre": "Platense at Defensa y Justicia",
+            "fecha": "2026-08-30T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "platense at defensa y justicia pla dyj torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "7764",
+                "uid": "s:600~t:7764",
+                "nombre": "Platense",
+                "nombre_corto": "Platense",
+                "abreviatura": "PLA",
+                "slug": "platense",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841528/platense-defensa-y-justicia",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-30"
+          },
+          {
             "id": "401841545",
             "nombre": "Banfield at Aldosivi",
             "fecha": "2026-09-06T04:00Z",
@@ -21554,57 +21554,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841553/tigre-gimnasia-la-plata",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-09-06"
-          },
-          {
-            "id": "401841546",
-            "nombre": "Defensa y Justicia at Lanús",
-            "fecha": "2026-09-06T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "defensa y justicia at lanus dyj lan torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "12",
-                "uid": "s:600~t:12",
-                "nombre": "Lanús",
-                "nombre_corto": "Lanús ",
-                "abreviatura": "LAN",
-                "slug": "lanus",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
-                "color": "9f0000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841546/defensa-y-justicia-lanus",
             "penales": {
               "definicion": false,
               "local": "",
@@ -21972,6 +21921,57 @@
             "fecha_grupo": "2026-09-06"
           },
           {
+            "id": "401841546",
+            "nombre": "Defensa y Justicia at Lanús",
+            "fecha": "2026-09-06T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "defensa y justicia at lanus dyj lan torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "12",
+                "uid": "s:600~t:12",
+                "nombre": "Lanús",
+                "nombre_corto": "Lanús ",
+                "abreviatura": "LAN",
+                "slug": "lanus",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+                "color": "9f0000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841546/defensa-y-justicia-lanus",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-09-06"
+          },
+          {
             "id": "401841560",
             "nombre": "Gimnasia La Plata at Argentinos Juniors",
             "fecha": "2026-09-13T04:00Z",
@@ -22166,57 +22166,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841557/central-cordoba-santiago-del-estero-boca-juniors",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-09-13"
-          },
-          {
-            "id": "401841556",
-            "nombre": "Gimnasia (Mendoza) at Defensa y Justicia",
-            "fecha": "2026-09-13T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "gimnasia mendoza at defensa y justicia gmz dyj torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "11972",
-                "uid": "s:600~t:11972",
-                "nombre": "Gimnasia (Mendoza)",
-                "nombre_corto": "Gimnasia (M)",
-                "abreviatura": "GMZ",
-                "slug": "gimnasia-mendoza",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841556/gimnasia-mendoza-defensa-y-justicia",
             "penales": {
               "definicion": false,
               "local": "",
@@ -22737,6 +22686,57 @@
             "fecha_grupo": "2026-09-13"
           },
           {
+            "id": "401841556",
+            "nombre": "Gimnasia (Mendoza) at Defensa y Justicia",
+            "fecha": "2026-09-13T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "gimnasia mendoza at defensa y justicia gmz dyj torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "11972",
+                "uid": "s:600~t:11972",
+                "nombre": "Gimnasia (Mendoza)",
+                "nombre_corto": "Gimnasia (M)",
+                "abreviatura": "GMZ",
+                "slug": "gimnasia-mendoza",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841556/gimnasia-mendoza-defensa-y-justicia",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-09-13"
+          },
+          {
             "id": "401841569",
             "nombre": "Atlético Tucumán at Aldosivi",
             "fecha": "2026-09-20T04:00Z",
@@ -22880,57 +22880,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841571/estudiantes-de-rio-cuarto-belgrano-cordoba",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-09-20"
-          },
-          {
-            "id": "401841572",
-            "nombre": "Defensa y Justicia at Central Córdoba (Santiago del Estero)",
-            "fecha": "2026-09-20T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "defensa y justicia at central cordoba santiago del estero dyj ctr torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "11989",
-                "uid": "s:600~t:11989",
-                "nombre": "Central Córdoba (Santiago del Estero)",
-                "nombre_corto": "C. Córdoba (SE)",
-                "abreviatura": "CTR",
-                "slug": "central-cordoba-santiago-del-estero",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841572/defensa-y-justicia-central-cordoba-santiago-del-estero",
             "penales": {
               "definicion": false,
               "local": "",
@@ -23502,6 +23451,57 @@
             "fecha_grupo": "2026-09-20"
           },
           {
+            "id": "401841572",
+            "nombre": "Defensa y Justicia at Central Córdoba (Santiago del Estero)",
+            "fecha": "2026-09-20T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "defensa y justicia at central cordoba santiago del estero dyj ctr torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "11989",
+                "uid": "s:600~t:11989",
+                "nombre": "Central Córdoba (Santiago del Estero)",
+                "nombre_corto": "C. Córdoba (SE)",
+                "abreviatura": "CTR",
+                "slug": "central-cordoba-santiago-del-estero",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841572/defensa-y-justicia-central-cordoba-santiago-del-estero",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-09-20"
+          },
+          {
             "id": "401841597",
             "nombre": "Tigre at Argentinos Juniors",
             "fecha": "2026-10-04T04:00Z",
@@ -23696,57 +23696,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841594/union-santa-fe-boca-juniors",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-10-04"
-          },
-          {
-            "id": "401841593",
-            "nombre": "San Lorenzo at Defensa y Justicia",
-            "fecha": "2026-10-04T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "san lorenzo at defensa y justicia slo dyj torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "18",
-                "uid": "s:600~t:18",
-                "nombre": "San Lorenzo",
-                "nombre_corto": "San Lorenzo ",
-                "abreviatura": "SLO",
-                "slug": "san-lorenzo",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
-                "color": "0060f0"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841593/san-lorenzo-defensa-y-justicia",
             "penales": {
               "definicion": false,
               "local": "",
@@ -24257,6 +24206,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841585/platense-velez-sarsfield",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-10-04"
+          },
+          {
+            "id": "401841593",
+            "nombre": "San Lorenzo at Defensa y Justicia",
+            "fecha": "2026-10-04T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "san lorenzo at defensa y justicia slo dyj torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "18",
+                "uid": "s:600~t:18",
+                "nombre": "San Lorenzo",
+                "nombre_corto": "San Lorenzo ",
+                "abreviatura": "SLO",
+                "slug": "san-lorenzo",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+                "color": "0060f0"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841593/san-lorenzo-defensa-y-justicia",
             "penales": {
               "definicion": false,
               "local": "",
@@ -24983,7 +24983,7 @@
           {
             "id": "401841613",
             "nombre": "Defensa y Justicia at Unión (Santa Fe)",
-            "fecha": "2026-10-11T04:00Z",
+            "fecha": "2026-10-11T18:00Z",
             "estado": "Scheduled",
             "estado_tipo": "pre",
             "completado": false,
@@ -25226,57 +25226,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841627/talleres-cordoba-boca-juniors",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-10-18"
-          },
-          {
-            "id": "401841626",
-            "nombre": "Instituto (Córdoba) at Defensa y Justicia",
-            "fecha": "2026-10-18T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "instituto cordoba at defensa y justicia iacc dyj torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2975",
-                "uid": "s:600~t:2975",
-                "nombre": "Instituto (Córdoba)",
-                "nombre_corto": "Instituto",
-                "abreviatura": "IACC",
-                "slug": "instituto-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
-                "color": "C60000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841626/instituto-cordoba-defensa-y-justicia",
             "penales": {
               "definicion": false,
               "local": "",
@@ -25787,6 +25736,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841616/gimnasia-mendoza-velez-sarsfield",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-10-18"
+          },
+          {
+            "id": "401841626",
+            "nombre": "Instituto (Córdoba) at Defensa y Justicia",
+            "fecha": "2026-10-18T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "instituto cordoba at defensa y justicia iacc dyj torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2975",
+                "uid": "s:600~t:2975",
+                "nombre": "Instituto (Córdoba)",
+                "nombre_corto": "Instituto",
+                "abreviatura": "IACC",
+                "slug": "instituto-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841626/instituto-cordoba-defensa-y-justicia",
             "penales": {
               "definicion": false,
               "local": "",
@@ -26409,57 +26409,6 @@
             "fecha_grupo": "2026-10-25"
           },
           {
-            "id": "401841631",
-            "nombre": "Defensa y Justicia at Talleres (Córdoba)",
-            "fecha": "2026-10-25T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "defensa y justicia at talleres cordoba dyj tall torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841631/defensa-y-justicia-talleres-cordoba",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-10-25"
-          },
-          {
             "id": "401841643",
             "nombre": "Atlético Tucumán at Tigre",
             "fecha": "2026-10-25T04:00Z",
@@ -26552,6 +26501,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841630/estudiantes-de-la-plata-union-santa-fe",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-10-25"
+          },
+          {
+            "id": "401841631",
+            "nombre": "Defensa y Justicia at Talleres (Córdoba)",
+            "fecha": "2026-10-25T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "defensa y justicia at talleres cordoba dyj tall torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841631/defensa-y-justicia-talleres-cordoba",
             "penales": {
               "definicion": false,
               "local": "",
@@ -26705,57 +26705,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841658/river-plate-boca-juniors",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-11-01"
-          },
-          {
-            "id": "401841657",
-            "nombre": "Independiente at Defensa y Justicia",
-            "fecha": "2026-11-01T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "independiente at defensa y justicia ind dyj torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "11",
-                "uid": "s:600~t:11",
-                "nombre": "Independiente",
-                "nombre_corto": "Independiente",
-                "abreviatura": "IND",
-                "slug": "independiente",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
-                "color": "C60000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841657/independiente-defensa-y-justicia",
             "penales": {
               "definicion": false,
               "local": "",
@@ -27327,6 +27276,57 @@
             "fecha_grupo": "2026-11-01"
           },
           {
+            "id": "401841657",
+            "nombre": "Independiente at Defensa y Justicia",
+            "fecha": "2026-11-01T20:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "independiente at defensa y justicia ind dyj torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "11",
+                "uid": "s:600~t:11",
+                "nombre": "Independiente",
+                "nombre_corto": "Independiente",
+                "abreviatura": "IND",
+                "slug": "independiente",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841657/independiente-defensa-y-justicia",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-11-01"
+          },
+          {
             "id": "401841659",
             "nombre": "River Plate at Aldosivi",
             "fecha": "2026-11-08T05:00Z",
@@ -27521,57 +27521,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841670/racing-club-barracas-central",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-11-08"
-          },
-          {
-            "id": "401841669",
-            "nombre": "Defensa y Justicia at Boca Juniors",
-            "fecha": "2026-11-08T05:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "defensa y justicia at boca juniors dyj cabj torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "5",
-                "uid": "s:600~t:5",
-                "nombre": "Boca Juniors",
-                "nombre_corto": "Boca ",
-                "abreviatura": "CABJ",
-                "slug": "boca-juniors",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
-                "color": "fcb000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "8950",
-                "uid": "s:600~t:8950",
-                "nombre": "Defensa y Justicia",
-                "nombre_corto": "Def. y Jus.",
-                "abreviatura": "DYJ",
-                "slug": "defensa-y-justicia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                "color": "ffff00"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841669/defensa-y-justicia-boca-juniors",
             "penales": {
               "definicion": false,
               "local": "",
@@ -28082,6 +28031,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841660/velez-sarsfield-union-santa-fe",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-11-08"
+          },
+          {
+            "id": "401841669",
+            "nombre": "Defensa y Justicia at Boca Juniors",
+            "fecha": "2026-11-08T20:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "defensa y justicia at boca juniors dyj cabj torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "5",
+                "uid": "s:600~t:5",
+                "nombre": "Boca Juniors",
+                "nombre_corto": "Boca ",
+                "abreviatura": "CABJ",
+                "slug": "boca-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+                "color": "fcb000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "8950",
+                "uid": "s:600~t:8950",
+                "nombre": "Defensa y Justicia",
+                "nombre_corto": "Def. y Jus.",
+                "abreviatura": "DYJ",
+                "slug": "defensa-y-justicia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                "color": "ffff00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841669/defensa-y-justicia-boca-juniors",
             "penales": {
               "definicion": false,
               "local": "",
@@ -43367,57 +43367,6 @@
                   "fecha_grupo": "2026-07-26"
                 },
                 {
-                  "id": "401841448",
-                  "nombre": "Aldosivi at Defensa y Justicia",
-                  "fecha": "2026-07-26T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "aldosivi at defensa y justicia aldo dyj torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "9739",
-                      "uid": "s:600~t:9739",
-                      "nombre": "Aldosivi",
-                      "nombre_corto": "Aldosivi",
-                      "abreviatura": "ALDO",
-                      "slug": "aldosivi",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
-                      "color": "288A00"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841448/aldosivi-defensa-y-justicia",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-07-26"
-                },
-                {
                   "id": "401841447",
                   "nombre": "Boca Juniors at Deportivo Riestra",
                   "fecha": "2026-07-26T04:00Z",
@@ -44028,6 +43977,57 @@
                   },
                   "fecha_numero": null,
                   "fecha_grupo": "2026-07-26"
+                },
+                {
+                  "id": "401841448",
+                  "nombre": "Aldosivi at Defensa y Justicia",
+                  "fecha": "2026-07-26T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "aldosivi at defensa y justicia aldo dyj torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "9739",
+                      "uid": "s:600~t:9739",
+                      "nombre": "Aldosivi",
+                      "nombre_corto": "Aldosivi",
+                      "abreviatura": "ALDO",
+                      "slug": "aldosivi",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
+                      "color": "288A00"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841448/aldosivi-defensa-y-justicia",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-07-26"
                 }
               ]
             },
@@ -44281,57 +44281,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841459/atletico-tucuman-central-cordoba-santiago-del-estero",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-07-29"
-                },
-                {
-                  "id": "401841458",
-                  "nombre": "Deportivo Riestra at Defensa y Justicia",
-                  "fecha": "2026-07-29T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "deportivo riestra at defensa y justicia rie dyj torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "17702",
-                      "uid": "s:600~t:17702",
-                      "nombre": "Deportivo Riestra",
-                      "nombre_corto": "Riestra",
-                      "abreviatura": "RIE",
-                      "slug": "deportivo-riestra",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
-                      "color": "212121"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841458/deportivo-riestra-defensa-y-justicia",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -44799,6 +44748,57 @@
                   },
                   "fecha_numero": null,
                   "fecha_grupo": "2026-07-29"
+                },
+                {
+                  "id": "401841458",
+                  "nombre": "Deportivo Riestra at Defensa y Justicia",
+                  "fecha": "2026-07-29T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "deportivo riestra at defensa y justicia rie dyj torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "17702",
+                      "uid": "s:600~t:17702",
+                      "nombre": "Deportivo Riestra",
+                      "nombre_corto": "Riestra",
+                      "abreviatura": "RIE",
+                      "slug": "deportivo-riestra",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
+                      "color": "212121"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841458/deportivo-riestra-defensa-y-justicia",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-07-29"
                 }
               ]
             },
@@ -45001,57 +45001,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841467/barracas-central-deportivo-riestra",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-08-02"
-                },
-                {
-                  "id": "401841478",
-                  "nombre": "Defensa y Justicia at Estudiantes de La Plata",
-                  "fecha": "2026-08-02T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "defensa y justicia at estudiantes de la plata dyj est torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "8",
-                      "uid": "s:600~t:8",
-                      "nombre": "Estudiantes de La Plata",
-                      "nombre_corto": "Estudiantes",
-                      "abreviatura": "EST",
-                      "slug": "estudiantes-de-la-plata",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
-                      "color": "C60000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841478/defensa-y-justicia-estudiantes-de-la-plata",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -45570,6 +45519,57 @@
                   },
                   "fecha_numero": null,
                   "fecha_grupo": "2026-08-02"
+                },
+                {
+                  "id": "401841478",
+                  "nombre": "Defensa y Justicia at Estudiantes de La Plata",
+                  "fecha": "2026-08-02T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "defensa y justicia at estudiantes de la plata dyj est torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "8",
+                      "uid": "s:600~t:8",
+                      "nombre": "Estudiantes de La Plata",
+                      "nombre_corto": "Estudiantes",
+                      "abreviatura": "EST",
+                      "slug": "estudiantes-de-la-plata",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+                      "color": "C60000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841478/defensa-y-justicia-estudiantes-de-la-plata",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-08-02"
                 }
               ]
             },
@@ -45772,57 +45772,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841482/velez-sarsfield-boca-juniors",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-08-09"
-                },
-                {
-                  "id": "401841481",
-                  "nombre": "Newell's Old Boys at Defensa y Justicia",
-                  "fecha": "2026-08-09T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "newell s old boys at defensa y justicia nob dyj torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "14",
-                      "uid": "s:600~t:14",
-                      "nombre": "Newell's Old Boys",
-                      "nombre_corto": "Newell's",
-                      "abreviatura": "NOB",
-                      "slug": "newell-s-old-boys",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-                      "color": "000000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841481/newells-old-boys-defensa-y-justicia",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -46333,6 +46282,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841487/central-cordoba-santiago-del-estero-union-santa-fe",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-08-09"
+                },
+                {
+                  "id": "401841481",
+                  "nombre": "Newell's Old Boys at Defensa y Justicia",
+                  "fecha": "2026-08-09T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "newell s old boys at defensa y justicia nob dyj torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "14",
+                      "uid": "s:600~t:14",
+                      "nombre": "Newell's Old Boys",
+                      "nombre_corto": "Newell's",
+                      "abreviatura": "NOB",
+                      "slug": "newell-s-old-boys",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
+                      "color": "000000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841481/newells-old-boys-defensa-y-justicia",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -47065,7 +47065,7 @@
                 {
                   "id": "401841495",
                   "nombre": "Defensa y Justicia at Vélez Sarsfield",
-                  "fecha": "2026-08-16T04:00Z",
+                  "fecha": "2026-08-16T18:00Z",
                   "estado": "Scheduled",
                   "estado_tipo": "pre",
                   "completado": false,
@@ -47263,57 +47263,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841509/platense-barracas-central",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-08-23"
-                },
-                {
-                  "id": "401841510",
-                  "nombre": "Defensa y Justicia at Belgrano (Córdoba)",
-                  "fecha": "2026-08-23T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "defensa y justicia at belgrano cordoba dyj bel torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "4",
-                      "uid": "s:600~t:4",
-                      "nombre": "Belgrano (Córdoba)",
-                      "nombre_corto": "Belgrano ",
-                      "abreviatura": "BEL",
-                      "slug": "belgrano-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
-                      "color": "0060f0"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841510/defensa-y-justicia-belgrano-cordoba",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -47883,6 +47832,57 @@
                   },
                   "fecha_numero": null,
                   "fecha_grupo": "2026-08-23"
+                },
+                {
+                  "id": "401841510",
+                  "nombre": "Defensa y Justicia at Belgrano (Córdoba)",
+                  "fecha": "2026-08-23T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "defensa y justicia at belgrano cordoba dyj bel torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "4",
+                      "uid": "s:600~t:4",
+                      "nombre": "Belgrano (Córdoba)",
+                      "nombre_corto": "Belgrano ",
+                      "abreviatura": "BEL",
+                      "slug": "belgrano-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                      "color": "0060f0"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841510/defensa-y-justicia-belgrano-cordoba",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-08-23"
                 }
               ]
             },
@@ -48085,57 +48085,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841527/lanus-boca-juniors",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-08-30"
-                },
-                {
-                  "id": "401841528",
-                  "nombre": "Platense at Defensa y Justicia",
-                  "fecha": "2026-08-30T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "platense at defensa y justicia pla dyj torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "7764",
-                      "uid": "s:600~t:7764",
-                      "nombre": "Platense",
-                      "nombre_corto": "Platense",
-                      "abreviatura": "PLA",
-                      "slug": "platense",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
-                      "color": "000000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841528/platense-defensa-y-justicia",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -48654,6 +48603,57 @@
                   },
                   "fecha_numero": null,
                   "fecha_grupo": "2026-08-30"
+                },
+                {
+                  "id": "401841528",
+                  "nombre": "Platense at Defensa y Justicia",
+                  "fecha": "2026-08-30T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "platense at defensa y justicia pla dyj torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "7764",
+                      "uid": "s:600~t:7764",
+                      "nombre": "Platense",
+                      "nombre_corto": "Platense",
+                      "abreviatura": "PLA",
+                      "slug": "platense",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+                      "color": "000000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841528/platense-defensa-y-justicia",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-08-30"
                 }
               ]
             },
@@ -49019,57 +49019,6 @@
                   "fecha_grupo": "2026-09-06"
                 },
                 {
-                  "id": "401841546",
-                  "nombre": "Defensa y Justicia at Lanús",
-                  "fecha": "2026-09-06T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "defensa y justicia at lanus dyj lan torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "12",
-                      "uid": "s:600~t:12",
-                      "nombre": "Lanús",
-                      "nombre_corto": "Lanús ",
-                      "abreviatura": "LAN",
-                      "slug": "lanus",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
-                      "color": "9f0000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841546/defensa-y-justicia-lanus",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-09-06"
-                },
-                {
                   "id": "401841547",
                   "nombre": "Deportivo Riestra at Platense",
                   "fecha": "2026-09-06T04:00Z",
@@ -49425,6 +49374,57 @@
                   },
                   "fecha_numero": null,
                   "fecha_grupo": "2026-09-06"
+                },
+                {
+                  "id": "401841546",
+                  "nombre": "Defensa y Justicia at Lanús",
+                  "fecha": "2026-09-06T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "defensa y justicia at lanus dyj lan torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "12",
+                      "uid": "s:600~t:12",
+                      "nombre": "Lanús",
+                      "nombre_corto": "Lanús ",
+                      "abreviatura": "LAN",
+                      "slug": "lanus",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+                      "color": "9f0000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841546/defensa-y-justicia-lanus",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-09-06"
                 }
               ]
             },
@@ -49627,57 +49627,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841557/central-cordoba-santiago-del-estero-boca-juniors",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-09-13"
-                },
-                {
-                  "id": "401841556",
-                  "nombre": "Gimnasia (Mendoza) at Defensa y Justicia",
-                  "fecha": "2026-09-13T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "gimnasia mendoza at defensa y justicia gmz dyj torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "11972",
-                      "uid": "s:600~t:11972",
-                      "nombre": "Gimnasia (Mendoza)",
-                      "nombre_corto": "Gimnasia (M)",
-                      "abreviatura": "GMZ",
-                      "slug": "gimnasia-mendoza",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
-                      "color": "000000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841556/gimnasia-mendoza-defensa-y-justicia",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -50196,6 +50145,57 @@
                   },
                   "fecha_numero": null,
                   "fecha_grupo": "2026-09-13"
+                },
+                {
+                  "id": "401841556",
+                  "nombre": "Gimnasia (Mendoza) at Defensa y Justicia",
+                  "fecha": "2026-09-13T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "gimnasia mendoza at defensa y justicia gmz dyj torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "11972",
+                      "uid": "s:600~t:11972",
+                      "nombre": "Gimnasia (Mendoza)",
+                      "nombre_corto": "Gimnasia (M)",
+                      "abreviatura": "GMZ",
+                      "slug": "gimnasia-mendoza",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
+                      "color": "000000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841556/gimnasia-mendoza-defensa-y-justicia",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-09-13"
                 }
               ]
             },
@@ -50347,57 +50347,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841571/estudiantes-de-rio-cuarto-belgrano-cordoba",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-09-20"
-                },
-                {
-                  "id": "401841572",
-                  "nombre": "Defensa y Justicia at Central Córdoba (Santiago del Estero)",
-                  "fecha": "2026-09-20T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "defensa y justicia at central cordoba santiago del estero dyj ctr torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "11989",
-                      "uid": "s:600~t:11989",
-                      "nombre": "Central Córdoba (Santiago del Estero)",
-                      "nombre_corto": "C. Córdoba (SE)",
-                      "abreviatura": "CTR",
-                      "slug": "central-cordoba-santiago-del-estero",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841572/defensa-y-justicia-central-cordoba-santiago-del-estero",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -50967,6 +50916,57 @@
                   },
                   "fecha_numero": null,
                   "fecha_grupo": "2026-09-20"
+                },
+                {
+                  "id": "401841572",
+                  "nombre": "Defensa y Justicia at Central Córdoba (Santiago del Estero)",
+                  "fecha": "2026-09-20T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "defensa y justicia at central cordoba santiago del estero dyj ctr torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "11989",
+                      "uid": "s:600~t:11989",
+                      "nombre": "Central Córdoba (Santiago del Estero)",
+                      "nombre_corto": "C. Córdoba (SE)",
+                      "abreviatura": "CTR",
+                      "slug": "central-cordoba-santiago-del-estero",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841572/defensa-y-justicia-central-cordoba-santiago-del-estero",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-09-20"
                 }
               ]
             },
@@ -51169,57 +51169,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841594/union-santa-fe-boca-juniors",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-10-04"
-                },
-                {
-                  "id": "401841593",
-                  "nombre": "San Lorenzo at Defensa y Justicia",
-                  "fecha": "2026-10-04T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "san lorenzo at defensa y justicia slo dyj torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "18",
-                      "uid": "s:600~t:18",
-                      "nombre": "San Lorenzo",
-                      "nombre_corto": "San Lorenzo ",
-                      "abreviatura": "SLO",
-                      "slug": "san-lorenzo",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
-                      "color": "0060f0"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841593/san-lorenzo-defensa-y-justicia",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -51730,6 +51679,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841585/platense-velez-sarsfield",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-10-04"
+                },
+                {
+                  "id": "401841593",
+                  "nombre": "San Lorenzo at Defensa y Justicia",
+                  "fecha": "2026-10-04T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "san lorenzo at defensa y justicia slo dyj torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "18",
+                      "uid": "s:600~t:18",
+                      "nombre": "San Lorenzo",
+                      "nombre_corto": "San Lorenzo ",
+                      "abreviatura": "SLO",
+                      "slug": "san-lorenzo",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+                      "color": "0060f0"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841593/san-lorenzo-defensa-y-justicia",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -52462,7 +52462,7 @@
                 {
                   "id": "401841613",
                   "nombre": "Defensa y Justicia at Unión (Santa Fe)",
-                  "fecha": "2026-10-11T04:00Z",
+                  "fecha": "2026-10-11T18:00Z",
                   "estado": "Scheduled",
                   "estado_tipo": "pre",
                   "completado": false,
@@ -52711,57 +52711,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841627/talleres-cordoba-boca-juniors",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-10-18"
-                },
-                {
-                  "id": "401841626",
-                  "nombre": "Instituto (Córdoba) at Defensa y Justicia",
-                  "fecha": "2026-10-18T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "instituto cordoba at defensa y justicia iacc dyj torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "2975",
-                      "uid": "s:600~t:2975",
-                      "nombre": "Instituto (Córdoba)",
-                      "nombre_corto": "Instituto",
-                      "abreviatura": "IACC",
-                      "slug": "instituto-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
-                      "color": "C60000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841626/instituto-cordoba-defensa-y-justicia",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -53272,6 +53221,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841616/gimnasia-mendoza-velez-sarsfield",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-10-18"
+                },
+                {
+                  "id": "401841626",
+                  "nombre": "Instituto (Córdoba) at Defensa y Justicia",
+                  "fecha": "2026-10-18T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "instituto cordoba at defensa y justicia iacc dyj torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "2975",
+                      "uid": "s:600~t:2975",
+                      "nombre": "Instituto (Córdoba)",
+                      "nombre_corto": "Instituto",
+                      "abreviatura": "IACC",
+                      "slug": "instituto-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
+                      "color": "C60000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841626/instituto-cordoba-defensa-y-justicia",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -53900,57 +53900,6 @@
                   "fecha_grupo": "2026-10-25"
                 },
                 {
-                  "id": "401841631",
-                  "nombre": "Defensa y Justicia at Talleres (Córdoba)",
-                  "fecha": "2026-10-25T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "defensa y justicia at talleres cordoba dyj tall torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841631/defensa-y-justicia-talleres-cordoba",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-10-25"
-                },
-                {
                   "id": "401841643",
                   "nombre": "Atlético Tucumán at Tigre",
                   "fecha": "2026-10-25T04:00Z",
@@ -54043,6 +53992,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841630/estudiantes-de-la-plata-union-santa-fe",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-10-25"
+                },
+                {
+                  "id": "401841631",
+                  "nombre": "Defensa y Justicia at Talleres (Córdoba)",
+                  "fecha": "2026-10-25T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "defensa y justicia at talleres cordoba dyj tall torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841631/defensa-y-justicia-talleres-cordoba",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -54202,57 +54202,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841658/river-plate-boca-juniors",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-11-01"
-                },
-                {
-                  "id": "401841657",
-                  "nombre": "Independiente at Defensa y Justicia",
-                  "fecha": "2026-11-01T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "independiente at defensa y justicia ind dyj torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "11",
-                      "uid": "s:600~t:11",
-                      "nombre": "Independiente",
-                      "nombre_corto": "Independiente",
-                      "abreviatura": "IND",
-                      "slug": "independiente",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
-                      "color": "C60000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841657/independiente-defensa-y-justicia",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -54822,6 +54771,57 @@
                   },
                   "fecha_numero": null,
                   "fecha_grupo": "2026-11-01"
+                },
+                {
+                  "id": "401841657",
+                  "nombre": "Independiente at Defensa y Justicia",
+                  "fecha": "2026-11-01T20:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "independiente at defensa y justicia ind dyj torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "11",
+                      "uid": "s:600~t:11",
+                      "nombre": "Independiente",
+                      "nombre_corto": "Independiente",
+                      "abreviatura": "IND",
+                      "slug": "independiente",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+                      "color": "C60000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841657/independiente-defensa-y-justicia",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-11-01"
                 }
               ]
             },
@@ -55024,57 +55024,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841670/racing-club-barracas-central",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-11-08"
-                },
-                {
-                  "id": "401841669",
-                  "nombre": "Defensa y Justicia at Boca Juniors",
-                  "fecha": "2026-11-08T05:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "defensa y justicia at boca juniors dyj cabj torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "5",
-                      "uid": "s:600~t:5",
-                      "nombre": "Boca Juniors",
-                      "nombre_corto": "Boca ",
-                      "abreviatura": "CABJ",
-                      "slug": "boca-juniors",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
-                      "color": "fcb000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "8950",
-                      "uid": "s:600~t:8950",
-                      "nombre": "Defensa y Justicia",
-                      "nombre_corto": "Def. y Jus.",
-                      "abreviatura": "DYJ",
-                      "slug": "defensa-y-justicia",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841669/defensa-y-justicia-boca-juniors",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -55593,6 +55542,57 @@
                   },
                   "fecha_numero": null,
                   "fecha_grupo": "2026-11-08"
+                },
+                {
+                  "id": "401841669",
+                  "nombre": "Defensa y Justicia at Boca Juniors",
+                  "fecha": "2026-11-08T20:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "defensa y justicia at boca juniors dyj cabj torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "5",
+                      "uid": "s:600~t:5",
+                      "nombre": "Boca Juniors",
+                      "nombre_corto": "Boca ",
+                      "abreviatura": "CABJ",
+                      "slug": "boca-juniors",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+                      "color": "fcb000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "8950",
+                      "uid": "s:600~t:8950",
+                      "nombre": "Defensa y Justicia",
+                      "nombre_corto": "Def. y Jus.",
+                      "abreviatura": "DYJ",
+                      "slug": "defensa-y-justicia",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8950.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841669/defensa-y-justicia-boca-juniors",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-11-08"
                 }
               ]
             }
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:53.391814+00:00",
+      "actualizado": "2026-06-05T11:40:49.001168+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -57013,7 +57013,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:54.845896+00:00",
+      "actualizado": "2026-06-05T11:40:50.687817+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -57994,7 +57994,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:54.995009+00:00",
+      "actualizado": "2026-06-05T11:40:50.986079+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -59678,7 +59678,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:55.178909+00:00",
+      "actualizado": "2026-06-05T11:40:51.263267+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -61278,7 +61278,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:55.509568+00:00",
+      "actualizado": "2026-06-05T11:40:51.661937+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -62675,7 +62675,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:55.663390+00:00",
+      "actualizado": "2026-06-05T11:40:52.002549+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -64072,7 +64072,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:55.842046+00:00",
+      "actualizado": "2026-06-05T11:40:52.324725+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -65470,7 +65470,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:56.011968+00:00",
+      "actualizado": "2026-06-05T11:40:52.645285+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -66728,7 +66728,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:56.427714+00:00",
+      "actualizado": "2026-06-05T11:40:52.930441+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -67623,7 +67623,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:56.698306+00:00",
+      "actualizado": "2026-06-05T11:40:53.215090+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -69957,7 +69957,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:56.855205+00:00",
+      "actualizado": "2026-06-05T11:40:53.463177+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -71876,7 +71876,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:57.005632+00:00",
+      "actualizado": "2026-06-05T11:40:53.735191+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -73631,7 +73631,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:57.142449+00:00",
+      "actualizado": "2026-06-05T11:40:53.996440+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -74468,7 +74468,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:57.304009+00:00",
+      "actualizado": "2026-06-05T11:40:54.403084+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -75917,7 +75917,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:57.463095+00:00",
+      "actualizado": "2026-06-05T11:40:54.657711+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -77500,7 +77500,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:57.621407+00:00",
+      "actualizado": "2026-06-05T11:40:55.053709+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -79083,7 +79083,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:57.773791+00:00",
+      "actualizado": "2026-06-05T11:40:55.316622+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -80666,7 +80666,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:57.977287+00:00",
+      "actualizado": "2026-06-05T11:40:55.594538+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -81911,7 +81911,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:58.179861+00:00",
+      "actualizado": "2026-06-05T11:40:55.991825+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -82608,7 +82608,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:58.356833+00:00",
+      "actualizado": "2026-06-05T11:40:56.257975+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -83369,7 +83369,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:58.566690+00:00",
+      "actualizado": "2026-06-05T11:40:56.659491+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -83380,8 +83380,8 @@
         "equipos": 20,
         "posiciones": 20,
         "partidos_scoreboard": 1,
-        "ultimos": 1,
-        "proximos": 0
+        "ultimos": 0,
+        "proximos": 1
       },
       "equipos": [
         {
@@ -84088,33 +84088,18 @@
         }
       ],
       "partidos": {
-        "ultimos": [
+        "ultimos": [],
+        "proximos": [
           {
-            "id": "401873658",
-            "nombre": "Atlético Nacional at Atlético Junior",
-            "fecha": "2026-06-03T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401873659",
+            "nombre": "Atlético Junior at Atlético Nacional",
+            "fecha": "2026-06-08T22:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "final",
-            "clasificacion_texto": "atletico nacional at atletico junior nal jun apertura finals event 1st leg 1st leg",
+            "clasificacion_texto": "atletico junior at atletico nacional jun nal apertura finals event 2nd leg atletico junior lead 3 0 on aggregate 2nd leg atletico junior lead 3 0 on aggregate",
             "local": {
-              "equipo": {
-                "id": "4815",
-                "uid": "s:600~t:4815",
-                "nombre": "Atlético Junior",
-                "nombre_corto": "Atl. Junior",
-                "abreviatura": "JUN",
-                "slug": "atletico-junior",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4815.png",
-                "color": "C60000"
-              },
-              "localia": "home",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
               "equipo": {
                 "id": "5264",
                 "uid": "s:600~t:5264",
@@ -84125,50 +84110,49 @@
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5264.png",
                 "color": "06933c"
               },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "4815",
+                "uid": "s:600~t:4815",
+                "nombre": "Atlético Junior",
+                "nombre_corto": "Atl. Junior",
+                "abreviatura": "JUN",
+                "slug": "atletico-junior",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4815.png",
+                "color": "C60000"
+              },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401873658/atletico-nacional-atletico-junior",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401873659/atletico-junior-atletico-nacional",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-06-03"
+            "fecha_grupo": "2026-06-08"
           }
         ],
-        "proximos": [],
         "todos": [
           {
-            "id": "401873658",
-            "nombre": "Atlético Nacional at Atlético Junior",
-            "fecha": "2026-06-03T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401873659",
+            "nombre": "Atlético Junior at Atlético Nacional",
+            "fecha": "2026-06-08T22:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "final",
-            "clasificacion_texto": "atletico nacional at atletico junior nal jun apertura finals event 1st leg 1st leg",
+            "clasificacion_texto": "atletico junior at atletico nacional jun nal apertura finals event 2nd leg atletico junior lead 3 0 on aggregate 2nd leg atletico junior lead 3 0 on aggregate",
             "local": {
-              "equipo": {
-                "id": "4815",
-                "uid": "s:600~t:4815",
-                "nombre": "Atlético Junior",
-                "nombre_corto": "Atl. Junior",
-                "abreviatura": "JUN",
-                "slug": "atletico-junior",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4815.png",
-                "color": "C60000"
-              },
-              "localia": "home",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
               "equipo": {
                 "id": "5264",
                 "uid": "s:600~t:5264",
@@ -84179,20 +84163,36 @@
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5264.png",
                 "color": "06933c"
               },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "4815",
+                "uid": "s:600~t:4815",
+                "nombre": "Atlético Junior",
+                "nombre_corto": "Atl. Junior",
+                "abreviatura": "JUN",
+                "slug": "atletico-junior",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4815.png",
+                "color": "C60000"
+              },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401873658/atletico-nacional-atletico-junior",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401873659/atletico-junior-atletico-nacional",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-06-03"
+            "fecha_grupo": "2026-06-08"
           }
         ],
         "total_scoreboard": 1
@@ -84206,7 +84206,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:58.871653+00:00",
+      "actualizado": "2026-06-05T11:40:56.996950+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -85209,7 +85209,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:59.096602+00:00",
+      "actualizado": "2026-06-05T11:40:57.248280+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -85976,7 +85976,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-04T21:58:59.273830+00:00",
+      "actualizado": "2026-06-05T11:40:57.517212+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
