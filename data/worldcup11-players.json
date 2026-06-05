@@ -1521,12 +1521,7 @@
       "dt": "",
       "players": [
         {
-          "name": "Benchimol",
-          "position": "CM",
-          "status": "Actual"
-        },
-        {
-          "name": "Carlos Dos Santos",
+          "name": "CJ dos Santos",
           "position": "CM",
           "status": "Actual"
         },
@@ -1541,12 +1536,17 @@
           "status": "Actual"
         },
         {
-          "name": "Diney",
+          "name": "Diney Borges",
           "position": "CM",
           "status": "Actual"
         },
         {
           "name": "Garry Rodrigues",
+          "position": "CM",
+          "status": "Actual"
+        },
+        {
+          "name": "Gilson Benchimol",
           "position": "CM",
           "status": "Actual"
         },
@@ -1571,7 +1571,7 @@
           "status": "Actual"
         },
         {
-          "name": "Kelvin Spencer Pires",
+          "name": "Kelvin Pires",
           "position": "CM",
           "status": "Actual"
         },
@@ -1601,7 +1601,7 @@
           "status": "Actual"
         },
         {
-          "name": "Roberto Lopes",
+          "name": "Pico Lopes",
           "position": "CM",
           "status": "Actual"
         },
@@ -1611,12 +1611,7 @@
           "status": "Actual"
         },
         {
-          "name": "Semedo",
-          "position": "CM",
-          "status": "Actual"
-        },
-        {
-          "name": "Sidny Cabral",
+          "name": "Sidny Lopes Cabral",
           "position": "CM",
           "status": "Actual"
         },
@@ -1647,6 +1642,11 @@
         },
         {
           "name": "Willy Semedo",
+          "position": "CM",
+          "status": "Actual"
+        },
+        {
+          "name": "Yannick Semedo",
           "position": "CM",
           "status": "Actual"
         }
@@ -1855,7 +1855,7 @@
           "status": "Actual"
         },
         {
-          "name": "Denis Višinský",
+          "name": "Denis Visinský",
           "position": "CM",
           "status": "Actual"
         },
@@ -1982,7 +1982,7 @@
           "status": "Actual"
         },
         {
-          "name": "Andres Gomez",
+          "name": "Andrés Gómez",
           "position": "CM",
           "status": "Actual"
         },
@@ -5142,7 +5142,7 @@
           "status": "Actual"
         },
         {
-          "name": "Henrik Sælebakke Falchener",
+          "name": "Henrik Falchener",
           "position": "CM",
           "status": "Actual"
         },
@@ -5177,7 +5177,7 @@
           "status": "Actual"
         },
         {
-          "name": "Marcus Pedersen",
+          "name": "Marcus Holmgren Pedersen",
           "position": "CM",
           "status": "Actual"
         },
@@ -5227,7 +5227,7 @@
           "status": "Actual"
         },
         {
-          "name": "Torbjorn Heggem",
+          "name": "Torbjørn Heggem",
           "position": "CM",
           "status": "Actual"
         }
@@ -5284,7 +5284,7 @@
           "status": "Actual"
         },
         {
-          "name": "Francis DeVries",
+          "name": "Francis de Vries",
           "position": "CM",
           "status": "Actual"
         },
@@ -6732,7 +6732,7 @@
           "status": "Actual"
         },
         {
-          "name": "Eric Anders Smith",
+          "name": "Eric Smith",
           "position": "CM",
           "status": "Actual"
         },
@@ -7601,7 +7601,7 @@
   ],
   "meta": {
     "source": "ESPN fifa.world participantes reales + respaldo manual del JSON anterior",
-    "updatedAt": "2026-06-04T10:53:17.493Z",
+    "updatedAt": "2026-06-05T11:01:42.850Z",
     "totalCountries": 48,
     "espnTeamsFound": 48,
     "note": "Generado por scripts/update-worldcup11-espn.js. El resultado final incluye solo selecciones reales encontradas en ESPN fifa.world. Se descartan placeholders como Group Winner, Round of 16 Winner, Quarterfinal Winner, etc."
