@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-05T21:55:05.107200+00:00",
+  "actualizado": "2026-06-06T10:28:53.974094+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-05T21:54:56.827143+00:00",
+      "actualizado": "2026-06-06T10:28:41.960059+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-05T21:54:57.231142+00:00",
+      "actualizado": "2026-06-06T10:28:42.313247+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -55625,9 +55625,9 @@
       "resumen": {
         "equipos": 36,
         "posiciones": 36,
-        "partidos_scoreboard": 1,
+        "partidos_scoreboard": 7,
         "ultimos": 0,
-        "proximos": 1
+        "proximos": 7
       },
       "equipos": [
         {
@@ -56480,7 +56480,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "11",
+            "posicion": "12",
             "pj": "15",
             "g": "5",
             "e": "3",
@@ -56505,7 +56505,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "10",
+            "posicion": "11",
             "pj": "14",
             "g": "4",
             "e": "6",
@@ -56530,7 +56530,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "13",
+            "posicion": "14",
             "pj": "15",
             "g": "4",
             "e": "5",
@@ -56631,13 +56631,13 @@
           },
           "stats": {
             "posicion": "3",
-            "pj": "15",
+            "pj": "16",
             "g": "7",
             "e": "4",
-            "p": "4",
+            "p": "5",
             "gf": "17",
-            "gc": "10",
-            "dg": "+7",
+            "gc": "11",
+            "dg": "+6",
             "pts": "25",
             "racha": "-"
           }
@@ -56705,7 +56705,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "9",
+            "posicion": "10",
             "pj": "15",
             "g": "4",
             "e": "8",
@@ -56755,7 +56755,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "12",
+            "posicion": "13",
             "pj": "15",
             "g": "4",
             "e": "6",
@@ -56780,15 +56780,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "14",
-            "pj": "15",
-            "g": "4",
+            "posicion": "9",
+            "pj": "16",
+            "g": "5",
             "e": "5",
             "p": "6",
-            "gf": "15",
+            "gf": "16",
             "gc": "18",
-            "dg": "-3",
-            "pts": "17",
+            "dg": "-2",
+            "pts": "20",
             "racha": "-"
           }
         },
@@ -56897,23 +56897,23 @@
         "ultimos": [],
         "proximos": [
           {
-            "id": "401843912",
-            "nombre": "Midland at Gimnasia y Tiro (Salta)",
-            "fecha": "2026-06-06T00:30Z",
+            "id": "401843906",
+            "nombre": "Gimnasia y Esgrima (Jujuy) at Atlanta",
+            "fecha": "2026-06-06T17:00Z",
             "estado": "Scheduled",
             "estado_tipo": "pre",
             "completado": false,
             "fase": "",
-            "clasificacion_texto": "midland at gimnasia y tiro salta mid gyt regular season",
+            "clasificacion_texto": "gimnasia y esgrima jujuy at atlanta gej atl regular season",
             "local": {
               "equipo": {
-                "id": "10743",
-                "uid": "s:600~t:10743",
-                "nombre": "Gimnasia y Tiro (Salta)",
-                "nombre_corto": "G y T (Salta)",
-                "abreviatura": "GYT",
-                "slug": "gimnasia-y-tiro-salta",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
+                "id": "10146",
+                "uid": "s:600~t:10146",
+                "nombre": "Atlanta",
+                "nombre_corto": "Atlanta",
+                "abreviatura": "ATL",
+                "slug": "atlanta",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10146.png",
                 "color": "000000"
               },
               "localia": "home",
@@ -56923,13 +56923,64 @@
             },
             "visitante": {
               "equipo": {
-                "id": "10109",
-                "uid": "s:600~t:10109",
-                "nombre": "Midland",
-                "nombre_corto": "Midland",
-                "abreviatura": "MID",
-                "slug": "midland",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
+                "id": "5263",
+                "uid": "s:600~t:5263",
+                "nombre": "Gimnasia y Esgrima (Jujuy)",
+                "nombre_corto": "Gimnasia J.",
+                "abreviatura": "GEJ",
+                "slug": "gimnasia-y-esgrima-jujuy",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
+                "color": "0e5196"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843906/gimnasia-y-esgrima-jujuy-atlanta",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401843915",
+            "nombre": "Estudiantes (Buenos Aires) at Los Andes",
+            "fecha": "2026-06-06T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "estudiantes buenos aires at los andes est and regular season",
+            "local": {
+              "equipo": {
+                "id": "13",
+                "uid": "s:600~t:13",
+                "nombre": "Los Andes",
+                "nombre_corto": "Los Andes ",
+                "abreviatura": "AND",
+                "slug": "los-andes",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/13.png",
+                "color": "b50202"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "17352",
+                "uid": "s:600~t:17352",
+                "nombre": "Estudiantes (Buenos Aires)",
+                "nombre_corto": "Estudiantes ",
+                "abreviatura": "EST",
+                "slug": "estudiantes-buenos-aires",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17352.png",
                 "color": "000000"
               },
               "localia": "away",
@@ -56937,7 +56988,262 @@
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843912/midland-gimnasia-y-tiro-salta",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843915/estudiantes-buenos-aires-los-andes",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401843903",
+            "nombre": "Central Norte at Acassuso",
+            "fecha": "2026-06-06T18:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "central norte at acassuso cno aca regular season",
+            "local": {
+              "equipo": {
+                "id": "10145",
+                "uid": "s:600~t:10145",
+                "nombre": "Acassuso",
+                "nombre_corto": "Acassuso",
+                "abreviatura": "ACA",
+                "slug": "acassuso",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10145.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "11993",
+                "uid": "s:600~t:11993",
+                "nombre": "Central Norte",
+                "nombre_corto": "Central Norte",
+                "abreviatura": "CNO",
+                "slug": "central-norte",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11993.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843903/central-norte-acassuso",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401843918",
+            "nombre": "Defensores de Belgrano at San Miguel",
+            "fecha": "2026-06-06T18:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "defensores de belgrano at san miguel def san regular season",
+            "local": {
+              "equipo": {
+                "id": "10058",
+                "uid": "s:600~t:10058",
+                "nombre": "San Miguel",
+                "nombre_corto": "San Miguel",
+                "abreviatura": "SAN",
+                "slug": "san-miguel",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10058.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10151",
+                "uid": "s:600~t:10151",
+                "nombre": "Defensores de Belgrano",
+                "nombre_corto": "Defensores",
+                "abreviatura": "DEF",
+                "slug": "defensores-de-belgrano",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10151.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843918/defensores-de-belgrano-san-miguel",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401843916",
+            "nombre": "Nueva Chicago at San Martín (San Juan)",
+            "fecha": "2026-06-06T19:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "nueva chicago at san martin san juan nchi smsj regular season",
+            "local": {
+              "equipo": {
+                "id": "7845",
+                "uid": "s:600~t:7845",
+                "nombre": "San Martín (San Juan)",
+                "nombre_corto": "San Martín SJ",
+                "abreviatura": "SMSJ",
+                "slug": "san-martin-san-juan",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7845.png",
+                "color": "288A00"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "236",
+                "uid": "s:600~t:236",
+                "nombre": "Nueva Chicago",
+                "nombre_corto": "N. Chicago",
+                "abreviatura": "NCHI",
+                "slug": "nueva-chicago",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843916/nueva-chicago-san-martin-san-juan",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401843907",
+            "nombre": "Colegiales at Atletico Rafaela",
+            "fecha": "2026-06-06T19:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "colegiales at atletico rafaela col raf regular season",
+            "local": {
+              "equipo": {
+                "id": "9747",
+                "uid": "s:600~t:9747",
+                "nombre": "Atletico Rafaela",
+                "nombre_corto": "Rafaela",
+                "abreviatura": "RAF",
+                "slug": "atletico-rafaela",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+                "color": "0a82ab"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10149",
+                "uid": "s:600~t:10149",
+                "nombre": "Colegiales",
+                "nombre_corto": "Colegiales",
+                "abreviatura": "COL",
+                "slug": "colegiales",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10149.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843907/colegiales-atletico-rafaela",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401843904",
+            "nombre": "Almagro at Tristán Suárez",
+            "fecha": "2026-06-06T22:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "almagro at tristan suarez alm tri regular season",
+            "local": {
+              "equipo": {
+                "id": "10163",
+                "uid": "s:600~t:10163",
+                "nombre": "Tristán Suárez",
+                "nombre_corto": "T. Suárez",
+                "abreviatura": "TRI",
+                "slug": "tristan-suarez",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10163.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2",
+                "uid": "s:600~t:2",
+                "nombre": "Almagro",
+                "nombre_corto": "Almagro ",
+                "abreviatura": "ALM",
+                "slug": "almagro",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2.png",
+                "color": "212121"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843904/almagro-tristan-suarez",
             "penales": {
               "definicion": false,
               "local": "",
@@ -56950,23 +57256,23 @@
         ],
         "todos": [
           {
-            "id": "401843912",
-            "nombre": "Midland at Gimnasia y Tiro (Salta)",
-            "fecha": "2026-06-06T00:30Z",
+            "id": "401843906",
+            "nombre": "Gimnasia y Esgrima (Jujuy) at Atlanta",
+            "fecha": "2026-06-06T17:00Z",
             "estado": "Scheduled",
             "estado_tipo": "pre",
             "completado": false,
             "fase": "",
-            "clasificacion_texto": "midland at gimnasia y tiro salta mid gyt regular season",
+            "clasificacion_texto": "gimnasia y esgrima jujuy at atlanta gej atl regular season",
             "local": {
               "equipo": {
-                "id": "10743",
-                "uid": "s:600~t:10743",
-                "nombre": "Gimnasia y Tiro (Salta)",
-                "nombre_corto": "G y T (Salta)",
-                "abreviatura": "GYT",
-                "slug": "gimnasia-y-tiro-salta",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10743.png",
+                "id": "10146",
+                "uid": "s:600~t:10146",
+                "nombre": "Atlanta",
+                "nombre_corto": "Atlanta",
+                "abreviatura": "ATL",
+                "slug": "atlanta",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10146.png",
                 "color": "000000"
               },
               "localia": "home",
@@ -56976,13 +57282,64 @@
             },
             "visitante": {
               "equipo": {
-                "id": "10109",
-                "uid": "s:600~t:10109",
-                "nombre": "Midland",
-                "nombre_corto": "Midland",
-                "abreviatura": "MID",
-                "slug": "midland",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10109.png",
+                "id": "5263",
+                "uid": "s:600~t:5263",
+                "nombre": "Gimnasia y Esgrima (Jujuy)",
+                "nombre_corto": "Gimnasia J.",
+                "abreviatura": "GEJ",
+                "slug": "gimnasia-y-esgrima-jujuy",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5263.png",
+                "color": "0e5196"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843906/gimnasia-y-esgrima-jujuy-atlanta",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401843915",
+            "nombre": "Estudiantes (Buenos Aires) at Los Andes",
+            "fecha": "2026-06-06T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "estudiantes buenos aires at los andes est and regular season",
+            "local": {
+              "equipo": {
+                "id": "13",
+                "uid": "s:600~t:13",
+                "nombre": "Los Andes",
+                "nombre_corto": "Los Andes ",
+                "abreviatura": "AND",
+                "slug": "los-andes",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/13.png",
+                "color": "b50202"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "17352",
+                "uid": "s:600~t:17352",
+                "nombre": "Estudiantes (Buenos Aires)",
+                "nombre_corto": "Estudiantes ",
+                "abreviatura": "EST",
+                "slug": "estudiantes-buenos-aires",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17352.png",
                 "color": "000000"
               },
               "localia": "away",
@@ -56990,7 +57347,262 @@
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843912/midland-gimnasia-y-tiro-salta",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843915/estudiantes-buenos-aires-los-andes",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401843903",
+            "nombre": "Central Norte at Acassuso",
+            "fecha": "2026-06-06T18:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "central norte at acassuso cno aca regular season",
+            "local": {
+              "equipo": {
+                "id": "10145",
+                "uid": "s:600~t:10145",
+                "nombre": "Acassuso",
+                "nombre_corto": "Acassuso",
+                "abreviatura": "ACA",
+                "slug": "acassuso",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10145.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "11993",
+                "uid": "s:600~t:11993",
+                "nombre": "Central Norte",
+                "nombre_corto": "Central Norte",
+                "abreviatura": "CNO",
+                "slug": "central-norte",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11993.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843903/central-norte-acassuso",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401843918",
+            "nombre": "Defensores de Belgrano at San Miguel",
+            "fecha": "2026-06-06T18:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "defensores de belgrano at san miguel def san regular season",
+            "local": {
+              "equipo": {
+                "id": "10058",
+                "uid": "s:600~t:10058",
+                "nombre": "San Miguel",
+                "nombre_corto": "San Miguel",
+                "abreviatura": "SAN",
+                "slug": "san-miguel",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10058.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10151",
+                "uid": "s:600~t:10151",
+                "nombre": "Defensores de Belgrano",
+                "nombre_corto": "Defensores",
+                "abreviatura": "DEF",
+                "slug": "defensores-de-belgrano",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10151.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843918/defensores-de-belgrano-san-miguel",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401843916",
+            "nombre": "Nueva Chicago at San Martín (San Juan)",
+            "fecha": "2026-06-06T19:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "nueva chicago at san martin san juan nchi smsj regular season",
+            "local": {
+              "equipo": {
+                "id": "7845",
+                "uid": "s:600~t:7845",
+                "nombre": "San Martín (San Juan)",
+                "nombre_corto": "San Martín SJ",
+                "abreviatura": "SMSJ",
+                "slug": "san-martin-san-juan",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7845.png",
+                "color": "288A00"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "236",
+                "uid": "s:600~t:236",
+                "nombre": "Nueva Chicago",
+                "nombre_corto": "N. Chicago",
+                "abreviatura": "NCHI",
+                "slug": "nueva-chicago",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/236.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843916/nueva-chicago-san-martin-san-juan",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401843907",
+            "nombre": "Colegiales at Atletico Rafaela",
+            "fecha": "2026-06-06T19:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "colegiales at atletico rafaela col raf regular season",
+            "local": {
+              "equipo": {
+                "id": "9747",
+                "uid": "s:600~t:9747",
+                "nombre": "Atletico Rafaela",
+                "nombre_corto": "Rafaela",
+                "abreviatura": "RAF",
+                "slug": "atletico-rafaela",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9747.png",
+                "color": "0a82ab"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10149",
+                "uid": "s:600~t:10149",
+                "nombre": "Colegiales",
+                "nombre_corto": "Colegiales",
+                "abreviatura": "COL",
+                "slug": "colegiales",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10149.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843907/colegiales-atletico-rafaela",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401843904",
+            "nombre": "Almagro at Tristán Suárez",
+            "fecha": "2026-06-06T22:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "almagro at tristan suarez alm tri regular season",
+            "local": {
+              "equipo": {
+                "id": "10163",
+                "uid": "s:600~t:10163",
+                "nombre": "Tristán Suárez",
+                "nombre_corto": "T. Suárez",
+                "abreviatura": "TRI",
+                "slug": "tristan-suarez",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10163.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2",
+                "uid": "s:600~t:2",
+                "nombre": "Almagro",
+                "nombre_corto": "Almagro ",
+                "abreviatura": "ALM",
+                "slug": "almagro",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2.png",
+                "color": "212121"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843904/almagro-tristan-suarez",
             "penales": {
               "definicion": false,
               "local": "",
@@ -57001,7 +57613,7 @@
             "fecha_grupo": "2026-06-06"
           }
         ],
-        "total_scoreboard": 1
+        "total_scoreboard": 7
       }
     },
     {
@@ -57013,7 +57625,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-05T21:54:58.937873+00:00",
+      "actualizado": "2026-06-06T10:28:45.216631+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -57994,7 +58606,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-05T21:54:59.188974+00:00",
+      "actualizado": "2026-06-06T10:28:45.454691+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -59678,7 +60290,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-05T21:54:59.494307+00:00",
+      "actualizado": "2026-06-06T10:28:46.039690+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -61278,7 +61890,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-05T21:54:59.863206+00:00",
+      "actualizado": "2026-06-06T10:28:46.520245+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -62675,7 +63287,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:00.140808+00:00",
+      "actualizado": "2026-06-06T10:28:46.872881+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -64072,7 +64684,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:00.410973+00:00",
+      "actualizado": "2026-06-06T10:28:47.578315+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -65470,7 +66082,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:00.718110+00:00",
+      "actualizado": "2026-06-06T10:28:47.905592+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -66728,7 +67340,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:00.991083+00:00",
+      "actualizado": "2026-06-06T10:28:48.150483+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -67623,7 +68235,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:01.268810+00:00",
+      "actualizado": "2026-06-06T10:28:48.384484+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -69957,7 +70569,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:01.535428+00:00",
+      "actualizado": "2026-06-06T10:28:48.691319+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -71876,7 +72488,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:01.762843+00:00",
+      "actualizado": "2026-06-06T10:28:48.977646+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -73631,7 +74243,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:02.045479+00:00",
+      "actualizado": "2026-06-06T10:28:49.255917+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -74468,7 +75080,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:02.320591+00:00",
+      "actualizado": "2026-06-06T10:28:49.803257+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -74477,10 +75089,10 @@
       },
       "resumen": {
         "equipos": 20,
-        "posiciones": 20,
-        "partidos_scoreboard": 7,
-        "ultimos": 7,
-        "proximos": 0
+        "posiciones": 0,
+        "partidos_scoreboard": 10,
+        "ultimos": 0,
+        "proximos": 10
       },
       "equipos": [
         {
@@ -74544,16 +75156,6 @@
           "color": "3933FF"
         },
         {
-          "id": "4050",
-          "uid": "s:600~t:4050",
-          "nombre": "Cremonese",
-          "nombre_corto": "Cremonese",
-          "abreviatura": "CRE",
-          "slug": "ita.cremonese",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4050.png",
-          "color": "FF0000"
-        },
-        {
           "id": "109",
           "uid": "s:600~t:109",
           "nombre": "Fiorentina",
@@ -74564,6 +75166,16 @@
           "color": "4c1d84"
         },
         {
+          "id": "4057",
+          "uid": "s:600~t:4057",
+          "nombre": "Frosinone",
+          "nombre_corto": "Frosinone",
+          "abreviatura": "FRO",
+          "slug": "ita.frosinone",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4057.png",
+          "color": "ffff00"
+        },
+        {
           "id": "3263",
           "uid": "s:600~t:3263",
           "nombre": "Genoa",
@@ -74572,16 +75184,6 @@
           "slug": "ita.genoa",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3263.png",
           "color": "08305d"
-        },
-        {
-          "id": "119",
-          "uid": "s:600~t:119",
-          "nombre": "Hellas Verona",
-          "nombre_corto": "Verona",
-          "abreviatura": "VER",
-          "slug": "ita.verona",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/119.png",
-          "color": "00239c"
         },
         {
           "id": "110",
@@ -74624,6 +75226,16 @@
           "color": "e4002b"
         },
         {
+          "id": "4007",
+          "uid": "s:600~t:4007",
+          "nombre": "Monza",
+          "nombre_corto": "Monza",
+          "abreviatura": "MON",
+          "slug": "ita.monza",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4007.png",
+          "color": "C8142F"
+        },
+        {
           "id": "114",
           "uid": "s:600~t:114",
           "nombre": "Napoli",
@@ -74642,16 +75254,6 @@
           "slug": "ita.parma",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/115.png",
           "color": "19161D"
-        },
-        {
-          "id": "3956",
-          "uid": "s:600~t:3956",
-          "nombre": "Pisa",
-          "nombre_corto": "Pisa",
-          "abreviatura": "PIS",
-          "slug": "ita.pisa",
-          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3956.png",
-          "color": "1a1a1a"
         },
         {
           "id": "3997",
@@ -74682,691 +75284,32 @@
           "slug": "ita.udinese",
           "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/118.png",
           "color": "19161D"
+        },
+        {
+          "id": "17530",
+          "uid": "s:600~t:17530",
+          "nombre": "Venezia",
+          "nombre_corto": "Venezia",
+          "abreviatura": "VEN",
+          "slug": "f.b.c_unione_venezia",
+          "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17530.png",
+          "color": "000000"
         }
       ],
-      "tabla": [
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "110",
-            "uid": "s:600~t:110",
-            "nombre": "Internazionale",
-            "nombre_corto": "Inter Milan",
-            "abreviatura": "INT",
-            "slug": "internazionale",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "1",
-            "pj": "38",
-            "g": "27",
-            "e": "6",
-            "p": "5",
-            "gf": "89",
-            "gc": "35",
-            "dg": "+54",
-            "pts": "87",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "114",
-            "uid": "s:600~t:114",
-            "nombre": "Napoli",
-            "nombre_corto": "Napoli",
-            "abreviatura": "NAP",
-            "slug": "napoli",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "2",
-            "pj": "38",
-            "g": "23",
-            "e": "7",
-            "p": "8",
-            "gf": "58",
-            "gc": "36",
-            "dg": "+22",
-            "pts": "76",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "104",
-            "uid": "s:600~t:104",
-            "nombre": "AS Roma",
-            "nombre_corto": "AS Roma",
-            "abreviatura": "ROMA",
-            "slug": "as-roma",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "3",
-            "pj": "38",
-            "g": "23",
-            "e": "4",
-            "p": "11",
-            "gf": "59",
-            "gc": "31",
-            "dg": "+28",
-            "pts": "73",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "2572",
-            "uid": "s:600~t:2572",
-            "nombre": "Como",
-            "nombre_corto": "Como",
-            "abreviatura": "COMO",
-            "slug": "como",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2572.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "4",
-            "pj": "38",
-            "g": "20",
-            "e": "11",
-            "p": "7",
-            "gf": "65",
-            "gc": "29",
-            "dg": "+36",
-            "pts": "71",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "103",
-            "uid": "s:600~t:103",
-            "nombre": "AC Milan",
-            "nombre_corto": "Milan",
-            "abreviatura": "MIL",
-            "slug": "ac-milan",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "5",
-            "pj": "38",
-            "g": "20",
-            "e": "10",
-            "p": "8",
-            "gf": "53",
-            "gc": "35",
-            "dg": "+18",
-            "pts": "70",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "111",
-            "uid": "s:600~t:111",
-            "nombre": "Juventus",
-            "nombre_corto": "Juventus",
-            "abreviatura": "JUV",
-            "slug": "juventus",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "6",
-            "pj": "38",
-            "g": "19",
-            "e": "12",
-            "p": "7",
-            "gf": "61",
-            "gc": "34",
-            "dg": "+27",
-            "pts": "69",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "105",
-            "uid": "s:600~t:105",
-            "nombre": "Atalanta",
-            "nombre_corto": "Atalanta",
-            "abreviatura": "ATA",
-            "slug": "atalanta",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "7",
-            "pj": "38",
-            "g": "15",
-            "e": "14",
-            "p": "9",
-            "gf": "51",
-            "gc": "36",
-            "dg": "+15",
-            "pts": "59",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "107",
-            "uid": "s:600~t:107",
-            "nombre": "Bologna",
-            "nombre_corto": "Bologna",
-            "abreviatura": "BOL",
-            "slug": "bologna",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/107.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "8",
-            "pj": "38",
-            "g": "16",
-            "e": "8",
-            "p": "14",
-            "gf": "49",
-            "gc": "46",
-            "dg": "+3",
-            "pts": "56",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "112",
-            "uid": "s:600~t:112",
-            "nombre": "Lazio",
-            "nombre_corto": "Lazio",
-            "abreviatura": "LAZ",
-            "slug": "lazio",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/112.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "9",
-            "pj": "38",
-            "g": "14",
-            "e": "12",
-            "p": "12",
-            "gf": "41",
-            "gc": "40",
-            "dg": "+1",
-            "pts": "54",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "118",
-            "uid": "s:600~t:118",
-            "nombre": "Udinese",
-            "nombre_corto": "Udinese",
-            "abreviatura": "UDI",
-            "slug": "udinese",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/118.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "10",
-            "pj": "38",
-            "g": "14",
-            "e": "8",
-            "p": "16",
-            "gf": "45",
-            "gc": "48",
-            "dg": "-3",
-            "pts": "50",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "3997",
-            "uid": "s:600~t:3997",
-            "nombre": "Sassuolo",
-            "nombre_corto": "Sassuolo",
-            "abreviatura": "SAS",
-            "slug": "sassuolo",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3997.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "11",
-            "pj": "38",
-            "g": "14",
-            "e": "7",
-            "p": "17",
-            "gf": "46",
-            "gc": "50",
-            "dg": "-4",
-            "pts": "49",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "239",
-            "uid": "s:600~t:239",
-            "nombre": "Torino",
-            "nombre_corto": "Torino",
-            "abreviatura": "TOR",
-            "slug": "torino",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/239.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "12",
-            "pj": "38",
-            "g": "12",
-            "e": "9",
-            "p": "17",
-            "gf": "44",
-            "gc": "63",
-            "dg": "-19",
-            "pts": "45",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "115",
-            "uid": "s:600~t:115",
-            "nombre": "Parma",
-            "nombre_corto": "Parma",
-            "abreviatura": "PAR",
-            "slug": "parma",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/115.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "13",
-            "pj": "38",
-            "g": "11",
-            "e": "12",
-            "p": "15",
-            "gf": "28",
-            "gc": "46",
-            "dg": "-18",
-            "pts": "45",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "2925",
-            "uid": "s:600~t:2925",
-            "nombre": "Cagliari",
-            "nombre_corto": "Cagliari",
-            "abreviatura": "CAG",
-            "slug": "cagliari",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2925.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "14",
-            "pj": "38",
-            "g": "11",
-            "e": "10",
-            "p": "17",
-            "gf": "40",
-            "gc": "53",
-            "dg": "-13",
-            "pts": "43",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "109",
-            "uid": "s:600~t:109",
-            "nombre": "Fiorentina",
-            "nombre_corto": "Fiorentina",
-            "abreviatura": "FIO",
-            "slug": "fiorentina",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "15",
-            "pj": "38",
-            "g": "9",
-            "e": "15",
-            "p": "14",
-            "gf": "41",
-            "gc": "50",
-            "dg": "-9",
-            "pts": "42",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "3263",
-            "uid": "s:600~t:3263",
-            "nombre": "Genoa",
-            "nombre_corto": "Genoa",
-            "abreviatura": "GEN",
-            "slug": "genoa",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3263.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "16",
-            "pj": "38",
-            "g": "10",
-            "e": "11",
-            "p": "17",
-            "gf": "41",
-            "gc": "51",
-            "dg": "-10",
-            "pts": "41",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "113",
-            "uid": "s:600~t:113",
-            "nombre": "Lecce",
-            "nombre_corto": "Lecce",
-            "abreviatura": "LEC",
-            "slug": "lecce",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/113.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "17",
-            "pj": "38",
-            "g": "10",
-            "e": "8",
-            "p": "20",
-            "gf": "28",
-            "gc": "50",
-            "dg": "-22",
-            "pts": "38",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "4050",
-            "uid": "s:600~t:4050",
-            "nombre": "Cremonese",
-            "nombre_corto": "Cremonese",
-            "abreviatura": "CRE",
-            "slug": "cremonese",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4050.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "18",
-            "pj": "38",
-            "g": "8",
-            "e": "10",
-            "p": "20",
-            "gf": "32",
-            "gc": "57",
-            "dg": "-25",
-            "pts": "34",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "119",
-            "uid": "s:600~t:119",
-            "nombre": "Hellas Verona",
-            "nombre_corto": "Verona",
-            "abreviatura": "VER",
-            "slug": "hellas-verona",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/119.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "19",
-            "pj": "38",
-            "g": "3",
-            "e": "12",
-            "p": "23",
-            "gf": "25",
-            "gc": "61",
-            "dg": "-36",
-            "pts": "21",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "3956",
-            "uid": "s:600~t:3956",
-            "nombre": "Pisa",
-            "nombre_corto": "Pisa",
-            "abreviatura": "PIS",
-            "slug": "pisa",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3956.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "20",
-            "pj": "38",
-            "g": "2",
-            "e": "12",
-            "p": "24",
-            "gf": "26",
-            "gc": "71",
-            "dg": "-45",
-            "pts": "18",
-            "racha": "-"
-          }
-        }
-      ],
+      "tabla": [],
       "partidos": {
-        "ultimos": [
+        "ultimos": [],
+        "proximos": [
           {
-            "id": "737158",
-            "nombre": "Juventus at Torino",
-            "fecha": "2026-05-24T19:45Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401874928",
+            "nombre": "Fiorentina at AS Roma",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
-            "clasificacion_texto": "juventus at torino juv tor 2025 26 italian serie a",
+            "clasificacion_texto": "fiorentina at as roma fio roma 2026 27 italian serie a",
             "local": {
-              "equipo": {
-                "id": "239",
-                "uid": "s:600~t:239",
-                "nombre": "Torino",
-                "nombre_corto": "Torino",
-                "abreviatura": "TOR",
-                "slug": "torino",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/239.png",
-                "color": "9f0000"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "111",
-                "uid": "s:600~t:111",
-                "nombre": "Juventus",
-                "nombre_corto": "Juventus",
-                "abreviatura": "JUV",
-                "slug": "juventus",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "2",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737158/juventus-torino",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
-          },
-          {
-            "id": "737157",
-            "nombre": "Cagliari at AC Milan",
-            "fecha": "2026-05-24T18:45Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "cagliari at ac milan cag mil 2025 26 italian serie a",
-            "local": {
-              "equipo": {
-                "id": "103",
-                "uid": "s:600~t:103",
-                "nombre": "AC Milan",
-                "nombre_corto": "Milan",
-                "abreviatura": "MIL",
-                "slug": "ac-milan",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
-                "color": "e4002b"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2925",
-                "uid": "s:600~t:2925",
-                "nombre": "Cagliari",
-                "nombre_corto": "Cagliari",
-                "abreviatura": "CAG",
-                "slug": "cagliari",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2925.png",
-                "color": "282846"
-              },
-              "localia": "away",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737157/cagliari-ac-milan",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
-          },
-          {
-            "id": "737162",
-            "nombre": "Como at Cremonese",
-            "fecha": "2026-05-24T18:45Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "como at cremonese como cre 2025 26 italian serie a",
-            "local": {
-              "equipo": {
-                "id": "4050",
-                "uid": "s:600~t:4050",
-                "nombre": "Cremonese",
-                "nombre_corto": "Cremonese",
-                "abreviatura": "CRE",
-                "slug": "cremonese",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4050.png",
-                "color": "FF0000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2572",
-                "uid": "s:600~t:2572",
-                "nombre": "Como",
-                "nombre_corto": "Como",
-                "abreviatura": "COMO",
-                "slug": "como",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2572.png",
-                "color": "3933FF"
-              },
-              "localia": "away",
-              "marcador": "4",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737162/como-cremonese",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
-          },
-          {
-            "id": "737160",
-            "nombre": "AS Roma at Hellas Verona",
-            "fecha": "2026-05-24T18:45Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "as roma at hellas verona roma ver 2025 26 italian serie a",
-            "local": {
-              "equipo": {
-                "id": "119",
-                "uid": "s:600~t:119",
-                "nombre": "Hellas Verona",
-                "nombre_corto": "Verona",
-                "abreviatura": "VER",
-                "slug": "hellas-verona",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/119.png",
-                "color": "00239c"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
               "equipo": {
                 "id": "104",
                 "uid": "s:600~t:104",
@@ -75377,147 +75320,61 @@
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
                 "color": "990a2c"
               },
-              "localia": "away",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737160/as-roma-hellas-verona",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
-          },
-          {
-            "id": "737163",
-            "nombre": "Genoa at Lecce",
-            "fecha": "2026-05-24T18:45Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "genoa at lecce gen lec 2025 26 italian serie a",
-            "local": {
-              "equipo": {
-                "id": "113",
-                "uid": "s:600~t:113",
-                "nombre": "Lecce",
-                "nombre_corto": "Lecce",
-                "abreviatura": "LEC",
-                "slug": "lecce",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/113.png",
-                "color": "e4002b"
-              },
               "localia": "home",
-              "marcador": "1",
-              "ganador": true,
-              "penales": "0"
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
             },
             "visitante": {
               "equipo": {
-                "id": "3263",
-                "uid": "s:600~t:3263",
-                "nombre": "Genoa",
-                "nombre_corto": "Genoa",
-                "abreviatura": "GEN",
-                "slug": "genoa",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3263.png",
-                "color": "08305d"
+                "id": "109",
+                "uid": "s:600~t:109",
+                "nombre": "Fiorentina",
+                "nombre_corto": "Fiorentina",
+                "abreviatura": "FIO",
+                "slug": "fiorentina",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png",
+                "color": "4c1d84"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737163/genoa-lecce",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874928/fiorentina-as-roma",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
+            "fecha_grupo": "2026-08-23"
           },
           {
-            "id": "737156",
-            "nombre": "Udinese at Napoli",
-            "fecha": "2026-05-24T16:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401874748",
+            "nombre": "Sassuolo at Atalanta",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
-            "clasificacion_texto": "udinese at napoli udi nap 2025 26 italian serie a",
+            "clasificacion_texto": "sassuolo at atalanta sas ata 2026 27 italian serie a",
             "local": {
               "equipo": {
-                "id": "114",
-                "uid": "s:600~t:114",
-                "nombre": "Napoli",
-                "nombre_corto": "Napoli",
-                "abreviatura": "NAP",
-                "slug": "napoli",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
-                "color": "0677d2"
+                "id": "105",
+                "uid": "s:600~t:105",
+                "nombre": "Atalanta",
+                "nombre_corto": "Atalanta",
+                "abreviatura": "ATA",
+                "slug": "atalanta",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
+                "color": "1157bf"
               },
               "localia": "home",
-              "marcador": "1",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "118",
-                "uid": "s:600~t:118",
-                "nombre": "Udinese",
-                "nombre_corto": "Udinese",
-                "abreviatura": "UDI",
-                "slug": "udinese",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/118.png",
-                "color": "19161D"
-              },
-              "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737156/udinese-napoli",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
-          },
-          {
-            "id": "737155",
-            "nombre": "Sassuolo at Parma",
-            "fecha": "2026-05-24T13:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "sassuolo at parma sas par 2025 26 italian serie a",
-            "local": {
-              "equipo": {
-                "id": "115",
-                "uid": "s:600~t:115",
-                "nombre": "Parma",
-                "nombre_corto": "Parma",
-                "abreviatura": "PAR",
-                "slug": "parma",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/115.png",
-                "color": "19161D"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": true,
-              "penales": "0"
+              "penales": ""
             },
             "visitante": {
               "equipo": {
@@ -75533,45 +75390,503 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737155/sassuolo-parma",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874748/sassuolo-atalanta",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874927",
+            "nombre": "Lazio at Bologna",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "lazio at bologna laz bol 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "107",
+                "uid": "s:600~t:107",
+                "nombre": "Bologna",
+                "nombre_corto": "Bologna",
+                "abreviatura": "BOL",
+                "slug": "bologna",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/107.png",
+                "color": "04043d"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "112",
+                "uid": "s:600~t:112",
+                "nombre": "Lazio",
+                "nombre_corto": "Lazio",
+                "abreviatura": "LAZ",
+                "slug": "lazio",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/112.png",
+                "color": "74bde7"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874927/lazio-bologna",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874930",
+            "nombre": "Juventus at Frosinone",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "juventus at frosinone juv fro 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "4057",
+                "uid": "s:600~t:4057",
+                "nombre": "Frosinone",
+                "nombre_corto": "Frosinone",
+                "abreviatura": "FRO",
+                "slug": "frosinone",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4057.png",
+                "color": "ffff00"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "111",
+                "uid": "s:600~t:111",
+                "nombre": "Juventus",
+                "nombre_corto": "Juventus",
+                "abreviatura": "JUV",
+                "slug": "juventus",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874930/juventus-frosinone",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874929",
+            "nombre": "Napoli at Genoa",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "napoli at genoa nap gen 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "3263",
+                "uid": "s:600~t:3263",
+                "nombre": "Genoa",
+                "nombre_corto": "Genoa",
+                "abreviatura": "GEN",
+                "slug": "genoa",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3263.png",
+                "color": "08305d"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "114",
+                "uid": "s:600~t:114",
+                "nombre": "Napoli",
+                "nombre_corto": "Napoli",
+                "abreviatura": "NAP",
+                "slug": "napoli",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
+                "color": "0677d2"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874929/napoli-genoa",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874931",
+            "nombre": "Monza at Internazionale",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "monza at internazionale mon int 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "110",
+                "uid": "s:600~t:110",
+                "nombre": "Internazionale",
+                "nombre_corto": "Inter Milan",
+                "abreviatura": "INT",
+                "slug": "internazionale",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
+                "color": "00239c"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "4007",
+                "uid": "s:600~t:4007",
+                "nombre": "Monza",
+                "nombre_corto": "Monza",
+                "abreviatura": "MON",
+                "slug": "monza",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4007.png",
+                "color": "C8142F"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874931/monza-internazionale",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874747",
+            "nombre": "Cagliari at Parma",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "cagliari at parma cag par 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "115",
+                "uid": "s:600~t:115",
+                "nombre": "Parma",
+                "nombre_corto": "Parma",
+                "abreviatura": "PAR",
+                "slug": "parma",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/115.png",
+                "color": "19161D"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2925",
+                "uid": "s:600~t:2925",
+                "nombre": "Cagliari",
+                "nombre_corto": "Cagliari",
+                "abreviatura": "CAG",
+                "slug": "cagliari",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2925.png",
+                "color": "282846"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874747/cagliari-parma",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874932",
+            "nombre": "AC Milan at Torino",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "ac milan at torino mil tor 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "239",
+                "uid": "s:600~t:239",
+                "nombre": "Torino",
+                "nombre_corto": "Torino",
+                "abreviatura": "TOR",
+                "slug": "torino",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/239.png",
+                "color": "9f0000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "103",
+                "uid": "s:600~t:103",
+                "nombre": "AC Milan",
+                "nombre_corto": "Milan",
+                "abreviatura": "MIL",
+                "slug": "ac-milan",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
+                "color": "e4002b"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874932/ac-milan-torino",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874745",
+            "nombre": "Como at Udinese",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "como at udinese como udi 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "118",
+                "uid": "s:600~t:118",
+                "nombre": "Udinese",
+                "nombre_corto": "Udinese",
+                "abreviatura": "UDI",
+                "slug": "udinese",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/118.png",
+                "color": "19161D"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2572",
+                "uid": "s:600~t:2572",
+                "nombre": "Como",
+                "nombre_corto": "Como",
+                "abreviatura": "COMO",
+                "slug": "como",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2572.png",
+                "color": "3933FF"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874745/como-udinese",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874946",
+            "nombre": "Lecce at Venezia",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "lecce at venezia lec ven 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "17530",
+                "uid": "s:600~t:17530",
+                "nombre": "Venezia",
+                "nombre_corto": "Venezia",
+                "abreviatura": "VEN",
+                "slug": "venezia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17530.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "113",
+                "uid": "s:600~t:113",
+                "nombre": "Lecce",
+                "nombre_corto": "Lecce",
+                "abreviatura": "LEC",
+                "slug": "lecce",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/113.png",
+                "color": "e4002b"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874946/lecce-venezia",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
           }
         ],
-        "proximos": [],
         "todos": [
           {
-            "id": "737155",
-            "nombre": "Sassuolo at Parma",
-            "fecha": "2026-05-24T13:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401874928",
+            "nombre": "Fiorentina at AS Roma",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
-            "clasificacion_texto": "sassuolo at parma sas par 2025 26 italian serie a",
+            "clasificacion_texto": "fiorentina at as roma fio roma 2026 27 italian serie a",
             "local": {
               "equipo": {
-                "id": "115",
-                "uid": "s:600~t:115",
-                "nombre": "Parma",
-                "nombre_corto": "Parma",
-                "abreviatura": "PAR",
-                "slug": "parma",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/115.png",
-                "color": "19161D"
+                "id": "104",
+                "uid": "s:600~t:104",
+                "nombre": "AS Roma",
+                "nombre_corto": "AS Roma",
+                "abreviatura": "ROMA",
+                "slug": "as-roma",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+                "color": "990a2c"
               },
               "localia": "home",
-              "marcador": "1",
-              "ganador": true,
-              "penales": "0"
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "109",
+                "uid": "s:600~t:109",
+                "nombre": "Fiorentina",
+                "nombre_corto": "Fiorentina",
+                "abreviatura": "FIO",
+                "slug": "fiorentina",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png",
+                "color": "4c1d84"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874928/fiorentina-as-roma",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874748",
+            "nombre": "Sassuolo at Atalanta",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "sassuolo at atalanta sas ata 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "105",
+                "uid": "s:600~t:105",
+                "nombre": "Atalanta",
+                "nombre_corto": "Atalanta",
+                "abreviatura": "ATA",
+                "slug": "atalanta",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
+                "color": "1157bf"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
             },
             "visitante": {
               "equipo": {
@@ -75587,297 +75902,93 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737155/sassuolo-parma",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874748/sassuolo-atalanta",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
+            "fecha_grupo": "2026-08-23"
           },
           {
-            "id": "737156",
-            "nombre": "Udinese at Napoli",
-            "fecha": "2026-05-24T16:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401874927",
+            "nombre": "Lazio at Bologna",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
-            "clasificacion_texto": "udinese at napoli udi nap 2025 26 italian serie a",
+            "clasificacion_texto": "lazio at bologna laz bol 2026 27 italian serie a",
             "local": {
               "equipo": {
-                "id": "114",
-                "uid": "s:600~t:114",
-                "nombre": "Napoli",
-                "nombre_corto": "Napoli",
-                "abreviatura": "NAP",
-                "slug": "napoli",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
-                "color": "0677d2"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "118",
-                "uid": "s:600~t:118",
-                "nombre": "Udinese",
-                "nombre_corto": "Udinese",
-                "abreviatura": "UDI",
-                "slug": "udinese",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/118.png",
-                "color": "19161D"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737156/udinese-napoli",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
-          },
-          {
-            "id": "737157",
-            "nombre": "Cagliari at AC Milan",
-            "fecha": "2026-05-24T18:45Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "cagliari at ac milan cag mil 2025 26 italian serie a",
-            "local": {
-              "equipo": {
-                "id": "103",
-                "uid": "s:600~t:103",
-                "nombre": "AC Milan",
-                "nombre_corto": "Milan",
-                "abreviatura": "MIL",
-                "slug": "ac-milan",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
-                "color": "e4002b"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2925",
-                "uid": "s:600~t:2925",
-                "nombre": "Cagliari",
-                "nombre_corto": "Cagliari",
-                "abreviatura": "CAG",
-                "slug": "cagliari",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2925.png",
-                "color": "282846"
-              },
-              "localia": "away",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737157/cagliari-ac-milan",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
-          },
-          {
-            "id": "737162",
-            "nombre": "Como at Cremonese",
-            "fecha": "2026-05-24T18:45Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "como at cremonese como cre 2025 26 italian serie a",
-            "local": {
-              "equipo": {
-                "id": "4050",
-                "uid": "s:600~t:4050",
-                "nombre": "Cremonese",
-                "nombre_corto": "Cremonese",
-                "abreviatura": "CRE",
-                "slug": "cremonese",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4050.png",
-                "color": "FF0000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2572",
-                "uid": "s:600~t:2572",
-                "nombre": "Como",
-                "nombre_corto": "Como",
-                "abreviatura": "COMO",
-                "slug": "como",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2572.png",
-                "color": "3933FF"
-              },
-              "localia": "away",
-              "marcador": "4",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737162/como-cremonese",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
-          },
-          {
-            "id": "737160",
-            "nombre": "AS Roma at Hellas Verona",
-            "fecha": "2026-05-24T18:45Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "as roma at hellas verona roma ver 2025 26 italian serie a",
-            "local": {
-              "equipo": {
-                "id": "119",
-                "uid": "s:600~t:119",
-                "nombre": "Hellas Verona",
-                "nombre_corto": "Verona",
-                "abreviatura": "VER",
-                "slug": "hellas-verona",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/119.png",
-                "color": "00239c"
+                "id": "107",
+                "uid": "s:600~t:107",
+                "nombre": "Bologna",
+                "nombre_corto": "Bologna",
+                "abreviatura": "BOL",
+                "slug": "bologna",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/107.png",
+                "color": "04043d"
               },
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
             "visitante": {
               "equipo": {
-                "id": "104",
-                "uid": "s:600~t:104",
-                "nombre": "AS Roma",
-                "nombre_corto": "AS Roma",
-                "abreviatura": "ROMA",
-                "slug": "as-roma",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
-                "color": "990a2c"
-              },
-              "localia": "away",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737160/as-roma-hellas-verona",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
-          },
-          {
-            "id": "737163",
-            "nombre": "Genoa at Lecce",
-            "fecha": "2026-05-24T18:45Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "genoa at lecce gen lec 2025 26 italian serie a",
-            "local": {
-              "equipo": {
-                "id": "113",
-                "uid": "s:600~t:113",
-                "nombre": "Lecce",
-                "nombre_corto": "Lecce",
-                "abreviatura": "LEC",
-                "slug": "lecce",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/113.png",
-                "color": "e4002b"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "3263",
-                "uid": "s:600~t:3263",
-                "nombre": "Genoa",
-                "nombre_corto": "Genoa",
-                "abreviatura": "GEN",
-                "slug": "genoa",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3263.png",
-                "color": "08305d"
+                "id": "112",
+                "uid": "s:600~t:112",
+                "nombre": "Lazio",
+                "nombre_corto": "Lazio",
+                "abreviatura": "LAZ",
+                "slug": "lazio",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/112.png",
+                "color": "74bde7"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737163/genoa-lecce",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874927/lazio-bologna",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
+            "fecha_grupo": "2026-08-23"
           },
           {
-            "id": "737158",
-            "nombre": "Juventus at Torino",
-            "fecha": "2026-05-24T19:45Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401874930",
+            "nombre": "Juventus at Frosinone",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
-            "clasificacion_texto": "juventus at torino juv tor 2025 26 italian serie a",
+            "clasificacion_texto": "juventus at frosinone juv fro 2026 27 italian serie a",
             "local": {
               "equipo": {
-                "id": "239",
-                "uid": "s:600~t:239",
-                "nombre": "Torino",
-                "nombre_corto": "Torino",
-                "abreviatura": "TOR",
-                "slug": "torino",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/239.png",
-                "color": "9f0000"
+                "id": "4057",
+                "uid": "s:600~t:4057",
+                "nombre": "Frosinone",
+                "nombre_corto": "Frosinone",
+                "abreviatura": "FRO",
+                "slug": "frosinone",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4057.png",
+                "color": "ffff00"
               },
               "localia": "home",
-              "marcador": "2",
+              "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
             "visitante": {
               "equipo": {
@@ -75891,22 +76002,328 @@
                 "color": "000000"
               },
               "localia": "away",
-              "marcador": "2",
+              "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/737158/juventus-torino",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874930/juventus-frosinone",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-05-24"
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874929",
+            "nombre": "Napoli at Genoa",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "napoli at genoa nap gen 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "3263",
+                "uid": "s:600~t:3263",
+                "nombre": "Genoa",
+                "nombre_corto": "Genoa",
+                "abreviatura": "GEN",
+                "slug": "genoa",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3263.png",
+                "color": "08305d"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "114",
+                "uid": "s:600~t:114",
+                "nombre": "Napoli",
+                "nombre_corto": "Napoli",
+                "abreviatura": "NAP",
+                "slug": "napoli",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
+                "color": "0677d2"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874929/napoli-genoa",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874931",
+            "nombre": "Monza at Internazionale",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "monza at internazionale mon int 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "110",
+                "uid": "s:600~t:110",
+                "nombre": "Internazionale",
+                "nombre_corto": "Inter Milan",
+                "abreviatura": "INT",
+                "slug": "internazionale",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
+                "color": "00239c"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "4007",
+                "uid": "s:600~t:4007",
+                "nombre": "Monza",
+                "nombre_corto": "Monza",
+                "abreviatura": "MON",
+                "slug": "monza",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4007.png",
+                "color": "C8142F"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874931/monza-internazionale",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874747",
+            "nombre": "Cagliari at Parma",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "cagliari at parma cag par 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "115",
+                "uid": "s:600~t:115",
+                "nombre": "Parma",
+                "nombre_corto": "Parma",
+                "abreviatura": "PAR",
+                "slug": "parma",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/115.png",
+                "color": "19161D"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2925",
+                "uid": "s:600~t:2925",
+                "nombre": "Cagliari",
+                "nombre_corto": "Cagliari",
+                "abreviatura": "CAG",
+                "slug": "cagliari",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2925.png",
+                "color": "282846"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874747/cagliari-parma",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874932",
+            "nombre": "AC Milan at Torino",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "ac milan at torino mil tor 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "239",
+                "uid": "s:600~t:239",
+                "nombre": "Torino",
+                "nombre_corto": "Torino",
+                "abreviatura": "TOR",
+                "slug": "torino",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/239.png",
+                "color": "9f0000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "103",
+                "uid": "s:600~t:103",
+                "nombre": "AC Milan",
+                "nombre_corto": "Milan",
+                "abreviatura": "MIL",
+                "slug": "ac-milan",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
+                "color": "e4002b"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874932/ac-milan-torino",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874745",
+            "nombre": "Como at Udinese",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "como at udinese como udi 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "118",
+                "uid": "s:600~t:118",
+                "nombre": "Udinese",
+                "nombre_corto": "Udinese",
+                "abreviatura": "UDI",
+                "slug": "udinese",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/118.png",
+                "color": "19161D"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2572",
+                "uid": "s:600~t:2572",
+                "nombre": "Como",
+                "nombre_corto": "Como",
+                "abreviatura": "COMO",
+                "slug": "como",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2572.png",
+                "color": "3933FF"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874745/como-udinese",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401874946",
+            "nombre": "Lecce at Venezia",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "lecce at venezia lec ven 2026 27 italian serie a",
+            "local": {
+              "equipo": {
+                "id": "17530",
+                "uid": "s:600~t:17530",
+                "nombre": "Venezia",
+                "nombre_corto": "Venezia",
+                "abreviatura": "VEN",
+                "slug": "venezia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17530.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "113",
+                "uid": "s:600~t:113",
+                "nombre": "Lecce",
+                "nombre_corto": "Lecce",
+                "abreviatura": "LEC",
+                "slug": "lecce",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/113.png",
+                "color": "e4002b"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874946/lecce-venezia",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
           }
         ],
-        "total_scoreboard": 7
+        "total_scoreboard": 10
       }
     },
     {
@@ -75917,7 +76334,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:02.633259+00:00",
+      "actualizado": "2026-06-06T10:28:50.209143+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -77500,7 +77917,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:02.892077+00:00",
+      "actualizado": "2026-06-06T10:28:50.695197+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -79083,7 +79500,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:03.230208+00:00",
+      "actualizado": "2026-06-06T10:28:50.949571+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -80666,7 +81083,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:03.493087+00:00",
+      "actualizado": "2026-06-06T10:28:51.387303+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -81911,7 +82328,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:03.764771+00:00",
+      "actualizado": "2026-06-06T10:28:51.642827+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -81921,9 +82338,9 @@
       "resumen": {
         "equipos": 16,
         "posiciones": 16,
-        "partidos_scoreboard": 1,
+        "partidos_scoreboard": 3,
         "ultimos": 0,
-        "proximos": 1
+        "proximos": 3
       },
       "equipos": [
         {
@@ -82301,7 +82718,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "3",
+            "posicion": "4",
             "pj": "3",
             "g": "2",
             "e": "0",
@@ -82327,14 +82744,14 @@
           },
           "stats": {
             "posicion": "8",
-            "pj": "2",
+            "pj": "3",
             "g": "0",
-            "e": "0",
+            "e": "1",
             "p": "2",
             "gf": "2",
             "gc": "5",
             "dg": "-3",
-            "pts": "0",
+            "pts": "1",
             "racha": "-"
           }
         },
@@ -82351,15 +82768,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "4",
-            "pj": "3",
+            "posicion": "2",
+            "pj": "4",
             "g": "1",
-            "e": "2",
+            "e": "3",
             "p": "0",
             "gf": "6",
             "gc": "3",
             "dg": "+3",
-            "pts": "5",
+            "pts": "6",
             "racha": "-"
           }
         },
@@ -82451,7 +82868,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "2",
+            "posicion": "3",
             "pj": "3",
             "g": "2",
             "e": "0",
@@ -82493,24 +82910,24 @@
         "ultimos": [],
         "proximos": [
           {
-            "id": "401874090",
-            "nombre": "Danubio at Montevideo Wanderers",
-            "fecha": "2026-06-05T22:00Z",
+            "id": "401874091",
+            "nombre": "Racing (Montevideo) at Central Español Fútbol Club",
+            "fecha": "2026-06-06T13:00Z",
             "estado": "Scheduled",
             "estado_tipo": "pre",
             "completado": false,
             "fase": "",
-            "clasificacion_texto": "danubio at montevideo wanderers dan wan torneo intermedio",
+            "clasificacion_texto": "racing montevideo at central espanol futbol club rac cefc torneo intermedio",
             "local": {
               "equipo": {
-                "id": "5501",
-                "uid": "s:600~t:5501",
-                "nombre": "Montevideo Wanderers",
-                "nombre_corto": "Wanderers",
-                "abreviatura": "WAN",
-                "slug": "montevideo-wanderers",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5501.png",
-                "color": "1a1a1a"
+                "id": "131688",
+                "uid": "s:600~t:131688",
+                "nombre": "Central Español Fútbol Club",
+                "nombre_corto": "Central Español",
+                "abreviatura": "CEFC",
+                "slug": "central-espanol-futbol-club",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131688.png",
+                "color": "000000"
               },
               "localia": "home",
               "marcador": "0",
@@ -82519,21 +82936,21 @@
             },
             "visitante": {
               "equipo": {
-                "id": "4817",
-                "uid": "s:600~t:4817",
-                "nombre": "Danubio",
-                "nombre_corto": "Danubio",
-                "abreviatura": "DAN",
-                "slug": "danubio",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4817.png",
-                "color": "0a0a0a"
+                "id": "9903",
+                "uid": "s:600~t:9903",
+                "nombre": "Racing (Montevideo)",
+                "nombre_corto": "Racing (M)",
+                "abreviatura": "RAC",
+                "slug": "racing-montevideo",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9903.png",
+                "color": "107436"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401874090/danubio-montevideo-wanderers",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874091/racing-montevideo-central-espanol-futbol-club",
             "penales": {
               "definicion": false,
               "local": "",
@@ -82541,29 +82958,131 @@
               "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-06-05"
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401874092",
+            "nombre": "Deportivo Maldonado at Montevideo City Torque",
+            "fecha": "2026-06-06T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "deportivo maldonado at montevideo city torque mal mct torneo intermedio",
+            "local": {
+              "equipo": {
+                "id": "19002",
+                "uid": "s:600~t:19002",
+                "nombre": "Montevideo City Torque",
+                "nombre_corto": "MC Torque",
+                "abreviatura": "MCT",
+                "slug": "montevideo-city-torque",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19002.png",
+                "color": "6bc7f5"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10000",
+                "uid": "s:600~t:10000",
+                "nombre": "Deportivo Maldonado",
+                "nombre_corto": "Maldonado",
+                "abreviatura": "MAL",
+                "slug": "deportivo-maldonado",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10000.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874092/deportivo-maldonado-montevideo-city-torque",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401874023",
+            "nombre": "Juventud at Nacional",
+            "fecha": "2026-06-06T21:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "juventud at nacional juv nac torneo intermedio",
+            "local": {
+              "equipo": {
+                "id": "2684",
+                "uid": "s:600~t:2684",
+                "nombre": "Nacional",
+                "nombre_corto": "Nacional",
+                "abreviatura": "NAC",
+                "slug": "nacional",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2684.png",
+                "color": "345BBC"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "8416",
+                "uid": "s:600~t:8416",
+                "nombre": "Juventud",
+                "nombre_corto": "Juventud",
+                "abreviatura": "JUV",
+                "slug": "juventud",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8416.png",
+                "color": "023396"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874023/juventud-nacional",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
           }
         ],
         "todos": [
           {
-            "id": "401874090",
-            "nombre": "Danubio at Montevideo Wanderers",
-            "fecha": "2026-06-05T22:00Z",
+            "id": "401874091",
+            "nombre": "Racing (Montevideo) at Central Español Fútbol Club",
+            "fecha": "2026-06-06T13:00Z",
             "estado": "Scheduled",
             "estado_tipo": "pre",
             "completado": false,
             "fase": "",
-            "clasificacion_texto": "danubio at montevideo wanderers dan wan torneo intermedio",
+            "clasificacion_texto": "racing montevideo at central espanol futbol club rac cefc torneo intermedio",
             "local": {
               "equipo": {
-                "id": "5501",
-                "uid": "s:600~t:5501",
-                "nombre": "Montevideo Wanderers",
-                "nombre_corto": "Wanderers",
-                "abreviatura": "WAN",
-                "slug": "montevideo-wanderers",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5501.png",
-                "color": "1a1a1a"
+                "id": "131688",
+                "uid": "s:600~t:131688",
+                "nombre": "Central Español Fútbol Club",
+                "nombre_corto": "Central Español",
+                "abreviatura": "CEFC",
+                "slug": "central-espanol-futbol-club",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131688.png",
+                "color": "000000"
               },
               "localia": "home",
               "marcador": "0",
@@ -82572,21 +83091,21 @@
             },
             "visitante": {
               "equipo": {
-                "id": "4817",
-                "uid": "s:600~t:4817",
-                "nombre": "Danubio",
-                "nombre_corto": "Danubio",
-                "abreviatura": "DAN",
-                "slug": "danubio",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4817.png",
-                "color": "0a0a0a"
+                "id": "9903",
+                "uid": "s:600~t:9903",
+                "nombre": "Racing (Montevideo)",
+                "nombre_corto": "Racing (M)",
+                "abreviatura": "RAC",
+                "slug": "racing-montevideo",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9903.png",
+                "color": "107436"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401874090/danubio-montevideo-wanderers",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874091/racing-montevideo-central-espanol-futbol-club",
             "penales": {
               "definicion": false,
               "local": "",
@@ -82594,10 +83113,112 @@
               "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-06-05"
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401874092",
+            "nombre": "Deportivo Maldonado at Montevideo City Torque",
+            "fecha": "2026-06-06T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "deportivo maldonado at montevideo city torque mal mct torneo intermedio",
+            "local": {
+              "equipo": {
+                "id": "19002",
+                "uid": "s:600~t:19002",
+                "nombre": "Montevideo City Torque",
+                "nombre_corto": "MC Torque",
+                "abreviatura": "MCT",
+                "slug": "montevideo-city-torque",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19002.png",
+                "color": "6bc7f5"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10000",
+                "uid": "s:600~t:10000",
+                "nombre": "Deportivo Maldonado",
+                "nombre_corto": "Maldonado",
+                "abreviatura": "MAL",
+                "slug": "deportivo-maldonado",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10000.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874092/deportivo-maldonado-montevideo-city-torque",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
+          },
+          {
+            "id": "401874023",
+            "nombre": "Juventud at Nacional",
+            "fecha": "2026-06-06T21:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "juventud at nacional juv nac torneo intermedio",
+            "local": {
+              "equipo": {
+                "id": "2684",
+                "uid": "s:600~t:2684",
+                "nombre": "Nacional",
+                "nombre_corto": "Nacional",
+                "abreviatura": "NAC",
+                "slug": "nacional",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2684.png",
+                "color": "345BBC"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "8416",
+                "uid": "s:600~t:8416",
+                "nombre": "Juventud",
+                "nombre_corto": "Juventud",
+                "abreviatura": "JUV",
+                "slug": "juventud",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8416.png",
+                "color": "023396"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874023/juventud-nacional",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-06"
           }
         ],
-        "total_scoreboard": 1
+        "total_scoreboard": 3
       }
     },
     {
@@ -82608,7 +83229,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:04.033649+00:00",
+      "actualizado": "2026-06-06T10:28:51.944217+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -83369,7 +83990,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:04.301446+00:00",
+      "actualizado": "2026-06-06T10:28:52.230205+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -84206,7 +84827,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:04.589920+00:00",
+      "actualizado": "2026-06-06T10:28:52.893949+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -84216,9 +84837,9 @@
       "resumen": {
         "equipos": 16,
         "posiciones": 16,
-        "partidos_scoreboard": 4,
-        "ultimos": 4,
-        "proximos": 0
+        "partidos_scoreboard": 1,
+        "ultimos": 0,
+        "proximos": 1
       },
       "equipos": [
         {
@@ -84785,33 +85406,18 @@
         }
       ],
       "partidos": {
-        "ultimos": [
+        "ultimos": [],
+        "proximos": [
           {
-            "id": "401850584",
-            "nombre": "Audax Italiano at Palestino",
-            "fecha": "2026-06-01T00:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401850588",
+            "nombre": "La Serena at Audax Italiano",
+            "fecha": "2026-06-13T00:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
-            "clasificacion_texto": "audax italiano at palestino aud pal 2026 primera division de chile",
+            "clasificacion_texto": "la serena at audax italiano lse aud 2026 primera division de chile",
             "local": {
-              "equipo": {
-                "id": "4422",
-                "uid": "s:600~t:4422",
-                "nombre": "Palestino",
-                "nombre_corto": "Palestino",
-                "abreviatura": "PAL",
-                "slug": "palestino",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4422.png",
-                "color": "2a1b07"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
               "equipo": {
                 "id": "4138",
                 "uid": "s:600~t:4138",
@@ -84822,356 +85428,49 @@
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4138.png",
                 "color": "046904"
               },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401850584/audax-italiano-palestino",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-01"
-          },
-          {
-            "id": "401850585",
-            "nombre": "Everton CD at O'Higgins",
-            "fecha": "2026-05-31T21:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "everton cd at o higgins eve ohi 2026 primera division de chile",
-            "local": {
-              "equipo": {
-                "id": "6072",
-                "uid": "s:600~t:6072",
-                "nombre": "O'Higgins",
-                "nombre_corto": "O'Higgins",
-                "abreviatura": "OHI",
-                "slug": "o-higgins",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6072.png",
-                "color": "517ab7"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "4129",
-                "uid": "s:600~t:4129",
-                "nombre": "Everton CD",
-                "nombre_corto": "Everton CD",
-                "abreviatura": "EVE",
-                "slug": "everton-cd",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4129.png",
-                "color": "212121"
-              },
-              "localia": "away",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401850585/everton-cd-ohiggins",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401850582",
-            "nombre": "Universidad Católica at Huachipato",
-            "fecha": "2026-05-31T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "universidad catolica at huachipato cduc hua 2026 primera division de chile",
-            "local": {
-              "equipo": {
-                "id": "4134",
-                "uid": "s:600~t:4134",
-                "nombre": "Huachipato",
-                "nombre_corto": "Huachipato",
-                "abreviatura": "HUA",
-                "slug": "huachipato",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4134.png",
-                "color": "023396"
-              },
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
             "visitante": {
               "equipo": {
-                "id": "885",
-                "uid": "s:600~t:885",
-                "nombre": "Universidad Católica",
-                "nombre_corto": "U Católica",
-                "abreviatura": "CDUC",
-                "slug": "universidad-catolica",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/885.png",
-                "color": "0a4f8d"
+                "id": "4137",
+                "uid": "s:600~t:4137",
+                "nombre": "La Serena",
+                "nombre_corto": "La Serena",
+                "abreviatura": "LSE",
+                "slug": "la-serena",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4137.png",
+                "color": "C22222"
               },
               "localia": "away",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401850582/universidad-catolica-huachipato",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401850581",
-            "nombre": "Coquimbo Unido at Deportes Limache",
-            "fecha": "2026-05-31T16:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "coquimbo unido at deportes limache coq lim 2026 primera division de chile",
-            "local": {
-              "equipo": {
-                "id": "19195",
-                "uid": "s:600~t:19195",
-                "nombre": "Deportes Limache",
-                "nombre_corto": "Limache",
-                "abreviatura": "LIM",
-                "slug": "deportes-limache",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19195.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "2",
+              "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "visitante": {
-              "equipo": {
-                "id": "8186",
-                "uid": "s:600~t:8186",
-                "nombre": "Coquimbo Unido",
-                "nombre_corto": "Coquimbo",
-                "abreviatura": "COQ",
-                "slug": "coquimbo-unido",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8186.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401850581/coquimbo-unido-deportes-limache",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401850588/la-serena-audax-italiano",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
+            "fecha_grupo": "2026-06-13"
           }
         ],
-        "proximos": [],
         "todos": [
           {
-            "id": "401850581",
-            "nombre": "Coquimbo Unido at Deportes Limache",
-            "fecha": "2026-05-31T16:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401850588",
+            "nombre": "La Serena at Audax Italiano",
+            "fecha": "2026-06-13T00:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
-            "clasificacion_texto": "coquimbo unido at deportes limache coq lim 2026 primera division de chile",
+            "clasificacion_texto": "la serena at audax italiano lse aud 2026 primera division de chile",
             "local": {
-              "equipo": {
-                "id": "19195",
-                "uid": "s:600~t:19195",
-                "nombre": "Deportes Limache",
-                "nombre_corto": "Limache",
-                "abreviatura": "LIM",
-                "slug": "deportes-limache",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19195.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "8186",
-                "uid": "s:600~t:8186",
-                "nombre": "Coquimbo Unido",
-                "nombre_corto": "Coquimbo",
-                "abreviatura": "COQ",
-                "slug": "coquimbo-unido",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8186.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401850581/coquimbo-unido-deportes-limache",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401850582",
-            "nombre": "Universidad Católica at Huachipato",
-            "fecha": "2026-05-31T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "universidad catolica at huachipato cduc hua 2026 primera division de chile",
-            "local": {
-              "equipo": {
-                "id": "4134",
-                "uid": "s:600~t:4134",
-                "nombre": "Huachipato",
-                "nombre_corto": "Huachipato",
-                "abreviatura": "HUA",
-                "slug": "huachipato",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4134.png",
-                "color": "023396"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "885",
-                "uid": "s:600~t:885",
-                "nombre": "Universidad Católica",
-                "nombre_corto": "U Católica",
-                "abreviatura": "CDUC",
-                "slug": "universidad-catolica",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/885.png",
-                "color": "0a4f8d"
-              },
-              "localia": "away",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401850582/universidad-catolica-huachipato",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401850585",
-            "nombre": "Everton CD at O'Higgins",
-            "fecha": "2026-05-31T21:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "everton cd at o higgins eve ohi 2026 primera division de chile",
-            "local": {
-              "equipo": {
-                "id": "6072",
-                "uid": "s:600~t:6072",
-                "nombre": "O'Higgins",
-                "nombre_corto": "O'Higgins",
-                "abreviatura": "OHI",
-                "slug": "o-higgins",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6072.png",
-                "color": "517ab7"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "4129",
-                "uid": "s:600~t:4129",
-                "nombre": "Everton CD",
-                "nombre_corto": "Everton CD",
-                "abreviatura": "EVE",
-                "slug": "everton-cd",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4129.png",
-                "color": "212121"
-              },
-              "localia": "away",
-              "marcador": "3",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401850585/everton-cd-ohiggins",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-31"
-          },
-          {
-            "id": "401850584",
-            "nombre": "Audax Italiano at Palestino",
-            "fecha": "2026-06-01T00:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "audax italiano at palestino aud pal 2026 primera division de chile",
-            "local": {
-              "equipo": {
-                "id": "4422",
-                "uid": "s:600~t:4422",
-                "nombre": "Palestino",
-                "nombre_corto": "Palestino",
-                "abreviatura": "PAL",
-                "slug": "palestino",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4422.png",
-                "color": "2a1b07"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
               "equipo": {
                 "id": "4138",
                 "uid": "s:600~t:4138",
@@ -85182,23 +85481,39 @@
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4138.png",
                 "color": "046904"
               },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "4137",
+                "uid": "s:600~t:4137",
+                "nombre": "La Serena",
+                "nombre_corto": "La Serena",
+                "abreviatura": "LSE",
+                "slug": "la-serena",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4137.png",
+                "color": "C22222"
+              },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401850584/audax-italiano-palestino",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401850588/la-serena-audax-italiano",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-06-01"
+            "fecha_grupo": "2026-06-13"
           }
         ],
-        "total_scoreboard": 4
+        "total_scoreboard": 1
       }
     },
     {
@@ -85209,7 +85524,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:04.849819+00:00",
+      "actualizado": "2026-06-06T10:28:53.291217+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -85976,7 +86291,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-05T21:55:05.107188+00:00",
+      "actualizado": "2026-06-06T10:28:53.974077+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
