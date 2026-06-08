@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "campeon": null,
-  "actualizado": "2026-06-08T13:16:05.331409Z",
+  "actualizado": "2026-06-08T18:07:49.688796Z",
   "fases": {
     "treintaidosavos": [
       {
@@ -1507,6 +1507,66 @@
         "src_local": 5,
         "src_visitante": 6,
         "llave_num": 1
+      },
+      {
+        "id": "401874288",
+        "fase": "octavos",
+        "nombre": "Instituto (Córdoba) at Platense",
+        "fecha": "2026-08-30",
+        "fecha_iso": "2026-08-30T18:00Z",
+        "local": {
+          "id": "7764",
+          "nombre": "Platense",
+          "nombre_corto": "PLA",
+          "logo": "",
+          "marcador": "",
+          "ganador": false
+        },
+        "visitante": {
+          "id": "2975",
+          "nombre": "Instituto (Córdoba)",
+          "nombre_corto": "IACC",
+          "logo": "",
+          "marcador": "",
+          "ganador": false
+        },
+        "completado": false,
+        "penaltis": false,
+        "estadio": "",
+        "nota": "",
+        "src_local": 4,
+        "src_visitante": 8,
+        "llave_num": 2
+      },
+      {
+        "id": "401874402",
+        "fase": "octavos",
+        "nombre": "Barracas Central at Estudiantes de La Plata",
+        "fecha": "2026-08-30",
+        "fecha_iso": "2026-08-30T18:00Z",
+        "local": {
+          "id": "8",
+          "nombre": "Estudiantes de La Plata",
+          "nombre_corto": "EST",
+          "logo": "",
+          "marcador": "",
+          "ganador": false
+        },
+        "visitante": {
+          "id": "10060",
+          "nombre": "Barracas Central",
+          "nombre_corto": "BAR",
+          "logo": "",
+          "marcador": "",
+          "ganador": false
+        },
+        "completado": false,
+        "penaltis": false,
+        "estadio": "",
+        "nota": "",
+        "src_local": 10,
+        "src_visitante": 11,
+        "llave_num": 3
       }
     ],
     "cuartos": [],
