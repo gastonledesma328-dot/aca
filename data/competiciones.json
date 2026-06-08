@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-07T21:43:07.021577+00:00",
+  "actualizado": "2026-06-08T12:45:00.577101+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:50.532671+00:00",
+      "actualizado": "2026-06-08T12:44:44.011056+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:51.099740+00:00",
+      "actualizado": "2026-06-08T12:44:44.687879+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -55626,8 +55626,8 @@
         "equipos": 36,
         "posiciones": 36,
         "partidos_scoreboard": 10,
-        "ultimos": 8,
-        "proximos": 2
+        "ultimos": 10,
+        "proximos": 0
       },
       "equipos": [
         {
@@ -56005,15 +56005,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "4",
-            "pj": "15",
+            "posicion": "5",
+            "pj": "16",
             "g": "6",
-            "e": "7",
+            "e": "8",
             "p": "2",
             "gf": "18",
             "gc": "13",
             "dg": "+5",
-            "pts": "25",
+            "pts": "26",
             "racha": "-"
           }
         },
@@ -56030,7 +56030,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "2",
+            "posicion": "4",
             "pj": "16",
             "g": "6",
             "e": "8",
@@ -56055,15 +56055,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "7",
-            "pj": "15",
-            "g": "5",
+            "posicion": "6",
+            "pj": "16",
+            "g": "6",
             "e": "7",
             "p": "3",
-            "gf": "16",
-            "gc": "11",
-            "dg": "+5",
-            "pts": "22",
+            "gf": "18",
+            "gc": "12",
+            "dg": "+6",
+            "pts": "25",
             "racha": "-"
           }
         },
@@ -56081,13 +56081,13 @@
           },
           "stats": {
             "posicion": "9",
-            "pj": "15",
+            "pj": "16",
             "g": "5",
             "e": "5",
-            "p": "5",
+            "p": "6",
             "gf": "9",
-            "gc": "10",
-            "dg": "-1",
+            "gc": "11",
+            "dg": "-2",
             "pts": "20",
             "racha": "-"
           }
@@ -56105,15 +56105,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "5",
-            "pj": "15",
-            "g": "7",
+            "posicion": "2",
+            "pj": "16",
+            "g": "8",
             "e": "4",
             "p": "4",
-            "gf": "15",
-            "gc": "11",
-            "dg": "+4",
-            "pts": "25",
+            "gf": "17",
+            "gc": "12",
+            "dg": "+5",
+            "pts": "28",
             "racha": "-"
           }
         },
@@ -56131,14 +56131,14 @@
           },
           "stats": {
             "posicion": "16",
-            "pj": "15",
+            "pj": "16",
             "g": "3",
-            "e": "6",
+            "e": "7",
             "p": "6",
-            "gf": "8",
-            "gc": "15",
+            "gf": "9",
+            "gc": "16",
             "dg": "-7",
-            "pts": "15",
+            "pts": "16",
             "racha": "-"
           }
         },
@@ -56231,14 +56231,14 @@
           },
           "stats": {
             "posicion": "1",
-            "pj": "15",
-            "g": "8",
+            "pj": "16",
+            "g": "9",
             "e": "4",
             "p": "3",
-            "gf": "23",
+            "gf": "24",
             "gc": "13",
-            "dg": "+10",
-            "pts": "28",
+            "dg": "+11",
+            "pts": "31",
             "racha": "-"
           }
         },
@@ -56256,14 +56256,14 @@
           },
           "stats": {
             "posicion": "15",
-            "pj": "15",
+            "pj": "16",
             "g": "3",
-            "e": "6",
+            "e": "7",
             "p": "6",
             "gf": "12",
             "gc": "16",
             "dg": "-4",
-            "pts": "15",
+            "pts": "16",
             "racha": "-"
           }
         },
@@ -56281,13 +56281,13 @@
           },
           "stats": {
             "posicion": "18",
-            "pj": "15",
+            "pj": "16",
             "g": "1",
             "e": "6",
-            "p": "8",
-            "gf": "11",
-            "gc": "20",
-            "dg": "-9",
+            "p": "9",
+            "gf": "12",
+            "gc": "22",
+            "dg": "-10",
             "pts": "9",
             "racha": "-"
           }
@@ -56306,13 +56306,13 @@
           },
           "stats": {
             "posicion": "13",
-            "pj": "15",
+            "pj": "16",
             "g": "3",
             "e": "8",
-            "p": "4",
-            "gf": "16",
-            "gc": "15",
-            "dg": "+1",
+            "p": "5",
+            "gf": "17",
+            "gc": "17",
+            "dg": "0",
             "pts": "17",
             "racha": "-"
           }
@@ -56380,15 +56380,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "6",
-            "pj": "15",
+            "posicion": "7",
+            "pj": "16",
             "g": "6",
-            "e": "5",
+            "e": "6",
             "p": "4",
             "gf": "20",
             "gc": "15",
             "dg": "+5",
-            "pts": "23",
+            "pts": "24",
             "racha": "-"
           }
         },
@@ -56406,14 +56406,14 @@
           },
           "stats": {
             "posicion": "14",
-            "pj": "15",
+            "pj": "16",
             "g": "4",
-            "e": "4",
+            "e": "5",
             "p": "7",
-            "gf": "13",
-            "gc": "18",
+            "gf": "14",
+            "gc": "19",
             "dg": "-5",
-            "pts": "16",
+            "pts": "17",
             "racha": "-"
           }
         },
@@ -56431,14 +56431,14 @@
           },
           "stats": {
             "posicion": "3",
-            "pj": "15",
+            "pj": "16",
             "g": "6",
-            "e": "8",
+            "e": "9",
             "p": "1",
             "gf": "13",
             "gc": "8",
             "dg": "+5",
-            "pts": "26",
+            "pts": "27",
             "racha": "-"
           }
         },
@@ -56455,7 +56455,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "17",
+            "posicion": "18",
             "pj": "16",
             "g": "4",
             "e": "4",
@@ -56480,14 +56480,14 @@
             "color": ""
           },
           "stats": {
-            "posicion": "12",
-            "pj": "15",
+            "posicion": "15",
+            "pj": "16",
             "g": "5",
             "e": "3",
-            "p": "7",
+            "p": "8",
             "gf": "14",
-            "gc": "17",
-            "dg": "-3",
+            "gc": "18",
+            "dg": "-4",
             "pts": "18",
             "racha": "-"
           }
@@ -56505,7 +56505,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "11",
+            "posicion": "14",
             "pj": "14",
             "g": "4",
             "e": "6",
@@ -56530,15 +56530,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "14",
-            "pj": "15",
+            "posicion": "13",
+            "pj": "16",
             "g": "4",
-            "e": "5",
+            "e": "6",
             "p": "6",
             "gf": "14",
             "gc": "11",
             "dg": "+3",
-            "pts": "17",
+            "pts": "18",
             "racha": "-"
           }
         },
@@ -56580,7 +56580,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "8",
+            "posicion": "9",
             "pj": "15",
             "g": "5",
             "e": "5",
@@ -56680,7 +56680,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "15",
+            "posicion": "17",
             "pj": "16",
             "g": "4",
             "e": "5",
@@ -56705,15 +56705,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "10",
-            "pj": "15",
-            "g": "4",
+            "posicion": "6",
+            "pj": "16",
+            "g": "5",
             "e": "8",
             "p": "3",
-            "gf": "12",
+            "gf": "13",
             "gc": "15",
-            "dg": "-3",
-            "pts": "20",
+            "dg": "-2",
+            "pts": "23",
             "racha": "-"
           }
         },
@@ -56755,15 +56755,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "13",
-            "pj": "15",
+            "posicion": "11",
+            "pj": "16",
             "g": "4",
-            "e": "6",
+            "e": "7",
             "p": "5",
-            "gf": "10",
-            "gc": "13",
+            "gf": "11",
+            "gc": "14",
             "dg": "-3",
-            "pts": "18",
+            "pts": "19",
             "racha": "-"
           }
         },
@@ -56780,7 +56780,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "9",
+            "posicion": "10",
             "pj": "16",
             "g": "5",
             "e": "5",
@@ -56805,14 +56805,14 @@
             "color": ""
           },
           "stats": {
-            "posicion": "6",
-            "pj": "15",
+            "posicion": "8",
+            "pj": "16",
             "g": "6",
             "e": "3",
-            "p": "6",
+            "p": "7",
             "gf": "22",
-            "gc": "18",
-            "dg": "+4",
+            "gc": "19",
+            "dg": "+3",
             "pts": "21",
             "racha": "-"
           }
@@ -56831,14 +56831,14 @@
           },
           "stats": {
             "posicion": "16",
-            "pj": "15",
+            "pj": "16",
             "g": "4",
-            "e": "5",
+            "e": "6",
             "p": "6",
-            "gf": "12",
-            "gc": "17",
+            "gf": "13",
+            "gc": "18",
             "dg": "-5",
-            "pts": "17",
+            "pts": "18",
             "racha": "-"
           }
         },
@@ -56856,14 +56856,14 @@
           },
           "stats": {
             "posicion": "7",
-            "pj": "15",
+            "pj": "16",
             "g": "5",
-            "e": "6",
+            "e": "7",
             "p": "4",
             "gf": "14",
             "gc": "12",
             "dg": "+2",
-            "pts": "21",
+            "pts": "22",
             "racha": "-"
           }
         },
@@ -56880,21 +56880,123 @@
             "color": ""
           },
           "stats": {
-            "posicion": "18",
-            "pj": "15",
-            "g": "4",
+            "posicion": "12",
+            "pj": "16",
+            "g": "5",
             "e": "4",
             "p": "7",
-            "gf": "15",
+            "gf": "16",
             "gc": "23",
-            "dg": "-8",
-            "pts": "16",
+            "dg": "-7",
+            "pts": "19",
             "racha": "-"
           }
         }
       ],
       "partidos": {
         "ultimos": [
+          {
+            "id": "401843917",
+            "nombre": "Quilmes at San Martín (Tucumán)",
+            "fecha": "2026-06-07T20:30Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "quilmes at san martin tucuman qui san regular season",
+            "local": {
+              "equipo": {
+                "id": "17814",
+                "uid": "s:600~t:17814",
+                "nombre": "San Martín (Tucumán)",
+                "nombre_corto": "San Martín (T)",
+                "abreviatura": "SAN",
+                "slug": "san-martin-tucuman",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
+                "color": "212121"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2741",
+                "uid": "s:600~t:2741",
+                "nombre": "Quilmes",
+                "nombre_corto": "Quilmes",
+                "abreviatura": "QUI",
+                "slug": "quilmes",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
+                "color": "0060f0"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843917/quilmes-san-martin-tucuman",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-07"
+          },
+          {
+            "id": "401843910",
+            "nombre": "Ciudad de Bolívar at Colón (Santa Fe)",
+            "fecha": "2026-06-07T20:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "ciudad de bolivar at colon santa fe cdb col regular season",
+            "local": {
+              "equipo": {
+                "id": "7",
+                "uid": "s:600~t:7",
+                "nombre": "Colón (Santa Fe)",
+                "nombre_corto": "Colón SF",
+                "abreviatura": "COL",
+                "slug": "colon-santa-fe",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7.png",
+                "color": "370000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "21799",
+                "uid": "s:600~t:21799",
+                "nombre": "Ciudad de Bolívar",
+                "nombre_corto": "Ciudad Bolívar",
+                "abreviatura": "CDB",
+                "slug": "ciudad-de-bolivar",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21799.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843910/ciudad-de-bolivar-colon-santa-fe",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-07"
+          },
           {
             "id": "401843913",
             "nombre": "Mitre (Santiago del Estero) at Godoy Cruz Antonio Tomba",
@@ -57304,110 +57406,7 @@
             "fecha_grupo": "2026-06-07"
           }
         ],
-        "proximos": [
-          {
-            "id": "401843910",
-            "nombre": "Ciudad de Bolívar at Colón (Santa Fe)",
-            "fecha": "2026-06-07T20:00Z",
-            "estado": "In Progress",
-            "estado_tipo": "in",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "ciudad de bolivar at colon santa fe cdb col regular season",
-            "local": {
-              "equipo": {
-                "id": "7",
-                "uid": "s:600~t:7",
-                "nombre": "Colón (Santa Fe)",
-                "nombre_corto": "Colón SF",
-                "abreviatura": "COL",
-                "slug": "colon-santa-fe",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7.png",
-                "color": "370000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "21799",
-                "uid": "s:600~t:21799",
-                "nombre": "Ciudad de Bolívar",
-                "nombre_corto": "Ciudad Bolívar",
-                "abreviatura": "CDB",
-                "slug": "ciudad-de-bolivar",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21799.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843910",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
-          },
-          {
-            "id": "401843917",
-            "nombre": "Quilmes at San Martín (Tucumán)",
-            "fecha": "2026-06-07T20:30Z",
-            "estado": "Second Half",
-            "estado_tipo": "in",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "quilmes at san martin tucuman qui san regular season",
-            "local": {
-              "equipo": {
-                "id": "17814",
-                "uid": "s:600~t:17814",
-                "nombre": "San Martín (Tucumán)",
-                "nombre_corto": "San Martín (T)",
-                "abreviatura": "SAN",
-                "slug": "san-martin-tucuman",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17814.png",
-                "color": "212121"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2741",
-                "uid": "s:600~t:2741",
-                "nombre": "Quilmes",
-                "nombre_corto": "Quilmes",
-                "abreviatura": "QUI",
-                "slug": "quilmes",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2741.png",
-                "color": "0060f0"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843917",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
-          }
-        ],
+        "proximos": [],
         "todos": [
           {
             "id": "401843911",
@@ -57821,9 +57820,9 @@
             "id": "401843910",
             "nombre": "Ciudad de Bolívar at Colón (Santa Fe)",
             "fecha": "2026-06-07T20:00Z",
-            "estado": "In Progress",
-            "estado_tipo": "in",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "ciudad de bolivar at colon santa fe cdb col regular season",
             "local": {
@@ -57858,7 +57857,7 @@
               "ganador": false,
               "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843910",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843910/ciudad-de-bolivar-colon-santa-fe",
             "penales": {
               "definicion": true,
               "local": "0",
@@ -57872,9 +57871,9 @@
             "id": "401843917",
             "nombre": "Quilmes at San Martín (Tucumán)",
             "fecha": "2026-06-07T20:30Z",
-            "estado": "Second Half",
-            "estado_tipo": "in",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "quilmes at san martin tucuman qui san regular season",
             "local": {
@@ -57909,7 +57908,7 @@
               "ganador": false,
               "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843917",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843917/quilmes-san-martin-tucuman",
             "penales": {
               "definicion": true,
               "local": "0",
@@ -57932,7 +57931,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:53.155959+00:00",
+      "actualizado": "2026-06-08T12:44:46.861976+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -58913,7 +58912,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:53.871229+00:00",
+      "actualizado": "2026-06-08T12:44:47.609193+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -60597,7 +60596,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:54.462447+00:00",
+      "actualizado": "2026-06-08T12:44:48.240801+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -62197,7 +62196,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:55.043882+00:00",
+      "actualizado": "2026-06-08T12:44:48.835201+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -63594,7 +63593,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:55.797445+00:00",
+      "actualizado": "2026-06-08T12:44:49.505899+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -64991,7 +64990,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:56.381791+00:00",
+      "actualizado": "2026-06-08T12:44:50.042026+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -66389,7 +66388,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:57.024475+00:00",
+      "actualizado": "2026-06-08T12:44:50.569496+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -67647,7 +67646,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:57.720420+00:00",
+      "actualizado": "2026-06-08T12:44:51.266931+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -68542,7 +68541,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:58.307942+00:00",
+      "actualizado": "2026-06-08T12:44:51.991340+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70876,7 +70875,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:58.801128+00:00",
+      "actualizado": "2026-06-08T12:44:52.519629+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -72795,7 +72794,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-07T21:42:59.513591+00:00",
+      "actualizado": "2026-06-08T12:44:53.010307+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -74550,7 +74549,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-07T21:43:00.238621+00:00",
+      "actualizado": "2026-06-08T12:44:53.651403+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -75387,7 +75386,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-07T21:43:00.909936+00:00",
+      "actualizado": "2026-06-08T12:44:54.379569+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -77142,7 +77141,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-07T21:43:01.439575+00:00",
+      "actualizado": "2026-06-08T12:44:54.968630+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -78725,7 +78724,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-07T21:43:02.010385+00:00",
+      "actualizado": "2026-06-08T12:44:55.722330+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -80308,7 +80307,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-07T21:43:02.641492+00:00",
+      "actualizado": "2026-06-08T12:44:56.290850+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -81891,7 +81890,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-07T21:43:03.174256+00:00",
+      "actualizado": "2026-06-08T12:44:56.948517+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -83136,7 +83135,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-07T21:43:04.217504+00:00",
+      "actualizado": "2026-06-08T12:44:57.542299+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -83146,8 +83145,8 @@
       "resumen": {
         "equipos": 16,
         "posiciones": 16,
-        "partidos_scoreboard": 3,
-        "ultimos": 2,
+        "partidos_scoreboard": 1,
+        "ultimos": 0,
         "proximos": 1
       },
       "equipos": [
@@ -83327,14 +83326,14 @@
           },
           "stats": {
             "posicion": "8",
-            "pj": "3",
+            "pj": "4",
             "g": "0",
-            "e": "1",
+            "e": "2",
             "p": "2",
-            "gf": "1",
-            "gc": "4",
+            "gf": "2",
+            "gc": "5",
             "dg": "-3",
-            "pts": "1",
+            "pts": "2",
             "racha": "-"
           }
         },
@@ -83351,15 +83350,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "3",
-            "pj": "3",
-            "g": "2",
+            "posicion": "1",
+            "pj": "4",
+            "g": "3",
             "e": "0",
             "p": "1",
-            "gf": "4",
+            "gf": "5",
             "gc": "2",
-            "dg": "+2",
-            "pts": "6",
+            "dg": "+3",
+            "pts": "9",
             "racha": "-"
           }
         },
@@ -83377,13 +83376,13 @@
           },
           "stats": {
             "posicion": "7",
-            "pj": "3",
+            "pj": "4",
             "g": "1",
             "e": "0",
-            "p": "2",
+            "p": "3",
             "gf": "2",
-            "gc": "6",
-            "dg": "-4",
+            "gc": "7",
+            "dg": "-5",
             "pts": "3",
             "racha": "-"
           }
@@ -83426,7 +83425,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "2",
+            "posicion": "3",
             "pj": "3",
             "g": "2",
             "e": "0",
@@ -83477,14 +83476,14 @@
           },
           "stats": {
             "posicion": "6",
-            "pj": "3",
+            "pj": "4",
             "g": "1",
-            "e": "0",
+            "e": "1",
             "p": "2",
-            "gf": "4",
-            "gc": "5",
+            "gf": "5",
+            "gc": "6",
             "dg": "-1",
-            "pts": "3",
+            "pts": "4",
             "racha": "-"
           }
         },
@@ -83501,7 +83500,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "1",
+            "posicion": "2",
             "pj": "4",
             "g": "2",
             "e": "1",
@@ -83715,130 +83714,27 @@
         }
       ],
       "partidos": {
-        "ultimos": [
-          {
-            "id": "401872704",
-            "nombre": "Peñarol at Cerro",
-            "fecha": "2026-06-07T18:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "penarol at cerro pen cer torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "5490",
-                "uid": "s:600~t:5490",
-                "nombre": "Cerro",
-                "nombre_corto": "Cerro",
-                "abreviatura": "CER",
-                "slug": "cerro",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5490.png",
-                "color": "6bc7f5"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2683",
-                "uid": "s:600~t:2683",
-                "nombre": "Peñarol",
-                "nombre_corto": "Peñarol",
-                "abreviatura": "PEN",
-                "slug": "penarol",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2683.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": true,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872704/penarol-cerro",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
-          },
-          {
-            "id": "401872707",
-            "nombre": "Albion FC at Progreso",
-            "fecha": "2026-06-07T13:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "albion fc at progreso alb pso torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "6866",
-                "uid": "s:600~t:6866",
-                "nombre": "Progreso",
-                "nombre_corto": "Progreso",
-                "abreviatura": "PSO",
-                "slug": "progreso",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6866.png",
-                "color": "212121"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "21403",
-                "uid": "s:600~t:21403",
-                "nombre": "Albion FC",
-                "nombre_corto": "Albion",
-                "abreviatura": "ALB",
-                "slug": "albion-fc",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21403.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "2",
-              "ganador": true,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872707/albion-fc-progreso",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
-          }
-        ],
+        "ultimos": [],
         "proximos": [
           {
-            "id": "401872703",
-            "nombre": "Boston River at Defensor Sporting",
-            "fecha": "2026-06-07T21:30Z",
-            "estado": "In Progress",
-            "estado_tipo": "in",
+            "id": "401874024",
+            "nombre": "Cerro Largo at Liverpool",
+            "fecha": "2026-06-08T22:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
             "completado": false,
             "fase": "",
-            "clasificacion_texto": "boston river at defensor sporting bos dsc torneo intermedio",
+            "clasificacion_texto": "cerro largo at liverpool cerr liv torneo intermedio",
             "local": {
               "equipo": {
-                "id": "1007",
-                "uid": "s:600~t:1007",
-                "nombre": "Defensor Sporting",
-                "nombre_corto": "Defensor",
-                "abreviatura": "DSC",
-                "slug": "defensor-sporting",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1007.png",
-                "color": "3e188b"
+                "id": "5492",
+                "uid": "s:600~t:5492",
+                "nombre": "Liverpool",
+                "nombre_corto": "Liverpool",
+                "abreviatura": "LIV",
+                "slug": "liverpool",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5492.png",
+                "color": "C60000"
               },
               "localia": "home",
               "marcador": "0",
@@ -83847,21 +83743,21 @@
             },
             "visitante": {
               "equipo": {
-                "id": "9999",
-                "uid": "s:600~t:9999",
-                "nombre": "Boston River",
-                "nombre_corto": "Boston River",
-                "abreviatura": "BOS",
-                "slug": "boston-river",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9999.png",
-                "color": "212121"
+                "id": "9902",
+                "uid": "s:600~t:9902",
+                "nombre": "Cerro Largo",
+                "nombre_corto": "Cerro Largo",
+                "abreviatura": "CERR",
+                "slug": "cerro-largo",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9902.png",
+                "color": "000000"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872703",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874024/cerro-largo-liverpool",
             "penales": {
               "definicion": false,
               "local": "",
@@ -83869,131 +83765,29 @@
               "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
+            "fecha_grupo": "2026-06-08"
           }
         ],
         "todos": [
           {
-            "id": "401872707",
-            "nombre": "Albion FC at Progreso",
-            "fecha": "2026-06-07T13:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "albion fc at progreso alb pso torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "6866",
-                "uid": "s:600~t:6866",
-                "nombre": "Progreso",
-                "nombre_corto": "Progreso",
-                "abreviatura": "PSO",
-                "slug": "progreso",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6866.png",
-                "color": "212121"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "21403",
-                "uid": "s:600~t:21403",
-                "nombre": "Albion FC",
-                "nombre_corto": "Albion",
-                "abreviatura": "ALB",
-                "slug": "albion-fc",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21403.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "2",
-              "ganador": true,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872707/albion-fc-progreso",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
-          },
-          {
-            "id": "401872704",
-            "nombre": "Peñarol at Cerro",
-            "fecha": "2026-06-07T18:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "penarol at cerro pen cer torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "5490",
-                "uid": "s:600~t:5490",
-                "nombre": "Cerro",
-                "nombre_corto": "Cerro",
-                "abreviatura": "CER",
-                "slug": "cerro",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5490.png",
-                "color": "6bc7f5"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2683",
-                "uid": "s:600~t:2683",
-                "nombre": "Peñarol",
-                "nombre_corto": "Peñarol",
-                "abreviatura": "PEN",
-                "slug": "penarol",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2683.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "1",
-              "ganador": true,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872704/penarol-cerro",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
-          },
-          {
-            "id": "401872703",
-            "nombre": "Boston River at Defensor Sporting",
-            "fecha": "2026-06-07T21:30Z",
-            "estado": "In Progress",
-            "estado_tipo": "in",
+            "id": "401874024",
+            "nombre": "Cerro Largo at Liverpool",
+            "fecha": "2026-06-08T22:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
             "completado": false,
             "fase": "",
-            "clasificacion_texto": "boston river at defensor sporting bos dsc torneo intermedio",
+            "clasificacion_texto": "cerro largo at liverpool cerr liv torneo intermedio",
             "local": {
               "equipo": {
-                "id": "1007",
-                "uid": "s:600~t:1007",
-                "nombre": "Defensor Sporting",
-                "nombre_corto": "Defensor",
-                "abreviatura": "DSC",
-                "slug": "defensor-sporting",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1007.png",
-                "color": "3e188b"
+                "id": "5492",
+                "uid": "s:600~t:5492",
+                "nombre": "Liverpool",
+                "nombre_corto": "Liverpool",
+                "abreviatura": "LIV",
+                "slug": "liverpool",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5492.png",
+                "color": "C60000"
               },
               "localia": "home",
               "marcador": "0",
@@ -84002,21 +83796,21 @@
             },
             "visitante": {
               "equipo": {
-                "id": "9999",
-                "uid": "s:600~t:9999",
-                "nombre": "Boston River",
-                "nombre_corto": "Boston River",
-                "abreviatura": "BOS",
-                "slug": "boston-river",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9999.png",
-                "color": "212121"
+                "id": "9902",
+                "uid": "s:600~t:9902",
+                "nombre": "Cerro Largo",
+                "nombre_corto": "Cerro Largo",
+                "abreviatura": "CERR",
+                "slug": "cerro-largo",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9902.png",
+                "color": "000000"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872703",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874024/cerro-largo-liverpool",
             "penales": {
               "definicion": false,
               "local": "",
@@ -84024,10 +83818,10 @@
               "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
+            "fecha_grupo": "2026-06-08"
           }
         ],
-        "total_scoreboard": 3
+        "total_scoreboard": 1
       }
     },
     {
@@ -84038,7 +83832,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-07T21:43:04.752490+00:00",
+      "actualizado": "2026-06-08T12:44:58.131607+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -84799,7 +84593,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-07T21:43:05.251745+00:00",
+      "actualizado": "2026-06-08T12:44:58.700095+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -85636,7 +85430,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-07T21:43:05.746418+00:00",
+      "actualizado": "2026-06-08T12:44:59.211966+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -86333,7 +86127,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-07T21:43:06.502603+00:00",
+      "actualizado": "2026-06-08T12:44:59.853628+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -87100,7 +86894,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-07T21:43:07.021560+00:00",
+      "actualizado": "2026-06-08T12:45:00.577092+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
