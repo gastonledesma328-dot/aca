@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-11T12:26:43.941483+00:00",
+  "actualizado": "2026-06-11T17:49:25.219923+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:27.155430+00:00",
+      "actualizado": "2026-06-11T17:49:19.035147+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -2539,57 +2539,6 @@
             "fecha_grupo": "2026-07-26"
           },
           {
-            "id": "401841441",
-            "nombre": "Talleres (Córdoba) at Newell's Old Boys",
-            "fecha": "2026-07-26T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "talleres cordoba at newell s old boys tall nob torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "14",
-                "uid": "s:600~t:14",
-                "nombre": "Newell's Old Boys",
-                "nombre_corto": "Newell's",
-                "abreviatura": "NOB",
-                "slug": "newell-s-old-boys",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841441/talleres-cordoba-newells-old-boys",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-26"
-          },
-          {
             "id": "401841440",
             "nombre": "Unión (Santa Fe) at Platense",
             "fecha": "2026-07-26T04:00Z",
@@ -2835,6 +2784,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841436/instituto-cordoba-velez-sarsfield",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-07-26"
+          },
+          {
+            "id": "401841441",
+            "nombre": "Talleres (Córdoba) at Newell's Old Boys",
+            "fecha": "2026-07-26T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "talleres cordoba at newell s old boys tall nob torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "14",
+                "uid": "s:600~t:14",
+                "nombre": "Newell's Old Boys",
+                "nombre_corto": "Newell's",
+                "abreviatura": "NOB",
+                "slug": "newell-s-old-boys",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841441/talleres-cordoba-newells-old-boys",
             "penales": {
               "definicion": false,
               "local": "",
@@ -16260,57 +16260,6 @@
             "fecha_grupo": "2026-07-26"
           },
           {
-            "id": "401841441",
-            "nombre": "Talleres (Córdoba) at Newell's Old Boys",
-            "fecha": "2026-07-26T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "talleres cordoba at newell s old boys tall nob torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "14",
-                "uid": "s:600~t:14",
-                "nombre": "Newell's Old Boys",
-                "nombre_corto": "Newell's",
-                "abreviatura": "NOB",
-                "slug": "newell-s-old-boys",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841441/talleres-cordoba-newells-old-boys",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-26"
-          },
-          {
             "id": "401841440",
             "nombre": "Unión (Santa Fe) at Platense",
             "fecha": "2026-07-26T04:00Z",
@@ -16556,6 +16505,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841436/instituto-cordoba-velez-sarsfield",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-07-26"
+          },
+          {
+            "id": "401841441",
+            "nombre": "Talleres (Córdoba) at Newell's Old Boys",
+            "fecha": "2026-07-26T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "talleres cordoba at newell s old boys tall nob torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "14",
+                "uid": "s:600~t:14",
+                "nombre": "Newell's Old Boys",
+                "nombre_corto": "Newell's",
+                "abreviatura": "NOB",
+                "slug": "newell-s-old-boys",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841441/talleres-cordoba-newells-old-boys",
             "penales": {
               "definicion": false,
               "local": "",
@@ -17178,57 +17178,6 @@
             "fecha_grupo": "2026-07-29"
           },
           {
-            "id": "401841451",
-            "nombre": "Vélez Sarsfield at Talleres (Córdoba)",
-            "fecha": "2026-07-29T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "velez sarsfield at talleres cordoba vel tall torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "21",
-                "uid": "s:600~t:21",
-                "nombre": "Vélez Sarsfield",
-                "nombre_corto": "Vélez ",
-                "abreviatura": "VEL",
-                "slug": "velez-sarsfield",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
-                "color": "0070b0"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841451/velez-sarsfield-talleres-cordoba",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-29"
-          },
-          {
             "id": "401841463",
             "nombre": "Belgrano (Córdoba) at Tigre",
             "fecha": "2026-07-29T04:00Z",
@@ -17321,6 +17270,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841450/lanus-union-santa-fe",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-07-29"
+          },
+          {
+            "id": "401841451",
+            "nombre": "Vélez Sarsfield at Talleres (Córdoba)",
+            "fecha": "2026-07-29T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "velez sarsfield at talleres cordoba vel tall torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "21",
+                "uid": "s:600~t:21",
+                "nombre": "Vélez Sarsfield",
+                "nombre_corto": "Vélez ",
+                "abreviatura": "VEL",
+                "slug": "velez-sarsfield",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+                "color": "0070b0"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841451/velez-sarsfield-talleres-cordoba",
             "penales": {
               "definicion": false,
               "local": "",
@@ -17841,57 +17841,6 @@
             "fecha_grupo": "2026-08-02"
           },
           {
-            "id": "401841474",
-            "nombre": "Talleres (Córdoba) at Platense",
-            "fecha": "2026-08-02T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "talleres cordoba at platense tall pla torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "7764",
-                "uid": "s:600~t:7764",
-                "nombre": "Platense",
-                "nombre_corto": "Platense",
-                "abreviatura": "PLA",
-                "slug": "platense",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841474/talleres-cordoba-platense",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-08-02"
-          },
-          {
             "id": "401841475",
             "nombre": "Tigre at Racing Club",
             "fecha": "2026-08-02T04:00Z",
@@ -18086,6 +18035,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841465/independiente-velez-sarsfield",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-02"
+          },
+          {
+            "id": "401841474",
+            "nombre": "Talleres (Córdoba) at Platense",
+            "fecha": "2026-08-02T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "talleres cordoba at platense tall pla torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "7764",
+                "uid": "s:600~t:7764",
+                "nombre": "Platense",
+                "nombre_corto": "Platense",
+                "abreviatura": "PLA",
+                "slug": "platense",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841474/talleres-cordoba-platense",
             "penales": {
               "definicion": false,
               "local": "",
@@ -18708,57 +18708,6 @@
             "fecha_grupo": "2026-08-09"
           },
           {
-            "id": "401841489",
-            "nombre": "Lanús at Talleres (Córdoba)",
-            "fecha": "2026-08-09T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "lanus at talleres cordoba lan tall torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "12",
-                "uid": "s:600~t:12",
-                "nombre": "Lanús",
-                "nombre_corto": "Lanús ",
-                "abreviatura": "LAN",
-                "slug": "lanus",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
-                "color": "9f0000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841489/lanus-talleres-cordoba",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-08-09"
-          },
-          {
             "id": "401841488",
             "nombre": "River Plate at Tigre",
             "fecha": "2026-08-09T04:00Z",
@@ -18851,6 +18800,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841487/central-cordoba-santiago-del-estero-union-santa-fe",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-09"
+          },
+          {
+            "id": "401841489",
+            "nombre": "Lanús at Talleres (Córdoba)",
+            "fecha": "2026-08-09T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "lanus at talleres cordoba lan tall torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "12",
+                "uid": "s:600~t:12",
+                "nombre": "Lanús",
+                "nombre_corto": "Lanús ",
+                "abreviatura": "LAN",
+                "slug": "lanus",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+                "color": "9f0000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841489/lanus-talleres-cordoba",
             "penales": {
               "definicion": false,
               "local": "",
@@ -19218,57 +19218,6 @@
             "fecha_grupo": "2026-08-16"
           },
           {
-            "id": "401841500",
-            "nombre": "Talleres (Córdoba) at Gimnasia (Mendoza)",
-            "fecha": "2026-08-16T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "talleres cordoba at gimnasia mendoza tall gmz torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "11972",
-                "uid": "s:600~t:11972",
-                "nombre": "Gimnasia (Mendoza)",
-                "nombre_corto": "Gimnasia (M)",
-                "abreviatura": "GMZ",
-                "slug": "gimnasia-mendoza",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841500/talleres-cordoba-gimnasia-mendoza",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-08-16"
-          },
-          {
             "id": "401841507",
             "nombre": "Independiente at Lanús",
             "fecha": "2026-08-16T04:00Z",
@@ -19616,6 +19565,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841501/huracan-sarmiento-junin",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-16"
+          },
+          {
+            "id": "401841500",
+            "nombre": "Talleres (Córdoba) at Gimnasia (Mendoza)",
+            "fecha": "2026-08-16T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "talleres cordoba at gimnasia mendoza tall gmz torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "11972",
+                "uid": "s:600~t:11972",
+                "nombre": "Gimnasia (Mendoza)",
+                "nombre_corto": "Gimnasia (M)",
+                "abreviatura": "GMZ",
+                "slug": "gimnasia-mendoza",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841500/talleres-cordoba-gimnasia-mendoza",
             "penales": {
               "definicion": false,
               "local": "",
@@ -20289,57 +20289,6 @@
             "fecha_grupo": "2026-08-23"
           },
           {
-            "id": "401841520",
-            "nombre": "Rosario Central at Talleres (Córdoba)",
-            "fecha": "2026-08-23T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "rosario central at talleres cordoba ros tall torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "17",
-                "uid": "s:600~t:17",
-                "nombre": "Rosario Central",
-                "nombre_corto": "Rosario Central",
-                "abreviatura": "ROS",
-                "slug": "rosario-central",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
-                "color": "ffff00"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841520/rosario-central-talleres-cordoba",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-08-23"
-          },
-          {
             "id": "401841521",
             "nombre": "Central Córdoba (Santiago del Estero) at Tigre",
             "fecha": "2026-08-23T04:00Z",
@@ -20381,6 +20330,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841521/central-cordoba-santiago-del-estero-tigre",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-23"
+          },
+          {
+            "id": "401841520",
+            "nombre": "Rosario Central at Talleres (Córdoba)",
+            "fecha": "2026-08-23T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "rosario central at talleres cordoba ros tall torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "17",
+                "uid": "s:600~t:17",
+                "nombre": "Rosario Central",
+                "nombre_corto": "Rosario Central",
+                "abreviatura": "ROS",
+                "slug": "rosario-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                "color": "ffff00"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841520/rosario-central-talleres-cordoba",
             "penales": {
               "definicion": false,
               "local": "",
@@ -21003,57 +21003,6 @@
             "fecha_grupo": "2026-08-30"
           },
           {
-            "id": "401841536",
-            "nombre": "Central Córdoba (Santiago del Estero) at Talleres (Córdoba)",
-            "fecha": "2026-08-30T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "central cordoba santiago del estero at talleres cordoba ctr tall torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "11989",
-                "uid": "s:600~t:11989",
-                "nombre": "Central Córdoba (Santiago del Estero)",
-                "nombre_corto": "C. Córdoba (SE)",
-                "abreviatura": "CTR",
-                "slug": "central-cordoba-santiago-del-estero",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841536/central-cordoba-santiago-del-estero-talleres-cordoba",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-08-30"
-          },
-          {
             "id": "401841537",
             "nombre": "Barracas Central at Tigre",
             "fecha": "2026-08-30T04:00Z",
@@ -21146,6 +21095,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841525/sarmiento-junin-union-santa-fe",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-08-30"
+          },
+          {
+            "id": "401841536",
+            "nombre": "Central Córdoba (Santiago del Estero) at Talleres (Córdoba)",
+            "fecha": "2026-08-30T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "central cordoba santiago del estero at talleres cordoba ctr tall torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "11989",
+                "uid": "s:600~t:11989",
+                "nombre": "Central Córdoba (Santiago del Estero)",
+                "nombre_corto": "C. Córdoba (SE)",
+                "abreviatura": "CTR",
+                "slug": "central-cordoba-santiago-del-estero",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841536/central-cordoba-santiago-del-estero-talleres-cordoba",
             "penales": {
               "definicion": false,
               "local": "",
@@ -21768,57 +21768,6 @@
             "fecha_grupo": "2026-09-06"
           },
           {
-            "id": "401841551",
-            "nombre": "Talleres (Córdoba) at San Lorenzo",
-            "fecha": "2026-09-06T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "talleres cordoba at san lorenzo tall slo torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "18",
-                "uid": "s:600~t:18",
-                "nombre": "San Lorenzo",
-                "nombre_corto": "San Lorenzo ",
-                "abreviatura": "SLO",
-                "slug": "san-lorenzo",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
-                "color": "0060f0"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841551/talleres-cordoba-san-lorenzo",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-09-06"
-          },
-          {
             "id": "401841552",
             "nombre": "Instituto (Córdoba) at Unión (Santa Fe)",
             "fecha": "2026-09-06T04:00Z",
@@ -21911,6 +21860,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841540/estudiantes-de-la-plata-velez-sarsfield",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-09-06"
+          },
+          {
+            "id": "401841551",
+            "nombre": "Talleres (Córdoba) at San Lorenzo",
+            "fecha": "2026-09-06T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "talleres cordoba at san lorenzo tall slo torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "18",
+                "uid": "s:600~t:18",
+                "nombre": "San Lorenzo",
+                "nombre_corto": "San Lorenzo ",
+                "abreviatura": "SLO",
+                "slug": "san-lorenzo",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+                "color": "0060f0"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841551/talleres-cordoba-san-lorenzo",
             "penales": {
               "definicion": false,
               "local": "",
@@ -22584,57 +22584,6 @@
             "fecha_grupo": "2026-09-13"
           },
           {
-            "id": "401841563",
-            "nombre": "Unión (Santa Fe) at Talleres (Córdoba)",
-            "fecha": "2026-09-13T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "union santa fe at talleres cordoba usf tall torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "20",
-                "uid": "s:600~t:20",
-                "nombre": "Unión (Santa Fe)",
-                "nombre_corto": "Unión (SF)",
-                "abreviatura": "USF",
-                "slug": "union-santa-fe",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
-                "color": "C60000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841563/union-santa-fe-talleres-cordoba",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-09-13"
-          },
-          {
             "id": "401841562",
             "nombre": "Rosario Central at Tigre",
             "fecha": "2026-09-13T04:00Z",
@@ -22676,6 +22625,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841562/rosario-central-tigre",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-09-13"
+          },
+          {
+            "id": "401841563",
+            "nombre": "Unión (Santa Fe) at Talleres (Córdoba)",
+            "fecha": "2026-09-13T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "union santa fe at talleres cordoba usf tall torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "20",
+                "uid": "s:600~t:20",
+                "nombre": "Unión (Santa Fe)",
+                "nombre_corto": "Unión (SF)",
+                "abreviatura": "USF",
+                "slug": "union-santa-fe",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841563/union-santa-fe-talleres-cordoba",
             "penales": {
               "definicion": false,
               "local": "",
@@ -22982,57 +22982,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841573/banfield-gimnasia-la-plata",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-09-20"
-          },
-          {
-            "id": "401841575",
-            "nombre": "Talleres (Córdoba) at Instituto (Córdoba)",
-            "fecha": "2026-09-20T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "talleres cordoba at instituto cordoba tall iacc torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "2975",
-                "uid": "s:600~t:2975",
-                "nombre": "Instituto (Córdoba)",
-                "nombre_corto": "Instituto",
-                "abreviatura": "IACC",
-                "slug": "instituto-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
-                "color": "C60000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841575/talleres-cordoba-instituto-cordoba",
             "penales": {
               "definicion": false,
               "local": "",
@@ -23441,6 +23390,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841570/tigre-velez-sarsfield",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-09-20"
+          },
+          {
+            "id": "401841575",
+            "nombre": "Talleres (Córdoba) at Instituto (Córdoba)",
+            "fecha": "2026-09-20T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "talleres cordoba at instituto cordoba tall iacc torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "2975",
+                "uid": "s:600~t:2975",
+                "nombre": "Instituto (Córdoba)",
+                "nombre_corto": "Instituto",
+                "abreviatura": "IACC",
+                "slug": "instituto-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
+                "color": "C60000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841575/talleres-cordoba-instituto-cordoba",
             "penales": {
               "definicion": false,
               "local": "",
@@ -24114,57 +24114,6 @@
             "fecha_grupo": "2026-10-04"
           },
           {
-            "id": "401841584",
-            "nombre": "Belgrano (Córdoba) at Talleres (Córdoba)",
-            "fecha": "2026-10-04T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "belgrano cordoba at talleres cordoba bel tall torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "4",
-                "uid": "s:600~t:4",
-                "nombre": "Belgrano (Córdoba)",
-                "nombre_corto": "Belgrano ",
-                "abreviatura": "BEL",
-                "slug": "belgrano-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
-                "color": "0060f0"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841584/belgrano-cordoba-talleres-cordoba",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-10-04"
-          },
-          {
             "id": "401841585",
             "nombre": "Platense at Vélez Sarsfield",
             "fecha": "2026-10-04T04:00Z",
@@ -24206,6 +24155,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841585/platense-velez-sarsfield",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-10-04"
+          },
+          {
+            "id": "401841584",
+            "nombre": "Belgrano (Córdoba) at Talleres (Córdoba)",
+            "fecha": "2026-10-04T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "belgrano cordoba at talleres cordoba bel tall torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "4",
+                "uid": "s:600~t:4",
+                "nombre": "Belgrano (Córdoba)",
+                "nombre_corto": "Belgrano ",
+                "abreviatura": "BEL",
+                "slug": "belgrano-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                "color": "0060f0"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841584/belgrano-cordoba-talleres-cordoba",
             "penales": {
               "definicion": false,
               "local": "",
@@ -24879,57 +24879,6 @@
             "fecha_grupo": "2026-10-11"
           },
           {
-            "id": "401841600",
-            "nombre": "Independiente at Talleres (Córdoba)",
-            "fecha": "2026-10-11T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "independiente at talleres cordoba ind tall torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "11",
-                "uid": "s:600~t:11",
-                "nombre": "Independiente",
-                "nombre_corto": "Independiente",
-                "abreviatura": "IND",
-                "slug": "independiente",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
-                "color": "C60000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841600/independiente-talleres-cordoba",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-10-11"
-          },
-          {
             "id": "401841599",
             "nombre": "Banfield at Tigre",
             "fecha": "2026-10-11T04:00Z",
@@ -24971,6 +24920,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841599/banfield-tigre",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-10-11"
+          },
+          {
+            "id": "401841600",
+            "nombre": "Independiente at Talleres (Córdoba)",
+            "fecha": "2026-10-11T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "independiente at talleres cordoba ind tall torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "11",
+                "uid": "s:600~t:11",
+                "nombre": "Independiente",
+                "nombre_corto": "Independiente",
+                "abreviatura": "IND",
+                "slug": "independiente",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841600/independiente-talleres-cordoba",
             "penales": {
               "definicion": false,
               "local": "",
@@ -25175,57 +25175,6 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841628/river-plate-belgrano-cordoba",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-10-18"
-          },
-          {
-            "id": "401841627",
-            "nombre": "Talleres (Córdoba) at Boca Juniors",
-            "fecha": "2026-10-18T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "talleres cordoba at boca juniors tall cabj torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "5",
-                "uid": "s:600~t:5",
-                "nombre": "Boca Juniors",
-                "nombre_corto": "Boca ",
-                "abreviatura": "CABJ",
-                "slug": "boca-juniors",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
-                "color": "fcb000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841627/talleres-cordoba-boca-juniors",
             "penales": {
               "definicion": false,
               "local": "",
@@ -25736,6 +25685,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841616/gimnasia-mendoza-velez-sarsfield",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-10-18"
+          },
+          {
+            "id": "401841627",
+            "nombre": "Talleres (Córdoba) at Boca Juniors",
+            "fecha": "2026-10-18T18:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "talleres cordoba at boca juniors tall cabj torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "5",
+                "uid": "s:600~t:5",
+                "nombre": "Boca Juniors",
+                "nombre_corto": "Boca ",
+                "abreviatura": "CABJ",
+                "slug": "boca-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+                "color": "fcb000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841627/talleres-cordoba-boca-juniors",
             "penales": {
               "definicion": false,
               "local": "",
@@ -26715,57 +26715,6 @@
             "fecha_grupo": "2026-11-01"
           },
           {
-            "id": "401841656",
-            "nombre": "Talleres (Córdoba) at Deportivo Riestra",
-            "fecha": "2026-11-01T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "talleres cordoba at deportivo riestra tall rie torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "17702",
-                "uid": "s:600~t:17702",
-                "nombre": "Deportivo Riestra",
-                "nombre_corto": "Riestra",
-                "abreviatura": "RIE",
-                "slug": "deportivo-riestra",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
-                "color": "212121"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841656/talleres-cordoba-deportivo-riestra",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-11-01"
-          },
-          {
             "id": "401841654",
             "nombre": "Instituto (Córdoba) at Estudiantes de La Plata",
             "fecha": "2026-11-01T04:00Z",
@@ -27266,6 +27215,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841646/san-lorenzo-velez-sarsfield",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-11-01"
+          },
+          {
+            "id": "401841656",
+            "nombre": "Talleres (Córdoba) at Deportivo Riestra",
+            "fecha": "2026-11-01T20:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "talleres cordoba at deportivo riestra tall rie torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "17702",
+                "uid": "s:600~t:17702",
+                "nombre": "Deportivo Riestra",
+                "nombre_corto": "Riestra",
+                "abreviatura": "RIE",
+                "slug": "deportivo-riestra",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
+                "color": "212121"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841656/talleres-cordoba-deportivo-riestra",
             "penales": {
               "definicion": false,
               "local": "",
@@ -27888,57 +27888,6 @@
             "fecha_grupo": "2026-11-08"
           },
           {
-            "id": "401841661",
-            "nombre": "Estudiantes de La Plata at Talleres (Córdoba)",
-            "fecha": "2026-11-08T05:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "estudiantes de la plata at talleres cordoba est tall torneo clausura",
-            "local": {
-              "equipo": {
-                "id": "19",
-                "uid": "s:600~t:19",
-                "nombre": "Talleres (Córdoba)",
-                "nombre_corto": "Talleres ",
-                "abreviatura": "TALL",
-                "slug": "talleres-cordoba",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "8",
-                "uid": "s:600~t:8",
-                "nombre": "Estudiantes de La Plata",
-                "nombre_corto": "Estudiantes",
-                "abreviatura": "EST",
-                "slug": "estudiantes-de-la-plata",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
-                "color": "C60000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401841661/estudiantes-de-la-plata-talleres-cordoba",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-11-08"
-          },
-          {
             "id": "401841673",
             "nombre": "Sarmiento (Junín) at Tigre",
             "fecha": "2026-11-08T05:00Z",
@@ -28031,6 +27980,57 @@
               "penales": ""
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401841660/velez-sarsfield-union-santa-fe",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-11-08"
+          },
+          {
+            "id": "401841661",
+            "nombre": "Estudiantes de La Plata at Talleres (Córdoba)",
+            "fecha": "2026-11-08T20:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "estudiantes de la plata at talleres cordoba est tall torneo clausura",
+            "local": {
+              "equipo": {
+                "id": "19",
+                "uid": "s:600~t:19",
+                "nombre": "Talleres (Córdoba)",
+                "nombre_corto": "Talleres ",
+                "abreviatura": "TALL",
+                "slug": "talleres-cordoba",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "8",
+                "uid": "s:600~t:8",
+                "nombre": "Estudiantes de La Plata",
+                "nombre_corto": "Estudiantes",
+                "abreviatura": "EST",
+                "slug": "estudiantes-de-la-plata",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+                "color": "C60000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401841661/estudiantes-de-la-plata-talleres-cordoba",
             "penales": {
               "definicion": false,
               "local": "",
@@ -43673,57 +43673,6 @@
                   "fecha_grupo": "2026-07-26"
                 },
                 {
-                  "id": "401841441",
-                  "nombre": "Talleres (Córdoba) at Newell's Old Boys",
-                  "fecha": "2026-07-26T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "talleres cordoba at newell s old boys tall nob torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "14",
-                      "uid": "s:600~t:14",
-                      "nombre": "Newell's Old Boys",
-                      "nombre_corto": "Newell's",
-                      "abreviatura": "NOB",
-                      "slug": "newell-s-old-boys",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841441/talleres-cordoba-newells-old-boys",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-07-26"
-                },
-                {
                   "id": "401841440",
                   "nombre": "Unión (Santa Fe) at Platense",
                   "fecha": "2026-07-26T04:00Z",
@@ -43969,6 +43918,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841436/instituto-cordoba-velez-sarsfield",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-07-26"
+                },
+                {
+                  "id": "401841441",
+                  "nombre": "Talleres (Córdoba) at Newell's Old Boys",
+                  "fecha": "2026-07-26T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "talleres cordoba at newell s old boys tall nob torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "14",
+                      "uid": "s:600~t:14",
+                      "nombre": "Newell's Old Boys",
+                      "nombre_corto": "Newell's",
+                      "abreviatura": "NOB",
+                      "slug": "newell-s-old-boys",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/14.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841441/talleres-cordoba-newells-old-boys",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -44597,57 +44597,6 @@
                   "fecha_grupo": "2026-07-29"
                 },
                 {
-                  "id": "401841451",
-                  "nombre": "Vélez Sarsfield at Talleres (Córdoba)",
-                  "fecha": "2026-07-29T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "velez sarsfield at talleres cordoba vel tall torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "21",
-                      "uid": "s:600~t:21",
-                      "nombre": "Vélez Sarsfield",
-                      "nombre_corto": "Vélez ",
-                      "abreviatura": "VEL",
-                      "slug": "velez-sarsfield",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
-                      "color": "0070b0"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841451/velez-sarsfield-talleres-cordoba",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-07-29"
-                },
-                {
                   "id": "401841463",
                   "nombre": "Belgrano (Córdoba) at Tigre",
                   "fecha": "2026-07-29T04:00Z",
@@ -44740,6 +44689,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841450/lanus-union-santa-fe",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-07-29"
+                },
+                {
+                  "id": "401841451",
+                  "nombre": "Vélez Sarsfield at Talleres (Córdoba)",
+                  "fecha": "2026-07-29T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "velez sarsfield at talleres cordoba vel tall torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "21",
+                      "uid": "s:600~t:21",
+                      "nombre": "Vélez Sarsfield",
+                      "nombre_corto": "Vélez ",
+                      "abreviatura": "VEL",
+                      "slug": "velez-sarsfield",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21.png",
+                      "color": "0070b0"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841451/velez-sarsfield-talleres-cordoba",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -45266,57 +45266,6 @@
                   "fecha_grupo": "2026-08-02"
                 },
                 {
-                  "id": "401841474",
-                  "nombre": "Talleres (Córdoba) at Platense",
-                  "fecha": "2026-08-02T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "talleres cordoba at platense tall pla torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "7764",
-                      "uid": "s:600~t:7764",
-                      "nombre": "Platense",
-                      "nombre_corto": "Platense",
-                      "abreviatura": "PLA",
-                      "slug": "platense",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841474/talleres-cordoba-platense",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-08-02"
-                },
-                {
                   "id": "401841475",
                   "nombre": "Tigre at Racing Club",
                   "fecha": "2026-08-02T04:00Z",
@@ -45511,6 +45460,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841465/independiente-velez-sarsfield",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-08-02"
+                },
+                {
+                  "id": "401841474",
+                  "nombre": "Talleres (Córdoba) at Platense",
+                  "fecha": "2026-08-02T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "talleres cordoba at platense tall pla torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "7764",
+                      "uid": "s:600~t:7764",
+                      "nombre": "Platense",
+                      "nombre_corto": "Platense",
+                      "abreviatura": "PLA",
+                      "slug": "platense",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7764.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841474/talleres-cordoba-platense",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -46139,57 +46139,6 @@
                   "fecha_grupo": "2026-08-09"
                 },
                 {
-                  "id": "401841489",
-                  "nombre": "Lanús at Talleres (Córdoba)",
-                  "fecha": "2026-08-09T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "lanus at talleres cordoba lan tall torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "12",
-                      "uid": "s:600~t:12",
-                      "nombre": "Lanús",
-                      "nombre_corto": "Lanús ",
-                      "abreviatura": "LAN",
-                      "slug": "lanus",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
-                      "color": "9f0000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841489/lanus-talleres-cordoba",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-08-09"
-                },
-                {
                   "id": "401841488",
                   "nombre": "River Plate at Tigre",
                   "fecha": "2026-08-09T04:00Z",
@@ -46282,6 +46231,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841487/central-cordoba-santiago-del-estero-union-santa-fe",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-08-09"
+                },
+                {
+                  "id": "401841489",
+                  "nombre": "Lanús at Talleres (Córdoba)",
+                  "fecha": "2026-08-09T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "lanus at talleres cordoba lan tall torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "12",
+                      "uid": "s:600~t:12",
+                      "nombre": "Lanús",
+                      "nombre_corto": "Lanús ",
+                      "abreviatura": "LAN",
+                      "slug": "lanus",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/12.png",
+                      "color": "9f0000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841489/lanus-talleres-cordoba",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -46655,57 +46655,6 @@
                   "fecha_grupo": "2026-08-16"
                 },
                 {
-                  "id": "401841500",
-                  "nombre": "Talleres (Córdoba) at Gimnasia (Mendoza)",
-                  "fecha": "2026-08-16T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "talleres cordoba at gimnasia mendoza tall gmz torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "11972",
-                      "uid": "s:600~t:11972",
-                      "nombre": "Gimnasia (Mendoza)",
-                      "nombre_corto": "Gimnasia (M)",
-                      "abreviatura": "GMZ",
-                      "slug": "gimnasia-mendoza",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841500/talleres-cordoba-gimnasia-mendoza",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-08-16"
-                },
-                {
                   "id": "401841507",
                   "nombre": "Independiente at Lanús",
                   "fecha": "2026-08-16T04:00Z",
@@ -47053,6 +47002,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841501/huracan-sarmiento-junin",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-08-16"
+                },
+                {
+                  "id": "401841500",
+                  "nombre": "Talleres (Córdoba) at Gimnasia (Mendoza)",
+                  "fecha": "2026-08-16T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "talleres cordoba at gimnasia mendoza tall gmz torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "11972",
+                      "uid": "s:600~t:11972",
+                      "nombre": "Gimnasia (Mendoza)",
+                      "nombre_corto": "Gimnasia (M)",
+                      "abreviatura": "GMZ",
+                      "slug": "gimnasia-mendoza",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11972.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841500/talleres-cordoba-gimnasia-mendoza",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -47732,57 +47732,6 @@
                   "fecha_grupo": "2026-08-23"
                 },
                 {
-                  "id": "401841520",
-                  "nombre": "Rosario Central at Talleres (Córdoba)",
-                  "fecha": "2026-08-23T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "rosario central at talleres cordoba ros tall torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "17",
-                      "uid": "s:600~t:17",
-                      "nombre": "Rosario Central",
-                      "nombre_corto": "Rosario Central",
-                      "abreviatura": "ROS",
-                      "slug": "rosario-central",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
-                      "color": "ffff00"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841520/rosario-central-talleres-cordoba",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-08-23"
-                },
-                {
                   "id": "401841521",
                   "nombre": "Central Córdoba (Santiago del Estero) at Tigre",
                   "fecha": "2026-08-23T04:00Z",
@@ -47824,6 +47773,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841521/central-cordoba-santiago-del-estero-tigre",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-08-23"
+                },
+                {
+                  "id": "401841520",
+                  "nombre": "Rosario Central at Talleres (Córdoba)",
+                  "fecha": "2026-08-23T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "rosario central at talleres cordoba ros tall torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "17",
+                      "uid": "s:600~t:17",
+                      "nombre": "Rosario Central",
+                      "nombre_corto": "Rosario Central",
+                      "abreviatura": "ROS",
+                      "slug": "rosario-central",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17.png",
+                      "color": "ffff00"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841520/rosario-central-talleres-cordoba",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -48452,57 +48452,6 @@
                   "fecha_grupo": "2026-08-30"
                 },
                 {
-                  "id": "401841536",
-                  "nombre": "Central Córdoba (Santiago del Estero) at Talleres (Córdoba)",
-                  "fecha": "2026-08-30T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "central cordoba santiago del estero at talleres cordoba ctr tall torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "11989",
-                      "uid": "s:600~t:11989",
-                      "nombre": "Central Córdoba (Santiago del Estero)",
-                      "nombre_corto": "C. Córdoba (SE)",
-                      "abreviatura": "CTR",
-                      "slug": "central-cordoba-santiago-del-estero",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
-                      "color": "000000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841536/central-cordoba-santiago-del-estero-talleres-cordoba",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-08-30"
-                },
-                {
                   "id": "401841537",
                   "nombre": "Barracas Central at Tigre",
                   "fecha": "2026-08-30T04:00Z",
@@ -48595,6 +48544,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841525/sarmiento-junin-union-santa-fe",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-08-30"
+                },
+                {
+                  "id": "401841536",
+                  "nombre": "Central Córdoba (Santiago del Estero) at Talleres (Córdoba)",
+                  "fecha": "2026-08-30T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "central cordoba santiago del estero at talleres cordoba ctr tall torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "11989",
+                      "uid": "s:600~t:11989",
+                      "nombre": "Central Córdoba (Santiago del Estero)",
+                      "nombre_corto": "C. Córdoba (SE)",
+                      "abreviatura": "CTR",
+                      "slug": "central-cordoba-santiago-del-estero",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11989.png",
+                      "color": "000000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841536/central-cordoba-santiago-del-estero-talleres-cordoba",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -49223,57 +49223,6 @@
                   "fecha_grupo": "2026-09-06"
                 },
                 {
-                  "id": "401841551",
-                  "nombre": "Talleres (Córdoba) at San Lorenzo",
-                  "fecha": "2026-09-06T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "talleres cordoba at san lorenzo tall slo torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "18",
-                      "uid": "s:600~t:18",
-                      "nombre": "San Lorenzo",
-                      "nombre_corto": "San Lorenzo ",
-                      "abreviatura": "SLO",
-                      "slug": "san-lorenzo",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
-                      "color": "0060f0"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841551/talleres-cordoba-san-lorenzo",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-09-06"
-                },
-                {
                   "id": "401841552",
                   "nombre": "Instituto (Córdoba) at Unión (Santa Fe)",
                   "fecha": "2026-09-06T04:00Z",
@@ -49366,6 +49315,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841540/estudiantes-de-la-plata-velez-sarsfield",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-09-06"
+                },
+                {
+                  "id": "401841551",
+                  "nombre": "Talleres (Córdoba) at San Lorenzo",
+                  "fecha": "2026-09-06T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "talleres cordoba at san lorenzo tall slo torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "18",
+                      "uid": "s:600~t:18",
+                      "nombre": "San Lorenzo",
+                      "nombre_corto": "San Lorenzo ",
+                      "abreviatura": "SLO",
+                      "slug": "san-lorenzo",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18.png",
+                      "color": "0060f0"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841551/talleres-cordoba-san-lorenzo",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -50045,57 +50045,6 @@
                   "fecha_grupo": "2026-09-13"
                 },
                 {
-                  "id": "401841563",
-                  "nombre": "Unión (Santa Fe) at Talleres (Córdoba)",
-                  "fecha": "2026-09-13T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "union santa fe at talleres cordoba usf tall torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "20",
-                      "uid": "s:600~t:20",
-                      "nombre": "Unión (Santa Fe)",
-                      "nombre_corto": "Unión (SF)",
-                      "abreviatura": "USF",
-                      "slug": "union-santa-fe",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
-                      "color": "C60000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841563/union-santa-fe-talleres-cordoba",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-09-13"
-                },
-                {
                   "id": "401841562",
                   "nombre": "Rosario Central at Tigre",
                   "fecha": "2026-09-13T04:00Z",
@@ -50137,6 +50086,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841562/rosario-central-tigre",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-09-13"
+                },
+                {
+                  "id": "401841563",
+                  "nombre": "Unión (Santa Fe) at Talleres (Córdoba)",
+                  "fecha": "2026-09-13T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "union santa fe at talleres cordoba usf tall torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "20",
+                      "uid": "s:600~t:20",
+                      "nombre": "Unión (Santa Fe)",
+                      "nombre_corto": "Unión (SF)",
+                      "abreviatura": "USF",
+                      "slug": "union-santa-fe",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20.png",
+                      "color": "C60000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841563/union-santa-fe-talleres-cordoba",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -50449,57 +50449,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841573/banfield-gimnasia-la-plata",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-09-20"
-                },
-                {
-                  "id": "401841575",
-                  "nombre": "Talleres (Córdoba) at Instituto (Córdoba)",
-                  "fecha": "2026-09-20T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "talleres cordoba at instituto cordoba tall iacc torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "2975",
-                      "uid": "s:600~t:2975",
-                      "nombre": "Instituto (Córdoba)",
-                      "nombre_corto": "Instituto",
-                      "abreviatura": "IACC",
-                      "slug": "instituto-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
-                      "color": "C60000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841575/talleres-cordoba-instituto-cordoba",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -50908,6 +50857,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841570/tigre-velez-sarsfield",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-09-20"
+                },
+                {
+                  "id": "401841575",
+                  "nombre": "Talleres (Córdoba) at Instituto (Córdoba)",
+                  "fecha": "2026-09-20T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "talleres cordoba at instituto cordoba tall iacc torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "2975",
+                      "uid": "s:600~t:2975",
+                      "nombre": "Instituto (Córdoba)",
+                      "nombre_corto": "Instituto",
+                      "abreviatura": "IACC",
+                      "slug": "instituto-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2975.png",
+                      "color": "C60000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841575/talleres-cordoba-instituto-cordoba",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -51587,57 +51587,6 @@
                   "fecha_grupo": "2026-10-04"
                 },
                 {
-                  "id": "401841584",
-                  "nombre": "Belgrano (Córdoba) at Talleres (Córdoba)",
-                  "fecha": "2026-10-04T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "belgrano cordoba at talleres cordoba bel tall torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "4",
-                      "uid": "s:600~t:4",
-                      "nombre": "Belgrano (Córdoba)",
-                      "nombre_corto": "Belgrano ",
-                      "abreviatura": "BEL",
-                      "slug": "belgrano-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
-                      "color": "0060f0"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841584/belgrano-cordoba-talleres-cordoba",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-10-04"
-                },
-                {
                   "id": "401841585",
                   "nombre": "Platense at Vélez Sarsfield",
                   "fecha": "2026-10-04T04:00Z",
@@ -51679,6 +51628,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841585/platense-velez-sarsfield",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-10-04"
+                },
+                {
+                  "id": "401841584",
+                  "nombre": "Belgrano (Córdoba) at Talleres (Córdoba)",
+                  "fecha": "2026-10-04T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "belgrano cordoba at talleres cordoba bel tall torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "4",
+                      "uid": "s:600~t:4",
+                      "nombre": "Belgrano (Córdoba)",
+                      "nombre_corto": "Belgrano ",
+                      "abreviatura": "BEL",
+                      "slug": "belgrano-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4.png",
+                      "color": "0060f0"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841584/belgrano-cordoba-talleres-cordoba",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -52358,57 +52358,6 @@
                   "fecha_grupo": "2026-10-11"
                 },
                 {
-                  "id": "401841600",
-                  "nombre": "Independiente at Talleres (Córdoba)",
-                  "fecha": "2026-10-11T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "independiente at talleres cordoba ind tall torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "11",
-                      "uid": "s:600~t:11",
-                      "nombre": "Independiente",
-                      "nombre_corto": "Independiente",
-                      "abreviatura": "IND",
-                      "slug": "independiente",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
-                      "color": "C60000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841600/independiente-talleres-cordoba",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-10-11"
-                },
-                {
                   "id": "401841599",
                   "nombre": "Banfield at Tigre",
                   "fecha": "2026-10-11T04:00Z",
@@ -52450,6 +52399,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841599/banfield-tigre",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-10-11"
+                },
+                {
+                  "id": "401841600",
+                  "nombre": "Independiente at Talleres (Córdoba)",
+                  "fecha": "2026-10-11T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "independiente at talleres cordoba ind tall torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "11",
+                      "uid": "s:600~t:11",
+                      "nombre": "Independiente",
+                      "nombre_corto": "Independiente",
+                      "abreviatura": "IND",
+                      "slug": "independiente",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11.png",
+                      "color": "C60000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841600/independiente-talleres-cordoba",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -52660,57 +52660,6 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841628/river-plate-belgrano-cordoba",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-10-18"
-                },
-                {
-                  "id": "401841627",
-                  "nombre": "Talleres (Córdoba) at Boca Juniors",
-                  "fecha": "2026-10-18T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "talleres cordoba at boca juniors tall cabj torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "5",
-                      "uid": "s:600~t:5",
-                      "nombre": "Boca Juniors",
-                      "nombre_corto": "Boca ",
-                      "abreviatura": "CABJ",
-                      "slug": "boca-juniors",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
-                      "color": "fcb000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841627/talleres-cordoba-boca-juniors",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -53221,6 +53170,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841616/gimnasia-mendoza-velez-sarsfield",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-10-18"
+                },
+                {
+                  "id": "401841627",
+                  "nombre": "Talleres (Córdoba) at Boca Juniors",
+                  "fecha": "2026-10-18T18:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "talleres cordoba at boca juniors tall cabj torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "5",
+                      "uid": "s:600~t:5",
+                      "nombre": "Boca Juniors",
+                      "nombre_corto": "Boca ",
+                      "abreviatura": "CABJ",
+                      "slug": "boca-juniors",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+                      "color": "fcb000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841627/talleres-cordoba-boca-juniors",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -54212,57 +54212,6 @@
                   "fecha_grupo": "2026-11-01"
                 },
                 {
-                  "id": "401841656",
-                  "nombre": "Talleres (Córdoba) at Deportivo Riestra",
-                  "fecha": "2026-11-01T04:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "talleres cordoba at deportivo riestra tall rie torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "17702",
-                      "uid": "s:600~t:17702",
-                      "nombre": "Deportivo Riestra",
-                      "nombre_corto": "Riestra",
-                      "abreviatura": "RIE",
-                      "slug": "deportivo-riestra",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
-                      "color": "212121"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841656/talleres-cordoba-deportivo-riestra",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-11-01"
-                },
-                {
                   "id": "401841654",
                   "nombre": "Instituto (Córdoba) at Estudiantes de La Plata",
                   "fecha": "2026-11-01T04:00Z",
@@ -54763,6 +54712,57 @@
                     "penales": ""
                   },
                   "url": "https://www.espn.com/soccer/match/_/gameId/401841646/san-lorenzo-velez-sarsfield",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-11-01"
+                },
+                {
+                  "id": "401841656",
+                  "nombre": "Talleres (Córdoba) at Deportivo Riestra",
+                  "fecha": "2026-11-01T20:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "talleres cordoba at deportivo riestra tall rie torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "17702",
+                      "uid": "s:600~t:17702",
+                      "nombre": "Deportivo Riestra",
+                      "nombre_corto": "Riestra",
+                      "abreviatura": "RIE",
+                      "slug": "deportivo-riestra",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17702.png",
+                      "color": "212121"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841656/talleres-cordoba-deportivo-riestra",
                   "penales": {
                     "definicion": false,
                     "local": "",
@@ -55391,57 +55391,6 @@
                   "fecha_grupo": "2026-11-08"
                 },
                 {
-                  "id": "401841661",
-                  "nombre": "Estudiantes de La Plata at Talleres (Córdoba)",
-                  "fecha": "2026-11-08T05:00Z",
-                  "estado": "Scheduled",
-                  "estado_tipo": "pre",
-                  "completado": false,
-                  "fase": "",
-                  "clasificacion_texto": "estudiantes de la plata at talleres cordoba est tall torneo clausura",
-                  "local": {
-                    "equipo": {
-                      "id": "19",
-                      "uid": "s:600~t:19",
-                      "nombre": "Talleres (Córdoba)",
-                      "nombre_corto": "Talleres ",
-                      "abreviatura": "TALL",
-                      "slug": "talleres-cordoba",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
-                      "color": "000000"
-                    },
-                    "localia": "home",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "visitante": {
-                    "equipo": {
-                      "id": "8",
-                      "uid": "s:600~t:8",
-                      "nombre": "Estudiantes de La Plata",
-                      "nombre_corto": "Estudiantes",
-                      "abreviatura": "EST",
-                      "slug": "estudiantes-de-la-plata",
-                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
-                      "color": "C60000"
-                    },
-                    "localia": "away",
-                    "marcador": "0",
-                    "ganador": false,
-                    "penales": ""
-                  },
-                  "url": "https://www.espn.com/soccer/match/_/gameId/401841661/estudiantes-de-la-plata-talleres-cordoba",
-                  "penales": {
-                    "definicion": false,
-                    "local": "",
-                    "visitante": "",
-                    "texto": ""
-                  },
-                  "fecha_numero": null,
-                  "fecha_grupo": "2026-11-08"
-                },
-                {
                   "id": "401841673",
                   "nombre": "Sarmiento (Junín) at Tigre",
                   "fecha": "2026-11-08T05:00Z",
@@ -55544,6 +55493,57 @@
                   "fecha_grupo": "2026-11-08"
                 },
                 {
+                  "id": "401841661",
+                  "nombre": "Estudiantes de La Plata at Talleres (Córdoba)",
+                  "fecha": "2026-11-08T20:00Z",
+                  "estado": "Scheduled",
+                  "estado_tipo": "pre",
+                  "completado": false,
+                  "fase": "",
+                  "clasificacion_texto": "estudiantes de la plata at talleres cordoba est tall torneo clausura",
+                  "local": {
+                    "equipo": {
+                      "id": "19",
+                      "uid": "s:600~t:19",
+                      "nombre": "Talleres (Córdoba)",
+                      "nombre_corto": "Talleres ",
+                      "abreviatura": "TALL",
+                      "slug": "talleres-cordoba",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19.png",
+                      "color": "000000"
+                    },
+                    "localia": "home",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "visitante": {
+                    "equipo": {
+                      "id": "8",
+                      "uid": "s:600~t:8",
+                      "nombre": "Estudiantes de La Plata",
+                      "nombre_corto": "Estudiantes",
+                      "abreviatura": "EST",
+                      "slug": "estudiantes-de-la-plata",
+                      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8.png",
+                      "color": "C60000"
+                    },
+                    "localia": "away",
+                    "marcador": "0",
+                    "ganador": false,
+                    "penales": ""
+                  },
+                  "url": "https://www.espn.com/soccer/match/_/gameId/401841661/estudiantes-de-la-plata-talleres-cordoba",
+                  "penales": {
+                    "definicion": false,
+                    "local": "",
+                    "visitante": "",
+                    "texto": ""
+                  },
+                  "fecha_numero": null,
+                  "fecha_grupo": "2026-11-08"
+                },
+                {
                   "id": "401841669",
                   "nombre": "Defensa y Justicia at Boca Juniors",
                   "fecha": "2026-11-08T20:00Z",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:27.878279+00:00",
+      "actualizado": "2026-06-11T17:49:19.246583+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -57727,7 +57727,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:30.206571+00:00",
+      "actualizado": "2026-06-11T17:49:20.624286+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -58708,7 +58708,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:31.024863+00:00",
+      "actualizado": "2026-06-11T17:49:20.887174+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -60392,7 +60392,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:31.547843+00:00",
+      "actualizado": "2026-06-11T17:49:21.096348+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -61992,7 +61992,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:32.226827+00:00",
+      "actualizado": "2026-06-11T17:49:21.294432+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -63389,7 +63389,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:32.869519+00:00",
+      "actualizado": "2026-06-11T17:49:21.498185+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -64786,7 +64786,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:33.358044+00:00",
+      "actualizado": "2026-06-11T17:49:21.687437+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -66184,7 +66184,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:33.871330+00:00",
+      "actualizado": "2026-06-11T17:49:21.934133+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -67442,7 +67442,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:34.525944+00:00",
+      "actualizado": "2026-06-11T17:49:22.130748+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -68337,7 +68337,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:35.144636+00:00",
+      "actualizado": "2026-06-11T17:49:22.356913+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70671,7 +70671,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:35.755540+00:00",
+      "actualizado": "2026-06-11T17:49:22.530501+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -72590,7 +72590,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:36.457916+00:00",
+      "actualizado": "2026-06-11T17:49:22.684026+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -74345,7 +74345,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:37.282627+00:00",
+      "actualizado": "2026-06-11T17:49:22.867569+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -75182,7 +75182,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:37.835813+00:00",
+      "actualizado": "2026-06-11T17:49:23.141704+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -76937,7 +76937,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:38.553290+00:00",
+      "actualizado": "2026-06-11T17:49:23.309671+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -78520,7 +78520,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:39.085775+00:00",
+      "actualizado": "2026-06-11T17:49:23.601395+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -80103,7 +80103,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:39.583126+00:00",
+      "actualizado": "2026-06-11T17:49:23.810190+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -81686,7 +81686,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:40.208657+00:00",
+      "actualizado": "2026-06-11T17:49:24.050200+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -82931,7 +82931,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:41.014024+00:00",
+      "actualizado": "2026-06-11T17:49:24.219848+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -83628,7 +83628,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:41.749183+00:00",
+      "actualizado": "2026-06-11T17:49:24.471422+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -84389,7 +84389,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:42.263820+00:00",
+      "actualizado": "2026-06-11T17:49:24.701100+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -85226,7 +85226,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:42.795162+00:00",
+      "actualizado": "2026-06-11T17:49:24.874805+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -85923,7 +85923,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:43.397879+00:00",
+      "actualizado": "2026-06-11T17:49:25.041458+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -86792,7 +86792,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-11T12:26:43.941466+00:00",
+      "actualizado": "2026-06-11T17:49:25.219908+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
