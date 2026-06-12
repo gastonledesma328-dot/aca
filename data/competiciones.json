@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-11T22:21:39.479434+00:00",
+  "actualizado": "2026-06-12T11:57:27.965621+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:25.241225+00:00",
+      "actualizado": "2026-06-12T11:57:13.248451+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:25.745463+00:00",
+      "actualizado": "2026-06-12T11:57:13.874044+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -57727,7 +57727,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:27.599639+00:00",
+      "actualizado": "2026-06-12T11:57:15.780533+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -57737,8 +57737,8 @@
       "resumen": {
         "equipos": 64,
         "posiciones": 0,
-        "partidos_scoreboard": 3,
-        "ultimos": 3,
+        "partidos_scoreboard": 1,
+        "ultimos": 1,
         "proximos": 0
       },
       "equipos": [
@@ -58387,39 +58387,39 @@
       "partidos": {
         "ultimos": [
           {
-            "id": "401861868",
-            "nombre": "Tigre at Independiente Rivadavia",
-            "fecha": "2026-06-07T04:00Z",
-            "estado": "Postponed",
+            "id": "401873937",
+            "nombre": "Huracán at Barracas Central",
+            "fecha": "2026-06-03T00:10Z",
+            "estado": "Full Time",
             "estado_tipo": "post",
-            "completado": false,
+            "completado": true,
             "fase": "",
-            "clasificacion_texto": "tigre at independiente rivadavia tig riv round of 32",
+            "clasificacion_texto": "huracan at barracas central hur bar round of 32",
             "local": {
               "equipo": {
-                "id": "9744",
-                "uid": "s:600~t:9744",
-                "nombre": "Independiente Rivadavia",
-                "nombre_corto": "Ind. Rivadavia",
-                "abreviatura": "RIV",
-                "slug": "independiente-rivadavia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-                "color": "000061"
+                "id": "10060",
+                "uid": "s:600~t:10060",
+                "nombre": "Barracas Central",
+                "nombre_corto": "Barracas",
+                "abreviatura": "BAR",
+                "slug": "barracas-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
+                "color": "000000"
               },
               "localia": "home",
-              "marcador": "0",
-              "ganador": false,
+              "marcador": "1",
+              "ganador": true,
               "penales": "0"
             },
             "visitante": {
               "equipo": {
-                "id": "7767",
-                "uid": "s:600~t:7767",
-                "nombre": "Tigre",
-                "nombre_corto": "Tigre",
-                "abreviatura": "TIG",
-                "slug": "tigre",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
+                "id": "10",
+                "uid": "s:600~t:10",
+                "nombre": "Huracán",
+                "nombre_corto": "Huracán ",
+                "abreviatura": "HUR",
+                "slug": "huracan",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
                 "color": "C60000"
               },
               "localia": "away",
@@ -58427,7 +58427,7 @@
               "ganador": false,
               "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401861868/tigre-independiente-rivadavia",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401873937/huracan-barracas-central",
             "penales": {
               "definicion": true,
               "local": "0",
@@ -58435,147 +58435,45 @@
               "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
-          },
-          {
-            "id": "401861869",
-            "nombre": "Aldosivi at River Plate",
-            "fecha": "2026-06-07T04:00Z",
-            "estado": "Postponed",
-            "estado_tipo": "post",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "aldosivi at river plate aldo riv round of 32",
-            "local": {
-              "equipo": {
-                "id": "16",
-                "uid": "s:600~t:16",
-                "nombre": "River Plate",
-                "nombre_corto": "River Plate",
-                "abreviatura": "RIV",
-                "slug": "river-plate",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
-                "color": "C60000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "9739",
-                "uid": "s:600~t:9739",
-                "nombre": "Aldosivi",
-                "nombre_corto": "Aldosivi",
-                "abreviatura": "ALDO",
-                "slug": "aldosivi",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
-                "color": "288A00"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401861869/aldosivi-river-plate",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
-          },
-          {
-            "id": "401867737",
-            "nombre": "Boca Juniors at Sarmiento (Junín)",
-            "fecha": "2026-06-07T04:00Z",
-            "estado": "Postponed",
-            "estado_tipo": "post",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "boca juniors at sarmiento junin cabj sarm round of 32",
-            "local": {
-              "equipo": {
-                "id": "10158",
-                "uid": "s:600~t:10158",
-                "nombre": "Sarmiento (Junín)",
-                "nombre_corto": "Sarmiento (J)",
-                "abreviatura": "SARM",
-                "slug": "sarmiento-junin",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10158.png",
-                "color": "288A00"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "5",
-                "uid": "s:600~t:5",
-                "nombre": "Boca Juniors",
-                "nombre_corto": "Boca ",
-                "abreviatura": "CABJ",
-                "slug": "boca-juniors",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
-                "color": "fcb000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401867737/boca-juniors-sarmiento-junin",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
+            "fecha_grupo": "2026-06-03"
           }
         ],
         "proximos": [],
         "todos": [
           {
-            "id": "401861868",
-            "nombre": "Tigre at Independiente Rivadavia",
-            "fecha": "2026-06-07T04:00Z",
-            "estado": "Postponed",
+            "id": "401873937",
+            "nombre": "Huracán at Barracas Central",
+            "fecha": "2026-06-03T00:10Z",
+            "estado": "Full Time",
             "estado_tipo": "post",
-            "completado": false,
+            "completado": true,
             "fase": "",
-            "clasificacion_texto": "tigre at independiente rivadavia tig riv round of 32",
+            "clasificacion_texto": "huracan at barracas central hur bar round of 32",
             "local": {
               "equipo": {
-                "id": "9744",
-                "uid": "s:600~t:9744",
-                "nombre": "Independiente Rivadavia",
-                "nombre_corto": "Ind. Rivadavia",
-                "abreviatura": "RIV",
-                "slug": "independiente-rivadavia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9744.png",
-                "color": "000061"
+                "id": "10060",
+                "uid": "s:600~t:10060",
+                "nombre": "Barracas Central",
+                "nombre_corto": "Barracas",
+                "abreviatura": "BAR",
+                "slug": "barracas-central",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
+                "color": "000000"
               },
               "localia": "home",
-              "marcador": "0",
-              "ganador": false,
+              "marcador": "1",
+              "ganador": true,
               "penales": "0"
             },
             "visitante": {
               "equipo": {
-                "id": "7767",
-                "uid": "s:600~t:7767",
-                "nombre": "Tigre",
-                "nombre_corto": "Tigre",
-                "abreviatura": "TIG",
-                "slug": "tigre",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
+                "id": "10",
+                "uid": "s:600~t:10",
+                "nombre": "Huracán",
+                "nombre_corto": "Huracán ",
+                "abreviatura": "HUR",
+                "slug": "huracan",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
                 "color": "C60000"
               },
               "localia": "away",
@@ -58583,7 +58481,7 @@
               "ganador": false,
               "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401861868/tigre-independiente-rivadavia",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401873937/huracan-barracas-central",
             "penales": {
               "definicion": true,
               "local": "0",
@@ -58591,112 +58489,10 @@
               "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
-          },
-          {
-            "id": "401861869",
-            "nombre": "Aldosivi at River Plate",
-            "fecha": "2026-06-07T04:00Z",
-            "estado": "Postponed",
-            "estado_tipo": "post",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "aldosivi at river plate aldo riv round of 32",
-            "local": {
-              "equipo": {
-                "id": "16",
-                "uid": "s:600~t:16",
-                "nombre": "River Plate",
-                "nombre_corto": "River Plate",
-                "abreviatura": "RIV",
-                "slug": "river-plate",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/16.png",
-                "color": "C60000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "9739",
-                "uid": "s:600~t:9739",
-                "nombre": "Aldosivi",
-                "nombre_corto": "Aldosivi",
-                "abreviatura": "ALDO",
-                "slug": "aldosivi",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9739.png",
-                "color": "288A00"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401861869/aldosivi-river-plate",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
-          },
-          {
-            "id": "401867737",
-            "nombre": "Boca Juniors at Sarmiento (Junín)",
-            "fecha": "2026-06-07T04:00Z",
-            "estado": "Postponed",
-            "estado_tipo": "post",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "boca juniors at sarmiento junin cabj sarm round of 32",
-            "local": {
-              "equipo": {
-                "id": "10158",
-                "uid": "s:600~t:10158",
-                "nombre": "Sarmiento (Junín)",
-                "nombre_corto": "Sarmiento (J)",
-                "abreviatura": "SARM",
-                "slug": "sarmiento-junin",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10158.png",
-                "color": "288A00"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "5",
-                "uid": "s:600~t:5",
-                "nombre": "Boca Juniors",
-                "nombre_corto": "Boca ",
-                "abreviatura": "CABJ",
-                "slug": "boca-juniors",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
-                "color": "fcb000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401867737/boca-juniors-sarmiento-junin",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-07"
+            "fecha_grupo": "2026-06-03"
           }
         ],
-        "total_scoreboard": 3
+        "total_scoreboard": 1
       }
     },
     {
@@ -58708,7 +58504,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:28.177380+00:00",
+      "actualizado": "2026-06-12T11:57:16.395017+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -60392,7 +60188,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:28.646709+00:00",
+      "actualizado": "2026-06-12T11:57:16.965928+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -61992,7 +61788,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:29.237626+00:00",
+      "actualizado": "2026-06-12T11:57:17.465082+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -63389,7 +63185,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:29.751189+00:00",
+      "actualizado": "2026-06-12T11:57:17.967082+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -64786,7 +64582,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:30.380327+00:00",
+      "actualizado": "2026-06-12T11:57:18.534228+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -66184,7 +65980,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:30.866352+00:00",
+      "actualizado": "2026-06-12T11:57:19.032859+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -67442,7 +67238,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:31.449143+00:00",
+      "actualizado": "2026-06-12T11:57:19.603647+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -68337,7 +68133,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:32.008737+00:00",
+      "actualizado": "2026-06-12T11:57:20.033597+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70671,7 +70467,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:32.497003+00:00",
+      "actualizado": "2026-06-12T11:57:20.465265+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -70682,8 +70478,8 @@
         "equipos": 48,
         "posiciones": 48,
         "partidos_scoreboard": 2,
-        "ultimos": 1,
-        "proximos": 1
+        "ultimos": 0,
+        "proximos": 2
       },
       "equipos": [
         {
@@ -71207,13 +71003,13 @@
           },
           "stats": {
             "posicion": "3",
-            "pj": "0",
+            "pj": "1",
             "g": "0",
             "e": "0",
-            "p": "0",
-            "gf": "0",
-            "gc": "0",
-            "dg": "0",
+            "p": "1",
+            "gf": "1",
+            "gc": "2",
+            "dg": "-1",
             "pts": "0",
             "racha": "-"
           }
@@ -71232,14 +71028,14 @@
           },
           "stats": {
             "posicion": "2",
-            "pj": "0",
-            "g": "0",
+            "pj": "1",
+            "g": "1",
             "e": "0",
             "p": "0",
-            "gf": "0",
-            "gc": "0",
-            "dg": "0",
-            "pts": "0",
+            "gf": "2",
+            "gc": "1",
+            "dg": "+1",
+            "pts": "3",
             "racha": "-"
           }
         },
@@ -72370,79 +72166,27 @@
         }
       ],
       "partidos": {
-        "ultimos": [
-          {
-            "id": "760415",
-            "nombre": "South Africa at Mexico",
-            "fecha": "2026-06-11T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "south africa at mexico rsa mex group stage",
-            "local": {
-              "equipo": {
-                "id": "203",
-                "uid": "s:600~t:203",
-                "nombre": "Mexico",
-                "nombre_corto": "Mexico",
-                "abreviatura": "MEX",
-                "slug": "mexico",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/203.png",
-                "color": "006847"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "467",
-                "uid": "s:600~t:467",
-                "nombre": "South Africa",
-                "nombre_corto": "South Africa",
-                "abreviatura": "RSA",
-                "slug": "south-africa",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/467.png",
-                "color": "087d5a"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760415/south-africa-mexico",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-11"
-          }
-        ],
+        "ultimos": [],
         "proximos": [
           {
-            "id": "760414",
-            "nombre": "Czechia at South Korea",
-            "fecha": "2026-06-12T02:00Z",
+            "id": "760416",
+            "nombre": "Bosnia-Herzegovina at Canada",
+            "fecha": "2026-06-12T19:00Z",
             "estado": "Scheduled",
             "estado_tipo": "pre",
             "completado": false,
             "fase": "",
-            "clasificacion_texto": "czechia at south korea cze kor group stage",
+            "clasificacion_texto": "bosnia herzegovina at canada bih can group stage",
             "local": {
               "equipo": {
-                "id": "451",
-                "uid": "s:600~t:451",
-                "nombre": "South Korea",
-                "nombre_corto": "South Korea",
-                "abreviatura": "KOR",
-                "slug": "south-korea",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/451.png",
-                "color": "ce2028"
+                "id": "206",
+                "uid": "s:600~t:206",
+                "nombre": "Canada",
+                "nombre_corto": "Canada",
+                "abreviatura": "CAN",
+                "slug": "canada",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/206.png",
+                "color": "ed2224"
               },
               "localia": "home",
               "marcador": "0",
@@ -72451,21 +72195,21 @@
             },
             "visitante": {
               "equipo": {
-                "id": "450",
-                "uid": "s:600~t:450",
-                "nombre": "Czechia",
-                "nombre_corto": "Czechia",
-                "abreviatura": "CZE",
-                "slug": "czechia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/450.png",
-                "color": "d7141a"
+                "id": "452",
+                "uid": "s:600~t:452",
+                "nombre": "Bosnia-Herzegovina",
+                "nombre_corto": "Bosnia-Herz",
+                "abreviatura": "BIH",
+                "slug": "bosnia-herzegovina",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/452.png",
+                "color": "112855"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760414/czechia-south-korea",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760416/bosnia-herzegovina-canada",
             "penales": {
               "definicion": false,
               "local": "",
@@ -72474,79 +72218,79 @@
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-12"
+          },
+          {
+            "id": "760417",
+            "nombre": "Paraguay at United States",
+            "fecha": "2026-06-13T01:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "paraguay at united states par usa group stage",
+            "local": {
+              "equipo": {
+                "id": "660",
+                "uid": "s:600~t:660",
+                "nombre": "United States",
+                "nombre_corto": "USA",
+                "abreviatura": "USA",
+                "slug": "united-states",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/660.png",
+                "color": "213065"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "210",
+                "uid": "s:600~t:210",
+                "nombre": "Paraguay",
+                "nombre_corto": "Paraguay",
+                "abreviatura": "PAR",
+                "slug": "paraguay",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/210.png",
+                "color": "ea2300"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760417/paraguay-united-states",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-13"
           }
         ],
         "todos": [
           {
-            "id": "760415",
-            "nombre": "South Africa at Mexico",
-            "fecha": "2026-06-11T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "south africa at mexico rsa mex group stage",
-            "local": {
-              "equipo": {
-                "id": "203",
-                "uid": "s:600~t:203",
-                "nombre": "Mexico",
-                "nombre_corto": "Mexico",
-                "abreviatura": "MEX",
-                "slug": "mexico",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/203.png",
-                "color": "006847"
-              },
-              "localia": "home",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "467",
-                "uid": "s:600~t:467",
-                "nombre": "South Africa",
-                "nombre_corto": "South Africa",
-                "abreviatura": "RSA",
-                "slug": "south-africa",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/467.png",
-                "color": "087d5a"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760415/south-africa-mexico",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-11"
-          },
-          {
-            "id": "760414",
-            "nombre": "Czechia at South Korea",
-            "fecha": "2026-06-12T02:00Z",
+            "id": "760416",
+            "nombre": "Bosnia-Herzegovina at Canada",
+            "fecha": "2026-06-12T19:00Z",
             "estado": "Scheduled",
             "estado_tipo": "pre",
             "completado": false,
             "fase": "",
-            "clasificacion_texto": "czechia at south korea cze kor group stage",
+            "clasificacion_texto": "bosnia herzegovina at canada bih can group stage",
             "local": {
               "equipo": {
-                "id": "451",
-                "uid": "s:600~t:451",
-                "nombre": "South Korea",
-                "nombre_corto": "South Korea",
-                "abreviatura": "KOR",
-                "slug": "south-korea",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/451.png",
-                "color": "ce2028"
+                "id": "206",
+                "uid": "s:600~t:206",
+                "nombre": "Canada",
+                "nombre_corto": "Canada",
+                "abreviatura": "CAN",
+                "slug": "canada",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/206.png",
+                "color": "ed2224"
               },
               "localia": "home",
               "marcador": "0",
@@ -72555,21 +72299,21 @@
             },
             "visitante": {
               "equipo": {
-                "id": "450",
-                "uid": "s:600~t:450",
-                "nombre": "Czechia",
-                "nombre_corto": "Czechia",
-                "abreviatura": "CZE",
-                "slug": "czechia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/450.png",
-                "color": "d7141a"
+                "id": "452",
+                "uid": "s:600~t:452",
+                "nombre": "Bosnia-Herzegovina",
+                "nombre_corto": "Bosnia-Herz",
+                "abreviatura": "BIH",
+                "slug": "bosnia-herzegovina",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/452.png",
+                "color": "112855"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760414/czechia-south-korea",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760416/bosnia-herzegovina-canada",
             "penales": {
               "definicion": false,
               "local": "",
@@ -72578,6 +72322,57 @@
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-12"
+          },
+          {
+            "id": "760417",
+            "nombre": "Paraguay at United States",
+            "fecha": "2026-06-13T01:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "paraguay at united states par usa group stage",
+            "local": {
+              "equipo": {
+                "id": "660",
+                "uid": "s:600~t:660",
+                "nombre": "United States",
+                "nombre_corto": "USA",
+                "abreviatura": "USA",
+                "slug": "united-states",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/660.png",
+                "color": "213065"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "210",
+                "uid": "s:600~t:210",
+                "nombre": "Paraguay",
+                "nombre_corto": "Paraguay",
+                "abreviatura": "PAR",
+                "slug": "paraguay",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/210.png",
+                "color": "ea2300"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760417/paraguay-united-states",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-13"
           }
         ],
         "total_scoreboard": 2
@@ -72591,7 +72386,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:33.027638+00:00",
+      "actualizado": "2026-06-12T11:57:20.968738+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -74346,7 +74141,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:33.569351+00:00",
+      "actualizado": "2026-06-12T11:57:21.580660+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -75183,7 +74978,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:34.117738+00:00",
+      "actualizado": "2026-06-12T11:57:22.117506+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -76938,7 +76733,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:34.668619+00:00",
+      "actualizado": "2026-06-12T11:57:22.704193+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -78521,7 +78316,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:35.105570+00:00",
+      "actualizado": "2026-06-12T11:57:23.166714+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -80104,7 +79899,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:35.746783+00:00",
+      "actualizado": "2026-06-12T11:57:23.879807+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -81687,7 +81482,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:36.224202+00:00",
+      "actualizado": "2026-06-12T11:57:24.387125+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -82932,7 +82727,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:36.806297+00:00",
+      "actualizado": "2026-06-12T11:57:25.117856+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -83629,7 +83424,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:37.407693+00:00",
+      "actualizado": "2026-06-12T11:57:25.624540+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -84390,7 +84185,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:38.030918+00:00",
+      "actualizado": "2026-06-12T11:57:26.246762+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -85227,7 +85022,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:38.508350+00:00",
+      "actualizado": "2026-06-12T11:57:26.849538+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -85924,7 +85719,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:39.013518+00:00",
+      "actualizado": "2026-06-12T11:57:27.455264+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -86793,7 +86588,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-11T22:21:39.479418+00:00",
+      "actualizado": "2026-06-12T11:57:27.965604+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
