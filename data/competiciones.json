@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-15T14:41:58.968566+00:00",
+  "actualizado": "2026-06-15T22:33:36.151921+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:44.964279+00:00",
+      "actualizado": "2026-06-15T22:33:21.488625+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:45.400252+00:00",
+      "actualizado": "2026-06-15T22:33:21.730598+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -57013,7 +57013,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:52.213317+00:00",
+      "actualizado": "2026-06-15T22:33:31.156882+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -57023,8 +57023,8 @@
       "resumen": {
         "equipos": 64,
         "posiciones": 0,
-        "partidos_scoreboard": 1,
-        "ultimos": 1,
+        "partidos_scoreboard": 0,
+        "ultimos": 0,
         "proximos": 0
       },
       "equipos": [
@@ -57671,114 +57671,10 @@
       ],
       "tabla": [],
       "partidos": {
-        "ultimos": [
-          {
-            "id": "401873937",
-            "nombre": "Huracán at Barracas Central",
-            "fecha": "2026-06-03T00:10Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "huracan at barracas central hur bar round of 32",
-            "local": {
-              "equipo": {
-                "id": "10060",
-                "uid": "s:600~t:10060",
-                "nombre": "Barracas Central",
-                "nombre_corto": "Barracas",
-                "abreviatura": "BAR",
-                "slug": "barracas-central",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "10",
-                "uid": "s:600~t:10",
-                "nombre": "Huracán",
-                "nombre_corto": "Huracán ",
-                "abreviatura": "HUR",
-                "slug": "huracan",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
-                "color": "C60000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401873937/huracan-barracas-central",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-03"
-          }
-        ],
+        "ultimos": [],
         "proximos": [],
-        "todos": [
-          {
-            "id": "401873937",
-            "nombre": "Huracán at Barracas Central",
-            "fecha": "2026-06-03T00:10Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "huracan at barracas central hur bar round of 32",
-            "local": {
-              "equipo": {
-                "id": "10060",
-                "uid": "s:600~t:10060",
-                "nombre": "Barracas Central",
-                "nombre_corto": "Barracas",
-                "abreviatura": "BAR",
-                "slug": "barracas-central",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10060.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "10",
-                "uid": "s:600~t:10",
-                "nombre": "Huracán",
-                "nombre_corto": "Huracán ",
-                "abreviatura": "HUR",
-                "slug": "huracan",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10.png",
-                "color": "C60000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401873937/huracan-barracas-central",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-03"
-          }
-        ],
-        "total_scoreboard": 1
+        "todos": [],
+        "total_scoreboard": 0
       }
     },
     {
@@ -57790,7 +57686,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:52.538072+00:00",
+      "actualizado": "2026-06-15T22:33:31.326655+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -59474,7 +59370,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:52.857862+00:00",
+      "actualizado": "2026-06-15T22:33:31.602475+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -61074,7 +60970,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:53.195595+00:00",
+      "actualizado": "2026-06-15T22:33:31.810906+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -62471,7 +62367,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:53.574018+00:00",
+      "actualizado": "2026-06-15T22:33:32.019869+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -63868,7 +63764,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:53.958752+00:00",
+      "actualizado": "2026-06-15T22:33:32.196782+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -65266,7 +65162,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:54.233548+00:00",
+      "actualizado": "2026-06-15T22:33:32.563083+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -66830,7 +66726,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:54.576686+00:00",
+      "actualizado": "2026-06-15T22:33:32.855004+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -67725,7 +67621,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:54.870421+00:00",
+      "actualizado": "2026-06-15T22:33:33.102073+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70059,7 +69955,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:55.096572+00:00",
+      "actualizado": "2026-06-15T22:33:33.288388+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -70070,8 +69966,8 @@
         "equipos": 48,
         "posiciones": 48,
         "partidos_scoreboard": 4,
-        "ultimos": 0,
-        "proximos": 4
+        "ultimos": 2,
+        "proximos": 2
       },
       "equipos": [
         {
@@ -71170,14 +71066,14 @@
           },
           "stats": {
             "posicion": "1",
-            "pj": "0",
+            "pj": "1",
             "g": "0",
-            "e": "0",
+            "e": "1",
             "p": "0",
-            "gf": "0",
-            "gc": "0",
+            "gf": "1",
+            "gc": "1",
             "dg": "0",
-            "pts": "0",
+            "pts": "1",
             "racha": "-"
           }
         },
@@ -71220,14 +71116,14 @@
           },
           "stats": {
             "posicion": "2",
-            "pj": "0",
+            "pj": "1",
             "g": "0",
-            "e": "0",
+            "e": "1",
             "p": "0",
-            "gf": "0",
-            "gc": "0",
+            "gf": "1",
+            "gc": "1",
             "dg": "0",
-            "pts": "0",
+            "pts": "1",
             "racha": "-"
           }
         },
@@ -71270,14 +71166,14 @@
           },
           "stats": {
             "posicion": "1",
-            "pj": "0",
+            "pj": "1",
             "g": "0",
-            "e": "0",
+            "e": "1",
             "p": "0",
             "gf": "0",
             "gc": "0",
             "dg": "0",
-            "pts": "0",
+            "pts": "1",
             "racha": "-"
           }
         },
@@ -71345,14 +71241,14 @@
           },
           "stats": {
             "posicion": "2",
-            "pj": "0",
+            "pj": "1",
             "g": "0",
-            "e": "0",
+            "e": "1",
             "p": "0",
             "gf": "0",
             "gc": "0",
             "dg": "0",
-            "pts": "0",
+            "pts": "1",
             "racha": "-"
           }
         },
@@ -71758,15 +71654,65 @@
         }
       ],
       "partidos": {
-        "ultimos": [],
-        "proximos": [
+        "ultimos": [
+          {
+            "id": "760426",
+            "nombre": "Egypt at Belgium",
+            "fecha": "2026-06-15T19:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "egypt at belgium egy bel group stage",
+            "local": {
+              "equipo": {
+                "id": "459",
+                "uid": "s:600~t:459",
+                "nombre": "Belgium",
+                "nombre_corto": "Belgium",
+                "abreviatura": "BEL",
+                "slug": "belgium",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/459.png",
+                "color": "E30613"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2620",
+                "uid": "s:600~t:2620",
+                "nombre": "Egypt",
+                "nombre_corto": "Egypt",
+                "abreviatura": "EGY",
+                "slug": "egypt",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2620.png",
+                "color": "D20300"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760426/egypt-belgium",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-15"
+          },
           {
             "id": "760428",
             "nombre": "Cape Verde at Spain",
             "fecha": "2026-06-15T16:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "cape verde at spain cpv esp group stage",
             "local": {
@@ -71783,7 +71729,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -71799,75 +71745,26 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/760428/cape-verde-spain",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-15"
-          },
-          {
-            "id": "760426",
-            "nombre": "Egypt at Belgium",
-            "fecha": "2026-06-15T19:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "egypt at belgium egy bel group stage",
-            "local": {
-              "equipo": {
-                "id": "459",
-                "uid": "s:600~t:459",
-                "nombre": "Belgium",
-                "nombre_corto": "Belgium",
-                "abreviatura": "BEL",
-                "slug": "belgium",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/459.png",
-                "color": "E30613"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2620",
-                "uid": "s:600~t:2620",
-                "nombre": "Egypt",
-                "nombre_corto": "Egypt",
-                "abreviatura": "EGY",
-                "slug": "egypt",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2620.png",
-                "color": "D20300"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760426/egypt-belgium",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-15"
-          },
+          }
+        ],
+        "proximos": [
           {
             "id": "760429",
             "nombre": "Uruguay at Saudi Arabia",
             "fecha": "2026-06-15T22:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "estado": "First Half",
+            "estado_tipo": "in",
             "completado": false,
             "fase": "",
             "clasificacion_texto": "uruguay at saudi arabia uru ksa group stage",
@@ -71885,7 +71782,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -71901,14 +71798,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760429/uruguay-saudi-arabia",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760429",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-15"
@@ -71970,9 +71867,9 @@
             "id": "760428",
             "nombre": "Cape Verde at Spain",
             "fecha": "2026-06-15T16:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "cape verde at spain cpv esp group stage",
             "local": {
@@ -71989,7 +71886,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -72005,14 +71902,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/760428/cape-verde-spain",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-15"
@@ -72021,9 +71918,9 @@
             "id": "760426",
             "nombre": "Egypt at Belgium",
             "fecha": "2026-06-15T19:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "egypt at belgium egy bel group stage",
             "local": {
@@ -72038,9 +71935,9 @@
                 "color": "E30613"
               },
               "localia": "home",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -72054,16 +71951,16 @@
                 "color": "D20300"
               },
               "localia": "away",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/760426/egypt-belgium",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-15"
@@ -72072,8 +71969,8 @@
             "id": "760429",
             "nombre": "Uruguay at Saudi Arabia",
             "fecha": "2026-06-15T22:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "estado": "First Half",
+            "estado_tipo": "in",
             "completado": false,
             "fase": "",
             "clasificacion_texto": "uruguay at saudi arabia uru ksa group stage",
@@ -72091,7 +71988,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -72107,14 +72004,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760429/uruguay-saudi-arabia",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760429",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-15"
@@ -72182,7 +72079,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:55.390698+00:00",
+      "actualizado": "2026-06-15T22:33:33.448860+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -73937,7 +73834,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:55.609576+00:00",
+      "actualizado": "2026-06-15T22:33:33.663152+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -74774,7 +74671,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:55.860333+00:00",
+      "actualizado": "2026-06-15T22:33:33.881521+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -76529,7 +76426,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:56.246894+00:00",
+      "actualizado": "2026-06-15T22:33:34.095360+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -78112,7 +78009,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:56.556792+00:00",
+      "actualizado": "2026-06-15T22:33:34.310645+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -79695,7 +79592,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:56.772104+00:00",
+      "actualizado": "2026-06-15T22:33:34.538360+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -81278,7 +81175,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:57.189522+00:00",
+      "actualizado": "2026-06-15T22:33:34.744213+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -82523,7 +82420,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:57.524578+00:00",
+      "actualizado": "2026-06-15T22:33:34.997728+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -83220,7 +83117,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:57.819461+00:00",
+      "actualizado": "2026-06-15T22:33:35.202047+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -83981,7 +83878,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:58.111514+00:00",
+      "actualizado": "2026-06-15T22:33:35.463945+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -84818,7 +84715,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:58.391657+00:00",
+      "actualizado": "2026-06-15T22:33:35.673470+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -85515,7 +85412,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:58.660380+00:00",
+      "actualizado": "2026-06-15T22:33:35.896892+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -86384,7 +86281,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-15T14:41:58.968554+00:00",
+      "actualizado": "2026-06-15T22:33:36.151906+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
