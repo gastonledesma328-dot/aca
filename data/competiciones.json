@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-17T17:28:32.926663+00:00",
+  "actualizado": "2026-06-17T22:19:30.905839+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:20.811048+00:00",
+      "actualizado": "2026-06-17T22:19:17.320930+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:21.230025+00:00",
+      "actualizado": "2026-06-17T22:19:17.639622+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -55626,8 +55626,8 @@
         "equipos": 36,
         "posiciones": 36,
         "partidos_scoreboard": 1,
-        "ultimos": 0,
-        "proximos": 1
+        "ultimos": 1,
+        "proximos": 0
       },
       "equipos": [
         {
@@ -56505,14 +56505,14 @@
             "color": ""
           },
           "stats": {
-            "posicion": "9",
-            "pj": "15",
+            "posicion": "10",
+            "pj": "16",
             "g": "5",
             "e": "6",
-            "p": "4",
+            "p": "5",
             "gf": "15",
-            "gc": "12",
-            "dg": "+3",
+            "gc": "16",
+            "dg": "-1",
             "pts": "21",
             "racha": "-"
           }
@@ -56556,14 +56556,14 @@
           },
           "stats": {
             "posicion": "2",
-            "pj": "16",
-            "g": "9",
+            "pj": "17",
+            "g": "10",
             "e": "3",
             "p": "4",
-            "gf": "23",
+            "gf": "27",
             "gc": "19",
-            "dg": "+4",
-            "pts": "30",
+            "dg": "+8",
+            "pts": "33",
             "racha": "-"
           }
         },
@@ -56805,7 +56805,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "10",
+            "posicion": "9",
             "pj": "17",
             "g": "6",
             "e": "3",
@@ -56894,15 +56894,14 @@
         }
       ],
       "partidos": {
-        "ultimos": [],
-        "proximos": [
+        "ultimos": [
           {
             "id": "401873898",
             "nombre": "Nueva Chicago at Gimnasia y Esgrima (Jujuy)",
             "fecha": "2026-06-17T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "nueva chicago at gimnasia y esgrima jujuy nchi gej regular season",
             "local": {
@@ -56917,8 +56916,8 @@
                 "color": "0e5196"
               },
               "localia": "home",
-              "marcador": "0",
-              "ganador": false,
+              "marcador": "4",
+              "ganador": true,
               "penales": "0"
             },
             "visitante": {
@@ -56948,14 +56947,15 @@
             "fecha_grupo": "2026-06-17"
           }
         ],
+        "proximos": [],
         "todos": [
           {
             "id": "401873898",
             "nombre": "Nueva Chicago at Gimnasia y Esgrima (Jujuy)",
             "fecha": "2026-06-17T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "nueva chicago at gimnasia y esgrima jujuy nchi gej regular season",
             "local": {
@@ -56970,8 +56970,8 @@
                 "color": "0e5196"
               },
               "localia": "home",
-              "marcador": "0",
-              "ganador": false,
+              "marcador": "4",
+              "ganador": true,
               "penales": "0"
             },
             "visitante": {
@@ -57013,7 +57013,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:23.248608+00:00",
+      "actualizado": "2026-06-17T22:19:19.137818+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -57790,7 +57790,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:23.795709+00:00",
+      "actualizado": "2026-06-17T22:19:19.380271+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -59474,7 +59474,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:24.246034+00:00",
+      "actualizado": "2026-06-17T22:19:19.573630+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -61074,7 +61074,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:24.632803+00:00",
+      "actualizado": "2026-06-17T22:19:19.796472+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -62471,7 +62471,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:25.044954+00:00",
+      "actualizado": "2026-06-17T22:19:20.023549+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -63868,7 +63868,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:25.514301+00:00",
+      "actualizado": "2026-06-17T22:19:20.224143+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -65266,7 +65266,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:25.903207+00:00",
+      "actualizado": "2026-06-17T22:19:20.457654+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -66830,7 +66830,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:26.446615+00:00",
+      "actualizado": "2026-06-17T22:19:20.654282+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -67725,7 +67725,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:26.909930+00:00",
+      "actualizado": "2026-06-17T22:19:20.825466+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70059,7 +70059,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:27.342028+00:00",
+      "actualizado": "2026-06-17T22:19:20.999888+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -70070,8 +70070,8 @@
         "equipos": 48,
         "posiciones": 48,
         "partidos_scoreboard": 5,
-        "ultimos": 1,
-        "proximos": 4
+        "ultimos": 3,
+        "proximos": 2
       },
       "equipos": [
         {
@@ -71569,7 +71569,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "4",
+            "posicion": "3",
             "pj": "0",
             "g": "0",
             "e": "0",
@@ -71594,15 +71594,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "1",
-            "pj": "0",
+            "posicion": "2",
+            "pj": "1",
             "g": "0",
-            "e": "0",
+            "e": "1",
             "p": "0",
-            "gf": "0",
-            "gc": "0",
+            "gf": "1",
+            "gc": "1",
             "dg": "0",
-            "pts": "0",
+            "pts": "1",
             "racha": "-"
           }
         },
@@ -71619,7 +71619,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "3",
+            "posicion": "4",
             "pj": "0",
             "g": "0",
             "e": "0",
@@ -71644,15 +71644,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "2",
-            "pj": "0",
+            "posicion": "1",
+            "pj": "1",
             "g": "0",
-            "e": "0",
+            "e": "1",
             "p": "0",
-            "gf": "0",
-            "gc": "0",
+            "gf": "1",
+            "gc": "1",
             "dg": "0",
-            "pts": "0",
+            "pts": "1",
             "racha": "-"
           }
         },
@@ -71670,14 +71670,14 @@
           },
           "stats": {
             "posicion": "1",
-            "pj": "0",
-            "g": "0",
+            "pj": "1",
+            "g": "1",
             "e": "0",
             "p": "0",
-            "gf": "0",
-            "gc": "0",
-            "dg": "0",
-            "pts": "0",
+            "gf": "4",
+            "gc": "2",
+            "dg": "+2",
+            "pts": "3",
             "racha": "-"
           }
         },
@@ -71694,14 +71694,14 @@
             "color": ""
           },
           "stats": {
-            "posicion": "2",
-            "pj": "0",
+            "posicion": "4",
+            "pj": "1",
             "g": "0",
             "e": "0",
-            "p": "0",
-            "gf": "0",
-            "gc": "0",
-            "dg": "0",
+            "p": "1",
+            "gf": "2",
+            "gc": "4",
+            "dg": "-2",
             "pts": "0",
             "racha": "-"
           }
@@ -71719,7 +71719,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "4",
+            "posicion": "2",
             "pj": "0",
             "g": "0",
             "e": "0",
@@ -71759,6 +71759,108 @@
       ],
       "partidos": {
         "ultimos": [
+          {
+            "id": "760437",
+            "nombre": "Croatia at England",
+            "fecha": "2026-06-17T20:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "croatia at england cro eng group stage",
+            "local": {
+              "equipo": {
+                "id": "448",
+                "uid": "s:600~t:448",
+                "nombre": "England",
+                "nombre_corto": "England",
+                "abreviatura": "ENG",
+                "slug": "england",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/448.png",
+                "color": "ffffff"
+              },
+              "localia": "home",
+              "marcador": "4",
+              "ganador": true,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "477",
+                "uid": "s:600~t:477",
+                "nombre": "Croatia",
+                "nombre_corto": "Croatia",
+                "abreviatura": "CRO",
+                "slug": "croatia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/477.png",
+                "color": "ff0000"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": false,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760437/croatia-england",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-17"
+          },
+          {
+            "id": "760435",
+            "nombre": "Congo DR at Portugal",
+            "fecha": "2026-06-17T17:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "congo dr at portugal cod por group stage",
+            "local": {
+              "equipo": {
+                "id": "482",
+                "uid": "s:600~t:482",
+                "nombre": "Portugal",
+                "nombre_corto": "Portugal",
+                "abreviatura": "POR",
+                "slug": "portugal",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/482.png",
+                "color": "da291c"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2850",
+                "uid": "s:600~t:2850",
+                "nombre": "Congo DR",
+                "nombre_corto": "Congo DR",
+                "abreviatura": "COD",
+                "slug": "congo-dr",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2850.png",
+                "color": "418fde"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760435/congo-dr-portugal",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-17"
+          },
           {
             "id": "760431",
             "nombre": "Jordan at Austria",
@@ -71813,108 +71915,6 @@
         ],
         "proximos": [
           {
-            "id": "760435",
-            "nombre": "Congo DR at Portugal",
-            "fecha": "2026-06-17T17:00Z",
-            "estado": "In Progress",
-            "estado_tipo": "in",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "congo dr at portugal cod por group stage",
-            "local": {
-              "equipo": {
-                "id": "482",
-                "uid": "s:600~t:482",
-                "nombre": "Portugal",
-                "nombre_corto": "Portugal",
-                "abreviatura": "POR",
-                "slug": "portugal",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/482.png",
-                "color": "da291c"
-              },
-              "localia": "home",
-              "marcador": "1",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2850",
-                "uid": "s:600~t:2850",
-                "nombre": "Congo DR",
-                "nombre_corto": "Congo DR",
-                "abreviatura": "COD",
-                "slug": "congo-dr",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2850.png",
-                "color": "418fde"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760435",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-17"
-          },
-          {
-            "id": "760437",
-            "nombre": "Croatia at England",
-            "fecha": "2026-06-17T20:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "croatia at england cro eng group stage",
-            "local": {
-              "equipo": {
-                "id": "448",
-                "uid": "s:600~t:448",
-                "nombre": "England",
-                "nombre_corto": "England",
-                "abreviatura": "ENG",
-                "slug": "england",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/448.png",
-                "color": "ffffff"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "477",
-                "uid": "s:600~t:477",
-                "nombre": "Croatia",
-                "nombre_corto": "Croatia",
-                "abreviatura": "CRO",
-                "slug": "croatia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/477.png",
-                "color": "ff0000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760437/croatia-england",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-17"
-          },
-          {
             "id": "760434",
             "nombre": "Panama at Ghana",
             "fecha": "2026-06-17T23:00Z",
@@ -71937,7 +71937,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -71953,14 +71953,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/760434/panama-ghana",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-17"
@@ -72073,9 +72073,9 @@
             "id": "760435",
             "nombre": "Congo DR at Portugal",
             "fecha": "2026-06-17T17:00Z",
-            "estado": "In Progress",
-            "estado_tipo": "in",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "congo dr at portugal cod por group stage",
             "local": {
@@ -72106,11 +72106,11 @@
                 "color": "418fde"
               },
               "localia": "away",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
               "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760435",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760435/congo-dr-portugal",
             "penales": {
               "definicion": true,
               "local": "0",
@@ -72124,9 +72124,9 @@
             "id": "760437",
             "nombre": "Croatia at England",
             "fecha": "2026-06-17T20:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "croatia at england cro eng group stage",
             "local": {
@@ -72141,9 +72141,9 @@
                 "color": "ffffff"
               },
               "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
+              "marcador": "4",
+              "ganador": true,
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -72157,16 +72157,16 @@
                 "color": "ff0000"
               },
               "localia": "away",
-              "marcador": "0",
+              "marcador": "2",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/760437/croatia-england",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-17"
@@ -72194,7 +72194,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -72210,14 +72210,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/760434/panama-ghana",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-17"
@@ -72285,7 +72285,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:27.731890+00:00",
+      "actualizado": "2026-06-17T22:19:21.202664+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -74040,7 +74040,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:28.126314+00:00",
+      "actualizado": "2026-06-17T22:19:21.376043+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -74877,7 +74877,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:28.515684+00:00",
+      "actualizado": "2026-06-17T22:19:21.590664+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -76632,7 +76632,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:28.895737+00:00",
+      "actualizado": "2026-06-17T22:19:21.755350+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -78215,7 +78215,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:29.298466+00:00",
+      "actualizado": "2026-06-17T22:19:21.971675+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -79798,7 +79798,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:29.836063+00:00",
+      "actualizado": "2026-06-17T22:19:22.207173+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -81381,7 +81381,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:30.207684+00:00",
+      "actualizado": "2026-06-17T22:19:22.457953+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -82626,7 +82626,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:30.602771+00:00",
+      "actualizado": "2026-06-17T22:19:22.650833+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -83323,7 +83323,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:31.178280+00:00",
+      "actualizado": "2026-06-17T22:19:22.871284+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -84084,7 +84084,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:31.664564+00:00",
+      "actualizado": "2026-06-17T22:19:23.082834+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -84921,7 +84921,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:32.064491+00:00",
+      "actualizado": "2026-06-17T22:19:30.292045+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -85618,7 +85618,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:32.524852+00:00",
+      "actualizado": "2026-06-17T22:19:30.531348+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -86487,7 +86487,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-17T17:28:32.926652+00:00",
+      "actualizado": "2026-06-17T22:19:30.905824+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
