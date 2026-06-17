@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-17T12:35:10.731594+00:00",
+  "actualizado": "2026-06-17T17:28:32.926663+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:39.642013+00:00",
+      "actualizado": "2026-06-17T17:28:20.811048+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:40.357548+00:00",
+      "actualizado": "2026-06-17T17:28:21.230025+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -56919,7 +56919,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -56935,14 +56935,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401873898/nueva-chicago-gimnasia-y-esgrima-jujuy",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-17"
@@ -56972,7 +56972,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -56988,14 +56988,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/401873898/nueva-chicago-gimnasia-y-esgrima-jujuy",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-17"
@@ -57013,7 +57013,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:42.923490+00:00",
+      "actualizado": "2026-06-17T17:28:23.248608+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -57790,7 +57790,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:43.403847+00:00",
+      "actualizado": "2026-06-17T17:28:23.795709+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -59474,7 +59474,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:44.212881+00:00",
+      "actualizado": "2026-06-17T17:28:24.246034+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -61074,7 +61074,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:45.014685+00:00",
+      "actualizado": "2026-06-17T17:28:24.632803+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -62471,7 +62471,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:45.621334+00:00",
+      "actualizado": "2026-06-17T17:28:25.044954+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -63868,7 +63868,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:46.364698+00:00",
+      "actualizado": "2026-06-17T17:28:25.514301+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -65266,7 +65266,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:47.102077+00:00",
+      "actualizado": "2026-06-17T17:28:25.903207+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -66830,7 +66830,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:47.991776+00:00",
+      "actualizado": "2026-06-17T17:28:26.446615+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -67725,7 +67725,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:48.643757+00:00",
+      "actualizado": "2026-06-17T17:28:26.909930+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70059,7 +70059,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:49.154735+00:00",
+      "actualizado": "2026-06-17T17:28:27.342028+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -71816,8 +71816,8 @@
             "id": "760435",
             "nombre": "Congo DR at Portugal",
             "fecha": "2026-06-17T17:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "estado": "In Progress",
+            "estado_tipo": "in",
             "completado": false,
             "fase": "",
             "clasificacion_texto": "congo dr at portugal cod por group stage",
@@ -71833,9 +71833,9 @@
                 "color": "da291c"
               },
               "localia": "home",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -71851,14 +71851,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760435/congo-dr-portugal",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760435",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-17"
@@ -72073,8 +72073,8 @@
             "id": "760435",
             "nombre": "Congo DR at Portugal",
             "fecha": "2026-06-17T17:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "estado": "In Progress",
+            "estado_tipo": "in",
             "completado": false,
             "fase": "",
             "clasificacion_texto": "congo dr at portugal cod por group stage",
@@ -72090,9 +72090,9 @@
                 "color": "da291c"
               },
               "localia": "home",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -72108,14 +72108,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760435/congo-dr-portugal",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760435",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-17"
@@ -72285,7 +72285,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:49.675635+00:00",
+      "actualizado": "2026-06-17T17:28:27.731890+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -74040,7 +74040,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:50.233106+00:00",
+      "actualizado": "2026-06-17T17:28:28.126314+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -74877,7 +74877,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:50.650912+00:00",
+      "actualizado": "2026-06-17T17:28:28.515684+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -76632,7 +76632,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:51.221690+00:00",
+      "actualizado": "2026-06-17T17:28:28.895737+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -78215,7 +78215,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:51.830914+00:00",
+      "actualizado": "2026-06-17T17:28:29.298466+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -79798,7 +79798,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:52.261585+00:00",
+      "actualizado": "2026-06-17T17:28:29.836063+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -81381,7 +81381,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-17T12:34:52.913432+00:00",
+      "actualizado": "2026-06-17T17:28:30.207684+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -82626,7 +82626,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-17T12:35:00.308785+00:00",
+      "actualizado": "2026-06-17T17:28:30.602771+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -83323,7 +83323,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-17T12:35:08.354041+00:00",
+      "actualizado": "2026-06-17T17:28:31.178280+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -83333,8 +83333,8 @@
       "resumen": {
         "equipos": 12,
         "posiciones": 12,
-        "partidos_scoreboard": 0,
-        "ultimos": 0,
+        "partidos_scoreboard": 3,
+        "ultimos": 3,
         "proximos": 0
       },
       "equipos": [
@@ -83762,10 +83762,318 @@
         }
       ],
       "partidos": {
-        "ultimos": [],
+        "ultimos": [
+          {
+            "id": "401848286",
+            "nombre": "Rubio Ñú at Cerro Porteño",
+            "fecha": "2026-05-24T20:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "rubio nu at cerro porteno crn cpt torneo apertura 2026",
+            "local": {
+              "equipo": {
+                "id": "2671",
+                "uid": "s:600~t:2671",
+                "nombre": "Cerro Porteño",
+                "nombre_corto": "Cerro Porteño",
+                "abreviatura": "CPT",
+                "slug": "cerro-porteno",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2671.png",
+                "color": "EF2D24"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10080",
+                "uid": "s:600~t:10080",
+                "nombre": "Rubio Ñú",
+                "nombre_corto": "Rubio Ñú",
+                "abreviatura": "CRN",
+                "slug": "rubio-nu",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10080.png",
+                "color": "32CD32"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401848286/rubio-nu-cerro-porteno",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-24"
+          },
+          {
+            "id": "401848289",
+            "nombre": "Libertad at Nacional Asunción",
+            "fecha": "2026-05-24T20:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "libertad at nacional asuncion lib nac torneo apertura 2026",
+            "local": {
+              "equipo": {
+                "id": "5584",
+                "uid": "s:600~t:5584",
+                "nombre": "Nacional Asunción",
+                "nombre_corto": "Nacional",
+                "abreviatura": "NAC",
+                "slug": "nacional-asuncion",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5584.png",
+                "color": "7CBDE7"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2670",
+                "uid": "s:600~t:2670",
+                "nombre": "Libertad",
+                "nombre_corto": "Libertad",
+                "abreviatura": "LIB",
+                "slug": "libertad",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2670.png",
+                "color": "212121"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401848289/libertad-nacional-asuncion",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-24"
+          },
+          {
+            "id": "401848287",
+            "nombre": "Sportivo Trinidense at Sportivo Ameliano",
+            "fecha": "2026-05-24T20:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "sportivo trinidense at sportivo ameliano cst csa torneo apertura 2026",
+            "local": {
+              "equipo": {
+                "id": "21313",
+                "uid": "s:600~t:21313",
+                "nombre": "Sportivo Ameliano",
+                "nombre_corto": "Ameliano",
+                "abreviatura": "CSA",
+                "slug": "sportivo-ameliano",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21313.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "7466",
+                "uid": "s:600~t:7466",
+                "nombre": "Sportivo Trinidense",
+                "nombre_corto": "Trinidense",
+                "abreviatura": "CST",
+                "slug": "sportivo-trinidense",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7466.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": true,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401848287/sportivo-trinidense-sportivo-ameliano",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-24"
+          }
+        ],
         "proximos": [],
-        "todos": [],
-        "total_scoreboard": 0
+        "todos": [
+          {
+            "id": "401848286",
+            "nombre": "Rubio Ñú at Cerro Porteño",
+            "fecha": "2026-05-24T20:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "rubio nu at cerro porteno crn cpt torneo apertura 2026",
+            "local": {
+              "equipo": {
+                "id": "2671",
+                "uid": "s:600~t:2671",
+                "nombre": "Cerro Porteño",
+                "nombre_corto": "Cerro Porteño",
+                "abreviatura": "CPT",
+                "slug": "cerro-porteno",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2671.png",
+                "color": "EF2D24"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "10080",
+                "uid": "s:600~t:10080",
+                "nombre": "Rubio Ñú",
+                "nombre_corto": "Rubio Ñú",
+                "abreviatura": "CRN",
+                "slug": "rubio-nu",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10080.png",
+                "color": "32CD32"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401848286/rubio-nu-cerro-porteno",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-24"
+          },
+          {
+            "id": "401848289",
+            "nombre": "Libertad at Nacional Asunción",
+            "fecha": "2026-05-24T20:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "libertad at nacional asuncion lib nac torneo apertura 2026",
+            "local": {
+              "equipo": {
+                "id": "5584",
+                "uid": "s:600~t:5584",
+                "nombre": "Nacional Asunción",
+                "nombre_corto": "Nacional",
+                "abreviatura": "NAC",
+                "slug": "nacional-asuncion",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5584.png",
+                "color": "7CBDE7"
+              },
+              "localia": "home",
+              "marcador": "2",
+              "ganador": true,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2670",
+                "uid": "s:600~t:2670",
+                "nombre": "Libertad",
+                "nombre_corto": "Libertad",
+                "abreviatura": "LIB",
+                "slug": "libertad",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2670.png",
+                "color": "212121"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401848289/libertad-nacional-asuncion",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-24"
+          },
+          {
+            "id": "401848287",
+            "nombre": "Sportivo Trinidense at Sportivo Ameliano",
+            "fecha": "2026-05-24T20:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "sportivo trinidense at sportivo ameliano cst csa torneo apertura 2026",
+            "local": {
+              "equipo": {
+                "id": "21313",
+                "uid": "s:600~t:21313",
+                "nombre": "Sportivo Ameliano",
+                "nombre_corto": "Ameliano",
+                "abreviatura": "CSA",
+                "slug": "sportivo-ameliano",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21313.png",
+                "color": "000000"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "7466",
+                "uid": "s:600~t:7466",
+                "nombre": "Sportivo Trinidense",
+                "nombre_corto": "Trinidense",
+                "abreviatura": "CST",
+                "slug": "sportivo-trinidense",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7466.png",
+                "color": "000000"
+              },
+              "localia": "away",
+              "marcador": "2",
+              "ganador": true,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401848287/sportivo-trinidense-sportivo-ameliano",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-05-24"
+          }
+        ],
+        "total_scoreboard": 3
       }
     },
     {
@@ -83776,7 +84084,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-17T12:35:08.966762+00:00",
+      "actualizado": "2026-06-17T17:28:31.664564+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -83996,75 +84304,25 @@
         {
           "grupo": "overall",
           "equipo": {
-            "id": "5264",
-            "uid": "s:600~t:5264",
-            "nombre": "Atlético Nacional",
-            "nombre_corto": "Atl. Nacional",
-            "abreviatura": "NAL",
-            "slug": "atletico-nacional",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5264.png",
+            "id": "9761",
+            "uid": "s:600~t:9761",
+            "nombre": "Alianza FC",
+            "nombre_corto": "Alianza FC",
+            "abreviatura": "AFC",
+            "slug": "alianza-fc",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9761.png",
             "color": ""
           },
           "stats": {
             "posicion": "1",
-            "pj": "19",
-            "g": "13",
-            "e": "1",
-            "p": "5",
-            "gf": "35",
-            "gc": "15",
-            "dg": "+20",
-            "pts": "40",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "4815",
-            "uid": "s:600~t:4815",
-            "nombre": "Atlético Junior",
-            "nombre_corto": "Atl. Junior",
-            "abreviatura": "JUN",
-            "slug": "atletico-junior",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4815.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "2",
-            "pj": "19",
-            "g": "11",
-            "e": "2",
-            "p": "6",
-            "gf": "31",
-            "gc": "24",
-            "dg": "+7",
-            "pts": "35",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "5485",
-            "uid": "s:600~t:5485",
-            "nombre": "Deportivo Pasto",
-            "nombre_corto": "Pasto",
-            "abreviatura": "PAS",
-            "slug": "deportivo-pasto",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5485.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "3",
-            "pj": "19",
-            "g": "10",
-            "e": "4",
-            "p": "5",
-            "gf": "29",
-            "gc": "25",
-            "dg": "+4",
-            "pts": "34",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
             "racha": "-"
           }
         },
@@ -84081,215 +84339,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "4",
-            "pj": "19",
-            "g": "10",
-            "e": "3",
-            "p": "6",
-            "gf": "25",
-            "gc": "15",
-            "dg": "+10",
-            "pts": "33",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "2919",
-            "uid": "s:600~t:2919",
-            "nombre": "Once Caldas",
-            "nombre_corto": "Once Caldas",
-            "abreviatura": "CAL",
-            "slug": "once-caldas",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2919.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "5",
-            "pj": "19",
-            "g": "8",
-            "e": "9",
-            "p": "2",
-            "gf": "31",
-            "gc": "22",
-            "dg": "+9",
-            "pts": "33",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "5489",
-            "uid": "s:600~t:5489",
-            "nombre": "Deportes Tolima",
-            "nombre_corto": "Tolima",
-            "abreviatura": "TOL",
-            "slug": "deportes-tolima",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5489.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "6",
-            "pj": "19",
-            "g": "8",
-            "e": "7",
-            "p": "4",
-            "gf": "27",
-            "gc": "17",
-            "dg": "+10",
-            "pts": "31",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "5488",
-            "uid": "s:600~t:5488",
-            "nombre": "Independiente Santa Fe",
-            "nombre_corto": "Santa Fe",
-            "abreviatura": "SFE",
-            "slug": "independiente-santa-fe",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5488.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "7",
-            "pj": "19",
-            "g": "7",
-            "e": "8",
-            "p": "4",
-            "gf": "29",
-            "gc": "22",
-            "dg": "+7",
-            "pts": "29",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "7445",
-            "uid": "s:600~t:7445",
-            "nombre": "Internacional de Bogotá",
-            "nombre_corto": "Inter Bogotá",
-            "abreviatura": "BOG",
-            "slug": "internacional-de-bogota",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7445.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "8",
-            "pj": "19",
-            "g": "7",
-            "e": "7",
-            "p": "5",
-            "gf": "26",
-            "gc": "26",
+            "posicion": "2",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
             "dg": "0",
-            "pts": "28",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "2672",
-            "uid": "s:600~t:2672",
-            "nombre": "Deportivo Cali",
-            "nombre_corto": "Cali",
-            "abreviatura": "DCI",
-            "slug": "deportivo-cali",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2672.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "9",
-            "pj": "19",
-            "g": "7",
-            "e": "6",
-            "p": "6",
-            "gf": "20",
-            "gc": "16",
-            "dg": "+4",
-            "pts": "27",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "5484",
-            "uid": "s:600~t:5484",
-            "nombre": "Millonarios",
-            "nombre_corto": "Millonarios",
-            "abreviatura": "MIL",
-            "slug": "millonarios",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5484.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "10",
-            "pj": "19",
-            "g": "7",
-            "e": "5",
-            "p": "7",
-            "gf": "31",
-            "gc": "23",
-            "dg": "+8",
-            "pts": "26",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "2690",
-            "uid": "s:600~t:2690",
-            "nombre": "Independiente Medellín",
-            "nombre_corto": "Ind. Medellín",
-            "abreviatura": "DIM",
-            "slug": "independiente-medellin",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "11",
-            "pj": "19",
-            "g": "7",
-            "e": "5",
-            "p": "7",
-            "gf": "26",
-            "gc": "24",
-            "dg": "+2",
-            "pts": "26",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "9762",
-            "uid": "s:600~t:9762",
-            "nombre": "Águilas Doradas",
-            "nombre_corto": "Águilas Doradas",
-            "abreviatura": "AGD",
-            "slug": "aguilas-doradas",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9762.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "12",
-            "pj": "19",
-            "g": "7",
-            "e": "5",
-            "p": "7",
-            "gf": "20",
-            "gc": "25",
-            "dg": "-5",
-            "pts": "26",
+            "pts": "0",
             "racha": "-"
           }
         },
@@ -84306,115 +84364,40 @@
             "color": ""
           },
           "stats": {
-            "posicion": "13",
-            "pj": "19",
-            "g": "5",
-            "e": "8",
-            "p": "6",
-            "gf": "26",
-            "gc": "20",
-            "dg": "+6",
-            "pts": "23",
+            "posicion": "3",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
             "racha": "-"
           }
         },
         {
           "grupo": "overall",
           "equipo": {
-            "id": "7915",
-            "uid": "s:600~t:7915",
-            "nombre": "Llaneros FC",
-            "nombre_corto": "Llaneros FC",
-            "abreviatura": "LLA",
-            "slug": "llaneros-fc",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7915.png",
+            "id": "5264",
+            "uid": "s:600~t:5264",
+            "nombre": "Atlético Nacional",
+            "nombre_corto": "Atl. Nacional",
+            "abreviatura": "NAL",
+            "slug": "atletico-nacional",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5264.png",
             "color": ""
           },
           "stats": {
-            "posicion": "14",
-            "pj": "19",
-            "g": "4",
-            "e": "10",
-            "p": "5",
-            "gf": "17",
-            "gc": "20",
-            "dg": "-3",
-            "pts": "22",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "4928",
-            "uid": "s:600~t:4928",
-            "nombre": "Fortaleza CEIF",
-            "nombre_corto": "Fortaleza",
-            "abreviatura": "FOR",
-            "slug": "fortaleza-ceif",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4928.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "15",
-            "pj": "19",
-            "g": "5",
-            "e": "7",
-            "p": "7",
-            "gf": "22",
-            "gc": "27",
-            "dg": "-5",
-            "pts": "22",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "10309",
-            "uid": "s:600~t:10309",
-            "nombre": "Jaguares de Córdoba",
-            "nombre_corto": "Jaguares",
-            "abreviatura": "COR",
-            "slug": "jaguares-de-cordoba",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10309.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "16",
-            "pj": "19",
-            "g": "5",
-            "e": "3",
-            "p": "11",
-            "gf": "20",
-            "gc": "33",
-            "dg": "-13",
-            "pts": "18",
-            "racha": "-"
-          }
-        },
-        {
-          "grupo": "overall",
-          "equipo": {
-            "id": "9761",
-            "uid": "s:600~t:9761",
-            "nombre": "Alianza FC",
-            "nombre_corto": "Alianza FC",
-            "abreviatura": "AFC",
-            "slug": "alianza-fc",
-            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9761.png",
-            "color": ""
-          },
-          "stats": {
-            "posicion": "17",
-            "pj": "19",
-            "g": "3",
-            "e": "8",
-            "p": "8",
-            "gf": "13",
-            "gc": "27",
-            "dg": "-14",
-            "pts": "17",
+            "posicion": "4",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
             "racha": "-"
           }
         },
@@ -84431,15 +84414,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "18",
-            "pj": "19",
-            "g": "5",
-            "e": "2",
-            "p": "12",
-            "gf": "15",
-            "gc": "32",
-            "dg": "-17",
-            "pts": "17",
+            "posicion": "5",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
             "racha": "-"
           }
         },
@@ -84456,15 +84439,90 @@
             "color": ""
           },
           "stats": {
-            "posicion": "19",
-            "pj": "19",
-            "g": "3",
-            "e": "7",
-            "p": "9",
-            "gf": "22",
-            "gc": "35",
-            "dg": "-13",
-            "pts": "16",
+            "posicion": "6",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "5489",
+            "uid": "s:600~t:5489",
+            "nombre": "Deportes Tolima",
+            "nombre_corto": "Tolima",
+            "abreviatura": "TOL",
+            "slug": "deportes-tolima",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5489.png",
+            "color": ""
+          },
+          "stats": {
+            "posicion": "7",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "2672",
+            "uid": "s:600~t:2672",
+            "nombre": "Deportivo Cali",
+            "nombre_corto": "Cali",
+            "abreviatura": "DCI",
+            "slug": "deportivo-cali",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2672.png",
+            "color": ""
+          },
+          "stats": {
+            "posicion": "8",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "5485",
+            "uid": "s:600~t:5485",
+            "nombre": "Deportivo Pasto",
+            "nombre_corto": "Pasto",
+            "abreviatura": "PAS",
+            "slug": "deportivo-pasto",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5485.png",
+            "color": ""
+          },
+          "stats": {
+            "posicion": "9",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
             "racha": "-"
           }
         },
@@ -84481,15 +84539,265 @@
             "color": ""
           },
           "stats": {
+            "posicion": "10",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "4928",
+            "uid": "s:600~t:4928",
+            "nombre": "Fortaleza CEIF",
+            "nombre_corto": "Fortaleza",
+            "abreviatura": "FOR",
+            "slug": "fortaleza-ceif",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4928.png",
+            "color": ""
+          },
+          "stats": {
+            "posicion": "11",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "2690",
+            "uid": "s:600~t:2690",
+            "nombre": "Independiente Medellín",
+            "nombre_corto": "Ind. Medellín",
+            "abreviatura": "DIM",
+            "slug": "independiente-medellin",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2690.png",
+            "color": ""
+          },
+          "stats": {
+            "posicion": "12",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "5488",
+            "uid": "s:600~t:5488",
+            "nombre": "Independiente Santa Fe",
+            "nombre_corto": "Santa Fe",
+            "abreviatura": "SFE",
+            "slug": "independiente-santa-fe",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5488.png",
+            "color": ""
+          },
+          "stats": {
+            "posicion": "13",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "7445",
+            "uid": "s:600~t:7445",
+            "nombre": "Internacional de Bogotá",
+            "nombre_corto": "Inter Bogotá",
+            "abreviatura": "BOG",
+            "slug": "internacional-de-bogota",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7445.png",
+            "color": ""
+          },
+          "stats": {
+            "posicion": "14",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "10309",
+            "uid": "s:600~t:10309",
+            "nombre": "Jaguares de Córdoba",
+            "nombre_corto": "Jaguares",
+            "abreviatura": "COR",
+            "slug": "jaguares-de-cordoba",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10309.png",
+            "color": ""
+          },
+          "stats": {
+            "posicion": "15",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "4815",
+            "uid": "s:600~t:4815",
+            "nombre": "Atlético Junior",
+            "nombre_corto": "Atl. Junior",
+            "abreviatura": "JUN",
+            "slug": "atletico-junior",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4815.png",
+            "color": ""
+          },
+          "stats": {
+            "posicion": "16",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "7915",
+            "uid": "s:600~t:7915",
+            "nombre": "Llaneros FC",
+            "nombre_corto": "Llaneros FC",
+            "abreviatura": "LLA",
+            "slug": "llaneros-fc",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7915.png",
+            "color": ""
+          },
+          "stats": {
+            "posicion": "17",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "5484",
+            "uid": "s:600~t:5484",
+            "nombre": "Millonarios",
+            "nombre_corto": "Millonarios",
+            "abreviatura": "MIL",
+            "slug": "millonarios",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5484.png",
+            "color": ""
+          },
+          "stats": {
+            "posicion": "18",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "2919",
+            "uid": "s:600~t:2919",
+            "nombre": "Once Caldas",
+            "nombre_corto": "Once Caldas",
+            "abreviatura": "CAL",
+            "slug": "once-caldas",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2919.png",
+            "color": ""
+          },
+          "stats": {
+            "posicion": "19",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
+            "racha": "-"
+          }
+        },
+        {
+          "grupo": "overall",
+          "equipo": {
+            "id": "9762",
+            "uid": "s:600~t:9762",
+            "nombre": "Águilas Doradas",
+            "nombre_corto": "Águilas Doradas",
+            "abreviatura": "AGD",
+            "slug": "aguilas-doradas",
+            "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9762.png",
+            "color": ""
+          },
+          "stats": {
             "posicion": "20",
-            "pj": "19",
-            "g": "1",
-            "e": "7",
-            "p": "11",
-            "gf": "15",
-            "gc": "32",
-            "dg": "-17",
-            "pts": "10",
+            "pj": "0",
+            "g": "0",
+            "e": "0",
+            "p": "0",
+            "gf": "0",
+            "gc": "0",
+            "dg": "0",
+            "pts": "0",
             "racha": "-"
           }
         }
@@ -84613,7 +84921,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-17T12:35:09.586658+00:00",
+      "actualizado": "2026-06-17T17:28:32.064491+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -85310,7 +85618,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-17T12:35:10.171127+00:00",
+      "actualizado": "2026-06-17T17:28:32.524852+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -86179,7 +86487,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-17T12:35:10.731581+00:00",
+      "actualizado": "2026-06-17T17:28:32.926652+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
