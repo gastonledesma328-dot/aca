@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-21T11:27:51.785634+00:00",
+  "actualizado": "2026-06-21T16:14:16.413789+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:44.658059+00:00",
+      "actualizado": "2026-06-21T16:14:02.905292+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:44.893423+00:00",
+      "actualizado": "2026-06-21T16:14:03.205737+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -57829,7 +57829,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:46.305493+00:00",
+      "actualizado": "2026-06-21T16:14:04.921598+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -58606,7 +58606,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:46.575894+00:00",
+      "actualizado": "2026-06-21T16:14:05.204084+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -60290,7 +60290,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:46.772064+00:00",
+      "actualizado": "2026-06-21T16:14:05.496118+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -61890,7 +61890,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:46.935238+00:00",
+      "actualizado": "2026-06-21T16:14:05.783041+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -63287,7 +63287,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:47.172155+00:00",
+      "actualizado": "2026-06-21T16:14:06.130774+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -64684,7 +64684,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:47.364229+00:00",
+      "actualizado": "2026-06-21T16:14:11.515150+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -66082,7 +66082,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:47.646336+00:00",
+      "actualizado": "2026-06-21T16:14:11.813614+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -67646,7 +67646,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:47.794644+00:00",
+      "actualizado": "2026-06-21T16:14:12.101606+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -68541,7 +68541,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:47.941166+00:00",
+      "actualizado": "2026-06-21T16:14:12.360399+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70875,7 +70875,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:48.222096+00:00",
+      "actualizado": "2026-06-21T16:14:12.789609+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -72632,8 +72632,8 @@
             "id": "760453",
             "nombre": "Saudi Arabia at Spain",
             "fecha": "2026-06-21T16:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "estado": "First Half",
+            "estado_tipo": "in",
             "completado": false,
             "fase": "",
             "clasificacion_texto": "saudi arabia at spain ksa esp group stage",
@@ -72649,9 +72649,9 @@
                 "color": "c60b1e"
               },
               "localia": "home",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -72667,14 +72667,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760453/saudi-arabia-spain",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760453",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-21"
@@ -72889,8 +72889,8 @@
             "id": "760453",
             "nombre": "Saudi Arabia at Spain",
             "fecha": "2026-06-21T16:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "estado": "First Half",
+            "estado_tipo": "in",
             "completado": false,
             "fase": "",
             "clasificacion_texto": "saudi arabia at spain ksa esp group stage",
@@ -72906,9 +72906,9 @@
                 "color": "c60b1e"
               },
               "localia": "home",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -72924,14 +72924,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760453/saudi-arabia-spain",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760453",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-21"
@@ -73101,7 +73101,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:48.491484+00:00",
+      "actualizado": "2026-06-21T16:14:13.024339+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -73938,7 +73938,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:48.654267+00:00",
+      "actualizado": "2026-06-21T16:14:13.247486+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -74775,7 +74775,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:48.863757+00:00",
+      "actualizado": "2026-06-21T16:14:13.487186+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -76530,7 +76530,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:49.014057+00:00",
+      "actualizado": "2026-06-21T16:14:13.802378+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -78113,7 +78113,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:49.144781+00:00",
+      "actualizado": "2026-06-21T16:14:14.065308+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -79696,7 +79696,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:49.383740+00:00",
+      "actualizado": "2026-06-21T16:14:14.394758+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -81279,7 +81279,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:50.525632+00:00",
+      "actualizado": "2026-06-21T16:14:14.697023+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -82524,7 +82524,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:50.738841+00:00",
+      "actualizado": "2026-06-21T16:14:15.009276+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -83221,7 +83221,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:50.876375+00:00",
+      "actualizado": "2026-06-21T16:14:15.264224+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -83982,7 +83982,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:51.023275+00:00",
+      "actualizado": "2026-06-21T16:14:15.587260+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -84819,7 +84819,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:51.346286+00:00",
+      "actualizado": "2026-06-21T16:14:15.849930+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -85516,7 +85516,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:51.526812+00:00",
+      "actualizado": "2026-06-21T16:14:16.160357+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -86385,7 +86385,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-21T11:27:51.785617+00:00",
+      "actualizado": "2026-06-21T16:14:16.413779+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
