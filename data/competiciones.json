@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-23T16:59:58.609309+00:00",
+  "actualizado": "2026-06-23T21:55:09.996694+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:52.231356+00:00",
+      "actualizado": "2026-06-23T21:55:01.644370+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:52.460161+00:00",
+      "actualizado": "2026-06-23T21:55:02.220898+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -56900,8 +56900,8 @@
             "id": "401843672",
             "nombre": "Atletico Rafaela at Nueva Chicago",
             "fecha": "2026-06-23T21:30Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "estado": "First Half",
+            "estado_tipo": "in",
             "completado": false,
             "fase": "",
             "clasificacion_texto": "atletico rafaela at nueva chicago raf nchi regular season",
@@ -56919,7 +56919,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -56935,14 +56935,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843672/atletico-rafaela-nueva-chicago",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843672",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-23"
@@ -56953,8 +56953,8 @@
             "id": "401843672",
             "nombre": "Atletico Rafaela at Nueva Chicago",
             "fecha": "2026-06-23T21:30Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "estado": "First Half",
+            "estado_tipo": "in",
             "completado": false,
             "fase": "",
             "clasificacion_texto": "atletico rafaela at nueva chicago raf nchi regular season",
@@ -56972,7 +56972,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -56988,14 +56988,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843672/atletico-rafaela-nueva-chicago",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843672",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-23"
@@ -57013,7 +57013,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:53.942685+00:00",
+      "actualizado": "2026-06-23T21:55:03.762155+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -57790,7 +57790,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:54.126216+00:00",
+      "actualizado": "2026-06-23T21:55:04.019870+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -59474,7 +59474,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:54.323527+00:00",
+      "actualizado": "2026-06-23T21:55:04.336802+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -61074,7 +61074,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:54.499013+00:00",
+      "actualizado": "2026-06-23T21:55:04.608931+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -62471,7 +62471,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:54.732924+00:00",
+      "actualizado": "2026-06-23T21:55:04.902591+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -63868,7 +63868,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:54.959885+00:00",
+      "actualizado": "2026-06-23T21:55:05.212882+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -65266,7 +65266,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:55.143172+00:00",
+      "actualizado": "2026-06-23T21:55:05.478030+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -66830,7 +66830,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:55.577095+00:00",
+      "actualizado": "2026-06-23T21:55:05.720478+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -67725,7 +67725,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:55.731880+00:00",
+      "actualizado": "2026-06-23T21:55:06.002571+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70059,7 +70059,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:56.217097+00:00",
+      "actualizado": "2026-06-23T21:55:06.251202+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -70070,8 +70070,8 @@
         "equipos": 48,
         "posiciones": 48,
         "partidos_scoreboard": 4,
-        "ultimos": 0,
-        "proximos": 4
+        "ultimos": 1,
+        "proximos": 3
       },
       "equipos": [
         {
@@ -71569,7 +71569,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "1",
+            "posicion": "2",
             "pj": "1",
             "g": "1",
             "e": "0",
@@ -71594,15 +71594,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "3",
-            "pj": "1",
-            "g": "0",
+            "posicion": "1",
+            "pj": "2",
+            "g": "1",
             "e": "1",
             "p": "0",
-            "gf": "1",
+            "gf": "6",
             "gc": "1",
-            "dg": "0",
-            "pts": "1",
+            "dg": "+5",
+            "pts": "4",
             "racha": "-"
           }
         },
@@ -71620,13 +71620,13 @@
           },
           "stats": {
             "posicion": "4",
-            "pj": "1",
+            "pj": "2",
             "g": "0",
             "e": "0",
-            "p": "1",
+            "p": "2",
             "gf": "1",
-            "gc": "3",
-            "dg": "-2",
+            "gc": "8",
+            "dg": "-7",
             "pts": "0",
             "racha": "-"
           }
@@ -71644,7 +71644,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "2",
+            "posicion": "3",
             "pj": "1",
             "g": "0",
             "e": "1",
@@ -71758,15 +71758,14 @@
         }
       ],
       "partidos": {
-        "ultimos": [],
-        "proximos": [
+        "ultimos": [
           {
             "id": "760461",
             "nombre": "Uzbekistan at Portugal",
             "fecha": "2026-06-23T17:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "uzbekistan at portugal uzb por group stage",
             "local": {
@@ -71781,8 +71780,8 @@
                 "color": "da291c"
               },
               "localia": "home",
-              "marcador": "0",
-              "ganador": false,
+              "marcador": "5",
+              "ganador": true,
               "penales": "0"
             },
             "visitante": {
@@ -71810,13 +71809,15 @@
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-23"
-          },
+          }
+        ],
+        "proximos": [
           {
             "id": "760458",
             "nombre": "Ghana at England",
             "fecha": "2026-06-23T20:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "estado": "Second Half",
+            "estado_tipo": "in",
             "completado": false,
             "fase": "",
             "clasificacion_texto": "ghana at england gha eng group stage",
@@ -71834,7 +71835,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -71850,14 +71851,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760458/ghana-england",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760458",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-23"
@@ -71970,9 +71971,9 @@
             "id": "760461",
             "nombre": "Uzbekistan at Portugal",
             "fecha": "2026-06-23T17:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "uzbekistan at portugal uzb por group stage",
             "local": {
@@ -71987,8 +71988,8 @@
                 "color": "da291c"
               },
               "localia": "home",
-              "marcador": "0",
-              "ganador": false,
+              "marcador": "5",
+              "ganador": true,
               "penales": "0"
             },
             "visitante": {
@@ -72021,8 +72022,8 @@
             "id": "760458",
             "nombre": "Ghana at England",
             "fecha": "2026-06-23T20:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "estado": "Second Half",
+            "estado_tipo": "in",
             "completado": false,
             "fase": "",
             "clasificacion_texto": "ghana at england gha eng group stage",
@@ -72040,7 +72041,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -72056,14 +72057,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760458/ghana-england",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760458",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-23"
@@ -72182,7 +72183,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:56.374624+00:00",
+      "actualizado": "2026-06-23T21:55:06.452606+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -73019,7 +73020,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:56.598803+00:00",
+      "actualizado": "2026-06-23T21:55:06.647298+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -73856,7 +73857,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:56.769358+00:00",
+      "actualizado": "2026-06-23T21:55:06.892648+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -75611,7 +75612,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:56.941354+00:00",
+      "actualizado": "2026-06-23T21:55:07.221581+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -77194,7 +77195,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:57.119670+00:00",
+      "actualizado": "2026-06-23T21:55:07.496368+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -78777,7 +78778,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:57.330284+00:00",
+      "actualizado": "2026-06-23T21:55:07.735361+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -80360,7 +80361,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:57.519961+00:00",
+      "actualizado": "2026-06-23T21:55:08.318004+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -81401,7 +81402,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:57.688563+00:00",
+      "actualizado": "2026-06-23T21:55:08.560521+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -82098,7 +82099,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:57.969931+00:00",
+      "actualizado": "2026-06-23T21:55:09.032765+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -83165,7 +83166,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:58.114231+00:00",
+      "actualizado": "2026-06-23T21:55:09.229039+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -84002,7 +84003,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:58.273588+00:00",
+      "actualizado": "2026-06-23T21:55:09.518661+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -84699,7 +84700,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:58.443215+00:00",
+      "actualizado": "2026-06-23T21:55:09.735102+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -85568,7 +85569,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-23T16:59:58.609285+00:00",
+      "actualizado": "2026-06-23T21:55:09.996679+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
