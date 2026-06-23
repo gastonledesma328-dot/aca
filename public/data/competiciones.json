@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-23T11:37:25.162580+00:00",
+  "actualizado": "2026-06-23T16:59:58.609309+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:06.450524+00:00",
+      "actualizado": "2026-06-23T16:59:52.231356+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:07.196171+00:00",
+      "actualizado": "2026-06-23T16:59:52.460161+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -57013,7 +57013,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:09.666986+00:00",
+      "actualizado": "2026-06-23T16:59:53.942685+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -57790,7 +57790,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:10.343071+00:00",
+      "actualizado": "2026-06-23T16:59:54.126216+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -59474,7 +59474,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:11.085416+00:00",
+      "actualizado": "2026-06-23T16:59:54.323527+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -61074,7 +61074,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:11.851176+00:00",
+      "actualizado": "2026-06-23T16:59:54.499013+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -62471,7 +62471,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:12.511031+00:00",
+      "actualizado": "2026-06-23T16:59:54.732924+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -63868,7 +63868,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:13.102892+00:00",
+      "actualizado": "2026-06-23T16:59:54.959885+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -65266,7 +65266,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:14.452314+00:00",
+      "actualizado": "2026-06-23T16:59:55.143172+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -66830,7 +66830,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:15.078583+00:00",
+      "actualizado": "2026-06-23T16:59:55.577095+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -67725,7 +67725,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:15.842262+00:00",
+      "actualizado": "2026-06-23T16:59:55.731880+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70059,7 +70059,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:16.497977+00:00",
+      "actualizado": "2026-06-23T16:59:56.217097+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -71783,7 +71783,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -71799,14 +71799,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/760461/uzbekistan-portugal",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-23"
@@ -71989,7 +71989,7 @@
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -72005,14 +72005,14 @@
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/760461/uzbekistan-portugal",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-23"
@@ -72182,7 +72182,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:17.354287+00:00",
+      "actualizado": "2026-06-23T16:59:56.374624+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -73019,7 +73019,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:17.994985+00:00",
+      "actualizado": "2026-06-23T16:59:56.598803+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -73856,7 +73856,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:18.546496+00:00",
+      "actualizado": "2026-06-23T16:59:56.769358+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -75611,7 +75611,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:19.409484+00:00",
+      "actualizado": "2026-06-23T16:59:56.941354+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -77194,7 +77194,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:20.007063+00:00",
+      "actualizado": "2026-06-23T16:59:57.119670+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -78777,7 +78777,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:20.751903+00:00",
+      "actualizado": "2026-06-23T16:59:57.330284+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -80360,7 +80360,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:21.330125+00:00",
+      "actualizado": "2026-06-23T16:59:57.519961+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -81401,7 +81401,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:22.024226+00:00",
+      "actualizado": "2026-06-23T16:59:57.688563+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -82098,7 +82098,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:22.695582+00:00",
+      "actualizado": "2026-06-23T16:59:57.969931+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -83165,7 +83165,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:23.318022+00:00",
+      "actualizado": "2026-06-23T16:59:58.114231+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -84002,7 +84002,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:23.931305+00:00",
+      "actualizado": "2026-06-23T16:59:58.273588+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -84699,7 +84699,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:24.585270+00:00",
+      "actualizado": "2026-06-23T16:59:58.443215+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -85568,7 +85568,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-23T11:37:25.162565+00:00",
+      "actualizado": "2026-06-23T16:59:58.609285+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
