@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-23T21:55:09.996694+00:00",
+  "actualizado": "2026-06-24T11:22:01.927541+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:01.644370+00:00",
+      "actualizado": "2026-06-24T11:21:53.340339+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55615,7 +55615,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:02.220898+00:00",
+      "actualizado": "2026-06-24T11:21:53.762745+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -55626,8 +55626,8 @@
         "equipos": 36,
         "posiciones": 36,
         "partidos_scoreboard": 1,
-        "ultimos": 0,
-        "proximos": 1
+        "ultimos": 1,
+        "proximos": 0
       },
       "equipos": [
         {
@@ -56455,7 +56455,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "11",
+            "posicion": "12",
             "pj": "18",
             "g": "6",
             "e": "4",
@@ -56505,15 +56505,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "13",
-            "pj": "16",
+            "posicion": "11",
+            "pj": "17",
             "g": "5",
-            "e": "6",
+            "e": "7",
             "p": "5",
             "gf": "15",
             "gc": "16",
             "dg": "-1",
-            "pts": "21",
+            "pts": "22",
             "racha": "-"
           }
         },
@@ -56530,7 +56530,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "12",
+            "posicion": "13",
             "pj": "18",
             "g": "5",
             "e": "6",
@@ -56605,15 +56605,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "6",
-            "pj": "17",
+            "posicion": "4",
+            "pj": "18",
             "g": "7",
-            "e": "5",
+            "e": "6",
             "p": "5",
             "gf": "14",
             "gc": "12",
             "dg": "+2",
-            "pts": "26",
+            "pts": "27",
             "racha": "-"
           }
         },
@@ -56630,7 +56630,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "5",
+            "posicion": "6",
             "pj": "18",
             "g": "7",
             "e": "5",
@@ -56705,7 +56705,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "4",
+            "posicion": "5",
             "pj": "18",
             "g": "6",
             "e": "9",
@@ -56894,15 +56894,14 @@
         }
       ],
       "partidos": {
-        "ultimos": [],
-        "proximos": [
+        "ultimos": [
           {
             "id": "401843672",
             "nombre": "Atletico Rafaela at Nueva Chicago",
             "fecha": "2026-06-23T21:30Z",
-            "estado": "First Half",
-            "estado_tipo": "in",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "atletico rafaela at nueva chicago raf nchi regular season",
             "local": {
@@ -56937,7 +56936,7 @@
               "ganador": false,
               "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843672",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843672/atletico-rafaela-nueva-chicago",
             "penales": {
               "definicion": true,
               "local": "0",
@@ -56948,14 +56947,15 @@
             "fecha_grupo": "2026-06-23"
           }
         ],
+        "proximos": [],
         "todos": [
           {
             "id": "401843672",
             "nombre": "Atletico Rafaela at Nueva Chicago",
             "fecha": "2026-06-23T21:30Z",
-            "estado": "First Half",
-            "estado_tipo": "in",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "atletico rafaela at nueva chicago raf nchi regular season",
             "local": {
@@ -56990,7 +56990,7 @@
               "ganador": false,
               "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401843672",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401843672/atletico-rafaela-nueva-chicago",
             "penales": {
               "definicion": true,
               "local": "0",
@@ -57013,7 +57013,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:03.762155+00:00",
+      "actualizado": "2026-06-24T11:21:55.557277+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -57790,7 +57790,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:04.019870+00:00",
+      "actualizado": "2026-06-24T11:21:55.837429+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -59474,7 +59474,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:04.336802+00:00",
+      "actualizado": "2026-06-24T11:21:56.120715+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -59485,8 +59485,8 @@
         "equipos": 56,
         "posiciones": 32,
         "partidos_scoreboard": 2,
-        "ultimos": 2,
-        "proximos": 0
+        "ultimos": 0,
+        "proximos": 2
       },
       "equipos": [
         {
@@ -60853,68 +60853,34 @@
         }
       ],
       "partidos": {
-        "ultimos": [
+        "ultimos": [],
+        "proximos": [
           {
-            "id": "401865451",
-            "nombre": "Macará at América de Cali",
-            "fecha": "2026-05-29T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401874150",
+            "nombre": "Tigre at Nacional",
+            "fecha": "2026-07-21T22:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
-            "clasificacion_texto": "macara at america de cali mac ame group stage",
+            "clasificacion_texto": "tigre at nacional tig nac knockout round playoffs event 1st leg 1st leg",
             "local": {
               "equipo": {
-                "id": "8109",
-                "uid": "s:600~t:8109",
-                "nombre": "América de Cali",
-                "nombre_corto": "América Cali",
-                "abreviatura": "AME",
-                "slug": "america-de-cali",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8109.png",
-                "color": "ff0000"
+                "id": "2684",
+                "uid": "s:600~t:2684",
+                "nombre": "Nacional",
+                "nombre_corto": "Nacional",
+                "abreviatura": "NAC",
+                "slug": "nacional",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2684.png",
+                "color": "345BBC"
               },
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
             "visitante": {
-              "equipo": {
-                "id": "18439",
-                "uid": "s:600~t:18439",
-                "nombre": "Macará",
-                "nombre_corto": "Macará",
-                "abreviatura": "MAC",
-                "slug": "macara",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18439.png",
-                "color": "0195DD"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865451/macara-america-de-cali",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-29"
-          },
-          {
-            "id": "401865458",
-            "nombre": "Alianza Atlético at Tigre",
-            "fecha": "2026-05-29T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "alianza atletico at tigre aat tig group stage",
-            "local": {
               "equipo": {
                 "id": "7767",
                 "uid": "s:600~t:7767",
@@ -60925,101 +60891,100 @@
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
                 "color": "C60000"
               },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874150/tigre-nacional",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-07-21"
+          },
+          {
+            "id": "401874072",
+            "nombre": "Santos at UCV FC",
+            "fecha": "2026-07-22T00:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "santos at ucv fc san ucv knockout round playoffs event 1st leg 1st leg",
+            "local": {
+              "equipo": {
+                "id": "10094",
+                "uid": "s:600~t:10094",
+                "nombre": "UCV FC",
+                "nombre_corto": "UCV FC",
+                "abreviatura": "UCV",
+                "slug": "ucv-fc",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
+                "color": "000000"
+              },
               "localia": "home",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
             },
             "visitante": {
               "equipo": {
-                "id": "5267",
-                "uid": "s:600~t:5267",
-                "nombre": "Alianza Atlético",
-                "nombre_corto": "Alianza Atl",
-                "abreviatura": "AAT",
-                "slug": "alianza-atletico",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5267.png",
+                "id": "2674",
+                "uid": "s:600~t:2674",
+                "nombre": "Santos",
+                "nombre_corto": "Santos",
+                "abreviatura": "SAN",
+                "slug": "santos",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2674.png",
                 "color": "000000"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865458/alianza-atletico-tigre",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874072/santos-ucv-fc",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-05-29"
+            "fecha_grupo": "2026-07-22"
           }
         ],
-        "proximos": [],
         "todos": [
           {
-            "id": "401865451",
-            "nombre": "Macará at América de Cali",
-            "fecha": "2026-05-29T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
+            "id": "401874150",
+            "nombre": "Tigre at Nacional",
+            "fecha": "2026-07-21T22:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
             "fase": "",
-            "clasificacion_texto": "macara at america de cali mac ame group stage",
+            "clasificacion_texto": "tigre at nacional tig nac knockout round playoffs event 1st leg 1st leg",
             "local": {
               "equipo": {
-                "id": "8109",
-                "uid": "s:600~t:8109",
-                "nombre": "América de Cali",
-                "nombre_corto": "América Cali",
-                "abreviatura": "AME",
-                "slug": "america-de-cali",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8109.png",
-                "color": "ff0000"
+                "id": "2684",
+                "uid": "s:600~t:2684",
+                "nombre": "Nacional",
+                "nombre_corto": "Nacional",
+                "abreviatura": "NAC",
+                "slug": "nacional",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2684.png",
+                "color": "345BBC"
               },
               "localia": "home",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
             "visitante": {
-              "equipo": {
-                "id": "18439",
-                "uid": "s:600~t:18439",
-                "nombre": "Macará",
-                "nombre_corto": "Macará",
-                "abreviatura": "MAC",
-                "slug": "macara",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18439.png",
-                "color": "0195DD"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865451/macara-america-de-cali",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-05-29"
-          },
-          {
-            "id": "401865458",
-            "nombre": "Alianza Atlético at Tigre",
-            "fecha": "2026-05-29T00:30Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "alianza atletico at tigre aat tig group stage",
-            "local": {
               "equipo": {
                 "id": "7767",
                 "uid": "s:600~t:7767",
@@ -61030,36 +60995,71 @@
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7767.png",
                 "color": "C60000"
               },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874150/tigre-nacional",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-07-21"
+          },
+          {
+            "id": "401874072",
+            "nombre": "Santos at UCV FC",
+            "fecha": "2026-07-22T00:30Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "santos at ucv fc san ucv knockout round playoffs event 1st leg 1st leg",
+            "local": {
+              "equipo": {
+                "id": "10094",
+                "uid": "s:600~t:10094",
+                "nombre": "UCV FC",
+                "nombre_corto": "UCV FC",
+                "abreviatura": "UCV",
+                "slug": "ucv-fc",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10094.png",
+                "color": "000000"
+              },
               "localia": "home",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
             },
             "visitante": {
               "equipo": {
-                "id": "5267",
-                "uid": "s:600~t:5267",
-                "nombre": "Alianza Atlético",
-                "nombre_corto": "Alianza Atl",
-                "abreviatura": "AAT",
-                "slug": "alianza-atletico",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5267.png",
+                "id": "2674",
+                "uid": "s:600~t:2674",
+                "nombre": "Santos",
+                "nombre_corto": "Santos",
+                "abreviatura": "SAN",
+                "slug": "santos",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2674.png",
                 "color": "000000"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": "0"
+              "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401865458/alianza-atletico-tigre",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401874072/santos-ucv-fc",
             "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-05-29"
+            "fecha_grupo": "2026-07-22"
           }
         ],
         "total_scoreboard": 2
@@ -61074,7 +61074,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:04.608931+00:00",
+      "actualizado": "2026-06-24T11:21:56.404825+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -62471,7 +62471,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:04.902591+00:00",
+      "actualizado": "2026-06-24T11:21:56.670189+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -63868,7 +63868,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:05.212882+00:00",
+      "actualizado": "2026-06-24T11:21:56.959771+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -65266,7 +65266,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:05.478030+00:00",
+      "actualizado": "2026-06-24T11:21:57.250671+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -66407,98 +66407,149 @@
       "partidos": {
         "ultimos": [
           {
-            "id": "724457",
-            "nombre": "Al Ahly at FC Porto",
-            "fecha": "2025-06-24T01:00Z",
+            "id": "724462",
+            "nombre": "Chelsea at Esperance Sportive de Tunis",
+            "fecha": "2025-06-25T01:00Z",
             "estado": "Full Time",
             "estado_tipo": "post",
             "completado": true,
             "fase": "",
-            "clasificacion_texto": "al ahly at fc porto ahl fcp group stage",
+            "clasificacion_texto": "chelsea at esperance sportive de tunis che est group stage",
             "local": {
               "equipo": {
-                "id": "437",
-                "uid": "s:600~t:437",
-                "nombre": "FC Porto",
-                "nombre_corto": "FC Porto",
-                "abreviatura": "FCP",
-                "slug": "fc-porto",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/437.png",
-                "color": "0000dd"
+                "id": "8377",
+                "uid": "s:600~t:8377",
+                "nombre": "Esperance Sportive de Tunis",
+                "nombre_corto": "ES Tunis",
+                "abreviatura": "EST",
+                "slug": "esperance-sportive-de-tunis",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8377.png",
+                "color": "EF0107"
               },
               "localia": "home",
-              "marcador": "4",
+              "marcador": "0",
               "ganador": false,
               "penales": "0"
             },
             "visitante": {
               "equipo": {
-                "id": "10207",
-                "uid": "s:600~t:10207",
-                "nombre": "Al Ahly",
-                "nombre_corto": "Al Ahly",
-                "abreviatura": "AHL",
-                "slug": "al-ahly",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10207.png",
+                "id": "363",
+                "uid": "s:600~t:363",
+                "nombre": "Chelsea",
+                "nombre_corto": "Chelsea",
+                "abreviatura": "CHE",
+                "slug": "chelsea",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+                "color": "144992"
+              },
+              "localia": "away",
+              "marcador": "3",
+              "ganador": true,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/724462/chelsea-esperance-sportive-de-tunis",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2025-06-25"
+          },
+          {
+            "id": "724461",
+            "nombre": "Flamengo at LAFC",
+            "fecha": "2025-06-25T01:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "flamengo at lafc fla lafc group stage",
+            "local": {
+              "equipo": {
+                "id": "18966",
+                "uid": "s:600~t:18966",
+                "nombre": "LAFC",
+                "nombre_corto": "LAFC",
+                "abreviatura": "LAFC",
+                "slug": "lafc",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18966.png",
                 "color": "000000"
               },
-              "localia": "away",
-              "marcador": "4",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/724457/al-ahly-fc-porto",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2025-06-24"
-          },
-          {
-            "id": "724458",
-            "nombre": "Palmeiras at Inter Miami CF",
-            "fecha": "2025-06-24T01:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "palmeiras at inter miami cf pal mia group stage",
-            "local": {
-              "equipo": {
-                "id": "20232",
-                "uid": "s:600~t:20232",
-                "nombre": "Inter Miami CF",
-                "nombre_corto": "Miami",
-                "abreviatura": "MIA",
-                "slug": "inter-miami-cf",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20232.png",
-                "color": "231f20"
-              },
               "localia": "home",
-              "marcador": "2",
+              "marcador": "1",
               "ganador": false,
               "penales": "0"
             },
             "visitante": {
               "equipo": {
-                "id": "2029",
-                "uid": "s:600~t:2029",
-                "nombre": "Palmeiras",
-                "nombre_corto": "Palmeiras",
-                "abreviatura": "PAL",
-                "slug": "palmeiras",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2029.png",
-                "color": "417505"
+                "id": "819",
+                "uid": "s:600~t:819",
+                "nombre": "Flamengo",
+                "nombre_corto": "Flamengo",
+                "abreviatura": "FLA",
+                "slug": "flamengo",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
+                "color": "C60000"
               },
               "localia": "away",
-              "marcador": "2",
+              "marcador": "1",
               "ganador": false,
               "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/724458/palmeiras-inter-miami-cf",
+            "url": "https://www.espn.com/soccer/match/_/gameId/724461/flamengo-lafc",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2025-06-25"
+          },
+          {
+            "id": "724459",
+            "nombre": "Boca Juniors at Auckland City",
+            "fecha": "2025-06-24T19:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "boca juniors at auckland city cabj acfc group stage",
+            "local": {
+              "equipo": {
+                "id": "7279",
+                "uid": "s:600~t:7279",
+                "nombre": "Auckland City",
+                "nombre_corto": "Auckland",
+                "abreviatura": "ACFC",
+                "slug": "auckland-city",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7279.png",
+                "color": "0427CB"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "5",
+                "uid": "s:600~t:5",
+                "nombre": "Boca Juniors",
+                "nombre_corto": "Boca ",
+                "abreviatura": "CABJ",
+                "slug": "boca-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+                "color": "fcb000"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/724459/boca-juniors-auckland-city",
             "penales": {
               "definicion": true,
               "local": "0",
@@ -66509,24 +66560,24 @@
             "fecha_grupo": "2025-06-24"
           },
           {
-            "id": "724455",
-            "nombre": "Botafogo at Atlético Madrid",
-            "fecha": "2025-06-23T19:00Z",
+            "id": "724460",
+            "nombre": "Bayern Munich at Benfica",
+            "fecha": "2025-06-24T19:00Z",
             "estado": "Full Time",
             "estado_tipo": "post",
             "completado": true,
             "fase": "",
-            "clasificacion_texto": "botafogo at atletico madrid bot atm group stage",
+            "clasificacion_texto": "bayern munich at benfica mun slb group stage",
             "local": {
               "equipo": {
-                "id": "1068",
-                "uid": "s:600~t:1068",
-                "nombre": "Atlético Madrid",
-                "nombre_corto": "Atlético",
-                "abreviatura": "ATM",
-                "slug": "atletico-madrid",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
-                "color": "ca3624"
+                "id": "1929",
+                "uid": "s:600~t:1929",
+                "nombre": "Benfica",
+                "nombre_corto": "Benfica",
+                "abreviatura": "SLB",
+                "slug": "benfica",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1929.png",
+                "color": "ca281d"
               },
               "localia": "home",
               "marcador": "1",
@@ -66535,21 +66586,21 @@
             },
             "visitante": {
               "equipo": {
-                "id": "6086",
-                "uid": "s:600~t:6086",
-                "nombre": "Botafogo",
-                "nombre_corto": "Botafogo",
-                "abreviatura": "BOT",
-                "slug": "botafogo",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6086.png",
-                "color": "000000"
+                "id": "132",
+                "uid": "s:600~t:132",
+                "nombre": "Bayern Munich",
+                "nombre_corto": "Bayern",
+                "abreviatura": "MUN",
+                "slug": "bayern-munich",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+                "color": "dc052d"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
               "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/724455/botafogo-atletico-madrid",
+            "url": "https://www.espn.com/soccer/match/_/gameId/724460/bayern-munich-benfica",
             "penales": {
               "definicion": true,
               "local": "0",
@@ -66557,81 +66608,81 @@
               "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
-            "fecha_grupo": "2025-06-23"
-          },
-          {
-            "id": "724456",
-            "nombre": "Paris Saint-Germain at Seattle Sounders FC",
-            "fecha": "2025-06-23T19:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "paris saint germain at seattle sounders fc psg sea group stage",
-            "local": {
-              "equipo": {
-                "id": "9726",
-                "uid": "s:600~t:9726",
-                "nombre": "Seattle Sounders FC",
-                "nombre_corto": "Seattle",
-                "abreviatura": "SEA",
-                "slug": "seattle-sounders-fc",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9726.png",
-                "color": "2dc84d"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "160",
-                "uid": "s:600~t:160",
-                "nombre": "Paris Saint-Germain",
-                "nombre_corto": "PSG",
-                "abreviatura": "PSG",
-                "slug": "paris-saint-germain",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
-                "color": "011F68"
-              },
-              "localia": "away",
-              "marcador": "2",
-              "ganador": true,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/724456/paris-saint-germain-seattle-sounders-fc",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2025-06-23"
+            "fecha_grupo": "2025-06-24"
           }
         ],
         "proximos": [],
         "todos": [
           {
-            "id": "724455",
-            "nombre": "Botafogo at Atlético Madrid",
-            "fecha": "2025-06-23T19:00Z",
+            "id": "724459",
+            "nombre": "Boca Juniors at Auckland City",
+            "fecha": "2025-06-24T19:00Z",
             "estado": "Full Time",
             "estado_tipo": "post",
             "completado": true,
             "fase": "",
-            "clasificacion_texto": "botafogo at atletico madrid bot atm group stage",
+            "clasificacion_texto": "boca juniors at auckland city cabj acfc group stage",
             "local": {
               "equipo": {
-                "id": "1068",
-                "uid": "s:600~t:1068",
-                "nombre": "Atlético Madrid",
-                "nombre_corto": "Atlético",
-                "abreviatura": "ATM",
-                "slug": "atletico-madrid",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
-                "color": "ca3624"
+                "id": "7279",
+                "uid": "s:600~t:7279",
+                "nombre": "Auckland City",
+                "nombre_corto": "Auckland",
+                "abreviatura": "ACFC",
+                "slug": "auckland-city",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7279.png",
+                "color": "0427CB"
+              },
+              "localia": "home",
+              "marcador": "1",
+              "ganador": false,
+              "penales": "0"
+            },
+            "visitante": {
+              "equipo": {
+                "id": "5",
+                "uid": "s:600~t:5",
+                "nombre": "Boca Juniors",
+                "nombre_corto": "Boca ",
+                "abreviatura": "CABJ",
+                "slug": "boca-juniors",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5.png",
+                "color": "fcb000"
+              },
+              "localia": "away",
+              "marcador": "1",
+              "ganador": false,
+              "penales": "0"
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/724459/boca-juniors-auckland-city",
+            "penales": {
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2025-06-24"
+          },
+          {
+            "id": "724460",
+            "nombre": "Bayern Munich at Benfica",
+            "fecha": "2025-06-24T19:00Z",
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
+            "fase": "",
+            "clasificacion_texto": "bayern munich at benfica mun slb group stage",
+            "local": {
+              "equipo": {
+                "id": "1929",
+                "uid": "s:600~t:1929",
+                "nombre": "Benfica",
+                "nombre_corto": "Benfica",
+                "abreviatura": "SLB",
+                "slug": "benfica",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1929.png",
+                "color": "ca281d"
               },
               "localia": "home",
               "marcador": "1",
@@ -66640,21 +66691,21 @@
             },
             "visitante": {
               "equipo": {
-                "id": "6086",
-                "uid": "s:600~t:6086",
-                "nombre": "Botafogo",
-                "nombre_corto": "Botafogo",
-                "abreviatura": "BOT",
-                "slug": "botafogo",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6086.png",
-                "color": "000000"
+                "id": "132",
+                "uid": "s:600~t:132",
+                "nombre": "Bayern Munich",
+                "nombre_corto": "Bayern",
+                "abreviatura": "MUN",
+                "slug": "bayern-munich",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+                "color": "dc052d"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
               "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/724455/botafogo-atletico-madrid",
+            "url": "https://www.espn.com/soccer/match/_/gameId/724460/bayern-munich-benfica",
             "penales": {
               "definicion": true,
               "local": "0",
@@ -66662,27 +66713,27 @@
               "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
-            "fecha_grupo": "2025-06-23"
+            "fecha_grupo": "2025-06-24"
           },
           {
-            "id": "724456",
-            "nombre": "Paris Saint-Germain at Seattle Sounders FC",
-            "fecha": "2025-06-23T19:00Z",
+            "id": "724462",
+            "nombre": "Chelsea at Esperance Sportive de Tunis",
+            "fecha": "2025-06-25T01:00Z",
             "estado": "Full Time",
             "estado_tipo": "post",
             "completado": true,
             "fase": "",
-            "clasificacion_texto": "paris saint germain at seattle sounders fc psg sea group stage",
+            "clasificacion_texto": "chelsea at esperance sportive de tunis che est group stage",
             "local": {
               "equipo": {
-                "id": "9726",
-                "uid": "s:600~t:9726",
-                "nombre": "Seattle Sounders FC",
-                "nombre_corto": "Seattle",
-                "abreviatura": "SEA",
-                "slug": "seattle-sounders-fc",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9726.png",
-                "color": "2dc84d"
+                "id": "8377",
+                "uid": "s:600~t:8377",
+                "nombre": "Esperance Sportive de Tunis",
+                "nombre_corto": "ES Tunis",
+                "abreviatura": "EST",
+                "slug": "esperance-sportive-de-tunis",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8377.png",
+                "color": "EF0107"
               },
               "localia": "home",
               "marcador": "0",
@@ -66691,21 +66742,21 @@
             },
             "visitante": {
               "equipo": {
-                "id": "160",
-                "uid": "s:600~t:160",
-                "nombre": "Paris Saint-Germain",
-                "nombre_corto": "PSG",
-                "abreviatura": "PSG",
-                "slug": "paris-saint-germain",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
-                "color": "011F68"
+                "id": "363",
+                "uid": "s:600~t:363",
+                "nombre": "Chelsea",
+                "nombre_corto": "Chelsea",
+                "abreviatura": "CHE",
+                "slug": "chelsea",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
+                "color": "144992"
               },
               "localia": "away",
-              "marcador": "2",
+              "marcador": "3",
               "ganador": true,
               "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/724456/paris-saint-germain-seattle-sounders-fc",
+            "url": "https://www.espn.com/soccer/match/_/gameId/724462/chelsea-esperance-sportive-de-tunis",
             "penales": {
               "definicion": true,
               "local": "0",
@@ -66713,101 +66764,50 @@
               "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
-            "fecha_grupo": "2025-06-23"
+            "fecha_grupo": "2025-06-25"
           },
           {
-            "id": "724457",
-            "nombre": "Al Ahly at FC Porto",
-            "fecha": "2025-06-24T01:00Z",
+            "id": "724461",
+            "nombre": "Flamengo at LAFC",
+            "fecha": "2025-06-25T01:00Z",
             "estado": "Full Time",
             "estado_tipo": "post",
             "completado": true,
             "fase": "",
-            "clasificacion_texto": "al ahly at fc porto ahl fcp group stage",
+            "clasificacion_texto": "flamengo at lafc fla lafc group stage",
             "local": {
               "equipo": {
-                "id": "437",
-                "uid": "s:600~t:437",
-                "nombre": "FC Porto",
-                "nombre_corto": "FC Porto",
-                "abreviatura": "FCP",
-                "slug": "fc-porto",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/437.png",
-                "color": "0000dd"
-              },
-              "localia": "home",
-              "marcador": "4",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "10207",
-                "uid": "s:600~t:10207",
-                "nombre": "Al Ahly",
-                "nombre_corto": "Al Ahly",
-                "abreviatura": "AHL",
-                "slug": "al-ahly",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10207.png",
+                "id": "18966",
+                "uid": "s:600~t:18966",
+                "nombre": "LAFC",
+                "nombre_corto": "LAFC",
+                "abreviatura": "LAFC",
+                "slug": "lafc",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/18966.png",
                 "color": "000000"
               },
-              "localia": "away",
-              "marcador": "4",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/724457/al-ahly-fc-porto",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2025-06-24"
-          },
-          {
-            "id": "724458",
-            "nombre": "Palmeiras at Inter Miami CF",
-            "fecha": "2025-06-24T01:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "palmeiras at inter miami cf pal mia group stage",
-            "local": {
-              "equipo": {
-                "id": "20232",
-                "uid": "s:600~t:20232",
-                "nombre": "Inter Miami CF",
-                "nombre_corto": "Miami",
-                "abreviatura": "MIA",
-                "slug": "inter-miami-cf",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/20232.png",
-                "color": "231f20"
-              },
               "localia": "home",
-              "marcador": "2",
+              "marcador": "1",
               "ganador": false,
               "penales": "0"
             },
             "visitante": {
               "equipo": {
-                "id": "2029",
-                "uid": "s:600~t:2029",
-                "nombre": "Palmeiras",
-                "nombre_corto": "Palmeiras",
-                "abreviatura": "PAL",
-                "slug": "palmeiras",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2029.png",
-                "color": "417505"
+                "id": "819",
+                "uid": "s:600~t:819",
+                "nombre": "Flamengo",
+                "nombre_corto": "Flamengo",
+                "abreviatura": "FLA",
+                "slug": "flamengo",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/819.png",
+                "color": "C60000"
               },
               "localia": "away",
-              "marcador": "2",
+              "marcador": "1",
               "ganador": false,
               "penales": "0"
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/724458/palmeiras-inter-miami-cf",
+            "url": "https://www.espn.com/soccer/match/_/gameId/724461/flamengo-lafc",
             "penales": {
               "definicion": true,
               "local": "0",
@@ -66815,7 +66815,7 @@
               "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
-            "fecha_grupo": "2025-06-24"
+            "fecha_grupo": "2025-06-25"
           }
         ],
         "total_scoreboard": 4
@@ -66830,7 +66830,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:05.720478+00:00",
+      "actualizado": "2026-06-24T11:21:57.593841+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -67725,7 +67725,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:06.002571+00:00",
+      "actualizado": "2026-06-24T11:21:57.869886+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70059,7 +70059,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:06.251202+00:00",
+      "actualizado": "2026-06-24T11:21:58.124860+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -70069,9 +70069,9 @@
       "resumen": {
         "equipos": 48,
         "posiciones": 48,
-        "partidos_scoreboard": 4,
-        "ultimos": 1,
-        "proximos": 3
+        "partidos_scoreboard": 6,
+        "ultimos": 0,
+        "proximos": 6
       },
       "equipos": [
         {
@@ -71569,15 +71569,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "2",
-            "pj": "1",
-            "g": "1",
+            "posicion": "1",
+            "pj": "2",
+            "g": "2",
             "e": "0",
             "p": "0",
-            "gf": "3",
+            "gf": "4",
             "gc": "1",
-            "dg": "+2",
-            "pts": "3",
+            "dg": "+3",
+            "pts": "6",
             "racha": "-"
           }
         },
@@ -71594,7 +71594,7 @@
             "color": ""
           },
           "stats": {
-            "posicion": "1",
+            "posicion": "2",
             "pj": "2",
             "g": "1",
             "e": "1",
@@ -71645,13 +71645,13 @@
           },
           "stats": {
             "posicion": "3",
-            "pj": "1",
+            "pj": "2",
             "g": "0",
             "e": "1",
-            "p": "0",
+            "p": "1",
             "gf": "1",
-            "gc": "1",
-            "dg": "0",
+            "gc": "2",
+            "dg": "-1",
             "pts": "1",
             "racha": "-"
           }
@@ -71670,14 +71670,14 @@
           },
           "stats": {
             "posicion": "1",
-            "pj": "1",
+            "pj": "2",
             "g": "1",
-            "e": "0",
+            "e": "1",
             "p": "0",
             "gf": "4",
             "gc": "2",
             "dg": "+2",
-            "pts": "3",
+            "pts": "4",
             "racha": "-"
           }
         },
@@ -71694,15 +71694,15 @@
             "color": ""
           },
           "stats": {
-            "posicion": "4",
-            "pj": "1",
-            "g": "0",
+            "posicion": "3",
+            "pj": "2",
+            "g": "1",
             "e": "0",
             "p": "1",
-            "gf": "2",
+            "gf": "3",
             "gc": "4",
-            "dg": "-2",
-            "pts": "0",
+            "dg": "-1",
+            "pts": "3",
             "racha": "-"
           }
         },
@@ -71719,14 +71719,14 @@
             "color": ""
           },
           "stats": {
-            "posicion": "3",
-            "pj": "1",
+            "posicion": "4",
+            "pj": "2",
             "g": "0",
             "e": "0",
-            "p": "1",
+            "p": "2",
             "gf": "0",
-            "gc": "1",
-            "dg": "-1",
+            "gc": "2",
+            "dg": "-2",
             "pts": "0",
             "racha": "-"
           }
@@ -71745,143 +71745,40 @@
           },
           "stats": {
             "posicion": "2",
-            "pj": "1",
+            "pj": "2",
             "g": "1",
-            "e": "0",
+            "e": "1",
             "p": "0",
             "gf": "1",
             "gc": "0",
             "dg": "+1",
-            "pts": "3",
+            "pts": "4",
             "racha": "-"
           }
         }
       ],
       "partidos": {
-        "ultimos": [
-          {
-            "id": "760461",
-            "nombre": "Uzbekistan at Portugal",
-            "fecha": "2026-06-23T17:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "uzbekistan at portugal uzb por group stage",
-            "local": {
-              "equipo": {
-                "id": "482",
-                "uid": "s:600~t:482",
-                "nombre": "Portugal",
-                "nombre_corto": "Portugal",
-                "abreviatura": "POR",
-                "slug": "portugal",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/482.png",
-                "color": "da291c"
-              },
-              "localia": "home",
-              "marcador": "5",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2570",
-                "uid": "s:600~t:2570",
-                "nombre": "Uzbekistan",
-                "nombre_corto": "Uzbekistan",
-                "abreviatura": "UZB",
-                "slug": "uzbekistan",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2570.png",
-                "color": "ffffff"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760461/uzbekistan-portugal",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-23"
-          }
-        ],
+        "ultimos": [],
         "proximos": [
           {
-            "id": "760458",
-            "nombre": "Ghana at England",
-            "fecha": "2026-06-23T20:00Z",
-            "estado": "Second Half",
-            "estado_tipo": "in",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "ghana at england gha eng group stage",
-            "local": {
-              "equipo": {
-                "id": "448",
-                "uid": "s:600~t:448",
-                "nombre": "England",
-                "nombre_corto": "England",
-                "abreviatura": "ENG",
-                "slug": "england",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/448.png",
-                "color": "ffffff"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "4469",
-                "uid": "s:600~t:4469",
-                "nombre": "Ghana",
-                "nombre_corto": "Ghana",
-                "abreviatura": "GHA",
-                "slug": "ghana",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4469.png",
-                "color": "fbd632"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760458",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-23"
-          },
-          {
-            "id": "760460",
-            "nombre": "Croatia at Panama",
-            "fecha": "2026-06-23T23:00Z",
+            "id": "760462",
+            "nombre": "Qatar at Bosnia-Herzegovina",
+            "fecha": "2026-06-24T19:00Z",
             "estado": "Scheduled",
             "estado_tipo": "pre",
             "completado": false,
             "fase": "",
-            "clasificacion_texto": "croatia at panama cro pan group stage",
+            "clasificacion_texto": "qatar at bosnia herzegovina qat bih group stage",
             "local": {
               "equipo": {
-                "id": "2659",
-                "uid": "s:600~t:2659",
-                "nombre": "Panama",
-                "nombre_corto": "Panama",
-                "abreviatura": "PAN",
-                "slug": "panama",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2659.png",
-                "color": "d21034"
+                "id": "452",
+                "uid": "s:600~t:452",
+                "nombre": "Bosnia-Herzegovina",
+                "nombre_corto": "Bosnia-Herz",
+                "abreviatura": "BIH",
+                "slug": "bosnia-herzegovina",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/452.png",
+                "color": "112855"
               },
               "localia": "home",
               "marcador": "0",
@@ -71890,72 +71787,21 @@
             },
             "visitante": {
               "equipo": {
-                "id": "477",
-                "uid": "s:600~t:477",
-                "nombre": "Croatia",
-                "nombre_corto": "Croatia",
-                "abreviatura": "CRO",
-                "slug": "croatia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/477.png",
-                "color": "ff0000"
+                "id": "4398",
+                "uid": "s:600~t:4398",
+                "nombre": "Qatar",
+                "nombre_corto": "Qatar",
+                "abreviatura": "QAT",
+                "slug": "qatar",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4398.png",
+                "color": "691a40"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760460/croatia-panama",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-23"
-          },
-          {
-            "id": "760459",
-            "nombre": "Congo DR at Colombia",
-            "fecha": "2026-06-24T02:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "congo dr at colombia cod col group stage",
-            "local": {
-              "equipo": {
-                "id": "208",
-                "uid": "s:600~t:208",
-                "nombre": "Colombia",
-                "nombre_corto": "Colombia",
-                "abreviatura": "COL",
-                "slug": "colombia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/208.png",
-                "color": "fbd632"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2850",
-                "uid": "s:600~t:2850",
-                "nombre": "Congo DR",
-                "nombre_corto": "Congo DR",
-                "abreviatura": "COD",
-                "slug": "congo-dr",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2850.png",
-                "color": "418fde"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760459/congo-dr-colombia",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760462/qatar-bosnia-herzegovina",
             "penales": {
               "definicion": false,
               "local": "",
@@ -71964,130 +71810,283 @@
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-24"
+          },
+          {
+            "id": "760463",
+            "nombre": "Canada at Switzerland",
+            "fecha": "2026-06-24T19:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "canada at switzerland can sui group stage",
+            "local": {
+              "equipo": {
+                "id": "475",
+                "uid": "s:600~t:475",
+                "nombre": "Switzerland",
+                "nombre_corto": "Switzerland",
+                "abreviatura": "SUI",
+                "slug": "switzerland",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/475.png",
+                "color": "FF0000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "206",
+                "uid": "s:600~t:206",
+                "nombre": "Canada",
+                "nombre_corto": "Canada",
+                "abreviatura": "CAN",
+                "slug": "canada",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/206.png",
+                "color": "ed2224"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760463/canada-switzerland",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-24"
+          },
+          {
+            "id": "760464",
+            "nombre": "Haiti at Morocco",
+            "fecha": "2026-06-24T22:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "haiti at morocco hai mar group stage",
+            "local": {
+              "equipo": {
+                "id": "2869",
+                "uid": "s:600~t:2869",
+                "nombre": "Morocco",
+                "nombre_corto": "Morocco",
+                "abreviatura": "MAR",
+                "slug": "morocco",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2869.png",
+                "color": "df2027"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2654",
+                "uid": "s:600~t:2654",
+                "nombre": "Haiti",
+                "nombre_corto": "Haiti",
+                "abreviatura": "HAI",
+                "slug": "haiti",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2654.png",
+                "color": "0033a0"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760464/haiti-morocco",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-24"
+          },
+          {
+            "id": "760465",
+            "nombre": "Brazil at Scotland",
+            "fecha": "2026-06-24T22:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "brazil at scotland bra sco group stage",
+            "local": {
+              "equipo": {
+                "id": "580",
+                "uid": "s:600~t:580",
+                "nombre": "Scotland",
+                "nombre_corto": "Scotland",
+                "abreviatura": "SCO",
+                "slug": "scotland",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/580.png",
+                "color": "1a2d69"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "205",
+                "uid": "s:600~t:205",
+                "nombre": "Brazil",
+                "nombre_corto": "Brazil",
+                "abreviatura": "BRA",
+                "slug": "brazil",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/205.png",
+                "color": "fee000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760465/brazil-scotland",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-24"
+          },
+          {
+            "id": "760467",
+            "nombre": "Mexico at Czechia",
+            "fecha": "2026-06-25T01:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "mexico at czechia mex cze group stage",
+            "local": {
+              "equipo": {
+                "id": "450",
+                "uid": "s:600~t:450",
+                "nombre": "Czechia",
+                "nombre_corto": "Czechia",
+                "abreviatura": "CZE",
+                "slug": "czechia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/450.png",
+                "color": "d7141a"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "203",
+                "uid": "s:600~t:203",
+                "nombre": "Mexico",
+                "nombre_corto": "Mexico",
+                "abreviatura": "MEX",
+                "slug": "mexico",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/203.png",
+                "color": "006847"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760467/mexico-czechia",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-25"
+          },
+          {
+            "id": "760466",
+            "nombre": "South Korea at South Africa",
+            "fecha": "2026-06-25T01:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "south korea at south africa kor rsa group stage",
+            "local": {
+              "equipo": {
+                "id": "467",
+                "uid": "s:600~t:467",
+                "nombre": "South Africa",
+                "nombre_corto": "South Africa",
+                "abreviatura": "RSA",
+                "slug": "south-africa",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/467.png",
+                "color": "FFB81C"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "451",
+                "uid": "s:600~t:451",
+                "nombre": "South Korea",
+                "nombre_corto": "South Korea",
+                "abreviatura": "KOR",
+                "slug": "south-korea",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/451.png",
+                "color": "ce2028"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760466/south-korea-south-africa",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-25"
           }
         ],
         "todos": [
           {
-            "id": "760461",
-            "nombre": "Uzbekistan at Portugal",
-            "fecha": "2026-06-23T17:00Z",
-            "estado": "Full Time",
-            "estado_tipo": "post",
-            "completado": true,
-            "fase": "",
-            "clasificacion_texto": "uzbekistan at portugal uzb por group stage",
-            "local": {
-              "equipo": {
-                "id": "482",
-                "uid": "s:600~t:482",
-                "nombre": "Portugal",
-                "nombre_corto": "Portugal",
-                "abreviatura": "POR",
-                "slug": "portugal",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/482.png",
-                "color": "da291c"
-              },
-              "localia": "home",
-              "marcador": "5",
-              "ganador": true,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2570",
-                "uid": "s:600~t:2570",
-                "nombre": "Uzbekistan",
-                "nombre_corto": "Uzbekistan",
-                "abreviatura": "UZB",
-                "slug": "uzbekistan",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2570.png",
-                "color": "ffffff"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760461/uzbekistan-portugal",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-23"
-          },
-          {
-            "id": "760458",
-            "nombre": "Ghana at England",
-            "fecha": "2026-06-23T20:00Z",
-            "estado": "Second Half",
-            "estado_tipo": "in",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "ghana at england gha eng group stage",
-            "local": {
-              "equipo": {
-                "id": "448",
-                "uid": "s:600~t:448",
-                "nombre": "England",
-                "nombre_corto": "England",
-                "abreviatura": "ENG",
-                "slug": "england",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/448.png",
-                "color": "ffffff"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "visitante": {
-              "equipo": {
-                "id": "4469",
-                "uid": "s:600~t:4469",
-                "nombre": "Ghana",
-                "nombre_corto": "Ghana",
-                "abreviatura": "GHA",
-                "slug": "ghana",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4469.png",
-                "color": "fbd632"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": "0"
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760458",
-            "penales": {
-              "definicion": true,
-              "local": "0",
-              "visitante": "0",
-              "texto": "Penales 0 - 0"
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-23"
-          },
-          {
-            "id": "760460",
-            "nombre": "Croatia at Panama",
-            "fecha": "2026-06-23T23:00Z",
+            "id": "760462",
+            "nombre": "Qatar at Bosnia-Herzegovina",
+            "fecha": "2026-06-24T19:00Z",
             "estado": "Scheduled",
             "estado_tipo": "pre",
             "completado": false,
             "fase": "",
-            "clasificacion_texto": "croatia at panama cro pan group stage",
+            "clasificacion_texto": "qatar at bosnia herzegovina qat bih group stage",
             "local": {
               "equipo": {
-                "id": "2659",
-                "uid": "s:600~t:2659",
-                "nombre": "Panama",
-                "nombre_corto": "Panama",
-                "abreviatura": "PAN",
-                "slug": "panama",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2659.png",
-                "color": "d21034"
+                "id": "452",
+                "uid": "s:600~t:452",
+                "nombre": "Bosnia-Herzegovina",
+                "nombre_corto": "Bosnia-Herz",
+                "abreviatura": "BIH",
+                "slug": "bosnia-herzegovina",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/452.png",
+                "color": "112855"
               },
               "localia": "home",
               "marcador": "0",
@@ -72096,72 +72095,21 @@
             },
             "visitante": {
               "equipo": {
-                "id": "477",
-                "uid": "s:600~t:477",
-                "nombre": "Croatia",
-                "nombre_corto": "Croatia",
-                "abreviatura": "CRO",
-                "slug": "croatia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/477.png",
-                "color": "ff0000"
+                "id": "4398",
+                "uid": "s:600~t:4398",
+                "nombre": "Qatar",
+                "nombre_corto": "Qatar",
+                "abreviatura": "QAT",
+                "slug": "qatar",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4398.png",
+                "color": "691a40"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760460/croatia-panama",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-06-23"
-          },
-          {
-            "id": "760459",
-            "nombre": "Congo DR at Colombia",
-            "fecha": "2026-06-24T02:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "congo dr at colombia cod col group stage",
-            "local": {
-              "equipo": {
-                "id": "208",
-                "uid": "s:600~t:208",
-                "nombre": "Colombia",
-                "nombre_corto": "Colombia",
-                "abreviatura": "COL",
-                "slug": "colombia",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/208.png",
-                "color": "fbd632"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2850",
-                "uid": "s:600~t:2850",
-                "nombre": "Congo DR",
-                "nombre_corto": "Congo DR",
-                "abreviatura": "COD",
-                "slug": "congo-dr",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2850.png",
-                "color": "418fde"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/760459/congo-dr-colombia",
+            "url": "https://www.espn.com/soccer/match/_/gameId/760462/qatar-bosnia-herzegovina",
             "penales": {
               "definicion": false,
               "local": "",
@@ -72170,9 +72118,264 @@
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-24"
+          },
+          {
+            "id": "760463",
+            "nombre": "Canada at Switzerland",
+            "fecha": "2026-06-24T19:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "canada at switzerland can sui group stage",
+            "local": {
+              "equipo": {
+                "id": "475",
+                "uid": "s:600~t:475",
+                "nombre": "Switzerland",
+                "nombre_corto": "Switzerland",
+                "abreviatura": "SUI",
+                "slug": "switzerland",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/475.png",
+                "color": "FF0000"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "206",
+                "uid": "s:600~t:206",
+                "nombre": "Canada",
+                "nombre_corto": "Canada",
+                "abreviatura": "CAN",
+                "slug": "canada",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/206.png",
+                "color": "ed2224"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760463/canada-switzerland",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-24"
+          },
+          {
+            "id": "760464",
+            "nombre": "Haiti at Morocco",
+            "fecha": "2026-06-24T22:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "haiti at morocco hai mar group stage",
+            "local": {
+              "equipo": {
+                "id": "2869",
+                "uid": "s:600~t:2869",
+                "nombre": "Morocco",
+                "nombre_corto": "Morocco",
+                "abreviatura": "MAR",
+                "slug": "morocco",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2869.png",
+                "color": "df2027"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "2654",
+                "uid": "s:600~t:2654",
+                "nombre": "Haiti",
+                "nombre_corto": "Haiti",
+                "abreviatura": "HAI",
+                "slug": "haiti",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2654.png",
+                "color": "0033a0"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760464/haiti-morocco",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-24"
+          },
+          {
+            "id": "760465",
+            "nombre": "Brazil at Scotland",
+            "fecha": "2026-06-24T22:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "brazil at scotland bra sco group stage",
+            "local": {
+              "equipo": {
+                "id": "580",
+                "uid": "s:600~t:580",
+                "nombre": "Scotland",
+                "nombre_corto": "Scotland",
+                "abreviatura": "SCO",
+                "slug": "scotland",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/580.png",
+                "color": "1a2d69"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "205",
+                "uid": "s:600~t:205",
+                "nombre": "Brazil",
+                "nombre_corto": "Brazil",
+                "abreviatura": "BRA",
+                "slug": "brazil",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/205.png",
+                "color": "fee000"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760465/brazil-scotland",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-24"
+          },
+          {
+            "id": "760467",
+            "nombre": "Mexico at Czechia",
+            "fecha": "2026-06-25T01:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "mexico at czechia mex cze group stage",
+            "local": {
+              "equipo": {
+                "id": "450",
+                "uid": "s:600~t:450",
+                "nombre": "Czechia",
+                "nombre_corto": "Czechia",
+                "abreviatura": "CZE",
+                "slug": "czechia",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/450.png",
+                "color": "d7141a"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "203",
+                "uid": "s:600~t:203",
+                "nombre": "Mexico",
+                "nombre_corto": "Mexico",
+                "abreviatura": "MEX",
+                "slug": "mexico",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/203.png",
+                "color": "006847"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760467/mexico-czechia",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-25"
+          },
+          {
+            "id": "760466",
+            "nombre": "South Korea at South Africa",
+            "fecha": "2026-06-25T01:00Z",
+            "estado": "Scheduled",
+            "estado_tipo": "pre",
+            "completado": false,
+            "fase": "",
+            "clasificacion_texto": "south korea at south africa kor rsa group stage",
+            "local": {
+              "equipo": {
+                "id": "467",
+                "uid": "s:600~t:467",
+                "nombre": "South Africa",
+                "nombre_corto": "South Africa",
+                "abreviatura": "RSA",
+                "slug": "south-africa",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/467.png",
+                "color": "FFB81C"
+              },
+              "localia": "home",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "visitante": {
+              "equipo": {
+                "id": "451",
+                "uid": "s:600~t:451",
+                "nombre": "South Korea",
+                "nombre_corto": "South Korea",
+                "abreviatura": "KOR",
+                "slug": "south-korea",
+                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/451.png",
+                "color": "ce2028"
+              },
+              "localia": "away",
+              "marcador": "0",
+              "ganador": false,
+              "penales": ""
+            },
+            "url": "https://www.espn.com/soccer/match/_/gameId/760466/south-korea-south-africa",
+            "penales": {
+              "definicion": false,
+              "local": "",
+              "visitante": "",
+              "texto": ""
+            },
+            "fecha_numero": null,
+            "fecha_grupo": "2026-06-25"
           }
         ],
-        "total_scoreboard": 4
+        "total_scoreboard": 6
       }
     },
     {
@@ -72183,7 +72386,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:06.452606+00:00",
+      "actualizado": "2026-06-24T11:21:58.392431+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -73020,7 +73223,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:06.647298+00:00",
+      "actualizado": "2026-06-24T11:21:58.649395+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -73857,7 +74060,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:06.892648+00:00",
+      "actualizado": "2026-06-24T11:21:58.923679+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -75612,7 +75815,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:07.221581+00:00",
+      "actualizado": "2026-06-24T11:21:59.237310+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -77195,7 +77398,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:07.496368+00:00",
+      "actualizado": "2026-06-24T11:21:59.505018+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -78778,7 +78981,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:07.735361+00:00",
+      "actualizado": "2026-06-24T11:21:59.780174+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -80361,7 +80564,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:08.318004+00:00",
+      "actualizado": "2026-06-24T11:22:00.095680+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -81402,7 +81605,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:08.560521+00:00",
+      "actualizado": "2026-06-24T11:22:00.367624+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -82099,7 +82302,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:09.032765+00:00",
+      "actualizado": "2026-06-24T11:22:00.695899+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -83166,7 +83369,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:09.229039+00:00",
+      "actualizado": "2026-06-24T11:22:01.072663+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -84003,7 +84206,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:09.518661+00:00",
+      "actualizado": "2026-06-24T11:22:01.395179+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -84700,7 +84903,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:09.735102+00:00",
+      "actualizado": "2026-06-24T11:22:01.667031+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -85569,7 +85772,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-23T21:55:09.996679+00:00",
+      "actualizado": "2026-06-24T11:22:01.927527+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
