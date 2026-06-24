@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "campeon": null,
-  "actualizado": "2026-06-24T17:16:26.377764Z",
+  "actualizado": "2026-06-24T22:37:37.644611Z",
   "fases": {
     "treintaidosavos": [
       {
@@ -1301,7 +1301,7 @@
         "fase": "dieciseisavos",
         "nombre": "Tigre at Independiente Rivadavia",
         "fecha": "2026-07-12",
-        "fecha_iso": "2026-07-12T18:00Z",
+        "fecha_iso": "2026-07-12T19:15Z",
         "local": {
           "id": "9744",
           "nombre": "Independiente Rivadavia",
@@ -1320,7 +1320,7 @@
         },
         "completado": false,
         "penaltis": false,
-        "estadio": "",
+        "estadio": "El Gigante de Alberdi, Córdoba",
         "nota": "",
         "src_local": 12,
         "src_visitante": 11,
@@ -1331,7 +1331,7 @@
         "fase": "dieciseisavos",
         "nombre": "Defensa y Justicia at Racing Club",
         "fecha": "2026-07-16",
-        "fecha_iso": "2026-07-16T18:00Z",
+        "fecha_iso": "2026-07-16T21:45Z",
         "local": {
           "id": "15",
           "nombre": "Racing Club",
@@ -1360,8 +1360,8 @@
         "id": "401867737",
         "fase": "dieciseisavos",
         "nombre": "Boca Juniors at Sarmiento (Junín)",
-        "fecha": "2026-07-16",
-        "fecha_iso": "2026-07-16T18:00Z",
+        "fecha": "2026-07-17",
+        "fecha_iso": "2026-07-17T00:45Z",
         "local": {
           "id": "10158",
           "nombre": "Sarmiento (Junín)",
@@ -1380,48 +1380,18 @@
         },
         "completado": false,
         "penaltis": false,
-        "estadio": "",
+        "estadio": "Marcelo Bielsa, Rosario",
         "nota": "",
         "src_local": 29,
         "src_visitante": 14,
         "llave_num": 13
       },
       {
-        "id": "401861869",
-        "fase": "dieciseisavos",
-        "nombre": "Aldosivi at River Plate",
-        "fecha": "2026-07-17",
-        "fecha_iso": "2026-07-17T18:00Z",
-        "local": {
-          "id": "16",
-          "nombre": "River Plate",
-          "nombre_corto": "RIV",
-          "logo": "",
-          "marcador": "",
-          "ganador": false
-        },
-        "visitante": {
-          "id": "9739",
-          "nombre": "Aldosivi",
-          "nombre_corto": "ALDO",
-          "logo": "",
-          "marcador": "",
-          "ganador": false
-        },
-        "completado": false,
-        "penaltis": false,
-        "estadio": "",
-        "nota": "",
-        "src_local": 12,
-        "src_visitante": 10,
-        "llave_num": 14
-      },
-      {
         "id": "401873912",
         "fase": "dieciseisavos",
         "nombre": "Deportivo Riestra at San Lorenzo",
         "fecha": "2026-07-17",
-        "fecha_iso": "2026-07-17T18:00Z",
+        "fecha_iso": "2026-07-17T21:45Z",
         "local": {
           "id": "18",
           "nombre": "San Lorenzo",
@@ -1444,6 +1414,36 @@
         "nota": "",
         "src_local": 16,
         "src_visitante": 6,
+        "llave_num": 14
+      },
+      {
+        "id": "401861869",
+        "fase": "dieciseisavos",
+        "nombre": "Aldosivi at River Plate",
+        "fecha": "2026-07-18",
+        "fecha_iso": "2026-07-18T00:45Z",
+        "local": {
+          "id": "16",
+          "nombre": "River Plate",
+          "nombre_corto": "RIV",
+          "logo": "",
+          "marcador": "",
+          "ganador": false
+        },
+        "visitante": {
+          "id": "9739",
+          "nombre": "Aldosivi",
+          "nombre_corto": "ALDO",
+          "logo": "",
+          "marcador": "",
+          "ganador": false
+        },
+        "completado": false,
+        "penaltis": false,
+        "estadio": "Padre Ernesto Martearena, Salta",
+        "nota": "",
+        "src_local": 12,
+        "src_visitante": 10,
         "llave_num": 15
       }
     ],
