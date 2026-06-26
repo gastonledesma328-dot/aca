@@ -1,6 +1,6 @@
 {
   "fuente": "ESPN API",
-  "actualizado": "2026-06-26T16:31:18.413194+00:00",
+  "actualizado": "2026-06-26T21:46:19.220202+00:00",
   "season": "2026",
   "total": 25,
   "errores": [],
@@ -14,7 +14,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:06.163058+00:00",
+      "actualizado": "2026-06-26T21:46:13.423001+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/teams",
@@ -55681,7 +55681,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:06.710857+00:00",
+      "actualizado": "2026-06-26T21:46:13.643316+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.2/teams",
@@ -57079,7 +57079,7 @@
       "pais": "Argentina",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:08.578685+00:00",
+      "actualizado": "2026-06-26T21:46:15.226309+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/arg.copa/teams",
@@ -57856,7 +57856,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:09.043957+00:00",
+      "actualizado": "2026-06-26T21:46:15.421205+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/teams",
@@ -59540,7 +59540,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:09.501123+00:00",
+      "actualizado": "2026-06-26T21:46:15.683419+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.sudamericana/teams",
@@ -61140,7 +61140,7 @@
       "pais": "Europa",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:09.916293+00:00",
+      "actualizado": "2026-06-26T21:46:15.840605+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.champions/teams",
@@ -62537,7 +62537,7 @@
       "slug": "uefa.europa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:10.376446+00:00",
+      "actualizado": "2026-06-26T21:46:15.985871+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa/teams",
@@ -63934,7 +63934,7 @@
       "slug": "uefa.europa.conf",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:10.881261+00:00",
+      "actualizado": "2026-06-26T21:46:16.327679+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uefa.europa.conf/teams",
@@ -65332,7 +65332,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:11.315851+00:00",
+      "actualizado": "2026-06-26T21:46:16.570304+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.cwc/teams",
@@ -66896,7 +66896,7 @@
       "pais": "CONMEBOL",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:11.722383+00:00",
+      "actualizado": "2026-06-26T21:46:16.794080+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.conmebol/teams",
@@ -67791,7 +67791,7 @@
       "slug": "fifa.worldq.uefa",
       "pais": "Europa",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:12.114970+00:00",
+      "actualizado": "2026-06-26T21:46:16.955292+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.worldq.uefa/teams",
@@ -70125,7 +70125,7 @@
       "pais": "FIFA",
       "destacado": true,
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:12.637876+00:00",
+      "actualizado": "2026-06-26T21:46:17.095422+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams",
@@ -70136,8 +70136,8 @@
         "equipos": 48,
         "posiciones": 48,
         "partidos_scoreboard": 6,
-        "ultimos": 0,
-        "proximos": 6
+        "ultimos": 2,
+        "proximos": 4
       },
       "equipos": [
         {
@@ -70368,7 +70368,7 @@
           "abreviatura": "IRQ",
           "slug": "irq",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png",
-          "color": "0A4D2E"
+          "color": "FFFFFF"
         },
         {
           "id": "4789",
@@ -70518,7 +70518,7 @@
           "abreviatura": "SEN",
           "slug": "sen",
           "logo": "https://a.espncdn.com/i/teamlogos/countries/500/sen.png",
-          "color": "006436"
+          "color": "FFFFFF"
         },
         {
           "id": "467",
@@ -71436,13 +71436,13 @@
           },
           "stats": {
             "posicion": "2",
-            "pj": "2",
+            "pj": "3",
             "g": "2",
             "e": "0",
-            "p": "0",
-            "gf": "7",
-            "gc": "3",
-            "dg": "+4",
+            "p": "1",
+            "gf": "8",
+            "gc": "7",
+            "dg": "+1",
             "pts": "6",
             "racha": "-"
           }
@@ -71461,14 +71461,14 @@
           },
           "stats": {
             "posicion": "1",
-            "pj": "2",
-            "g": "2",
+            "pj": "3",
+            "g": "3",
             "e": "0",
             "p": "0",
-            "gf": "6",
-            "gc": "1",
-            "dg": "+5",
-            "pts": "6",
+            "gf": "10",
+            "gc": "2",
+            "dg": "+8",
+            "pts": "9",
             "racha": "-"
           }
         },
@@ -71486,14 +71486,14 @@
           },
           "stats": {
             "posicion": "3",
-            "pj": "2",
-            "g": "0",
+            "pj": "3",
+            "g": "1",
             "e": "0",
             "p": "2",
-            "gf": "3",
+            "gf": "8",
             "gc": "6",
-            "dg": "-3",
-            "pts": "0",
+            "dg": "+2",
+            "pts": "3",
             "racha": "-"
           }
         },
@@ -71511,13 +71511,13 @@
           },
           "stats": {
             "posicion": "4",
-            "pj": "2",
+            "pj": "3",
             "g": "0",
             "e": "0",
-            "p": "2",
+            "p": "3",
             "gf": "1",
-            "gc": "7",
-            "dg": "-6",
+            "gc": "12",
+            "dg": "-11",
             "pts": "0",
             "racha": "-"
           }
@@ -71824,15 +71824,14 @@
         }
       ],
       "partidos": {
-        "ultimos": [],
-        "proximos": [
+        "ultimos": [
           {
             "id": "760475",
             "nombre": "France at Norway",
             "fecha": "2026-06-26T19:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "france at norway fra nor group stage",
             "local": {
@@ -71847,9 +71846,9 @@
                 "color": "C8102E"
               },
               "localia": "home",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -71863,16 +71862,16 @@
                 "color": "000080"
               },
               "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
+              "marcador": "4",
+              "ganador": true,
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/760475/france-norway",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-26"
@@ -71881,9 +71880,9 @@
             "id": "760474",
             "nombre": "Iraq at Senegal",
             "fecha": "2026-06-26T19:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "iraq at senegal irq sen group stage",
             "local": {
@@ -71895,12 +71894,12 @@
                 "abreviatura": "SEN",
                 "slug": "senegal",
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/654.png",
-                "color": "006436"
+                "color": "FFFFFF"
               },
               "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
+              "marcador": "5",
+              "ganador": true,
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -71911,23 +71910,25 @@
                 "abreviatura": "IRQ",
                 "slug": "iraq",
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4375.png",
-                "color": "0A4D2E"
+                "color": "FFFFFF"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/760474/iraq-senegal",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-26"
-          },
+          }
+        ],
+        "proximos": [
           {
             "id": "760478",
             "nombre": "Saudi Arabia at Cape Verde",
@@ -72138,9 +72139,9 @@
             "id": "760475",
             "nombre": "France at Norway",
             "fecha": "2026-06-26T19:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "france at norway fra nor group stage",
             "local": {
@@ -72155,9 +72156,9 @@
                 "color": "C8102E"
               },
               "localia": "home",
-              "marcador": "0",
+              "marcador": "1",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -72171,16 +72172,16 @@
                 "color": "000080"
               },
               "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
+              "marcador": "4",
+              "ganador": true,
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/760475/france-norway",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-26"
@@ -72189,9 +72190,9 @@
             "id": "760474",
             "nombre": "Iraq at Senegal",
             "fecha": "2026-06-26T19:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
+            "estado": "Full Time",
+            "estado_tipo": "post",
+            "completado": true,
             "fase": "",
             "clasificacion_texto": "iraq at senegal irq sen group stage",
             "local": {
@@ -72203,12 +72204,12 @@
                 "abreviatura": "SEN",
                 "slug": "senegal",
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/654.png",
-                "color": "006436"
+                "color": "FFFFFF"
               },
               "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
+              "marcador": "5",
+              "ganador": true,
+              "penales": "0"
             },
             "visitante": {
               "equipo": {
@@ -72219,19 +72220,19 @@
                 "abreviatura": "IRQ",
                 "slug": "iraq",
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4375.png",
-                "color": "0A4D2E"
+                "color": "FFFFFF"
               },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
-              "penales": ""
+              "penales": "0"
             },
             "url": "https://www.espn.com/soccer/match/_/gameId/760474/iraq-senegal",
             "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
+              "definicion": true,
+              "local": "0",
+              "visitante": "0",
+              "texto": "Penales 0 - 0"
             },
             "fecha_numero": null,
             "fecha_grupo": "2026-06-26"
@@ -72452,7 +72453,7 @@
       "slug": "eng.1",
       "pais": "Inglaterra",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:13.033365+00:00",
+      "actualizado": "2026-06-26T21:46:17.256404+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/eng.1/teams",
@@ -73289,7 +73290,7 @@
       "slug": "esp.1",
       "pais": "España",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:13.695699+00:00",
+      "actualizado": "2026-06-26T21:46:17.393282+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/esp.1/teams",
@@ -74126,7 +74127,7 @@
       "slug": "ita.1",
       "pais": "Italia",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:14.078799+00:00",
+      "actualizado": "2026-06-26T21:46:17.554597+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ita.1/teams",
@@ -75269,7 +75270,7 @@
       "slug": "ger.1",
       "pais": "Alemania",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:14.469242+00:00",
+      "actualizado": "2026-06-26T21:46:17.728826+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/ger.1/teams",
@@ -76852,7 +76853,7 @@
       "slug": "por.1",
       "pais": "Portugal",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:14.976177+00:00",
+      "actualizado": "2026-06-26T21:46:17.880481+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/por.1/teams",
@@ -78435,7 +78436,7 @@
       "slug": "fra.1",
       "pais": "Francia",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:15.491124+00:00",
+      "actualizado": "2026-06-26T21:46:18.028879+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/fra.1/teams",
@@ -80018,7 +80019,7 @@
       "slug": "bra.1",
       "pais": "Brasil",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:15.858505+00:00",
+      "actualizado": "2026-06-26T21:46:18.212244+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/bra.1/teams",
@@ -81059,7 +81060,7 @@
       "slug": "uru.1",
       "pais": "Uruguay",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:16.269051+00:00",
+      "actualizado": "2026-06-26T21:46:18.412287+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/uru.1/teams",
@@ -81069,9 +81070,9 @@
       "resumen": {
         "equipos": 16,
         "posiciones": 16,
-        "partidos_scoreboard": 8,
-        "ultimos": 0,
-        "proximos": 8
+        "partidos_scoreboard": 1,
+        "ultimos": 1,
+        "proximos": 0
       },
       "equipos": [
         {
@@ -81638,170 +81639,16 @@
         }
       ],
       "partidos": {
-        "ultimos": [],
-        "proximos": [
+        "ultimos": [
           {
-            "id": "401872718",
-            "nombre": "Peñarol at Racing (Montevideo)",
-            "fecha": "2026-07-12T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "id": "401872687",
+            "nombre": "Juventud at Danubio",
+            "fecha": "2026-07-05T17:00Z",
+            "estado": "Postponed",
+            "estado_tipo": "post",
             "completado": false,
             "fase": "",
-            "clasificacion_texto": "penarol at racing montevideo pen rac torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "9903",
-                "uid": "s:600~t:9903",
-                "nombre": "Racing (Montevideo)",
-                "nombre_corto": "Racing (M)",
-                "abreviatura": "RAC",
-                "slug": "racing-montevideo",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9903.png",
-                "color": "107436"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2683",
-                "uid": "s:600~t:2683",
-                "nombre": "Peñarol",
-                "nombre_corto": "Peñarol",
-                "abreviatura": "PEN",
-                "slug": "penarol",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2683.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872718/penarol-racing-montevideo",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872713",
-            "nombre": "Central Español Fútbol Club at Boston River",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "central espanol futbol club at boston river cefc bos torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "9999",
-                "uid": "s:600~t:9999",
-                "nombre": "Boston River",
-                "nombre_corto": "Boston River",
-                "abreviatura": "BOS",
-                "slug": "boston-river",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9999.png",
-                "color": "212121"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "131688",
-                "uid": "s:600~t:131688",
-                "nombre": "Central Español Fútbol Club",
-                "nombre_corto": "Central Español",
-                "abreviatura": "CEFC",
-                "slug": "central-espanol-futbol-club",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131688.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872713/central-espanol-futbol-club-boston-river",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872712",
-            "nombre": "Defensor Sporting at Cerro Largo",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "defensor sporting at cerro largo dsc cerr torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "9902",
-                "uid": "s:600~t:9902",
-                "nombre": "Cerro Largo",
-                "nombre_corto": "Cerro Largo",
-                "abreviatura": "CERR",
-                "slug": "cerro-largo",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9902.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "1007",
-                "uid": "s:600~t:1007",
-                "nombre": "Defensor Sporting",
-                "nombre_corto": "Defensor",
-                "abreviatura": "DSC",
-                "slug": "defensor-sporting",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1007.png",
-                "color": "3e188b"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872712/defensor-sporting-cerro-largo",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872711",
-            "nombre": "Nacional at Danubio",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "nacional at danubio nac dan torneo intermedio",
+            "clasificacion_texto": "juventud at danubio juv dan torneo intermedio",
             "local": {
               "equipo": {
                 "id": "4817",
@@ -81820,92 +81667,6 @@
             },
             "visitante": {
               "equipo": {
-                "id": "2684",
-                "uid": "s:600~t:2684",
-                "nombre": "Nacional",
-                "nombre_corto": "Nacional",
-                "abreviatura": "NAC",
-                "slug": "nacional",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2684.png",
-                "color": "345BBC"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872711/nacional-danubio",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872714",
-            "nombre": "Albion FC at Deportivo Maldonado",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "albion fc at deportivo maldonado alb mal torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "10000",
-                "uid": "s:600~t:10000",
-                "nombre": "Deportivo Maldonado",
-                "nombre_corto": "Maldonado",
-                "abreviatura": "MAL",
-                "slug": "deportivo-maldonado",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10000.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "21403",
-                "uid": "s:600~t:21403",
-                "nombre": "Albion FC",
-                "nombre_corto": "Albion",
-                "abreviatura": "ALB",
-                "slug": "albion-fc",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21403.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872714/albion-fc-deportivo-maldonado",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872715",
-            "nombre": "Montevideo City Torque at Juventud",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "montevideo city torque at juventud mct juv torneo intermedio",
-            "local": {
-              "equipo": {
                 "id": "8416",
                 "uid": "s:600~t:8416",
                 "nombre": "Juventud",
@@ -81915,28 +81676,12 @@
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8416.png",
                 "color": "023396"
               },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "19002",
-                "uid": "s:600~t:19002",
-                "nombre": "Montevideo City Torque",
-                "nombre_corto": "MC Torque",
-                "abreviatura": "MCT",
-                "slug": "montevideo-city-torque",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19002.png",
-                "color": "6bc7f5"
-              },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872715/montevideo-city-torque-juventud",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872687/juventud-danubio",
             "penales": {
               "definicion": false,
               "local": "",
@@ -81944,274 +81689,20 @@
               "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872716",
-            "nombre": "Cerro at Liverpool",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "cerro at liverpool cer liv torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "5492",
-                "uid": "s:600~t:5492",
-                "nombre": "Liverpool",
-                "nombre_corto": "Liverpool",
-                "abreviatura": "LIV",
-                "slug": "liverpool",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5492.png",
-                "color": "C60000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "5490",
-                "uid": "s:600~t:5490",
-                "nombre": "Cerro",
-                "nombre_corto": "Cerro",
-                "abreviatura": "CER",
-                "slug": "cerro",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5490.png",
-                "color": "6bc7f5"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872716/cerro-liverpool",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872717",
-            "nombre": "Progreso at Montevideo Wanderers",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "progreso at montevideo wanderers pso wan torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "5501",
-                "uid": "s:600~t:5501",
-                "nombre": "Montevideo Wanderers",
-                "nombre_corto": "Wanderers",
-                "abreviatura": "WAN",
-                "slug": "montevideo-wanderers",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5501.png",
-                "color": "1a1a1a"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "6866",
-                "uid": "s:600~t:6866",
-                "nombre": "Progreso",
-                "nombre_corto": "Progreso",
-                "abreviatura": "PSO",
-                "slug": "progreso",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6866.png",
-                "color": "212121"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872717/progreso-montevideo-wanderers",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
+            "fecha_grupo": "2026-07-05"
           }
         ],
+        "proximos": [],
         "todos": [
           {
-            "id": "401872718",
-            "nombre": "Peñarol at Racing (Montevideo)",
-            "fecha": "2026-07-12T04:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
+            "id": "401872687",
+            "nombre": "Juventud at Danubio",
+            "fecha": "2026-07-05T17:00Z",
+            "estado": "Postponed",
+            "estado_tipo": "post",
             "completado": false,
             "fase": "",
-            "clasificacion_texto": "penarol at racing montevideo pen rac torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "9903",
-                "uid": "s:600~t:9903",
-                "nombre": "Racing (Montevideo)",
-                "nombre_corto": "Racing (M)",
-                "abreviatura": "RAC",
-                "slug": "racing-montevideo",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9903.png",
-                "color": "107436"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "2683",
-                "uid": "s:600~t:2683",
-                "nombre": "Peñarol",
-                "nombre_corto": "Peñarol",
-                "abreviatura": "PEN",
-                "slug": "penarol",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2683.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872718/penarol-racing-montevideo",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872713",
-            "nombre": "Central Español Fútbol Club at Boston River",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "central espanol futbol club at boston river cefc bos torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "9999",
-                "uid": "s:600~t:9999",
-                "nombre": "Boston River",
-                "nombre_corto": "Boston River",
-                "abreviatura": "BOS",
-                "slug": "boston-river",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9999.png",
-                "color": "212121"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "131688",
-                "uid": "s:600~t:131688",
-                "nombre": "Central Español Fútbol Club",
-                "nombre_corto": "Central Español",
-                "abreviatura": "CEFC",
-                "slug": "central-espanol-futbol-club",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131688.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872713/central-espanol-futbol-club-boston-river",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872712",
-            "nombre": "Defensor Sporting at Cerro Largo",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "defensor sporting at cerro largo dsc cerr torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "9902",
-                "uid": "s:600~t:9902",
-                "nombre": "Cerro Largo",
-                "nombre_corto": "Cerro Largo",
-                "abreviatura": "CERR",
-                "slug": "cerro-largo",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/9902.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "1007",
-                "uid": "s:600~t:1007",
-                "nombre": "Defensor Sporting",
-                "nombre_corto": "Defensor",
-                "abreviatura": "DSC",
-                "slug": "defensor-sporting",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1007.png",
-                "color": "3e188b"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872712/defensor-sporting-cerro-largo",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872711",
-            "nombre": "Nacional at Danubio",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "nacional at danubio nac dan torneo intermedio",
+            "clasificacion_texto": "juventud at danubio juv dan torneo intermedio",
             "local": {
               "equipo": {
                 "id": "4817",
@@ -82230,92 +81721,6 @@
             },
             "visitante": {
               "equipo": {
-                "id": "2684",
-                "uid": "s:600~t:2684",
-                "nombre": "Nacional",
-                "nombre_corto": "Nacional",
-                "abreviatura": "NAC",
-                "slug": "nacional",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2684.png",
-                "color": "345BBC"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872711/nacional-danubio",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872714",
-            "nombre": "Albion FC at Deportivo Maldonado",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "albion fc at deportivo maldonado alb mal torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "10000",
-                "uid": "s:600~t:10000",
-                "nombre": "Deportivo Maldonado",
-                "nombre_corto": "Maldonado",
-                "abreviatura": "MAL",
-                "slug": "deportivo-maldonado",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10000.png",
-                "color": "000000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "21403",
-                "uid": "s:600~t:21403",
-                "nombre": "Albion FC",
-                "nombre_corto": "Albion",
-                "abreviatura": "ALB",
-                "slug": "albion-fc",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21403.png",
-                "color": "000000"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872714/albion-fc-deportivo-maldonado",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872715",
-            "nombre": "Montevideo City Torque at Juventud",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "montevideo city torque at juventud mct juv torneo intermedio",
-            "local": {
-              "equipo": {
                 "id": "8416",
                 "uid": "s:600~t:8416",
                 "nombre": "Juventud",
@@ -82325,28 +81730,12 @@
                 "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/8416.png",
                 "color": "023396"
               },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "19002",
-                "uid": "s:600~t:19002",
-                "nombre": "Montevideo City Torque",
-                "nombre_corto": "MC Torque",
-                "abreviatura": "MCT",
-                "slug": "montevideo-city-torque",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/19002.png",
-                "color": "6bc7f5"
-              },
               "localia": "away",
               "marcador": "0",
               "ganador": false,
               "penales": ""
             },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872715/montevideo-city-torque-juventud",
+            "url": "https://www.espn.com/soccer/match/_/gameId/401872687/juventud-danubio",
             "penales": {
               "definicion": false,
               "local": "",
@@ -82354,112 +81743,10 @@
               "texto": ""
             },
             "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872716",
-            "nombre": "Cerro at Liverpool",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "cerro at liverpool cer liv torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "5492",
-                "uid": "s:600~t:5492",
-                "nombre": "Liverpool",
-                "nombre_corto": "Liverpool",
-                "abreviatura": "LIV",
-                "slug": "liverpool",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5492.png",
-                "color": "C60000"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "5490",
-                "uid": "s:600~t:5490",
-                "nombre": "Cerro",
-                "nombre_corto": "Cerro",
-                "abreviatura": "CER",
-                "slug": "cerro",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5490.png",
-                "color": "6bc7f5"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872716/cerro-liverpool",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
-          },
-          {
-            "id": "401872717",
-            "nombre": "Progreso at Montevideo Wanderers",
-            "fecha": "2026-07-12T18:00Z",
-            "estado": "Scheduled",
-            "estado_tipo": "pre",
-            "completado": false,
-            "fase": "",
-            "clasificacion_texto": "progreso at montevideo wanderers pso wan torneo intermedio",
-            "local": {
-              "equipo": {
-                "id": "5501",
-                "uid": "s:600~t:5501",
-                "nombre": "Montevideo Wanderers",
-                "nombre_corto": "Wanderers",
-                "abreviatura": "WAN",
-                "slug": "montevideo-wanderers",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5501.png",
-                "color": "1a1a1a"
-              },
-              "localia": "home",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "visitante": {
-              "equipo": {
-                "id": "6866",
-                "uid": "s:600~t:6866",
-                "nombre": "Progreso",
-                "nombre_corto": "Progreso",
-                "abreviatura": "PSO",
-                "slug": "progreso",
-                "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/6866.png",
-                "color": "212121"
-              },
-              "localia": "away",
-              "marcador": "0",
-              "ganador": false,
-              "penales": ""
-            },
-            "url": "https://www.espn.com/soccer/match/_/gameId/401872717/progreso-montevideo-wanderers",
-            "penales": {
-              "definicion": false,
-              "local": "",
-              "visitante": "",
-              "texto": ""
-            },
-            "fecha_numero": null,
-            "fecha_grupo": "2026-07-12"
+            "fecha_grupo": "2026-07-05"
           }
         ],
-        "total_scoreboard": 8
+        "total_scoreboard": 1
       }
     },
     {
@@ -82470,7 +81757,7 @@
       "slug": "par.1",
       "pais": "Paraguay",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:16.776878+00:00",
+      "actualizado": "2026-06-26T21:46:18.595543+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/par.1/teams",
@@ -83537,7 +82824,7 @@
       "slug": "col.1",
       "pais": "Colombia",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:17.156184+00:00",
+      "actualizado": "2026-06-26T21:46:18.782943+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/col.1/teams",
@@ -84374,7 +83661,7 @@
       "slug": "chi.1",
       "pais": "Chile",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:17.537652+00:00",
+      "actualizado": "2026-06-26T21:46:18.935834+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/chi.1/teams",
@@ -85071,7 +84358,7 @@
       "slug": "mex.1",
       "pais": "México",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:17.927573+00:00",
+      "actualizado": "2026-06-26T21:46:19.085708+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/mex.1/teams",
@@ -85940,7 +85227,7 @@
       "slug": "usa.1",
       "pais": "Estados Unidos",
       "season": "2026",
-      "actualizado": "2026-06-26T16:31:18.413181+00:00",
+      "actualizado": "2026-06-26T21:46:19.220187+00:00",
       "fuente": "ESPN API",
       "api": {
         "teams": "https://site.api.espn.com/apis/site/v2/sports/soccer/usa.1/teams",
