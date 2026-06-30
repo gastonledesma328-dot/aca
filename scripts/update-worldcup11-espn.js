@@ -100,7 +100,10 @@ const COUNTRY_NAME_FIXES = new Map([
   ["New Zealand", "Nueva Zelanda"],
   ["Panama", "Panamá"],
   ["South Africa", "Sudáfrica"],
-  ["Uzbekistan", "Uzbekistán"]
+  ["Uzbekistan", "Uzbekistán"],
+  ["Bosnia and Herzegovina", "Bosnia-Herzegovina"],
+  ["Bosnia & Herzegovina", "Bosnia-Herzegovina"],
+  ["Bosnia Herzegovina", "Bosnia-Herzegovina"],
 ]);
 
 const FIFA_FLAG_FIXES = {
@@ -162,7 +165,8 @@ const FIFA_FLAG_FIXES = {
   NZL: "nz",
   PAN: "pa",
   RSA: "za",
-  UZB: "uz"
+  UZB: "uz",
+  BIH: "ba",
 };
 
 function sleep(ms) {

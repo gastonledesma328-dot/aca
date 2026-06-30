@@ -15,6 +15,8 @@ const LEAGUES = {
   // FIFA / Mundo
   "fifa.world": "Mundial FIFA",
   "fifa.cwc": "Mundial de Clubes FIFA",
+  "fifa.friendly": "Amistoso Internacional",
+  "club.friendly": "Amistoso de Clubes",
   "fifa.worldq.conmebol": "Eliminatorias CONMEBOL",
   "fifa.worldq.uefa": "Eliminatorias UEFA",
 
@@ -37,6 +39,7 @@ const LEAGUES = {
   "bra.2": "Brasileirão Serie B",
   "arg.1": "Liga Profesional Argentina",
   "arg.2": "Primera Nacional Argentina",
+  "arg.reserva": "Liga Profesional - Reserva",
   "arg.copa": "Copa Argentina",
   "uru.1": "Campeonato Uruguayo",
   "chi.1": "Primera División Chile",
@@ -80,9 +83,12 @@ const LEAGUE_PRIORITY = {
   "conmebol.sudamericana": 101,
   "bra.1": 110,
   "bra.2": 112,
+  "fifa.friendly": 30,
+  "club.friendly": 31,
   "arg.1": 120,
   "arg.copa": 121,
   "arg.2": 123,
+  "arg.reserva": 124,
   "uru.1": 130,
   "chi.1": 131,
   "col.1": 132,
@@ -123,6 +129,22 @@ const LEAGUE_365_FALLBACKS = [
     prioridad: LEAGUE_PRIORITY["par.1"] ?? 135,
     match: /paraguay|paraguayo|paraguaya|liga de paraguay|primera division paraguay|division de honor|copa de primera/i,
     exclude: /promerica|costa rica|saudi|saudí|arabia/i,
+  },
+  {
+    slug: "arg.reserva",
+    nombre: "Liga Profesional - Reserva",
+    prioridad: 105,
+    competition365Id: 7712,
+    match: /liga profesional.*reserva|reserva.*apertura|reserva.*clausura/i,
+    exclude: /femenina|women/i,
+  },
+  {
+    slug: "fifa.friendly",
+    nombre: "Amistoso Internacional",
+    prioridad: 3,
+    competition365Id: 570,
+    match: /friendly international|amistoso internacional|selecciones/i,
+    exclude: /women|femenina|u21|u23|club/i,
   },
   {
     slug: "ecu.1",
@@ -1573,14 +1595,16 @@ function detectarLiga365Fallback(game) {
     game.visitante_365,
   ].join(" ");
 
-  for (const liga of LEAGUE_365_FALLBACKS) {
-    if (liga.exclude && liga.exclude.test(texto)) {
-      continue;
-    }
+  // Match by competition ID first (most reliable)
+  if (game.competition_id_365) {
+    const byId = LEAGUE_365_FALLBACKS.find(l => l.competition365Id === game.competition_id_365);
+    if (byId && (!byId.exclude || !byId.exclude.test(texto))) return byId;
+  }
 
-    if (liga.match.test(texto)) {
-      return liga;
-    }
+  // Then match by name regex
+  for (const liga of LEAGUE_365_FALLBACKS) {
+    if (liga.exclude && liga.exclude.test(texto)) continue;
+    if (liga.match.test(texto)) return liga;
   }
 
   return null;
