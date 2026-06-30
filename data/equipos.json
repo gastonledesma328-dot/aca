@@ -11,7 +11,7 @@
     "fundacion": "1905/04/08",
     "estadio": "Jorge Luis Hirschi",
     "ciudad": "La Plata",
-    "actualizado": "2026-06-30T17:16:05.513594+00:00",
+    "actualizado": "2026-06-03T15:15:36.717643+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -159,7 +159,7 @@
       "arqueros": [
         {
           "nombre": "Fernando Muslera",
-          "edad": 40,
+          "edad": 39,
           "altura": "6' 3\""
         },
         {
@@ -188,11 +188,6 @@
           "nombre": "Leandro González Pírez",
           "edad": 34,
           "altura": "6' 1\""
-        },
-        {
-          "nombre": "Joaquín Pereyra",
-          "edad": 27,
-          "altura": "5' 11\""
         },
         {
           "nombre": "Santiago Arzamendia",
@@ -236,7 +231,7 @@
         },
         {
           "nombre": "Máximo Desábato",
-          "edad": 21,
+          "edad": 20,
           "altura": "6' 3\""
         },
         {
@@ -248,17 +243,17 @@
           "nombre": "Jorge Georgieff",
           "edad": 19,
           "altura": "5' 8\""
-        },
-        {
-          "nombre": "Brian Aguirre",
-          "edad": 25,
-          "altura": "5' 9\""
         }
       ],
       "mediocampistas": [
         {
+          "nombre": "Joaquín Pereyra",
+          "edad": 27,
+          "altura": "5' 11\""
+        },
+        {
           "nombre": "José Sosa",
-          "edad": 41,
+          "edad": 40,
           "altura": "5' 11\""
         },
         {
@@ -297,6 +292,11 @@
           "altura": "6' 0\""
         },
         {
+          "nombre": "Lucas Cornejo",
+          "edad": 21,
+          "altura": "5' 8\""
+        },
+        {
           "nombre": "Franco Basualdo",
           "edad": 19,
           "altura": "5' 7\""
@@ -325,19 +325,9 @@
           "nombre": "Agustín Traina",
           "edad": 19,
           "altura": "6' 0\""
-        },
-        {
-          "nombre": "Ciro Spalletta",
-          "edad": 21,
-          "altura": "5' 8\""
         }
       ],
       "delanteros": [
-        {
-          "nombre": "Lucas Cornejo",
-          "edad": 20,
-          "altura": "5' 8\""
-        },
         {
           "nombre": "Guido Carrillo",
           "edad": 35,
@@ -359,6 +349,11 @@
           "altura": "6' 3\""
         },
         {
+          "nombre": "Brian Aguirre",
+          "edad": 23,
+          "altura": "5' 9\""
+        },
+        {
           "nombre": "Fabricio Pérez",
           "edad": 20,
           "altura": "5' 10\""
@@ -377,6 +372,11 @@
           "nombre": "Franco Dominguez",
           "edad": 18,
           "altura": "6' 0\""
+        },
+        {
+          "nombre": "Ciro Spalletta",
+          "edad": 20,
+          "altura": "5' 8\""
         },
         {
           "nombre": "Santino Crego",
@@ -1088,7 +1088,7 @@
     "fundacion": "1905/03/04",
     "estadio": "Alberto J. Armando",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-06-30T17:16:06.016853+00:00",
+    "actualizado": "2026-06-03T15:15:37.361683+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -1233,21 +1233,359 @@
       }
     ],
     "plantel": {
-      "arqueros": [],
-      "defensores": [],
-      "mediocampistas": [
+      "arqueros": [
         {
-          "nombre": "Ezequiel Vidal González",
-          "edad": "-",
-          "altura": "-"
+          "nombre": "Javier García",
+          "edad": 39,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Agustín Marchesín",
+          "edad": 38,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Leandro Brey",
+          "edad": 23,
+          "altura": "6' 4\""
+        },
+        {
+          "nombre": "Fernando Rodríguez",
+          "edad": 21,
+          "altura": "6' 3\""
         }
       ],
-      "delanteros": []
+      "defensores": [
+        {
+          "nombre": "Jorge Figal",
+          "edad": 32,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Marcelo Weigandt",
+          "edad": 26,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Juan Barinaga",
+          "edad": 25,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Ayrton Costa",
+          "edad": 26,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Lautaro Blanco",
+          "edad": 27,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Marco Pellegrino",
+          "edad": 23,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Lautaro Di Lollo",
+          "edad": 22,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Dylan Gorosito",
+          "edad": 20,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Facundo Herrera",
+          "edad": 19,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Matías Satas",
+          "edad": 18,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Gian Paoli",
+          "edad": 20,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Kevin Giménez",
+          "edad": 21,
+          "altura": "5' 5\""
+        }
+      ],
+      "mediocampistas": [
+        {
+          "nombre": "Camilo Rey",
+          "edad": 20,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Ander Herrera",
+          "edad": 36,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Rodrigo Battaglia",
+          "edad": 34,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Leandro Paredes",
+          "edad": 31,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Santiago Ascacibar",
+          "edad": 29,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Tomás Belmonte",
+          "edad": 28,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Malcom Braida",
+          "edad": 29,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "William Alarcón",
+          "edad": 25,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Alan Velasco",
+          "edad": 23,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Agustín Martegani",
+          "edad": 26,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Kevin Zenón",
+          "edad": 24,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Milton Delgado",
+          "edad": 20,
+          "altura": "5' 5\""
+        },
+        {
+          "nombre": "Dante Gonzalez",
+          "edad": 19,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Tomás Aranda",
+          "edad": 19,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Santiago Zampieri",
+          "edad": 19,
+          "altura": "6' 0\""
+        }
+      ],
+      "delanteros": [
+        {
+          "nombre": "Edinson Cavani",
+          "edad": 39,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Lucas Janson",
+          "edad": 31,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Ángel Romero",
+          "edad": 33,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Carlos Palacios",
+          "edad": 25,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Adam Bareiro",
+          "edad": 29,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Miguel Merentiel",
+          "edad": 30,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Exequiel Zeballos",
+          "edad": 24,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Milton Gimenez",
+          "edad": 29,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Iker Zufiaurre",
+          "edad": 20,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Joaquín Ruíz",
+          "edad": 19,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Leonel Flores",
+          "edad": 19,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Joaquín Piñeyro",
+          "edad": 18,
+          "altura": "6' 4\""
+        },
+        {
+          "nombre": "Kevin Ferreira",
+          "edad": 17,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Gonzalo Gelini",
+          "edad": 19,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Rodrigo Bacidalupe",
+          "edad": 18,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Miguel Ventos",
+          "edad": 21,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Ezequiel González",
+          "edad": 18,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Juan Pussetto",
+          "edad": 18,
+          "altura": "6' 1\""
+        }
+      ]
     },
     "estadisticas": {
-      "goles": [],
-      "asistencias": [],
-      "amarillas": [],
+      "goles": [
+        {
+          "jugador": "Miguel Merentiel",
+          "total": 5
+        },
+        {
+          "jugador": "Adam Bareiro",
+          "total": 3
+        },
+        {
+          "jugador": "Milton Giménez",
+          "total": 3
+        },
+        {
+          "jugador": "Alan Velasco",
+          "total": 2
+        },
+        {
+          "jugador": "Santiago Ascacibar",
+          "total": 2
+        },
+        {
+          "jugador": "Leandro Paredes",
+          "total": 2
+        },
+        {
+          "jugador": "Exequiel Zeballos",
+          "total": 1
+        },
+        {
+          "jugador": "Lautaro Blanco",
+          "total": 1
+        },
+        {
+          "jugador": "Lautaro Di Lollo",
+          "total": 1
+        },
+        {
+          "jugador": "Tomás Aranda",
+          "total": 1
+        }
+      ],
+      "asistencias": [
+        {
+          "jugador": "Exequiel Zeballos",
+          "total": 3
+        },
+        {
+          "jugador": "Leandro Paredes",
+          "total": 3
+        },
+        {
+          "jugador": "Tomás Aranda",
+          "total": 2
+        },
+        {
+          "jugador": "Miguel Merentiel",
+          "total": 2
+        },
+        {
+          "jugador": "Alan Velasco",
+          "total": 1
+        },
+        {
+          "jugador": "Adam Bareiro",
+          "total": 1
+        }
+      ],
+      "amarillas": [
+        {
+          "jugador": "Leandro Paredes",
+          "total": 6
+        },
+        {
+          "jugador": "Adam Bareiro",
+          "total": 4
+        },
+        {
+          "jugador": "Lautaro Di Lollo",
+          "total": 3
+        },
+        {
+          "jugador": "Milton Delgado",
+          "total": 3
+        },
+        {
+          "jugador": "Santiago Ascacibar",
+          "total": 3
+        },
+        {
+          "jugador": "Ayrton Costa",
+          "total": 2
+        },
+        {
+          "jugador": "Tomás Aranda",
+          "total": 2
+        }
+      ],
       "rojas": []
     },
     "estadisticasGenerales": {
@@ -1414,9 +1752,104 @@
           }
         ],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
+          "goles": [
+            {
+              "jugador": "Miguel Merentiel",
+              "total": 5
+            },
+            {
+              "jugador": "Adam Bareiro",
+              "total": 3
+            },
+            {
+              "jugador": "Milton Giménez",
+              "total": 3
+            },
+            {
+              "jugador": "Alan Velasco",
+              "total": 2
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 2
+            },
+            {
+              "jugador": "Leandro Paredes",
+              "total": 2
+            },
+            {
+              "jugador": "Exequiel Zeballos",
+              "total": 1
+            },
+            {
+              "jugador": "Lautaro Blanco",
+              "total": 1
+            },
+            {
+              "jugador": "Lautaro Di Lollo",
+              "total": 1
+            },
+            {
+              "jugador": "Tomás Aranda",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Exequiel Zeballos",
+              "total": 3
+            },
+            {
+              "jugador": "Leandro Paredes",
+              "total": 3
+            },
+            {
+              "jugador": "Tomás Aranda",
+              "total": 2
+            },
+            {
+              "jugador": "Miguel Merentiel",
+              "total": 2
+            },
+            {
+              "jugador": "Alan Velasco",
+              "total": 1
+            },
+            {
+              "jugador": "Adam Bareiro",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Leandro Paredes",
+              "total": 6
+            },
+            {
+              "jugador": "Adam Bareiro",
+              "total": 4
+            },
+            {
+              "jugador": "Lautaro Di Lollo",
+              "total": 3
+            },
+            {
+              "jugador": "Milton Delgado",
+              "total": 3
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 3
+            },
+            {
+              "jugador": "Ayrton Costa",
+              "total": 2
+            },
+            {
+              "jugador": "Tomás Aranda",
+              "total": 2
+            }
+          ],
           "rojas": []
         },
         "generales": {
@@ -1442,9 +1875,104 @@
         "proximosPartidos": [],
         "resultados": [],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
+          "goles": [
+            {
+              "jugador": "Miguel Merentiel",
+              "total": 5
+            },
+            {
+              "jugador": "Adam Bareiro",
+              "total": 3
+            },
+            {
+              "jugador": "Milton Giménez",
+              "total": 3
+            },
+            {
+              "jugador": "Alan Velasco",
+              "total": 2
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 2
+            },
+            {
+              "jugador": "Leandro Paredes",
+              "total": 2
+            },
+            {
+              "jugador": "Exequiel Zeballos",
+              "total": 1
+            },
+            {
+              "jugador": "Lautaro Blanco",
+              "total": 1
+            },
+            {
+              "jugador": "Lautaro Di Lollo",
+              "total": 1
+            },
+            {
+              "jugador": "Tomás Aranda",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Exequiel Zeballos",
+              "total": 3
+            },
+            {
+              "jugador": "Leandro Paredes",
+              "total": 3
+            },
+            {
+              "jugador": "Tomás Aranda",
+              "total": 2
+            },
+            {
+              "jugador": "Miguel Merentiel",
+              "total": 2
+            },
+            {
+              "jugador": "Alan Velasco",
+              "total": 1
+            },
+            {
+              "jugador": "Adam Bareiro",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Leandro Paredes",
+              "total": 6
+            },
+            {
+              "jugador": "Adam Bareiro",
+              "total": 4
+            },
+            {
+              "jugador": "Lautaro Di Lollo",
+              "total": 3
+            },
+            {
+              "jugador": "Milton Delgado",
+              "total": 3
+            },
+            {
+              "jugador": "Santiago Ascacibar",
+              "total": 3
+            },
+            {
+              "jugador": "Ayrton Costa",
+              "total": 2
+            },
+            {
+              "jugador": "Tomás Aranda",
+              "total": 2
+            }
+          ],
           "rojas": []
         },
         "generales": {
@@ -1615,7 +2143,7 @@
     "fundacion": "1910/01/01",
     "estadio": "José Amalfitani",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-06-30T17:16:06.327919+00:00",
+    "actualizado": "2026-06-03T15:15:37.683256+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -1768,7 +2296,7 @@
         },
         {
           "nombre": "Tomás Marchiori",
-          "edad": 31,
+          "edad": 30,
           "altura": "6' 1\""
         },
         {
@@ -1790,7 +2318,7 @@
         },
         {
           "nombre": "Elias Gomez",
-          "edad": 32,
+          "edad": 31,
           "altura": "5' 10\""
         },
         {
@@ -1805,7 +2333,7 @@
         },
         {
           "nombre": "Jano Gordon",
-          "edad": 22,
+          "edad": 21,
           "altura": "6' 0\""
         },
         {
@@ -1836,11 +2364,6 @@
         {
           "nombre": "Alexis Pereyra",
           "edad": 19,
-          "altura": "-"
-        },
-        {
-          "nombre": "Benjamin Moyano",
-          "edad": 18,
           "altura": "-"
         }
       ],
@@ -1878,6 +2401,16 @@
       ],
       "delanteros": [
         {
+          "nombre": "Benjamin Moyano",
+          "edad": 20,
+          "altura": "-"
+        },
+        {
+          "nombre": "Braian Romero",
+          "edad": 34,
+          "altura": "5' 11\""
+        },
+        {
           "nombre": "Rodrigo Piñeiro",
           "edad": 27,
           "altura": "5' 9\""
@@ -1886,6 +2419,11 @@
           "nombre": "Matías Pellegrini",
           "edad": 26,
           "altura": "5' 11\""
+        },
+        {
+          "nombre": "Imanol Machuca",
+          "edad": 26,
+          "altura": "5' 7\""
         },
         {
           "nombre": "Florián Monzón",
@@ -2000,6 +2538,10 @@
         {
           "jugador": "Lisandro Magallán",
           "total": 3
+        },
+        {
+          "jugador": "Braian Romero",
+          "total": 2
         }
       ],
       "rojas": [
@@ -2253,6 +2795,10 @@
             {
               "jugador": "Lisandro Magallán",
               "total": 3
+            },
+            {
+              "jugador": "Braian Romero",
+              "total": 2
             }
           ],
           "rojas": [
@@ -2365,6 +2911,10 @@
             {
               "jugador": "Lisandro Magallán",
               "total": 3
+            },
+            {
+              "jugador": "Braian Romero",
+              "total": 2
             }
           ],
           "rojas": [
@@ -2457,7 +3007,7 @@
     "fundacion": "1913/12/10",
     "estadio": "Mario Alberto Kempes",
     "ciudad": "Córdoba",
-    "actualizado": "2026-06-30T17:16:06.702324+00:00",
+    "actualizado": "2026-06-03T15:15:38.994320+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -2615,7 +3165,7 @@
         },
         {
           "nombre": "Santino Barbi",
-          "edad": 21,
+          "edad": 20,
           "altura": "6' 3\""
         }
       ],
@@ -2658,11 +3208,6 @@
         {
           "nombre": "Santiago Fernández",
           "edad": 21,
-          "altura": "5' 10\""
-        },
-        {
-          "nombre": "Alexandro Maidana",
-          "edad": 20,
           "altura": "5' 10\""
         },
         {
@@ -2724,6 +3269,11 @@
         }
       ],
       "delanteros": [
+        {
+          "nombre": "Alexandro Maidana",
+          "edad": 20,
+          "altura": "5' 8\""
+        },
         {
           "nombre": "Diego Valoyes",
           "edad": 29,
@@ -3277,7 +3827,7 @@
     "fundacion": "1905/01/01",
     "estadio": "Libertadores de América - Ricardo Enrique Bochini",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-06-30T17:16:07.091744+00:00",
+    "actualizado": "2026-06-03T15:15:39.446819+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -3437,6 +3987,11 @@
           "nombre": "Lucas Lavagnino",
           "edad": 21,
           "altura": "6' 2\""
+        },
+        {
+          "nombre": "Mateo Morro",
+          "edad": 20,
+          "altura": "6' 1\""
         }
       ],
       "defensores": [
@@ -3454,6 +4009,11 @@
           "nombre": "Leonardo Godoy",
           "edad": 31,
           "altura": "5' 8\""
+        },
+        {
+          "nombre": "Milton Valenzuela",
+          "edad": 27,
+          "altura": "5' 7\""
         },
         {
           "nombre": "Sebastian Valdez",
@@ -3482,7 +4042,7 @@
         },
         {
           "nombre": "Gonzalo Bordón",
-          "edad": 21,
+          "edad": 20,
           "altura": "-"
         },
         {
@@ -3494,6 +4054,11 @@
           "nombre": "Joshua Velárdez",
           "edad": 20,
           "altura": "-"
+        },
+        {
+          "nombre": "Mateo Perez",
+          "edad": 24,
+          "altura": "6' 1\""
         }
       ],
       "mediocampistas": [
@@ -3518,11 +4083,6 @@
           "altura": "5' 7\""
         },
         {
-          "nombre": "Mateo Pérez",
-          "edad": 20,
-          "altura": "5' 10\""
-        },
-        {
           "nombre": "Tomás Parmo",
           "edad": 18,
           "altura": "5' 7\""
@@ -3541,14 +4101,14 @@
           "nombre": "Josias Palais",
           "edad": 20,
           "altura": "-"
+        },
+        {
+          "nombre": "Maximiliano Gutiérrez",
+          "edad": 29,
+          "altura": "6' 0\""
         }
       ],
       "delanteros": [
-        {
-          "nombre": "Rodrigo Fernández",
-          "edad": 19,
-          "altura": "5' 9\""
-        },
         {
           "nombre": "Ignacio Pussetto",
           "edad": 30,
@@ -3557,17 +4117,17 @@
         {
           "nombre": "Gabriel Ávalos",
           "edad": 35,
-          "altura": "6' 3\""
-        },
-        {
-          "nombre": "Maximiliano Gutiérrez",
-          "edad": 22,
-          "altura": "6' 0\""
+          "altura": "6' 2\""
         },
         {
           "nombre": "Santiago Montiel",
           "edad": 25,
           "altura": "5' 5\""
+        },
+        {
+          "nombre": "Matías Abaldo",
+          "edad": 22,
+          "altura": "5' 8\""
         },
         {
           "nombre": "Facundo Valdéz",
@@ -3596,6 +4156,10 @@
         {
           "jugador": "Gabriel Ávalos",
           "total": 9
+        },
+        {
+          "jugador": "Matías Abaldo",
+          "total": 5
         },
         {
           "jugador": "Maximiliano Gutiérrez",
@@ -3685,6 +4249,10 @@
         },
         {
           "jugador": "Luciano Cabral",
+          "total": 1
+        },
+        {
+          "jugador": "Matías Abaldo",
           "total": 1
         },
         {
@@ -3863,6 +4431,10 @@
               "total": 9
             },
             {
+              "jugador": "Matías Abaldo",
+              "total": 5
+            },
+            {
               "jugador": "Maximiliano Gutiérrez",
               "total": 2
             },
@@ -3950,6 +4522,10 @@
             },
             {
               "jugador": "Luciano Cabral",
+              "total": 1
+            },
+            {
+              "jugador": "Matías Abaldo",
               "total": 1
             },
             {
@@ -3987,6 +4563,10 @@
               "total": 9
             },
             {
+              "jugador": "Matías Abaldo",
+              "total": 5
+            },
+            {
               "jugador": "Maximiliano Gutiérrez",
               "total": 2
             },
@@ -4074,6 +4654,10 @@
             },
             {
               "jugador": "Luciano Cabral",
+              "total": 1
+            },
+            {
+              "jugador": "Matías Abaldo",
               "total": 1
             },
             {
@@ -4165,7 +4749,7 @@
     "fundacion": "1915/03/01",
     "estadio": "Ciudad de Lanús - Néstor Díaz Pérez",
     "ciudad": "Lanús",
-    "actualizado": "2026-06-30T17:16:07.464913+00:00",
+    "actualizado": "2026-06-03T15:15:39.751572+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -4318,7 +4902,7 @@
         },
         {
           "nombre": "Franco Petroli",
-          "edad": 28,
+          "edad": 27,
           "altura": "6' 1\""
         },
         {
@@ -4356,7 +4940,7 @@
         {
           "nombre": "José Canale",
           "edad": 29,
-          "altura": "6' 2\""
+          "altura": "6' 0\""
         },
         {
           "nombre": "Tomás López",
@@ -4415,24 +4999,19 @@
         },
         {
           "nombre": "Elías Prieto",
-          "edad": 19,
+          "edad": 18,
           "altura": "5' 7\""
         },
         {
           "nombre": "Gabriel Aguirre",
           "edad": 19,
           "altura": "5' 9\""
-        },
-        {
-          "nombre": "Alexis Duarte",
-          "edad": 26,
-          "altura": "6' 1\""
         }
       ],
       "mediocampistas": [
         {
           "nombre": "Juan Mujica",
-          "edad": 19,
+          "edad": 18,
           "altura": "5' 10\""
         },
         {
@@ -4452,12 +5031,12 @@
         },
         {
           "nombre": "Raúl Loaiza",
-          "edad": 32,
+          "edad": 31,
           "altura": "5' 11\""
         },
         {
           "nombre": "Marcelino Moreno",
-          "edad": 31,
+          "edad": 30,
           "altura": "5' 9\""
         },
         {
@@ -4499,11 +5078,6 @@
           "nombre": "Tiago Domínguez",
           "edad": 17,
           "altura": "6' 0\""
-        },
-        {
-          "nombre": "Mateo Peralta",
-          "edad": 20,
-          "altura": "5' 9\""
         }
       ],
       "delanteros": [
@@ -4518,6 +5092,11 @@
           "altura": "5' 10\""
         },
         {
+          "nombre": "Alexis Duarte",
+          "edad": 19,
+          "altura": "6' 0\""
+        },
+        {
           "nombre": "Lucas Besozzi",
           "edad": 23,
           "altura": "5' 9\""
@@ -4528,8 +5107,13 @@
           "altura": "5' 9\""
         },
         {
+          "nombre": "Mateo Peralta",
+          "edad": 18,
+          "altura": "5' 7\""
+        },
+        {
           "nombre": "Dylan Aquino",
-          "edad": 21,
+          "edad": 20,
           "altura": "5' 7\""
         },
         {
@@ -4549,7 +5133,7 @@
         },
         {
           "nombre": "Thomás De Martis",
-          "edad": 18,
+          "edad": 17,
           "altura": "5' 11\""
         },
         {
@@ -5196,7 +5780,7 @@
     "fundacion": "1908/01/04",
     "estadio": "Pedro Bidegain",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-06-30T17:16:07.982557+00:00",
+    "actualizado": "2026-06-03T15:15:40.370085+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -5341,22 +5925,348 @@
       }
     ],
     "plantel": {
-      "arqueros": [],
-      "defensores": [],
-      "mediocampistas": [
+      "arqueros": [
         {
-          "nombre": "Cristian Gabriel Gallardo",
-          "edad": "-",
+          "nombre": "José Devecchi",
+          "edad": 30,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Orlando Gil",
+          "edad": 25,
+          "altura": "6' 6\""
+        },
+        {
+          "nombre": "Mateo Clemente",
+          "edad": 23,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Demian Talavera",
+          "edad": 19,
+          "altura": "6' 1\""
+        }
+      ],
+      "defensores": [
+        {
+          "nombre": "Daniel Herrera",
+          "edad": 22,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Nicolas Tripichio",
+          "edad": 30,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Gastón Hernández",
+          "edad": 28,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Jhohan Romaña",
+          "edad": 27,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Guzmán Corujo",
+          "edad": 29,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Máximiliano Zelaya",
+          "edad": 29,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Franco Lorenzón",
+          "edad": 25,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Ezequiel Herrera",
+          "edad": 23,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Mathías De Ritis",
+          "edad": 23,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Oscar Arias",
+          "edad": 21,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Alejo Cordoba",
+          "edad": 22,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Lautaro Montenegro",
+          "edad": 21,
+          "altura": "-"
+        },
+        {
+          "nombre": "Fabricio Gabriel López",
+          "edad": 23,
+          "altura": "-"
+        },
+        {
+          "nombre": "Ramiro Pedroza",
+          "edad": 19,
+          "altura": "-"
+        },
+        {
+          "nombre": "Agustín Ladstatter",
+          "edad": 20,
+          "altura": "-"
+        },
+        {
+          "nombre": "Teo Rodríguez",
+          "edad": 20,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Nicolás Blanco",
+          "edad": 19,
+          "altura": "-"
+        },
+        {
+          "nombre": "Juan Crisafulli",
+          "edad": 18,
           "altura": "-"
         }
       ],
-      "delanteros": []
+      "mediocampistas": [
+        {
+          "nombre": "Gustavo Romero",
+          "edad": 21,
+          "altura": "-"
+        },
+        {
+          "nombre": "Nahuel Barrios",
+          "edad": 28,
+          "altura": "5' 1\""
+        },
+        {
+          "nombre": "Carlos Insaurralde",
+          "edad": 27,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Gonzalo Abrego",
+          "edad": 26,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Gonzalo Alassia",
+          "edad": 22,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Francisco Perruzzi",
+          "edad": 25,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Mauricio Cardillo",
+          "edad": 23,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Uriel Ojeda",
+          "edad": 18,
+          "altura": "-"
+        },
+        {
+          "nombre": "Juan Rattalino",
+          "edad": 21,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Ignacio Perruzzi",
+          "edad": 21,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Alejo Benjamín Rivas",
+          "edad": 20,
+          "altura": "-"
+        },
+        {
+          "nombre": "Facundo Gulli",
+          "edad": 20,
+          "altura": "-"
+        },
+        {
+          "nombre": "Cristian Gallardo",
+          "edad": 18,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Valentino Bossio",
+          "edad": 19,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Tomás Yaciuk",
+          "edad": 18,
+          "altura": "5' 7\""
+        }
+      ],
+      "delanteros": [
+        {
+          "nombre": "Ezequiel Cerutti",
+          "edad": 34,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Luciano Vietto",
+          "edad": 32,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Diego Herazo",
+          "edad": 30,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Alexis Cuello",
+          "edad": 26,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Gregorio Rodríguez",
+          "edad": 26,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Matías Reali",
+          "edad": 28,
+          "altura": "5' 5\""
+        },
+        {
+          "nombre": "Matías Hernández",
+          "edad": 21,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Rodrigo Auzmendi",
+          "edad": 25,
+          "altura": "6' 3\""
+        },
+        {
+          "nombre": "Thiago Perugini",
+          "edad": 21,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Branco Salinardi",
+          "edad": 19,
+          "altura": "-"
+        },
+        {
+          "nombre": "Valentín Escalante",
+          "edad": 21,
+          "altura": "-"
+        }
+      ]
     },
     "estadisticas": {
-      "goles": [],
-      "asistencias": [],
-      "amarillas": [],
-      "rojas": []
+      "goles": [
+        {
+          "jugador": "Alexis Cuello",
+          "total": 4
+        },
+        {
+          "jugador": "Rodrigo Auzmendi",
+          "total": 3
+        },
+        {
+          "jugador": "Gregorio Rodríguez",
+          "total": 2
+        },
+        {
+          "jugador": "Luciano Vietto",
+          "total": 2
+        },
+        {
+          "jugador": "Diego Herazo",
+          "total": 1
+        },
+        {
+          "jugador": "Ezequiel Herrera",
+          "total": 1
+        }
+      ],
+      "asistencias": [
+        {
+          "jugador": "Alexis Cuello",
+          "total": 3
+        },
+        {
+          "jugador": "Mathías De Ritis",
+          "total": 2
+        },
+        {
+          "jugador": "Facundo Gulli",
+          "total": 2
+        },
+        {
+          "jugador": "Diego Herazo",
+          "total": 1
+        },
+        {
+          "jugador": "Nahuel Barrios",
+          "total": 1
+        },
+        {
+          "jugador": "Matías Reali",
+          "total": 1
+        }
+      ],
+      "amarillas": [
+        {
+          "jugador": "Alexis Cuello",
+          "total": 5
+        },
+        {
+          "jugador": "Nicolas Tripichio",
+          "total": 5
+        },
+        {
+          "jugador": "Jhohan Romaña",
+          "total": 4
+        },
+        {
+          "jugador": "Mathías De Ritis",
+          "total": 4
+        },
+        {
+          "jugador": "Facundo Gulli",
+          "total": 3
+        },
+        {
+          "jugador": "Luciano Vietto",
+          "total": 3
+        },
+        {
+          "jugador": "Ezequiel Herrera",
+          "total": 2
+        }
+      ],
+      "rojas": [
+        {
+          "jugador": "Alexis Cuello",
+          "total": 1
+        },
+        {
+          "jugador": "Agustín Ladstatter",
+          "total": 1
+        }
+      ]
     },
     "estadisticasGenerales": {
       "posicion": "7",
@@ -5522,10 +6432,98 @@
           }
         ],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
-          "rojas": []
+          "goles": [
+            {
+              "jugador": "Alexis Cuello",
+              "total": 4
+            },
+            {
+              "jugador": "Rodrigo Auzmendi",
+              "total": 3
+            },
+            {
+              "jugador": "Gregorio Rodríguez",
+              "total": 2
+            },
+            {
+              "jugador": "Luciano Vietto",
+              "total": 2
+            },
+            {
+              "jugador": "Diego Herazo",
+              "total": 1
+            },
+            {
+              "jugador": "Ezequiel Herrera",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Alexis Cuello",
+              "total": 3
+            },
+            {
+              "jugador": "Mathías De Ritis",
+              "total": 2
+            },
+            {
+              "jugador": "Facundo Gulli",
+              "total": 2
+            },
+            {
+              "jugador": "Diego Herazo",
+              "total": 1
+            },
+            {
+              "jugador": "Nahuel Barrios",
+              "total": 1
+            },
+            {
+              "jugador": "Matías Reali",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Alexis Cuello",
+              "total": 5
+            },
+            {
+              "jugador": "Nicolas Tripichio",
+              "total": 5
+            },
+            {
+              "jugador": "Jhohan Romaña",
+              "total": 4
+            },
+            {
+              "jugador": "Mathías De Ritis",
+              "total": 4
+            },
+            {
+              "jugador": "Facundo Gulli",
+              "total": 3
+            },
+            {
+              "jugador": "Luciano Vietto",
+              "total": 3
+            },
+            {
+              "jugador": "Ezequiel Herrera",
+              "total": 2
+            }
+          ],
+          "rojas": [
+            {
+              "jugador": "Alexis Cuello",
+              "total": 1
+            },
+            {
+              "jugador": "Agustín Ladstatter",
+              "total": 1
+            }
+          ]
         },
         "generales": {
           "posicion": "7",
@@ -5550,10 +6548,98 @@
         "proximosPartidos": [],
         "resultados": [],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
-          "rojas": []
+          "goles": [
+            {
+              "jugador": "Alexis Cuello",
+              "total": 4
+            },
+            {
+              "jugador": "Rodrigo Auzmendi",
+              "total": 3
+            },
+            {
+              "jugador": "Gregorio Rodríguez",
+              "total": 2
+            },
+            {
+              "jugador": "Luciano Vietto",
+              "total": 2
+            },
+            {
+              "jugador": "Diego Herazo",
+              "total": 1
+            },
+            {
+              "jugador": "Ezequiel Herrera",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Alexis Cuello",
+              "total": 3
+            },
+            {
+              "jugador": "Mathías De Ritis",
+              "total": 2
+            },
+            {
+              "jugador": "Facundo Gulli",
+              "total": 2
+            },
+            {
+              "jugador": "Diego Herazo",
+              "total": 1
+            },
+            {
+              "jugador": "Nahuel Barrios",
+              "total": 1
+            },
+            {
+              "jugador": "Matías Reali",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Alexis Cuello",
+              "total": 5
+            },
+            {
+              "jugador": "Nicolas Tripichio",
+              "total": 5
+            },
+            {
+              "jugador": "Jhohan Romaña",
+              "total": 4
+            },
+            {
+              "jugador": "Mathías De Ritis",
+              "total": 4
+            },
+            {
+              "jugador": "Facundo Gulli",
+              "total": 3
+            },
+            {
+              "jugador": "Luciano Vietto",
+              "total": 3
+            },
+            {
+              "jugador": "Ezequiel Herrera",
+              "total": 2
+            }
+          ],
+          "rojas": [
+            {
+              "jugador": "Alexis Cuello",
+              "total": 1
+            },
+            {
+              "jugador": "Agustín Ladstatter",
+              "total": 1
+            }
+          ]
         },
         "generales": {
           "posicion": "-",
@@ -5723,7 +6809,7 @@
     "fundacion": "1907/15/04",
     "estadio": "15 de Abril",
     "ciudad": "Santa Fe",
-    "actualizado": "2026-06-30T17:16:08.357120+00:00",
+    "actualizado": "2026-06-03T15:15:40.863065+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -5881,11 +6967,16 @@
         },
         {
           "nombre": "Lucas Meuli",
-          "edad": 25,
+          "edad": 24,
           "altura": "6' 1\""
         }
       ],
       "defensores": [
+        {
+          "nombre": "Claudio Corvalán",
+          "edad": 37,
+          "altura": "5' 11\""
+        },
         {
           "nombre": "Bruno Pittón",
           "edad": 33,
@@ -5974,6 +7065,11 @@
           "altura": "5' 10\""
         },
         {
+          "nombre": "Nicolás Palavecino",
+          "edad": 23,
+          "altura": "6' 1\""
+        },
+        {
           "nombre": "Emilio Giaccone",
           "edad": 21,
           "altura": "6' 2\""
@@ -6028,6 +7124,10 @@
           "total": 4
         },
         {
+          "jugador": "Julián Palacios",
+          "total": 3
+        },
+        {
           "jugador": "Mateo Del Blanco",
           "total": 2
         },
@@ -6050,6 +7150,10 @@
       ],
       "asistencias": [
         {
+          "jugador": "Julián Palacios",
+          "total": 5
+        },
+        {
           "jugador": "Rafael Profini",
           "total": 5
         },
@@ -6059,6 +7163,10 @@
         },
         {
           "jugador": "Emiliano Álvarez",
+          "total": 1
+        },
+        {
+          "jugador": "Nicolás Palavecino",
           "total": 1
         },
         {
@@ -6074,6 +7182,10 @@
         {
           "jugador": "Lautaro Vargas",
           "total": 8
+        },
+        {
+          "jugador": "Julián Palacios",
+          "total": 6
         },
         {
           "jugador": "Marcelo Estigarribia",
@@ -6273,6 +7385,10 @@
               "total": 4
             },
             {
+              "jugador": "Julián Palacios",
+              "total": 3
+            },
+            {
               "jugador": "Mateo Del Blanco",
               "total": 2
             },
@@ -6295,6 +7411,10 @@
           ],
           "asistencias": [
             {
+              "jugador": "Julián Palacios",
+              "total": 5
+            },
+            {
               "jugador": "Rafael Profini",
               "total": 5
             },
@@ -6304,6 +7424,10 @@
             },
             {
               "jugador": "Emiliano Álvarez",
+              "total": 1
+            },
+            {
+              "jugador": "Nicolás Palavecino",
               "total": 1
             },
             {
@@ -6319,6 +7443,10 @@
             {
               "jugador": "Lautaro Vargas",
               "total": 8
+            },
+            {
+              "jugador": "Julián Palacios",
+              "total": 6
             },
             {
               "jugador": "Marcelo Estigarribia",
@@ -6377,6 +7505,10 @@
               "total": 4
             },
             {
+              "jugador": "Julián Palacios",
+              "total": 3
+            },
+            {
               "jugador": "Mateo Del Blanco",
               "total": 2
             },
@@ -6399,6 +7531,10 @@
           ],
           "asistencias": [
             {
+              "jugador": "Julián Palacios",
+              "total": 5
+            },
+            {
               "jugador": "Rafael Profini",
               "total": 5
             },
@@ -6408,6 +7544,10 @@
             },
             {
               "jugador": "Emiliano Álvarez",
+              "total": 1
+            },
+            {
+              "jugador": "Nicolás Palavecino",
               "total": 1
             },
             {
@@ -6423,6 +7563,10 @@
             {
               "jugador": "Lautaro Vargas",
               "total": 8
+            },
+            {
+              "jugador": "Julián Palacios",
+              "total": 6
             },
             {
               "jugador": "Marcelo Estigarribia",
@@ -6531,7 +7675,7 @@
     "fundacion": "1918/08/08",
     "estadio": "Juan Domingo Perón",
     "ciudad": "Córdoba",
-    "actualizado": "2026-06-30T17:16:08.739685+00:00",
+    "actualizado": "2026-06-03T15:15:41.308912+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -6706,12 +7850,12 @@
         },
         {
           "nombre": "Jonathan Galván",
-          "edad": 34,
+          "edad": 33,
           "altura": "5' 10\""
         },
         {
           "nombre": "Fernando Alarcón",
-          "edad": 32,
+          "edad": 31,
           "altura": "6' 1\""
         },
         {
@@ -6735,14 +7879,14 @@
           "altura": "6' 0\""
         },
         {
-          "nombre": "Juan Meli",
-          "edad": 25,
-          "altura": "5' 9\""
+          "nombre": "Giuliano Cerato",
+          "edad": 27,
+          "altura": "5' 7\""
         },
         {
-          "nombre": "Giuliano Cerato",
-          "edad": 28,
-          "altura": "5' 7\""
+          "nombre": "Gonzalo Requena",
+          "edad": 23,
+          "altura": "6' 1\""
         },
         {
           "nombre": "Agustín Massaccesi",
@@ -6750,25 +7894,20 @@
           "altura": "6' 3\""
         },
         {
-          "nombre": "Lautaro Ludueña",
-          "edad": 19,
-          "altura": "-"
-        },
-        {
           "nombre": "Genaro Ordóñez",
           "edad": 18,
           "altura": "6' 5\""
-        },
-        {
-          "nombre": "Lucas Olviera",
-          "edad": "-",
-          "altura": "-"
         }
       ],
       "mediocampistas": [
         {
           "nombre": "Alex Luna",
           "edad": 22,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Juan Mendez",
+          "edad": 29,
           "altura": "5' 9\""
         },
         {
@@ -6798,12 +7937,12 @@
         },
         {
           "nombre": "Jeremías Lázaro",
-          "edad": 22,
+          "edad": 21,
           "altura": "5' 9\""
         },
         {
           "nombre": "Ignacio Rossi",
-          "edad": 23,
+          "edad": 22,
           "altura": "-"
         },
         {
@@ -6814,9 +7953,14 @@
       ],
       "delanteros": [
         {
-          "nombre": "Tomás Peralta",
-          "edad": "-",
-          "altura": "-"
+          "nombre": "Jhon Córdoba",
+          "edad": 33,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Franco Jara",
+          "edad": 37,
+          "altura": "5' 11\""
         },
         {
           "nombre": "Matias Tissera",
@@ -6837,6 +7981,11 @@
           "nombre": "Matias Fonseca",
           "edad": 25,
           "altura": "5' 11\""
+        },
+        {
+          "nombre": "Juan Manuel Romero",
+          "edad": 25,
+          "altura": "5' 10\""
         },
         {
           "nombre": "Lorenzo Albarracín",
@@ -6871,6 +8020,10 @@
         },
         {
           "jugador": "Jeremías Lázaro",
+          "total": 1
+        },
+        {
+          "jugador": "Jhon Córdoba",
           "total": 1
         },
         {
@@ -7134,6 +8287,10 @@
               "total": 1
             },
             {
+              "jugador": "Jhon Córdoba",
+              "total": 1
+            },
+            {
               "jugador": "Luca Rafaelli",
               "total": 1
             },
@@ -7250,6 +8407,10 @@
             },
             {
               "jugador": "Jeremías Lázaro",
+              "total": 1
+            },
+            {
+              "jugador": "Jhon Córdoba",
               "total": 1
             },
             {
@@ -7414,7 +8575,7 @@
     "fundacion": "1935/20/03",
     "estadio": "Norberto Tomaghello",
     "ciudad": "Florencio Varela",
-    "actualizado": "2026-06-30T17:16:09.219016+00:00",
+    "actualizado": "2026-06-03T15:15:41.713555+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -7636,7 +8797,7 @@
         },
         {
           "nombre": "Éver Banega",
-          "edad": 38,
+          "edad": 37,
           "altura": "5' 9\""
         },
         {
@@ -7653,11 +8814,6 @@
           "nombre": "Máximo Rodríguez",
           "edad": 21,
           "altura": "-"
-        },
-        {
-          "nombre": "Santiago Sosa",
-          "edad": 21,
-          "altura": "5' 9\""
         },
         {
           "nombre": "Santiago Toloza",
@@ -7688,6 +8844,11 @@
           "nombre": "Juan Pablo Moreno",
           "edad": 21,
           "altura": "5' 10\""
+        },
+        {
+          "nombre": "Luciano Gonzalez",
+          "edad": 18,
+          "altura": "5' 7\""
         }
       ],
       "delanteros": [
@@ -7702,9 +8863,19 @@
           "altura": "6' 0\""
         },
         {
+          "nombre": "Juan Gutiérrez",
+          "edad": 24,
+          "altura": "5' 10\""
+        },
+        {
           "nombre": "Agustin Hausch",
           "edad": 23,
           "altura": "5' 10\""
+        },
+        {
+          "nombre": "Abiel Osorio",
+          "edad": 23,
+          "altura": "6' 0\""
         },
         {
           "nombre": "David Fernández",
@@ -7712,19 +8883,23 @@
           "altura": "6' 0\""
         },
         {
-          "nombre": "Luciano González",
-          "edad": 20,
-          "altura": "5' 10\""
+          "nombre": "Facundo Nogueira",
+          "edad": 19,
+          "altura": "-"
         },
         {
           "nombre": "Alan Coria",
-          "edad": 19,
+          "edad": 18,
           "altura": "-"
         }
       ]
     },
     "estadisticas": {
       "goles": [
+        {
+          "jugador": "Juan Gutiérrez",
+          "total": 3
+        },
         {
           "jugador": "Ayrton Portillo",
           "total": 3
@@ -7761,6 +8936,10 @@
       "asistencias": [
         {
           "jugador": "Aaron Molinas",
+          "total": 3
+        },
+        {
+          "jugador": "Juan Gutiérrez",
           "total": 3
         },
         {
@@ -7975,6 +9154,10 @@
         "estadisticas": {
           "goles": [
             {
+              "jugador": "Juan Gutiérrez",
+              "total": 3
+            },
+            {
               "jugador": "Ayrton Portillo",
               "total": 3
             },
@@ -8010,6 +9193,10 @@
           "asistencias": [
             {
               "jugador": "Aaron Molinas",
+              "total": 3
+            },
+            {
+              "jugador": "Juan Gutiérrez",
               "total": 3
             },
             {
@@ -8083,6 +9270,10 @@
         "estadisticas": {
           "goles": [
             {
+              "jugador": "Juan Gutiérrez",
+              "total": 3
+            },
+            {
               "jugador": "Ayrton Portillo",
               "total": 3
             },
@@ -8118,6 +9309,10 @@
           "asistencias": [
             {
               "jugador": "Aaron Molinas",
+              "total": 3
+            },
+            {
+              "jugador": "Juan Gutiérrez",
               "total": 3
             },
             {
@@ -8249,7 +9444,7 @@
     "fundacion": "1908/30/08",
     "estadio": "Víctor Antonio Legrotaglie",
     "ciudad": "Mendoza",
-    "actualizado": "2026-06-30T17:16:09.625751+00:00",
+    "actualizado": "2026-06-03T15:15:42.082475+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -8439,7 +9634,7 @@
         },
         {
           "nombre": "Ismael Cortez",
-          "edad": 26,
+          "edad": 25,
           "altura": "6' 1\""
         },
         {
@@ -8449,19 +9644,14 @@
         },
         {
           "nombre": "Martín Úbeda",
-          "edad": 22,
-          "altura": "-"
-        },
-        {
-          "nombre": "Gerónimo Patritti",
-          "edad": 23,
+          "edad": 21,
           "altura": "-"
         }
       ],
       "mediocampistas": [
         {
-          "nombre": "Juan Álvarez",
-          "edad": 30,
+          "nombre": "Juan Ignacio Álvarez",
+          "edad": 28,
           "altura": "5' 9\""
         },
         {
@@ -8481,7 +9671,7 @@
         },
         {
           "nombre": "Ulises Sánchez",
-          "edad": 28,
+          "edad": 27,
           "altura": "5' 6\""
         },
         {
@@ -8515,6 +9705,16 @@
           "altura": "5' 9\""
         },
         {
+          "nombre": "Lautaro Carrera",
+          "edad": 23,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Gerónimo Patritti",
+          "edad": 23,
+          "altura": "-"
+        },
+        {
           "nombre": "Santiago Rodríguez",
           "edad": 26,
           "altura": "5' 8\""
@@ -8523,7 +9723,7 @@
       "delanteros": [
         {
           "nombre": "Brian Andrada",
-          "edad": 29,
+          "edad": 28,
           "altura": "5' 6\""
         },
         {
@@ -8553,7 +9753,7 @@
         },
         {
           "nombre": "Ignacio Charparin",
-          "edad": 27,
+          "edad": 26,
           "altura": "-"
         },
         {
@@ -9123,7 +10323,7 @@
     "fundacion": "1905/25/05",
     "estadio": "Ciudad de Vicente López",
     "ciudad": "Vicente López",
-    "actualizado": "2026-06-30T17:16:09.969025+00:00",
+    "actualizado": "2026-06-03T15:15:42.482027+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -9268,21 +10468,338 @@
       }
     ],
     "plantel": {
-      "arqueros": [],
-      "defensores": [],
-      "mediocampistas": [
+      "arqueros": [
         {
-          "nombre": "Matías Ariel Ramírez",
-          "edad": "-",
-          "altura": "-"
+          "nombre": "Brian Bustos",
+          "edad": 29,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Matias Borgogno",
+          "edad": 27,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Nicolás Sumavil",
+          "edad": 26,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Joaquín Giudice",
+          "edad": 20,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Santino Cambiasso",
+          "edad": 19,
+          "altura": "6' 6\""
         }
       ],
-      "delanteros": []
+      "defensores": [
+        {
+          "nombre": "Ignacio Vázquez",
+          "edad": 29,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Víctor Cuesta",
+          "edad": 37,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Gonzalo Goñi",
+          "edad": 27,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Tomás Giménez",
+          "edad": 19,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Agustín Lagos",
+          "edad": 24,
+          "altura": "6' 3\""
+        },
+        {
+          "nombre": "Juan Ignacio Saborido",
+          "edad": 28,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Tomas Silva",
+          "edad": 23,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Santiago Quirós",
+          "edad": 23,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Eugenio Raggio",
+          "edad": 24,
+          "altura": "-"
+        },
+        {
+          "nombre": "Mateo Mendia",
+          "edad": 22,
+          "altura": "6' 3\""
+        },
+        {
+          "nombre": "Celías Ingenthron",
+          "edad": 17,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Agustín Maglione",
+          "edad": 20,
+          "altura": "-"
+        },
+        {
+          "nombre": "Lucas Testa",
+          "edad": 20,
+          "altura": "-"
+        },
+        {
+          "nombre": "Thiago Currado",
+          "edad": 19,
+          "altura": "-"
+        },
+        {
+          "nombre": "Axel Guzmán",
+          "edad": 20,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Christian Ortiz",
+          "edad": 24,
+          "altura": "5' 7\""
+        }
+      ],
+      "mediocampistas": [
+        {
+          "nombre": "Ivan Gomez",
+          "edad": 29,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Leonardo Heredia",
+          "edad": 30,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Mauro Luna Diale",
+          "edad": 27,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Pablo Ferreira",
+          "edad": 21,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Martín Barrios",
+          "edad": 27,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Agustín Funes",
+          "edad": 22,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Lucas Ocampo",
+          "edad": 28,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Franco Zapiola",
+          "edad": 25,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Marcos Portillo",
+          "edad": 26,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Maximiliano Amarfil",
+          "edad": 25,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Franco Minerva",
+          "edad": 20,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Santiago Dalmasso",
+          "edad": 21,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Felipe Bussio",
+          "edad": 21,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Demian Troya",
+          "edad": 21,
+          "altura": "-"
+        },
+        {
+          "nombre": "Santiago Bouhet",
+          "edad": 20,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Salvador Rixner",
+          "edad": 20,
+          "altura": "5' 10\""
+        }
+      ],
+      "delanteros": [
+        {
+          "nombre": "Alejandro Vera",
+          "edad": 19,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Augusto Lotti",
+          "edad": 29,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Guido Mainero",
+          "edad": 31,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Bautista Merlini",
+          "edad": 30,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Juan Gauto",
+          "edad": 22,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Gonzalo Lencina",
+          "edad": 28,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Héctor Bobadilla",
+          "edad": 24,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Nicolas Retamar",
+          "edad": 27,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Manuel Tucker",
+          "edad": 21,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Tomás Nasif",
+          "edad": 22,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Benjamín Bosch",
+          "edad": 20,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Lucas Zelaya",
+          "edad": 20,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Matías Ramírez",
+          "edad": 19,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Luca Bastilla",
+          "edad": 21,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Fausto San Pedro",
+          "edad": 18,
+          "altura": "6' 4\""
+        }
+      ]
     },
     "estadisticas": {
-      "goles": [],
-      "asistencias": [],
-      "amarillas": [],
+      "goles": [
+        {
+          "jugador": "Franco Zapiola",
+          "total": 2
+        },
+        {
+          "jugador": "Augusto Lotti",
+          "total": 2
+        },
+        {
+          "jugador": "Tomás Nasif",
+          "total": 2
+        },
+        {
+          "jugador": "Bautista Merlini",
+          "total": 1
+        },
+        {
+          "jugador": "Ignacio Vázquez",
+          "total": 1
+        }
+      ],
+      "asistencias": [
+        {
+          "jugador": "Tomás Nasif",
+          "total": 1
+        },
+        {
+          "jugador": "Juan Gauto",
+          "total": 1
+        }
+      ],
+      "amarillas": [
+        {
+          "jugador": "Maximiliano Amarfil",
+          "total": 5
+        },
+        {
+          "jugador": "Víctor Cuesta",
+          "total": 5
+        },
+        {
+          "jugador": "Franco Zapiola",
+          "total": 3
+        },
+        {
+          "jugador": "Eugenio Raggio",
+          "total": 2
+        },
+        {
+          "jugador": "Felipe Bussio",
+          "total": 2
+        },
+        {
+          "jugador": "Ignacio Vázquez",
+          "total": 2
+        },
+        {
+          "jugador": "Tomas Silva",
+          "total": 2
+        }
+      ],
       "rojas": []
     },
     "estadisticasGenerales": {
@@ -9449,9 +10966,68 @@
           }
         ],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
+          "goles": [
+            {
+              "jugador": "Franco Zapiola",
+              "total": 2
+            },
+            {
+              "jugador": "Augusto Lotti",
+              "total": 2
+            },
+            {
+              "jugador": "Tomás Nasif",
+              "total": 2
+            },
+            {
+              "jugador": "Bautista Merlini",
+              "total": 1
+            },
+            {
+              "jugador": "Ignacio Vázquez",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Tomás Nasif",
+              "total": 1
+            },
+            {
+              "jugador": "Juan Gauto",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Maximiliano Amarfil",
+              "total": 5
+            },
+            {
+              "jugador": "Víctor Cuesta",
+              "total": 5
+            },
+            {
+              "jugador": "Franco Zapiola",
+              "total": 3
+            },
+            {
+              "jugador": "Eugenio Raggio",
+              "total": 2
+            },
+            {
+              "jugador": "Felipe Bussio",
+              "total": 2
+            },
+            {
+              "jugador": "Ignacio Vázquez",
+              "total": 2
+            },
+            {
+              "jugador": "Tomas Silva",
+              "total": 2
+            }
+          ],
           "rojas": []
         },
         "generales": {
@@ -9477,9 +11053,68 @@
         "proximosPartidos": [],
         "resultados": [],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
+          "goles": [
+            {
+              "jugador": "Franco Zapiola",
+              "total": 2
+            },
+            {
+              "jugador": "Augusto Lotti",
+              "total": 2
+            },
+            {
+              "jugador": "Tomás Nasif",
+              "total": 2
+            },
+            {
+              "jugador": "Bautista Merlini",
+              "total": 1
+            },
+            {
+              "jugador": "Ignacio Vázquez",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Tomás Nasif",
+              "total": 1
+            },
+            {
+              "jugador": "Juan Gauto",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Maximiliano Amarfil",
+              "total": 5
+            },
+            {
+              "jugador": "Víctor Cuesta",
+              "total": 5
+            },
+            {
+              "jugador": "Franco Zapiola",
+              "total": 3
+            },
+            {
+              "jugador": "Eugenio Raggio",
+              "total": 2
+            },
+            {
+              "jugador": "Felipe Bussio",
+              "total": 2
+            },
+            {
+              "jugador": "Ignacio Vázquez",
+              "total": 2
+            },
+            {
+              "jugador": "Tomas Silva",
+              "total": 2
+            }
+          ],
           "rojas": []
         },
         "generales": {
@@ -9650,7 +11285,7 @@
     "fundacion": "1919/03/06",
     "estadio": "Único Madre de Ciudades",
     "ciudad": "Santiago del Estero",
-    "actualizado": "2026-06-30T17:16:10.319833+00:00",
+    "actualizado": "2026-06-03T15:15:42.836771+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -9805,6 +11440,11 @@
           "nombre": "Javier Vallejos",
           "edad": 23,
           "altura": "6' 2\""
+        },
+        {
+          "nombre": "Matias Vera",
+          "edad": 20,
+          "altura": "6' 1\""
         }
       ],
       "defensores": [
@@ -9852,11 +11492,6 @@
           "nombre": "Yuri Casermeiro",
           "edad": 24,
           "altura": "6' 3\""
-        },
-        {
-          "nombre": "Matías Vera",
-          "edad": 27,
-          "altura": "5' 7\""
         }
       ],
       "mediocampistas": [
@@ -9904,7 +11539,7 @@
         },
         {
           "nombre": "Diego Barrera",
-          "edad": 22,
+          "edad": 21,
           "altura": "5' 7\""
         },
         {
@@ -10433,7 +12068,7 @@
     "fundacion": "1903/03/11",
     "estadio": "Marcelo Bielsa",
     "ciudad": "Rosario",
-    "actualizado": "2026-06-30T17:16:10.686018+00:00",
+    "actualizado": "2026-06-03T15:15:43.127058+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -10580,13 +12215,8 @@
     "plantel": {
       "arqueros": [
         {
-          "nombre": "Gabriel Arias",
-          "edad": 38,
-          "altura": "6' 2\""
-        },
-        {
           "nombre": "Williams Barlasina",
-          "edad": 28,
+          "edad": 27,
           "altura": "6' 5\""
         },
         {
@@ -10596,11 +12226,6 @@
         }
       ],
       "defensores": [
-        {
-          "nombre": "Rodrigo Herrera",
-          "edad": 25,
-          "altura": "5' 10\""
-        },
         {
           "nombre": "Fabián Noguera",
           "edad": 33,
@@ -10612,9 +12237,9 @@
           "altura": "6' 0\""
         },
         {
-          "nombre": "Martín Ortega",
-          "edad": 26,
-          "altura": "6' 0\""
+          "nombre": "Gabriel Risso",
+          "edad": 30,
+          "altura": "5' 10\""
         },
         {
           "nombre": "Armando Méndez",
@@ -10628,7 +12253,7 @@
         },
         {
           "nombre": "Nicolas Goitea",
-          "edad": 29,
+          "edad": 28,
           "altura": "6' 1\""
         },
         {
@@ -10654,6 +12279,16 @@
       ],
       "mediocampistas": [
         {
+          "nombre": "Gabriel Arias",
+          "edad": 27,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Rodrigo Herrera",
+          "edad": 25,
+          "altura": "5' 10\""
+        },
+        {
           "nombre": "Michael Hoyos",
           "edad": 34,
           "altura": "6' 1\""
@@ -10664,9 +12299,9 @@
           "altura": "5' 10\""
         },
         {
-          "nombre": "Lautaro Rios",
-          "edad": 19,
-          "altura": "6' 0\""
+          "nombre": "Franco Orozco",
+          "edad": 24,
+          "altura": "5' 6\""
         },
         {
           "nombre": "Marcelo Esponda",
@@ -10716,6 +12351,11 @@
           "altura": "5' 10\""
         },
         {
+          "nombre": "Franco García",
+          "edad": 28,
+          "altura": "5' 9\""
+        },
+        {
           "nombre": "Luciano Herrera",
           "edad": 30,
           "altura": "5' 10\""
@@ -10752,6 +12392,10 @@
         {
           "jugador": "Oscar Salómon",
           "total": 2
+        },
+        {
+          "jugador": "Franco García",
+          "total": 1
         },
         {
           "jugador": "Matías Cóccaro",
@@ -10999,6 +12643,10 @@
               "total": 2
             },
             {
+              "jugador": "Franco García",
+              "total": 1
+            },
+            {
               "jugador": "Matías Cóccaro",
               "total": 1
             },
@@ -11101,6 +12749,10 @@
             {
               "jugador": "Oscar Salómon",
               "total": 2
+            },
+            {
+              "jugador": "Franco García",
+              "total": 1
             },
             {
               "jugador": "Matías Cóccaro",
@@ -11261,7 +12913,7 @@
     "fundacion": "1931/22/02",
     "estadio": "Guillermo Laza",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-06-30T17:16:11.065957+00:00",
+    "actualizado": "2026-06-03T15:15:43.629057+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -11430,11 +13082,6 @@
       ],
       "defensores": [
         {
-          "nombre": "Carlos Quintana",
-          "edad": 38,
-          "altura": "6' 3\""
-        },
-        {
           "nombre": "Yaison Murillo",
           "edad": 32,
           "altura": "6' 4\""
@@ -11486,18 +13133,13 @@
         },
         {
           "nombre": "Manuel Aiello",
-          "edad": 22,
+          "edad": 21,
           "altura": "5' 9\""
         },
         {
           "nombre": "Justo Rodríguez",
           "edad": 23,
           "altura": "5' 10\""
-        },
-        {
-          "nombre": "Luciano Cremosa",
-          "edad": 20,
-          "altura": "6' 1\""
         }
       ],
       "mediocampistas": [
@@ -11505,6 +13147,16 @@
           "nombre": "Matías García",
           "edad": 30,
           "altura": "5' 10\""
+        },
+        {
+          "nombre": "Leonardo Landriel",
+          "edad": 29,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Mateo Ramirez",
+          "edad": 31,
+          "altura": "6' 1\""
         },
         {
           "nombre": "Nicólas Watson",
@@ -11552,22 +13204,17 @@
           "altura": "6' 2\""
         },
         {
+          "nombre": "Luciano Cremosa",
+          "edad": 20,
+          "altura": "6' 1\""
+        },
+        {
           "nombre": "Luciano De Reatti",
           "edad": 17,
           "altura": "6' 0\""
-        },
-        {
-          "nombre": "Thiago Montenegro",
-          "edad": 17,
-          "altura": "5' 11\""
         }
       ],
       "delanteros": [
-        {
-          "nombre": "Miguel Graneros",
-          "edad": 30,
-          "altura": "5' 11\""
-        },
         {
           "nombre": "Alexander Díaz",
           "edad": 26,
@@ -11599,9 +13246,19 @@
           "altura": "5' 10\""
         },
         {
+          "nombre": "Rodrigo Sayavedra",
+          "edad": 30,
+          "altura": "5' 10\""
+        },
+        {
           "nombre": "Antony Alonso",
           "edad": 28,
           "altura": "6' 3\""
+        },
+        {
+          "nombre": "Johnson Nsumoh Kalu",
+          "edad": 24,
+          "altura": "5' 7\""
         },
         {
           "nombre": "Ángel Stringa",
@@ -11620,13 +13277,18 @@
         },
         {
           "nombre": "Mateo Straffurini",
-          "edad": 20,
+          "edad": 19,
           "altura": "6' 2\""
         },
         {
           "nombre": "Ronald Villafañe",
           "edad": 19,
           "altura": "5' 9\""
+        },
+        {
+          "nombre": "Thiago Montenegro",
+          "edad": 17,
+          "altura": "5' 11\""
         }
       ]
     },
@@ -12127,7 +13789,7 @@
     "fundacion": "1913/24/01",
     "estadio": "Bautista Gargantini",
     "ciudad": "Mendoza",
-    "actualizado": "2026-06-30T17:16:11.468684+00:00",
+    "actualizado": "2026-06-03T15:15:43.939680+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -12384,7 +14046,7 @@
       "mediocampistas": [
         {
           "nombre": "Matías Fernández",
-          "edad": 25,
+          "edad": 24,
           "altura": "5' 7\""
         },
         {
@@ -12409,7 +14071,7 @@
         },
         {
           "nombre": "Diego Crego",
-          "edad": 29,
+          "edad": 28,
           "altura": "-"
         },
         {
@@ -12486,12 +14148,12 @@
         },
         {
           "nombre": "Alex Arce",
-          "edad": 31,
+          "edad": 30,
           "altura": "6' 2\""
         },
         {
           "nombre": "Santiago Múñoz",
-          "edad": 27,
+          "edad": 26,
           "altura": "5' 8\""
         },
         {
@@ -12501,7 +14163,7 @@
         },
         {
           "nombre": "Rodrigo Atencio",
-          "edad": 24,
+          "edad": 23,
           "altura": "5' 9\""
         },
         {
@@ -12521,7 +14183,7 @@
         },
         {
           "nombre": "Joaquin Ibañez",
-          "edad": 22,
+          "edad": 21,
           "altura": "5' 7\""
         },
         {
@@ -13180,7 +14842,7 @@
     "fundacion": "1901/25/05",
     "estadio": "Mâs Monumental",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-06-30T17:16:11.822464+00:00",
+    "actualizado": "2026-06-03T15:15:44.364287+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -13350,7 +15012,7 @@
       "defensores": [
         {
           "nombre": "Germán Pezzella",
-          "edad": 35,
+          "edad": 34,
           "altura": "6' 2\""
         },
         {
@@ -13432,7 +15094,7 @@
       "mediocampistas": [
         {
           "nombre": "Brian Gutiérrez",
-          "edad": 23,
+          "edad": 22,
           "altura": "5' 10\""
         },
         {
@@ -13457,7 +15119,7 @@
         },
         {
           "nombre": "Giuliano Galoppo",
-          "edad": 27,
+          "edad": 26,
           "altura": "5' 11\""
         },
         {
@@ -14291,7 +15953,7 @@
     "fundacion": "1904/15/08",
     "estadio": "Diego Armando Maradona",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-06-30T17:16:12.221719+00:00",
+    "actualizado": "2026-06-03T15:15:44.641307+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -14439,7 +16101,7 @@
       "arqueros": [
         {
           "nombre": "Diego Rodríguez",
-          "edad": 37,
+          "edad": 36,
           "altura": "6' 0\""
         },
         {
@@ -14598,7 +16260,7 @@
         },
         {
           "nombre": "Lucas Gómez",
-          "edad": 22,
+          "edad": 21,
           "altura": "5' 11\""
         },
         {
@@ -15280,7 +16942,7 @@
     "fundacion": "1889/24/12",
     "estadio": "Gigante de Arroyito",
     "ciudad": "Rosario",
-    "actualizado": "2026-06-30T17:16:12.767668+00:00",
+    "actualizado": "2026-06-03T15:15:45.206443+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -15454,6 +17116,11 @@
       ],
       "defensores": [
         {
+          "nombre": "Carlos Quintana",
+          "edad": 38,
+          "altura": "6' 3\""
+        },
+        {
           "nombre": "Juan Komar",
           "edad": 29,
           "altura": "6' 3\""
@@ -15510,7 +17177,7 @@
         },
         {
           "nombre": "Ignacio Ovando",
-          "edad": 19,
+          "edad": 18,
           "altura": "6' 0\""
         },
         {
@@ -15573,7 +17240,7 @@
         {
           "nombre": "Jáminton Campaz",
           "edad": 26,
-          "altura": "5' 5\""
+          "altura": "5' 6\""
         },
         {
           "nombre": "Federico Navarro",
@@ -15591,19 +17258,9 @@
           "altura": "5' 9\""
         },
         {
-          "nombre": "Gaspar Duarte",
-          "edad": 23,
-          "altura": "5' 9\""
-        },
-        {
           "nombre": "Samuel Beltrán",
           "edad": 22,
           "altura": "5' 10\""
-        },
-        {
-          "nombre": "Giovanni Cantizano",
-          "edad": 19,
-          "altura": "5' 6\""
         },
         {
           "nombre": "Santiago Segovia",
@@ -15627,7 +17284,7 @@
         },
         {
           "nombre": "Bautista Cantero",
-          "edad": 18,
+          "edad": 17,
           "altura": "-"
         },
         {
@@ -15658,6 +17315,11 @@
           "altura": "5' 10\""
         },
         {
+          "nombre": "Alejo Veliz",
+          "edad": 22,
+          "altura": "6' 1\""
+        },
+        {
           "nombre": "Julián Fernández",
           "edad": 22,
           "altura": "6' 0\""
@@ -15666,6 +17328,16 @@
           "nombre": "Fabricio Oviedo",
           "edad": 22,
           "altura": "5' 9\""
+        },
+        {
+          "nombre": "Gaspar Duarte",
+          "edad": 23,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Giovanni Cantizano",
+          "edad": 19,
+          "altura": "5' 6\""
         },
         {
           "nombre": "Thiago Ponce",
@@ -15679,7 +17351,7 @@
         },
         {
           "nombre": "Paulo Bustos",
-          "edad": 21,
+          "edad": 20,
           "altura": "5' 9\""
         }
       ]
@@ -15688,6 +17360,10 @@
       "goles": [
         {
           "jugador": "Enzo Copetti",
+          "total": 4
+        },
+        {
+          "jugador": "Alejo Veliz",
           "total": 4
         },
         {
@@ -15737,7 +17413,15 @@
           "total": 3
         },
         {
+          "jugador": "Carlos Quintana",
+          "total": 1
+        },
+        {
           "jugador": "Agustín Sández",
+          "total": 1
+        },
+        {
+          "jugador": "Alejo Veliz",
           "total": 1
         }
       ],
@@ -15943,6 +17627,10 @@
               "total": 4
             },
             {
+              "jugador": "Alejo Veliz",
+              "total": 4
+            },
+            {
               "jugador": "Ángel Di María",
               "total": 4
             },
@@ -15989,7 +17677,15 @@
               "total": 3
             },
             {
+              "jugador": "Carlos Quintana",
+              "total": 1
+            },
+            {
               "jugador": "Agustín Sández",
+              "total": 1
+            },
+            {
+              "jugador": "Alejo Veliz",
               "total": 1
             }
           ],
@@ -16054,6 +17750,10 @@
               "total": 4
             },
             {
+              "jugador": "Alejo Veliz",
+              "total": 4
+            },
+            {
               "jugador": "Ángel Di María",
               "total": 4
             },
@@ -16100,7 +17800,15 @@
               "total": 3
             },
             {
+              "jugador": "Carlos Quintana",
+              "total": 1
+            },
+            {
               "jugador": "Agustín Sández",
+              "total": 1
+            },
+            {
+              "jugador": "Alejo Veliz",
               "total": 1
             }
           ],
@@ -16304,7 +18012,7 @@
     "fundacion": "1905/19/03",
     "estadio": "Julio César Villagra",
     "ciudad": "Córdoba",
-    "actualizado": "2026-06-30T17:16:13.109564+00:00",
+    "actualizado": "2026-06-03T15:15:45.544600+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -16499,7 +18207,7 @@
         },
         {
           "nombre": "Alcides Benítez",
-          "edad": 24,
+          "edad": 23,
           "altura": "5' 6\""
         },
         {
@@ -16541,7 +18249,7 @@
         },
         {
           "nombre": "Lucas Zelarayán",
-          "edad": 34,
+          "edad": 33,
           "altura": "5' 8\""
         },
         {
@@ -17204,7 +18912,7 @@
     "fundacion": "1887/03/06",
     "estadio": "Juan Carmelo Zerillo",
     "ciudad": "La Plata",
-    "actualizado": "2026-06-30T17:16:13.426324+00:00",
+    "actualizado": "2026-06-03T15:15:45.959636+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -17378,13 +19086,18 @@
           "altura": "6' 0\""
         },
         {
+          "nombre": "Germán Conti",
+          "edad": 32,
+          "altura": "6' 4\""
+        },
+        {
           "nombre": "Pedro Silva Torrejón",
           "edad": 29,
           "altura": "5' 10\""
         },
         {
           "nombre": "Matías Melluso",
-          "edad": 28,
+          "edad": 27,
           "altura": "5' 7\""
         },
         {
@@ -17456,7 +19169,7 @@
         },
         {
           "nombre": "Ignacio Miramon",
-          "edad": 23,
+          "edad": 22,
           "altura": "5' 9\""
         },
         {
@@ -17481,12 +19194,12 @@
         },
         {
           "nombre": "Jeremias Merlo",
-          "edad": 20,
+          "edad": 19,
           "altura": "5' 7\""
         },
         {
           "nombre": "Facundo Di Biasi",
-          "edad": 21,
+          "edad": 20,
           "altura": "5' 11\""
         },
         {
@@ -18040,7 +19753,7 @@
     "fundacion": "1908/01/11",
     "estadio": "Tomás Adolfo Ducó",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-06-30T17:16:13.896752+00:00",
+    "actualizado": "2026-06-03T15:15:46.369140+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -18235,7 +19948,7 @@
         },
         {
           "nombre": "Cesar Ibañez",
-          "edad": 27,
+          "edad": 26,
           "altura": "5' 7\""
         },
         {
@@ -18255,8 +19968,13 @@
         },
         {
           "nombre": "Máximo Palazzo",
-          "edad": 21,
+          "edad": 20,
           "altura": "6' 0\""
+        },
+        {
+          "nombre": "Thiago Pérez",
+          "edad": 17,
+          "altura": "5' 8\""
         }
       ],
       "mediocampistas": [
@@ -18284,11 +20002,6 @@
           "nombre": "Silvio Martínez",
           "edad": 28,
           "altura": "5' 7\""
-        },
-        {
-          "nombre": "Thiago Pérez",
-          "edad": 20,
-          "altura": "6' 0\""
         },
         {
           "nombre": "Luca Babino",
@@ -18331,6 +20044,11 @@
           "nombre": "Oscar Cortés",
           "edad": 22,
           "altura": "5' 9\""
+        },
+        {
+          "nombre": "Luciano Giménez",
+          "edad": 26,
+          "altura": "6' 2\""
         },
         {
           "nombre": "Lautaro Mora",
@@ -18407,6 +20125,10 @@
         },
         {
           "jugador": "Lucas Blondel",
+          "total": 3
+        },
+        {
+          "jugador": "Luciano Giménez",
           "total": 3
         },
         {
@@ -18663,6 +20385,10 @@
               "total": 3
             },
             {
+              "jugador": "Luciano Giménez",
+              "total": 3
+            },
+            {
               "jugador": "Leandro Lescano",
               "total": 2
             }
@@ -18775,6 +20501,10 @@
               "total": 3
             },
             {
+              "jugador": "Luciano Giménez",
+              "total": 3
+            },
+            {
               "jugador": "Leandro Lescano",
               "total": 2
             }
@@ -18877,7 +20607,7 @@
     "fundacion": "1903/25/03",
     "estadio": "Presidente Perón",
     "ciudad": "Avellaneda",
-    "actualizado": "2026-06-30T17:16:14.197298+00:00",
+    "actualizado": "2026-06-03T15:15:46.778896+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -19022,22 +20752,354 @@
       }
     ],
     "plantel": {
-      "arqueros": [],
-      "defensores": [],
-      "mediocampistas": [
+      "arqueros": [
         {
-          "nombre": "Bautista Ezequiel Pérez",
-          "edad": "-",
+          "nombre": "Facundo Cambeses",
+          "edad": 29,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Matías Tagliamonte",
+          "edad": 28,
+          "altura": "6' 5\""
+        },
+        {
+          "nombre": "Francisco Gómez",
+          "edad": 22,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Thiago De Bellis",
+          "edad": 21,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Lucio Latorre",
+          "edad": 20,
           "altura": "-"
         }
       ],
-      "delanteros": []
+      "defensores": [
+        {
+          "nombre": "Marcos Rojo",
+          "edad": 36,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Agustín García Basso",
+          "edad": 34,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Gabriel Rojas",
+          "edad": 28,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Franco Pardo",
+          "edad": 29,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Nazareno Colombo",
+          "edad": 27,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Marco Di Cesare",
+          "edad": 24,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Gastón Martirena",
+          "edad": 26,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Ezequiel Cannavo",
+          "edad": 23,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Tobías Rubio",
+          "edad": 21,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Axel Cabellos",
+          "edad": 19,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Gonzalo Escudero",
+          "edad": 19,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Galo Volpe",
+          "edad": 22,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Samir Meza",
+          "edad": 20,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Benjamín González",
+          "edad": 19,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Mateo Martínez",
+          "edad": 18,
+          "altura": "5' 9\""
+        }
+      ],
+      "mediocampistas": [
+        {
+          "nombre": "Alejandro Tello",
+          "edad": 18,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Bruno Zuculini",
+          "edad": 33,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Gonzalo Sosa",
+          "edad": 21,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Matías Zaracho",
+          "edad": 28,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Santiago Sosa",
+          "edad": 27,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Matko Miljevic",
+          "edad": 25,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Adrián Fernández",
+          "edad": 25,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Ignacio Agustin Rodríguez",
+          "edad": 24,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Valentin Carboni",
+          "edad": 21,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Baltasar Rodríguez",
+          "edad": 22,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Felipe Schaare",
+          "edad": 20,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Bautista Castreje",
+          "edad": 19,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Alan Forneris",
+          "edad": 21,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Ezequiel Pérez",
+          "edad": 18,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Bautista Perez",
+          "edad": 17,
+          "altura": "-"
+        },
+        {
+          "nombre": "Gonzalo Leiva",
+          "edad": 19,
+          "altura": "-"
+        },
+        {
+          "nombre": "Luciano Agüero",
+          "edad": 18,
+          "altura": "5' 10\""
+        }
+      ],
+      "delanteros": [
+        {
+          "nombre": "Adrián Martínez",
+          "edad": 33,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Duván Vergara",
+          "edad": 29,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Tomás Conechny",
+          "edad": 28,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Santiago Solari",
+          "edad": 28,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Damián Pizarro",
+          "edad": 21,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Elías Torres",
+          "edad": 25,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Tomas Perez",
+          "edad": 20,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Francisco Fraga",
+          "edad": 20,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Thiago Taborda",
+          "edad": 20,
+          "altura": "-"
+        }
+      ]
     },
     "estadisticas": {
-      "goles": [],
-      "asistencias": [],
-      "amarillas": [],
-      "rojas": []
+      "goles": [
+        {
+          "jugador": "Adrián Martínez",
+          "total": 4
+        },
+        {
+          "jugador": "Tomás Conechny",
+          "total": 3
+        },
+        {
+          "jugador": "Duván Vergara",
+          "total": 2
+        },
+        {
+          "jugador": "Marco Di Cesare",
+          "total": 2
+        },
+        {
+          "jugador": "Matías Zaracho",
+          "total": 2
+        },
+        {
+          "jugador": "Santiago Solari",
+          "total": 2
+        },
+        {
+          "jugador": "Adrián Fernández",
+          "total": 1
+        },
+        {
+          "jugador": "Gabriel Rojas",
+          "total": 1
+        }
+      ],
+      "asistencias": [
+        {
+          "jugador": "Gabriel Rojas",
+          "total": 3
+        },
+        {
+          "jugador": "Santiago Solari",
+          "total": 3
+        },
+        {
+          "jugador": "Tomás Conechny",
+          "total": 2
+        },
+        {
+          "jugador": "Damián Pizarro",
+          "total": 1
+        },
+        {
+          "jugador": "Adrián Fernández",
+          "total": 1
+        },
+        {
+          "jugador": "Baltasar Rodríguez",
+          "total": 1
+        },
+        {
+          "jugador": "Bruno Zuculini",
+          "total": 1
+        }
+      ],
+      "amarillas": [
+        {
+          "jugador": "Marco Di Cesare",
+          "total": 6
+        },
+        {
+          "jugador": "Baltasar Rodríguez",
+          "total": 5
+        },
+        {
+          "jugador": "Santiago Sosa",
+          "total": 5
+        },
+        {
+          "jugador": "Matko Miljevic",
+          "total": 4
+        },
+        {
+          "jugador": "Adrián Martínez",
+          "total": 3
+        },
+        {
+          "jugador": "Franco Pardo",
+          "total": 3
+        }
+      ],
+      "rojas": [
+        {
+          "jugador": "Marco Di Cesare",
+          "total": 1
+        },
+        {
+          "jugador": "Matko Miljevic",
+          "total": 1
+        },
+        {
+          "jugador": "Marcos Rojo",
+          "total": 1
+        },
+        {
+          "jugador": "Adrián Fernández",
+          "total": 1
+        }
+      ]
     },
     "estadisticasGenerales": {
       "posicion": "8",
@@ -19203,10 +21265,114 @@
           }
         ],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
-          "rojas": []
+          "goles": [
+            {
+              "jugador": "Adrián Martínez",
+              "total": 4
+            },
+            {
+              "jugador": "Tomás Conechny",
+              "total": 3
+            },
+            {
+              "jugador": "Duván Vergara",
+              "total": 2
+            },
+            {
+              "jugador": "Marco Di Cesare",
+              "total": 2
+            },
+            {
+              "jugador": "Matías Zaracho",
+              "total": 2
+            },
+            {
+              "jugador": "Santiago Solari",
+              "total": 2
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 1
+            },
+            {
+              "jugador": "Gabriel Rojas",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Gabriel Rojas",
+              "total": 3
+            },
+            {
+              "jugador": "Santiago Solari",
+              "total": 3
+            },
+            {
+              "jugador": "Tomás Conechny",
+              "total": 2
+            },
+            {
+              "jugador": "Damián Pizarro",
+              "total": 1
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 1
+            },
+            {
+              "jugador": "Baltasar Rodríguez",
+              "total": 1
+            },
+            {
+              "jugador": "Bruno Zuculini",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Marco Di Cesare",
+              "total": 6
+            },
+            {
+              "jugador": "Baltasar Rodríguez",
+              "total": 5
+            },
+            {
+              "jugador": "Santiago Sosa",
+              "total": 5
+            },
+            {
+              "jugador": "Matko Miljevic",
+              "total": 4
+            },
+            {
+              "jugador": "Adrián Martínez",
+              "total": 3
+            },
+            {
+              "jugador": "Franco Pardo",
+              "total": 3
+            }
+          ],
+          "rojas": [
+            {
+              "jugador": "Marco Di Cesare",
+              "total": 1
+            },
+            {
+              "jugador": "Matko Miljevic",
+              "total": 1
+            },
+            {
+              "jugador": "Marcos Rojo",
+              "total": 1
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 1
+            }
+          ]
         },
         "generales": {
           "posicion": "8",
@@ -19231,10 +21397,114 @@
         "proximosPartidos": [],
         "resultados": [],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
-          "rojas": []
+          "goles": [
+            {
+              "jugador": "Adrián Martínez",
+              "total": 4
+            },
+            {
+              "jugador": "Tomás Conechny",
+              "total": 3
+            },
+            {
+              "jugador": "Duván Vergara",
+              "total": 2
+            },
+            {
+              "jugador": "Marco Di Cesare",
+              "total": 2
+            },
+            {
+              "jugador": "Matías Zaracho",
+              "total": 2
+            },
+            {
+              "jugador": "Santiago Solari",
+              "total": 2
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 1
+            },
+            {
+              "jugador": "Gabriel Rojas",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Gabriel Rojas",
+              "total": 3
+            },
+            {
+              "jugador": "Santiago Solari",
+              "total": 3
+            },
+            {
+              "jugador": "Tomás Conechny",
+              "total": 2
+            },
+            {
+              "jugador": "Damián Pizarro",
+              "total": 1
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 1
+            },
+            {
+              "jugador": "Baltasar Rodríguez",
+              "total": 1
+            },
+            {
+              "jugador": "Bruno Zuculini",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Marco Di Cesare",
+              "total": 6
+            },
+            {
+              "jugador": "Baltasar Rodríguez",
+              "total": 5
+            },
+            {
+              "jugador": "Santiago Sosa",
+              "total": 5
+            },
+            {
+              "jugador": "Matko Miljevic",
+              "total": 4
+            },
+            {
+              "jugador": "Adrián Martínez",
+              "total": 3
+            },
+            {
+              "jugador": "Franco Pardo",
+              "total": 3
+            }
+          ],
+          "rojas": [
+            {
+              "jugador": "Marco Di Cesare",
+              "total": 1
+            },
+            {
+              "jugador": "Matko Miljevic",
+              "total": 1
+            },
+            {
+              "jugador": "Marcos Rojo",
+              "total": 1
+            },
+            {
+              "jugador": "Adrián Fernández",
+              "total": 1
+            }
+          ]
         },
         "generales": {
           "posicion": "-",
@@ -19404,7 +21674,7 @@
     "fundacion": "1904/05/04",
     "estadio": "Claudio Chiqui Tapia",
     "ciudad": "Buenos Aires",
-    "actualizado": "2026-06-30T17:16:14.594563+00:00",
+    "actualizado": "2026-06-03T15:15:47.084351+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -19549,21 +21819,347 @@
       }
     ],
     "plantel": {
-      "arqueros": [],
-      "defensores": [],
-      "mediocampistas": [
+      "arqueros": [
         {
-          "nombre": "Alejandro Emanuel Rodriguez",
-          "edad": "-",
+          "nombre": "Juan Espínola",
+          "edad": 31,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Marcelo Miño",
+          "edad": 28,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Juan Insúa",
+          "edad": 21,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Luca Fernández",
+          "edad": 20,
           "altura": "-"
         }
       ],
-      "delanteros": []
+      "defensores": [
+        {
+          "nombre": "Fernando Tobio",
+          "edad": 36,
+          "altura": "6' 3\""
+        },
+        {
+          "nombre": "Damián Martínez",
+          "edad": 36,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Gastón Campi",
+          "edad": 35,
+          "altura": "6' 4\""
+        },
+        {
+          "nombre": "Rafael Barrios",
+          "edad": 33,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Yonatthan Rak",
+          "edad": 32,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Nicolás De Martini",
+          "edad": 26,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Nicolás Capraro",
+          "edad": 28,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Lautaro Bilbao",
+          "edad": 19,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Tomás Guimarey",
+          "edad": 20,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Alejandro Hermes",
+          "edad": 20,
+          "altura": "5' 9\""
+        }
+      ],
+      "mediocampistas": [
+        {
+          "nombre": "Carlos Arce",
+          "edad": 35,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Dardo Miloc",
+          "edad": 35,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Yeison Gordillo",
+          "edad": 33,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Rodrigo Bogarín",
+          "edad": 29,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Gonzalo Maroni",
+          "edad": 27,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Alex Juárez",
+          "edad": 21,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Mateo Coronel",
+          "edad": 21,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Iván Tapia",
+          "edad": 27,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Rodrigo Insúa",
+          "edad": 28,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Maximiliano Puig",
+          "edad": 25,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Tomás Porra",
+          "edad": 22,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Manuel Duarte",
+          "edad": 24,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Kevin Jappert",
+          "edad": 22,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Leandro Duarte",
+          "edad": 22,
+          "altura": "-"
+        },
+        {
+          "nombre": "Bruno Mascheroni",
+          "edad": 18,
+          "altura": "-"
+        },
+        {
+          "nombre": "Francisco Cora",
+          "edad": 20,
+          "altura": "-"
+        },
+        {
+          "nombre": "Oziel Gorosito",
+          "edad": 20,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Leandro Ballota",
+          "edad": 20,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Gianluca Scarvaci",
+          "edad": 20,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Octavio Vallejos",
+          "edad": 20,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Faustino Barreto",
+          "edad": 19,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Alejandro Rodríguez",
+          "edad": 20,
+          "altura": "5' 9\""
+        }
+      ],
+      "delanteros": [
+        {
+          "nombre": "Javier Morales",
+          "edad": 23,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Lucas Gamba",
+          "edad": 38,
+          "altura": "5' 5\""
+        },
+        {
+          "nombre": "Norberto Briasco",
+          "edad": 30,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Jhonatan Candia",
+          "edad": 31,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Facundo Bruera",
+          "edad": 27,
+          "altura": "6' 4\""
+        },
+        {
+          "nombre": "Wilfredo Rivera",
+          "edad": 22,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Enzo Taborda",
+          "edad": 21,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Lucas Villagra",
+          "edad": 21,
+          "altura": "5' 5\""
+        },
+        {
+          "nombre": "Valentino Gandín",
+          "edad": 19,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Iván Guaraz",
+          "edad": 21,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Tomas Lavezzi",
+          "edad": 21,
+          "altura": "5' 6\""
+        },
+        {
+          "nombre": "Bruno Váldez",
+          "edad": 20,
+          "altura": "-"
+        },
+        {
+          "nombre": "Julián Tripepi",
+          "edad": 19,
+          "altura": "5' 9\""
+        }
+      ]
     },
     "estadisticas": {
-      "goles": [],
-      "asistencias": [],
-      "amarillas": [],
+      "goles": [
+        {
+          "jugador": "Rodrigo Insúa",
+          "total": 3
+        },
+        {
+          "jugador": "Fernando Tobio",
+          "total": 2
+        },
+        {
+          "jugador": "Damián Martínez",
+          "total": 1
+        },
+        {
+          "jugador": "Facundo Bruera",
+          "total": 1
+        },
+        {
+          "jugador": "Gonzalo Maroni",
+          "total": 1
+        },
+        {
+          "jugador": "Iván Tapia",
+          "total": 1
+        },
+        {
+          "jugador": "Jhonatan Candia",
+          "total": 1
+        },
+        {
+          "jugador": "Kevin Jappert",
+          "total": 1
+        },
+        {
+          "jugador": "Lucas Gamba",
+          "total": 1
+        }
+      ],
+      "asistencias": [
+        {
+          "jugador": "Tomás Porra",
+          "total": 3
+        },
+        {
+          "jugador": "Facundo Bruera",
+          "total": 1
+        },
+        {
+          "jugador": "Iván Tapia",
+          "total": 1
+        },
+        {
+          "jugador": "Rodrigo Insúa",
+          "total": 1
+        }
+      ],
+      "amarillas": [
+        {
+          "jugador": "Facundo Bruera",
+          "total": 4
+        },
+        {
+          "jugador": "Tomás Porra",
+          "total": 4
+        },
+        {
+          "jugador": "Dardo Miloc",
+          "total": 3
+        },
+        {
+          "jugador": "Rodrigo Insúa",
+          "total": 3
+        },
+        {
+          "jugador": "Gastón Campi",
+          "total": 2
+        },
+        {
+          "jugador": "Gonzalo Maroni",
+          "total": 2
+        },
+        {
+          "jugador": "Iván Guaraz",
+          "total": 2
+        }
+      ],
       "rojas": []
     },
     "estadisticasGenerales": {
@@ -19730,9 +22326,92 @@
           }
         ],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
+          "goles": [
+            {
+              "jugador": "Rodrigo Insúa",
+              "total": 3
+            },
+            {
+              "jugador": "Fernando Tobio",
+              "total": 2
+            },
+            {
+              "jugador": "Damián Martínez",
+              "total": 1
+            },
+            {
+              "jugador": "Facundo Bruera",
+              "total": 1
+            },
+            {
+              "jugador": "Gonzalo Maroni",
+              "total": 1
+            },
+            {
+              "jugador": "Iván Tapia",
+              "total": 1
+            },
+            {
+              "jugador": "Jhonatan Candia",
+              "total": 1
+            },
+            {
+              "jugador": "Kevin Jappert",
+              "total": 1
+            },
+            {
+              "jugador": "Lucas Gamba",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Tomás Porra",
+              "total": 3
+            },
+            {
+              "jugador": "Facundo Bruera",
+              "total": 1
+            },
+            {
+              "jugador": "Iván Tapia",
+              "total": 1
+            },
+            {
+              "jugador": "Rodrigo Insúa",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Facundo Bruera",
+              "total": 4
+            },
+            {
+              "jugador": "Tomás Porra",
+              "total": 4
+            },
+            {
+              "jugador": "Dardo Miloc",
+              "total": 3
+            },
+            {
+              "jugador": "Rodrigo Insúa",
+              "total": 3
+            },
+            {
+              "jugador": "Gastón Campi",
+              "total": 2
+            },
+            {
+              "jugador": "Gonzalo Maroni",
+              "total": 2
+            },
+            {
+              "jugador": "Iván Guaraz",
+              "total": 2
+            }
+          ],
           "rojas": []
         },
         "generales": {
@@ -19758,9 +22437,92 @@
         "proximosPartidos": [],
         "resultados": [],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
+          "goles": [
+            {
+              "jugador": "Rodrigo Insúa",
+              "total": 3
+            },
+            {
+              "jugador": "Fernando Tobio",
+              "total": 2
+            },
+            {
+              "jugador": "Damián Martínez",
+              "total": 1
+            },
+            {
+              "jugador": "Facundo Bruera",
+              "total": 1
+            },
+            {
+              "jugador": "Gonzalo Maroni",
+              "total": 1
+            },
+            {
+              "jugador": "Iván Tapia",
+              "total": 1
+            },
+            {
+              "jugador": "Jhonatan Candia",
+              "total": 1
+            },
+            {
+              "jugador": "Kevin Jappert",
+              "total": 1
+            },
+            {
+              "jugador": "Lucas Gamba",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Tomás Porra",
+              "total": 3
+            },
+            {
+              "jugador": "Facundo Bruera",
+              "total": 1
+            },
+            {
+              "jugador": "Iván Tapia",
+              "total": 1
+            },
+            {
+              "jugador": "Rodrigo Insúa",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Facundo Bruera",
+              "total": 4
+            },
+            {
+              "jugador": "Tomás Porra",
+              "total": 4
+            },
+            {
+              "jugador": "Dardo Miloc",
+              "total": 3
+            },
+            {
+              "jugador": "Rodrigo Insúa",
+              "total": 3
+            },
+            {
+              "jugador": "Gastón Campi",
+              "total": 2
+            },
+            {
+              "jugador": "Gonzalo Maroni",
+              "total": 2
+            },
+            {
+              "jugador": "Iván Guaraz",
+              "total": 2
+            }
+          ],
           "rojas": []
         },
         "generales": {
@@ -19931,7 +22693,7 @@
     "fundacion": "1902/03/08",
     "estadio": "José Dellagiovanna",
     "ciudad": "Victoria",
-    "actualizado": "2026-06-30T17:16:14.938791+00:00",
+    "actualizado": "2026-06-03T15:15:47.558153+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -20076,22 +22838,350 @@
       }
     ],
     "plantel": {
-      "arqueros": [],
+      "arqueros": [
+        {
+          "nombre": "Tomas Sultani",
+          "edad": 27,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Felipe Zenobio",
+          "edad": 26,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Luka Fuster",
+          "edad": 19,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Máximo Leguizamón",
+          "edad": 18,
+          "altura": "6' 2\""
+        }
+      ],
       "defensores": [
+        {
+          "nombre": "Juan Villalba",
+          "edad": 20,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Ramón Arias",
+          "edad": 33,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Federico Álvarez",
+          "edad": 31,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Guillermo Soto",
+          "edad": 32,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Joaquín Laso",
+          "edad": 35,
+          "altura": "6' 1\""
+        },
+        {
+          "nombre": "Germán Guiffrey",
+          "edad": 28,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Nahuel Banegas",
+          "edad": 29,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Alan Barrionuevo",
+          "edad": 29,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Thiago Sanchez",
+          "edad": 20,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Valentin Moreno",
+          "edad": 23,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Angelo Marchese",
+          "edad": 21,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Luciano Minniti",
+          "edad": 20,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Bautista Feversani",
+          "edad": 18,
+          "altura": "6' 3\""
+        },
+        {
+          "nombre": "Alex González",
+          "edad": 19,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Lucas Molas",
+          "edad": 18,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Román Saravia",
+          "edad": 19,
+          "altura": "6' 1\""
+        },
         {
           "nombre": "Fabricio Córdoba",
           "edad": 24,
           "altura": "6' 0\""
         }
       ],
-      "mediocampistas": [],
-      "delanteros": []
+      "mediocampistas": [
+        {
+          "nombre": "Gonzalo Martínez",
+          "edad": 32,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Jalil Elías",
+          "edad": 30,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Gastón Pérez",
+          "edad": 20,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Hector Garay",
+          "edad": 26,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Gonzalo Piñeiro",
+          "edad": 25,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Sebastián Medina",
+          "edad": 26,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Bruno Leyes",
+          "edad": 24,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Simón Rivero",
+          "edad": 23,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Elías Cabrera",
+          "edad": 23,
+          "altura": "5' 8\""
+        },
+        {
+          "nombre": "Jabes Saralegui",
+          "edad": 23,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Joaquín Mosqueira",
+          "edad": 21,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Santiago González",
+          "edad": 23,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Tiago Serrago",
+          "edad": 22,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Sebastián Lezcano",
+          "edad": 19,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Nicolás Afonso",
+          "edad": 19,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Lucian Carracedo",
+          "edad": 20,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Román Pesolilla",
+          "edad": 19,
+          "altura": "5' 7\""
+        }
+      ],
+      "delanteros": [
+        {
+          "nombre": "Marco Rivas",
+          "edad": 18,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Alejandro Medina",
+          "edad": 21,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Alfio Oviedo",
+          "edad": 30,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "José Romero",
+          "edad": 23,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Ignacio Russo",
+          "edad": 25,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Santiago López",
+          "edad": 20,
+          "altura": "5' 7\""
+        },
+        {
+          "nombre": "Manuel Fernández",
+          "edad": 21,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Ignacio Peluffo",
+          "edad": 19,
+          "altura": "6' 0\""
+        },
+        {
+          "nombre": "Jordan Andrusisen",
+          "edad": 19,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Benjamín Figueredo",
+          "edad": 19,
+          "altura": "5' 10\""
+        },
+        {
+          "nombre": "Brandon Leszczuk",
+          "edad": 18,
+          "altura": "5' 5\""
+        },
+        {
+          "nombre": "Santino Galesio",
+          "edad": 17,
+          "altura": "6' 2\""
+        }
+      ]
     },
     "estadisticas": {
-      "goles": [],
-      "asistencias": [],
-      "amarillas": [],
-      "rojas": []
+      "goles": [
+        {
+          "jugador": "Ignacio Russo",
+          "total": 4
+        },
+        {
+          "jugador": "Alan Barrionuevo",
+          "total": 2
+        },
+        {
+          "jugador": "Gonzalo Martínez",
+          "total": 2
+        },
+        {
+          "jugador": "Alfio Oviedo",
+          "total": 1
+        },
+        {
+          "jugador": "Jalil Elías",
+          "total": 1
+        },
+        {
+          "jugador": "Tiago Serrago",
+          "total": 1
+        }
+      ],
+      "asistencias": [
+        {
+          "jugador": "Ignacio Russo",
+          "total": 3
+        },
+        {
+          "jugador": "Alan Barrionuevo",
+          "total": 2
+        },
+        {
+          "jugador": "Santiago López",
+          "total": 2
+        },
+        {
+          "jugador": "Jabes Saralegui",
+          "total": 1
+        },
+        {
+          "jugador": "Federico Álvarez",
+          "total": 1
+        }
+      ],
+      "amarillas": [
+        {
+          "jugador": "Bruno Leyes",
+          "total": 4
+        },
+        {
+          "jugador": "Joaquín Laso",
+          "total": 4
+        },
+        {
+          "jugador": "Valentin Moreno",
+          "total": 4
+        },
+        {
+          "jugador": "Gonzalo Piñeiro",
+          "total": 3
+        },
+        {
+          "jugador": "Alfio Oviedo",
+          "total": 2
+        },
+        {
+          "jugador": "Elías Cabrera",
+          "total": 2
+        },
+        {
+          "jugador": "Federico Álvarez",
+          "total": 2
+        }
+      ],
+      "rojas": [
+        {
+          "jugador": "Jabes Saralegui",
+          "total": 1
+        }
+      ]
     },
     "estadisticasGenerales": {
       "posicion": "10",
@@ -20257,10 +23347,90 @@
           }
         ],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
-          "rojas": []
+          "goles": [
+            {
+              "jugador": "Ignacio Russo",
+              "total": 4
+            },
+            {
+              "jugador": "Alan Barrionuevo",
+              "total": 2
+            },
+            {
+              "jugador": "Gonzalo Martínez",
+              "total": 2
+            },
+            {
+              "jugador": "Alfio Oviedo",
+              "total": 1
+            },
+            {
+              "jugador": "Jalil Elías",
+              "total": 1
+            },
+            {
+              "jugador": "Tiago Serrago",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Ignacio Russo",
+              "total": 3
+            },
+            {
+              "jugador": "Alan Barrionuevo",
+              "total": 2
+            },
+            {
+              "jugador": "Santiago López",
+              "total": 2
+            },
+            {
+              "jugador": "Jabes Saralegui",
+              "total": 1
+            },
+            {
+              "jugador": "Federico Álvarez",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Bruno Leyes",
+              "total": 4
+            },
+            {
+              "jugador": "Joaquín Laso",
+              "total": 4
+            },
+            {
+              "jugador": "Valentin Moreno",
+              "total": 4
+            },
+            {
+              "jugador": "Gonzalo Piñeiro",
+              "total": 3
+            },
+            {
+              "jugador": "Alfio Oviedo",
+              "total": 2
+            },
+            {
+              "jugador": "Elías Cabrera",
+              "total": 2
+            },
+            {
+              "jugador": "Federico Álvarez",
+              "total": 2
+            }
+          ],
+          "rojas": [
+            {
+              "jugador": "Jabes Saralegui",
+              "total": 1
+            }
+          ]
         },
         "generales": {
           "posicion": "10",
@@ -20285,10 +23455,90 @@
         "proximosPartidos": [],
         "resultados": [],
         "estadisticas": {
-          "goles": [],
-          "asistencias": [],
-          "amarillas": [],
-          "rojas": []
+          "goles": [
+            {
+              "jugador": "Ignacio Russo",
+              "total": 4
+            },
+            {
+              "jugador": "Alan Barrionuevo",
+              "total": 2
+            },
+            {
+              "jugador": "Gonzalo Martínez",
+              "total": 2
+            },
+            {
+              "jugador": "Alfio Oviedo",
+              "total": 1
+            },
+            {
+              "jugador": "Jalil Elías",
+              "total": 1
+            },
+            {
+              "jugador": "Tiago Serrago",
+              "total": 1
+            }
+          ],
+          "asistencias": [
+            {
+              "jugador": "Ignacio Russo",
+              "total": 3
+            },
+            {
+              "jugador": "Alan Barrionuevo",
+              "total": 2
+            },
+            {
+              "jugador": "Santiago López",
+              "total": 2
+            },
+            {
+              "jugador": "Jabes Saralegui",
+              "total": 1
+            },
+            {
+              "jugador": "Federico Álvarez",
+              "total": 1
+            }
+          ],
+          "amarillas": [
+            {
+              "jugador": "Bruno Leyes",
+              "total": 4
+            },
+            {
+              "jugador": "Joaquín Laso",
+              "total": 4
+            },
+            {
+              "jugador": "Valentin Moreno",
+              "total": 4
+            },
+            {
+              "jugador": "Gonzalo Piñeiro",
+              "total": 3
+            },
+            {
+              "jugador": "Alfio Oviedo",
+              "total": 2
+            },
+            {
+              "jugador": "Elías Cabrera",
+              "total": 2
+            },
+            {
+              "jugador": "Federico Álvarez",
+              "total": 2
+            }
+          ],
+          "rojas": [
+            {
+              "jugador": "Jabes Saralegui",
+              "total": 1
+            }
+          ]
         },
         "generales": {
           "posicion": "-",
@@ -20458,7 +23708,7 @@
     "fundacion": "1911/01/04",
     "estadio": "Eva Perón",
     "ciudad": "Junín",
-    "actualizado": "2026-06-30T17:16:15.235892+00:00",
+    "actualizado": "2026-06-03T15:15:47.839499+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -20680,11 +23930,6 @@
           "nombre": "Ulises Echevarria",
           "edad": 22,
           "altura": "-"
-        },
-        {
-          "nombre": "Jhon Rentería",
-          "edad": 20,
-          "altura": "6' 4\""
         }
       ],
       "mediocampistas": [
@@ -20700,7 +23945,7 @@
         },
         {
           "nombre": "Manuel Garcia",
-          "edad": 27,
+          "edad": 26,
           "altura": "5' 11\""
         },
         {
@@ -20731,6 +23976,11 @@
         {
           "nombre": "Osmar Giménez",
           "edad": 19,
+          "altura": "5' 9\""
+        },
+        {
+          "nombre": "Jhon Rentería",
+          "edad": 20,
           "altura": "5' 9\""
         },
         {
@@ -20767,12 +24017,12 @@
         },
         {
           "nombre": "Gastón González",
-          "edad": 25,
+          "edad": 24,
           "altura": "6' 0\""
         },
         {
           "nombre": "Santiago Salle",
-          "edad": 22,
+          "edad": 21,
           "altura": "6' 1\""
         },
         {
@@ -21328,7 +24578,7 @@
     "fundacion": "1896/21/01",
     "estadio": "Florencio Sola",
     "ciudad": "Banfield",
-    "actualizado": "2026-06-30T17:16:15.587781+00:00",
+    "actualizado": "2026-06-03T15:15:48.365681+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -21476,7 +24726,7 @@
       "arqueros": [
         {
           "nombre": "Joaquín Molina",
-          "edad": 22,
+          "edad": 21,
           "altura": "5' 11\""
         },
         {
@@ -21488,9 +24738,24 @@
           "nombre": "Gino Santilli",
           "edad": 24,
           "altura": "6' 3\""
+        },
+        {
+          "nombre": "Thiago Cano",
+          "edad": 20,
+          "altura": "5' 11\""
         }
       ],
       "defensores": [
+        {
+          "nombre": "Sergio Vittor",
+          "edad": 36,
+          "altura": "6' 2\""
+        },
+        {
+          "nombre": "Nicolás Colazo",
+          "edad": 35,
+          "altura": "5' 10\""
+        },
         {
           "nombre": "Danilo Arboleda",
           "edad": 31,
@@ -21507,6 +24772,11 @@
           "altura": "5' 9\""
         },
         {
+          "nombre": "Juan Iribarren",
+          "edad": 23,
+          "altura": "5' 9\""
+        },
+        {
           "nombre": "Santiago Daniele",
           "edad": 20,
           "altura": "6' 0\""
@@ -21520,6 +24790,11 @@
           "nombre": "Marcos López",
           "edad": 19,
           "altura": "-"
+        },
+        {
+          "nombre": "Mateo Mendizabal",
+          "edad": 16,
+          "altura": "5' 10\""
         }
       ],
       "mediocampistas": [
@@ -21541,6 +24816,11 @@
         {
           "nombre": "Santiago López Garcia",
           "edad": 28,
+          "altura": "5' 11\""
+        },
+        {
+          "nombre": "Lautaro Ríos",
+          "edad": 25,
           "altura": "5' 11\""
         },
         {
@@ -21587,7 +24867,7 @@
         },
         {
           "nombre": "Federico Anselmo",
-          "edad": 32,
+          "edad": 31,
           "altura": "6' 1\""
         },
         {
@@ -21670,6 +24950,10 @@
         },
         {
           "jugador": "Mauro Méndez",
+          "total": 3
+        },
+        {
+          "jugador": "Sergio Vittor",
           "total": 3
         },
         {
@@ -21902,6 +25186,10 @@
               "total": 3
             },
             {
+              "jugador": "Sergio Vittor",
+              "total": 3
+            },
+            {
               "jugador": "Santiago Esquivel",
               "total": 2
             }
@@ -21987,6 +25275,10 @@
             },
             {
               "jugador": "Mauro Méndez",
+              "total": 3
+            },
+            {
+              "jugador": "Sergio Vittor",
               "total": 3
             },
             {
@@ -22088,7 +25380,7 @@
     "fundacion": "1902/27/09",
     "estadio": "Monumental José Fierro",
     "ciudad": "San Miguel de Tucumán",
-    "actualizado": "2026-06-30T17:16:15.853030+00:00",
+    "actualizado": "2026-06-03T15:15:48.833862+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -22278,7 +25570,7 @@
         },
         {
           "nombre": "Gianluca Ferrari",
-          "edad": 29,
+          "edad": 28,
           "altura": "5' 11\""
         },
         {
@@ -22320,7 +25612,7 @@
       "mediocampistas": [
         {
           "nombre": "Martín Benítez",
-          "edad": 32,
+          "edad": 31,
           "altura": "5' 9\""
         },
         {
@@ -22330,7 +25622,7 @@
         },
         {
           "nombre": "Renzo Tesuri",
-          "edad": 30,
+          "edad": 29,
           "altura": "5' 7\""
         },
         {
@@ -22361,6 +25653,11 @@
       ],
       "delanteros": [
         {
+          "nombre": "Martín Ortega",
+          "edad": 19,
+          "altura": "6' 0\""
+        },
+        {
           "nombre": "Ramiro Ruiz Rodriguez",
           "edad": 26,
           "altura": "6' 1\""
@@ -22382,7 +25679,7 @@
         },
         {
           "nombre": "Alexis Segovia",
-          "edad": 22,
+          "edad": 21,
           "altura": "5' 10\""
         },
         {
@@ -22921,7 +26218,7 @@
     "fundacion": "1913/29/03",
     "estadio": "José María Minella",
     "ciudad": "Mar del Plata",
-    "actualizado": "2026-06-30T17:16:16.234058+00:00",
+    "actualizado": "2026-06-03T15:15:49.117244+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -23079,7 +26376,7 @@
         },
         {
           "nombre": "Ignacio Chicco",
-          "edad": 30,
+          "edad": 29,
           "altura": "6' 1\""
         },
         {
@@ -23111,8 +26408,13 @@
         },
         {
           "nombre": "Santiago Moya",
-          "edad": 23,
+          "edad": 22,
           "altura": "6' 2\""
+        },
+        {
+          "nombre": "Emanuel Iñiguez",
+          "edad": 29,
+          "altura": "5' 10\""
         },
         {
           "nombre": "Rodrigo González",
@@ -23130,11 +26432,6 @@
           "altura": "6' 3\""
         },
         {
-          "nombre": "Elías López",
-          "edad": 25,
-          "altura": "5' 7\""
-        },
-        {
           "nombre": "Matias Morello",
           "edad": 25,
           "altura": "6' 1\""
@@ -23146,7 +26443,7 @@
         },
         {
           "nombre": "Ian Acosta",
-          "edad": 19,
+          "edad": 18,
           "altura": "-"
         }
       ],
@@ -23731,7 +27028,7 @@
     "fundacion": "1912/21/09",
     "estadio": "Antonio Candini",
     "ciudad": "Río Cuarto",
-    "actualizado": "2026-06-30T17:16:16.540389+00:00",
+    "actualizado": "2026-06-03T15:15:49.599446+00:00",
     "proximosPartidos": [],
     "resultados": [
       {
@@ -23973,11 +27270,6 @@
           "nombre": "Bautista Pieroni",
           "edad": 17,
           "altura": "-"
-        },
-        {
-          "nombre": "Mateo Rodríguez",
-          "edad": 24,
-          "altura": "6' 1\""
         }
       ],
       "mediocampistas": [
@@ -24003,7 +27295,7 @@
         },
         {
           "nombre": "Siro Rosané",
-          "edad": 26,
+          "edad": 25,
           "altura": "5' 10\""
         },
         {
@@ -24029,9 +27321,9 @@
       ],
       "delanteros": [
         {
-          "nombre": "Juan Garro",
-          "edad": 33,
-          "altura": "5' 10\""
+          "nombre": "Mateo Rodríguez",
+          "edad": 19,
+          "altura": "6' 3\""
         },
         {
           "nombre": "Javier Ferreira",

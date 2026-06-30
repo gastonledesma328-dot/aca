@@ -1,0 +1,6889 @@
+{
+  "meta": {
+    "source": "ESPN clubs+Sofascore",
+    "updatedAt": "2026-06-08T01:46:05.083Z",
+    "totalTeams": 46,
+    "totalPlayers": 348,
+    "playersWithSofaPhoto": 332,
+    "photoSource": "local (downloaded from Sofascore)"
+  },
+  "teams": {
+    "Argentina": {
+      "name": "Argentina",
+      "espnId": 9,
+      "players": [
+        {
+          "id": "167192",
+          "name": "Gerónimo Rulli",
+          "short": "G. Rulli",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 34,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/167192.webp",
+          "sofaId": 128383,
+          "stats": {
+            "APP": 29,
+            "G": 0,
+            "A": 0,
+            "SV": 76,
+            "YC": 3
+          }
+        },
+        {
+          "id": "271555",
+          "name": "Leonardo Balerdi",
+          "short": "L. Balerdi",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 27,
+          "jersey": "5",
+          "club": "",
+          "photo": "../img/players/271555.webp",
+          "sofaId": 928236,
+          "stats": {
+            "APP": 26,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "233937",
+          "name": "Lisandro Martínez",
+          "short": "L. Martínez",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 28,
+          "jersey": "6",
+          "club": "",
+          "photo": "../img/players/233937.webp",
+          "sofaId": 859999,
+          "stats": {
+            "APP": 18,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "249663",
+          "name": "Facundo Medina",
+          "short": "F. Medina",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 27,
+          "jersey": "32",
+          "club": "",
+          "photo": "../img/players/249663.webp",
+          "sofaId": 860307,
+          "stats": {
+            "APP": 17,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 7
+          }
+        },
+        {
+          "id": "309487",
+          "name": "Julian Malatini",
+          "short": "J. Malatini",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 25,
+          "jersey": "22",
+          "club": "",
+          "photo": "../img/players/309487.webp",
+          "sofaId": 1087043,
+          "stats": {
+            "APP": 11,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "36775",
+          "name": "Carlos Arano",
+          "short": "C. Arano",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 46,
+          "jersey": "17",
+          "club": "",
+          "photo": "../img/players/36775.webp",
+          "sofaId": 79239,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "249299",
+          "name": "Alexis Mac Allister",
+          "short": "A. Mac Allister",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 27,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/249299.webp",
+          "sofaId": 895324,
+          "stats": {
+            "APP": 37,
+            "G": 2,
+            "A": 4,
+            "SV": 0,
+            "YC": 7
+          }
+        },
+        {
+          "id": "285450",
+          "name": "Enzo Fernández",
+          "short": "E. Fernández",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 25,
+          "jersey": "8",
+          "club": "",
+          "photo": "../img/players/285450.webp",
+          "sofaId": 974505,
+          "stats": {
+            "APP": 36,
+            "G": 10,
+            "A": 4,
+            "SV": 0,
+            "YC": 10
+          }
+        },
+        {
+          "id": "284835",
+          "name": "Nicolás Capaldo",
+          "short": "N. Capaldo",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 27,
+          "jersey": "24",
+          "club": "",
+          "photo": "../img/players/284835.webp",
+          "sofaId": 973564,
+          "stats": {
+            "APP": 26,
+            "G": 1,
+            "A": 3,
+            "SV": 0,
+            "YC": 10
+          }
+        },
+        {
+          "id": "325555",
+          "name": "Alejandro Garnacho",
+          "short": "A. Garnacho",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 21,
+          "jersey": "49",
+          "club": "",
+          "photo": "../img/players/325555.webp",
+          "sofaId": 1135873,
+          "stats": {
+            "APP": 24,
+            "G": 1,
+            "A": 4,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "364080",
+          "name": "Ezequiel Fernández",
+          "short": "E. Fernández",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 23,
+          "jersey": "6",
+          "club": "",
+          "photo": "../img/players/364080.webp",
+          "sofaId": 1003012,
+          "stats": {
+            "APP": 21,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "302162",
+          "name": "Carlos Alcaraz",
+          "short": "C. Alcaraz",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 23,
+          "jersey": "24",
+          "club": "",
+          "photo": "../img/players/302162.webp",
+          "sofaId": 1017392,
+          "stats": {
+            "APP": 20,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "228393",
+          "name": "Exequiel Palacios",
+          "short": "E. Palacios",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 27,
+          "jersey": "25",
+          "club": "",
+          "photo": "../img/players/228393.webp",
+          "sofaId": 822600,
+          "stats": {
+            "APP": 18,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "233734",
+          "name": "Santiago Ascacibar",
+          "short": "S. Ascacibar",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 29,
+          "jersey": "18",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/233734.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "376473",
+          "name": "Franco Mastantuono",
+          "short": "F. Mastantuono",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 18,
+          "jersey": "30",
+          "club": "",
+          "photo": "../img/players/376473.webp",
+          "sofaId": 1403559,
+          "stats": {
+            "APP": 23,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "252933",
+          "name": "Valentín Castellanos",
+          "short": "V. Castellanos",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 27,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/252933.webp",
+          "sofaId": 877013,
+          "stats": {
+            "APP": 18,
+            "G": 6,
+            "A": 0,
+            "SV": 0,
+            "YC": 6
+          }
+        }
+      ]
+    },
+    "Brasil": {
+      "name": "Brasil",
+      "espnId": 6,
+      "players": [
+        {
+          "id": "196876",
+          "name": "Alisson Becker",
+          "short": "A. Becker",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 33,
+          "jersey": "1",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/196876.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 26,
+            "G": 0,
+            "A": 0,
+            "SV": 57,
+            "YC": 1
+          }
+        },
+        {
+          "id": "338950",
+          "name": "Kauã Santos",
+          "short": "Kauã Santos",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 23,
+          "jersey": "40",
+          "club": "",
+          "photo": "../img/players/338950.webp",
+          "sofaId": 1134203,
+          "stats": {
+            "APP": 13,
+            "G": 0,
+            "A": 0,
+            "SV": 37,
+            "YC": 0
+          }
+        },
+        {
+          "id": "236322",
+          "name": "Gabriel Magalhães",
+          "short": "G. Magalhães",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 28,
+          "jersey": "6",
+          "club": "",
+          "photo": "../img/players/236322.webp",
+          "sofaId": 869792,
+          "stats": {
+            "APP": 32,
+            "G": 3,
+            "A": 4,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "11937",
+          "name": "Ferreira Ze Maria",
+          "short": "F. Ze Maria",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 52,
+          "jersey": "2",
+          "club": "",
+          "photo": "../img/players/11937.webp",
+          "sofaId": 2459849,
+          "stats": {
+            "APP": 31,
+            "G": 7,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "285790",
+          "name": "Lucas Pires",
+          "short": "L. Pires",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 25,
+          "jersey": "23",
+          "club": "",
+          "photo": "../img/players/285790.webp",
+          "sofaId": 1136896,
+          "stats": {
+            "APP": 20,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "316128",
+          "name": "Lucas Beraldo",
+          "short": "L. Beraldo",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 22,
+          "jersey": "4",
+          "club": "",
+          "photo": "../img/players/316128.webp",
+          "sofaId": 1108441,
+          "stats": {
+            "APP": 20,
+            "G": 2,
+            "A": 1,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "334374",
+          "name": "Arthur",
+          "short": "Arthur",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 23,
+          "jersey": "13",
+          "club": "",
+          "photo": "../img/players/334374.webp",
+          "sofaId": 794927,
+          "stats": {
+            "APP": 20,
+            "G": 1,
+            "A": 3,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "297084",
+          "name": "Yan Couto",
+          "short": "Y. Couto",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "2",
+          "club": "",
+          "photo": "../img/players/297084.webp",
+          "sofaId": 1002813,
+          "stats": {
+            "APP": 19,
+            "G": 2,
+            "A": 2,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "228402",
+          "name": "Éder Militão",
+          "short": "É. Militão",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 28,
+          "jersey": "3",
+          "club": "",
+          "photo": "../img/players/228402.webp",
+          "sofaId": 822519,
+          "stats": {
+            "APP": 16,
+            "G": 2,
+            "A": 1,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "159047",
+          "name": "Marquinhos null",
+          "short": "Marquinhos",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 32,
+          "jersey": "5",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/159047.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 14,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "301524",
+          "name": "João Gomes",
+          "short": "J. Gomes",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 25,
+          "jersey": "8",
+          "club": "",
+          "photo": "../img/players/301524.webp",
+          "sofaId": 1015267,
+          "stats": {
+            "APP": 35,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 10
+          }
+        },
+        {
+          "id": "304216",
+          "name": "André ",
+          "short": "André ",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 24,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/304216.webp",
+          "sofaId": 88625,
+          "stats": {
+            "APP": 35,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 12
+          }
+        },
+        {
+          "id": "173666",
+          "name": "Casemiro null",
+          "short": "Casemiro",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 34,
+          "jersey": "18",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/173666.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 34,
+            "G": 9,
+            "A": 2,
+            "SV": 0,
+            "YC": 9
+          }
+        },
+        {
+          "id": "218522",
+          "name": "Bruno Guimarães",
+          "short": "B. Guimarães",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 28,
+          "jersey": "39",
+          "club": "",
+          "photo": "../img/players/218522.webp",
+          "sofaId": 866469,
+          "stats": {
+            "APP": 29,
+            "G": 9,
+            "A": 5,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "202232",
+          "name": "Joelinton",
+          "short": "Joelinton",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 29,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/202232.webp",
+          "sofaId": 560128,
+          "stats": {
+            "APP": 27,
+            "G": 2,
+            "A": 1,
+            "SV": 0,
+            "YC": 10
+          }
+        },
+        {
+          "id": "314858",
+          "name": "Andrey Santos",
+          "short": "A. Santos",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 22,
+          "jersey": "17",
+          "club": "",
+          "photo": "../img/players/314858.webp",
+          "sofaId": 1105779,
+          "stats": {
+            "APP": 27,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "330764",
+          "name": "Kevin",
+          "short": "Kevin",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 23,
+          "jersey": "22",
+          "club": "",
+          "photo": "../img/players/330764.webp",
+          "sofaId": 70996,
+          "stats": {
+            "APP": 26,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "36774",
+          "name": "Guilherme do Prado Raymundo",
+          "short": "Guly do Prado",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 44,
+          "jersey": "7",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/36774.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 17,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "252107",
+          "name": "Vinícius Júnior",
+          "short": "V. Júnior",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 25,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/252107.webp",
+          "sofaId": 868812,
+          "stats": {
+            "APP": 36,
+            "G": 16,
+            "A": 5,
+            "SV": 0,
+            "YC": 8
+          }
+        },
+        {
+          "id": "284960",
+          "name": "João Pedro",
+          "short": "João Pedro",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/284960.webp",
+          "sofaId": 975079,
+          "stats": {
+            "APP": 35,
+            "G": 15,
+            "A": 5,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "259902",
+          "name": "Matheus Cunha",
+          "short": "M. Cunha",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 27,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/259902.webp",
+          "sofaId": 886363,
+          "stats": {
+            "APP": 33,
+            "G": 10,
+            "A": 2,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "269844",
+          "name": "Gabriel Martinelli",
+          "short": "G. Martinelli",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/269844.webp",
+          "sofaId": 922573,
+          "stats": {
+            "APP": 30,
+            "G": 1,
+            "A": 4,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "289114",
+          "name": "Igor Paixão",
+          "short": "Igor Paixão",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 25,
+          "jersey": "14",
+          "club": "",
+          "photo": "../img/players/289114.webp",
+          "sofaId": 981815,
+          "stats": {
+            "APP": 30,
+            "G": 6,
+            "A": 5,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "304470",
+          "name": "Savinho",
+          "short": "Savinho",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 22,
+          "jersey": "26",
+          "club": "",
+          "photo": "../img/players/304470.webp",
+          "sofaId": 1046795,
+          "stats": {
+            "APP": 24,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "231050",
+          "name": "Raphinha",
+          "short": "Raphinha",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 29,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/231050.webp",
+          "sofaId": 831005,
+          "stats": {
+            "APP": 22,
+            "G": 13,
+            "A": 3,
+            "SV": 0,
+            "YC": 5
+          }
+        }
+      ]
+    },
+    "Francia": {
+      "name": "Francia",
+      "espnId": 2,
+      "players": [
+        {
+          "id": "227416",
+          "name": "Gautier Larsonneur",
+          "short": "G. Larsonneur",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 29,
+          "jersey": "30",
+          "club": "",
+          "photo": "../img/players/227416.webp",
+          "sofaId": 810526,
+          "stats": {
+            "APP": 34,
+            "G": 0,
+            "A": 0,
+            "SV": 137,
+            "YC": 5
+          }
+        },
+        {
+          "id": "344517",
+          "name": "Robin Risser",
+          "short": "R. Risser",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 21,
+          "jersey": "40",
+          "club": "",
+          "photo": "../img/players/344517.webp",
+          "sofaId": 1387161,
+          "stats": {
+            "APP": 33,
+            "G": 0,
+            "A": 1,
+            "SV": 78,
+            "YC": 2
+          }
+        },
+        {
+          "id": "148987",
+          "name": "Alphonse Areola",
+          "short": "A. Areola",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 33,
+          "jersey": "23",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/148987.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 20,
+            "G": 0,
+            "A": 1,
+            "SV": 77,
+            "YC": 0
+          }
+        },
+        {
+          "id": "251634",
+          "name": "Ibrahima Konaté",
+          "short": "I. Konaté",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 27,
+          "jersey": "5",
+          "club": "",
+          "photo": "../img/players/251634.webp",
+          "sofaId": 826215,
+          "stats": {
+            "APP": 36,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 7
+          }
+        },
+        {
+          "id": "233199",
+          "name": "Matthieu Udol",
+          "short": "M. Udol",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 30,
+          "jersey": "14",
+          "club": "",
+          "photo": "../img/players/233199.webp",
+          "sofaId": 787827,
+          "stats": {
+            "APP": 34,
+            "G": 1,
+            "A": 7,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "308947",
+          "name": "Malo Gusto",
+          "short": "M. Gusto",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 23,
+          "jersey": "27",
+          "club": "",
+          "photo": "../img/players/308947.webp",
+          "sofaId": 996958,
+          "stats": {
+            "APP": 34,
+            "G": 2,
+            "A": 3,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "318316",
+          "name": "Maxime Estève",
+          "short": "M. Estève",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "5",
+          "club": "",
+          "photo": "../img/players/318316.webp",
+          "sofaId": 1117223,
+          "stats": {
+            "APP": 34,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "240438",
+          "name": "Malang Sarr",
+          "short": "M. Sarr",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 27,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/240438.webp",
+          "sofaId": 826203,
+          "stats": {
+            "APP": 33,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "214188",
+          "name": "Nordi Mukiele",
+          "short": "N. Mukiele",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 28,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/214188.webp",
+          "sofaId": 780014,
+          "stats": {
+            "APP": 32,
+            "G": 3,
+            "A": 4,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "340206",
+          "name": "Leny Yoro",
+          "short": "L. Yoro",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 20,
+          "jersey": "15",
+          "club": "",
+          "photo": "../img/players/340206.webp",
+          "sofaId": 1153315,
+          "stats": {
+            "APP": 32,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "231780",
+          "name": "Léo Pétrot",
+          "short": "L. Pétrot",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 29,
+          "jersey": "19",
+          "club": "",
+          "photo": "../img/players/231780.webp",
+          "sofaId": 827504,
+          "stats": {
+            "APP": 31,
+            "G": 0,
+            "A": 3,
+            "SV": 24,
+            "YC": 4
+          }
+        },
+        {
+          "id": "288340",
+          "name": "Enzo Le Fée",
+          "short": "E. Le Fée",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "28",
+          "club": "",
+          "photo": "../img/players/288340.webp",
+          "sofaId": 984014,
+          "stats": {
+            "APP": 36,
+            "G": 5,
+            "A": 6,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "309563",
+          "name": "Lesley Ugochukwu",
+          "short": "L. Ugochukwu",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 22,
+          "jersey": "8",
+          "club": "",
+          "photo": "../img/players/309563.webp",
+          "sofaId": 1048916,
+          "stats": {
+            "APP": 35,
+            "G": 3,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "215574",
+          "name": "Lucas Tousart",
+          "short": "L. Tousart",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 29,
+          "jersey": "29",
+          "club": "",
+          "photo": "../img/players/215574.webp",
+          "sofaId": 787889,
+          "stats": {
+            "APP": 33,
+            "G": 5,
+            "A": 2,
+            "SV": 5,
+            "YC": 1
+          }
+        },
+        {
+          "id": "265919",
+          "name": "Aurélien Tchouaméni",
+          "short": "A. Tchouaméni",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "14",
+          "club": "",
+          "photo": "../img/players/265919.webp",
+          "sofaId": 859025,
+          "stats": {
+            "APP": 33,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 8
+          }
+        },
+        {
+          "id": "298008",
+          "name": "Rayan Cherki",
+          "short": "R. Cherki",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 22,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/298008.webp",
+          "sofaId": 979128,
+          "stats": {
+            "APP": 33,
+            "G": 4,
+            "A": 12,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "173266",
+          "name": "Adrien Thomasson",
+          "short": "A. Thomasson",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 32,
+          "jersey": "28",
+          "club": "",
+          "photo": "../img/players/173266.webp",
+          "sofaId": 231946,
+          "stats": {
+            "APP": 32,
+            "G": 3,
+            "A": 9,
+            "SV": 0,
+            "YC": 11
+          }
+        },
+        {
+          "id": "345581",
+          "name": "Warren Zaïre-Emery",
+          "short": "W. Zaïre-Emery",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 20,
+          "jersey": "33",
+          "club": "",
+          "photo": "../img/players/345581.webp",
+          "sofaId": 1142672,
+          "stats": {
+            "APP": 32,
+            "G": 3,
+            "A": 4,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "285150",
+          "name": "Eduardo Camavinga",
+          "short": "E. Camavinga",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 23,
+          "jersey": "6",
+          "club": "",
+          "photo": "../img/players/285150.webp",
+          "sofaId": 973887,
+          "stats": {
+            "APP": 29,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "301166",
+          "name": "Thierno Barry",
+          "short": "T. Barry",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 23,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/301166.webp",
+          "sofaId": 1395746,
+          "stats": {
+            "APP": 38,
+            "G": 8,
+            "A": 0,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "156898",
+          "name": "Florian Thauvin",
+          "short": "F. Thauvin",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 33,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/156898.webp",
+          "sofaId": 148824,
+          "stats": {
+            "APP": 33,
+            "G": 11,
+            "A": 6,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "318389",
+          "name": "Matthis Abline",
+          "short": "M. Abline",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 23,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/318389.webp",
+          "sofaId": 999070,
+          "stats": {
+            "APP": 33,
+            "G": 6,
+            "A": 4,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "231388",
+          "name": "Kylian Mbappé",
+          "short": "K. Mbappé",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 27,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/231388.webp",
+          "sofaId": 826643,
+          "stats": {
+            "APP": 31,
+            "G": 25,
+            "A": 5,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "186189",
+          "name": "Wesley Saïd",
+          "short": "W. Saïd",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 31,
+          "jersey": "22",
+          "club": "",
+          "photo": "../img/players/186189.webp",
+          "sofaId": 227862,
+          "stats": {
+            "APP": 29,
+            "G": 12,
+            "A": 2,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "222180",
+          "name": "Odsonne Édouard",
+          "short": "O. Édouard",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 28,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/222180.webp",
+          "sofaId": 795228,
+          "stats": {
+            "APP": 29,
+            "G": 12,
+            "A": 3,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "328238",
+          "name": "Bradley Barcola",
+          "short": "B. Barcola",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 23,
+          "jersey": "29",
+          "club": "",
+          "photo": "../img/players/328238.webp",
+          "sofaId": 996952,
+          "stats": {
+            "APP": 29,
+            "G": 11,
+            "A": 1,
+            "SV": 0,
+            "YC": 2
+          }
+        }
+      ]
+    },
+    "España": {
+      "name": "España",
+      "espnId": 164,
+      "players": [
+        {
+          "id": "191360",
+          "name": "Sergio Herrera",
+          "short": "S. Herrera",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 33,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/191360.webp",
+          "sofaId": 294377,
+          "stats": {
+            "APP": 37,
+            "G": 0,
+            "A": 0,
+            "SV": 113,
+            "YC": 3
+          }
+        },
+        {
+          "id": "196176",
+          "name": "David Raya",
+          "short": "D. Raya",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 30,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/196176.webp",
+          "sofaId": 581310,
+          "stats": {
+            "APP": 37,
+            "G": 0,
+            "A": 0,
+            "SV": 60,
+            "YC": 1
+          }
+        },
+        {
+          "id": "108662",
+          "name": "Robert Sánchez",
+          "short": "R. Sánchez",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 28,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/108662.webp",
+          "sofaId": 920546,
+          "stats": {
+            "APP": 35,
+            "G": 0,
+            "A": 1,
+            "SV": 98,
+            "YC": 3
+          }
+        },
+        {
+          "id": "189777",
+          "name": "Hugo Bueno",
+          "short": "H. Bueno",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 23,
+          "jersey": "3",
+          "club": "",
+          "photo": "../img/players/189777.webp",
+          "sofaId": 1013928,
+          "stats": {
+            "APP": 35,
+            "G": 1,
+            "A": 2,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "264175",
+          "name": "Alejandro Catena",
+          "short": "A. Catena",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 31,
+          "jersey": "24",
+          "club": "",
+          "photo": "../img/players/264175.webp",
+          "sofaId": 900792,
+          "stats": {
+            "APP": 35,
+            "G": 3,
+            "A": 2,
+            "SV": 0,
+            "YC": 11
+          }
+        },
+        {
+          "id": "128714",
+          "name": "Eric García",
+          "short": "E. García",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 25,
+          "jersey": "24",
+          "club": "",
+          "photo": "../img/players/128714.webp",
+          "sofaId": 876214,
+          "stats": {
+            "APP": 34,
+            "G": 1,
+            "A": 2,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "259910",
+          "name": "Marc Cucurella",
+          "short": "M. Cucurella",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 27,
+          "jersey": "3",
+          "club": "",
+          "photo": "../img/players/259910.webp",
+          "sofaId": 794939,
+          "stats": {
+            "APP": 34,
+            "G": 1,
+            "A": 4,
+            "SV": 0,
+            "YC": 8
+          }
+        },
+        {
+          "id": "312015",
+          "name": "Gerard Martín",
+          "short": "G. Martín",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "18",
+          "club": "",
+          "photo": "../img/players/312015.webp",
+          "sofaId": 1094827,
+          "stats": {
+            "APP": 32,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "368992",
+          "name": "Pau Cubarsí",
+          "short": "P. Cubarsí",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 19,
+          "jersey": "5",
+          "club": "",
+          "photo": "../img/players/368992.webp",
+          "sofaId": 1402913,
+          "stats": {
+            "APP": 31,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "166396",
+          "name": "Alejandro Grimaldo",
+          "short": "A. Grimaldo",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 30,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/166396.webp",
+          "sofaId": 177177,
+          "stats": {
+            "APP": 29,
+            "G": 8,
+            "A": 8,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "300284",
+          "name": "Abel Bretones",
+          "short": "A. Bretones",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 25,
+          "jersey": "23",
+          "club": "",
+          "photo": "../img/players/300284.webp",
+          "sofaId": 1010165,
+          "stats": {
+            "APP": 28,
+            "G": 1,
+            "A": 2,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "287266",
+          "name": "Martín Zubimendi",
+          "short": "M. Zubimendi",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 27,
+          "jersey": "36",
+          "club": "",
+          "photo": "../img/players/287266.webp",
+          "sofaId": 966837,
+          "stats": {
+            "APP": 38,
+            "G": 5,
+            "A": 1,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "286176",
+          "name": "Jon Moncayola",
+          "short": "J. Moncayola",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 28,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/286176.webp",
+          "sofaId": 976141,
+          "stats": {
+            "APP": 36,
+            "G": 0,
+            "A": 4,
+            "SV": 0,
+            "YC": 9
+          }
+        },
+        {
+          "id": "178328",
+          "name": "Rubén García",
+          "short": "R. García",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 32,
+          "jersey": "14",
+          "club": "",
+          "photo": "../img/players/178328.webp",
+          "sofaId": 260031,
+          "stats": {
+            "APP": 35,
+            "G": 2,
+            "A": 5,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "170154",
+          "name": "Lucas Torró",
+          "short": "L. Torró",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 31,
+          "jersey": "6",
+          "club": "",
+          "photo": "../img/players/170154.webp",
+          "sofaId": 187313,
+          "stats": {
+            "APP": 34,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "219294",
+          "name": "Aleix García",
+          "short": "A. García",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 28,
+          "jersey": "24",
+          "club": "",
+          "photo": "../img/players/219294.webp",
+          "sofaId": 796047,
+          "stats": {
+            "APP": 33,
+            "G": 3,
+            "A": 8,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "227765",
+          "name": "Dani Olmo",
+          "short": "D. Olmo",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 28,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/227765.webp",
+          "sofaId": 789071,
+          "stats": {
+            "APP": 33,
+            "G": 7,
+            "A": 8,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "288760",
+          "name": "Aimar Oroz",
+          "short": "A. Oroz",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 24,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/288760.webp",
+          "sofaId": 985329,
+          "stats": {
+            "APP": 31,
+            "G": 0,
+            "A": 2,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "354334",
+          "name": "Fermín López",
+          "short": "F. López",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 23,
+          "jersey": "16",
+          "club": "",
+          "photo": "../img/players/354334.webp",
+          "sofaId": 1153270,
+          "stats": {
+            "APP": 30,
+            "G": 6,
+            "A": 9,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "296163",
+          "name": "Raúl García",
+          "short": "R. García",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 25,
+          "jersey": "9",
+          "club": "",
+          "photo": "../img/players/296163.webp",
+          "sofaId": 997280,
+          "stats": {
+            "APP": 36,
+            "G": 7,
+            "A": 1,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "397545",
+          "name": "Víctor Muñoz",
+          "short": "V. Muñoz",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 22,
+          "jersey": "21",
+          "club": "",
+          "photo": "../img/players/397545.webp",
+          "sofaId": 1145642,
+          "stats": {
+            "APP": 34,
+            "G": 6,
+            "A": 2,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "265869",
+          "name": "Ferran Torres",
+          "short": "F. Torres",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 26,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/265869.webp",
+          "sofaId": 855833,
+          "stats": {
+            "APP": 33,
+            "G": 16,
+            "A": 2,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "87297",
+          "name": "Gonzalo García",
+          "short": "G. García",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 22,
+          "jersey": "16",
+          "club": "",
+          "photo": "../img/players/87297.webp",
+          "sofaId": 1402716,
+          "stats": {
+            "APP": 30,
+            "G": 6,
+            "A": 1,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "362150",
+          "name": "Lamine Yamal",
+          "short": "L. Yamal",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 18,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/362150.webp",
+          "sofaId": 1402912,
+          "stats": {
+            "APP": 28,
+            "G": 16,
+            "A": 11,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "209580",
+          "name": "Enrique Barja",
+          "short": "E. Barja",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 29,
+          "jersey": "11",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/209580.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 27,
+            "G": 2,
+            "A": 2,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "169089",
+          "name": "Moi Gómez",
+          "short": "Moi Gómez",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 31,
+          "jersey": "16",
+          "club": "",
+          "photo": "../img/players/169089.webp",
+          "sofaId": 149370,
+          "stats": {
+            "APP": 26,
+            "G": 0,
+            "A": 2,
+            "SV": 0,
+            "YC": 3
+          }
+        }
+      ]
+    },
+    "Alemania": {
+      "name": "Alemania",
+      "espnId": 3,
+      "players": [
+        {
+          "id": "153765",
+          "name": "Bernd Leno",
+          "short": "B. Leno",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 34,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/153765.webp",
+          "sofaId": 103335,
+          "stats": {
+            "APP": 38,
+            "G": 0,
+            "A": 0,
+            "SV": 98,
+            "YC": 3
+          }
+        },
+        {
+          "id": "338852",
+          "name": "Mio Backhaus",
+          "short": "M. Backhaus",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 22,
+          "jersey": "30",
+          "club": "",
+          "photo": "../img/players/338852.webp",
+          "sofaId": 1083390,
+          "stats": {
+            "APP": 32,
+            "G": 0,
+            "A": 0,
+            "SV": 102,
+            "YC": 1
+          }
+        },
+        {
+          "id": "122280",
+          "name": "Kevin Trapp",
+          "short": "K. Trapp",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 35,
+          "jersey": "29",
+          "club": "",
+          "photo": "../img/players/122280.webp",
+          "sofaId": 38440,
+          "stats": {
+            "APP": 23,
+            "G": 0,
+            "A": 0,
+            "SV": 76,
+            "YC": 1
+          }
+        },
+        {
+          "id": "303444",
+          "name": "Malick Thiaw",
+          "short": "M. Thiaw",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "12",
+          "club": "",
+          "photo": "../img/players/303444.webp",
+          "sofaId": 1014286,
+          "stats": {
+            "APP": 35,
+            "G": 4,
+            "A": 0,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "120829",
+          "name": "Nathaniel Brown",
+          "short": "N. Brown",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 22,
+          "jersey": "21",
+          "club": "",
+          "photo": "../img/players/120829.webp",
+          "sofaId": 1159759,
+          "stats": {
+            "APP": 33,
+            "G": 4,
+            "A": 4,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "208285",
+          "name": "Robin Koch",
+          "short": "R. Koch",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 29,
+          "jersey": "4",
+          "club": "",
+          "photo": "../img/players/208285.webp",
+          "sofaId": 581302,
+          "stats": {
+            "APP": 32,
+            "G": 3,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "220714",
+          "name": "Waldemar Anton",
+          "short": "W. Anton",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 29,
+          "jersey": "3",
+          "club": "",
+          "photo": "../img/players/220714.webp",
+          "sofaId": 799046,
+          "stats": {
+            "APP": 32,
+            "G": 2,
+            "A": 0,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "152774",
+          "name": "Marvin Plattenhardt",
+          "short": "M. Plattenhardt",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 34,
+          "jersey": "21",
+          "club": "",
+          "photo": "../img/players/152774.webp",
+          "sofaId": 108584,
+          "stats": {
+            "APP": 31,
+            "G": 0,
+            "A": 2,
+            "SV": 10,
+            "YC": 3
+          }
+        },
+        {
+          "id": "175887",
+          "name": "Marc-Oliver Kempf",
+          "short": "M. Kempf",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 31,
+          "jersey": "20",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/175887.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 31,
+            "G": 1,
+            "A": 0,
+            "SV": 24,
+            "YC": 5
+          }
+        },
+        {
+          "id": "286828",
+          "name": "Nico Schlotterbeck",
+          "short": "N. Schlotterbeck",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 26,
+          "jersey": "4",
+          "club": "",
+          "photo": "../img/players/286828.webp",
+          "sofaId": 940871,
+          "stats": {
+            "APP": 28,
+            "G": 5,
+            "A": 1,
+            "SV": 0,
+            "YC": 8
+          }
+        },
+        {
+          "id": "224074",
+          "name": "Karim Coulibaly",
+          "short": "K. Coulibaly",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 19,
+          "jersey": "31",
+          "club": "",
+          "photo": "../img/players/224074.webp",
+          "sofaId": 1797852,
+          "stats": {
+            "APP": 27,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "303748",
+          "name": "Florian Wirtz",
+          "short": "F. Wirtz",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 23,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/303748.webp",
+          "sofaId": 1019322,
+          "stats": {
+            "APP": 34,
+            "G": 5,
+            "A": 3,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "180998",
+          "name": "Robert Andrich",
+          "short": "R. Andrich",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 31,
+          "jersey": "8",
+          "club": "",
+          "photo": "../img/players/180998.webp",
+          "sofaId": 168903,
+          "stats": {
+            "APP": 32,
+            "G": 2,
+            "A": 0,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "227053",
+          "name": "Suat Serdar",
+          "short": "S. Serdar",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 29,
+          "jersey": "8",
+          "club": "",
+          "photo": "../img/players/227053.webp",
+          "sofaId": 800408,
+          "stats": {
+            "APP": 32,
+            "G": 4,
+            "A": 2,
+            "SV": 9,
+            "YC": 7
+          }
+        },
+        {
+          "id": "321226",
+          "name": "Nicolai Remberg",
+          "short": "N. Remberg",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 25,
+          "jersey": "21",
+          "club": "",
+          "photo": "../img/players/321226.webp",
+          "sofaId": 1064305,
+          "stats": {
+            "APP": 32,
+            "G": 0,
+            "A": 2,
+            "SV": 0,
+            "YC": 11
+          }
+        },
+        {
+          "id": "197628",
+          "name": "Julian Brandt",
+          "short": "J. Brandt",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 30,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/197628.webp",
+          "sofaId": 226978,
+          "stats": {
+            "APP": 29,
+            "G": 7,
+            "A": 4,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "259053",
+          "name": "Marco Richter",
+          "short": "M. Richter",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 28,
+          "jersey": "23",
+          "club": "",
+          "photo": "../img/players/259053.webp",
+          "sofaId": 796027,
+          "stats": {
+            "APP": 29,
+            "G": 6,
+            "A": 6,
+            "SV": 1,
+            "YC": 8
+          }
+        },
+        {
+          "id": "281122",
+          "name": "Felix Nmecha",
+          "short": "F. Nmecha",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 25,
+          "jersey": "8",
+          "club": "",
+          "photo": "../img/players/281122.webp",
+          "sofaId": 907463,
+          "stats": {
+            "APP": 29,
+            "G": 2,
+            "A": 3,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "84659",
+          "name": "Oliver Kirch",
+          "short": "O. Kirch",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 43,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/84659.webp",
+          "sofaId": 168,
+          "stats": {
+            "APP": 23,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "298349",
+          "name": "Nick Woltemade",
+          "short": "N. Woltemade",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "27",
+          "club": "",
+          "photo": "../img/players/298349.webp",
+          "sofaId": 980623,
+          "stats": {
+            "APP": 33,
+            "G": 8,
+            "A": 3,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "340639",
+          "name": "Justin Njinmah",
+          "short": "J. Njinmah",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 25,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/340639.webp",
+          "sofaId": 1005343,
+          "stats": {
+            "APP": 33,
+            "G": 5,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "290639",
+          "name": "Maximilian Beier",
+          "short": "M. Beier",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 23,
+          "jersey": "14",
+          "club": "",
+          "photo": "../img/players/290639.webp",
+          "sofaId": 980628,
+          "stats": {
+            "APP": 32,
+            "G": 9,
+            "A": 6,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "162096",
+          "name": "Florian Niederlechner",
+          "short": "F. Niederlechner",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 35,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/162096.webp",
+          "sofaId": 156146,
+          "stats": {
+            "APP": 30,
+            "G": 5,
+            "A": 1,
+            "SV": 2,
+            "YC": 3
+          }
+        },
+        {
+          "id": "274913",
+          "name": "Karim Adeyemi",
+          "short": "K. Adeyemi",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "27",
+          "club": "",
+          "photo": "../img/players/274913.webp",
+          "sofaId": 940054,
+          "stats": {
+            "APP": 28,
+            "G": 7,
+            "A": 4,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "305555",
+          "name": "Ansgar Knauff",
+          "short": "A. Knauff",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/305555.webp",
+          "sofaId": 997012,
+          "stats": {
+            "APP": 28,
+            "G": 4,
+            "A": 1,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "122269",
+          "name": "Richard Sukuta-Pasu",
+          "short": "R. Sukuta-Pasu",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 35,
+          "jersey": "16",
+          "club": "",
+          "photo": "../img/players/122269.webp",
+          "sofaId": 38691,
+          "stats": {
+            "APP": 24,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 4
+          }
+        }
+      ]
+    },
+    "Inglaterra": {
+      "name": "Inglaterra",
+      "espnId": 10,
+      "players": [
+        {
+          "id": "159443",
+          "name": "Jordan Pickford",
+          "short": "J. Pickford",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 32,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/159443.webp",
+          "sofaId": 138530,
+          "stats": {
+            "APP": 38,
+            "G": 0,
+            "A": 0,
+            "SV": 100,
+            "YC": 4
+          }
+        },
+        {
+          "id": "161715",
+          "name": "Nick Pope",
+          "short": "N. Pope",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 34,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/161715.webp",
+          "sofaId": 162653,
+          "stats": {
+            "APP": 27,
+            "G": 0,
+            "A": 0,
+            "SV": 89,
+            "YC": 2
+          }
+        },
+        {
+          "id": "162338",
+          "name": "Sam Johnstone",
+          "short": "S. Johnstone",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 33,
+          "jersey": "31",
+          "club": "",
+          "photo": "../img/players/162338.webp",
+          "sofaId": 98427,
+          "stats": {
+            "APP": 12,
+            "G": 0,
+            "A": 0,
+            "SV": 39,
+            "YC": 0
+          }
+        },
+        {
+          "id": "167127",
+          "name": "Luke Shaw",
+          "short": "L. Shaw",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 30,
+          "jersey": "23",
+          "club": "",
+          "photo": "../img/players/167127.webp",
+          "sofaId": 190839,
+          "stats": {
+            "APP": 38,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 9
+          }
+        },
+        {
+          "id": "155226",
+          "name": "James Tarkowski",
+          "short": "J. Tarkowski",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 33,
+          "jersey": "6",
+          "club": "",
+          "photo": "../img/players/155226.webp",
+          "sofaId": 145188,
+          "stats": {
+            "APP": 37,
+            "G": 2,
+            "A": 3,
+            "SV": 0,
+            "YC": 8
+          }
+        },
+        {
+          "id": "129358",
+          "name": "Kyle Walker",
+          "short": "K. Walker",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 36,
+          "jersey": "2",
+          "club": "",
+          "photo": "../img/players/129358.webp",
+          "sofaId": 44614,
+          "stats": {
+            "APP": 36,
+            "G": 0,
+            "A": 2,
+            "SV": 0,
+            "YC": 9
+          }
+        },
+        {
+          "id": "265907",
+          "name": "Marc Guéhi",
+          "short": "M. Guéhi",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 25,
+          "jersey": "15",
+          "club": "",
+          "photo": "../img/players/265907.webp",
+          "sofaId": 877994,
+          "stats": {
+            "APP": 35,
+            "G": 3,
+            "A": 3,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "227784",
+          "name": "Trevoh Chalobah",
+          "short": "T. Chalobah",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 26,
+          "jersey": "23",
+          "club": "",
+          "photo": "../img/players/227784.webp",
+          "sofaId": 826134,
+          "stats": {
+            "APP": 34,
+            "G": 3,
+            "A": 0,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "328464",
+          "name": "Nico O'Reilly",
+          "short": "N. O'Reilly",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 21,
+          "jersey": "33",
+          "club": "",
+          "photo": "../img/players/328464.webp",
+          "sofaId": 1142703,
+          "stats": {
+            "APP": 34,
+            "G": 5,
+            "A": 3,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "4946",
+          "name": "Michael Keane",
+          "short": "M. Keane",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 33,
+          "jersey": "5",
+          "club": "",
+          "photo": "../img/players/4946.webp",
+          "sofaId": 110846,
+          "stats": {
+            "APP": 33,
+            "G": 3,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "106139",
+          "name": "Lewis Hall",
+          "short": "L. Hall",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 21,
+          "jersey": "3",
+          "club": "",
+          "photo": "../img/players/106139.webp",
+          "sofaId": 1136730,
+          "stats": {
+            "APP": 30,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "276220",
+          "name": "James Garner",
+          "short": "J. Garner",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 25,
+          "jersey": "37",
+          "club": "",
+          "photo": "../img/players/276220.webp",
+          "sofaId": 927361,
+          "stats": {
+            "APP": 38,
+            "G": 2,
+            "A": 7,
+            "SV": 0,
+            "YC": 12
+          }
+        },
+        {
+          "id": "243386",
+          "name": "Harvey Barnes",
+          "short": "H. Barnes",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 28,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/243386.webp",
+          "sofaId": 855647,
+          "stats": {
+            "APP": 37,
+            "G": 7,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "266697",
+          "name": "Emile Smith Rowe",
+          "short": "E. Smith Rowe",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 25,
+          "jersey": "32",
+          "club": "",
+          "photo": "../img/players/266697.webp",
+          "sofaId": 867445,
+          "stats": {
+            "APP": 37,
+            "G": 3,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "307657",
+          "name": "Jaidon Anthony",
+          "short": "J. Anthony",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/307657.webp",
+          "sofaId": 1020680,
+          "stats": {
+            "APP": 37,
+            "G": 8,
+            "A": 2,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "238262",
+          "name": "Declan Rice",
+          "short": "D. Rice",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 27,
+          "jersey": "41",
+          "club": "",
+          "photo": "../img/players/238262.webp",
+          "sofaId": 856714,
+          "stats": {
+            "APP": 36,
+            "G": 4,
+            "A": 5,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "190257",
+          "name": "Curtis Jones",
+          "short": "C. Jones",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 25,
+          "jersey": "17",
+          "club": "",
+          "photo": "../img/players/190257.webp",
+          "sofaId": 927353,
+          "stats": {
+            "APP": 34,
+            "G": 1,
+            "A": 2,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "172836",
+          "name": "Jacob Murphy",
+          "short": "J. Murphy",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 31,
+          "jersey": "23",
+          "club": "",
+          "photo": "../img/players/172836.webp",
+          "sofaId": 372336,
+          "stats": {
+            "APP": 33,
+            "G": 3,
+            "A": 2,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "190936",
+          "name": "Josh Laurent",
+          "short": "J. Laurent",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 31,
+          "jersey": "29",
+          "club": "",
+          "photo": "../img/players/190936.webp",
+          "sofaId": 552036,
+          "stats": {
+            "APP": 33,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 7
+          }
+        },
+        {
+          "id": "201089",
+          "name": "Jarrod Bowen",
+          "short": "J. Bowen",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 29,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/201089.webp",
+          "sofaId": 552884,
+          "stats": {
+            "APP": 38,
+            "G": 9,
+            "A": 11,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "138924",
+          "name": "Callum Wilson",
+          "short": "C. Wilson",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 34,
+          "jersey": "9",
+          "club": "",
+          "photo": "../img/players/138924.webp",
+          "sofaId": 113956,
+          "stats": {
+            "APP": 32,
+            "G": 7,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "230945",
+          "name": "Marcus Rashford",
+          "short": "M. Rashford",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 28,
+          "jersey": "14",
+          "club": "",
+          "photo": "../img/players/230945.webp",
+          "sofaId": 814590,
+          "stats": {
+            "APP": 32,
+            "G": 8,
+            "A": 7,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "276221",
+          "name": "Mason Greenwood",
+          "short": "M. Greenwood",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/276221.webp",
+          "sofaId": 942116,
+          "stats": {
+            "APP": 32,
+            "G": 16,
+            "A": 7,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "280555",
+          "name": "Bukayo Saka",
+          "short": "B. Saka",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/280555.webp",
+          "sofaId": 934235,
+          "stats": {
+            "APP": 32,
+            "G": 7,
+            "A": 5,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "307114",
+          "name": "Liam Delap",
+          "short": "L. Delap",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 23,
+          "jersey": "9",
+          "club": "",
+          "photo": "../img/players/307114.webp",
+          "sofaId": 997087,
+          "stats": {
+            "APP": 28,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "5208",
+          "name": "Jay Bothroyd",
+          "short": "J. Bothroyd",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 44,
+          "jersey": "9",
+          "club": "",
+          "photo": "../img/players/5208.webp",
+          "sofaId": 13057,
+          "stats": {
+            "APP": 26,
+            "G": 5,
+            "A": 0,
+            "SV": 0,
+            "YC": 3
+          }
+        }
+      ]
+    },
+    "Portugal": {
+      "name": "Portugal",
+      "espnId": 165,
+      "players": [
+        {
+          "id": "180162",
+          "name": "Daniel Heuer Fernandes",
+          "short": "D. Fernandes",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 33,
+          "jersey": "1",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/180162.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 33,
+            "G": 0,
+            "A": 0,
+            "SV": 107,
+            "YC": 3
+          }
+        },
+        {
+          "id": "131743",
+          "name": "Anthony Lopes",
+          "short": "A. Lopes",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 35,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/131743.webp",
+          "sofaId": 48535,
+          "stats": {
+            "APP": 32,
+            "G": 0,
+            "A": 0,
+            "SV": 98,
+            "YC": 4
+          }
+        },
+        {
+          "id": "181278",
+          "name": "José Sá",
+          "short": "J. Sá",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 33,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/181278.webp",
+          "sofaId": 252669,
+          "stats": {
+            "APP": 23,
+            "G": 0,
+            "A": 0,
+            "SV": 65,
+            "YC": 2
+          }
+        },
+        {
+          "id": "238902",
+          "name": "Diogo Dalot",
+          "short": "D. Dalot",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 27,
+          "jersey": "2",
+          "club": "",
+          "photo": "../img/players/238902.webp",
+          "sofaId": 843200,
+          "stats": {
+            "APP": 34,
+            "G": 1,
+            "A": 3,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "234878",
+          "name": "Rúben Dias",
+          "short": "R. Dias",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 29,
+          "jersey": "3",
+          "club": "",
+          "photo": "../img/players/234878.webp",
+          "sofaId": 318941,
+          "stats": {
+            "APP": 26,
+            "G": 2,
+            "A": 0,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "308456",
+          "name": "Rodrigo Gomes",
+          "short": "R. Gomes",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 22,
+          "jersey": "21",
+          "club": "",
+          "photo": "../img/players/308456.webp",
+          "sofaId": 1006073,
+          "stats": {
+            "APP": 22,
+            "G": 3,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "290591",
+          "name": "Nuno Mendes",
+          "short": "N. Mendes",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 23,
+          "jersey": "25",
+          "club": "",
+          "photo": "../img/players/290591.webp",
+          "sofaId": 989768,
+          "stats": {
+            "APP": 20,
+            "G": 4,
+            "A": 5,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "320848",
+          "name": "Toti Gomes",
+          "short": "T. Gomes",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 27,
+          "jersey": "24",
+          "club": "",
+          "photo": "../img/players/320848.webp",
+          "sofaId": 973418,
+          "stats": {
+            "APP": 19,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "176399",
+          "name": "João Cancelo",
+          "short": "J. Cancelo",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 32,
+          "jersey": "2",
+          "club": "",
+          "photo": "../img/players/176399.webp",
+          "sofaId": 138892,
+          "stats": {
+            "APP": 16,
+            "G": 2,
+            "A": 2,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "199833",
+          "name": "Bernardo Silva",
+          "short": "B. Silva",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 31,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/199833.webp",
+          "sofaId": 331209,
+          "stats": {
+            "APP": 38,
+            "G": 2,
+            "A": 4,
+            "SV": 0,
+            "YC": 10
+          }
+        },
+        {
+          "id": "346820",
+          "name": "Mateus Fernandes",
+          "short": "M. Fernandes",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 21,
+          "jersey": "18",
+          "club": "",
+          "photo": "../img/players/346820.webp",
+          "sofaId": 1142562,
+          "stats": {
+            "APP": 36,
+            "G": 3,
+            "A": 4,
+            "SV": 0,
+            "YC": 7
+          }
+        },
+        {
+          "id": "124091",
+          "name": "Bruno Fernandes",
+          "short": "B. Fernandes",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 31,
+          "jersey": "8",
+          "club": "",
+          "photo": "../img/players/124091.webp",
+          "sofaId": 288205,
+          "stats": {
+            "APP": 35,
+            "G": 9,
+            "A": 21,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "303785",
+          "name": "Matheus Nunes",
+          "short": "M. Nunes",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 27,
+          "jersey": "27",
+          "club": "",
+          "photo": "../img/players/303785.webp",
+          "sofaId": 945122,
+          "stats": {
+            "APP": 34,
+            "G": 1,
+            "A": 5,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "256607",
+          "name": "Florentino",
+          "short": "Florentino",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "16",
+          "club": "",
+          "photo": "../img/players/256607.webp",
+          "sofaId": 855845,
+          "stats": {
+            "APP": 31,
+            "G": 0,
+            "A": 2,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "88865",
+          "name": "Fabio Vieira",
+          "short": "F. Vieira",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/88865.webp",
+          "sofaId": 904835,
+          "stats": {
+            "APP": 29,
+            "G": 7,
+            "A": 5,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "288897",
+          "name": "Vitinha",
+          "short": "Vitinha",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "17",
+          "club": "",
+          "photo": "../img/players/288897.webp",
+          "sofaId": 902029,
+          "stats": {
+            "APP": 29,
+            "G": 1,
+            "A": 7,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "355061",
+          "name": "João Neves",
+          "short": "J. Neves",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 21,
+          "jersey": "87",
+          "club": "",
+          "photo": "../img/players/355061.webp",
+          "sofaId": 1190933,
+          "stats": {
+            "APP": 21,
+            "G": 5,
+            "A": 1,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "256115",
+          "name": "Pedro Neto",
+          "short": "P. Neto",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 26,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/256115.webp",
+          "sofaId": 879349,
+          "stats": {
+            "APP": 34,
+            "G": 5,
+            "A": 6,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "288896",
+          "name": "Gonçalo Ramos",
+          "short": "G. Ramos",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "9",
+          "club": "",
+          "photo": "../img/players/288896.webp",
+          "sofaId": 934510,
+          "stats": {
+            "APP": 30,
+            "G": 6,
+            "A": 1,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "291629",
+          "name": "Fábio Silva",
+          "short": "F. Silva",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 23,
+          "jersey": "21",
+          "club": "",
+          "photo": "../img/players/291629.webp",
+          "sofaId": 954076,
+          "stats": {
+            "APP": 28,
+            "G": 2,
+            "A": 6,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "380196",
+          "name": "Mateus Mané",
+          "short": "M. Mané",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 18,
+          "jersey": "36",
+          "club": "",
+          "photo": "../img/players/380196.webp",
+          "sofaId": 1899647,
+          "stats": {
+            "APP": 27,
+            "G": 3,
+            "A": 1,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "388392",
+          "name": "Fabio Baldé",
+          "short": "Fabio Baldé",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 20,
+          "jersey": "45",
+          "club": "",
+          "photo": "../img/players/388392.webp",
+          "sofaId": 1546267,
+          "stats": {
+            "APP": 16,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        }
+      ]
+    },
+    "Países Bajos": {
+      "name": "Países Bajos",
+      "espnId": 167,
+      "players": [
+        {
+          "id": "301449",
+          "name": "Robin Roefs",
+          "short": "R. Roefs",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 23,
+          "jersey": "22",
+          "club": "",
+          "photo": "../img/players/301449.webp",
+          "sofaId": 1012928,
+          "stats": {
+            "APP": 35,
+            "G": 0,
+            "A": 0,
+            "SV": 109,
+            "YC": 4
+          }
+        },
+        {
+          "id": "177821",
+          "name": "Mark Flekken",
+          "short": "M. Flekken",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 32,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/177821.webp",
+          "sofaId": 171919,
+          "stats": {
+            "APP": 24,
+            "G": 0,
+            "A": 0,
+            "SV": 79,
+            "YC": 1
+          }
+        },
+        {
+          "id": "228707",
+          "name": "Jeffrey de Lange",
+          "short": "J. de Lange",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 28,
+          "jersey": "12",
+          "club": "",
+          "photo": "../img/players/228707.webp",
+          "sofaId": 803034,
+          "stats": {
+            "APP": 5,
+            "G": 0,
+            "A": 0,
+            "SV": 13,
+            "YC": 0
+          }
+        },
+        {
+          "id": "157892",
+          "name": "Virgil van Dijk",
+          "short": "V. van Dijk",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 34,
+          "jersey": "4",
+          "club": "",
+          "photo": "../img/players/157892.webp",
+          "sofaId": 151545,
+          "stats": {
+            "APP": 38,
+            "G": 6,
+            "A": 0,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "282716",
+          "name": "Jurriën Timber",
+          "short": "J. Timber",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "12",
+          "club": "",
+          "photo": "../img/players/282716.webp",
+          "sofaId": 958959,
+          "stats": {
+            "APP": 30,
+            "G": 3,
+            "A": 5,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "264828",
+          "name": "Lutsharel Geertruida",
+          "short": "L. Geertruida",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 25,
+          "jersey": "6",
+          "club": "",
+          "photo": "../img/players/264828.webp",
+          "sofaId": 856739,
+          "stats": {
+            "APP": 28,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "274633",
+          "name": "Sven Botman",
+          "short": "S. Botman",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 26,
+          "jersey": "4",
+          "club": "",
+          "photo": "../img/players/274633.webp",
+          "sofaId": 910046,
+          "stats": {
+            "APP": 25,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "190974",
+          "name": "Kenny Tete",
+          "short": "K. Tete",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 30,
+          "jersey": "2",
+          "club": "",
+          "photo": "../img/players/190974.webp",
+          "sofaId": 190877,
+          "stats": {
+            "APP": 22,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "353951",
+          "name": "Jorrel Hato",
+          "short": "J. Hato",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 20,
+          "jersey": "21",
+          "club": "",
+          "photo": "../img/players/353951.webp",
+          "sofaId": 1153079,
+          "stats": {
+            "APP": 22,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 7
+          }
+        },
+        {
+          "id": "281119",
+          "name": "Jeremie Frimpong",
+          "short": "J. Frimpong",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 25,
+          "jersey": "30",
+          "club": "",
+          "photo": "../img/players/281119.webp",
+          "sofaId": 970361,
+          "stats": {
+            "APP": 21,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "346210",
+          "name": "Quilindschy Hartman",
+          "short": "Q. Hartman",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "3",
+          "club": "",
+          "photo": "../img/players/346210.webp",
+          "sofaId": 1392044,
+          "stats": {
+            "APP": 21,
+            "G": 0,
+            "A": 5,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "274632",
+          "name": "Ryan Gravenberch",
+          "short": "R. Gravenberch",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 24,
+          "jersey": "38",
+          "club": "",
+          "photo": "../img/players/274632.webp",
+          "sofaId": 904897,
+          "stats": {
+            "APP": 36,
+            "G": 5,
+            "A": 3,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "261328",
+          "name": "Tijjani Reijnders",
+          "short": "T. Reijnders",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 27,
+          "jersey": "4",
+          "club": "",
+          "photo": "../img/players/261328.webp",
+          "sofaId": 893549,
+          "stats": {
+            "APP": 28,
+            "G": 5,
+            "A": 2,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "219022",
+          "name": "Frenkie de Jong",
+          "short": "F. de Jong",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 29,
+          "jersey": "21",
+          "club": "",
+          "photo": "../img/players/219022.webp",
+          "sofaId": 795222,
+          "stats": {
+            "APP": 25,
+            "G": 1,
+            "A": 5,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "282230",
+          "name": "Quinten Timber",
+          "short": "Q. Timber",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 24,
+          "jersey": "27",
+          "club": "",
+          "photo": "../img/players/282230.webp",
+          "sofaId": 959805,
+          "stats": {
+            "APP": 15,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "249524",
+          "name": "Cody Gakpo",
+          "short": "C. Gakpo",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 27,
+          "jersey": "18",
+          "club": "",
+          "photo": "../img/players/249524.webp",
+          "sofaId": 862967,
+          "stats": {
+            "APP": 36,
+            "G": 7,
+            "A": 5,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "282229",
+          "name": "Brian Brobbey",
+          "short": "B. Brobbey",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "9",
+          "club": "",
+          "photo": "../img/players/282229.webp",
+          "sofaId": 910048,
+          "stats": {
+            "APP": 31,
+            "G": 7,
+            "A": 1,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "284792",
+          "name": "Crysencio Summerville",
+          "short": "C. Summerville",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/284792.webp",
+          "sofaId": 917005,
+          "stats": {
+            "APP": 31,
+            "G": 5,
+            "A": 2,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "261598",
+          "name": "Zian Flemming",
+          "short": "Z. Flemming",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 27,
+          "jersey": "19",
+          "club": "",
+          "photo": "../img/players/261598.webp",
+          "sofaId": 875137,
+          "stats": {
+            "APP": 29,
+            "G": 11,
+            "A": 0,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "318534",
+          "name": "Ernest Poku",
+          "short": "E. Poku",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 22,
+          "jersey": "19",
+          "club": "",
+          "photo": "../img/players/318534.webp",
+          "sofaId": 1119502,
+          "stats": {
+            "APP": 29,
+            "G": 5,
+            "A": 5,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "276327",
+          "name": "Joshua Zirkzee",
+          "short": "J. Zirkzee",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 25,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/276327.webp",
+          "sofaId": 917007,
+          "stats": {
+            "APP": 24,
+            "G": 2,
+            "A": 1,
+            "SV": 0,
+            "YC": 3
+          }
+        }
+      ]
+    },
+    "Bélgica": {
+      "name": "Bélgica",
+      "espnId": 1,
+      "players": [
+        {
+          "id": "134283",
+          "name": "Thibaut Courtois",
+          "short": "T. Courtois",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 34,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/134283.webp",
+          "sofaId": 70988,
+          "stats": {
+            "APP": 32,
+            "G": 0,
+            "A": 0,
+            "SV": 70,
+            "YC": 1
+          }
+        },
+        {
+          "id": "301425",
+          "name": "Senne Lammens",
+          "short": "S. Lammens",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 23,
+          "jersey": "31",
+          "club": "",
+          "photo": "../img/players/301425.webp",
+          "sofaId": 964753,
+          "stats": {
+            "APP": 32,
+            "G": 0,
+            "A": 0,
+            "SV": 79,
+            "YC": 0
+          }
+        },
+        {
+          "id": "330271",
+          "name": "Jelle Van Neck",
+          "short": "J. Van Neck",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 22,
+          "jersey": "40",
+          "club": "",
+          "photo": "../img/players/330271.webp",
+          "sofaId": 1142668,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "197163",
+          "name": "Timothy Castagne",
+          "short": "T. Castagne",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 30,
+          "jersey": "21",
+          "club": "",
+          "photo": "../img/players/197163.webp",
+          "sofaId": 329417,
+          "stats": {
+            "APP": 30,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "304222",
+          "name": "Arthur Theate",
+          "short": "A. Theate",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 26,
+          "jersey": "3",
+          "club": "",
+          "photo": "../img/players/304222.webp",
+          "sofaId": 965778,
+          "stats": {
+            "APP": 24,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 8
+          }
+        },
+        {
+          "id": "282388",
+          "name": "Olivier Deman",
+          "short": "O. Deman",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 26,
+          "jersey": "2",
+          "club": "",
+          "photo": "../img/players/282388.webp",
+          "sofaId": 960114,
+          "stats": {
+            "APP": 16,
+            "G": 1,
+            "A": 2,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "270389",
+          "name": "Senne Lynen",
+          "short": "S. Lynen",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 27,
+          "jersey": "14",
+          "club": "",
+          "photo": "../img/players/270389.webp",
+          "sofaId": 826171,
+          "stats": {
+            "APP": 31,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "268239",
+          "name": "Albert Sambi Lokonga",
+          "short": "A. Lokonga",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "6",
+          "club": "",
+          "photo": "../img/players/268239.webp",
+          "sofaId": 901892,
+          "stats": {
+            "APP": 26,
+            "G": 5,
+            "A": 0,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "345805",
+          "name": "Arthur Vermeeren",
+          "short": "A. Vermeeren",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 21,
+          "jersey": "18",
+          "club": "",
+          "photo": "../img/players/345805.webp",
+          "sofaId": 1149127,
+          "stats": {
+            "APP": 20,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "308217",
+          "name": "Romeo Lavia",
+          "short": "R. Lavia",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 22,
+          "jersey": "45",
+          "club": "",
+          "photo": "../img/players/308217.webp",
+          "sofaId": 1069488,
+          "stats": {
+            "APP": 12,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "229443",
+          "name": "Dodi Lukébakio",
+          "short": "D. Lukébakio",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 28,
+          "jersey": "14",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/229443.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 32,
+            "G": 11,
+            "A": 3,
+            "SV": 4,
+            "YC": 8
+          }
+        },
+        {
+          "id": "174980",
+          "name": "Leandro Trossard",
+          "short": "L. Trossard",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 31,
+          "jersey": "19",
+          "club": "",
+          "photo": "../img/players/174980.webp",
+          "sofaId": 135666,
+          "stats": {
+            "APP": 31,
+            "G": 6,
+            "A": 6,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "283672",
+          "name": "Jérémy Doku",
+          "short": "J. Doku",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/283672.webp",
+          "sofaId": 934386,
+          "stats": {
+            "APP": 30,
+            "G": 5,
+            "A": 5,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "323033",
+          "name": "Lucas Stassin",
+          "short": "L. Stassin",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 21,
+          "jersey": "32",
+          "club": "",
+          "photo": "../img/players/323033.webp",
+          "sofaId": 1126521,
+          "stats": {
+            "APP": 28,
+            "G": 12,
+            "A": 4,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "355997",
+          "name": "Samuel Mbangula",
+          "short": "S. Mbangula",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 22,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/355997.webp",
+          "sofaId": 1100836,
+          "stats": {
+            "APP": 26,
+            "G": 3,
+            "A": 2,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "156479",
+          "name": "Michy Batshuayi",
+          "short": "M. Batshuayi",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 32,
+          "jersey": "30",
+          "club": "",
+          "photo": "../img/players/156479.webp",
+          "sofaId": 147745,
+          "stats": {
+            "APP": 6,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "280895",
+          "name": "Mike Trésor",
+          "short": "M. Trésor",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 27,
+          "jersey": "31",
+          "club": "",
+          "photo": "../img/players/280895.webp",
+          "sofaId": 826183,
+          "stats": {
+            "APP": 6,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        }
+      ]
+    },
+    "Croacia": {
+      "name": "Croacia",
+      "espnId": 44,
+      "players": [
+        {
+          "id": "364962",
+          "name": "Luka Vuskovic",
+          "short": "L. Vuskovic",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 19,
+          "jersey": "44",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/364962.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 28,
+            "G": 6,
+            "A": 0,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "262602",
+          "name": "Filip Uremovic",
+          "short": "F. Uremovic",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 29,
+          "jersey": "5",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/262602.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 22,
+            "G": 0,
+            "A": 0,
+            "SV": 8,
+            "YC": 7
+          }
+        },
+        {
+          "id": "299910",
+          "name": "Josko Gvardiol",
+          "short": "J. Gvardiol",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "24",
+          "club": "",
+          "photo": "../img/players/299910.webp",
+          "sofaId": 964994,
+          "stats": {
+            "APP": 18,
+            "G": 2,
+            "A": 2,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "84736",
+          "name": "Ivo Ilicevic",
+          "short": "I. Ilicevic",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 39,
+          "jersey": "22",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/84736.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 22,
+            "G": 3,
+            "A": 0,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "398005",
+          "name": "Patrice Covic",
+          "short": "P. Covic",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 18,
+          "jersey": "24",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/398005.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 15,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "154595",
+          "name": "Mateo Kovacic",
+          "short": "M. Kovacic",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 32,
+          "jersey": "8",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/154595.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 6,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "207288",
+          "name": "Ante Budimir",
+          "short": "A. Budimir",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 34,
+          "jersey": "17",
+          "club": "",
+          "photo": "../img/players/207288.webp",
+          "sofaId": 37318,
+          "stats": {
+            "APP": 37,
+            "G": 17,
+            "A": 0,
+            "SV": 0,
+            "YC": 4
+          }
+        }
+      ]
+    },
+    "Escocia": {
+      "name": "Escocia",
+      "espnId": 269,
+      "players": [
+        {
+          "id": "104943",
+          "name": "Andy Robertson",
+          "short": "A. Robertson",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 32,
+          "jersey": "26",
+          "club": "",
+          "photo": "../img/players/104943.webp",
+          "sofaId": 262911,
+          "stats": {
+            "APP": 24,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "271191",
+          "name": "Nathan Patterson",
+          "short": "N. Patterson",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "2",
+          "club": "",
+          "photo": "../img/players/271191.webp",
+          "sofaId": 1020141,
+          "stats": {
+            "APP": 7,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "291353",
+          "name": "Calvin Ramsay",
+          "short": "C. Ramsay",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 22,
+          "jersey": "47",
+          "club": "",
+          "photo": "../img/players/291353.webp",
+          "sofaId": 991227,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "347290",
+          "name": "Murray Campbell",
+          "short": "M. Campbell",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 19,
+          "jersey": "43",
+          "club": "",
+          "photo": "../img/players/347290.webp",
+          "sofaId": 1403049,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "140033",
+          "name": "Tom Cairney",
+          "short": "T. Cairney",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 35,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/140033.webp",
+          "sofaId": 82566,
+          "stats": {
+            "APP": 24,
+            "G": 2,
+            "A": 0,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "393138",
+          "name": "Tyler Fletcher",
+          "short": "T. Fletcher",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 19,
+          "jersey": "39",
+          "club": "",
+          "photo": "../img/players/393138.webp",
+          "sofaId": 1402850,
+          "stats": {
+            "APP": 2,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "119004",
+          "name": "Matt Phillips",
+          "short": "M. Phillips",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 35,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/119004.webp",
+          "sofaId": 36466,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "156085",
+          "name": "Robert Snodgrass",
+          "short": "R. Snodgrass",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 38,
+          "jersey": "23",
+          "club": "",
+          "photo": "../img/players/156085.webp",
+          "sofaId": 9127,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "345845",
+          "name": "Ethan Sutherland",
+          "short": "E. Sutherland",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 20,
+          "jersey": "60",
+          "club": "",
+          "photo": "../img/players/345845.webp",
+          "sofaId": 1391249,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "366750",
+          "name": "Ellis Clark",
+          "short": "E. Clark",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 18,
+          "jersey": "47",
+          "club": "",
+          "photo": "../img/players/366750.webp",
+          "sofaId": 1977040,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        }
+      ]
+    },
+    "Suiza": {
+      "name": "Suiza",
+      "espnId": 379,
+      "players": [
+        {
+          "id": "238544",
+          "name": "Gregor Kobel",
+          "short": "G. Kobel",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 28,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/238544.webp",
+          "sofaId": 556866,
+          "stats": {
+            "APP": 34,
+            "G": 0,
+            "A": 0,
+            "SV": 89,
+            "YC": 3
+          }
+        },
+        {
+          "id": "238418",
+          "name": "Jonas Omlin",
+          "short": "J. Omlin",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 32,
+          "jersey": "18",
+          "club": "",
+          "photo": "../img/players/238418.webp",
+          "sofaId": 571622,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "243626",
+          "name": "Miro Muheim",
+          "short": "M. Muheim",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 28,
+          "jersey": "28",
+          "club": "",
+          "photo": "../img/players/243626.webp",
+          "sofaId": 798303,
+          "stats": {
+            "APP": 29,
+            "G": 0,
+            "A": 4,
+            "SV": 0,
+            "YC": 7
+          }
+        },
+        {
+          "id": "319404",
+          "name": "Aurèle Amenda",
+          "short": "A. Amenda",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 22,
+          "jersey": "5",
+          "club": "",
+          "photo": "../img/players/319404.webp",
+          "sofaId": 999276,
+          "stats": {
+            "APP": 24,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "307242",
+          "name": "Isaac Schmidt",
+          "short": "I. Schmidt",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 26,
+          "jersey": "23",
+          "club": "",
+          "photo": "../img/players/307242.webp",
+          "sofaId": 1015164,
+          "stats": {
+            "APP": 19,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "179233",
+          "name": "Fabian Schär",
+          "short": "F. Schär",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 34,
+          "jersey": "5",
+          "club": "",
+          "photo": "../img/players/179233.webp",
+          "sofaId": 101882,
+          "stats": {
+            "APP": 16,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "149981",
+          "name": "Granit Xhaka",
+          "short": "G. Xhaka",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 33,
+          "jersey": "34",
+          "club": "",
+          "photo": "../img/players/149981.webp",
+          "sofaId": 117777,
+          "stats": {
+            "APP": 34,
+            "G": 1,
+            "A": 6,
+            "SV": 0,
+            "YC": 8
+          }
+        },
+        {
+          "id": "320757",
+          "name": "Zeki Amdouni",
+          "short": "Z. Amdouni",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 25,
+          "jersey": "25",
+          "club": "",
+          "photo": "../img/players/320757.webp",
+          "sofaId": 990550,
+          "stats": {
+            "APP": 4,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        }
+      ]
+    },
+    "Austria": {
+      "name": "Austria",
+      "espnId": 371,
+      "players": [
+        {
+          "id": "149296",
+          "name": "Marco Knaller",
+          "short": "M. Knaller",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 39,
+          "jersey": "27",
+          "club": "",
+          "photo": "../img/players/149296.webp",
+          "sofaId": 7617,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "232477",
+          "name": "Marco Friedl",
+          "short": "M. Friedl",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 28,
+          "jersey": "32",
+          "club": "",
+          "photo": "../img/players/232477.webp",
+          "sofaId": 825771,
+          "stats": {
+            "APP": 30,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 9
+          }
+        },
+        {
+          "id": "329484",
+          "name": "Samson Baidoo",
+          "short": "S. Baidoo",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 22,
+          "jersey": "6",
+          "club": "",
+          "photo": "../img/players/329484.webp",
+          "sofaId": 1099117,
+          "stats": {
+            "APP": 23,
+            "G": 2,
+            "A": 1,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "118444",
+          "name": "David Alaba",
+          "short": "D. Alaba",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 33,
+          "jersey": "4",
+          "club": "",
+          "photo": "../img/players/118444.webp",
+          "sofaId": 66492,
+          "stats": {
+            "APP": 11,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "231674",
+          "name": "Maximilian Wöber",
+          "short": "M. Wöber",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 28,
+          "jersey": "39",
+          "club": "",
+          "photo": "../img/players/231674.webp",
+          "sofaId": 794962,
+          "stats": {
+            "APP": 2,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "238296",
+          "name": "Romano Schmid",
+          "short": "R. Schmid",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/238296.webp",
+          "sofaId": 830127,
+          "stats": {
+            "APP": 34,
+            "G": 4,
+            "A": 8,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "294317",
+          "name": "Carney Chukwuemeka",
+          "short": "C. Chukwuemeka",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 22,
+          "jersey": "17",
+          "club": "",
+          "photo": "../img/players/294317.webp",
+          "sofaId": 994556,
+          "stats": {
+            "APP": 28,
+            "G": 2,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "173907",
+          "name": "Marcel Sabitzer",
+          "short": "M. Sabitzer",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 32,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/173907.webp",
+          "sofaId": 133908,
+          "stats": {
+            "APP": 26,
+            "G": 1,
+            "A": 2,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "121557",
+          "name": "Clemens Walch",
+          "short": "C. Walch",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 38,
+          "jersey": "15",
+          "club": "",
+          "photo": "../img/players/121557.webp",
+          "sofaId": 27199,
+          "stats": {
+            "APP": 5,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "305853",
+          "name": "Marco Grüll",
+          "short": "M. Grüll",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 27,
+          "jersey": "17",
+          "club": "",
+          "photo": "../img/players/305853.webp",
+          "sofaId": 815612,
+          "stats": {
+            "APP": 33,
+            "G": 3,
+            "A": 1,
+            "SV": 0,
+            "YC": 5
+          }
+        }
+      ]
+    },
+    "Noruega": {
+      "name": "Noruega",
+      "espnId": 378,
+      "players": [
+        {
+          "id": "304258",
+          "name": "Sander Tangvik",
+          "short": "S. Tangvik",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 23,
+          "jersey": "12",
+          "club": "",
+          "photo": "../img/players/304258.webp",
+          "sofaId": 1030355,
+          "stats": {
+            "APP": 1,
+            "G": 0,
+            "A": 0,
+            "SV": 7,
+            "YC": 0
+          }
+        },
+        {
+          "id": "45622",
+          "name": "Rune Jarstein",
+          "short": "R. Jarstein",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 41,
+          "jersey": "22",
+          "club": "",
+          "photo": "../img/players/45622.webp",
+          "sofaId": 6280,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "222991",
+          "name": "Julian Ryerson",
+          "short": "J. Ryerson",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 28,
+          "jersey": "26",
+          "club": "",
+          "photo": "../img/players/222991.webp",
+          "sofaId": 800951,
+          "stats": {
+            "APP": 31,
+            "G": 0,
+            "A": 15,
+            "SV": 0,
+            "YC": 8
+          }
+        },
+        {
+          "id": "313361",
+          "name": "David Møller Wolfe",
+          "short": "D. Møller Wolfe",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "6",
+          "club": "",
+          "photo": "../img/players/313361.webp",
+          "sofaId": 1031283,
+          "stats": {
+            "APP": 22,
+            "G": 0,
+            "A": 2,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "218998",
+          "name": "Sander Berge",
+          "short": "S. Berge",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 28,
+          "jersey": "16",
+          "club": "",
+          "photo": "../img/players/218998.webp",
+          "sofaId": 793167,
+          "stats": {
+            "APP": 35,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "203669",
+          "name": "Martin Ødegaard",
+          "short": "M. Ødegaard",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 27,
+          "jersey": "8",
+          "club": "",
+          "photo": "../img/players/203669.webp",
+          "sofaId": 547410,
+          "stats": {
+            "APP": 24,
+            "G": 1,
+            "A": 6,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "307111",
+          "name": "Oscar Bobb",
+          "short": "O. Bobb",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 22,
+          "jersey": "14",
+          "club": "",
+          "photo": "../img/players/307111.webp",
+          "sofaId": 1065216,
+          "stats": {
+            "APP": 23,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "334109",
+          "name": "Sverre Nypan",
+          "short": "S. Nypan",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 19,
+          "jersey": "41",
+          "club": "",
+          "photo": "../img/players/334109.webp",
+          "sofaId": 1146511,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "253989",
+          "name": "Erling Haaland",
+          "short": "E. Haaland",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 25,
+          "jersey": "9",
+          "club": "",
+          "photo": "../img/players/253989.webp",
+          "sofaId": 839956,
+          "stats": {
+            "APP": 35,
+            "G": 27,
+            "A": 8,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "384471",
+          "name": "Alexander Røssing-Lelesiit",
+          "short": "A. Røssing-Lelesiit",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 19,
+          "jersey": "38",
+          "club": "",
+          "photo": "../img/players/384471.webp",
+          "sofaId": 1862226,
+          "stats": {
+            "APP": 11,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        }
+      ]
+    },
+    "Suecia": {
+      "name": "Suecia",
+      "espnId": 466,
+      "players": [
+        {
+          "id": "221041",
+          "name": "Patrick Carlgren",
+          "short": "P. Carlgren",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 34,
+          "jersey": "30",
+          "club": "",
+          "photo": "../img/players/221041.webp",
+          "sofaId": 156236,
+          "stats": {
+            "APP": 3,
+            "G": 0,
+            "A": 0,
+            "SV": 11,
+            "YC": 0
+          }
+        },
+        {
+          "id": "307800",
+          "name": "Melker Ellborg",
+          "short": "M. Ellborg",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 23,
+          "jersey": "31",
+          "club": "",
+          "photo": "../img/players/307800.webp",
+          "sofaId": 1099795,
+          "stats": {
+            "APP": 3,
+            "G": 0,
+            "A": 0,
+            "SV": 10,
+            "YC": 0
+          }
+        },
+        {
+          "id": "310709",
+          "name": "Daniel Svensson",
+          "short": "D. Svensson",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "24",
+          "club": "",
+          "photo": "../img/players/310709.webp",
+          "sofaId": 1021272,
+          "stats": {
+            "APP": 33,
+            "G": 2,
+            "A": 2,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "290413",
+          "name": "Hjalmar Ekdal",
+          "short": "H. Ekdal",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 27,
+          "jersey": "18",
+          "club": "",
+          "photo": "../img/players/290413.webp",
+          "sofaId": 875360,
+          "stats": {
+            "APP": 19,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "172922",
+          "name": "Emil Krafth",
+          "short": "E. Krafth",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 31,
+          "jersey": "17",
+          "club": "",
+          "photo": "../img/players/172922.webp",
+          "sofaId": 150396,
+          "stats": {
+            "APP": 1,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "336460",
+          "name": "Hugo Larsson",
+          "short": "H. Larsson",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 21,
+          "jersey": "16",
+          "club": "",
+          "photo": "../img/players/336460.webp",
+          "sofaId": 1142211,
+          "stats": {
+            "APP": 25,
+            "G": 2,
+            "A": 2,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "399423",
+          "name": "Love Arrhov",
+          "short": "L. Arrhov",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 18,
+          "jersey": "31",
+          "club": "",
+          "photo": "../img/players/399423.webp",
+          "sofaId": 1977245,
+          "stats": {
+            "APP": 5,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "258906",
+          "name": "Viktor Gyökeres",
+          "short": "V. Gyökeres",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 28,
+          "jersey": "14",
+          "club": "",
+          "photo": "../img/players/258906.webp",
+          "sofaId": 804508,
+          "stats": {
+            "APP": 36,
+            "G": 14,
+            "A": 1,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "296622",
+          "name": "Anthony Elanga",
+          "short": "A. Elanga",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/296622.webp",
+          "sofaId": 979232,
+          "stats": {
+            "APP": 32,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "331152",
+          "name": "Roony Bardghji",
+          "short": "R. Bardghji",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 20,
+          "jersey": "19",
+          "club": "",
+          "photo": "../img/players/331152.webp",
+          "sofaId": 1162107,
+          "stats": {
+            "APP": 21,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "235662",
+          "name": "Alexander Isak",
+          "short": "A. Isak",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 26,
+          "jersey": "9",
+          "club": "",
+          "photo": "../img/players/235662.webp",
+          "sofaId": 823941,
+          "stats": {
+            "APP": 14,
+            "G": 3,
+            "A": 1,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "369363",
+          "name": "Jonah Kusi-Asare",
+          "short": "J. Kusi-Asare",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 18,
+          "jersey": "18",
+          "club": "",
+          "photo": "../img/players/369363.webp",
+          "sofaId": 1503757,
+          "stats": {
+            "APP": 7,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "421853",
+          "name": "Ugo El Kadmiri",
+          "short": "U. El Kadmiri",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 18,
+          "jersey": "70",
+          "club": "",
+          "photo": "../img/players/421853.webp",
+          "sofaId": 1998104,
+          "stats": {
+            "APP": 3,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        }
+      ]
+    },
+    "Bosnia y Herz.": {
+      "name": "Bosnia y Herz.",
+      "espnId": 452,
+      "players": [
+        {
+          "id": "387044",
+          "name": "Nidal Celik",
+          "short": "N. Celik",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 19,
+          "jersey": "4",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/387044.png",
+          "sofaId": null,
+          "stats": {
+            "APP": 8,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "194767",
+          "name": "Ivan Sunjic",
+          "short": "I. Sunjic",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 29,
+          "jersey": "34",
+          "club": "",
+          "photo": "../img/players/194767.webp",
+          "sofaId": 1506360,
+          "stats": {
+            "APP": 18,
+            "G": 0,
+            "A": 0,
+            "SV": 4,
+            "YC": 4
+          }
+        }
+      ]
+    },
+    "Uruguay": {
+      "name": "Uruguay",
+      "espnId": 47,
+      "players": [
+        {
+          "id": "241225",
+          "name": "Santiago Bueno",
+          "short": "S. Bueno",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 27,
+          "jersey": "4",
+          "club": "",
+          "photo": "../img/players/241225.webp",
+          "sofaId": 846308,
+          "stats": {
+            "APP": 29,
+            "G": 3,
+            "A": 1,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "270821",
+          "name": "Ronald Araújo",
+          "short": "R. Araújo",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 27,
+          "jersey": "4",
+          "club": "",
+          "photo": "../img/players/270821.webp",
+          "sofaId": 925097,
+          "stats": {
+            "APP": 24,
+            "G": 3,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "254033",
+          "name": "Agustin Rogel",
+          "short": "A. Rogel",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 28,
+          "jersey": "3",
+          "club": "",
+          "photo": "../img/players/254033.webp",
+          "sofaId": 875293,
+          "stats": {
+            "APP": 20,
+            "G": 0,
+            "A": 1,
+            "SV": 9,
+            "YC": 7
+          }
+        },
+        {
+          "id": "235818",
+          "name": "Federico Valverde",
+          "short": "F. Valverde",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 27,
+          "jersey": "8",
+          "club": "",
+          "photo": "../img/players/235818.webp",
+          "sofaId": 831808,
+          "stats": {
+            "APP": 33,
+            "G": 5,
+            "A": 8,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "241468",
+          "name": "Manuel Ugarte",
+          "short": "M. Ugarte",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 25,
+          "jersey": "25",
+          "club": "",
+          "photo": "../img/players/241468.webp",
+          "sofaId": 846425,
+          "stats": {
+            "APP": 22,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "13741",
+          "name": "Marcelo Zalayeta",
+          "short": "M. Zalayeta",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 47,
+          "jersey": "25",
+          "club": "",
+          "photo": "../img/players/13741.webp",
+          "sofaId": 2092,
+          "stats": {
+            "APP": 2,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        }
+      ]
+    },
+    "Colombia": {
+      "name": "Colombia",
+      "espnId": 11,
+      "players": [
+        {
+          "id": "341729",
+          "name": "Alexei Rojas",
+          "short": "A. Rojas",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 20,
+          "jersey": "51",
+          "club": "",
+          "photo": "../img/players/341729.webp",
+          "sofaId": 1218090,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "301462",
+          "name": "Yerson Mosquera",
+          "short": "Y. Mosquera",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 25,
+          "jersey": "15",
+          "club": "",
+          "photo": "../img/players/301462.webp",
+          "sofaId": 1014835,
+          "stats": {
+            "APP": 27,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 11
+          }
+        },
+        {
+          "id": "197401",
+          "name": "Deiver Machado",
+          "short": "D. Machado",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 32,
+          "jersey": "27",
+          "club": "",
+          "photo": "../img/players/197401.webp",
+          "sofaId": 822110,
+          "stats": {
+            "APP": 19,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 3
+          }
+        }
+      ]
+    },
+    "Ecuador": {
+      "name": "Ecuador",
+      "espnId": 13,
+      "players": [
+        {
+          "id": "292062",
+          "name": "Piero Hincapié",
+          "short": "P. Hincapié",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "5",
+          "club": "",
+          "photo": "../img/players/292062.webp",
+          "sofaId": 1002837,
+          "stats": {
+            "APP": 25,
+            "G": 1,
+            "A": 2,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "287005",
+          "name": "Willian Pacho",
+          "short": "W. Pacho",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "51",
+          "club": "",
+          "photo": "../img/players/287005.webp",
+          "sofaId": 979480,
+          "stats": {
+            "APP": 23,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "289877",
+          "name": "Moisés Caicedo",
+          "short": "M. Caicedo",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 24,
+          "jersey": "25",
+          "club": "",
+          "photo": "../img/players/289877.webp",
+          "sofaId": 987650,
+          "stats": {
+            "APP": 33,
+            "G": 3,
+            "A": 1,
+            "SV": 0,
+            "YC": 11
+          }
+        },
+        {
+          "id": "318090",
+          "name": "Nilson Angulo",
+          "short": "N. Angulo",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 22,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/318090.webp",
+          "sofaId": 1116571,
+          "stats": {
+            "APP": 8,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        }
+      ]
+    },
+    "Paraguay": {
+      "name": "Paraguay",
+      "espnId": 30,
+      "players": [
+        {
+          "id": "215401",
+          "name": "Omar Alderete",
+          "short": "O. Alderete",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 29,
+          "jersey": "15",
+          "club": "",
+          "photo": "../img/players/215401.webp",
+          "sofaId": 805137,
+          "stats": {
+            "APP": 33,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "387634",
+          "name": "Diego León",
+          "short": "D. León",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 19,
+          "jersey": "35",
+          "club": "",
+          "photo": "../img/players/387634.webp",
+          "sofaId": 1900795,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "349723",
+          "name": "Enso González",
+          "short": "E. González",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 21,
+          "jersey": "30",
+          "club": "",
+          "photo": "../img/players/349723.webp",
+          "sofaId": 1402232,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        }
+      ]
+    },
+    "México": {
+      "name": "México",
+      "espnId": 20,
+      "players": [
+        {
+          "id": "167060",
+          "name": "Raúl Jiménez",
+          "short": "R. Jiménez",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 35,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/167060.webp",
+          "sofaId": 192442,
+          "stats": {
+            "APP": 36,
+            "G": 9,
+            "A": 3,
+            "SV": 0,
+            "YC": 5
+          }
+        }
+      ]
+    },
+    "Estados Unidos": {
+      "name": "Estados Unidos",
+      "espnId": 18,
+      "players": []
+    },
+    "Canadá": {
+      "name": "Canadá",
+      "espnId": 571,
+      "players": []
+    },
+    "Panamá": {
+      "name": "Panamá",
+      "espnId": 516,
+      "players": []
+    },
+    "Haití": {
+      "name": "Haití",
+      "espnId": 531,
+      "players": [
+        {
+          "id": "240369",
+          "name": "Jean-Ricner Bellegarde",
+          "short": "J. Bellegarde",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 27,
+          "jersey": "27",
+          "club": "",
+          "photo": "../img/players/240369.webp",
+          "sofaId": 845273,
+          "stats": {
+            "APP": 26,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "265915",
+          "name": "Wilson Isidor",
+          "short": "W. Isidor",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 25,
+          "jersey": "18",
+          "club": "",
+          "photo": "../img/players/265915.webp",
+          "sofaId": 877980,
+          "stats": {
+            "APP": 32,
+            "G": 6,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        }
+      ]
+    },
+    "Curazao": {
+      "name": "Curazao",
+      "espnId": 557,
+      "players": []
+    },
+    "Marruecos": {
+      "name": "Marruecos",
+      "espnId": 51,
+      "players": [
+        {
+          "id": "239350",
+          "name": "Noussair Mazraoui",
+          "short": "N. Mazraoui",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 28,
+          "jersey": "3",
+          "club": "",
+          "photo": "../img/players/239350.webp",
+          "sofaId": 847030,
+          "stats": {
+            "APP": 20,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "240233",
+          "name": "Achraf Hakimi",
+          "short": "A. Hakimi",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 27,
+          "jersey": "2",
+          "club": "",
+          "photo": "../img/players/240233.webp",
+          "sofaId": 814594,
+          "stats": {
+            "APP": 18,
+            "G": 2,
+            "A": 2,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "166634",
+          "name": "Yunis Abdelhamid",
+          "short": "Y. Abdelhamid",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 38,
+          "jersey": "5",
+          "club": "",
+          "photo": "../img/players/166634.webp",
+          "sofaId": 178721,
+          "stats": {
+            "APP": 16,
+            "G": 0,
+            "A": 0,
+            "SV": 17,
+            "YC": 2
+          }
+        },
+        {
+          "id": "245243",
+          "name": "Nayef Aguerd",
+          "short": "N. Aguerd",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 30,
+          "jersey": "21",
+          "club": "",
+          "photo": "../img/players/245243.webp",
+          "sofaId": 877102,
+          "stats": {
+            "APP": 16,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "230963",
+          "name": "Issa Diop",
+          "short": "I. Diop",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 29,
+          "jersey": "31",
+          "club": "",
+          "photo": "../img/players/230963.webp",
+          "sofaId": 825719,
+          "stats": {
+            "APP": 13,
+            "G": 1,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "379032",
+          "name": "Adam Aznou",
+          "short": "A. Aznou",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 20,
+          "jersey": "39",
+          "club": "",
+          "photo": "../img/players/379032.webp",
+          "sofaId": 1466124,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "246532",
+          "name": "Brahim Díaz",
+          "short": "B. Díaz",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "21",
+          "club": "",
+          "photo": "../img/players/246532.webp",
+          "sofaId": 835485,
+          "stats": {
+            "APP": 30,
+            "G": 1,
+            "A": 6,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "304683",
+          "name": "Benjamin Bouchouari",
+          "short": "B. Bouchouari",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 24,
+          "jersey": "6",
+          "club": "",
+          "photo": "../img/players/304683.webp",
+          "sofaId": 1046446,
+          "stats": {
+            "APP": 25,
+            "G": 1,
+            "A": 0,
+            "SV": 1,
+            "YC": 6
+          }
+        },
+        {
+          "id": "291401",
+          "name": "Aimen Moueffek",
+          "short": "A. Moueffek",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 25,
+          "jersey": "29",
+          "club": "",
+          "photo": "../img/players/291401.webp",
+          "sofaId": 990227,
+          "stats": {
+            "APP": 22,
+            "G": 0,
+            "A": 1,
+            "SV": 6,
+            "YC": 2
+          }
+        },
+        {
+          "id": "324567",
+          "name": "Bilal Nadir",
+          "short": "B. Nadir",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 22,
+          "jersey": "26",
+          "club": "",
+          "photo": "../img/players/324567.webp",
+          "sofaId": 1129527,
+          "stats": {
+            "APP": 20,
+            "G": 0,
+            "A": 4,
+            "SV": 0,
+            "YC": 4
+          }
+        },
+        {
+          "id": "360062",
+          "name": "Chemsdine Talbi",
+          "short": "C. Talbi",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 21,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/360062.webp",
+          "sofaId": 1142675,
+          "stats": {
+            "APP": 28,
+            "G": 4,
+            "A": 1,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "129859",
+          "name": "Youssef El Arabi",
+          "short": "Y. El Arabi",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 39,
+          "jersey": "19",
+          "club": "",
+          "photo": "../img/players/129859.webp",
+          "sofaId": 45512,
+          "stats": {
+            "APP": 25,
+            "G": 3,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "416636",
+          "name": "Ayoube Amaimouni",
+          "short": "A. Amaimouni",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 21,
+          "jersey": "29",
+          "club": "",
+          "photo": "../img/players/416636.webp",
+          "sofaId": 1898148,
+          "stats": {
+            "APP": 17,
+            "G": 2,
+            "A": 3,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "346947",
+          "name": "Eliesse Ben Seghir",
+          "short": "E. Ben Seghir",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 21,
+          "jersey": "17",
+          "club": "",
+          "photo": "../img/players/346947.webp",
+          "sofaId": 1394353,
+          "stats": {
+            "APP": 10,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        }
+      ]
+    },
+    "Senegal": {
+      "name": "Senegal",
+      "espnId": 83,
+      "players": [
+        {
+          "id": "308637",
+          "name": "Boubacar Fall",
+          "short": "B. Fall",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 25,
+          "jersey": "16",
+          "club": "",
+          "photo": "../img/players/308637.webp",
+          "sofaId": 1090196,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "359796",
+          "name": "El Hadji Malick Diouf",
+          "short": "E. Diouf",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 21,
+          "jersey": "12",
+          "club": "",
+          "photo": "../img/players/359796.webp",
+          "sofaId": 1471764,
+          "stats": {
+            "APP": 32,
+            "G": 0,
+            "A": 5,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "355433",
+          "name": "Mamadou Sarr",
+          "short": "M. Sarr",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 20,
+          "jersey": "19",
+          "club": "",
+          "photo": "../img/players/355433.webp",
+          "sofaId": 1154657,
+          "stats": {
+            "APP": 3,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "414255",
+          "name": "Talla Ndiaye",
+          "short": "T. Ndiaye",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 18,
+          "jersey": "75",
+          "club": "",
+          "photo": "../img/players/414255.webp",
+          "sofaId": 2169894,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "144517",
+          "name": "Idrissa Gueye",
+          "short": "I. Gueye",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 36,
+          "jersey": "27",
+          "club": "",
+          "photo": "../img/players/144517.webp",
+          "sofaId": 1536811,
+          "stats": {
+            "APP": 25,
+            "G": 2,
+            "A": 3,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "324991",
+          "name": "Habib Diarra",
+          "short": "H. Diarra",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 22,
+          "jersey": "19",
+          "club": "",
+          "photo": "../img/players/324991.webp",
+          "sofaId": 1128532,
+          "stats": {
+            "APP": 20,
+            "G": 2,
+            "A": 2,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "193806",
+          "name": "Cheikh Fall",
+          "short": "C. Fall",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 22,
+          "jersey": "31",
+          "club": "",
+          "photo": "../img/players/193806.webp",
+          "sofaId": 1498629,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "268641",
+          "name": "Iliman Ndiaye",
+          "short": "I. Ndiaye",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 26,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/268641.webp",
+          "sofaId": 914309,
+          "stats": {
+            "APP": 32,
+            "G": 6,
+            "A": 3,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "388522",
+          "name": "Ibrahim Mbaye",
+          "short": "I. Mbaye",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 18,
+          "jersey": "49",
+          "club": "",
+          "photo": "../img/players/388522.webp",
+          "sofaId": 1590918,
+          "stats": {
+            "APP": 24,
+            "G": 3,
+            "A": 2,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "308246",
+          "name": "Abdallah Sima",
+          "short": "A. Sima",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "19",
+          "club": "",
+          "photo": "../img/players/308246.webp",
+          "sofaId": 1029018,
+          "stats": {
+            "APP": 21,
+            "G": 2,
+            "A": 2,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "219514",
+          "name": "Ibrahima Wadji",
+          "short": "I. Wadji",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 31,
+          "jersey": "25",
+          "club": "",
+          "photo": "../img/players/219514.webp",
+          "sofaId": 796081,
+          "stats": {
+            "APP": 10,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "193526",
+          "name": "Mbaye Diagne",
+          "short": "M. Diagne",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 34,
+          "jersey": "17",
+          "club": "",
+          "photo": "../img/players/193526.webp",
+          "sofaId": 346790,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        }
+      ]
+    },
+    "Egipto": {
+      "name": "Egipto",
+      "espnId": 48,
+      "players": [
+        {
+          "id": "346567",
+          "name": "Omar Megeed",
+          "short": "O. Megeed",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 20,
+          "jersey": "39",
+          "club": "",
+          "photo": "../img/players/346567.webp",
+          "sofaId": 1386180,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "173896",
+          "name": "Mohamed Salah",
+          "short": "M. Salah",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 33,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/173896.webp",
+          "sofaId": 159665,
+          "stats": {
+            "APP": 27,
+            "G": 7,
+            "A": 7,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "243816",
+          "name": "Mostafa Mohamed",
+          "short": "M. Mohamed",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 28,
+          "jersey": "31",
+          "club": "",
+          "photo": "../img/players/243816.webp",
+          "sofaId": 873551,
+          "stats": {
+            "APP": 24,
+            "G": 4,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "303745",
+          "name": "Omar Marmoush",
+          "short": "O. Marmoush",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 27,
+          "jersey": "7",
+          "club": "",
+          "photo": "../img/players/303745.webp",
+          "sofaId": 873554,
+          "stats": {
+            "APP": 21,
+            "G": 3,
+            "A": 3,
+            "SV": 0,
+            "YC": 3
+          }
+        }
+      ]
+    },
+    "Ghana": {
+      "name": "Ghana",
+      "espnId": 56,
+      "players": [
+        {
+          "id": "326183",
+          "name": "Augustine Boakye",
+          "short": "A. Boakye",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 25,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/326183.webp",
+          "sofaId": 1138352,
+          "stats": {
+            "APP": 17,
+            "G": 3,
+            "A": 0,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "66880",
+          "name": "Kevin-Prince Boateng",
+          "short": "K. Boateng",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 39,
+          "jersey": "27",
+          "club": "",
+          "photo": "../img/players/66880.webp",
+          "sofaId": 8713,
+          "stats": {
+            "APP": 16,
+            "G": 0,
+            "A": 0,
+            "SV": 3,
+            "YC": 3
+          }
+        },
+        {
+          "id": "273292",
+          "name": "Antoine Semenyo",
+          "short": "A. Semenyo",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 26,
+          "jersey": "42",
+          "club": "",
+          "photo": "../img/players/273292.webp",
+          "sofaId": 934354,
+          "stats": {
+            "APP": 37,
+            "G": 17,
+            "A": 4,
+            "SV": 0,
+            "YC": 7
+          }
+        },
+        {
+          "id": "300961",
+          "name": "Ransford-Yeboah Königsdörffer",
+          "short": "R. Königsdörffer",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 24,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/300961.webp",
+          "sofaId": 1012235,
+          "stats": {
+            "APP": 33,
+            "G": 5,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        }
+      ]
+    },
+    "Costa de Marfil": {
+      "name": "Costa de Marfil",
+      "espnId": 54,
+      "players": [
+        {
+          "id": "340239",
+          "name": "Abakar Sylla",
+          "short": "A. Sylla",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 23,
+          "jersey": "4",
+          "club": "",
+          "photo": "../img/players/340239.webp",
+          "sofaId": 1170197,
+          "stats": {
+            "APP": 3,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "257058",
+          "name": "Hamed Traoré",
+          "short": "H. Traoré",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/257058.webp",
+          "sofaId": 2411549,
+          "stats": {
+            "APP": 13,
+            "G": 2,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "291630",
+          "name": "Amad",
+          "short": "Amad",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 23,
+          "jersey": "16",
+          "club": "",
+          "photo": "../img/players/291630.webp",
+          "sofaId": 971037,
+          "stats": {
+            "APP": 32,
+            "G": 2,
+            "A": 3,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "417825",
+          "name": "Jocelin Ta Bi",
+          "short": "J. Ta Bi",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 21,
+          "jersey": "37",
+          "club": "",
+          "photo": "../img/players/417825.webp",
+          "sofaId": 2138729,
+          "stats": {
+            "APP": 1,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        }
+      ]
+    },
+    "Argelia": {
+      "name": "Argelia",
+      "espnId": 46,
+      "players": [
+        {
+          "id": "220703",
+          "name": "Ramy Bensebaini",
+          "short": "R. Bensebaini",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 31,
+          "jersey": "5",
+          "club": "",
+          "photo": "../img/players/220703.webp",
+          "sofaId": 577726,
+          "stats": {
+            "APP": 21,
+            "G": 5,
+            "A": 2,
+            "SV": 0,
+            "YC": 6
+          }
+        },
+        {
+          "id": "272512",
+          "name": "Rayan Aït-Nouri",
+          "short": "R. Aït-Nouri",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 25,
+          "jersey": "21",
+          "club": "",
+          "photo": "../img/players/272512.webp",
+          "sofaId": 931278,
+          "stats": {
+            "APP": 17,
+            "G": 0,
+            "A": 2,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "387529",
+          "name": "Elias Benkara",
+          "short": "E. Benkara",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 19,
+          "jersey": "47",
+          "club": "",
+          "photo": "../img/players/387529.webp",
+          "sofaId": 1544423,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "422095",
+          "name": "Kelyann Bezahaf",
+          "short": "K. Bezahaf",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 20,
+          "jersey": "35",
+          "club": "",
+          "photo": "../img/players/422095.webp",
+          "sofaId": 1831803,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "337306",
+          "name": "Farès Chaïbi",
+          "short": "F. Chaïbi",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 23,
+          "jersey": "8",
+          "club": "",
+          "photo": "../img/players/337306.webp",
+          "sofaId": 1192318,
+          "stats": {
+            "APP": 28,
+            "G": 2,
+            "A": 9,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "361212",
+          "name": "Ibrahim Maza",
+          "short": "I. Maza",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 20,
+          "jersey": "30",
+          "club": "",
+          "photo": "../img/players/361212.webp",
+          "sofaId": 1407524,
+          "stats": {
+            "APP": 28,
+            "G": 3,
+            "A": 4,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "277525",
+          "name": "Himad Abdelli",
+          "short": "H. Abdelli",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "8",
+          "club": "",
+          "photo": "../img/players/277525.webp",
+          "sofaId": 945830,
+          "stats": {
+            "APP": 21,
+            "G": 2,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "85445",
+          "name": "Chadli Amri",
+          "short": "C. Amri",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 41,
+          "jersey": "10",
+          "club": "",
+          "photo": "../img/players/85445.webp",
+          "sofaId": 11737,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "409118",
+          "name": "Yanis Sellami",
+          "short": "Y. Sellami",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 19,
+          "jersey": "45",
+          "club": "",
+          "photo": "../img/players/409118.webp",
+          "sofaId": 1823979,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "259743",
+          "name": "Amine Gouiri",
+          "short": "A. Gouiri",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 26,
+          "jersey": "9",
+          "club": "",
+          "photo": "../img/players/259743.webp",
+          "sofaId": 859026,
+          "stats": {
+            "APP": 22,
+            "G": 8,
+            "A": 3,
+            "SV": 0,
+            "YC": 1
+          }
+        }
+      ]
+    },
+    "RD Congo": {
+      "name": "RD Congo",
+      "espnId": 49,
+      "players": []
+    },
+    "Túnez": {
+      "name": "Túnez",
+      "espnId": 87,
+      "players": [
+        {
+          "id": "418016",
+          "name": "Anis Doubal",
+          "short": "A. Doubal",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 19,
+          "club": "",
+          "photo": "../img/players/418016.webp",
+          "sofaId": 2137625,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "300007",
+          "name": "Hannibal Mejbri",
+          "short": "H. Mejbri",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 23,
+          "jersey": "28",
+          "club": "",
+          "photo": "../img/players/300007.webp",
+          "sofaId": 1009386,
+          "stats": {
+            "APP": 27,
+            "G": 1,
+            "A": 4,
+            "SV": 0,
+            "YC": 10
+          }
+        },
+        {
+          "id": "209595",
+          "name": "Ellyes Skhiri",
+          "short": "E. Skhiri",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 31,
+          "jersey": "15",
+          "club": "",
+          "photo": "../img/players/209595.webp",
+          "sofaId": 591706,
+          "stats": {
+            "APP": 25,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
+          "id": "403420",
+          "name": "Wassim Slama",
+          "short": "W. Slama",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 17,
+          "jersey": "48",
+          "club": "",
+          "photo": "../img/players/403420.webp",
+          "sofaId": 1937852,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        }
+      ]
+    },
+    "Cabo Verde": {
+      "name": "Cabo Verde",
+      "espnId": 96,
+      "players": []
+    },
+    "Sudáfrica": {
+      "name": "Sudáfrica",
+      "espnId": 67,
+      "players": [
+        {
+          "id": "264751",
+          "name": "Lyle Foster",
+          "short": "L. Foster",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 25,
+          "jersey": "9",
+          "club": "",
+          "photo": "../img/players/264751.webp",
+          "sofaId": 901907,
+          "stats": {
+            "APP": 26,
+            "G": 3,
+            "A": 2,
+            "SV": 0,
+            "YC": 4
+          }
+        }
+      ]
+    },
+    "Japón": {
+      "name": "Japón",
+      "espnId": 175,
+      "players": [
+        {
+          "id": "265965",
+          "name": "Yukinari Sugawara",
+          "short": "Y. Sugawara",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 25,
+          "jersey": "3",
+          "club": "",
+          "photo": "../img/players/265965.webp",
+          "sofaId": 905347,
+          "stats": {
+            "APP": 31,
+            "G": 0,
+            "A": 6,
+            "SV": 0,
+            "YC": 2
+          }
+        },
+        {
+          "id": "371596",
+          "name": "Keita Kosugi",
+          "short": "K. Kosugi",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 20,
+          "jersey": "26",
+          "club": "",
+          "photo": "../img/players/371596.webp",
+          "sofaId": 1501641,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "219627",
+          "name": "Ritsu Doan",
+          "short": "R. Doan",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 27,
+          "jersey": "20",
+          "club": "",
+          "photo": "../img/players/219627.webp",
+          "sofaId": 790965,
+          "stats": {
+            "APP": 31,
+            "G": 5,
+            "A": 5,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "152479",
+          "name": "Wataru Endo",
+          "short": "W. Endo",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 33,
+          "jersey": "3",
+          "club": "",
+          "photo": "../img/players/152479.webp",
+          "sofaId": 143040,
+          "stats": {
+            "APP": 8,
+            "G": 0,
+            "A": 1,
+            "SV": 0,
+            "YC": 1
+          }
+        }
+      ]
+    },
+    "Corea del Sur": {
+      "name": "Corea del Sur",
+      "espnId": 181,
+      "players": [
+        {
+          "id": "274197",
+          "name": "Lee Kang-In",
+          "short": "L. Kang-In",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 25,
+          "jersey": "19",
+          "club": "",
+          "photo": "../img/players/274197.webp",
+          "sofaId": 917087,
+          "stats": {
+            "APP": 27,
+            "G": 3,
+            "A": 4,
+            "SV": 0,
+            "YC": 3
+          }
+        },
+        {
+          "id": "237224",
+          "name": "Hwang Hee-Chan",
+          "short": "H. Hee-Chan",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 30,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/237224.webp",
+          "sofaId": 786186,
+          "stats": {
+            "APP": 26,
+            "G": 2,
+            "A": 2,
+            "SV": 0,
+            "YC": 5
+          }
+        },
+        {
+          "id": "371584",
+          "name": "Park Seung-Soo",
+          "short": "S. Park",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 19,
+          "jersey": "64",
+          "club": "",
+          "photo": "../img/players/371584.webp",
+          "sofaId": 1501498,
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        }
+      ]
+    },
+    "Australia": {
+      "name": "Australia",
+      "espnId": 201,
+      "players": [
+        {
+          "id": "11633",
+          "name": "Zeljko Kalac",
+          "short": "Z. Kalac",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 53,
+          "jersey": "1",
+          "club": "",
+          "photo": "../img/players/11633.webp",
+          "sofaId": 11629,
+          "stats": {
+            "APP": 29,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        }
+      ]
+    },
+    "Arabia Saudita": {
+      "name": "Arabia Saudita",
+      "espnId": 173,
+      "players": [
+        {
+          "id": "286011",
+          "name": "Saud Abdulhamid",
+          "short": "S. Abdulhamid",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 26,
+          "jersey": "23",
+          "club": "",
+          "photo": "../img/players/286011.webp",
+          "sofaId": 966849,
+          "stats": {
+            "APP": 25,
+            "G": 2,
+            "A": 4,
+            "SV": 0,
+            "YC": 4
+          }
+        }
+      ]
+    },
+    "Qatar": {
+      "name": "Qatar",
+      "espnId": 196,
+      "players": []
+    },
+    "Jordania": {
+      "name": "Jordania",
+      "espnId": 172,
+      "players": []
+    },
+    "Uzbekistán": {
+      "name": "Uzbekistán",
+      "espnId": 192,
+      "players": [
+        {
+          "id": "362211",
+          "name": "Abdukodir Khusanov",
+          "short": "A. Khusanov",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 22,
+          "jersey": "45",
+          "club": "",
+          "photo": "../img/players/362211.webp",
+          "sofaId": 1194333,
+          "stats": {
+            "APP": 21,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 2
+          }
+        }
+      ]
+    },
+    "Irak": {
+      "name": "Irak",
+      "espnId": 171,
+      "players": []
+    },
+    "Irán": {
+      "name": "Irán",
+      "espnId": 170,
+      "players": []
+    },
+    "Nueva Zelanda": {
+      "name": "Nueva Zelanda",
+      "espnId": 202,
+      "players": [
+        {
+          "id": "297802",
+          "name": "Ben Old",
+          "short": "B. Old",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 23,
+          "jersey": "11",
+          "club": "",
+          "photo": "../img/players/297802.webp",
+          "sofaId": 1122425,
+          "stats": {
+            "APP": 13,
+            "G": 0,
+            "A": 0,
+            "SV": 1,
+            "YC": 0
+          }
+        }
+      ]
+    }
+  }
+}
