@@ -1,271 +1,517 @@
 <!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Partidos Hoy</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="competitions-sidebar.css" />
-  </head>
+<html lang="es" data-theme="futbol">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fut11</title>
+  <style>
+    :root,[data-theme="futbol"]{
+      --bg:#0b1a13;--sur:#0f2018;--sur2:#142819;--sur3:#1a3220;
+      --bdr:#1e3524;--bdr2:#284a30;
+      --acc:#3ecf6a;--acc-fg:#061209;
+      --txt:#e2f0e7;--txt2:#6e9478;--txt3:#38583f;
+      --gold:#e8b84b;--gold-fg:#160e00;
+    }
+    [data-theme="dark"]{
+      --bg:#060606;--sur:#0d0d0d;--sur2:#121212;--sur3:#181818;
+      --bdr:#1f1f1f;--bdr2:#2a2a2a;
+      --acc:#e8e8e8;--acc-fg:#060606;
+      --txt:#e8e8e8;--txt2:#666;--txt3:#3a3a3a;
+      --gold:#c8c8c8;--gold-fg:#060606;
+    }
+    [data-theme="light"]{
+      --bg:#f0f0f0;--sur:#ffffff;--sur2:#f7f7f7;--sur3:#eeeeee;
+      --bdr:#e0e0e0;--bdr2:#cacaca;
+      --acc:#0a0a0a;--acc-fg:#ffffff;
+      --txt:#0a0a0a;--txt2:#606060;--txt3:#b0b0b0;
+      --gold:#0a0a0a;--gold-fg:#ffffff;
+    }
 
-  <body>
-    <main class="app-shell">
-      <header class="topbar" aria-label="Barra principal">
-        <a class="brand" href="#" aria-label="Partidos Hoy">
-          <span>Partid</span><img src="assets/iconoweb.png" alt="o" class="brand-ball-logo" style="width:24px;height:24px;margin:0 2px;object-fit:contain;display:inline-block;vertical-align:middle;" /><span>s</span><strong>.Hoy</strong>
-        </a>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{-webkit-font-smoothing:antialiased;}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;font-size:14px;line-height:1.5;transition:background .2s,color .2s;}
+    a{color:inherit;text-decoration:none;}
+    button{font:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+    img{display:block;}
 
-        <nav class="top-actions" aria-label="Acciones">
-          <button class="icon-btn" id="searchToggle" type="button" aria-label="Buscar" title="Buscar">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="m21 21-4.7-4.7m2.1-5.2a7.3 7.3 0 1 1-14.6 0 7.3 7.3 0 0 1 14.6 0Z" />
-            </svg>
-          </button>
+    .shell{width:min(100% - 2.5rem,1080px);margin:0 auto;padding:18px 0 40px;display:flex;flex-direction:column;gap:1px;}
 
-          <button class="icon-btn" id="calendarToggle" type="button" aria-label="Calendario" title="Calendario">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M8 2v4m8-4v4M3 10h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />
-              <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" />
-            </svg>
-          </button>
+    /* TOPBAR */
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:0 22px;height:52px;background:var(--sur);border:1px solid var(--bdr);margin-bottom:16px;}
+    .brand{font-size:20px;font-weight:800;font-style:italic;letter-spacing:-0.05em;line-height:1;display:flex;align-items:center;}
+    .brand em{font-style:normal;color:var(--acc);}
+    .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc);margin:0 1px;vertical-align:middle;position:relative;top:-1px;box-shadow:0 0 8px var(--acc);}
+    .themes{display:flex;border:1px solid var(--bdr);overflow:hidden;}
+    .tbtn{width:34px;height:28px;display:grid;place-items:center;color:var(--txt3);background:var(--sur2);border-right:1px solid var(--bdr);transition:background .1s,color .1s;}
+    .tbtn:last-child{border-right:none;}
+    .tbtn:hover{background:var(--bdr2);color:var(--txt);}
+    .tbtn.on{background:var(--acc);color:var(--acc-fg);}
+    .tbtn svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .topbar-right{display:flex;align-items:center;gap:8px;}
+    .fsbtn{width:34px;height:28px;display:grid;place-items:center;color:var(--txt3);background:var(--sur2);border:1px solid var(--bdr);cursor:pointer;transition:background .1s,color .1s;flex-shrink:0;}
+    .fsbtn:hover{background:var(--bdr2);color:var(--txt);}
+    .fsbtn svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+    .fsbtn .icon-exit{display:none;}
+    :fullscreen .fsbtn .icon-enter{display:none;}
+    :fullscreen .fsbtn .icon-exit{display:block;}
+    :fullscreen .fsbtn{background:var(--acc);color:var(--acc-fg);border-color:transparent;}
+    :-webkit-full-screen .fsbtn .icon-enter{display:none;}
+    :-webkit-full-screen .fsbtn .icon-exit{display:block;}
+    :-webkit-full-screen .fsbtn{background:var(--acc);color:var(--acc-fg);border-color:transparent;}
 
-          <button class="profile-btn" id="profileToggle" type="button" aria-label="Perfil" title="Perfil">
-            <span class="avatar"></span>
-            <span class="status-dot"></span>
-          </button>
-        </nav>
-      </header>
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 200px;gap:1px;margin-bottom:16px;}
+    .hero-main{
+      background:var(--sur);border:1px solid var(--bdr);padding:28px 32px;
+      display:flex;flex-direction:column;justify-content:center;gap:10px;
+      position:relative;overflow:hidden;
+    }
+    .hero-bg{
+      position:absolute;inset:0;z-index:0;
+      background-size:cover;
+      background-position:center center;
+      background-repeat:no-repeat;
+      opacity:0;transition:opacity 1.2s ease;
+    }
+    .hero-bg.active{opacity:.22;}
+    .hero-main > *:not(.hero-bg){position:relative;z-index:1;}
+    .hero-h1-text,.hero-desc-text{transition:opacity .4s ease;}
+    .hero-h1-text.fade,.hero-desc-text.fade{opacity:0;}
+    .kicker{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);display:flex;align-items:center;gap:6px;}
+    .kicker::before{content:"";display:block;width:16px;height:1px;background:var(--acc);}
+    .hero h1{font-size:clamp(28px,3.6vw,48px);font-weight:800;letter-spacing:-0.05em;line-height:.96;color:var(--txt);}
+    .hero-desc{font-size:13px;color:var(--txt2);max-width:460px;line-height:1.6;}
+    .hero-side{display:flex;flex-direction:column;gap:1px;}
+    .stat{flex:1;background:var(--sur);border:1px solid var(--bdr);padding:16px 20px;display:flex;flex-direction:column;gap:3px;}
+    .stat-lbl{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--txt3);}
+    .stat-val{font-size:15px;font-weight:700;color:var(--txt);letter-spacing:-0.02em;}
 
-      <section class="utility-panel" id="utilityPanel" aria-live="polite">
-        <label class="search-box" for="matchSearch">
-          <span>Buscar</span>
-          <input id="matchSearch" type="search" placeholder="Equipo, liga o marcador" autocomplete="off" />
-        </label>
+    /* SECTION */
+    .games-wrap{background:var(--sur);border:1px solid var(--bdr);padding:18px;}
+    .sec-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--bdr);margin-bottom:14px;}
+    .sec-title{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--txt2);}.sec-stats{display:flex;gap:12px;font-size:11px;font-weight:700;color:var(--txt3);}.sec-stats span{display:flex;align-items:center;gap:3px;}.sec-stats span:first-child b{color:#4caf7d;}.sec-stats span:last-child b{color:#e05555;}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 
-        <div class="date-strip" aria-label="Seleccionar dia">
-          <button type="button" data-day="ayer">Ayer</button>
-          <button class="active" type="button" data-day="hoy">Hoy</button>
-          <button type="button" data-day="manana">Manana</button>
+    /* CARD */
+    .card{position:relative;height:auto;background:var(--sur2);border:1px solid var(--bdr);border-radius:0;overflow:hidden;cursor:pointer;transition:border-color .14s,transform .12s,box-shadow .14s;}
+    .card:hover{border-color:var(--acc);box-shadow:0 8px 28px rgba(0,0,0,.45);}
+    .card-locked{cursor:default;opacity:.5;}
+    .card-locked:hover{border-color:var(--bdr);transform:none;box-shadow:none;}
+
+    /* Zona imagen */
+    .cvis{position:relative;width:100%;height:440px;overflow:hidden;z-index:1;background:var(--sur3);flex-shrink:0;}
+    .cvis::before{content:"";position:absolute;inset:0;z-index:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 1px,transparent 1px 56px),repeating-linear-gradient(0deg,rgba(255,255,255,.012) 0 1px,transparent 1px 56px);}
+    .cvis::after{content:"";position:absolute;inset:0 0 -2px 0;z-index:3;background:linear-gradient(180deg,transparent 0%,transparent 45%,var(--sur2) 100%);}
+
+    /* Imagen temática de card */
+    .card-theme-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center top;
+      z-index: 2;
+      pointer-events: none;
+      transition: transform .22s ease;
+    }
+    .card:hover .card-theme-img { transform: scale(1.04); }
+
+    /* Tokens (unused pero por compatibilidad) */
+    .ctoks{display:none;}
+    .tok{position:absolute;width:30px;height:42px;display:grid;place-items:end center;padding-bottom:4px;color:#221608;background:#dfd0a0;border:1px solid #b89840;clip-path:polygon(13% 0,87% 0,100% 13%,100% 80%,50% 100%,0 80%,0 13%);font-size:7px;font-weight:900;transition:transform .16s;}
+    .tok::before{content:"";position:absolute;top:5px;width:13px;height:13px;border-radius:50%;background:#221608;}
+    .tok::after{content:"";position:absolute;top:17px;width:18px;height:10px;border-radius:8px 8px 2px 2px;background:#3d2c14;}
+    .tok b{position:relative;z-index:2;}
+    .tok:nth-child(1){left:3%;top:32%;transform:rotate(-4deg);}
+    .tok:nth-child(2){left:25%;top:4px;transform:rotate(3deg);}
+    .tok:nth-child(3){right:13%;top:5px;transform:rotate(-2deg);}
+    .tok:nth-child(4){right:3%;top:32%;transform:rotate(4deg);}
+    .card:hover .tok{transform:translateY(-3px) rotate(0);}
+
+    /* Confetti */
+    .cconf{position:absolute;inset:0;z-index:2;pointer-events:none;}
+    .cconf span{position:absolute;width:4px;height:7px;opacity:.7;}
+    .cconf span:nth-child(1){left:9%;top:7%;transform:rotate(18deg);background:#3b9eff;}
+    .cconf span:nth-child(2){left:74%;top:6%;transform:rotate(-20deg);background:#e84b4b;}
+    .cconf span:nth-child(3){left:15%;top:54%;transform:rotate(-8deg);background:#e8b84b;}
+    .cconf span:nth-child(4){right:11%;top:52%;transform:rotate(22deg);background:#3ecf6a;}
+
+    /* Badges */
+    .ctop{position:absolute;top:0;left:0;right:0;z-index:4;display:flex;align-items:flex-start;justify-content:space-between;padding:9px 10px 0;}
+    .badge{font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);backdrop-filter:blur(4px);}
+    .tag{font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;background:var(--gold);color:var(--gold-fg);}
+    .tag-off{font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;background:var(--bdr2);color:var(--txt3);}
+    .card-result-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+    .card-result-overlay::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: grayscale(1);
+      border-radius: inherit;
+    }
+    .card-result-overlay::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 2px solid var(--result-color, #fff);
+      box-shadow: inset 0 0 24px var(--result-glow, rgba(255,255,255,.1));
+    }
+    .card-result-win  { --result-color: #4cff8a; --result-glow: rgba(76,255,138,.18); }
+    .card-result-loss { --result-color: #ff4f4f; --result-glow: rgba(255,79,79,.18); }
+
+    /* Zona texto */
+    .cin{position:relative;z-index:3;background:var(--sur2);padding:11px 13px 13px;display:flex;flex-direction:column;gap:6px;}
+    .card h3{font-size:14px;font-weight:800;letter-spacing:-0.025em;line-height:1.15;color:var(--txt);}
+    .card p{font-size:11px;color:var(--txt2);line-height:1.4;}
+    .chips{display:flex;flex-wrap:wrap;gap:3px;margin-top:1px;}
+    .chip{font-size:8px;font-weight:700;letter-spacing:.05em;padding:2px 6px;border:1px solid var(--bdr2);color:var(--txt3);}
+
+    /* Botón jugar */
+    .btn-play{position:absolute;bottom:13px;right:13px;display:inline-flex;align-items:center;gap:4px;padding:5px 11px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--gold);color:var(--gold-fg);transition:opacity .12s,transform .1s;z-index:5;}
+    .btn-play:hover{opacity:.85;transform:translateY(-1px);}
+    .btn-play svg{width:8px;height:8px;fill:currentColor;stroke:none;}
+    .btn-dis{position:absolute;bottom:13px;right:13px;padding:5px 11px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--txt3);border:1px solid var(--bdr2);cursor:not-allowed;}
+
+    /* FOOTER */
+    footer{margin-top:20px;display:flex;align-items:center;justify-content:space-between;padding:0 2px;}
+    .footer-brand{font-size:11px;font-weight:700;font-style:italic;color:var(--txt3);letter-spacing:-0.02em;}
+    .footer-brand em{font-style:normal;color:var(--acc);opacity:.6;}
+    .footer-copy{font-size:10px;color:var(--txt3);}
+
+    /* RESPONSIVE */
+    @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr);}.hero{grid-template-columns:1fr;}.hero-side{flex-direction:row;}.stat{flex:1;}}
+    @media(max-width:540px){.shell{width:100%;padding:10px 12px 28px;}.topbar{padding:0 14px;height:48px;}.brand{font-size:18px;}.hero-main{padding:20px 16px;}.hero{margin-bottom:12px;}.games-wrap{padding:12px;}.grid{grid-template-columns:1fr;}.card{height:auto;}.cvis{height:360px;}.cin{top:auto;}footer{flex-direction:column;gap:4px;align-items:flex-start;}}
+
+    /* TICKER */
+    .ticker-wrap {
+      display: flex;
+      align-items: center;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,.08);
+      overflow: hidden;
+      margin-bottom: 16px;
+      background: linear-gradient(90deg,
+        #0d3320 0%,
+        #1a1a2e 25%,
+        #3d0a0a 50%,
+        #1a1a2e 75%,
+        #0d3320 100%
+      );
+      box-shadow: inset 0 0 40px rgba(30,80,200,.15), inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .ticker-label { display: none; }
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      white-space: nowrap;
+      animation: ticker 22s linear infinite;
+      padding-left: 30px;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item {
+      font-size: 12px;
+      color: rgba(200,220,255,.8);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .ticker-item strong { color: #f0e6b0; font-weight: 700; }
+    .ticker-item::after {
+      content: "●";
+      margin-left: 40px;
+      color: rgba(255,255,255,.2);
+      font-size: 6px;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <header class="topbar">
+    <a class="brand" href="#">Fut<span class="dot" style="top:5px;"></span>11</a>
+    <div class="topbar-right">
+      <button class="fsbtn" id="fsBtn" type="button" title="Pantalla completa" aria-label="Pantalla completa">
+        <svg class="icon-enter" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+        <svg class="icon-exit" viewBox="0 0 24 24"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>
+      </button>
+      <div class="themes" role="group" aria-label="Tema">
+        <button class="tbtn" data-t="light" title="Claro"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
+        <button class="tbtn" data-t="dark" title="Oscuro"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <button class="tbtn on" data-t="futbol" title="Fútbol"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <span class="ticker-label">NUEVO</span>
+    <div class="ticker-track">
+      <span class="ticker-item">🌍 <strong>Armá tu 11 Mundial</strong> — Completá una formación con jugadores de todo el mundo</span>
+      <span class="ticker-item">🏆 ¿Tenés el mejor 11 mundialista? — <strong>Jugá ahora</strong> y demostralo</span>
+      <span class="ticker-item">⚽ Seleccioná jugadores por país, sin repetir posiciones — <strong>Armá tu 11 Mundial</strong></span>
+      <span class="ticker-item">🌍 <strong>Armá tu 11 Mundial</strong> — Completá una formación con jugadores de todo el mundo</span>
+      <span class="ticker-item">🏆 ¿Tenés el mejor 11 mundialista? — <strong>Jugá ahora</strong> y demostralo</span>
+      <span class="ticker-item">⚽ Seleccioná jugadores por país, sin repetir posiciones — <strong>Armá tu 11 Mundial</strong></span>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-main">
+      <p class="kicker">Juegos de fulbo</p>
+      <h1><span class="hero-h1-text">Elegí un<br>reto rápido</span></h1>
+      <p class="hero-desc"><span class="hero-desc-text">Armá equipos, adiviná jugadores y completá desafíos futboleros con el estilo de Partidos.Hoy.</span></p>
+    </div>
+    <div class="hero-side">
+      <div class="stat"><span class="stat-lbl">Disponibles</span><span class="stat-val">4 juegos</span></div>
+      <div class="stat"><span class="stat-lbl">Destacado</span><span class="stat-val">11 Leyendas</span></div>
+    </div>
+  </div>
+
+  <div class="games-wrap">
+    <div class="sec-head"><span class="sec-title">Modos disponibles</span><span class="sec-stats"><span title="Ganados">✓ <b id="statWins">0</b></span><span title="Perdidos">✗ <b id="statLosses">0</b></span></span></div>
+    <div class="grid">
+
+      <!-- Sudamérica -->
+      <div class="card" id="cardAmerica11" onclick="location.href='juegos/america11/america11.html'">
+        <div class="cvis">
+          <img class="card-theme-img" data-base="suda" src="img/sudave.png" alt="" loading="lazy">
         </div>
-
-        <p class="utility-status" id="utilityStatus">Mostrando agenda de hoy</p>
-      </section>
-
-      <section class="tabs" aria-label="Secciones">
-        <button class="tab active" type="button" data-tab="agenda">Agenda del dia</button>
-
-        <button class="tab" type="button" data-tab="games">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M6 12h4m-2-2v4m7-1h.01M18 10h.01" />
-            <path d="M5 7h14a3 3 0 0 1 3 3v4a4 4 0 0 1-4 4 4.5 4.5 0 0 1-3.6-1.8H9.6A4.5 4.5 0 0 1 6 18a4 4 0 0 1-4-4v-4a3 3 0 0 1 3-3Z" />
-          </svg>
-          Juegos de fulbo
-        </button>
-
-        <button class="tab" type="button" data-tab="live">
-          Partidos en vivo <span>Live</span>
-        </button>
-      </section>
-
-      <section class="featured" aria-label="Partido destacado">
-        <article class="score-panel">
-          <p class="eyebrow">Partido destacado</p>
-
-          <div class="score-grid">
-            <div class="team">
-              <span class="crest crest-a">A</span>
-              <strong>Team Alfa</strong>
-            </div>
-
-            <div class="score">
-              <span class="live-pill">Live</span>
-              <strong id="mainScore">2 - 1</strong>
-              <small>vs</small>
-            </div>
-
-            <div class="team">
-              <span class="crest crest-b">B</span>
-              <strong>Team Beta</strong>
-            </div>
-          </div>
-        </article>
-
-        <article class="video-card" id="videoCard" aria-label="Reproductor en vivo">
-          <iframe
-            class="featured-frame"
-            id="featuredFrame"
-            src="about:blank"
-            title="Reproductor del partido destacado"
-            allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-            allowfullscreen
-            loading="eager"
-            referrerpolicy="no-referrer"
-          ></iframe>
-
-          <button class="play-btn" id="playToggle" type="button" aria-label="Reproducir partido">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M8 5v14l11-7Z" />
-            </svg>
-          </button>
-
-          <button class="watch-btn" type="button">Watch live</button>
-          <p class="video-state" id="videoState">En pausa</p>
-
-          <div class="video-tools">
-            <button type="button" id="reloadEmbed" aria-label="Recargar reproductor" title="Recargar reproductor">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M21 12a9 9 0 1 1-2.64-6.36" />
-                <path d="M21 3v6h-6" />
-              </svg>
-            </button>
-
-            <button type="button" id="volumeToggle" aria-label="Volumen" title="Volumen">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M11 5 6 9H3v6h3l5 4V5Zm5.5 3.5a5 5 0 0 1 0 7M19 6a8 8 0 0 1 0 12" />
-              </svg>
-            </button>
-
-            <button type="button" id="focusToggle" aria-label="Pantalla completa" title="Pantalla completa">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M8 3H3v5m18 0V3h-5M3 16v5h5m8 0h5v-5" />
-              </svg>
-            </button>
-          </div>
-        </article>
-
-        <article class="featured-status" id="featuredStatus">
-          <span>Estado</span>
-          <strong>Buscando partido en vivo...</strong>
-          <p>El destacado se actualiza con los horarios del JSON remoto.</p>
-        </article>
-      </section>
-
-      <section class="social-section games-section hidden" id="gamesSection" aria-label="Juegos de fulbo">
-        <div class="section-head">
-          <div>
-            <span>Juegos de fulbo</span>
-            <strong>Elegí un reto rápido</strong>
-          </div>
-
-          <a class="section-link" href="juegos/index.html">Ver todos →</a>
+        <div class="ctop" id="ctopAmerica11"><span class="badge">Sudamérica</span><span class="tag">Clubes</span></div>
+        <div class="cin">
+          <h3>Armá el 11 Sudamericano</h3>
+          <p>Formá un once con jugadores actuales de clubes sudamericanos.</p>
+          <div class="chips"><span class="chip">Clubes</span><span class="chip">Ligas</span><span class="chip">Países</span></div>
         </div>
+        <a class="btn-play" href="juegos/america11/america11.html">Jugar <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></a>
+      </div>
 
-        <div class="games-grid">
-          <article class="game-card">
-            <span>🌎</span>
-            <strong>Armá 11 América</strong>
-            <p>Formá un 11 con jugadores actuales de clubes americanos, con desafíos por país, liga y dificultad.</p>
-            <a class="game-play-link" href="juegos/america11/america11.html">Jugar</a>
-          </article>
-
-          <article class="game-card">
-            <span>⭐</span>
-            <strong>Armá 11 Leyendas</strong>
-            <p>Completá tu equipo con jugadores históricos y leyendas del fútbol mundial.</p>
-            <a class="game-play-link" href="juegos/legends11/legends11.html">Jugar</a>
-          </article>
-
-          <article class="game-card">
-            <span>🏆</span>
-            <strong>Armá tu 11 Mundial</strong>
-            <p>Elegí un jugador por país y completá una formación sin repetir posiciones.</p>
-            <a class="game-play-link" href="juegos/worldcup11.html">Jugar</a>
-          </article>
-
-          <article class="game-card locked-card">
-            <span>🧩</span>
-            <strong>Grilla futbolera</strong>
-            <p>Completá casillas con jugadores que cumplan club, selección o liga.</p>
-            <button type="button" disabled>Próximamente</button>
-          </article>
-
-          <article class="game-card">
-            <span>👤</span>
-            <strong>Adiviná el jugador</strong>
-            <p>Descubrí al futbolista oculto usando pistas de país, club, competición, posición, edad y altura.</p>
-            <a class="game-play-link" href="juegos/adivinajugador/adivina.html">Jugar</a>
-          </article>
+      <!-- Leyendas -->
+      <div class="card" onclick="location.href='juegos/legends11/legends11.html'">
+        <div class="cvis">
+          <img class="card-theme-img" data-base="leyen" src="img/leyenve.png" alt="" loading="lazy">
         </div>
-      </section>
-
-      <section class="social-section hidden" id="socialSection" aria-label="Chat social">
-        <form class="post-composer" id="postForm">
-          <div class="composer-avatar">T</div>
-
-          <label for="postInput">
-            <span>Publicar en el muro</span>
-            <textarea id="postInput" maxlength="220" placeholder="Que esta pasando en el partido?"></textarea>
-          </label>
-
-          <button type="submit">Postear</button>
-        </form>
-
-        <div class="feed-toolbar">
-          <strong>Comunidad Partidos.Hoy</strong>
-          <span id="postCounter">3 posts</span>
+        <div class="ctop"><span class="badge">Destacado</span><span class="tag">Diario</span></div>
+        <div class="cin">
+          <h3>Armá el 11 de Leyendas</h3>
+          <p>Completá la cancha con históricos del fútbol mundial.</p>
+          <div class="chips"><span class="chip">Fácil</span><span class="chip">Normal</span><span class="chip">90s</span><span class="chip">30s</span></div>
         </div>
+        <a class="btn-play" href="juegos/legends11/legends11.html">Jugar <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></a>
+      </div>
 
-        <div class="post-feed" id="postFeed">
-          <article class="post-card">
-            <div class="post-avatar">PH</div>
-            <div>
-              <header><strong>Partidos.Hoy</strong><span>@partidoshoy · ahora</span></header>
-              <p>Los eventos en vivo se actualizan desde el calendario remoto. Usa esta seccion para comentar como en X.</p>
-              <footer>
-                <button type="button">Responder</button>
-                <button type="button">Repost</button>
-                <button type="button" data-like>Me gusta <span>8</span></button>
-              </footer>
-            </div>
-          </article>
-
-          <article class="post-card">
-            <div class="post-avatar">AF</div>
-            <div>
-              <header><strong>Analista Futbol</strong><span>@analista · 4 min</span></header>
-              <p>Si el destacado cambia solo, es porque encontro un partido dentro de su ventana horaria.</p>
-              <footer>
-                <button type="button">Responder</button>
-                <button type="button">Repost</button>
-                <button type="button" data-like>Me gusta <span>3</span></button>
-              </footer>
-            </div>
-          </article>
-
-          <article class="post-card">
-            <div class="post-avatar">TV</div>
-            <div>
-              <header><strong>TV Sports</strong><span>@tvsports · 12 min</span></header>
-              <p>Recuerda revisar los canales disponibles dentro de cada evento antes de abrir la transmision.</p>
-              <footer>
-                <button type="button">Responder</button>
-                <button type="button">Repost</button>
-                <button type="button" data-like>Me gusta <span>5</span></button>
-              </footer>
-            </div>
-          </article>
+      <!-- Mundial -->
+      <div class="card" onclick="location.href='juegos/worldcup11.html'">
+        <div class="cvis">
+          <img class="card-theme-img" data-base="mund" src="img/mundve.png" alt="" loading="lazy">
         </div>
-      </section>
-
-      <section class="live-section hidden" id="liveSection" aria-label="Partidos diarios en vivo">
-        <div class="section-head">
-          <div>
-            <span>Partidos en vivo</span>
-            <strong id="liveTitle">Cargando eventos...</strong>
-          </div>
-
-          <button type="button" id="refreshLive">Actualizar</button>
+        <div class="ctop"><span class="badge">Copa del Mundo</span><span class="tag">Selecciones</span></div>
+        <div class="cin">
+          <h3>Armá tu 11 Mundial</h3>
+          <p>Completá una formación mundialista sin repetir posiciones.</p>
+          <div class="chips"><span class="chip">Países</span><span class="chip">Copa</span><span class="chip">Once ideal</span></div>
         </div>
+        <a class="btn-play" href="juegos/worldcup11.html">Jugar <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></a>
+      </div>
 
-        <div class="live-grid" id="liveGrid"></div>
-      </section>
+      <!-- Grilla -->
+      <div class="card card-locked">
+        <div class="cvis"></div>
+        <div class="ctop"><span class="badge">Grilla</span><span class="tag-off">Próximamente</span></div>
+        <div class="cin">
+          <h3>Grilla futbolera</h3>
+          <p>Completá casillas con jugadores que cumplan club, selección o liga.</p>
+        </div>
+        <span class="btn-dis">Próximamente</span>
+      </div>
 
-      <section class="league-grid" id="leagueGrid" aria-label="Agenda del dia"></section>
-    </main>
+      <!-- Adiviná -->
+      <div class="card" onclick="location.href='juegos/adivinajugador/adivina.html'">
+        <div class="cvis">
+          <img class="card-theme-img" data-base="adiv" src="img/adivve.png" alt="" loading="lazy">
+        </div>
+        <div class="ctop"><span class="badge">Modo pistas</span><span class="tag">?</span></div>
+        <div class="cin">
+          <h3>Adiviná el jugador</h3>
+          <p>Usá pistas de país, club, posición y edad para descubrirlo.</p>
+          <div class="chips"><span class="chip">País</span><span class="chip">Club</span><span class="chip">Edad</span><span class="chip">Altura</span></div>
+        </div>
+        <a class="btn-play" href="juegos/adivinajugador/adivina.html">Jugar <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></a>
+      </div>
 
-    <footer>Desarrollado por <strong>AzWink</strong></footer>
+    </div>
+  </div>
 
-    <script src="app.js"></script>
-    <script src="competitions-sidebar.js"></script>
-  </body>
+  <footer>
+    <span class="footer-brand">Fut11</span>
+    <span class="footer-copy">Desarrollado por AzWink</span>
+  </footer>
+
+</div>
+<script>
+  const html = document.documentElement;
+  function sysTheme() {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+    if (window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
+    return 'futbol';
+  }
+  const themeImgSuffix = {light:'bl', dark:'os', futbol:'ve'};
+  function apply(t) {
+    html.setAttribute('data-theme', t);
+    localStorage.setItem('ph-theme', t);
+    document.querySelectorAll('.tbtn').forEach(b => b.classList.toggle('on', b.dataset.t === t));
+    const suffix = themeImgSuffix[t] || 've';
+    document.querySelectorAll('.card-theme-img').forEach(img => {
+      const base = img.dataset.base;
+      if (base) img.src = 'img/' + base + suffix + '.png';
+    });
+  }
+  document.querySelectorAll('.tbtn').forEach(b => b.addEventListener('click', () => apply(b.dataset.t)));
+  apply(localStorage.getItem('ph-theme') || sysTheme());
+
+  // Contadores globales de victorias/derrotas
+  (function(){
+    try {
+      const s = JSON.parse(localStorage.getItem('ph_stats') || '{}');
+      const w = document.getElementById('statWins');
+      const l = document.getElementById('statLosses');
+      if (w) w.textContent = s.wins   || 0;
+      if (l) l.textContent = s.losses || 0;
+    } catch {}
+  })();
+
+  // Zapping de fondo + texto en hero
+  const slides = [
+    {
+      img: '',           /* sin imagen — slide default */
+      pos: 'center center',
+      size: 'cover',
+      h1: 'Elegí un<br>reto rápido',
+      desc: 'Armá equipos, adiviná jugadores y completá desafíos futboleros con el estilo de Partidos.Hoy.'
+    },
+    {
+      img: 'img/arma11sudamericabarra.png',
+      pos: 'center 45%',   /* subir: menos % | bajar: más % | izq: 20% | der: 80% */
+      size: '90%',         /* cover | 150% | 80% | 200% */
+      h1: 'Armá el 11<br>Sudamericano',
+      desc: 'Formá un once con jugadores actuales de clubes sudamericanos.'
+    },
+    {
+      img: 'img/maradonabarra.webp',
+      pos: 'center 50%',
+      size: 'cover',
+      h1: 'Armá el 11<br>de Leyendas',
+      desc: 'Completá la cancha con históricos del fútbol mundial.'
+    },
+    {
+      img: 'img/copa-mundialbarra.png',
+      pos: 'center 40%',
+      size: 'cover',
+      h1: 'Armá tu 11<br>Mundial',
+      desc: 'Completá una formación mundialista sin repetir posiciones.'
+    },
+    {
+      img: 'img/jugadorocultobarra.png',
+      pos: 'center 50%',
+      size: 'cover',
+      h1: 'Adiviná<br>el jugador',
+      desc: 'Usá pistas de país, club, posición y edad para descubrirlo.'
+    }
+  ];
+
+  const heroMain = document.querySelector('.hero-main');
+  const h1Text = document.querySelector('.hero-h1-text');
+  const descText = document.querySelector('.hero-desc-text');
+
+  // Crear fondos
+  slides.forEach(s => {
+    const div = document.createElement('div');
+    div.className = 'hero-bg';
+    if (s.img) {
+      div.style.backgroundImage = `url('${s.img}')`;
+      div.style.backgroundPosition = s.pos || 'center center';
+      div.style.backgroundSize = s.size || 'cover';
+    }
+    heroMain.appendChild(div);
+  });
+
+  const bgs = heroMain.querySelectorAll('.hero-bg');
+  let current = 0;
+  /* el slide 0 es el default sin imagen — no activamos ningún fondo */
+
+  setInterval(() => {
+    h1Text.classList.add('fade');
+    descText.classList.add('fade');
+    if (current > 0) bgs[current].classList.remove('active');
+
+    setTimeout(() => {
+      current = (current + 1) % slides.length;
+
+      if (slides[current].img) bgs[current].classList.add('active');
+
+      h1Text.innerHTML = slides[current].h1;
+      descText.textContent = slides[current].desc;
+
+      h1Text.classList.remove('fade');
+      descText.classList.remove('fade');
+    }, 500);
+
+  }, 4000);
+
+  // Pantalla completa
+  (function(){
+    const btn = document.getElementById('fsBtn');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+  })();
+
+  // Badge de resultado diario en card America11
+  (function(){
+    try {
+      const raw = localStorage.getItem('america11_daily');
+      if (!raw) return;
+      const state = JSON.parse(raw);
+      const today = new Date();
+      const todayStr = today.getFullYear() + '-' +
+        String(today.getMonth()+1).padStart(2,'0') + '-' +
+        String(today.getDate()).padStart(2,'0');
+      if (state.date !== todayStr) return;
+
+      const ctop = document.getElementById('ctopAmerica11');
+      const card = document.getElementById('cardAmerica11');
+      if (!ctop) return;
+
+      const won = state.reason === 'win';
+
+      // Overlay B&N con borde de color
+      if (card) {
+        const overlay = document.createElement('div');
+        overlay.className = 'card-result-overlay ' + (won ? 'card-result-win' : 'card-result-loss');
+        card.appendChild(overlay);
+      }
+    } catch {}
+  })();
+</script>
+</body>
 </html>

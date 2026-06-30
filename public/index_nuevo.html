@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="es" data-theme="futbol">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Partidos.Hoy — Juegos</title>
+  <style>
+    /* ── TEMAS ─────────────────────────────────────────────────── */
+    :root, [data-theme="futbol"] {
+      --bg:       #0d1f18;
+      --sur:      #132a20;
+      --sur2:     #1a3228;
+      --bdr:      #253d2e;
+      --bdr2:     #2f5040;
+      --acc:      #4ade7b;
+      --acc-fg:   #091a10;
+      --txt:      #e8f5ec;
+      --txt2:     #8dab97;
+      --txt3:     #4e6b58;
+      --gold:     #f2c35b;
+      --gold-fg:  #1c1200;
+      --live:     #ef4444;
+      --bdg:      #182e22;
+    }
+    [data-theme="dark"] {
+      --bg:       #080808;
+      --sur:      #101010;
+      --sur2:     #181818;
+      --bdr:      #242424;
+      --bdr2:     #303030;
+      --acc:      #ffffff;
+      --acc-fg:   #000000;
+      --txt:      #f0f0f0;
+      --txt2:     #808080;
+      --txt3:     #484848;
+      --gold:     #e0e0e0;
+      --gold-fg:  #080808;
+      --live:     #ef4444;
+      --bdg:      #181818;
+    }
+    [data-theme="light"] {
+      --bg:       #f2f2f2;
+      --sur:      #ffffff;
+      --sur2:     #f8f8f8;
+      --bdr:      #e2e2e2;
+      --bdr2:     #c8c8c8;
+      --acc:      #111111;
+      --acc-fg:   #ffffff;
+      --txt:      #111111;
+      --txt2:     #555555;
+      --txt3:     #999999;
+      --gold:     #111111;
+      --gold-fg:  #ffffff;
+      --live:     #dc2626;
+      --bdg:      #ebebeb;
+    }
+
+    /* ── RESET ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      background: var(--bg);
+      color: var(--txt);
+      min-height: 100vh;
+      transition: background .2s, color .2s;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+    /* ── SHELL ──────────────────────────────────────────────────── */
+    .shell {
+      width: min(100% - 2rem, 1100px);
+      margin: 0 auto;
+      padding: 20px 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* ── TOPBAR ─────────────────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      height: 56px;
+      background: var(--sur);
+      border: 1px solid var(--bdr);
+    }
+    .brand {
+      font-size: 22px;
+      font-weight: 800;
+      font-style: italic;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+    .brand em { font-style: normal; color: var(--acc); }
+    .brand-dot {
+      display: inline-block;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--acc);
+      margin: 0 1px;
+      vertical-align: middle;
+      position: relative; top: -1px;
+    }
+
+    /* Selector tema */
+    .themes {
+      display: flex;
+      border: 1px solid var(--bdr);
+      overflow: hidden;
+    }
+    .t-btn {
+      width: 32px; height: 30px;
+      display: grid; place-items: center;
+      color: var(--txt3);
+      background: var(--sur2);
+      transition: background .12s, color .12s;
+      border-right: 1px solid var(--bdr);
+    }
+    .t-btn:last-child { border-right: none; }
+    .t-btn:hover { background: var(--bdr); color: var(--txt); }
+    .t-btn.on { background: var(--acc); color: var(--acc-fg); }
+    .t-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── HERO ───────────────────────────────────────────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 12px;
+    }
+    .hero-main {
+      background: var(--sur);
+      border: 1px solid var(--bdr);
+      padding: 26px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--txt3);
+    }
+    .hero h1 {
+      font-size: clamp(26px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--txt);
+    }
+    .hero-desc { font-size: 13px; color: var(--txt2); max-width: 500px; }
+
+    .hero-side { display: flex; flex-direction: column; gap: 12px; }
+    .stat-card {
+      flex: 1;
+      background: var(--sur);
+      border: 1px solid var(--bdr);
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .stat-lbl { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--txt3); }
+    .stat-val { font-size: 15px; font-weight: 700; color: var(--txt); }
+
+    /* ── GAMES SECTION ──────────────────────────────────────────── */
+    .games-wrap {
+      background: var(--sur);
+      border: 1px solid var(--bdr);
+      padding: 16px;
+    }
+    .sec-head {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--bdr);
+      margin-bottom: 14px;
+    }
+    .sec-title { font-size: 13px; font-weight: 700; }
+    .sec-sub { font-size: 11px; color: var(--txt3); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    /* ── CARD ───────────────────────────────────────────────────── */
+    /*
+      Estructura fija:
+        .card (position:relative, height:210px, overflow:hidden)
+          .card-bg      — fondo decorativo, position:absolute, inset:0, z-index:0
+          .card-inner   — position:absolute, inset:0, z-index:2, display:flex col, padding:12px
+            .card-top     — fila de badges (top)
+            .card-spacer  — flex:1 empuja contenido hacia abajo
+            .card-info    — titulo + desc + chips + boton (bottom)
+    */
+    .card {
+      position: relative;
+      height: 210px;
+      border: 1px solid var(--bdr);
+      overflow: hidden;
+      transition: border-color .15s, transform .12s;
+      display: block;
+      text-decoration: none;
+      color: var(--txt);
+    }
+    .card:hover { border-color: var(--acc); transform: translateY(-1px); }
+    .card-locked { opacity: .6; cursor: default; }
+    .card-locked:hover { border-color: var(--bdr); transform: none; }
+
+    /* Fondo de campo */
+    .card-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: var(--sur2);
+    }
+    .card-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,.025) 0 1px,
+        transparent 1px 48px
+      );
+    }
+    /* overlay oscuro solo en la parte inferior para que el texto sea legible */
+    .card-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg,
+        transparent 35%,
+        rgba(8,18,12,.88) 72%,
+        rgba(8,18,12,.97) 100%
+      );
+    }
+
+    /* Copa / imagen flotante — va dentro de card-bg para que quede detrás del texto */
+    .card-cup {
+      position: absolute;
+      left: 50%; top: -40px;
+      width: 110px; height: 155px;
+      transform: translateX(-50%);
+      object-fit: contain;
+      object-position: center top;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,.55));
+      pointer-events: none;
+      transition: transform .2s;
+    }
+    .card:hover .card-cup { transform: translateX(-50%) translateY(-4px) scale(1.03); }
+
+    .card-player {
+      position: absolute;
+      left: 50%; top: -24px;
+      width: 115px; height: 150px;
+      transform: translateX(-50%);
+      object-fit: contain;
+      object-position: center top;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.6));
+      pointer-events: none;
+      transition: transform .2s;
+    }
+    .card:hover .card-player { transform: translateX(-50%) translateY(-4px) scale(1.03); }
+
+    /* Banderines */
+    .flags {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .flags span {
+      position: absolute;
+      width: 26px; height: 19px;
+      display: grid; place-items: center;
+      font-size: 12px;
+      background: rgba(8,18,12,.72);
+      border: 1px solid rgba(255,255,255,.16);
+    }
+    .flags span:nth-child(1) { left: 6%; top: 33%; transform: rotate(-5deg); }
+    .flags span:nth-child(2) { right: 6%; top: 33%; transform: rotate(5deg); }
+    .flags span:nth-child(3) { left: 21%; top: 3px; transform: rotate(4deg); }
+    .flags span:nth-child(4) { right: 21%; top: 3px; transform: rotate(-4deg); }
+
+    /* Tokens leyendas */
+    .tokens {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .tok {
+      position: absolute;
+      width: 34px; height: 47px;
+      display: grid; place-items: end center;
+      padding-bottom: 5px;
+      color: #2a1d08;
+      background: #e8d89a;
+      border: 1px solid #c9a84c;
+      clip-path: polygon(14% 0, 86% 0, 100% 14%, 100% 80%, 50% 100%, 0 80%, 0 14%);
+      font-size: 7px; font-weight: 900;
+      transition: transform .18s;
+    }
+    .tok::before { content: ""; position: absolute; top: 6px; width: 16px; height: 16px; border-radius: 50%; background: #2a1d08; }
+    .tok::after  { content: ""; position: absolute; top: 20px; width: 22px; height: 12px; border-radius: 10px 10px 2px 2px; background: #4a3518; }
+    .tok b { position: relative; z-index: 2; }
+    .tok:nth-child(1) { left: 2%; top: 35%; transform: rotate(-5deg); }
+    .tok:nth-child(2) { left: 27%; top: 3px; transform: rotate(3deg); }
+    .tok:nth-child(3) { right: 15%; top: 4px; transform: rotate(-2deg); }
+    .tok:nth-child(4) { right: 2%; top: 35%; transform: rotate(5deg); }
+    .card:hover .tok { transform: translateY(-2px) rotate(0); }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .confetti span { position: absolute; width: 5px; height: 8px; opacity: .8; }
+    .confetti span:nth-child(1) { left: 10%; top: 8%; transform: rotate(18deg); background: #3b9eff; }
+    .confetti span:nth-child(2) { left: 72%; top: 7%; transform: rotate(-20deg); background: #ef4444; }
+    .confetti span:nth-child(3) { left: 17%; top: 56%; transform: rotate(-10deg); background: #f2c35b; }
+    .confetti span:nth-child(4) { right: 13%; top: 54%; transform: rotate(22deg); background: #4ade7b; }
+
+    /* Capa de contenido — sobre todo */
+    .card-inner {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      padding: 10px 12px 12px;
+    }
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .card-spacer { flex: 1; }  /* empuja info hacia abajo */
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .card h3 {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: #ffffff;
+      text-shadow: 0 1px 4px rgba(0,0,0,.6);
+    }
+    /* en tema light las cards siguen teniendo fondo oscuro por el campo, así que el texto queda blanco */
+    .card p {
+      font-size: 11.5px;
+      color: rgba(255,255,255,.72);
+      line-height: 1.35;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 3px; }
+    .chip {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      padding: 2px 6px;
+      border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.7);
+      background: rgba(0,0,0,.25);
+    }
+
+    /* Badges */
+    .badge {
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 3px 6px;
+      background: rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.8);
+      backdrop-filter: blur(4px);
+    }
+    .tag {
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 3px 7px;
+      background: var(--gold);
+      color: var(--gold-fg);
+    }
+
+    /* Botón jugar */
+    .btn-play {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 13px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--gold-fg);
+      border: none;
+      text-decoration: none;
+      transition: opacity .12s;
+    }
+    .btn-play:hover { opacity: .85; }
+    .btn-play svg { width: 10px; height: 10px; fill: currentColor; }
+    .btn-disabled {
+      align-self: flex-start;
+      padding: 6px 13px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.35);
+      border: 1px solid rgba(255,255,255,.12);
+      cursor: not-allowed;
+    }
+
+    /* Card bloqueada — fondo plano sin campo */
+    .card-locked .card-bg::before,
+    .card-locked .card-bg::after { display: none; }
+    .card-locked .card-bg { background: var(--sur2); }
+    .card-locked .card h3 { color: var(--txt); text-shadow: none; }
+    .card-locked .card p { color: var(--txt2); }
+
+    /* ── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      padding: 6px 0;
+      text-align: right;
+      font-size: 11px;
+      color: var(--txt3);
+    }
+    footer strong { color: var(--txt2); font-weight: 600; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { grid-template-columns: 1fr; }
+      .hero-side { flex-direction: row; }
+      .stat-card { flex: 1; }
+    }
+    @media (max-width: 580px) {
+      .shell { padding: 10px 0 20px; gap: 8px; }
+      .topbar { padding: 0 14px; height: 50px; }
+      .brand { font-size: 19px; }
+      .hero-main { padding: 18px 16px; }
+      .games-wrap { padding: 12px; }
+      .grid { grid-template-columns: 1fr; }
+      .card { height: 200px; }
+      footer { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Partidos Hoy">
+      Partid<span class="brand-dot"></span>s<em>.Hoy</em>
+    </a>
+    <div class="themes" role="group" aria-label="Tema">
+      <button class="t-btn" data-t="light" title="Claro">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="t-btn" data-t="dark" title="Oscuro">
+        <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="t-btn on" data-t="futbol" title="Fútbol">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7l2 4-2 2-2-4z" fill="currentColor" stroke="none" opacity=".5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-main">
+      <p class="eyebrow">Juegos de fulbo</p>
+      <h1>Elegí un reto rápido</h1>
+      <p class="hero-desc">Armá equipos, adiviná jugadores y completá desafíos de fútbol con el estilo de Partidos.Hoy.</p>
+    </div>
+    <div class="hero-side">
+      <div class="stat-card">
+        <span class="stat-lbl">Disponibles</span>
+        <span class="stat-val">4 juegos</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-lbl">Destacado</span>
+        <span class="stat-val">Armá 11 Leyendas</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- JUEGOS -->
+  <div class="games-wrap">
+    <div class="sec-head">
+      <span class="sec-title">Juegos disponibles</span>
+      <span class="sec-sub">Seleccioná un modo para empezar</span>
+    </div>
+    <div class="grid">
+
+      <!-- América -->
+      <a class="card" href="juegos/america11/america11.html">
+        <div class="card-bg"></div>
+        <img class="card-cup" src="img/copa-america.png" alt="" loading="lazy">
+        <div class="flags" aria-hidden="true">
+          <span>🇦🇷</span><span>🇧🇷</span><span>🇺🇾</span><span>🇨🇴</span>
+        </div>
+        <div class="card-inner">
+          <div class="card-top">
+            <span class="badge">América</span>
+            <span class="tag">Clubes</span>
+          </div>
+          <div class="card-spacer"></div>
+          <div class="card-info">
+            <h3>Armá 11 América</h3>
+            <p>Formá un once con jugadores actuales de clubes americanos.</p>
+            <div class="chips"><span class="chip">Clubes</span><span class="chip">Ligas</span><span class="chip">Países</span></div>
+            <a class="btn-play" href="juegos/america11/america11.html">Jugar <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></a>
+          </div>
+        </div>
+      </a>
+
+      <!-- Leyendas -->
+      <a class="card" href="juegos/legends11/legends11.html">
+        <div class="card-bg"></div>
+        <div class="tokens" aria-hidden="true">
+          <span class="tok"><b>10</b></span>
+          <span class="tok"><b>9</b></span>
+          <span class="tok"><b>7</b></span>
+          <span class="tok"><b>1</b></span>
+        </div>
+        <div class="card-inner">
+          <div class="card-top">
+            <span class="badge">Destacado</span>
+            <span class="tag">Diario</span>
+          </div>
+          <div class="card-spacer"></div>
+          <div class="card-info">
+            <h3>Armá tu 11 de Leyendas</h3>
+            <p>Completá la cancha con históricos del fútbol mundial.</p>
+            <div class="chips"><span class="chip">Fácil</span><span class="chip">Normal</span><span class="chip">90s</span><span class="chip">30s</span></div>
+            <a class="btn-play" href="juegos/legends11/legends11.html">Jugar <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></a>
+          </div>
+        </div>
+      </a>
+
+      <!-- Mundial -->
+      <a class="card" href="juegos/worldcup11.html">
+        <div class="card-bg"></div>
+        <img class="card-cup" src="img/copa-mundial.png" alt="" loading="lazy">
+        <div class="flags" aria-hidden="true">
+          <span>🇦🇷</span><span>🇧🇷</span><span>🇺🇾</span><span>🇨🇴</span>
+        </div>
+        <div class="confetti" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="card-inner">
+          <div class="card-top">
+            <span class="badge">Copa del Mundo</span>
+            <span class="tag">Selecciones</span>
+          </div>
+          <div class="card-spacer"></div>
+          <div class="card-info">
+            <h3>Armá tu 11 Mundial</h3>
+            <p>Completá una formación mundialista sin repetir posiciones.</p>
+            <div class="chips"><span class="chip">Países</span><span class="chip">Copa</span><span class="chip">Once ideal</span></div>
+            <a class="btn-play" href="juegos/worldcup11.html">Jugar <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></a>
+          </div>
+        </div>
+      </a>
+
+      <!-- Grilla locked -->
+      <div class="card card-locked">
+        <div class="card-bg"></div>
+        <div class="card-inner">
+          <div class="card-top">
+            <span class="badge">Grilla</span>
+            <span class="tag" style="background:var(--bdr2);color:var(--txt2);">Próximamente</span>
+          </div>
+          <div class="card-spacer"></div>
+          <div class="card-info">
+            <h3>Grilla futbolera</h3>
+            <p>Completá casillas con jugadores que cumplan club, selección o liga.</p>
+            <button class="btn-disabled" disabled>Próximamente</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Adiviná -->
+      <a class="card" href="juegos/adivinajugador/adivina.html">
+        <div class="card-bg"></div>
+        <img class="card-player" src="img/jugadoroculto.png" alt="" loading="lazy">
+        <div class="card-inner">
+          <div class="card-top">
+            <span class="badge">Modo pistas</span>
+            <span class="tag">?</span>
+          </div>
+          <div class="card-spacer"></div>
+          <div class="card-info">
+            <h3>Adiviná el jugador</h3>
+            <p>Usá pistas de país, club, posición y edad para descubrirlo.</p>
+            <div class="chips"><span class="chip">País</span><span class="chip">Club</span><span class="chip">Edad</span><span class="chip">Altura</span></div>
+            <a class="btn-play" href="juegos/adivinajugador/adivina.html">Jugar <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></a>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>Desarrollado por <strong>AzWink</strong></footer>
+</div>
+
+<script>
+  const html = document.documentElement;
+  const saved = localStorage.getItem('ph-theme') || 'futbol';
+  apply(saved);
+  function apply(t) {
+    html.setAttribute('data-theme', t);
+    localStorage.setItem('ph-theme', t);
+    document.querySelectorAll('.t-btn').forEach(b =>
+      b.classList.toggle('on', b.dataset.t === t)
+    );
+  }
+  document.querySelectorAll('.t-btn').forEach(b =>
+    b.addEventListener('click', () => apply(b.dataset.t))
+  );
+</script>
+</body>
+</html>
