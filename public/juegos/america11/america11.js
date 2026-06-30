@@ -1,4 +1,93 @@
-const DATA_URL = "https://partidoshoy-worker-jugadores-america.gastonledesma328.workers.dev/data/jugadores_america.json";
+const DATA_URL = "../../data/jugadores_america.json";
+// ─────────────────────────────────────────────────────────────
+// INTENTO DIARIO — una sola partida por día en todos los modos
+// ─────────────────────────────────────────────────────────────
+const DAILY_KEY = "america11_daily";
+
+function getTodayStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+}
+
+function getDailyState() {
+  try {
+    const raw = localStorage.getItem(DAILY_KEY);
+    if (!raw) return null;
+    const state = JSON.parse(raw);
+    if (state.date !== getTodayStr()) {
+      localStorage.removeItem(DAILY_KEY);
+      return null;
+    }
+    return state;
+  } catch { return null; }
+}
+
+function saveDailyState(reason, completed, total, mode) {
+  const state = {
+    date: getTodayStr(),
+    reason,
+    completed,
+    total,
+    mode,
+    ts: Date.now()
+  };
+  try { localStorage.setItem(DAILY_KEY, JSON.stringify(state)); } catch {}
+}
+
+
+function updateGlobalStats(won) {
+  try {
+    const raw = localStorage.getItem("ph_stats");
+    const stats = raw ? JSON.parse(raw) : { wins: 0, losses: 0 };
+    if (won) stats.wins = (stats.wins || 0) + 1;
+    else      stats.losses = (stats.losses || 0) + 1;
+    localStorage.setItem("ph_stats", JSON.stringify(stats));
+  } catch {}
+}
+function getTimeUntilTomorrow() {
+  const now = new Date();
+  const tom = new Date(now);
+  tom.setDate(tom.getDate() + 1);
+  tom.setHours(0, 0, 0, 0);
+  const diff = tom - now;
+  const h = Math.floor(diff / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  return `${h}h ${m}m`;
+}
+
+function showDailyBlocked(state) {
+  // Bloquear botones de modo
+  modeButtons.forEach(b => b.disabled = true);
+
+  // Mostrar estado en la cancha
+  pitchFrame.innerHTML = `
+    <div class="daily-blocked">
+      <div class="daily-blocked-icon">${state.reason === "win" ? "🏆" : "⏳"}</div>
+      <p class="daily-blocked-title">${state.reason === "win" ? "¡Ya completaste el desafío de hoy!" : "Ya usaste tu intento de hoy"}</p>
+      <p class="daily-blocked-sub">Completaste <strong>${state.completed}/${state.total}</strong> en modo <strong>${state.mode}</strong></p>
+      <p class="daily-blocked-timer">Próximo desafío en <strong id="dailyCountdown">${getTimeUntilTomorrow()}</strong></p>
+    </div>
+  `;
+
+  // Actualizar countdown cada minuto
+  setInterval(() => {
+    const el = document.getElementById("dailyCountdown");
+    if (el) el.textContent = getTimeUntilTomorrow();
+  }, 60000);
+
+  // Bloquear input
+  playerSearch.disabled = true;
+  surrenderBtn.disabled = true;
+
+  // Ocultar panel de challenge
+  const challengePanel = document.querySelector(".country-panel");
+  if (challengePanel) challengePanel.style.display = "none";
+}
+
+
+const ESCUDOS_URL = "../../data/escudos_america.json";
+
+let ESCUDOS = {};
 
 const GAME_MODES = {
   easy: {
@@ -6,28 +95,28 @@ const GAME_MODES = {
     showHints: true,
     timeLimit: null,
     points: 100,
-    help: "Modo fácil: salen clubes populares de América y vas a ver sugerencias."
+    help: "Clubes populares · Con pista de iniciales."
   },
   normal: {
     label: "Normal",
     showHints: false,
     timeLimit: null,
     points: 150,
-    help: "Modo normal: salen clubes populares, pero sin ayudas."
+    help: "Clubes populares · Sin ayudas."
   },
   hard: {
     label: "Difícil",
     showHints: false,
     timeLimit: 90,
     points: 200,
-    help: "Modo difícil: pueden salir clubes populares y clubes menos conocidos."
+    help: "Más equipos · Sin ayudas · 90 seg."
   },
   expert: {
     label: "Experto",
     showHints: false,
-    timeLimit: 90,
+    timeLimit: 60,
     points: 300,
-    help: "Modo experto: puede salir cualquier club de América."
+    help: "Todos los clubes · Sin ayudas · 60 seg."
   }
 };
 
@@ -37,15 +126,6 @@ const FORMATIONS = [
     rows: [
       ["LW", "ST", "RW"],
       ["CM", "CM", "CM"],
-      ["LB", "CB", "CB", "RB"],
-      ["GK"]
-    ]
-  },
-  {
-    name: "4-4-2",
-    rows: [
-      ["ST", "ST"],
-      ["LM", "CM", "CM", "RM"],
       ["LB", "CB", "CB", "RB"],
       ["GK"]
     ]
@@ -61,10 +141,37 @@ const FORMATIONS = [
     ]
   },
   {
+    name: "4-4-2",
+    rows: [
+      ["ST", "ST"],
+      ["LM", "CM", "CM", "RM"],
+      ["LB", "CB", "CB", "RB"],
+      ["GK"]
+    ]
+  },
+  {
     name: "3-5-2",
     rows: [
       ["ST", "ST"],
-      ["CAM"],
+      ["LM", "CDM", "CM", "CM", "RM"],
+      ["CB", "CB", "CB"],
+      ["GK"]
+    ]
+  },
+  {
+    name: "4-1-4-1",
+    rows: [
+      ["ST"],
+      ["LM", "CM", "CM", "RM"],
+      ["CDM"],
+      ["LB", "CB", "CB", "RB"],
+      ["GK"]
+    ]
+  },
+  {
+    name: "3-4-3",
+    rows: [
+      ["LW", "ST", "RW"],
       ["LM", "CM", "CM", "RM"],
       ["CB", "CB", "CB"],
       ["GK"]
@@ -78,50 +185,52 @@ const FORMATIONS = [
       ["LB", "CB", "CB", "CB", "RB"],
       ["GK"]
     ]
-  },
-  {
-    name: "4-3-1-2",
-    rows: [
-      ["ST", "ST"],
-      ["CAM"],
-      ["CM", "CM", "CM"],
-      ["LB", "CB", "CB", "RB"],
-      ["GK"]
-    ]
-  },
-  {
-    name: "3-4-3",
-    rows: [
-      ["LW", "ST", "RW"],
-      ["LM", "CM", "CM", "RM"],
-      ["CB", "CB", "CB"],
-      ["GK"]
-    ]
   }
 ];
 
 const POSITION_COMPATIBILITY = {
-  GK: ["GK"],
-
-  RB: ["RB", "RWB"],
-  CB: ["CB"],
-  LB: ["LB", "LWB"],
-
-  LWB: ["LWB", "LB", "LM"],
-  RWB: ["RWB", "RB", "RM"],
-
+  GK:  ["GK"],
+  CB:  ["CB"],
+  LB:  ["LB", "CB"],
+  RB:  ["RB", "CB"],
   CDM: ["CDM", "CM"],
-  CM: ["CM", "CDM", "CAM", "LM", "RM"],
+  CM:  ["CM", "CDM", "CAM", "LM", "RM"],
   CAM: ["CAM", "CM"],
-
-  LW: ["LW", "LM", "ST"],
-  LM: ["LM", "LW", "CM"],
-
-  RW: ["RW", "RM", "ST"],
-  RM: ["RM", "RW", "CM"],
-
-  ST: ["ST", "LW", "RW"]
+  LM:  ["LM", "LW", "CM"],
+  RM:  ["RM", "RW", "CM"],
+  LW:  ["LW", "LM", "ST"],
+  RW:  ["RW", "RM", "ST"],
+  ST:  ["ST", "LW", "RW"]
 };
+
+// Posiciones exactas — el jugador solo ocupa su posición natural
+// excepto como último recurso cuando no hay slot exacto disponible
+const POSITION_EXACT = {
+  GK:  ["GK"],
+  CB:  ["CB"],
+  LB:  ["LB"],
+  RB:  ["RB"],
+  CDM: ["CDM"],
+  CM:  ["CM"],
+  CAM: ["CAM"],
+  LM:  ["LM"],
+  RM:  ["RM"],
+  LW:  ["LW"],
+  RW:  ["RW"],
+  ST:  ["ST"],
+  SS:  ["SS"],
+};
+
+function playerExactSlotExists(player) {
+  // Hay algún slot libre del mismo club que acepta exactamente la posición del jugador
+  return getEmptySlots().some(slot => {
+    const slotData = getSlotData(slot);
+    return (
+      playerBelongsToSlotClub(player, slotData) &&
+      normalizePosition(slotData.position) === normalizePosition(player.posicion)
+    );
+  });
+}
 
 const COUNTRY_FLAGS = {
   Argentina: "ar",
@@ -140,129 +249,62 @@ const COUNTRY_FLAGS = {
   Venezuela: "ve"
 };
 
-const POPULAR_CLUB_NAMES = [
-  // Argentina
-  "Boca Juniors",
-  "River Plate",
-  "Racing Club",
-  "Independiente",
-  "San Lorenzo",
-  "Estudiantes de La Plata",
-  "Vélez Sarsfield",
-  "Rosario Central",
-  "Newell's Old Boys",
+// ─────────────────────────────────────────────────────────────
+// TIERS DE DIFICULTAD (por slug365)
+// Tier 1 → Fácil/Normal  |  Tier 2 → Difícil  |  Tier 3 → Experto
+// ─────────────────────────────────────────────────────────────
+const CLUB_TIER = {
+  // Tier 1 — Argentina (los 5 grandes + Estudiantes)
+  "boca-juniors":1, "river-plate":1, "racing-club":1,
+  "independiente":1, "san-lorenzo":1, "estudiantes-de-la-plata":1,
+  // Tier 1 — Brasil
+  "flamengo":1, "palmeiras":1, "corinthians":1, "fluminense":1,
+  "atletico-mineiro":1, "botafogo":1, "internacional":1, "gremio":1,
+  // Tier 1 — Uruguay
+  "penarol":1, "nacional":1,
+  // Tier 1 — Chile
+  "colo-colo":1, "universidad-de-chile":1, "u-catolica":1,
+  // Tier 1 — Colombia
+  "atletico-nacional":1, "millonarios":1, "america-de-cali":1,
+  // Tier 1 — México
+  "club-america":1, "chivas":1, "tigres-uanl":1, "monterrey":1, "pumas-unam":1,
+  // Tier 2 — Argentina
+  "velez-sarsfield":2, "rosario-central":2, "newells-old-boys":2, "talleres-cordoba":2,
+  "banfield":2, "lanus":2, "huracan":2, "argentinos-juniors":2, "atletico-tucuman":2,
+  "belgrano":2, "defensa-y-justicia":2, "union-santa-fe":2, "gimnasia-la-plata":2,
+  "platense":2, "tigre":2,
+  // Tier 2 — Brasil
+  "sao-paulo":2, "santos":2, "cruzeiro":2, "vasco-da-gama":2,
+  "athletico-paranaense":2, "bahia":2, "rb-bragantino":2, "coritiba":2,
+  // Tier 2 — Chile
+  "o-higgins":2, "coquimbo-unido":2, "palestino":2, "huachipato":2,
+  // Tier 2 — Colombia
+  "deportivo-cali":2, "deportivo-pereira":2, "independiente-medellin":2,
+  "independiente-santa-fe":2, "atletico-bucaramanga":2, "deportes-tolima":2,
+  // Tier 2 — México
+  "pachuca":2, "toluca":2, "leon":2, "santos-laguna":2, "atlas":2, "guadalajara":2,
+  // Tier 2 — Uruguay
+  "defensor-sporting":2, "liverpool-montevideo":2, "danubio-fc":2, "montevideo-city-torque":2,
+  // Tier 2 — MLS
+  "los-angeles-fc":2, "los-angeles-galaxy":2, "fc-dallas":2, "columbus-crew":2, "nashville-sc":2,
+};
 
-  // Brasil
-  "Flamengo",
-  "Fluminense",
-  "Palmeiras",
-  "Corinthians",
-  "São Paulo",
-  "Sao Paulo",
-  "Santos",
-  "Grêmio",
-  "Gremio",
-  "Internacional",
-  "Atlético Mineiro",
-  "Atletico Mineiro",
-  "Cruzeiro",
-  "Botafogo",
-  "Vasco da Gama",
-
-  // Uruguay
-  "Peñarol",
-  "Penarol",
-  "Nacional",
-
-  // Chile
-  "Colo Colo",
-  "Universidad de Chile",
-  "Universidad Católica",
-  "Universidad Catolica",
-
-  // Colombia
-  "Atlético Nacional",
-  "Atletico Nacional",
-  "Millonarios",
-  "América de Cali",
-  "America de Cali",
-  "Deportivo Cali",
-  "Junior",
-
-  // México
-  "América",
-  "Club América",
-  "Guadalajara",
-  "Chivas",
-  "Cruz Azul",
-  "Pumas UNAM",
-  "Tigres UANL",
-  "Monterrey",
-  "Pachuca",
-  "Toluca",
-
-  // MLS / Estados Unidos
-  "Inter Miami CF",
-  "Inter Miami",
-  "LA Galaxy",
-  "Los Angeles FC",
-  "Seattle Sounders FC",
-  "Atlanta United FC",
-  "New York City FC",
-  "New York Red Bulls"
-];
-
-const EXCLUDED_EASY_NORMAL_CLUB_NAMES = [
-  "New York City FC",
-  "NYCFC",
-
-  "Guadalajara",
-  "LA Galaxy",
-  "Deportivo Cali",
-  "Cruzeiro",
-
-  "Vasco da Gama",
-
-  "Santos Laguna",
-  "Santos",
-
-  "Atlanta United FC",
-  "Atlanta United",
-
-  "São Paulo",
-  "Sao Paulo",
-
-  "Seattle Sounders FC",
-  "Seattle Sounders",
-
-  "Pumas UNAM",
-  "Pumas",
-
-  "Toluca",
-
-  "Millonarios",
-
-  "Cruz Azul",
-
-  "Grêmio",
-  "Gremio",
-
-  "América de Cali",
-  "America de Cali"
-];
-
-const MEDIUM_CLUB_COUNTRIES = [
-  "Argentina",
-  "Brasil",
-  "México",
-  "Mexico",
-  "Estados Unidos",
-  "Uruguay",
-  "Chile",
-  "Colombia"
-];
+// Prioridad de país al elegir clubes (menor número = aparece antes)
+const COUNTRY_PRIORITY = {
+  "Argentina":   1,
+  "Brasil":      2,
+  "Chile":       3,
+  "Uruguay":     4,
+  "Colombia":    5,
+  "Mexico":      6,
+  "México":      6,
+  "Estados Unidos": 7,
+};
 
 const pitchFrame = document.querySelector(".pitch-frame");
+const timerBar  = document.getElementById("timerBar");
+const timerText = document.getElementById("timerText");
+const timerFill = document.getElementById("timerFill");
 const modeButtons = document.querySelectorAll(".mode-btn");
 
 const challengeIcon = document.getElementById("challengeIcon");
@@ -272,14 +314,10 @@ const challengeDescription = document.getElementById("challengeDescription");
 const playerForm = document.getElementById("playerForm");
 const playerSearch = document.getElementById("playerSearch");
 const suggestions = document.getElementById("suggestions");
+const modeHint   = document.getElementById("modeHint");
 const surrenderBtn = document.getElementById("surrenderBtn");
 const helpBtn = document.getElementById("helpBtn");
 
-const completedText = document.getElementById("completedText");
-const scoreText = document.getElementById("scoreText");
-const modeText = document.getElementById("modeText");
-const timerText = document.getElementById("timerText");
-const modeHint = document.getElementById("modeHint");
 
 const baseTotal = document.getElementById("baseTotal");
 const baseUpdated = document.getElementById("baseUpdated");
@@ -307,11 +345,37 @@ let challengeCounter = 0;
 let surrendering = false;
 
 async function loadGameData() {
+  // Chequear intento diario antes de cargar
+  const dailyState = getDailyState();
+  if (dailyState) {
+    // Ya jugó hoy — mostrar estado bloqueado después de cargar datos mínimos
+    try {
+      const [res, resEscudos] = await Promise.all([
+        fetch(`${DATA_URL}?v=${Date.now()}`),
+        fetch(`${ESCUDOS_URL}?v=${Date.now()}`)
+      ]);
+      if (res.ok) {
+        const payload = await res.json();
+        PLAYERS = Array.isArray(payload) ? payload : (payload.jugadores || []);
+        PLAYERS = PLAYERS.map(normalizePlayer).filter(p => p.nombre && p.slug && p.club);
+        if (resEscudos.ok) ESCUDOS = await resEscudos.json();
+      }
+    } catch {}
+    showDailyBlocked(dailyState);
+    return;
+  }
   try {
-    const res = await fetch(`${DATA_URL}?v=${Date.now()}`);
+    const [res, resEscudos] = await Promise.all([
+      fetch(`${DATA_URL}?v=${Date.now()}`),
+      fetch(`${ESCUDOS_URL}?v=${Date.now()}`)
+    ]);
 
     if (!res.ok) {
       throw new Error("No se pudo cargar jugadores_america.json desde el Worker.");
+    }
+
+    if (resEscudos.ok) {
+      ESCUDOS = await resEscudos.json();
     }
 
     const payload = await res.json();
@@ -345,7 +409,6 @@ async function loadGameData() {
       </div>
     `;
 
-    modeHint.textContent = error.message;
   }
 }
 
@@ -361,10 +424,13 @@ function normalizePlayer(raw) {
     categoria: raw.categoria || positionGroup(position),
     club: raw.club || "Club desconocido",
     club_id: String(raw.club_id || "").trim(),
+    club_slug: raw.club_slug || slugify(raw.club || ""),
     club_logo: raw.club_logo || "",
-    pais_club: raw.pais_club || "",
+    // El nuevo JSON usa "pais" en lugar de "pais_club"
+    pais_club: raw.pais_club || raw.pais || "",
     liga: raw.liga || "",
-    league_slug: raw.league_slug || ""
+    league_slug: raw.league_slug || "",
+    posicion_raw: raw.posicion_raw || ""
   };
 }
 
@@ -374,14 +440,15 @@ function buildClubs() {
   PLAYERS.forEach(player => {
     if (!player.club) return;
 
-    const key = player.club_id || slugify(player.club);
+    const key = player.club_slug || slugify(player.club);
 
     if (!clubMap.has(key)) {
       clubMap.set(key, {
         key,
         clubId: player.club_id,
+        clubSlug: player.club_slug,
         name: player.club,
-        country: player.pais_club || "América",
+        country: player.pais_club || player.pais || "América",
         league: player.liga || "",
         logo: player.club_logo || "",
         players: []
@@ -399,50 +466,21 @@ function buildClubs() {
     }));
 }
 
-function isPopularClub(club) {
-  const clubName = normalizeText(club.name);
-
-  const isExcluded = EXCLUDED_EASY_NORMAL_CLUB_NAMES.some(name => {
-    return clubName === normalizeText(name);
-  });
-
-  if (isExcluded) {
-    return false;
-  }
-
-  if (
-    clubName === normalizeText("Santos") &&
-    (club.country === "México" || club.country === "Mexico")
-  ) {
-    return false;
-  }
-
-  return POPULAR_CLUB_NAMES.some(name => {
-    return clubName === normalizeText(name);
-  });
+function getClubTier(club) {
+  return CLUB_TIER[club.key] || 3;
 }
 
-function isMediumClub(club) {
-  if (isPopularClub(club)) {
-    return true;
-  }
-
-  if (!MEDIUM_CLUB_COUNTRIES.includes(club.country)) {
-    return false;
-  }
-
-  return club.players.length >= 16;
+function getCountryPriority(country) {
+  return COUNTRY_PRIORITY[country] || 99;
 }
 
 function getClubPoolForCurrentMode() {
   if (currentMode === "easy" || currentMode === "normal") {
-    return CLUBS.filter(club => isPopularClub(club));
+    return CLUBS.filter(club => getClubTier(club) === 1);
   }
-
   if (currentMode === "hard") {
-    return CLUBS.filter(club => isMediumClub(club));
+    return CLUBS.filter(club => getClubTier(club) <= 2);
   }
-
   return CLUBS;
 }
 
@@ -477,17 +515,9 @@ function normalizeText(text) {
 
 function positionGroup(position) {
   const pos = String(position || "").toUpperCase();
-
   if (pos === "GK") return "arqueros";
-
-  if (["CB", "LB", "RB", "LWB", "RWB"].includes(pos)) {
-    return "defensores";
-  }
-
-  if (["CM", "CDM", "CAM", "LM", "RM"].includes(pos)) {
-    return "mediocampistas";
-  }
-
+  if (["CB","LB","RB"].includes(pos)) return "defensores";
+  if (["CM","CDM","CAM","LM","RM"].includes(pos)) return "mediocampistas";
   return "delanteros";
 }
 
@@ -561,6 +591,7 @@ function generateSlotChallenges(formation) {
       position,
       clubKey: club.key,
       clubId: club.clubId,
+      clubSlug: club.clubSlug,
       clubName: club.name,
       clubLogo: club.logo,
       country: club.country,
@@ -587,8 +618,7 @@ function pickClubForPosition(position, usedClubKeys, countryCount) {
   if (!candidates.length && (currentMode === "easy" || currentMode === "normal")) {
     candidates = CLUBS.filter(club => {
       if (usedClubKeys.has(club.key)) return false;
-      if (!isMediumClub(club)) return false;
-
+      if (getClubTier(club) > 2) return false;
       return clubHasCompatiblePlayer(club, position);
     });
   }
@@ -596,7 +626,6 @@ function pickClubForPosition(position, usedClubKeys, countryCount) {
   if (!candidates.length && currentMode === "hard") {
     candidates = CLUBS.filter(club => {
       if (usedClubKeys.has(club.key)) return false;
-
       return clubHasCompatiblePlayer(club, position);
     });
   }
@@ -606,22 +635,26 @@ function pickClubForPosition(position, usedClubKeys, countryCount) {
   }
 
   const sorted = shuffleArray(candidates).sort((a, b) => {
+    // 1. Balancear países: el que menos veces salió va primero
     const countA = countryCount.get(a.country) || 0;
     const countB = countryCount.get(b.country) || 0;
+    if (countA !== countB) return countA - countB;
 
-    if (countA !== countB) {
-      return countA - countB;
+    // 2. Prioridad de liga: Argentina > Brasil > Chile > Uruguay > ...
+    const prioA = getCountryPriority(a.country);
+    const prioB = getCountryPriority(b.country);
+    if (prioA !== prioB) return prioA - prioB;
+
+    // 3. Dentro del mismo país: tier más bajo primero (más popular)
+    if (currentMode !== "expert") {
+      const tierDiff = getClubTier(a) - getClubTier(b);
+      if (tierDiff !== 0) return tierDiff;
     }
 
-    if (currentMode === "easy" || currentMode === "normal") {
-      return Number(isPopularClub(b)) - Number(isPopularClub(a));
-    }
+    // 4. Experto: prioriza clubes más oscuros (menos jugadores)
+    if (currentMode === "expert") return a.players.length - b.players.length;
 
-    if (currentMode === "expert") {
-      return a.players.length - b.players.length;
-    }
-
-    return b.players.length - a.players.length;
+    return 0;
   });
 
   return sorted[0];
@@ -633,23 +666,48 @@ function clubHasCompatiblePlayer(club, position) {
   });
 }
 
+// Zona vertical fija por rol (% desde arriba dentro del pitch-frame)
+const ZONE_TOP = {
+  "line-attack":       "10%",
+  "line-mid-advanced": "24%",
+  "line-mid":          "40%",
+  "line-cdm":          "54%",
+  "line-defense":      "67%",
+  "line-gk":           "84%",
+};
+
+function getLineRole(row) {
+  if (row.includes("GK"))                                        return "line-gk";
+  if (row.some(p => ["CB","LB","RB"].includes(p)))               return "line-defense";
+  if (row.every(p => ["CDM"].includes(p)))                       return "line-cdm";
+  if (row.some(p => ["CDM","CM","LM","RM"].includes(p)))         return "line-mid";
+  if (row.some(p => ["CAM"].includes(p)))                        return "line-mid-advanced";
+  return "line-attack";
+}
+
 function renderFormation() {
   pitchFrame.innerHTML = "";
 
   let slotIndex = 0;
-  const totalRows = CURRENT_GAME.rows.length;
 
   CURRENT_GAME.rows.forEach((row, rowIndex) => {
-    const line = document.createElement("div");
-    const lineRole = getLineRole(row, rowIndex, totalRows);
+    const role = getLineRole(row);
+    const top  = ZONE_TOP[role] || (10 + rowIndex * 16) + "%";
 
+    const line = document.createElement("div");
     line.className = [
       "line",
-      "dynamic-line",
-      `line-${rowIndex}`,
       `line-count-${row.length}`,
-      lineRole
+      role
     ].join(" ");
+
+    // Posición absoluta fija según zona
+    line.style.cssText = `
+      position: absolute;
+      left: 0; right: 0;
+      top: ${top};
+      transform: translateY(-50%);
+    `;
 
     row.forEach(position => {
       const slotData = CURRENT_GAME.slots[slotIndex];
@@ -665,9 +723,7 @@ function renderFormation() {
       button.dataset.clubName = slotData.clubName;
       button.dataset.country = slotData.country;
 
-      button.innerHTML = `
-        <span class="slot-position">${position}</span>
-      `;
+      button.innerHTML = `<span class="slot-position">${position}</span>`;
 
       line.appendChild(button);
       slotIndex++;
@@ -677,29 +733,21 @@ function renderFormation() {
   });
 }
 
-function getLineRole(row, rowIndex, totalRows) {
-  if (rowIndex === totalRows - 1 || row.includes("GK")) {
-    return "line-gk";
-  }
-
-  if (row.some(position => ["CB", "LB", "RB", "LWB", "RWB"].includes(position))) {
-    return "line-defense";
-  }
-
-  if (row.some(position => ["CDM", "CM", "LM", "RM"].includes(position))) {
-    return "line-mid";
-  }
-
-  if (row.some(position => ["CAM"].includes(position))) {
-    return "line-mid-advanced";
-  }
-
-  if (row.some(position => ["LW", "RW", "ST"].includes(position))) {
-    return "line-attack";
-  }
-
-  return `line-${rowIndex}`;
-}
+const POSITION_LABEL = {
+  GK:  "Portero",
+  CB:  "Defensa Central",
+  LB:  "Defensa Lateral Izquierdo",
+  RB:  "Defensa Lateral Derecho",
+  CDM: "Centrocampista Defensivo",
+  CM:  "Mediocampista Central",
+  CAM: "Mediocampista Ofensivo",
+  LM:  "Mediocampista Izquierdo",
+  RM:  "Mediocampista Derecho",
+  LW:  "Delantero Izquierdo",
+  RW:  "Delantero Derecho",
+  ST:  "Centro Delantero",
+  SS:  "Segundo Delantero",
+};
 
 function renderChallengePanel() {
   if (!selectedSlot) {
@@ -713,7 +761,8 @@ function renderChallengePanel() {
 
   const slotData = getSlotData(selectedSlot);
   const logo = getClubLogo(slotData);
-  const positionLabel = getPositionGroupLabel(slotData.position);
+
+  const positionLabel = POSITION_LABEL[normalizePosition(slotData.position)] || getPositionGroupLabel(slotData.position);
 
   challengeIcon.src = logo;
   challengeIcon.alt = `Escudo de ${slotData.clubName}`;
@@ -723,6 +772,8 @@ function renderChallengePanel() {
 }
 
 function getClubLogo(slotData) {
+  const slug = slotData.clubSlug || slotData.clubKey || "";
+  if (slug && ESCUDOS[slug]) return ESCUDOS[slug];
   return slotData.clubLogo || getCountryFlagUrl(slotData.country);
 }
 
@@ -828,16 +879,24 @@ function findBestFreeSlotForPlayer(player) {
 
   const compatibleSlots = freeSlots.filter(slot => {
     const slotData = getSlotData(slot);
-
     return (
       playerBelongsToSlotClub(player, slotData) &&
       playerCanPlaySlot(player.posicion, slotData.position)
     );
   });
 
-  if (compatibleSlots.length === 1) {
-    return compatibleSlots[0];
-  }
+  if (!compatibleSlots.length) return null;
+
+  // Priorizar slot exacto (misma posición que el jugador)
+  const exactSlot = compatibleSlots.find(slot => {
+    const slotData = getSlotData(slot);
+    return normalizePosition(slotData.position) === normalizePosition(player.posicion);
+  });
+
+  if (exactSlot) return exactSlot;
+
+  // Si hay un único compatible, usarlo
+  if (compatibleSlots.length === 1) return compatibleSlots[0];
 
   return null;
 }
@@ -887,65 +946,44 @@ function getPlayersForSlot(slot) {
   });
 }
 
-function renderSuggestions(query) {
+function buildHint(nombre) {
+  return nombre
+    .split(" ")
+    .filter(w => w.length > 0)
+    .map(w => w[0] + "*".repeat(w.length - 1))
+    .join(" ");
+}
+
+function renderSuggestions() {
   const mode = GAME_MODES[currentMode];
 
+  suggestions.innerHTML = "";
+
   if (!mode.showHints || gameFinished) {
-    suggestions.innerHTML = "";
     suggestions.classList.add("hidden");
     return;
   }
 
-  suggestions.innerHTML = "";
-  suggestions.classList.remove("hidden");
-
   if (!selectedSlot) {
-    selectRandomEmptySlot();
+    suggestions.classList.add("hidden");
     return;
   }
 
-  const value = normalizeText(query);
-
-  const filtered = getPlayersForSlot(selectedSlot).filter(player => {
-    if (!value) return true;
-
-    return playerMatchesSearch(player, value);
-  });
-
-  if (!filtered.length) {
-    const slotData = getSlotData(selectedSlot);
-
-    suggestions.innerHTML = `
-      <button class="suggestion-item" type="button">
-        <div>
-          <strong>No encontré ese jugador</strong>
-          <span>Debe ser de ${slotData.clubName} y servir para ${slotData.position}.</span>
-        </div>
-        <span>-</span>
-      </button>
-    `;
+  const candidates = getPlayersForSlot(selectedSlot);
+  if (!candidates.length) {
+    suggestions.classList.add("hidden");
     return;
   }
 
-  filtered.slice(0, 6).forEach(player => {
-    const button = document.createElement("button");
-    button.className = "suggestion-item";
-    button.type = "button";
+  const hint = buildHint(candidates[0].nombre);
 
-    button.innerHTML = `
-      <div>
-        <strong>${player.nombre}</strong>
-        <span>${player.club} · ${player.posicion} · ${player.pais_club}</span>
-      </div>
-      <span>Elegir</span>
-    `;
-
-    button.onclick = () => {
-      placePlayer(player, selectedSlot);
-    };
-
-    suggestions.appendChild(button);
-  });
+  suggestions.classList.remove("hidden");
+  suggestions.innerHTML = `
+    <div class="suggestion-item hint-item-readonly">
+      <strong class="hint-text">${hint}</strong>
+      <span class="hint-badge">💡</span>
+    </div>
+  `;
 }
 
 function placePlayer(player, forcedSlot = null) {
@@ -970,6 +1008,16 @@ function placePlayer(player, forcedSlot = null) {
     return;
   }
 
+  // Si el slot no es exacto para este jugador pero existe uno exacto libre, redirigir
+  const slotIsExact = normalizePosition(slotData.position) === normalizePosition(player.posicion);
+  if (!slotIsExact && playerExactSlotExists(player)) {
+    const bestSlot = findBestFreeSlotForPlayer(player);
+    if (bestSlot && bestSlot !== targetSlot) {
+      placePlayer(player, bestSlot);
+      return;
+    }
+  }
+
   if (playerAlreadyUsed(player)) {
     showTemporaryPlaceholder("Ese jugador ya fue usado");
     return;
@@ -980,12 +1028,14 @@ function placePlayer(player, forcedSlot = null) {
   targetSlot.classList.add("filled");
   targetSlot.classList.remove("selected");
 
+  const posLabel = player.posicion_raw || getPositionGroupLabel(player.posicion);
   targetSlot.innerHTML = `
     <span class="slot-logo-wrap">
       <img class="slot-logo" src="${logo}" alt="${escapeHtml(slotData.clubName)}" loading="lazy" />
     </span>
     <span class="slot-player-name">${escapeHtml(player.nombre)}</span>
     <span class="slot-club-name">${escapeHtml(slotData.clubName)}</span>
+    <span class="slot-pos-label">${escapeHtml(posLabel)}</span>
   `;
 
   completedSlots.push(Number(targetSlot.dataset.index));
@@ -1023,17 +1073,32 @@ function trySubmitSearch() {
     return;
   }
 
-  const matches = getPlayersForSlot(selectedSlot).filter(player => {
+  // Buscar primero en el slot seleccionado
+  let matches = getPlayersForSlot(selectedSlot).filter(player => {
     return playerMatchesSearch(player, value);
   });
 
+  // Si no hay match en el slot actual, buscar en todos los slots libres
   if (!matches.length) {
+    const allMatches = PLAYERS.filter(p => !playerAlreadyUsed(p) && playerMatchesSearch(p, value));
+    if (allMatches.length) {
+      // Intentar colocar en el slot correcto via findBestFreeSlotForPlayer
+      const exactNameMatch = allMatches.find(p => playerIsExactMatch(p, value)) || (allMatches.length === 1 ? allMatches[0] : null);
+      if (exactNameMatch) {
+        const bestSlot = findBestFreeSlotForPlayer(exactNameMatch);
+        if (bestSlot) {
+          placePlayer(exactNameMatch, bestSlot);
+          return;
+        }
+        showTemporaryPlaceholder(`${exactNameMatch.nombre} no tiene un casillero disponible`);
+        return;
+      }
+    }
     if (GAME_MODES[currentMode].showHints) {
       renderSuggestions(playerSearch.value);
     } else {
       showTemporaryPlaceholder("No encontré un jugador compatible");
     }
-
     return;
   }
 
@@ -1076,10 +1141,9 @@ function showTemporaryPlaceholder(message) {
 function applyModeUi() {
   const mode = GAME_MODES[currentMode];
 
-  modeText.textContent = mode.label;
-
-  modeHint.textContent =
-    `${mode.help} Desafío #${CURRENT_GAME.challengeNumber} · Formación: ${CURRENT_GAME.formationName}`;
+  if (modeHint) {
+    modeHint.textContent = `${mode.help} Formación: ${CURRENT_GAME.formationName}`;
+  }
 
   if (mode.showHints) {
     suggestions.classList.remove("hidden");
@@ -1090,10 +1154,13 @@ function applyModeUi() {
 
   if (mode.timeLimit === null) {
     timeLeft = null;
-    timerText.textContent = "Sin límite";
+    timerBar.classList.add("hidden");
+    timerBar.classList.remove("urgent");
   } else {
     timeLeft = mode.timeLimit;
     timerText.textContent = formatTime(timeLeft);
+    timerFill.style.width = "100%";
+    timerBar.classList.remove("hidden", "urgent");
   }
 
   modeButtons.forEach(button => {
@@ -1118,11 +1185,16 @@ function startTimerIfNeeded() {
     if (timeLeft <= 0) {
       timeLeft = 0;
       timerText.textContent = formatTime(timeLeft);
+      timerFill.style.width = "0%";
       finishGame("time");
       return;
     }
 
+    const pct = (timeLeft / mode.timeLimit) * 100;
+    timerFill.style.width = pct + "%";
     timerText.textContent = formatTime(timeLeft);
+    timerBar.classList.toggle("urgent", timeLeft <= 15);
+
   }, 1000);
 }
 
@@ -1134,8 +1206,6 @@ function stopTimer() {
 }
 
 function updateStatus() {
-  completedText.textContent = `${completedSlots.length}/${CURRENT_GAME.positions.length}`;
-  scoreText.textContent = score;
 }
 
 function finishGame(reason) {
@@ -1174,6 +1244,16 @@ function finishGame(reason) {
       <span class="result-chip">${score} puntos</span>
     `;
   }
+
+  // Guardar intento diario
+  const won = reason === "win" || completedSlots.length === CURRENT_GAME.positions.length;
+  saveDailyState(
+    won ? "win" : reason,
+    completedSlots.length,
+    CURRENT_GAME.positions.length,
+    GAME_MODES[currentMode].label
+  );
+  updateGlobalStats(won);
 
   if (reason === "surrender") {
     if (resultEyebrow) resultEyebrow.textContent = "PARTIDA TERMINADA";
@@ -1233,21 +1313,7 @@ function getResultActions() {
   return resultModal.querySelector(".result-actions");
 }
 
-function getOrCreateNextChallengeButton() {
-  const nextBtn = document.getElementById("nextChallengeBtn");
-
-  if (!nextBtn) return null;
-
-  nextBtn.onclick = () => {
-    initGame();
-  };
-
-  return nextBtn;
-}
-
 function showFinalButtons() {
-  const nextBtn = getOrCreateNextChallengeButton();
-
   if (shareBtn) {
     shareBtn.classList.remove("hidden");
     shareBtn.style.display = "inline-flex";
@@ -1261,21 +1327,9 @@ function showFinalButtons() {
     backToGamesBtn.href = "../../index.html#games";
   }
 
-  if (nextBtn) {
-    nextBtn.classList.remove("hidden");
-    nextBtn.style.display = "inline-flex";
-    nextBtn.textContent = "Siguiente desafío";
-  }
 }
 
 function hideFinalButtons() {
-  const nextBtn = document.getElementById("nextChallengeBtn");
-
-  if (nextBtn) {
-    nextBtn.classList.remove("hidden");
-    nextBtn.style.display = "inline-flex";
-  }
-
   if (shareBtn) {
     shareBtn.classList.remove("hidden");
     shareBtn.style.display = "inline-flex";
@@ -1299,8 +1353,10 @@ function showModeChangeModal(nextMode) {
 
   confirmBtn.onclick = () => {
     modal.classList.add("hidden");
-    currentMode = nextMode;
-    initGame();
+    if (!getDailyState()) {
+      currentMode = nextMode;
+      initGame();
+    }
   };
 
   cancelBtn.onclick = () => {
@@ -1342,22 +1398,23 @@ function renderBaseInfo(payload) {
     ? PLAYERS.length
     : payload.total || PLAYERS.length;
 
+  // El nuevo JSON usa "fecha_generacion" en lugar de "actualizado"
   const updated = Array.isArray(payload)
     ? "-"
-    : formatDateTime(payload.actualizado);
+    : formatDateTime(payload.fecha_generacion || payload.actualizado);
 
-  const ligas = Array.isArray(payload)
+  // El nuevo JSON no tiene "ligas"; derivamos países únicos desde PLAYERS
+  const paises = Array.isArray(payload)
     ? []
-    : payload.ligas || [];
+    : [...new Set(PLAYERS.map(p => p.pais_club).filter(Boolean))].sort();
 
-  baseTotal.textContent = `${total} jugadores`;
+  const equipos = Array.isArray(payload)
+    ? ""
+    : (payload.equipos_procesados ? ` · ${payload.equipos_procesados} equipos` : "");
+
+  baseTotal.textContent = `${total} jugadores${equipos}`;
   baseUpdated.textContent = updated;
-
-  if (ligas.length) {
-    baseLeagues.textContent = ligas.map(liga => liga.pais_club).join(", ");
-  } else {
-    baseLeagues.textContent = "-";
-  }
+  baseLeagues.textContent = paises.length ? paises.join(", ") : "-";
 }
 
 function pickRandom(list) {
@@ -1438,12 +1495,14 @@ Puntaje: ${score}`;
   }
 });
 
-helpBtn.addEventListener("click", () => {
-  alert(
-    "El juego muestra automáticamente una posición y un equipo de América. " +
-    "Escribí un jugador actual de ese club y compatible con la posición marcada. " +
-    "Al acertar, se desbloquea otra posición aleatoria. En Fácil aparecen sugerencias."
-  );
-});
+if (helpBtn) {
+  helpBtn.addEventListener("click", () => {
+    alert(
+      "El juego muestra automáticamente una posición y un equipo de América. " +
+      "Escribí un jugador actual de ese club y compatible con la posición marcada. " +
+      "Al acertar, se desbloquea otra posición aleatoria. En Fácil aparecen sugerencias."
+    );
+  });
+}
 
 loadGameData();
