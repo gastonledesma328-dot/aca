@@ -1,0 +1,33 @@
+name: Update Comparador Selecciones
+
+on:
+  schedule:
+    # Corre todos los dias a las 06:00 y 18:00 UTC
+    # (02:00 y 14:00 hora Argentina)
+    - cron: "0 6,18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-comparador:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repo
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Ejecutar scraper ESPN
+        run: node scripts/scraper_comparador_selecciones.js
+
+      - name: Guardar cambios
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update comparador-selecciones.json [ESPN]"
+          file_pattern: "data/comparador-selecciones.json public/data/comparador-selecciones.json"
