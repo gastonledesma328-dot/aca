@@ -1,0 +1,190 @@
+name: Scraping ESPN — Actualización de datos
+
+on:
+  # Cron: cada 3 horas en horario activo (UTC)
+  schedule:
+    - cron: "0 */3 * * *"
+
+  # Disparo manual desde la UI de GitHub Actions
+  workflow_dispatch:
+    inputs:
+      group:
+        description: "Grupo específico (vacío = todos)"
+        required: false
+        default: ""
+      force_refresh:
+        description: "Forzar refresh de cache"
+        type: boolean
+        required: false
+        default: false
+
+  # También ejecutar en push a main (para probar cambios de scrapers)
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - ".github/workflows/scraping.yml"
+
+concurrency:
+  # Solo un workflow a la vez por branch para no pisar datos
+  group: scraping-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # ── Job 1: Scraping en matrix por grupos ──────────────────────────────────
+  scrape:
+    name: "Scraping — ${{ matrix.group }}"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    strategy:
+      # fail-fast: false garantiza que un grupo fallido no cancele los demás
+      fail-fast: false
+      matrix:
+        group:
+          - argentina
+          - conmebol
+          - uefa
+          - fifa
+          - selecciones
+          - europa
+          - copas-europa
+          - america
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            pip-${{ runner.os }}-
+
+      - name: Cache ESPN responses
+        uses: actions/cache@v4
+        with:
+          path: .cache/espn
+          key: espn-cache-${{ matrix.group }}-${{ github.run_id }}
+          restore-keys: |
+            espn-cache-${{ matrix.group }}-
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scraper — ${{ matrix.group }}
+        env:
+          GROUP: ${{ matrix.group }}
+          FORCE_REFRESH: ${{ github.event.inputs.force_refresh || 'false' }}
+        run: |
+          ARGS="--group $GROUP --log-level INFO --log-file logs/scraping-$GROUP.log"
+          if [ "$FORCE_REFRESH" = "true" ]; then
+            ARGS="$ARGS --force-refresh"
+          fi
+          # Si es disparo manual con grupo específico, respetar el input
+          if [ -n "${{ github.event.inputs.group }}" ] && [ "${{ github.event.inputs.group }}" != "$GROUP" ]; then
+            echo "Saltando $GROUP (no coincide con input: ${{ github.event.inputs.group }})"
+            exit 0
+          fi
+          python scripts/run_scrapers.py $ARGS
+
+      - name: Upload log artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-${{ matrix.group }}-${{ github.run_id }}
+          path: logs/
+          retention-days: 7
+
+      - name: Upload generated JSON artifacts (debugging)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-${{ matrix.group }}-${{ github.run_id }}
+          path: public/data/competitions/
+          retention-days: 3
+
+  # ── Job 2: Commit datos (solo si todos los grupos tuvieron éxito) ──────────
+  commit:
+    name: Commit datos actualizados
+    runs-on: ubuntu-latest
+    needs: scrape
+    # Ejecutar incluso si algún grupo falló (fail-fast: false significa que
+    # queremos commitear lo que SÍ salió bien)
+    if: always()
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Descargar todos los artefactos de datos generados por la matrix
+      - name: Download all data artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: data-*-${{ github.run_id }}
+          path: .artifacts/
+          merge-multiple: true
+
+      # Mover los JSONs a public/data/competitions/
+      - name: Merge artifact data
+        run: |
+          mkdir -p public/data/competitions
+          if [ -d ".artifacts" ]; then
+            cp -r .artifacts/* public/data/competitions/ 2>/dev/null || true
+          fi
+
+      # Regenerar competiciones.json legacy para compatibilidad
+      - name: Update legacy competiciones.json
+        run: python scripts/run_scrapers.py --update-legacy --log-level INFO
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet public/data/ && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          git commit -m "data: actualización automática $TIMESTAMP [skip ci]"
+          git push
+
+      - name: No changes detected
+        if: steps.changes.outputs.changed == 'false'
+        run: echo "Sin cambios en los datos. Nada que commitear."
+
+  # ── Job 3: Notificar fallos (opcional, requiere SLACK_WEBHOOK secret) ──────
+  notify-failure:
+    name: Notificar fallos
+    runs-on: ubuntu-latest
+    needs: [scrape, commit]
+    if: failure()
+    steps:
+      - name: Log failure
+        run: |
+          echo "::error::El workflow de scraping tuvo fallos. Revisar artefactos de logs."
+          echo "Run ID: ${{ github.run_id }}"
+          echo "URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
