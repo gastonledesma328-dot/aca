@@ -1,0 +1,12281 @@
+{
+  "fuente": "Fútbol en Vivo Argentina",
+  "metodo": "scraping HTML Partidos de hoy",
+  "actualizado": "2026-05-13T07:14:48.505109+00:00",
+  "timezone": "America/Argentina/Buenos_Aires",
+  "fechas": [
+    "2026-05-13"
+  ],
+  "total": 437,
+  "partidos": {
+    "feva-2026-05-13-copa-argentina-platense": {
+      "id": "feva-2026-05-13-copa-argentina-platense",
+      "fixture_id": "feva-2026-05-13-copa-argentina-platense",
+      "partido": "Copa Argentina vs Platense",
+      "local": "Copa Argentina",
+      "visitante": "Platense",
+      "liga": "Campeonatos",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:15:00",
+      "dia": "2026-05-13",
+      "hora": "16:15",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "San Martín SJ"
+      ],
+      "canales_raw": [
+        "San Martín SJ"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-la-liga-ea-sports-villarreal": {
+      "id": "feva-2026-05-13-la-liga-ea-sports-villarreal",
+      "fixture_id": "feva-2026-05-13-la-liga-ea-sports-villarreal",
+      "partido": "La Liga EA Sports vs Villarreal",
+      "local": "La Liga EA Sports",
+      "visitante": "Villarreal",
+      "liga": "-",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:00:00",
+      "dia": "2026-05-13",
+      "hora": "14:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Sevilla FC"
+      ],
+      "canales_raw": [
+        "Sevilla FC"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-la-liga-ea-sports-espanyol": {
+      "id": "feva-2026-05-13-la-liga-ea-sports-espanyol",
+      "fixture_id": "feva-2026-05-13-la-liga-ea-sports-espanyol",
+      "partido": "La Liga EA Sports vs Espanyol",
+      "local": "La Liga EA Sports",
+      "visitante": "Espanyol",
+      "liga": "-",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:00:00",
+      "dia": "2026-05-13",
+      "hora": "14:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Athletic Club"
+      ],
+      "canales_raw": [
+        "Athletic Club"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-la-liga-ea-sports-getafe": {
+      "id": "feva-2026-05-13-la-liga-ea-sports-getafe",
+      "fixture_id": "feva-2026-05-13-la-liga-ea-sports-getafe",
+      "partido": "La Liga EA Sports vs Getafe",
+      "local": "La Liga EA Sports",
+      "visitante": "Getafe",
+      "liga": "-",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:30:00",
+      "dia": "2026-05-13",
+      "hora": "16:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Mallorca"
+      ],
+      "canales_raw": [
+        "Mallorca"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-la-liga-ea-sports-alaves": {
+      "id": "feva-2026-05-13-la-liga-ea-sports-alaves",
+      "fixture_id": "feva-2026-05-13-la-liga-ea-sports-alaves",
+      "partido": "La Liga EA Sports vs Alavés",
+      "local": "La Liga EA Sports",
+      "visitante": "Alavés",
+      "liga": "-",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:30:00",
+      "dia": "2026-05-13",
+      "hora": "16:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "FC Barcelona"
+      ],
+      "canales_raw": [
+        "FC Barcelona"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-premier-league-manchester-city": {
+      "id": "feva-2026-05-13-premier-league-manchester-city",
+      "fixture_id": "feva-2026-05-13-premier-league-manchester-city",
+      "partido": "Premier League vs Manchester City",
+      "local": "Premier League",
+      "visitante": "Manchester City",
+      "liga": "-",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Crystal Palace",
+        "Partidos de hoy miércoles, 13/5/2026"
+      ],
+      "canales_raw": [
+        "Crystal Palace",
+        "Partidos de hoy miércoles, 13/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-rosario-central-racing-avellaneda": {
+      "id": "feva-2026-05-13-rosario-central-racing-avellaneda",
+      "fixture_id": "feva-2026-05-13-rosario-central-racing-avellaneda",
+      "partido": "Rosario Central vs Racing Avellaneda",
+      "local": "Rosario Central",
+      "visitante": "Racing Avellaneda",
+      "liga": "Torneo Betano",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:45:00",
+      "dia": "2026-05-13",
+      "hora": "18:45",
+      "fase": "1/4 de Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "ESPN Premium",
+        "TNT Sports Premium",
+        "TNT Sports en HBO MAX"
+      ],
+      "canales_raw": [
+        "ESPN Premium",
+        "TNT Sports Premium",
+        "TNT Sports en HBO MAX"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-river-plate-gimnasia-lp": {
+      "id": "feva-2026-05-13-river-plate-gimnasia-lp",
+      "fixture_id": "feva-2026-05-13-river-plate-gimnasia-lp",
+      "partido": "River Plate vs Gimnasia LP",
+      "local": "River Plate",
+      "visitante": "Gimnasia LP",
+      "liga": "Torneo Betano",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "1/4 de Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "ESPN Premium",
+        "TNT Sports Premium",
+        "TNT Sports en HBO MAX"
+      ],
+      "canales_raw": [
+        "ESPN Premium",
+        "TNT Sports Premium",
+        "TNT Sports en HBO MAX"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-platense-san-martin-sj": {
+      "id": "feva-2026-05-13-platense-san-martin-sj",
+      "fixture_id": "feva-2026-05-13-platense-san-martin-sj",
+      "partido": "Platense vs San Martín SJ",
+      "local": "Platense",
+      "visitante": "San Martín SJ",
+      "liga": "Copa Argentina",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:15:00",
+      "dia": "2026-05-13",
+      "hora": "16:15",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "TyC Sports",
+        "TyC Sports Play"
+      ],
+      "canales_raw": [
+        "TyC Sports",
+        "TyC Sports Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-villarreal-sevilla-fc": {
+      "id": "feva-2026-05-13-villarreal-sevilla-fc",
+      "fixture_id": "feva-2026-05-13-villarreal-sevilla-fc",
+      "partido": "Villarreal vs Sevilla FC",
+      "local": "Villarreal",
+      "visitante": "Sevilla FC",
+      "liga": "La Liga EA Sports",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:00:00",
+      "dia": "2026-05-13",
+      "hora": "14:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "ESPN 2",
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "ESPN 2",
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-espanyol-athletic-club": {
+      "id": "feva-2026-05-13-espanyol-athletic-club",
+      "fixture_id": "feva-2026-05-13-espanyol-athletic-club",
+      "partido": "Espanyol vs Athletic Club",
+      "local": "Espanyol",
+      "visitante": "Athletic Club",
+      "liga": "La Liga EA Sports",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:00:00",
+      "dia": "2026-05-13",
+      "hora": "14:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DGO",
+        "DSPORTS+ Plus"
+      ],
+      "canales_raw": [
+        "DGO",
+        "DSPORTS+ Plus"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-getafe-mallorca": {
+      "id": "feva-2026-05-13-getafe-mallorca",
+      "fixture_id": "feva-2026-05-13-getafe-mallorca",
+      "partido": "Getafe vs Mallorca",
+      "local": "Getafe",
+      "visitante": "Mallorca",
+      "liga": "La Liga EA Sports",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:30:00",
+      "dia": "2026-05-13",
+      "hora": "16:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "ESPN 3",
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "ESPN 3",
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-alaves-fc-barcelona": {
+      "id": "feva-2026-05-13-alaves-fc-barcelona",
+      "fixture_id": "feva-2026-05-13-alaves-fc-barcelona",
+      "partido": "Alavés vs FC Barcelona",
+      "local": "Alavés",
+      "visitante": "FC Barcelona",
+      "liga": "La Liga EA Sports",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:30:00",
+      "dia": "2026-05-13",
+      "hora": "16:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "ESPN 2",
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "ESPN 2",
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-manchester-city-crystal-palace": {
+      "id": "feva-2026-05-13-manchester-city-crystal-palace",
+      "fixture_id": "feva-2026-05-13-manchester-city-crystal-palace",
+      "partido": "Manchester City vs Crystal Palace",
+      "local": "Manchester City",
+      "visitante": "Crystal Palace",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "ESPN",
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "ESPN",
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-stade-brestois-strasbourg-alsace": {
+      "id": "feva-2026-05-13-stade-brestois-strasbourg-alsace",
+      "fixture_id": "feva-2026-05-13-stade-brestois-strasbourg-alsace",
+      "partido": "Stade Brestois vs Strasbourg Alsace",
+      "local": "Stade Brestois",
+      "visitante": "Strasbourg Alsace",
+      "liga": "Francia Ligue 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:00:00",
+      "dia": "2026-05-13",
+      "hora": "14:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "ESPN 3",
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "ESPN 3",
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-lens-psg": {
+      "id": "feva-2026-05-13-lens-psg",
+      "fixture_id": "feva-2026-05-13-lens-psg",
+      "partido": "Lens vs PSG",
+      "local": "Lens",
+      "visitante": "PSG",
+      "liga": "Francia Ligue 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-nam-inh-fc-selangor-fa": {
+      "id": "feva-2026-05-13-nam-inh-fc-selangor-fa",
+      "fixture_id": "feva-2026-05-13-nam-inh-fc-selangor-fa",
+      "partido": "Nam Định FC vs Selangor FA",
+      "local": "Nam Định FC",
+      "visitante": "Selangor FA",
+      "liga": "ASEAN Club Championship",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T07:30:00",
+      "dia": "2026-05-13",
+      "hora": "07:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball PPV"
+      ],
+      "canales_raw": [
+        "OneFootball PPV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-buriram-united-johor-darul-takzim": {
+      "id": "feva-2026-05-13-buriram-united-johor-darul-takzim",
+      "fixture_id": "feva-2026-05-13-buriram-united-johor-darul-takzim",
+      "partido": "Buriram United vs Johor Darul Takzim",
+      "local": "Buriram United",
+      "visitante": "Johor Darul Takzim",
+      "liga": "ASEAN Club Championship",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T09:00:00",
+      "dia": "2026-05-13",
+      "hora": "09:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball PPV"
+      ],
+      "canales_raw": [
+        "OneFootball PPV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-juventude-sao-paulo": {
+      "id": "feva-2026-05-13-juventude-sao-paulo",
+      "fixture_id": "feva-2026-05-13-juventude-sao-paulo",
+      "partido": "Juventude vs São Paulo",
+      "local": "Juventude",
+      "visitante": "São Paulo",
+      "liga": "Copa do Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DGO",
+        "DSPORTS+ Plus"
+      ],
+      "canales_raw": [
+        "DGO",
+        "DSPORTS+ Plus"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-lazio-inter-milan": {
+      "id": "feva-2026-05-13-lazio-inter-milan",
+      "fixture_id": "feva-2026-05-13-lazio-inter-milan",
+      "partido": "Lazio vs Inter Milan",
+      "local": "Lazio",
+      "visitante": "Inter Milan",
+      "liga": "Coppa Italia",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DGO",
+        "DSports 1611"
+      ],
+      "canales_raw": [
+        "DGO",
+        "DSports 1611"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-arsenal-femenino-everton-femenino": {
+      "id": "feva-2026-05-13-arsenal-femenino-everton-femenino",
+      "fixture_id": "feva-2026-05-13-arsenal-femenino-everton-femenino",
+      "partido": "Arsenal Femenino vs Everton Femenino",
+      "local": "Arsenal Femenino",
+      "visitante": "Everton Femenino",
+      "liga": "FA Women's Super League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-vissel-kobe-kyoto-sanga": {
+      "id": "feva-2026-05-13-vissel-kobe-kyoto-sanga",
+      "fixture_id": "feva-2026-05-13-vissel-kobe-kyoto-sanga",
+      "partido": "Vissel Kobe vs Kyoto Sanga",
+      "local": "Vissel Kobe",
+      "visitante": "Kyoto Sanga",
+      "liga": "J1 League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T07:00:00",
+      "dia": "2026-05-13",
+      "hora": "07:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "J.LEAGUE International YouTube"
+      ],
+      "canales_raw": [
+        "J.LEAGUE International YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-machida-zelvia-tokyo-verdy-beleza": {
+      "id": "feva-2026-05-13-machida-zelvia-tokyo-verdy-beleza",
+      "fixture_id": "feva-2026-05-13-machida-zelvia-tokyo-verdy-beleza",
+      "partido": "Machida Zelvia vs Tokyo Verdy Beleza",
+      "local": "Machida Zelvia",
+      "visitante": "Tokyo Verdy Beleza",
+      "liga": "J1 League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T07:00:00",
+      "dia": "2026-05-13",
+      "hora": "07:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "J.LEAGUE International YouTube"
+      ],
+      "canales_raw": [
+        "J.LEAGUE International YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-stockport-county-stevenage": {
+      "id": "feva-2026-05-13-stockport-county-stevenage",
+      "fixture_id": "feva-2026-05-13-stockport-county-stevenage",
+      "partido": "Stockport County vs Stevenage",
+      "local": "Stockport County",
+      "visitante": "Stevenage",
+      "liga": "League One",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-deportivo-pasto-deportes-tolima": {
+      "id": "feva-2026-05-13-deportivo-pasto-deportes-tolima",
+      "fixture_id": "feva-2026-05-13-deportivo-pasto-deportes-tolima",
+      "partido": "Deportivo Pasto vs Deportes Tolima",
+      "local": "Deportivo Pasto",
+      "visitante": "Deportes Tolima",
+      "liga": "Liga Colombiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "1/4 de Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "RCN Nuestra Tele"
+      ],
+      "canales_raw": [
+        "RCN Nuestra Tele"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-junior-once-caldas": {
+      "id": "feva-2026-05-13-junior-once-caldas",
+      "fixture_id": "feva-2026-05-13-junior-once-caldas",
+      "partido": "Junior vs Once Caldas",
+      "local": "Junior",
+      "visitante": "Once Caldas",
+      "liga": "Liga Colombiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:15:00",
+      "dia": "2026-05-13",
+      "hora": "22:15",
+      "fase": "1/4 de Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "RCN Nuestra Tele",
+        "Liga Futve"
+      ],
+      "canales_raw": [
+        "RCN Nuestra Tele",
+        "Liga Futve"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-carabobo-estudiantes-merida": {
+      "id": "feva-2026-05-13-carabobo-estudiantes-merida",
+      "fixture_id": "feva-2026-05-13-carabobo-estudiantes-merida",
+      "partido": "Carabobo vs Estudiantes Mérida",
+      "local": "Carabobo",
+      "visitante": "Estudiantes Mérida",
+      "liga": "Liga Colombiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Liga Futve YouTube"
+      ],
+      "canales_raw": [
+        "Liga Futve YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-puerto-cabello-portuguesa-fc": {
+      "id": "feva-2026-05-13-puerto-cabello-portuguesa-fc",
+      "fixture_id": "feva-2026-05-13-puerto-cabello-portuguesa-fc",
+      "partido": "Puerto Cabello vs Portuguesa FC",
+      "local": "Puerto Cabello",
+      "visitante": "Portuguesa FC",
+      "liga": "LigaFUTVE App",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Liga Futve YouTube",
+        "LigaFUTVE App"
+      ],
+      "canales_raw": [
+        "Liga Futve YouTube",
+        "LigaFUTVE App"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-charlotte-fc-new-york-city": {
+      "id": "feva-2026-05-13-charlotte-fc-new-york-city",
+      "fixture_id": "feva-2026-05-13-charlotte-fc-new-york-city",
+      "partido": "Charlotte FC vs New York City",
+      "local": "Charlotte FC",
+      "visitante": "New York City",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cf-montreal-portland-timbers": {
+      "id": "feva-2026-05-13-cf-montreal-portland-timbers",
+      "fixture_id": "feva-2026-05-13-cf-montreal-portland-timbers",
+      "partido": "CF Montréal vs Portland Timbers",
+      "local": "CF Montréal",
+      "visitante": "Portland Timbers",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-new-york-rb-columbus-crew": {
+      "id": "feva-2026-05-13-new-york-rb-columbus-crew",
+      "fixture_id": "feva-2026-05-13-new-york-rb-columbus-crew",
+      "partido": "New York RB vs Columbus Crew",
+      "local": "New York RB",
+      "visitante": "Columbus Crew",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-dc-united-chicago-fire": {
+      "id": "feva-2026-05-13-dc-united-chicago-fire",
+      "fixture_id": "feva-2026-05-13-dc-united-chicago-fire",
+      "partido": "DC United vs Chicago Fire",
+      "local": "DC United",
+      "visitante": "Chicago Fire",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-new-england-revolution-nashville-sc": {
+      "id": "feva-2026-05-13-new-england-revolution-nashville-sc",
+      "fixture_id": "feva-2026-05-13-new-england-revolution-nashville-sc",
+      "partido": "New England Revolution vs Nashville SC",
+      "local": "New England Revolution",
+      "visitante": "Nashville SC",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-orlando-city-philadelphia-union": {
+      "id": "feva-2026-05-13-orlando-city-philadelphia-union",
+      "fixture_id": "feva-2026-05-13-orlando-city-philadelphia-union",
+      "partido": "Orlando City vs Philadelphia Union",
+      "local": "Orlando City",
+      "visitante": "Philadelphia Union",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fc-cincinnati-inter-miami-cf": {
+      "id": "feva-2026-05-13-fc-cincinnati-inter-miami-cf",
+      "fixture_id": "feva-2026-05-13-fc-cincinnati-inter-miami-cf",
+      "partido": "FC Cincinnati vs Inter Miami CF",
+      "local": "FC Cincinnati",
+      "visitante": "Inter Miami CF",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fc-dallas-vancouver-whitecaps": {
+      "id": "feva-2026-05-13-fc-dallas-vancouver-whitecaps",
+      "fixture_id": "feva-2026-05-13-fc-dallas-vancouver-whitecaps",
+      "partido": "FC Dallas vs Vancouver Whitecaps",
+      "local": "FC Dallas",
+      "visitante": "Vancouver Whitecaps",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sporting-kc-la-galaxy": {
+      "id": "feva-2026-05-13-sporting-kc-la-galaxy",
+      "fixture_id": "feva-2026-05-13-sporting-kc-la-galaxy",
+      "partido": "Sporting KC vs LA Galaxy",
+      "local": "Sporting KC",
+      "visitante": "LA Galaxy",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-minnesota-utd-colorado-rapids": {
+      "id": "feva-2026-05-13-minnesota-utd-colorado-rapids",
+      "fixture_id": "feva-2026-05-13-minnesota-utd-colorado-rapids",
+      "partido": "Minnesota Utd. vs Colorado Rapids",
+      "local": "Minnesota Utd.",
+      "visitante": "Colorado Rapids",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-st-louis-city-sc-los-angeles-fc": {
+      "id": "feva-2026-05-13-st-louis-city-sc-los-angeles-fc",
+      "fixture_id": "feva-2026-05-13-st-louis-city-sc-los-angeles-fc",
+      "partido": "St. Louis City SC vs Los Angeles FC",
+      "local": "St. Louis City SC",
+      "visitante": "Los Angeles FC",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-seattle-sounders-san-jose-earthquakes": {
+      "id": "feva-2026-05-13-seattle-sounders-san-jose-earthquakes",
+      "fixture_id": "feva-2026-05-13-seattle-sounders-san-jose-earthquakes",
+      "partido": "Seattle Sounders vs San Jose Earthquakes",
+      "local": "Seattle Sounders",
+      "visitante": "San Jose Earthquakes",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:30:00",
+      "dia": "2026-05-13",
+      "hora": "22:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-real-salt-lake-houston-dynamo": {
+      "id": "feva-2026-05-13-real-salt-lake-houston-dynamo",
+      "fixture_id": "feva-2026-05-13-real-salt-lake-houston-dynamo",
+      "partido": "Real Salt Lake vs Houston Dynamo",
+      "local": "Real Salt Lake",
+      "visitante": "Houston Dynamo",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:30:00",
+      "dia": "2026-05-13",
+      "hora": "22:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-san-diego-fc-austin-fc": {
+      "id": "feva-2026-05-13-san-diego-fc-austin-fc",
+      "fixture_id": "feva-2026-05-13-san-diego-fc-austin-fc",
+      "partido": "San Diego FC vs Austin FC",
+      "local": "San Diego FC",
+      "visitante": "Austin FC",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:30:00",
+      "dia": "2026-05-13",
+      "hora": "22:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-philadelphia-union-ii-new-england-revolution-ii": {
+      "id": "feva-2026-05-13-philadelphia-union-ii-new-england-revolution-ii",
+      "fixture_id": "feva-2026-05-13-philadelphia-union-ii-new-england-revolution-ii",
+      "partido": "Philadelphia Union II vs New England Revolution II",
+      "local": "Philadelphia Union II",
+      "visitante": "New England Revolution II",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-portland-timbers-2-minnesota-utd-2": {
+      "id": "feva-2026-05-13-portland-timbers-2-minnesota-utd-2",
+      "fixture_id": "feva-2026-05-13-portland-timbers-2-minnesota-utd-2",
+      "partido": "Portland Timbers 2 vs Minnesota Utd. 2",
+      "local": "Portland Timbers 2",
+      "visitante": "Minnesota Utd. 2",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-colorado-rapids-2-austin-fc-ii": {
+      "id": "feva-2026-05-13-colorado-rapids-2-austin-fc-ii",
+      "fixture_id": "feva-2026-05-13-colorado-rapids-2-austin-fc-ii",
+      "partido": "Colorado Rapids 2 vs Austin FC II",
+      "local": "Colorado Rapids 2",
+      "visitante": "Austin FC II",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-huntsville-city-fc-fc-cincinnati-2": {
+      "id": "feva-2026-05-13-huntsville-city-fc-fc-cincinnati-2",
+      "fixture_id": "feva-2026-05-13-huntsville-city-fc-fc-cincinnati-2",
+      "partido": "Huntsville City FC vs FC Cincinnati 2",
+      "local": "Huntsville City FC",
+      "visitante": "FC Cincinnati 2",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-lecco-pianese": {
+      "id": "feva-2026-05-13-lecco-pianese",
+      "fixture_id": "feva-2026-05-13-lecco-pianese",
+      "partido": "Lecco vs Pianese",
+      "local": "Lecco",
+      "visitante": "Pianese",
+      "liga": "Serie C",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-u-catolica-independiente-del-valle": {
+      "id": "feva-2026-05-13-u-catolica-independiente-del-valle",
+      "fixture_id": "feva-2026-05-13-u-catolica-independiente-del-valle",
+      "partido": "U. Católica vs Independiente del Valle",
+      "local": "U. Católica",
+      "visitante": "Independiente del Valle",
+      "liga": "Supercopa Ecuador",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DGO",
+        "DSports 4"
+      ],
+      "canales_raw": [
+        "DGO",
+        "DSports 4"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-independiente-rivadavia-reserva-ca-colon-reserva": {
+      "id": "feva-2026-05-13-independiente-rivadavia-reserva-ca-colon-reserva",
+      "fixture_id": "feva-2026-05-13-independiente-rivadavia-reserva-ca-colon-reserva",
+      "partido": "Independiente Rivadavia Reserva vs CA Colón Reserva",
+      "local": "Independiente Rivadavia Reserva",
+      "visitante": "CA Colón Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-argentinos-juniors-reserva-tigre-reserva": {
+      "id": "feva-2026-05-13-argentinos-juniors-reserva-tigre-reserva",
+      "fixture_id": "feva-2026-05-13-argentinos-juniors-reserva-tigre-reserva",
+      "partido": "Argentinos Juniors Reserva vs Tigre Reserva",
+      "local": "Argentinos Juniors Reserva",
+      "visitante": "Tigre Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-atletico-tucuman-reserva-barracas-central-reserva": {
+      "id": "feva-2026-05-13-atletico-tucuman-reserva-barracas-central-reserva",
+      "fixture_id": "feva-2026-05-13-atletico-tucuman-reserva-barracas-central-reserva",
+      "partido": "Atlético Tucumán Reserva vs Barracas Central Reserva",
+      "local": "Atlético Tucumán Reserva",
+      "visitante": "Barracas Central Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-belgrano-reserva-central-cordoba-reserva": {
+      "id": "feva-2026-05-13-belgrano-reserva-central-cordoba-reserva",
+      "fixture_id": "feva-2026-05-13-belgrano-reserva-central-cordoba-reserva",
+      "partido": "Belgrano Reserva vs Central Córdoba Reserva",
+      "local": "Belgrano Reserva",
+      "visitante": "Central Córdoba Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ferro-carril-oeste-reserva-boca-juniors-reserva": {
+      "id": "feva-2026-05-13-ferro-carril-oeste-reserva-boca-juniors-reserva",
+      "fixture_id": "feva-2026-05-13-ferro-carril-oeste-reserva-boca-juniors-reserva",
+      "partido": "Ferro Carril Oeste Reserva vs Boca Juniors Reserva",
+      "local": "Ferro Carril Oeste Reserva",
+      "visitante": "Boca Juniors Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "TNT Sports Premium",
+        "LPF Play",
+        "Mañana jueves, 14/5/2026"
+      ],
+      "canales_raw": [
+        "TNT Sports Premium",
+        "LPF Play",
+        "Mañana jueves, 14/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-valencia-cf-rayo-vallecano": {
+      "id": "feva-2026-05-13-valencia-cf-rayo-vallecano",
+      "fixture_id": "feva-2026-05-13-valencia-cf-rayo-vallecano",
+      "partido": "Valencia CF vs Rayo Vallecano",
+      "local": "Valencia CF",
+      "visitante": "Rayo Vallecano",
+      "liga": "La Liga EA Sports",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:00:00",
+      "dia": "2026-05-13",
+      "hora": "14:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DGO",
+        "DSports"
+      ],
+      "canales_raw": [
+        "DGO",
+        "DSports"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-girona-real-sociedad": {
+      "id": "feva-2026-05-13-girona-real-sociedad",
+      "fixture_id": "feva-2026-05-13-girona-real-sociedad",
+      "partido": "Girona vs Real Sociedad",
+      "local": "Girona",
+      "visitante": "Real Sociedad",
+      "liga": "La Liga EA Sports",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "ESPN 4",
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "ESPN 4",
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-real-madrid-real-oviedo": {
+      "id": "feva-2026-05-13-real-madrid-real-oviedo",
+      "fixture_id": "feva-2026-05-13-real-madrid-real-oviedo",
+      "partido": "Real Madrid vs Real Oviedo",
+      "local": "Real Madrid",
+      "visitante": "Real Oviedo",
+      "liga": "La Liga EA Sports",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:30:00",
+      "dia": "2026-05-13",
+      "hora": "16:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DGO",
+        "DSports"
+      ],
+      "canales_raw": [
+        "DGO",
+        "DSports"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-saint-gilloise-anderlecht": {
+      "id": "feva-2026-05-13-saint-gilloise-anderlecht",
+      "fixture_id": "feva-2026-05-13-saint-gilloise-anderlecht",
+      "partido": "Saint-Gilloise vs Anderlecht",
+      "local": "Saint-Gilloise",
+      "visitante": "Anderlecht",
+      "liga": "Copa de Bélgica",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:00:00",
+      "dia": "2026-05-13",
+      "hora": "10:00",
+      "fase": "Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN (Ver en directo)"
+      ],
+      "canales_raw": [
+        "DAZN (Ver en directo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-vitoria-cr-flamengo": {
+      "id": "feva-2026-05-13-vitoria-cr-flamengo",
+      "fixture_id": "feva-2026-05-13-vitoria-cr-flamengo",
+      "partido": "Vitória vs CR Flamengo",
+      "local": "Vitória",
+      "visitante": "CR Flamengo",
+      "liga": "Copa do Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DGO",
+        "DSPORTS+ Plus"
+      ],
+      "canales_raw": [
+        "DGO",
+        "DSPORTS+ Plus"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-astillero-fc-guayaquil-city": {
+      "id": "feva-2026-05-13-astillero-fc-guayaquil-city",
+      "fixture_id": "feva-2026-05-13-astillero-fc-guayaquil-city",
+      "partido": "Astillero FC vs Guayaquil City",
+      "local": "Astillero FC",
+      "visitante": "Guayaquil City",
+      "liga": "Copa Ecuador",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DGO",
+        "DSports 4"
+      ],
+      "canales_raw": [
+        "DGO",
+        "DSports 4"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-bradford-city-bolton-wanderers": {
+      "id": "feva-2026-05-13-bradford-city-bolton-wanderers",
+      "fixture_id": "feva-2026-05-13-bradford-city-bolton-wanderers",
+      "partido": "Bradford City vs Bolton Wanderers",
+      "local": "Bradford City",
+      "visitante": "Bolton Wanderers",
+      "liga": "League One",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ca-huracan-reserva-independiente-reserva": {
+      "id": "feva-2026-05-13-ca-huracan-reserva-independiente-reserva",
+      "fixture_id": "feva-2026-05-13-ca-huracan-reserva-independiente-reserva",
+      "partido": "CA Huracán Reserva vs Independiente Reserva",
+      "local": "CA Huracán Reserva",
+      "visitante": "Independiente Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T13:00:00",
+      "dia": "2026-05-13",
+      "hora": "13:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "ESPN 4",
+        "Disney+ Premium",
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "ESPN 4",
+        "Disney+ Premium",
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-union-santa-fe-reserva-talleres-cordoba-reserva": {
+      "id": "feva-2026-05-13-union-santa-fe-reserva-talleres-cordoba-reserva",
+      "fixture_id": "feva-2026-05-13-union-santa-fe-reserva-talleres-cordoba-reserva",
+      "partido": "Unión Santa Fe Reserva vs Talleres Córdoba Reserva",
+      "local": "Unión Santa Fe Reserva",
+      "visitante": "Talleres Córdoba Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-godoy-cruz-reserva-gimnasia-mendoza-reserva": {
+      "id": "feva-2026-05-13-godoy-cruz-reserva-gimnasia-mendoza-reserva",
+      "fixture_id": "feva-2026-05-13-godoy-cruz-reserva-gimnasia-mendoza-reserva",
+      "partido": "Godoy Cruz Reserva vs Gimnasia Mendoza Reserva",
+      "local": "Godoy Cruz Reserva",
+      "visitante": "Gimnasia Mendoza Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-lanus-reserva-estudiantes-lp-reserva": {
+      "id": "feva-2026-05-13-lanus-reserva-estudiantes-lp-reserva",
+      "fixture_id": "feva-2026-05-13-lanus-reserva-estudiantes-lp-reserva",
+      "partido": "Lanús Reserva vs Estudiantes LP Reserva",
+      "local": "Lanús Reserva",
+      "visitante": "Estudiantes LP Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-deportivo-riestra-reserva-san-martin-sj-reserva": {
+      "id": "feva-2026-05-13-deportivo-riestra-reserva-san-martin-sj-reserva",
+      "fixture_id": "feva-2026-05-13-deportivo-riestra-reserva-san-martin-sj-reserva",
+      "partido": "Deportivo Riestra Reserva vs San Martín SJ Reserva",
+      "local": "Deportivo Riestra Reserva",
+      "visitante": "San Martín SJ Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "TNT Sports Premium",
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "TNT Sports Premium",
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-river-plate-reserva-instituto-reserva": {
+      "id": "feva-2026-05-13-river-plate-reserva-instituto-reserva",
+      "fixture_id": "feva-2026-05-13-river-plate-reserva-instituto-reserva",
+      "partido": "River Plate Reserva vs Instituto Reserva",
+      "local": "River Plate Reserva",
+      "visitante": "Instituto Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sarmiento-reserva-san-lorenzo-reserva": {
+      "id": "feva-2026-05-13-sarmiento-reserva-san-lorenzo-reserva",
+      "fixture_id": "feva-2026-05-13-sarmiento-reserva-san-lorenzo-reserva",
+      "partido": "Sarmiento Reserva vs San Lorenzo Reserva",
+      "local": "Sarmiento Reserva",
+      "visitante": "San Lorenzo Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play",
+        "Viernes, 15/5/2026"
+      ],
+      "canales_raw": [
+        "LPF Play",
+        "Viernes, 15/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-racing-cordoba-ca-central-norte": {
+      "id": "feva-2026-05-13-racing-cordoba-ca-central-norte",
+      "fixture_id": "feva-2026-05-13-racing-cordoba-ca-central-norte",
+      "partido": "Racing Córdoba vs CA Central Norte",
+      "local": "Racing Córdoba",
+      "visitante": "CA Central Norte",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-comunicaciones-argentinos-quilmes": {
+      "id": "feva-2026-05-13-comunicaciones-argentinos-quilmes",
+      "fixture_id": "feva-2026-05-13-comunicaciones-argentinos-quilmes",
+      "partido": "Comunicaciones vs Argentinos Quilmes",
+      "local": "Comunicaciones",
+      "visitante": "Argentinos Quilmes",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-aston-villa-liverpool": {
+      "id": "feva-2026-05-13-aston-villa-liverpool",
+      "fixture_id": "feva-2026-05-13-aston-villa-liverpool",
+      "partido": "Aston Villa vs Liverpool",
+      "local": "Aston Villa",
+      "visitante": "Liverpool",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-crusaders-women-cliftonville-women": {
+      "id": "feva-2026-05-13-crusaders-women-cliftonville-women",
+      "fixture_id": "feva-2026-05-13-crusaders-women-cliftonville-women",
+      "partido": "Crusaders Women vs Cliftonville Women",
+      "local": "Crusaders Women",
+      "visitante": "Cliftonville Women",
+      "liga": "Women's Premiership",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN (Ver en directo)"
+      ],
+      "canales_raw": [
+        "DAZN (Ver en directo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sochaux-le-puy-auvergne": {
+      "id": "feva-2026-05-13-sochaux-le-puy-auvergne",
+      "fixture_id": "feva-2026-05-13-sochaux-le-puy-auvergne",
+      "partido": "Sochaux vs Le Puy Auvergne",
+      "local": "Sochaux",
+      "visitante": "Le Puy Auvergne",
+      "liga": "Championnat National",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:30:00",
+      "dia": "2026-05-13",
+      "hora": "14:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-valenciennes-chateauroux": {
+      "id": "feva-2026-05-13-valenciennes-chateauroux",
+      "fixture_id": "feva-2026-05-13-valenciennes-chateauroux",
+      "partido": "Valenciennes vs Cháteauroux",
+      "local": "Valenciennes",
+      "visitante": "Cháteauroux",
+      "liga": "Championnat National",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:30:00",
+      "dia": "2026-05-13",
+      "hora": "14:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-dijon-us-orleans": {
+      "id": "feva-2026-05-13-dijon-us-orleans",
+      "fixture_id": "feva-2026-05-13-dijon-us-orleans",
+      "partido": "Dijon vs US Orléans",
+      "local": "Dijon",
+      "visitante": "US Orléans",
+      "liga": "Championnat National",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:30:00",
+      "dia": "2026-05-13",
+      "hora": "14:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-us-concarneau-villefranche-fc": {
+      "id": "feva-2026-05-13-us-concarneau-villefranche-fc",
+      "fixture_id": "feva-2026-05-13-us-concarneau-villefranche-fc",
+      "partido": "US Concarneau vs Villefranche FC",
+      "local": "US Concarneau",
+      "visitante": "Villefranche FC",
+      "liga": "Championnat National",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:30:00",
+      "dia": "2026-05-13",
+      "hora": "14:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-quevilly-rouen-metro-paris-13-atletico": {
+      "id": "feva-2026-05-13-quevilly-rouen-metro-paris-13-atletico",
+      "fixture_id": "feva-2026-05-13-quevilly-rouen-metro-paris-13-atletico",
+      "partido": "Quevilly Rouen Metro vs Paris 13 Atletico",
+      "local": "Quevilly Rouen Metro",
+      "visitante": "Paris 13 Atletico",
+      "liga": "Championnat National",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:30:00",
+      "dia": "2026-05-13",
+      "hora": "14:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-aubagne-fc-caen": {
+      "id": "feva-2026-05-13-aubagne-fc-caen",
+      "fixture_id": "feva-2026-05-13-aubagne-fc-caen",
+      "partido": "Aubagne FC vs Caen",
+      "local": "Aubagne FC",
+      "visitante": "Caen",
+      "liga": "Championnat National",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:30:00",
+      "dia": "2026-05-13",
+      "hora": "14:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fc-versailles-78-stade-briochin": {
+      "id": "feva-2026-05-13-fc-versailles-78-stade-briochin",
+      "fixture_id": "feva-2026-05-13-fc-versailles-78-stade-briochin",
+      "partido": "FC Versailles 78 vs Stade Briochin",
+      "local": "FC Versailles 78",
+      "visitante": "Stade Briochin",
+      "liga": "Championnat National",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:30:00",
+      "dia": "2026-05-13",
+      "hora": "14:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fc-fleury-91-fc-rouen": {
+      "id": "feva-2026-05-13-fc-fleury-91-fc-rouen",
+      "fixture_id": "feva-2026-05-13-fc-fleury-91-fc-rouen",
+      "partido": "FC Fleury 91 vs FC Rouen",
+      "local": "FC Fleury 91",
+      "visitante": "FC Rouen",
+      "liga": "Championnat National",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:30:00",
+      "dia": "2026-05-13",
+      "hora": "14:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cd-castellon-cadiz-cf": {
+      "id": "feva-2026-05-13-cd-castellon-cadiz-cf",
+      "fixture_id": "feva-2026-05-13-cd-castellon-cadiz-cf",
+      "partido": "CD Castellón vs Cádiz CF",
+      "local": "CD Castellón",
+      "visitante": "Cádiz CF",
+      "liga": "LaLiga Hypermotion",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DGO",
+        "DSports 6"
+      ],
+      "canales_raw": [
+        "DGO",
+        "DSports 6"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-salford-city-grimsby-town": {
+      "id": "feva-2026-05-13-salford-city-grimsby-town",
+      "fixture_id": "feva-2026-05-13-salford-city-grimsby-town",
+      "partido": "Salford City vs Grimsby Town",
+      "local": "Salford City",
+      "visitante": "Grimsby Town",
+      "liga": "League Two",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:15:00",
+      "dia": "2026-05-13",
+      "hora": "15:15",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-notts-county-chesterfield": {
+      "id": "feva-2026-05-13-notts-county-chesterfield",
+      "fixture_id": "feva-2026-05-13-notts-county-chesterfield",
+      "partido": "Notts County vs Chesterfield",
+      "local": "Notts County",
+      "visitante": "Chesterfield",
+      "liga": "League Two",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fc-cajamarca-sporting-cristal": {
+      "id": "feva-2026-05-13-fc-cajamarca-sporting-cristal",
+      "fixture_id": "feva-2026-05-13-fc-cajamarca-sporting-cristal",
+      "partido": "FC Cajamarca vs Sporting Cristal",
+      "local": "FC Cajamarca",
+      "visitante": "Sporting Cristal",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-universitario-atletico-grau": {
+      "id": "feva-2026-05-13-universitario-atletico-grau",
+      "fixture_id": "feva-2026-05-13-universitario-atletico-grau",
+      "partido": "Universitario vs Atlético Grau",
+      "local": "Universitario",
+      "visitante": "Atlético Grau",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:00:00",
+      "dia": "2026-05-13",
+      "hora": "22:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)",
+        "Liga Futve"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)",
+        "Liga Futve"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-la-guaira-ucv": {
+      "id": "feva-2026-05-13-la-guaira-ucv",
+      "fixture_id": "feva-2026-05-13-la-guaira-ucv",
+      "partido": "La Guaira vs UCV",
+      "local": "La Guaira",
+      "visitante": "UCV",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Liga Futve YouTube"
+      ],
+      "canales_raw": [
+        "Liga Futve YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-al-orooba-fc-dubai-united-fc": {
+      "id": "feva-2026-05-13-al-orooba-fc-dubai-united-fc",
+      "fixture_id": "feva-2026-05-13-al-orooba-fc-dubai-united-fc",
+      "partido": "Al-Orooba FC vs Dubai United FC",
+      "local": "Al-Orooba FC",
+      "visitante": "Dubai United FC",
+      "liga": "UAE Division 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:05:00",
+      "dia": "2026-05-13",
+      "hora": "11:05",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-al-dhaid-hatta-club": {
+      "id": "feva-2026-05-13-al-dhaid-hatta-club",
+      "fixture_id": "feva-2026-05-13-al-dhaid-hatta-club",
+      "partido": "Al Dhaid vs Hatta Club",
+      "local": "Al Dhaid",
+      "visitante": "Hatta Club",
+      "liga": "UAE Division 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:05:00",
+      "dia": "2026-05-13",
+      "hora": "11:05",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-majd-fc-al-jazira-al-hamra": {
+      "id": "feva-2026-05-13-majd-fc-al-jazira-al-hamra",
+      "fixture_id": "feva-2026-05-13-majd-fc-al-jazira-al-hamra",
+      "partido": "Majd FC vs Al Jazira Al Hamra",
+      "local": "Majd FC",
+      "visitante": "Al Jazira Al Hamra",
+      "liga": "UAE Division 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:05:00",
+      "dia": "2026-05-13",
+      "hora": "11:05",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-al-arabi-uae-gulf-united": {
+      "id": "feva-2026-05-13-al-arabi-uae-gulf-united",
+      "fixture_id": "feva-2026-05-13-al-arabi-uae-gulf-united",
+      "partido": "Al Arabi UAE vs Gulf United",
+      "local": "Al Arabi UAE",
+      "visitante": "Gulf United",
+      "liga": "UAE Division 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:05:00",
+      "dia": "2026-05-13",
+      "hora": "11:05",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-al-hamriya-dibba-al-hisn": {
+      "id": "feva-2026-05-13-al-hamriya-dibba-al-hisn",
+      "fixture_id": "feva-2026-05-13-al-hamriya-dibba-al-hisn",
+      "partido": "Al Hamriya vs Dibba Al-Hisn",
+      "local": "Al Hamriya",
+      "visitante": "Dibba Al-Hisn",
+      "liga": "UAE Division 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:05:00",
+      "dia": "2026-05-13",
+      "hora": "11:05",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-al-ittifaq-fc-emirates-club": {
+      "id": "feva-2026-05-13-al-ittifaq-fc-emirates-club",
+      "fixture_id": "feva-2026-05-13-al-ittifaq-fc-emirates-club",
+      "partido": "Al Ittifaq FC vs Emirates Club",
+      "local": "Al Ittifaq FC",
+      "visitante": "Emirates Club",
+      "liga": "UAE Division 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:05:00",
+      "dia": "2026-05-13",
+      "hora": "11:05",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-dubai-city-fc-fujairah-fc": {
+      "id": "feva-2026-05-13-dubai-city-fc-fujairah-fc",
+      "fixture_id": "feva-2026-05-13-dubai-city-fc-fujairah-fc",
+      "partido": "Dubai City FC vs Fujairah FC",
+      "local": "Dubai City FC",
+      "visitante": "Fujairah FC",
+      "liga": "UAE Division 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:05:00",
+      "dia": "2026-05-13",
+      "hora": "11:05",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+",
+        "Sábado, 16/5/2026"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+",
+        "Sábado, 16/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ca-atlanta-at-rafaela": {
+      "id": "feva-2026-05-13-ca-atlanta-at-rafaela",
+      "fixture_id": "feva-2026-05-13-ca-atlanta-at-rafaela",
+      "partido": "CA Atlanta vs At. Rafaela",
+      "local": "CA Atlanta",
+      "visitante": "At. Rafaela",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T13:00:00",
+      "dia": "2026-05-13",
+      "hora": "13:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-estudiantes-ba-ca-colon": {
+      "id": "feva-2026-05-13-estudiantes-ba-ca-colon",
+      "fixture_id": "feva-2026-05-13-estudiantes-ba-ca-colon",
+      "partido": "Estudiantes BA vs CA Colón",
+      "local": "Estudiantes BA",
+      "visitante": "CA Colón",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-los-andes-godoy-cruz": {
+      "id": "feva-2026-05-13-los-andes-godoy-cruz",
+      "fixture_id": "feva-2026-05-13-los-andes-godoy-cruz",
+      "partido": "Los Andes vs Godoy Cruz",
+      "local": "Los Andes",
+      "visitante": "Godoy Cruz",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-colegiales-atletico-guemes": {
+      "id": "feva-2026-05-13-colegiales-atletico-guemes",
+      "fixture_id": "feva-2026-05-13-colegiales-atletico-guemes",
+      "partido": "Colegiales vs Atlético Güemes",
+      "local": "Colegiales",
+      "visitante": "Atlético Güemes",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ciudad-de-bolivar-acassuso": {
+      "id": "feva-2026-05-13-ciudad-de-bolivar-acassuso",
+      "fixture_id": "feva-2026-05-13-ciudad-de-bolivar-acassuso",
+      "partido": "Ciudad de Bolivar vs Acassuso",
+      "local": "Ciudad de Bolivar",
+      "visitante": "Acassuso",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-villa-san-carlos-argentino-merlo": {
+      "id": "feva-2026-05-13-villa-san-carlos-argentino-merlo",
+      "fixture_id": "feva-2026-05-13-villa-san-carlos-argentino-merlo",
+      "partido": "Villa San Carlos vs Argentino Merlo",
+      "local": "Villa San Carlos",
+      "visitante": "Argentino Merlo",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-uai-urquiza-villa-dalmine": {
+      "id": "feva-2026-05-13-uai-urquiza-villa-dalmine",
+      "fixture_id": "feva-2026-05-13-uai-urquiza-villa-dalmine",
+      "partido": "UAI Urquiza vs Villa Dálmine",
+      "local": "UAI Urquiza",
+      "visitante": "Villa Dálmine",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-dock-sud-flandria": {
+      "id": "feva-2026-05-13-dock-sud-flandria",
+      "fixture_id": "feva-2026-05-13-dock-sud-flandria",
+      "partido": "Dock Sud vs Flandria",
+      "local": "Dock Sud",
+      "visitante": "Flandria",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-csd-liniers-arsenal-sarandi": {
+      "id": "feva-2026-05-13-csd-liniers-arsenal-sarandi",
+      "fixture_id": "feva-2026-05-13-csd-liniers-arsenal-sarandi",
+      "partido": "CSD Liniers vs Arsenal Sarandí",
+      "local": "CSD Liniers",
+      "visitante": "Arsenal Sarandí",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-deportivo-camioneros-brown-de-adrogue": {
+      "id": "feva-2026-05-13-deportivo-camioneros-brown-de-adrogue",
+      "fixture_id": "feva-2026-05-13-deportivo-camioneros-brown-de-adrogue",
+      "partido": "Deportivo Camioneros vs Brown de Adrogué",
+      "local": "Deportivo Camioneros",
+      "visitante": "Brown de Adrogué",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-defensores-unidos-ituzaingo": {
+      "id": "feva-2026-05-13-defensores-unidos-ituzaingo",
+      "fixture_id": "feva-2026-05-13-defensores-unidos-ituzaingo",
+      "partido": "Defensores Unidos vs Ituzaingó",
+      "local": "Defensores Unidos",
+      "visitante": "Ituzaingó",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-san-martin-burzaco-ca-talleres": {
+      "id": "feva-2026-05-13-san-martin-burzaco-ca-talleres",
+      "fixture_id": "feva-2026-05-13-san-martin-burzaco-ca-talleres",
+      "partido": "San Martín Burzaco vs CA Talleres",
+      "local": "San Martín Burzaco",
+      "visitante": "CA Talleres",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-real-pilar-excursionistas": {
+      "id": "feva-2026-05-13-real-pilar-excursionistas",
+      "fixture_id": "feva-2026-05-13-real-pilar-excursionistas",
+      "partido": "Real Pilar vs Excursionistas",
+      "local": "Real Pilar",
+      "visitante": "Excursionistas",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-deportivo-merlo-dep-armenio": {
+      "id": "feva-2026-05-13-deportivo-merlo-dep-armenio",
+      "fixture_id": "feva-2026-05-13-deportivo-merlo-dep-armenio",
+      "partido": "Deportivo Merlo vs Dep. Armenio",
+      "local": "Deportivo Merlo",
+      "visitante": "Dep. Armenio",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-al-nassr-gamba-osaka": {
+      "id": "feva-2026-05-13-al-nassr-gamba-osaka",
+      "fixture_id": "feva-2026-05-13-al-nassr-gamba-osaka",
+      "partido": "Al Nassr vs Gamba Osaka",
+      "local": "Al Nassr",
+      "visitante": "Gamba Osaka",
+      "liga": "AFC Champions League Two",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:15:00",
+      "dia": "2026-05-13",
+      "hora": "15:15",
+      "fase": "Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-bayer-leverkusen-hamburger-sv": {
+      "id": "feva-2026-05-13-bayer-leverkusen-hamburger-sv",
+      "fixture_id": "feva-2026-05-13-bayer-leverkusen-hamburger-sv",
+      "partido": "Bayer Leverkusen vs Hamburger SV",
+      "local": "Bayer Leverkusen",
+      "visitante": "Hamburger SV",
+      "liga": "Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fc-bayern-fc-koln": {
+      "id": "feva-2026-05-13-fc-bayern-fc-koln",
+      "fixture_id": "feva-2026-05-13-fc-bayern-fc-koln",
+      "partido": "FC Bayern vs FC Köln",
+      "local": "FC Bayern",
+      "visitante": "FC Köln",
+      "liga": "Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-borussia-m-gladbach-hoffenheim": {
+      "id": "feva-2026-05-13-borussia-m-gladbach-hoffenheim",
+      "fixture_id": "feva-2026-05-13-borussia-m-gladbach-hoffenheim",
+      "partido": "Borussia M'gladbach vs Hoffenheim",
+      "local": "Borussia M'gladbach",
+      "visitante": "Hoffenheim",
+      "liga": "Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-eintracht-frankfurt-stuttgart": {
+      "id": "feva-2026-05-13-eintracht-frankfurt-stuttgart",
+      "fixture_id": "feva-2026-05-13-eintracht-frankfurt-stuttgart",
+      "partido": "Eintracht Frankfurt vs Stuttgart",
+      "local": "Eintracht Frankfurt",
+      "visitante": "Stuttgart",
+      "liga": "Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-freiburg-rb-leipzig": {
+      "id": "feva-2026-05-13-freiburg-rb-leipzig",
+      "fixture_id": "feva-2026-05-13-freiburg-rb-leipzig",
+      "partido": "Freiburg vs RB Leipzig",
+      "local": "Freiburg",
+      "visitante": "RB Leipzig",
+      "liga": "Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-werder-bremen-borussia-dortmund": {
+      "id": "feva-2026-05-13-werder-bremen-borussia-dortmund",
+      "fixture_id": "feva-2026-05-13-werder-bremen-borussia-dortmund",
+      "partido": "Werder Bremen vs Borussia Dortmund",
+      "local": "Werder Bremen",
+      "visitante": "Borussia Dortmund",
+      "liga": "Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-1-fc-union-berlin-augsburg": {
+      "id": "feva-2026-05-13-1-fc-union-berlin-augsburg",
+      "fixture_id": "feva-2026-05-13-1-fc-union-berlin-augsburg",
+      "partido": "1. FC Union Berlin vs Augsburg",
+      "local": "1. FC Union Berlin",
+      "visitante": "Augsburg",
+      "liga": "Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-st-pauli-vfl-wolfsburg": {
+      "id": "feva-2026-05-13-st-pauli-vfl-wolfsburg",
+      "fixture_id": "feva-2026-05-13-st-pauli-vfl-wolfsburg",
+      "partido": "St. Pauli vs VfL Wolfsburg",
+      "local": "St. Pauli",
+      "visitante": "VfL Wolfsburg",
+      "liga": "Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-heidenheim-mainz-05": {
+      "id": "feva-2026-05-13-heidenheim-mainz-05",
+      "fixture_id": "feva-2026-05-13-heidenheim-mainz-05",
+      "partido": "Heidenheim vs Mainz 05",
+      "local": "Heidenheim",
+      "visitante": "Mainz 05",
+      "liga": "Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fc-barcelona-femenino-at-madrid-femenino": {
+      "id": "feva-2026-05-13-fc-barcelona-femenino-at-madrid-femenino",
+      "fixture_id": "feva-2026-05-13-fc-barcelona-femenino-at-madrid-femenino",
+      "partido": "FC Barcelona Femenino vs At. Madrid Femenino",
+      "local": "FC Barcelona Femenino",
+      "visitante": "At. Madrid Femenino",
+      "liga": "Copa de la Reina",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-chelsea-manchester-city": {
+      "id": "feva-2026-05-13-chelsea-manchester-city",
+      "fixture_id": "feva-2026-05-13-chelsea-manchester-city",
+      "partido": "Chelsea vs Manchester City",
+      "local": "Chelsea",
+      "visitante": "Manchester City",
+      "liga": "FA Cup",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:00:00",
+      "dia": "2026-05-13",
+      "hora": "11:00",
+      "fase": "Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-chelsea-femenino-man-utd-femenino": {
+      "id": "feva-2026-05-13-chelsea-femenino-man-utd-femenino",
+      "fixture_id": "feva-2026-05-13-chelsea-femenino-man-utd-femenino",
+      "partido": "Chelsea Femenino vs Man Utd Femenino",
+      "local": "Chelsea Femenino",
+      "visitante": "Man Utd Femenino",
+      "liga": "FA Women's Super League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T09:00:00",
+      "dia": "2026-05-13",
+      "hora": "09:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-liverpool-femenino-arsenal-femenino": {
+      "id": "feva-2026-05-13-liverpool-femenino-arsenal-femenino",
+      "fixture_id": "feva-2026-05-13-liverpool-femenino-arsenal-femenino",
+      "partido": "Liverpool Femenino vs Arsenal Femenino",
+      "local": "Liverpool Femenino",
+      "visitante": "Arsenal Femenino",
+      "liga": "FA Women's Super League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T09:00:00",
+      "dia": "2026-05-13",
+      "hora": "09:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-brighton-femenino-tottenham-femenino": {
+      "id": "feva-2026-05-13-brighton-femenino-tottenham-femenino",
+      "fixture_id": "feva-2026-05-13-brighton-femenino-tottenham-femenino",
+      "partido": "Brighton Femenino vs Tottenham Femenino",
+      "local": "Brighton Femenino",
+      "visitante": "Tottenham Femenino",
+      "liga": "FA Women's Super League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T09:00:00",
+      "dia": "2026-05-13",
+      "hora": "09:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-west-ham-femenino-man-city-femenino": {
+      "id": "feva-2026-05-13-west-ham-femenino-man-city-femenino",
+      "fixture_id": "feva-2026-05-13-west-ham-femenino-man-city-femenino",
+      "partido": "West Ham Femenino vs Man City Femenino",
+      "local": "West Ham Femenino",
+      "visitante": "Man City Femenino",
+      "liga": "FA Women's Super League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T09:00:00",
+      "dia": "2026-05-13",
+      "hora": "09:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-everton-femenino-leicester-femenino": {
+      "id": "feva-2026-05-13-everton-femenino-leicester-femenino",
+      "fixture_id": "feva-2026-05-13-everton-femenino-leicester-femenino",
+      "partido": "Everton Femenino vs Leicester Femenino",
+      "local": "Everton Femenino",
+      "visitante": "Leicester Femenino",
+      "liga": "FA Women's Super League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T09:00:00",
+      "dia": "2026-05-13",
+      "hora": "09:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-london-city-lionesses-aston-villa-femenino": {
+      "id": "feva-2026-05-13-london-city-lionesses-aston-villa-femenino",
+      "fixture_id": "feva-2026-05-13-london-city-lionesses-aston-villa-femenino",
+      "partido": "London City Lionesses vs Aston Villa Femenino",
+      "local": "London City Lionesses",
+      "visitante": "Aston Villa Femenino",
+      "liga": "FA Women's Super League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T09:00:00",
+      "dia": "2026-05-13",
+      "hora": "09:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-melgar-sport-huancayo": {
+      "id": "feva-2026-05-13-melgar-sport-huancayo",
+      "fixture_id": "feva-2026-05-13-melgar-sport-huancayo",
+      "partido": "Melgar vs Sport Huancayo",
+      "local": "Melgar",
+      "visitante": "Sport Huancayo",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-acd-juan-pablo-ii-college-alianza-atletico": {
+      "id": "feva-2026-05-13-acd-juan-pablo-ii-college-alianza-atletico",
+      "fixture_id": "feva-2026-05-13-acd-juan-pablo-ii-college-alianza-atletico",
+      "partido": "ACD Juan Pablo II College vs Alianza Atlético",
+      "local": "ACD Juan Pablo II College",
+      "visitante": "Alianza Atlético",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:15:00",
+      "dia": "2026-05-13",
+      "hora": "17:15",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cienciano-alianza-lima": {
+      "id": "feva-2026-05-13-cienciano-alianza-lima",
+      "fixture_id": "feva-2026-05-13-cienciano-alianza-lima",
+      "partido": "Cienciano vs Alianza Lima",
+      "local": "Cienciano",
+      "visitante": "Alianza Lima",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:45:00",
+      "dia": "2026-05-13",
+      "hora": "19:45",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sport-boys-a-cusco-fc": {
+      "id": "feva-2026-05-13-sport-boys-a-cusco-fc",
+      "fixture_id": "feva-2026-05-13-sport-boys-a-cusco-fc",
+      "partido": "Sport Boys A. vs Cusco FC",
+      "local": "Sport Boys A.",
+      "visitante": "Cusco FC",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:30:00",
+      "dia": "2026-05-13",
+      "hora": "22:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-tepatitlan-fc-tm-futbol-club": {
+      "id": "feva-2026-05-13-tepatitlan-fc-tm-futbol-club",
+      "fixture_id": "feva-2026-05-13-tepatitlan-fc-tm-futbol-club",
+      "partido": "Tepatitlán FC vs TM Fútbol Club",
+      "local": "Tepatitlán FC",
+      "visitante": "TM Fútbol Club",
+      "liga": "Liga Expansión MX",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:00:00",
+      "dia": "2026-05-13",
+      "hora": "22:00",
+      "fase": "Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium",
+        "Liga Futve 2"
+      ],
+      "canales_raw": [
+        "Disney+ Premium",
+        "Liga Futve 2"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-mineros-guayana-deportivo-miranda": {
+      "id": "feva-2026-05-13-mineros-guayana-deportivo-miranda",
+      "fixture_id": "feva-2026-05-13-mineros-guayana-deportivo-miranda",
+      "partido": "Mineros Guayana vs Deportivo Miranda",
+      "local": "Mineros Guayana",
+      "visitante": "Deportivo Miranda",
+      "liga": "Liga Expansión MX",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:30:00",
+      "dia": "2026-05-13",
+      "hora": "16:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-yaracuyanos-fc-puerto-cabello-b": {
+      "id": "feva-2026-05-13-yaracuyanos-fc-puerto-cabello-b",
+      "fixture_id": "feva-2026-05-13-yaracuyanos-fc-puerto-cabello-b",
+      "partido": "Yaracuyanos FC vs Puerto Cabello B",
+      "local": "Yaracuyanos FC",
+      "visitante": "Puerto Cabello B",
+      "liga": "Liga Expansión MX",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:30:00",
+      "dia": "2026-05-13",
+      "hora": "16:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-atletico-el-vigia-zamora-fc-b": {
+      "id": "feva-2026-05-13-atletico-el-vigia-zamora-fc-b",
+      "fixture_id": "feva-2026-05-13-atletico-el-vigia-zamora-fc-b",
+      "partido": "Atlético El Vigía vs Zamora FC B",
+      "local": "Atlético El Vigía",
+      "visitante": "Zamora FC B",
+      "liga": "Liga Expansión MX",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:30:00",
+      "dia": "2026-05-13",
+      "hora": "16:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-atletico-barinas-academia-rey": {
+      "id": "feva-2026-05-13-atletico-barinas-academia-rey",
+      "fixture_id": "feva-2026-05-13-atletico-barinas-academia-rey",
+      "partido": "Atlético Barinas vs Academia Rey",
+      "local": "Atlético Barinas",
+      "visitante": "Academia Rey",
+      "liga": "Liga Expansión MX",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:30:00",
+      "dia": "2026-05-13",
+      "hora": "16:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-deportivo-lara-real-frontera": {
+      "id": "feva-2026-05-13-deportivo-lara-real-frontera",
+      "fixture_id": "feva-2026-05-13-deportivo-lara-real-frontera",
+      "partido": "Deportivo Lara vs Real Frontera",
+      "local": "Deportivo Lara",
+      "visitante": "Real Frontera",
+      "liga": "Liga Expansión MX",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:00:00",
+      "dia": "2026-05-13",
+      "hora": "18:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-maritimo-de-la-guaira-aragua": {
+      "id": "feva-2026-05-13-maritimo-de-la-guaira-aragua",
+      "fixture_id": "feva-2026-05-13-maritimo-de-la-guaira-aragua",
+      "partido": "Marítimo de La Guaira vs Aragua",
+      "local": "Marítimo de La Guaira",
+      "visitante": "Aragua",
+      "liga": "Liga Expansión MX",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:00:00",
+      "dia": "2026-05-13",
+      "hora": "18:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cf-montreal-chicago-fire": {
+      "id": "feva-2026-05-13-cf-montreal-chicago-fire",
+      "fixture_id": "feva-2026-05-13-cf-montreal-chicago-fire",
+      "partido": "CF Montréal vs Chicago Fire",
+      "local": "CF Montréal",
+      "visitante": "Chicago Fire",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:30:00",
+      "dia": "2026-05-13",
+      "hora": "17:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-new-york-rb-new-york-city": {
+      "id": "feva-2026-05-13-new-york-rb-new-york-city",
+      "fixture_id": "feva-2026-05-13-new-york-rb-new-york-city",
+      "partido": "New York RB vs New York City",
+      "local": "New York RB",
+      "visitante": "New York City",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-dc-united-st-louis-city-sc": {
+      "id": "feva-2026-05-13-dc-united-st-louis-city-sc",
+      "fixture_id": "feva-2026-05-13-dc-united-st-louis-city-sc",
+      "partido": "DC United vs St. Louis City SC",
+      "local": "DC United",
+      "visitante": "St. Louis City SC",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-philadelphia-union-columbus-crew": {
+      "id": "feva-2026-05-13-philadelphia-union-columbus-crew",
+      "fixture_id": "feva-2026-05-13-philadelphia-union-columbus-crew",
+      "partido": "Philadelphia Union vs Columbus Crew",
+      "local": "Philadelphia Union",
+      "visitante": "Columbus Crew",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-new-england-revolution-minnesota-utd": {
+      "id": "feva-2026-05-13-new-england-revolution-minnesota-utd",
+      "fixture_id": "feva-2026-05-13-new-england-revolution-minnesota-utd",
+      "partido": "New England Revolution vs Minnesota Utd.",
+      "local": "New England Revolution",
+      "visitante": "Minnesota Utd.",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-orlando-city-atlanta-united": {
+      "id": "feva-2026-05-13-orlando-city-atlanta-united",
+      "fixture_id": "feva-2026-05-13-orlando-city-atlanta-united",
+      "partido": "Orlando City vs Atlanta United",
+      "local": "Orlando City",
+      "visitante": "Atlanta United",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-charlotte-fc-toronto-fc": {
+      "id": "feva-2026-05-13-charlotte-fc-toronto-fc",
+      "fixture_id": "feva-2026-05-13-charlotte-fc-toronto-fc",
+      "partido": "Charlotte FC vs Toronto FC",
+      "local": "Charlotte FC",
+      "visitante": "Toronto FC",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-houston-dynamo-vancouver-whitecaps": {
+      "id": "feva-2026-05-13-houston-dynamo-vancouver-whitecaps",
+      "fixture_id": "feva-2026-05-13-houston-dynamo-vancouver-whitecaps",
+      "partido": "Houston Dynamo vs Vancouver Whitecaps",
+      "local": "Houston Dynamo",
+      "visitante": "Vancouver Whitecaps",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-austin-fc-sporting-kc": {
+      "id": "feva-2026-05-13-austin-fc-sporting-kc",
+      "fixture_id": "feva-2026-05-13-austin-fc-sporting-kc",
+      "partido": "Austin FC vs Sporting KC",
+      "local": "Austin FC",
+      "visitante": "Sporting KC",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-seattle-sounders-la-galaxy": {
+      "id": "feva-2026-05-13-seattle-sounders-la-galaxy",
+      "fixture_id": "feva-2026-05-13-seattle-sounders-la-galaxy",
+      "partido": "Seattle Sounders vs LA Galaxy",
+      "local": "Seattle Sounders",
+      "visitante": "LA Galaxy",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:00:00",
+      "dia": "2026-05-13",
+      "hora": "22:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-real-salt-lake-colorado-rapids": {
+      "id": "feva-2026-05-13-real-salt-lake-colorado-rapids",
+      "fixture_id": "feva-2026-05-13-real-salt-lake-colorado-rapids",
+      "partido": "Real Salt Lake vs Colorado Rapids",
+      "local": "Real Salt Lake",
+      "visitante": "Colorado Rapids",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:30:00",
+      "dia": "2026-05-13",
+      "hora": "22:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-san-diego-fc-fc-cincinnati": {
+      "id": "feva-2026-05-13-san-diego-fc-fc-cincinnati",
+      "fixture_id": "feva-2026-05-13-san-diego-fc-fc-cincinnati",
+      "partido": "San Diego FC vs FC Cincinnati",
+      "local": "San Diego FC",
+      "visitante": "FC Cincinnati",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:30:00",
+      "dia": "2026-05-13",
+      "hora": "22:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-san-jose-earthquakes-fc-dallas": {
+      "id": "feva-2026-05-13-san-jose-earthquakes-fc-dallas",
+      "fixture_id": "feva-2026-05-13-san-jose-earthquakes-fc-dallas",
+      "partido": "San Jose Earthquakes vs FC Dallas",
+      "local": "San Jose Earthquakes",
+      "visitante": "FC Dallas",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T23:30:00",
+      "dia": "2026-05-13",
+      "hora": "23:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-carolina-core-fc-chicago-fire-2": {
+      "id": "feva-2026-05-13-carolina-core-fc-chicago-fire-2",
+      "fixture_id": "feva-2026-05-13-carolina-core-fc-chicago-fire-2",
+      "partido": "Carolina Core FC vs Chicago Fire 2",
+      "local": "Carolina Core FC",
+      "visitante": "Chicago Fire 2",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-connecticut-united-fc-toronto-fc-ii": {
+      "id": "feva-2026-05-13-connecticut-united-fc-toronto-fc-ii",
+      "fixture_id": "feva-2026-05-13-connecticut-united-fc-toronto-fc-ii",
+      "partido": "Connecticut United FC vs Toronto FC II",
+      "local": "Connecticut United FC",
+      "visitante": "Toronto FC II",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-huntsville-city-fc-atlanta-united-2": {
+      "id": "feva-2026-05-13-huntsville-city-fc-atlanta-united-2",
+      "fixture_id": "feva-2026-05-13-huntsville-city-fc-atlanta-united-2",
+      "partido": "Huntsville City FC vs Atlanta United 2",
+      "local": "Huntsville City FC",
+      "visitante": "Atlanta United 2",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-minnesota-utd-2-houston-dynamo-2": {
+      "id": "feva-2026-05-13-minnesota-utd-2-houston-dynamo-2",
+      "fixture_id": "feva-2026-05-13-minnesota-utd-2-houston-dynamo-2",
+      "partido": "Minnesota Utd. 2 vs Houston Dynamo 2",
+      "local": "Minnesota Utd. 2",
+      "visitante": "Houston Dynamo 2",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-north-texas-sc-sporting-kc-ii": {
+      "id": "feva-2026-05-13-north-texas-sc-sporting-kc-ii",
+      "fixture_id": "feva-2026-05-13-north-texas-sc-sporting-kc-ii",
+      "partido": "North Texas SC vs Sporting KC II",
+      "local": "North Texas SC",
+      "visitante": "Sporting KC II",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-los-angeles-fc-2-ventura-county": {
+      "id": "feva-2026-05-13-los-angeles-fc-2-ventura-county",
+      "fixture_id": "feva-2026-05-13-los-angeles-fc-2-ventura-county",
+      "partido": "Los Angeles FC 2 vs Ventura County",
+      "local": "Los Angeles FC 2",
+      "visitante": "Ventura County",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T23:00:00",
+      "dia": "2026-05-13",
+      "hora": "23:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-al-hilal-neom-sc": {
+      "id": "feva-2026-05-13-al-hilal-neom-sc",
+      "fixture_id": "feva-2026-05-13-al-hilal-neom-sc",
+      "partido": "Al Hilal vs NEOM SC",
+      "local": "Al Hilal",
+      "visitante": "NEOM SC",
+      "liga": "Saudi Pro League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T13:05:00",
+      "dia": "2026-05-13",
+      "hora": "13:05",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Somos FOX YouTube"
+      ],
+      "canales_raw": [
+        "Somos FOX YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-al-ahli-al-kholood": {
+      "id": "feva-2026-05-13-al-ahli-al-kholood",
+      "fixture_id": "feva-2026-05-13-al-ahli-al-kholood",
+      "partido": "Al Ahli vs Al Kholood",
+      "local": "Al Ahli",
+      "visitante": "Al Kholood",
+      "liga": "Saudi Pro League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Somos FOX YouTube"
+      ],
+      "canales_raw": [
+        "Somos FOX YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-atletico-mineiro-mirassol": {
+      "id": "feva-2026-05-13-atletico-mineiro-mirassol",
+      "fixture_id": "feva-2026-05-13-atletico-mineiro-mirassol",
+      "partido": "Atlético Mineiro vs Mirassol",
+      "local": "Atlético Mineiro",
+      "visitante": "Mirassol",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:30:00",
+      "dia": "2026-05-13",
+      "hora": "18:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-internacional-vasco-da-gama": {
+      "id": "feva-2026-05-13-internacional-vasco-da-gama",
+      "fixture_id": "feva-2026-05-13-internacional-vasco-da-gama",
+      "partido": "Internacional vs Vasco da Gama",
+      "local": "Internacional",
+      "visitante": "Vasco da Gama",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:30:00",
+      "dia": "2026-05-13",
+      "hora": "18:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fluminense-sao-paulo": {
+      "id": "feva-2026-05-13-fluminense-sao-paulo",
+      "fixture_id": "feva-2026-05-13-fluminense-sao-paulo",
+      "partido": "Fluminense vs São Paulo",
+      "local": "Fluminense",
+      "visitante": "São Paulo",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-palmeiras-cruzeiro": {
+      "id": "feva-2026-05-13-palmeiras-cruzeiro",
+      "fixture_id": "feva-2026-05-13-palmeiras-cruzeiro",
+      "partido": "Palmeiras vs Cruzeiro",
+      "local": "Palmeiras",
+      "visitante": "Cruzeiro",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)",
+        "Domingo, 17/5/2026"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)",
+        "Domingo, 17/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-gimnasia-jujuy-temperley": {
+      "id": "feva-2026-05-13-gimnasia-jujuy-temperley",
+      "fixture_id": "feva-2026-05-13-gimnasia-jujuy-temperley",
+      "partido": "Gimnasia Jujuy vs Temperley",
+      "local": "Gimnasia Jujuy",
+      "visitante": "Temperley",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-almirante-brown-san-telmo": {
+      "id": "feva-2026-05-13-almirante-brown-san-telmo",
+      "fixture_id": "feva-2026-05-13-almirante-brown-san-telmo",
+      "partido": "Almirante Brown vs San Telmo",
+      "local": "Almirante Brown",
+      "visitante": "San Telmo",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-almagro-san-martin-sj": {
+      "id": "feva-2026-05-13-almagro-san-martin-sj",
+      "fixture_id": "feva-2026-05-13-almagro-san-martin-sj",
+      "partido": "Almagro vs San Martín SJ",
+      "local": "Almagro",
+      "visitante": "San Martín SJ",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-patronato-chacarita-juniors": {
+      "id": "feva-2026-05-13-patronato-chacarita-juniors",
+      "fixture_id": "feva-2026-05-13-patronato-chacarita-juniors",
+      "partido": "Patronato vs Chacarita Juniors",
+      "local": "Patronato",
+      "visitante": "Chacarita Juniors",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ca-mitre-san-miguel": {
+      "id": "feva-2026-05-13-ca-mitre-san-miguel",
+      "fixture_id": "feva-2026-05-13-ca-mitre-san-miguel",
+      "partido": "CA Mitre vs San Miguel",
+      "local": "CA Mitre",
+      "visitante": "San Miguel",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-deportivo-madryn-ferro-carril-oeste": {
+      "id": "feva-2026-05-13-deportivo-madryn-ferro-carril-oeste",
+      "fixture_id": "feva-2026-05-13-deportivo-madryn-ferro-carril-oeste",
+      "partido": "Deportivo Madryn vs Ferro Carril Oeste",
+      "local": "Deportivo Madryn",
+      "visitante": "Ferro Carril Oeste",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-midland-agropecuario": {
+      "id": "feva-2026-05-13-midland-agropecuario",
+      "fixture_id": "feva-2026-05-13-midland-agropecuario",
+      "partido": "Midland vs Agropecuario",
+      "local": "Midland",
+      "visitante": "Agropecuario",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:30:00",
+      "dia": "2026-05-13",
+      "hora": "16:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-quilmes-tristan-suarez": {
+      "id": "feva-2026-05-13-quilmes-tristan-suarez",
+      "fixture_id": "feva-2026-05-13-quilmes-tristan-suarez",
+      "partido": "Quilmes vs Tristán Suárez",
+      "local": "Quilmes",
+      "visitante": "Tristán Suárez",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-gimnasia-y-tiro-san-martin-tucuman": {
+      "id": "feva-2026-05-13-gimnasia-y-tiro-san-martin-tucuman",
+      "fixture_id": "feva-2026-05-13-gimnasia-y-tiro-san-martin-tucuman",
+      "partido": "Gimnasia y Tiro vs San Martín Tucumán",
+      "local": "Gimnasia y Tiro",
+      "visitante": "San Martín Tucumán",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-deportivo-maipu-nueva-chicago": {
+      "id": "feva-2026-05-13-deportivo-maipu-nueva-chicago",
+      "fixture_id": "feva-2026-05-13-deportivo-maipu-nueva-chicago",
+      "partido": "Deportivo Maipú vs Nueva Chicago",
+      "local": "Deportivo Maipú",
+      "visitante": "Nueva Chicago",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:30:00",
+      "dia": "2026-05-13",
+      "hora": "17:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-manchester-utd-nottingham-forest": {
+      "id": "feva-2026-05-13-manchester-utd-nottingham-forest",
+      "fixture_id": "feva-2026-05-13-manchester-utd-nottingham-forest",
+      "partido": "Manchester Utd. vs Nottingham Forest",
+      "local": "Manchester Utd.",
+      "visitante": "Nottingham Forest",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T08:30:00",
+      "dia": "2026-05-13",
+      "hora": "08:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-everton-sunderland": {
+      "id": "feva-2026-05-13-everton-sunderland",
+      "fixture_id": "feva-2026-05-13-everton-sunderland",
+      "partido": "Everton vs Sunderland",
+      "local": "Everton",
+      "visitante": "Sunderland",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:00:00",
+      "dia": "2026-05-13",
+      "hora": "11:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-leeds-utd-brighton": {
+      "id": "feva-2026-05-13-leeds-utd-brighton",
+      "fixture_id": "feva-2026-05-13-leeds-utd-brighton",
+      "partido": "Leeds Utd vs Brighton",
+      "local": "Leeds Utd",
+      "visitante": "Brighton",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:00:00",
+      "dia": "2026-05-13",
+      "hora": "11:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-brentford-crystal-palace": {
+      "id": "feva-2026-05-13-brentford-crystal-palace",
+      "fixture_id": "feva-2026-05-13-brentford-crystal-palace",
+      "partido": "Brentford vs Crystal Palace",
+      "local": "Brentford",
+      "visitante": "Crystal Palace",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:00:00",
+      "dia": "2026-05-13",
+      "hora": "11:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-wolverhampton-fulham": {
+      "id": "feva-2026-05-13-wolverhampton-fulham",
+      "fixture_id": "feva-2026-05-13-wolverhampton-fulham",
+      "partido": "Wolverhampton vs Fulham",
+      "local": "Wolverhampton",
+      "visitante": "Fulham",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:00:00",
+      "dia": "2026-05-13",
+      "hora": "11:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-newcastle-west-ham": {
+      "id": "feva-2026-05-13-newcastle-west-ham",
+      "fixture_id": "feva-2026-05-13-newcastle-west-ham",
+      "partido": "Newcastle vs West Ham",
+      "local": "Newcastle",
+      "visitante": "West Ham",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T13:30:00",
+      "dia": "2026-05-13",
+      "hora": "13:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-o-lyonnais-lens": {
+      "id": "feva-2026-05-13-o-lyonnais-lens",
+      "fixture_id": "feva-2026-05-13-o-lyonnais-lens",
+      "partido": "O. Lyonnais vs Lens",
+      "local": "O. Lyonnais",
+      "visitante": "Lens",
+      "liga": "Francia Ligue 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-lorient-le-havre-ac": {
+      "id": "feva-2026-05-13-lorient-le-havre-ac",
+      "fixture_id": "feva-2026-05-13-lorient-le-havre-ac",
+      "partido": "Lorient vs Le Havre AC",
+      "local": "Lorient",
+      "visitante": "Le Havre AC",
+      "liga": "Francia Ligue 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-lille-auxerre": {
+      "id": "feva-2026-05-13-lille-auxerre",
+      "fixture_id": "feva-2026-05-13-lille-auxerre",
+      "partido": "Lille vs Auxerre",
+      "local": "Lille",
+      "visitante": "Auxerre",
+      "liga": "Francia Ligue 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-nice-metz": {
+      "id": "feva-2026-05-13-nice-metz",
+      "fixture_id": "feva-2026-05-13-nice-metz",
+      "partido": "Nice vs Metz",
+      "local": "Nice",
+      "visitante": "Metz",
+      "liga": "Francia Ligue 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-o-marseille-rennes": {
+      "id": "feva-2026-05-13-o-marseille-rennes",
+      "fixture_id": "feva-2026-05-13-o-marseille-rennes",
+      "partido": "O. Marseille vs Rennes",
+      "local": "O. Marseille",
+      "visitante": "Rennes",
+      "liga": "Francia Ligue 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-stade-brestois-angers": {
+      "id": "feva-2026-05-13-stade-brestois-angers",
+      "fixture_id": "feva-2026-05-13-stade-brestois-angers",
+      "partido": "Stade Brestois vs Angers",
+      "local": "Stade Brestois",
+      "visitante": "Angers",
+      "liga": "Francia Ligue 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-nantes-toulouse": {
+      "id": "feva-2026-05-13-nantes-toulouse",
+      "fixture_id": "feva-2026-05-13-nantes-toulouse",
+      "partido": "Nantes vs Toulouse",
+      "local": "Nantes",
+      "visitante": "Toulouse",
+      "liga": "Francia Ligue 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-paris-fc-psg": {
+      "id": "feva-2026-05-13-paris-fc-psg",
+      "fixture_id": "feva-2026-05-13-paris-fc-psg",
+      "partido": "Paris FC vs PSG",
+      "local": "Paris FC",
+      "visitante": "PSG",
+      "liga": "Francia Ligue 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-strasbourg-alsace-as-monaco": {
+      "id": "feva-2026-05-13-strasbourg-alsace-as-monaco",
+      "fixture_id": "feva-2026-05-13-strasbourg-alsace-as-monaco",
+      "partido": "Strasbourg Alsace vs AS Monaco",
+      "local": "Strasbourg Alsace",
+      "visitante": "AS Monaco",
+      "liga": "Francia Ligue 1",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-schalke-04-eintracht-braunschweig": {
+      "id": "feva-2026-05-13-schalke-04-eintracht-braunschweig",
+      "fixture_id": "feva-2026-05-13-schalke-04-eintracht-braunschweig",
+      "partido": "Schalke 04 vs Eintracht Braunschweig",
+      "local": "Schalke 04",
+      "visitante": "Eintracht Braunschweig",
+      "liga": "2. Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-hannover-96-nurnberg": {
+      "id": "feva-2026-05-13-hannover-96-nurnberg",
+      "fixture_id": "feva-2026-05-13-hannover-96-nurnberg",
+      "partido": "Hannover 96 vs Nürnberg",
+      "local": "Hannover 96",
+      "visitante": "Nürnberg",
+      "liga": "2. Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-greuther-furth-fortuna-dusseldorf": {
+      "id": "feva-2026-05-13-greuther-furth-fortuna-dusseldorf",
+      "fixture_id": "feva-2026-05-13-greuther-furth-fortuna-dusseldorf",
+      "partido": "Greuther Fürth vs Fortuna Düsseldorf",
+      "local": "Greuther Fürth",
+      "visitante": "Fortuna Düsseldorf",
+      "liga": "2. Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-dynamo-dresden-holstein-kiel": {
+      "id": "feva-2026-05-13-dynamo-dresden-holstein-kiel",
+      "fixture_id": "feva-2026-05-13-dynamo-dresden-holstein-kiel",
+      "partido": "Dynamo Dresden vs Holstein Kiel",
+      "local": "Dynamo Dresden",
+      "visitante": "Holstein Kiel",
+      "liga": "2. Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-1-fc-magdeburg-kaiserslautern": {
+      "id": "feva-2026-05-13-1-fc-magdeburg-kaiserslautern",
+      "fixture_id": "feva-2026-05-13-1-fc-magdeburg-kaiserslautern",
+      "partido": "1. FC Magdeburg vs Kaiserslautern",
+      "local": "1. FC Magdeburg",
+      "visitante": "Kaiserslautern",
+      "liga": "2. Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-karlsruher-vfl-bochum": {
+      "id": "feva-2026-05-13-karlsruher-vfl-bochum",
+      "fixture_id": "feva-2026-05-13-karlsruher-vfl-bochum",
+      "partido": "Karlsruher vs VfL Bochum",
+      "local": "Karlsruher",
+      "visitante": "VfL Bochum",
+      "liga": "2. Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-arminia-bielefeld-hertha-berlin": {
+      "id": "feva-2026-05-13-arminia-bielefeld-hertha-berlin",
+      "fixture_id": "feva-2026-05-13-arminia-bielefeld-hertha-berlin",
+      "partido": "Arminia Bielefeld vs Hertha Berlin",
+      "local": "Arminia Bielefeld",
+      "visitante": "Hertha Berlin",
+      "liga": "2. Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-darmstadt-98-paderborn-07": {
+      "id": "feva-2026-05-13-darmstadt-98-paderborn-07",
+      "fixture_id": "feva-2026-05-13-darmstadt-98-paderborn-07",
+      "partido": "Darmstadt 98 vs Paderborn 07",
+      "local": "Darmstadt 98",
+      "visitante": "Paderborn 07",
+      "liga": "2. Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sv-elversberg-preu-en-munster": {
+      "id": "feva-2026-05-13-sv-elversberg-preu-en-munster",
+      "fixture_id": "feva-2026-05-13-sv-elversberg-preu-en-munster",
+      "partido": "SV Elversberg vs Preußen Münster",
+      "local": "SV Elversberg",
+      "visitante": "Preußen Münster",
+      "liga": "2. Bundesliga",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:30:00",
+      "dia": "2026-05-13",
+      "hora": "10:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-az-alkmaar-nac-breda": {
+      "id": "feva-2026-05-13-az-alkmaar-nac-breda",
+      "fixture_id": "feva-2026-05-13-az-alkmaar-nac-breda",
+      "partido": "AZ Alkmaar vs NAC Breda",
+      "local": "AZ Alkmaar",
+      "visitante": "NAC Breda",
+      "liga": "Eredivisie",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T09:30:00",
+      "dia": "2026-05-13",
+      "hora": "09:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-psv-eindhoven-twente": {
+      "id": "feva-2026-05-13-psv-eindhoven-twente",
+      "fixture_id": "feva-2026-05-13-psv-eindhoven-twente",
+      "partido": "PSV Eindhoven vs Twente",
+      "local": "PSV Eindhoven",
+      "visitante": "Twente",
+      "liga": "Eredivisie",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T09:30:00",
+      "dia": "2026-05-13",
+      "hora": "09:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-heerenveen-ajax": {
+      "id": "feva-2026-05-13-heerenveen-ajax",
+      "fixture_id": "feva-2026-05-13-heerenveen-ajax",
+      "partido": "Heerenveen vs Ajax",
+      "local": "Heerenveen",
+      "visitante": "Ajax",
+      "liga": "Eredivisie",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T09:30:00",
+      "dia": "2026-05-13",
+      "hora": "09:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-pec-zwolle-feyenoord": {
+      "id": "feva-2026-05-13-pec-zwolle-feyenoord",
+      "fixture_id": "feva-2026-05-13-pec-zwolle-feyenoord",
+      "partido": "PEC Zwolle vs Feyenoord",
+      "local": "PEC Zwolle",
+      "visitante": "Feyenoord",
+      "liga": "Eredivisie",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T09:30:00",
+      "dia": "2026-05-13",
+      "hora": "09:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ad-tarma-comerciantes-unidos": {
+      "id": "feva-2026-05-13-ad-tarma-comerciantes-unidos",
+      "fixture_id": "feva-2026-05-13-ad-tarma-comerciantes-unidos",
+      "partido": "AD Tarma vs Comerciantes Unidos",
+      "local": "AD Tarma",
+      "visitante": "Comerciantes Unidos",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-deportivo-garcilaso-utc-cajamarca": {
+      "id": "feva-2026-05-13-deportivo-garcilaso-utc-cajamarca",
+      "fixture_id": "feva-2026-05-13-deportivo-garcilaso-utc-cajamarca",
+      "partido": "Deportivo Garcilaso vs UTC Cajamarca",
+      "local": "Deportivo Garcilaso",
+      "visitante": "UTC Cajamarca",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:15:00",
+      "dia": "2026-05-13",
+      "hora": "15:15",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cd-los-chankas-cd-moquegua": {
+      "id": "feva-2026-05-13-cd-los-chankas-cd-moquegua",
+      "fixture_id": "feva-2026-05-13-cd-los-chankas-cd-moquegua",
+      "partido": "CD Los Chankas vs CD Moquegua",
+      "local": "CD Los Chankas",
+      "visitante": "CD Moquegua",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:30:00",
+      "dia": "2026-05-13",
+      "hora": "17:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)",
+        "Liga Futve"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)",
+        "Liga Futve"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-estudiantes-merida-carabobo": {
+      "id": "feva-2026-05-13-estudiantes-merida-carabobo",
+      "fixture_id": "feva-2026-05-13-estudiantes-merida-carabobo",
+      "partido": "Estudiantes Mérida vs Carabobo",
+      "local": "Estudiantes Mérida",
+      "visitante": "Carabobo",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Liga Futve YouTube"
+      ],
+      "canales_raw": [
+        "Liga Futve YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-portuguesa-fc-puerto-cabello": {
+      "id": "feva-2026-05-13-portuguesa-fc-puerto-cabello",
+      "fixture_id": "feva-2026-05-13-portuguesa-fc-puerto-cabello",
+      "partido": "Portuguesa FC vs Puerto Cabello",
+      "local": "Portuguesa FC",
+      "visitante": "Puerto Cabello",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:00:00",
+      "dia": "2026-05-13",
+      "hora": "18:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Liga Futve YouTube"
+      ],
+      "canales_raw": [
+        "Liga Futve YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-metropolitanos-deportivo-tachira": {
+      "id": "feva-2026-05-13-metropolitanos-deportivo-tachira",
+      "fixture_id": "feva-2026-05-13-metropolitanos-deportivo-tachira",
+      "partido": "Metropolitanos vs Deportivo Táchira",
+      "local": "Metropolitanos",
+      "visitante": "Deportivo Táchira",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Liga Futve YouTube",
+        "Liga Futve 2"
+      ],
+      "canales_raw": [
+        "Liga Futve YouTube",
+        "Liga Futve 2"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-bolivar-sc-monagas-sc-b": {
+      "id": "feva-2026-05-13-bolivar-sc-monagas-sc-b",
+      "fixture_id": "feva-2026-05-13-bolivar-sc-monagas-sc-b",
+      "partido": "Bolívar SC vs Monagas SC B",
+      "local": "Bolívar SC",
+      "visitante": "Monagas SC B",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-avila-fc-dynamo-puerto": {
+      "id": "feva-2026-05-13-avila-fc-dynamo-puerto",
+      "fixture_id": "feva-2026-05-13-avila-fc-dynamo-puerto",
+      "partido": "Ávila FC vs Dynamo Puerto",
+      "local": "Ávila FC",
+      "visitante": "Dynamo Puerto",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-inter-miami-cf-portland-timbers": {
+      "id": "feva-2026-05-13-inter-miami-cf-portland-timbers",
+      "fixture_id": "feva-2026-05-13-inter-miami-cf-portland-timbers",
+      "partido": "Inter Miami CF vs Portland Timbers",
+      "local": "Inter Miami CF",
+      "visitante": "Portland Timbers",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-nashville-sc-los-angeles-fc": {
+      "id": "feva-2026-05-13-nashville-sc-los-angeles-fc",
+      "fixture_id": "feva-2026-05-13-nashville-sc-los-angeles-fc",
+      "partido": "Nashville SC vs Los Angeles FC",
+      "local": "Nashville SC",
+      "visitante": "Los Angeles FC",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-the-town-fc-portland-timbers-2": {
+      "id": "feva-2026-05-13-the-town-fc-portland-timbers-2",
+      "fixture_id": "feva-2026-05-13-the-town-fc-portland-timbers-2",
+      "partido": "The Town FC vs Portland Timbers 2",
+      "local": "The Town FC",
+      "visitante": "Portland Timbers 2",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T13:00:00",
+      "dia": "2026-05-13",
+      "hora": "13:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-new-england-revolution-ii-orlando-city-b": {
+      "id": "feva-2026-05-13-new-england-revolution-ii-orlando-city-b",
+      "fixture_id": "feva-2026-05-13-new-england-revolution-ii-orlando-city-b",
+      "partido": "New England Revolution II vs Orlando City B",
+      "local": "New England Revolution II",
+      "visitante": "Orlando City B",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-philadelphia-union-ii-columbus-crew-2": {
+      "id": "feva-2026-05-13-philadelphia-union-ii-columbus-crew-2",
+      "fixture_id": "feva-2026-05-13-philadelphia-union-ii-columbus-crew-2",
+      "partido": "Philadelphia Union II vs Columbus Crew 2",
+      "local": "Philadelphia Union II",
+      "visitante": "Columbus Crew 2",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fc-cincinnati-2-chattanooga-fc": {
+      "id": "feva-2026-05-13-fc-cincinnati-2-chattanooga-fc",
+      "fixture_id": "feva-2026-05-13-fc-cincinnati-2-chattanooga-fc",
+      "partido": "FC Cincinnati 2 vs Chattanooga FC",
+      "local": "FC Cincinnati 2",
+      "visitante": "Chattanooga FC",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-new-york-rb-ii-new-york-city-2": {
+      "id": "feva-2026-05-13-new-york-rb-ii-new-york-city-2",
+      "fixture_id": "feva-2026-05-13-new-york-rb-ii-new-york-city-2",
+      "partido": "New York RB II vs New York City 2",
+      "local": "New York RB II",
+      "visitante": "New York City 2",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-vancouver-whitecaps-2-tacoma-defiance": {
+      "id": "feva-2026-05-13-vancouver-whitecaps-2-tacoma-defiance",
+      "fixture_id": "feva-2026-05-13-vancouver-whitecaps-2-tacoma-defiance",
+      "partido": "Vancouver Whitecaps 2 vs Tacoma Defiance",
+      "local": "Vancouver Whitecaps 2",
+      "visitante": "Tacoma Defiance",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-inter-miami-cf-ii-crown-legacy-fc": {
+      "id": "feva-2026-05-13-inter-miami-cf-ii-crown-legacy-fc",
+      "fixture_id": "feva-2026-05-13-inter-miami-cf-ii-crown-legacy-fc",
+      "partido": "Inter Miami CF II vs Crown Legacy FC",
+      "local": "Inter Miami CF II",
+      "visitante": "Crown Legacy FC",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-austin-fc-ii-st-louis-city-sc-2": {
+      "id": "feva-2026-05-13-austin-fc-ii-st-louis-city-sc-2",
+      "fixture_id": "feva-2026-05-13-austin-fc-ii-st-louis-city-sc-2",
+      "partido": "Austin FC II vs St. Louis City SC 2",
+      "local": "Austin FC II",
+      "visitante": "St. Louis City SC 2",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-portland-thorns-angel-city-fc": {
+      "id": "feva-2026-05-13-portland-thorns-angel-city-fc",
+      "fixture_id": "feva-2026-05-13-portland-thorns-angel-city-fc",
+      "partido": "Portland Thorns vs Angel City FC",
+      "local": "Portland Thorns",
+      "visitante": "Angel City FC",
+      "liga": "NWSL",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ce-carroi-inter-club-d-escaldes": {
+      "id": "feva-2026-05-13-ce-carroi-inter-club-d-escaldes",
+      "fixture_id": "feva-2026-05-13-ce-carroi-inter-club-d-escaldes",
+      "partido": "CE Carroi vs Inter Club d'Escaldes",
+      "local": "CE Carroi",
+      "visitante": "Inter Club d'Escaldes",
+      "liga": "Primera División Andorra",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T06:00:00",
+      "dia": "2026-05-13",
+      "hora": "06:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "FIFA+",
+        "DAZN App Gratis ()"
+      ],
+      "canales_raw": [
+        "FIFA+",
+        "DAZN App Gratis ()"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fc-ordino-esperanca-d-andorra": {
+      "id": "feva-2026-05-13-fc-ordino-esperanca-d-andorra",
+      "fixture_id": "feva-2026-05-13-fc-ordino-esperanca-d-andorra",
+      "partido": "FC Ordino vs Esperança d'Andorra",
+      "local": "FC Ordino",
+      "visitante": "Esperança d'Andorra",
+      "liga": "Primera División Andorra",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T08:15:00",
+      "dia": "2026-05-13",
+      "hora": "08:15",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "FIFA+",
+        "DAZN App Gratis ()"
+      ],
+      "canales_raw": [
+        "FIFA+",
+        "DAZN App Gratis ()"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-atletic-escaldes-penya-encarnada": {
+      "id": "feva-2026-05-13-atletic-escaldes-penya-encarnada",
+      "fixture_id": "feva-2026-05-13-atletic-escaldes-penya-encarnada",
+      "partido": "Atlètic Escaldes vs Penya Encarnada",
+      "local": "Atlètic Escaldes",
+      "visitante": "Penya Encarnada",
+      "liga": "Primera División Andorra",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:00:00",
+      "dia": "2026-05-13",
+      "hora": "11:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ranger-s-fc-fc-santa-coloma": {
+      "id": "feva-2026-05-13-ranger-s-fc-fc-santa-coloma",
+      "fixture_id": "feva-2026-05-13-ranger-s-fc-fc-santa-coloma",
+      "partido": "Ranger's FC vs FC Santa Coloma",
+      "local": "Ranger's FC",
+      "visitante": "FC Santa Coloma",
+      "liga": "Primera División Andorra",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:30:00",
+      "dia": "2026-05-13",
+      "hora": "14:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-livingston-kilmarnock": {
+      "id": "feva-2026-05-13-livingston-kilmarnock",
+      "fixture_id": "feva-2026-05-13-livingston-kilmarnock",
+      "partido": "Livingston vs Kilmarnock",
+      "local": "Livingston",
+      "visitante": "Kilmarnock",
+      "liga": "Scottish Premiership",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:00:00",
+      "dia": "2026-05-13",
+      "hora": "10:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball PPV"
+      ],
+      "canales_raw": [
+        "OneFootball PPV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-santos-coritiba": {
+      "id": "feva-2026-05-13-santos-coritiba",
+      "fixture_id": "feva-2026-05-13-santos-coritiba",
+      "partido": "Santos vs Coritiba",
+      "local": "Santos",
+      "visitante": "Coritiba",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T11:00:00",
+      "dia": "2026-05-13",
+      "hora": "11:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-bahia-gremio": {
+      "id": "feva-2026-05-13-bahia-gremio",
+      "fixture_id": "feva-2026-05-13-bahia-gremio",
+      "partido": "Bahía vs Grêmio",
+      "local": "Bahía",
+      "visitante": "Grêmio",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-botafogo-corinthians": {
+      "id": "feva-2026-05-13-botafogo-corinthians",
+      "fixture_id": "feva-2026-05-13-botafogo-corinthians",
+      "partido": "Botafogo vs Corinthians",
+      "local": "Botafogo",
+      "visitante": "Corinthians",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-rb-bragantino-vitoria": {
+      "id": "feva-2026-05-13-rb-bragantino-vitoria",
+      "fixture_id": "feva-2026-05-13-rb-bragantino-vitoria",
+      "partido": "RB Bragantino vs Vitória",
+      "local": "RB Bragantino",
+      "visitante": "Vitória",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:30:00",
+      "dia": "2026-05-13",
+      "hora": "18:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-chapecoense-remo": {
+      "id": "feva-2026-05-13-chapecoense-remo",
+      "fixture_id": "feva-2026-05-13-chapecoense-remo",
+      "partido": "Chapecoense vs Remo",
+      "local": "Chapecoense",
+      "visitante": "Remo",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:30:00",
+      "dia": "2026-05-13",
+      "hora": "18:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-at-paranaense-cr-flamengo": {
+      "id": "feva-2026-05-13-at-paranaense-cr-flamengo",
+      "fixture_id": "feva-2026-05-13-at-paranaense-cr-flamengo",
+      "partido": "At. Paranaense vs CR Flamengo",
+      "local": "At. Paranaense",
+      "visitante": "CR Flamengo",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:30:00",
+      "dia": "2026-05-13",
+      "hora": "19:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-juventus-fiorentina": {
+      "id": "feva-2026-05-13-juventus-fiorentina",
+      "fixture_id": "feva-2026-05-13-juventus-fiorentina",
+      "partido": "Juventus vs Fiorentina",
+      "local": "Juventus",
+      "visitante": "Fiorentina",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T07:30:00",
+      "dia": "2026-05-13",
+      "hora": "07:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-genoa-ac-milan": {
+      "id": "feva-2026-05-13-genoa-ac-milan",
+      "fixture_id": "feva-2026-05-13-genoa-ac-milan",
+      "partido": "Genoa vs AC Milan",
+      "local": "Genoa",
+      "visitante": "AC Milan",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T07:30:00",
+      "dia": "2026-05-13",
+      "hora": "07:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-as-roma-lazio": {
+      "id": "feva-2026-05-13-as-roma-lazio",
+      "fixture_id": "feva-2026-05-13-as-roma-lazio",
+      "partido": "AS Roma vs Lazio",
+      "local": "AS Roma",
+      "visitante": "Lazio",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T07:30:00",
+      "dia": "2026-05-13",
+      "hora": "07:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-como-1907-parma": {
+      "id": "feva-2026-05-13-como-1907-parma",
+      "fixture_id": "feva-2026-05-13-como-1907-parma",
+      "partido": "Como 1907 vs Parma",
+      "local": "Como 1907",
+      "visitante": "Parma",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T07:30:00",
+      "dia": "2026-05-13",
+      "hora": "07:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-pisa-sporting-club-napoli": {
+      "id": "feva-2026-05-13-pisa-sporting-club-napoli",
+      "fixture_id": "feva-2026-05-13-pisa-sporting-club-napoli",
+      "partido": "Pisa Sporting Club vs Napoli",
+      "local": "Pisa Sporting Club",
+      "visitante": "Napoli",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T07:30:00",
+      "dia": "2026-05-13",
+      "hora": "07:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-inter-milan-hellas-verona": {
+      "id": "feva-2026-05-13-inter-milan-hellas-verona",
+      "fixture_id": "feva-2026-05-13-inter-milan-hellas-verona",
+      "partido": "Inter Milan vs Hellas Verona",
+      "local": "Inter Milan",
+      "visitante": "Hellas Verona",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T10:00:00",
+      "dia": "2026-05-13",
+      "hora": "10:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-atalanta-bologna": {
+      "id": "feva-2026-05-13-atalanta-bologna",
+      "fixture_id": "feva-2026-05-13-atalanta-bologna",
+      "partido": "Atalanta vs Bologna",
+      "local": "Atalanta",
+      "visitante": "Bologna",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T13:00:00",
+      "dia": "2026-05-13",
+      "hora": "13:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cagliari-torino": {
+      "id": "feva-2026-05-13-cagliari-torino",
+      "fixture_id": "feva-2026-05-13-cagliari-torino",
+      "partido": "Cagliari vs Torino",
+      "local": "Cagliari",
+      "visitante": "Torino",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:45:00",
+      "dia": "2026-05-13",
+      "hora": "15:45",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-udinese-us-cremonese": {
+      "id": "feva-2026-05-13-udinese-us-cremonese",
+      "fixture_id": "feva-2026-05-13-udinese-us-cremonese",
+      "partido": "Udinese vs US Cremonese",
+      "local": "Udinese",
+      "visitante": "US Cremonese",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:45:00",
+      "dia": "2026-05-13",
+      "hora": "15:45",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sassuolo-us-lecce": {
+      "id": "feva-2026-05-13-sassuolo-us-lecce",
+      "fixture_id": "feva-2026-05-13-sassuolo-us-lecce",
+      "partido": "Sassuolo vs US Lecce",
+      "local": "Sassuolo",
+      "visitante": "US Lecce",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:45:00",
+      "dia": "2026-05-13",
+      "hora": "15:45",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium",
+        "Lunes, 18/5/2026"
+      ],
+      "canales_raw": [
+        "Disney+ Premium",
+        "Lunes, 18/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-defensores-belgrano-chaco-for-ever": {
+      "id": "feva-2026-05-13-defensores-belgrano-chaco-for-ever",
+      "fixture_id": "feva-2026-05-13-defensores-belgrano-chaco-for-ever",
+      "partido": "Defensores Belgrano vs Chaco For Ever",
+      "local": "Defensores Belgrano",
+      "visitante": "Chaco For Ever",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-all-boys-deportivo-moron": {
+      "id": "feva-2026-05-13-all-boys-deportivo-moron",
+      "fixture_id": "feva-2026-05-13-all-boys-deportivo-moron",
+      "partido": "All Boys vs Deportivo Morón",
+      "local": "All Boys",
+      "visitante": "Deportivo Morón",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sportivo-italiano-laferrere": {
+      "id": "feva-2026-05-13-sportivo-italiano-laferrere",
+      "fixture_id": "feva-2026-05-13-sportivo-italiano-laferrere",
+      "partido": "Sportivo Italiano vs Laferrere",
+      "local": "Sportivo Italiano",
+      "visitante": "Laferrere",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-arsenal-burnley": {
+      "id": "feva-2026-05-13-arsenal-burnley",
+      "fixture_id": "feva-2026-05-13-arsenal-burnley",
+      "partido": "Arsenal vs Burnley",
+      "local": "Arsenal",
+      "visitante": "Burnley",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-club-libertad-2-de-mayo": {
+      "id": "feva-2026-05-13-club-libertad-2-de-mayo",
+      "fixture_id": "feva-2026-05-13-club-libertad-2-de-mayo",
+      "partido": "Club Libertad vs 2 de Mayo",
+      "local": "Club Libertad",
+      "visitante": "2 de Mayo",
+      "liga": "Primera División Paraguay",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "canales_raw": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-olimpia-deportivo-recoleta": {
+      "id": "feva-2026-05-13-olimpia-deportivo-recoleta",
+      "fixture_id": "feva-2026-05-13-olimpia-deportivo-recoleta",
+      "partido": "Olimpia vs Deportivo Recoleta",
+      "local": "Olimpia",
+      "visitante": "Deportivo Recoleta",
+      "liga": "Primera División Paraguay",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "canales_raw": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-rubio-nu-club-nacional": {
+      "id": "feva-2026-05-13-rubio-nu-club-nacional",
+      "fixture_id": "feva-2026-05-13-rubio-nu-club-nacional",
+      "partido": "Rubio Ñu vs Club Nacional",
+      "local": "Rubio Ñu",
+      "visitante": "Club Nacional",
+      "liga": "Primera División Paraguay",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "canales_raw": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-club-guarani-sportivo-ameliano": {
+      "id": "feva-2026-05-13-club-guarani-sportivo-ameliano",
+      "fixture_id": "feva-2026-05-13-club-guarani-sportivo-ameliano",
+      "partido": "Club Guaraní vs Sportivo Ameliano",
+      "local": "Club Guaraní",
+      "visitante": "Sportivo Ameliano",
+      "liga": "Primera División Paraguay",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "canales_raw": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cs-san-lorenzo-sportivo-luqueno": {
+      "id": "feva-2026-05-13-cs-san-lorenzo-sportivo-luqueno",
+      "fixture_id": "feva-2026-05-13-cs-san-lorenzo-sportivo-luqueno",
+      "partido": "CS San Lorenzo vs Sportivo Luqueño",
+      "local": "CS San Lorenzo",
+      "visitante": "Sportivo Luqueño",
+      "liga": "Primera División Paraguay",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "canales_raw": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-trinidense-cerro-porteno": {
+      "id": "feva-2026-05-13-trinidense-cerro-porteno",
+      "fixture_id": "feva-2026-05-13-trinidense-cerro-porteno",
+      "partido": "Trinidense vs Cerro Porteño",
+      "local": "Trinidense",
+      "visitante": "Cerro Porteño",
+      "liga": "Primera División Paraguay",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fútbol Paraguayo (634 DirecTV)",
+        "Martes, 19/5/2026"
+      ],
+      "canales_raw": [
+        "Fútbol Paraguayo (634 DirecTV)",
+        "Martes, 19/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fluminense-bolivar": {
+      "id": "feva-2026-05-13-fluminense-bolivar",
+      "fixture_id": "feva-2026-05-13-fluminense-bolivar",
+      "partido": "Fluminense vs Bolívar",
+      "local": "Fluminense",
+      "visitante": "Bolívar",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-rosario-central-ucv": {
+      "id": "feva-2026-05-13-rosario-central-ucv",
+      "fixture_id": "feva-2026-05-13-rosario-central-ucv",
+      "partido": "Rosario Central vs UCV",
+      "local": "Rosario Central",
+      "visitante": "UCV",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-coquimbo-unido-deportes-tolima": {
+      "id": "feva-2026-05-13-coquimbo-unido-deportes-tolima",
+      "fixture_id": "feva-2026-05-13-coquimbo-unido-deportes-tolima",
+      "partido": "Coquimbo Unido vs Deportes Tolima",
+      "local": "Coquimbo Unido",
+      "visitante": "Deportes Tolima",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-santa-fe-platense": {
+      "id": "feva-2026-05-13-santa-fe-platense",
+      "fixture_id": "feva-2026-05-13-santa-fe-platense",
+      "partido": "Santa Fe vs Platense",
+      "local": "Santa Fe",
+      "visitante": "Platense",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-always-ready-mirassol": {
+      "id": "feva-2026-05-13-always-ready-mirassol",
+      "fixture_id": "feva-2026-05-13-always-ready-mirassol",
+      "partido": "Always Ready vs Mirassol",
+      "local": "Always Ready",
+      "visitante": "Mirassol",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-boca-juniors-cruzeiro": {
+      "id": "feva-2026-05-13-boca-juniors-cruzeiro",
+      "fixture_id": "feva-2026-05-13-boca-juniors-cruzeiro",
+      "partido": "Boca Juniors vs Cruzeiro",
+      "local": "Boca Juniors",
+      "visitante": "Cruzeiro",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-independiente-del-valle-club-libertad": {
+      "id": "feva-2026-05-13-independiente-del-valle-club-libertad",
+      "fixture_id": "feva-2026-05-13-independiente-del-valle-club-libertad",
+      "partido": "Independiente del Valle vs Club Libertad",
+      "local": "Independiente del Valle",
+      "visitante": "Club Libertad",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T23:00:00",
+      "dia": "2026-05-13",
+      "hora": "23:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-audax-italiano-barracas-central": {
+      "id": "feva-2026-05-13-audax-italiano-barracas-central",
+      "fixture_id": "feva-2026-05-13-audax-italiano-barracas-central",
+      "partido": "Audax Italiano vs Barracas Central",
+      "local": "Audax Italiano",
+      "visitante": "Barracas Central",
+      "liga": "Copa Sudamericana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-montevideo-city-torque-deportivo-riestra": {
+      "id": "feva-2026-05-13-montevideo-city-torque-deportivo-riestra",
+      "fixture_id": "feva-2026-05-13-montevideo-city-torque-deportivo-riestra",
+      "partido": "Montevideo City Torque vs Deportivo Riestra",
+      "local": "Montevideo City Torque",
+      "visitante": "Deportivo Riestra",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-sao-paulo-millonarios": {
+      "id": "feva-2026-05-13-sao-paulo-millonarios",
+      "fixture_id": "feva-2026-05-13-sao-paulo-millonarios",
+      "partido": "São Paulo vs Millonarios",
+      "local": "São Paulo",
+      "visitante": "Millonarios",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-america-de-cali-tigre": {
+      "id": "feva-2026-05-13-america-de-cali-tigre",
+      "fixture_id": "feva-2026-05-13-america-de-cali-tigre",
+      "partido": "América de Cali vs Tigre",
+      "local": "América de Cali",
+      "visitante": "Tigre",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T23:00:00",
+      "dia": "2026-05-13",
+      "hora": "23:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-deportivo-cuenca-deportivo-recoleta": {
+      "id": "feva-2026-05-13-deportivo-cuenca-deportivo-recoleta",
+      "fixture_id": "feva-2026-05-13-deportivo-cuenca-deportivo-recoleta",
+      "partido": "Deportivo Cuenca vs Deportivo Recoleta",
+      "local": "Deportivo Cuenca",
+      "visitante": "Deportivo Recoleta",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T23:00:00",
+      "dia": "2026-05-13",
+      "hora": "23:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Canal por confirmar"
+      ],
+      "canales_raw": [
+        "Canal por confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-bournemouth-manchester-city": {
+      "id": "feva-2026-05-13-bournemouth-manchester-city",
+      "fixture_id": "feva-2026-05-13-bournemouth-manchester-city",
+      "partido": "Bournemouth vs Manchester City",
+      "local": "Bournemouth",
+      "visitante": "Manchester City",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-chelsea-tottenham": {
+      "id": "feva-2026-05-13-chelsea-tottenham",
+      "fixture_id": "feva-2026-05-13-chelsea-tottenham",
+      "partido": "Chelsea vs Tottenham",
+      "local": "Chelsea",
+      "visitante": "Tottenham",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:15:00",
+      "dia": "2026-05-13",
+      "hora": "16:15",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-banfield-reserva-aldosivi-reserva": {
+      "id": "feva-2026-05-13-banfield-reserva-aldosivi-reserva",
+      "fixture_id": "feva-2026-05-13-banfield-reserva-aldosivi-reserva",
+      "partido": "Banfield Reserva vs Aldosivi Reserva",
+      "local": "Banfield Reserva",
+      "visitante": "Aldosivi Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-san-lorenzo-reserva-racing-avellaneda-reserva": {
+      "id": "feva-2026-05-13-san-lorenzo-reserva-racing-avellaneda-reserva",
+      "fixture_id": "feva-2026-05-13-san-lorenzo-reserva-racing-avellaneda-reserva",
+      "partido": "San Lorenzo Reserva vs Racing Avellaneda Reserva",
+      "local": "San Lorenzo Reserva",
+      "visitante": "Racing Avellaneda Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-independiente-reserva-estudiantes-rc-reserva": {
+      "id": "feva-2026-05-13-independiente-reserva-estudiantes-rc-reserva",
+      "fixture_id": "feva-2026-05-13-independiente-reserva-estudiantes-rc-reserva",
+      "partido": "Independiente Reserva vs Estudiantes RC Reserva",
+      "local": "Independiente Reserva",
+      "visitante": "Estudiantes RC Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ca-colon-reserva-ferro-carril-oeste-reserva": {
+      "id": "feva-2026-05-13-ca-colon-reserva-ferro-carril-oeste-reserva",
+      "fixture_id": "feva-2026-05-13-ca-colon-reserva-ferro-carril-oeste-reserva",
+      "partido": "CA Colón Reserva vs Ferro Carril Oeste Reserva",
+      "local": "CA Colón Reserva",
+      "visitante": "Ferro Carril Oeste Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-san-martin-sj-reserva-independiente-rivadavia-reserva": {
+      "id": "feva-2026-05-13-san-martin-sj-reserva-independiente-rivadavia-reserva",
+      "fixture_id": "feva-2026-05-13-san-martin-sj-reserva-independiente-rivadavia-reserva",
+      "partido": "San Martín SJ Reserva vs Independiente Rivadavia Reserva",
+      "local": "San Martín SJ Reserva",
+      "visitante": "Independiente Rivadavia Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-quilmes-reserva-lanus-reserva": {
+      "id": "feva-2026-05-13-quilmes-reserva-lanus-reserva",
+      "fixture_id": "feva-2026-05-13-quilmes-reserva-lanus-reserva",
+      "partido": "Quilmes Reserva vs Lanús Reserva",
+      "local": "Quilmes Reserva",
+      "visitante": "Lanús Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play",
+        "Miércoles, 20/5/2026"
+      ],
+      "canales_raw": [
+        "LPF Play",
+        "Miércoles, 20/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-nacional-universitario": {
+      "id": "feva-2026-05-13-nacional-universitario",
+      "fixture_id": "feva-2026-05-13-nacional-universitario",
+      "partido": "Nacional vs Universitario",
+      "local": "Nacional",
+      "visitante": "Universitario",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cr-flamengo-estudiantes-lp": {
+      "id": "feva-2026-05-13-cr-flamengo-estudiantes-lp",
+      "fixture_id": "feva-2026-05-13-cr-flamengo-estudiantes-lp",
+      "partido": "CR Flamengo vs Estudiantes LP",
+      "local": "CR Flamengo",
+      "visitante": "Estudiantes LP",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ldu-quito-lanus": {
+      "id": "feva-2026-05-13-ldu-quito-lanus",
+      "fixture_id": "feva-2026-05-13-ldu-quito-lanus",
+      "partido": "LDU Quito vs Lanús",
+      "local": "LDU Quito",
+      "visitante": "Lanús",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-palmeiras-cerro-porteno": {
+      "id": "feva-2026-05-13-palmeiras-cerro-porteno",
+      "fixture_id": "feva-2026-05-13-palmeiras-cerro-porteno",
+      "partido": "Palmeiras vs Cerro Porteño",
+      "local": "Palmeiras",
+      "visitante": "Cerro Porteño",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-junior-sporting-cristal": {
+      "id": "feva-2026-05-13-junior-sporting-cristal",
+      "fixture_id": "feva-2026-05-13-junior-sporting-cristal",
+      "partido": "Junior vs Sporting Cristal",
+      "local": "Junior",
+      "visitante": "Sporting Cristal",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T23:00:00",
+      "dia": "2026-05-13",
+      "hora": "23:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cusco-fc-medellin": {
+      "id": "feva-2026-05-13-cusco-fc-medellin",
+      "fixture_id": "feva-2026-05-13-cusco-fc-medellin",
+      "partido": "Cusco FC vs Medellín",
+      "local": "Cusco FC",
+      "visitante": "Medellín",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T23:00:00",
+      "dia": "2026-05-13",
+      "hora": "23:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-santos-san-lorenzo": {
+      "id": "feva-2026-05-13-santos-san-lorenzo",
+      "fixture_id": "feva-2026-05-13-santos-san-lorenzo",
+      "partido": "Santos vs San Lorenzo",
+      "local": "Santos",
+      "visitante": "San Lorenzo",
+      "liga": "Copa Sudamericana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-olimpia-vasco-da-gama": {
+      "id": "feva-2026-05-13-olimpia-vasco-da-gama",
+      "fixture_id": "feva-2026-05-13-olimpia-vasco-da-gama",
+      "partido": "Olimpia vs Vasco da Gama",
+      "local": "Olimpia",
+      "visitante": "Vasco da Gama",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-boston-river-o-higgins": {
+      "id": "feva-2026-05-13-boston-river-o-higgins",
+      "fixture_id": "feva-2026-05-13-boston-river-o-higgins",
+      "partido": "Boston River vs O'Higgins",
+      "local": "Boston River",
+      "visitante": "O'Higgins",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-gremio-palestino": {
+      "id": "feva-2026-05-13-gremio-palestino",
+      "fixture_id": "feva-2026-05-13-gremio-palestino",
+      "partido": "Grêmio vs Palestino",
+      "local": "Grêmio",
+      "visitante": "Palestino",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-independiente-petrolero-botafogo": {
+      "id": "feva-2026-05-13-independiente-petrolero-botafogo",
+      "fixture_id": "feva-2026-05-13-independiente-petrolero-botafogo",
+      "partido": "Independiente Petrolero vs Botafogo",
+      "local": "Independiente Petrolero",
+      "visitante": "Botafogo",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-river-plate-rb-bragantino": {
+      "id": "feva-2026-05-13-river-plate-rb-bragantino",
+      "fixture_id": "feva-2026-05-13-river-plate-rb-bragantino",
+      "partido": "River Plate vs RB Bragantino",
+      "local": "River Plate",
+      "visitante": "RB Bragantino",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Canal por confirmar"
+      ],
+      "canales_raw": [
+        "Canal por confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-melbourne-city-women-tokyo-verdy-beleza": {
+      "id": "feva-2026-05-13-melbourne-city-women-tokyo-verdy-beleza",
+      "fixture_id": "feva-2026-05-13-melbourne-city-women-tokyo-verdy-beleza",
+      "partido": "Melbourne City Women vs Tokyo Verdy Beleza",
+      "local": "Melbourne City Women",
+      "visitante": "Tokyo Verdy Beleza",
+      "liga": "AFC Women's Champions League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T02:00:00",
+      "dia": "2026-05-13",
+      "hora": "02:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-naegohyang-women-s-fc-suwon-wfc": {
+      "id": "feva-2026-05-13-naegohyang-women-s-fc-suwon-wfc",
+      "fixture_id": "feva-2026-05-13-naegohyang-women-s-fc-suwon-wfc",
+      "partido": "Naegohyang Women's FC vs Suwon WFC",
+      "local": "Naegohyang Women's FC",
+      "visitante": "Suwon WFC",
+      "liga": "AFC Women's Champions League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T07:00:00",
+      "dia": "2026-05-13",
+      "hora": "07:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-freiburg-aston-villa": {
+      "id": "feva-2026-05-13-freiburg-aston-villa",
+      "fixture_id": "feva-2026-05-13-freiburg-aston-villa",
+      "partido": "Freiburg vs Aston Villa",
+      "local": "Freiburg",
+      "visitante": "Aston Villa",
+      "liga": "Europa League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium",
+        "DAZN (Ver en directo)"
+      ],
+      "canales_raw": [
+        "Disney+ Premium",
+        "DAZN (Ver en directo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-tigre-reserva-sarmiento-reserva": {
+      "id": "feva-2026-05-13-tigre-reserva-sarmiento-reserva",
+      "fixture_id": "feva-2026-05-13-tigre-reserva-sarmiento-reserva",
+      "partido": "Tigre Reserva vs Sarmiento Reserva",
+      "local": "Tigre Reserva",
+      "visitante": "Sarmiento Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-rosario-central-reserva-argentinos-juniors-reserva": {
+      "id": "feva-2026-05-13-rosario-central-reserva-argentinos-juniors-reserva",
+      "fixture_id": "feva-2026-05-13-rosario-central-reserva-argentinos-juniors-reserva",
+      "partido": "Rosario Central Reserva vs Argentinos Juniors Reserva",
+      "local": "Rosario Central Reserva",
+      "visitante": "Argentinos Juniors Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-platense-reserva-newell-s-old-boys-reserva": {
+      "id": "feva-2026-05-13-platense-reserva-newell-s-old-boys-reserva",
+      "fixture_id": "feva-2026-05-13-platense-reserva-newell-s-old-boys-reserva",
+      "partido": "Platense Reserva vs Newell's Old Boys Reserva",
+      "local": "Platense Reserva",
+      "visitante": "Newell's Old Boys Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-at-rafaela-reserva-defensa-y-justicia-reserva": {
+      "id": "feva-2026-05-13-at-rafaela-reserva-defensa-y-justicia-reserva",
+      "fixture_id": "feva-2026-05-13-at-rafaela-reserva-defensa-y-justicia-reserva",
+      "partido": "At. Rafaela Reserva vs Defensa y Justicia Reserva",
+      "local": "At. Rafaela Reserva",
+      "visitante": "Defensa y Justicia Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-central-cordoba-reserva-deportivo-riestra-reserva": {
+      "id": "feva-2026-05-13-central-cordoba-reserva-deportivo-riestra-reserva",
+      "fixture_id": "feva-2026-05-13-central-cordoba-reserva-deportivo-riestra-reserva",
+      "partido": "Central Córdoba Reserva vs Deportivo Riestra Reserva",
+      "local": "Central Córdoba Reserva",
+      "visitante": "Deportivo Riestra Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-boca-juniors-reserva-ca-huracan-reserva": {
+      "id": "feva-2026-05-13-boca-juniors-reserva-ca-huracan-reserva",
+      "fixture_id": "feva-2026-05-13-boca-juniors-reserva-ca-huracan-reserva",
+      "partido": "Boca Juniors Reserva vs CA Huracán Reserva",
+      "local": "Boca Juniors Reserva",
+      "visitante": "CA Huracán Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play",
+        "Jueves, 21/5/2026"
+      ],
+      "canales_raw": [
+        "LPF Play",
+        "Jueves, 21/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-la-guaira-independiente-rivadavia": {
+      "id": "feva-2026-05-13-la-guaira-independiente-rivadavia",
+      "fixture_id": "feva-2026-05-13-la-guaira-independiente-rivadavia",
+      "partido": "La Guaira vs Independiente Rivadavia",
+      "local": "La Guaira",
+      "visitante": "Independiente Rivadavia",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cdu-catolica-barcelona-sc": {
+      "id": "feva-2026-05-13-cdu-catolica-barcelona-sc",
+      "fixture_id": "feva-2026-05-13-cdu-catolica-barcelona-sc",
+      "partido": "CDU Católica vs Barcelona SC",
+      "local": "CDU Católica",
+      "visitante": "Barcelona SC",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-penarol-corinthians": {
+      "id": "feva-2026-05-13-penarol-corinthians",
+      "fixture_id": "feva-2026-05-13-penarol-corinthians",
+      "partido": "Peñarol vs Corinthians",
+      "local": "Peñarol",
+      "visitante": "Corinthians",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-atletico-mineiro-cienciano": {
+      "id": "feva-2026-05-13-atletico-mineiro-cienciano",
+      "fixture_id": "feva-2026-05-13-atletico-mineiro-cienciano",
+      "partido": "Atlético Mineiro vs Cienciano",
+      "local": "Atlético Mineiro",
+      "visitante": "Cienciano",
+      "liga": "Copa Sudamericana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-puerto-cabello-ca-juventud": {
+      "id": "feva-2026-05-13-puerto-cabello-ca-juventud",
+      "fixture_id": "feva-2026-05-13-puerto-cabello-ca-juventud",
+      "partido": "Puerto Cabello vs CA Juventud",
+      "local": "Puerto Cabello",
+      "visitante": "CA Juventud",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-racing-avellaneda-caracas-fc": {
+      "id": "feva-2026-05-13-racing-avellaneda-caracas-fc",
+      "fixture_id": "feva-2026-05-13-racing-avellaneda-caracas-fc",
+      "partido": "Racing Avellaneda vs Caracas FC",
+      "local": "Racing Avellaneda",
+      "visitante": "Caracas FC",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-club-blooming-carabobo": {
+      "id": "feva-2026-05-13-club-blooming-carabobo",
+      "fixture_id": "feva-2026-05-13-club-blooming-carabobo",
+      "partido": "Club Blooming vs Carabobo",
+      "local": "Club Blooming",
+      "visitante": "Carabobo",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-macara-alianza-atletico": {
+      "id": "feva-2026-05-13-macara-alianza-atletico",
+      "fixture_id": "feva-2026-05-13-macara-alianza-atletico",
+      "partido": "Macará vs Alianza Atlético",
+      "local": "Macará",
+      "visitante": "Alianza Atlético",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T23:00:00",
+      "dia": "2026-05-13",
+      "hora": "23:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Canal por confirmar"
+      ],
+      "canales_raw": [
+        "Canal por confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-estudiantes-lp-reserva-belgrano-reserva": {
+      "id": "feva-2026-05-13-estudiantes-lp-reserva-belgrano-reserva",
+      "fixture_id": "feva-2026-05-13-estudiantes-lp-reserva-belgrano-reserva",
+      "partido": "Estudiantes LP Reserva vs Belgrano Reserva",
+      "local": "Estudiantes LP Reserva",
+      "visitante": "Belgrano Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-barracas-central-reserva-union-santa-fe-reserva": {
+      "id": "feva-2026-05-13-barracas-central-reserva-union-santa-fe-reserva",
+      "fixture_id": "feva-2026-05-13-barracas-central-reserva-union-santa-fe-reserva",
+      "partido": "Barracas Central Reserva vs Unión Santa Fe Reserva",
+      "local": "Barracas Central Reserva",
+      "visitante": "Unión Santa Fe Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-velez-sarsfield-reserva-river-plate-reserva": {
+      "id": "feva-2026-05-13-velez-sarsfield-reserva-river-plate-reserva",
+      "fixture_id": "feva-2026-05-13-velez-sarsfield-reserva-river-plate-reserva",
+      "partido": "Vélez Sarsfield Reserva vs River Plate Reserva",
+      "local": "Vélez Sarsfield Reserva",
+      "visitante": "River Plate Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-instituto-reserva-godoy-cruz-reserva": {
+      "id": "feva-2026-05-13-instituto-reserva-godoy-cruz-reserva",
+      "fixture_id": "feva-2026-05-13-instituto-reserva-godoy-cruz-reserva",
+      "partido": "Instituto Reserva vs Godoy Cruz Reserva",
+      "local": "Instituto Reserva",
+      "visitante": "Godoy Cruz Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-gimnasia-mendoza-reserva-atletico-tucuman-reserva": {
+      "id": "feva-2026-05-13-gimnasia-mendoza-reserva-atletico-tucuman-reserva",
+      "fixture_id": "feva-2026-05-13-gimnasia-mendoza-reserva-atletico-tucuman-reserva",
+      "partido": "Gimnasia Mendoza Reserva vs Atlético Tucumán Reserva",
+      "local": "Gimnasia Mendoza Reserva",
+      "visitante": "Atlético Tucumán Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-talleres-cordoba-reserva-gimnasia-lp-reserva": {
+      "id": "feva-2026-05-13-talleres-cordoba-reserva-gimnasia-lp-reserva",
+      "fixture_id": "feva-2026-05-13-talleres-cordoba-reserva-gimnasia-lp-reserva",
+      "partido": "Talleres Córdoba Reserva vs Gimnasia LP Reserva",
+      "local": "Talleres Córdoba Reserva",
+      "visitante": "Gimnasia LP Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play",
+        "Viernes, 22/5/2026"
+      ],
+      "canales_raw": [
+        "LPF Play",
+        "Viernes, 22/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-9-de-octubre-manta-fc": {
+      "id": "feva-2026-05-13-9-de-octubre-manta-fc",
+      "fixture_id": "feva-2026-05-13-9-de-octubre-manta-fc",
+      "partido": "9 de Octubre vs Manta FC",
+      "local": "9 de Octubre",
+      "visitante": "Manta FC",
+      "liga": "Copa Ecuador",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DGO",
+        "DSports 4"
+      ],
+      "canales_raw": [
+        "DGO",
+        "DSports 4"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-acd-juan-pablo-ii-college-melgar": {
+      "id": "feva-2026-05-13-acd-juan-pablo-ii-college-melgar",
+      "fixture_id": "feva-2026-05-13-acd-juan-pablo-ii-college-melgar",
+      "partido": "ACD Juan Pablo II College vs Melgar",
+      "local": "ACD Juan Pablo II College",
+      "visitante": "Melgar",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-al-jazira-al-ain": {
+      "id": "feva-2026-05-13-al-jazira-al-ain",
+      "fixture_id": "feva-2026-05-13-al-jazira-al-ain",
+      "partido": "Al Jazira vs Al Ain",
+      "local": "Al Jazira",
+      "visitante": "Al Ain",
+      "liga": "UAE President's Cup",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T12:40:00",
+      "dia": "2026-05-13",
+      "hora": "12:40",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "DAZN App Gratis ()",
+        "FIFA+",
+        "Sábado, 23/5/2026"
+      ],
+      "canales_raw": [
+        "DAZN App Gratis ()",
+        "FIFA+",
+        "Sábado, 23/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-tristan-suarez-colegiales": {
+      "id": "feva-2026-05-13-tristan-suarez-colegiales",
+      "fixture_id": "feva-2026-05-13-tristan-suarez-colegiales",
+      "partido": "Tristán Suárez vs Colegiales",
+      "local": "Tristán Suárez",
+      "visitante": "Colegiales",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-los-andes-racing-cordoba": {
+      "id": "feva-2026-05-13-los-andes-racing-cordoba",
+      "fixture_id": "feva-2026-05-13-los-andes-racing-cordoba",
+      "partido": "Los Andes vs Racing Córdoba",
+      "local": "Los Andes",
+      "visitante": "Racing Córdoba",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-deportivo-moron-estudiantes-ba": {
+      "id": "feva-2026-05-13-deportivo-moron-estudiantes-ba",
+      "fixture_id": "feva-2026-05-13-deportivo-moron-estudiantes-ba",
+      "partido": "Deportivo Morón vs Estudiantes BA",
+      "local": "Deportivo Morón",
+      "visitante": "Estudiantes BA",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-san-telmo-ciudad-de-bolivar": {
+      "id": "feva-2026-05-13-san-telmo-ciudad-de-bolivar",
+      "fixture_id": "feva-2026-05-13-san-telmo-ciudad-de-bolivar",
+      "partido": "San Telmo vs Ciudad de Bolivar",
+      "local": "San Telmo",
+      "visitante": "Ciudad de Bolivar",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-san-miguel-almirante-brown": {
+      "id": "feva-2026-05-13-san-miguel-almirante-brown",
+      "fixture_id": "feva-2026-05-13-san-miguel-almirante-brown",
+      "partido": "San Miguel vs Almirante Brown",
+      "local": "San Miguel",
+      "visitante": "Almirante Brown",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-nueva-chicago-temperley": {
+      "id": "feva-2026-05-13-nueva-chicago-temperley",
+      "fixture_id": "feva-2026-05-13-nueva-chicago-temperley",
+      "partido": "Nueva Chicago vs Temperley",
+      "local": "Nueva Chicago",
+      "visitante": "Temperley",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-san-martin-sj-deportivo-maipu": {
+      "id": "feva-2026-05-13-san-martin-sj-deportivo-maipu",
+      "fixture_id": "feva-2026-05-13-san-martin-sj-deportivo-maipu",
+      "partido": "San Martín SJ vs Deportivo Maipú",
+      "local": "San Martín SJ",
+      "visitante": "Deportivo Maipú",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:30:00",
+      "dia": "2026-05-13",
+      "hora": "16:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-at-rafaela-midland": {
+      "id": "feva-2026-05-13-at-rafaela-midland",
+      "fixture_id": "feva-2026-05-13-at-rafaela-midland",
+      "partido": "At. Rafaela vs Midland",
+      "local": "At. Rafaela",
+      "visitante": "Midland",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:00:00",
+      "dia": "2026-05-13",
+      "hora": "18:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-arsenal-sarandi-villa-san-carlos": {
+      "id": "feva-2026-05-13-arsenal-sarandi-villa-san-carlos",
+      "fixture_id": "feva-2026-05-13-arsenal-sarandi-villa-san-carlos",
+      "partido": "Arsenal Sarandí vs Villa San Carlos",
+      "local": "Arsenal Sarandí",
+      "visitante": "Villa San Carlos",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-brown-de-adrogue-deportivo-merlo": {
+      "id": "feva-2026-05-13-brown-de-adrogue-deportivo-merlo",
+      "fixture_id": "feva-2026-05-13-brown-de-adrogue-deportivo-merlo",
+      "partido": "Brown de Adrogué vs Deportivo Merlo",
+      "local": "Brown de Adrogué",
+      "visitante": "Deportivo Merlo",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-laferrere-deportivo-camioneros": {
+      "id": "feva-2026-05-13-laferrere-deportivo-camioneros",
+      "fixture_id": "feva-2026-05-13-laferrere-deportivo-camioneros",
+      "partido": "Laferrere vs Deportivo Camioneros",
+      "local": "Laferrere",
+      "visitante": "Deportivo Camioneros",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-villa-dalmine-real-pilar": {
+      "id": "feva-2026-05-13-villa-dalmine-real-pilar",
+      "fixture_id": "feva-2026-05-13-villa-dalmine-real-pilar",
+      "partido": "Villa Dálmine vs Real Pilar",
+      "local": "Villa Dálmine",
+      "visitante": "Real Pilar",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-dep-armenio-dock-sud": {
+      "id": "feva-2026-05-13-dep-armenio-dock-sud",
+      "fixture_id": "feva-2026-05-13-dep-armenio-dock-sud",
+      "partido": "Dep. Armenio vs Dock Sud",
+      "local": "Dep. Armenio",
+      "visitante": "Dock Sud",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-flandria-comunicaciones": {
+      "id": "feva-2026-05-13-flandria-comunicaciones",
+      "fixture_id": "feva-2026-05-13-flandria-comunicaciones",
+      "partido": "Flandria vs Comunicaciones",
+      "local": "Flandria",
+      "visitante": "Comunicaciones",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ca-talleres-sportivo-italiano": {
+      "id": "feva-2026-05-13-ca-talleres-sportivo-italiano",
+      "fixture_id": "feva-2026-05-13-ca-talleres-sportivo-italiano",
+      "partido": "CA Talleres vs Sportivo Italiano",
+      "local": "CA Talleres",
+      "visitante": "Sportivo Italiano",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-excursionistas-csd-liniers": {
+      "id": "feva-2026-05-13-excursionistas-csd-liniers",
+      "fixture_id": "feva-2026-05-13-excursionistas-csd-liniers",
+      "partido": "Excursionistas vs CSD Liniers",
+      "local": "Excursionistas",
+      "visitante": "CSD Liniers",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-argentinos-quilmes-defensores-unidos": {
+      "id": "feva-2026-05-13-argentinos-quilmes-defensores-unidos",
+      "fixture_id": "feva-2026-05-13-argentinos-quilmes-defensores-unidos",
+      "partido": "Argentinos Quilmes vs Defensores Unidos",
+      "local": "Argentinos Quilmes",
+      "visitante": "Defensores Unidos",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ituzaingo-uai-urquiza": {
+      "id": "feva-2026-05-13-ituzaingo-uai-urquiza",
+      "fixture_id": "feva-2026-05-13-ituzaingo-uai-urquiza",
+      "partido": "Ituzaingó vs UAI Urquiza",
+      "local": "Ituzaingó",
+      "visitante": "UAI Urquiza",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-argentino-merlo-san-martin-burzaco": {
+      "id": "feva-2026-05-13-argentino-merlo-san-martin-burzaco",
+      "fixture_id": "feva-2026-05-13-argentino-merlo-san-martin-burzaco",
+      "partido": "Argentino Merlo vs San Martín Burzaco",
+      "local": "Argentino Merlo",
+      "visitante": "San Martín Burzaco",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-tbd-tbd": {
+      "id": "feva-2026-05-13-tbd-tbd",
+      "fixture_id": "feva-2026-05-13-tbd-tbd",
+      "partido": "TBD vs TBD",
+      "local": "TBD",
+      "visitante": "TBD",
+      "liga": "AFC Women's Champions League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T02:00:00",
+      "dia": "2026-05-13",
+      "hora": "02:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fc-barcelona-femenino-o-lyonnais-femenino": {
+      "id": "feva-2026-05-13-fc-barcelona-femenino-o-lyonnais-femenino",
+      "fixture_id": "feva-2026-05-13-fc-barcelona-femenino-o-lyonnais-femenino",
+      "partido": "FC Barcelona Femenino vs O. Lyonnais Femenino",
+      "local": "FC Barcelona Femenino",
+      "visitante": "O. Lyonnais Femenino",
+      "liga": "Champions League Femenina",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T13:00:00",
+      "dia": "2026-05-13",
+      "hora": "13:00",
+      "fase": "Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-utc-cajamarca-sport-boys-a": {
+      "id": "feva-2026-05-13-utc-cajamarca-sport-boys-a",
+      "fixture_id": "feva-2026-05-13-utc-cajamarca-sport-boys-a",
+      "partido": "UTC Cajamarca vs Sport Boys A.",
+      "local": "UTC Cajamarca",
+      "visitante": "Sport Boys A.",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T14:45:00",
+      "dia": "2026-05-13",
+      "hora": "14:45",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cd-moquegua-universitario": {
+      "id": "feva-2026-05-13-cd-moquegua-universitario",
+      "fixture_id": "feva-2026-05-13-cd-moquegua-universitario",
+      "partido": "CD Moquegua vs Universitario",
+      "local": "CD Moquegua",
+      "visitante": "Universitario",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cusco-fc-atletico-grau": {
+      "id": "feva-2026-05-13-cusco-fc-atletico-grau",
+      "fixture_id": "feva-2026-05-13-cusco-fc-atletico-grau",
+      "partido": "Cusco FC vs Atlético Grau",
+      "local": "Cusco FC",
+      "visitante": "Atlético Grau",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:15:00",
+      "dia": "2026-05-13",
+      "hora": "19:15",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-alianza-lima-cd-los-chankas": {
+      "id": "feva-2026-05-13-alianza-lima-cd-los-chankas",
+      "fixture_id": "feva-2026-05-13-alianza-lima-cd-los-chankas",
+      "partido": "Alianza Lima vs CD Los Chankas",
+      "local": "Alianza Lima",
+      "visitante": "CD Los Chankas",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:30:00",
+      "dia": "2026-05-13",
+      "hora": "22:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)",
+        "Liga Futve"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)",
+        "Liga Futve"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-puerto-cabello-ucv": {
+      "id": "feva-2026-05-13-puerto-cabello-ucv",
+      "fixture_id": "feva-2026-05-13-puerto-cabello-ucv",
+      "partido": "Puerto Cabello vs UCV",
+      "local": "Puerto Cabello",
+      "visitante": "UCV",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Liga Futve YouTube"
+      ],
+      "canales_raw": [
+        "Liga Futve YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-portuguesa-fc-la-guaira": {
+      "id": "feva-2026-05-13-portuguesa-fc-la-guaira",
+      "fixture_id": "feva-2026-05-13-portuguesa-fc-la-guaira",
+      "partido": "Portuguesa FC vs La Guaira",
+      "local": "Portuguesa FC",
+      "visitante": "La Guaira",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Liga Futve YouTube"
+      ],
+      "canales_raw": [
+        "Liga Futve YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-st-louis-city-sc-austin-fc": {
+      "id": "feva-2026-05-13-st-louis-city-sc-austin-fc",
+      "fixture_id": "feva-2026-05-13-st-louis-city-sc-austin-fc",
+      "partido": "St. Louis City SC vs Austin FC",
+      "local": "St. Louis City SC",
+      "visitante": "Austin FC",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-minnesota-utd-real-salt-lake": {
+      "id": "feva-2026-05-13-minnesota-utd-real-salt-lake",
+      "fixture_id": "feva-2026-05-13-minnesota-utd-real-salt-lake",
+      "partido": "Minnesota Utd. vs Real Salt Lake",
+      "local": "Minnesota Utd.",
+      "visitante": "Real Salt Lake",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:30:00",
+      "dia": "2026-05-13",
+      "hora": "17:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-dc-united-cf-montreal": {
+      "id": "feva-2026-05-13-dc-united-cf-montreal",
+      "fixture_id": "feva-2026-05-13-dc-united-cf-montreal",
+      "partido": "DC United vs CF Montréal",
+      "local": "DC United",
+      "visitante": "CF Montréal",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fc-cincinnati-orlando-city": {
+      "id": "feva-2026-05-13-fc-cincinnati-orlando-city",
+      "fixture_id": "feva-2026-05-13-fc-cincinnati-orlando-city",
+      "partido": "FC Cincinnati vs Orlando City",
+      "local": "FC Cincinnati",
+      "visitante": "Orlando City",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-charlotte-fc-new-england-revolution": {
+      "id": "feva-2026-05-13-charlotte-fc-new-england-revolution",
+      "fixture_id": "feva-2026-05-13-charlotte-fc-new-england-revolution",
+      "partido": "Charlotte FC vs New England Revolution",
+      "local": "Charlotte FC",
+      "visitante": "New England Revolution",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-chicago-fire-toronto-fc": {
+      "id": "feva-2026-05-13-chicago-fire-toronto-fc",
+      "fixture_id": "feva-2026-05-13-chicago-fire-toronto-fc",
+      "partido": "Chicago Fire vs Toronto FC",
+      "local": "Chicago Fire",
+      "visitante": "Toronto FC",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sporting-kc-new-york-rb": {
+      "id": "feva-2026-05-13-sporting-kc-new-york-rb",
+      "fixture_id": "feva-2026-05-13-sporting-kc-new-york-rb",
+      "partido": "Sporting KC vs New York RB",
+      "local": "Sporting KC",
+      "visitante": "New York RB",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-nashville-sc-new-york-city": {
+      "id": "feva-2026-05-13-nashville-sc-new-york-city",
+      "fixture_id": "feva-2026-05-13-nashville-sc-new-york-city",
+      "partido": "Nashville SC vs New York City",
+      "local": "Nashville SC",
+      "visitante": "New York City",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-colorado-rapids-fc-dallas": {
+      "id": "feva-2026-05-13-colorado-rapids-fc-dallas",
+      "fixture_id": "feva-2026-05-13-colorado-rapids-fc-dallas",
+      "partido": "Colorado Rapids vs FC Dallas",
+      "local": "Colorado Rapids",
+      "visitante": "FC Dallas",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:30:00",
+      "dia": "2026-05-13",
+      "hora": "22:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-portland-timbers-san-jose-earthquakes": {
+      "id": "feva-2026-05-13-portland-timbers-san-jose-earthquakes",
+      "fixture_id": "feva-2026-05-13-portland-timbers-san-jose-earthquakes",
+      "partido": "Portland Timbers vs San Jose Earthquakes",
+      "local": "Portland Timbers",
+      "visitante": "San Jose Earthquakes",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:30:00",
+      "dia": "2026-05-13",
+      "hora": "22:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-san-diego-fc-vancouver-whitecaps": {
+      "id": "feva-2026-05-13-san-diego-fc-vancouver-whitecaps",
+      "fixture_id": "feva-2026-05-13-san-diego-fc-vancouver-whitecaps",
+      "partido": "San Diego FC vs Vancouver Whitecaps",
+      "local": "San Diego FC",
+      "visitante": "Vancouver Whitecaps",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:30:00",
+      "dia": "2026-05-13",
+      "hora": "22:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-la-galaxy-houston-dynamo": {
+      "id": "feva-2026-05-13-la-galaxy-houston-dynamo",
+      "fixture_id": "feva-2026-05-13-la-galaxy-houston-dynamo",
+      "partido": "LA Galaxy vs Houston Dynamo",
+      "local": "LA Galaxy",
+      "visitante": "Houston Dynamo",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T23:30:00",
+      "dia": "2026-05-13",
+      "hora": "23:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cerro-porteno-rubio-nu": {
+      "id": "feva-2026-05-13-cerro-porteno-rubio-nu",
+      "fixture_id": "feva-2026-05-13-cerro-porteno-rubio-nu",
+      "partido": "Cerro Porteño vs Rubio Ñu",
+      "local": "Cerro Porteño",
+      "visitante": "Rubio Ñu",
+      "liga": "Primera División Paraguay",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "canales_raw": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-club-nacional-club-libertad": {
+      "id": "feva-2026-05-13-club-nacional-club-libertad",
+      "fixture_id": "feva-2026-05-13-club-nacional-club-libertad",
+      "partido": "Club Nacional vs Club Libertad",
+      "local": "Club Nacional",
+      "visitante": "Club Libertad",
+      "liga": "Primera División Paraguay",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "canales_raw": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sportivo-luqueno-olimpia": {
+      "id": "feva-2026-05-13-sportivo-luqueno-olimpia",
+      "fixture_id": "feva-2026-05-13-sportivo-luqueno-olimpia",
+      "partido": "Sportivo Luqueño vs Olimpia",
+      "local": "Sportivo Luqueño",
+      "visitante": "Olimpia",
+      "liga": "Primera División Paraguay",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "canales_raw": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-2-de-mayo-cs-san-lorenzo": {
+      "id": "feva-2026-05-13-2-de-mayo-cs-san-lorenzo",
+      "fixture_id": "feva-2026-05-13-2-de-mayo-cs-san-lorenzo",
+      "partido": "2 de Mayo vs CS San Lorenzo",
+      "local": "2 de Mayo",
+      "visitante": "CS San Lorenzo",
+      "liga": "Primera División Paraguay",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "canales_raw": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-deportivo-recoleta-club-guarani": {
+      "id": "feva-2026-05-13-deportivo-recoleta-club-guarani",
+      "fixture_id": "feva-2026-05-13-deportivo-recoleta-club-guarani",
+      "partido": "Deportivo Recoleta vs Club Guaraní",
+      "local": "Deportivo Recoleta",
+      "visitante": "Club Guaraní",
+      "liga": "Primera División Paraguay",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "canales_raw": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sportivo-ameliano-trinidense": {
+      "id": "feva-2026-05-13-sportivo-ameliano-trinidense",
+      "fixture_id": "feva-2026-05-13-sportivo-ameliano-trinidense",
+      "partido": "Sportivo Ameliano vs Trinidense",
+      "local": "Sportivo Ameliano",
+      "visitante": "Trinidense",
+      "liga": "Primera División Paraguay",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "canales_raw": [
+        "Fútbol Paraguayo (634 DirecTV)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sao-paulo-botafogo": {
+      "id": "feva-2026-05-13-sao-paulo-botafogo",
+      "fixture_id": "feva-2026-05-13-sao-paulo-botafogo",
+      "partido": "São Paulo vs Botafogo",
+      "local": "São Paulo",
+      "visitante": "Botafogo",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-vitoria-internacional": {
+      "id": "feva-2026-05-13-vitoria-internacional",
+      "fixture_id": "feva-2026-05-13-vitoria-internacional",
+      "partido": "Vitória vs Internacional",
+      "local": "Vitória",
+      "visitante": "Internacional",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-gremio-santos": {
+      "id": "feva-2026-05-13-gremio-santos",
+      "fixture_id": "feva-2026-05-13-gremio-santos",
+      "partido": "Grêmio vs Santos",
+      "local": "Grêmio",
+      "visitante": "Santos",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-mirassol-fluminense": {
+      "id": "feva-2026-05-13-mirassol-fluminense",
+      "fixture_id": "feva-2026-05-13-mirassol-fluminense",
+      "partido": "Mirassol vs Fluminense",
+      "local": "Mirassol",
+      "visitante": "Fluminense",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cr-flamengo-palmeiras": {
+      "id": "feva-2026-05-13-cr-flamengo-palmeiras",
+      "fixture_id": "feva-2026-05-13-cr-flamengo-palmeiras",
+      "partido": "CR Flamengo vs Palmeiras",
+      "local": "CR Flamengo",
+      "visitante": "Palmeiras",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Flamengo TV YouTube"
+      ],
+      "canales_raw": [
+        "Flamengo TV YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fiorentina-atalanta": {
+      "id": "feva-2026-05-13-fiorentina-atalanta",
+      "fixture_id": "feva-2026-05-13-fiorentina-atalanta",
+      "partido": "Fiorentina vs Atalanta",
+      "local": "Fiorentina",
+      "visitante": "Atalanta",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-napoli-udinese": {
+      "id": "feva-2026-05-13-napoli-udinese",
+      "fixture_id": "feva-2026-05-13-napoli-udinese",
+      "partido": "Napoli vs Udinese",
+      "local": "Napoli",
+      "visitante": "Udinese",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ac-milan-cagliari": {
+      "id": "feva-2026-05-13-ac-milan-cagliari",
+      "fixture_id": "feva-2026-05-13-ac-milan-cagliari",
+      "partido": "AC Milan vs Cagliari",
+      "local": "AC Milan",
+      "visitante": "Cagliari",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-bologna-inter-milan": {
+      "id": "feva-2026-05-13-bologna-inter-milan",
+      "fixture_id": "feva-2026-05-13-bologna-inter-milan",
+      "partido": "Bologna vs Inter Milan",
+      "local": "Bologna",
+      "visitante": "Inter Milan",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-lazio-pisa-sporting-club": {
+      "id": "feva-2026-05-13-lazio-pisa-sporting-club",
+      "fixture_id": "feva-2026-05-13-lazio-pisa-sporting-club",
+      "partido": "Lazio vs Pisa Sporting Club",
+      "local": "Lazio",
+      "visitante": "Pisa Sporting Club",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-parma-sassuolo": {
+      "id": "feva-2026-05-13-parma-sassuolo",
+      "fixture_id": "feva-2026-05-13-parma-sassuolo",
+      "partido": "Parma vs Sassuolo",
+      "local": "Parma",
+      "visitante": "Sassuolo",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-torino-juventus": {
+      "id": "feva-2026-05-13-torino-juventus",
+      "fixture_id": "feva-2026-05-13-torino-juventus",
+      "partido": "Torino vs Juventus",
+      "local": "Torino",
+      "visitante": "Juventus",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-hellas-verona-as-roma": {
+      "id": "feva-2026-05-13-hellas-verona-as-roma",
+      "fixture_id": "feva-2026-05-13-hellas-verona-as-roma",
+      "partido": "Hellas Verona vs AS Roma",
+      "local": "Hellas Verona",
+      "visitante": "AS Roma",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-us-lecce-genoa": {
+      "id": "feva-2026-05-13-us-lecce-genoa",
+      "fixture_id": "feva-2026-05-13-us-lecce-genoa",
+      "partido": "US Lecce vs Genoa",
+      "local": "US Lecce",
+      "visitante": "Genoa",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-us-cremonese-como-1907": {
+      "id": "feva-2026-05-13-us-cremonese-como-1907",
+      "fixture_id": "feva-2026-05-13-us-cremonese-como-1907",
+      "partido": "US Cremonese vs Como 1907",
+      "local": "US Cremonese",
+      "visitante": "Como 1907",
+      "liga": "Serie A Italiana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:00:00",
+      "dia": "2026-05-13",
+      "hora": "21:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium",
+        "Domingo, 24/5/2026"
+      ],
+      "canales_raw": [
+        "Disney+ Premium",
+        "Domingo, 24/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-chacarita-juniors-almagro": {
+      "id": "feva-2026-05-13-chacarita-juniors-almagro",
+      "fixture_id": "feva-2026-05-13-chacarita-juniors-almagro",
+      "partido": "Chacarita Juniors vs Almagro",
+      "local": "Chacarita Juniors",
+      "visitante": "Almagro",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-acassuso-defensores-belgrano": {
+      "id": "feva-2026-05-13-acassuso-defensores-belgrano",
+      "fixture_id": "feva-2026-05-13-acassuso-defensores-belgrano",
+      "partido": "Acassuso vs Defensores Belgrano",
+      "local": "Acassuso",
+      "visitante": "Defensores Belgrano",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:30:00",
+      "dia": "2026-05-13",
+      "hora": "15:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ferro-carril-oeste-ca-central-norte": {
+      "id": "feva-2026-05-13-ferro-carril-oeste-ca-central-norte",
+      "fixture_id": "feva-2026-05-13-ferro-carril-oeste-ca-central-norte",
+      "partido": "Ferro Carril Oeste vs CA Central Norte",
+      "local": "Ferro Carril Oeste",
+      "visitante": "CA Central Norte",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-atletico-guemes-patronato": {
+      "id": "feva-2026-05-13-atletico-guemes-patronato",
+      "fixture_id": "feva-2026-05-13-atletico-guemes-patronato",
+      "partido": "Atlético Güemes vs Patronato",
+      "local": "Atlético Güemes",
+      "visitante": "Patronato",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-chaco-for-ever-deportivo-madryn": {
+      "id": "feva-2026-05-13-chaco-for-ever-deportivo-madryn",
+      "fixture_id": "feva-2026-05-13-chaco-for-ever-deportivo-madryn",
+      "partido": "Chaco For Ever vs Deportivo Madryn",
+      "local": "Chaco For Ever",
+      "visitante": "Deportivo Madryn",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-agropecuario-quilmes": {
+      "id": "feva-2026-05-13-agropecuario-quilmes",
+      "fixture_id": "feva-2026-05-13-agropecuario-quilmes",
+      "partido": "Agropecuario vs Quilmes",
+      "local": "Agropecuario",
+      "visitante": "Quilmes",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-godoy-cruz-all-boys": {
+      "id": "feva-2026-05-13-godoy-cruz-all-boys",
+      "fixture_id": "feva-2026-05-13-godoy-cruz-all-boys",
+      "partido": "Godoy Cruz vs All Boys",
+      "local": "Godoy Cruz",
+      "visitante": "All Boys",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:30:00",
+      "dia": "2026-05-13",
+      "hora": "16:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-gimnasia-y-tiro-gimnasia-jujuy": {
+      "id": "feva-2026-05-13-gimnasia-y-tiro-gimnasia-jujuy",
+      "fixture_id": "feva-2026-05-13-gimnasia-y-tiro-gimnasia-jujuy",
+      "partido": "Gimnasia y Tiro vs Gimnasia Jujuy",
+      "local": "Gimnasia y Tiro",
+      "visitante": "Gimnasia Jujuy",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ca-colon-ca-mitre": {
+      "id": "feva-2026-05-13-ca-colon-ca-mitre",
+      "fixture_id": "feva-2026-05-13-ca-colon-ca-mitre",
+      "partido": "CA Colón vs CA Mitre",
+      "local": "CA Colón",
+      "visitante": "CA Mitre",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:00:00",
+      "dia": "2026-05-13",
+      "hora": "18:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-san-martin-tucuman-ca-atlanta": {
+      "id": "feva-2026-05-13-san-martin-tucuman-ca-atlanta",
+      "fixture_id": "feva-2026-05-13-san-martin-tucuman-ca-atlanta",
+      "partido": "San Martín Tucumán vs CA Atlanta",
+      "local": "San Martín Tucumán",
+      "visitante": "CA Atlanta",
+      "liga": "Primera Nacional",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-manchester-city-aston-villa": {
+      "id": "feva-2026-05-13-manchester-city-aston-villa",
+      "fixture_id": "feva-2026-05-13-manchester-city-aston-villa",
+      "partido": "Manchester City vs Aston Villa",
+      "local": "Manchester City",
+      "visitante": "Aston Villa",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-tottenham-everton": {
+      "id": "feva-2026-05-13-tottenham-everton",
+      "fixture_id": "feva-2026-05-13-tottenham-everton",
+      "partido": "Tottenham vs Everton",
+      "local": "Tottenham",
+      "visitante": "Everton",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-west-ham-leeds-utd": {
+      "id": "feva-2026-05-13-west-ham-leeds-utd",
+      "fixture_id": "feva-2026-05-13-west-ham-leeds-utd",
+      "partido": "West Ham vs Leeds Utd",
+      "local": "West Ham",
+      "visitante": "Leeds Utd",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sunderland-chelsea": {
+      "id": "feva-2026-05-13-sunderland-chelsea",
+      "fixture_id": "feva-2026-05-13-sunderland-chelsea",
+      "partido": "Sunderland vs Chelsea",
+      "local": "Sunderland",
+      "visitante": "Chelsea",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-liverpool-brentford": {
+      "id": "feva-2026-05-13-liverpool-brentford",
+      "fixture_id": "feva-2026-05-13-liverpool-brentford",
+      "partido": "Liverpool vs Brentford",
+      "local": "Liverpool",
+      "visitante": "Brentford",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-fulham-newcastle": {
+      "id": "feva-2026-05-13-fulham-newcastle",
+      "fixture_id": "feva-2026-05-13-fulham-newcastle",
+      "partido": "Fulham vs Newcastle",
+      "local": "Fulham",
+      "visitante": "Newcastle",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-brighton-manchester-utd": {
+      "id": "feva-2026-05-13-brighton-manchester-utd",
+      "fixture_id": "feva-2026-05-13-brighton-manchester-utd",
+      "partido": "Brighton vs Manchester Utd.",
+      "local": "Brighton",
+      "visitante": "Manchester Utd.",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-nottingham-forest-bournemouth": {
+      "id": "feva-2026-05-13-nottingham-forest-bournemouth",
+      "fixture_id": "feva-2026-05-13-nottingham-forest-bournemouth",
+      "partido": "Nottingham Forest vs Bournemouth",
+      "local": "Nottingham Forest",
+      "visitante": "Bournemouth",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-burnley-wolverhampton": {
+      "id": "feva-2026-05-13-burnley-wolverhampton",
+      "fixture_id": "feva-2026-05-13-burnley-wolverhampton",
+      "partido": "Burnley vs Wolverhampton",
+      "local": "Burnley",
+      "visitante": "Wolverhampton",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-crystal-palace-arsenal": {
+      "id": "feva-2026-05-13-crystal-palace-arsenal",
+      "fixture_id": "feva-2026-05-13-crystal-palace-arsenal",
+      "partido": "Crystal Palace vs Arsenal",
+      "local": "Crystal Palace",
+      "visitante": "Arsenal",
+      "liga": "Premier League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T12:00:00",
+      "dia": "2026-05-13",
+      "hora": "12:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sporting-cristal-ad-tarma": {
+      "id": "feva-2026-05-13-sporting-cristal-ad-tarma",
+      "fixture_id": "feva-2026-05-13-sporting-cristal-ad-tarma",
+      "partido": "Sporting Cristal vs AD Tarma",
+      "local": "Sporting Cristal",
+      "visitante": "AD Tarma",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T13:00:00",
+      "dia": "2026-05-13",
+      "hora": "13:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-sport-huancayo-cienciano": {
+      "id": "feva-2026-05-13-sport-huancayo-cienciano",
+      "fixture_id": "feva-2026-05-13-sport-huancayo-cienciano",
+      "partido": "Sport Huancayo vs Cienciano",
+      "local": "Sport Huancayo",
+      "visitante": "Cienciano",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:15:00",
+      "dia": "2026-05-13",
+      "hora": "15:15",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-alianza-atletico-fc-cajamarca": {
+      "id": "feva-2026-05-13-alianza-atletico-fc-cajamarca",
+      "fixture_id": "feva-2026-05-13-alianza-atletico-fc-cajamarca",
+      "partido": "Alianza Atlético vs FC Cajamarca",
+      "local": "Alianza Atlético",
+      "visitante": "FC Cajamarca",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:30:00",
+      "dia": "2026-05-13",
+      "hora": "17:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)",
+        "Liga Futve"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)",
+        "Liga Futve"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-carabobo-deportivo-tachira": {
+      "id": "feva-2026-05-13-carabobo-deportivo-tachira",
+      "fixture_id": "feva-2026-05-13-carabobo-deportivo-tachira",
+      "partido": "Carabobo vs Deportivo Táchira",
+      "local": "Carabobo",
+      "visitante": "Deportivo Táchira",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:00:00",
+      "dia": "2026-05-13",
+      "hora": "18:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Liga Futve YouTube"
+      ],
+      "canales_raw": [
+        "Liga Futve YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-estudiantes-merida-metropolitanos": {
+      "id": "feva-2026-05-13-estudiantes-merida-metropolitanos",
+      "fixture_id": "feva-2026-05-13-estudiantes-merida-metropolitanos",
+      "partido": "Estudiantes Mérida vs Metropolitanos",
+      "local": "Estudiantes Mérida",
+      "visitante": "Metropolitanos",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:00:00",
+      "dia": "2026-05-13",
+      "hora": "18:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Liga Futve YouTube"
+      ],
+      "canales_raw": [
+        "Liga Futve YouTube"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-columbus-crew-atlanta-united": {
+      "id": "feva-2026-05-13-columbus-crew-atlanta-united",
+      "fixture_id": "feva-2026-05-13-columbus-crew-atlanta-united",
+      "partido": "Columbus Crew vs Atlanta United",
+      "local": "Columbus Crew",
+      "visitante": "Atlanta United",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:00:00",
+      "dia": "2026-05-13",
+      "hora": "18:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-inter-miami-cf-philadelphia-union": {
+      "id": "feva-2026-05-13-inter-miami-cf-philadelphia-union",
+      "fixture_id": "feva-2026-05-13-inter-miami-cf-philadelphia-union",
+      "partido": "Inter Miami CF vs Philadelphia Union",
+      "local": "Inter Miami CF",
+      "visitante": "Philadelphia Union",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-los-angeles-fc-seattle-sounders": {
+      "id": "feva-2026-05-13-los-angeles-fc-seattle-sounders",
+      "fixture_id": "feva-2026-05-13-los-angeles-fc-seattle-sounders",
+      "partido": "Los Angeles FC vs Seattle Sounders",
+      "local": "Los Angeles FC",
+      "visitante": "Seattle Sounders",
+      "liga": "MLS",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T22:00:00",
+      "dia": "2026-05-13",
+      "hora": "22:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Apple TV"
+      ],
+      "canales_raw": [
+        "Apple TV"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-orlando-city-b-inter-miami-cf-ii": {
+      "id": "feva-2026-05-13-orlando-city-b-inter-miami-cf-ii",
+      "fixture_id": "feva-2026-05-13-orlando-city-b-inter-miami-cf-ii",
+      "partido": "Orlando City B vs Inter Miami CF II",
+      "local": "Orlando City B",
+      "visitante": "Inter Miami CF II",
+      "liga": "MLS Next Pro",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "OneFootball"
+      ],
+      "canales_raw": [
+        "OneFootball"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cruzeiro-chapecoense": {
+      "id": "feva-2026-05-13-cruzeiro-chapecoense",
+      "fixture_id": "feva-2026-05-13-cruzeiro-chapecoense",
+      "partido": "Cruzeiro vs Chapecoense",
+      "local": "Cruzeiro",
+      "visitante": "Chapecoense",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-remo-at-paranaense": {
+      "id": "feva-2026-05-13-remo-at-paranaense",
+      "fixture_id": "feva-2026-05-13-remo-at-paranaense",
+      "partido": "Remo vs At. Paranaense",
+      "local": "Remo",
+      "visitante": "At. Paranaense",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-corinthians-atletico-mineiro": {
+      "id": "feva-2026-05-13-corinthians-atletico-mineiro",
+      "fixture_id": "feva-2026-05-13-corinthians-atletico-mineiro",
+      "partido": "Corinthians vs Atlético Mineiro",
+      "local": "Corinthians",
+      "visitante": "Atlético Mineiro",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T18:30:00",
+      "dia": "2026-05-13",
+      "hora": "18:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-vasco-da-gama-rb-bragantino": {
+      "id": "feva-2026-05-13-vasco-da-gama-rb-bragantino",
+      "fixture_id": "feva-2026-05-13-vasco-da-gama-rb-bragantino",
+      "partido": "Vasco da Gama vs RB Bragantino",
+      "local": "Vasco da Gama",
+      "visitante": "RB Bragantino",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:30:00",
+      "dia": "2026-05-13",
+      "hora": "20:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)",
+        "Lunes, 25/5/2026"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)",
+        "Lunes, 25/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-comerciantes-unidos-deportivo-garcilaso": {
+      "id": "feva-2026-05-13-comerciantes-unidos-deportivo-garcilaso",
+      "fixture_id": "feva-2026-05-13-comerciantes-unidos-deportivo-garcilaso",
+      "partido": "Comerciantes Unidos vs Deportivo Garcilaso",
+      "local": "Comerciantes Unidos",
+      "visitante": "Deportivo Garcilaso",
+      "liga": "Liga 1 Perú",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:30:00",
+      "dia": "2026-05-13",
+      "hora": "17:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-coritiba-bahia": {
+      "id": "feva-2026-05-13-coritiba-bahia",
+      "fixture_id": "feva-2026-05-13-coritiba-bahia",
+      "partido": "Coritiba vs Bahía",
+      "local": "Coritiba",
+      "visitante": "Bahía",
+      "liga": "Serie A Brasil",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T20:00:00",
+      "dia": "2026-05-13",
+      "hora": "20:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Fanatiz (Míralo en vivo)",
+        "Martes, 26/5/2026"
+      ],
+      "canales_raw": [
+        "Fanatiz (Míralo en vivo)",
+        "Martes, 26/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-deportivo-merlo-csd-liniers": {
+      "id": "feva-2026-05-13-deportivo-merlo-csd-liniers",
+      "fixture_id": "feva-2026-05-13-deportivo-merlo-csd-liniers",
+      "partido": "Deportivo Merlo vs CSD Liniers",
+      "local": "Deportivo Merlo",
+      "visitante": "CSD Liniers",
+      "liga": "Primera B",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-brown-de-adrogue-ca-talleres": {
+      "id": "feva-2026-05-13-brown-de-adrogue-ca-talleres",
+      "fixture_id": "feva-2026-05-13-brown-de-adrogue-ca-talleres",
+      "partido": "Brown de Adrogué vs CA Talleres",
+      "local": "Brown de Adrogué",
+      "visitante": "CA Talleres",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-sportivo-italiano-san-martin-burzaco": {
+      "id": "feva-2026-05-13-sportivo-italiano-san-martin-burzaco",
+      "fixture_id": "feva-2026-05-13-sportivo-italiano-san-martin-burzaco",
+      "partido": "Sportivo Italiano vs San Martín Burzaco",
+      "local": "Sportivo Italiano",
+      "visitante": "San Martín Burzaco",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-dep-armenio-argentino-merlo": {
+      "id": "feva-2026-05-13-dep-armenio-argentino-merlo",
+      "fixture_id": "feva-2026-05-13-dep-armenio-argentino-merlo",
+      "partido": "Dep. Armenio vs Argentino Merlo",
+      "local": "Dep. Armenio",
+      "visitante": "Argentino Merlo",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-dock-sud-real-pilar": {
+      "id": "feva-2026-05-13-dock-sud-real-pilar",
+      "fixture_id": "feva-2026-05-13-dock-sud-real-pilar",
+      "partido": "Dock Sud vs Real Pilar",
+      "local": "Dock Sud",
+      "visitante": "Real Pilar",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-flandria-arsenal-sarandi": {
+      "id": "feva-2026-05-13-flandria-arsenal-sarandi",
+      "fixture_id": "feva-2026-05-13-flandria-arsenal-sarandi",
+      "partido": "Flandria vs Arsenal Sarandí",
+      "local": "Flandria",
+      "visitante": "Arsenal Sarandí",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-comunicaciones-uai-urquiza": {
+      "id": "feva-2026-05-13-comunicaciones-uai-urquiza",
+      "fixture_id": "feva-2026-05-13-comunicaciones-uai-urquiza",
+      "partido": "Comunicaciones vs UAI Urquiza",
+      "local": "Comunicaciones",
+      "visitante": "UAI Urquiza",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-argentinos-quilmes-excursionistas": {
+      "id": "feva-2026-05-13-argentinos-quilmes-excursionistas",
+      "fixture_id": "feva-2026-05-13-argentinos-quilmes-excursionistas",
+      "partido": "Argentinos Quilmes vs Excursionistas",
+      "local": "Argentinos Quilmes",
+      "visitante": "Excursionistas",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-ituzaingo-laferrere": {
+      "id": "feva-2026-05-13-ituzaingo-laferrere",
+      "fixture_id": "feva-2026-05-13-ituzaingo-laferrere",
+      "partido": "Ituzaingó vs Laferrere",
+      "local": "Ituzaingó",
+      "visitante": "Laferrere",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-deportivo-camioneros-villa-san-carlos": {
+      "id": "feva-2026-05-13-deportivo-camioneros-villa-san-carlos",
+      "fixture_id": "feva-2026-05-13-deportivo-camioneros-villa-san-carlos",
+      "partido": "Deportivo Camioneros vs Villa San Carlos",
+      "local": "Deportivo Camioneros",
+      "visitante": "Villa San Carlos",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-defensores-unidos-villa-dalmine": {
+      "id": "feva-2026-05-13-defensores-unidos-villa-dalmine",
+      "fixture_id": "feva-2026-05-13-defensores-unidos-villa-dalmine",
+      "partido": "Defensores Unidos vs Villa Dálmine",
+      "local": "Defensores Unidos",
+      "visitante": "Villa Dálmine",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T17:00:00",
+      "dia": "2026-05-13",
+      "hora": "17:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Canal por confirmar"
+      ],
+      "canales_raw": [
+        "Canal por confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-lanus-mirassol": {
+      "id": "feva-2026-05-13-lanus-mirassol",
+      "fixture_id": "feva-2026-05-13-lanus-mirassol",
+      "partido": "Lanús vs Mirassol",
+      "local": "Lanús",
+      "visitante": "Mirassol",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ldu-quito-always-ready": {
+      "id": "feva-2026-05-13-ldu-quito-always-ready",
+      "fixture_id": "feva-2026-05-13-ldu-quito-always-ready",
+      "partido": "LDU Quito vs Always Ready",
+      "local": "LDU Quito",
+      "visitante": "Always Ready",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-estudiantes-lp-medellin": {
+      "id": "feva-2026-05-13-estudiantes-lp-medellin",
+      "fixture_id": "feva-2026-05-13-estudiantes-lp-medellin",
+      "partido": "Estudiantes LP vs Medellín",
+      "local": "Estudiantes LP",
+      "visitante": "Medellín",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-cr-flamengo-cusco-fc": {
+      "id": "feva-2026-05-13-cr-flamengo-cusco-fc",
+      "fixture_id": "feva-2026-05-13-cr-flamengo-cusco-fc",
+      "partido": "CR Flamengo vs Cusco FC",
+      "local": "CR Flamengo",
+      "visitante": "Cusco FC",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-nacional-coquimbo-unido": {
+      "id": "feva-2026-05-13-nacional-coquimbo-unido",
+      "fixture_id": "feva-2026-05-13-nacional-coquimbo-unido",
+      "partido": "Nacional vs Coquimbo Unido",
+      "local": "Nacional",
+      "visitante": "Coquimbo Unido",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-universitario-deportes-tolima": {
+      "id": "feva-2026-05-13-universitario-deportes-tolima",
+      "fixture_id": "feva-2026-05-13-universitario-deportes-tolima",
+      "partido": "Universitario vs Deportes Tolima",
+      "local": "Universitario",
+      "visitante": "Deportes Tolima",
+      "liga": "Copa Libertadores",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-gremio-montevideo-city-torque": {
+      "id": "feva-2026-05-13-gremio-montevideo-city-torque",
+      "fixture_id": "feva-2026-05-13-gremio-montevideo-city-torque",
+      "partido": "Grêmio vs Montevideo City Torque",
+      "local": "Grêmio",
+      "visitante": "Montevideo City Torque",
+      "liga": "Copa Sudamericana",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-sao-paulo-boston-river": {
+      "id": "feva-2026-05-13-sao-paulo-boston-river",
+      "fixture_id": "feva-2026-05-13-sao-paulo-boston-river",
+      "partido": "São Paulo vs Boston River",
+      "local": "São Paulo",
+      "visitante": "Boston River",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-millonarios-o-higgins": {
+      "id": "feva-2026-05-13-millonarios-o-higgins",
+      "fixture_id": "feva-2026-05-13-millonarios-o-higgins",
+      "partido": "Millonarios vs O'Higgins",
+      "local": "Millonarios",
+      "visitante": "O'Higgins",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-palestino-deportivo-riestra": {
+      "id": "feva-2026-05-13-palestino-deportivo-riestra",
+      "fixture_id": "feva-2026-05-13-palestino-deportivo-riestra",
+      "partido": "Palestino vs Deportivo Riestra",
+      "local": "Palestino",
+      "visitante": "Deportivo Riestra",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T19:00:00",
+      "dia": "2026-05-13",
+      "hora": "19:00",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-san-lorenzo-deportivo-recoleta": {
+      "id": "feva-2026-05-13-san-lorenzo-deportivo-recoleta",
+      "fixture_id": "feva-2026-05-13-san-lorenzo-deportivo-recoleta",
+      "partido": "San Lorenzo vs Deportivo Recoleta",
+      "local": "San Lorenzo",
+      "visitante": "Deportivo Recoleta",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "A confirmar"
+      ],
+      "canales_raw": [
+        "A confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "baja"
+    },
+    "feva-2026-05-13-santos-deportivo-cuenca": {
+      "id": "feva-2026-05-13-santos-deportivo-cuenca",
+      "fixture_id": "feva-2026-05-13-santos-deportivo-cuenca",
+      "partido": "Santos vs Deportivo Cuenca",
+      "local": "Santos",
+      "visitante": "Deportivo Cuenca",
+      "liga": "Canal por confirmar",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T21:30:00",
+      "dia": "2026-05-13",
+      "hora": "21:30",
+      "fase": "Fase de grupos",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Canal por confirmar"
+      ],
+      "canales_raw": [
+        "Canal por confirmar"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-defensa-y-justicia-reserva-independiente-reserva": {
+      "id": "feva-2026-05-13-defensa-y-justicia-reserva-independiente-reserva",
+      "fixture_id": "feva-2026-05-13-defensa-y-justicia-reserva-independiente-reserva",
+      "partido": "Defensa y Justicia Reserva vs Independiente Reserva",
+      "local": "Defensa y Justicia Reserva",
+      "visitante": "Independiente Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T13:30:00",
+      "dia": "2026-05-13",
+      "hora": "13:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-racing-avellaneda-reserva-tigre-reserva": {
+      "id": "feva-2026-05-13-racing-avellaneda-reserva-tigre-reserva",
+      "fixture_id": "feva-2026-05-13-racing-avellaneda-reserva-tigre-reserva",
+      "partido": "Racing Avellaneda Reserva vs Tigre Reserva",
+      "local": "Racing Avellaneda Reserva",
+      "visitante": "Tigre Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-argentinos-juniors-reserva-banfield-reserva": {
+      "id": "feva-2026-05-13-argentinos-juniors-reserva-banfield-reserva",
+      "fixture_id": "feva-2026-05-13-argentinos-juniors-reserva-banfield-reserva",
+      "partido": "Argentinos Juniors Reserva vs Banfield Reserva",
+      "local": "Argentinos Juniors Reserva",
+      "visitante": "Banfield Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-ca-huracan-reserva-ferro-carril-oeste-reserva": {
+      "id": "feva-2026-05-13-ca-huracan-reserva-ferro-carril-oeste-reserva",
+      "fixture_id": "feva-2026-05-13-ca-huracan-reserva-ferro-carril-oeste-reserva",
+      "partido": "CA Huracán Reserva vs Ferro Carril Oeste Reserva",
+      "local": "CA Huracán Reserva",
+      "visitante": "Ferro Carril Oeste Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-san-martin-sj-reserva-ca-colon-reserva": {
+      "id": "feva-2026-05-13-san-martin-sj-reserva-ca-colon-reserva",
+      "fixture_id": "feva-2026-05-13-san-martin-sj-reserva-ca-colon-reserva",
+      "partido": "San Martín SJ Reserva vs CA Colón Reserva",
+      "local": "San Martín SJ Reserva",
+      "visitante": "CA Colón Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-estudiantes-rc-reserva-boca-juniors-reserva": {
+      "id": "feva-2026-05-13-estudiantes-rc-reserva-boca-juniors-reserva",
+      "fixture_id": "feva-2026-05-13-estudiantes-rc-reserva-boca-juniors-reserva",
+      "partido": "Estudiantes RC Reserva vs Boca Juniors Reserva",
+      "local": "Estudiantes RC Reserva",
+      "visitante": "Boca Juniors Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play",
+        "Miércoles, 27/5/2026"
+      ],
+      "canales_raw": [
+        "LPF Play",
+        "Miércoles, 27/5/2026"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-crystal-palace-rayo-vallecano": {
+      "id": "feva-2026-05-13-crystal-palace-rayo-vallecano",
+      "fixture_id": "feva-2026-05-13-crystal-palace-rayo-vallecano",
+      "partido": "Crystal Palace vs Rayo Vallecano",
+      "local": "Crystal Palace",
+      "visitante": "Rayo Vallecano",
+      "liga": "Conference League",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T16:00:00",
+      "dia": "2026-05-13",
+      "hora": "16:00",
+      "fase": "Final",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "Disney+ Premium"
+      ],
+      "canales_raw": [
+        "Disney+ Premium"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-deportivo-riestra-reserva-estudiantes-lp-reserva": {
+      "id": "feva-2026-05-13-deportivo-riestra-reserva-estudiantes-lp-reserva",
+      "fixture_id": "feva-2026-05-13-deportivo-riestra-reserva-estudiantes-lp-reserva",
+      "partido": "Deportivo Riestra Reserva vs Estudiantes LP Reserva",
+      "local": "Deportivo Riestra Reserva",
+      "visitante": "Estudiantes LP Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T13:30:00",
+      "dia": "2026-05-13",
+      "hora": "13:30",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-independiente-rivadavia-reserva-central-cordoba-reserva": {
+      "id": "feva-2026-05-13-independiente-rivadavia-reserva-central-cordoba-reserva",
+      "fixture_id": "feva-2026-05-13-independiente-rivadavia-reserva-central-cordoba-reserva",
+      "partido": "Independiente Rivadavia Reserva vs Central Córdoba Reserva",
+      "local": "Independiente Rivadavia Reserva",
+      "visitante": "Central Córdoba Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-velez-sarsfield-reserva-instituto-reserva": {
+      "id": "feva-2026-05-13-velez-sarsfield-reserva-instituto-reserva",
+      "fixture_id": "feva-2026-05-13-velez-sarsfield-reserva-instituto-reserva",
+      "partido": "Vélez Sarsfield Reserva vs Instituto Reserva",
+      "local": "Vélez Sarsfield Reserva",
+      "visitante": "Instituto Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-atletico-tucuman-reserva-godoy-cruz-reserva": {
+      "id": "feva-2026-05-13-atletico-tucuman-reserva-godoy-cruz-reserva",
+      "fixture_id": "feva-2026-05-13-atletico-tucuman-reserva-godoy-cruz-reserva",
+      "partido": "Atlético Tucumán Reserva vs Godoy Cruz Reserva",
+      "local": "Atlético Tucumán Reserva",
+      "visitante": "Godoy Cruz Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-belgrano-reserva-quilmes-reserva": {
+      "id": "feva-2026-05-13-belgrano-reserva-quilmes-reserva",
+      "fixture_id": "feva-2026-05-13-belgrano-reserva-quilmes-reserva",
+      "partido": "Belgrano Reserva vs Quilmes Reserva",
+      "local": "Belgrano Reserva",
+      "visitante": "Quilmes Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "LPF Play"
+      ],
+      "canales_raw": [
+        "LPF Play"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    },
+    "feva-2026-05-13-newell-s-old-boys-reserva-at-rafaela-reserva": {
+      "id": "feva-2026-05-13-newell-s-old-boys-reserva-at-rafaela-reserva",
+      "fixture_id": "feva-2026-05-13-newell-s-old-boys-reserva-at-rafaela-reserva",
+      "partido": "Newell's Old Boys Reserva vs At. Rafaela Reserva",
+      "local": "Newell's Old Boys Reserva",
+      "visitante": "At. Rafaela Reserva",
+      "liga": "Torneo Proyección",
+      "pais": "Argentina",
+      "fecha": "2026-05-13T15:00:00",
+      "dia": "2026-05-13",
+      "hora": "15:00",
+      "fase": "",
+      "estado": {
+        "long": "Programado",
+        "short": "Programado",
+        "elapsed": null
+      },
+      "canales": [
+        "ESPN",
+        "ESPN 2",
+        "Disney+ Premium",
+        "DGO",
+        "DSports",
+        "TNT Sports Premium",
+        "TyC Sports",
+        "TyC Sports Play",
+        "OneFootball",
+        "OneFootball PPV",
+        "LPF Play",
+        "Más días",
+        "RANKING POR CANALES",
+        "Star+",
+        "16.214 (15,16%)",
+        "10.540 (9,85%)",
+        "10.501 (9,82%)",
+        "10.220 (9,55%)",
+        "8.472 (7,92%)",
+        "Fanatiz",
+        "6.616 (6,19%)",
+        "GolTV",
+        "5.222 (4,88%)",
+        "4.846 (4,53%)",
+        "4.114 (3,85%)",
+        "GolTV Play",
+        "3.817 (3,57%)",
+        "3.515 (3,29%)",
+        "3.501 (3,27%)",
+        "FIFA+",
+        "3.204 (3%)",
+        "3.166 (2,96%)",
+        "2.922 (2,73%)",
+        "DIRECTV Play",
+        "2.397 (2,24%)",
+        "2.126 (1,99%)",
+        "Brasileirão Play",
+        "2.029 (1,9%)",
+        "MLS Season Pass",
+        "1.797 (1,68%)",
+        "ESPN Play",
+        "1.698 (1,59%)",
+        "RANKING POR EQUIPOS",
+        "FC Barcelona",
+        "646 (0,6%)",
+        "River Plate",
+        "638 (0,6%)",
+        "Real Madrid",
+        "611 (0,57%)",
+        "Boca Juniors",
+        "608 (0,57%)",
+        "Liverpool",
+        "600 (0,56%)",
+        "Manchester City",
+        "573 (0,54%)",
+        "Chelsea",
+        "566 (0,53%)",
+        "Manchester Utd",
+        "559 (0,52%)",
+        "Racing Avellaneda",
+        "557 (0,52%)",
+        "At. Madrid",
+        "555 (0,52%)",
+        "Juventus",
+        "551 (0,52%)",
+        "PSG",
+        "541 (0,51%)",
+        "San Lorenzo",
+        "537 (0,5%)",
+        "Sevilla FC",
+        "532 (0,5%)",
+        "Inter Milan",
+        "528 (0,49%)",
+        "Lanús",
+        "527 (0,49%)",
+        "Estudiantes LP",
+        "525 (0,49%)",
+        "Tottenham",
+        "519 (0,49%)",
+        "Independiente",
+        "518 (0,48%)",
+        "Arsenal",
+        "510 (0,48%)",
+        "RANKING POR COMPETICIONES",
+        "Primera Nacional",
+        "5.460 (5,1%)",
+        "Torneo Betano",
+        "4.540 (4,24%)",
+        "Premier League",
+        "3.882 (3,63%)",
+        "La Liga EA Sports",
+        "3.645 (3,41%)",
+        "Primera B",
+        "3.495 (3,27%)",
+        "Serie A Italiana",
+        "3.300 (3,09%)",
+        "MLS",
+        "2.722 (2,54%)",
+        "LaLiga Hypermotion",
+        "2.653 (2,48%)",
+        "Bundesliga",
+        "2.410 (2,25%)",
+        "Liga Pro Ecuador",
+        "2.406 (2,25%)",
+        "Liga 1 Perú",
+        "2.363 (2,21%)",
+        "Torneo Proyección",
+        "2.218 (2,07%)",
+        "Serie A Brasil",
+        "2.102 (1,97%)",
+        "Liga AUF Uruguaya",
+        "1.985 (1,86%)",
+        "Francia Ligue 1",
+        "1.963 (1,84%)",
+        "FIFA Copa Mundial 2026",
+        "1.650 (1,54%)",
+        "Primera División Paraguay",
+        "1.433 (1,34%)",
+        "Regionalliga",
+        "1.417 (1,32%)",
+        "Liga Colombiana",
+        "1.403 (1,31%)",
+        "Champions League",
+        "1.242 (1,16%)",
+        "Ranking equipos por nº de partidos Local",
+        "336 (0,31%)",
+        "329 (0,31%)",
+        "326 (0,3%)",
+        "307 (0,29%)",
+        "303 (0,28%)",
+        "291 (0,27%)",
+        "286 (0,27%)",
+        "284 (0,27%)",
+        "280 (0,26%)",
+        "276 (0,26%)",
+        "268 (0,25%)",
+        "267 (0,25%)",
+        "266 (0,25%)",
+        "265 (0,25%)",
+        "Argentinos Juniors",
+        "261 (0,24%)",
+        "Argentina",
+        "260 (0,24%)",
+        "259 (0,24%)",
+        "Ranking equipos por nº de partidos Visitante",
+        "320 (0,3%)",
+        "308 (0,29%)",
+        "302 (0,28%)",
+        "293 (0,27%)",
+        "287 (0,27%)",
+        "285 (0,27%)",
+        "282 (0,26%)",
+        "279 (0,26%)",
+        "273 (0,26%)",
+        "257 (0,24%)",
+        "253 (0,24%)",
+        "FC Bayern",
+        "252 (0,24%)"
+      ],
+      "canales_raw": [
+        "ESPN",
+        "ESPN 2",
+        "Disney+ Premium",
+        "DGO",
+        "DSports",
+        "TNT Sports Premium",
+        "TyC Sports",
+        "TyC Sports Play",
+        "OneFootball",
+        "OneFootball PPV",
+        "LPF Play",
+        "Más días",
+        "RANKING POR CANALES",
+        "Star+",
+        "16.214 (15,16%)",
+        "10.540 (9,85%)",
+        "10.501 (9,82%)",
+        "10.220 (9,55%)",
+        "8.472 (7,92%)",
+        "Fanatiz",
+        "6.616 (6,19%)",
+        "GolTV",
+        "5.222 (4,88%)",
+        "4.846 (4,53%)",
+        "4.114 (3,85%)",
+        "GolTV Play",
+        "3.817 (3,57%)",
+        "3.515 (3,29%)",
+        "3.501 (3,27%)",
+        "FIFA+",
+        "3.204 (3%)",
+        "3.166 (2,96%)",
+        "2.922 (2,73%)",
+        "DIRECTV Play",
+        "2.397 (2,24%)",
+        "2.126 (1,99%)",
+        "Brasileirão Play",
+        "2.029 (1,9%)",
+        "MLS Season Pass",
+        "1.797 (1,68%)",
+        "ESPN Play",
+        "1.698 (1,59%)",
+        "RANKING POR EQUIPOS",
+        "FC Barcelona",
+        "646 (0,6%)",
+        "River Plate",
+        "638 (0,6%)",
+        "Real Madrid",
+        "611 (0,57%)",
+        "Boca Juniors",
+        "608 (0,57%)",
+        "Liverpool",
+        "600 (0,56%)",
+        "Manchester City",
+        "573 (0,54%)",
+        "Chelsea",
+        "566 (0,53%)",
+        "Manchester Utd",
+        "559 (0,52%)",
+        "Racing Avellaneda",
+        "557 (0,52%)",
+        "At. Madrid",
+        "555 (0,52%)",
+        "Juventus",
+        "551 (0,52%)",
+        "PSG",
+        "541 (0,51%)",
+        "San Lorenzo",
+        "537 (0,5%)",
+        "Sevilla FC",
+        "532 (0,5%)",
+        "Inter Milan",
+        "528 (0,49%)",
+        "Lanús",
+        "527 (0,49%)",
+        "Estudiantes LP",
+        "525 (0,49%)",
+        "Tottenham",
+        "519 (0,49%)",
+        "Independiente",
+        "518 (0,48%)",
+        "Arsenal",
+        "510 (0,48%)",
+        "RANKING POR COMPETICIONES",
+        "Primera Nacional",
+        "5.460 (5,1%)",
+        "Torneo Betano",
+        "4.540 (4,24%)",
+        "Premier League",
+        "3.882 (3,63%)",
+        "La Liga EA Sports",
+        "3.645 (3,41%)",
+        "Primera B",
+        "3.495 (3,27%)",
+        "Serie A Italiana",
+        "3.300 (3,09%)",
+        "MLS",
+        "2.722 (2,54%)",
+        "LaLiga Hypermotion",
+        "2.653 (2,48%)",
+        "Bundesliga",
+        "2.410 (2,25%)",
+        "Liga Pro Ecuador",
+        "2.406 (2,25%)",
+        "Liga 1 Perú",
+        "2.363 (2,21%)",
+        "Torneo Proyección",
+        "2.218 (2,07%)",
+        "Serie A Brasil",
+        "2.102 (1,97%)",
+        "Liga AUF Uruguaya",
+        "1.985 (1,86%)",
+        "Francia Ligue 1",
+        "1.963 (1,84%)",
+        "FIFA Copa Mundial 2026",
+        "1.650 (1,54%)",
+        "Primera División Paraguay",
+        "1.433 (1,34%)",
+        "Regionalliga",
+        "1.417 (1,32%)",
+        "Liga Colombiana",
+        "1.403 (1,31%)",
+        "Champions League",
+        "1.242 (1,16%)",
+        "Ranking equipos por nº de partidos Local",
+        "336 (0,31%)",
+        "329 (0,31%)",
+        "326 (0,3%)",
+        "307 (0,29%)",
+        "303 (0,28%)",
+        "291 (0,27%)",
+        "286 (0,27%)",
+        "284 (0,27%)",
+        "280 (0,26%)",
+        "276 (0,26%)",
+        "268 (0,25%)",
+        "267 (0,25%)",
+        "266 (0,25%)",
+        "265 (0,25%)",
+        "Argentinos Juniors",
+        "261 (0,24%)",
+        "Argentina",
+        "260 (0,24%)",
+        "259 (0,24%)",
+        "Ranking equipos por nº de partidos Visitante",
+        "320 (0,3%)",
+        "308 (0,29%)",
+        "302 (0,28%)",
+        "293 (0,27%)",
+        "287 (0,27%)",
+        "285 (0,27%)",
+        "282 (0,26%)",
+        "279 (0,26%)",
+        "273 (0,26%)",
+        "257 (0,24%)",
+        "253 (0,24%)",
+        "FC Bayern",
+        "252 (0,24%)"
+      ],
+      "fuente": "Fútbol en Vivo Argentina",
+      "fuente_url": "https://www.futbolenvivoargentina.com/",
+      "confianza": "alta"
+    }
+  }
+}
