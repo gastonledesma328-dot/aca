@@ -1,30 +1,35 @@
 const DATA_URL = "../data/legends11-players.json";
-const STORAGE_PREFIX = "partidos_hoy_legends11_played_";
+const STORAGE_PREFIX    = "partidos_hoy_legends11_played_";
+const STATE_KEY         = "partidos_hoy_legends11_state";
 
 const GAME_MODES = {
   easy: {
     label: "Fácil",
     showHints: true,
     timeLimit: null,
-    help: "Modo fácil: vas a ver sugerencias disponibles."
+    popularity: 1,        // solo jugadores muy conocidos
+    help: "Jugadores populares · Con pista de iniciales."
   },
   normal: {
     label: "Normal",
     showHints: false,
     timeLimit: null,
-    help: "Modo normal: sin ayudas y sin tiempo en contra."
+    popularity: 1,        // solo jugadores muy conocidos, sin pistas
+    help: "Jugadores populares · Sin ayudas."
   },
   hard: {
     label: "Difícil",
     showHints: false,
     timeLimit: 90,
-    help: "Modo difícil: sin ayudas y con 90 segundos."
+    popularity: 2,        // jugadores menos conocidos
+    help: "Menos conocidos · Sin ayudas · 90 seg."
   },
   impossible: {
     label: "Imposible",
     showHints: false,
-    timeLimit: 30,
-    help: "Modo imposible: sin ayudas y con 30 segundos."
+    timeLimit: 60,
+    popularity: null,     // todos los jugadores
+    help: "Todos los jugadores · Sin ayudas · 60 seg."
   }
 };
 
@@ -86,7 +91,9 @@ const completedText = document.getElementById("completedText");
 const scoreText = document.getElementById("scoreText");
 const modeText = document.getElementById("modeText");
 const timerText = document.getElementById("timerText");
-const modeHint = document.getElementById("modeHint");
+const timerBar  = document.getElementById("timerBar");
+const timerFill = document.getElementById("timerFill");
+const modeHint  = document.getElementById("modeHint");
 const resultModal = document.getElementById("resultModal");
 const resultTitle = document.getElementById("resultTitle");
 const resultText = document.getElementById("resultText");
@@ -106,6 +113,7 @@ let timerInterval = null;
 let gameFinished = false;
 let dailyAttemptLocked = false;
 let currentRoundIndex = 0;
+let pendingSlots = [];
 let attemptStartedThisSession = false;
 let challengeCounter = 0;
 
@@ -181,6 +189,33 @@ function savePlayedToday() {
   attemptStartedThisSession = true;
 }
 
+function saveState() {
+  if (!DAILY_GAME) return;
+  const state = {
+    challengeId:    DAILY_GAME.date + "_" + DAILY_GAME.challengeNumber,
+    dailyGame:      DAILY_GAME,
+    mode:           currentMode,
+    completedSlots: completedSlots,
+    usedPlayers:    usedPlayers,
+    pendingSlots:   pendingSlots,
+    score:          score,
+    timeLeft:       timeLeft
+  };
+  try { localStorage.setItem(STATE_KEY, JSON.stringify(state)); } catch(e) {}
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STATE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch(e) { return null; }
+}
+
+function clearState() {
+  try { localStorage.removeItem(STATE_KEY); } catch(e) {}
+}
+
 function createSeedFromString(text) {
   let seed = 0;
 
@@ -235,9 +270,19 @@ function generateDailyGame() {
 
   const random = seededRandom(seed);
 
-  const availableCountries = GAME_DATA.countries.filter(country => {
-    return Array.isArray(country.players) && country.players.length > 0;
-  });
+  const modePop = GAME_MODES[currentMode].popularity; // 1, 2 o null
+
+  // Clonar países filtrando jugadores según popularidad del modo
+  const availableCountries = GAME_DATA.countries
+    .map(country => ({
+      ...country,
+      players: country.players.filter(p =>
+        modePop === null ||          // imposible: todos
+        modePop === 2 ||             // difícil: todos (1 y 2)
+        p.popularity === 1           // fácil/normal: solo populares
+      )
+    }))
+    .filter(country => Array.isArray(country.players) && country.players.length > 0);
 
   const validFormations = GAME_DATA.formations.filter(formation => {
     const flatPositions = formation.rows.flat();
@@ -295,9 +340,19 @@ function generateDailyGame() {
   const rounds = selectedCountries.map((country, index) => {
     const requiredPosition = flatPositions[index];
 
-    const compatiblePlayers = country.players.filter(player => {
-      return playerCanPlaySlot(player.position, requiredPosition);
-    });
+    const allCompatible = country.players.filter(player =>
+      playerCanPlaySlot(player.position, requiredPosition)
+    );
+
+    // En modo difícil preferir jugadores poco conocidos (popularity=2)
+    const preferredPool = modePop === 2
+      ? allCompatible.filter(p => p.popularity === 2)
+      : allCompatible;
+
+    const compatiblePlayers = preferredPool.length > 0 ? preferredPool : allCompatible;
+
+    // Elegir exactamente 1 jugador para este casillero
+    const chosenPlayer = pickRandom(compatiblePlayers, random);
 
     return {
       country: country.country,
@@ -305,7 +360,8 @@ function generateDailyGame() {
       flagEmoji: country.flagEmoji || "",
       dt: country.dt || "",
       requiredPosition,
-      players: shuffleArray(compatiblePlayers, random)
+      player: chosenPlayer,
+      players: [chosenPlayer]
     };
   });
 
@@ -351,19 +407,16 @@ function renderFormation() {
   pitchFrame.innerHTML = "";
 
   let slotIndex = 0;
-  const totalRows = DAILY_GAME.rows.length;
+  const rows = DAILY_GAME.rows;
+  const totalRows = rows.length;
 
-  DAILY_GAME.rows.forEach((row, rowIndex) => {
+  // Agregar clase rows-N al frame para que el CSS distribuya correctamente
+  pitchFrame.className = pitchFrame.className.replace(/rows-\d/g, "").trim();
+  pitchFrame.classList.add("rows-" + totalRows);
+
+  rows.forEach((row, rowIndex) => {
     const line = document.createElement("div");
-    const lineRole = getLineRole(row, rowIndex, totalRows);
-
-    line.className = [
-      "line",
-      "dynamic-line",
-      `line-${rowIndex}`,
-      `line-count-${row.length}`,
-      lineRole
-    ].join(" ");
+    line.className = "line line-row-" + rowIndex + " line-count-" + row.length;
 
     row.forEach(position => {
       const button = document.createElement("button");
@@ -372,11 +425,7 @@ function renderFormation() {
       button.dataset.position = position;
       button.dataset.index = slotIndex;
       button.textContent = position;
-
-      button.onclick = () => {
-        selectSlot(button);
-      };
-
+      button.onclick = () => { selectSlot(button); };
       line.appendChild(button);
       slotIndex++;
     });
@@ -392,8 +441,13 @@ function resetGameState() {
   score = 0;
   gameFinished = false;
   dailyAttemptLocked = false;
-  currentRoundIndex = 0;
   attemptStartedThisSession = false;
+
+  // Orden aleatorio de los 11 slots
+  const total = DAILY_GAME ? DAILY_GAME.rounds.length : 11;
+  pendingSlots = Array.from({ length: total }, (_, i) => i)
+    .sort(() => Math.random() - 0.5);
+  currentRoundIndex = pendingSlots[0];
 
   resultModal.classList.add("hidden");
   hideFinalButtons();
@@ -404,10 +458,79 @@ function resetGameState() {
   suggestions.innerHTML = "";
 }
 
+function restoreFilledSlots() {
+  const slots = Array.from(getSlots());
+  completedSlots.forEach(slotIndex => {
+    const round = DAILY_GAME.rounds[slotIndex];
+    const player = round ? round.player : null;
+    const slot = slots.find(s => Number(s.dataset.index) === slotIndex);
+    if (!slot || !round || !player) return;
+
+    slot.classList.add("filled");
+    slot.classList.remove("selected");
+    slot.innerHTML = `
+      <span class="slot-flag">
+        <img
+          src="${getFlagUrl(round.flagCode, 40)}"
+          alt="${escapeHTML(round.country)}"
+          loading="lazy"
+          onerror="this.style.display='none'; this.parentElement.textContent='${round.flagEmoji || "🏳️"}';"
+        />
+      </span>
+      <strong class="slot-player">${escapeHTML(player.name)}</strong>
+      <small class="slot-country">${escapeHTML(round.country)}</small>
+    `;
+  });
+}
+
 function initGame() {
   stopTimer();
 
-  DAILY_GAME = generateDailyGame();
+  const saved = loadState();
+  const freshGame = generateDailyGame();
+
+  // Restaurar si el desafío guardado coincide con el generado Y es el mismo modo
+  if (
+    saved &&
+    saved.challengeId === freshGame.date + "_" + freshGame.challengeNumber &&
+    saved.mode === currentMode
+  ) {
+    DAILY_GAME      = saved.dailyGame;
+    completedSlots  = saved.completedSlots  || [];
+    usedPlayers     = saved.usedPlayers     || [];
+    pendingSlots    = saved.pendingSlots    || [];
+    score           = saved.score           || 0;
+    timeLeft        = saved.timeLeft        != null ? saved.timeLeft : null;
+    currentRoundIndex = pendingSlots.length > 0 ? pendingSlots[0] : -1;
+    gameFinished    = false;
+    dailyAttemptLocked = false;
+    selectedSlot    = null;
+
+    resultModal.classList.add("hidden");
+    hideFinalButtons();
+    playerSearch.disabled = false;
+    surrenderBtn.disabled = false;
+    playerSearch.value = "";
+    suggestions.innerHTML = "";
+
+    renderFormation();
+    restoreFilledSlots();
+    applyModeUi();
+    // Restaurar tiempo: no reiniciar el timer con el tiempo original,
+    // sino con el timeLeft guardado
+    if (timeLeft !== null) {
+      timerText.textContent = formatTime(timeLeft);
+      timerFill.style.width = ((timeLeft / GAME_MODES[currentMode].timeLimit) * 100) + "%";
+      timerBar.classList.remove("hidden", "urgent");
+      timerBar.classList.toggle("urgent", timeLeft <= 15);
+      startTimerIfNeeded();
+    }
+    updateCountryPanel();
+    updateStatus();
+    return;
+  }
+
+  DAILY_GAME = freshGame;
 
   resetGameState();
 
@@ -442,10 +565,11 @@ function applyModeUi() {
   const mode = GAME_MODES[currentMode];
 
   modeText.textContent = mode.label;
-  modeHint.textContent = `${mode.help} Desafío #${DAILY_GAME.challengeNumber} · Formación: ${DAILY_GAME.formationName}`;
+  modeHint.textContent = `${mode.help} Formación: ${DAILY_GAME.formationName}`;
 
   if (mode.showHints && !dailyAttemptLocked) {
     suggestions.classList.remove("hidden");
+    setTimeout(() => renderSuggestions(""), 0);
   } else {
     suggestions.classList.add("hidden");
     suggestions.innerHTML = "";
@@ -453,10 +577,13 @@ function applyModeUi() {
 
   if (mode.timeLimit === null) {
     timeLeft = null;
-    timerText.textContent = "Sin límite";
+    timerBar.classList.add("hidden");
+    timerBar.classList.remove("urgent");
   } else {
     timeLeft = mode.timeLimit;
     timerText.textContent = formatTime(timeLeft);
+    timerFill.style.width = "100%";
+    timerBar.classList.remove("hidden", "urgent");
   }
 
   modeButtons.forEach(button => {
@@ -483,12 +610,16 @@ function startTimerIfNeeded() {
 
     if (timeLeft <= 0) {
       timeLeft = 0;
-      timerText.textContent = formatTime(timeLeft);
+      timerText.textContent = formatTime(0);
+      timerFill.style.width = "0%";
       finishGame("time");
       return;
     }
 
+    const pct = (timeLeft / mode.timeLimit) * 100;
+    timerFill.style.width = pct + "%";
     timerText.textContent = formatTime(timeLeft);
+    timerBar.classList.toggle("urgent", timeLeft <= 15);
   }, 1000);
 }
 
@@ -556,6 +687,10 @@ function updateCountryPanel() {
   playerSearch.placeholder = `Leyenda de ${round.country} para ${requiredPosition}...`;
 
   highlightCurrentSlot();
+
+  if (GAME_MODES[currentMode].showHints && !dailyAttemptLocked) {
+    setTimeout(() => renderSuggestions(""), 0);
+  }
 }
 
 function selectSlot(slot) {
@@ -631,6 +766,13 @@ function playerCanAutocompleteSafely(player, value) {
   return fullNameOk || lastNameOk || aliasOk;
 }
 
+// Convierte un nombre en pista de iniciales: "Lionel Messi" → "L****** M****"
+function buildHint(name) {
+  return name.split(" ").map(word =>
+    word.length > 0 ? word[0] + "*".repeat(word.length - 1) : ""
+  ).join(" ");
+}
+
 function renderSuggestions(query) {
   const mode = GAME_MODES[currentMode];
 
@@ -648,59 +790,17 @@ function renderSuggestions(query) {
 
   if (!round || !requiredPosition) return;
 
-  const value = normalizeText(query);
+  const target = round.player;
+  const hint = buildHint(target.name);
 
-  if (value && value.length < MIN_SEARCH_CHARS) {
-    suggestions.innerHTML = `
-      <button class="suggestion-item" type="button">
-        <strong>Escribí al menos ${MIN_SEARCH_CHARS} letras</strong>
-        <span>${escapeHTML(round.country)} · ${escapeHTML(requiredPosition)}</span>
-      </button>
-    `;
-    return;
-  }
-
-  const filtered = round.players.filter(player => {
-    if (usedPlayers.includes(player.name)) return false;
-
-    if (!playerCanPlaySlot(player.position, requiredPosition)) {
-      return false;
-    }
-
-    if (!value) return true;
-
-    return playerMatchesSearch(player, value);
-  });
-
-  if (!filtered.length) {
-    suggestions.innerHTML = `
-      <button class="suggestion-item" type="button">
-        <strong>No encontré esa leyenda</strong>
-        <span>${escapeHTML(round.country)} · Debe servir para ${escapeHTML(requiredPosition)}</span>
-      </button>
-    `;
-    return;
-  }
-
-  filtered.slice(0, 6).forEach(player => {
-    const button = document.createElement("button");
-    button.className = "suggestion-item";
-    button.type = "button";
-
-    button.innerHTML = `
-      <div>
-        <strong>${escapeHTML(player.name)}</strong>
-        <span>${escapeHTML(round.country)} · ${escapeHTML(player.position)}</span>
-      </div>
-      <span>Elegir</span>
-    `;
-
-    button.onclick = () => {
-      placePlayer(player);
-    };
-
-    suggestions.appendChild(button);
-  });
+  // Mostrar solo la pista de iniciales — sin botón clickeable ni "Elegir"
+  const item = document.createElement("div");
+  item.className = "suggestion-item hint-item-readonly";
+  item.innerHTML = `
+    <strong>${escapeHTML(hint)}</strong>
+    <span class="hint-badge">💡</span>
+  `;
+  suggestions.appendChild(item);
 }
 
 function placePlayer(player) {
@@ -744,12 +844,15 @@ function placePlayer(player) {
   usedPlayers.push(player.name);
   score += calculatePoints();
 
-  currentRoundIndex++;
+  // Avanzar al siguiente slot pendiente (orden aleatorio)
+  pendingSlots = pendingSlots.filter(i => !completedSlots.includes(i));
+  currentRoundIndex = pendingSlots.length > 0 ? pendingSlots[0] : -1;
 
   selectedSlot = null;
   playerSearch.value = "";
   suggestions.innerHTML = "";
 
+  saveState();
   updateStatus();
 
   if (completedSlots.length === DAILY_GAME.positions.length) {
@@ -787,56 +890,32 @@ function trySubmitSearch() {
     return;
   }
 
-  const matches = round.players.filter(player => {
-    if (usedPlayers.includes(player.name)) return false;
+  // Solo hay 1 jugador válido por casillero
+  const target = round.player;
 
-    if (!playerCanPlaySlot(player.position, requiredPosition)) {
-      return false;
-    }
-
-    return playerMatchesSearch(player, value);
-  });
-
-  if (!matches.length) {
+  if (!playerMatchesSearch(target, value)) {
     if (GAME_MODES[currentMode].showHints) {
       renderSuggestions(playerSearch.value);
     } else {
-      showTemporaryPlaceholder(`No encontré una leyenda de ${round.country} para ${requiredPosition}`);
+      showTemporaryPlaceholder(`No es la leyenda correcta para ${round.country} · ${requiredPosition}`);
     }
-
     return;
   }
 
-  const exactMatch = matches.find(player => {
-    return playerIsExactMatch(player, value);
-  });
-
-  if (exactMatch) {
-    placePlayer(exactMatch);
+  if (playerIsExactMatch(target, value)) {
+    placePlayer(target);
     return;
   }
 
-  if (matches.length === 1) {
-    const candidate = matches[0];
-
-    if (playerCanAutocompleteSafely(candidate, value)) {
-      placePlayer(candidate);
-      return;
-    }
-
-    if (GAME_MODES[currentMode].showHints) {
-      renderSuggestions(playerSearch.value);
-    } else {
-      showTemporaryPlaceholder("Escribí un poco más del nombre");
-    }
-
+  if (playerCanAutocompleteSafely(target, value)) {
+    placePlayer(target);
     return;
   }
 
   if (GAME_MODES[currentMode].showHints) {
     renderSuggestions(playerSearch.value);
   } else {
-    showTemporaryPlaceholder("Hay más de una coincidencia. Escribí mejor el nombre.");
+    showTemporaryPlaceholder("Escribí un poco más del nombre");
   }
 }
 
@@ -937,6 +1016,7 @@ function showModeChangeModal(nextMode) {
   confirmBtn.onclick = () => {
     modal.classList.add("hidden");
     currentMode = nextMode;
+    clearState();
     initGame();
   };
 
@@ -1061,8 +1141,10 @@ Puntaje: ${score}`;
   }
 });
 
-helpBtn.addEventListener("click", () => {
-  alert("El juego muestra un país y una posición. Escribí una leyenda de ese país para esa posición y presioná Enter. El jugador se coloca automáticamente en la cancha. No alcanza con escribir 1 o 2 letras: tenés que escribir mejor el nombre. Al terminar, podés jugar otro desafío con nueva formación y países rotados.");
-});
+if (helpBtn) {
+  helpBtn.addEventListener("click", () => {
+    alert("El juego muestra un país y una posición. Escribí una leyenda de ese país para esa posición y presioná Enter. El jugador se coloca automáticamente en la cancha. No alcanza con escribir 1 o 2 letras: tenés que escribir mejor el nombre. Al terminar, podés jugar otro desafío con nueva formación y países rotados.");
+  });
+}
 
 loadGameData();

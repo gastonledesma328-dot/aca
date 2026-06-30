@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comparador de Selecciones | Partidos.Hoy</title>
+  <link rel="stylesheet" href="comparador-selecciones.css" />
+</head>
+
+<body>
+  <main class="game-page">
+
+    <header class="topbar">
+      <a href="index.html" class="back">← Volver</a>
+      <div class="brand">
+        <strong>Partidos.Hoy</strong>
+        <span>Comparador de Selecciones</span>
+      </div>
+      <div class="espn-live" aria-label="Datos en vivo de ESPN">
+        <span class="dot" aria-hidden="true"></span>ESPN
+      </div>
+    </header>
+
+    <section class="game-header">
+      <span class="daily-badge">⚽ Mundial 2026</span>
+      <h1>Compará Selecciones</h1>
+      <p>Elegí un partido del fixture o armá tu propio duelo y compará las plantillas reales.</p>
+    </section>
+
+    <section class="mode-panel" aria-label="Elegir modo">
+      <button class="mode-btn active" type="button" id="modeFixture" onclick="setMode('fixture')">
+        📅 Fixture
+        <small>Partidos del Mundial</small>
+      </button>
+      <button class="mode-btn" type="button" id="modeCustom" onclick="setMode('custom')">
+        🎯 Libre
+        <small>Elegí vos</small>
+      </button>
+    </section>
+
+    <section id="fixtureSection" aria-label="Fixture Mundial 2026">
+      <div id="fixturePanel"></div>
+    </section>
+
+    <section id="customSection" class="hidden" aria-label="Selección libre">
+      <div class="picker-row">
+        <div class="picker-side">
+          <label for="sel1">Selección 1</label>
+          <select id="sel1"><option value="">Elegí...</option></select>
+        </div>
+        <div class="vs-col"><div class="vs-circle">VS</div></div>
+        <div class="picker-side">
+          <label for="sel2">Selección 2</label>
+          <select id="sel2"><option value="">Elegí...</option></select>
+        </div>
+      </div>
+    </section>
+
+    <button class="kick-btn" type="button" id="kickBtn" onclick="loadMatch()">
+      ⚽ Comparar selecciones
+    </button>
+
+    <div id="matchArea"></div>
+
+  </main>
+
+  <script src="comparador-selecciones.js"></script>
+</body>
+</html>

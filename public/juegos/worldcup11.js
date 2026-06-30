@@ -5,25 +5,25 @@ const GAME_MODES = {
     label: "Fácil",
     showHints: true,
     timeLimit: null,
-    help: "Modo fácil: vas a ver sugerencias disponibles."
+    help: "Países populares · Con pista de iniciales."
   },
   normal: {
     label: "Normal",
     showHints: false,
     timeLimit: null,
-    help: "Modo normal: sin ayudas y sin tiempo en contra."
+    help: "Países populares · Sin ayudas."
   },
   hard: {
     label: "Difícil",
     showHints: false,
     timeLimit: 90,
-    help: "Modo difícil: sin ayudas y con 90 segundos."
+    help: "Más países · Sin ayudas · 90 seg."
   },
   impossible: {
     label: "Imposible",
     showHints: false,
     timeLimit: 30,
-    help: "Modo imposible: sin ayudas y con 30 segundos."
+    help: "Todos los países · Sin ayudas · 30 seg."
   }
 };
 
@@ -503,6 +503,10 @@ function getLineRole(row, rowIndex, totalRows) {
 
 function renderFormation() {
   pitchFrame.innerHTML = "";
+  pitchFrame.className = pitchFrame.className
+    .replace(/\brows-\d+\b/g, "").trim();
+  pitchFrame.classList.add(`rows-${DAILY_GAME.rows.length}`);
+
   let slotIndex = 0;
   const totalRows = DAILY_GAME.rows.length;
 
@@ -511,7 +515,7 @@ function renderFormation() {
     line.className = [
       "line",
       "dynamic-line",
-      `line-${rowIndex}`,
+      `line-row-${rowIndex}`,
       `line-count-${row.length}`,
       getLineRole(row, rowIndex, totalRows)
     ].join(" ");
@@ -570,10 +574,11 @@ function initGame() {
 function applyModeUi() {
   const mode = GAME_MODES[currentMode];
   modeText.textContent = mode.label;
-  modeHint.textContent = `${mode.help} Desafío #${DAILY_GAME.challengeNumber} · Formación: ${DAILY_GAME.formationName}`;
+  modeHint.textContent = `${mode.help} Formación: ${DAILY_GAME.formationName}`;
 
   if (mode.showHints) {
     suggestions.classList.remove("hidden");
+    setTimeout(() => renderSuggestions(""), 0);
   } else {
     suggestions.classList.add("hidden");
     suggestions.innerHTML = "";
@@ -663,6 +668,15 @@ function updateCountryPanel() {
   playerSearch.placeholder = positionToShow
     ? `Jugador de ${round.country} para ${positionToShow}...`
     : `Jugador de ${round.country}...`;
+
+  if (GAME_MODES[currentMode].showHints) {
+    setTimeout(() => renderSuggestions(""), 0);
+  }
+
+  // Resaltar el slot activo igual que america11/legends11
+  getSlots().forEach(s => s.classList.remove("selected"));
+  const activeSlot = findSlotForActivePosition(positionToShow);
+  if (activeSlot) activeSlot.classList.add("selected");
 }
 
 function selectSlot() {
@@ -716,6 +730,20 @@ function isStrongPlayerMatch(player, value) {
   return fullName === cleanValue || nameParts.includes(cleanValue) || aliases.includes(cleanValue);
 }
 
+function buildHint(name) {
+  return String(name || "").split(" ").map(word =>
+    word.length > 0 ? word[0] + "*".repeat(word.length - 1) : ""
+  ).join(" ");
+}
+
+function escapeHTML(str) {
+  return String(str || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 function renderSuggestions(query) {
   const mode = GAME_MODES[currentMode];
   if (!mode.showHints) {
@@ -727,48 +755,25 @@ function renderSuggestions(query) {
   const round = getCurrentRound();
   if (!round) return;
 
-  const value = normalizeText(query);
   const activePosition = getActivePositionForRound();
-  const filtered = round.players.filter(player => {
-    if (usedPlayers.includes(player.name)) return false;
-    if (activePosition && !playerCanPlaySlot(player.position, activePosition)) return false;
-    if (!value) return true;
-    return playerMatchesSearch(player, value);
-  });
 
-  if (!filtered.length) {
-    suggestions.innerHTML = `
-      <button class="suggestion-item" type="button">
-        <strong>No encontré ese jugador</strong>
-        <span>Debe ser de ${round.country} y servir para ${activePosition}</span>
-      </button>
-    `;
-    return;
-  }
+  // Obtener el primer jugador compatible como objetivo de la pista
+  const candidates = round.players.filter(player =>
+    !usedPlayers.includes(player.name) &&
+    (!activePosition || playerCanPlaySlot(player.position, activePosition))
+  );
 
-  filtered.slice(0, 6).forEach(player => {
-    const button = document.createElement("button");
-    button.className = "suggestion-item";
-    button.type = "button";
-    button.innerHTML = `
-      <div>
-        <strong>${player.name}</strong>
-        <span>${round.country} · ${player.position}</span>
-      </div>
-      <span>Elegir</span>
-    `;
+  if (!candidates.length) return;
 
-    button.onclick = () => {
-      const autoSlot = findSlotForActivePosition(activePosition);
-      if (!autoSlot) {
-        showTemporaryPlaceholder("No hay casillero disponible para esta posición");
-        return;
-      }
-      placePlayer(player, autoSlot);
-    };
+  const hint = buildHint(candidates[0].name);
 
-    suggestions.appendChild(button);
-  });
+  const item = document.createElement("div");
+  item.className = "suggestion-item hint-item-readonly";
+  item.innerHTML = `
+    <strong>${escapeHTML(hint)}</strong>
+    <span class="hint-badge">💡</span>
+  `;
+  suggestions.appendChild(item);
 }
 
 function placePlayer(player, forcedSlot = null) {
@@ -1084,8 +1089,10 @@ shareBtn.addEventListener("click", async () => {
   }
 });
 
-helpBtn.addEventListener("click", () => {
-  alert("Cada ronda tiene una posición fija. Escribí un jugador del país indicado que pueda jugar en esa posición. El juego lo coloca automáticamente en el casillero correcto. Al terminar, podés jugar otro desafío con nueva formación y países rotados.");
-});
+if (helpBtn) {
+  helpBtn.addEventListener("click", () => {
+    alert("Cada ronda tiene una posición fija. Escribí un jugador del país indicado que pueda jugar en esa posición. El juego lo coloca automáticamente en el casillero correcto. Al terminar, podés jugar otro desafío con nueva formación y países rotados.");
+  });
+}
 
 loadGameData();
