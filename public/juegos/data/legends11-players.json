@@ -1,0 +1,1818 @@
+{
+  "formations": [
+    {
+      "name": "3-5-2",
+      "rows": [
+        [
+          "ST",
+          "ST"
+        ],
+        [
+          "CAM"
+        ],
+        [
+          "LM",
+          "CDM",
+          "CDM",
+          "RM"
+        ],
+        [
+          "CB",
+          "CB",
+          "CB"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    },
+    {
+      "name": "3-4-3",
+      "rows": [
+        [
+          "LW",
+          "ST",
+          "RW"
+        ],
+        [
+          "LM",
+          "CM",
+          "CM",
+          "RM"
+        ],
+        [
+          "CB",
+          "CB",
+          "CB"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    },
+    {
+      "name": "5-3-2",
+      "rows": [
+        [
+          "ST",
+          "ST"
+        ],
+        [
+          "CM",
+          "CM",
+          "CM"
+        ],
+        [
+          "LWB",
+          "CB",
+          "CB",
+          "CB",
+          "RWB"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    },
+    {
+      "name": "4-4-2",
+      "rows": [
+        [
+          "ST",
+          "ST"
+        ],
+        [
+          "LM",
+          "CM",
+          "CM",
+          "RM"
+        ],
+        [
+          "CDM",
+          "CB",
+          "CB",
+          "CDM"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    },
+    {
+      "name": "4-5-1",
+      "rows": [
+        [
+          "ST"
+        ],
+        [
+          "LM",
+          "CAM",
+          "CM",
+          "CAM",
+          "RM"
+        ],
+        [
+          "CDM",
+          "CB",
+          "CB",
+          "CDM"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    },
+    {
+      "name": "4-3-2-1",
+      "rows": [
+        [
+          "ST"
+        ],
+        [
+          "CAM",
+          "CAM"
+        ],
+        [
+          "CM",
+          "CDM",
+          "CM"
+        ],
+        [
+          "CDM",
+          "CB",
+          "CB",
+          "CDM"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    },
+    {
+      "name": "4-1-3-2",
+      "rows": [
+        [
+          "ST",
+          "ST"
+        ],
+        [
+          "LM",
+          "CAM",
+          "RM"
+        ],
+        [
+          "CDM"
+        ],
+        [
+          "CDM",
+          "CB",
+          "CB",
+          "CDM"
+        ],
+        [
+          "GK"
+        ]
+      ]
+    }
+  ],
+  "countries": [
+    {
+      "country": "Argentina",
+      "flagCode": "ar",
+      "flagEmoji": "🇦🇷",
+      "players": [
+        {
+          "name": "Ubaldo Fillol",
+          "position": "GK",
+          "aliases": [
+            "fillol",
+            "pato fillol"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Daniel Passarella",
+          "position": "CB",
+          "aliases": [
+            "passarella"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Javier Zanetti",
+          "position": "RB",
+          "aliases": [
+            "zanetti",
+            "pupi zanetti"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Roberto Ayala",
+          "position": "CB",
+          "aliases": [
+            "ayala",
+            "raton ayala",
+            "ratón ayala"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Oscar Ruggeri",
+          "position": "CB",
+          "aliases": [
+            "ruggeri"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Diego Maradona",
+          "position": "CAM",
+          "aliases": [
+            "maradona",
+            "diego armando maradona"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Juan Román Riquelme",
+          "position": "CAM",
+          "aliases": [
+            "riquelme",
+            "roman",
+            "román"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Fernando Redondo",
+          "position": "CDM",
+          "aliases": [
+            "redondo"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Javier Mascherano",
+          "position": "CDM",
+          "aliases": [
+            "mascherano",
+            "jefecito"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Gabriel Batistuta",
+          "position": "ST",
+          "aliases": [
+            "batistuta",
+            "bati",
+            "batigol"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Mario Kempes",
+          "position": "ST",
+          "aliases": [
+            "kempes",
+            "matador kempes"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Claudio Caniggia",
+          "position": "ST",
+          "aliases": [
+            "caniggia",
+            "cani"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Brasil",
+      "flagCode": "br",
+      "flagEmoji": "🇧🇷",
+      "players": [
+        {
+          "name": "Cláudio Taffarel",
+          "position": "GK",
+          "aliases": [
+            "taffarel"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Dida",
+          "position": "GK",
+          "aliases": [],
+          "popularity": 2
+        },
+        {
+          "name": "Cafu",
+          "position": "RB",
+          "aliases": [],
+          "popularity": 1
+        },
+        {
+          "name": "Roberto Carlos",
+          "position": "LB",
+          "aliases": [],
+          "popularity": 1
+        },
+        {
+          "name": "Carlos Alberto",
+          "position": "RB",
+          "aliases": [
+            "capita"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Pelé",
+          "position": "CAM",
+          "aliases": [
+            "pele"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Zico",
+          "position": "CAM",
+          "aliases": [],
+          "popularity": 1
+        },
+        {
+          "name": "Sócrates",
+          "position": "CM",
+          "aliases": [
+            "socrates"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Kaká",
+          "position": "CAM",
+          "aliases": [
+            "kaka"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Ronaldinho",
+          "position": "LW",
+          "aliases": [
+            "dinho",
+            "ronaldinho gaucho",
+            "ronaldinho gaúcho"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Rivaldo",
+          "position": "CAM",
+          "aliases": [],
+          "popularity": 1
+        },
+        {
+          "name": "Ronaldo Nazário",
+          "position": "ST",
+          "aliases": [
+            "ronaldo",
+            "ronaldo nazario",
+            "fenomeno",
+            "fenómeno",
+            "el fenomeno",
+            "el fenómeno"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Romário",
+          "position": "ST",
+          "aliases": [
+            "romario"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Garrincha",
+          "position": "RW",
+          "aliases": [
+            "mane garrincha",
+            "mané garrincha"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Jairzinho",
+          "position": "RW",
+          "aliases": [],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Uruguay",
+      "flagCode": "uy",
+      "flagEmoji": "🇺🇾",
+      "players": [
+        {
+          "name": "Ladislao Mazurkiewicz",
+          "position": "GK",
+          "aliases": [
+            "mazurkiewicz"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Diego Godín",
+          "position": "CB",
+          "aliases": [
+            "godin",
+            "godín"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "José Nasazzi",
+          "position": "CB",
+          "aliases": [
+            "nasazzi"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Obdulio Varela",
+          "position": "CDM",
+          "aliases": [
+            "obdulio"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "José Santamaría",
+          "position": "CB",
+          "aliases": [
+            "santamaria",
+            "santamaría"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Enzo Francescoli",
+          "position": "CAM",
+          "aliases": [
+            "francescoli",
+            "principe",
+            "príncipe"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Álvaro Recoba",
+          "position": "CAM",
+          "aliases": [
+            "recoba",
+            "chino recoba"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Juan Alberto Schiaffino",
+          "position": "CAM",
+          "aliases": [
+            "schiaffino"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Alcides Ghiggia",
+          "position": "RW",
+          "aliases": [
+            "ghiggia"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Héctor Scarone",
+          "position": "ST",
+          "aliases": [
+            "scarone"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Colombia",
+      "flagCode": "co",
+      "flagEmoji": "🇨🇴",
+      "players": [
+        {
+          "name": "René Higuita",
+          "position": "GK",
+          "aliases": [
+            "higuita"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Óscar Córdoba",
+          "position": "GK",
+          "aliases": [
+            "oscar cordoba",
+            "óscar córdoba"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Iván Córdoba",
+          "position": "CB",
+          "aliases": [
+            "ivan cordoba",
+            "iván córdoba"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Mario Yepes",
+          "position": "CB",
+          "aliases": [
+            "yepes"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Carlos Valderrama",
+          "position": "CAM",
+          "aliases": [
+            "valderrama",
+            "el pibe",
+            "pibe valderrama"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Freddy Rincón",
+          "position": "CM",
+          "aliases": [
+            "rincon",
+            "rincón"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Faustino Asprilla",
+          "position": "ST",
+          "aliases": [
+            "asprilla",
+            "tino asprilla"
+          ],
+          "popularity": 1
+        }
+      ]
+    },
+    {
+      "country": "Chile",
+      "flagCode": "cl",
+      "flagEmoji": "🇨🇱",
+      "players": [
+        {
+          "name": "Elías Figueroa",
+          "position": "CB",
+          "aliases": [
+            "elias figueroa",
+            "figueroa"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Leonel Sánchez",
+          "position": "LW",
+          "aliases": [
+            "leonel sanchez"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Iván Zamorano",
+          "position": "ST",
+          "aliases": [
+            "zamorano",
+            "bam bam",
+            "ivan zamorano"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Marcelo Salas",
+          "position": "ST",
+          "aliases": [
+            "salas",
+            "matador",
+            "el matador"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Carlos Caszely",
+          "position": "ST",
+          "aliases": [
+            "caszely"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Claudio Bravo",
+          "position": "GK",
+          "aliases": [
+            "Bravo"
+          ],
+          "popularity": 1
+        }
+      ]
+    },
+    {
+      "country": "Paraguay",
+      "flagCode": "py",
+      "flagEmoji": "🇵🇾",
+      "players": [
+        {
+          "name": "José Luis Chilavert",
+          "position": "GK",
+          "aliases": [
+            "chilavert"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Carlos Gamarra",
+          "position": "CB",
+          "aliases": [
+            "gamarra"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Julio César Romero",
+          "position": "CAM",
+          "aliases": [
+            "romerito"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "José Saturnino Cardozo",
+          "position": "ST",
+          "aliases": [
+            "cardozo"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Arsenio Erico",
+          "position": "ST",
+          "aliases": [
+            "erico",
+            "érico"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Perú",
+      "flagCode": "pe",
+      "flagEmoji": "🇵🇪",
+      "players": [
+        {
+          "name": "Héctor Chumpitaz",
+          "position": "CB",
+          "aliases": [
+            "chumpitaz"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Teófilo Cubillas",
+          "position": "CAM",
+          "aliases": [
+            "cubillas"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "César Cueto",
+          "position": "CM",
+          "aliases": [
+            "cueto"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Claudio Pizarro",
+          "position": "ST",
+          "aliases": [
+            "pizarro"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Hugo Sotil",
+          "position": "ST",
+          "aliases": [
+            "sotil"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Teodoro Fernández",
+          "position": "ST",
+          "aliases": [
+            "lolo fernandez",
+            "lolo fernández"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Ecuador",
+      "flagCode": "ec",
+      "flagEmoji": "🇪🇨",
+      "players": [
+        {
+          "name": "Iván Hurtado",
+          "position": "CB",
+          "aliases": [
+            "hurtado"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Álex Aguinaga",
+          "position": "CAM",
+          "aliases": [
+            "alex aguinaga",
+            "aguinaga"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Antonio Valencia",
+          "position": "RM",
+          "aliases": [
+            "valencia"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Agustín Delgado",
+          "position": "ST",
+          "aliases": [
+            "tin delgado",
+            "agustin delgado"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Bolivia",
+      "flagCode": "bo",
+      "flagEmoji": "🇧🇴",
+      "players": [
+        {
+          "name": "Marco Etcheverry",
+          "position": "CAM",
+          "aliases": [
+            "etcheverry",
+            "diablo etcheverry"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Erwin Sánchez",
+          "position": "CM",
+          "aliases": [
+            "erwin sanchez",
+            "sanchez"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Víctor Agustín Ugarte",
+          "position": "ST",
+          "aliases": [
+            "ugarte"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Venezuela",
+      "flagCode": "ve",
+      "flagEmoji": "🇻🇪",
+      "players": [
+        {
+          "name": "Juan Arango",
+          "position": "LM",
+          "aliases": [
+            "arango"
+          ],
+          "popularity": 1
+        }
+      ]
+    },
+    {
+      "country": "Francia",
+      "flagCode": "fr",
+      "flagEmoji": "🇫🇷",
+      "players": [
+        {
+          "name": "Fabien Barthez",
+          "position": "GK",
+          "aliases": [
+            "barthez"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Lilian Thuram",
+          "position": "RB",
+          "aliases": [
+            "thuram"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Marcel Desailly",
+          "position": "CB",
+          "aliases": [
+            "desailly"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Laurent Blanc",
+          "position": "CB",
+          "aliases": [
+            "blanc"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Bixente Lizarazu",
+          "position": "LB",
+          "aliases": [
+            "lizarazu"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Patrick Vieira",
+          "position": "CM",
+          "aliases": [
+            "vieira"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Zinedine Zidane",
+          "position": "CAM",
+          "aliases": [
+            "zidane",
+            "zizou"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Michel Platini",
+          "position": "CAM",
+          "aliases": [
+            "platini"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Didier Deschamps",
+          "position": "CDM",
+          "aliases": [
+            "deschamps"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Claude Makélélé",
+          "position": "CDM",
+          "aliases": [
+            "makelele",
+            "makélélé"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Thierry Henry",
+          "position": "ST",
+          "aliases": [
+            "henry"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Jean-Pierre Papin",
+          "position": "ST",
+          "aliases": [
+            "papin"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "España",
+      "flagCode": "es",
+      "flagEmoji": "🇪🇸",
+      "players": [
+        {
+          "name": "Iker Casillas",
+          "position": "GK",
+          "aliases": [
+            "casillas"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Andoni Zubizarreta",
+          "position": "GK",
+          "aliases": [
+            "zubizarreta"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Carles Puyol",
+          "position": "CB",
+          "aliases": [
+            "puyol"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Gerard Piqué",
+          "position": "CB",
+          "aliases": [
+            "pique",
+            "piqué"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Fernando Hierro",
+          "position": "CB",
+          "aliases": [
+            "hierro"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Xavi",
+          "position": "CM",
+          "aliases": [
+            "xavi hernandez",
+            "xavi hernández"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Andrés Iniesta",
+          "position": "CM",
+          "aliases": [
+            "iniesta"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Xabi Alonso",
+          "position": "CM",
+          "aliases": [
+            "xabi"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "David Silva",
+          "position": "CAM",
+          "aliases": [
+            "silva"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "David Villa",
+          "position": "ST",
+          "aliases": [
+            "villa"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Raúl",
+          "position": "ST",
+          "aliases": [
+            "raul"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Luis Suárez Miramontes",
+          "position": "CM",
+          "aliases": [
+            "Suárez"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Fernando Torres",
+          "position": "ST",
+          "aliases": [
+            "torres",
+            "niño torres"
+          ],
+          "popularity": 1
+        }
+      ]
+    },
+    {
+      "country": "Inglaterra",
+      "flagCode": "gb-eng",
+      "flagEmoji": "🏴",
+      "players": [
+        {
+          "name": "Gordon Banks",
+          "position": "GK",
+          "aliases": [
+            "banks"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Peter Shilton",
+          "position": "GK",
+          "aliases": [
+            "shilton"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Bobby Moore",
+          "position": "CB",
+          "aliases": [
+            "moore"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Rio Ferdinand",
+          "position": "CB",
+          "aliases": [
+            "ferdinand"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "John Terry",
+          "position": "CB",
+          "aliases": [
+            "terry"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Bobby Charlton",
+          "position": "CAM",
+          "aliases": [
+            "charlton"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Steven Gerrard",
+          "position": "CM",
+          "aliases": [
+            "gerrard"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Frank Lampard",
+          "position": "CM",
+          "aliases": [
+            "lampard"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Paul Scholes",
+          "position": "CM",
+          "aliases": [
+            "scholes"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "David Beckham",
+          "position": "RM",
+          "aliases": [
+            "beckham"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Wayne Rooney",
+          "position": "ST",
+          "aliases": [
+            "rooney"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Alan Shearer",
+          "position": "ST",
+          "aliases": [
+            "shearer"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Gary Lineker",
+          "position": "ST",
+          "aliases": [
+            "lineker"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Michael Owen",
+          "position": "ST",
+          "aliases": [
+            "owen"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Portugal",
+      "flagCode": "pt",
+      "flagEmoji": "🇵🇹",
+      "players": [
+        {
+          "name": "Vítor Baía",
+          "position": "GK",
+          "aliases": [
+            "vitor baia",
+            "baía",
+            "baia"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Pepe",
+          "position": "CB",
+          "aliases": [],
+          "popularity": 2
+        },
+        {
+          "name": "Ricardo Carvalho",
+          "position": "CB",
+          "aliases": [
+            "carvalho"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Luís Figo",
+          "position": "RM",
+          "aliases": [
+            "figo",
+            "luis figo"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Rui Costa",
+          "position": "CAM",
+          "aliases": [],
+          "popularity": 1
+        },
+        {
+          "name": "Deco",
+          "position": "CAM",
+          "aliases": [],
+          "popularity": 2
+        },
+        {
+          "name": "Eusébio",
+          "position": "ST",
+          "aliases": [
+            "eusebio",
+            "pantera negra"
+          ],
+          "popularity": 1
+        }
+      ]
+    },
+    {
+      "country": "Países Bajos",
+      "flagCode": "nl",
+      "flagEmoji": "🇳🇱",
+      "players": [
+        {
+          "name": "Edwin van der Sar",
+          "position": "GK",
+          "aliases": [
+            "van der sar"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Ronald Koeman",
+          "position": "CB",
+          "aliases": [
+            "koeman"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Jaap Stam",
+          "position": "CB",
+          "aliases": [
+            "stam"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Frank de Boer",
+          "position": "CB",
+          "aliases": [
+            "de boer"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Ruud Krol",
+          "position": "LB",
+          "aliases": [
+            "krol"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Johan Cruyff",
+          "position": "CAM",
+          "aliases": [
+            "cruyff"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Ruud Gullit",
+          "position": "CAM",
+          "aliases": [
+            "gullit"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Frank Rijkaard",
+          "position": "CDM",
+          "aliases": [
+            "rijkaard"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Wesley Sneijder",
+          "position": "CAM",
+          "aliases": [
+            "sneijder"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Clarence Seedorf",
+          "position": "CM",
+          "aliases": [
+            "seedorf"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Marco van Basten",
+          "position": "ST",
+          "aliases": [
+            "van basten"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Dennis Bergkamp",
+          "position": "ST",
+          "aliases": [
+            "bergkamp"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Robin van Persie",
+          "position": "ST",
+          "aliases": [
+            "van persie"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Arjen Robben",
+          "position": "RW",
+          "aliases": [
+            "robben"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Ruud van Nistelrooy",
+          "position": "ST",
+          "aliases": [
+            "van nistelrooy"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Bélgica",
+      "flagCode": "be",
+      "flagEmoji": "🇧🇪",
+      "players": [
+        {
+          "name": "Jean-Marie Pfaff",
+          "position": "GK",
+          "aliases": [
+            "pfaff"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Michel Preud'homme",
+          "position": "GK",
+          "aliases": [
+            "preudhomme",
+            "preud'homme"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Enzo Scifo",
+          "position": "CAM",
+          "aliases": [
+            "scifo"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Paul Van Himst",
+          "position": "ST",
+          "aliases": [
+            "van himst"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Alemania",
+      "flagCode": "de",
+      "flagEmoji": "🇩🇪",
+      "players": [
+        {
+          "name": "Oliver Kahn",
+          "position": "GK",
+          "aliases": [
+            "kahn"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Sepp Maier",
+          "position": "GK",
+          "aliases": [
+            "maier"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Franz Beckenbauer",
+          "position": "CB",
+          "aliases": [
+            "beckenbauer",
+            "kaiser"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Philipp Lahm",
+          "position": "RB",
+          "aliases": [
+            "lahm"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Jürgen Kohler",
+          "position": "CB",
+          "aliases": [
+            "kohler"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Andreas Brehme",
+          "position": "LB",
+          "aliases": [
+            "brehme"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Lothar Matthäus",
+          "position": "CM",
+          "aliases": [
+            "matthaus",
+            "matthäus"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Michael Ballack",
+          "position": "CM",
+          "aliases": [
+            "ballack"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Mesut Özil",
+          "position": "CAM",
+          "aliases": [
+            "ozil",
+            "özil"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Miroslav Klose",
+          "position": "ST",
+          "aliases": [
+            "klose"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Gerd Müller",
+          "position": "ST",
+          "aliases": [
+            "gerd muller",
+            "müller"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Rudi Völler",
+          "position": "ST",
+          "aliases": [
+            "voller",
+            "völler"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Jürgen Klinsmann",
+          "position": "ST",
+          "aliases": [
+            "klinsmann"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Italia",
+      "flagCode": "it",
+      "flagEmoji": "🇮🇹",
+      "players": [
+        {
+          "name": "Gianluigi Buffon",
+          "position": "GK",
+          "aliases": [
+            "buffon"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Dino Zoff",
+          "position": "GK",
+          "aliases": [
+            "zoff"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Paolo Maldini",
+          "position": "LB",
+          "aliases": [
+            "maldini"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Franco Baresi",
+          "position": "CB",
+          "aliases": [
+            "baresi"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Fabio Cannavaro",
+          "position": "CB",
+          "aliases": [
+            "cannavaro"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Alessandro Nesta",
+          "position": "CB",
+          "aliases": [
+            "nesta"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Gaetano Scirea",
+          "position": "CB",
+          "aliases": [
+            "scirea"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Giacinto Facchetti",
+          "position": "LB",
+          "aliases": [
+            "facchetti"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Andrea Pirlo",
+          "position": "CM",
+          "aliases": [
+            "pirlo"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Roberto Baggio",
+          "position": "CAM",
+          "aliases": [
+            "baggio",
+            "divin codino"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Francesco Totti",
+          "position": "CAM",
+          "aliases": [
+            "totti"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Paolo Rossi",
+          "position": "ST",
+          "aliases": [
+            "rossi"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Alessandro Del Piero",
+          "position": "ST",
+          "aliases": [
+            "del piero"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Giuseppe Meazza",
+          "position": "ST",
+          "aliases": [
+            "meazza"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Christian Vieri",
+          "position": "ST",
+          "aliases": [
+            "vieri"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Filippo Inzaghi",
+          "position": "ST",
+          "aliases": [
+            "inzaghi"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Croacia",
+      "flagCode": "hr",
+      "flagEmoji": "🇭🇷",
+      "players": [
+        {
+          "name": "Zvonimir Boban",
+          "position": "CAM",
+          "aliases": [
+            "boban"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Robert Prosinečki",
+          "position": "CAM",
+          "aliases": [
+            "prosinecki",
+            "prosinečki"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Davor Šuker",
+          "position": "ST",
+          "aliases": [
+            "suker",
+            "šuker"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Mario Mandžukić",
+          "position": "ST",
+          "aliases": [
+            "mandzukic",
+            "mandžukić"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Dinamarca",
+      "flagCode": "dk",
+      "flagEmoji": "🇩🇰",
+      "players": [
+        {
+          "name": "Peter Schmeichel",
+          "position": "GK",
+          "aliases": [
+            "schmeichel"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Michael Laudrup",
+          "position": "CAM",
+          "aliases": [
+            "laudrup"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Brian Laudrup",
+          "position": "LW",
+          "aliases": [
+            "brian laudrup"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Preben Elkjær",
+          "position": "ST",
+          "aliases": [
+            "elkjaer",
+            "elkjær"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Jon Dahl Tomasson",
+          "position": "ST",
+          "aliases": [
+            "tomasson"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Allan Simonsen",
+          "position": "ST",
+          "aliases": [
+            "simonsen"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Austria",
+      "flagCode": "at",
+      "flagEmoji": "🇦🇹",
+      "players": [
+        {
+          "name": "Ernst Happel",
+          "position": "CB",
+          "aliases": [
+            "happel"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Matthias Sindelar",
+          "position": "CAM",
+          "aliases": [
+            "sindelar"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Hans Krankl",
+          "position": "ST",
+          "aliases": [
+            "krankl"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Toni Polster",
+          "position": "ST",
+          "aliases": [
+            "polster"
+          ],
+          "popularity": 2
+        }
+      ]
+    },
+    {
+      "country": "Polonia",
+      "flagCode": "pl",
+      "flagEmoji": "🇵🇱",
+      "players": [
+        {
+          "name": "Zbigniew Boniek",
+          "position": "CAM",
+          "aliases": [
+            "boniek"
+          ],
+          "popularity": 1
+        },
+        {
+          "name": "Kazimierz Deyna",
+          "position": "CM",
+          "aliases": [
+            "deyna"
+          ],
+          "popularity": 2
+        },
+        {
+          "name": "Grzegorz Lato",
+          "position": "RW",
+          "aliases": [
+            "lato"
+          ],
+          "popularity": 2
+        }
+      ]
+    }
+  ]
+}
