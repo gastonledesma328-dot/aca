@@ -226,6 +226,45 @@ let newGameLocked = false;
 let selectedDifficulty = 'facil';
 let activeCategories = new Set(CATEGORIES.map((item) => item.key));
 
+// ─────────────────────────────────────────────────────────────
+// GUARDADO DE SESIÓN EN CURSO
+// Persiste la partida activa para sobrevivir recargas.
+// Se borra al terminar (victoria o intentos agotados).
+// ─────────────────────────────────────────────────────────────
+const SESSION_KEY = 'adivina_session';
+
+function getTodayStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function saveSession() {
+  if (finished || !secret) return;
+  try {
+    localStorage.setItem(SESSION_KEY, JSON.stringify({
+      date: getTodayStr(),
+      difficulty: selectedDifficulty,
+      secretNombre: secret.nombre,
+      guessNames: guesses.map(p => p.nombre),
+      activeCategories: [...activeCategories],
+    }));
+  } catch {}
+}
+
+function clearSession() {
+  try { localStorage.removeItem(SESSION_KEY); } catch {}
+}
+
+function getSession() {
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    if (!raw) return null;
+    const s = JSON.parse(raw);
+    if (s.date !== getTodayStr()) { clearSession(); return null; }
+    return s;
+  } catch { return null; }
+}
+
 const $ = (id) => document.getElementById(id);
 
 const els = {
@@ -758,6 +797,7 @@ function rerenderGuesses() {
 }
 
 function showAnswer(won) {
+  clearSession();
   unlockNewGameButton();
   finished = true;
   els.playerInput.disabled = true;
@@ -831,6 +871,7 @@ function submitGuess() {
   }
 
   guesses.push(player);
+  saveSession();
   lockNewGameButton();
   renderGuess(player);
   updateCounters();
@@ -959,6 +1000,63 @@ function normalizePlayerForGame(player) {
   };
 }
 
+function tryRestoreSession(session) {
+  // Validar dificultad
+  if (!DIFFICULTIES[session.difficulty]) return false;
+
+  // Buscar el jugador secreto por nombre exacto
+  const restoredSecret = allPlayers.find(
+    p => p.nombre === session.secretNombre
+  );
+  if (!restoredSecret) return false;
+
+  // Restaurar estado
+  selectedDifficulty = session.difficulty;
+  filterPool();
+  updateDifficultyInfo();
+  fillDatalist();
+
+  // Restaurar categorías activas
+  if (Array.isArray(session.activeCategories) && session.activeCategories.length) {
+    activeCategories = new Set(session.activeCategories);
+    updateCategoryButtons();
+  }
+
+  secret = restoredSecret;
+  guesses = session.guessNames
+    .map(name => allPlayers.find(p => p.nombre === name))
+    .filter(Boolean);
+  finished = false;
+
+  // Resetear UI
+  els.guessesBody.innerHTML = '';
+  closeResultModal();
+  els.playerInput.value = '';
+  els.playerInput.disabled = false;
+  els.guessBtn.disabled = false;
+  els.secretCompetition.textContent = getCompetitionLabel(secret);
+
+  renderTableHeader();
+
+  // Redibujar intentos previos
+  guesses.forEach(renderGuess);
+
+  updateCounters();
+
+  // Actualizar botones de dificultad
+  els.difficultyButtons.forEach(b =>
+    b.classList.toggle('active', b.dataset.difficulty === selectedDifficulty)
+  );
+
+  if (guesses.length > 0) {
+    lockNewGameButton();
+    setMessage(`Retomando partida — ${guesses.length} intento${guesses.length > 1 ? 's' : ''} realizado${guesses.length > 1 ? 's' : ''}.`, 'ok');
+  }
+
+  els.playerInput.focus();
+  return true;
+}
+
 async function loadPlayers() {
   try {
     const data = await fetchPlayersJson();
@@ -974,6 +1072,11 @@ async function loadPlayers() {
     }
 
     updateCategoryButtons();
+
+    // Intentar restaurar sesión guardada del mismo día
+    const session = getSession();
+    if (session && tryRestoreSession(session)) return;
+
     startGame();
   } catch (error) {
     console.error(error);
