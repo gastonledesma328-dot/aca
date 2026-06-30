@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Comparador de Jugadores | Partidos.Hoy</title>
+  <link rel="stylesheet" href="comparador-jugadores.css"/>
+</head>
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="comparador-selecciones.html" class="back-btn">← Volver</a>
+      <div class="brand"><strong>Partidos.Hoy</strong><span id="matchLabel">Comparador</span></div>
+      <div class="espn-pill"><span class="live-dot"></span>ESPN</div>
+    </header>
+
+    <section class="match-header">
+      <div class="mh-team">
+        <img class="mh-logo" id="logo1" src="" alt=""/>
+        <span class="mh-name" id="teamName1">—</span>
+      </div>
+      <div class="mh-vs">VS</div>
+      <div class="mh-team">
+        <img class="mh-logo" id="logo2" src="" alt=""/>
+        <span class="mh-name" id="teamName2">—</span>
+      </div>
+    </section>
+
+    <div class="loading-state" id="loadingState">
+      <div class="loading-ring"></div>
+      <div class="loading-label">Cargando plantillas...</div>
+    </div>
+
+    <section class="comparator" id="comparator" style="display:none">
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('confrontacion',this)">⚔️ Enfrentamiento</button>
+        <button class="tab-btn" id="tabPlantilla1" onclick="switchTab('plantilla1',this)">Plantilla</button>
+        <button class="tab-btn" id="tabPlantilla2" onclick="switchTab('plantilla2',this)">Plantilla</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-confrontacion">
+        <div class="formation-bar">
+          <span class="form-label">Formación</span>
+          <div class="form-btns">
+            <button class="form-btn active" onclick="setFormation('4-3-3',this)">4-3-3</button>
+            <button class="form-btn" onclick="setFormation('4-4-2',this)">4-4-2</button>
+            <button class="form-btn" onclick="setFormation('3-5-2',this)">3-5-2</button>
+          </div>
+        </div>
+        <div id="positionRows"></div>
+      </div>
+
+      <div class="tab-panel" id="tab-plantilla1">
+        <div class="plantilla-wrap" id="plantilla1Wrap"></div>
+      </div>
+      <div class="tab-panel" id="tab-plantilla2">
+        <div class="plantilla-wrap" id="plantilla2Wrap"></div>
+      </div>
+
+    </section>
+
+    <!-- SELECTOR OVERLAY -->
+    <div id="selectorOverlay" class="selector-overlay" style="display:none" onclick="closeSelector()"></div>
+
+  </main>
+  <script src="comparador-jugadores.js"></script>
+</body>
+</html>
