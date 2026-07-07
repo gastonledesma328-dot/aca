@@ -1,9 +1,9 @@
 {
   "meta": {
     "source": "ESPN API — club rosters by citizenship + event headshots",
-    "updatedAt": "2026-07-06T08:54:57.472Z",
+    "updatedAt": "2026-07-07T08:13:47.110Z",
     "totalTeams": 46,
-    "totalPlayers": 415,
+    "totalPlayers": 416,
     "playersWithRealPhoto": 0
   },
   "teams": {
@@ -2755,7 +2755,7 @@
           "short": "R. Gomes",
           "pos": "DEF",
           "posRaw": "D",
-          "age": 22,
+          "age": 23,
           "jersey": "21",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/308456.png",
@@ -3568,7 +3568,7 @@
           "short": "S. Lammens",
           "pos": "GK",
           "posRaw": "G",
-          "age": 23,
+          "age": 24,
           "jersey": "31",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/301425.png",
@@ -7316,6 +7316,23 @@
           "jersey": "10",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/85445.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "214891",
+          "name": "Ismaël Bennacer",
+          "short": "I. Bennacer",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 28,
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/214891.png",
           "stats": {
             "APP": 0,
             "G": 0,
