@@ -1,9 +1,9 @@
 {
   "meta": {
     "source": "ESPN API — club rosters by citizenship + event headshots",
-    "updatedAt": "2026-07-10T08:15:22.328Z",
+    "updatedAt": "2026-07-11T07:03:52.920Z",
     "totalTeams": 46,
-    "totalPlayers": 416,
+    "totalPlayers": 415,
     "playersWithRealPhoto": 0
   },
   "teams": {
@@ -514,6 +514,23 @@
           }
         },
         {
+          "id": "139008",
+          "name": "Joao Victor",
+          "short": "Joao Victor",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 31,
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/139008.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
           "id": "155684",
           "name": "Lucas",
           "short": "Lucas",
@@ -559,24 +576,6 @@
           "jersey": "13",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/228397.png",
-          "stats": {
-            "APP": 0,
-            "G": 0,
-            "A": 0,
-            "SV": 0,
-            "YC": 0
-          }
-        },
-        {
-          "id": "236322",
-          "name": "Gabriel Magalhães",
-          "short": "G. Magalhães",
-          "pos": "DEF",
-          "posRaw": "D",
-          "age": 28,
-          "jersey": "6",
-          "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/236322.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -2786,23 +2785,6 @@
           }
         },
         {
-          "id": "139008",
-          "name": "João Mário",
-          "short": "João Mário",
-          "pos": "DEF",
-          "posRaw": "D",
-          "age": 26,
-          "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/139008.png",
-          "stats": {
-            "APP": 0,
-            "G": 0,
-            "A": 0,
-            "SV": 0,
-            "YC": 0
-          }
-        },
-        {
           "id": "234878",
           "name": "Rúben Dias",
           "short": "R. Dias",
@@ -4699,7 +4681,7 @@
           "short": "C. Walch",
           "pos": "MID",
           "posRaw": "M",
-          "age": 38,
+          "age": 39,
           "jersey": "15",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/121557.png",
