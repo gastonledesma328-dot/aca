@@ -1,8 +1,8 @@
 {
   "meta": {
     "source": "Google Knowledge Graph lr_lm_mt + ESPN API",
-    "updatedAt": "2026-07-19T16:50:33.602Z",
-    "total": 36
+    "updatedAt": "2026-07-19T17:32:59.731Z",
+    "total": 42
   },
   "fixture": [
     {
@@ -472,6 +472,93 @@
         "visita": 6
       },
       "status": "finished"
+    },
+    {
+      "mid": "/espn/760517",
+      "startTime": "2026-07-19T19:00Z",
+      "fecha": "19 Jul",
+      "grupo": "?",
+      "local": "Spain",
+      "visita": "Argentina",
+      "score": null,
+      "status": "upcoming",
+      "logoLocal": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+      "logoVisita": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
+    },
+    {
+      "mid": "/espn/684665",
+      "startTime": "2025-09-09T23:00Z",
+      "fecha": "9 Sep",
+      "grupo": "?",
+      "local": "Ecuador",
+      "visita": "Argentina",
+      "score": {
+        "local": 1,
+        "visita": 0
+      },
+      "status": "finished",
+      "logoLocal": "https://a.espncdn.com/i/teamlogos/countries/500/ecu.png",
+      "logoVisita": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
+    },
+    {
+      "mid": "/espn/684663",
+      "startTime": "2025-09-09T23:30Z",
+      "fecha": "9 Sep",
+      "grupo": "?",
+      "local": "Bolivia",
+      "visita": "Brazil",
+      "score": {
+        "local": 1,
+        "visita": 0
+      },
+      "status": "finished",
+      "logoLocal": "https://a.espncdn.com/i/teamlogos/countries/500/bol.png",
+      "logoVisita": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
+    },
+    {
+      "mid": "/espn/684664",
+      "startTime": "2025-09-09T23:30Z",
+      "fecha": "9 Sep",
+      "grupo": "?",
+      "local": "Chile",
+      "visita": "Uruguay",
+      "score": {
+        "local": 0,
+        "visita": 0
+      },
+      "status": "finished",
+      "logoLocal": "https://a.espncdn.com/i/teamlogos/countries/500/chi.png",
+      "logoVisita": "https://a.espncdn.com/i/teamlogos/countries/500/uru.png"
+    },
+    {
+      "mid": "/espn/684666",
+      "startTime": "2025-09-09T23:30Z",
+      "fecha": "9 Sep",
+      "grupo": "?",
+      "local": "Peru",
+      "visita": "Paraguay",
+      "score": {
+        "local": 0,
+        "visita": 1
+      },
+      "status": "finished",
+      "logoLocal": "https://a.espncdn.com/i/teamlogos/countries/500/per.png",
+      "logoVisita": "https://a.espncdn.com/i/teamlogos/countries/500/par.png"
+    },
+    {
+      "mid": "/espn/684667",
+      "startTime": "2025-09-09T23:30Z",
+      "fecha": "9 Sep",
+      "grupo": "?",
+      "local": "Venezuela",
+      "visita": "Colombia",
+      "score": {
+        "local": 3,
+        "visita": 6
+      },
+      "status": "finished",
+      "logoLocal": "https://a.espncdn.com/i/teamlogos/countries/500/ven.png",
+      "logoVisita": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
     }
   ]
 }
