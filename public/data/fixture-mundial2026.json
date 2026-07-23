@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "Google Knowledge Graph lr_lm_mt + ESPN API",
-    "updatedAt": "2026-07-23T20:55:21.494Z",
+    "updatedAt": "2026-07-23T21:36:16.539Z",
     "total": 42
   },
   "fixture": [
@@ -480,8 +480,11 @@
       "grupo": "?",
       "local": "Spain",
       "visita": "Argentina",
-      "score": null,
-      "status": "upcoming",
+      "score": {
+        "local": 1,
+        "visita": 0
+      },
+      "status": "finished",
       "logoLocal": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
       "logoVisita": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png"
     },
