@@ -1,9 +1,9 @@
 {
   "meta": {
     "source": "ESPN API — club rosters by citizenship + event headshots",
-    "updatedAt": "2026-07-29T07:35:58.136Z",
+    "updatedAt": "2026-07-30T07:25:50.511Z",
     "totalTeams": 46,
-    "totalPlayers": 457,
+    "totalPlayers": 464,
     "playersWithRealPhoto": 0
   },
   "teams": {
@@ -11,6 +11,24 @@
       "name": "Argentina",
       "espnId": 9,
       "players": [
+        {
+          "id": "167192",
+          "name": "Gerónimo Rulli",
+          "short": "G. Rulli",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 34,
+          "jersey": "1",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/167192.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
         {
           "id": "177927",
           "name": "Juan Musso",
@@ -136,15 +154,15 @@
           }
         },
         {
-          "id": "281590",
-          "name": "Lautaro Valenti",
-          "short": "L. Valenti",
+          "id": "249663",
+          "name": "Facundo Medina",
+          "short": "F. Medina",
           "pos": "DEF",
           "posRaw": "D",
           "age": 27,
-          "jersey": "5",
+          "jersey": "32",
           "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/281590.png",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/249663.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -154,14 +172,15 @@
           }
         },
         {
-          "id": "308939",
-          "name": "Franco Carboni",
-          "short": "F. Carboni",
+          "id": "271555",
+          "name": "Leonardo Balerdi",
+          "short": "L. Balerdi",
           "pos": "DEF",
           "posRaw": "D",
-          "age": 23,
+          "age": 27,
+          "jersey": "5",
           "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/308939.png",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/271555.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -739,6 +758,7 @@
           "pos": "MID",
           "posRaw": "M",
           "age": 29,
+          "jersey": "12",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/216254.png",
           "stats": {
@@ -2887,6 +2907,7 @@
           "pos": "DEF",
           "posRaw": "D",
           "age": 26,
+          "jersey": "25",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/139008.png",
           "stats": {
@@ -3258,14 +3279,15 @@
           }
         },
         {
-          "id": "246244",
-          "name": "Kjell Scherpen",
-          "short": "K. Scherpen",
+          "id": "228707",
+          "name": "Jeffrey de Lange",
+          "short": "J. de Lange",
           "pos": "GK",
           "posRaw": "G",
-          "age": 26,
+          "age": 28,
+          "jersey": "12",
           "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/246244.png",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/228707.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -3275,15 +3297,14 @@
           }
         },
         {
-          "id": "301449",
-          "name": "Robin Roefs",
-          "short": "R. Roefs",
+          "id": "246244",
+          "name": "Kjell Scherpen",
+          "short": "K. Scherpen",
           "pos": "GK",
           "posRaw": "G",
-          "age": 23,
-          "jersey": "22",
+          "age": 26,
           "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/301449.png",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/246244.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -3562,15 +3583,15 @@
           }
         },
         {
-          "id": "332962",
-          "name": "Xavi Simons",
-          "short": "X. Simons",
+          "id": "282230",
+          "name": "Quinten Timber",
+          "short": "Q. Timber",
           "pos": "MID",
           "posRaw": "M",
-          "age": 23,
-          "jersey": "7",
+          "age": 25,
+          "jersey": "27",
           "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/332962.png",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/282230.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -3747,15 +3768,15 @@
           }
         },
         {
-          "id": "332343",
-          "name": "Mike Penders",
-          "short": "M. Penders",
+          "id": "330271",
+          "name": "Jelle Van Neck",
+          "short": "J. Van Neck",
           "pos": "GK",
           "posRaw": "G",
-          "age": 20,
-          "jersey": "39",
+          "age": 22,
+          "jersey": "40",
           "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/332343.png",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/330271.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -4715,6 +4736,24 @@
           }
         },
         {
+          "id": "220718",
+          "name": "Ulisses Garcia",
+          "short": "U. Garcia",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 30,
+          "jersey": "25",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/220718.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
           "id": "243626",
           "name": "Miro Muheim",
           "short": "M. Muheim",
@@ -4863,6 +4902,7 @@
           "pos": "MID",
           "posRaw": "M",
           "age": 25,
+          "jersey": "7",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/275015.png",
           "stats": {
@@ -4879,7 +4919,7 @@
           "short": "A. Jashari",
           "pos": "MID",
           "posRaw": "M",
-          "age": 23,
+          "age": 24,
           "jersey": "30",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/303973.png",
@@ -5492,6 +5532,7 @@
           "pos": "DEF",
           "posRaw": "D",
           "age": 26,
+          "jersey": "2",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/286814.png",
           "stats": {
@@ -5545,6 +5586,7 @@
           "pos": "DEF",
           "posRaw": "D",
           "age": 22,
+          "jersey": "40",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/355999.png",
           "stats": {
@@ -5704,6 +5746,7 @@
           "pos": "FWD",
           "posRaw": "F",
           "age": 28,
+          "jersey": "23",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/235503.png",
           "stats": {
@@ -6199,23 +6242,6 @@
             "SV": 0,
             "YC": 0
           }
-        },
-        {
-          "id": "336456",
-          "name": "Óscar Perea",
-          "short": "Ó. Perea",
-          "pos": "FWD",
-          "posRaw": "F",
-          "age": 20,
-          "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/336456.png",
-          "stats": {
-            "APP": 0,
-            "G": 0,
-            "A": 0,
-            "SV": 0,
-            "YC": 0
-          }
         }
       ]
     },
@@ -6463,6 +6489,24 @@
       "espnId": 571,
       "players": [
         {
+          "id": "238712",
+          "name": "Derek Cornelius",
+          "short": "D. Cornelius",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 28,
+          "jersey": "13",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/238712.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
           "id": "273499",
           "name": "Jonathan David",
           "short": "J. David",
@@ -6628,6 +6672,24 @@
           }
         },
         {
+          "id": "245243",
+          "name": "Nayef Aguerd",
+          "short": "N. Aguerd",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 30,
+          "jersey": "21",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/245243.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
           "id": "376333",
           "name": "Naoufel El Hannach",
           "short": "N. El Hannach",
@@ -6717,6 +6779,24 @@
           }
         },
         {
+          "id": "238917",
+          "name": "Amine Harit",
+          "short": "A. Harit",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 29,
+          "jersey": "77",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/238917.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
           "id": "246532",
           "name": "Brahim Díaz",
           "short": "B. Díaz",
@@ -6776,25 +6856,9 @@
           "pos": "MID",
           "posRaw": "M",
           "age": 25,
+          "jersey": "17",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/320947.png",
-          "stats": {
-            "APP": 0,
-            "G": 0,
-            "A": 0,
-            "SV": 0,
-            "YC": 0
-          }
-        },
-        {
-          "id": "324567",
-          "name": "Bilal Nadir",
-          "short": "B. Nadir",
-          "pos": "MID",
-          "posRaw": "M",
-          "age": 22,
-          "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/324567.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -7060,24 +7124,6 @@
           }
         },
         {
-          "id": "355433",
-          "name": "Mamadou Sarr",
-          "short": "M. Sarr",
-          "pos": "DEF",
-          "posRaw": "D",
-          "age": 20,
-          "jersey": "19",
-          "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/355433.png",
-          "stats": {
-            "APP": 0,
-            "G": 0,
-            "A": 0,
-            "SV": 0,
-            "YC": 0
-          }
-        },
-        {
           "id": "414159",
           "name": "Moustapha Diop",
           "short": "M. Diop",
@@ -7087,6 +7133,24 @@
           "jersey": "3",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/414159.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "414255",
+          "name": "Talla Ndiaye",
+          "short": "T. Ndiaye",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 18,
+          "jersey": "75",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/414255.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -7312,14 +7376,15 @@
           }
         },
         {
-          "id": "377170",
-          "name": "Idrissa Gueye",
-          "short": "I. Gueye",
+          "id": "355433",
+          "name": "Mamadou Sarr",
+          "short": "M. Sarr",
           "pos": "FWD",
           "posRaw": "F",
-          "age": 19,
+          "age": 20,
+          "jersey": "19",
           "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/377170.png",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/355433.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -7329,15 +7394,14 @@
           }
         },
         {
-          "id": "388522",
-          "name": "Ibrahim Mbaye",
-          "short": "I. Mbaye",
+          "id": "377170",
+          "name": "Idrissa Gueye",
+          "short": "I. Gueye",
           "pos": "FWD",
           "posRaw": "F",
-          "age": 18,
-          "jersey": "49",
+          "age": 19,
           "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/388522.png",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/377170.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -7491,6 +7555,7 @@
           "pos": "MID",
           "posRaw": "M",
           "age": 23,
+          "jersey": "6",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/347018.png",
           "stats": {
@@ -7669,6 +7734,24 @@
           }
         },
         {
+          "id": "324960",
+          "name": "Bamo Meïté",
+          "short": "B. Meïté",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 24,
+          "jersey": "18",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/324960.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
           "id": "186151",
           "name": "Jean-Philippe Gbamin",
           "short": "J. Gbamin",
@@ -7710,6 +7793,7 @@
           "pos": "FWD",
           "posRaw": "F",
           "age": 29,
+          "jersey": "13",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/206153.png",
           "stats": {
@@ -7958,6 +8042,24 @@
           }
         },
         {
+          "id": "277525",
+          "name": "Himad Abdelli",
+          "short": "H. Abdelli",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "8",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/277525.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
           "id": "337306",
           "name": "Farès Chaïbi",
           "short": "F. Chaïbi",
@@ -7994,6 +8096,24 @@
           }
         },
         {
+          "id": "409118",
+          "name": "Yanis Sellami",
+          "short": "Y. Sellami",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 19,
+          "jersey": "45",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/409118.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
           "id": "315384",
           "name": "Mohamed Amoura",
           "short": "M. Amoura",
@@ -8009,6 +8129,24 @@
             "A": 3,
             "SV": 0,
             "YC": 2
+          }
+        },
+        {
+          "id": "259743",
+          "name": "Amine Gouiri",
+          "short": "A. Gouiri",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 26,
+          "jersey": "9",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/259743.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
           }
         }
       ]
