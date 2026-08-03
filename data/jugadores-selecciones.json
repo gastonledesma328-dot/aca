@@ -1,9 +1,9 @@
 {
   "meta": {
     "source": "ESPN API — club rosters by citizenship + event headshots",
-    "updatedAt": "2026-08-02T07:25:40.008Z",
+    "updatedAt": "2026-08-03T08:19:18.317Z",
     "totalTeams": 46,
-    "totalPlayers": 469,
+    "totalPlayers": 471,
     "playersWithRealPhoto": 0
   },
   "teams": {
@@ -3677,7 +3677,7 @@
           "short": "T. Dallinga",
           "pos": "FWD",
           "posRaw": "F",
-          "age": 25,
+          "age": 26,
           "jersey": "24",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/266280.png",
@@ -4028,6 +4028,23 @@
           "jersey": "16",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/316609.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "365318",
+          "name": "Jesse Bisiwu",
+          "short": "J. Bisiwu",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 18,
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/365318.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -6436,6 +6453,24 @@
           }
         },
         {
+          "id": "183529",
+          "name": "Kevin Paredes",
+          "short": "K. Paredes",
+          "pos": "FWD",
+          "posRaw": "F",
+          "age": 19,
+          "jersey": "40",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/183529.png",
+          "stats": {
+            "APP": 6,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 1
+          }
+        },
+        {
           "id": "349723",
           "name": "Enso González",
           "short": "E. González",
@@ -6820,7 +6855,7 @@
           "short": "B. Díaz",
           "pos": "MID",
           "posRaw": "M",
-          "age": 26,
+          "age": 27,
           "jersey": "21",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/246532.png",
