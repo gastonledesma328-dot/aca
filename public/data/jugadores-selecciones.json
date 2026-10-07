@@ -1,9 +1,9 @@
 {
   "meta": {
     "source": "ESPN API — club rosters by citizenship + event headshots",
-    "updatedAt": "2026-10-06T11:34:45.257Z",
+    "updatedAt": "2026-10-07T11:24:13.747Z",
     "totalTeams": 46,
-    "totalPlayers": 456,
+    "totalPlayers": 455,
     "playersWithRealPhoto": 0
   },
   "teams": {
@@ -4551,6 +4551,24 @@
           }
         },
         {
+          "id": "106139",
+          "name": "Lewis Hall",
+          "short": "L. Hall",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 26,
+          "jersey": "3",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/106139.png",
+          "stats": {
+            "APP": 5,
+            "G": 1,
+            "A": 1,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
           "id": "202429",
           "name": "Lewis Ferguson",
           "short": "L. Ferguson",
@@ -4668,24 +4686,6 @@
           "jersey": "23",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/156085.png",
-          "stats": {
-            "APP": 0,
-            "G": 0,
-            "A": 0,
-            "SV": 0,
-            "YC": 0
-          }
-        },
-        {
-          "id": "366750",
-          "name": "Ellis Clark",
-          "short": "E. Clark",
-          "pos": "MID",
-          "posRaw": "M",
-          "age": 19,
-          "jersey": "47",
-          "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/366750.png",
           "stats": {
             "APP": 0,
             "G": 0,
@@ -5036,6 +5036,7 @@
           "pos": "DEF",
           "posRaw": "D",
           "age": 34,
+          "jersey": "5",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/118444.png",
           "stats": {
@@ -6000,24 +6001,6 @@
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/234881.png",
           "stats": {
             "APP": 4,
-            "G": 0,
-            "A": 0,
-            "SV": 0,
-            "YC": 0
-          }
-        },
-        {
-          "id": "184757",
-          "name": "Jorge Castillo",
-          "short": "J. Castillo",
-          "pos": "DEF",
-          "posRaw": "D",
-          "age": 20,
-          "jersey": "46",
-          "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/184757.png",
-          "stats": {
-            "APP": 0,
             "G": 0,
             "A": 0,
             "SV": 0,
@@ -7934,7 +7917,7 @@
           "short": "M. Bouguerra",
           "pos": "DEF",
           "posRaw": "D",
-          "age": 43,
+          "age": 44,
           "jersey": "22",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/74714.png",
