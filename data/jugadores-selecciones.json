@@ -1,9 +1,9 @@
 {
   "meta": {
     "source": "ESPN API — club rosters by citizenship + event headshots",
-    "updatedAt": "2026-10-13T12:15:23.590Z",
+    "updatedAt": "2026-10-14T09:49:07.007Z",
     "totalTeams": 46,
-    "totalPlayers": 455,
+    "totalPlayers": 456,
     "playersWithRealPhoto": 0
   },
   "teams": {
@@ -4542,6 +4542,23 @@
           "jersey": "43",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/347290.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "381055",
+          "name": "Daniel Armer",
+          "short": "D. Armer",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 18,
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/381055.png",
           "stats": {
             "APP": 0,
             "G": 0,
