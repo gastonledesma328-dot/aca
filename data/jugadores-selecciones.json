@@ -1,9 +1,9 @@
 {
   "meta": {
     "source": "ESPN API — club rosters by citizenship + event headshots",
-    "updatedAt": "2026-10-22T09:42:57.637Z",
+    "updatedAt": "2026-10-23T09:39:14.923Z",
     "totalTeams": 46,
-    "totalPlayers": 457,
+    "totalPlayers": 458,
     "playersWithRealPhoto": 0
   },
   "teams": {
@@ -4575,7 +4575,7 @@
           "short": "D. Armer",
           "pos": "DEF",
           "posRaw": "D",
-          "age": 18,
+          "age": 19,
           "jersey": "57",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/381055.png",
@@ -6623,6 +6623,23 @@
       "name": "Marruecos",
       "espnId": 51,
       "players": [
+        {
+          "id": "404675",
+          "name": "Ibrahim Gomis",
+          "short": "I. Gomis",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 21,
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/404675.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
+            "SV": 0,
+            "YC": 0
+          }
+        },
         {
           "id": "166634",
           "name": "Yunis Abdelhamid",
