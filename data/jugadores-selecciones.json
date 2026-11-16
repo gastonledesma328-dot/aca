@@ -1,9 +1,9 @@
 {
   "meta": {
     "source": "ESPN API — club rosters by citizenship + event headshots",
-    "updatedAt": "2026-11-15T12:19:52.034Z",
+    "updatedAt": "2026-11-16T13:12:40.177Z",
     "totalTeams": 46,
-    "totalPlayers": 457,
+    "totalPlayers": 458,
     "playersWithRealPhoto": 0
   },
   "teams": {
@@ -797,7 +797,7 @@
           "short": "B. Guimarães",
           "pos": "MID",
           "posRaw": "M",
-          "age": 28,
+          "age": 29,
           "jersey": "39",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/218522.png",
@@ -4281,7 +4281,7 @@
           "short": "M. Vuskovic",
           "pos": "DEF",
           "posRaw": "D",
-          "age": 24,
+          "age": 25,
           "jersey": "44",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/307725.png",
@@ -6022,6 +6022,24 @@
             "APP": 9,
             "G": 0,
             "A": 1,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
+          "id": "184757",
+          "name": "Jorge Castillo",
+          "short": "J. Castillo",
+          "pos": "DEF",
+          "posRaw": "D",
+          "age": 20,
+          "jersey": "46",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/184757.png",
+          "stats": {
+            "APP": 0,
+            "G": 0,
+            "A": 0,
             "SV": 0,
             "YC": 0
           }
