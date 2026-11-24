@@ -1,7 +1,7 @@
 {
   "meta": {
     "source": "ESPN API — club rosters by citizenship + event headshots",
-    "updatedAt": "2026-11-23T15:28:59.196Z",
+    "updatedAt": "2026-11-24T15:23:03.412Z",
     "totalTeams": 46,
     "totalPlayers": 458,
     "playersWithRealPhoto": 0
@@ -400,7 +400,7 @@
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/312757.png",
           "stats": {
-            "APP": 11,
+            "APP": 12,
             "G": 4,
             "A": 0,
             "SV": 0,
@@ -418,7 +418,7 @@
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/376473.png",
           "stats": {
-            "APP": 11,
+            "APP": 12,
             "G": 4,
             "A": 0,
             "SV": 0,
@@ -640,7 +640,7 @@
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/364156.png",
           "stats": {
-            "APP": 10,
+            "APP": 11,
             "G": 0,
             "A": 0,
             "SV": 0,
@@ -1434,6 +1434,24 @@
       "espnId": 164,
       "players": [
         {
+          "id": "108482",
+          "name": "David de Gea",
+          "short": "D. de Gea",
+          "pos": "GK",
+          "posRaw": "G",
+          "age": 36,
+          "jersey": "43",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/108482.png",
+          "stats": {
+            "APP": 12,
+            "G": 0,
+            "A": 0,
+            "SV": 39,
+            "YC": 1
+          }
+        },
+        {
           "id": "297362",
           "name": "Joan García",
           "short": "J. García",
@@ -1449,24 +1467,6 @@
             "A": 0,
             "SV": 23,
             "YC": 0
-          }
-        },
-        {
-          "id": "108482",
-          "name": "David de Gea",
-          "short": "D. de Gea",
-          "pos": "GK",
-          "posRaw": "G",
-          "age": 36,
-          "jersey": "43",
-          "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/108482.png",
-          "stats": {
-            "APP": 11,
-            "G": 0,
-            "A": 0,
-            "SV": 37,
-            "YC": 1
           }
         },
         {
@@ -2129,7 +2129,7 @@
           "short": "M. Richter",
           "pos": "MID",
           "posRaw": "M",
-          "age": 28,
+          "age": 29,
           "jersey": "23",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/259053.png",
@@ -2426,10 +2426,10 @@
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/159443.png",
           "stats": {
-            "APP": 10,
+            "APP": 11,
             "G": 0,
             "A": 0,
-            "SV": 28,
+            "SV": 31,
             "YC": 0
           }
         },
@@ -3088,6 +3088,24 @@
           }
         },
         {
+          "id": "262591",
+          "name": "Pedro Gonçalves",
+          "short": "P. Gonçalves",
+          "pos": "MID",
+          "posRaw": "M",
+          "age": 28,
+          "jersey": "28",
+          "club": "",
+          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/262591.png",
+          "stats": {
+            "APP": 9,
+            "G": 0,
+            "A": 2,
+            "SV": 0,
+            "YC": 0
+          }
+        },
+        {
           "id": "288897",
           "name": "Vitinha",
           "short": "Vitinha",
@@ -3121,24 +3139,6 @@
             "A": 1,
             "SV": 0,
             "YC": 2
-          }
-        },
-        {
-          "id": "355061",
-          "name": "João Neves",
-          "short": "J. Neves",
-          "pos": "MID",
-          "posRaw": "M",
-          "age": 22,
-          "jersey": "87",
-          "club": "",
-          "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/355061.png",
-          "stats": {
-            "APP": 9,
-            "G": 0,
-            "A": 0,
-            "SV": 0,
-            "YC": 0
           }
         },
         {
@@ -5737,7 +5737,7 @@
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/367743.png",
           "stats": {
-            "APP": 9,
+            "APP": 10,
             "G": 3,
             "A": 2,
             "SV": 0,
@@ -7810,7 +7810,7 @@
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/386989.png",
           "stats": {
-            "APP": 7,
+            "APP": 8,
             "G": 0,
             "A": 0,
             "SV": 0,
@@ -8063,7 +8063,7 @@
           "short": "I. Maza",
           "pos": "MID",
           "posRaw": "M",
-          "age": 20,
+          "age": 21,
           "jersey": "30",
           "club": "",
           "photo": "https://a.espncdn.com/i/headshots/soccer/players/full/361212.png",
